@@ -59,7 +59,7 @@ export function SettingsPanel({ state }: { state: GameState }) {
     {state.settings.spoiler === 'anime' && <label className="setting-row"><span>允许揭晓至游戏第几章<small>锁定篇章隐藏标题和概要。修改不会抹除已完成记录。</small></span><select value={Math.min(state.settings.animeLimit, chapters.length)} onChange={e => settings({ animeLimit: Number(e.target.value) })}>{chapters.map(c => <option key={c.id} value={c.id}>第 {c.id} 章</option>)}</select></label>}
     <label className="setting-row"><span>音效音量<small>首次主动操作后启用合成音效，0 为静音。</small></span><input aria-label="音效音量" type="range" min="0" max="1" step=".05" value={state.settings.volume} onChange={e => settings({ volume: Number(e.target.value) })} /></label>
     <label className="setting-row"><span>减弱动态效果<small>降低闪烁、火焰动画与背景粒子。</small></span><input type="checkbox" checked={state.settings.reducedMotion} onChange={e => settings({ reducedMotion: e.target.checked })} /></label>
-    <p className="muted">菜单、剧情和页面后台暂停战斗。手机建议横屏游玩。音效及触控表现将在体验阶段完善。</p>
+    <p className="muted">菜单、剧情和页面后台暂停战斗。手机横屏使用摇杆；普攻按钮可按住连击。所有音效由程序合成。</p>
   </>
 }
 export function SavesPanel({ state, onLoaded, onReset }: { state: GameState; onLoaded: () => void; onReset: () => void }) {

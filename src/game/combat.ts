@@ -6,6 +6,7 @@ export interface Obstacle { x: number; y: number; w: number; h: number }
 export interface Fighter extends Vec {
   id: number; hp: number; maxHp: number; type: 'brute' | 'hunter' | 'mage' | 'boss'
   timer: number; windup: number; target: Vec; radius: number; burn: number; burnTick: number
+  secondary?: Vec[]
 }
 export interface Herb extends Vec { available: boolean; respawn: number }
 export interface Effect extends Vec { radius: number; time: number; maxTime: number; color: number; kind: 'ring' | 'slash' }
@@ -14,6 +15,7 @@ export interface Input { x: number; y: number; aim?: Vec }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
+  sound?: (kind: 'attack' | 'skill' | 'dodge' | 'hurt' | 'collect' | 'victory') => void
 }
 export const WIDTH = 1280, HEIGHT = 800
 export const camp = { x: 160, y: 640 }, gate = { x: 1090, y: 180 }
@@ -80,6 +82,7 @@ export class CombatWorld {
     if (e.hp === 0) {
       this.effect(e.x, e.y, e.type === 'boss' ? 110 : 40, 0xd4bb87)
       this.cb.kill(e.type === 'boss')
+      if (e.type === 'boss') this.cb.sound?.('victory')
     }
   }
   private hurtPlayer(amount: number) {
@@ -91,6 +94,7 @@ export class CombatWorld {
     this.player.invincible = .5
     this.player.hit = .18
     this.lastHit = this.elapsed
+    this.cb.sound?.('hurt')
     this.floats.push({ x: this.player.x, y: this.player.y - 48, text: `−${hit}`, time: .8, color: '#ef9583' })
   }
   private aim(input: Input): Vec {
@@ -109,7 +113,7 @@ export class CombatWorld {
       if (near === 'herb') {
         const herb = this.herbs.find(h => h.available && distance(h, p) < 75)!
         herb.available = false; herb.respawn = 22
-        this.cb.collect(); this.effect(herb.x, herb.y, 36, 0x8ee4b3)
+        this.cb.collect(); this.cb.sound?.('collect'); this.effect(herb.x, herb.y, 36, 0x8ee4b3)
       } else if (near === 'camp') {
         this.cb.camp()
       } else if (near === 'gate') {
@@ -128,6 +132,7 @@ export class CombatWorld {
         ? { x: input.x / Math.hypot(input.x, input.y), y: input.y / Math.hypot(input.x, input.y) }
         : { x: Math.cos(p.facing), y: Math.sin(p.facing) }
       p.stamina -= 28; p.roll = .22; p.invincible = .28; this.cooldowns.dodge = .7
+      this.cb.sound?.('dodge')
       return
     }
     if (action === 'heal') {
@@ -179,6 +184,7 @@ export class CombatWorld {
       if (s.flame === 'pure') amount *= 1.18
     }
     this.effect(center.x, center.y, radius, color, cone ? 'slash' : 'ring')
+    this.cb.sound?.(action === 'attack' ? 'attack' : 'skill')
     for (const e of this.enemies) {
       if (e.hp <= 0 || distance(e, center) > radius + 20) continue
       const deltaAngle = Math.atan2(Math.sin(Math.atan2(e.y - p.y, e.x - p.x) - p.facing), Math.cos(Math.atan2(e.y - p.y, e.x - p.x) - p.facing))
@@ -216,12 +222,15 @@ export class CombatWorld {
       }
       if (e.hp <= 0) continue
       const dist = distance(e, p)
+      if (e.type !== 'boss' && distance(p, camp) < 105) { e.windup = 0; e.timer = Math.max(e.timer, 1); continue }
       if (dist > (e.type === 'boss' ? 1100 : 370)) continue
       if (e.windup > 0) {
         e.windup -= dt
         if (e.windup <= 0) {
-          if (distance(e.target, p) < e.radius + 16) this.hurtPlayer(12 + this.chapter.id * 2.4 + (e.type === 'boss' ? 13 : 0))
-          this.effect(e.target.x, e.target.y, e.radius, 0xcf6452)
+          for (const point of [e.target, ...(e.secondary ?? [])]) {
+            if (distance(point, p) < e.radius + 16) this.hurtPlayer(12 + this.chapter.id * 2.4 + (e.type === 'boss' ? 13 : 0))
+            this.effect(point.x, point.y, e.radius, 0xcf6452)
+          }
           if (e.type === 'boss' && this.chapter.pattern === 'dash') {
             e.x = clamp(e.target.x, 60, WIDTH - 60); e.y = clamp(e.target.y, 60, HEIGHT - 60)
           }
@@ -238,6 +247,9 @@ export class CombatWorld {
         e.windup = e.type === 'boss' ? .95 : e.type === 'mage' ? .8 : .58
         e.target = ranged || e.type === 'boss' ? { x: p.x, y: p.y } : { x: e.x, y: e.y }
         e.radius = e.type === 'boss' ? (this.chapter.pattern === 'storm' ? 150 : this.chapter.pattern === 'dash' ? 100 : 135) : ranged ? 85 : 70
+        const phase = e.hp / e.maxHp
+        e.secondary = e.type === 'boss' && ['storm', 'volley'].includes(this.chapter.pattern) && phase < .7
+          ? [{ x: clamp(p.x + 200, 65, WIDTH - 65), y: p.y }, ...(phase < .35 ? [{ x: clamp(p.x - 200, 65, WIDTH - 65), y: clamp(p.y + 140, 65, HEIGHT - 65) }] : [])] : []
       } else if (dist > (ranged ? 240 : 70)) {
         const speed = e.type === 'hunter' ? 135 : e.type === 'boss' ? 95 : 80
         this.move(e, (p.x - e.x) / dist * dt * speed, (p.y - e.y) / dist * dt * speed)
@@ -254,7 +266,7 @@ export class CombatWorld {
   runtime(): Runtime {
     const stats = playerStats(this.cb.state()), near = this.near()
     const boss = this.enemies.find(e => e.type === 'boss')
-    return { hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
+    return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
       near, prompt: near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? 'E · 开启章节试炼' : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0 }

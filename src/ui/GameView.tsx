@@ -11,7 +11,7 @@ export default function GameView() {
       backgroundColor: '#213b33', scene: [AdventureScene],
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       render: { antialias: true, pixelArt: false }, audio: { noAudio: true },
-      input: { keyboard: { capture: [32, 37, 38, 39, 40] } },
+      input: { keyboard: { capture: [] } },
     })
     return () => { game.destroy(true) }
   }, [])

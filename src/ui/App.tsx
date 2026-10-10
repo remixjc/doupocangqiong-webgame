@@ -3,6 +3,8 @@ import { chapters, chapterById } from '../content/chapters'
 import { gameStore } from '../core/store'
 import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
 import { AlchemyPanel, SavesPanel, SettingsPanel, ShopPanel } from './Panels'
+import TouchControls from './TouchControls'
+import { setVolume, unlockAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
 
 const GameView = lazy(() => import('./GameView'))
@@ -16,18 +18,26 @@ export default function App() {
   const [story, setStory] = useState<Story | null>(null)
   const [run, setRun] = useState(0)
   const [ready, setReady] = useState(false)
+  const [portrait, setPortrait] = useState(() => window.matchMedia('(max-width:720px) and (orientation:portrait)').matches)
   const chapter = chapterById(s.chapter), progress = s.progress[s.chapter]
   const flame = flames.find(f => f.id === s.flame)!
   const stats = playerStats(s)
   const completed = s.completed.includes(s.chapter)
 
   useEffect(() => { gameStore.initialize().finally(() => setReady(true)) }, [])
+  useEffect(() => { setVolume(s.settings.volume) }, [s.settings.volume])
   useEffect(() => {
-    gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead
+    const media = window.matchMedia('(max-width:720px) and (orientation:portrait)')
+    const changed = () => setPortrait(media.matches)
+    media.addEventListener('change', changed)
+    return () => media.removeEventListener('change', changed)
+  }, [])
+  useEffect(() => {
+    gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead || portrait
     if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
     gameStore.onInteract = () => setPanel('camp')
     return () => { gameStore.onInteract = null }
-  }, [screen, panel, story, r.dead])
+  }, [screen, panel, story, r.dead, portrait])
   useEffect(() => {
     if (!notice) return
     const id = window.setTimeout(() => gameStore.notify(''), 3500)
@@ -35,13 +45,31 @@ export default function App() {
   }, [notice])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && !story) setPanel(p => p ? null : 'camp')
+      if (e.key === 'Escape' && !story && (screen === 'play' || panel)) setPanel(p => p ? null : 'camp')
     }
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
-  }, [story])
+  }, [story, screen, panel])
+  useEffect(() => {
+    if (!panel && !story && !r.dead) return
+    const previous = document.activeElement as HTMLElement | null
+    const dialogs = document.querySelectorAll<HTMLElement>('[role="dialog"]')
+    const dialog = dialogs[dialogs.length - 1]
+    if (!dialog) return
+    const focusable = () => [...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),select,input:not([hidden]),a[href]')]
+    focusable()[0]?.focus()
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return
+      const controls = focusable(), first = controls[0], last = controls[controls.length - 1]
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus() }
+    }
+    document.addEventListener('keydown', trap)
+    return () => { document.removeEventListener('keydown', trap); previous?.focus() }
+  }, [panel, story, r.dead])
 
   function enter(id: number) {
+    unlockAudio()
     if (!gameStore.enter(id)) { gameStore.notify('该篇章尚未解锁或超出剧透范围。'); return }
     const c = chapterById(id), p = gameStore.getSnapshot().state.progress[id]
     setPanel(null); setScreen('play'); setRun(n => n + 1)
@@ -60,7 +88,7 @@ export default function App() {
   }
   function retry() { gameStore.runtime({ ...r, dead: false }); setRun(n => n + 1) }
 
-  return <div className={`shell ${screen === 'play' ? 'playing' : ''}`}>
+  return <div className={`shell ${screen === 'play' ? 'playing' : ''} ${s.settings.reducedMotion ? 'reduced' : ''}`}>
     <header className="topbar">
       <button className="brand brand-button" onClick={() => { setScreen('home'); setPanel(null); setStory(null) }}><span className="brand-seal">炎</span><span>斗破苍穹<small>异 火 之 路</small></span></button>
       <nav aria-label="主导航">
@@ -113,10 +141,11 @@ export default function App() {
         <div className="stage-topline"><span>◈ {chapter.location}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
         <div className="stage">
           <Suspense fallback={<div className="loading">正在展开山川画卷…</div>}><GameView key={`${s.chapter}:${run}`} /></Suspense>
-          <div className="player-hud"><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
-          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}</span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
+          <div className="player-hud" data-player-x={r.x} data-player-y={r.y}><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
+          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
           {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
+          <TouchControls onMenu={() => setPanel('camp')} />
         </div>
         <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button onClick={() => gameStore.action('support')}><kbd>R</kbd> 支援</button></div>
           <div className="skills">{skillInfo.map(skill => {
@@ -128,7 +157,7 @@ export default function App() {
       </section>
     </main>}
     {notice && <div className="toast" role="status">{notice}</div>}
-    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={panel === 'guide' ? '修炼手札' : panel === 'camp' ? '营地休整' : '人物行囊'}>
+    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市'}[panel]}>
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
       {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">采集灵草、击败普通敌人后，到右上方试炼碑开启章节挑战。击败首领，再回到左下营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><button className="primary" onClick={() => setPanel(null)}>记下了</button></>}
       {panel === 'camp' && <><span className="eyebrow">灯火与归途 / 营地</span><h2>{completed ? '本章已经完成。' : progress.boss ? '这一程，你做到了。' : '整装，再赴历练。'}</h2><p className="muted">休整会回到营地并恢复状态，已结算的资源和任务进度保留。</p><div className="camp-options"><button className="secondary" onClick={() => { setPanel(null); retry() }}>营地休整 · 恢复状态</button>{progress.boss && !completed && <button className="primary" onClick={finish}>结算本章 · {chapter.reward} 金币 ↗</button>}<button className="secondary" onClick={() => { setPanel(null); setScreen('world') }}>返回大陆舆图</button></div><p className="muted">{chapter.trialNote}</p></>}
@@ -141,7 +170,7 @@ export default function App() {
       {panel === 'save' && <SavesPanel state={s} onLoaded={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} onReset={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} />}
     </section></div>}
     {story && <div className="story-backdrop"><section className="story-box" role="dialog" aria-modal="true" aria-label="剧情对白"><div className="story-portrait">{story.lines[story.index].speaker.slice(0, 1)}</div><div className="story-content"><span className="eyebrow">{story.closing ? '历练归来' : chapter.location}</span><h2>{story.lines[story.index].speaker}</h2><p>{story.lines[story.index].text}</p><button className="primary" onClick={advanceStory}>{story.index < story.lines.length - 1 ? '继续' : story.closing ? '展开新的旅途' : '开始探索'} <span>→</span></button><small>{story.index + 1} / {story.lines.length}</small></div></section></div>}
-    {screen === 'play' && r.dead && !story && <div className="modal-backdrop"><section className="modal panel"><span className="eyebrow">暂歇，不是终点</span><h2>这一次，先记住对手的招式。</h2><p className="muted">任务进度、金币和材料已保留。试着在敌人蓄力时离开红色区域，再用八极崩打断普通敌人。</p><button className="primary" onClick={retry}>回到营地，重新挑战</button><button className="text-button" onClick={() => setScreen('world')}>返回舆图</button></section></div>}
+    {screen === 'play' && r.dead && !story && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label="历练失败"><span className="eyebrow">暂歇，不是终点</span><h2>这一次，先记住对手的招式。</h2><p className="muted">任务进度、金币和材料已保留。试着在敌人蓄力时离开红色区域，再用八极崩打断普通敌人。</p><button className="primary" onClick={retry}>回到营地，重新挑战</button><button className="text-button" onClick={() => setScreen('world')}>返回舆图</button></section></div>}
   </div>
 }
 function Quest({ text, current, target }: { text: string; current: number; target: number }) {

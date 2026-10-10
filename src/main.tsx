@@ -5,6 +5,7 @@ import './ui/styles.css'
 import './ui/game.css'
 import './ui/panels.css'
 import './ui/content.css'
+import './ui/experience.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode><App /></React.StrictMode>,

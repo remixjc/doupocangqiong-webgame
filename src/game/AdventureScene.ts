@@ -3,6 +3,7 @@ import { gameStore } from '../core/store'
 import { chapterById } from '../content/chapters'
 import { CombatWorld, camp, gate, HEIGHT, obstacles, WIDTH, type Input } from './combat'
 import type { Action } from '../core/model'
+import { playSound } from './audio'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -34,16 +35,17 @@ export default class AdventureScene extends Phaser.Scene {
         gameStore.update(s => { s.inventory.mana-- })
         return true
       },
-      camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message),
+      camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message), sound: playSound,
     })
     this.drawEnvironment()
     this.ink = this.add.graphics()
     this.floats = Array.from({ length: 30 }, () => this.add.text(0, 0, '', {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
     }).setOrigin(.5).setDepth(10))
-    this.keys = this.input.keyboard!.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,J,SPACE,ONE,TWO,THREE,Q,E,R,F') as Record<string, Phaser.Input.Keyboard.Key>
+    this.keys = this.input.keyboard!.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,J,SPACE,ONE,TWO,THREE,Q,E,R,F', false) as Record<string, Phaser.Input.Keyboard.Key>
     this.input.keyboard!.on('keydown', (event: KeyboardEvent) => {
       if (event.repeat || gameStore.paused) return
+      if ([' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) event.preventDefault()
       const map: Record<string, Action> = { j: 'attack', ' ': 'dodge', '1': 'strike', '2': 'wave', '3': 'lotus', q: 'heal', f: 'mana', e: 'interact', r: 'support' }
       const action = map[event.key.toLowerCase()]
       if (action) gameStore.action(action)
@@ -72,6 +74,23 @@ export default class AdventureScene extends Phaser.Scene {
       bg.fillStyle(i % 2 ? c[1] : 0x0b1c1b, .08 + rand() * .14)
       bg.fillEllipse(x, y, 3 + rand() * 12, 2 + rand() * 5)
     }
+    if (this.world.chapter.theme === 'desert') {
+      for (let i = 0; i < 14; i++) {
+        bg.lineStyle(2, 0xdac08c, .12)
+        bg.beginPath(); bg.arc(rand() * WIDTH, rand() * HEIGHT, 110 + rand() * 160, Math.PI * .12, Math.PI * .88); bg.strokePath()
+      }
+    }
+    if (this.world.chapter.theme === 'void') {
+      for (let i = 0; i < 120; i++) { bg.fillStyle(0xc7bedf, .1 + rand() * .3); bg.fillCircle(rand() * WIDTH, rand() * HEIGHT, 1 + rand()) }
+      bg.lineStyle(1, c[2], .12); bg.strokeCircle(650, 410, 300); bg.strokeCircle(650, 410, 335)
+    }
+    if (this.world.chapter.theme === 'fire') {
+      for (let i = 0; i < 15; i++) {
+        const x = rand() * WIDTH, y = rand() * HEIGHT
+        bg.fillStyle(0xd78154, .11); bg.fillEllipse(x, y, 80 + rand() * 130, 25 + rand() * 55)
+        bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
+      }
+    }
     const path = new Phaser.Curves.Path(150, 650)
     path.lineTo(360, 480).lineTo(680, 470).lineTo(800, 270).lineTo(1090, 180)
     bg.lineStyle(85, c[1], .16); path.draw(bg)
@@ -89,6 +108,11 @@ export default class AdventureScene extends Phaser.Scene {
       bg.fillStyle(c[1], .95); bg.fillRoundedRect(o.x, o.y, o.w, o.h, 18)
       bg.fillStyle(c[2], .14); bg.fillTriangle(o.x + 10, o.y + 12, o.x + o.w - 15, o.y + 8, o.x + 25, o.y + o.h * .5)
       if (this.world.chapter.theme === 'forest') this.tree(bg, o.x + o.w * .7, o.y + 25, .9, c)
+      if (this.world.chapter.theme === 'city' || this.world.chapter.theme === 'temple') {
+        bg.fillStyle(0x172622); bg.fillTriangle(o.x - 15, o.y + 8, o.x + o.w / 2, o.y - 45, o.x + o.w + 15, o.y + 8)
+        bg.lineStyle(2, c[2], .6); bg.lineBetween(o.x - 15, o.y + 8, o.x + o.w + 15, o.y + 8)
+        bg.fillStyle(c[2], .65); bg.fillRect(o.x + o.w / 2 - 9, o.y + 15, 18, 26)
+      }
     }
     // A small roofed camp, ink silhouettes and a bronze trial platform.
     bg.fillStyle(0x0a1717, .4); bg.fillEllipse(camp.x, camp.y + 35, 150, 60)
@@ -101,10 +125,23 @@ export default class AdventureScene extends Phaser.Scene {
     bg.lineStyle(1, c[2], .85); bg.strokeRoundedRect(gate.x - 18, gate.y - 55, 36, 55, 6)
     this.add.text(camp.x, camp.y + 50, '营 地', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(gate.x, gate.y + 65, '试 炼 碑', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
+    this.add.text(gate.x, gate.y - 29, '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(50, 35, this.world.chapter.location, { fontSize: '20px', color: '#cbd1b7', fontFamily: 'serif' }).setAlpha(.8)
     bg.lineStyle(2, c[2], .15); bg.strokeRect(28, 28, WIDTH - 56, HEIGHT - 56)
   }
   private tree(g: Phaser.GameObjects.Graphics, x: number, y: number, scale: number, c: number[]) {
+    if (this.world.chapter.theme === 'void' || this.world.chapter.theme === 'fire') {
+      g.fillStyle(c[1], .65); g.fillTriangle(x - 18 * scale, y, x + 3 * scale, y - 60 * scale, x + 24 * scale, y)
+      g.fillStyle(c[2], .3); g.fillTriangle(x + 3 * scale, y - 60 * scale, x + 24 * scale, y, x + 3 * scale, y - 4 * scale)
+      return
+    }
+    if (this.world.chapter.theme === 'city' || this.world.chapter.theme === 'temple') {
+      g.fillStyle(0x142622, .45); g.fillEllipse(x, y + 6, 45 * scale, 17 * scale)
+      g.fillStyle(c[1], .9); g.fillRect(x - 7 * scale, y - 60 * scale, 14 * scale, 60 * scale)
+      g.fillStyle(c[2], .45); g.fillRect(x - 16 * scale, y - 65 * scale, 32 * scale, 9 * scale)
+      g.fillStyle(0x172622); g.fillTriangle(x - 24 * scale, y - 66 * scale, x, y - 83 * scale, x + 24 * scale, y - 66 * scale)
+      return
+    }
     if (this.world.chapter.theme === 'desert') {
       g.lineStyle(7 * scale, c[1], .85); g.lineBetween(x, y, x, y - 45 * scale)
       g.lineBetween(x, y - 25 * scale, x + 18 * scale, y - 35 * scale); return
@@ -138,19 +175,23 @@ export default class AdventureScene extends Phaser.Scene {
     const g = this.ink
     g.clear()
     const w = this.world, p = w.player
+    const reduced = gameStore.getSnapshot().state.settings.reducedMotion
     for (const h of w.herbs) if (h.available) {
-      const glow = .2 + .1 * Math.sin(w.elapsed * 3 + h.x)
+      const glow = reduced ? .22 : .2 + .1 * Math.sin(w.elapsed * 3 + h.x)
       g.fillStyle(0x8ce7ae, glow); g.fillCircle(h.x, h.y, 21)
       g.lineStyle(2, 0xa7dba5); g.lineBetween(h.x, h.y + 6, h.x, h.y - 13)
       g.fillStyle(0x91c993); g.fillEllipse(h.x - 6, h.y - 4, 12, 6); g.fillEllipse(h.x + 6, h.y - 10, 12, 7)
     }
-    g.lineStyle(1, 0xe3bb7c, .3 + Math.sin(w.elapsed * 2) * .1); g.strokeCircle(gate.x, gate.y, 45 + Math.sin(w.elapsed * 2) * 3)
+    g.lineStyle(1, 0xe3bb7c, reduced ? .35 : .3 + Math.sin(w.elapsed * 2) * .1); g.strokeCircle(gate.x, gate.y, reduced ? 45 : 45 + Math.sin(w.elapsed * 2) * 3)
     for (const e of w.enemies) {
       if (e.hp <= 0) continue
       if (e.windup > 0) {
-        g.fillStyle(0xc75b45, .16); g.fillCircle(e.target.x, e.target.y, e.radius)
-        g.lineStyle(2.5, 0xf4a17a, .8); g.strokeCircle(e.target.x, e.target.y, e.radius)
-        g.lineStyle(4, 0xecaa75, .7); g.beginPath(); g.arc(e.target.x, e.target.y, e.radius, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - e.windup)); g.strokePath()
+        for (const target of [e.target, ...(e.secondary ?? [])]) {
+          g.fillStyle(0xc75b45, .16); g.fillCircle(target.x, target.y, e.radius)
+          g.lineStyle(2.5, 0xf4a17a, .8); g.strokeCircle(target.x, target.y, e.radius)
+          g.lineStyle(4, 0xecaa75, .7); g.beginPath(); g.arc(target.x, target.y, e.radius, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - e.windup)); g.strokePath()
+        }
+        if (e.type === 'boss') { g.lineStyle(1, 0xe8aa7b, .3); g.lineBetween(e.x, e.y, e.target.x, e.target.y) }
       }
       const size = e.type === 'boss' ? 1.65 : 1
       const color = e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
@@ -169,8 +210,8 @@ export default class AdventureScene extends Phaser.Scene {
       const f = effect.time / effect.maxTime
       g.lineStyle(3 + f * 4, effect.color, f * .9)
       if (effect.kind === 'ring') {
-        g.fillStyle(effect.color, f * .1); g.fillCircle(effect.x, effect.y, effect.radius * (1 - f * .35))
-        g.strokeCircle(effect.x, effect.y, effect.radius * (1 - f * .35))
+        g.fillStyle(effect.color, f * .1); g.fillCircle(effect.x, effect.y, effect.radius * (reduced ? .9 : 1 - f * .35))
+        g.strokeCircle(effect.x, effect.y, effect.radius * (reduced ? .9 : 1 - f * .35))
       } else {
         g.beginPath(); g.arc(effect.x, effect.y, effect.radius * (1 - f * .2), p.facing - 1, p.facing + 1); g.strokePath()
       }

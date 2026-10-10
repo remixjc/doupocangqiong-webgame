@@ -6,7 +6,7 @@ import { loadSlot, saveSlot } from './save'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
-  return { hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
+  return { x: 210, y: 615, hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
     cooldowns: { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 },
     prompt: '', near: '', bossHp: 0, bossMaxHp: 0, bossName: '', dead: false }
 }
