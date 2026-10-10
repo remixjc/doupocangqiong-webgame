@@ -1,11 +1,12 @@
 import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 import { chapters, chapterById } from '../content/chapters'
 import { gameStore } from '../core/store'
-import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked } from '../core/rules'
+import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
+import { AlchemyPanel, SavesPanel, SettingsPanel, ShopPanel } from './Panels'
 import type { Dialogue } from '../core/model'
 
 const GameView = lazy(() => import('./GameView'))
-type Panel = 'guide' | 'camp' | 'character' | null
+type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
 export default function App() {
@@ -14,11 +15,13 @@ export default function App() {
   const [panel, setPanel] = useState<Panel>(null)
   const [story, setStory] = useState<Story | null>(null)
   const [run, setRun] = useState(0)
+  const [ready, setReady] = useState(false)
   const chapter = chapterById(s.chapter), progress = s.progress[s.chapter]
   const flame = flames.find(f => f.id === s.flame)!
   const stats = playerStats(s)
   const completed = s.completed.includes(s.chapter)
 
+  useEffect(() => { gameStore.initialize().finally(() => setReady(true)) }, [])
   useEffect(() => {
     gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead
     if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
@@ -66,7 +69,7 @@ export default function App() {
         <button className="nav" onClick={() => setPanel('guide')}>修炼手札</button>
       </nav>
       <span className="version-label">{screen === 'play' ? `${s.gold} 金币 · ${chapter.realm}` : '浏览器单机 · 章节式冒险'}</span>
-      <button className="icon-button" onClick={() => setPanel('character')} aria-label="查看人物">◈</button>
+      <div className="top-tools"><button className="icon-button" onClick={() => setPanel('character')} aria-label="查看人物">◈</button><button className="icon-button" onClick={() => setPanel('save')} aria-label="存档管理">▤</button><button className="icon-button" onClick={() => setPanel('settings')} aria-label="游戏设置">⚙</button></div>
     </header>
     {screen === 'home' && <main className="landing">
       <div className="landscape" />
@@ -74,7 +77,7 @@ export default function App() {
         <span className="eyebrow"><i /> 从乌坦城，走向斗气大陆</span>
         <h1>以少年之名<br /><em>赴异火之约。</em></h1>
         <p>一枚古戒，一位老师，一条不向命运低头的路。<br />探索山川，磨砺斗技，以掌中之火照亮新的旅途。</p>
-        <div className="hero-actions"><button className="primary" onClick={() => enter(s.chapter)}>开始历练 <span>↗</span></button><button className="secondary" onClick={() => setScreen('world')}>展开大陆舆图</button></div>
+        <div className="hero-actions"><button className="primary" disabled={!ready} onClick={() => enter(s.chapter)}>{ready ? '开始历练' : '读取旅途…'} <span>↗</span></button><button className="secondary" onClick={() => setScreen('world')}>展开大陆舆图</button></div>
         <div className="hero-stats"><div><b>{String(chapters.length).padStart(2, '0')}</b><span>当前可玩篇章</span></div><div><b>焚诀</b><span>异火成长之路</span></div><div><b>纯网页</b><span>无需安装客户端</span></div></div>
       </section>
       <aside className="landing-note"><span className="vertical-title">万 火 归 一</span><span>斗气大陆 · 故事改编</span></aside>
@@ -103,7 +106,7 @@ export default function App() {
         {chapter.objectives.brews > 0 && <Quest text="炼制丹药" current={progress.brews} target={chapter.objectives.brews} />}
         <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
         <p className="quest-hint">{progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? '准备完成。前往右上方试炼碑，按 E 开始挑战。' : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
-        <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
+        <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
       </aside>
       <section className="stage-wrap">
         <div className="stage-topline"><span>◈ {chapter.location}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
@@ -114,7 +117,7 @@ export default function App() {
           {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
         </div>
-        <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button></div>
+        <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button onClick={() => gameStore.action('support')}><kbd>R</kbd> 支援</button></div>
           <div className="skills">{skillInfo.map(skill => {
             const unlocked = skillUnlocked(s, skill.id), cd = r.cooldowns[skill.id]
             return <button className={`skill ${unlocked ? '' : 'locked'}`} key={skill.id} onClick={() => gameStore.action(skill.id)} disabled={!unlocked} title={skill.description}><kbd>{skill.key}</kbd><b>{skill.name}</b><small>{!unlocked ? '剧情解锁' : cd > .1 ? `${cd.toFixed(1)}s` : `${skill.cost} 斗气`}</small></button>
@@ -127,7 +130,13 @@ export default function App() {
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
       {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">采集灵草、击败普通敌人后，到右上方试炼碑开启章节挑战。击败首领，再回到左下营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><button className="primary" onClick={() => setPanel(null)}>记下了</button></>}
       {panel === 'camp' && <><span className="eyebrow">灯火与归途 / 营地</span><h2>{completed ? '本章已经完成。' : progress.boss ? '这一程，你做到了。' : '整装，再赴历练。'}</h2><p className="muted">休整会回到营地并恢复状态，已结算的资源和任务进度保留。</p><div className="camp-options"><button className="secondary" onClick={() => { setPanel(null); retry() }}>营地休整 · 恢复状态</button>{progress.boss && !completed && <button className="primary" onClick={finish}>结算本章 · {chapter.reward} 金币 ↗</button>}<button className="secondary" onClick={() => { setPanel(null); setScreen('world') }}>返回大陆舆图</button></div><p className="muted">{chapter.trialNote}</p></>}
+      {panel === 'camp' && <div className="panel-tabs"><button className="secondary" onClick={() => setPanel('alchemy')}>炼药</button><button className="secondary" onClick={() => setPanel('shop')}>坊市</button><button className="secondary" onClick={() => setPanel('save')}>存档</button><button className="secondary" onClick={() => setPanel('settings')}>设置</button></div>}
       {panel === 'character' && <><span className="eyebrow">人物 / 行囊</span><h2>萧炎 <small className="muted">{chapter.realm}</small></h2><div className="stat-grid">{[['生命上限', stats.maxHp], ['斗气上限', stats.maxQi], ['攻击', Math.round(stats.attack)], ['防御', Math.round(stats.defense)], ['金币', s.gold], ['修炼积累', s.xp]].map(([label, value]) => <div key={label}><span>{label}</span><b>{value}</b></div>)}</div><div className="inventory-grid">{[['灵草', s.inventory.herb], ['魔晶', s.inventory.crystal], ['恢复丹', s.inventory.heal], ['回气丹', s.inventory.mana]].map(([label, value]) => <div key={label}><span>◇ {label}</span><b>×{value}</b></div>)}</div><p className="muted">当前火焰：{flame.name}。{flame.description}</p></>}
+      {panel === 'character' && <><div className="upgrade-row"><button className="secondary" disabled={s.gold < 60 + s.attackUpgrade * 60 || s.attackUpgrade >= 20} onClick={() => gameStore.upgrade('attack')}>兵器磨砺 +{s.attackUpgrade} · {60 + s.attackUpgrade * 60} 金币</button><button className="secondary" disabled={s.gold < 60 + s.armorUpgrade * 60 || s.armorUpgrade >= 20} onClick={() => gameStore.upgrade('armor')}>护具强化 +{s.armorUpgrade} · {60 + s.armorUpgrade * 60} 金币</button><button className="secondary" disabled={s.inventory.elixir < 1} onClick={() => gameStore.update(s => { if (s.inventory.elixir > 0) { s.inventory.elixir--; s.xp += 100 } })}>修炼丹 ×{s.inventory.elixir} · 使用</button></div><span className="section-label">已取得火焰</span><div className="flame-list">{unlockedFlames(s).filter(f => isVisible(s, f.chapter)).map(f => <button key={f.id} className={`flame-card ${s.flame === f.id ? 'active' : ''}`} onClick={() => gameStore.update(s => { s.flame = f.id })}><b style={{ color: f.color }}>◈ {f.name}</b><small>{f.description}</small></button>)}</div></>}
+      {panel === 'alchemy' && <AlchemyPanel state={s} />}
+      {panel === 'shop' && <ShopPanel state={s} />}
+      {panel === 'settings' && <SettingsPanel state={s} />}
+      {panel === 'save' && <SavesPanel state={s} onLoaded={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} onReset={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} />}
     </section></div>}
     {story && <div className="story-backdrop"><section className="story-box" role="dialog" aria-modal="true" aria-label="剧情对白"><div className="story-portrait">{story.lines[story.index].speaker.slice(0, 1)}</div><div className="story-content"><span className="eyebrow">{story.closing ? '历练归来' : chapter.location}</span><h2>{story.lines[story.index].speaker}</h2><p>{story.lines[story.index].text}</p><button className="primary" onClick={advanceStory}>{story.index < story.lines.length - 1 ? '继续' : story.closing ? '展开新的旅途' : '开始探索'} <span>→</span></button><small>{story.index + 1} / {story.lines.length}</small></div></section></div>}
     {screen === 'play' && r.dead && !story && <div className="modal-backdrop"><section className="modal panel"><span className="eyebrow">暂歇，不是终点</span><h2>这一次，先记住对手的招式。</h2><p className="muted">任务进度、金币和材料已保留。试着在敌人蓄力时离开红色区域，再用八极崩打断普通敌人。</p><button className="primary" onClick={retry}>回到营地，重新挑战</button><button className="text-button" onClick={() => setScreen('world')}>返回舆图</button></section></div>}

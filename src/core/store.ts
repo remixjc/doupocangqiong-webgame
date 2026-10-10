@@ -1,5 +1,8 @@
 import { initialState, blankProgress, type Action, type Runtime, type Snapshot, type GameState } from './model'
 import { canEnter, chapterReady, finishChapter, playerStats } from './rules'
+import { buy, craft, upgrade } from './rules'
+import type { ItemId } from './model'
+import { loadSlot, saveSlot } from './save'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
@@ -15,6 +18,27 @@ class GameStore {
   paused = true
   onInteract: (() => void) | null = null
   onChange: ((s: GameState) => void) | null = null
+  private initialization: Promise<void> | null = null
+  private saveTimer: ReturnType<typeof setTimeout> | undefined
+  initialize(): Promise<void> {
+    if (!this.initialization) this.initialization = (async () => {
+      try {
+        const saved = await loadSlot(0)
+        if (saved) this.replace(saved)
+      } catch (error) {
+        try {
+          const recovery = await loadSlot(-1)
+          if (recovery) { this.replace(recovery); this.notify('自动存档异常，已恢复上一份备份。') }
+          else this.notify((error as Error).message)
+        } catch { this.notify((error as Error).message) }
+      }
+      this.onChange = state => {
+        clearTimeout(this.saveTimer)
+        this.saveTimer = setTimeout(() => { saveSlot(0, state).catch(e => this.notify(e.message)) }, 250)
+      }
+    })()
+    return this.initialization
+  }
   subscribe = (fn: () => void) => { this.listeners.add(fn); return () => { this.listeners.delete(fn) } }
   getSnapshot = () => this.snapshot
   private publish() { for (const listener of this.listeners) listener() }
@@ -65,6 +89,22 @@ class GameStore {
     if (next === this.snapshot.state) return false
     this.replace(next)
     return true
+  }
+  craft(id: string, quality: number) {
+    const result = craft(this.snapshot.state, id, quality)
+    if (result.ok) this.replace(result.state)
+    this.notify(result.message)
+    return result.ok
+  }
+  buy(item: ItemId, quantity = 1) {
+    const result = buy(this.snapshot.state, item, quantity)
+    if (result.ok) this.replace(result.state)
+    this.notify(result.message)
+  }
+  upgrade(kind: 'attack' | 'armor') {
+    const result = upgrade(this.snapshot.state, kind)
+    if (result.ok) this.replace(result.state)
+    this.notify(result.message)
   }
 }
 export const gameStore = new GameStore()

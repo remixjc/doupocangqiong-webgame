@@ -4,7 +4,7 @@ export type FlameId = 'ember' | 'lotus' | 'fallen' | 'star' | 'pure'
 export type ItemId = 'herb' | 'crystal' | 'heal' | 'mana' | 'elixir'
 export type SkillId = 'strike' | 'wave' | 'lotus'
 export type Difficulty = 'story' | 'normal' | 'hard'
-export type Action = 'attack' | 'dodge' | 'strike' | 'wave' | 'lotus' | 'heal' | 'interact' | 'support'
+export type Action = 'attack' | 'dodge' | 'strike' | 'wave' | 'lotus' | 'heal' | 'mana' | 'interact' | 'support'
 
 export interface Dialogue { speaker: string; text: string }
 export interface Chapter {

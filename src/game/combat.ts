@@ -13,7 +13,7 @@ export interface Floating extends Vec { text: string; time: number; color: strin
 export interface Input { x: number; y: number; aim?: Vec }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
-  heal: () => boolean; camp: () => void; notify: (text: string) => void
+  heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
 }
 export const WIDTH = 1280, HEIGHT = 800
 export const camp = { x: 160, y: 640 }, gate = { x: 1090, y: 180 }
@@ -133,6 +133,14 @@ export class CombatWorld {
       if (this.cb.heal()) {
         p.hp = Math.min(playerStats(s).maxHp, p.hp + playerStats(s).maxHp * .48)
         this.cooldowns.heal = 6; this.effect(p.x, p.y, 70, 0x8de1b7)
+      }
+      return
+    }
+    if (action === 'mana') {
+      if (this.cooldowns.heal > 0 || p.qi >= playerStats(s).maxQi) return
+      if (this.cb.mana?.()) {
+        p.qi = Math.min(playerStats(s).maxQi, p.qi + 65)
+        this.cooldowns.heal = 6; this.effect(p.x, p.y, 70, 0x87bdce)
       }
       return
     }

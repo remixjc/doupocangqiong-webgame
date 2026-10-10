@@ -29,6 +29,11 @@ export default class AdventureScene extends Phaser.Scene {
         gameStore.update(s => { s.inventory.heal-- })
         return true
       },
+      mana: () => {
+        if (gameStore.getSnapshot().state.inventory.mana < 1) { gameStore.notify('回气丹不足。'); return false }
+        gameStore.update(s => { s.inventory.mana-- })
+        return true
+      },
       camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message),
     })
     this.drawEnvironment()
@@ -36,10 +41,10 @@ export default class AdventureScene extends Phaser.Scene {
     this.floats = Array.from({ length: 30 }, () => this.add.text(0, 0, '', {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
     }).setOrigin(.5).setDepth(10))
-    this.keys = this.input.keyboard!.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,J,SPACE,ONE,TWO,THREE,Q,E,R') as Record<string, Phaser.Input.Keyboard.Key>
+    this.keys = this.input.keyboard!.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,J,SPACE,ONE,TWO,THREE,Q,E,R,F') as Record<string, Phaser.Input.Keyboard.Key>
     this.input.keyboard!.on('keydown', (event: KeyboardEvent) => {
       if (event.repeat || gameStore.paused) return
-      const map: Record<string, Action> = { j: 'attack', ' ': 'dodge', '1': 'strike', '2': 'wave', '3': 'lotus', q: 'heal', e: 'interact', r: 'support' }
+      const map: Record<string, Action> = { j: 'attack', ' ': 'dodge', '1': 'strike', '2': 'wave', '3': 'lotus', q: 'heal', f: 'mana', e: 'interact', r: 'support' }
       const action = map[event.key.toLowerCase()]
       if (action) gameStore.action(action)
     })
