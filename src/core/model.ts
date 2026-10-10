@@ -29,7 +29,9 @@ export interface ChapterProgress {
   brews: number
   boss: boolean
   intro: boolean
+  event: ChapterEventProgress
 }
+export interface ChapterEventProgress { started: boolean; stage: number; quote: number }
 export interface Settings {
   difficulty: Difficulty
   volume: number
@@ -38,7 +40,7 @@ export interface Settings {
   animeLimit: number
 }
 export interface GameState {
-  schemaVersion: 1
+  schemaVersion: 2
   contentVersion: string
   chapter: number
   completed: number[]
@@ -59,16 +61,17 @@ export interface Runtime {
   hp: number; maxHp: number; qi: number; maxQi: number; stamina: number
   cooldowns: Record<SkillId | 'dodge' | 'heal' | 'support', number>
   prompt: string
-  near: 'camp' | 'herb' | 'gate' | ''
+  near: 'camp' | 'herb' | 'gate' | 'event' | 'checkpoint' | ''
   bossHp: number; bossMaxHp: number; bossName: string
   dead: boolean
 }
 export interface Snapshot { state: GameState; runtime: Runtime; notice: string }
-export const CONTENT_VERSION = '0.1.0'
-export const blankProgress = (): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false })
+export const CONTENT_VERSION = '0.2.0'
+export const blankEvent = (): ChapterEventProgress => ({ started: false, stage: 0, quote: 0 })
+export const blankProgress = (): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false, event: blankEvent() })
 export function initialState(): GameState {
   return {
-    schemaVersion: 1, contentVersion: CONTENT_VERSION, chapter: 1, completed: [], progress: { 1: blankProgress() },
+    schemaVersion: 2, contentVersion: CONTENT_VERSION, chapter: 1, completed: [], progress: { 1: blankProgress() },
     gold: 80, xp: 0, inventory: { herb: 0, crystal: 0, heal: 3, mana: 2, elixir: 0 },
     attackUpgrade: 0, armorUpgrade: 0, flame: 'ember',
     settings: { difficulty: 'normal', volume: 0.3, reducedMotion: false, spoiler: 'novel', animeLimit: 3 },

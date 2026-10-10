@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { initialState } from '../src/core/model'
 import { chapterById } from '../src/content/chapters'
-import { CombatWorld, collides } from '../src/game/combat'
+import { CombatWorld } from '../src/game/combat'
+import { mapCollides } from '../src/content/maps'
 import { chapterReady, finishChapter } from '../src/core/rules'
 
 function setup() {
@@ -19,7 +20,7 @@ describe('战斗和章节规则', () => {
     const before = world.player.x
     for (let i = 0; i < 60; i++) world.step({ x: 1, y: 0 })
     expect(world.player.x - before).toBeCloseTo(235)
-    expect(collides(world.player)).toBe(false)
+    expect(mapCollides(world.map, world.player)).toBe(false)
   })
   it('同一个敌人的死亡只结算一次', () => {
     const { world, kills } = setup()
@@ -45,6 +46,8 @@ describe('战斗和章节规则', () => {
     expect(chapterReady(state)).toBe(false)
     expect(finishChapter(state)).toBe(state)
     state.progress[1].herbs = 3; state.progress[1].kills = 3
+    expect(finishChapter(state)).toBe(state)
+    state.progress[1].event = { started: true, stage: 2, quote: 0 }
     const result = finishChapter(state)
     expect(result.gold).toBe(state.gold + chapterById(1).reward)
     expect(finishChapter(result)).toBe(result)

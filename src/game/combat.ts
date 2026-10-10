@@ -1,5 +1,8 @@
 import type { Action, Chapter, GameState, Runtime } from '../core/model'
 import { chapterReady, damage, playerStats, skillInfo, skillUnlocked } from '../core/rules'
+import { mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT } from '../content/maps'
+import { eventForChapter } from '../content/events'
+import type { EventAction } from '../core/events'
 
 export interface Vec { x: number; y: number }
 export interface Obstacle { x: number; y: number; w: number; h: number }
@@ -16,28 +19,18 @@ export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
   sound?: (kind: 'attack' | 'skill' | 'dodge' | 'hurt' | 'collect' | 'victory') => void
+  storyEvent?: () => void
+  eventAction?: (action: EventAction) => void
 }
-export const WIDTH = 1280, HEIGHT = 800
-export const camp = { x: 160, y: 640 }, gate = { x: 1090, y: 180 }
-export const obstacles: Obstacle[] = [
-  { x: 360, y: 140, w: 120, h: 80 }, { x: 540, y: 560, w: 90, h: 90 },
-  { x: 860, y: 360, w: 130, h: 70 }, { x: 90, y: 350, w: 80, h: 80 },
-]
-export function collides(p: Vec, radius = 17): boolean {
-  return obstacles.some(o => p.x > o.x - radius && p.x < o.x + o.w + radius
-    && p.y > o.y - radius && p.y < o.y + o.h + radius)
-}
+export const WIDTH = MAP_WIDTH, HEIGHT = MAP_HEIGHT
 function distance(a: Vec, b: Vec) { return Math.hypot(a.x - b.x, a.y - b.y) }
 function clamp(n: number, min: number, max: number) { return Math.max(min, Math.min(max, n)) }
 
 export class CombatWorld {
-  player = { x: camp.x + 50, y: camp.y - 25, hp: 180, qi: 100, stamina: 100, facing: 0, invincible: 0, roll: 0, hit: 0 }
+  readonly map
+  player = { x: 0, y: 0, hp: 180, qi: 100, stamina: 100, facing: 0, invincible: 0, roll: 0, hit: 0 }
   enemies: Fighter[] = []
-  herbs: Herb[] = [
-    { x: 300, y: 550, available: true, respawn: 0 }, { x: 550, y: 300, available: true, respawn: 0 },
-    { x: 740, y: 640, available: true, respawn: 0 }, { x: 1080, y: 500, available: true, respawn: 0 },
-    { x: 850, y: 220, available: true, respawn: 0 }, { x: 250, y: 200, available: true, respawn: 0 },
-  ]
+  herbs: Herb[] = []
   effects: Effect[] = []
   floats: Floating[] = []
   cooldowns: Runtime['cooldowns'] = { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 }
@@ -48,14 +41,13 @@ export class CombatWorld {
   private bossSpawned = false
   private rollDirection: Vec = { x: 1, y: 0 }
   constructor(readonly chapter: Chapter, private cb: CombatCallbacks) {
+    this.map = mapForChapter(chapter.id)
+    Object.assign(this.player, this.map.spawn)
+    this.herbs = this.map.herbs.map(h => ({ ...h, available: true, respawn: 0 }))
     const stats = playerStats(cb.state())
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
-    this.spawn('brute', 550, 470)
-    this.spawn('hunter', 740, 360)
-    this.spawn('mage', 1020, 610)
-    if (chapter.objectives.kills >= 4) this.spawn('hunter', 570, 260)
-    if (chapter.objectives.kills >= 5) this.spawn('mage', 1050, 390)
+    for (const enemy of this.map.enemies.slice(0, Math.max(3, chapter.objectives.kills))) this.spawn(enemy.type, enemy.x, enemy.y)
   }
   spawn(type: Fighter['type'], x: number, y: number) {
     const d = this.cb.state().settings.difficulty
@@ -67,8 +59,8 @@ export class CombatWorld {
   private move(p: Vec, vx: number, vy: number) {
     const nx = clamp(p.x + vx, 40, WIDTH - 40)
     const ny = clamp(p.y + vy, 45, HEIGHT - 40)
-    if (!collides({ x: nx, y: p.y })) p.x = nx
-    if (!collides({ x: p.x, y: ny })) p.y = ny
+    if (!mapCollides(this.map, { x: nx, y: p.y })) p.x = nx
+    if (!mapCollides(this.map, { x: p.x, y: ny })) p.y = ny
   }
   private effect(x: number, y: number, radius: number, color: number, kind: Effect['kind'] = 'ring') {
     this.effects.push({ x, y, radius, color, kind, time: .36, maxTime: .36 })
@@ -99,6 +91,8 @@ export class CombatWorld {
   }
   private aim(input: Input): Vec {
     if (input.aim) return input.aim
+    const event = eventForChapter(this.chapter.id), progress = this.cb.state().progress[this.chapter.id].event
+    if (event?.dummy && progress.started && progress.stage === 0 && distance(event.dummy, this.player) < 170) return event.dummy
     const nearest = this.enemies.filter(e => e.hp > 0).sort((a, b) => distance(a, this.player) - distance(b, this.player))[0]
     if (nearest && distance(nearest, this.player) < 440) return nearest
     return { x: this.player.x + Math.cos(this.player.facing) * 150, y: this.player.y + Math.sin(this.player.facing) * 150 }
@@ -110,7 +104,12 @@ export class CombatWorld {
     if (action !== 'interact') p.facing = Math.atan2(target.y - p.y, target.x - p.x)
     if (action === 'interact') {
       const near = this.near()
-      if (near === 'herb') {
+      if (near === 'event') this.cb.storyEvent?.()
+      else if (near === 'checkpoint') {
+        const event = eventForChapter(this.chapter.id)!
+        const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
+        this.cb.eventAction?.({ type: 'seal', index })
+      } else if (near === 'herb') {
         const herb = this.herbs.find(h => h.available && distance(h, p) < 75)!
         herb.available = false; herb.respawn = 22
         this.cb.collect(); this.cb.sound?.('collect'); this.effect(herb.x, herb.y, 36, 0x8ee4b3)
@@ -118,12 +117,12 @@ export class CombatWorld {
         this.cb.camp()
       } else if (near === 'gate') {
         if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
-        else if (!chapterReady(s)) this.cb.notify('先完成采集、普通战和炼药目标，再开启试炼。')
+        else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
         else if (!this.bossSpawned) {
-          this.spawn('boss', gate.x - 70, gate.y + 80); this.bossSpawned = true
+          this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
           this.cb.notify(`${this.chapter.boss} · 注意脚下的攻击预警`)
         } else this.cb.notify('试炼正在进行。')
-      } else this.cb.notify('靠近药草、营地或右上方试炼碑后交互。')
+      } else this.cb.notify('靠近人物、立约点、药草、营地或试炼碑后交互。')
       return
     }
     if (action === 'dodge') {
@@ -133,6 +132,8 @@ export class CombatWorld {
         : { x: Math.cos(p.facing), y: Math.sin(p.facing) }
       p.stamina -= 28; p.roll = .22; p.invincible = .28; this.cooldowns.dodge = .7
       this.cb.sound?.('dodge')
+      const event = eventForChapter(this.chapter.id), progress = s.progress[this.chapter.id].event
+      if (event?.dummy && progress.started && progress.stage === 1 && distance(p, event.dummy) < 170) this.cb.eventAction?.({ type: 'dodge' })
       return
     }
     if (action === 'heal') {
@@ -185,6 +186,14 @@ export class CombatWorld {
     }
     this.effect(center.x, center.y, radius, color, cone ? 'slash' : 'ring')
     this.cb.sound?.(action === 'attack' ? 'attack' : 'skill')
+    const event = eventForChapter(this.chapter.id), progress = s.progress[this.chapter.id].event
+    if (action === 'strike' && event?.dummy && progress.started && progress.stage === 0 && distance(p, event.dummy) <= radius + 20) {
+      const angle = Math.atan2(event.dummy.y - p.y, event.dummy.x - p.x) - p.facing
+      if (Math.abs(Math.atan2(Math.sin(angle), Math.cos(angle))) <= 1.2) {
+        this.cb.eventAction?.({ type: 'strike' })
+        this.floats.push({ ...event.dummy, text: '八极崩 · 命中', time: 1, color: '#f4deb4' })
+      }
+    }
     for (const e of this.enemies) {
       if (e.hp <= 0 || distance(e, center) > radius + 20) continue
       const deltaAngle = Math.atan2(Math.sin(Math.atan2(e.y - p.y, e.x - p.x) - p.facing), Math.cos(Math.atan2(e.y - p.y, e.x - p.x) - p.facing))
@@ -222,7 +231,7 @@ export class CombatWorld {
       }
       if (e.hp <= 0) continue
       const dist = distance(e, p)
-      if (e.type !== 'boss' && distance(p, camp) < 105) { e.windup = 0; e.timer = Math.max(e.timer, 1); continue }
+      if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); continue }
       if (dist > (e.type === 'boss' ? 1100 : 370)) continue
       if (e.windup > 0) {
         e.windup -= dt
@@ -258,9 +267,12 @@ export class CombatWorld {
   }
   near(): Runtime['near'] {
     const p = this.player
-    if (distance(p, camp) < 110) return 'camp'
+    const event = eventForChapter(this.chapter.id)
+    if (event && distance(p, event.npc) < 75) return 'event'
+    if (event?.checkpoints?.some(point => distance(p, point) < 75)) return 'checkpoint'
+    if (distance(p, this.map.camp) < 110) return 'camp'
     if (this.herbs.some(h => h.available && distance(p, h) < 75)) return 'herb'
-    if (distance(p, gate) < 115) return 'gate'
+    if (distance(p, this.map.gate) < 115) return 'gate'
     return ''
   }
   runtime(): Runtime {
@@ -268,7 +280,7 @@ export class CombatWorld {
     const boss = this.enemies.find(e => e.type === 'boss')
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
-      near, prompt: near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? 'E · 开启章节试炼' : '',
+      near, prompt: near === 'event' ? `E · 与${eventForChapter(this.chapter.id)!.speaker}交谈` : near === 'checkpoint' ? 'E · 确认立约路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0 }
   }
 }

@@ -1,7 +1,8 @@
 import Phaser from 'phaser'
 import { gameStore } from '../core/store'
 import { chapterById } from '../content/chapters'
-import { CombatWorld, camp, gate, HEIGHT, obstacles, WIDTH, type Input } from './combat'
+import { CombatWorld, HEIGHT, WIDTH, type Input } from './combat'
+import { eventForChapter } from '../content/events'
 import type { Action } from '../core/model'
 import { playSound } from './audio'
 import { FixedClock } from './clock'
@@ -37,6 +38,7 @@ export default class AdventureScene extends Phaser.Scene {
         return true
       },
       camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message), sound: playSound,
+      storyEvent: () => gameStore.onStoryEvent?.(), eventAction: action => { gameStore.event(action) },
     })
     this.drawEnvironment()
     this.ink = this.add.graphics()
@@ -79,6 +81,7 @@ export default class AdventureScene extends Phaser.Scene {
     gameStore.runtime(this.world.runtime())
   }
   private drawEnvironment() {
+    const { camp, gate, obstacles, style } = this.world.map
     const c = palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
@@ -107,13 +110,20 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
       }
     }
-    const path = new Phaser.Curves.Path(150, 650)
-    path.lineTo(360, 480).lineTo(680, 470).lineTo(800, 270).lineTo(1090, 180)
+    if (style === 'courtyard' || style === 'market') {
+      bg.lineStyle(1, c[2], .08)
+      for (let x = 40; x < WIDTH; x += 40) bg.lineBetween(x, 40, x, HEIGHT - 40)
+      for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
+    }
+    for (const points of this.world.map.paths) {
+    const path = new Phaser.Curves.Path(points[0].x, points[0].y)
+    for (const point of points.slice(1)) path.lineTo(point.x, point.y)
     bg.lineStyle(85, c[1], .16); path.draw(bg)
     bg.lineStyle(55, c[2], .1); path.draw(bg)
     for (let i = 0; i < 95; i++) {
       const t = rand(), point = path.getPoint(t), x = point.x + (rand() - .5) * 50, y = point.y + (rand() - .5) * 50
       bg.fillStyle(c[2], .12); bg.fillEllipse(x, y, 12 + rand() * 14, 7)
+    }
     }
     for (let i = 0; i < 48; i++) {
       const x = rand() * WIDTH, y = rand() > .5 ? rand() * 120 + 30 : 710 + rand() * 60
@@ -124,7 +134,14 @@ export default class AdventureScene extends Phaser.Scene {
       bg.fillStyle(c[1], .95); bg.fillRoundedRect(o.x, o.y, o.w, o.h, 18)
       bg.fillStyle(c[2], .14); bg.fillTriangle(o.x + 10, o.y + 12, o.x + o.w - 15, o.y + 8, o.x + 25, o.y + o.h * .5)
       if (this.world.chapter.theme === 'forest') this.tree(bg, o.x + o.w * .7, o.y + 25, .9, c)
-      if (this.world.chapter.theme === 'city' || this.world.chapter.theme === 'temple') {
+      if (style === 'market') {
+        bg.fillStyle(0x987b56); bg.fillRect(o.x, o.y, o.w, 30)
+        for (let x = o.x; x < o.x + o.w; x += 24) {
+          bg.fillStyle(Math.floor((x - o.x) / 24) % 2 ? 0x587975 : 0xb4a17b)
+          bg.fillRect(x, o.y, Math.min(24, o.x + o.w - x), 30)
+        }
+        bg.fillStyle(0xd0b889, .7); bg.fillCircle(o.x + 30, o.y + 55, 10); bg.fillCircle(o.x + 65, o.y + 55, 10)
+      } else if (this.world.chapter.theme === 'city' || this.world.chapter.theme === 'temple') {
         bg.fillStyle(0x172622); bg.fillTriangle(o.x - 15, o.y + 8, o.x + o.w / 2, o.y - 45, o.x + o.w + 15, o.y + 8)
         bg.lineStyle(2, c[2], .6); bg.lineBetween(o.x - 15, o.y + 8, o.x + o.w + 15, o.y + 8)
         bg.fillStyle(c[2], .65); bg.fillRect(o.x + o.w / 2 - 9, o.y + 15, 18, 26)
@@ -143,6 +160,13 @@ export default class AdventureScene extends Phaser.Scene {
     this.add.text(gate.x, gate.y + 65, '试 炼 碑', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(gate.x, gate.y - 29, '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(50, 35, this.world.chapter.location, { fontSize: '20px', color: '#cbd1b7', fontFamily: 'serif' }).setAlpha(.8)
+    for (const point of this.world.map.landmarks) this.add.text(point.x, point.y, point.label, { fontSize: '16px', color: '#cbd1b7' }).setOrigin(.5)
+    const event = eventForChapter(this.world.chapter.id)
+    if (event) {
+      this.add.text(event.npc.x, event.npc.y - 55, event.speaker, { fontSize: '17px', color: '#b5ded4' }).setOrigin(.5)
+      if (event.dummy) this.add.text(event.dummy.x, event.dummy.y + 35, '木桩 · 1 斗技 / 空格闪避', { fontSize: '14px', color: '#d8c4a0' }).setOrigin(.5)
+      event.checkpoints?.forEach((point, index) => this.add.text(point.x, point.y + 35, `${index + 1} · ${point.label}`, { fontSize: '15px', color: '#d8c4a0' }).setOrigin(.5))
+    }
     bg.lineStyle(2, c[2], .15); bg.strokeRect(28, 28, WIDTH - 56, HEIGHT - 56)
   }
   private tree(g: Phaser.GameObjects.Graphics, x: number, y: number, scale: number, c: number[]) {
@@ -191,6 +215,22 @@ export default class AdventureScene extends Phaser.Scene {
     const g = this.ink
     g.clear()
     const w = this.world, p = w.player
+    const { gate } = w.map
+    const event = eventForChapter(w.chapter.id), progress = gameStore.getSnapshot().state.progress[w.chapter.id].event
+    if (event) {
+      this.actor(g, event.npc.x, event.npc.y, 0x729d96, 1, false)
+      g.lineStyle(2, 0x9bd7cb, .5); g.strokeCircle(event.npc.x, event.npc.y, 35)
+      if (event.dummy) {
+        g.fillStyle(progress.stage > 0 ? 0xcdb786 : 0x9d7757); g.fillRect(event.dummy.x - 9, event.dummy.y - 32, 18, 50)
+        g.fillRect(event.dummy.x - 27, event.dummy.y - 19, 54, 9)
+        g.lineStyle(2, 0xe8c98c, .5); g.strokeCircle(event.dummy.x, event.dummy.y, 28)
+      }
+      event.checkpoints?.forEach((point, index) => {
+        const active = progress.started && index === progress.stage
+        g.fillStyle(index < progress.stage ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
+        g.lineStyle(active ? 4 : 1, active ? 0xf0d498 : 0x9da688, .8); g.strokeCircle(point.x, point.y, active ? 34 : 24)
+      })
+    }
     const reduced = gameStore.getSnapshot().state.settings.reducedMotion
     for (const h of w.herbs) if (h.available) {
       const glow = reduced ? .22 : .2 + .1 * Math.sin(w.elapsed * 3 + h.x)

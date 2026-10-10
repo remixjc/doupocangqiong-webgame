@@ -1,6 +1,8 @@
 import { chapterById, chapters } from '../content/chapters'
 import { CONTENT_VERSION, initialState, type FlameId, type GameState, type ItemId } from './model'
 import { unlockedFlames } from './rules'
+import { eventForChapter } from '../content/events'
+import { eventDone, migrateLegacyEvent } from './events'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -25,7 +27,7 @@ function checkVersion(value: unknown) {
 }
 export function validateState(value: unknown): GameState {
   const data = record(value)
-  if (data.schemaVersion !== 1) throw new Error('不支持此存档版本，现有存档没有被修改。')
+  if (data.schemaVersion !== 1 && data.schemaVersion !== 2) throw new Error('不支持此存档版本，现有存档没有被修改。')
   checkVersion(data.contentVersion)
   const s = initialState()
   s.contentVersion = CONTENT_VERSION
@@ -43,10 +45,22 @@ export function validateState(value: unknown): GameState {
     const n = Number(id)
     if (!Number.isInteger(n) || n < 1 || n > Math.min(chapters.length, s.completed.length + 1)) throw new Error('任务章节无效。')
     const p = record(value)
-    s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss: bool(p.boss), intro: bool(p.intro) }
-    const o = chapterById(n).objectives
+    const boss = bool(p.boss), definition = eventForChapter(n)
+    let event = migrateLegacyEvent(n, boss)
+    if (data.schemaVersion === 2) {
+      const e = record(p.event)
+      event = { started: bool(e.started), stage: number(e.stage, definition ? definition.stages.length - 1 : 0), quote: number(e.quote, 90) }
+      if ((!event.started && (event.stage !== 0 || event.quote !== 0)) ||
+        (!definition && event.started) ||
+        (definition?.kind !== 'trade' && event.quote !== 0) ||
+        (definition?.kind === 'trade' && (event.stage === 0 ? event.quote !== 0 : ![42, 60].includes(event.quote))))
+        throw new Error('剧情事件进度无效。')
+    }
+    s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), event }
+    const o = data.schemaVersion === 1 && [2, 3].includes(n) ? { herbs: 3, kills: 3, brews: 0 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
+    if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')
   }
   if (!s.progress[s.chapter] || s.completed.some(id => !s.progress[id]?.boss)) throw new Error('章节进度缺失。')
   s.gold = number(data.gold); s.xp = number(data.xp, 100_000_000)

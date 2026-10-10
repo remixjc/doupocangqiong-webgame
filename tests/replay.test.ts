@@ -2,11 +2,14 @@ import { describe, expect, it } from 'vitest'
 import { chapters } from '../src/content/chapters'
 import { blankProgress, initialState } from '../src/core/model'
 import { chapterReady, craft, finishChapter, skillUnlocked } from '../src/core/rules'
-import { CombatWorld, collides, gate, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
+import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
+import { mapCollides, type MapDefinition } from '../src/content/maps'
+import { eventForChapter } from '../src/content/events'
+import { advanceEvent, eventDone } from '../src/core/events'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
-function route(from: Vec, to: Vec): Vec[] {
+function route(from: Vec, to: Vec, map: MapDefinition): Vec[] {
   const cell = 32, columns = Math.floor(WIDTH / cell), rows = Math.floor(HEIGHT / cell)
   const key = (x: number, y: number) => y * columns + x
   const pos = (n: number) => ({ x: (n % columns) * cell + cell / 2, y: Math.floor(n / columns) * cell + cell / 2 })
@@ -18,7 +21,7 @@ function route(from: Vec, to: Vec): Vec[] {
     const x = current % columns, y = Math.floor(current / columns)
     for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
       const nx = x + dx, ny = y + dy, n = key(nx, ny)
-      if (nx < 1 || ny < 1 || nx >= columns - 1 || ny >= rows - 1 || parents.has(n) || collides(pos(n), 22)) continue
+      if (nx < 1 || ny < 1 || nx >= columns - 1 || ny >= rows - 1 || parents.has(n) || mapCollides(map, pos(n), 22)) continue
       parents.set(n, current); queue.push(n)
     }
   }
@@ -47,6 +50,12 @@ describe('完整主线真实规则战斗回放', () => {
         heal: () => { if (!state.inventory.heal) return false; state.inventory.heal--; return true },
         mana: () => { if (!state.inventory.mana) return false; state.inventory.mana--; return true },
         camp: () => {}, notify: () => {},
+        eventAction: action => { state = advanceEvent(state, action).state },
+        storyEvent: () => {
+          const p = state.progress[chapter.id].event, e = eventForChapter(chapter.id)!
+          if (!p.started) state = advanceEvent(state, { type: 'begin' }).state
+          else if (e.kind === 'trade') state = advanceEvent(state, p.stage === 0 ? { type: 'quote', amount: 60 } : { type: 'deliver' }).state
+        },
       })
       let path: Vec[] = [], previousTarget: Vec = { x: -999, y: -999 }, frame = 0
       for (; frame < 60 * 240 && !state.progress[chapter.id].boss && world.player.hp > 0; frame++) {
@@ -55,10 +64,15 @@ describe('完整主线真实规则战斗回放', () => {
           const result = craft(state, 'heal', .5); if (result.ok) state = result.state
         }
         const needsHerb = p.herbs < chapter.objectives.herbs || (p.brews < chapter.objectives.brews && state.inventory.herb < 2)
+        const event = eventForChapter(chapter.id), activeEvent = event && !eventDone(state)
+        const needsTradeHerb = activeEvent && event.kind === 'trade' && p.event.stage === 1 && state.inventory.herb < 2
         const living = world.enemies.filter(e => e.hp > 0).sort((a, b) => dist(a, world.player) - dist(b, world.player))
-        let target: Vec = gate
-        if (needsHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? gate
+        let target: Vec = world.map.gate
+        if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
+        if (activeEvent && !needsTradeHerb && !(event.kind === 'trade' && p.event.stage === 1 && state.inventory.crystal < 1)) {
+          target = !p.event.started || event.kind === 'trade' ? event.npc : event.kind === 'training' ? event.dummy! : event.checkpoints![p.event.stage]
+        }
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
         if (threat) {
@@ -69,12 +83,12 @@ describe('完整主线真实规则战斗回放', () => {
           path = []
         } else {
           if (frame % 20 === 0 || !path.length || dist(target, previousTarget) > 45) {
-            path = route(world.player, target); previousTarget = { ...target }
+            path = route(world.player, target, world.map); previousTarget = { ...target }
           }
           while (path.length > 1 && dist(path[0], world.player) < 14) path.shift()
           const waypoint = path[0] ?? target
           const dx = waypoint.x - world.player.x, dy = waypoint.y - world.player.y, length = Math.hypot(dx, dy)
-          if (length > 4 && (needsHerb || !living.length || dist(target, world.player) > 70)) input = { x: dx / length, y: dy / length }
+          if (length > 4 && (needsHerb || needsTradeHerb || activeEvent || !living.length || dist(target, world.player) > 70)) input = { x: dx / length, y: dy / length }
         }
         if (frame % 10 === 0) {
           world.action('attack', input)
@@ -84,7 +98,11 @@ describe('完整主线真实规则战斗回放', () => {
           if (world.player.hp < world.runtime().maxHp * .5) world.action('heal', input)
           if (world.player.qi < 20) world.action('mana', input)
           world.action('support', input)
-          if (needsHerb || (chapterReady(state) && !living.length)) world.action('interact', input)
+          if (activeEvent && event.kind === 'training' && p.event.started && dist(world.player, event.dummy!) < 145) {
+            if (p.event.stage === 0) world.action('strike', { ...input, aim: event.dummy })
+            else world.action('dodge', input)
+          }
+          if (needsHerb || needsTradeHerb || activeEvent || (chapterReady(state) && !living.length)) world.action('interact', input)
         }
         world.step(input)
       }

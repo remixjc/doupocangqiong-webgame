@@ -7,7 +7,7 @@ export const chapters: Chapter[] = [{
   opening: [
     { speaker: '萧炎', text: '从山下走到这里，那些议论声终于远了。我需要的不是同情，是重新开始的机会。' },
     { speaker: '药老', text: '小家伙，机会就在你手中。先采些药材，再让我看看，你是否还有面对困难的勇气。' },
-    { speaker: '历练指引', text: 'WASD 移动，J 普攻，空格闪避，1 释放八极崩。靠近发光药草按 E 采集。完成目标后，到右上方的试炼碑开启挑战。' },
+    { speaker: '历练指引', text: '先在营地附近找药老接下指导：用八极崩命中木桩，再在木桩附近闪避。随后采集药草、击败投影，前往右上试炼碑。WASD 移动，1 斗技，空格闪避，E 交互。' },
   ],
   closing: [
     { speaker: '药老', text: '记住今天的感觉。力量会慢慢回来，但肯向前走的心，比天赋更难得。' },
@@ -19,6 +19,12 @@ export const chapters: Chapter[] = [{
 }]
 
 chapters.push(...storyChapters)
+// Dedicated story interactions replace the repetitive resource checklist here.
+chapters[1].location = '乌坦城 · 萧家议事院'
+chapters[1].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[2].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[2].boss = '成人礼武技考核 · 历练投影'
+chapters[2].trialNote = '供货订单和武技考核为游戏原创历练，不直接复现原著商业细节。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

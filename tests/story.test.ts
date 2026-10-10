@@ -4,6 +4,7 @@ import { blankProgress, initialState } from '../src/core/model'
 import { canEnter, craft, finishChapter, isVisible, unlockedFlames } from '../src/core/rules'
 import { parseSave, serializeSave } from '../src/core/save'
 import { CombatWorld } from '../src/game/combat'
+import { migrateLegacyEvent } from '../src/core/events'
 
 describe('全主线配置与任务可达性', () => {
   it('28 章连续且每章都有目标、开场、结局与足够敌人', () => {
@@ -33,6 +34,7 @@ describe('全主线配置与任务可达性', () => {
         s = result.state
       }
       s.progress[c.id].boss = true
+      s.progress[c.id].event = migrateLegacyEvent(c.id, true)
       const oldGold = s.gold
       s = finishChapter(s)
       expect(s.completed.length).toBe(c.id)

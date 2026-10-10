@@ -83,4 +83,22 @@ describe('IndexedDB persistence and recovery', () => {
       await expect(saveSlot(slot, initialState())).rejects.toThrow('存档槽')
     expect(await listSlots()).toEqual([])
   })
+
+  it('loads schema 1 auto and manual records, then writes schema 2 without losing recovery', async () => {
+    const old = JSON.parse(JSON.stringify(initialState()))
+    old.schemaVersion = 1; old.contentVersion = '0.1.0'
+    delete old.progress[1].event
+    old.gold = 345; old.progress[1].herbs = 2
+    const text = JSON.stringify({ game: 'doupocangqiong-webgame', state: old })
+    await mutateDatabase(store => {
+      for (const slot of [0, 1]) store.put({ slot, savedAt: Date.now(), text } satisfies SaveRecord)
+    })
+    const migrated = (await loadSlot(0))!
+    expect(migrated.schemaVersion).toBe(2)
+    expect(migrated.progress[1].herbs).toBe(2)
+    expect(await loadSlot(1)).toEqual(migrated)
+    await saveSlot(0, migrated)
+    expect((await loadSlot(-1))?.gold).toBe(345)
+    expect(JSON.parse((await listSlots()).find(s => s.slot === 0)!.text).state.schemaVersion).toBe(2)
+  })
 })

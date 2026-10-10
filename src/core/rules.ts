@@ -2,6 +2,7 @@ import { chapterById, chapters } from '../content/chapters'
 import { blankProgress, type FlameId, type GameState, type SkillId } from './model'
 import { recipes } from '../content/recipes'
 import type { ItemId } from './model'
+import { eventDone } from './events'
 
 export const flames: { id: FlameId; name: string; color: string; description: string; chapter: number }[] = [
   { id: 'ember', name: '修炼之火', color: '#e5b97e', description: '基础斗气火焰，均衡、稳定。游戏原创训练效果。', chapter: 0 },
@@ -34,7 +35,7 @@ export function skillUnlocked(s: GameState, id: SkillId): boolean {
 export function chapterReady(s: GameState): boolean {
   const p = s.progress[s.chapter] ?? blankProgress()
   const o = chapterById(s.chapter).objectives
-  return p.herbs >= o.herbs && p.kills >= o.kills && p.brews >= o.brews
+  return p.herbs >= o.herbs && p.kills >= o.kills && p.brews >= o.brews && eventDone(s)
 }
 export function finishChapter(s: GameState): GameState {
   if (!chapterReady(s) || !s.progress[s.chapter]?.boss || s.completed.includes(s.chapter)) return s

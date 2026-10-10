@@ -3,10 +3,13 @@ import { canEnter, chapterReady, finishChapter, playerStats } from './rules'
 import { buy, craft, upgrade } from './rules'
 import type { ItemId } from './model'
 import { loadSlot, saveSlot } from './save'
+import { advanceEvent, type EventAction } from './events'
+import { mapForChapter } from '../content/maps'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
-  return { x: 210, y: 615, hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
+  const spawn = mapForChapter(s.chapter).spawn
+  return { x: spawn.x, y: spawn.y, hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
     cooldowns: { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 },
     prompt: '', near: '', bossHp: 0, bossMaxHp: 0, bossName: '', dead: false }
 }
@@ -17,6 +20,7 @@ class GameStore {
   move = { x: 0, y: 0 }
   paused = true
   onInteract: (() => void) | null = null
+  onStoryEvent: (() => void) | null = null
   onChange: ((s: GameState) => void) | null = null
   private initialization: Promise<void> | null = null
   initialize(): Promise<void> {
@@ -66,6 +70,17 @@ class GameStore {
     return true
   }
   introSeen() { this.update(s => { s.progress[s.chapter].intro = true }) }
+  event(action: EventAction) {
+    const result = advanceEvent(this.snapshot.state, action)
+    if (result.ok) {
+      // Preserve combat runtime; an NPC conversation does not heal or teleport.
+      this.snapshot = { ...this.snapshot, state: result.state }
+      this.publish()
+      this.onChange?.(result.state)
+    }
+    this.notify(result.message)
+    return result.ok
+  }
   collect() {
     this.update(s => { s.inventory.herb++; s.progress[s.chapter].herbs++ })
     this.notify('采得灵草 ×1')
