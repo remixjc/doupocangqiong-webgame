@@ -5,7 +5,7 @@ import type { ItemId } from './model'
 
 export const flames: { id: FlameId; name: string; color: string; description: string; chapter: number }[] = [
   { id: 'ember', name: '修炼之火', color: '#e5b97e', description: '基础斗气火焰，均衡、稳定。游戏原创训练效果。', chapter: 0 },
-  { id: 'lotus', name: '青莲地心火', color: '#6de4bc', description: '技能命中附加持续燃烧。', chapter: 8 },
+  { id: 'lotus', name: '青莲地心火', color: '#6de4bc', description: '攻击命中附加持续燃烧。', chapter: 8 },
   { id: 'fallen', name: '陨落心炎', color: '#eac788', description: '斗气恢复更快，支持连续释放。', chapter: 15 },
   { id: 'star', name: '三千焱炎火', color: '#b59af5', description: '非受击期间缓慢恢复生命。', chapter: 21 },
   { id: 'pure', name: '净莲妖火', color: '#f4c1d3', description: '扩大火莲范围并增强技能伤害。', chapter: 25 },

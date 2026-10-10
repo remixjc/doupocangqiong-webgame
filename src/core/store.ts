@@ -19,7 +19,6 @@ class GameStore {
   onInteract: (() => void) | null = null
   onChange: ((s: GameState) => void) | null = null
   private initialization: Promise<void> | null = null
-  private saveTimer: ReturnType<typeof setTimeout> | undefined
   initialize(): Promise<void> {
     if (!this.initialization) this.initialization = (async () => {
       try {
@@ -33,8 +32,9 @@ class GameStore {
         } catch { this.notify((error as Error).message) }
       }
       this.onChange = state => {
-        clearTimeout(this.saveTimer)
-        this.saveTimer = setTimeout(() => { saveSlot(0, state).catch(e => this.notify(e.message)) }, 250)
+        // Persistent events are infrequent; start each write immediately.
+        // Frame-by-frame runtime updates never enter this path.
+        void saveSlot(0, state).catch(e => this.notify(e.message))
       }
     })()
     return this.initialization

@@ -83,23 +83,34 @@ function openDatabase(): Promise<IDBDatabase> {
     if (typeof indexedDB === 'undefined') { reject(new Error('此浏览器无法使用本地存档，请使用 JSON 备份。')); return }
     const req = indexedDB.open('doupocangqiong-saves', 1)
     req.onupgradeneeded = () => { req.result.createObjectStore('slots', { keyPath: 'slot' }) }
-    req.onsuccess = () => resolve(req.result)
+    req.onsuccess = () => {
+      req.result.onversionchange = () => { req.result.close(); database = undefined }
+      resolve(req.result)
+    }
     req.onerror = () => { database = undefined; reject(new Error('无法打开浏览器存档，请导出备份。')) }
     req.onblocked = () => reject(new Error('存档数据库被其他标签页占用，请关闭其他游戏标签。'))
   })
+  database.catch(() => { database = undefined })
   return database
 }
 export async function saveSlot(slot: number, state: GameState): Promise<void> {
   if (![0, 1, 2, 3].includes(slot)) throw new Error('存档槽无效。')
+  const text = serializeSave(validateState(state))
   const db = await openDatabase()
-  const text = serializeSave(state)
   await new Promise<void>((resolve, reject) => {
     const tx = db.transaction('slots', 'readwrite')
     // Keep the previous valid auto-save as a recovery slot in the same transaction.
     if (slot === 0) {
       const previous = tx.objectStore('slots').get(0)
       previous.onsuccess = () => {
-        if (previous.result) tx.objectStore('slots').put({ ...previous.result, slot: -1 })
+        if (previous.result) {
+          try {
+            parseSave(previous.result.text)
+            tx.objectStore('slots').put({ ...previous.result, slot: -1 })
+          } catch {
+            // A damaged current slot must never replace a valid recovery copy.
+          }
+        }
       }
     }
     tx.objectStore('slots').put({ slot, savedAt: Date.now(), text } satisfies SaveRecord)

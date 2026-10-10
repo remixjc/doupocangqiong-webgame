@@ -4,6 +4,7 @@ import { chapterById } from '../content/chapters'
 import { CombatWorld, camp, gate, HEIGHT, obstacles, WIDTH, type Input } from './combat'
 import type { Action } from '../core/model'
 import { playSound } from './audio'
+import { FixedClock } from './clock'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -14,8 +15,8 @@ export default class AdventureScene extends Phaser.Scene {
   world!: CombatWorld
   private ink!: Phaser.GameObjects.Graphics
   private floats!: Phaser.GameObjects.Text[]
-  private keys!: Record<string, Phaser.Input.Keyboard.Key>
-  private accumulator = 0
+  private heldKeys = new Set<string>()
+  private clock = new FixedClock()
   private runtimeTimer = 0
   private aim: { x: number; y: number } | undefined
   private lostFocus = false
@@ -42,24 +43,39 @@ export default class AdventureScene extends Phaser.Scene {
     this.floats = Array.from({ length: 30 }, () => this.add.text(0, 0, '', {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
     }).setOrigin(.5).setDepth(10))
-    this.keys = this.input.keyboard!.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,J,SPACE,ONE,TWO,THREE,Q,E,R,F', false) as Record<string, Phaser.Input.Keyboard.Key>
-    this.input.keyboard!.on('keydown', (event: KeyboardEvent) => {
-      if (event.repeat || gameStore.paused) return
-      if ([' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) event.preventDefault()
+    const keydown = (event: KeyboardEvent) => {
+      if (gameStore.paused || event.ctrlKey || event.altKey || event.metaKey) return
+      if (event.target instanceof HTMLElement && ['INPUT', 'SELECT', 'TEXTAREA'].includes(event.target.tagName)) return
+      if (!document.hidden) this.lostFocus = false
+      const key = event.key.toLowerCase()
+      if ([' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) event.preventDefault()
+      this.heldKeys.add(key)
+      if (event.repeat) return
       const map: Record<string, Action> = { j: 'attack', ' ': 'dodge', '1': 'strike', '2': 'wave', '3': 'lotus', q: 'heal', f: 'mana', e: 'interact', r: 'support' }
-      const action = map[event.key.toLowerCase()]
+      const action = map[key]
       if (action) gameStore.action(action)
-    })
+    }
+    const keyup = (event: KeyboardEvent) => {
+      this.heldKeys.delete(event.key.toLowerCase())
+    }
+    window.addEventListener('keydown', keydown); window.addEventListener('keyup', keyup)
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+      if (!document.hidden) this.lostFocus = false
       if (pointer.event instanceof MouseEvent && pointer.event.button === 0) {
         this.aim = { x: pointer.worldX, y: pointer.worldY }
         gameStore.action('attack')
       }
     })
-    const blur = () => { this.lostFocus = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
+    const blur = () => { this.lostFocus = true; this.heldKeys.clear(); gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
     const focus = () => { this.lostFocus = false }
     window.addEventListener('blur', blur); window.addEventListener('focus', focus)
-    this.events.once('shutdown', () => { window.removeEventListener('blur', blur); window.removeEventListener('focus', focus) })
+    const releaseInput = () => {
+      window.removeEventListener('blur', blur); window.removeEventListener('focus', focus)
+      window.removeEventListener('keydown', keydown); window.removeEventListener('keyup', keyup)
+      this.heldKeys.clear()
+    }
+    this.events.once('shutdown', releaseInput)
+    this.events.once('destroy', releaseInput)
     gameStore.runtime(this.world.runtime())
   }
   private drawEnvironment() {
@@ -157,16 +173,16 @@ export default class AdventureScene extends Phaser.Scene {
   update(_time: number, delta: number) {
     if (!this.world) return
     const paused = gameStore.paused || this.lostFocus || document.hidden
-    if (paused) { this.accumulator = 0; gameStore.actions.length = 0; this.drawActors(); return }
+    if (paused) { this.clock.reset(); this.heldKeys.clear(); gameStore.actions.length = 0; this.drawActors(); return }
     const input: Input = {
-      x: (Number(this.keys.D.isDown || this.keys.RIGHT.isDown) - Number(this.keys.A.isDown || this.keys.LEFT.isDown)) + gameStore.move.x,
-      y: (Number(this.keys.S.isDown || this.keys.DOWN.isDown) - Number(this.keys.W.isDown || this.keys.UP.isDown)) + gameStore.move.y,
+      x: (Number(this.heldKeys.has('d') || this.heldKeys.has('arrowright')) - Number(this.heldKeys.has('a') || this.heldKeys.has('arrowleft'))) + gameStore.move.x,
+      y: (Number(this.heldKeys.has('s') || this.heldKeys.has('arrowdown')) - Number(this.heldKeys.has('w') || this.heldKeys.has('arrowup'))) + gameStore.move.y,
       aim: this.aim,
     }
-    this.accumulator += Math.min(delta, 100) / 1000
     for (const action of gameStore.actions.splice(0)) this.world.action(action, input)
+    if (this.heldKeys.has('j') && this.world.attackCooldown <= 0) this.world.action('attack', input)
     this.aim = undefined
-    while (this.accumulator >= 1 / 60) { this.world.step(input); this.accumulator -= 1 / 60 }
+    this.clock.advance(delta, () => this.world.step(input))
     this.runtimeTimer += delta
     if (this.runtimeTimer >= 100) { gameStore.runtime(this.world.runtime()); this.runtimeTimer = 0 }
     this.drawActors()
