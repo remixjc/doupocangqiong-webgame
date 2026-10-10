@@ -1,33 +1,141 @@
-import { useState } from 'react'
+import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
+import { chapters, chapterById } from '../content/chapters'
+import { gameStore } from '../core/store'
+import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked } from '../core/rules'
+import type { Dialogue } from '../core/model'
+
+const GameView = lazy(() => import('./GameView'))
+type Panel = 'guide' | 'camp' | 'character' | null
+interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
 export default function App() {
-  const [section, setSection] = useState<'home' | 'guide'>('home')
-  return <div className="shell">
+  const { state: s, runtime: r, notice } = useSyncExternalStore(gameStore.subscribe, gameStore.getSnapshot)
+  const [screen, setScreen] = useState<'home' | 'world' | 'play'>('home')
+  const [panel, setPanel] = useState<Panel>(null)
+  const [story, setStory] = useState<Story | null>(null)
+  const [run, setRun] = useState(0)
+  const chapter = chapterById(s.chapter), progress = s.progress[s.chapter]
+  const flame = flames.find(f => f.id === s.flame)!
+  const stats = playerStats(s)
+  const completed = s.completed.includes(s.chapter)
+
+  useEffect(() => {
+    gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead
+    if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
+    gameStore.onInteract = () => setPanel('camp')
+    return () => { gameStore.onInteract = null }
+  }, [screen, panel, story, r.dead])
+  useEffect(() => {
+    if (!notice) return
+    const id = window.setTimeout(() => gameStore.notify(''), 3500)
+    return () => window.clearTimeout(id)
+  }, [notice])
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && !story) setPanel(p => p ? null : 'camp')
+    }
+    window.addEventListener('keydown', key)
+    return () => window.removeEventListener('keydown', key)
+  }, [story])
+
+  function enter(id: number) {
+    if (!gameStore.enter(id)) { gameStore.notify('该篇章尚未解锁或超出剧透范围。'); return }
+    const c = chapterById(id), p = gameStore.getSnapshot().state.progress[id]
+    setPanel(null); setScreen('play'); setRun(n => n + 1)
+    if (!p.intro) setStory({ lines: c.opening, index: 0, closing: false })
+  }
+  function advanceStory() {
+    if (!story) return
+    if (story.index < story.lines.length - 1) { setStory({ ...story, index: story.index + 1 }); return }
+    if (!story.closing) gameStore.introSeen()
+    const closing = story.closing
+    setStory(null)
+    if (closing) setScreen('world')
+  }
+  function finish() {
+    if (gameStore.finish()) { setPanel(null); setStory({ lines: chapter.closing, index: 0, closing: true }) }
+  }
+  function retry() { gameStore.runtime({ ...r, dead: false }); setRun(n => n + 1) }
+
+  return <div className={`shell ${screen === 'play' ? 'playing' : ''}`}>
     <header className="topbar">
-      <a className="brand" href="./"><span className="brand-seal">炎</span><span>斗破苍穹<small>异 火 之 路</small></span></a>
+      <button className="brand brand-button" onClick={() => { setScreen('home'); setPanel(null); setStory(null) }}><span className="brand-seal">炎</span><span>斗破苍穹<small>异 火 之 路</small></span></button>
       <nav aria-label="主导航">
-        <button className={section === 'home' ? 'nav active' : 'nav'} onClick={() => setSection('home')}>启程</button>
-        <button className={section === 'guide' ? 'nav active' : 'nav'} onClick={() => setSection('guide')}>修炼手札</button>
+        <button className={screen === 'home' ? 'nav active' : 'nav'} onClick={() => { setScreen('home'); setStory(null) }}>启程</button>
+        <button className={screen === 'world' ? 'nav active' : 'nav'} onClick={() => { setScreen('world'); setStory(null) }}>大陆舆图</button>
+        <button className="nav" onClick={() => setPanel('guide')}>修炼手札</button>
       </nav>
-      <span className="version-label">浏览器单机 · 开发中</span>
+      <span className="version-label">{screen === 'play' ? `${s.gold} 金币 · ${chapter.realm}` : '浏览器单机 · 章节式冒险'}</span>
+      <button className="icon-button" onClick={() => setPanel('character')} aria-label="查看人物">◈</button>
     </header>
-    <main className="landing">
+    {screen === 'home' && <main className="landing">
       <div className="landscape" />
-      {section === 'home' ? <section className="hero">
+      <section className="hero">
         <span className="eyebrow"><i /> 从乌坦城，走向斗气大陆</span>
         <h1>以少年之名<br /><em>赴异火之约。</em></h1>
         <p>一枚古戒，一位老师，一条不向命运低头的路。<br />探索山川，磨砺斗技，以掌中之火照亮新的旅途。</p>
-        <div className="hero-actions"><button className="primary" onClick={() => setSection('guide')}>阅读修炼手札 <span>↗</span></button><span className="muted">基础工程阶段</span></div>
-        <div className="hero-stats"><div><b>28</b><span>主线篇章规划</span></div><div><b>焚诀</b><span>异火成长之路</span></div><div><b>纯网页</b><span>无需安装客户端</span></div></div>
-      </section> : <section className="guide-panel panel">
-        <span className="eyebrow">修炼手札 / 初心</span><h2>每一份力量，都来自历练。</h2>
-        <p>探索采药 → 实战历练 → 炼药准备 → 章节挑战 → 境界成长。</p>
-        <div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '交互'], ['Q', '服用丹药']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div>
-        <p className="muted">当前为基础工程版本，后续阶段加入可玩探索、战斗和存档。</p>
-        <button className="secondary" onClick={() => setSection('home')}>返回启程</button>
-      </section>}
+        <div className="hero-actions"><button className="primary" onClick={() => enter(s.chapter)}>开始历练 <span>↗</span></button><button className="secondary" onClick={() => setScreen('world')}>展开大陆舆图</button></div>
+        <div className="hero-stats"><div><b>{String(chapters.length).padStart(2, '0')}</b><span>当前可玩篇章</span></div><div><b>焚诀</b><span>异火成长之路</span></div><div><b>纯网页</b><span>无需安装客户端</span></div></div>
+      </section>
       <aside className="landing-note"><span className="vertical-title">万 火 归 一</span><span>斗气大陆 · 故事改编</span></aside>
       <footer className="landing-footer"><span>原创短对白 · 程序绘制场景 · 单机冒险</span><span>漫长的旅途，从此刻开始。</span></footer>
-    </main>
+    </main>}
+    {screen === 'world' && <main className="world-page">
+      <div className="page-heading"><div><span className="eyebrow">斗气大陆 / 章节旅途</span><h1>山海有尽，修炼无涯。</h1><p className="muted">沿着萧炎的足迹前行。首通解锁下一篇章，已完成的篇章可重返修炼。</p></div><span className="chapter-counter">{s.completed.length}<small> / {chapters.length} 篇章</small></span></div>
+      <div className="chapter-grid">{chapters.map(c => {
+        const visible = isVisible(s, c.id), unlocked = canEnter(s, c.id), done = s.completed.includes(c.id)
+        return <button key={c.id} disabled={!unlocked} className={`chapter-card theme-${c.theme} ${done ? 'done' : ''}`} onClick={() => enter(c.id)}>
+          <span className="chapter-number">{String(c.id).padStart(2, '0')}<small>{done ? '已历练 ✓' : unlocked ? '可启程 ↗' : '未解锁 ◇'}</small></span>
+          <div className="chapter-art"><span>山</span><i /><i /><i /></div>
+          <span className="chapter-place">{visible ? c.location : '待揭晓之地'}</span>
+          <h2>{visible ? c.title : '未揭晓篇章'}</h2><p>{visible ? c.summary : '超出当前剧透范围。可在后续设置中调整已观看篇章上限。'}</p>
+          <span className="chapter-bottom">{visible ? c.realm : '旅途尚未抵达'}<b>{done ? '重返' : '启程'} →</b></span>
+        </button>
+      })}</div>
+    </main>}
+    {screen === 'play' && <main className="adventure">
+      <aside className="quest-sidebar">
+        <span className="eyebrow">第 {String(chapter.id).padStart(2, '0')} 章</span><h2>{chapter.title}</h2>
+        <p className="muted">{chapter.summary}</p><div className="thin-divider" />
+        <span className="section-label">本章历练</span>
+        <Quest text="采集灵草" current={progress.herbs} target={chapter.objectives.herbs} />
+        <Quest text="击败普通敌人" current={progress.kills} target={chapter.objectives.kills} />
+        {chapter.objectives.brews > 0 && <Quest text="炼制丹药" current={progress.brews} target={chapter.objectives.brews} />}
+        <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
+        <p className="quest-hint">{progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? '准备完成。前往右上方试炼碑，按 E 开始挑战。' : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
+        <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
+      </aside>
+      <section className="stage-wrap">
+        <div className="stage-topline"><span>◈ {chapter.location}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
+        <div className="stage">
+          <Suspense fallback={<div className="loading">正在展开山川画卷…</div>}><GameView key={`${s.chapter}:${run}`} /></Suspense>
+          <div className="player-hud"><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
+          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}</span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
+          {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
+          <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
+        </div>
+        <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button></div>
+          <div className="skills">{skillInfo.map(skill => {
+            const unlocked = skillUnlocked(s, skill.id), cd = r.cooldowns[skill.id]
+            return <button className={`skill ${unlocked ? '' : 'locked'}`} key={skill.id} onClick={() => gameStore.action(skill.id)} disabled={!unlocked} title={skill.description}><kbd>{skill.key}</kbd><b>{skill.name}</b><small>{!unlocked ? '剧情解锁' : cd > .1 ? `${cd.toFixed(1)}s` : `${skill.cost} 斗气`}</small></button>
+          })}<button className="skill potion" onClick={() => gameStore.action('heal')}><kbd>Q</kbd><b>恢复丹</b><small>{r.cooldowns.heal > .1 ? `${r.cooldowns.heal.toFixed(1)}s` : `持有 ${s.inventory.heal}`}</small></button></div>
+        </div>
+      </section>
+    </main>}
+    {notice && <div className="toast" role="status">{notice}</div>}
+    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={panel === 'guide' ? '修炼手札' : panel === 'camp' ? '营地休整' : '人物行囊'}>
+      <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
+      {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">采集灵草、击败普通敌人后，到右上方试炼碑开启章节挑战。击败首领，再回到左下营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><button className="primary" onClick={() => setPanel(null)}>记下了</button></>}
+      {panel === 'camp' && <><span className="eyebrow">灯火与归途 / 营地</span><h2>{completed ? '本章已经完成。' : progress.boss ? '这一程，你做到了。' : '整装，再赴历练。'}</h2><p className="muted">休整会回到营地并恢复状态，已结算的资源和任务进度保留。</p><div className="camp-options"><button className="secondary" onClick={() => { setPanel(null); retry() }}>营地休整 · 恢复状态</button>{progress.boss && !completed && <button className="primary" onClick={finish}>结算本章 · {chapter.reward} 金币 ↗</button>}<button className="secondary" onClick={() => { setPanel(null); setScreen('world') }}>返回大陆舆图</button></div><p className="muted">{chapter.trialNote}</p></>}
+      {panel === 'character' && <><span className="eyebrow">人物 / 行囊</span><h2>萧炎 <small className="muted">{chapter.realm}</small></h2><div className="stat-grid">{[['生命上限', stats.maxHp], ['斗气上限', stats.maxQi], ['攻击', Math.round(stats.attack)], ['防御', Math.round(stats.defense)], ['金币', s.gold], ['修炼积累', s.xp]].map(([label, value]) => <div key={label}><span>{label}</span><b>{value}</b></div>)}</div><div className="inventory-grid">{[['灵草', s.inventory.herb], ['魔晶', s.inventory.crystal], ['恢复丹', s.inventory.heal], ['回气丹', s.inventory.mana]].map(([label, value]) => <div key={label}><span>◇ {label}</span><b>×{value}</b></div>)}</div><p className="muted">当前火焰：{flame.name}。{flame.description}</p></>}
+    </section></div>}
+    {story && <div className="story-backdrop"><section className="story-box" role="dialog" aria-modal="true" aria-label="剧情对白"><div className="story-portrait">{story.lines[story.index].speaker.slice(0, 1)}</div><div className="story-content"><span className="eyebrow">{story.closing ? '历练归来' : chapter.location}</span><h2>{story.lines[story.index].speaker}</h2><p>{story.lines[story.index].text}</p><button className="primary" onClick={advanceStory}>{story.index < story.lines.length - 1 ? '继续' : story.closing ? '展开新的旅途' : '开始探索'} <span>→</span></button><small>{story.index + 1} / {story.lines.length}</small></div></section></div>}
+    {screen === 'play' && r.dead && !story && <div className="modal-backdrop"><section className="modal panel"><span className="eyebrow">暂歇，不是终点</span><h2>这一次，先记住对手的招式。</h2><p className="muted">任务进度、金币和材料已保留。试着在敌人蓄力时离开红色区域，再用八极崩打断普通敌人。</p><button className="primary" onClick={retry}>回到营地，重新挑战</button><button className="text-button" onClick={() => setScreen('world')}>返回舆图</button></section></div>}
   </div>
+}
+function Quest({ text, current, target }: { text: string; current: number; target: number }) {
+  return <div className={`quest-line ${current >= target ? 'checked' : ''}`}><span>{current >= target ? '✓' : '◇'}</span><div>{text}</div><b>{Math.min(current, target)} / {target}</b></div>
+}
+function Meter({ value, max, label, color }: { value: number; max: number; label: string; color: string }) {
+  return <div className={`meter ${color}`} role="meter" aria-label={label} aria-valuenow={value} aria-valuemin={0} aria-valuemax={max}><i style={{ width: `${Math.max(0, Math.min(100, value / max * 100))}%` }} /><span>{label} {value} / {max}</span></div>
 }

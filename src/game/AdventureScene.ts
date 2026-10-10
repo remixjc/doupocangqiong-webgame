@@ -1,0 +1,191 @@
+import Phaser from 'phaser'
+import { gameStore } from '../core/store'
+import { chapterById } from '../content/chapters'
+import { CombatWorld, camp, gate, HEIGHT, obstacles, WIDTH, type Input } from './combat'
+import type { Action } from '../core/model'
+
+const palette = {
+  city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
+  desert: [0x665943, 0x958164, 0xd9b884], temple: [0x303936, 0x6a7770, 0xc0baa1],
+  void: [0x252b42, 0x5b5884, 0xb3a3d1], fire: [0x493238, 0x7e514c, 0xd39b79],
+}
+export default class AdventureScene extends Phaser.Scene {
+  world!: CombatWorld
+  private ink!: Phaser.GameObjects.Graphics
+  private floats!: Phaser.GameObjects.Text[]
+  private keys!: Record<string, Phaser.Input.Keyboard.Key>
+  private accumulator = 0
+  private runtimeTimer = 0
+  private aim: { x: number; y: number } | undefined
+  private lostFocus = false
+  constructor() { super('adventure') }
+  create() {
+    const chapter = chapterById(gameStore.getSnapshot().state.chapter)
+    this.world = new CombatWorld(chapter, {
+      state: () => gameStore.getSnapshot().state,
+      collect: () => gameStore.collect(), kill: boss => gameStore.kill(boss),
+      heal: () => {
+        if (gameStore.getSnapshot().state.inventory.heal < 1) { gameStore.notify('恢复丹不足，返回营地炼制或购买。'); return false }
+        gameStore.update(s => { s.inventory.heal-- })
+        return true
+      },
+      camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message),
+    })
+    this.drawEnvironment()
+    this.ink = this.add.graphics()
+    this.floats = Array.from({ length: 30 }, () => this.add.text(0, 0, '', {
+      fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
+    }).setOrigin(.5).setDepth(10))
+    this.keys = this.input.keyboard!.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,J,SPACE,ONE,TWO,THREE,Q,E,R') as Record<string, Phaser.Input.Keyboard.Key>
+    this.input.keyboard!.on('keydown', (event: KeyboardEvent) => {
+      if (event.repeat || gameStore.paused) return
+      const map: Record<string, Action> = { j: 'attack', ' ': 'dodge', '1': 'strike', '2': 'wave', '3': 'lotus', q: 'heal', e: 'interact', r: 'support' }
+      const action = map[event.key.toLowerCase()]
+      if (action) gameStore.action(action)
+    })
+    this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+      if (pointer.event instanceof MouseEvent && pointer.event.button === 0) {
+        this.aim = { x: pointer.worldX, y: pointer.worldY }
+        gameStore.action('attack')
+      }
+    })
+    const blur = () => { this.lostFocus = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
+    const focus = () => { this.lostFocus = false }
+    window.addEventListener('blur', blur); window.addEventListener('focus', focus)
+    this.events.once('shutdown', () => { window.removeEventListener('blur', blur); window.removeEventListener('focus', focus) })
+    gameStore.runtime(this.world.runtime())
+  }
+  private drawEnvironment() {
+    const c = palette[this.world.chapter.theme]
+    const bg = this.add.graphics()
+    bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
+    // All art is native vector drawing, seeded by chapter for repeatable maps.
+    let seed = this.world.chapter.id * 117 + 42
+    const rand = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296 }
+    for (let i = 0; i < 420; i++) {
+      const x = rand() * WIDTH, y = rand() * HEIGHT
+      bg.fillStyle(i % 2 ? c[1] : 0x0b1c1b, .08 + rand() * .14)
+      bg.fillEllipse(x, y, 3 + rand() * 12, 2 + rand() * 5)
+    }
+    const path = new Phaser.Curves.Path(150, 650)
+    path.lineTo(360, 480).lineTo(680, 470).lineTo(800, 270).lineTo(1090, 180)
+    bg.lineStyle(85, c[1], .16); path.draw(bg)
+    bg.lineStyle(55, c[2], .1); path.draw(bg)
+    for (let i = 0; i < 95; i++) {
+      const t = rand(), point = path.getPoint(t), x = point.x + (rand() - .5) * 50, y = point.y + (rand() - .5) * 50
+      bg.fillStyle(c[2], .12); bg.fillEllipse(x, y, 12 + rand() * 14, 7)
+    }
+    for (let i = 0; i < 48; i++) {
+      const x = rand() * WIDTH, y = rand() > .5 ? rand() * 120 + 30 : 710 + rand() * 60
+      this.tree(bg, x, y, .7 + rand() * .8, c)
+    }
+    for (const o of obstacles) {
+      bg.fillStyle(0x0a1715, .28); bg.fillEllipse(o.x + o.w * .55, o.y + o.h, o.w + 35, o.h * .65)
+      bg.fillStyle(c[1], .95); bg.fillRoundedRect(o.x, o.y, o.w, o.h, 18)
+      bg.fillStyle(c[2], .14); bg.fillTriangle(o.x + 10, o.y + 12, o.x + o.w - 15, o.y + 8, o.x + 25, o.y + o.h * .5)
+      if (this.world.chapter.theme === 'forest') this.tree(bg, o.x + o.w * .7, o.y + 25, .9, c)
+    }
+    // A small roofed camp, ink silhouettes and a bronze trial platform.
+    bg.fillStyle(0x0a1717, .4); bg.fillEllipse(camp.x, camp.y + 35, 150, 60)
+    bg.fillStyle(0x423c2f); bg.fillRect(camp.x - 47, camp.y - 45, 94, 60)
+    bg.fillStyle(0x171f21); bg.fillTriangle(camp.x - 72, camp.y - 38, camp.x, camp.y - 85, camp.x + 72, camp.y - 38)
+    bg.lineStyle(3, c[2], .6); bg.lineBetween(camp.x - 72, camp.y - 38, camp.x + 72, camp.y - 38)
+    bg.fillStyle(0xc6a372, .8); bg.fillRect(camp.x - 12, camp.y - 25, 24, 33)
+    bg.lineStyle(3, c[2], .5); bg.strokeCircle(gate.x, gate.y, 54)
+    bg.fillStyle(0x182423); bg.fillRoundedRect(gate.x - 18, gate.y - 55, 36, 55, 6)
+    bg.lineStyle(1, c[2], .85); bg.strokeRoundedRect(gate.x - 18, gate.y - 55, 36, 55, 6)
+    this.add.text(camp.x, camp.y + 50, '营 地', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
+    this.add.text(gate.x, gate.y + 65, '试 炼 碑', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
+    this.add.text(50, 35, this.world.chapter.location, { fontSize: '20px', color: '#cbd1b7', fontFamily: 'serif' }).setAlpha(.8)
+    bg.lineStyle(2, c[2], .15); bg.strokeRect(28, 28, WIDTH - 56, HEIGHT - 56)
+  }
+  private tree(g: Phaser.GameObjects.Graphics, x: number, y: number, scale: number, c: number[]) {
+    if (this.world.chapter.theme === 'desert') {
+      g.lineStyle(7 * scale, c[1], .85); g.lineBetween(x, y, x, y - 45 * scale)
+      g.lineBetween(x, y - 25 * scale, x + 18 * scale, y - 35 * scale); return
+    }
+    g.fillStyle(0x091b19, .28); g.fillEllipse(x + 8, y + 5, 90 * scale, 30 * scale)
+    g.fillStyle(0x3d3b2d); g.fillRect(x - 3 * scale, y - 40 * scale, 6 * scale, 47 * scale)
+    for (let i = 0; i < 3; i++) {
+      g.fillStyle(i % 2 ? c[1] : 0x244c40, .85)
+      const yy = y - i * 24 * scale, ww = (45 - i * 10) * scale
+      g.fillTriangle(x - ww, yy, x, yy - 64 * scale, x + ww, yy)
+    }
+  }
+  update(_time: number, delta: number) {
+    if (!this.world) return
+    const paused = gameStore.paused || this.lostFocus || document.hidden
+    if (paused) { this.accumulator = 0; gameStore.actions.length = 0; this.drawActors(); return }
+    const input: Input = {
+      x: (Number(this.keys.D.isDown || this.keys.RIGHT.isDown) - Number(this.keys.A.isDown || this.keys.LEFT.isDown)) + gameStore.move.x,
+      y: (Number(this.keys.S.isDown || this.keys.DOWN.isDown) - Number(this.keys.W.isDown || this.keys.UP.isDown)) + gameStore.move.y,
+      aim: this.aim,
+    }
+    this.accumulator += Math.min(delta, 100) / 1000
+    for (const action of gameStore.actions.splice(0)) this.world.action(action, input)
+    this.aim = undefined
+    while (this.accumulator >= 1 / 60) { this.world.step(input); this.accumulator -= 1 / 60 }
+    this.runtimeTimer += delta
+    if (this.runtimeTimer >= 100) { gameStore.runtime(this.world.runtime()); this.runtimeTimer = 0 }
+    this.drawActors()
+  }
+  private drawActors() {
+    const g = this.ink
+    g.clear()
+    const w = this.world, p = w.player
+    for (const h of w.herbs) if (h.available) {
+      const glow = .2 + .1 * Math.sin(w.elapsed * 3 + h.x)
+      g.fillStyle(0x8ce7ae, glow); g.fillCircle(h.x, h.y, 21)
+      g.lineStyle(2, 0xa7dba5); g.lineBetween(h.x, h.y + 6, h.x, h.y - 13)
+      g.fillStyle(0x91c993); g.fillEllipse(h.x - 6, h.y - 4, 12, 6); g.fillEllipse(h.x + 6, h.y - 10, 12, 7)
+    }
+    g.lineStyle(1, 0xe3bb7c, .3 + Math.sin(w.elapsed * 2) * .1); g.strokeCircle(gate.x, gate.y, 45 + Math.sin(w.elapsed * 2) * 3)
+    for (const e of w.enemies) {
+      if (e.hp <= 0) continue
+      if (e.windup > 0) {
+        g.fillStyle(0xc75b45, .16); g.fillCircle(e.target.x, e.target.y, e.radius)
+        g.lineStyle(2.5, 0xf4a17a, .8); g.strokeCircle(e.target.x, e.target.y, e.radius)
+        g.lineStyle(4, 0xecaa75, .7); g.beginPath(); g.arc(e.target.x, e.target.y, e.radius, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - e.windup)); g.strokePath()
+      }
+      const size = e.type === 'boss' ? 1.65 : 1
+      const color = e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
+      this.actor(g, e.x, e.y, color, size, false)
+      if (e.burn > 0) { g.lineStyle(2, 0x6de4bc, .8); g.strokeCircle(e.x, e.y, 23 * size) }
+      g.fillStyle(0x0b1718, .8); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size, 5, 2)
+      g.fillStyle(e.type === 'boss' ? 0xd38d75 : 0xc8b38d); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size * e.hp / e.maxHp, 5, 2)
+    }
+    const flame = gameStore.getSnapshot().state.flame
+    const color = flame === 'lotus' ? 0x6de4bc : flame === 'star' ? 0xb59af5 : flame === 'pure' ? 0xf4c1d3 : 0xeac18c
+    if (p.invincible > 0) { g.lineStyle(2, color, .6); g.strokeCircle(p.x, p.y, 30) }
+    this.actor(g, p.x, p.y, p.hit > 0 ? 0xad6a58 : 0x293d41, 1.05, true)
+    g.lineStyle(3, 0xd1c5ac, .9)
+    g.lineBetween(p.x + Math.cos(p.facing) * 14, p.y + Math.sin(p.facing) * 14, p.x + Math.cos(p.facing) * 43, p.y + Math.sin(p.facing) * 43)
+    for (const effect of w.effects) {
+      const f = effect.time / effect.maxTime
+      g.lineStyle(3 + f * 4, effect.color, f * .9)
+      if (effect.kind === 'ring') {
+        g.fillStyle(effect.color, f * .1); g.fillCircle(effect.x, effect.y, effect.radius * (1 - f * .35))
+        g.strokeCircle(effect.x, effect.y, effect.radius * (1 - f * .35))
+      } else {
+        g.beginPath(); g.arc(effect.x, effect.y, effect.radius * (1 - f * .2), p.facing - 1, p.facing + 1); g.strokePath()
+      }
+    }
+    for (let i = 0; i < this.floats.length; i++) {
+      const text = this.floats[i], f = w.floats[i]
+      if (!f) { text.setVisible(false); continue }
+      text.setVisible(true).setText(f.text).setPosition(f.x, f.y).setColor(f.color).setAlpha(Math.min(1, f.time * 2))
+    }
+  }
+  private actor(g: Phaser.GameObjects.Graphics, x: number, y: number, color: number, scale: number, player: boolean) {
+    g.fillStyle(0x061515, .35); g.fillEllipse(x + 2, y + 13 * scale, 35 * scale, 14 * scale)
+    g.fillStyle(color); g.fillTriangle(x - 16 * scale, y + 12 * scale, x, y - 23 * scale, x + 16 * scale, y + 12 * scale)
+    g.fillRoundedRect(x - 9 * scale, y - 21 * scale, 18 * scale, 25 * scale, 4)
+    g.fillStyle(player ? 0xe3c5a0 : 0xc2ac8c); g.fillCircle(x, y - 28 * scale, 8 * scale)
+    g.fillStyle(0x172426); g.fillEllipse(x, y - 34 * scale, 18 * scale, 9 * scale)
+    g.lineStyle(2 * scale, player ? 0xc4a67d : 0x453f38); g.lineBetween(x - 9 * scale, y - 1 * scale, x + 9 * scale, y - 1 * scale)
+    if (player) {
+      g.lineStyle(2, 0x314747); g.lineBetween(x - 3, y - 37, x - 16, y - 28)
+      g.fillStyle(0x142324); g.fillRoundedRect(x - 18, y - 22, 7, 32, 2)
+    }
+  }
+}
