@@ -85,9 +85,10 @@ export default function App() {
     </main>}
     {screen === 'world' && <main className="world-page">
       <div className="page-heading"><div><span className="eyebrow">斗气大陆 / 章节旅途</span><h1>山海有尽，修炼无涯。</h1><p className="muted">沿着萧炎的足迹前行。首通解锁下一篇章，已完成的篇章可重返修炼。</p></div><span className="chapter-counter">{s.completed.length}<small> / {chapters.length} 篇章</small></span></div>
+      {s.completed.length === chapters.length && isVisible(s, 28) && <div className="ending-banner"><span className="brand-seal">帝</span><div><span className="eyebrow">全主线已完成 / 旅途仍在继续</span><h2>从少年，到炎帝。</h2><p className="muted">你已走过 {chapters.length} 个篇章，完成 {s.totalKills} 次普通战、炼制 {s.totalBrews} 炉丹药。可以重返各地，自由修炼，或导出存档纪念这一程。</p></div></div>}
       <div className="chapter-grid">{chapters.map(c => {
         const visible = isVisible(s, c.id), unlocked = canEnter(s, c.id), done = s.completed.includes(c.id)
-        return <button key={c.id} disabled={!unlocked} className={`chapter-card theme-${c.theme} ${done ? 'done' : ''}`} onClick={() => enter(c.id)}>
+        return <button key={c.id} disabled={!unlocked} className={`chapter-card theme-${visible ? c.theme : 'city'} ${done ? 'done' : ''}`} onClick={() => enter(c.id)}>
           <span className="chapter-number">{String(c.id).padStart(2, '0')}<small>{done ? '已历练 ✓' : unlocked ? '可启程 ↗' : '未解锁 ◇'}</small></span>
           <div className="chapter-art"><span>山</span><i /><i /><i /></div>
           <span className="chapter-place">{visible ? c.location : '待揭晓之地'}</span>
@@ -120,7 +121,8 @@ export default function App() {
         <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button onClick={() => gameStore.action('support')}><kbd>R</kbd> 支援</button></div>
           <div className="skills">{skillInfo.map(skill => {
             const unlocked = skillUnlocked(s, skill.id), cd = r.cooldowns[skill.id]
-            return <button className={`skill ${unlocked ? '' : 'locked'}`} key={skill.id} onClick={() => gameStore.action(skill.id)} disabled={!unlocked} title={skill.description}><kbd>{skill.key}</kbd><b>{skill.name}</b><small>{!unlocked ? '剧情解锁' : cd > .1 ? `${cd.toFixed(1)}s` : `${skill.cost} 斗气`}</small></button>
+            const revealed = isVisible(s, skill.unlock)
+            return <button className={`skill ${unlocked ? '' : 'locked'}`} key={skill.id} onClick={() => gameStore.action(skill.id)} disabled={!unlocked || !revealed} title={revealed ? skill.description : '超出当前剧透范围'}><kbd>{skill.key}</kbd><b>{revealed ? skill.name : '未揭晓斗技'}</b><small>{!unlocked || !revealed ? '剧情解锁' : cd > .1 ? `${cd.toFixed(1)}s` : `${skill.cost} 斗气`}</small></button>
           })}<button className="skill potion" onClick={() => gameStore.action('heal')}><kbd>Q</kbd><b>恢复丹</b><small>{r.cooldowns.heal > .1 ? `${r.cooldowns.heal.toFixed(1)}s` : `持有 ${s.inventory.heal}`}</small></button></div>
         </div>
       </section>

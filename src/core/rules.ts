@@ -29,7 +29,7 @@ export function unlockedFlames(s: GameState) {
 }
 export function skillUnlocked(s: GameState, id: SkillId): boolean {
   const info = skillInfo.find(k => k.id === id)!
-  return unlockedChapter(s) >= info.unlock && (id !== 'lotus' || unlockedFlames(s).length > 1)
+  return isVisible(s, info.unlock) && unlockedChapter(s) >= info.unlock && (id !== 'lotus' || unlockedFlames(s).length > 1)
 }
 export function chapterReady(s: GameState): boolean {
   const p = s.progress[s.chapter] ?? blankProgress()
@@ -45,6 +45,7 @@ export function finishChapter(s: GameState): GameState {
   next.completed.push(s.chapter)
   next.gold += chapter.reward
   next.xp += 100 + s.chapter * 25
+  if (chapter.flame) next.flame = chapter.flame
   return next
 }
 export function playerStats(s: GameState) {

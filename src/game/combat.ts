@@ -52,6 +52,8 @@ export class CombatWorld {
     this.spawn('brute', 550, 470)
     this.spawn('hunter', 740, 360)
     this.spawn('mage', 1020, 610)
+    if (chapter.objectives.kills >= 4) this.spawn('hunter', 570, 260)
+    if (chapter.objectives.kills >= 5) this.spawn('mage', 1050, 390)
   }
   spawn(type: Fighter['type'], x: number, y: number) {
     const d = this.cb.state().settings.difficulty

@@ -4,6 +4,7 @@ import App from './ui/App'
 import './ui/styles.css'
 import './ui/game.css'
 import './ui/panels.css'
+import './ui/content.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode><App /></React.StrictMode>,

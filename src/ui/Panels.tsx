@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { recipes, itemNames } from '../content/recipes'
 import { gameStore } from '../core/store'
 import { chapterById, chapters } from '../content/chapters'
-import { craft, prices, unlockedChapter } from '../core/rules'
+import { craft, prices, unlockedChapter, flames, isVisible } from '../core/rules'
 import type { GameState, ItemId } from '../core/model'
 import { listSlots, loadSlot, parseSave, saveSlot, serializeSave, type SaveRecord } from '../core/save'
 
@@ -35,7 +35,7 @@ export function AlchemyPanel({ state }: { state: GameState }) {
   }
   return <><span className="eyebrow">炼药 / 控火成丹</span><h2>掌中之火，也需要耐心。</h2>
     <p className="muted">三个阶段分别锁定火力。指针越靠近中间的金色区域，品质越高；上品额外产出一枚。丹药名称与数值为游戏设计。</p>
-    <div className="recipe-tabs">{recipes.filter(r => unlockedChapter(state) >= r.unlock).map(r => <button key={r.id} className={r.id === recipeId ? 'selected' : ''} disabled={phase >= 0 && phase <= 2} onClick={() => { setRecipeId(r.id); setPhase(-1) }}>{r.name}</button>)}</div>
+    <div className="recipe-tabs">{recipes.filter(r => unlockedChapter(state) >= r.unlock && isVisible(state, r.unlock)).map(r => <button key={r.id} className={r.id === recipeId ? 'selected' : ''} disabled={phase >= 0 && phase <= 2} onClick={() => { setRecipeId(r.id); setPhase(-1) }}>{r.name}</button>)}</div>
     <p className="muted">{recipe.description}</p><div className="ingredient-row">{(Object.entries(recipe.cost) as [ItemId, number][]).map(([id, n]) => <span key={id} className={state.inventory[id] < n ? 'insufficient' : ''}>{itemNames[id]} {state.inventory[id]} / {n}</span>)}</div>
     {phase < 0 && <div className="alchemy-idle"><div className="cauldron">鼎</div><div className="camp-options"><button className="primary" disabled={!preview.ok} onClick={() => { resolved.current = false; setScores([]); setPhase(0) }}>开炉 · 手动控火</button><button className="secondary" disabled={!preview.ok} onClick={() => gameStore.craft(recipeId, .5)}>稳火炼制 · 固定良品</button></div>{!preview.ok && <p className="muted">{preview.message}</p>}</div>}
     {phase >= 0 && phase <= 2 && <div className="alchemy-active"><div className="cauldron burning">鼎</div><span className="eyebrow">第 {phase + 1} 步 / {['提炼 · 除去杂质', '融合 · 协调药性', '凝丹 · 收束火焰'][phase]}</span><div className="heat-meter"><div className="heat-target" /><i style={{ left: `${marker * 100}%` }} /></div><button className="primary" onClick={lock}>锁定火力</button><p className="muted">中途关闭不会消耗材料。第三步结算时统一扣除并产出。</p></div>}
@@ -50,6 +50,7 @@ export function SettingsPanel({ state }: { state: GameState }) {
     gameStore.update(s => {
       Object.assign(s.settings, part)
       if (s.settings.spoiler === 'anime' && s.chapter > s.settings.animeLimit) s.chapter = Math.min(unlockedChapter(s), s.settings.animeLimit)
+      if (s.settings.spoiler === 'anime' && flames.find(f => f.id === s.flame)!.chapter > s.settings.animeLimit) s.flame = 'ember'
     })
   }
   return <><span className="eyebrow">设置 / 随心历练</span><h2>用自己的节奏，走这条路。</h2>

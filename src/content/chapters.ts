@@ -1,4 +1,5 @@
 import type { Chapter } from '../core/model'
+import { storyChapters } from './story'
 
 export const chapters: Chapter[] = [{
   id: 1, title: '少年与戒指', location: '乌坦城 · 萧家后山', theme: 'forest',
@@ -16,6 +17,8 @@ export const chapters: Chapter[] = [{
   realm: '斗之气 · 三段', reward: 140,
   trialNote: '试炼守卫为原创教学敌人，剧情对白为游戏改编。',
 }]
+
+chapters.push(...storyChapters)
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
