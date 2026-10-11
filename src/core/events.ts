@@ -35,7 +35,7 @@ export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
     quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
-    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal'].includes(event.kind) ? 1 : 0,
+    attempts: event.kind === 'tournament' || event.kind === 'tomb' ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -112,6 +112,13 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'tomb' && action.type === 'seal' && action.index === p.stage && p.stage >= 0 && p.stage <= 3) {
+      message = event.checkpoints![p.stage].text; p.stage++
+      if (p.stage <= 3) p.attempts++
+    } else if (event.kind === 'tomb' && action.type === 'restart' && p.stage >= 1 && p.stage <= 3) {
+      p.attempts++; message = '当前层重新计时，已完成层保留，不扣材料。刷新/休整会重建未完成层守卫。'
+    } else if (event.kind === 'tomb' && action.type === 'deliver' && p.stage === 4) {
+      p.stage = 5; message = '天墓探索登记完成，未发资源。前往天墓深处试炼，传承交互继续后续扩充。'
     } else if (event.kind === 'prison' && action.type === 'seal' && action.index === p.stage && p.stage >= 0 && p.stage <= 3) {
       message = event.checkpoints![p.stage].text; p.stage++
     } else if (event.kind === 'prison' && action.type === 'deliver' && p.stage === 4) {

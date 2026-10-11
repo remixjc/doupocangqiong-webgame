@@ -62,6 +62,7 @@ export class CombatWorld {
   danLightning?: SurvivalRun
   starRun?: FlameRun
   prisonEscort?: EscortRun
+  tombRun?: { stage: number; attempt: number; elapsed: number; failed: boolean }
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -80,7 +81,7 @@ export class CombatWorld {
     const stats = playerStats(cb.state())
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
-    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations || this.map.expeditionDuration || this.map.prisonPursuit ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
+    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations || this.map.expeditionDuration || this.map.prisonPursuit || this.map.tombDurations ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
       const cleared = enemy.id && eventsForChapter(chapter.id).some(event => {
         const p = eventProgress(cb.state(), chapter.id, event.id)
         if (['lineage', 'expedition'].includes(event.kind)) return p.started && event.checkpoints?.some((point, index) =>
@@ -100,6 +101,7 @@ export class CombatWorld {
     this.syncDanLightning()
     this.syncStar()
     this.syncPrison()
+    this.syncTomb()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -128,6 +130,24 @@ export class CombatWorld {
     const prison = eventsForChapter(chapter.id).find(e => e.kind === 'prison'), prisonProgress = prison && eventProgress(cb.state(), chapter.id, prison.id)
     if (prison && prisonProgress?.started && prisonProgress.stage >= 1 && prisonProgress.stage <= 4)
       Object.assign(this.player, prison.checkpoints![prisonProgress.stage - 1])
+    const tomb = eventsForChapter(chapter.id).find(e => e.kind === 'tomb')
+    if (tomb && this.tombRun) Object.assign(this.player, tomb.checkpoints![this.tombRun.stage - 1])
+  }
+  private syncTomb() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'tomb'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage < 1 || p.stage > 3) this.tombRun = undefined
+    else if (!this.tombRun || this.tombRun.stage !== p.stage || this.tombRun.attempt !== p.attempts)
+      this.tombRun = { stage: p.stage, attempt: p.attempts, elapsed: 0, failed: false }
+  }
+  private stepTomb(dt: number) {
+    this.syncTomb()
+    const run = this.tombRun
+    if (!run || run.failed) return
+    run.elapsed += dt
+    if (run.elapsed >= this.map.tombDurations![run.stage - 1]) {
+      run.failed = true
+      this.cb.notify('本层天墓探索超时，不能读取当前路标。已完成层保留，免费休整/刷新重建，或回薰儿处重试当前层。')
+    }
   }
   private syncPrison() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'prison'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
@@ -634,6 +654,14 @@ export class CombatWorld {
           else if (this.guardsRemaining(event.id, index) > 0) this.cb.notify(`本节点还有${this.guardsRemaining(event.id, index)}名守卫，先清理再破禁。`)
           else { this.cb.eventAction?.({ type: 'seal', index, eventId: event.id }); this.syncPrison() }
         }
+        else if (event.kind === 'tomb') {
+          this.syncTomb()
+          const stage = eventProgress(s, this.chapter.id, event.id).stage, run = this.tombRun
+          if (index !== stage) this.cb.notify('从入口按外层、中层、深层顺序探索，已完成路标不重复读取。')
+          else if (index > 0 && (!run || run.failed || run.elapsed >= this.map.tombDurations![stage - 1])) this.cb.notify('当前层已超时或尚未启动，免费休整或回薰儿处重试。')
+          else if (this.guardsRemaining(event.id, index) > 0) this.cb.notify(`本层还有${this.guardsRemaining(event.id, index)}名守卫，清理后读取路标。`)
+          else this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+        }
         else if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
         else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
         else if (event.kind === 'tower' && index > 0) this.cb.notify('进入当前层阵眼累计镇炎时间；镇心石降热但不计时，E不能代替镇炎。')
@@ -898,6 +926,7 @@ export class CombatWorld {
     this.stepHuntTeam(dt)
     this.stepTower(dt)
     this.stepExpedition(dt)
+    this.stepTomb(dt)
     this.stepPrison(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
@@ -1015,6 +1044,7 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
+      tomb: this.tombRun ? { stage: this.tombRun.stage, remaining: Math.max(0, Math.ceil(this.map.tombDurations![this.tombRun.stage - 1] - this.tombRun.elapsed)), failed: this.tombRun.failed } : undefined,
       prisonEscort: this.prisonEscort ? { hp: this.prisonEscort.hp, maxHp: this.prisonEscort.maxHp, waiting: this.prisonEscort.waiting,
         failed: this.prisonEscort.hp <= 0, arrived: this.prisonArrived() } : undefined,
       starChallenge: this.starRun ? { phase: this.starRun.phase, remaining: Math.max(0, Math.ceil(this.map.starTrial!.durations[this.starRun.phase - 2] - this.starRun.elapsed)),

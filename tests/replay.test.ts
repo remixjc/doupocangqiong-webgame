@@ -81,6 +81,8 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'expedition' && p.stage === 1 && world.runtime().expedition?.failed) state = advanceEvent(state, { type: 'restart', eventId }).state
           else if (e.kind === 'expedition' && p.stage === 2) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'prison' && p.stage === 4 && world.runtime().prisonEscort?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'tomb' && p.stage >= 1 && p.stage <= 3 && world.runtime().tomb?.failed) state = advanceEvent(state, { type: 'restart', eventId }).state
+          else if (e.kind === 'tomb' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'danfinal') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
@@ -184,6 +186,12 @@ describe('完整主线真实规则战斗回放', () => {
             if (threat) target = threat
             else if (world.prisonEscort && dist(world.player, world.prisonEscort) > 140) target = world.prisonEscort
           }
+          if (event.kind === 'tomb') {
+            target = !ep.started || ep.stage === 4 || world.runtime().tomb?.failed ? event.npc : event.checkpoints![ep.stage]
+            const guards = event.checkpoints?.[ep.stage]?.guards
+            const threat = !world.runtime().tomb?.failed && living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
+            if (threat) target = threat
+          }
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
@@ -239,6 +247,7 @@ describe('完整主线真实规则战斗回放', () => {
       }
       expect(state.progress[chapter.id].boss, `第${chapter.id}章未打通：hp=${world.player.hp}, kills=${state.progress[chapter.id].kills}, herbs=${state.progress[chapter.id].herbs}, position=${world.player.x},${world.player.y}, event=${JSON.stringify(eventProgress(state))}, star=${JSON.stringify(world.runtime().starChallenge)}`).toBe(true)
       if (chapter.id === 20) expect(eventProgress(state).attempts, '丹界指定药材应在单次45秒内完成').toBe(1)
+      if (chapter.id === 23) expect(eventProgress(state).attempts, '天墓三层应各在单次时限内完成').toBe(3)
       state = finishChapter(state)
       expect(validateState(state)).toEqual(state)
       expect(state.completed.length).toBe(chapter.id)

@@ -104,6 +104,10 @@ chapters[21].boss = '救师退路 · 撤离确认'
 chapters[21].opening[2].text = '向风尊者接取，确认退路，清除外廊、内封与囚牢投影守卫并逐点E破禁。解锁囚牢后保护药老原路撤离，清理追击者；双方存活且到达风尊者处才能报告。失败免费重建当前安全段，出口确认后营地首通恢复药老支援。'
 chapters[21].trialNote = '破禁、护送与追击为原创营救机制；囚牢解锁或报告均不提前恢复支援，第22章正式首通才归队。'
 
+chapters[22].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[22].opening[2].text = '向薰儿接取天墓探索，到入口牌启动。三层分别45 / 40 / 35秒，清理对应守卫后E读取路标；读取即开始下一层。超时免费重试当前层，已完成层保留。报告之后再开启深处试炼；完整传承机制继续后续扩充。'
+chapters[22].trialNote = '天墓计时与守卫路标为原创探索机制，时长不对应原著修炼岁月；本批仍保留深处投影试炼，传承交互后续替换。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

@@ -29,6 +29,7 @@ export interface MapDefinition {
   lightningTrial?: { center: Point; radius: number; duration: number }
   starTrial?: { center: Point; radius: number; cooling: Point[]; durations: number[]; pressure: number[] }
   prisonPursuit?: MapEnemy[]
+  tombDurations?: number[]
   rankingArena?: boolean
   towerFloors?: TowerFloor[]
   siegeDurations?: number[]
@@ -373,7 +374,7 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
 }
 export const ancientMaps: Record<number, MapDefinition> = {
   23: {
-    id: 'ancient-clan-heaven-tomb', style: 'tomb', gateLabel: '天墓深处',
+    id: 'ancient-clan-heaven-tomb', style: 'tomb', gateLabel: '天墓深处', tombDurations: [45, 40, 35],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 160 }, bossSpawn: { x: 1070, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 430, y: 100, w: 140, h: 160 }, { x: 680, y: 550, w: 140, h: 130 },
       { x: 900, y: 90, w: 100, h: 130 }, { x: 60, y: 310, w: 120, h: 100 }],
@@ -383,7 +384,7 @@ export const ancientMaps: Record<number, MapDefinition> = {
       { id: 'tomb-deep-mage', type: 'mage', x: 1150, y: 320 }],
     paths: [[{ x: 150, y: 650 }, { x: 310, y: 430 }, { x: 630, y: 390 }, { x: 830, y: 400 }, { x: 1090, y: 380 }, { x: 1140, y: 160 }],
       [{ x: 630, y: 390 }, { x: 610, y: 660 }]],
-    landmarks: [{ x: 680, y: 60, label: '古族之行 · 天墓石径' }, { x: 650, y: 755, label: '外层石阶 · 中层遗迹 · 深层祭台' }],
+    landmarks: [{ x: 680, y: 60, label: '古族之行 · 天墓石径' }, { x: 650, y: 755, label: '入口 → 外层45秒 → 中层40秒 → 深层35秒 → 报告' }],
   },
   24: {
     id: 'wilderness-bodhi-illusion-grove', style: 'bodhi', gateLabel: '菩提树前',

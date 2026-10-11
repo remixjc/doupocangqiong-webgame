@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -159,6 +159,21 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
       { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
       { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
+    ],
+  },
+  23: {
+    id: 'heaven-tomb-timed-layers', kind: 'tomb', introducedVersion: '0.10.1',
+    title: '天墓 · 三层限时探索', speaker: '薰儿', npc: { x: 280, y: 625 },
+    stages: ['前往天墓入口牌启动探索', '45秒内清理外层守卫并读取外层路标',
+      '40秒内清理中层两名守卫并读取中层路标', '35秒内清理深层两名守卫并读取深层路标',
+      '三层路线已确认，返回薰儿处报告', '探索记录已登记，前往天墓深处试炼'],
+    introduction: '进入天墓先记下退路。三层分别45、40、35秒，清理对应守卫后到路标按E确认；读取路标即开始下一层。超时本层不能推进，可回来免费重试，已完成层保留。',
+    note: '三层时长、守卫与路标为原创探索改编，不等于原著天墓修炼时间。普通药草不能代交记录。死亡/刷新/休整从最近完成路标重建当前层及其未完成守卫；报告不发资源，完整传承机制继续后续批次。',
+    checkpoints: [
+      { x: 330, y: 220, label: '天墓入口牌', text: '外层45秒开始。清理外层守卫，到外层石阶读取路标。' },
+      { x: 630, y: 390, label: '外层石阶', guards: ['tomb-outer-brute'], text: '外层路标已记录，中层40秒开始。' },
+      { x: 830, y: 400, label: '中层遗迹', guards: ['tomb-middle-hunter', 'tomb-middle-mage'], text: '中层路标已记录，深层35秒开始。' },
+      { x: 1090, y: 380, label: '深层祭台', guards: ['tomb-deep-hunter', 'tomb-deep-mage'], text: '深层路线已确认，计时停止。回薰儿处登记探索。' },
     ],
   },
   22: {
