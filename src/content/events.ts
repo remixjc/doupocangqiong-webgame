@@ -2,7 +2,8 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave'
+  introducedVersion?: string
   optional?: boolean
   requires?: string[]
   title: string
@@ -40,6 +41,18 @@ export const chapterEvents: Record<number, ChapterEvent> = {
     stages: ['和执事议定供货价格', '备好灵草 ×2、魔晶 ×1，回到执事处交付', '家族供货完成'],
     introduction: '家里的生意也需要你出一份力。这份订单收灵草两株、魔晶一枚，买方预算最多六十金币。先议价，再备货，最后到我这里交付；不够的材料可以采集、击败护卫投影或在坊市购买。',
     note: '订单与报价为游戏原创经营机制，只结算一次；不会重演原著中的商业细节。',
+  },
+  4: {
+    id: 'hidden-cave-treasure', kind: 'cave', introducedVersion: '0.3.2',
+    title: '洞穴 · 三符寻宝', speaker: '小医仙', npc: { x: 280, y: 625 },
+    stages: ['前往北侧石刻，读出机关线索', '前往机关盘，按线索解开三符封门', '穿过开启的石门，打开洞内宝匣', '带着材料回到洞口，与小医仙确认返程', '洞穴探索完成'],
+    introduction: '洞内的石门封住了去路。先到北侧石刻寻找提示，再到岩壁前的机关盘依序触碰三枚符文。开门后带回宝匣里的材料，我们在洞口会合。',
+    note: '石刻、三符机关与材料宝匣为原创游戏化设计；不是原著宝物清单。错误输入免费重试，刷新保留已解开的符文与领取记录。',
+    checkpoints: [
+      { x: 320, y: 215, label: '石刻线索', text: '石刻：草木先醒，月照归途，最后一缕火光开启石门。顺序：叶 → 月 → 火。' },
+      { x: 730, y: 400, label: '三符机关盘', text: '观察石刻的顺序，再触碰三符。' },
+      { x: 1060, y: 270, label: '材料宝匣', text: '宝匣内是本次探索所得：灵草 ×3、魔晶 ×2、恢复丹 ×1。带回洞口，不要继续深入。' },
+    ],
   },
 }
 export function eventForChapter(id: number): ChapterEvent | undefined { return chapterEvents[id] }

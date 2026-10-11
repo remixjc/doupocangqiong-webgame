@@ -19,7 +19,7 @@ export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
   sound?: (kind: 'attack' | 'skill' | 'dodge' | 'hurt' | 'collect' | 'victory') => void
-  storyEvent?: (id: string) => void
+  storyEvent?: (id: string, checkpoint?: number) => void
   eventAction?: (action: EventAction) => void
 }
 export const WIDTH = MAP_WIDTH, HEIGHT = MAP_HEIGHT
@@ -40,6 +40,13 @@ export class CombatWorld {
   private lastHit = -10
   private bossSpawned = false
   private rollDirection: Vec = { x: 1, y: 0 }
+  barrierClosed() {
+    const barrier = this.map.eventBarrier
+    return !!barrier && eventProgress(this.cb.state(), this.chapter.id, barrier.eventId).stage < barrier.unlockedStage
+  }
+  collisionMap() {
+    return this.barrierClosed() ? { ...this.map, obstacles: [...this.map.obstacles, this.map.eventBarrier!.obstacle] } : this.map
+  }
   constructor(readonly chapter: Chapter, private cb: CombatCallbacks) {
     this.map = mapForChapter(chapter.id)
     Object.assign(this.player, this.map.spawn)
@@ -59,8 +66,9 @@ export class CombatWorld {
   private move(p: Vec, vx: number, vy: number) {
     const nx = clamp(p.x + vx, 40, WIDTH - 40)
     const ny = clamp(p.y + vy, 45, HEIGHT - 40)
-    if (!mapCollides(this.map, { x: nx, y: p.y })) p.x = nx
-    if (!mapCollides(this.map, { x: p.x, y: ny })) p.y = ny
+    const map = this.collisionMap()
+    if (!mapCollides(map, { x: nx, y: p.y })) p.x = nx
+    if (!mapCollides(map, { x: p.x, y: ny })) p.y = ny
   }
   private effect(x: number, y: number, radius: number, color: number, kind: Effect['kind'] = 'ring') {
     this.effects.push({ x, y, radius, color, kind, time: .36, maxTime: .36 })
@@ -108,7 +116,11 @@ export class CombatWorld {
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+        if (event.kind === 'cave' && index === 1) {
+          if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify('先到洞口与小医仙交谈，再探索机关。')
+          else this.cb.storyEvent?.(event.id, index)
+        }
+        else this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
       } else if (near === 'herb') {
         const herb = this.herbs.find(h => h.available && distance(h, p) < 75)!
         herb.available = false; herb.respawn = 22
@@ -282,7 +294,7 @@ export class CombatWorld {
     const boss = this.enemies.find(e => e.type === 'boss')
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
-      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 确认当前路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
+      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0 }
   }
 }

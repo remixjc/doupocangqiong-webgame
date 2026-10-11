@@ -39,7 +39,7 @@ export default class AdventureScene extends Phaser.Scene {
         return true
       },
       camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message), sound: playSound,
-      storyEvent: id => gameStore.onStoryEvent?.(id), eventAction: action => { gameStore.event(action) },
+      storyEvent: (id, checkpoint) => gameStore.onStoryEvent?.(id, checkpoint), eventAction: action => { gameStore.event(action) },
     })
     this.drawEnvironment()
     this.ink = this.add.graphics()
@@ -220,6 +220,12 @@ export default class AdventureScene extends Phaser.Scene {
     g.clear()
     const w = this.world, p = w.player
     const { gate } = w.map
+    if (w.barrierClosed()) {
+      const door = w.map.eventBarrier!.obstacle
+      g.fillStyle(0x746c58); g.fillRect(door.x, door.y, door.w, door.h)
+      g.lineStyle(3, 0xe8c98c); g.strokeRect(door.x, door.y, door.w, door.h)
+      for (let i = 0; i < 3; i++) { g.fillStyle(0xd9bf84); g.fillCircle(door.x + door.w / 2, door.y + 22 + i * 28, 6) }
+    }
     for (const event of eventsForChapter(w.chapter.id)) {
       const progress = eventProgress(gameStore.getSnapshot().state, w.chapter.id, event.id)
       if (event.kind === 'stone') {
@@ -236,6 +242,10 @@ export default class AdventureScene extends Phaser.Scene {
         const step = event.kind === 'competition' ? progress.stage - 1 : progress.stage
         const active = progress.started && index === step && (event.kind !== 'competition' || progress.choice === 'premium')
         g.fillStyle(index < step ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
+        if (event.kind === 'cave' && index === 2) {
+          g.fillStyle(progress.stage >= 3 ? 0x58695c : 0xb39152); g.fillRect(point.x - 24, point.y - 16, 48, 32)
+          g.lineStyle(2, 0xebce92); g.strokeRect(point.x - 24, point.y - 16, 48, 32)
+        }
         g.lineStyle(active ? 4 : 1, active ? 0xf0d498 : 0x9da688, .8); g.strokeCircle(point.x, point.y, active ? 34 : 24)
       })
     }

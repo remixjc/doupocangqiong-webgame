@@ -25,6 +25,9 @@ chapters[1].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[2].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[2].boss = '成人礼武技考核 · 历练投影'
 chapters[2].trialNote = '供货订单和武技考核为游戏原创历练，不直接复现原著商业细节。'
+chapters[3].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[3].boss = '洞穴归途 · 护卫投影'
+chapters[3].trialNote = '三符机关、宝匣材料与归途护卫为原创历练；完成寻宝和回程后开启试炼。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

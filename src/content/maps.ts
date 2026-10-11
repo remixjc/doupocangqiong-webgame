@@ -10,6 +10,7 @@ export interface MapDefinition {
   bossSpawn: Point
   safeRadius: number
   obstacles: MapObstacle[]
+  eventBarrier?: { eventId: string; unlockedStage: number; obstacle: MapObstacle }
   herbs: Point[]
   enemies: MapEnemy[]
   paths: Point[][]
@@ -84,6 +85,7 @@ export const mountainMaps: Record<number, MapDefinition> = {
     id: 'qingshan-hidden-cave', style: 'cave',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1090, y: 650 },
     bossSpawn: { x: 1050, y: 550 }, safeRadius: 170,
+    eventBarrier: { eventId: 'hidden-cave-treasure', unlockedStage: 2, obstacle: { x: 810, y: 350, w: 45, h: 100 } },
     obstacles: [
       { x: 810, y: 0, w: 45, h: 350 }, { x: 810, y: 450, w: 45, h: 350 },
       { x: 380, y: 140, w: 110, h: 80 }, { x: 480, y: 570, w: 130, h: 100 },

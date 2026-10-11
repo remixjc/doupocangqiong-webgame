@@ -4,6 +4,7 @@ import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' }
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
   | { type: 'strategy'; choice: 'steady' | 'premium' }
+  | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -57,6 +58,24 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'vow' && action.type === 'seal' && action.index === p.stage) {
       message = event.checkpoints![p.stage].text
       p.stage++
+    } else if (event.kind === 'cave' && action.type === 'seal' && action.index === 0 && p.stage <= 1) {
+      p.stage = 1
+      message = event.checkpoints![0].text
+    } else if (event.kind === 'cave' && action.type === 'rune' && p.stage === 1) {
+      if (action.step !== p.score || !['leaf', 'moon', 'fire'].includes(action.symbol)) return fail('机关输入已更新，请按当前步骤继续。')
+      if (action.symbol !== ['leaf', 'moon', 'fire'][p.score]) {
+        p.score = 0; p.attempts++
+        message = '符文顺序不对，机关复位。没有消耗材料；可回到石刻重新查看线索。'
+      } else {
+        p.score++
+        message = `符文响应 · 已解开 ${p.score} / 3 道封印。`
+        if (p.score === 3) { p.stage = 2; p.score = 0; message = '三符相合，石门已经开启。穿过通道，前往宝匣。' }
+      }
+    } else if (event.kind === 'cave' && action.type === 'seal' && action.index === 2 && p.stage === 2) {
+      next.inventory.herb += 3; next.inventory.crystal += 2; next.inventory.heal++
+      p.stage = 3; message = event.checkpoints![2].text
+    } else if (event.kind === 'cave' && action.type === 'deliver' && p.stage === 3) {
+      p.stage = 4; message = '已与小医仙会合，洞穴探索完成。现在可前往试炼碑完成本章历练。'
     } else if (event.kind === 'trade' && action.type === 'quote' && p.stage === 0) {
       if (![42, 60].includes(action.amount)) return fail('报价超过买方预算，订单未签订，也没有消耗材料。')
       p.quote = action.amount

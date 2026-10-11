@@ -20,7 +20,7 @@ class GameStore {
   move = { x: 0, y: 0 }
   paused = true
   onInteract: (() => void) | null = null
-  onStoryEvent: ((id: string) => void) | null = null
+  onStoryEvent: ((id: string, checkpoint?: number) => void) | null = null
   onChange: ((s: GameState) => void) | null = null
   private initialization: Promise<void> | null = null
   initialize(): Promise<void> {

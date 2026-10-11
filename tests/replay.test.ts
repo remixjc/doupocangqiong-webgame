@@ -51,7 +51,7 @@ describe('完整主线真实规则战斗回放', () => {
         mana: () => { if (!state.inventory.mana) return false; state.inventory.mana--; return true },
         camp: () => {}, notify: () => {},
         eventAction: action => { state = advanceEvent(state, action).state },
-        storyEvent: eventId => {
+        storyEvent: (eventId, checkpoint) => {
           const p = eventProgress(state, chapter.id, eventId), e = findEvent(chapter.id, eventId)!
           if (!p.started) state = advanceEvent(state, { type: 'begin', eventId }).state
           else if (e.kind === 'trade') state = advanceEvent(state, p.stage === 0 ? { type: 'quote', amount: 60, eventId } : { type: 'deliver', eventId }).state
@@ -60,6 +60,10 @@ describe('完整主线真实规则战斗回放', () => {
             if (p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (marker >= .4 && marker <= .6) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
           } else if (e.kind === 'competition') state = advanceEvent(state, p.stage === 0 ? { type: 'strategy', choice: 'steady', eventId } : { type: 'deliver', eventId }).state
+          else if (e.kind === 'cave') {
+            if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'rune', symbol: (['leaf', 'moon', 'fire'] as const)[p.score], step: p.score, eventId }).state
+            else if (checkpoint === undefined && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          }
         },
       })
       let path: Vec[] = [], previousTarget: Vec = { x: -999, y: -999 }, frame = 0
@@ -77,7 +81,7 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) ? event.npc : event.kind === 'training' ? event.dummy! : event.checkpoints![ep.stage]
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (event.kind === 'cave' && ep.stage === 3) ? event.npc : event.kind === 'training' ? event.dummy! : event.checkpoints![ep.stage]
         }
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
@@ -89,7 +93,7 @@ describe('完整主线真实规则战斗回放', () => {
           path = []
         } else {
           if (frame % 20 === 0 || !path.length || dist(target, previousTarget) > 45) {
-            path = route(world.player, target, world.map); previousTarget = { ...target }
+            path = route(world.player, target, world.collisionMap()); previousTarget = { ...target }
           }
           while (path.length > 1 && dist(path[0], world.player) < 14) path.shift()
           const waypoint = path[0] ?? target

@@ -2,7 +2,7 @@ import { chapterById, chapters } from '../content/chapters'
 import { CONTENT_VERSION, initialState, blankEvent, type ChapterEventProgress, type FlameId, type GameState, type ItemId } from './model'
 import { unlockedFlames } from './rules'
 import { eventForChapter, eventsForChapter, type ChapterEvent } from '../content/events'
-import { eventDone, migrateLegacyEvents } from './events'
+import { eventDone, migrateLegacyEvent, migrateLegacyEvents } from './events'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -16,6 +16,11 @@ function number(value: unknown, max = 10_000_000): number {
 function bool(value: unknown): boolean {
   if (typeof value !== 'boolean') throw new Error('存档包含非法状态。')
   return value
+}
+export function versionBefore(a: string, b: string): boolean {
+  const x = a.split('.').map(Number), y = b.split('.').map(Number)
+  for (let i = 0; i < 3; i++) { if (x[i] !== y[i]) return x[i] < y[i] }
+  return false
 }
 function checkVersion(value: unknown) {
   if (typeof value !== 'string' || !/^\d+\.\d+\.\d+$/.test(value)) throw new Error('内容版本无效。')
@@ -36,12 +41,14 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
     (!definition && p.started) || (definition?.kind !== 'trade' && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
-    (definition?.kind !== 'stone' && (p.score !== 0 || p.attempts !== 0)) ||
+    (!['stone', 'cave'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
     (definition?.kind !== 'competition' && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
     throw new Error('控气测试记录无效。')
   if (definition?.kind === 'competition' && (p.stage === 0 ? p.choice !== 'none' : p.choice === 'none' || (p.choice === 'steady' && p.stage < 4)))
     throw new Error('竞争路线进度无效。')
+  if (definition?.kind === 'cave' && (p.score > 2 || (p.stage !== 1 && p.score !== 0) || (p.stage === 0 && p.attempts !== 0)))
+    throw new Error('洞穴机关记录无效。')
   return p
 }
 export function validateState(value: unknown): GameState {
@@ -72,12 +79,17 @@ export function validateState(value: unknown): GameState {
     } else if (data.schemaVersion === 3) {
       const entries = record(p.events)
       if (Object.keys(entries).some(id => !definitions.some(e => e.id === id))) throw new Error('未知剧情事件。')
-      for (const definition of definitions) events[definition.id] = parseEvent(entries[definition.id], definition)
+      for (const definition of definitions) {
+        const addedLater = definition.introducedVersion && versionBefore(data.contentVersion as string, definition.introducedVersion)
+        events[definition.id] = !Object.hasOwn(entries, definition.id) && addedLater
+          ? migrateLegacyEvent(n, boss, definition.id) : parseEvent(entries[definition.id], definition)
+      }
     }
     s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), events }
     for (const definition of definitions) if (events[definition.id].started && definition.requires?.some(id => !eventDone(s, n, id)))
       throw new Error('事件前置条件不完整。')
-    const o = data.schemaVersion === 1 && [2, 3].includes(n) ? { herbs: 3, kills: 3, brews: 0 } : chapterById(n).objectives
+    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2'))
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

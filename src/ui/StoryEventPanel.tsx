@@ -4,7 +4,7 @@ import { eventDone, eventHint, eventProgress, pulseMarker, type EventAction } fr
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 
-export default function StoryEventPanel({ state, eventId, close, shop }: { state: GameState; eventId?: string; close: () => void; shop: () => void }) {
+export default function StoryEventPanel({ state, eventId, checkpoint, close, shop }: { state: GameState; eventId?: string; checkpoint?: number; close: () => void; shop: () => void }) {
   const event = findEvent(state.chapter, eventId), progress = eventProgress(state, state.chapter, eventId)
   const [marker, setMarker] = useState(0)
   useEffect(() => {
@@ -20,7 +20,14 @@ export default function StoryEventPanel({ state, eventId, close, shop }: { state
   }, [event?.kind, progress.stage])
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
-  const act = (action: EventAction) => gameStore.event({ ...action, eventId: event.id })
+  const act = (action: EventAction) => {
+    if (event.kind === 'cave') {
+      const point = checkpoint === 1 ? event.checkpoints![1] : event.npc
+      const runtime = gameStore.getSnapshot().runtime
+      if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
+    }
+    return gameStore.event({ ...action, eventId: event.id })
+  }
   return <>
     <span className="eyebrow">{event.speaker} / 本章事件</span><h2>{event.title}</h2>
     <p>{event.introduction}</p><p className="muted">{event.note}</p>
@@ -50,6 +57,14 @@ export default function StoryEventPanel({ state, eventId, close, shop }: { state
         <button className="primary" onClick={() => act({ type: 'deliver' })}>交付竞争委托</button><button className="secondary" onClick={shop}>到坊市补货</button>
       </div></>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'cave' && progress.started && !done && <>
+      {checkpoint === 1 && progress.stage === 1 && <>
+        <p>三符封印 {progress.score} / 3 · 复位 {progress.attempts} 次。按石刻提示选择符文。</p>
+        <div className="camp-options">{([['leaf', '叶'], ['moon', '月'], ['fire', '火']] as const).map(([symbol, label]) =>
+          <button className="secondary" key={symbol} onClick={() => act({ type: 'rune', symbol, step: progress.score })}>触碰「{label}」符</button>)}</div>
+      </>}
+      {checkpoint === undefined && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>与小医仙会合 · 确认返程</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }
