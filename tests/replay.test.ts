@@ -309,7 +309,7 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
       if (chapter.id === 2) {
-        state = replayEarlyTraining(state, true, undefined, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true)
+        state = replayEarlyTraining(state, true, undefined, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true)
         expect(state.earlyTraining.practice.attempts).toBe(1)
       }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {
@@ -363,6 +363,7 @@ describe('完整主线真实规则战斗回放', () => {
     expect(state.earlyTraining.palmPair).toEqual({ stage: 10, beats: 2, attempts: 2, first: 'fragments', second: 'dust', teaching: 'basic', period: 'reviewed' })
     expect(state.earlyTraining.preliminary).toEqual({ stage: 16, mei: 'eighth-duan', xuner: 'one-star', yan: 'seventh-duan' })
     expect(state.earlyTraining.keChallenge).toEqual({ stage: 12, beats: 2, attempts: 2, verdict: 'xiaoyan', invitation: 'offered' })
+    expect(state.earlyTraining.eighthTraining).toEqual({ stage: 15, beats: 0, attempts: 3, outing: 'completed', period: 'reviewed', energy: 'little', result: 'eighth-duan' })
     console.log(`28章纯逻辑输入回放（${difficulty}，非人工通关）：${timings.join(', ')} 秒`)
     const reportDirectory = process.env.DOUPO_REPLAY_REPORT_DIR
     if (reportDirectory) {

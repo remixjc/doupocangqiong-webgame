@@ -1,3 +1,5 @@
+import { advanceEarlyEighthTraining, eighthPlaces, eighthTrainingBeats, eighthTrainingOperation } from '../../src/core/early-eighth-training'
+import { eighthTrainingScenes } from '../../src/content/early-eighth-training'
 import { expect } from 'vitest'
 import type { GameState } from '../../src/core/model'
 import { advanceEarlyTraining, beginEarlyTraining, type EarlyTrainingAction } from '../../src/core/early-training'
@@ -42,7 +44,8 @@ import { keChallengeScenes } from '../../src/content/early-ke-challenge'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false, includeKeChallenge = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false, includeKeChallenge = false, includeEighthTraining = false): GameState {
+  if (includeEighthTraining) includeKeChallenge = true
   if (includeKeChallenge) includePreliminary = true
   if (includePreliminary) includePalmPair = true
   if (includePalmPair) includeSeventhRoom = true
@@ -242,6 +245,18 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       }
       const result = advanceEarlyKeChallenge(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, keChallengePlaces[scene.place],
         { ...task, operation, marker: task.stage === 3 ? .5 : undefined })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
+  }
+  if (includeEighthTraining) {
+    const failed = new Set<number>()
+    while (state.earlyTraining.eighthTraining.stage < 15) {
+      const task = state.earlyTraining.eighthTraining, scene = eighthTrainingScenes[task.stage], training = eighthTrainingBeats(task.stage)
+      const marker = training ? failed.has(task.stage) ? .5 : 0 : undefined
+      if (marker === 0) failed.add(task.stage)
+      const result = advanceEarlyEighthTraining(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, eighthPlaces[scene.place],
+        { ...task, operation: eighthTrainingOperation(task), marker })
       expect(result.ok, result.message).toBe(true)
       state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
     }

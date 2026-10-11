@@ -23,7 +23,7 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const visible = viewing.spoiler === 'novel' || saved.chapter <= viewing.animeLimit
-  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)} · ${earlyBraceletSaveSummary(saved, viewing)} · ${earlyGrowthSaveSummary(saved, viewing)} · ${earlyHallSaveSummary(saved, viewing)} · ${earlyTeachingSaveSummary(saved, viewing)} · ${earlySupervisionSaveSummary(saved, viewing)} · ${earlyRecoverySaveSummary(saved, viewing)} · ${earlyConsignmentSaveSummary(saved, viewing)} · ${earlyAppraisalSaveSummary(saved, viewing)} · ${earlyAuctionSaveSummary(saved, viewing)} · ${earlySettlementSaveSummary(saved, viewing)} · ${earlyFatherGiftSaveSummary(saved, viewing)} · ${earlyXunerVisitSaveSummary(saved, viewing)} · ${earlyLongSuppliesSaveSummary(saved, viewing)} · ${earlyForestStrikeSaveSummary(saved, viewing)} · ${earlySeventhRoomSaveSummary(saved, viewing)} · ${earlyPalmPairSaveSummary(saved, viewing)} · ${earlyPreliminarySaveSummary(saved, viewing)} · ${earlyKeChallengeSaveSummary(saved, viewing)}`
+  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)} · ${earlyBraceletSaveSummary(saved, viewing)} · ${earlyGrowthSaveSummary(saved, viewing)} · ${earlyHallSaveSummary(saved, viewing)} · ${earlyTeachingSaveSummary(saved, viewing)} · ${earlySupervisionSaveSummary(saved, viewing)} · ${earlyRecoverySaveSummary(saved, viewing)} · ${earlyConsignmentSaveSummary(saved, viewing)} · ${earlyAppraisalSaveSummary(saved, viewing)} · ${earlyAuctionSaveSummary(saved, viewing)} · ${earlySettlementSaveSummary(saved, viewing)} · ${earlyFatherGiftSaveSummary(saved, viewing)} · ${earlyXunerVisitSaveSummary(saved, viewing)} · ${earlyLongSuppliesSaveSummary(saved, viewing)} · ${earlyForestStrikeSaveSummary(saved, viewing)} · ${earlySeventhRoomSaveSummary(saved, viewing)} · ${earlyPalmPairSaveSummary(saved, viewing)} · ${earlyPreliminarySaveSummary(saved, viewing)} · ${earlyKeChallengeSaveSummary(saved, viewing)} · ${earlyEighthTrainingSaveSummary(saved, viewing)}`
 }
 
 export function earlyPalmPairSaveSummary(saved: GameState, viewing: Settings): string {
@@ -174,4 +174,14 @@ export function earlyBraceletSaveSummary(saved: GameState, viewing: Settings): s
 export function saveRecordSummary(entry: SaveRecord, viewing: Settings): string {
   try { return savePreviewSummary(parseSave(entry.text), viewing) }
   catch { return '存档异常，可尝试恢复上一份自动备份' }
+}
+
+export function earlyEighthTrainingSaveSummary(saved: GameState, viewing: Settings): string {
+  const task = saved.earlyTraining.eighthTraining
+  return '礼前八段 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+    : task.stage === 15 ? '同行与故事八段已归档' : task.stage === 14 ? '故事八段已感知，待归档'
+    : task.stage === 13 ? '夜间调息已过，尚待感知八段' : task.stage === 12 ? `夜间少量药力，调息${task.beats}/2`
+    : task.stage >= 10 ? '未突破的时段已记，待夜间练习' : task.stage === 9 ? '本轮练技与调息已过，待回顾时段'
+    : task.stage === 8 ? `回房调息${task.beats}/3` : task.stage === 7 ? `清晨吸推复习${task.beats}/2`
+    : task.stage >= 6 ? '次日同行已完成，待实际练习' : task.stage >= 1 ? '已约好，次日同行未完成' : '未参与')
 }

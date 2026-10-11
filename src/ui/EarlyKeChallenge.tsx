@@ -7,8 +7,8 @@ import { keChallengeScenes } from '../content/early-ke-challenge'
 import { startSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
-export default function EarlyKeChallenge({ state, position: entryPosition, onBack }: {
-  state: GameState; position: EarlyWalkPosition; onBack: () => void
+export default function EarlyKeChallenge({ state, position: entryPosition, onBack, onTraining }: {
+  state: GameState; position: EarlyWalkPosition; onBack: () => void; onTraining?: () => void
 }) {
   const task = state.earlyTraining.keChallenge, scene = keChallengeScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...keChallengePlaces.waiting })
@@ -73,7 +73,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
         </div>
       </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
     </section> : <p className="muted">下一步请走近{keChallengePlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p></section>}
+      : <section className="bond-summary"><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p>{onTraining && <button className="primary" onClick={onTraining}>接续同行与礼前八段 · 实际训练</button>}</section>}
     {training && <button className="secondary" onClick={() => act('stop')}>停下本轮应战 · 免费重新准备</button>}
     <p className="muted">这次不是萧宁正式礼挑战；低阶掌法不新增主线技能，错误八极崩选项只会重开练习。钱账、材料、故事七段、预测名簿与伙伴关系值保留。</p>
     <button className="secondary" onClick={onBack}>暂离萧克挑战 · 保留应战断点</button>
