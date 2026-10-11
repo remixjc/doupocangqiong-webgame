@@ -5,7 +5,7 @@ export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?
 export interface TowerFloor { center: Point; cooling: Point; duration: number; pressure: number; radius: number }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'dan-realm' | 'star-domain' | 'soul-prison' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -326,7 +326,42 @@ export const returnAndCentralMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 690, y: 65, label: '星陨阁 · 师门林径' }, { x: 680, y: 750, label: '两份记录 → 校对丹塔之行 → 返回登记 → 联络审核' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? legacy }
+export const dantaAndRescueMaps: Record<number, MapDefinition> = {
+  20: {
+    id: 'danta-dan-realm-valley', style: 'dan-realm', gateLabel: '丹雷历练台',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1080, y: 300 }, safeRadius: 175,
+    obstacles: [{ x: 460, y: 110, w: 170, h: 150 }, { x: 740, y: 500, w: 150, h: 160 }, { x: 930, y: 100, w: 70, h: 120 }],
+    herbs: [{ x: 320, y: 440 }, { x: 650, y: 310 }, { x: 1030, y: 620 }, { x: 320, y: 180 }, { x: 680, y: 650 }, { x: 1100, y: 390 }],
+    enemies: [{ type: 'brute', x: 600, y: 420 }, { type: 'hunter', x: 820, y: 340 },
+      { type: 'mage', x: 1060, y: 560 }, { type: 'hunter', x: 710, y: 260 }],
+    paths: [[{ x: 150, y: 650 }, { x: 310, y: 430 }, { x: 650, y: 390 }, { x: 1010, y: 390 }, { x: 1150, y: 160 }],
+      [{ x: 650, y: 390 }, { x: 650, y: 680 }, { x: 1060, y: 680 }]],
+    landmarks: [{ x: 680, y: 60, label: '丹界药谷 · 赛前整备' }, { x: 620, y: 755, label: '药谷山径 · 留心守卫与回程' }],
+  },
+  21: {
+    id: 'danta-star-domain-platforms', style: 'star-domain', gateLabel: '星火收服台',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1060, y: 300 }, safeRadius: 175,
+    obstacles: [{ x: 410, y: 100, w: 140, h: 180 }, { x: 740, y: 560, w: 170, h: 140 }, { x: 930, y: 70, w: 80, h: 120 }],
+    herbs: [{ x: 310, y: 440 }, { x: 640, y: 280 }, { x: 1010, y: 620 }, { x: 290, y: 170 }, { x: 680, y: 650 }, { x: 1080, y: 430 }],
+    enemies: [{ type: 'brute', x: 610, y: 420 }, { type: 'mage', x: 850, y: 310 },
+      { type: 'hunter', x: 1040, y: 570 }, { type: 'mage', x: 760, y: 260 }],
+    paths: [[{ x: 150, y: 650 }, { x: 300, y: 430 }, { x: 650, y: 420 }, { x: 1050, y: 400 }, { x: 1150, y: 160 }],
+      [{ x: 650, y: 420 }, { x: 650, y: 240 }]],
+    landmarks: [{ x: 680, y: 60, label: '丹塔星域 · 不灭星火' }, { x: 660, y: 755, label: '星台之间 · 稳住火息' }],
+  },
+  22: {
+    id: 'soul-prison-rescue-corridor', style: 'soul-prison', gateLabel: '禁魂深处',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 150 }, bossSpawn: { x: 1090, y: 290 }, safeRadius: 175,
+    obstacles: [{ x: 620, y: 0, w: 70, h: 300 }, { x: 620, y: 530, w: 70, h: 270 },
+      { x: 910, y: 460, w: 100, h: 110 }, { x: 400, y: 140, w: 100, h: 100 }],
+    herbs: [{ x: 310, y: 460 }, { x: 540, y: 310 }, { x: 800, y: 610 }, { x: 1070, y: 650 }, { x: 1000, y: 240 }, { x: 310, y: 170 }],
+    enemies: [{ type: 'brute', x: 510, y: 450 }, { type: 'hunter', x: 830, y: 410 },
+      { type: 'mage', x: 1080, y: 560 }, { type: 'mage', x: 960, y: 330 }],
+    paths: [[{ x: 150, y: 650 }, { x: 330, y: 460 }, { x: 540, y: 410 }, { x: 780, y: 410 }, { x: 1060, y: 400 }, { x: 1140, y: 150 }]],
+    landmarks: [{ x: 920, y: 60, label: '魂殿据点 · 禁魂长廊' }, { x: 410, y: 755, label: '确认退路 · 向深处推进' }],
+  },
+}
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? dantaAndRescueMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

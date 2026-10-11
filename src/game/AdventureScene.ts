@@ -84,7 +84,9 @@ export default class AdventureScene extends Phaser.Scene {
   private drawEnvironment() {
     const { camp, gate, obstacles, style } = this.world.map
     const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : style === 'thunder-path' ? [0x263139, 0x566575, 0xacc7cd]
-      : style === 'star-pavilion' ? [0x243735, 0x547b6d, 0xb9c3a1] : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
+      : style === 'star-pavilion' ? [0x243735, 0x547b6d, 0xb9c3a1] : style === 'dan-realm' ? [0x293b32, 0x5a7560, 0xc1c398]
+      : style === 'star-domain' ? [0x28243e, 0x686283, 0xc6b4e5] : style === 'soul-prison' ? [0x252933, 0x535869, 0xadb0bb]
+      : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
     if (style === 'sect') {
@@ -100,6 +102,20 @@ export default class AdventureScene extends Phaser.Scene {
     } else if (style === 'star-pavilion') {
       bg.lineStyle(2, 0xb9c3a1, .16); bg.strokeCircle(1080, 220, 105); bg.strokeCircle(1080, 220, 120)
       for (let index = 0; index < 8; index++) { const angle = index * Math.PI / 4; bg.fillStyle(0xcdd0b2, .45); bg.fillCircle(1080 + Math.cos(angle) * 120, 220 + Math.sin(angle) * 120, 4) }
+    } else if (style === 'dan-realm') {
+      for (const point of [{ x: 650, y: 310 }, { x: 1030, y: 620 }]) {
+        bg.lineStyle(2, 0xb1cba5, .2); bg.strokeCircle(point.x, point.y, 100)
+        bg.fillStyle(0x8aa982, .15); bg.fillEllipse(point.x, point.y, 140, 55)
+      }
+    } else if (style === 'star-domain') {
+      for (const point of [{ x: 640, y: 280 }, { x: 1010, y: 620 }, { x: 1060, y: 300 }]) {
+        bg.lineStyle(2, 0xc6b4e5, .3); bg.strokeCircle(point.x, point.y, 105); bg.strokeCircle(point.x, point.y, 120)
+      }
+    } else if (style === 'soul-prison') {
+      bg.lineStyle(5, 0xa2a6ba, .25)
+      for (let y = 305; y <= 525; y += 25) {
+        bg.strokeCircle(645, y, 9); bg.strokeCircle(666, y + 12, 9)
+      }
     }
     // All art is native vector drawing, seeded by chapter for repeatable maps.
     let seed = this.world.chapter.id * 117 + 42
