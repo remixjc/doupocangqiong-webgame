@@ -140,6 +140,8 @@ export default function App() {
         {chapter.objectives.herbs > 0 && <Quest text="采集灵草" current={progress.herbs} target={chapter.objectives.herbs} />}
         {chapter.objectives.kills > 0 && <Quest text="击败普通敌人" current={progress.kills} target={chapter.objectives.kills} />}
         {chapter.objectives.brews > 0 && <Quest text="炼制丹药" current={progress.brews} target={chapter.objectives.brews} />}
+        {r.escort && <div className="mountain-status"><b>采药同伴</b><Meter value={r.escort.hp} max={r.escort.maxHp} label="同伴生命" color="hp" /><span>{r.escort.failed ? '受伤倒下 · 营地休整重试' : r.escort.waiting ? '等待你靠近 · 先清理沿途威胁' : '正在跟进 · 到达后按 E 采药'}</span></div>}
+        {r.survival && <div className="mountain-status"><b>狮王警戒 · 剩余 {r.survival.remaining} 秒</b><span>{r.survival.inZone ? '避开紫色落焰预警，窗口开启后向西撤离' : '请进入紫色警戒区 · 区外不计时'}</span></div>}
         <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
         <p className="quest-hint">{completed ? '本章已结算，可自由修炼或返回大陆舆图继续旅途。' : progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? '准备完成。前往地图上的试炼碑，按 E 开始挑战。' : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
         <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>

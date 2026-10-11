@@ -65,6 +65,6 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </>}
       {checkpoint === undefined && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>与小医仙会合 · 确认返程</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

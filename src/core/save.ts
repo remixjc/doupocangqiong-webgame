@@ -74,8 +74,10 @@ export function validateState(value: unknown): GameState {
     const boss = bool(p.boss), definitions = eventsForChapter(n)
     const events = migrateLegacyEvents(n, data.schemaVersion < 3 && boss)
     if (data.schemaVersion === 2) {
-      const definition = eventForChapter(n), primary = parseEvent(p.event, definition, true)
-      if (definition) events[definition.id] = primary
+      const definition = eventForChapter(n)
+      const existed = definition && (!definition.introducedVersion || !versionBefore(data.contentVersion as string, definition.introducedVersion))
+      const primary = parseEvent(p.event, existed ? definition : undefined, true)
+      if (definition && existed) events[definition.id] = primary
     } else if (data.schemaVersion === 3) {
       const entries = record(p.events)
       if (Object.keys(entries).some(id => !definitions.some(e => e.id === id))) throw new Error('未知剧情事件。')
@@ -88,7 +90,7 @@ export function validateState(value: unknown): GameState {
     s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), events }
     for (const definition of definitions) if (events[definition.id].started && definition.requires?.some(id => !eventDone(s, n, id)))
       throw new Error('事件前置条件不完整。')
-    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2'))
+    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2')) || (n === 5 && versionBefore(data.contentVersion as string, '0.4.0'))
     const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')

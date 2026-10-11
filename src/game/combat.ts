@@ -15,6 +15,8 @@ export interface Herb extends Vec { available: boolean; respawn: number }
 export interface Effect extends Vec { radius: number; time: number; maxTime: number; color: number; kind: 'ring' | 'slash' }
 export interface Floating extends Vec { text: string; time: number; color: string }
 export interface Input { x: number; y: number; aim?: Vec }
+export interface EscortRun extends Vec { hp: number; maxHp: number; stage: number; waiting: boolean }
+export interface SurvivalRun { elapsed: number; nextWave: number; warnings: (Vec & { time: number; radius: number })[] }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
@@ -36,6 +38,8 @@ export class CombatWorld {
   cooldowns: Runtime['cooldowns'] = { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 }
   attackCooldown = 0
   elapsed = 0
+  escort?: EscortRun
+  survival?: SurvivalRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -55,6 +59,63 @@ export class CombatWorld {
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
     for (const enemy of this.map.enemies.slice(0, Math.max(3, chapter.objectives.kills))) this.spawn(enemy.type, enemy.x, enemy.y)
+    this.syncMountainRuns()
+  }
+  private syncMountainRuns() {
+    const s = this.cb.state()
+    for (const e of eventsForChapter(this.chapter.id)) {
+      const p = eventProgress(s, this.chapter.id, e.id)
+      if (e.kind === 'escort') {
+        if (!p.started || p.stage === 3) this.escort = undefined
+        else if (!this.escort) {
+          const point = p.stage > 0 ? e.checkpoints![p.stage - 1] : e.npc
+          this.escort = { ...point, hp: 120, maxHp: 120, stage: p.stage, waiting: false }
+        } else this.escort.stage = p.stage
+      }
+      if (e.kind === 'survival') {
+        if (!p.started || p.stage !== 1) this.survival = undefined
+        else this.survival ??= { elapsed: 0, nextWave: 0, warnings: [] }
+      }
+    }
+  }
+  inSurvivalZone() {
+    const z = this.map.survivalZone, p = this.player
+    return !!z && p.x >= z.x && p.x <= z.x + z.w && p.y >= z.y && p.y <= z.y + z.h
+  }
+  private escortCheckpoint(index: number) {
+    const event = eventsForChapter(this.chapter.id).find(e => e.kind === 'escort')!
+    const progress = eventProgress(this.cb.state(), this.chapter.id, event.id), npc = this.escort
+    if (!progress.started) { this.cb.notify('先与采药同伴交谈，接下保护任务。'); return }
+    if (!npc || npc.hp <= 0) { this.cb.notify(progress.stage === 3 ? '采药同伴已经安全返营。' : '同伴受伤倒下，请营地休整后从安全节点重试。'); return }
+    if (index !== progress.stage) { this.cb.notify('按路线顺序前往当前药圃或会合点。'); return }
+    if (distance(npc, event.checkpoints![index]) > 65) { this.cb.notify('同伴尚未到达，靠近同伴让他继续前进。'); return }
+    this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+  }
+  private stepMountain(dt: number) {
+    this.syncMountainRuns()
+    const escortEvent = eventsForChapter(this.chapter.id).find(e => e.kind === 'escort')
+    if (this.escort && this.escort.hp > 0 && escortEvent) {
+      const npc = this.escort, target = escortEvent.checkpoints![npc.stage], dist = distance(npc, target)
+      npc.waiting = distance(npc, this.player) > 180
+      if (!npc.waiting && dist > 8) this.move(npc, (target.x - npc.x) / dist * Math.min(dist, dt * 125), (target.y - npc.y) / dist * Math.min(dist, dt * 125))
+    }
+    const run = this.survival, event = eventsForChapter(this.chapter.id).find(e => e.kind === 'survival')
+    if (!run || !event || !this.inSurvivalZone()) return
+    run.elapsed += dt
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        if (distance(this.player, warning) < warning.radius + 16) this.hurtPlayer(65)
+        this.effect(warning.x, warning.y, warning.radius, 0x9e68b9)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.elapsed >= 24) { this.cb.eventAction?.({ type: 'survive', eventId: event.id }); return }
+    if (run.elapsed >= run.nextWave) {
+      run.nextWave = run.elapsed + 2.4
+      run.warnings.push({ x: this.player.x, y: this.player.y, time: 1, radius: 85 })
+    }
   }
   spawn(type: Fighter['type'], x: number, y: number) {
     const d = this.cb.state().settings.difficulty
@@ -112,11 +173,21 @@ export class CombatWorld {
     if (action !== 'interact') p.facing = Math.atan2(target.y - p.y, target.x - p.x)
     if (action === 'interact') {
       const near = this.near()
-      if (near === 'event') this.cb.storyEvent?.(this.nearEvent()!.id)
+      if (near === 'event') {
+        const event = this.nearEvent()!, progress = eventProgress(s, this.chapter.id, event.id)
+        if (event.kind === 'escort' && progress.started && progress.stage < 3) {
+          if (distance(p, event.checkpoints![progress.stage]) < 75) this.escortCheckpoint(progress.stage)
+          else this.cb.notify(this.escort?.hp === 0 ? '同伴受伤倒下，请营地休整后重试。' : '带同伴前往当前药圃；距离太远时同伴会等你。')
+        } else this.cb.storyEvent?.(event.id)
+      }
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'cave' && index === 1) {
+        if (event.kind === 'escort') this.escortCheckpoint(index)
+        else if (event.kind === 'survival' && index === 1) {
+          this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+          if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
+        } else if (event.kind === 'cave' && index === 1) {
           if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify('先到洞口与小医仙交谈，再探索机关。')
           else this.cb.storyEvent?.(event.id, index)
         }
@@ -130,6 +201,7 @@ export class CombatWorld {
       } else if (near === 'gate') {
         if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
+        else if (this.map.survivalZone) { this.cb.kill(true); this.cb.notify('已安全撤离，返回营地结算。') }
         else if (!this.bossSpawned) {
           this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
           this.cb.notify(`${this.chapter.boss} · 注意脚下的攻击预警`)
@@ -235,6 +307,8 @@ export class CombatWorld {
       this.move(p, input.x / Math.max(1, length) * dt * 235, input.y / Math.max(1, length) * dt * 235)
       p.facing = Math.atan2(input.y, input.x)
     }
+    this.stepMountain(dt)
+    if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
       if (e.burn > 0) {
@@ -251,6 +325,10 @@ export class CombatWorld {
           for (const point of [e.target, ...(e.secondary ?? [])]) {
             if (distance(point, p) < e.radius + 16) this.hurtPlayer(12 + this.chapter.id * 2.4 + (e.type === 'boss' ? 13 : 0))
             this.effect(point.x, point.y, e.radius, 0xcf6452)
+          }
+          if (this.escort && this.escort.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.escort!) < e.radius + 16)) {
+            this.escort.hp = Math.max(0, this.escort.hp - damage(30, 1, 10))
+            if (this.escort.hp === 0) this.cb.notify('采药同伴受伤倒下。已采药草保留，营地休整后从安全节点重试。')
           }
           if (e.type === 'boss' && this.chapter.pattern === 'dash') {
             e.x = clamp(e.target.x, 60, WIDTH - 60); e.y = clamp(e.target.y, 60, HEIGHT - 60)
@@ -278,7 +356,8 @@ export class CombatWorld {
     }
   }
   nearEvent() {
-    return eventsForChapter(this.chapter.id).filter(e => distance(this.player, e.npc) < 75).sort((a, b) => distance(this.player, a.npc) - distance(this.player, b.npc))[0]
+    return eventsForChapter(this.chapter.id).map(e => e.kind === 'escort' && this.escort ? { ...e, npc: this.escort } : e)
+      .filter(e => distance(this.player, e.npc) < 75).sort((a, b) => distance(this.player, a.npc) - distance(this.player, b.npc))[0]
   }
   near(): Runtime['near'] {
     const p = this.player
@@ -295,6 +374,8 @@ export class CombatWorld {
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
       near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
-      bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0 }
+      bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0,
+      escort: this.escort ? { hp: this.escort.hp, maxHp: this.escort.maxHp, failed: this.escort.hp <= 0, waiting: this.escort.waiting } : undefined,
+      survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined }
   }
 }

@@ -220,6 +220,16 @@ export default class AdventureScene extends Phaser.Scene {
     g.clear()
     const w = this.world, p = w.player
     const { gate } = w.map
+    if (w.map.survivalZone) {
+      const z = w.map.survivalZone
+      g.fillStyle(0x9068b1, .12); g.fillRect(z.x, z.y, z.w, z.h)
+      g.lineStyle(2, 0xb78bca, .5); g.strokeRect(z.x, z.y, z.w, z.h)
+      g.fillStyle(0x6e4c85, .7); g.fillEllipse(1120, 135, 90, 44); g.fillTriangle(1145, 135, 1175, 105, 1190, 130)
+      for (const warning of w.survival?.warnings ?? []) {
+        g.fillStyle(0xa367c4, .2); g.fillCircle(warning.x, warning.y, warning.radius)
+        g.lineStyle(3, 0xd6a2e7); g.strokeCircle(warning.x, warning.y, warning.radius)
+      }
+    }
     if (w.barrierClosed()) {
       const door = w.map.eventBarrier!.obstacle
       g.fillStyle(0x746c58); g.fillRect(door.x, door.y, door.w, door.h)
@@ -231,15 +241,23 @@ export default class AdventureScene extends Phaser.Scene {
       if (event.kind === 'stone') {
         g.fillStyle(0x939d8f); g.fillRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
         g.lineStyle(3, progress.stage === 4 ? 0x8ee4b3 : 0xe8c98c); g.strokeRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
-      } else this.actor(g, event.npc.x, event.npc.y, 0x729d96, 1, false)
-      g.lineStyle(2, 0x9bd7cb, .5); g.strokeCircle(event.npc.x, event.npc.y, 35)
+      } else {
+        const npc = event.kind === 'escort' && w.escort ? w.escort : event.npc
+        this.actor(g, npc.x, npc.y, event.kind === 'escort' && w.escort?.hp === 0 ? 0x775c58 : 0x729d96, 1, false)
+      }
+      const npc = event.kind === 'escort' && w.escort ? w.escort : event.npc
+      g.lineStyle(2, 0x9bd7cb, .5); g.strokeCircle(npc.x, npc.y, 35)
+      if (event.kind === 'escort' && w.escort) {
+        g.fillStyle(0x101d19); g.fillRect(npc.x - 25, npc.y - 55, 50, 6)
+        g.fillStyle(0x8fd2b1); g.fillRect(npc.x - 25, npc.y - 55, 50 * w.escort.hp / w.escort.maxHp, 6)
+      }
       if (event.dummy) {
         g.fillStyle(progress.stage > 0 ? 0xcdb786 : 0x9d7757); g.fillRect(event.dummy.x - 9, event.dummy.y - 32, 18, 50)
         g.fillRect(event.dummy.x - 27, event.dummy.y - 19, 54, 9)
         g.lineStyle(2, 0xe8c98c, .5); g.strokeCircle(event.dummy.x, event.dummy.y, 28)
       }
       event.checkpoints?.forEach((point, index) => {
-        const step = event.kind === 'competition' ? progress.stage - 1 : progress.stage
+        const step = event.kind === 'competition' ? progress.stage - 1 : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
         const active = progress.started && index === step && (event.kind !== 'competition' || progress.choice === 'premium')
         g.fillStyle(index < step ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
         if (event.kind === 'cave' && index === 2) {

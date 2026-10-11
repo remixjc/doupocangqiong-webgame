@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -54,6 +54,18 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 1060, y: 270, label: '材料宝匣', text: '宝匣内是本次探索所得：灵草 ×3、魔晶 ×2、恢复丹 ×1。带回洞口，不要继续深入。' },
     ],
   },
+  5: {
+    id: 'mountain-herb-escort', kind: 'escort', introducedVersion: '0.4.0',
+    title: '山谷 · 采药保护', speaker: '采药同伴', npc: { x: 280, y: 625 },
+    stages: ['带同伴到南坡药圃，双方靠近后按 E 采药', '带同伴到山涧药圃，双方靠近后按 E 采药', '护送同伴返回洞口会合点', '采药同伴安全返营'],
+    introduction: '山谷药圃沿途有魔兽。走在前方清理威胁，但不要把同伴甩在身后。同伴只在你附近时继续前进，双方都到达药圃后按 E 采药，最后返回洞口。',
+    note: '采药保护为原创历练。同伴有独立生命，受伤倒下可营地休整免费重试。每处药圃只奖励一次灵草；刷新从最近完成的安全节点重建同伴。',
+    checkpoints: [
+      { x: 500, y: 580, label: '南坡药圃', text: '南坡灵草采集完成。继续去山涧，保护同伴跟上。' },
+      { x: 820, y: 420, label: '山涧药圃', text: '山涧灵草采集完成。沿山谷返回洞口会合点。' },
+      { x: 280, y: 625, label: '洞口会合点', text: '同伴已安全返营。去北侧寻找云韵，了解洞外的警戒。' },
+    ],
+  },
 }
 export function eventForChapter(id: number): ChapterEvent | undefined { return chapterEvents[id] }
 const adultEvents: ChapterEvent[] = [
@@ -77,9 +89,20 @@ const adultEvents: ChapterEvent[] = [
     ],
   },
 ]
+const mountainEvents: ChapterEvent[] = [{
+  id: 'lion-escape', kind: 'survival', introducedVersion: '0.4.0', requires: ['mountain-herb-escort'],
+  title: '紫晶洞外 · 警戒撤离', speaker: '云韵', npc: { x: 330, y: 220 },
+  stages: ['前往洞外警戒石，按 E 开始生存遭遇', '在紫色警戒区躲避预警，坚持 24 秒', '撤离窗口已开，前往西侧撤离标记', '已经安全撤离'],
+  introduction: '狮王的力量远非你现在能对抗。到警戒石观察洞外动静，在紫色区域躲开落焰预警，坚持到撤离窗口开启，然后从西侧离开。攻击无法伤害狮王。',
+  note: '此处是原创生存机制，不改写早期实力差距。菜单暂停计时，离开警戒区不计时；刷新或死亡重试从本段开始重新计时，已完成节点保留。',
+  checkpoints: [
+    { x: 920, y: 230, label: '洞外警戒石', text: '警戒开始。进入紫色区域，离开圆形落焰预警。' },
+    { x: 400, y: 450, label: '西侧撤离标记', text: '已安全撤离，返回营地结算。本次没有击杀紫晶翼狮王。' },
+  ],
+}]
 export function eventsForChapter(id: number): ChapterEvent[] {
   const primary = eventForChapter(id)
-  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : [])]
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : [])]
 }
 export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
   return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)

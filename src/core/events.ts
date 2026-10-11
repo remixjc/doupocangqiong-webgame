@@ -1,7 +1,7 @@
 import { eventsForChapter, findEvent, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
-export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' }
+export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' }
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
   | { type: 'strategy'; choice: 'steady' | 'premium' }
   | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
@@ -43,7 +43,7 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
   const fail = (message: string): EventResult => ({ state, ok: false, message })
   if (!event) return fail('此篇章没有该剧情事件。')
   if (eventDone(state, state.chapter, event.id)) return fail('本次事件已经完成，奖励不会重复发放。')
-  if (event.requires?.some(id => !eventDone(state, state.chapter, id))) return fail('先完成坊市供货，再参加此项历练。')
+  if (event.requires?.some(id => !eventDone(state, state.chapter, id))) return fail('先完成前置历练，再接下此项任务。')
   const next = structuredClone(state), p = next.progress[state.chapter].events[event.id] ??= blankEvent()
   let message = ''
   if (action.type === 'begin') {
@@ -76,6 +76,15 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
       p.stage = 3; message = event.checkpoints![2].text
     } else if (event.kind === 'cave' && action.type === 'deliver' && p.stage === 3) {
       p.stage = 4; message = '已与小医仙会合，洞穴探索完成。现在可前往试炼碑完成本章历练。'
+    } else if (event.kind === 'escort' && action.type === 'seal' && action.index === p.stage && p.stage < 3) {
+      if (p.stage < 2) next.inventory.herb++
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'survival' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'survival' && action.type === 'survive' && p.stage === 1) {
+      p.stage = 2; message = '撤离窗口已开。前往西侧撤离标记，按 E 安全离开。'
+    } else if (event.kind === 'survival' && action.type === 'seal' && action.index === 1 && p.stage === 2) {
+      p.stage = 3; message = event.checkpoints![1].text
     } else if (event.kind === 'trade' && action.type === 'quote' && p.stage === 0) {
       if (![42, 60].includes(action.amount)) return fail('报价超过买方预算，订单未签订，也没有消耗材料。')
       p.quote = action.amount

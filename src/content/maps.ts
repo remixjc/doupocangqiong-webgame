@@ -15,6 +15,7 @@ export interface MapDefinition {
   enemies: MapEnemy[]
   paths: Point[][]
   landmarks: (Point & { label: string })[]
+  survivalZone?: { x: number; y: number; w: number; h: number }
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -101,6 +102,24 @@ export const mountainMaps: Record<number, MapDefinition> = {
     ],
     landmarks: [{ x: 300, y: 100, label: '青山镇 · 洞口山径' }, { x: 650, y: 300, label: '机关石室' },
       { x: 1070, y: 210, label: '洞穴深处 · 寻宝区域' }],
+  },
+  5: {
+    id: 'purple-crystal-valley', style: 'wilderness',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 400, y: 450 },
+    bossSpawn: { x: 1120, y: 150 }, safeRadius: 180,
+    survivalZone: { x: 500, y: 130, w: 680, h: 390 },
+    obstacles: [
+      { x: 440, y: 180, w: 70, h: 110 }, { x: 540, y: 680, w: 130, h: 80 },
+      { x: 950, y: 580, w: 150, h: 120 }, { x: 70, y: 320, w: 90, h: 110 },
+    ],
+    herbs: [{ x: 480, y: 630 }, { x: 720, y: 560 }, { x: 850, y: 600 }, { x: 1090, y: 320 }, { x: 600, y: 150 }, { x: 240, y: 180 }],
+    enemies: [{ type: 'brute', x: 550, y: 540 }, { type: 'hunter', x: 790, y: 400 }, { type: 'mage', x: 1060, y: 360 }],
+    paths: [
+      [{ x: 150, y: 650 }, { x: 280, y: 625 }, { x: 500, y: 580 }, { x: 820, y: 420 }],
+      [{ x: 280, y: 625 }, { x: 330, y: 400 }, { x: 330, y: 220 }, { x: 600, y: 320 }, { x: 920, y: 230 }],
+      [{ x: 920, y: 230 }, { x: 800, y: 450 }, { x: 400, y: 450 }],
+    ],
+    landmarks: [{ x: 710, y: 75, label: '紫晶洞外 · 狮王警戒' }, { x: 550, y: 740, label: '采药山谷 · 保护同伴' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? legacy }

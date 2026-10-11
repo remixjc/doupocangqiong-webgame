@@ -81,11 +81,17 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (event.kind === 'cave' && ep.stage === 3) ? event.npc : event.kind === 'training' ? event.dummy! : event.checkpoints![ep.stage]
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (event.kind === 'cave' && ep.stage === 3) ? event.npc
+            : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : event.checkpoints![ep.stage]
+          if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
         }
+        const warning = world.survival?.warnings.find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
-        if (threat) {
+        if (warning) {
+          const direction = world.player.x < 850 ? 1 : -1
+          input = { x: direction, y: 0 }; world.action('dodge', input); path = []
+        } else if (threat) {
           const point = [threat.target, ...(threat.secondary ?? [])].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
           const dx = world.player.x - point.x, dy = world.player.y - point.y, length = Math.hypot(dx, dy)
           input = length > 1 ? { x: dx / length, y: dy / length } : { x: 0, y: 1 }
