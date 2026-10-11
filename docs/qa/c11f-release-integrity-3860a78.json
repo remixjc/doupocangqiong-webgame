@@ -1,0 +1,400 @@
+{
+  "checkedOn": "2026-10-12",
+  "batch": "C11f-2b",
+  "sourceTrackedChanges": false,
+  "gitSha": "3860a781de53156bcbb2de4a6edeb7447dba65db",
+  "expectedRemoteShaMatched": true,
+  "savedDirectory": ".git/release-candidates/3860a781de53156bcbb2de4a6edeb7447dba65db/dist",
+  "command": "node scripts/verify-release.mjs <savedDirectory> 3860a781de53156bcbb2de4a6edeb7447dba65db",
+  "verificationOutput": "Release verified: 0.37.1 @ 3860a781de53156bcbb2de4a6edeb7447dba65db; 71 files / 1733435 bytes",
+  "manifestSha256": "d75a6a849dae424be71f45dbd280b1eff3b02c363210d1d70fd0f860abb8aa3a",
+  "publicDeployment": false,
+  "rollbackPerformed": false,
+  "manifest": {
+    "artifactFormat": 1,
+    "game": "doupocangqiong-webgame",
+    "version": "0.37.1",
+    "gitSha": "3860a781de53156bcbb2de4a6edeb7447dba65db",
+    "schemaVersion": 3,
+    "contentVersion": "0.37.1",
+    "engineLazy": true,
+    "bundle": {
+      "initialJsBytes": 488439,
+      "initialJsGzipBytes": 158750,
+      "totalJsBytes": 1623906,
+      "engineGzipBytes": 173297
+    },
+    "migration": {
+      "olderSaves": "schema 1/2 自动迁移到 schema 3；新内容按 introducedVersion 补空记录",
+      "newerSaves": "较新版本存档拒绝载入并保留原文件"
+    },
+    "files": [
+      {
+        "file": ".vite/manifest.json",
+        "bytes": 20027,
+        "sha256": "3b97d7f0ce0fcc7e38acf79f85a3ac75028fe7d326070a6a451a77a20d29afaa"
+      },
+      {
+        "file": "assets/BondJournal-CMcKWcOh.js",
+        "bytes": 4641,
+        "sha256": "41615ba96335cfc60f0fb7268cc602ccb6c47290318112d9c93419ae4b41954f"
+      },
+      {
+        "file": "assets/EarlyAppraisal-Hchy3mtx.js",
+        "bytes": 5350,
+        "sha256": "05788cf7387df980ba4c166c17e9e2fe1b5d0c8c15c07b6f3c3b59d3c2ca955b"
+      },
+      {
+        "file": "assets/EarlyAuction-Cap42L4S.js",
+        "bytes": 5307,
+        "sha256": "643a31d4011bbda40819c659f4fce9db02103313e2459745c5393b3dc911f05b"
+      },
+      {
+        "file": "assets/EarlyCeremonialTest-BS1pThOj.js",
+        "bytes": 6985,
+        "sha256": "7f41aeb270836b0045561d22f1b36a5ff844163afdae0990095d72abf41eb36e"
+      },
+      {
+        "file": "assets/EarlyCeremonyGuests-Cn05syB9.js",
+        "bytes": 5729,
+        "sha256": "f62d46e09dd552a07df37abfabd641769b18484cf253c3b8622c50d0daedcb84"
+      },
+      {
+        "file": "assets/EarlyCeremonyVerdict-w30m2GAk.js",
+        "bytes": 6176,
+        "sha256": "915f5aecee22fe07d75dcd6db29d823f0931b78cc19ef676da959fea394476dd"
+      },
+      {
+        "file": "assets/EarlyConsignment-GOwXdn7R.js",
+        "bytes": 7381,
+        "sha256": "7168fb4f822c1d2fc1d7a44c7f13f2394de1de563ba00ae5af6e79476b1fffbc"
+      },
+      {
+        "file": "assets/EarlyEighthTraining-CMjUtBBQ.js",
+        "bytes": 7853,
+        "sha256": "b59c7d7c5bf00856af14cd09b4d7bc40fa2185f8e4abe72ca60be72068933f1c"
+      },
+      {
+        "file": "assets/EarlyFatherGift-BTI-2322.js",
+        "bytes": 4414,
+        "sha256": "c3c4c6bd5c284bd8153c2197d321f52b9b43e4d54faa7fdbd7a25ac9e811cb79"
+      },
+      {
+        "file": "assets/EarlyForestStrike-BLMs-V00.js",
+        "bytes": 7139,
+        "sha256": "8a19d6759761cf137a452f872e58c75e280cfa3d656d03679d372f5bd4c1a5df"
+      },
+      {
+        "file": "assets/EarlyHall-CETpWFy4.js",
+        "bytes": 6752,
+        "sha256": "526052e2d1ec95a958686346b69fcb10070d9cb41d9d1add9e0e6c1ab0ed65ea"
+      },
+      {
+        "file": "assets/EarlyKeChallenge-DNC8qAwr.js",
+        "bytes": 7959,
+        "sha256": "0f7bd56a3adf6ff4d21b4158850c568d767d4e67f662ee337d5d037daa2badcd"
+      },
+      {
+        "file": "assets/EarlyLongSupplies-DosNk7CW.js",
+        "bytes": 5001,
+        "sha256": "32647c47040baadf1e47daab346ed7d07f36a8b82537017114abbb1787521bd3"
+      },
+      {
+        "file": "assets/EarlyNingFirst-D_G-JvMj.js",
+        "bytes": 8836,
+        "sha256": "3248eefd9040d8e25c304c916586874c0339970b3357914bf70917a15f8c2558"
+      },
+      {
+        "file": "assets/EarlyNingSecond-Bluk5RLB.js",
+        "bytes": 8772,
+        "sha256": "26d7bac3b009bf0e655430770e56b1ff4551f6caade46a5f8f3bfe9c5f4b0edc"
+      },
+      {
+        "file": "assets/EarlyPalmPair-Cz63KUt6.js",
+        "bytes": 6435,
+        "sha256": "ac95c713a5845cba2e25f87eef303fe0525ab5705685e4603c48fbe75ea752da"
+      },
+      {
+        "file": "assets/EarlyPreliminary-Btmc5IkF.js",
+        "bytes": 6567,
+        "sha256": "1c516f250d72ae7a60813abafea54b1a709460e81af6bb50b9c64d056627bf8c"
+      },
+      {
+        "file": "assets/EarlyQiAid-C_pGJEuc.js",
+        "bytes": 10956,
+        "sha256": "fcc91ec50328d1ce8d91fcd153f9e5a2a048bb563aadc78bbb361824e3608e4d"
+      },
+      {
+        "file": "assets/EarlyQiBarrier-C2I_byN_.js",
+        "bytes": 12839,
+        "sha256": "1cc1170ecd0160ca0bea970282648ce1cabe939380c47d15bb5e0a4358cd09cc"
+      },
+      {
+        "file": "assets/EarlyQiExchange-DA6Bjdkn.js",
+        "bytes": 5548,
+        "sha256": "3e998e338e62ebe50ac16bc493a1aa98757f1dcbb2968d068a7cc4051fc22059"
+      },
+      {
+        "file": "assets/EarlyQiPavilion-C_PZu7Do.js",
+        "bytes": 5762,
+        "sha256": "4dea511df30b5559a6882383255e3d396305aa6524c1cbc8b0d308faa669fa6e"
+      },
+      {
+        "file": "assets/EarlyQiScroll-DdVEcffj.js",
+        "bytes": 1341,
+        "sha256": "ac1ca4e85728327df9df14ac51316d89baaa0310944192ca9ef8cd1041380ab1"
+      },
+      {
+        "file": "assets/EarlyRecovery-DUvjhJHz.js",
+        "bytes": 5215,
+        "sha256": "0180427e9e0040de93f5adabcb76cad8c20d83003f8c6f20c2896f167130bf6b"
+      },
+      {
+        "file": "assets/EarlySettlement-tB9k2evz.js",
+        "bytes": 5106,
+        "sha256": "6bc50c5ed43f5c92aa1f685fc23635a68003091ab0582c20cdb7273c89819d92"
+      },
+      {
+        "file": "assets/EarlySeventhRoom-DSb6ogVB.js",
+        "bytes": 6105,
+        "sha256": "d07c3c4eb1e680c65e7cfce235511b47a509161fb322f52f7f4491d8a2025c9a"
+      },
+      {
+        "file": "assets/EarlySupervision-CqGUWw54.js",
+        "bytes": 5525,
+        "sha256": "367d463da132e89318b5e5fbb5d42a75763d6277b4d664da482ee31da742d1a0"
+      },
+      {
+        "file": "assets/EarlyTeaching-CsnCoxfj.js",
+        "bytes": 4844,
+        "sha256": "abceb1e74d7140ad1853c37e758d42f036ec3e89a300c3ad7e5efff47f2fa161"
+      },
+      {
+        "file": "assets/EarlyTrainingPanel-PboeyBj_.css",
+        "bytes": 1406,
+        "sha256": "13778c151ed45495b54e299c316b013d076f516dcedb4a9a43a7ebc09d39b540"
+      },
+      {
+        "file": "assets/EarlyTrainingPanel-kE1Q__8Y.js",
+        "bytes": 72353,
+        "sha256": "e9b49fe4e6f365f3da2ba9d2ffd5eb45b804d0b9336ed40868f250fa7f4c8563"
+      },
+      {
+        "file": "assets/EarlyXunerVisit-BoTBN2Hd.js",
+        "bytes": 4900,
+        "sha256": "40abef5822ee93846d21f4c28a1650b7e11ef169fa79e1a4da0c9e263223f13f"
+      },
+      {
+        "file": "assets/GameView-D2J1ShvX.js",
+        "bytes": 87995,
+        "sha256": "8c4e988bdf4ea250d420fc4e754ce4409599a10066f9875df8a0dec4ae9b5984"
+      },
+      {
+        "file": "assets/HeatControl-DjwXphxE.js",
+        "bytes": 1690,
+        "sha256": "b2b6f83a4638b6e1259f9fcd61f43f2acac233e81f972ff14eeee24141207111"
+      },
+      {
+        "file": "assets/Panels-Bh3hNVuT.js",
+        "bytes": 6994,
+        "sha256": "09bf5460ab7afc36f5cda5ac63588f837a1b14b08d34064d1c22d55a532f761e"
+      },
+      {
+        "file": "assets/SavesPanel-C5TSJGiD.js",
+        "bytes": 3802,
+        "sha256": "76aff99de48d96f2b838396a6ccc56f4c63a4fd8d29254057453447c36d0e834"
+      },
+      {
+        "file": "assets/StoryEventPanel-ogNjCkQW.js",
+        "bytes": 22586,
+        "sha256": "d9d43197f5f78458bc129caba0dd196fc78157ceb1d6e8da9188441b19f17b9f"
+      },
+      {
+        "file": "assets/StoryRecap-C-5Q1TZ_.js",
+        "bytes": 2333,
+        "sha256": "6a4ec6658bbf8441731cd166bbd03e91fdee691e803fa84a9787930b31063160"
+      },
+      {
+        "file": "assets/bonds-BCbzD5k1.js",
+        "bytes": 1889,
+        "sha256": "e79d4da629756bd7473ce75b481aab7a9ee3fd13d23621c180363e5630cb3552"
+      },
+      {
+        "file": "assets/early-appraisal-DQMBjPa1.js",
+        "bytes": 1330,
+        "sha256": "d3c236db134542934afa9d92419a37482fd328ecd1546172cf3197b9247f2b83"
+      },
+      {
+        "file": "assets/early-appraisal-HI8HTi-9.js",
+        "bytes": 4102,
+        "sha256": "5806534b372faa62212c8b42f649b77fc04dbe60c8712a3ecca4343d754d2c44"
+      },
+      {
+        "file": "assets/early-auction-aRQ4bRMS.js",
+        "bytes": 3272,
+        "sha256": "9c5d5e107c08b2ad5039ac420b94b8d75a755fe3966976686d533600198dfef7"
+      },
+      {
+        "file": "assets/early-ceremonial-test-Curk-Q5p.js",
+        "bytes": 5717,
+        "sha256": "cf182bc4b6b64f19f195c1bcc64ba251da48ccc480d25754945ced680df0ff2a"
+      },
+      {
+        "file": "assets/early-ceremony-guests-Br-bpwSG.js",
+        "bytes": 4734,
+        "sha256": "f4e754f93ca7b9fc1b5899fc98de47c1daa217d44cd0f2fdc6dfcc976d00e590"
+      },
+      {
+        "file": "assets/early-eighth-training-DLPawgQ4.js",
+        "bytes": 6555,
+        "sha256": "1b4bb24be256ecb5869e54bec9c19ac7ad2c110861f056aa415e43f96dc0a431"
+      },
+      {
+        "file": "assets/early-father-gift-t4w1Qg9S.js",
+        "bytes": 3008,
+        "sha256": "afdbd2523f286b86e4762ee376014118b0473cc85444bc76c869c72dde35c15c"
+      },
+      {
+        "file": "assets/early-forest-strike-BQLTrnjo.js",
+        "bytes": 4661,
+        "sha256": "300fd840638fbaab5c7cc16c810e7692d537d4bbe6bf548b1591183397c766ec"
+      },
+      {
+        "file": "assets/early-ke-challenge-BRwNZbqI.js",
+        "bytes": 5634,
+        "sha256": "b49fa5eb3ced51fc04931ee55283f8b1d94dd8cb10cad12af61bf6bd17154efb"
+      },
+      {
+        "file": "assets/early-long-supplies-ydE4ZqWP.js",
+        "bytes": 3332,
+        "sha256": "f5e6d742e884c7286f1600e81fbac7fbe657686e24467a4e4ef6361a0dff01f5"
+      },
+      {
+        "file": "assets/early-ning-first-D-1xEBZY.js",
+        "bytes": 5315,
+        "sha256": "5e73bb6eab4b9e64ad283418140553bce1cff08b9f24cc1647a2d69c15251409"
+      },
+      {
+        "file": "assets/early-ning-second-C3V5973O.js",
+        "bytes": 4483,
+        "sha256": "eabbf9300e979050a2c61ca150695984cc144f0b987737f921db283f4276b253"
+      },
+      {
+        "file": "assets/early-palm-pair-RlHLY72L.js",
+        "bytes": 4308,
+        "sha256": "b146732fa99c00a5318b3765b9ccff98d3cae6c15e80f208152c874e10e01550"
+      },
+      {
+        "file": "assets/early-preliminary-BXGx2GqE.js",
+        "bytes": 6597,
+        "sha256": "e9feca26bca8c902aea24aad8ec2c884afe49c2fadac9dc1d4c72821c7c17631"
+      },
+      {
+        "file": "assets/early-recovery-bI4USL5I.js",
+        "bytes": 3478,
+        "sha256": "21ce75da54b607794c8b9dfbf010e04640d7ef5a6bea20c051c0d509e0b665fe"
+      },
+      {
+        "file": "assets/early-settlement-CKoCuJIj.js",
+        "bytes": 3246,
+        "sha256": "22f3038c1d4fb5ce203f88ca75d25c04d9d5b4767b0227c89445f73ed0744545"
+      },
+      {
+        "file": "assets/early-seventh-room-DZdAyjov.js",
+        "bytes": 3741,
+        "sha256": "a1ed1f9893ebd7ccb8968170582edb7ec58620a89d750d616cab58f99e3c19dd"
+      },
+      {
+        "file": "assets/early-supervision-Cmwfml-9.js",
+        "bytes": 1724,
+        "sha256": "f3b267cd554f8f253b880c1d4bba70d8be59e6ced26f595a8890e4f88308d961"
+      },
+      {
+        "file": "assets/early-teaching-Cwq2Sof9.js",
+        "bytes": 2534,
+        "sha256": "799d6607285f453246a653204830396e6e4b386291c1c219700fd31bea5ecbfc"
+      },
+      {
+        "file": "assets/early-walk-Lp6qe7Op.js",
+        "bytes": 2171,
+        "sha256": "437d00f0430ee6e8031fc6015e8a4115ccef85e28e177190e6dd130a99d83151"
+      },
+      {
+        "file": "assets/early-xuner-visit-BkjGIbJu.js",
+        "bytes": 3152,
+        "sha256": "e16fde9325d269e42cc8aea77d42ef847729372c25b6c8cab12258dc596c5459"
+      },
+      {
+        "file": "assets/index-BPh2Hjvq.js",
+        "bytes": 321690,
+        "sha256": "275bad53ffb198223cb5b41b414dd33ad803aa1e560becc699d667d5f54cae69"
+      },
+      {
+        "file": "assets/index-DVX5TOB_.css",
+        "bytes": 29290,
+        "sha256": "945ebdbe0166f7f2a8f06bd51a72dcf2164e1dc216ae2820c773d1d4bc55104d"
+      },
+      {
+        "file": "assets/jsx-runtime-BSx6pBed.js",
+        "bytes": 166749,
+        "sha256": "aaf273948eab3269a96125c7f2d35339576295c4e5ec54504e34343bc49ed0c4"
+      },
+      {
+        "file": "assets/phaser-D47_Ju9o.js",
+        "bytes": 657239,
+        "sha256": "6c576bb1795ef7db32938b46a9effe2bee5e701ae260fdfbf7ee08ec5a3f94c1"
+      },
+      {
+        "file": "assets/save-preview-BoYvqiVB.js",
+        "bytes": 15623,
+        "sha256": "57327f423b90f7ae712b4ff323211ebc13d621cd704d804c8673406ff0b27260"
+      },
+      {
+        "file": "assets/supervision-pointer-DPmJc-VK.js",
+        "bytes": 431,
+        "sha256": "a71310f9bc5a9d1c4a36f56d30eb6138ef5746fd424b2e26e145d620c07b77ec"
+      },
+      {
+        "file": "bundle-report.json",
+        "bytes": 8415,
+        "sha256": "b9d9ae9d29127da38735e5c2d1a8ac644191e642a76cd096a90db90e915d77e5"
+      },
+      {
+        "file": "engine-module-report.json",
+        "bytes": 41192,
+        "sha256": "66468fb3ec5e37f32819ab3fb4d4c347fa5dd0496428cb0c7ef5c919ca3558a1"
+      },
+      {
+        "file": "favicon.svg",
+        "bytes": 245,
+        "sha256": "c5594b978e5dd9a9492b9b13ee6ce47f7063db99ab2a7e311295660731d503b5"
+      },
+      {
+        "file": "index.html",
+        "bytes": 751,
+        "sha256": "da6c4baebf5b0df46092f5194479fafd3bf287adfe08839fda2144c8872e3b5b"
+      },
+      {
+        "file": "landscape.svg",
+        "bytes": 2592,
+        "sha256": "50c89d467a4820d65988309b2b49a1184872ed5afe9a7670137c6069e67801fa"
+      },
+      {
+        "file": "third-party-notices.txt",
+        "bytes": 5611,
+        "sha256": "292b62ebd93e956abeb82eeabe9da9de85ac3ae6659a87760cb1d378d274df4f"
+      }
+    ]
+  },
+  "remoteChecks": {
+    "gameChecks": {
+      "id": 38181225929,
+      "conclusion": "success",
+      "headSha": "3860a781de53156bcbb2de4a6edeb7447dba65db"
+    },
+    "pages": {
+      "id": 38181225966,
+      "conclusion": "skipped"
+    }
+  }
+}
