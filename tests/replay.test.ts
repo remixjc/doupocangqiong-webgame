@@ -309,7 +309,11 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
       if (chapter.id === 2) {
-        state = replayEarlyTraining(state, true, undefined, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true)
+        const earlyReplay: Parameters<typeof replayEarlyTraining> = [state, true, undefined]
+        earlyReplay[3] = true
+        earlyReplay[4] = true
+        earlyReplay[30] = true
+        state = replayEarlyTraining(...earlyReplay)
         expect(state.earlyTraining.practice.attempts).toBe(1)
       }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {

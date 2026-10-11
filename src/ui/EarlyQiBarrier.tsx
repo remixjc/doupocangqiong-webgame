@@ -77,7 +77,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
         </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
       {task.stage >= 4 && <button className="secondary" onClick={() => act('take-scroll')}>尝试提前取卷 · 尚未择卷</button>}
     </section> : <p className="muted">下一步请走近{scene.place === 'path' ? '第三支路入口' : qiBarrierPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>火路、门障与入室已归档。</h3><p>四十三号室内卷轴仍待独立取得；本批没有增加功法、技能、境界或奖励。</p></section>}
+      : <section className="bond-summary"><h3>火路、门障与入室已归档。</h3><p>{state.earlyTraining.qiPavilionScroll.family === 'held' ? '后续已取得家族卷，这里保留此前破幕与入室的记录。' : '四十三号室内卷轴仍待独立取得。'}破幕不增加功法、技能、境界或奖励。</p></section>}
     {task.stage === 6 && <button className="secondary" onClick={() => act('stop')}>停下这一轮 · 免费重新蓄势</button>}
     <p className="muted">五条支路、门牌与门障地图是原创压缩操作；八极崩沿已有主线技能使用，不重复解锁。</p>
     <button className="secondary" onClick={onBack}>暂离火通道 · 保留门障断点</button>

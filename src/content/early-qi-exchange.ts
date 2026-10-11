@@ -1,0 +1,10 @@
+export const qiExchangeScenes = [
+  { actor: 'xiaoyan', operation: 'recall', title: '回看四十三号房 · 保管细节', text: '此前简略保管记录保留。这里回看取卷后的一段对话，实际分别记录双卷和短暂拿看，不再取得家族卷。', action: '回看取卷后的对话' },
+  { actor: 'xiaoyan', operation: 'read-tier', title: '黄阶高级 · 家族火属性卷', text: '萧炎读出这一卷的品阶与属性。中文卷名仍待准确核验，先以黄阶高级火属性功法呈现。', action: '核对品阶与属性' },
+  { actor: 'xuner', operation: 'inspect-family', title: '薰儿拿看同一卷', text: '薰儿从萧炎手中拿看这一卷家族功法。萧炎此刻不持卷；这不是新取出的一份副本。', action: '薰儿拿看家族卷' },
+  { actor: 'xuner', operation: 'show-own', title: '薰儿展示自己携带的卷轴', text: '薰儿展示自己携带的玄阶高级火属性卷，一手一卷。额外支持卷属于薰儿，未交给萧炎，也不是萧家第二份卷轴。', action: '展示支持卷 · 两卷仍在薰儿手中' },
+  { actor: 'xiaoyan', operation: 'take-back', title: '萧炎取回家族卷', text: '萧炎取回黄阶高级家族卷。玄阶高级支持卷仍由薰儿持有，取回与婉拒分别记录。', action: '取回唯一家族卷' },
+  { actor: 'xiaoyan', operation: 'decline', title: '感谢后婉拒', text: '萧炎感谢薰儿，并说明自己会有另一条功法道路。没有实际交付支持卷，也没有习得新的功法。', action: '感谢并婉拒支持卷' },
+  { actor: 'xiaoyan', operation: 'reassure', title: '说明自己的打算', text: '萧炎说自己能取得更合适的功法。这一想法只记为对话，不提前授予焚诀或派发未来功法。', action: '记下打算 · 不提前授功法' },
+  { actor: 'xiaoyan', operation: 'archive', title: '双卷归属已核', text: '同一家族卷回到萧炎手中，支持卷始终属于薰儿；短暂拿看、展示、取回与婉拒均已分开记录。', action: '归档双卷交接细节' },
+] as const

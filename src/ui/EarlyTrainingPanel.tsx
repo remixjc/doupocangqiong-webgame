@@ -12,6 +12,8 @@ import { loadSceneModule } from './scene-load'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
+const EarlyQiAid = lazy(() => loadSceneModule(() => import('./EarlyQiAid')))
+const EarlyQiExchange = lazy(() => loadSceneModule(() => import('./EarlyQiExchange')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -19,6 +21,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [pavilion, setPavilion] = useState(false)
   const [barrier, setBarrier] = useState(false)
   const [scroll, setScroll] = useState(false)
+  const [aid, setAid] = useState(false)
+  const [exchange, setExchange] = useState(false)
+  const scrollEntry = useRef<HTMLButtonElement>(null), aidEntry = useRef<HTMLButtonElement>(null), exchangeEntry = useRef<HTMLButtonElement>(null)
+  const returningScroll = useRef(false), returningAid = useRef(false), returningExchange = useRef(false)
   const pavilionEntry = useRef<HTMLButtonElement>(null)
   const returningPavilion = useRef(false)
   const barrierEntry = useRef<HTMLButtonElement>(null)
@@ -34,12 +40,17 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => {
     if (!barrier && returningBarrier.current) { returningBarrier.current = false; barrierEntry.current?.focus() }
   }, [barrier])
+  useEffect(() => { if (!scroll && returningScroll.current) { returningScroll.current = false; scrollEntry.current?.focus() } }, [scroll])
+  useEffect(() => { if (!exchange && returningExchange.current) { returningExchange.current = false; exchangeEntry.current?.focus() } }, [exchange])
+  useEffect(() => { if (!aid && returningAid.current) { returningAid.current = false; aidEntry.current?.focus() } }, [aid])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
   if (barrier) return <Suspense fallback={<p role="status">正在进入火通道与四十三号门障……</p>}><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></Suspense>
-  if (scroll) return <Suspense fallback={<p role="status">正在打开卷轴保管记录……</p>}><EarlyQiScroll state={state} onBack={() => setScroll(false)} /></Suspense>
+  if (scroll) return <Suspense fallback={<p role="status">正在打开卷轴保管记录……</p>}><EarlyQiScroll state={state} onBack={() => { returningScroll.current = true; setScroll(false) }} /></Suspense>
+  if (exchange) return <Suspense fallback={<p role="status">正在回看双卷交接……</p>}><EarlyQiExchange state={state} onBack={() => { returningExchange.current = true; setExchange(false) }} /></Suspense>
+  if (aid) return <Suspense fallback={<p role="status">正在打开同行与援助记录……</p>}><EarlyQiAid state={state} onBack={() => { returningAid.current = true; setAid(false) }} /></Suspense>
   if (pavilion) return <Suspense fallback={<p role="status">正在前往五天后的功法阁……</p>}><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></Suspense>
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
@@ -54,12 +65,20 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         <button ref={pavilionEntry} className="secondary" onClick={() => setPavilion(true)}>前往功法阁 · 属性测定与入阁</button>
       </section>}
       {isVisible(state, 3) && task.qiPavilionEntry.stage === 12 && <section className="bond-summary" aria-label="功法阁门障接续">
-        <b>功法阁入阁已归档 · 接续火通道</b><p>沿第三支路核对三十七号与四十三号，再进行独立红幕测试。尚未取得卷轴。</p>
+        <b>功法阁入阁已归档 · 火通道记录</b><p>沿第三支路核对三十七号与四十三号，再进行独立红幕测试。{task.qiPavilionScroll.family === 'held' ? '后续已取得家族卷，门障记录保留。' : '尚未取得卷轴。'}</p>
         <button ref={barrierEntry} className="secondary" onClick={() => setBarrier(true)}>进入火通道 · 四十三号门障</button>
       </section>}
       {isVisible(state, 3) && task.qiPavilionBarrier.stage === 10 && <section className="bond-summary" aria-label="功法阁卷轴保管接续">
-        <b>四十三号房已入室 · 卷轴保管待续</b><p>先保管唯一家族火属性卷，再分别记录薰儿的额外卷轴提议与婉拒。</p>
-        <button className="secondary" onClick={() => setScroll(true)}>处理四十三号房卷轴</button>
+        <b>四十三号房已入室 · {task.qiPavilionScroll.stage === 6 ? '简略保管已归档' : '卷轴保管待续'}</b><p>先保管唯一家族火属性卷，再分别记录薰儿的额外卷轴提议与婉拒。</p>
+        <button ref={scrollEntry} className="secondary" onClick={() => setScroll(true)}>处理四十三号房卷轴</button>
+      </section>}
+      {isVisible(state, 3) && task.qiPavilionScroll.stage === 6 && <section className="bond-summary" aria-label="功法阁同行援助接续">
+        <b>简略保管已归档 · 双卷交接回看</b><p>回看薰儿拿看同一卷、展示自己的支持卷、萧炎取回与婉拒，原结局记录保留。</p>
+        <button ref={exchangeEntry} className="secondary" onClick={() => setExchange(true)}>回看双卷交接细节</button>
+      </section>}
+      {isVisible(state, 3) && task.qiPavilionExchange.stage === 8 && <section className="bond-summary" aria-label="功法阁独自援助接续">
+        <b>双卷交接已核 · {task.qiPavilionAid.stage === 10 ? '同行援助已归档' : '接续同行与援助'}</b><p>薰儿另选卷、近时限与萧媚风属性房门，先经过再独自回返。</p>
+        <button ref={aidEntry} className="secondary" onClick={() => setAid(true)}>进入同行与援助记录</button>
       </section>}
       {task.practice.phase === 4 && <p className="muted">初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</p>}
       <section className="bond-summary" aria-label="重修准备记录">

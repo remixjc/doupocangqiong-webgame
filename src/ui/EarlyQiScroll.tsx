@@ -1,6 +1,6 @@
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
-import { earlyQiScrollBlock, type QiScrollOperation } from '../core/early-qi-scroll'
+import { earlyQiScrollBlock, submitEarlyQiScroll } from '../core/early-qi-scroll'
 import { qiScrollScenes } from '../content/early-qi-scroll'
 
 export default function EarlyQiScroll({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -13,7 +13,7 @@ export default function EarlyQiScroll({ state, onBack }: { state: GameState; onB
     <span className="eyebrow">功法阁 / 卷轴保管 · {task.stage + 1} / 6</span>
     <h3>{scene.title}</h3>
     <p>{scene.text}</p>
-    <button className="primary" onClick={() => gameStore.earlyTraining({ type: 'qi-scroll', operation: scene.operation as QiScrollOperation, stage: task.stage, family: task.family, offer: task.offer, owner: task.owner, expectedSpent: state.earlyTraining.purse.spent })}>{scene.action}</button>
+    <button className="primary" onClick={() => submitEarlyQiScroll(gameStore, { ...task, operation: scene.operation })}>{scene.action}</button>
     <p className="muted">不直接修炼焚诀、不增加主线斗技或境界；本段只记录保管与婉拒。</p>
     <button className="secondary" onClick={onBack}>暂离卷轴保管 · 保留断点</button>
   </section>
