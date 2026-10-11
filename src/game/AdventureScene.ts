@@ -407,6 +407,9 @@ export default class AdventureScene extends Phaser.Scene {
         ...(event.checkpoints ?? []).map((point, index) => ({ ...point, id: `${event.id}:${index}`, label: point.label })),
       ]),
       ...w.herbs.flatMap((herb, index) => herb.available ? [{ x: herb.x, y: herb.y, id: `herb:${index}`, label: `灵草 ${index + 1}` }] : []),
+      ...(w.map.towerFloors ?? []).map((floor, index) => ({
+        ...floor.cooling, id: `tower-cooling:${index}`, label: `${['一', '二', '三'][index] ?? index + 1}层镇心石`,
+      })),
       ...w.map.landmarks.map((point, index) => ({ ...point, id: `landmark:${index}`, label: point.label })),
     ].map(({ id, label, x, y }) => ({ id, label, x, y }))
   }
