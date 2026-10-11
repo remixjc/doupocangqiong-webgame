@@ -406,6 +406,8 @@ export default class AdventureScene extends Phaser.Scene {
         ...(event.dummy ? [{ ...event.dummy, id: `${event.id}:dummy`, label: '演练木桩' }] : []),
         ...(event.checkpoints ?? []).map((point, index) => ({ ...point, id: `${event.id}:${index}`, label: point.label })),
       ]),
+      ...(w.prisonEscort && w.prisonEscort.hp > 0
+        ? [{ ...w.prisonEscort, id: 'prison-escort', label: '药老 · 撤离同伴' }] : []),
       ...w.herbs.flatMap((herb, index) => herb.available ? [{ x: herb.x, y: herb.y, id: `herb:${index}`, label: `灵草 ${index + 1}` }] : []),
       ...(w.map.towerFloors ?? []).map((floor, index) => ({
         ...floor.cooling, id: `tower-cooling:${index}`, label: `${['一', '二', '三'][index] ?? index + 1}层镇心石`,
