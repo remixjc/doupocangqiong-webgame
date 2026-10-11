@@ -71,6 +71,10 @@ chapters[14].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[14].trialNote = '三层镇炎、镇心石和韩枫投影为压缩主线的原创玩法；陨落心炎仅在第十五章首次正式结算时取得。'
 chapters[14].opening[2].text = '向苏千接取火塔镇炎，确认塔门退路后依次到三层阵眼，累计8 / 10 / 12秒并闪避落焰。镇心石降热但不计时，满100热量失控。失败保留已完成层数，回报后再挑战韩枫投影；营地首次结算才取得陨落心炎。'
 
+chapters[15].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[15].trialNote = '三阵攻防、守阵投影和云山三阶段招式为原创宗门关卡；首通收尾后药老离队，营救仍需后续主线。'
+chapters[15].opening[2].text = '与药老确认路线，到战前约碑后依次清理三处守卫，在山阶/中庭/前殿阵眼连续破阵3/4/5秒。离阵或受击清空当前计时，已破阵节点保留。回报药老后到决战碑挑战云山，注意护盾蓄势和收招窗口。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

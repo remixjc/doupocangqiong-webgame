@@ -25,6 +25,7 @@ export interface MapDefinition {
   escapeRoute?: boolean
   rankingArena?: boolean
   towerFloors?: TowerFloor[]
+  siegeDurations?: number[]
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -279,14 +280,17 @@ export const academyMaps: Record<number, MapDefinition> = {
 export const returnAndCentralMaps: Record<number, MapDefinition> = {
   16: {
     id: 'yunlan-return-sect', style: 'sect', gateLabel: '宗门决战碑',
+    siegeDurations: [3, 4, 5],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1160, y: 140 }, bossSpawn: { x: 1090, y: 260 }, safeRadius: 170,
-    obstacles: [{ x: 440, y: 100, w: 200, h: 190 }, { x: 790, y: 550, w: 200, h: 120 }, { x: 90, y: 300, w: 100, h: 110 }],
-    herbs: [{ x: 330, y: 410 }, { x: 680, y: 620 }, { x: 1080, y: 540 }, { x: 280, y: 170 }, { x: 1010, y: 310 }],
-    enemies: [{ type: 'brute', x: 700, y: 460 }, { type: 'hunter', x: 840, y: 360 },
-      { type: 'mage', x: 1080, y: 600 }, { type: 'hunter', x: 750, y: 230 }],
+    eventBarrier: { eventId: 'yunlan-three-sigil-siege', unlockedStage: 4, obstacle: { x: 1000, y: 155, w: 45, h: 190 } },
+    obstacles: [{ x: 440, y: 100, w: 200, h: 190 }, { x: 790, y: 550, w: 200, h: 120 }, { x: 90, y: 300, w: 100, h: 110 },
+      { x: 1000, y: 0, w: 45, h: 155 }, { x: 1000, y: 345, w: 45, h: 455 }],
+    herbs: [{ x: 330, y: 410 }, { x: 680, y: 620 }, { x: 1080, y: 540 }, { x: 280, y: 170 }, { x: 1100, y: 310 }],
+    enemies: [{ id: 'sect-stair-brute', type: 'brute', x: 700, y: 460 }, { id: 'sect-stair-hunter', type: 'hunter', x: 700, y: 370 },
+      { id: 'sect-court-mage', type: 'mage', x: 840, y: 470 }, { id: 'sect-hall-hunter', type: 'hunter', x: 750, y: 230 }],
     paths: [[{ x: 150, y: 650 }, { x: 300, y: 430 }, { x: 650, y: 430 }, { x: 900, y: 380 }, { x: 1160, y: 140 }],
       [{ x: 300, y: 430 }, { x: 300, y: 170 }]],
-    landmarks: [{ x: 690, y: 65, label: '再临云岚 · 宗门台阶' }, { x: 690, y: 750, label: '重返山门 · 做好战前准备' }],
+    landmarks: [{ x: 690, y: 65, label: '再临云岚 · 宗门台阶' }, { x: 690, y: 750, label: '清理守阵投影 → 连续破阵 → 回报 → 决战' }],
   },
   17: {
     id: 'flame-alliance-hall', style: 'alliance', gateLabel: '炎盟防线',

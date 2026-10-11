@@ -17,6 +17,7 @@ export interface Fighter extends Vec {
   secondary?: Vec[]
   duel?: { phase: number; move: 'thrust' | 'fan' | 'cyclone'; sequence: number; origin: Vec; dashTime: number; recovery: number }
   ranking?: { phase: number; recovery: number; practice: boolean; sequence: number }
+  sect?: { phase: number; recovery: number; sequence: number }
 }
 export interface Herb extends Vec { available: boolean; respawn: number }
 export interface Effect extends Vec { radius: number; time: number; maxTime: number; color: number; kind: 'ring' | 'slash' }
@@ -56,6 +57,7 @@ export class CombatWorld {
   squad?: SquadRun
   huntTeam?: EscortRun
   towerRun?: FlameRun
+  siegeRun?: { stage: number; channel: number }
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -74,7 +76,7 @@ export class CombatWorld {
     const stats = playerStats(cb.state())
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
-    for (const enemy of this.map.enemies.slice(0, Math.max(3, chapter.objectives.kills))) {
+    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
       const cleared = enemy.id && eventsForChapter(chapter.id).some(event => {
         const p = eventProgress(cb.state(), chapter.id, event.id)
         return p.started && event.checkpoints?.some((point, index) => index < p.stage && point.guards?.includes(enemy.id!))
@@ -87,6 +89,7 @@ export class CombatWorld {
     this.syncSquad()
     this.syncHuntTeam()
     this.syncTower()
+    this.syncSiege()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -103,6 +106,30 @@ export class CombatWorld {
     const towerProgress = towerEvent && eventProgress(cb.state(), chapter.id, towerEvent.id)
     if (towerEvent && towerProgress?.started && towerProgress.stage >= 1 && towerProgress.stage <= 3)
       Object.assign(this.player, towerEvent.checkpoints![towerProgress.stage - 1])
+    const siegeEvent = eventsForChapter(chapter.id).find(e => e.kind === 'siege')
+    const siegeProgress = siegeEvent && eventProgress(cb.state(), chapter.id, siegeEvent.id)
+    if (siegeEvent && siegeProgress?.started && siegeProgress.stage >= 1 && siegeProgress.stage <= 4)
+      Object.assign(this.player, siegeEvent.checkpoints![siegeProgress.stage - 1])
+  }
+  private syncSiege() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'siege'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage < 1 || p.stage > 3) this.siegeRun = undefined
+    else if (!this.siegeRun || this.siegeRun.stage !== p.stage) this.siegeRun = { stage: p.stage, channel: 0 }
+  }
+  siegeChanneling() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'siege'), run = this.siegeRun
+    return !!e && !!run && this.player.hp > 0 && distance(this.player, e.checkpoints![run.stage]) < 65 && this.guardsRemaining(e.id, run.stage) === 0
+  }
+  private chargeSiege(dt: number) {
+    this.syncSiege()
+    const run = this.siegeRun, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'siege')
+    if (!run || !e) return
+    if (!this.siegeChanneling() || this.lastHit === this.elapsed) { run.channel = 0; return }
+    run.channel += dt
+    if (run.channel >= this.map.siegeDurations![run.stage - 1]) {
+      this.cb.eventAction?.({ type: 'breach', stage: run.stage, eventId: e.id })
+      this.syncSiege()
+    }
   }
   private syncTower() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'tower'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
@@ -357,7 +384,8 @@ export class CombatWorld {
     this.enemies.push({ id: this.nextId++, spawnId, patrol, patrolIndex: 0, alert: 0, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
       windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0,
       ...(type === 'boss' && this.map.duelArena ? { duel: { phase: 1, move: 'thrust' as const, sequence: 0, origin: { x, y }, dashTime: 0, recovery: 0 } } : {}),
-      ...(type === 'boss' && this.map.rankingArena ? { ranking: { phase: 1, recovery: 0, practice: this.cb.state().completed.includes(14), sequence: 0 } } : {}) })
+      ...(type === 'boss' && this.map.rankingArena ? { ranking: { phase: 1, recovery: 0, practice: this.cb.state().completed.includes(14), sequence: 0 } } : {}),
+      ...(type === 'boss' && this.map.siegeDurations ? { sect: { phase: 1, recovery: 0, sequence: 0 } } : {}) })
   }
   guardsRemaining(eventId: string, index: number) {
     const guards = eventsForChapter(this.chapter.id).find(e => e.id === eventId)?.checkpoints?.[index]?.guards ?? []
@@ -377,6 +405,7 @@ export class CombatWorld {
   private hurtEnemy(e: Fighter, amount: number, interrupt = false, applyBurn = true) {
     if (e.hp <= 0) return
     if (e.ranking) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .35 : e.ranking.recovery > 0 ? 1.25 : 1)))
+    if (e.sect) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .55 : e.sect.recovery > 0 ? 1.3 : 1)))
     e.hp = Math.max(0, e.hp - amount)
     if (e.patrol) e.alert = 1
     this.floats.push({ x: e.x, y: e.y - 40, text: String(amount), time: .65, color: '#f4deb4' })
@@ -429,6 +458,8 @@ export class CombatWorld {
         if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
         else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
         else if (event.kind === 'tower' && index > 0) this.cb.notify('进入当前层阵眼累计镇炎时间；镇心石降热但不计时，E不能代替镇炎。')
+        else if (event.kind === 'siege' && index > 0) this.cb.notify(this.guardsRemaining(event.id, index) > 0
+          ? `本阵守卫尚有${this.guardsRemaining(event.id, index)}名，先清理威胁。` : '在当前阵眼连续稳定斗气；离阵或受击会中断，E不能代替破阵计时。')
         else if (event.kind === 'escape' && [1, 2].includes(index)) this.cb.notify('继续在当前掩体附近稳住脚步，躲避追击；两处按顺序通过后才开放出口。')
         else if (event.kind === 'escape' && index === 3) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
@@ -545,6 +576,29 @@ export class CombatWorld {
       this.hurtEnemy(e, damage(amount, e.duel && e.duel.recovery > 0 ? 1.15 : 1, this.chapter.id * 2), action === 'strike')
     }
   }
+  private stepSect(e: Fighter, dt: number) {
+    const sect = e.sect!, p = this.player
+    sect.phase = e.hp / e.maxHp < .34 ? 3 : e.hp / e.maxHp < .67 ? 2 : 1
+    if (sect.recovery > 0) { sect.recovery = Math.max(0, sect.recovery - dt); return }
+    if (e.windup > 0) {
+      e.windup -= dt
+      if (e.windup <= 0) {
+        for (const point of [e.target, ...(e.secondary ?? [])]) {
+          if (distance(point, p) < e.radius + 16) this.hurtPlayer(78)
+          this.effect(point.x, point.y, e.radius, 0xb7cbdf)
+        }
+        sect.recovery = sect.phase === 3 ? 1 : 1.4; e.timer = .6
+      }
+      return
+    }
+    e.timer -= dt
+    if (e.timer > 0) return
+    sect.sequence++; e.target = { x: p.x, y: p.y }
+    const offsets = sect.phase === 1 ? [[-165, 0], [165, 0]] : sect.phase === 2
+      ? [[-130, -130], [130, 130]] : [[-170, 0], [170, 0], [0, -170], [0, 170]]
+    e.secondary = offsets.map(([x, y]) => ({ x: clamp(p.x + x, 65, WIDTH - 65), y: clamp(p.y + y, 65, HEIGHT - 65) }))
+    e.radius = sect.phase === 3 ? 95 : 85; e.windup = sect.phase === 3 ? .85 : 1.15
+  }
   private stepRanking(e: Fighter, dt: number) {
     const rank = e.ranking!, p = this.player
     rank.phase = e.hp / e.maxHp < .5 ? 2 : 1
@@ -630,7 +684,7 @@ export class CombatWorld {
     this.effects = this.effects.filter(e => { e.time -= dt; return e.time > 0 })
     this.floats = this.floats.filter(f => { f.time -= dt; f.y -= dt * 26; return f.time > 0 })
     for (const h of this.herbs) if (!h.available) { h.respawn -= dt; if (h.respawn <= 0) h.available = true }
-    if (p.hp <= 0) return
+    if (p.hp <= 0) { if (this.siegeRun) this.siegeRun.channel = 0; return }
     const s = this.cb.state(), stats = playerStats(s)
     p.qi = Math.min(stats.maxQi, p.qi + dt * (s.flame === 'fallen' ? 11 : 6))
     p.stamina = Math.min(100, p.stamina + dt * 23)
@@ -659,6 +713,7 @@ export class CombatWorld {
       if (e.hp <= 0) continue
       if (e.duel) { this.stepDuel(e, dt); continue }
       if (e.ranking) { this.stepRanking(e, dt); continue }
+      if (e.sect) { this.stepSect(e, dt); continue }
       const ally = this.squad?.holding && this.squad.hp > 0 ? this.squad : this.huntTeam && this.huntTeam.hp > 0 ? this.huntTeam : undefined
       const enemyTarget = ally && distance(e, ally) < distance(e, p) ? ally : p
       const dist = distance(e, enemyTarget)
@@ -719,6 +774,7 @@ export class CombatWorld {
       }
     }
     this.chargeSquad(dt)
+    this.chargeSiege(dt)
   }
   nearEvent() {
     return eventsForChapter(this.chapter.id).map(e => e.kind === 'escort' && this.escort ? { ...e, npc: this.escort } : e)
@@ -753,6 +809,9 @@ export class CombatWorld {
       ranking: boss?.ranking && boss.hp > 0 ? { phase: boss.ranking.phase, shield: boss.windup > 0, recovery: boss.ranking.recovery > 0, practice: boss.ranking.practice } : undefined,
       tower: this.towerRun ? { floor: this.towerRun.phase, remaining: Math.max(0, Math.ceil(this.map.towerFloors![this.towerRun.phase - 1].duration - this.towerRun.elapsed)),
         heat: Math.round(this.towerRun.heat), failed: this.towerRun.failed, inZone: this.inTowerFloor(), cooling: this.towerCooling() } : undefined,
+      siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
+        guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
+      sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
       squad: this.squad ? { hp: this.squad.hp, maxHp: this.squad.maxHp, holding: this.squad.holding, failed: this.squad.hp <= 0,
         waiting: this.squad.waiting, remaining: Math.max(0, Math.ceil(3 - this.squad.channel)), channeling: this.channeling() } : undefined }
   }

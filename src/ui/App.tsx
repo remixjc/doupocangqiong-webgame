@@ -155,6 +155,8 @@ export default function App() {
         {chapter.id === 14 && <div className="mountain-status"><b>火能 {s.fireEnergy}</b><span>{completed ? '每次复练胜利+1 · 人物面板2火能换30积累' : '两路各+2 · 登记−2 · 强榜首胜+3'}</span></div>}
         {r.ranking && <div className="mountain-status"><b>{r.ranking.practice ? '强榜复练' : '强榜挑战'} · 第{r.ranking.phase}阶段</b><span>{r.ranking.shield ? '蓄势护盾 · 伤害降低65%，离开锁定预警' : r.ranking.recovery ? '收招窗口 · 反击伤害提高25%' : '保持走位，等待收招反击'}</span></div>}
         {r.tower && <div className="mountain-status"><b>火塔第{r.tower.floor}层 · 剩余{r.tower.remaining}秒</b><span>心炎热量 {r.tower.heat} / 100 · {r.tower.failed ? '本层失控 · 休整从安全台阶重试' : r.tower.cooling ? '镇心石降热 · 当前计时暂停' : r.tower.inZone ? '镇炎计时中 · 躲开落焰并留意热量' : '前往当前层阵眼 · 区外暂停计时'}</span></div>}
+        {r.siege && <div className="mountain-status"><b>第{r.siege.stage}阵 · 连续破阵剩余{r.siege.remaining}秒</b><span>{r.siege.guards > 0 ? `守阵投影${r.siege.guards}名 · 先清理威胁` : r.siege.channeling ? '稳定斗气中 · 离阵或受击会中断' : '进入当前阵眼 · 已通过节点保留'}</span></div>}
+        {r.sect && <div className="mountain-status"><b>宗门决战 · 第{r.sect.phase}阶段</b><span>{r.sect.shield ? '云盾蓄势 · 减伤45%，离开锁定预警' : r.sect.recovery ? '收招窗口 · 反击伤害提高30%' : '留心云阵预警，等待反击机会'}</span></div>}
         <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
         <p className="quest-hint">{completed ? '本章已结算，可自由修炼或返回大陆舆图继续旅途。' : progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? `准备完成。前往${map.gateLabel ?? '地图上的试炼碑'}，按 E ${map.trialMode === 'assessment' ? '提交审核' : map.trialMode === 'attunement' ? '确认火域收服' : '开始挑战'}。` : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
         <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
@@ -164,7 +166,7 @@ export default function App() {
         <div className="stage">
           <Suspense fallback={<div className="loading">正在展开山川画卷…</div>}><GameView key={`${s.chapter}:${run}`} /></Suspense>
           <div className="player-hud" data-player-x={r.x} data-player-y={r.y}><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
-          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.duel?.phase ?? r.ranking?.phase ?? (r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1)} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
+          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.duel?.phase ?? r.ranking?.phase ?? r.sect?.phase ?? (r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1)} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
           {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
           <TouchControls onMenu={() => setPanel('camp')} />

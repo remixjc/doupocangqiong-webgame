@@ -73,6 +73,7 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'squad' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'hunt' && p.stage === 3 && world.runtime().huntTeam?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'tower' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'siege' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'flame') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
@@ -127,6 +128,12 @@ describe('完整主线真实规则战斗回放', () => {
               const floor = world.map.towerFloors![world.towerRun.phase - 1]
               target = world.towerRun.heat > 55 || (world.towerCooling() && world.towerRun.heat > 10) ? floor.cooling : floor.center
             }
+          }
+          if (event.kind === 'siege') {
+            target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
+            const guards = event.checkpoints?.[ep.stage]?.guards
+            const threat = ep.started && living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
+            if (threat) target = threat
           }
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)

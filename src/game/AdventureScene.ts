@@ -279,6 +279,19 @@ export default class AdventureScene extends Phaser.Scene {
       g.fillStyle(0x0b1718); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50, 6)
       g.fillStyle(0xb8c58d); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50 * w.huntTeam.hp / w.huntTeam.maxHp, 6)
     }
+    if (w.map.siegeDurations) {
+      const e = eventsForChapter(w.chapter.id).find(event => event.kind === 'siege')!
+      const stage = eventProgress(gameStore.getSnapshot().state, w.chapter.id, e.id).stage
+      e.checkpoints!.slice(1).forEach((point, index) => {
+        const passed = stage > index + 1, active = w.siegeRun?.stage === index + 1
+        g.fillStyle(passed ? 0x85c9b1 : 0xb0bfd6, .1); g.fillCircle(point.x, point.y, 65)
+        g.lineStyle(active ? 3 : 1, passed ? 0x85c9b1 : 0xc5d5eb, .7); g.strokeCircle(point.x, point.y, 65)
+        if (active && w.siegeRun!.channel > 0) {
+          g.lineStyle(5, 0xdfcfa4, .8)
+          g.beginPath(); g.arc(point.x, point.y, 69, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * w.siegeRun!.channel / w.map.siegeDurations![index]); g.strokePath()
+        }
+      })
+    }
     if (w.map.towerFloors) {
       const stage = eventProgress(gameStore.getSnapshot().state, w.chapter.id).stage
       for (const [index, floor] of w.map.towerFloors.entries()) {
@@ -396,6 +409,7 @@ export default class AdventureScene extends Phaser.Scene {
       const color = e.duel ? 0x88a8a1 : e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
       this.actor(g, e.x, e.y, color, size, false)
       if (e.ranking && e.windup > 0) { g.fillStyle(0x83c7dc, .12); g.fillCircle(e.x, e.y, 45); g.lineStyle(3, 0x9bd5e0, .8); g.strokeCircle(e.x, e.y, 45) }
+      if (e.sect && e.windup > 0) { g.fillStyle(0xc0d1e7, .12); g.fillCircle(e.x, e.y, 52); g.lineStyle(3, 0xc0d1e7, .8); g.strokeCircle(e.x, e.y, 52) }
       if (e.burn > 0) { g.lineStyle(2, 0x6de4bc, .8); g.strokeCircle(e.x, e.y, 23 * size) }
       g.fillStyle(0x0b1718, .8); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size, 5, 2)
       g.fillStyle(e.type === 'boss' ? 0xd38d75 : 0xc8b38d); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size * e.hp / e.maxHp, 5, 2)

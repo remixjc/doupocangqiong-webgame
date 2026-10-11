@@ -4,6 +4,7 @@ import { initialState } from '../src/core/model'
 import { chapterById } from '../src/content/chapters'
 import { mapCollides, mapForChapter } from '../src/content/maps'
 import { CombatWorld } from '../src/game/combat'
+import { eventForChapter } from '../src/content/events'
 
 describe('C6a-1 回归与中州基础', () => {
   it.each([
@@ -47,7 +48,9 @@ describe('C6a-1 回归与中州基础', () => {
       if (p.x < 40 || p.x > 1240 || p.y < 50 || p.y > 760 || visited.has(key) || mapCollides(map, p)) continue
       visited.add(key); queue.push(p)
     }
-    for (const p of [map.spawn, map.camp, map.gate, map.bossSpawn, ...map.herbs, ...map.enemies]) {
+    const event = eventForChapter(chapter)
+    for (const p of [map.spawn, map.camp, map.gate, map.bossSpawn, ...map.herbs, ...map.enemies,
+      ...(event ? [event.npc, ...(event.checkpoints ?? [])] : [])]) {
       expect(mapCollides(map, p), `阻挡点${p.x},${p.y}`).toBe(false)
       expect(queue.some(q => Math.hypot(q.x - p.x, q.y - p.y) < 15), `不可达${p.x},${p.y}`).toBe(true)
     }

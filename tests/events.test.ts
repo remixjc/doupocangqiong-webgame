@@ -92,7 +92,7 @@ describe('旧存档迁移与事件校验', () => {
   })
   it('完整28章旧存档迁移后可继续重返', () => {
     const old = legacy(); old.chapter = 28; old.completed = Array.from({ length: 28 }, (_, i) => i + 1)
-    for (const id of old.completed) old.progress[id] = { ...chapterById(id).objectives, ...(id <= 15 ? { herbs: 3, kills: id >= 12 ? 4 : 3, brews: id === 6 ? 1 : id === 9 ? 2 : 0 } : {}), boss: true, intro: true }
+    for (const id of old.completed) old.progress[id] = { ...chapterById(id).objectives, ...(id <= 16 ? { herbs: 3, kills: id >= 12 ? 4 : 3, brews: id === 6 ? 1 : id === 9 ? 2 : 0 } : {}), boss: true, intro: true }
     expect(validateState(old).completed).toHaveLength(28)
   })
   it('拒绝事件越界、未开始已完成、非法报价及过关缺事件', () => {

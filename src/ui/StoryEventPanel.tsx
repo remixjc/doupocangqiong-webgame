@@ -24,7 +24,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -33,6 +33,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'auction' && ['bid', 'resolve-bid', 'observe'].includes(action.type) && checkpoint !== 1) { gameStore.notify('请到竞拍台处理出价。'); return false }
       if (event.kind === 'auction' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回交易执事处登记。'); return false }
       if (event.kind === 'hunt' && action.type === 'deliver' && !runtime.huntTeam?.arrived) { gameStore.notify('队友须存活并返回胡嘉处，等待队友跟上。'); return false }
+      if (event.kind === 'siege' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回药老处确认决战准备。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -115,6 +116,10 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === 1 && progress.stage === 2 && <button className="primary" onClick={() => act({ type: 'resolve-bid' })}>查看对手回应 · 结算本次出价</button>}
       {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记交易情报 · 30积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'siege' && progress.started && !done && <>
+      <p>三阵按序通过；离阵或受击清空当前计时，已通过阵眼保留。</p>
+      {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>确认决战准备</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

@@ -8,6 +8,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'stabilize'; stage: number }
   | { type: 'evade'; stage: number }
   | { type: 'descend'; stage: number }
+  | { type: 'breach'; stage: number }
   | { type: 'bid'; amount: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
@@ -110,6 +111,12 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'siege' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'siege' && action.type === 'breach' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'siege' && action.type === 'deliver' && p.stage === 4) {
+      p.stage = 5; message = '决战准备已确认。蓄势时护盾减伤，收招时反击更有效。前往宗门决战碑。'
     } else if (event.kind === 'tower' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'tower' && action.type === 'descend' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {

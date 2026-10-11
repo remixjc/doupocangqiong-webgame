@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -16,6 +16,21 @@ export interface ChapterEvent {
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  16: {
+    id: 'yunlan-three-sigil-siege', kind: 'siege', introducedVersion: '0.8.1',
+    title: '再临云岚 · 三阵破门', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['到战前约碑确认破阵路线', '清理山阶守卫，在第一阵眼连续破阵3秒',
+      '清理中庭守卫，在第二阵眼连续破阵4秒', '清理前殿守卫，在第三阵眼连续破阵5秒',
+      '山门已开，返回药老处确认决战准备', '决战准备完成，前往宗门决战碑'],
+    introduction: '先确认进攻路线，再按山阶、中庭、前殿的次序破阵。清理对应守阵投影后，留在当前阵眼连续3、4、5秒；受击或离阵会中断当前计时。三阵通过后山门开放，回来确认准备，再面对云山。',
+    note: '三阵、守卫和破阵计时为原创宗门攻防。已破阵节点保留，失败免费休整；破阵不额外发材料。决战获胜后营地首通，第16章收尾后药老暂时离队。',
+    checkpoints: [
+      { x: 330, y: 220, label: '战前约碑', text: '路线确认：山阶 → 中庭 → 前殿。先清理守阵投影，再在阵眼稳定斗气。' },
+      { x: 600, y: 430, label: '山阶阵眼', text: '山阶已破。前往中庭，继续清理守阵投影。', guards: ['sect-stair-brute', 'sect-stair-hunter'] },
+      { x: 800, y: 420, label: '中庭阵眼', text: '中庭已破。沿北侧去前殿，留意最后一处守卫。', guards: ['sect-court-mage'] },
+      { x: 930, y: 220, label: '前殿阵眼', text: '三阵已破，山门开启。返回药老处确认决战准备。', guards: ['sect-hall-hunter'] },
+    ],
+  },
   1: {
     id: 'yao-training', kind: 'training', title: '药老指导', speaker: '药老',
     npc: { x: 285, y: 625 }, dummy: { x: 370, y: 630 },
