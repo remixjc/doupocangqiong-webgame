@@ -70,6 +70,7 @@ export class CombatWorld {
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
+  private vaultSpawned = false
   private rollDirection: Vec = { x: 1, y: 0 }
   barrierClosed() {
     const barrier = this.map.eventBarrier
@@ -108,6 +109,7 @@ export class CombatWorld {
     this.syncTomb()
     this.syncPurification()
     this.syncDefense()
+    this.syncVault()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -143,6 +145,14 @@ export class CombatWorld {
       Object.assign(this.player, purification.checkpoints![this.purificationRun.stage - 1])
     const defense = eventsForChapter(chapter.id).find(e => e.kind === 'defense')
     if (defense && this.defenseRun) Object.assign(this.player, defense.checkpoints![this.defenseRun.stage - 1])
+    const vault = eventsForChapter(chapter.id).find(e => e.kind === 'vault')
+    if (vault && eventProgress(cb.state(), chapter.id, vault.id).stage === 5) Object.assign(this.player, vault.checkpoints![4])
+  }
+  private syncVault() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'vault')
+    if (!e || this.vaultSpawned || eventProgress(this.cb.state(), this.chapter.id, e.id).stage !== 5) return
+    for (const guard of this.map.vaultGuards!) this.spawn(guard.type, guard.x, guard.y, guard.id)
+    this.vaultSpawned = true
   }
   private syncDefense() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'defense')
@@ -739,6 +749,13 @@ export class CombatWorld {
           if (eventProgress(s, this.chapter.id, event.id).stage !== index) this.cb.notify('先读引路碑记，再按三处幻境顺序观察。')
           else this.cb.storyEvent?.(event.id, index)
         }
+        else if (event.kind === 'vault') {
+          this.syncVault()
+          if (index === 4) this.cb.storyEvent?.(event.id, index)
+          else if (index === 5 && this.guardsRemaining(event.id, index) > 0)
+            this.cb.notify(`内殿还有${this.guardsRemaining(event.id, index)}名守卫，先清理再读取石刻。`)
+          else this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+        }
         else if (event.kind === 'defense') {
           if (index === 0) this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           else this.cb.notify('靠近当前驻点开始两波防守，击退袭击者并保护280生命；E不能代替守线。')
@@ -1039,6 +1056,7 @@ export class CombatWorld {
     this.stepExpedition(dt)
     this.stepTomb(dt)
     this.stepPrison(dt)
+    this.syncVault()
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue

@@ -124,6 +124,10 @@ chapters[25].boss = '联盟防线 · 出征确认'
 chapters[25].opening[2].text = '向药老接取守线，读联盟战报牌，再依序靠近西哨、东侧联络、后方撤离点开始各两波防守。驻点280生命，敌人会攻击驻点；击退两波且双方存活才能记录该段。失败免费重建当前段，已守住段保留，回报与出征确认后营地首通。'
 chapters[25].trialNote = '三处驻点、独立生命与两波袭击为灾难后联盟筹备的原创玩法，不改变已失去族群的结局；本章不提前战胜魂天帝。'
 
+chapters[26].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[26].opening[2].text = '向古元接取洞府探索，读入口碑后依序读北侧青莲、南侧心炎、西侧星火三铭。封门盘按青莲→心炎→星火输入，错误免费复位、线索可重读，部分火纹保存。封门打开后清理内殿投影，读取石刻并报告；本源传承专属交互接续，本批仍保留原试炼投影。'
+chapters[26].trialNote = '三铭火纹、实体封门和内殿投影为原创压缩探索，不复述原著古玉或洞府机关；本源传承下一批接续。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

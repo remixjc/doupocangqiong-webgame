@@ -14,6 +14,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'reflect'; choice: ReflectionChoice; stage: number }
   | { type: 'purify'; stage: number }
   | { type: 'defend'; stage: number }
+  | { type: 'inscribe'; symbol: 'lotus' | 'fallen' | 'star'; step: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -38,7 +39,7 @@ export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
     quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal', 'inheritance'].includes(event.kind) ? 300 : ['lineage', 'illusion'].includes(event.kind) ? 3 : event.kind === 'expedition' ? 7 : 0,
-    attempts: ['tournament', 'tomb', 'illusion'].includes(event.kind) ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance'].includes(event.kind) ? 1 : 0,
+    attempts: ['tournament', 'tomb', 'illusion'].includes(event.kind) ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance', 'vault'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -115,6 +116,21 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'vault' && action.type === 'seal' && action.index >= 0 && action.index <= 3 && action.index <= p.stage) {
+      message = event.checkpoints![action.index].text
+      if (action.index === p.stage) p.stage++
+    } else if (event.kind === 'vault' && action.type === 'inscribe' && p.stage === 4) {
+      if (action.step !== p.score || !['lotus', 'fallen', 'star'].includes(action.symbol)) return fail('火纹输入步骤已更新或无效。')
+      if (action.symbol !== ['lotus', 'fallen', 'star'][p.score]) {
+        p.score = 0; p.attempts++; message = '火纹顺序不符，封门盘免费复位。已读铭文保留；顺序为青莲 → 心炎 → 星火。'
+      } else {
+        p.score++; message = `火纹响应 · ${p.score}/3。`
+        if (p.score === 3) { p.stage = 5; p.score = 0; p.attempts++; message = '封门已开。清理内殿守卫后，读取石刻。' }
+      }
+    } else if (event.kind === 'vault' && action.type === 'seal' && action.index === 5 && p.stage === 5) {
+      p.stage = 6; message = event.checkpoints![5].text
+    } else if (event.kind === 'vault' && action.type === 'deliver' && p.stage === 6) {
+      p.stage = 7; message = '洞府路线已经登记，未发资源。前往本源传承台准备下一步。'
     } else if (event.kind === 'defense' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'defense' && action.type === 'defend' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {

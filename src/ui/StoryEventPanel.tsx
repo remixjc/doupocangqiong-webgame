@@ -26,7 +26,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'purification', 'defense', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'purification', 'defense', 'vault', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -52,6 +52,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'illusion' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify(`请返回${event.speaker}处接取或确认。`); return false }
       if (event.kind === 'purification' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回净化引路人处接取或报告。'); return false }
       if (event.kind === 'defense' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回药老处接取或报告。'); return false }
+      if (event.kind === 'vault' && action.type === 'inscribe' && checkpoint !== 4) { gameStore.notify('请在封门盘操作火纹。'); return false }
+      if (event.kind === 'vault' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回古元处接取或报告。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -104,6 +106,14 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     </>}
     {event.kind === 'purification' && progress.started && checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记三段净化 · 未发资源</button>}
     {event.kind === 'defense' && progress.started && checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告联盟守线 · 未额外发资源</button>}
+    {event.kind === 'vault' && progress.started && !done && <>
+      {checkpoint === 4 && progress.stage === 4 && <>
+        <p>已连通火纹 {progress.score}/3 · 尝试记录 {progress.attempts}。北铭青莲 → 南铭心炎 → 西铭星火。</p>
+        <div className="camp-options">{([['lotus', '青莲'], ['fallen', '心炎'], ['star', '星火']] as const).map(([symbol, label]) =>
+          <button className="secondary" key={symbol} onClick={() => act({ type: 'inscribe', symbol, step: progress.score })}>触碰{label}火纹</button>)}</div>
+      </>}
+      {checkpoint === undefined && progress.stage === 6 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告洞府路线 · 未发资源</button>}
+    </>}
     {event.kind === 'rescue' && progress.started && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>向萧鼎报告 · 50金币</button>}
     {event.kind === 'squad' && progress.started && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记协作资格 · 40积累</button>}
     {event.kind === 'hunt' && progress.started && <>

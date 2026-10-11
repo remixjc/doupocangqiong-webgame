@@ -19,7 +19,7 @@ describe('C9a-1 终局三图基础', () => {
       if (p.x < 40 || p.x > 1240 || p.y < 50 || p.y > 760 || visited.has(key) || mapCollides(map, p)) continue
       visited.add(key); queue.push(p)
     }
-    for (const p of [map.spawn, map.camp, map.gate, map.bossSpawn, ...map.herbs, ...map.enemies,
+    for (const p of [map.spawn, map.camp, map.gate, map.bossSpawn, ...map.herbs, ...map.enemies, ...(map.vaultGuards ?? []),
       ...eventsForChapter(id).flatMap(e => [e.npc, ...(e.checkpoints ?? [])])]) {
       expect(mapCollides(map, p)).toBe(false)
       expect(queue.some(q => Math.hypot(q.x - p.x, q.y - p.y) < 15), `第${id}章不可达${p.x},${p.y}`).toBe(true)

@@ -8,7 +8,7 @@ export interface Reflection {
 }
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification' | 'defense'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification' | 'defense' | 'vault'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -24,6 +24,23 @@ export interface ChapterEvent {
   reflectionReward?: number
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  27: {
+    id: 'emperor-vault-three-inscriptions', kind: 'vault', introducedVersion: '0.11.2',
+    title: '洞府 · 三铭封门', speaker: '古元', npc: { x: 280, y: 625 },
+    stages: ['前往洞府入口碑读取铭文规则', '读取北侧青莲铭文', '读取南侧心炎铭文', '读取西侧星火铭文',
+      '前往封门盘，按三铭顺序输入火纹', '封門已开，清理内殿守卫后读取内殿石刻', '返回古元处报告洞府路线', '洞府路线已经登记，准备本源传承'],
+    introduction: '先读入口碑，再按北、南、西三铭顺序观察。三处铭文分别指向青莲、心炎、星火；到封门盘照此输入火纹。错误免费复位当前机关，已读线索保留且可以重读。封门打开后，清理内殿投影守卫、读取石刻，再回来报告。',
+    note: '三铭、火纹顺序、投影守卫与封门是原创压缩探索，不复述原著古帝洞府机关或古玉细节。输入不扣异火或材料，报告不发资源。本源传承继续下一批，本批仍保留原传承试炼投影。',
+    checkpoints: [
+      { x: 330, y: 220, label: '入口碑', text: '北铭 → 南铭 → 西铭。三处铭文指出火纹顺序；到封门盘输入，错误可免费复位并重读线索。' },
+      { x: 620, y: 290, label: '北侧青莲铭', text: '第一纹：地底青莲。封门第一步选青莲火纹。' },
+      { x: 650, y: 620, label: '南侧心炎铭', text: '第二纹：塔底心炎。封门第二步选心炎火纹。' },
+      { x: 330, y: 460, label: '西侧星火铭', text: '第三纹：星域不灭。封门第三步选星火火纹。' },
+      { x: 720, y: 410, label: '封门盘', text: '火纹顺序：青莲 → 心炎 → 星火。错误免费复位当前机关，三处铭文仍可重读。' },
+      { x: 1050, y: 400, label: '内殿石刻', text: '内殿路线已记下。返回古元处报告，再准备本源传承。',
+        guards: ['vault-core-hunter', 'vault-core-mage'] },
+    ],
+  },
   26: {
     id: 'coalition-three-post-defense', kind: 'defense', introducedVersion: '0.11.1',
     title: '联盟 · 三处守线', speaker: '药老', npc: { x: 280, y: 625 },

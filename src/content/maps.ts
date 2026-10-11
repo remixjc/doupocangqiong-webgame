@@ -30,6 +30,7 @@ export interface MapDefinition {
   starTrial?: { center: Point; radius: number; cooling: Point[]; durations: number[]; pressure: number[] }
   purificationZones?: { center: Point; radius: number; duration: number }[]
   defensePosts?: boolean
+  vaultGuards?: MapEnemy[]
   prisonPursuit?: MapEnemy[]
   tombDurations?: number[]
   rankingArena?: boolean
@@ -430,16 +431,17 @@ export const endgameMaps: Record<number, MapDefinition> = {
   },
   27: {
     id: 'tuoshe-emperor-origin-vault', style: 'emperor-vault', gateLabel: '本源传承台',
+    eventBarrier: { eventId: 'emperor-vault-three-inscriptions', unlockedStage: 5, obstacle: { x: 780, y: 300, w: 70, h: 220 } },
+    vaultGuards: [{ id: 'vault-core-hunter', type: 'hunter', x: 1070, y: 410 }, { id: 'vault-core-mage', type: 'mage', x: 1100, y: 260 }],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 150 }, bossSpawn: { x: 1080, y: 310 }, safeRadius: 175,
     obstacles: [{ x: 420, y: 90, w: 140, h: 160 }, { x: 740, y: 550, w: 170, h: 110 },
-      { x: 940, y: 60, w: 70, h: 150 }, { x: 60, y: 320, w: 100, h: 100 }],
-    herbs: [{ x: 310, y: 430 }, { x: 640, y: 270 }, { x: 1080, y: 660 }, { x: 280, y: 100 }, { x: 620, y: 670 }, { x: 1140, y: 430 }],
-    enemies: [{ id: 'vault-outer-brute', type: 'brute', x: 620, y: 410 }, { id: 'vault-west-mage', type: 'mage', x: 670, y: 320 },
-      { id: 'vault-inner-hunter', type: 'hunter', x: 1020, y: 500 }, { id: 'vault-north-mage', type: 'mage', x: 740, y: 240 },
-      { id: 'vault-core-hunter', type: 'hunter', x: 1120, y: 300 }],
+      { x: 940, y: 60, w: 70, h: 150 }, { x: 60, y: 320, w: 100, h: 100 },
+      { x: 780, y: 0, w: 70, h: 300 }, { x: 780, y: 520, w: 70, h: 280 }],
+    herbs: [{ x: 300, y: 350 }, { x: 650, y: 140 }, { x: 1080, y: 660 }, { x: 280, y: 100 }, { x: 560, y: 750 }, { x: 1200, y: 560 }],
+    enemies: [],
     paths: [[{ x: 150, y: 650 }, { x: 330, y: 430 }, { x: 650, y: 400 }, { x: 1030, y: 400 }, { x: 1150, y: 150 }],
       [{ x: 650, y: 400 }, { x: 660, y: 670 }]],
-    landmarks: [{ x: 680, y: 60, label: '陀舍古帝洞府 · 本源石殿' }, { x: 680, y: 755, label: '外殿铭文 / 封门 / 本源祭台' }],
+    landmarks: [{ x: 680, y: 60, label: '陀舍古帝洞府 · 本源石殿' }, { x: 680, y: 755, label: '入口碑 → 北 / 南 / 西三铭 → 封门 / 内殿石刻' }],
   },
   28: {
     id: 'continent-final-battlefield', style: 'final-battle', gateLabel: '终战启程碑',
