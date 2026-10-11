@@ -87,7 +87,7 @@ describe('完整主线真实规则战斗回放', () => {
               state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
             else if (checkpoint === undefined && p.stage === 6) state = advanceEvent(state, { type: 'deliver', eventId }).state
           }
-          else if (e.kind === 'flame') {
+          else if (['flame', 'starfire'].includes(e.kind)) {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
           } else if (e.kind === 'tournament') {
@@ -169,13 +169,33 @@ describe('完整主线真实规则战斗回放', () => {
             if (threat) target = threat
           }
           if (event.kind === 'danfinal') target = !ep.started || ep.stage === 6 ? event.npc : event.checkpoints![ep.stage <= 3 ? 0 : 1]
+          if (event.kind === 'starfire') {
+            target = !ep.started || ep.stage === 5 ? event.npc : event.checkpoints![ep.stage === 0 ? 0 : 1]
+            if (world.starRun) {
+              const z = world.map.starTrial!, cooling = [...z.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
+              target = world.starRun.heat > 50 || (world.starCooling() && world.starRun.heat > 10) ? cooling : z.center
+            }
+          }
         }
-        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
+        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
         if (warning) {
           const direction = world.player.x < 850 ? 1 : -1
           input = world.towerRun || world.flameRun?.phase === 3 ? { x: 0, y: world.player.y < warning.y ? -1 : 1 } : { x: direction, y: 0 }
+          if (world.starRun) {
+            // Choose a visible escape direction that avoids locked warnings and stays near the current goal.
+            const z = world.map.starTrial!, warnings = world.starRun.warnings
+            const options = Array.from({ length: 8 }, (_, i) => {
+              const x = Math.cos(i * Math.PI / 4), y = Math.sin(i * Math.PI / 4)
+              const point = { x: world.player.x + x * 140, y: world.player.y + y * 140 }
+              const score = -dist(point, target) - (dist(point, z.center) > z.radius ? 250 : 0)
+                - warnings.filter(w => dist(w, point) < w.radius + 22).length * 1000
+                - (mapCollides(world.map, point, 22) ? 2000 : 0)
+              return { x, y, score }
+            }).sort((a, b) => b.score - a.score)
+            input = { x: options[0].x, y: options[0].y }
+          }
           world.action('dodge', input); path = []
         } else if (threat) {
           const point = [threat.target, ...(threat.secondary ?? [])].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
@@ -209,7 +229,7 @@ describe('完整主线真实规则战斗回放', () => {
         world.step(input)
         if (frame % 10 === 0) expect(() => validateState(state), `第${chapter.id}章第${frame}帧必须可存档`).not.toThrow()
       }
-      expect(state.progress[chapter.id].boss, `第${chapter.id}章未打通：hp=${world.player.hp}, kills=${state.progress[chapter.id].kills}, herbs=${state.progress[chapter.id].herbs}, position=${world.player.x},${world.player.y}`).toBe(true)
+      expect(state.progress[chapter.id].boss, `第${chapter.id}章未打通：hp=${world.player.hp}, kills=${state.progress[chapter.id].kills}, herbs=${state.progress[chapter.id].herbs}, position=${world.player.x},${world.player.y}, event=${JSON.stringify(eventProgress(state))}, star=${JSON.stringify(world.runtime().starChallenge)}`).toBe(true)
       if (chapter.id === 20) expect(eventProgress(state).attempts, '丹界指定药材应在单次45秒内完成').toBe(1)
       state = finishChapter(state)
       expect(validateState(state)).toEqual(state)

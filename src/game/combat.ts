@@ -60,6 +60,7 @@ export class CombatWorld {
   siegeRun?: { stage: number; channel: number }
   expeditionRun?: { attempt: number; elapsed: number; failed: boolean }
   danLightning?: SurvivalRun
+  starRun?: FlameRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -96,6 +97,7 @@ export class CombatWorld {
     this.syncSiege()
     this.syncExpedition()
     this.syncDanLightning()
+    this.syncStar()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -120,6 +122,61 @@ export class CombatWorld {
     if (expedition && eventProgress(cb.state(), chapter.id, expedition.id).stage === 1)
       Object.assign(this.player, expedition.checkpoints![0])
     if (this.danLightning) Object.assign(this.player, this.map.lightningTrial!.center)
+    if (this.starRun) Object.assign(this.player, this.map.starTrial!.cooling[0])
+  }
+  private syncStar() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'starfire')
+    const p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage < 2 || p.stage > 4) this.starRun = undefined
+    else if (!this.starRun || this.starRun.phase !== p.stage)
+      this.starRun = { phase: p.stage, heat: this.starRun?.heat ?? 0, elapsed: 0, nextWave: 0, warnings: [], wave: 0, failed: false }
+  }
+  starCooling() { return !!this.map.starTrial?.cooling.some(p => distance(p, this.player) < 55) }
+  inStarZone() {
+    const z = this.map.starTrial
+    return !!z && distance(this.player, z.center) < z.radius
+  }
+  starStable() { return !!this.starRun && this.inStarZone() && !this.starCooling() && this.starRun.heat <= 65 && !this.starRun.failed && this.player.hp > 0 }
+  private stepStar(dt: number) {
+    this.syncStar()
+    const run = this.starRun, z = this.map.starTrial, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'starfire')
+    if (!run || !z || !e || run.failed) return
+    run.heat = clamp(run.heat + dt * (this.starCooling() ? -32 : this.inStarZone() ? z.pressure[run.phase - 2] : -8), 0, 100)
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        if (distance(this.player, warning) < warning.radius + 16 && this.player.invincible <= 0) {
+          this.hurtPlayer(55); run.heat = clamp(run.heat + 15, 0, 100)
+        }
+        this.effect(warning.x, warning.y, warning.radius, 0xac8fd7)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.heat >= 100) {
+      run.failed = true; run.warnings = []
+      this.cb.notify('星火压力满格，本段失控。已完成阶段保留，免费休整或刷新回镇心石重试当前阶段。')
+      return
+    }
+    if (this.starStable()) run.elapsed += dt
+    if (run.elapsed >= z.durations[run.phase - 2]) {
+      this.cb.eventAction?.({ type: 'stabilize', stage: run.phase, eventId: e.id }); this.syncStar(); return
+    }
+    run.nextWave -= dt
+    if (run.nextWave <= 0) {
+      run.nextWave = run.phase === 4 ? 1.9 : 2.4
+      if (run.phase === 3) {
+        run.warnings.push(...Array.from({ length: 6 }, (_, i) => {
+          const angle = i * Math.PI / 3 + (run.wave % 2 ? Math.PI / 6 : 0)
+          return { x: z.center.x + Math.cos(angle) * 125, y: z.center.y + Math.sin(angle) * 125, radius: 45, time: 1.1 }
+        }))
+      } else {
+        const offsets = run.phase === 4 ? [[0, 0], [-125, 0], [125, 0], [0, -125], [0, 125]] : [[0, 0]]
+        run.warnings.push(...offsets.map(([x, y]) => ({ x: clamp(this.player.x + x, 65, WIDTH - 65),
+          y: clamp(this.player.y + y, 65, HEIGHT - 65), radius: run.phase === 4 ? 50 : 65, time: 1 })))
+      }
+      run.wave++
+    }
   }
   private syncDanLightning() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'danfinal')
@@ -537,6 +594,11 @@ export class CombatWorld {
           else if (stage === 4) this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           else this.cb.notify('控火通过后在丹雷台开始；生存18秒并躲避预警，E不能跳过丹雷。')
         }
+        else if (event.kind === 'starfire' && index === 1) {
+          if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify('先与丹塔引路人接取星火稳固。')
+          else if (eventProgress(s, this.chapter.id, event.id).stage === 1) this.cb.storyEvent?.(event.id, index)
+          else this.cb.notify('核心内压力不超过65才计时；镇心石降压，E不能代替三段稳固。')
+        }
         else if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
         else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
         else if (event.kind === 'tower' && index > 0) this.cb.notify('进入当前层阵眼累计镇炎时间；镇心石降热但不计时，E不能代替镇炎。')
@@ -588,7 +650,7 @@ export class CombatWorld {
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
         else if (this.map.survivalZone || this.map.trialMode || this.map.escapeRoute) {
           this.cb.kill(true)
-          this.cb.notify(this.map.trialMode === 'assessment' ? `${this.map.gateLabel ?? '资格'}审核通过，返回营地结算并继续旅程。` : this.map.trialMode === 'attunement' ? '火域收服已确认，返回营地正式结算取得青莲地心火。' : '已安全撤离，返回营地结算。')
+          this.cb.notify(this.map.trialMode === 'assessment' ? `${this.map.gateLabel ?? '资格'}审核通过，返回营地结算并继续旅程。` : this.map.trialMode === 'attunement' ? `收服已确认，返回营地正式结算取得${this.map.starTrial ? '三千焱炎火' : '青莲地心火'}。` : '已安全撤离，返回营地结算。')
         }
         else if (!this.bossSpawned) {
           this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
@@ -874,6 +936,7 @@ export class CombatWorld {
     this.chargeSquad(dt)
     this.chargeSiege(dt)
     if (p.hp > 0) this.stepDanLightning(dt)
+    if (p.hp > 0) this.stepStar(dt)
   }
   nearEvent() {
     return eventsForChapter(this.chapter.id).map(e => e.kind === 'escort' && this.escort ? { ...e, npc: this.escort } : e)
@@ -911,6 +974,8 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
+      starChallenge: this.starRun ? { phase: this.starRun.phase, remaining: Math.max(0, Math.ceil(this.map.starTrial!.durations[this.starRun.phase - 2] - this.starRun.elapsed)),
+        heat: Math.round(this.starRun.heat), inZone: this.inStarZone(), cooling: this.starCooling(), stable: this.starStable(), failed: this.starRun.failed } : undefined,
       danLightning: this.danLightning ? { remaining: Math.max(0, Math.ceil(this.map.lightningTrial!.duration - this.danLightning.elapsed)),
         inZone: this.inDanLightningZone(), phase: Math.min(3, 1 + Math.floor(this.danLightning.elapsed / 6)) } : undefined,
       expedition: this.expeditionRun ? { remaining: Math.max(0, Math.ceil(this.map.expeditionDuration! - this.expeditionRun.elapsed)),

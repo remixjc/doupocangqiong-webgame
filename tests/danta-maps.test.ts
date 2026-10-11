@@ -16,7 +16,7 @@ describe('C7a-1 丹界、星域与魂殿场景基础', () => {
     }
     const event = eventForChapter(chapter)
     for (const p of [map.spawn, map.camp, map.gate, map.bossSpawn, ...map.herbs, ...map.enemies,
-      ...eventsForChapter(chapter).flatMap(e => [e.npc, ...(e.checkpoints ?? [])])]) {
+      ...eventsForChapter(chapter).flatMap(e => [e.npc, ...(e.checkpoints ?? [])]), ...(map.starTrial?.cooling ?? [])]) {
       expect(mapCollides(map, p), `阻挡点${p.x},${p.y}`).toBe(false)
       expect(queue.some(q => Math.hypot(q.x - p.x, q.y - p.y) < 15), `不可达${p.x},${p.y}`).toBe(true)
     }

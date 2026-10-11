@@ -94,6 +94,11 @@ chapters[19].boss = '丹会成绩 · 大会审核'
 chapters[19].trialNote = '限时药材、三步控火与18秒丹雷生存为原创丹会关卡，不判定原著丹药品级；练习不额外生成玩家丹药。'
 chapters[19].opening[2].text = '先向丹塔执事完成45秒指定药材目标，再到南侧找玄空子。大会丹炉按30/70/50%三步控火，合计210分通过，失败免费重试。到丹雷台累计18秒并躲避三阶段雷击，回玄空子登记，再到审核台通过本章。'
 
+chapters[20].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[20].boss = '三千焱炎火 · 收服确认'
+chapters[20].opening[2].text = '与丹塔引路人接取稳固，确认星域退路，再在核心开启三段10 / 12 / 14秒挑战。核心内且压力不超过65才能累计，镇心石降压但不计时；受击加压，100失控免费重试当前阶段。返回报告、收服台确认后营地首通取得三千焱炎火。'
+chapters[20].trialNote = '星火压力、镇心石与三段稳固为原创收服改编；不能击杀异火投影代替稳固，正式首通后才取得异火，药老仍离队。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

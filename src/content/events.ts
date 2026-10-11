@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -159,6 +159,19 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
       { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
       { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
+    ],
+  },
+  21: {
+    id: 'star-domain-undying-attunement', kind: 'starfire', introducedVersion: '0.9.3',
+    title: '星域 · 不灭星火', speaker: '丹塔引路人', npc: { x: 280, y: 625 },
+    stages: ['前往星域退路牌确认安全路线', '前往星火核心开始三段稳固',
+      '星火引流：压力不超过65，核心内累计10秒', '魂力稳固：压力不超过65，核心内累计12秒',
+      '不灭调息：压力不超过65，核心内累计14秒', '返回引路人报告星火稳定', '星火已稳固，前往收服台'],
+    introduction: '确认退路，再在星火核心开启引流、魂力稳固与不灭调息。核心内且压力不超过65才累计时间，青色镇心石降压但不计时。火息压力跨段保留，落焰受击还会增加压力；100失控，可免费重试当前安全阶段。',
+    note: '压力、镇心石、三段时长与短对白为原创收服改编。未复现原著具体强者时序。报告不发异火或材料，第21章营地正式首通才取得三千焱炎火；药老仍待营救。',
+    checkpoints: [
+      { x: 330, y: 220, label: '星域退路牌', text: '退路已确认。星火核心压力需不超过65；镇心石降压时不能累计稳固时间。' },
+      { x: 980, y: 350, label: '星火核心', text: '三段稳固10 / 12 / 14秒。避开落焰、交替星环与十字回涌，利用镇心石调息。' },
     ],
   },
   8: {

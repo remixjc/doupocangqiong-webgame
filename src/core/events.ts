@@ -112,6 +112,14 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'starfire' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'starfire' && action.type === 'test' && p.stage === 1) {
+      p.stage = 2; message = '星火稳固开始。压力跨段保留，核心内压力不超过65才计时；镇心石降压时不计时。'
+    } else if (event.kind === 'starfire' && action.type === 'stabilize' && action.stage === p.stage && p.stage >= 2 && p.stage <= 4) {
+      p.stage++; message = p.stage === 5 ? '不灭星火已稳定。返回引路人报告，再确认收服。' : event.stages[p.stage]
+    } else if (event.kind === 'starfire' && action.type === 'deliver' && p.stage === 5) {
+      p.stage = 6; message = '稳固记录已登记，不发异火或材料。前往收服台确认，再营地首通结算取得三千焱炎火。'
     } else if (event.kind === 'danfinal' && action.type === 'test' && p.stage === 0) {
       p.stage = 1; p.score = 0; message = '大会丹炉开始。三步火候30 / 70 / 50%，合计210分通过。'
     } else if (event.kind === 'danfinal' && action.type === 'pulse' && p.stage >= 1 && p.stage <= 3) {

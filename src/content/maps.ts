@@ -27,6 +27,7 @@ export interface MapDefinition {
   escapeDurations?: number[]
   expeditionDuration?: number
   lightningTrial?: { center: Point; radius: number; duration: number }
+  starTrial?: { center: Point; radius: number; cooling: Point[]; durations: number[]; pressure: number[] }
   rankingArena?: boolean
   towerFloors?: TowerFloor[]
   siegeDurations?: number[]
@@ -342,15 +343,16 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '丹界药谷 · 大会历练' }, { x: 620, y: 755, label: '限时药材 → 控火成丹 → 丹雷生存 → 审核' }],
   },
   21: {
-    id: 'danta-star-domain-platforms', style: 'star-domain', gateLabel: '星火收服台',
+    id: 'danta-star-domain-platforms', style: 'star-domain', gateLabel: '星火收服台', trialMode: 'attunement',
+    starTrial: { center: { x: 980, y: 350 }, radius: 200, cooling: [{ x: 860, y: 420 }, { x: 1110, y: 430 }],
+      durations: [10, 12, 14], pressure: [9, 11, 13] },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1060, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 410, y: 100, w: 140, h: 180 }, { x: 740, y: 560, w: 170, h: 140 }, { x: 930, y: 70, w: 80, h: 120 }],
     herbs: [{ x: 310, y: 440 }, { x: 640, y: 280 }, { x: 1010, y: 620 }, { x: 290, y: 170 }, { x: 680, y: 650 }, { x: 1080, y: 430 }],
-    enemies: [{ type: 'brute', x: 610, y: 420 }, { type: 'mage', x: 850, y: 310 },
-      { type: 'hunter', x: 1040, y: 570 }, { type: 'mage', x: 760, y: 260 }],
+    enemies: [],
     paths: [[{ x: 150, y: 650 }, { x: 300, y: 430 }, { x: 650, y: 420 }, { x: 1050, y: 400 }, { x: 1150, y: 160 }],
       [{ x: 650, y: 420 }, { x: 650, y: 240 }]],
-    landmarks: [{ x: 680, y: 60, label: '丹塔星域 · 不灭星火' }, { x: 660, y: 755, label: '星台之间 · 稳住火息' }],
+    landmarks: [{ x: 680, y: 60, label: '丹塔星域 · 不灭星火' }, { x: 660, y: 755, label: '确认退路 → 星火引流 / 魂力稳固 / 不灭调息 → 收服' }],
   },
   22: {
     id: 'soul-prison-rescue-corridor', style: 'soul-prison', gateLabel: '禁魂深处',

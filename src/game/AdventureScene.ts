@@ -329,6 +329,19 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(3, 0xf2ac87, .8); g.strokeCircle(warning.x, warning.y, warning.radius)
       }
     }
+    if (w.map.starTrial) {
+      const z = w.map.starTrial
+      g.fillStyle(0x9f78cb, .1); g.fillCircle(z.center.x, z.center.y, z.radius)
+      g.lineStyle(2, 0xb998df, .6); g.strokeCircle(z.center.x, z.center.y, z.radius)
+      for (const point of z.cooling) {
+        g.fillStyle(0x82cdb5, .15); g.fillCircle(point.x, point.y, 55)
+        g.lineStyle(2, 0x8bdbc3, .7); g.strokeCircle(point.x, point.y, 55)
+      }
+      for (const warning of w.starRun?.warnings ?? []) {
+        g.fillStyle(0xac8fd7, .2); g.fillCircle(warning.x, warning.y, warning.radius)
+        g.lineStyle(3, 0xe0bcff); g.strokeCircle(warning.x, warning.y, warning.radius)
+      }
+    }
     if (w.map.heatZone) {
       const z = w.map.heatZone
       g.fillStyle(0xcb6e45, .06); g.fillRect(z.x, z.y, z.w, z.h)
@@ -389,8 +402,10 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(2, 0xe8c98c, .5); g.strokeCircle(event.dummy.x, event.dummy.y, 28)
       }
       event.checkpoints?.forEach((point, index) => {
-        const step = event.kind === 'competition' ? progress.stage - 1 : event.kind === 'tournament' ? (progress.stage === 0 ? 0 : progress.stage <= 12 ? Math.floor((progress.stage - 1) / 4) + 1 : 4) : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
-        const passed = event.kind === 'danfinal' ? progress.stage >= (index === 0 ? 4 : 6)
+        const step = ['starfire', 'flame'].includes(event.kind) ? progress.stage === 0 ? 0 : progress.stage <= 4 ? 1 : -1
+          : event.kind === 'competition' ? progress.stage - 1 : event.kind === 'tournament' ? (progress.stage === 0 ? 0 : progress.stage <= 12 ? Math.floor((progress.stage - 1) / 4) + 1 : 4) : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
+        const passed = ['starfire', 'flame'].includes(event.kind) ? progress.stage >= (index === 0 ? 1 : 5)
+          : event.kind === 'danfinal' ? progress.stage >= (index === 0 ? 4 : 6)
           : event.kind === 'expedition' ? index === 0 ? progress.stage > 0 : (progress.score & (1 << (index - 1))) !== 0
           : event.kind === 'lineage' ? index === 0 ? progress.stage > 0 : index <= 2 ? (progress.score & (1 << (index - 1))) !== 0 : progress.stage >= 3
           : event.kind === 'alliance' ? index === 0 ? progress.stage > 0 : index < progress.stage - 1 : index < step
