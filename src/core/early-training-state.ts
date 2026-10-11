@@ -11,6 +11,7 @@ export interface EarlyTrainingState {
   hall: { stage: number; scroll: 'none' | 'reading-first' | 'selected-second' | 'borrowed-second' }
   teaching: { stage: number }
   supervision: { stage: number; pulses: number; attempts: number }
+  recovery: { stage: number; energy: 'unobserved' | 'active' | 'fading' | 'spent'; period: 'unreviewed' | 'reviewed'; result: 'none' | 'fifth-duan' }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -25,6 +26,7 @@ export const EARLY_HALL_VERSION = '0.17.0'
 export const EARLY_HALL_SCROLL_VERSION = '0.17.1'
 export const EARLY_TEACHING_VERSION = '0.17.2'
 export const EARLY_SUPERVISION_VERSION = '0.18.0'
+export const EARLY_RECOVERY_VERSION = '0.18.1'
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
@@ -34,9 +36,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     liquid: { stage: 0, water: false, ready: false },
     practice: { phase: 0, pulse: 0, score: 0, attempts: 0 },
     bracelet: { stage: 0, gift: 'none' }, growth: { stage: 0 }, hall: { stage: 0, scroll: 'none' }, teaching: { stage: 0 },
-    supervision: { stage: 0, pulses: 0, attempts: 0 } }
+    supervision: { stage: 0, pulses: 0, attempts: 0 },
+    recovery: { stage: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -111,5 +114,16 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     || supervision.stage === 1 && supervision.pulses >= 4
     || supervision.stage === 2 && supervision.pulses !== 4) return invalid()
   result.supervision = { stage: supervision.stage, pulses: supervision.pulses, attempts: supervision.attempts }
+  const recovery = data.recovery === undefined && legacyRecovery ? result.recovery : object(data.recovery)
+  if (!integer(recovery.stage, 7) || recovery.stage > 0 && supervision.stage !== 2
+    || recovery.energy !== recoveryEnergyAt(recovery.stage)
+    || recovery.period !== (recovery.stage >= 6 ? 'reviewed' : 'unreviewed')
+    || recovery.result !== (recovery.stage === 7 ? 'fifth-duan' : 'none')) return invalid()
+  result.recovery = { stage: recovery.stage, energy: recovery.energy as EarlyTrainingState['recovery']['energy'],
+    period: recovery.period as EarlyTrainingState['recovery']['period'], result: recovery.result as EarlyTrainingState['recovery']['result'] }
   return result
+}
+
+export function recoveryEnergyAt(stage: number): EarlyTrainingState['recovery']['energy'] {
+  return stage < 2 ? 'unobserved' : stage === 2 ? 'active' : stage === 3 ? 'fading' : 'spent'
 }

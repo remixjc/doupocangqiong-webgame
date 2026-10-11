@@ -37,7 +37,7 @@ export default function EarlyWalkInteraction({ state, position, onContinue }: { 
             <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
             <button className="secondary" onClick={() => act({ type: 'liquid', step: task.liquid.stage,
               operation: liquidScene.operation, expectedSpent: spent })}>{liquidScene.action}</button>
-          </> : <p>药液已经加水。三种材料由老师依次使用，收据和黑铁片保留。</p>}
+          </> : <p>{task.recovery.energy === 'spent' ? '药液曾经加水，现已在恢复中耗尽；容器保留。' : task.recovery.energy === 'fading' ? '药液已经加水，恢复中药色渐淡。' : '药液已经加水。'}三种材料由老师依次使用，收据和黑铁片保留。</p>}
           <p className="muted">玩家准备与观察，药老调制；药液不进入口服丹药行囊。</p>
           <EarlyPractice state={state} onAction={act} onContinue={onContinue} />
         </>)}

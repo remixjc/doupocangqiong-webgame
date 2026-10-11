@@ -63,7 +63,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
         </g>
         <g transform="translate(530 280)">
           <path d="M-74-7 L-62 38 Q0 58 62 38 L74-7Z" fill="#786448" stroke="#bda16e" strokeWidth="2" />
-          <ellipse rx="74" ry="24" cy="-7" fill={task.liquid.ready ? '#75ad87' : task.liquid.water ? '#709c99' : '#2e3d34'} stroke="#c3aa7b" strokeWidth="3" />
+          <ellipse rx="74" ry="24" cy="-7" fill={task.recovery.energy === 'spent' ? '#9badb0' : task.recovery.energy === 'fading' ? '#9faf94' : task.liquid.ready ? '#75ad87' : task.liquid.water ? '#709c99' : '#2e3d34'} stroke="#c3aa7b" strokeWidth="3" />
           {task.liquid.water && <path d="M-45-7 Q-25-15-5-7 T40-7" fill="none" stroke={task.liquid.ready ? '#d3e8ad' : '#b2d3ce'} strokeWidth="2" />}
           <path d="M-52 8 L-48 35 M-15 17 V45 M22 16 V45 M55 7 L50 35" stroke="#ae9366" strokeWidth="2" />
           <text y="68" textAnchor="middle" fill="#e6d4a6" fontSize="13">{view.water}</text>
@@ -87,7 +87,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
         <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
         <button className="primary" onClick={() => submitEarlyRoom(gameStore, position, station,
           { type: 'liquid', step: task.liquid.stage, operation: scene.operation, expectedSpent: task.purse.spent })}>{scene.action}</button>
-      </> : <p>{task.liquid.ready ? '药液已供修炼使用。容器和采购记录保留，不会再次消耗材料。'
+      </> : <p>{task.recovery.energy === 'spent' ? '这份自用药液在训练后恢复中已耗尽，容器和调制历史保留，后续需另筹材料。' : task.liquid.ready ? '药液已供修炼使用。容器和采购记录保留，不会再次消耗材料。'
         : `下一步请查看${stations[view.station]}：${scene?.title}。`}</p>}
     </section>
     <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} onContinue={onContinue} />

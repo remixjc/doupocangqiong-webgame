@@ -17,7 +17,8 @@ export function earlyRoomPresentation(state: GameState) {
   const { liquid, supplies } = state.earlyTraining
   return {
     station: (liquid.stage === 1 ? 'water' : 'teacher') as EarlyRoomStation,
-    water: liquid.ready ? '药液已加入清水' : liquid.water ? '清水已备好' : '容器尚未盛水',
+    water: state.earlyTraining.recovery.energy === 'spent' ? '药力耗尽 · 只余清水'
+      : state.earlyTraining.recovery.energy === 'fading' ? '药色渐淡' : liquid.ready ? '药液已加入清水' : liquid.water ? '清水已备好' : '容器尚未盛水',
     mixture: ['尚未开始提炼', '尚未开始提炼', '尚未开始提炼', '主药已经提炼',
       '两种药草已融合', '三种材料已炼化', '药液已入水'][liquid.stage],
     flame: liquid.stage >= 2 && liquid.stage <= 4,

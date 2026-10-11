@@ -6,7 +6,7 @@ import { gameStore } from '../core/store'
 import { startSupervisionPointer } from './supervision-pointer'
 import './early-walk.css'
 
-export default function EarlySupervision({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlySupervision({ state, position, onBack, onRecover }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onRecover?: () => void }) {
   const task = state.earlyTraining.supervision
   const [marker, setMarker] = useState(.5)
   const [paused, setPaused] = useState(false)
@@ -34,7 +34,7 @@ export default function EarlySupervision({ state, position, onBack }: { state: G
     <span className="eyebrow">后山 / 药老监督训练</span>
     <h2>承接斗气，也学会停下。</h2>
     <p>药老在后山指导萧炎打好身体基础。这一轮用四次抽象斗气脉冲表现姿态承接，绿色时机区为35%–65%；次数、负荷与节奏都是游戏折算。</p>
-    <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={task.stage === 2 ? '本轮督练结束，萧炎停下等待回房恢复' : '药老在后山监督萧炎承接斗气脉冲'}>
+    <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={task.stage === 2 ? state.earlyTraining.recovery.stage >= 5 ? '本轮督练结束，萧炎已经回房恢复' : '本轮督练结束，萧炎停下等待接续恢复' : '药老在后山监督萧炎承接斗气脉冲'}>
       <rect width="720" height="300" fill="#203934" /><path d="M0 120 L90 32 L200 105 L350 15 L480 110 L610 40 L720 116 V0 H0Z" fill="#496359" />
       <path d="M0 255 Q130 200 250 245 T720 230 V300 H0Z" fill="#606346" />
       <ellipse cx="205" cy="234" rx="60" ry="20" fill="#73786a" />
@@ -43,7 +43,7 @@ export default function EarlySupervision({ state, position, onBack }: { state: G
         {task.stage === 1 && <path d="M-32-25 Q40-30 40 34 Q0 75-32 36" fill="none" stroke="#a8cbaa" strokeWidth="3" />}
       </g>
       {task.stage === 1 && <path d="M233 145 Q320 103 430 166" fill="none" stroke="#d99078" strokeWidth="4" strokeDasharray="7 10" />}
-      <text x="360" y="286" textAnchor="middle" fill="#d5ceb2" fontSize="13">{task.stage === 2 ? '本轮已停下 · 恢复过程尚未记录' : '后山督练 · 留意负荷'}</text>
+      <text x="360" y="286" textAnchor="middle" fill="#d5ceb2" fontSize="13">{task.stage === 2 ? state.earlyTraining.recovery.stage > 0 ? '本轮已停下 · 恢复有独立记录' : '本轮已停下 · 待回房恢复' : '后山督练 · 留意负荷'}</text>
     </svg>
     <p role="status">督练承接 {task.pulses}/4 · 本轮负荷 {task.pulses * 25}% · 重新开练 {task.attempts} 次</p>
     {task.stage === 0 && <><p className="muted">开始后可以随时免费停练。失误结束当前轮，不扣金币、材料或药液；再次开始后从第一道脉冲练起。</p>
@@ -58,7 +58,8 @@ export default function EarlySupervision({ state, position, onBack }: { state: G
       <button ref={entry} className="primary" disabled={paused} onClick={() => act('brace')}>承接第{task.pulses + 1}次斗气脉冲</button>
       <button className="secondary" onClick={() => act('stop')}>停练 · 免费重新准备</button>
     </>}
-    {task.stage === 2 && <section className="bond-summary"><h3>这一轮督练已记下</h3><p>萧炎停下，药老提醒他回房使用修炼药液恢复。本轮没有自动完成恢复、持续训练时段或五段结果，后续过程另行继续。</p></section>}
+    {task.stage === 2 && <section className="bond-summary"><h3>这一轮督练已记下</h3><p>萧炎停下，药老提醒他回房使用修炼药液恢复。回房恢复、持续时段回顾与阶段结果分别记录。</p>
+      {onRecover && <button className="primary" onClick={onRecover}>接续回房 · 使用自用药液恢复</button>}</section>}
     <button className="secondary" onClick={onBack}>暂离后山督练 · 保留断点</button>
   </>
 }

@@ -73,7 +73,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
             <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
             <button className="secondary" onClick={() => gameStore.earlyTraining({ type: 'liquid',
               step: task.liquid.stage, operation: liquidScene.operation, expectedSpent: task.purse.spent })}>{liquidScene.action}</button>
-          </> : <><h3>修炼药液已备好</h3><p>药老已完成调制，药液加入水中。主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
+          </> : <><h3>{task.recovery.energy === 'spent' ? '自用药液已耗尽' : task.recovery.energy === 'fading' ? '恢复中药色渐淡' : '修炼药液已备好'}</h3>
+            <p>{task.recovery.energy === 'spent' ? '此前药老调制并加水的药液已用于恢复，现只余清水，后续需另筹材料。' : '药老已完成调制，药液加入水中。'}主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
           <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；备好后可在下方进行初期练习。</p>
         </section>}
         <EarlyPractice state={state} onContinue={onContinue} />
