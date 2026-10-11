@@ -118,6 +118,17 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 1100, y: 400, label: '决赛炉', text: '决赛：冷静完成最后三步。' },
     ],
   },
+  10: {
+    id: 'yunlan-duel-approach', kind: 'vow', introducedVersion: '0.6.1',
+    title: '云岚 · 赴约足迹', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['到山门约碑，确认三年之约', '到演武台入口，确认决斗规则', '赴约准备完成，前往决斗碑'],
+    introduction: '先到北侧山门约碑记下这一路，再到演武台入口。决斗开始后只能在演武台内交锋；突进、三叠风刃、旋风有不同预警，招式结束后留下反击机会。',
+    note: '赴约路线与三阶段招式为原创战斗设计，不代表原著招式参数。失败可休整重试，已确认路线保留；获胜后营地结算约定之战。',
+    checkpoints: [
+      { x: 330, y: 220, label: '山门约碑', text: '三年的路已走到这里。前往演武台入口，用自己的行动回应约定。' },
+      { x: 880, y: 400, label: '演武台入口', text: '突进沿锁定路线、三叠风刃封锁横向区域、旋风围绕对手。预警出现后离开范围，收招时再反击；决斗期间演武台边界封闭。' },
+    ],
+  },
 }
 export const certificationTargets = [.35, .6, .5] as const
 export const tournamentRounds = [

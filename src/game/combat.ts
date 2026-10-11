@@ -14,6 +14,7 @@ export interface Fighter extends Vec {
   alert: number
   timer: number; windup: number; target: Vec; radius: number; burn: number; burnTick: number
   secondary?: Vec[]
+  duel?: { phase: number; move: 'thrust' | 'fan' | 'cyclone'; sequence: number; origin: Vec; dashTime: number; recovery: number }
 }
 export interface Herb extends Vec { available: boolean; respawn: number }
 export interface Effect extends Vec { radius: number; time: number; maxTime: number; color: number; kind: 'ring' | 'slash' }
@@ -179,15 +180,17 @@ export class CombatWorld {
     const scale = d === 'story' ? 0.72 : d === 'hard' ? 1.25 : 1
     const hp = Math.round((type === 'boss' ? 280 + this.chapter.id * 46 : 48 + this.chapter.id * 6) * scale)
     this.enemies.push({ id: this.nextId++, spawnId, patrol, patrolIndex: 0, alert: 0, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
-      windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0 })
+      windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0,
+      ...(type === 'boss' && this.map.duelArena ? { duel: { phase: 1, move: 'thrust' as const, sequence: 0, origin: { x, y }, dashTime: 0, recovery: 0 } } : {}) })
   }
   guardsRemaining(eventId: string, index: number) {
     const guards = eventsForChapter(this.chapter.id).find(e => e.id === eventId)?.checkpoints?.[index]?.guards ?? []
     return this.enemies.filter(e => e.hp > 0 && e.spawnId && guards.includes(e.spawnId)).length
   }
   private move(p: Vec, vx: number, vy: number) {
-    const nx = clamp(p.x + vx, 40, WIDTH - 40)
-    const ny = clamp(p.y + vy, 45, HEIGHT - 40)
+    const arena = this.map.duelArena && this.enemies.some(e => e.duel && e.hp > 0) ? this.map.duelArena : undefined
+    const nx = clamp(p.x + vx, arena ? arena.x + 22 : 40, arena ? arena.x + arena.w - 22 : WIDTH - 40)
+    const ny = clamp(p.y + vy, arena ? arena.y + 22 : 45, arena ? arena.y + arena.h - 22 : HEIGHT - 40)
     const map = this.collisionMap()
     if (!mapCollides(map, { x: nx, y: p.y })) p.x = nx
     if (!mapCollides(map, { x: p.x, y: ny })) p.y = ny
@@ -348,7 +351,54 @@ export class CombatWorld {
       if (e.hp <= 0 || distance(e, center) > radius + 20) continue
       const deltaAngle = Math.atan2(Math.sin(Math.atan2(e.y - p.y, e.x - p.x) - p.facing), Math.cos(Math.atan2(e.y - p.y, e.x - p.x) - p.facing))
       if (cone && Math.abs(deltaAngle) > (action === 'wave' ? .55 : 1.2)) continue
-      this.hurtEnemy(e, damage(amount, 1, this.chapter.id * 2), action === 'strike')
+      this.hurtEnemy(e, damage(amount, e.duel && e.duel.recovery > 0 ? 1.15 : 1, this.chapter.id * 2), action === 'strike')
+    }
+  }
+  private stepDuel(e: Fighter, dt: number) {
+    const duel = e.duel!, p = this.player
+    duel.phase = e.hp / e.maxHp < .34 ? 3 : e.hp / e.maxHp < .67 ? 2 : 1
+    if (duel.dashTime > 0) {
+      const fraction = Math.min(1, dt / duel.dashTime)
+      this.move(e, (e.target.x - e.x) * fraction, (e.target.y - e.y) * fraction)
+      duel.dashTime = Math.max(0, duel.dashTime - dt)
+      return
+    }
+    if (duel.recovery > 0) { duel.recovery = Math.max(0, duel.recovery - dt); return }
+    if (e.windup > 0) {
+      e.windup -= dt
+      if (e.windup <= 0) {
+        for (const point of [e.target, ...(e.secondary ?? [])]) {
+          if (distance(point, p) < e.radius + 16) this.hurtPlayer(58)
+          this.effect(point.x, point.y, e.radius, 0x9acbc4)
+        }
+        if (duel.move === 'thrust') duel.dashTime = .24
+        duel.recovery = duel.move === 'cyclone' ? 1.25 : .85
+        e.timer = duel.phase === 3 ? .55 : .8
+      }
+      return
+    }
+    e.timer -= dt
+    if (e.timer > 0) {
+      const d = distance(e, p)
+      if (d > 150) this.move(e, (p.x - e.x) / d * dt * 105, (p.y - e.y) / d * dt * 105)
+      return
+    }
+    duel.move = duel.phase === 1 ? 'thrust' : duel.phase === 2 ? (duel.sequence % 2 ? 'thrust' : 'fan') : (['cyclone', 'fan', 'thrust'] as const)[duel.sequence % 3]
+    duel.sequence++; duel.origin = { x: e.x, y: e.y }
+    const angle = Math.atan2(p.y - e.y, p.x - e.x), arena = this.map.duelArena!
+    const bounded = (point: Vec) => ({ x: clamp(point.x, arena.x + 22, arena.x + arena.w - 22), y: clamp(point.y, arena.y + 22, arena.y + arena.h - 22) })
+    if (duel.move === 'thrust') {
+      const reach = clamp(distance(e, p), 100, 300)
+      e.target = bounded({ x: e.x + Math.cos(angle) * reach, y: e.y + Math.sin(angle) * reach })
+      e.secondary = [.33, .66].map(f => ({ x: e.x + (e.target.x - e.x) * f, y: e.y + (e.target.y - e.y) * f }))
+      e.radius = 54; e.windup = .9
+    } else if (duel.move === 'fan') {
+      e.target = { x: p.x, y: p.y }
+      e.secondary = [-110, 110].map(offset => bounded({ x: p.x - Math.sin(angle) * offset, y: p.y + Math.cos(angle) * offset }))
+      e.radius = 68; e.windup = .85
+    } else {
+      e.target = { x: e.x, y: e.y }; e.secondary = []
+      e.radius = 185; e.windup = 1.1
     }
   }
   step(input: Input, dt = 1 / 60) {
@@ -383,6 +433,7 @@ export class CombatWorld {
         if (e.burnTick >= .8) { e.burnTick = 0; this.hurtEnemy(e, Math.round(stats.attack * .2), false, false) }
       }
       if (e.hp <= 0) continue
+      if (e.duel) { this.stepDuel(e, dt); continue }
       const dist = distance(e, p)
       if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); e.alert = 0; continue }
       if (e.patrol && e.alert < 1) {
@@ -457,6 +508,8 @@ export class CombatWorld {
       escort: this.escort ? { hp: this.escort.hp, maxHp: this.escort.maxHp, failed: this.escort.hp <= 0, waiting: this.escort.waiting } : undefined,
       survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined,
       patrol: patrols.length ? { alert: Math.round(alert * 100), alerted: alert >= 1, remaining: patrols.length } : undefined,
-      heatChallenge: this.flameRun ? { phase: this.flameRun.phase, remaining: Math.max(0, Math.ceil(12 - this.flameRun.elapsed)), heat: Math.round(this.flameRun.heat), cooling: this.cooling(), inZone: this.inHeatZone(), failed: this.flameRun.failed } : undefined }
+      heatChallenge: this.flameRun ? { phase: this.flameRun.phase, remaining: Math.max(0, Math.ceil(12 - this.flameRun.elapsed)), heat: Math.round(this.flameRun.heat), cooling: this.cooling(), inZone: this.inHeatZone(), failed: this.flameRun.failed } : undefined,
+      duel: boss?.duel && boss.hp > 0 ? { phase: boss.duel.phase, move: { thrust: '踏风突进', fan: '三叠风刃', cyclone: '旋风回旋' }[boss.duel.move],
+        warning: boss.windup > 0, recovery: boss.duel.recovery > 0 && boss.duel.dashTime <= 0 } : undefined }
   }
 }

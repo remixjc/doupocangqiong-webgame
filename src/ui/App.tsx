@@ -146,6 +146,7 @@ export default function App() {
         {r.survival && <div className="mountain-status"><b>狮王警戒 · 剩余 {r.survival.remaining} 秒</b><span>{r.survival.inZone ? '避开紫色落焰预警，窗口开启后向西撤离' : '请进入紫色警戒区 · 区外不计时'}</span></div>}
         {r.patrol && <div className="mountain-status patrol-status"><b>蛇人巡逻 · 警戒 {r.patrol.alert}%</b><span>{r.patrol.alerted ? '已被发现 · 战斗或退回营地脱离警戒' : '掩体可阻挡视线 · 在警戒满前离开巡逻圈'}</span></div>}
         {r.heatChallenge && <div className="mountain-status heat-status"><b>{['火焰引流', '熔脉绕行', '火息凝定'][r.heatChallenge.phase - 2]} · 剩余 {r.heatChallenge.remaining} 秒</b><span>热量 {r.heatChallenge.heat} / 100 · {r.heatChallenge.failed ? '火焰失控，营地休整后重试当前阶段' : !r.heatChallenge.inZone ? '进入火域继续计时，区外可降温' : r.heatChallenge.cooling ? '正在冷却 · 继续避开预警' : '靠近青色冷却点降温，躲开火焰预警'}</span></div>}
+        {r.duel && <div className="mountain-status duel-status"><b>约定之战 · 第{r.duel.phase}阶段 · {r.duel.move}</b><span>{r.duel.warning ? '预警已锁定 · 离开危险范围' : r.duel.recovery ? '收招窗口 · 反击伤害提高15%' : '保持走位 · 决斗期间无法离开演武台'}</span></div>}
         <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
         <p className="quest-hint">{completed ? '本章已结算，可自由修炼或返回大陆舆图继续旅途。' : progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? `准备完成。前往${map.gateLabel ?? '地图上的试炼碑'}，按 E ${map.trialMode === 'assessment' ? '提交审核' : map.trialMode === 'attunement' ? '确认火域收服' : '开始挑战'}。` : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
         <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
@@ -155,7 +156,7 @@ export default function App() {
         <div className="stage">
           <Suspense fallback={<div className="loading">正在展开山川画卷…</div>}><GameView key={`${s.chapter}:${run}`} /></Suspense>
           <div className="player-hud" data-player-x={r.x} data-player-y={r.y}><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
-          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
+          {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.duel?.phase ?? (r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1)} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
           {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
           <TouchControls onMenu={() => setPanel('camp')} />

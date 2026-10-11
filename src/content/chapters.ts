@@ -49,6 +49,9 @@ chapters[8].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[8].boss = '大会领奖 · 成绩审核'
 chapters[8].trialNote = '三轮赛制与火候为原创大会机制，各轮独立210分通过；免费重试，不重复产丹。'
 chapters[8].opening[2].text = '先与法犸报名，查看赛程牌，再依序前往初赛、复赛、决赛炉。每轮三步210分通过，后两轮指针加快；失败只重试当前轮。返回法犸登记，再到领奖台审核后营地结算。'
+chapters[9].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[9].trialNote = '独立演武台、三阶段风系招式和反击窗口为原创决斗机制；正式首通结算约定之战。'
+chapters[9].opening[2].text = '与药老交谈，依序确认山门约碑和演武台入口，再到决斗碑开始约定之战。注意锁定突进路线、三叠风刃和旋风，闪避后趁收招反击。失败可休整，赴约准备保留。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

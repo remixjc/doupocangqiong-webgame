@@ -4,7 +4,7 @@ export interface PatrolDefinition { route: Point[]; detectionRadius: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -20,6 +20,7 @@ export interface MapDefinition {
   landmarks: (Point & { label: string })[]
   survivalZone?: { x: number; y: number; w: number; h: number }
   heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
+  duelArena?: { x: number; y: number; w: number; h: number }
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -96,6 +97,17 @@ export const capitalMaps: Record<number, MapDefinition> = {
     paths: [[{ x: 150, y: 650 }, { x: 330, y: 400 }, { x: 1100, y: 400 }, { x: 1100, y: 200 }],
       [{ x: 330, y: 400 }, { x: 330, y: 220 }]],
     landmarks: [{ x: 650, y: 70, label: '帝都大会 · 岩枭之名' }, { x: 650, y: 750, label: '初赛 → 复赛 → 决赛 · 成绩分轮保留' }],
+  },
+  10: {
+    id: 'yunlan-duel-court', style: 'duel', gateLabel: '决斗碑',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 220 }, bossSpawn: { x: 1050, y: 330 }, safeRadius: 150,
+    duelArena: { x: 500, y: 140, w: 700, h: 520 },
+    obstacles: [{ x: 400, y: 100, w: 60, h: 200 }, { x: 80, y: 300, w: 100, h: 160 }, { x: 340, y: 530, w: 100, h: 100 }],
+    herbs: [{ x: 280, y: 410 }, { x: 1150, y: 720 }],
+    enemies: [],
+    paths: [[{ x: 150, y: 650 }, { x: 300, y: 400 }, { x: 880, y: 400 }, { x: 1100, y: 220 }],
+      [{ x: 300, y: 400 }, { x: 330, y: 220 }]],
+    landmarks: [{ x: 810, y: 80, label: '云岚宗 · 三年之约' }, { x: 840, y: 740, label: '踏风突进 · 三叠风刃 · 旋风回旋' }],
   },
 }
 export const mountainMaps: Record<number, MapDefinition> = {

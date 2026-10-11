@@ -111,7 +111,7 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
       }
     }
-    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town' || style === 'tournament') {
+    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town' || style === 'tournament' || style === 'duel') {
       bg.lineStyle(1, c[2], .08)
       for (let x = 40; x < WIDTH; x += 40) bg.lineBetween(x, 40, x, HEIGHT - 40)
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
@@ -231,6 +231,12 @@ export default class AdventureScene extends Phaser.Scene {
     g.clear()
     const w = this.world, p = w.player
     const { gate } = w.map
+    if (w.map.duelArena) {
+      const a = w.map.duelArena, active = w.enemies.some(e => e.duel && e.hp > 0)
+      g.fillStyle(0x90bab0, .035); g.fillRect(a.x, a.y, a.w, a.h)
+      g.lineStyle(active ? 4 : 2, active ? 0xa3ded2 : 0xafbcaa, active ? .8 : .4); g.strokeRect(a.x, a.y, a.w, a.h)
+      g.lineStyle(1, 0xacbba5, .25); g.strokeCircle(a.x + a.w / 2, a.y + a.h / 2, 180)
+    }
     if (w.map.heatZone) {
       const z = w.map.heatZone
       g.fillStyle(0xcb6e45, .06); g.fillRect(z.x, z.y, z.w, z.h)
@@ -289,7 +295,7 @@ export default class AdventureScene extends Phaser.Scene {
           g.fillStyle(progress.stage >= 3 ? 0x58695c : 0xb39152); g.fillRect(point.x - 24, point.y - 16, 48, 32)
           g.lineStyle(2, 0xebce92); g.strokeRect(point.x - 24, point.y - 16, 48, 32)
         }
-        if (event.kind === 'certification' && index === 1) {
+        if ((event.kind === 'certification' && index === 1) || (event.kind === 'tournament' && index > 0)) {
           g.fillStyle(0x8c7556); g.fillRoundedRect(point.x - 28, point.y - 20, 56, 45, 12)
           g.lineStyle(4, 0xd1b382); g.strokeEllipse(point.x, point.y - 20, 56, 18)
           g.fillStyle(progress.stage >= 2 && progress.stage <= 4 ? 0xf0ac68 : 0xad8355); g.fillTriangle(point.x - 18, point.y + 32, point.x, point.y + 3, point.x + 18, point.y + 32)
@@ -328,10 +334,10 @@ export default class AdventureScene extends Phaser.Scene {
           g.lineStyle(2.5, 0xf4a17a, .8); g.strokeCircle(target.x, target.y, e.radius)
           g.lineStyle(4, 0xecaa75, .7); g.beginPath(); g.arc(target.x, target.y, e.radius, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - e.windup)); g.strokePath()
         }
-        if (e.type === 'boss') { g.lineStyle(1, 0xe8aa7b, .3); g.lineBetween(e.x, e.y, e.target.x, e.target.y) }
+        if (e.type === 'boss') { g.lineStyle(e.duel?.move === 'thrust' ? 5 : 1, e.duel ? 0xa1d8cc : 0xe8aa7b, .5); g.lineBetween(e.x, e.y, e.target.x, e.target.y) }
       }
       const size = e.type === 'boss' ? 1.65 : 1
-      const color = e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
+      const color = e.duel ? 0x88a8a1 : e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
       this.actor(g, e.x, e.y, color, size, false)
       if (e.burn > 0) { g.lineStyle(2, 0x6de4bc, .8); g.strokeCircle(e.x, e.y, 23 * size) }
       g.fillStyle(0x0b1718, .8); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size, 5, 2)
