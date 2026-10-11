@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
@@ -7,19 +7,29 @@ import { earlyMarketScenes } from '../content/early-market'
 import { earlyLiquidScenes } from '../content/early-liquid'
 import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
+import { isVisible } from '../core/rules'
+import { loadSceneModule } from './scene-load'
+const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
   const [walking, setWalking] = useState(false)
+  const [pavilion, setPavilion] = useState(false)
+  const pavilionEntry = useRef<HTMLButtonElement>(null)
+  const returningPavilion = useRef(false)
   const entry = useRef<HTMLButtonElement>(null)
   const returning = useRef(false)
   useEffect(() => {
     if (!walking && returning.current) { returning.current = false; entry.current?.focus() }
   }, [walking])
+  useEffect(() => {
+    if (!pavilion && returningPavilion.current) { returningPavilion.current = false; pavilionEntry.current?.focus() }
+  }, [pavilion])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (pavilion) return <Suspense fallback={<p role="status">正在前往五天后的功法阁……</p>}><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></Suspense>
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
     <span className="eyebrow">重修往事 / 拜师之后</span>
@@ -28,6 +38,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       <p>三年约定之后，药老在后山现身，萧炎拜师。重修的下一步，是筹措资金、找到指定药材，再由老师调制供修炼使用的药液。</p>
       <p className="muted">这段往事独立记录。任务资金和材料专用于重修，不与行囊金币、灵草或魔晶混用。</p>
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
+      {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">
+        <b>成人礼离场已归档 · 接续五天后的安排</b><p>前往功法阁测定属性，分别记录本人、薰儿与实际入阁。已有斗技堂借卷保留。</p>
+        <button ref={pavilionEntry} className="secondary" onClick={() => setPavilion(true)}>前往功法阁 · 属性测定与入阁</button>
+      </section>}
       {task.practice.phase === 4 && <p className="muted">初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</p>}
       <section className="bond-summary" aria-label="重修准备记录">
         <b>{state.earlyTraining.started ? '准备单已记下' : '尚未接下准备'}</b>

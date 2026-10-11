@@ -31,7 +31,9 @@ export interface EarlyTrainingState {
   ningFirst: NingFirstState
   ningSecond: NingSecondState
   ceremonyVerdict: CeremonyVerdictState
+  qiPavilionEntry: QiPavilionEntryState
 }
+export interface QiPavilionEntryState { stage: number; door: 'closed' | 'open'; other: 'unmeasured' | 'wind'; yan: 'unmeasured' | 'fire'; xuner: 'unmeasured' | 'fire'; crystal: 'intact' | 'cracked' | 'broken'; hint: 'none' | 'fire-3-43'; permission: boolean; entered: boolean }
 export interface CeremonyVerdictState { stage: number; yu: 'none' | 'requested' | 'blocked'; xuner: 'none' | 'requested' | 'blocked'; penalty: 0 | 3; verdict: 'pending' | 'xiaoyan'; rite: 'none' | 'continued' | 'ended'; technique: 'none' | 'offered' | 'declined'; method: 'none' | 'offered' | 'declined'; nextHall: 'none' | 'five-days' }
 export interface NingSecondState { stage: number; beats: number; attempts: number; pill: 'ning-held' | 'used'; ignored: boolean; contact: 'none' | 'met' | 'out'; verdict: 'pending' }
 export interface NingFirstState { stage: number; beats: number; attempts: number; pill: 'unseen' | 'ning-held'; verdict: 'none' | 'pending' }
@@ -84,6 +86,7 @@ export const EARLY_CEREMONIAL_TEST_VERSION = '0.30.0'
 export const EARLY_NING_FIRST_VERSION = '0.31.0'
 export const EARLY_NING_SECOND_VERSION = '0.32.0'
 export const EARLY_CEREMONY_VERDICT_VERSION = '0.33.0'
+export const EARLY_QI_PAVILION_ENTRY_VERSION = '0.34.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -119,9 +122,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     ceremonialTest: { stage: 0, rite: 'none', inspected: false, result: 'unmeasured' },
     ningFirst: { stage: 0, beats: 0, attempts: 0, pill: 'unseen', verdict: 'none' },
     ningSecond: { stage: 0, beats: 0, attempts: 0, pill: 'ning-held', ignored: false, contact: 'none', verdict: 'pending' },
-    ceremonyVerdict: { stage: 0, ...ceremonyVerdictAt(0) } }
+    ceremonyVerdict: { stage: 0, ...ceremonyVerdictAt(0) },
+    qiPavilionEntry: { stage: 0, ...qiPavilionEntryAt(0) } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -287,6 +291,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const ceremonyVerdict = data.ceremonyVerdict === undefined && legacyCeremonyVerdict ? result.ceremonyVerdict : object(data.ceremonyVerdict)
   if (!validCeremonyVerdict(ceremonyVerdict) || ceremonyVerdict.stage > 0 && ningSecond.stage !== 8) return invalid()
   result.ceremonyVerdict = { stage: ceremonyVerdict.stage, ...ceremonyVerdictAt(ceremonyVerdict.stage) }
+  const qiPavilionEntry = data.qiPavilionEntry === undefined && legacyQiPavilionEntry ? result.qiPavilionEntry : object(data.qiPavilionEntry)
+  if (!validQiPavilionEntry(qiPavilionEntry) || qiPavilionEntry.stage > 0 && ceremonyVerdict.stage !== 16) return invalid()
+  result.qiPavilionEntry = { stage: qiPavilionEntry.stage, ...qiPavilionEntryAt(qiPavilionEntry.stage) }
   return result
 }
 
@@ -421,5 +428,16 @@ export function ceremonyVerdictAt(stage: number): Omit<CeremonyVerdictState, 'st
 export function validCeremonyVerdict(task: Record<string, unknown> | CeremonyVerdictState): task is CeremonyVerdictState {
   if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 16) return false
   const expected = ceremonyVerdictAt(task.stage)
+  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+}
+export function qiPavilionEntryAt(stage: number): Omit<QiPavilionEntryState, 'stage'> {
+  return { door: stage >= 3 ? 'open' : 'closed', other: stage >= 4 ? 'wind' : 'unmeasured',
+    yan: stage >= 5 ? 'fire' : 'unmeasured', xuner: stage >= 7 ? 'fire' : 'unmeasured',
+    crystal: stage >= 11 ? 'broken' : stage >= 7 ? 'cracked' : 'intact',
+    hint: stage >= 6 ? 'fire-3-43' : 'none', permission: stage >= 8, entered: stage >= 10 }
+}
+export function validQiPavilionEntry(task: Record<string, unknown> | QiPavilionEntryState): task is QiPavilionEntryState {
+  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 12) return false
+  const expected = qiPavilionEntryAt(task.stage)
   return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
 }

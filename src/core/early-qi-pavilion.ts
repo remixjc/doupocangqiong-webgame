@@ -1,0 +1,68 @@
+import type { GameState } from './model'
+import type { GameStore } from './store'
+import type { Transaction } from './rules'
+import type { EarlyWalkPosition, EarlyWalkDirection } from './early-walk'
+import { earlyTrainingBlock } from './early-training'
+import { isVisible } from './rules'
+import { qiPavilionEntryAt, validQiPavilionEntry, type QiPavilionEntryState } from './early-training-state'
+import { qiPavilionEntryScenes } from '../content/early-qi-pavilion'
+
+export const QI_PAVILION_ENTRY_ID = 'early-qi-pavilion-entry'
+export const qiPavilionPlaces = {
+  forecourt: { x: 180, y: 350, label: '阁前集合' },
+  father: { x: 360, y: 310, label: '萧战 · 规则与许可' },
+  crystal: { x: 500, y: 290, label: '水晶球 · 属性测定' },
+  door: { x: 360, y: 230, label: '门前 · 守卫与药老评述' },
+  inside: { x: 360, y: 100, label: '阁内入口 · 择卷待续' },
+} as const
+export const qiPavilionWalls = [{ x: 0, y: 170, width: 310, height: 20 }, { x: 410, y: 170, width: 310, height: 20 }] as const
+export const qiPavilionGate = { x: 310, y: 170, width: 100, height: 20 }
+export function validQiPavilionPosition(position: EarlyWalkPosition, stage: number): boolean {
+  const radius = 12, obstacles = stage < 9 ? [...qiPavilionWalls, qiPavilionGate] : qiPavilionWalls
+  return Number.isSafeInteger(stage) && stage >= 0 && stage <= 12
+    && Number.isFinite(position.x) && Number.isFinite(position.y)
+    && position.x >= radius && position.x <= 720 - radius && position.y >= radius && position.y <= 420 - radius
+    && !(stage < 9 && position.y < 170)
+    && !obstacles.some(rect => position.x > rect.x - radius && position.x < rect.x + rect.width + radius
+      && position.y > rect.y - radius && position.y < rect.y + rect.height + radius)
+}
+export function moveQiPavilionWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection, stage: number): EarlyWalkPosition {
+  if (!validQiPavilionPosition(position, stage)) return { ...qiPavilionPlaces.forecourt }
+  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
+  if (!delta) return position
+  const next = { x: position.x + delta[0], y: position.y + delta[1] }
+  return validQiPavilionPosition(next, stage) ? next : position
+}
+export function nearQiPavilionPlace(position: EarlyWalkPosition, place: keyof typeof qiPavilionPlaces, stage: number): boolean {
+  const target = qiPavilionPlaces[place]
+  return validQiPavilionPosition(position, stage) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+}
+export function earlyQiPavilionBlock(state: GameState): string {
+  if (!isVisible(state, 3)) return '这段往事超出当前剧透范围。'
+  return earlyTrainingBlock(state)
+    || (state.earlyTraining.ceremonyVerdict.stage !== 16 ? '先归档成人礼的正式裁定与离场，再赴五天后的功法阁。' : '')
+}
+export type QiPavilionEntryAction = QiPavilionEntryState & {
+  actor: typeof qiPavilionEntryScenes[number]['actor']
+  operation: typeof qiPavilionEntryScenes[number]['operation'] | 'take-scroll' | 'take-crystal'
+}
+export function advanceEarlyQiPavilionEntry(state: GameState, position: EarlyWalkPosition, action: QiPavilionEntryAction): Transaction {
+  const blocked = earlyQiPavilionBlock(state)
+  if (blocked) return { state, ok: false, message: blocked }
+  const task = state.earlyTraining.qiPavilionEntry, scene = qiPavilionEntryScenes[task.stage]
+  if (!scene || !validQiPavilionEntry(task) || (Object.keys(task) as (keyof QiPavilionEntryState)[]).some(key => task[key] !== action[key]))
+    return { state, ok: false, message: '入阁记录已变化，请按当前步骤继续。' }
+  if (action.actor !== scene.actor || action.operation !== scene.operation)
+    return { state, ok: false, message: '当前人物或步骤不符；入阁测定不发卷轴或水晶物品。' }
+  if (!nearQiPavilionPlace(position, scene.place, task.stage))
+    return { state, ok: false, message: `请先走近${qiPavilionPlaces[scene.place].label}。` }
+  const next = structuredClone(state), stage = task.stage + 1
+  next.earlyTraining.qiPavilionEntry = { stage, ...qiPavilionEntryAt(stage) }
+  return { state: next, ok: true, message: '属性与入阁步骤已保存，主线与已结算奖励保留。' }
+}
+export function submitEarlyQiPavilionEntry(store: GameStore, position: EarlyWalkPosition, action: QiPavilionEntryAction): boolean {
+  const result = advanceEarlyQiPavilionEntry(store.getSnapshot().state, position, action)
+  if (result.ok) store.update(state => { state.earlyTraining.qiPavilionEntry = result.state.earlyTraining.qiPavilionEntry })
+  store.notify(result.message)
+  return result.ok
+}
