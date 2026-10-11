@@ -1,18 +1,26 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { earlyWalkPlaces, earlyWalkObstacles, earlyWalkStart, earlyWalkSize, moveEarlyWalker, nearbyEarlyWalkPlace, type EarlyWalkDirection } from '../core/early-walk'
 import { earlyTrainingSaveSummary } from '../core/save-preview'
 import EarlyWalkInteraction from './EarlyWalkInteraction'
 import EarlyRoom from './EarlyRoom'
+import { earlyHallBlock, submitEarlyHallEntry } from '../core/early-hall'
+import { gameStore } from '../core/store'
+import { loadSceneModule } from './scene-load'
 import './early-walk.css'
+
+const EarlyHall = lazy(() => loadSceneModule(() => import('./EarlyHall')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
   const [reading, setReading] = useState<string>()
   const [indoors, setIndoors] = useState(false)
+  const [hall, setHall] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
+  const hallEntry = useRef<HTMLButtonElement>(null)
+  const returningHall = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -20,6 +28,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!indoors && returning.current) { returning.current = false; roomEntry.current?.focus() }
   }, [indoors])
+  useEffect(() => {
+    if (!hall && returningHall.current) { returningHall.current = false; hallEntry.current?.focus() }
+  }, [hall])
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -29,6 +40,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
+  if (hall) return <Suspense fallback={<p role="status">正在展开斗技堂……</p>}><EarlyHall state={state}
+    onBack={() => { returningHall.current = true; setHall(false) }} /></Suspense>
   if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={() => { returning.current = true; setIndoors(false) }} />
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
@@ -73,6 +86,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     {reading && place?.id === reading && <>
       <section className="bond-summary" aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></section>
       {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <button ref={roomEntry} className="primary" onClick={() => setIndoors(true)}>进入药老调制室</button>}
+      {place.id === 'teacher' && !earlyHallBlock(state) && <button ref={hallEntry} className="secondary" onClick={() => {
+        if (submitEarlyHallEntry(gameStore, position)) setHall(true)
+      }}>接续往事 · 前往斗技堂</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
