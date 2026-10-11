@@ -6,8 +6,8 @@ import { preliminaryScenes } from '../content/early-preliminary'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 
-export default function EarlyPreliminary({ state, position: entryPosition, onBack }: {
-  state: GameState; position: EarlyWalkPosition; onBack: () => void
+export default function EarlyPreliminary({ state, position: entryPosition, onBack, onChallenge }: {
+  state: GameState; position: EarlyWalkPosition; onBack: () => void; onChallenge?: () => void
 }) {
   const task = state.earlyTraining.preliminary, scene = preliminaryScenes[task.stage]
   const [position, setPosition] = useState({ ...preliminaryStart })
@@ -60,7 +60,8 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
     </ul>
     {scene ? near ? <section className="bond-summary" aria-label="预测当前步骤"><h3>{scene.title}</h3><p>{scene.text}</p><button className="primary" onClick={act}>{scene.action}</button></section>
       : <p className="muted">下一步请走近{preliminaryPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>预测已归档，等待后续挑战。</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼将按顺序接续。</p></section>}
+      : <section className="bond-summary"><h3>{state.earlyTraining.keChallenge.stage === 12 ? '预测与后续萧克应战已归档。' : '预测已归档，接续后续挑战。'}</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼按顺序记录。</p>
+        {onChallenge && <button className="primary" onClick={onChallenge}>接续萧克挑战 · 六段对手应战</button>}</section>}
     <p className="muted">这段只记录往事预测，主线境界、技能、关系值、钱账与首通奖励保留。七段合格不提前结算挑战或正式礼胜利。</p>
     <button className="secondary" onClick={onBack}>暂离族中预测 · 保留点名断点</button>
   </>

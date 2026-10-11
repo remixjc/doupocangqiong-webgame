@@ -24,7 +24,10 @@ export interface EarlyTrainingState {
   seventhRoom: SeventhRoomState
   palmPair: PalmPairState
   preliminary: PreliminaryState
+  keChallenge: KeChallengeState
 }
+export interface KeChallengeState { stage: number; beats: number; attempts: number;
+  verdict: 'none' | 'pending' | 'xiaoyan'; invitation: 'none' | 'offered' }
 export interface PreliminaryState { stage: number; mei: 'unmeasured' | 'eighth-duan';
   xuner: 'unmeasured' | 'one-star'; yan: 'unmeasured' | 'seventh-duan' }
 export interface PalmPairState { stage: number; beats: number; attempts: number;
@@ -60,6 +63,7 @@ export const EARLY_FOREST_STRIKE_VERSION = '0.23.0'
 export const EARLY_SEVENTH_ROOM_VERSION = '0.24.0'
 export const EARLY_PALM_PAIR_VERSION = '0.25.0'
 export const EARLY_PRELIMINARY_VERSION = '0.26.0'
+export const EARLY_KE_CHALLENGE_VERSION = '0.27.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -88,9 +92,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     forestStrike: { stage: 0, beats: 0, attempts: 0, tree: 'intact', result: 'none' },
     seventhRoom: { stage: 0, beats: 0, attempts: 0, drops: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' },
     palmPair: { stage: 0, beats: 0, attempts: 0, first: 'intact', second: 'intact', teaching: 'unlearned', period: 'unreviewed' },
-    preliminary: { stage: 0, mei: 'unmeasured', xuner: 'unmeasured', yan: 'unmeasured' } }
+    preliminary: { stage: 0, mei: 'unmeasured', xuner: 'unmeasured', yan: 'unmeasured' },
+    keChallenge: { stage: 0, beats: 0, attempts: 0, verdict: 'none', invitation: 'none' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -232,7 +237,19 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const preliminary = data.preliminary === undefined && legacyPreliminary ? result.preliminary : object(data.preliminary)
   if (!validPreliminary(preliminary) || preliminary.stage > 0 && palmPair.stage !== 10) return invalid()
   result.preliminary = { stage: preliminary.stage, mei: preliminary.mei, xuner: preliminary.xuner, yan: preliminary.yan }
+  const keChallenge = data.keChallenge === undefined && legacyKeChallenge ? result.keChallenge : object(data.keChallenge)
+  if (!validKeChallenge(keChallenge) || (keChallenge.stage > 0 || keChallenge.attempts > 0) && preliminary.stage !== 16) return invalid()
+  result.keChallenge = { stage: keChallenge.stage, beats: keChallenge.beats, attempts: keChallenge.attempts,
+    verdict: keChallenge.verdict, invitation: keChallenge.invitation }
   return result
+}
+
+export function validKeChallenge(task: Record<string, unknown> | KeChallengeState): task is KeChallengeState {
+  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
+  return integer(task.stage, 12) && integer(task.beats, 2) && integer(task.attempts, 1_000_000)
+    && (task.stage < 2 ? task.beats === 0 && task.attempts === 0 : task.stage === 2 ? task.beats === 0 : task.stage === 3 ? task.beats < 2 : task.beats === 2)
+    && task.verdict === (task.stage >= 5 ? 'xiaoyan' : task.stage === 4 ? 'pending' : 'none')
+    && task.invitation === (task.stage >= 11 ? 'offered' : 'none')
 }
 
 export function preliminaryAt(stage: number): Omit<PreliminaryState, 'stage'> {

@@ -6,6 +6,7 @@ import { eventDone, migrateLegacyEvent, migrateLegacyEvents } from './events'
 import { EARLY_TRAINING_VERSION, EARLY_GROWTH_VERSION, EARLY_HALL_VERSION, EARLY_HALL_SCROLL_VERSION, EARLY_TEACHING_VERSION, EARLY_SUPERVISION_VERSION, EARLY_RECOVERY_VERSION, EARLY_CONSIGNMENT_VERSION, EARLY_APPRAISAL_VERSION, EARLY_AUCTION_VERSION, EARLY_SETTLEMENT_VERSION, EARLY_FATHER_GIFT_VERSION, EARLY_XUNER_VISIT_VERSION, EARLY_LONG_SUPPLIES_VERSION, EARLY_FOREST_STRIKE_VERSION, EARLY_SEVENTH_ROOM_VERSION, parseEarlyTraining } from './early-training-state'
 import { EARLY_PALM_PAIR_VERSION } from './early-training-state'
 import { EARLY_PRELIMINARY_VERSION } from './early-training-state'
+import { EARLY_KE_CHALLENGE_VERSION } from './early-training-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -229,7 +230,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_FOREST_STRIKE_VERSION),
     versionBefore(data.contentVersion as string, EARLY_SEVENTH_ROOM_VERSION),
     versionBefore(data.contentVersion as string, EARLY_PALM_PAIR_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_PRELIMINARY_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_PRELIMINARY_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_KE_CHALLENGE_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
