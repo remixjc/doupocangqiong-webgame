@@ -35,6 +35,7 @@ export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId
     attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
+    ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
     choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
 }
 export function migrateLegacyEvents(chapter: number, bossPassed: boolean): Record<string, ChapterEventProgress> {
@@ -108,6 +109,13 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'hunt' && action.type === 'seal' && action.index === p.stage && p.stage < 3) {
+      if (p.stage > 0) { next.fireEnergy += 2; p.score += 2 }
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'hunt' && action.type === 'deliver' && p.stage === 3) {
+      if (next.fireEnergy < 2) return fail('登记需2火能。完成两路猎捕可取得4火能，登记前不能用于普通修炼。')
+      next.fireEnergy -= 2; next.xp += 30; p.stage = 4; p.huntOutcome = 'completed'
+      message = '磐门修炼资格已登记 · 消耗2火能、获得30积累。前往强榜演武台。'
     } else if (event.kind === 'squad' && action.type === 'seal' && action.index === p.stage && p.stage <= 1) {
       message = event.checkpoints![p.stage].text; p.stage++
     } else if (event.kind === 'squad' && action.type === 'formation' && p.stage === 2) {

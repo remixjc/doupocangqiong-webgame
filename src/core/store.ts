@@ -1,5 +1,5 @@
 import { initialState, blankProgress, type Action, type Runtime, type Snapshot, type GameState } from './model'
-import { canEnter, chapterReady, finishChapter, playerStats } from './rules'
+import { canEnter, registerBossVictory, rankPracticeReward, trainFireEnergy, finishChapter, playerStats } from './rules'
 import { buy, craft, upgrade } from './rules'
 import type { ItemId } from './model'
 import { loadSlot, saveSlot } from './save'
@@ -87,9 +87,10 @@ class GameStore {
   }
   kill(boss = false) {
     if (boss) {
-      if (chapterReady(this.snapshot.state)) {
-        this.update(s => { s.progress[s.chapter].boss = true })
-        this.notify('章节挑战已完成 · 返回营地结算')
+      const next = registerBossVictory(this.snapshot.state)
+      if (next !== this.snapshot.state) {
+        this.update(s => { Object.assign(s, next) })
+        this.notify(`章节挑战已完成${next.chapter === 14 ? ' · 首胜火能+3' : ''} · 返回营地结算`)
       }
     } else this.update(s => {
       s.progress[s.chapter].kills++
@@ -98,6 +99,16 @@ class GameStore {
       s.xp += 10
       s.inventory.crystal++
     })
+  }
+  rankPractice() {
+    const result = rankPracticeReward(this.snapshot.state)
+    if (result.ok) this.update(s => { Object.assign(s, result.state) })
+    this.notify(result.message)
+  }
+  fireTraining() {
+    const result = trainFireEnergy(this.snapshot.state)
+    if (result.ok) this.update(s => { Object.assign(s, result.state) })
+    this.notify(result.message)
   }
   finish(): boolean {
     const next = finishChapter(this.snapshot.state)

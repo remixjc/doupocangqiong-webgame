@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -163,6 +163,19 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 500, y: 520, label: '集合点', text: '集合已经确认。前往西阵，保护同伴跟上。' },
       { x: 700, y: 400, label: '西阵', text: '同伴已经守住西阵。清理投影威胁，再到东阵连续共鸣3秒。' },
       { x: 1000, y: 400, label: '东阵', text: '双阵连通。返回若琳处登记，准备入院审核。' },
+    ],
+  },
+  14: {
+    id: 'inner-academy-fire-hunt', kind: 'hunt', introducedVersion: '0.7.2',
+    title: '磐门 · 火能猎捕', speaker: '胡嘉', npc: { x: 280, y: 625 },
+    stages: ['带队友到猎捕集合点，两人靠近后按E', '带队友清理西路投影，两人到火能台按E', '带队友清理东路投影，两人到火能台按E',
+      '返回胡嘉处，支付2火能登记磐门修炼资格', '磐门资格已登记，前往强榜演武台'],
+    introduction: '先集合，再共同走两条猎捕路线。清理每处投影守卫，两人到火能台按E，各领取一次2火能；队友受伤倒下可休整重试。回来支付2火能登记修炼资格，然后挑战强榜投影。',
+    note: '路线、试炼队友、火能数量与强榜招式为原创改编。火能独立于金币；登记一次消耗2火能、获得30积累。首胜另得3火能，章节结算后可每次花2火能换30积累；重返演武台每次真实复练胜利得1火能，没有额外金币或首通奖励。',
+    checkpoints: [
+      { x: 500, y: 520, label: '猎捕集合点', text: '队伍已集合。先去西路清理守卫。' },
+      { x: 740, y: 350, label: '西路火能台', text: '西路火能已登记 · 火能+2。保护队友继续东路。', guards: ['hunt-west-brute'] },
+      { x: 1050, y: 500, label: '东路火能台', text: '东路火能已登记 · 火能+2。带队友返回胡嘉处。', guards: ['hunt-east-mage', 'hunt-east-hunter'] },
     ],
   },
 }

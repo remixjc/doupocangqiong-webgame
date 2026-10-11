@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { chapters } from '../src/content/chapters'
 import { blankProgress, initialState } from '../src/core/model'
-import { chapterReady, craft, finishChapter, skillUnlocked } from '../src/core/rules'
+import { chapterReady, craft, finishChapter, skillUnlocked, registerBossVictory } from '../src/core/rules'
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
 import { certificationTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
@@ -45,8 +45,8 @@ describe('完整主线真实规则战斗回放', () => {
         state: () => state,
         collect: () => { state.progress[chapter.id].herbs++; state.inventory.herb++ },
         kill: boss => {
-          if (boss) { if (chapterReady(state)) state.progress[chapter.id].boss = true }
-          else { state.progress[chapter.id].kills++; state.inventory.crystal++; state.totalKills++ }
+          if (boss) state = registerBossVictory(state)
+          else { state.progress[chapter.id].kills++; state.inventory.crystal++; state.totalKills++; state.gold += 8 + chapter.id * 2; state.xp += 10 }
         },
         heal: () => { if (!state.inventory.heal) return false; state.inventory.heal--; return true },
         mana: () => { if (!state.inventory.mana) return false; state.inventory.mana--; return true },
@@ -71,6 +71,7 @@ describe('完整主线真实规则战斗回放', () => {
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
           } else if (e.kind === 'rescue' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'squad' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'hunt' && p.stage === 3 && world.runtime().huntTeam?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'flame') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
@@ -103,7 +104,7 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue', 'squad'].includes(event.kind) && ep.stage === 3) || (['certification', 'flame'].includes(event.kind) && ep.stage === 5) ? event.npc
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue', 'squad', 'hunt'].includes(event.kind) && ep.stage === 3) || (['certification', 'flame'].includes(event.kind) && ep.stage === 5) ? event.npc
             : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : ['certification', 'flame'].includes(event.kind) ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
           if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
           if (event.kind === 'flame' && ep.stage >= 2 && ep.stage <= 4) target = [...world.map.heatZone!.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
@@ -112,6 +113,12 @@ describe('完整主线真实规则战斗回放', () => {
           if (event.kind === 'squad' && world.squad) {
             if (!world.squad.holding && dist(world.player, world.squad) > 140) target = world.squad
             if (world.squad.holding && living.length) target = living[0]
+          }
+          if (event.kind === 'hunt' && world.huntTeam) {
+            if (dist(world.player, world.huntTeam) > 140) target = world.huntTeam
+            const guards = event.checkpoints?.[ep.stage]?.guards
+            const threat = living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
+            if (threat) target = threat
           }
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)

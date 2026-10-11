@@ -27,7 +27,7 @@ export default class AdventureScene extends Phaser.Scene {
     const chapter = chapterById(gameStore.getSnapshot().state.chapter)
     this.world = new CombatWorld(chapter, {
       state: () => gameStore.getSnapshot().state,
-      collect: () => gameStore.collect(), kill: boss => gameStore.kill(boss),
+      collect: () => gameStore.collect(), kill: boss => gameStore.kill(boss), rankPractice: () => gameStore.rankPractice(),
       heal: () => {
         if (gameStore.getSnapshot().state.inventory.heal < 1) { gameStore.notify('恢复丹不足，返回营地炼制或购买。'); return false }
         gameStore.update(s => { s.inventory.heal-- })
@@ -259,6 +259,11 @@ export default class AdventureScene extends Phaser.Scene {
       g.fillStyle(0x86c9b1); g.fillRect(w.squad.x - 25, w.squad.y - 52, 50 * w.squad.hp / w.squad.maxHp, 6)
       if (w.squad.holding) { g.lineStyle(2, 0xa5d9ca, .6); g.strokeCircle(w.squad.x, w.squad.y, 30) }
     }
+    if (w.huntTeam) {
+      this.actor(g, w.huntTeam.x, w.huntTeam.y, w.huntTeam.hp > 0 ? 0x929b75 : 0x775c58, .95, false)
+      g.fillStyle(0x0b1718); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50, 6)
+      g.fillStyle(0xb8c58d); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50 * w.huntTeam.hp / w.huntTeam.maxHp, 6)
+    }
     if (w.map.heatZone) {
       const z = w.map.heatZone
       g.fillStyle(0xcb6e45, .06); g.fillRect(z.x, z.y, z.w, z.h)
@@ -361,6 +366,7 @@ export default class AdventureScene extends Phaser.Scene {
       const size = e.type === 'boss' ? 1.65 : 1
       const color = e.duel ? 0x88a8a1 : e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
       this.actor(g, e.x, e.y, color, size, false)
+      if (e.ranking && e.windup > 0) { g.fillStyle(0x83c7dc, .12); g.fillCircle(e.x, e.y, 45); g.lineStyle(3, 0x9bd5e0, .8); g.strokeCircle(e.x, e.y, 45) }
       if (e.burn > 0) { g.lineStyle(2, 0x6de4bc, .8); g.strokeCircle(e.x, e.y, 23 * size) }
       g.fillStyle(0x0b1718, .8); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size, 5, 2)
       g.fillStyle(e.type === 'boss' ? 0xd38d75 : 0xc8b38d); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size * e.hp / e.maxHp, 5, 2)

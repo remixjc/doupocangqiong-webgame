@@ -32,7 +32,7 @@ export interface ChapterProgress {
   intro: boolean
   events: Record<string, ChapterEventProgress>
 }
-export interface ChapterEventProgress { started: boolean; stage: number; quote: number; score: number; attempts: number; choice: 'none' | 'steady' | 'premium'; roundScores?: number[]; auctionOutcome?: 'won' | 'observed' }
+export interface ChapterEventProgress { started: boolean; stage: number; quote: number; score: number; attempts: number; choice: 'none' | 'steady' | 'premium'; roundScores?: number[]; auctionOutcome?: 'won' | 'observed'; huntOutcome?: 'completed' | 'legacy' }
 export interface Settings {
   difficulty: Difficulty
   volume: number
@@ -48,6 +48,7 @@ export interface GameState {
   progress: Record<number, ChapterProgress>
   gold: number
   xp: number
+  fireEnergy: number
   inventory: Record<ItemId, number>
   attackUpgrade: number
   armorUpgrade: number
@@ -71,17 +72,19 @@ export interface Runtime {
   duel?: { phase: number; move: string; warning: boolean; recovery: boolean }
   escape?: { stage: number; remaining: number; sheltered: boolean }
   squad?: { hp: number; maxHp: number; holding: boolean; failed: boolean; waiting: boolean; remaining: number; channeling: boolean }
+  huntTeam?: { hp: number; maxHp: number; failed: boolean; waiting: boolean; arrived: boolean }
+  ranking?: { phase: number; shield: boolean; recovery: boolean; practice: boolean }
   dead: boolean
 }
 export interface Snapshot { state: GameState; runtime: Runtime; notice: string }
-export const CONTENT_VERSION = '0.7.1'
+export const CONTENT_VERSION = '0.7.2'
 export const blankEvent = (): ChapterEventProgress => ({ started: false, stage: 0, quote: 0, score: 0, attempts: 0, choice: 'none' })
 export const blankProgress = (chapter = 1): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false,
   events: Object.fromEntries(eventsForChapter(chapter).map(event => [event.id, blankEvent()])) })
 export function initialState(): GameState {
   return {
     schemaVersion: 3, contentVersion: CONTENT_VERSION, chapter: 1, completed: [], progress: { 1: blankProgress() },
-    gold: 80, xp: 0, inventory: { herb: 0, crystal: 0, heal: 3, mana: 2, elixir: 0 },
+    gold: 80, xp: 0, fireEnergy: 0, inventory: { herb: 0, crystal: 0, heal: 3, mana: 2, elixir: 0 },
     attackUpgrade: 0, armorUpgrade: 0, flame: 'ember',
     settings: { difficulty: 'normal', volume: 0.3, reducedMotion: false, spoiler: 'novel', animeLimit: 3 },
     totalKills: 0, totalBrews: 0, startedAt: Date.now(),

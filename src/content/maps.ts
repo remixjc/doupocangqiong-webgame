@@ -22,6 +22,7 @@ export interface MapDefinition {
   heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
   duelArena?: { x: number; y: number; w: number; h: number }
   escapeRoute?: boolean
+  rankingArena?: boolean
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -246,6 +247,17 @@ export const academyMaps: Record<number, MapDefinition> = {
     enemies: [{ id: 'formation-mage', type: 'mage', x: 740, y: 300 }, { id: 'formation-hunter', type: 'hunter', x: 900, y: 480 }],
     paths: [[{ x: 150, y: 650 }, { x: 500, y: 520 }, { x: 700, y: 400 }, { x: 1000, y: 400 }, { x: 1150, y: 300 }, { x: 1100, y: 190 }]],
     landmarks: [{ x: 680, y: 70, label: '迦南外院 · 双阵协作' }, { x: 650, y: 750, label: '集合 → 西阵守护 → 东阵共鸣 → 入院审核' }],
+  },
+  14: {
+    id: 'inner-academy-hunt-paths', style: 'academy', gateLabel: '强榜演武台', rankingArena: true,
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1120, y: 160 }, bossSpawn: { x: 1060, y: 270 }, safeRadius: 150,
+    obstacles: [{ x: 400, y: 100, w: 170, h: 150 }, { x: 820, y: 80, w: 120, h: 130 }, { x: 570, y: 630, w: 150, h: 100 }],
+    herbs: [{ x: 330, y: 370 }, { x: 730, y: 570 }, { x: 1100, y: 680 }],
+    enemies: [{ id: 'hunt-west-brute', type: 'brute', x: 720, y: 330 },
+      { id: 'hunt-east-mage', type: 'mage', x: 1050, y: 450 }, { id: 'hunt-east-hunter', type: 'hunter', x: 980, y: 530 }],
+    paths: [[{ x: 150, y: 650 }, { x: 500, y: 520 }, { x: 740, y: 350 }, { x: 1050, y: 500 }, { x: 280, y: 625 }],
+      [{ x: 1050, y: 500 }, { x: 1120, y: 160 }]],
+    landmarks: [{ x: 670, y: 60, label: '迦南内院 · 磐门共同历练' }, { x: 900, y: 740, label: '双路猎捕 · 火能独立收支 · 强榜复练' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? legacy }

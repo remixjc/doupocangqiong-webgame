@@ -41,7 +41,7 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
     (!definition && p.started) || (!['trade', 'auction'].includes(definition?.kind ?? '') && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
-    (!['stone', 'cave', 'certification', 'tournament', 'auction'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
+    (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
     (definition?.kind !== 'competition' && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
     throw new Error('控气测试记录无效。')
@@ -77,6 +77,17 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
         : p.quote !== 0 || (p.score === 0 ? p.attempts !== 0 : p.attempts < 1)) throw new Error('拍卖结果与资金记录不一致。')
     }
   } else if (e.auctionOutcome !== undefined) throw new Error('此事件不包含拍卖结果。')
+  if (definition?.kind === 'hunt') {
+    if (p.attempts !== 0 || (p.stage < 4 && p.score !== (p.stage < 2 ? 0 : p.stage === 2 ? 2 : 4)))
+      throw new Error('猎捕火能记录无效。')
+    if (p.stage < 4) {
+      if (e.huntOutcome !== undefined) throw new Error('猎捕资格尚未登记。')
+    } else {
+      if (!['completed', 'legacy'].includes(String(e.huntOutcome))) throw new Error('猎捕登记结果缺失。')
+      p.huntOutcome = e.huntOutcome as ChapterEventProgress['huntOutcome']
+      if (p.score !== (p.huntOutcome === 'completed' ? 4 : 0)) throw new Error('猎捕收益与登记结果不一致。')
+    }
+  } else if (e.huntOutcome !== undefined) throw new Error('此事件不包含猎捕登记。')
   return p
 }
 export function validateState(value: unknown): GameState {
@@ -123,13 +134,15 @@ export function validateState(value: unknown): GameState {
     const oldTournament = n === 9 && versionBefore(data.contentVersion as string, '0.6.0')
     const oldAuction = n === 12 && versionBefore(data.contentVersion as string, '0.7.0')
     const oldSquad = n === 13 && versionBefore(data.contentVersion as string, '0.7.1')
-    const o = oldChecklist || oldAuction || oldSquad ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
+    const oldHunt = n === 14 && versionBefore(data.contentVersion as string, '0.7.2')
+    const o = oldChecklist || oldAuction || oldSquad || oldHunt ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')
   }
   if (!s.progress[s.chapter] || s.completed.some(id => !s.progress[id]?.boss)) throw new Error('章节进度缺失。')
   s.gold = number(data.gold); s.xp = number(data.xp, 100_000_000)
+  s.fireEnergy = data.fireEnergy === undefined && versionBefore(data.contentVersion as string, '0.7.2') ? 0 : number(data.fireEnergy, 1_000_000)
   s.totalKills = number(data.totalKills); s.totalBrews = number(data.totalBrews)
   s.attackUpgrade = number(data.attackUpgrade, 20); s.armorUpgrade = number(data.armorUpgrade, 20)
   const inventory = record(data.inventory)

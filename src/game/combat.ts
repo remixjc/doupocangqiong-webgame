@@ -15,6 +15,7 @@ export interface Fighter extends Vec {
   timer: number; windup: number; target: Vec; radius: number; burn: number; burnTick: number
   secondary?: Vec[]
   duel?: { phase: number; move: 'thrust' | 'fan' | 'cyclone'; sequence: number; origin: Vec; dashTime: number; recovery: number }
+  ranking?: { phase: number; recovery: number; practice: boolean; sequence: number }
 }
 export interface Herb extends Vec { available: boolean; respawn: number }
 export interface Effect extends Vec { radius: number; time: number; maxTime: number; color: number; kind: 'ring' | 'slash' }
@@ -31,6 +32,7 @@ export interface CombatCallbacks {
   sound?: (kind: 'attack' | 'skill' | 'dodge' | 'hurt' | 'collect' | 'victory') => void
   storyEvent?: (id: string, checkpoint?: number) => void
   eventAction?: (action: EventAction) => void
+  rankPractice?: () => void
 }
 export const WIDTH = MAP_WIDTH, HEIGHT = MAP_HEIGHT
 function distance(a: Vec, b: Vec) { return Math.hypot(a.x - b.x, a.y - b.y) }
@@ -51,6 +53,7 @@ export class CombatWorld {
   flameRun?: FlameRun
   escapeRun?: EscapeRun
   squad?: SquadRun
+  huntTeam?: EscortRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -80,6 +83,7 @@ export class CombatWorld {
     this.syncFlameRun()
     this.syncEscapeRun()
     this.syncSquad()
+    this.syncHuntTeam()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -88,6 +92,35 @@ export class CombatWorld {
     const squadProgress = squadEvent && eventProgress(cb.state(), chapter.id, squadEvent.id)
     if (squadEvent && squadProgress?.started && [1, 2].includes(squadProgress.stage))
       Object.assign(this.player, squadEvent.checkpoints![squadProgress.stage - 1])
+    const huntEvent = eventsForChapter(chapter.id).find(e => e.kind === 'hunt')
+    const huntProgress = huntEvent && eventProgress(cb.state(), chapter.id, huntEvent.id)
+    if (huntEvent && huntProgress?.started && huntProgress.stage >= 1 && huntProgress.stage <= 3)
+      Object.assign(this.player, huntEvent.checkpoints![huntProgress.stage - 1])
+  }
+  private syncHuntTeam() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'hunt'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage >= 4) this.huntTeam = undefined
+    else if (!this.huntTeam) this.huntTeam = { ...(p.stage === 0 ? e!.npc : e!.checkpoints![p.stage - 1]),
+      hp: 180, maxHp: 180, stage: p.stage, waiting: false }
+    else this.huntTeam.stage = p.stage
+  }
+  private stepHuntTeam(dt: number) {
+    this.syncHuntTeam()
+    const team = this.huntTeam, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'hunt')
+    if (!team || !e || team.hp <= 0) return
+    team.waiting = distance(this.player, team) > 180
+    const target = team.stage < 3 ? e.checkpoints![team.stage] : e.npc, dist = distance(team, target)
+    if (!team.waiting && dist > 8) this.move(team, (target.x - team.x) / dist * Math.min(dist, dt * 125), (target.y - team.y) / dist * Math.min(dist, dt * 125))
+  }
+  private huntCheckpoint(eventId: string, index: number) {
+    const e = eventsForChapter(this.chapter.id).find(e => e.id === eventId)!, p = eventProgress(this.cb.state(), this.chapter.id, eventId)
+    this.syncHuntTeam()
+    if (!p.started) { this.cb.notify('先向胡嘉接取火能猎捕。'); return }
+    if (index !== p.stage || index > 2) { this.cb.notify('按集合、西路、东路的顺序共同推进。'); return }
+    if (this.guardsRemaining(eventId, index)) { this.cb.notify('先清理本路投影守卫，才能领取火能。'); return }
+    if (!this.huntTeam || this.huntTeam.hp <= 0) { this.cb.notify('猎捕队友受伤，休整后从最近节点重试。'); return }
+    if (distance(this.huntTeam, e.checkpoints![index]) >= 65) { this.cb.notify('队友尚未到达，靠近队伍让他继续前进。'); return }
+    this.cb.eventAction?.({ type: 'seal', index, eventId })
   }
   private syncSquad() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'squad')
@@ -265,7 +298,8 @@ export class CombatWorld {
     const hp = Math.round((type === 'boss' ? 280 + this.chapter.id * 46 : 48 + this.chapter.id * 6) * scale)
     this.enemies.push({ id: this.nextId++, spawnId, patrol, patrolIndex: 0, alert: 0, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
       windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0,
-      ...(type === 'boss' && this.map.duelArena ? { duel: { phase: 1, move: 'thrust' as const, sequence: 0, origin: { x, y }, dashTime: 0, recovery: 0 } } : {}) })
+      ...(type === 'boss' && this.map.duelArena ? { duel: { phase: 1, move: 'thrust' as const, sequence: 0, origin: { x, y }, dashTime: 0, recovery: 0 } } : {}),
+      ...(type === 'boss' && this.map.rankingArena ? { ranking: { phase: 1, recovery: 0, practice: this.cb.state().completed.includes(14), sequence: 0 } } : {}) })
   }
   guardsRemaining(eventId: string, index: number) {
     const guards = eventsForChapter(this.chapter.id).find(e => e.id === eventId)?.checkpoints?.[index]?.guards ?? []
@@ -284,6 +318,7 @@ export class CombatWorld {
   }
   private hurtEnemy(e: Fighter, amount: number, interrupt = false, applyBurn = true) {
     if (e.hp <= 0) return
+    if (e.ranking) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .35 : e.ranking.recovery > 0 ? 1.25 : 1)))
     e.hp = Math.max(0, e.hp - amount)
     if (e.patrol) e.alert = 1
     this.floats.push({ x: e.x, y: e.y - 40, text: String(amount), time: .65, color: '#f4deb4' })
@@ -291,7 +326,8 @@ export class CombatWorld {
     if (applyBurn && this.cb.state().flame === 'lotus') e.burn = 3
     if (e.hp === 0) {
       this.effect(e.x, e.y, e.type === 'boss' ? 110 : 40, 0xd4bb87)
-      this.cb.kill(e.type === 'boss')
+      if (e.ranking?.practice) this.cb.rankPractice?.()
+      else this.cb.kill(e.type === 'boss')
       if (e.type === 'boss') this.cb.sound?.('victory')
     }
   }
@@ -333,6 +369,7 @@ export class CombatWorld {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
         if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
+        else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
         else if (event.kind === 'escape' && [1, 2].includes(index)) this.cb.notify('继续在当前掩体附近稳住脚步，躲避追击；两处按顺序通过后才开放出口。')
         else if (event.kind === 'escape' && index === 3) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
@@ -354,7 +391,13 @@ export class CombatWorld {
       } else if (near === 'camp') {
         this.cb.camp()
       } else if (near === 'gate') {
-        if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
+        if (this.map.rankingArena && s.completed.includes(14)) {
+          if (!this.bossSpawned) {
+            this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
+            this.cb.notify('强榜复练已开始。真实获胜得1火能，首通奖励不重复。')
+          } else this.cb.notify(this.enemies.some(e => e.ranking && e.hp > 0) ? '本轮复练正在进行。' : '本轮复练已经结束，休整后可再次挑战。')
+        }
+        else if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
         else if (this.map.survivalZone || this.map.trialMode || this.map.escapeRoute) {
           this.cb.kill(true)
@@ -443,6 +486,35 @@ export class CombatWorld {
       this.hurtEnemy(e, damage(amount, e.duel && e.duel.recovery > 0 ? 1.15 : 1, this.chapter.id * 2), action === 'strike')
     }
   }
+  private stepRanking(e: Fighter, dt: number) {
+    const rank = e.ranking!, p = this.player
+    rank.phase = e.hp / e.maxHp < .5 ? 2 : 1
+    if (rank.recovery > 0) { rank.recovery = Math.max(0, rank.recovery - dt); return }
+    if (e.windup > 0) {
+      e.windup -= dt
+      if (e.windup <= 0) {
+        for (const point of [e.target, ...(e.secondary ?? [])]) {
+          if (distance(point, p) < e.radius + 16) this.hurtPlayer(62)
+          this.effect(point.x, point.y, e.radius, 0x86c9dc)
+        }
+        rank.recovery = rank.phase === 1 ? 1.2 : .9
+        e.timer = .65
+      }
+      return
+    }
+    e.timer -= dt
+    if (e.timer > 0) {
+      const dist = distance(e, p)
+      if (dist > 160) this.move(e, (p.x - e.x) / dist * dt * 100, (p.y - e.y) / dist * dt * 100)
+      return
+    }
+    rank.sequence++
+    e.target = { x: p.x, y: p.y }
+    const diagonal = rank.sequence % 2 === 0
+    const offsets = rank.phase === 1 ? [[-125, 0], [125, 0]] : diagonal ? [[-100, -100], [100, 100], [-100, 100], [100, -100]] : [[-135, 0], [135, 0], [0, -135], [0, 135]]
+    e.secondary = offsets.map(([x, y]) => ({ x: clamp(p.x + x, 65, WIDTH - 65), y: clamp(p.y + y, 65, HEIGHT - 65) }))
+    e.radius = rank.phase === 1 ? 58 : 62; e.windup = rank.phase === 1 ? 1.05 : .85
+  }
   private stepDuel(e: Fighter, dt: number) {
     const duel = e.duel!, p = this.player
     duel.phase = e.hp / e.maxHp < .34 ? 3 : e.hp / e.maxHp < .67 ? 2 : 1
@@ -516,6 +588,7 @@ export class CombatWorld {
     this.stepFlame(dt)
     this.stepEscape(dt)
     this.stepSquad(dt)
+    this.stepHuntTeam(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -525,7 +598,9 @@ export class CombatWorld {
       }
       if (e.hp <= 0) continue
       if (e.duel) { this.stepDuel(e, dt); continue }
-      const enemyTarget = this.squad?.holding && this.squad.hp > 0 && distance(e, this.squad) < distance(e, p) ? this.squad : p
+      if (e.ranking) { this.stepRanking(e, dt); continue }
+      const ally = this.squad?.holding && this.squad.hp > 0 ? this.squad : this.huntTeam && this.huntTeam.hp > 0 ? this.huntTeam : undefined
+      const enemyTarget = ally && distance(e, ally) < distance(e, p) ? ally : p
       const dist = distance(e, enemyTarget)
       if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); e.alert = 0; continue }
       if (e.patrol && e.alert < 1) {
@@ -554,6 +629,10 @@ export class CombatWorld {
           if (this.squad?.holding && this.squad.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.squad!) < e.radius + 16)) {
             this.squad.hp = Math.max(0, this.squad.hp - damage(30, 1, 10))
             if (this.squad.hp === 0) this.cb.notify('试炼同伴受伤，共鸣中断。休整可从已完成的集合节点重试。')
+          }
+          if (this.huntTeam && this.huntTeam.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.huntTeam!) < e.radius + 16)) {
+            this.huntTeam.hp = Math.max(0, this.huntTeam.hp - damage(30, 1, 10))
+            if (this.huntTeam.hp === 0) this.cb.notify('猎捕队友受伤，当前路线中止。已领火能保留，休整后从最近集合节点重试。')
           }
           if (e.type === 'boss' && this.chapter.pattern === 'dash') {
             e.x = clamp(e.target.x, 60, WIDTH - 60); e.y = clamp(e.target.y, 60, HEIGHT - 60)
@@ -600,7 +679,7 @@ export class CombatWorld {
     const patrols = this.enemies.filter(e => e.hp > 0 && e.patrol), alert = Math.max(0, ...patrols.map(e => e.alert))
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
-      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : this.map.trialMode === 'attunement' ? 'E · 确认火域收服' : 'E · 开启章节试炼') : '',
+      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.map.rankingArena && this.cb.state().completed.includes(14) ? 'E · 开启强榜复练 · 胜利1火能' : this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : this.map.trialMode === 'attunement' ? 'E · 确认火域收服' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0,
       escort: this.escort ? { hp: this.escort.hp, maxHp: this.escort.maxHp, failed: this.escort.hp <= 0, waiting: this.escort.waiting } : undefined,
       survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined,
@@ -609,6 +688,9 @@ export class CombatWorld {
       duel: boss?.duel && boss.hp > 0 ? { phase: boss.duel.phase, move: { thrust: '踏风突进', fan: '三叠风刃', cyclone: '旋风回旋' }[boss.duel.move],
         warning: boss.windup > 0, recovery: boss.duel.recovery > 0 && boss.duel.dashTime <= 0 } : undefined,
       escape: this.escapeRun ? { stage: this.escapeRun.stage, remaining: Math.max(0, Math.ceil(6 - this.escapeRun.elapsed)), sheltered: this.sheltered() } : undefined,
+      huntTeam: this.huntTeam ? { hp: this.huntTeam.hp, maxHp: this.huntTeam.maxHp, failed: this.huntTeam.hp <= 0, waiting: this.huntTeam.waiting,
+        arrived: this.huntTeam.hp > 0 && this.huntTeam.stage === 3 && distance(this.huntTeam, eventForChapter(this.chapter.id)!.npc) < 65 } : undefined,
+      ranking: boss?.ranking && boss.hp > 0 ? { phase: boss.ranking.phase, shield: boss.windup > 0, recovery: boss.ranking.recovery > 0, practice: boss.ranking.practice } : undefined,
       squad: this.squad ? { hp: this.squad.hp, maxHp: this.squad.maxHp, holding: this.squad.holding, failed: this.squad.hp <= 0,
         waiting: this.squad.waiting, remaining: Math.max(0, Math.ceil(3 - this.squad.channel)), channeling: this.channeling() } : undefined }
   }

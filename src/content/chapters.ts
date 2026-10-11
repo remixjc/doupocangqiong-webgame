@@ -63,6 +63,10 @@ chapters[12].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[12].boss = '外院资格 · 协作审核'
 chapters[12].trialNote = '双阵协作与试炼同伴为原创资格玩法，完整伙伴支线后续扩充。'
 chapters[12].opening[2].text = '若琳提供双阵协作试炼。先带同伴到集合点，再到西阵按E守阵；同伴保持西阵，你到东阵连续3秒共鸣。投影守卫能威胁同伴，失败可免费休整。登记后入院审核完成本章。'
+chapters[13].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[13].boss = '强榜守关者 · 演武投影'
+chapters[13].trialNote = '双路火能猎捕、临时队友和强榜招式为原创改编，火能数量不对应原著数值。'
+chapters[13].opening[2].text = '向胡嘉接取队伍猎捕，集合后按西路、东路清理投影并共同领取火能。返回支付2火能登记，再挑战强榜投影；蓄势护盾时伤害降低，收招后反击更有效。首次获胜得3火能，结算后可用火能修炼或重返复练。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
