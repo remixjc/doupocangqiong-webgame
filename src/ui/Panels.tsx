@@ -6,6 +6,14 @@ import { craft, prices, unlockedChapter, flames, isVisible } from '../core/rules
 import type { GameState, ItemId } from '../core/model'
 import HeatControl from './HeatControl'
 
+export default function ToolkitPanel({ panel, state, activeDifficulty }: {
+  panel: 'alchemy' | 'shop' | 'settings'; state: GameState; activeDifficulty?: GameState['settings']['difficulty']
+}) {
+  if (panel === 'alchemy') return <AlchemyPanel state={state} />
+  if (panel === 'shop') return <ShopPanel state={state} />
+  return <SettingsPanel state={state} activeDifficulty={activeDifficulty} />
+}
+
 export function AlchemyPanel({ state }: { state: GameState }) {
   const [recipeId, setRecipeId] = useState('heal')
   const [phase, setPhase] = useState(-1)

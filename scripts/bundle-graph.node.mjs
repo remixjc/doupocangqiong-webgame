@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { budgetFailures, initialAssets } from './check-bundle.mjs'
+import { budgetFailures, initialAssets, deferredAssetFailures } from './check-bundle.mjs'
 
 test('static dependency walk includes shared CSS and cycles but excludes dynamic engine', () => {
   const manifest = {
@@ -20,4 +20,16 @@ test('engine becoming an initial import fails even within byte budgets', () => {
 test('missing entry and missing static chunks are rejected instead of undercounted', () => {
   assert.throws(() => initialAssets({}), /one application entry/)
   assert.throws(() => initialAssets({ entry: { isEntry: true, file: 'entry.js', imports: ['missing'] } }), /Missing static import/)
+})
+test('optional panel must have its own deferred JS entry even when byte budgets pass', () => {
+  const manifest = {
+    entry: { isEntry: true, file: 'entry.js', imports: ['shared'], dynamicImports: ['panel'] },
+    shared: { file: 'shared.js' },
+    panel: { file: 'panel.js', imports: ['shared'] },
+  }
+  assert.deepEqual(deferredAssetFailures(manifest, ['panel']), [])
+  assert.match(deferredAssetFailures(manifest, ['missing'])[0], /Missing deferred module/)
+  assert.match(deferredAssetFailures({ ...manifest, panel: { file: 'panel.css' } }, ['panel'])[0], /Missing deferred module/)
+  const eager = { ...manifest, entry: { ...manifest.entry, imports: ['shared', 'panel'] } }
+  assert.match(deferredAssetFailures(eager, ['panel'])[0], /outside the initial/)
 })

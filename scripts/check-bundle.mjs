@@ -24,6 +24,14 @@ export function budgetFailures(report, budgets) {
   if (!report.engineLazy) failures.push('Phaser must remain outside the initial static dependency graph')
   return failures
 }
+export function deferredAssetFailures(manifest, paths) {
+  const initial = initialAssets(manifest)
+  return paths.flatMap(path => {
+    const item = manifest[path]
+    if (!item || !item.file?.endsWith('.js')) return [`Missing deferred module in manifest: ${path}`]
+    return initial.has(item.file) ? [`Module must remain outside the initial static dependency graph: ${path}`] : []
+  })
+}
 async function main() {
   const root = fileURLToPath(new URL('../', import.meta.url)), dist = resolve(root, 'dist')
   const manifest = JSON.parse(await readFile(resolve(dist, '.vite/manifest.json'), 'utf8'))
@@ -45,7 +53,8 @@ async function main() {
     initialJsGzipBytes: sum(js.filter(item => item.initial), 'gzip'), totalJsBytes: sum(js, 'bytes'),
     engineGzipBytes: sum(engine, 'gzip'), engineLazy: engine.every(item => !item.initial), files }
   await writeFile(resolve(dist, 'bundle-report.json'), JSON.stringify(report, null, 2) + '\n')
-  const failures = budgetFailures(report, budgets)
+  const failures = [...budgetFailures(report, budgets),
+    ...deferredAssetFailures(manifest, ['src/ui/Panels.tsx', 'src/ui/GameView.tsx', 'src/ui/SavesPanel.tsx'])]
   if (failures.length) throw new Error(`Bundle budget exceeded:\n${failures.join('\n')}`)
   console.log(`Bundle check: entry ${report.initialJsBytes} bytes / gzip ${report.initialJsGzipBytes}; engine gzip ${report.engineGzipBytes}; total JS ${report.totalJsBytes}; engine lazy=${report.engineLazy}`)
 }

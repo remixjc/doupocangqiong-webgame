@@ -32,6 +32,6 @@
 
 ## 接续
 
-0.35.0门障提交e1ebdf51a993e207f4700982808dfac1f9bef03f / Game checks38177334801 success、Pages38177334809 skipped。0.36.0简略保管提交92e3cb69bf2b30fc69c6abbbc8aa8905276a3f69 / Game checks38177947631 success、Pages38177947635 skipped。0.37.0待本批独立提交后核远端/CI，后续记录补证。
+0.35.0门障提交e1ebdf51a993e207f4700982808dfac1f9bef03f / Game checks38177334801 success、Pages38177334809 skipped。0.36.0简略保管提交92e3cb69bf2b30fc69c6abbbc8aa8905276a3f69 / Game checks38177947631 success、Pages38177947635 skipped。0.37.0独立推送dd743553e64fc52ea33b9cd71b3630fb20c6306e且远端同SHA；Game checks38179422495 success、Pages38179422503 skipped。0.37.1正常刷新并导出，整state仅contentVersion变化，原双卷/援助/主线全部保持。
 
 接不依赖51的C11入口包体/模块加载专项与C0合法来源。51完整正文、药老1277融合完整结果、小医仙完整控制链、中文/最新动画定位、真正后台/真人设备、Beta和公开部署/回滚仍开放；本批不停止automation-2。

@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react
 import { chapters, chapterById } from '../content/chapters'
 import { gameStore } from '../core/store'
 import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
-import { AlchemyPanel, SettingsPanel, ShopPanel } from './Panels'
 import TouchControls from './TouchControls'
 import { setVolume, unlockAudio, stopAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
@@ -22,6 +21,7 @@ const EarlyTrainingPanel = lazy(() => loadSceneModule(() => import('./EarlyTrain
 const SavesPanel = lazy(() => loadSceneModule(() => import('./SavesPanel')))
 const BondJournal = lazy(() => loadSceneModule(() => import('./BondJournal')))
 const StoryEventPanel = lazy(() => loadSceneModule(() => import('./StoryEventPanel')))
+const ToolkitPanel = lazy(() => loadSceneModule(() => import('./Panels')))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | 'recap' | 'early' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
@@ -207,12 +207,13 @@ export default function App() {
     {notice && <div className="toast" role="status">{notice}</div>}
     {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件',bonds:'伙伴手札',recap:'篇章回顾',early:'重修往事'}[panel]}>
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
-      {(panel === 'recap' || panel === 'early' || panel === 'bonds' || panel === 'event') && <SceneBoundary key={panel === 'event' ? `${panel}:${eventId}:${eventCheckpoint}` : panel} context="panel"
+      {(panel === 'recap' || panel === 'early' || panel === 'bonds' || panel === 'event' || panel === 'alchemy' || panel === 'shop' || panel === 'settings') && <SceneBoundary key={panel === 'event' ? `${panel}:${eventId}:${eventCheckpoint}` : panel} context="panel"
         onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
         onSave={() => setPanel('save')} onBack={() => { setPanel(null); setScreen('world') }}>
-        <Suspense fallback={<p className="muted" role="status">正在翻开旅途记录…</p>}>
+        <Suspense fallback={<p className="muted" role="status">{panel === 'alchemy' || panel === 'shop' || panel === 'settings' ? '正在打开操作面板…' : '正在翻开旅途记录…'}</p>}>
           {panel === 'recap' ? <StoryRecap state={s} /> : panel === 'bonds' ? <BondJournal state={s} visit={enter} />
             : panel === 'event' ? <StoryEventPanel key={`${eventId}:${eventCheckpoint}`} state={s} eventId={eventId} checkpoint={eventCheckpoint} close={() => setPanel(null)} shop={() => setPanel('shop')} />
+            : panel === 'alchemy' || panel === 'shop' || panel === 'settings' ? <ToolkitPanel panel={panel} state={s} activeDifficulty={screen === 'play' ? r.difficulty : undefined} />
             : <EarlyTrainingPanel state={s} onContinue={() => { setPanel(null); setScreen('world') }} />}
         </Suspense>
       </SceneBoundary>}
@@ -224,9 +225,6 @@ export default function App() {
       {panel === 'character' && s.completed.length >= 13 && isVisible(s, 14) && <div className="mountain-status"><b>火能 {s.fireEnergy} · 磐门修炼</b><span>双路猎捕与强榜胜利取得。完成内院首通后可用于修炼；金币与火能分别记录。</span><button className="secondary" disabled={!s.completed.includes(14) || s.fireEnergy < 2} onClick={() => gameStore.fireTraining()}>火能修炼 · 2火能 / 30积累</button></div>}
       {panel === 'character' && <div className="mountain-status"><b>药老 · {support.available ? '支援可用' : '支援暂不可用'}</b><span>{support.status === 'away' && !isVisible(s, 16) ? '支援状态随已历练进度变化。' : support.status === 'returned' && !isVisible(s, 22) ? '同行指导' : support.label}</span></div>}
       {panel === 'character' && <><div className="upgrade-row"><button className="secondary" disabled={s.gold < 60 + s.attackUpgrade * 60 || s.attackUpgrade >= 20} onClick={() => gameStore.upgrade('attack')}>兵器磨砺 +{s.attackUpgrade} · {60 + s.attackUpgrade * 60} 金币</button><button className="secondary" disabled={s.gold < 60 + s.armorUpgrade * 60 || s.armorUpgrade >= 20} onClick={() => gameStore.upgrade('armor')}>护具强化 +{s.armorUpgrade} · {60 + s.armorUpgrade * 60} 金币</button><button className="secondary" disabled={s.inventory.elixir < 1} onClick={() => gameStore.update(s => { if (s.inventory.elixir > 0) { s.inventory.elixir--; s.xp += 100 } })}>修炼丹 ×{s.inventory.elixir} · 使用</button></div><span className="section-label">已取得火焰</span><div className="flame-list">{unlockedFlames(s).filter(f => isVisible(s, f.chapter)).map(f => <button key={f.id} className={`flame-card ${s.flame === f.id ? 'active' : ''}`} onClick={() => gameStore.update(s => { s.flame = f.id })}><b style={{ color: f.color }}>◈ {f.name}</b><small>{f.description}</small></button>)}</div></>}
-      {panel === 'alchemy' && <AlchemyPanel state={s} />}
-      {panel === 'shop' && <ShopPanel state={s} />}
-      {panel === 'settings' && <SettingsPanel state={s} activeDifficulty={screen === 'play' ? r.difficulty : undefined} />}
       {panel === 'save' && <SceneBoundary context="save"
         onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
         onBack={() => { setPanel(null); setScreen('world') }}>
