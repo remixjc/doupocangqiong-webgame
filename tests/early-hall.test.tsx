@@ -50,13 +50,13 @@ describe('斗技堂到访与两区基础', () => {
       }
     }
     expect(found).toEqual(new Set(earlyHallPlaces.map(place => place.id)))
-    expect(earlyHallPositionValid({ x: 170, y: 65 })).toBe(false)
-    expect(moveEarlyHall({ x: 170, y: 110 }, 'up')).toEqual({ x: 170, y: 110 })
+    expect(earlyHallPositionValid({ x: 550, y: 65 })).toBe(false)
+    expect(moveEarlyHall({ x: 550, y: 110 }, 'up')).toEqual({ x: 550, y: 110 })
     expect(moveEarlyHall({ x: Infinity, y: 0 }, 'up')).toEqual(earlyHallStart)
     const state = enterEarlyHall(eligible(), teacher).state, before = structuredClone(state)
     const html = renderToStaticMarkup(<EarlyHall state={state} onBack={() => {}} />)
     expect(html).toContain('斗技堂东西两区原创布局')
-    expect(html).toContain('卷册仍在堂内')
+    expect(html).toContain('尚无卷册借出')
     expect(html).toContain('查看堂内地点')
     expect(state).toEqual(before)
   })
@@ -66,7 +66,7 @@ describe('斗技堂到访与两区基础', () => {
     expect(validateState(old)).toEqual(state)
     old.contentVersion = initialState().contentVersion
     expect(() => validateState(old)).toThrow('重修')
-    for (const stage of [-1, 2, .5, NaN, '1']) {
+    for (const stage of [-1, 10, .5, NaN, '1']) {
       const bad = structuredClone(state); bad.earlyTraining.hall.stage = stage as number
       expect(() => validateState(bad)).toThrow('重修')
     }

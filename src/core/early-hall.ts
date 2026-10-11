@@ -3,20 +3,21 @@ import type { GameStore } from './store'
 import type { Transaction } from './rules'
 import { earlyGrowthBlock } from './early-growth'
 import { nearbyEarlyWalkPlace, type EarlyWalkPosition, type EarlyWalkDirection } from './early-walk'
+import { earlyHallScenes } from '../content/early-hall'
 
 export const earlyHallStart = { x: 360, y: 370 }
 export const earlyHallObstacles = [
-  { x: 55, y: 45, width: 230, height: 45 },
+  { x: 435, y: 45, width: 230, height: 45 },
   { x: 55, y: 215, width: 65, height: 65 },
   { x: 625, y: 245, width: 40, height: 60 },
 ]
 export const earlyHallPlaces = [
-  { id: 'shelves', label: '西区 · 藏卷书架', x: 170, y: 130,
-    text: '族内斗技藏卷在西侧收存。此处先查看书架，卷册仍由斗技堂保管，尚未办理借阅。' },
-  { id: 'practice', label: '东区 · 练习场', x: 540, y: 170,
-    text: '东侧供族人切磋与练习。萧炎可在场边观察；本次到访尚未记录人物切磋，也没有玩家胜负。' },
+  { id: 'shelves', label: '东区 · 藏卷书架', x: 550, y: 130,
+    text: '族内斗技藏卷在东侧收存。阅读和选卷是不同步骤；离堂前还需登记。' },
+  { id: 'practice', label: '西区 · 练习场', x: 180, y: 170,
+    text: '西侧供族人切磋与练习。萧炎在场边观察薰儿与萧宁，没有玩家战斗胜负。' },
   { id: 'registry', label: '堂口 · 登记处', x: 360, y: 310,
-    text: '借卷离堂需要登记。当前只辨认位置，没有借卷、归还或药老正式传技记录。' },
+    text: '借卷离堂需要登记。卷册保管记录与药老正式传技分别记录，不重复发放战斗技能。' },
 ] as const
 
 export function earlyHallPositionValid(position: EarlyWalkPosition): boolean {
@@ -53,6 +54,31 @@ export function submitEarlyHallEntry(store: GameStore, position: EarlyWalkPositi
   const before = store.getSnapshot().state
   const result = enterEarlyHall(before, position)
   if (result.ok && result.state !== before) store.update(state => { state.earlyTraining = result.state.earlyTraining })
+  store.notify(result.message)
+  return result.ok
+}
+
+export type EarlyHallAction = { step: number; operation: typeof earlyHallScenes[number]['operation'] }
+export function advanceEarlyHall(state: GameState, position: EarlyWalkPosition, action: EarlyHallAction): Transaction {
+  const blocked = earlyHallBlock(state)
+  if (blocked) return { state, ok: false, message: blocked }
+  const scene = earlyHallScenes.find(scene => scene.stage === state.earlyTraining.hall.stage)
+  if (!scene || action.step !== scene.stage || action.operation !== scene.operation)
+    return { state, ok: false, message: '堂内记录已变化，请按当前步骤继续。' }
+  if (nearbyEarlyHallPlace(position)?.id !== scene.place)
+    return { state, ok: false, message: '先走近这一步对应的堂内地点。' }
+  const next = structuredClone(state)
+  const hall = next.earlyTraining.hall
+  hall.stage++
+  if (action.operation === 'read') hall.scroll = 'reading-first'
+  if (action.operation === 'return') hall.scroll = 'none'
+  if (action.operation === 'select') hall.scroll = 'selected-second'
+  if (action.operation === 'register') hall.scroll = 'borrowed-second'
+  return { state: next, ok: true, message: scene.stage === 8 ? '离堂与回房已记录，借卷由萧炎保管；老师传技另行继续。' : '堂内这一步已记下，可继续或稍后回来。' }
+}
+export function submitEarlyHall(store: GameStore, position: EarlyWalkPosition, action: EarlyHallAction): boolean {
+  const result = advanceEarlyHall(store.getSnapshot().state, position, action)
+  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
   store.notify(result.message)
   return result.ok
 }

@@ -27,8 +27,10 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
 }
 
 export function earlyHallSaveSummary(saved: GameState, viewing: Settings): string {
+  const stage = saved.earlyTraining.hall.stage
   return '斗技堂 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
-    : saved.earlyTraining.hall.stage === 0 ? '未到访' : '已到访，待借卷')
+    : stage === 0 ? '未到访' : stage === 1 ? '已到访，待借卷' : stage === 9 ? '已离堂，借卷由萧炎保管'
+    : stage >= 8 ? '借阅已登记，待离堂' : stage === 7 ? '已选另一卷，待登记' : `堂内进行中 ${stage - 1}/8`)
 }
 
 export function earlyGrowthSaveSummary(saved: GameState, viewing: Settings): string {

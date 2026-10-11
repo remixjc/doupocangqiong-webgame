@@ -9,10 +9,12 @@ import { advanceEarlyBracelet } from '../../src/core/early-bracelet'
 import { earlyBraceletScenes } from '../../src/content/early-bracelet'
 import { earlyWalkPlaces } from '../../src/core/early-walk'
 import { advanceEarlyGrowth } from '../../src/core/early-growth'
+import { advanceEarlyHall, enterEarlyHall, earlyHallPlaces } from '../../src/core/early-hall'
+import { earlyHallScenes } from '../../src/content/early-hall'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false): GameState {
   let state = input
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
@@ -52,6 +54,17 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)
+  }
+  if (includeHall) {
+    const entered = enterEarlyHall(state, earlyWalkPlaces.find(place => place.id === 'teacher')!)
+    expect(entered.ok, entered.message).toBe(true)
+    state = parseSave(serializeSave(entered.state)); onCheckpoint?.(state)
+    for (const scene of earlyHallScenes) {
+      const result = advanceEarlyHall(state, earlyHallPlaces.find(place => place.id === scene.place)!,
+        { step: scene.stage, operation: scene.operation })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
   }
   return state
 }

@@ -3,7 +3,7 @@ import { CONTENT_VERSION, initialState, blankEvent, type ChapterEventProgress, t
 import { unlockedFlames } from './rules'
 import { eventForChapter, eventsForChapter, type ChapterEvent } from '../content/events'
 import { eventDone, migrateLegacyEvent, migrateLegacyEvents } from './events'
-import { EARLY_TRAINING_VERSION, EARLY_GROWTH_VERSION, EARLY_HALL_VERSION, parseEarlyTraining } from './early-training-state'
+import { EARLY_TRAINING_VERSION, EARLY_GROWTH_VERSION, EARLY_HALL_VERSION, EARLY_HALL_SCROLL_VERSION, parseEarlyTraining } from './early-training-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -212,7 +212,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, '0.15.1'), versionBefore(data.contentVersion as string, '0.15.3'),
     versionBefore(data.contentVersion as string, '0.15.4'), versionBefore(data.contentVersion as string, '0.15.5'),
     versionBefore(data.contentVersion as string, '0.16.3'), versionBefore(data.contentVersion as string, EARLY_GROWTH_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_HALL_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_HALL_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_HALL_SCROLL_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
