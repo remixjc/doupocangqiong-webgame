@@ -1,0 +1,5 @@
+.early-walk-map{display:block;width:100%;max-height:55vh;background:#182d29;border:1px solid var(--line);border-radius:4px;margin:20px 0;touch-action:pan-y}
+.early-walk-map:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.early-walk-status{min-height:24px;color:var(--gold);font-size:13px}
+.early-walk-controls{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.early-walk-controls button{min-height:44px;padding:10px 15px}
+@media(max-width:600px){.early-walk-map{max-height:none}.early-walk-controls{gap:6px}.early-walk-controls button{padding:10px 12px}}

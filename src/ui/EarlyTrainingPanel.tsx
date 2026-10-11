@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
@@ -5,19 +6,28 @@ import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from '../core/early-tra
 import { earlyMarketScenes } from '../content/early-market'
 import { earlyLiquidScenes } from '../content/early-liquid'
 import EarlyPractice from './EarlyPractice'
+import EarlyWalk from './EarlyWalk'
 
 export default function EarlyTrainingPanel({ state }: { state: GameState }) {
   const blocked = earlyTrainingBlock(state)
+  const [walking, setWalking] = useState(false)
+  const entry = useRef<HTMLButtonElement>(null)
+  const returning = useRef(false)
+  useEffect(() => {
+    if (!walking && returning.current) { returning.current = false; entry.current?.focus() }
+  }, [walking])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (walking && !blocked) return <EarlyWalk state={state} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
     {blocked ? <p className="muted">{blocked}</p> : <>
       <p>三年约定之后，药老在后山现身，萧炎拜师。重修的下一步，是筹措资金、找到指定药材，再由老师调制供修炼使用的药液。</p>
       <p className="muted">这段往事独立记录。任务资金和材料专用于重修，不与行囊金币、灵草或魔晶混用。</p>
+      <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       <section className="bond-summary" aria-label="重修准备记录">
         <b>{state.earlyTraining.started ? '准备单已记下' : '尚未接下准备'}</b>
         <p>两种指定草药，分别三株与两株；另需一枚一阶木属性魔核。药老负责调制，萧炎准备容器与水。药液用于修炼。</p>
@@ -54,7 +64,7 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
               onClick={() => gameStore.earlyTraining({ type: 'market', step: task.market.stage, expectedSpent: task.purse.spent })}>{marketScene.action}</button>
             {task.market.stage === 3 && !task.receipts.woodCore && <p className="muted">先在上方付清魔核采购订单，再核对附物。</p>}
           </> : <><h3>黑铁片已收好</h3><p>护卫介入后，争执告一段落。魔核和黑铁片来自同一次采购，萧炎带着物品回家，准备请药老辨认。</p><p>任务袋：黑铁片 ×{task.market.blackIron}</p></>}
-          <p className="muted">这是对白与交互的压缩改编；没有新的坊市行走地图。黑铁片尚未化为玩家的战斗技能。</p>
+          <p className="muted">这是对白与交互的压缩改编；可在上方漫步原创准备路线，交易仍由本准备单操作。黑铁片尚未化为玩家的战斗技能。</p>
         </section>}
         {task.market.stage === 4 && <section className="bond-summary" aria-label="药老调制与稀释">
           <span className="eyebrow">重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</span>

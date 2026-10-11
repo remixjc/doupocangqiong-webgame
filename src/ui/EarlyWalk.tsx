@@ -1,0 +1,68 @@
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import type { GameState } from '../core/model'
+import { earlyTrainingBlock } from '../core/early-training'
+import { earlyWalkPlaces, earlyWalkObstacles, earlyWalkStart, earlyWalkSize, moveEarlyWalker, nearbyEarlyWalkPlace, type EarlyWalkDirection } from '../core/early-walk'
+import { earlyTrainingSaveSummary } from '../core/save-preview'
+import './early-walk.css'
+
+export default function EarlyWalk({ state, onBack }: { state: GameState; onBack: () => void }) {
+  const [position, setPosition] = useState({ ...earlyWalkStart })
+  const [reading, setReading] = useState<string>()
+  const field = useRef<SVGSVGElement>(null)
+  const blocked = earlyTrainingBlock(state)
+  const place = nearbyEarlyWalkPlace(position)
+  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
+  function key(event: KeyboardEvent<SVGSVGElement>) {
+    if (event.altKey || event.ctrlKey || event.metaKey) return
+    const direction = ({ ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right',
+      w: 'up', s: 'down', a: 'left', d: 'right' } as Record<string, EarlyWalkDirection>)[event.key.length === 1 ? event.key.toLowerCase() : event.key]
+    if (direction) { event.preventDefault(); move(direction) }
+    if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
+  }
+  if (blocked) return <p>{blocked}</p>
+  return <>
+    <span className="eyebrow">乌坦城 / 往事准备路线</span>
+    <h2>走过街巷，再把准备做齐。</h2>
+    <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E查看；下方方向按钮也可操作。沿街巷熟悉准备次序，采购和调制继续从准备单操作。</p>
+    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="往事路线地图"
+      aria-describedby="early-walk-help" viewBox={`0 0 ${earlyWalkSize.width} ${earlyWalkSize.height}`} onKeyDown={key}>
+      <title>萧家院落、药铺与坊市的原创压缩布局</title>
+      <rect width="720" height="420" fill="#182d29" />
+      <path d="M0 25 Q165 80 320 20 T720 35 V0 H0Z" fill="#31453d" />
+      <path d="M28 400 Q160 360 250 408 T720 375 V420 H0Z" fill="#344139" />
+      <path d="M135 355 V143 H580 V350 H140 M270 145 V355 M450 145 V355" fill="none" stroke="#6d6551" strokeWidth="38" strokeLinejoin="round" />
+      <path d="M135 355 V143 H580 V350 H140" fill="none" stroke="#a28f63" strokeOpacity=".2" strokeWidth="2" strokeDasharray="5 14" />
+      {earlyWalkObstacles.slice(0, 2).map((rect, index) => <g key={rect.x}>
+        <rect {...rect} rx="4" fill="#39473b" stroke="#ad9365" />
+        <path d={`M${rect.x - 12} ${rect.y + 10} L${rect.x + rect.width / 2} ${rect.y - 25} L${rect.x + rect.width + 12} ${rect.y + 10}Z`} fill="#614c3b" stroke="#bb9460" />
+        <rect x={rect.x + rect.width / 2 - 14} y={rect.y + 18} width="28" height="50" fill="#223430" />
+        <text x={rect.x + rect.width / 2} y={rect.y + 8} textAnchor="middle" fill="#f0d7a4" fontSize="15">{index === 0 ? '药 铺' : '萧 家 坊 市'}</text>
+      </g>)}
+      <g><rect {...earlyWalkObstacles[2]} rx="10" fill="#394b47" stroke="#829381" /><ellipse cx="360" cy="208" rx="34" ry="13" fill="#49766d" /><path d="M352 202 Q360 175 368 202" fill="none" stroke="#a0c2af" strokeWidth="2" /></g>
+      {[{ x: 30, y: 190 }, { x: 680, y: 210 }, { x: 290, y: 75 }, { x: 430, y: 380 }].map(tree => <g key={tree.x}><path d={`M${tree.x} ${tree.y} v34`} stroke="#6d5741" strokeWidth="5" /><circle cx={tree.x} cy={tree.y} r="24" fill="#3c5a42" /><circle cx={tree.x - 8} cy={tree.y - 8} r="14" fill="#4d6c4d" /></g>)}
+      <g><ellipse cx="575" cy="318" rx="23" ry="9" fill="#274d4e" stroke="#a6ac88" /><rect x="555" y="295" width="40" height="21" rx="4" fill="#645b44" /><ellipse cx="575" cy="295" rx="20" ry="7" fill="#79a89c" /></g>
+      {earlyWalkPlaces.map(item => <g key={item.id}>
+        <circle cx={item.x} cy={item.y} r="27" fill={place?.id === item.id ? '#e4bc7335' : '#e4bc7312'} stroke="#c9ab70" strokeDasharray={place?.id === item.id ? undefined : '3 5'} />
+        <text x={item.x} y={item.y - 35} textAnchor="middle" fill="#edcea0" fontSize="13">{item.label}</text>
+        {item.id === 'xuner' && <><path d={`M${item.x - 10} ${item.y + 12} Q${item.x} ${item.y - 15} ${item.x + 10} ${item.y + 12}Z`} fill="#bcb8db" /><circle cx={item.x} cy={item.y - 10} r="7" fill="#e9c6a1" /></>}
+        {item.id === 'teacher' && <circle cx={item.x} cy={item.y - 6} r="9" fill="#aec9ce" opacity=".8" />}
+      </g>)}
+      <g aria-hidden="true" data-player-x={position.x} data-player-y={position.y} transform={`translate(${position.x} ${position.y})`}>
+        <ellipse cy="14" rx="13" ry="5" fill="#0005" /><path d="M-10 12 L-6-2 H6 L11 12Z" fill="#d3a567" /><circle cy="-8" r="7" fill="#edc79f" /><path d="M-7-11 Q0-20 7-10" fill="#26322f" /><path d="M-12 3 L-8 11 M12 3 L8 11" stroke="#8e653c" strokeWidth="3" />
+      </g>
+      <text x="360" y="402" textAnchor="middle" fill="#a7b9a9" fontSize="12">院门 · 每次进入从这里出发</text>
+    </svg>
+    <p role="status" className="early-walk-status">{place ? `附近：${place.label} · 可查看地点` : '沿街巷行走，靠近金色路标查看。'}</p>
+    <div className="early-walk-controls" aria-label="往事行走操作">
+      <button className="secondary" onClick={() => move('up')} aria-label="往事向上走">↑</button>
+      <button className="secondary" onClick={() => move('left')} aria-label="往事向左走">←</button>
+      <button className="secondary" onClick={() => move('down')} aria-label="往事向下走">↓</button>
+      <button className="secondary" onClick={() => move('right')} aria-label="往事向右走">→</button>
+      <button className="primary" disabled={!place} onClick={() => place && setReading(place.id)}>查看附近地点</button>
+    </div>
+    {reading && <section className="bond-summary" aria-label="往事地点说明"><b>{earlyWalkPlaces.find(item => item.id === reading)!.label}</b><p>{earlyWalkPlaces.find(item => item.id === reading)!.text}</p></section>}
+    <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
+    <button className="secondary" onClick={onBack}>回到重修准备单</button>
+  </>
+}
