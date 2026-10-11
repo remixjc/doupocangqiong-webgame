@@ -107,7 +107,7 @@ export default function App() {
   }
   function retry() { gameStore.runtime({ ...r, dead: false }); setRun(n => n + 1) }
 
-  return <div onPointerDown={unlockAudio} className={`shell ${screen === 'play' ? 'playing' : ''} ${s.settings.reducedMotion ? 'reduced' : ''}`}>
+  return <div onPointerDown={unlockAudio} onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') unlockAudio() }} className={`shell ${screen === 'play' ? 'playing' : ''} ${s.settings.reducedMotion ? 'reduced' : ''}`}>
     <header className="topbar">
       <button className="brand brand-button" onClick={() => { setScreen('home'); setPanel(null); setStory(null) }}><span className="brand-seal">炎</span><span>斗破苍穹<small>异 火 之 路</small></span></button>
       <nav aria-label="主导航">
@@ -196,6 +196,7 @@ export default function App() {
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
           <TouchControls onMenu={() => setPanel('camp')} />
         </div>
+        <p id="scene-keyboard-help" className="visually-hidden">聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。</p>
         <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button disabled={!support.available} onClick={() => gameStore.action('support')}><kbd>R</kbd> {support.available ? '支援' : '支援暂不可用'}</button></div>
           <div className="skills">{skillInfo.map(skill => {
             const unlocked = skillUnlocked(s, skill.id), cd = r.cooldowns[skill.id]

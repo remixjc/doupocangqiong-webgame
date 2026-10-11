@@ -22,5 +22,5 @@ export default function GameView() {
     }, game => game.destroy(true), error => setFailure(error instanceof Error ? error : new Error('Scene initialization failed')))
   }, [])
   if (failure) throw failure
-  return <div className="game-canvas" ref={container} aria-label="探索场景：WASD移动，J普攻，空格闪避，E交互" role="application" />
+  return <div className="game-canvas" ref={container} tabIndex={0} aria-describedby="scene-keyboard-help" aria-label="探索场景：WASD移动，J普攻，空格闪避，E交互" role="application" />
 }

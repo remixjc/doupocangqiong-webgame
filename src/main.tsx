@@ -6,6 +6,7 @@ import './ui/game.css'
 import './ui/panels.css'
 import './ui/content.css'
 import './ui/experience.css'
+import './ui/responsive.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode><App /></React.StrictMode>,

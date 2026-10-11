@@ -11,6 +11,7 @@ import { PauseDrawGate, presentFloat } from './presentation'
 import { bindFocusLifecycle } from './focus'
 import { ActorMotion, type ActorPose } from './actor-motion'
 import { drawActor } from './draw-actor'
+import { acceptsGameplayKey, keyboardSurface } from './keyboard'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -65,8 +66,8 @@ export default class AdventureScene extends Phaser.Scene {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
     }).setOrigin(.5).setDepth(10).setVisible(false))
     const keydown = (event: KeyboardEvent) => {
-      if (gameStore.paused || document.hidden || event.ctrlKey || event.altKey || event.metaKey) return
-      if (event.target instanceof HTMLElement && ['INPUT', 'SELECT', 'TEXTAREA'].includes(event.target.tagName)) return
+      const surface = keyboardSurface(event.target instanceof Element ? event.target : null)
+      if (!acceptsGameplayKey(event, surface, gameStore.paused, document.hidden)) return
       unlockAudio()
       if (!document.hidden) this.lostFocus = false
       const key = event.key.toLowerCase()
