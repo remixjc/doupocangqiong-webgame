@@ -68,4 +68,18 @@ describe('关卡模块加载期限', () => {
     expect(renderToStaticMarkup(boundary.render())).toContain('本次场景遇到问题')
     expect(renderToStaticMarkup(boundary.render())).not.toContain('等待超过20秒')
   })
+  it('按需手札面板故障保留存档与舆图恢复入口，不误称战场运行错误', () => {
+    const props = { children: 'panel', context: 'panel' as const, onFailure: vi.fn(), onReload: vi.fn(), onSave: vi.fn(), onBack: vi.fn() }
+    const boundary = new SceneBoundary(props)
+    boundary.state = SceneBoundary.getDerivedStateFromError(new SceneLoadTimeout())
+    boundary.componentDidCatch()
+    expect(props.onFailure).toHaveBeenCalledTimes(1)
+    const timeout = renderToStaticMarkup(boundary.render())
+    expect(timeout).toContain('打开此页已等待超过20秒')
+    for (const text of ['保存后刷新页面', '打开存档管理', '返回大陆舆图']) expect(timeout).toContain(text)
+    expect(timeout).not.toContain('本次场景')
+    boundary.state = SceneBoundary.getDerivedStateFromError(new Error('recap render failed'))
+    expect(renderToStaticMarkup(boundary.render())).toContain('本页遇到问题')
+    expect(renderToStaticMarkup(boundary.render())).not.toContain('20秒')
+  })
 })

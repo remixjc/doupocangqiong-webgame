@@ -16,10 +16,10 @@ import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
 import { bindDialogFocus } from './dialog-focus'
 import { loadSceneModule } from './scene-load'
-import StoryRecap from './StoryRecap'
-import EarlyTrainingPanel from './EarlyTrainingPanel'
 
 const GameView = lazy(() => loadSceneModule(() => import('./GameView')))
+const StoryRecap = lazy(() => loadSceneModule(() => import('./StoryRecap')))
+const EarlyTrainingPanel = lazy(() => loadSceneModule(() => import('./EarlyTrainingPanel')))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | 'recap' | 'early' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
@@ -204,8 +204,13 @@ export default function App() {
     {notice && <div className="toast" role="status">{notice}</div>}
     {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件',bonds:'伙伴手札',recap:'篇章回顾',early:'重修往事'}[panel]}>
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
-      {panel === 'recap' && <StoryRecap state={s} />}
-      {panel === 'early' && <EarlyTrainingPanel state={s} />}
+      {(panel === 'recap' || panel === 'early') && <SceneBoundary key={panel} context="panel"
+        onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
+        onSave={() => setPanel('save')} onBack={() => { setPanel(null); setScreen('world') }}>
+        <Suspense fallback={<p className="muted" role="status">正在翻开旅途记录…</p>}>
+          {panel === 'recap' ? <StoryRecap state={s} /> : <EarlyTrainingPanel state={s} />}
+        </Suspense>
+      </SceneBoundary>}
       {panel === 'bonds' && <BondJournal state={s} visit={enter} />}
       {panel === 'event' && <StoryEventPanel key={`${eventId}:${eventCheckpoint}`} state={s} eventId={eventId} checkpoint={eventCheckpoint} close={() => setPanel(null)} shop={() => setPanel('shop')} />}
       {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">按左侧目标完成本章事件：前三章先与药老、萧战或坊市执事交谈，分别练习斗技、走完立约路线和交付订单。采集、击杀与炼药仅在目标列出时必做。目标完成后到试炼碑挑战首领，再回到营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '人物 / 路标 / 采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><div className="panel-tabs"><button className="primary" onClick={() => setPanel(null)}>记下了</button><button className="secondary" onClick={() => setPanel('recap')}>篇章回顾 · 重读已看对白</button></div></>}
