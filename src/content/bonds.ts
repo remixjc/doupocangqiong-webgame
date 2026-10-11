@@ -13,6 +13,7 @@ export const bondLines = [
   { id: 'hai-bodong', name: '海波东', title: '守约与相助' },
   { id: 'yun-yun', name: '云韵', title: '相遇与立场' },
   { id: 'medusa', name: '美杜莎', title: '共历与责任' },
+  { id: 'yao-teacher', name: '药老', title: '传授与归途' },
 ]
 export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
   {
@@ -359,6 +360,93 @@ export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
         options: [
           { choice: 'steady', label: '珍重约定 · 继续兑现承担的责任', response: '你珍重共历，愿意继续兑现自己承担的责任。', reward: { xp: 50, heal: 1 } },
           { choice: 'premium', label: '共同安排 · 让各自愿望被看见', response: '你愿意共同安排下一程，让各自的愿望被认真听见。', reward: { xp: 50, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 2,
+    event: {
+      id: 'teacher-first-lessons', kind: 'bond', optional: true, introducedVersion: '0.12.5',
+      requiresCompleted: [2], title: '药老 · 戒中初课', speaker: '药老 · 师徒回访', npc: { x: 620, y: 730 },
+      stages: ['到初课记回望重新修炼', '前往日课石选择回应', '返回药老处确认并领取一次补给', '戒中初课已记入伙伴手札'],
+      introduction: '立约篇章正式首通后，回访药老。看初课记，再到日课石想一想如何把指导变成每天的练习，回来确认。',
+      note: '师徒书简与回应为原创回望，不代替原著焚诀传授细节；原有斗技教学、支援解锁和材料规则保持。旧档可重返补做，不自动补足迹。',
+      checkpoints: [
+        { x: 500, y: 430, label: '初课记', text: '重新修炼的第一步，是学会把力量用准，也把退路留好。' },
+        { x: 800, y: 650, label: '日课石', text: '把老师的指导写成下一程可以坚持的日课。' },
+      ],
+      bond: {
+        lineId: 'yao-teacher', question: '重新走上修炼之路后，你愿意怎样回应老师的指导？',
+        options: [
+          { choice: 'steady', label: '稳住根基 · 每日认真练习', response: '你将指导落实到每天的练习，让根基跟上目标。', reward: { xp: 20, heal: 1 } },
+          { choice: 'premium', label: '记下疑问 · 主动请教与核对', response: '你记下疑问，愿意主动请教，也认真核对自己的理解。', reward: { xp: 20, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 16,
+    event: {
+      id: 'teacher-absence-notes', kind: 'bond', optional: true, introducedVersion: '0.12.5',
+      requiresCompleted: [16], requiresHistory: [{ chapter: 2, eventId: 'teacher-first-lessons' }],
+      title: '药老 · 留下的日课', speaker: '药老 · 留存札记', npc: { x: 280, y: 750 },
+      stages: ['到留课记读取老师留下的札记', '前往自立石写下回应', '返回札记处确认并领取一次补给', '留下的日课已记入伙伴手札'],
+      introduction: '再临云岚正式首通后，老师暂时离队。阅读营地中留下的札记，走到留课记与自立石，将接下来能做的准备记下来，再返回札记处确认。',
+      note: '札记是原创留存记录，现场标记不是药老实体归队。回应与补给不会恢复支援、跳过丹塔或提前完成营救；老师状态继续由主线首通规则管理。',
+      checkpoints: [
+        { x: 300, y: 520, label: '留课记', text: '老师暂时不在身边，日课与退路仍需要自己认真守住。' },
+        { x: 730, y: 730, label: '自立石', text: '将牵挂写成可以实践的准备，下一程先走稳。' },
+      ],
+      bond: {
+        lineId: 'yao-teacher', question: '老师暂时离队时，你会怎样守住曾有的指导？',
+        options: [
+          { choice: 'steady', label: '继续日课 · 先积累可靠的力量', response: '你继续日课，认真积累下一程需要的力量。', reward: { xp: 35, heal: 1 } },
+          { choice: 'premium', label: '核对情报 · 把营救准备写清', response: '你把情报与退路核对清楚，将牵挂落实到准备中。', reward: { xp: 35, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 22,
+    event: {
+      id: 'teacher-reunion-lessons', kind: 'bond', optional: true, introducedVersion: '0.12.5',
+      requiresCompleted: [22], requiresHistory: [{ chapter: 16, eventId: 'teacher-absence-notes' }],
+      title: '药老 · 归队之后', speaker: '药老 · 归途回访', npc: { x: 580, y: 720 },
+      stages: ['到归队记回望营救归途', '前往传授石回应新的责任', '返回药老处确认并领取一次补给', '归队之后已记入伙伴手札'],
+      introduction: '营救正式首通、药老归队后，回访老师。读归队记，再到传授石回应新的责任，回来确认；营救与支援的正式结果由主线保存。',
+      note: '回访为原创师徒表达，不重放原著营救强者时序，也不再次支付首通或恢复奖励。成长的责任与战斗实力分别记录，回访不直接解锁新的斗技。',
+      checkpoints: [
+        { x: 350, y: 340, label: '归队记', text: '走过险境之后，曾经的指导也成为你可以主动承担的责任。' },
+        { x: 1000, y: 390, label: '传授石', text: '将归途里的感悟写成能传递给同行者的行动。' },
+      ],
+      bond: {
+        lineId: 'yao-teacher', question: '归队之后，怎样让曾有的指导继续前行？',
+        options: [
+          { choice: 'steady', label: '照看同行 · 将退路也留给别人', response: '你愿意照看同行者，将学会的退路与耐心传下去。', reward: { xp: 45, heal: 1 } },
+          { choice: 'premium', label: '整理经验 · 把学到的事讲清楚', response: '你整理走过的经验，愿意认真把学到的事讲清楚。', reward: { xp: 45, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 28,
+    event: {
+      id: 'teacher-epilogue-teaching', kind: 'bond', optional: true, introducedVersion: '0.12.5',
+      requiresCompleted: [28], requiresHistory: [{ chapter: 22, eventId: 'teacher-reunion-lessons' }],
+      title: '药老 · 传授未止', speaker: '药老 · 归途札记', npc: { x: 1180, y: 70 },
+      stages: ['到旧课记读取归途札记', '前往传灯记写下回应', '返回札记处确认并领取一次补给', '传授与归途四页已完成'],
+      introduction: '终战正式首通后，回到营地读归途札记。走过旧课记与传灯记，回望从受教到能够承担的旅途，再回来确认。',
+      note: '札记为原创尾声，不补写原著师门职位或最终去向；支援保持正式归队，报告只发一次补给，不追加主线奖励。',
+      checkpoints: [
+        { x: 160, y: 220, label: '旧课记', text: '最初关于力量与退路的日课，如今仍然能照亮新的旅途。' },
+        { x: 1000, y: 750, label: '传灯记', text: '修炼并未止步，传授也可以由你继续。' },
+      ],
+      bond: {
+        lineId: 'yao-teacher', question: '走过终战后，你愿意怎样继续这份传授？',
+        options: [
+          { choice: 'steady', label: '守住初心 · 认真照看后来的少年', response: '你记得最初的日课，愿意认真照看后来的少年。', reward: { xp: 60, heal: 1 } },
+          { choice: 'premium', label: '整理手札 · 将经验与疑问一并留下', response: '你把经验与仍在思考的疑问写下，让后来者继续求索。', reward: { xp: 60, mana: 1 } },
         ],
       },
     },
