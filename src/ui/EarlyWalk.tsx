@@ -18,6 +18,7 @@ import { earlyFatherGiftBlock } from '../core/early-father-gift'
 import { earlyXunerVisitBlock } from '../core/early-xuner-visit'
 import { earlyLongSuppliesBlock } from '../core/early-long-supplies'
 import { earlyForestStrikeBlock } from '../core/early-forest-strike'
+import { earlySeventhRoomBlock } from '../core/early-seventh-room'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
@@ -33,6 +34,7 @@ const EarlyFatherGift = lazy(() => loadSceneModule(() => import('./EarlyFatherGi
 const EarlyXunerVisit = lazy(() => loadSceneModule(() => import('./EarlyXunerVisit')))
 const EarlyLongSupplies = lazy(() => loadSceneModule(() => import('./EarlyLongSupplies')))
 const EarlyForestStrike = lazy(() => loadSceneModule(() => import('./EarlyForestStrike')))
+const EarlySeventhRoom = lazy(() => loadSceneModule(() => import('./EarlySeventhRoom')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -50,6 +52,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const [xunerVisiting, setXunerVisiting] = useState(false)
   const [storingSupplies, setStoringSupplies] = useState(false)
   const [forestTraining, setForestTraining] = useState(false)
+  const [seventhTraining, setSeventhTraining] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
@@ -76,6 +79,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const returningLongSupplies = useRef(false)
   const forestEntry = useRef<HTMLButtonElement>(null)
   const returningForest = useRef(false)
+  const seventhEntry = useRef<HTMLButtonElement>(null)
+  const returningSeventh = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -119,6 +124,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!forestTraining && returningForest.current) { returningForest.current = false; forestEntry.current?.focus() }
   }, [forestTraining])
+  useEffect(() => {
+    if (!seventhTraining && returningSeventh.current) { returningSeventh.current = false; seventhEntry.current?.focus() }
+  }, [seventhTraining])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -174,6 +182,11 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setStoringSupplies(false); setForestTraining(true)
   }
+  function openSeventh() {
+    const blocked = earlySeventhRoomBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setForestTraining(false); setSeventhTraining(true)
+  }
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -183,7 +196,10 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
+  if (seventhTraining) return <Suspense fallback={<p role="status">正在回房接续七段调息……</p>}><EarlySeventhRoom state={state} position={position}
+    onBack={() => { returningSeventh.current = true; setSeventhTraining(false) }} /></Suspense>
   if (forestTraining) return <Suspense fallback={<p role="status">正在走入练技森林……</p>}><EarlyForestStrike state={state} position={position}
+    onSeventh={openSeventh}
     onBack={() => { returningForest.current = true; setForestTraining(false) }} /></Suspense>
   if (storingSupplies) return <Suspense fallback={<p role="status">正在回看房中物资……</p>}><EarlyLongSupplies state={state} position={position}
     onForest={openForest}
@@ -276,6 +292,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyXunerVisitBlock(state, position) && <button ref={xunerVisitEntry} className="primary" onClick={openXunerVisit}>接续薰儿来访 · 独自处理长老争执</button>}
       {place.id === 'teacher' && !earlyLongSuppliesBlock(state, position) && <button ref={longSuppliesEntry} className="secondary" onClick={openLongSupplies}>回看已购长期物资 · 分拣与藏柜</button>}
       {place.id === 'teacher' && !earlyForestStrikeBlock(state, position) && <button ref={forestEntry} className="primary" onClick={openForest}>走入后山森林 · 首次成功八极崩</button>}
+      {place.id === 'teacher' && !earlySeventhRoomBlock(state, position) && <button ref={seventhEntry} className="secondary" onClick={openSeventh}>回房冲向七段 · 老师从古戒补一滴</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>

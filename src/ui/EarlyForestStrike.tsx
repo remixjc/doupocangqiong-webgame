@@ -7,7 +7,7 @@ import { startSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 
-export default function EarlyForestStrike({ state, position: entryPosition, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyForestStrike({ state, position: entryPosition, onBack, onSeventh }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onSeventh?: () => void }) {
   const task = state.earlyTraining.forestStrike, scene = forestStrikeScenes[task.stage]
   const [position, setPosition] = useState({ ...forestStart })
   const [marker, setMarker] = useState(.5), [paused, setPaused] = useState(false)
@@ -71,7 +71,8 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
         <button className="primary" disabled={paused} onClick={() => act(operation)}>{actionLabel}</button>
       </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
     </section> : <p className="muted">下一步请走近{forestPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>首次成功与下山已归档。</h3><p>这次树倒与耗尽各自有记录，七段仍是目标。继续回房修炼，后续补液与突破另行接续。</p></section>}
+      : <section className="bond-summary"><h3>首次成功与下山已归档。</h3><p>这次树倒与耗尽各自有记录，七段结果须由后续房中调息建立。</p>
+        {onSeventh && <button className="primary" onClick={onSeventh}>接续房中七段 · 观察老师补液</button>}</section>}
     {training && <button className="secondary" onClick={() => act('stop')}>停下这一轮 · 免费重新稳身</button>}
     <p className="muted">本次只新增往事练技记录，不重复解锁主线八极崩、不改变人物攻击或已结算奖励。三个月是压缩故事回顾；药液耗尽、房柜物资、同瓶与所有钱账保留。</p>
     <button className="secondary" onClick={onBack}>暂离林中练技 · 保留成功断点</button>

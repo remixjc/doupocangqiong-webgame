@@ -31,10 +31,13 @@ import { xunerVisitScenes } from '../../src/content/early-xuner-visit'
 import { advanceEarlyLongSupplies } from '../../src/core/early-long-supplies'
 import { longSupplyScenes } from '../../src/content/early-long-supplies'
 import { advanceEarlyForestStrike, forestPlaces, type ForestStrikeAction } from '../../src/core/early-forest-strike'
+import { advanceEarlySeventhRoom } from '../../src/core/early-seventh-room'
+import { seventhRoomScenes } from '../../src/content/early-seventh-room'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false): GameState {
+  if (includeSeventhRoom) includeForestStrike = true
   if (includeForestStrike) includeLongSupplies = true
   if (includeLongSupplies) includeXunerVisit = true
   if (includeXunerVisit) includeFatherGift = true
@@ -186,6 +189,19 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     forestAct('tree', 'begin')
     forestAct('tree', 'steady', .5); forestAct('tree', 'gather', .5); forestAct('tree', 'strike', .5)
     forestAct('stone', 'rest'); forestAct('stone', 'ask'); forestAct('stone', 'goal'); forestAct('trail', 'leave')
+  }
+  if (includeSeventhRoom) {
+    const teacher = earlyWalkPlaces.find(place => place.id === 'teacher')!
+    let failed = false
+    while (state.earlyTraining.seventhRoom.stage < 8) {
+      const task = state.earlyTraining.seventhRoom, scene = seventhRoomScenes[task.stage]
+      const training = task.stage === 1 || task.stage === 4
+      const marker = training ? task.stage === 4 && !failed ? 0 : .5 : undefined
+      const result = advanceEarlySeventhRoom(state, teacher, scene.station, { ...task, operation: scene.operation, marker })
+      expect(result.ok, result.message).toBe(true)
+      if (marker === 0) failed = true
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
   }
   return state
 }

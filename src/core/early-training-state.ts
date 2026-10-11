@@ -21,7 +21,11 @@ export interface EarlyTrainingState {
   xunerVisit: { stage: number; card: 'xuner' | 'elders' }
   longSupplies: { stage: number; herbs: LongSupplyPlace; cores: LongSupplyPlace }
   forestStrike: ForestStrikeState
+  seventhRoom: SeventhRoomState
 }
+export interface SeventhRoomState { stage: number; beats: number; attempts: number; drops: number;
+  energy: 'unobserved' | 'active' | 'fading' | 'clear' | 'restored' | 'lighter';
+  period: 'unreviewed' | 'reviewed'; result: 'none' | 'seventh-duan' }
 export interface ForestStrikeState { stage: number; beats: number; attempts: number; tree: 'intact' | 'fallen'; result: 'none' | 'sixth-duan' }
 export type LongSupplyPlace = 'none' | 'parcel' | 'shelf' | 'cabinet'
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
@@ -46,6 +50,7 @@ export const EARLY_FATHER_GIFT_VERSION = '0.20.2'
 export const EARLY_XUNER_VISIT_VERSION = '0.21.0'
 export const EARLY_LONG_SUPPLIES_VERSION = '0.22.0'
 export const EARLY_FOREST_STRIKE_VERSION = '0.23.0'
+export const EARLY_SEVENTH_ROOM_VERSION = '0.24.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -71,9 +76,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     appraisal: { stage: 0, cloaked: false, speaker: 'self', tier: 0, card: 'none' }, auction: { stage: 0 },
     settlement: { stage: 0, net: 0, vip: false }, fatherGift: { stage: 0 }, xunerVisit: { stage: 0, card: 'xuner' },
     longSupplies: { stage: 0, herbs: 'none', cores: 'none' },
-    forestStrike: { stage: 0, beats: 0, attempts: 0, tree: 'intact', result: 'none' } }
+    forestStrike: { stage: 0, beats: 0, attempts: 0, tree: 'intact', result: 'none' },
+    seventhRoom: { stage: 0, beats: 0, attempts: 0, drops: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -204,7 +210,26 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!validForestStrike(forestStrike) || forestStrike.stage > 0 && longSupplies.stage !== 6) return invalid()
   result.forestStrike = { stage: forestStrike.stage, beats: forestStrike.beats, attempts: forestStrike.attempts,
     tree: forestStrike.tree, result: forestStrike.result }
+  const seventhRoom = data.seventhRoom === undefined && legacySeventhRoom ? result.seventhRoom : object(data.seventhRoom)
+  if (!validSeventhRoom(seventhRoom) || seventhRoom.stage > 0 && forestStrike.stage !== 7) return invalid()
+  result.seventhRoom = { stage: seventhRoom.stage, beats: seventhRoom.beats, attempts: seventhRoom.attempts,
+    drops: seventhRoom.drops, energy: seventhRoom.energy, period: seventhRoom.period, result: seventhRoom.result }
   return result
+}
+
+export function seventhEnergyAt(stage: number): SeventhRoomState['energy'] {
+  return stage === 0 ? 'unobserved' : stage === 1 ? 'active' : stage === 2 ? 'fading'
+    : stage === 3 ? 'clear' : stage === 4 ? 'restored' : 'lighter'
+}
+export function validSeventhRoom(task: Record<string, unknown> | SeventhRoomState): task is SeventhRoomState {
+  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
+  return integer(task.stage, 8) && integer(task.beats, 3) && integer(task.attempts, 1_000_000)
+    && (task.stage === 0 ? task.beats === 0 && task.attempts === 0
+      : task.stage === 1 ? task.beats <= 1 : task.stage <= 3 ? task.beats === 2
+      : task.stage === 4 ? task.beats <= 2 : task.beats === 3)
+    && task.drops === (task.stage >= 4 ? 1 : 0) && task.energy === seventhEnergyAt(task.stage)
+    && task.period === (task.stage >= 6 ? 'reviewed' : 'unreviewed')
+    && task.result === (task.stage >= 7 ? 'seventh-duan' : 'none')
 }
 
 export function validForestStrike(task: Record<string, unknown> | ForestStrikeState): task is ForestStrikeState {
