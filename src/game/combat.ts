@@ -21,6 +21,7 @@ export interface Floating extends Vec { text: string; time: number; color: strin
 export interface Input { x: number; y: number; aim?: Vec }
 export interface EscortRun extends Vec { hp: number; maxHp: number; stage: number; waiting: boolean }
 export interface SurvivalRun { elapsed: number; nextWave: number; warnings: (Vec & { time: number; radius: number })[] }
+export interface FlameRun extends SurvivalRun { phase: number; heat: number; failed: boolean; wave: number }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
@@ -44,6 +45,7 @@ export class CombatWorld {
   elapsed = 0
   escort?: EscortRun
   survival?: SurvivalRun
+  flameRun?: FlameRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -70,6 +72,51 @@ export class CombatWorld {
       if (!cleared) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id, enemy.patrol)
     }
     this.syncMountainRuns()
+    this.syncFlameRun()
+  }
+  private syncFlameRun() {
+    const event = eventsForChapter(this.chapter.id).find(e => e.kind === 'flame')
+    const p = event && eventProgress(this.cb.state(), this.chapter.id, event.id)
+    if (!p?.started || p.stage < 2 || p.stage > 4) this.flameRun = undefined
+    else if (!this.flameRun) this.flameRun = { phase: p.stage, heat: 0, failed: false, elapsed: 0, nextWave: 0, warnings: [], wave: 0 }
+    else if (this.flameRun.phase !== p.stage) this.flameRun = { ...this.flameRun, phase: p.stage, failed: false, elapsed: 0, nextWave: 0, warnings: [], wave: 0 }
+  }
+  inHeatZone() {
+    const z = this.map.heatZone, p = this.player
+    return !!z && p.x >= z.x && p.x <= z.x + z.w && p.y >= z.y && p.y <= z.y + z.h
+  }
+  cooling() { return !!this.map.heatZone?.cooling.some(point => distance(point, this.player) < 70) }
+  private stepFlame(dt: number) {
+    this.syncFlameRun()
+    const run = this.flameRun, event = eventsForChapter(this.chapter.id).find(e => e.kind === 'flame')
+    if (!run || !event || run.failed) return
+    const inZone = this.inHeatZone()
+    run.heat = clamp(run.heat + dt * (!inZone ? -8 : this.cooling() ? -28 : 6), 0, 100)
+    if (!inZone) return
+    if (run.heat >= 100) {
+      run.failed = true; run.warnings = []
+      this.cb.notify('火焰热量满格，控火失控。未扣材料；营地休整后从当前阶段重试。')
+      return
+    }
+    run.elapsed += dt
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        if (distance(this.player, warning) < warning.radius + 16) this.hurtPlayer(55)
+        this.effect(warning.x, warning.y, warning.radius, run.phase === 3 ? 0xd68c62 : 0x77cbb0)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.elapsed >= 12) { this.cb.eventAction?.({ type: 'stabilize', stage: run.phase, eventId: event.id }); return }
+    if (run.elapsed >= run.nextWave) {
+      run.nextWave = run.elapsed + (run.phase === 4 ? 2 : 2.4)
+      if (run.phase === 3) {
+        const y = run.wave % 2 === 0 ? 330 : 500
+        run.warnings.push(...[650, 830, 1010, 1190].map(x => ({ x, y, time: 1.1, radius: 72 })))
+      } else run.warnings.push({ x: this.player.x, y: this.player.y, time: run.phase === 4 ? .9 : 1, radius: run.phase === 4 ? 120 : 80 })
+      run.wave++
+    }
   }
   private syncMountainRuns() {
     const s = this.cb.state()
@@ -203,7 +250,7 @@ export class CombatWorld {
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
-        } else if (['cave', 'certification'].includes(event.kind) && index === 1) {
+        } else if (['cave', 'certification', 'flame'].includes(event.kind) && index === 1) {
           if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify(`先与${event.speaker}交谈，接下本章历练。`)
           else this.cb.storyEvent?.(event.id, index)
         }
@@ -217,7 +264,10 @@ export class CombatWorld {
       } else if (near === 'gate') {
         if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
-        else if (this.map.survivalZone || this.map.trialMode === 'assessment') { this.cb.kill(true); this.cb.notify(this.map.trialMode === 'assessment' ? '公会审核通过，返回营地结算并继续旅程。' : '已安全撤离，返回营地结算。') }
+        else if (this.map.survivalZone || this.map.trialMode) {
+          this.cb.kill(true)
+          this.cb.notify(this.map.trialMode === 'assessment' ? '公会审核通过，返回营地结算并继续旅程。' : this.map.trialMode === 'attunement' ? '火域收服已确认，返回营地正式结算取得青莲地心火。' : '已安全撤离，返回营地结算。')
+        }
         else if (!this.bossSpawned) {
           this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
           this.cb.notify(`${this.chapter.boss} · 注意脚下的攻击预警`)
@@ -324,6 +374,7 @@ export class CombatWorld {
       p.facing = Math.atan2(input.y, input.x)
     }
     this.stepMountain(dt)
+    this.stepFlame(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -401,10 +452,11 @@ export class CombatWorld {
     const patrols = this.enemies.filter(e => e.hp > 0 && e.patrol), alert = Math.max(0, ...patrols.map(e => e.alert))
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
-      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : 'E · 开启章节试炼') : '',
+      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : this.map.trialMode === 'attunement' ? 'E · 确认火域收服' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0,
       escort: this.escort ? { hp: this.escort.hp, maxHp: this.escort.maxHp, failed: this.escort.hp <= 0, waiting: this.escort.waiting } : undefined,
       survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined,
-      patrol: patrols.length ? { alert: Math.round(alert * 100), alerted: alert >= 1, remaining: patrols.length } : undefined }
+      patrol: patrols.length ? { alert: Math.round(alert * 100), alerted: alert >= 1, remaining: patrols.length } : undefined,
+      heatChallenge: this.flameRun ? { phase: this.flameRun.phase, remaining: Math.max(0, Math.ceil(12 - this.flameRun.elapsed)), heat: Math.round(this.flameRun.heat), cooling: this.cooling(), inZone: this.inHeatZone(), failed: this.flameRun.failed } : undefined }
   }
 }

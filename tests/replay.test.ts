@@ -69,6 +69,10 @@ describe('完整主线真实规则战斗回放', () => {
             else if (checkpoint === 1 && p.stage >= 2 && p.stage <= 4 && Math.abs(marker - certificationTargets[p.stage - 2]) < .08) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
           } else if (e.kind === 'rescue' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'flame') {
+            if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
+            else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          }
         },
       })
       let path: Vec[] = [], previousTarget: Vec = { x: -999, y: -999 }, frame = 0
@@ -86,16 +90,18 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue'].includes(event.kind) && ep.stage === 3) || (event.kind === 'certification' && ep.stage === 5) ? event.npc
-            : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : event.kind === 'certification' ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue'].includes(event.kind) && ep.stage === 3) || (['certification', 'flame'].includes(event.kind) && ep.stage === 5) ? event.npc
+            : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : ['certification', 'flame'].includes(event.kind) ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
           if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
+          if (event.kind === 'flame' && ep.stage >= 2 && ep.stage <= 4) target = [...world.map.heatZone!.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
         }
-        const warning = world.survival?.warnings.find(w => dist(w, world.player) < w.radius + 25)
+        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
         if (warning) {
           const direction = world.player.x < 850 ? 1 : -1
-          input = { x: direction, y: 0 }; world.action('dodge', input); path = []
+          input = world.flameRun?.phase === 3 ? { x: 0, y: world.player.y < warning.y ? -1 : 1 } : { x: direction, y: 0 }
+          world.action('dodge', input); path = []
         } else if (threat) {
           const point = [threat.target, ...(threat.secondary ?? [])].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
           const dx = world.player.x - point.x, dy = world.player.y - point.y, length = Math.hypot(dx, dy)

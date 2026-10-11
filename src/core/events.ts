@@ -5,6 +5,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
   | { type: 'strategy'; choice: 'steady' | 'premium' }
   | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
+  | { type: 'stabilize'; stage: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -108,6 +109,14 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
       message = event.checkpoints![p.stage].text; p.stage++
     } else if (event.kind === 'rescue' && action.type === 'deliver' && p.stage === 3) {
       next.gold += 50; p.stage = 4; message = '两位团员脱险的消息已带回 · 50金币。前往城外试炼碑，准备下一程。'
+    } else if (event.kind === 'flame' && action.type === 'seal' && action.index === 0 && p.stage <= 1) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'flame' && action.type === 'test' && p.stage === 1) {
+      p.stage = 2; message = event.checkpoints![1].text
+    } else if (event.kind === 'flame' && action.type === 'stabilize' && p.stage >= 2 && p.stage <= 4 && action.stage === p.stage) {
+      p.stage++; message = p.stage === 5 ? '三段火焰已稳定，返回药老处确认。' : `本段控火完成 · ${event.stages[p.stage]}`
+    } else if (event.kind === 'flame' && action.type === 'deliver' && p.stage === 5) {
+      p.stage = 6; message = '控火准备已确认。前往收服台，再返回营地正式结算；异火尚未入手。'
     } else if (event.kind === 'trade' && action.type === 'quote' && p.stage === 0) {
       if (![42, 60].includes(action.amount)) return fail('报价超过买方预算，订单未签订，也没有消耗材料。')
       p.quote = action.amount

@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -87,6 +87,19 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
       { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
       { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
+    ],
+  },
+  8: {
+    id: 'lotus-fire-attunement', kind: 'flame', introducedVersion: '0.5.2',
+    title: '青莲火域 · 三段控火', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['穿过巡逻区，到地底入口按 E 确认退路', '前往控火坛，开始三段火焰挑战',
+      '火焰引流：躲开追踪落焰，坚持12秒', '熔脉绕行：避开交替火脉，坚持12秒', '火息凝定：避开大范围回涌，坚持12秒',
+      '控火稳定，返回药老处确认', '控火准备完成，前往收服台'],
+    introduction: '先留下退路，再面对火焰。穿过巡逻区确认入口，进入控火坛开始三段挑战。每段在火域内坚持12秒，热量过高会失控，青色冷却点可降温。最后回来确认，再去收服台。',
+    note: '三段危险、热量与冷却点为原创收服玩法。专用练习补给不扣行囊材料；失败或刷新从当前安全阶段重建。完成事件不会提前发异火，第八章正式结算才取得青莲地心火。',
+    checkpoints: [
+      { x: 600, y: 220, label: '地底入口', text: '已确认退路。前往控火坛；追踪落焰、交替火脉、范围回涌需不同走位，青色冷却点可以降温。' },
+      { x: 1000, y: 400, label: '控火坛', text: '进入火域后开始计时。保持走位，靠近青色冷却点，别让热量满格。' },
     ],
   },
 }

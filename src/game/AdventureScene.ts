@@ -166,7 +166,7 @@ export default class AdventureScene extends Phaser.Scene {
     bg.lineStyle(1, c[2], .85); bg.strokeRoundedRect(gate.x - 18, gate.y - 55, 36, 55, 6)
     this.add.text(camp.x, camp.y + 50, '营 地', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(gate.x, gate.y + 65, this.world.map.gateLabel ?? '试 炼 碑', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
-    this.add.text(gate.x, gate.y - 29, this.world.map.trialMode === 'assessment' ? '审' : '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
+    this.add.text(gate.x, gate.y - 29, this.world.map.trialMode === 'assessment' ? '审' : this.world.map.trialMode === 'attunement' ? '火' : '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(50, 35, this.world.chapter.location, { fontSize: '20px', color: '#cbd1b7', fontFamily: 'serif' }).setAlpha(.8)
     for (const point of this.world.map.landmarks) this.add.text(point.x, point.y, point.label, { fontSize: '16px', color: '#cbd1b7' }).setOrigin(.5)
     for (const event of eventsForChapter(this.world.chapter.id)) {
@@ -223,6 +223,20 @@ export default class AdventureScene extends Phaser.Scene {
     g.clear()
     const w = this.world, p = w.player
     const { gate } = w.map
+    if (w.map.heatZone) {
+      const z = w.map.heatZone
+      g.fillStyle(0xcb6e45, .06); g.fillRect(z.x, z.y, z.w, z.h)
+      g.lineStyle(2, 0xd89871, .4); g.strokeRect(z.x, z.y, z.w, z.h)
+      for (const point of z.cooling) {
+        g.fillStyle(0x82cdb5, .14); g.fillCircle(point.x, point.y, 70)
+        g.lineStyle(2, 0x8bdbc3, .7); g.strokeCircle(point.x, point.y, 70)
+      }
+      for (const warning of w.flameRun?.warnings ?? []) {
+        const color = w.flameRun!.phase === 3 ? 0xd88761 : 0x87cbae
+        g.fillStyle(color, .2); g.fillCircle(warning.x, warning.y, warning.radius)
+        g.lineStyle(3, color); g.strokeCircle(warning.x, warning.y, warning.radius)
+      }
+    }
     if (w.map.survivalZone) {
       const z = w.map.survivalZone
       g.fillStyle(0x9068b1, .12); g.fillRect(z.x, z.y, z.w, z.h)

@@ -5,7 +5,7 @@ export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?
 export interface MapDefinition {
   id: string
   style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'legacy'
-  trialMode?: 'assessment'
+  trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
   spawn: Point
@@ -19,6 +19,7 @@ export interface MapDefinition {
   paths: Point[][]
   landmarks: (Point & { label: string })[]
   survivalZone?: { x: number; y: number; w: number; h: number }
+  heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -165,7 +166,8 @@ export const desertMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 690, y: 60, label: '石漠城 · 漠铁佣兵团' }, { x: 690, y: 750, label: '解救团员 · 原创救援历练' }],
   },
   8: {
-    id: 'lotus-fire-cavern', style: 'fire-cavern',
+    id: 'lotus-fire-cavern', style: 'fire-cavern', trialMode: 'attunement', gateLabel: '收服台',
+    heatZone: { x: 600, y: 210, w: 620, h: 470, cooling: [{ x: 680, y: 270 }, { x: 1030, y: 570 }] },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 620 },
     bossSpawn: { x: 1080, y: 510 }, safeRadius: 180,
     obstacles: [

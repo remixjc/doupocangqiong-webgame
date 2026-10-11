@@ -41,7 +41,10 @@ chapters[6].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[6].boss = '沙城出发 · 护卫投影'
 chapters[6].trialNote = '失散团员与守卫为原创救援，解救和回报后再完成出发试炼；青鳞完整支线后续扩充。'
 chapters[6].opening[2].text = '先与萧鼎接取救援，读青鳞线索，清除后巷守卫并按E解救团员。巷门打开后寻找水井旁的第二人；已解救节点保存，回报萧鼎后开启城外试炼。'
-chapters[7].opening[2].text = '地底火域外有沿路线移动的巡逻投影。掩体能阻挡视线，在感知圈内持续暴露会积累警戒；警戒满后对方追击，退回营地可脱离。先按左侧目标完成历练，再到火域试炼碑。'
+chapters[7].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[7].boss = '青莲地心火 · 收服确认'
+chapters[7].trialNote = '三段控火、热量与冷却点为原创收服机制；第八章首通正式结算后取得青莲地心火。'
+chapters[7].opening[2].text = '先与药老交谈，穿过巡逻区确认地底入口，再到控火坛开始三段挑战。各段坚持12秒，离开火域不计时；躲避预警并利用青色冷却点降温，失控可休整重试。回报后到收服台确认，再结算取得异火。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
