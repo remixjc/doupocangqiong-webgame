@@ -1,6 +1,6 @@
 {
   "name": "doupocangqiong-webgame",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.25.0",
@@ -10,6 +10,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc -b",
     "test": "vitest run",
+    "test:replay": "vitest run tests/replay.test.ts",
     "check": "tsc -b && vitest run && node --test scripts/bundle-graph.node.mjs && vite build && node scripts/check-bundle.mjs",
     "bundle:check": "node scripts/check-bundle.mjs"
   },

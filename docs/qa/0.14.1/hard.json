@@ -1,0 +1,241 @@
+{
+  "version": "0.14.1",
+  "difficulty": "hard",
+  "simulation": "fixed-step rule replay; not manual or device play",
+  "completed": 28,
+  "deaths": 0,
+  "equipmentUpgrades": {
+    "attack": 0,
+    "armor": 0
+  },
+  "healsUsed": 5,
+  "manaUsed": 4,
+  "mainChapterSeconds": [
+    23,
+    24,
+    25,
+    28,
+    41,
+    14,
+    32,
+    50,
+    22,
+    13,
+    27,
+    18,
+    16,
+    26,
+    74,
+    41,
+    30,
+    30,
+    22,
+    62,
+    64,
+    28,
+    22,
+    17,
+    89,
+    28,
+    22,
+    15
+  ],
+  "resources": [
+    {
+      "chapter": 1,
+      "hp": 180,
+      "gold": 250,
+      "heal": 4,
+      "mana": 2
+    },
+    {
+      "chapter": 2,
+      "hp": 198,
+      "gold": 486,
+      "heal": 5,
+      "mana": 2
+    },
+    {
+      "chapter": 3,
+      "hp": 220,
+      "gold": 888,
+      "heal": 5,
+      "mana": 2
+    },
+    {
+      "chapter": 4,
+      "hp": 238,
+      "gold": 1196,
+      "heal": 7,
+      "mana": 2
+    },
+    {
+      "chapter": 5,
+      "hp": 234,
+      "gold": 1540,
+      "heal": 4,
+      "mana": 2
+    },
+    {
+      "chapter": 6,
+      "hp": 282,
+      "gold": 1900,
+      "heal": 4,
+      "mana": 2
+    },
+    {
+      "chapter": 7,
+      "hp": 304,
+      "gold": 2366,
+      "heal": 7,
+      "mana": 2
+    },
+    {
+      "chapter": 8,
+      "hp": 326,
+      "gold": 2818,
+      "heal": 9,
+      "mana": 2
+    },
+    {
+      "chapter": 9,
+      "hp": 352,
+      "gold": 3288,
+      "heal": 9,
+      "mana": 2
+    },
+    {
+      "chapter": 10,
+      "hp": 374,
+      "gold": 3728,
+      "heal": 10,
+      "mana": 2
+    },
+    {
+      "chapter": 11,
+      "hp": 396,
+      "gold": 4198,
+      "heal": 10,
+      "mana": 2
+    },
+    {
+      "chapter": 12,
+      "hp": 418,
+      "gold": 4682,
+      "heal": 12,
+      "mana": 3
+    },
+    {
+      "chapter": 13,
+      "hp": 436,
+      "gold": 5280,
+      "heal": 12,
+      "mana": 3
+    },
+    {
+      "chapter": 14,
+      "hp": 454,
+      "gold": 5948,
+      "heal": 13,
+      "mana": 3
+    },
+    {
+      "chapter": 15,
+      "hp": 408,
+      "gold": 6690,
+      "heal": 13,
+      "mana": 2
+    },
+    {
+      "chapter": 16,
+      "hp": 490,
+      "gold": 7470,
+      "heal": 15,
+      "mana": 2
+    },
+    {
+      "chapter": 17,
+      "hp": 508,
+      "gold": 8246,
+      "heal": 19,
+      "mana": 2
+    },
+    {
+      "chapter": 18,
+      "hp": 404,
+      "gold": 8926,
+      "heal": 19,
+      "mana": 2
+    },
+    {
+      "chapter": 19,
+      "hp": 544,
+      "gold": 9774,
+      "heal": 20,
+      "mana": 2
+    },
+    {
+      "chapter": 20,
+      "hp": 302,
+      "gold": 10706,
+      "heal": 20,
+      "mana": 2
+    },
+    {
+      "chapter": 21,
+      "hp": 418,
+      "gold": 11476,
+      "heal": 20,
+      "mana": 2
+    },
+    {
+      "chapter": 22,
+      "hp": 616,
+      "gold": 12588,
+      "heal": 22,
+      "mana": 1
+    },
+    {
+      "chapter": 23,
+      "hp": 634,
+      "gold": 13688,
+      "heal": 23,
+      "mana": 1
+    },
+    {
+      "chapter": 24,
+      "hp": 634,
+      "gold": 14548,
+      "heal": 23,
+      "mana": 1
+    },
+    {
+      "chapter": 25,
+      "hp": 652,
+      "gold": 15438,
+      "heal": 22,
+      "mana": 1
+    },
+    {
+      "chapter": 26,
+      "hp": 670,
+      "gold": 16898,
+      "heal": 22,
+      "mana": 0
+    },
+    {
+      "chapter": 27,
+      "hp": 688,
+      "gold": 17972,
+      "heal": 22,
+      "mana": 0
+    },
+    {
+      "chapter": 28,
+      "hp": 706,
+      "gold": 18952,
+      "heal": 29,
+      "mana": 0
+    }
+  ]
+}

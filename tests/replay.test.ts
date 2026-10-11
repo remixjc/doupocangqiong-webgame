@@ -9,6 +9,8 @@ import { advanceEvent, eventDone, eventProgress, nextEvent, pulseMarker } from '
 import { validateState } from '../src/core/save'
 import { bondEvents } from '../src/content/bonds'
 import { preparationEvents, preparationProtocols } from '../src/content/preparations'
+import { mkdirSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -49,10 +51,12 @@ function route(from: Vec, to: Vec, map: MapDefinition): Vec[] {
 const dist = (a: Vec, b: Vec) => Math.hypot(a.x - b.x, a.y - b.y)
 
 describe('完整主线真实规则战斗回放', () => {
-  it('通过移动、采集、炼制与战斗，依次打通28章', () => {
+  it.each(['story', 'normal', 'hard'] as const)('%s：通过移动、采集、炼制与战斗，依次打通28章', difficulty => {
     let state = initialState()
-    state.settings.difficulty = 'story'
+    state.settings.difficulty = difficulty
     const timings: number[] = []
+    const resources: { chapter: number; hp: number; gold: number; heal: number; mana: number }[] = []
+    let healsUsed = 0, manaUsed = 0
     for (const chapter of chapters) {
       state.chapter = chapter.id; state.progress[chapter.id] = blankProgress(chapter.id)
       const world = new CombatWorld(chapter, {
@@ -62,8 +66,8 @@ describe('完整主线真实规则战斗回放', () => {
           if (boss) state = registerBossVictory(state)
           else { state.progress[chapter.id].kills++; state.inventory.crystal++; state.totalKills++; state.gold += 8 + chapter.id * 2; state.xp += 10 }
         },
-        heal: () => { if (!state.inventory.heal) return false; state.inventory.heal--; return true },
-        mana: () => { if (!state.inventory.mana) return false; state.inventory.mana--; return true },
+        heal: () => { if (!state.inventory.heal) return false; state.inventory.heal--; healsUsed++; return true },
+        mana: () => { if (!state.inventory.mana) return false; state.inventory.mana--; manaUsed++; return true },
         camp: () => {}, notify: () => {},
         eventAction: action => { state = advanceEvent(state, action).state },
         storyEvent: (eventId, checkpoint) => {
@@ -326,10 +330,21 @@ describe('完整主线真实规则战斗回放', () => {
         expect(eventDone(state, chapter.id, id), `${event.title}需合法回访输入完成：progress=${JSON.stringify(eventProgress(state, chapter.id, id))},position=${world.player.x},${world.player.y}`).toBe(true)
       }
       expect(validateState(state)).toEqual(state)
+      expect(world.player.hp, `${difficulty}/${chapter.id}回访后必须存活`).toBeGreaterThan(0)
       expect(state.completed.length).toBe(chapter.id)
       timings.push(Math.round(frame / 60))
+      resources.push({ chapter: chapter.id, hp: Math.round(world.player.hp), gold: state.gold, heal: state.inventory.heal, mana: state.inventory.mana })
     }
     expect(state.completed.length).toBe(28)
-    console.log(`28章纯逻辑输入回放（剧情难度，非人工通关）：${timings.join(', ')} 秒`)
+    console.log(`28章纯逻辑输入回放（${difficulty}，非人工通关）：${timings.join(', ')} 秒`)
+    const reportDirectory = process.env.DOUPO_REPLAY_REPORT_DIR
+    if (reportDirectory) {
+      mkdirSync(reportDirectory, { recursive: true })
+      writeFileSync(resolve(reportDirectory, `${difficulty}.json`), JSON.stringify({
+        version: state.contentVersion, difficulty, simulation: 'fixed-step rule replay; not manual or device play',
+        completed: state.completed.length, deaths: 0, equipmentUpgrades: { attack: state.attackUpgrade, armor: state.armorUpgrade },
+        healsUsed, manaUsed, mainChapterSeconds: timings, resources,
+      }, null, 2) + '\n')
+    }
   }, 30_000)
 })
