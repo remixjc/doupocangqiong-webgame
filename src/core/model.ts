@@ -61,6 +61,7 @@ export interface GameState {
   startedAt: number
 }
 export interface Runtime {
+  difficulty: Difficulty
   x: number; y: number
   hp: number; maxHp: number; qi: number; maxQi: number; stamina: number
   cooldowns: Record<SkillId | 'dodge' | 'heal' | 'support', number>

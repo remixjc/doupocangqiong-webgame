@@ -44,6 +44,7 @@ function distance(a: Vec, b: Vec) { return Math.hypot(a.x - b.x, a.y - b.y) }
 function clamp(n: number, min: number, max: number) { return Math.max(min, Math.min(max, n)) }
 
 export class CombatWorld {
+  readonly difficulty: GameState['settings']['difficulty']
   private activeMap: MapDefinition
   get map() { return this.activeMap }
   player = { x: 0, y: 0, hp: 180, qi: 100, stamina: 100, facing: 0, invincible: 0, roll: 0, hit: 0 }
@@ -82,6 +83,7 @@ export class CombatWorld {
     return this.barrierClosed() ? { ...this.map, obstacles: [...this.map.obstacles, this.map.eventBarrier!.obstacle] } : this.map
   }
   constructor(readonly chapter: Chapter, private cb: CombatCallbacks) {
+    this.difficulty = cb.state().settings.difficulty
     this.activeMap = mapForChapter(chapter.id)
     Object.assign(this.player, this.map.spawn)
     this.herbs = this.map.herbs.map(h => ({ ...h, available: true, respawn: 0 }))
@@ -668,7 +670,7 @@ export class CombatWorld {
     }
   }
   spawn(type: Fighter['type'], x: number, y: number, spawnId?: string, patrol?: PatrolDefinition) {
-    const d = this.cb.state().settings.difficulty
+    const d = this.difficulty
     const scale = d === 'story' ? 0.72 : d === 'hard' ? 1.25 : 1
     const hp = Math.round((type === 'boss' ? 280 + this.chapter.id * 46 : 48 + this.chapter.id * 6) * scale)
     this.enemies.push({ id: this.nextId++, spawnId, patrol, patrolIndex: 0, alert: 0, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
@@ -723,7 +725,7 @@ export class CombatWorld {
   private hurtPlayer(amount: number) {
     if (this.player.hp <= 0 || this.player.invincible > 0) return
     const s = this.cb.state()
-    const scale = s.settings.difficulty === 'story' ? .48 : s.settings.difficulty === 'hard' ? 1.3 : 1
+    const scale = this.difficulty === 'story' ? .48 : this.difficulty === 'hard' ? 1.3 : 1
     const hit = damage(amount, scale, playerStats(s).defense)
     this.player.hp = Math.max(0, this.player.hp - hit)
     this.player.invincible = .5
@@ -1175,11 +1177,11 @@ export class CombatWorld {
             if (this.huntTeam.hp === 0) this.cb.notify('猎捕队友受伤，当前路线中止。已领火能保留，休整后从最近集合节点重试。')
           }
           if (this.prisonEscort && this.prisonEscort.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.prisonEscort!) < e.radius + 16)) {
-            this.prisonEscort.hp = Math.max(0, this.prisonEscort.hp - damage(30, s.settings.difficulty === 'story' ? .7 : s.settings.difficulty === 'hard' ? 1.25 : 1, 10))
+            this.prisonEscort.hp = Math.max(0, this.prisonEscort.hp - damage(30, this.difficulty === 'story' ? .7 : this.difficulty === 'hard' ? 1.25 : 1, 10))
             if (this.prisonEscort.hp === 0) this.cb.notify('药老受伤倒下，撤离中断。已破禁节点保留，免费休整后从囚牢重试。')
           }
           if (defending && [e.target, ...(e.secondary ?? [])].some(point => distance(point, defending) < e.radius + 16)) {
-            defending.hp = Math.max(0, defending.hp - damage(30, s.settings.difficulty === 'story' ? .7 : s.settings.difficulty === 'hard' ? 1.25 : 1, 10))
+            defending.hp = Math.max(0, defending.hp - damage(30, this.difficulty === 'story' ? .7 : this.difficulty === 'hard' ? 1.25 : 1, 10))
             if (defending.hp === 0) {
               defending.failed = true
               this.cb.notify('联盟驻点失守，本段停止。已守住段保留，免费休整或刷新重建当前段。')
@@ -1233,7 +1235,7 @@ export class CombatWorld {
     const stats = playerStats(this.cb.state()), near = this.near()
     const boss = this.enemies.find(e => e.type === 'boss')
     const patrols = this.enemies.filter(e => e.hp > 0 && e.patrol), alert = Math.max(0, ...patrols.map(e => e.alert))
-    return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
+    return { difficulty: this.difficulty, x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
       near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.map.rankingArena && this.cb.state().completed.includes(14) ? 'E · 开启强榜复练 · 胜利1火能' : this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : this.map.trialMode === 'attunement' ? 'E · 确认火域收服' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0,

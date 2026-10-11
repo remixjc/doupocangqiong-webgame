@@ -10,7 +10,7 @@ import { AutoSaveQueue } from './autosave'
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
   const spawn = mapForChapter(s.chapter).spawn
-  return { x: spawn.x, y: spawn.y, hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
+  return { difficulty: s.settings.difficulty, x: spawn.x, y: spawn.y, hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
     cooldowns: { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 },
     prompt: '', near: '', bossHp: 0, bossMaxHp: 0, bossName: '', dead: false }
 }
