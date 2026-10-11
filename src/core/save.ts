@@ -3,6 +3,7 @@ import { CONTENT_VERSION, initialState, blankEvent, type ChapterEventProgress, t
 import { unlockedFlames } from './rules'
 import { eventForChapter, eventsForChapter, type ChapterEvent } from '../content/events'
 import { eventDone, migrateLegacyEvent, migrateLegacyEvents } from './events'
+import { EARLY_TRAINING_VERSION, parseEarlyTraining } from './early-training-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -205,6 +206,9 @@ export function validateState(value: unknown): GameState {
   s.settings = { difficulty: settings.difficulty as GameState['settings']['difficulty'], volume: settings.volume,
     reducedMotion: bool(settings.reducedMotion), spoiler: settings.spoiler as GameState['settings']['spoiler'], animeLimit }
   s.startedAt = number(data.startedAt, 9_000_000_000_000_000)
+  if (data.earlyTraining === undefined && versionBefore(data.contentVersion as string, EARLY_TRAINING_VERSION)) {
+    // Keep the initial empty task record; old main clears cannot grant supplies.
+  } else s.earlyTraining = parseEarlyTraining(data.earlyTraining, s.completed)
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

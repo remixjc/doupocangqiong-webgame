@@ -6,6 +6,7 @@ import { AutoSaveSession } from './save-session'
 import { advanceEvent, type EventAction } from './events'
 import { mapForChapter } from '../content/maps'
 import { AutoSaveQueue } from './autosave'
+import { beginEarlyTraining } from './early-training'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
@@ -83,6 +84,15 @@ export class GameStore {
     return true
   }
   introSeen() { this.update(s => { s.progress[s.chapter].intro = true }) }
+  beginEarlyTraining() {
+    const result = beginEarlyTraining(this.snapshot.state)
+    if (result.ok) {
+      this.snapshot = { ...this.snapshot, state: result.state }
+      this.publish(); this.onChange?.(result.state)
+    }
+    this.notify(result.message)
+    return result.ok
+  }
   event(action: EventAction) {
     const result = advanceEvent(this.snapshot.state, action)
     if (result.ok) {

@@ -1,6 +1,7 @@
 import { eventsForChapter } from '../content/events'
 import { version } from '../../package.json'
 import type { AutoSaveStatus } from './autosave'
+import { blankEarlyTraining, type EarlyTrainingState } from './early-training-state'
 export type Theme = 'city' | 'forest' | 'desert' | 'temple' | 'void' | 'fire'
 export type Pattern = 'slam' | 'dash' | 'volley' | 'storm'
 export type FlameId = 'ember' | 'lotus' | 'fallen' | 'star' | 'pure'
@@ -51,6 +52,7 @@ export interface GameState {
   gold: number
   xp: number
   fireEnergy: number
+  earlyTraining: EarlyTrainingState
   inventory: Record<ItemId, number>
   attackUpgrade: number
   armorUpgrade: number
@@ -98,7 +100,7 @@ export const blankProgress = (chapter = 1): ChapterProgress => ({ herbs: 0, kill
 export function initialState(): GameState {
   return {
     schemaVersion: 3, contentVersion: CONTENT_VERSION, chapter: 1, completed: [], progress: { 1: blankProgress() },
-    gold: 80, xp: 0, fireEnergy: 0, inventory: { herb: 0, crystal: 0, heal: 3, mana: 2, elixir: 0 },
+    gold: 80, xp: 0, fireEnergy: 0, earlyTraining: blankEarlyTraining(), inventory: { herb: 0, crystal: 0, heal: 3, mana: 2, elixir: 0 },
     attackUpgrade: 0, armorUpgrade: 0, flame: 'ember',
     settings: { difficulty: 'normal', volume: 0.3, reducedMotion: false, spoiler: 'novel', animeLimit: 3 },
     totalKills: 0, totalBrews: 0, startedAt: Date.now(),
