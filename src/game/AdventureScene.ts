@@ -86,10 +86,28 @@ export default class AdventureScene extends Phaser.Scene {
     const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : style === 'thunder-path' ? [0x263139, 0x566575, 0xacc7cd]
       : style === 'star-pavilion' ? [0x243735, 0x547b6d, 0xb9c3a1] : style === 'dan-realm' ? [0x293b32, 0x5a7560, 0xc1c398]
       : style === 'star-domain' ? [0x28243e, 0x686283, 0xc6b4e5] : style === 'soul-prison' ? [0x252933, 0x535869, 0xadb0bb]
+      : style === 'tomb' ? [0x293037, 0x667477, 0xb9bba5] : style === 'bodhi' ? [0x24382c, 0x5b7e60, 0xc3c79d]
+      : style === 'pure-fire' ? [0x393039, 0x87777e, 0xe4d4ca]
       : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
-    if (style === 'sect') {
+    if (style === 'tomb') {
+      for (const point of [{ x: 630, y: 390 }, { x: 830, y: 400 }, { x: 1090, y: 380 }]) {
+        bg.lineStyle(2, 0xc4c6b0, .22); bg.strokeRect(point.x - 60, point.y - 50, 120, 100)
+        bg.lineStyle(1, 0xc4c6b0, .18); bg.strokeRect(point.x - 72, point.y - 62, 144, 124)
+      }
+    } else if (style === 'bodhi') {
+      bg.fillStyle(0x99bc82, .15); bg.fillEllipse(990, 155, 270, 175)
+      bg.lineStyle(7, 0xc3c79d, .25); bg.lineBetween(982, 185, 982, 72)
+      bg.lineBetween(982, 122, 925, 82); bg.lineBetween(982, 115, 1035, 78)
+      bg.lineStyle(2, 0xc3c79d, .18); bg.strokeCircle(982, 150, 115)
+    } else if (style === 'pure-fire') {
+      for (let i = 0; i < 8; i++) {
+        const angle = i * Math.PI / 4
+        bg.fillStyle(0xecd9dd, .14); bg.fillEllipse(1050 + Math.cos(angle) * 70, 320 + Math.sin(angle) * 60, 90, 55)
+      }
+      bg.lineStyle(2, 0xf0dee7, .3); bg.strokeCircle(1050, 320, 110)
+    } else if (style === 'sect') {
       bg.lineStyle(2, 0xc2b99b, .18)
       for (let y = 130; y < 360; y += 24) bg.lineBetween(1000, y, 1210, y)
     } else if (style === 'alliance') {
