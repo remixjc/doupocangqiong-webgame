@@ -1,0 +1,85 @@
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import type { GameState } from '../core/model'
+import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
+import {
+  earlyQiBarrierBlock, moveQiBarrierWalker, nearQiBarrierPlace, nearQiPath, qiBarrierPlaces, qiBarrierOperation,
+  qiPaths, submitEarlyQiBarrier, type QiBarrierAction,
+} from '../core/early-qi-barrier'
+import { qiBarrierScenes } from '../content/early-qi-barrier'
+import { gameStore } from '../core/store'
+import { startSupervisionPointer } from './supervision-pointer'
+import './early-walk.css'
+
+export default function EarlyQiBarrier({ state, onBack }: { state: GameState; onBack: () => void }) {
+  const task = state.earlyTraining.qiPavilionBarrier
+  const scene = qiBarrierScenes[task.stage]
+  const [position, setPosition] = useState<EarlyWalkPosition>({ ...qiBarrierPlaces.fire })
+  const [marker, setMarker] = useState(.5)
+  const [paused, setPaused] = useState(false)
+  const field = useRef<SVGSVGElement>(null)
+  const blocked = earlyQiBarrierBlock(state), training = task.stage === 6
+  const steady = state.settings.reducedMotion
+  const nearPath = scene?.place === 'path'
+    && qiPaths.some((_, index) => nearQiPath(position, index + 1, task.stage))
+  const near = scene && (scene.place === 'path' ? nearPath : nearQiBarrierPlace(position, scene.place, task.stage))
+  const motionActive = training && near && !steady && !paused
+  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
+  useEffect(() => {
+    if (!motionActive || blocked) return
+    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
+      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    setMarker, () => setPaused(true))
+  }, [motionActive, blocked])
+  const move = (direction: EarlyWalkDirection) => setPosition(current => moveQiBarrierWalker(current, direction, task.stage))
+  function act(operation: QiBarrierAction['operation'], chosenPath?: number) {
+    if (document.hidden || (training && operation !== 'stop' && paused)) return
+    submitEarlyQiBarrier(gameStore, position, {
+      ...task, actor: scene?.actor ?? 'xiaoyan', operation, chosenPath,
+      marker: training && operation !== 'stop' ? marker : undefined,
+    })
+  }
+  function key(event: KeyboardEvent<SVGSVGElement>) {
+    if (event.altKey || event.ctrlKey || event.metaKey) return
+    const directions: Record<string, EarlyWalkDirection> = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' }
+    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
+    if (direction) { event.preventDefault(); move(direction) }
+    if (event.key.toLowerCase() === 'e' && scene && near) { event.preventDefault(); act(scene.place === 'path' ? 'path' : qiBarrierOperation(task), scene.place === 'path' ? 3 : undefined) }
+  }
+  if (blocked) return <p>{blocked}</p>
+  const operation = qiBarrierOperation(task)
+  const actionLabel = task.stage === 6 ? ['稳身 · 连接第一步', '运气 · 连接第二步', '八极崩 · 破幕出击'][task.beats] : scene?.action
+  return <>
+    <span className="eyebrow">功法阁 / 火通道与四十三号门障</span>
+    <h2>走到四十三号，再破开最后一道红幕。</h2>
+    <p id="qi-barrier-help">沿火属性通道行走，按顺序核对第三路、三十七号与四十三号。门障前先触幕，再退步蓄势；练习失败只免费重开，不会取得卷轴。</p>
+    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="功法阁火通道与红幕地图" aria-describedby="qi-barrier-help" viewBox="0 0 720 420" onKeyDown={key}>
+      <rect width="720" height="420" fill="#2e3934" />
+      <path d="M80 350 H640 M100 350 V300 M220 350 V300 M360 350 V300 M500 350 V300 M620 350 V300 M360 300 V100" fill="none" stroke="#716a4c" strokeWidth="24" strokeLinejoin="round" />
+      <path d="M360 100 H520 V180 H390" fill="none" stroke="#675141" strokeWidth="26" strokeLinejoin="round" />
+      <rect x="392" y="104" width="10" height="76" fill={task.barrier === 'broken' ? '#4b6b52' : '#cc6257'} />
+      <text x="360" y="58" textAnchor="middle" fill="#e5c48e" fontSize="17">火通道 · 第三路 · 四十三号</text>
+      {qiPaths.map((x, index) => <g key={x}><circle cx={x} cy="350" r="25" fill={task.path === 3 && index === 2 ? '#a18456' : '#465a4d'} /><text x={x} y="355" textAnchor="middle" fill="#ead9b6" fontSize="12">{index + 1}</text></g>)}
+      <text x="335" y="285" fill="#e6d4ad" fontSize="11">37</text><text x="335" y="112" fill="#e6d4ad" fontSize="11">43</text>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 43} textAnchor="middle" fill="#ead9b6" fontSize="10">{place.label}</text></g>)}
+    </svg>
+    <div className="early-walk-controls" aria-label="火通道行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <button key={direction} className="secondary" aria-label={['火通道向上走', '火通道向左走', '火通道向下走', '火通道向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</button>)}</div>
+    <p role="status">门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</p>
+    {scene ? near ? <section className="bond-summary" aria-label="火通道门障步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
+      {task.stage === 1 ? <div className="early-walk-controls">{[1, 2, 3, 4, 5].map(path => <button key={path} className="secondary" onClick={() => act('path', path)}>选择第{path}路</button>)}</div>
+        : task.stage === 6 ? <>
+          {steady && <label className="setting-row"><span>破幕时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="破幕时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+          <div className="heat-meter" aria-label="破幕时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+          {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停破幕时机</button>}
+          {paused && <><p role="status">破幕时机已暂停，需明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续破幕练习</button></>}
+          <button className="primary" disabled={paused} onClick={() => act(operation)}>{actionLabel}</button>
+        </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
+      {task.stage >= 4 && <button className="secondary" onClick={() => act('take-scroll')}>尝试提前取卷 · 尚未择卷</button>}
+    </section> : <p className="muted">下一步请走近{scene.place === 'path' ? '第三支路入口' : qiBarrierPlaces[scene.place].label}：{scene.title}。</p>
+      : <section className="bond-summary"><h3>火路、门障与入室已归档。</h3><p>四十三号室内卷轴仍待独立取得；本批没有增加功法、技能、境界或奖励。</p></section>}
+    {task.stage === 6 && <button className="secondary" onClick={() => act('stop')}>停下这一轮 · 免费重新蓄势</button>}
+    <p className="muted">五条支路、门牌与门障地图是原创压缩操作；八极崩沿已有主线技能使用，不重复解锁。</p>
+    <button className="secondary" onClick={onBack}>暂离火通道 · 保留门障断点</button>
+  </>
+}

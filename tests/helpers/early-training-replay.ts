@@ -2,6 +2,8 @@ import { advanceEarlyCeremonyVerdict, verdictPlaces } from '../../src/core/early
 import { ceremonyVerdictScenes } from '../../src/content/early-ceremony-verdict'
 import { advanceEarlyQiPavilionEntry, qiPavilionPlaces } from '../../src/core/early-qi-pavilion'
 import { qiPavilionEntryScenes } from '../../src/content/early-qi-pavilion'
+import { advanceEarlyQiBarrier, qiBarrierPlaces } from '../../src/core/early-qi-barrier'
+import { qiBarrierScenes } from '../../src/content/early-qi-barrier'
 import { advanceEarlyNingSecond, ningSecondOperation } from '../../src/core/early-ning-second'
 import { ningSecondScenes } from '../../src/content/early-ning-second'
 import { advanceEarlyNingFirst, ningPlaces, ningFirstOperation } from '../../src/core/early-ning-first'
@@ -56,7 +58,8 @@ import { keChallengeScenes } from '../../src/content/early-ke-challenge'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false, includeKeChallenge = false, includeEighthTraining = false, includeCeremonyGuests = false, includeCeremonialTest = false, includeNingFirst = false, includeNingSecond = false, includeCeremonyVerdict = false, includeQiPavilionEntry = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false, includeKeChallenge = false, includeEighthTraining = false, includeCeremonyGuests = false, includeCeremonialTest = false, includeNingFirst = false, includeNingSecond = false, includeCeremonyVerdict = false, includeQiPavilionEntry = false, includeQiBarrier = false): GameState {
+  if (includeQiBarrier) includeQiPavilionEntry = true
   if (includeQiPavilionEntry) includeCeremonyVerdict = true
   if (includeCeremonyVerdict) includeNingSecond = true
   if (includeNingSecond) includeNingFirst = true
@@ -326,6 +329,24 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       { ...state.earlyTraining.qiPavilionEntry, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiBarrier) for (const scene of qiBarrierScenes) {
+    if (scene.place === 'path') {
+      const result = advanceEarlyQiBarrier(state, qiBarrierPlaces.path,
+        { ...state.earlyTraining.qiPavilionBarrier, actor: scene.actor, operation: 'path', chosenPath: 3 })
+      expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    } else if (state.earlyTraining.qiPavilionBarrier.stage === 6) {
+      for (const operation of ['settle', 'gather', 'blast'] as const) {
+        const task = state.earlyTraining.qiPavilionBarrier
+        const result = advanceEarlyQiBarrier(state, qiBarrierPlaces.stance,
+          { ...task, actor: scene.actor, operation, marker: .5 })
+        expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+      }
+    } else {
+      const result = advanceEarlyQiBarrier(state, qiBarrierPlaces[scene.place],
+        { ...state.earlyTraining.qiPavilionBarrier, actor: scene.actor, operation: scene.operation })
+      expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
   }
   return state
 }
