@@ -1,0 +1,87 @@
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import type { GameState } from '../core/model'
+import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
+import { ceremonialRails } from '../core/early-ceremonial-test'
+import { ceremonyPlatform } from '../core/early-ceremony-guests'
+import { earlyNingFirstBlock, ningPlaces, ningFirstOperation, moveNingWalker, nearNingPlace,
+  submitEarlyNingFirst, type NingFirstAction } from '../core/early-ning-first'
+import { ningFirstScenes } from '../content/early-ning-first'
+import { startSupervisionPointer } from './supervision-pointer'
+import { gameStore } from '../core/store'
+import './early-walk.css'
+export default function EarlyNingFirst({ state, position: entryPosition, onBack }: {
+  state: GameState; position: EarlyWalkPosition; onBack: () => void
+}) {
+  const task = state.earlyTraining.ningFirst, scene = ningFirstScenes[task.stage]
+  const [position, setPosition] = useState<EarlyWalkPosition>({ ...ningPlaces.waiting })
+  const [marker, setMarker] = useState(.5), [paused, setPaused] = useState(false)
+  const field = useRef<SVGSVGElement>(null), blocked = earlyNingFirstBlock(state, entryPosition)
+  const training = task.stage === 6, near = scene && nearNingPlace(position, scene.place), steady = state.settings.reducedMotion
+  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
+  useEffect(() => {
+    if (!training || !near || steady || paused || blocked) return
+    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
+      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    setMarker, () => setPaused(true))
+  }, [training, near, steady, paused, blocked, task.beats])
+  const move = (direction: EarlyWalkDirection) => setPosition(current => moveNingWalker(current, direction))
+  function act(operation: NingFirstAction['operation']) {
+    if (document.hidden || !scene || training && paused && operation !== 'stop') return
+    submitEarlyNingFirst(gameStore, entryPosition, position, { ...task, actor: scene.actor, operation,
+      marker: training && operation !== 'stop' ? marker : undefined })
+  }
+  function key(event: KeyboardEvent<SVGSVGElement>) {
+    if (event.altKey || event.ctrlKey || event.metaKey) return
+    const directions: Record<string, EarlyWalkDirection> = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' }
+    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
+    if (direction) { event.preventDefault(); move(direction) }
+    if (event.key.toLowerCase() === 'e' && scene && !training) { event.preventDefault(); act(scene.operation) }
+  }
+  if (blocked) return <p>{blocked}</p>
+  const ningX = task.stage >= 7 ? 550 : task.beats === 1 ? 610 : task.beats === 2 ? 478 : 535
+  return <>
+    <span className="eyebrow">正式礼挑战 / 萧宁首轮</span>
+    <h2>先推、再拉、再推，倒地仍待裁定。</h2>
+    <p id="ning-first-help">方向键或WASD行走，近地点按E接静态步骤。沿南侧阶梯登台，首轮用35%–65%窗口选择动作；错序、错时机或停下免费重开。重入从台下出发，推拉断点保留。</p>
+    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="萧宁首轮推拉推地图" aria-describedby="ning-first-help" viewBox="0 0 720 420" onKeyDown={key}>
+      <rect width="720" height="420" fill="#34463b" />
+      <path d="M240 280 H440 V240" fill="none" stroke="#79816b" strokeWidth="32" strokeLinejoin="round" />
+      <rect {...ceremonyPlatform} rx="6" fill="#89704b" stroke="#b79b65" strokeWidth="3" />
+      {[100, 128, 156, 184, 212].map(y => <path key={y} d={`M304 ${y} H656`} stroke="#b39464" strokeWidth="2" />)}
+      <rect x="412" y="220" width="56" height="36" fill="#a38a61" />
+      {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
+      <path d="M592 181 V114 Q613 99 634 114 V181Z" fill="#293434" stroke="#93a492" strokeWidth="3" />
+      <text x="613" y="130" textAnchor="middle" fill="#e2c273" fontSize="12">复测已记</text>
+      {task.stage >= 3 && <g transform={`translate(${ningX} ${task.stage >= 7 ? 181 : 146}) rotate(${task.stage >= 7 ? 83 : 0})`} role="img" aria-label={task.verdict === 'pending' ? '萧宁首轮倒地，裁判尚未最终宣布' : task.beats === 1 ? '萧宁被首次推退' : task.beats === 2 ? '萧宁被吸掌拉近，准备推出' : '萧宁来袭，药物尚未服用'}>
+        <circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /><path d="M-8-3 L-25-6" stroke="#e1bba0" strokeWidth="5" />
+      </g>}
+      {training && <path d={task.beats === 1 ? 'M607 173 Q535 190 468 173' : 'M468 173 Q535 155 601 173'} fill="none" stroke="#ead093" strokeWidth="3" strokeDasharray="6 5" />}
+      <text x="544" y="204" textAnchor="middle" fill="#ead9b6" fontSize="11">萧宁 · {task.verdict === 'pending' ? '倒地待裁判' : '首轮交锋'}</text>
+      <g transform="translate(272 272)" aria-label="薰儿台下观礼" role="img"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
+      {task.stage >= 1 && task.stage <= 2 && <g transform="translate(174 271)" role="img" aria-label={task.pill === 'ning-held' ? '场边镜头：萧宁持有增气药物，未服用' : '场边镜头：萧玉准备交药'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#9e83a6" /><circle cx="20" cy="-1" r="5" fill="#8bbc87" /></g>}
+      {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+    </svg>
+    <div className="early-walk-controls" aria-label="萧宁首轮行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['首轮向上走', '首轮向左走', '首轮向下走', '首轮向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <p role="status">萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? '首轮倒地，待最终裁判' : '尚未完成首轮'}</p>
+    {scene ? near ? <section className="bond-summary" aria-label="萧宁首轮步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
+      {training ? <>
+        {steady && <label className="setting-row"><span>萧宁首轮时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧宁首轮时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        <div className="heat-meter" aria-label="萧宁首轮时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+        {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停萧宁首轮时机</button>}
+        {paused && <><p role="status">时机已暂停，需明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续萧宁首轮 · 恢复时机</button></>}
+        <p>{task.beats === 0 ? '先吹火掌推退来袭。' : task.beats === 1 ? '再吸掌拉近对手。' : '最后吹火掌推出，仍须等待裁判。'}</p>
+        <div className="early-walk-controls">
+          <button className="primary" disabled={paused} onClick={() => act(ningFirstOperation(task))}>{task.beats === 0 ? '吹火掌 · 首次推退' : task.beats === 1 ? '吸掌 · 拉近萧宁' : '吹火掌 · 最后推出'}</button>
+          <button className="secondary" disabled={paused} onClick={() => act(task.beats === 1 ? 'push' : 'pull')}>{task.beats === 1 ? '尝试直接推 · 尚未拉近' : '尝试吸掌 · 当前次序不符'}</button>
+          <button className="secondary" disabled={paused} onClick={() => act('octane')}>尝试八极崩 · 首轮次序不符</button>
+        </div>
+      </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
+    </section> : <p className="muted">下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</p>
+      : <section className="bond-summary"><h3>首轮倒地已记，仍待裁判与后续变化。</h3><p>这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。</p></section>}
+    {training && <button className="secondary" onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</button>}
+    <p className="muted">药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</p>
+    <button className="secondary" onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</button>
+  </>
+}
