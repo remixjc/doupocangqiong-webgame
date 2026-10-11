@@ -15,6 +15,7 @@ import { earlyAppraisalBlock } from '../core/early-appraisal'
 import { earlyAuctionBlock } from '../core/early-auction'
 import { earlySettlementBlock } from '../core/early-settlement'
 import { earlyFatherGiftBlock } from '../core/early-father-gift'
+import { earlyXunerVisitBlock } from '../core/early-xuner-visit'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
@@ -27,6 +28,7 @@ const EarlyAppraisal = lazy(() => loadSceneModule(() => import('./EarlyAppraisal
 const EarlyAuction = lazy(() => loadSceneModule(() => import('./EarlyAuction')))
 const EarlySettlement = lazy(() => loadSceneModule(() => import('./EarlySettlement')))
 const EarlyFatherGift = lazy(() => loadSceneModule(() => import('./EarlyFatherGift')))
+const EarlyXunerVisit = lazy(() => loadSceneModule(() => import('./EarlyXunerVisit')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -41,6 +43,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const [auctioning, setAuctioning] = useState(false)
   const [settling, setSettling] = useState(false)
   const [fatherVisiting, setFatherVisiting] = useState(false)
+  const [xunerVisiting, setXunerVisiting] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
@@ -61,6 +64,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const returningSettlement = useRef(false)
   const fatherGiftEntry = useRef<HTMLButtonElement>(null)
   const returningFatherGift = useRef(false)
+  const xunerVisitEntry = useRef<HTMLButtonElement>(null)
+  const returningXunerVisit = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -95,6 +100,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!fatherVisiting && returningFatherGift.current) { returningFatherGift.current = false; fatherGiftEntry.current?.focus() }
   }, [fatherVisiting])
+  useEffect(() => {
+    if (!xunerVisiting && returningXunerVisit.current) { returningXunerVisit.current = false; xunerVisitEntry.current?.focus() }
+  }, [xunerVisiting])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -135,6 +143,11 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setSettling(false); setFatherVisiting(true)
   }
+  function openXunerVisit() {
+    const blocked = earlyXunerVisitBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setFatherVisiting(false); setXunerVisiting(true)
+  }
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -144,7 +157,10 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
+  if (xunerVisiting) return <Suspense fallback={<p role="status">正在接续薰儿来访……</p>}><EarlyXunerVisit state={state} position={position}
+    onBack={() => { returningXunerVisit.current = true; setXunerVisiting(false) }} /></Suspense>
   if (fatherVisiting) return <Suspense fallback={<p role="status">正在回房接续父亲来访……</p>}><EarlyFatherGift state={state} position={position}
+    onXunerVisit={openXunerVisit}
     onBack={() => { returningFatherGift.current = true; setFatherVisiting(false) }} /></Suspense>
   if (settling) return <Suspense fallback={<p role="status">正在展开寄售手续……</p>}><EarlySettlement state={state} position={position}
     onFatherGift={openFatherGift}
@@ -225,6 +241,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyAuctionBlock(state, position) && <button ref={auctionEntry} className="secondary" onClick={openAuction}>入席旁观 · 雅妃主持首次拍卖</button>}
       {place.id === 'teacher' && !earlySettlementBlock(state, position) && <button ref={settlementEntry} className="primary" onClick={openSettlement}>回鉴定室 · 贵宾卡与寄售收款</button>}
       {place.id === 'teacher' && !earlyFatherGiftBlock(state, position) && <button ref={fatherGiftEntry} className="secondary" onClick={openFatherGift}>回萧家房中 · 父亲赠回同瓶</button>}
+      {place.id === 'teacher' && !earlyXunerVisitBlock(state, position) && <button ref={xunerVisitEntry} className="primary" onClick={openXunerVisit}>接续薰儿来访 · 独自处理长老争执</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>

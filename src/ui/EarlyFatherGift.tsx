@@ -8,7 +8,7 @@ import { gameStore } from '../core/store'
 import './early-walk.css'
 
 const stations = { door: '房门', meeting: '父子会面处', cabinet: '收瓶处' } as const
-export default function EarlyFatherGift({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyFatherGift({ state, position, onBack, onXunerVisit }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onXunerVisit?: () => void }) {
   const task = state.earlyTraining.fatherGift, bottle = state.earlyTraining.consignment, scene = fatherGiftScenes[task.stage]
   const [station, setStation] = useState<FatherGiftStation>('door')
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlyFatherGiftBlock(state, position)
@@ -41,7 +41,8 @@ export default function EarlyFatherGift({ state, position, onBack }: { state: Ga
       <button className="primary" onClick={() => submitEarlyFatherGift(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>同瓶已收好，父亲支持已记下。</h3><p>原来的寄售瓶经萧战购得再赠回，由萧炎保管。长期物资筹备与后续人物来访另行接续。</p></section>}
+      : <section className="bond-summary"><h3>同瓶已收好，父亲支持已记下。</h3><p>原来的寄售瓶经萧战购得再赠回，由萧炎保管。接下来展开薰儿来访，长期物资筹备另行接续。</p>
+        {onXunerVisit && <button className="primary" onClick={onXunerVisit}>接续薰儿来访 · 房中与转角</button>}</section>}
     <p className="muted">父亲的40000是已记录的故事购买金额，不再扣玩家的钱。赠回只改变原瓶保管，不增加材料、技能或第二份药液，也不回补已耗尽的自用容器。</p>
     <button className="secondary" onClick={onBack}>暂离父子来访 · 保留同瓶断点</button>
   </>

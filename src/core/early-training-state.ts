@@ -18,6 +18,7 @@ export interface EarlyTrainingState {
   auction: { stage: number }
   settlement: { stage: number; net: number; vip: boolean }
   fatherGift: { stage: number }
+  xunerVisit: { stage: number; card: 'xuner' | 'elders' }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -38,6 +39,7 @@ export const EARLY_APPRAISAL_VERSION = '0.19.1'
 export const EARLY_AUCTION_VERSION = '0.20.0'
 export const EARLY_SETTLEMENT_VERSION = '0.20.1'
 export const EARLY_FATHER_GIFT_VERSION = '0.20.2'
+export const EARLY_XUNER_VISIT_VERSION = '0.21.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -61,9 +63,9 @@ export function blankEarlyTraining(): EarlyTrainingState {
       receipts: { youngPrimary: false, youngAuxiliary: false, woodCore: false, jadeBottle: false },
       supplies: { youngPrimary: 0, youngAuxiliary: 0, woodCore: 0, jadeBottle: 0 }, product: 'none', owner: 'none' },
     appraisal: { stage: 0, cloaked: false, speaker: 'self', tier: 0, card: 'none' }, auction: { stage: 0 },
-    settlement: { stage: 0, net: 0, vip: false }, fatherGift: { stage: 0 } }
+    settlement: { stage: 0, net: 0, vip: false }, fatherGift: { stage: 0 }, xunerVisit: { stage: 0, card: 'xuner' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -181,7 +183,15 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     || settlement.vip !== (settlement.stage >= 4) || settlement.net !== (settlement.stage >= 6 ? 39200 : 0)) return invalid()
   result.settlement = { stage: settlement.stage, net: settlement.net as number, vip: settlement.vip as boolean }
   if (fatherGift.stage > 0 && settlement.stage !== 7) return invalid()
+  const xunerVisit = data.xunerVisit === undefined && legacyXunerVisit ? result.xunerVisit : object(data.xunerVisit)
+  if (!integer(xunerVisit.stage, 7) || xunerVisit.stage > 0 && fatherGift.stage !== 6
+    || xunerVisit.card !== xunerCardAt(xunerVisit.stage)) return invalid()
+  result.xunerVisit = { stage: xunerVisit.stage, card: xunerVisit.card as EarlyTrainingState['xunerVisit']['card'] }
   return result
+}
+
+export function xunerCardAt(stage: number): EarlyTrainingState['xunerVisit']['card'] {
+  return stage >= 6 ? 'elders' : 'xuner'
 }
 
 export function recoveryEnergyAt(stage: number): EarlyTrainingState['recovery']['energy'] {
