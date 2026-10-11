@@ -20,10 +20,13 @@ import { advanceEarlyConsignment } from '../../src/core/early-consignment'
 import { consignmentSupplies, type ConsignmentSupplyId } from '../../src/core/early-training-state'
 import { advanceEarlyAppraisal } from '../../src/core/early-appraisal'
 import { appraisalScenes } from '../../src/content/early-appraisal'
+import { advanceEarlyAuction } from '../../src/core/early-auction'
+import { auctionScenes } from '../../src/content/early-auction'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false): GameState {
+  if (includeAuction) includeAppraisal = true
   if (includeAppraisal) includeConsignment = true
   let state = input
   const act = (action: EarlyTrainingAction) => {
@@ -120,6 +123,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   }
   if (includeAppraisal) for (const scene of appraisalScenes) {
     const result = advanceEarlyAppraisal(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
+      { step: scene.step, owner: state.earlyTraining.consignment.owner, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeAuction) for (const scene of auctionScenes) {
+    const result = advanceEarlyAuction(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
       { step: scene.step, owner: state.earlyTraining.consignment.owner, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)

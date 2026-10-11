@@ -12,6 +12,7 @@ import { earlySupervisionBlock } from '../core/early-supervision'
 import { earlyRecoveryBlock } from '../core/early-recovery'
 import { earlyConsignmentBlock } from '../core/early-consignment'
 import { earlyAppraisalBlock } from '../core/early-appraisal'
+import { earlyAuctionBlock } from '../core/early-auction'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
@@ -21,6 +22,7 @@ const EarlySupervision = lazy(() => loadSceneModule(() => import('./EarlySupervi
 const EarlyRecovery = lazy(() => loadSceneModule(() => import('./EarlyRecovery')))
 const EarlyConsignment = lazy(() => loadSceneModule(() => import('./EarlyConsignment')))
 const EarlyAppraisal = lazy(() => loadSceneModule(() => import('./EarlyAppraisal')))
+const EarlyAuction = lazy(() => loadSceneModule(() => import('./EarlyAuction')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -32,6 +34,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const [recovering, setRecovering] = useState(false)
   const [consigning, setConsigning] = useState(false)
   const [appraising, setAppraising] = useState(false)
+  const [auctioning, setAuctioning] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
@@ -46,6 +49,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const returningConsignment = useRef(false)
   const appraisalEntry = useRef<HTMLButtonElement>(null)
   const returningAppraisal = useRef(false)
+  const auctionEntry = useRef<HTMLButtonElement>(null)
+  const returningAuction = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -71,6 +76,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!appraising && returningAppraisal.current) { returningAppraisal.current = false; appraisalEntry.current?.focus() }
   }, [appraising])
+  useEffect(() => {
+    if (!auctioning && returningAuction.current) { returningAuction.current = false; auctionEntry.current?.focus() }
+  }, [auctioning])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -96,6 +104,11 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setConsigning(false); setAppraising(true)
   }
+  function openAuction() {
+    const blocked = earlyAuctionBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setAppraising(false); setAuctioning(true)
+  }
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -105,7 +118,10 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
+  if (auctioning) return <Suspense fallback={<p role="status">正在进入第一拍卖室……</p>}><EarlyAuction state={state} position={position}
+    onBack={() => { returningAuction.current = true; setAuctioning(false) }} /></Suspense>
   if (appraising) return <Suspense fallback={<p role="status">正在展开寄售鉴定路线……</p>}><EarlyAppraisal state={state} position={position}
+    onAuction={openAuction}
     onBack={() => { returningAppraisal.current = true; setAppraising(false) }} /></Suspense>
   if (consigning) return <Suspense fallback={<p role="status">正在展开首次寄售准备……</p>}><EarlyConsignment state={state} position={position}
     onAppraise={openAppraisal}
@@ -174,6 +190,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyRecoveryBlock(state, position) && <button ref={recoveryEntry} className="primary" onClick={openRecovery}>回房恢复 · 查看自用药液</button>}
       {place.id === 'teacher' && !earlyConsignmentBlock(state, position) && <button ref={consignmentEntry} className="secondary" onClick={openConsignment}>筹备首次寄售 · 另备待售药液</button>}
       {place.id === 'teacher' && !earlyAppraisalBlock(state, position) && <button ref={appraisalEntry} className="primary" onClick={openAppraisal}>前往拍卖场 · 黑袍与谷尼鉴定</button>}
+      {place.id === 'teacher' && !earlyAuctionBlock(state, position) && <button ref={auctionEntry} className="secondary" onClick={openAuction}>入席旁观 · 雅妃主持首次拍卖</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>

@@ -15,6 +15,7 @@ export interface EarlyTrainingState {
   consignment: { stage: number; funds: number; spent: number; receipts: Record<ConsignmentSupplyId, boolean>;
     supplies: Record<ConsignmentSupplyId, number>; product: 'none' | 'mixture' | 'sealed'; owner: 'none' | 'xiaoyan' | 'inspection-desk' | 'guni' | 'auction' }
   appraisal: { stage: number; cloaked: boolean; speaker: 'self' | 'yaolao'; tier: number; card: 'none' | 'black-entry' }
+  auction: { stage: number }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -32,6 +33,7 @@ export const EARLY_SUPERVISION_VERSION = '0.18.0'
 export const EARLY_RECOVERY_VERSION = '0.18.1'
 export const EARLY_CONSIGNMENT_VERSION = '0.19.0'
 export const EARLY_APPRAISAL_VERSION = '0.19.1'
+export const EARLY_AUCTION_VERSION = '0.20.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -54,9 +56,9 @@ export function blankEarlyTraining(): EarlyTrainingState {
     consignment: { stage: 0, funds: 0, spent: 0,
       receipts: { youngPrimary: false, youngAuxiliary: false, woodCore: false, jadeBottle: false },
       supplies: { youngPrimary: 0, youngAuxiliary: 0, woodCore: 0, jadeBottle: 0 }, product: 'none', owner: 'none' },
-    appraisal: { stage: 0, cloaked: false, speaker: 'self', tier: 0, card: 'none' } }
+    appraisal: { stage: 0, cloaked: false, speaker: 'self', tier: 0, card: 'none' }, auction: { stage: 0 } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -163,6 +165,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     || consignment.owner !== (consignment.stage === 5 ? appraisalOwnerAt(appraisal.stage) : 'none')) return invalid()
   result.consignment = { ...parsed, stage: consignment.stage, funds: consignment.funds as number, spent: saleSpent,
     product: consignment.product as EarlyTrainingState['consignment']['product'], owner: consignment.owner as EarlyTrainingState['consignment']['owner'] }
+  const auction = data.auction === undefined && legacyAuction ? result.auction : object(data.auction)
+  if (!integer(auction.stage, 7) || auction.stage > 0 && appraisal.stage !== 8) return invalid()
+  result.auction = { stage: auction.stage }
   return result
 }
 
