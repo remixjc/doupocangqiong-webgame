@@ -3,25 +3,34 @@ import { storyChapters } from './story'
 
 export const chapters: Chapter[] = [{
   id: 1, title: '少年与戒指', location: '乌坦城 · 萧家后山', theme: 'forest',
-  summary: '曾经消失的天赋，藏着另一段机缘。跟随药老，重新迈出修炼的第一步。',
+  summary: '教学序章：先体验拜师后的后山练习。下一章将回到药老现身之前，讲述三年约定的起因。',
   opening: [
-    { speaker: '萧炎', text: '从山下走到这里，那些议论声终于远了。我需要的不是同情，是重新开始的机会。' },
+    { speaker: '旅途手札', text: '教学序章 · 拜师之后。先随药老熟悉移动、斗技与闪避；练习结束后，故事将回到萧家来访当日。三年约定发生在这次拜师之前。' },
     { speaker: '药老', text: '小家伙，机会就在你手中。先采些药材，再让我看看，你是否还有面对困难的勇气。' },
     { speaker: '历练指引', text: '先在营地附近找药老接下指导：用八极崩命中木桩，再在木桩附近闪避。随后采集药草、击败投影，前往右上试炼碑。WASD 移动，1 斗技，空格闪避，E 交互。' },
   ],
   closing: [
     { speaker: '药老', text: '记住今天的感觉。力量会慢慢回来，但肯向前走的心，比天赋更难得。' },
-    { speaker: '萧炎', text: '既然还能修炼，就从这一步开始。' },
+    { speaker: '旅途手札', text: '练习告一段落。接下来回到拜师之前：萧家议事院的来访，正是三年约定的起点。' },
   ],
   boss: '后山试炼守卫', pattern: 'slam', objectives: { herbs: 3, kills: 3, brews: 0 },
   realm: '斗之气 · 三段', reward: 140,
-  trialNote: '试炼守卫为原创教学敌人，剧情对白为游戏改编。',
+  trialNote: '本章提前展示拜师后的原创教学；第2章回溯立约及拜师起因。药草、投影和试炼守卫为教学设计，不代表原作拜师考核或药方。',
 }]
 
 chapters.push(...storyChapters)
 // Dedicated story interactions replace the repetitive resource checklist here.
 chapters[1].location = '乌坦城 · 萧家议事院'
 chapters[1].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[1].summary = '时间回溯 · 拜师之前。纳兰嫣然来访萧家，三年约定由此开始；离开议事院后，药老才在后山现身。'
+chapters[1].opening[0] = { speaker: '旅途手札', text: '时间回溯 · 萧家来访当日。此时萧炎还未拜师。先回到议事院，了解纳兰嫣然的来意与父亲的处境；院中的演武是游戏对决心的象征练习。' }
+chapters[1].opening[1].text = '父亲，我会面对自己的选择。三年之后，我亲自赴约；今天的轻视，不能替我决定今后的路。'
+chapters[1].closing = [
+  { speaker: '萧战', text: '炎儿，我相信你。眼前的议论，不会决定你这一生。' },
+  { speaker: '旅途手札', text: '离开议事院后，萧炎登上后山。古戒中的老人现身，道出过去三年吸收斗气的缘由。疑问与怒气之后，萧炎选择拜师，开始重修；这才接上序章展示的练习。' },
+  { speaker: '药老', text: '既然认了我这个老师，就从基础重新做起。修炼与炼药的路，都需要一步一步走。' },
+]
+chapters[1].trialNote = '回溯三年立约，再以短场景概括药老现身与拜师，之后恢复顺叙。院中教习和演武为原创练习；来访者不是本章可击杀首领，赴约决战在第10章。'
 chapters[2].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[2].boss = '成人礼武技考核 · 历练投影'
 chapters[2].trialNote = '供货订单和武技考核为游戏原创历练，不直接复现原著商业细节。'
