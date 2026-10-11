@@ -10,7 +10,7 @@ import EarlyPractice from './EarlyPractice'
 import './early-room.css'
 
 const stations = { materials: '材料盘', water: '盛水容器', teacher: '药老操作处' } as const
-export default function EarlyRoom({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyRoom({ state, position, onBack, onContinue }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onContinue?: () => void }) {
   const task = state.earlyTraining, view = earlyRoomPresentation(state)
   const [station, setStation] = useState<EarlyRoomStation>(view.station)
   const heading = useRef<HTMLHeadingElement>(null)
@@ -90,7 +90,7 @@ export default function EarlyRoom({ state, position, onBack }: { state: GameStat
       </> : <p>{task.liquid.ready ? '药液已供修炼使用。容器和采购记录保留，不会再次消耗材料。'
         : `下一步请查看${stations[view.station]}：${scene?.title}。`}</p>}
     </section>
-    <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} />
+    <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} onContinue={onContinue} />
     <p className="muted">场景位置与器物外观为原创表现。调制断点沿用准备单，离开室内不退材料、不重炼；这里没有口服丹药产出。</p>
     <button className="secondary" onClick={onBack}>回到往事街巷</button>
   </>

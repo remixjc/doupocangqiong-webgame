@@ -8,10 +8,11 @@ import { pulseMarker } from '../../src/core/events'
 import { advanceEarlyBracelet } from '../../src/core/early-bracelet'
 import { earlyBraceletScenes } from '../../src/content/early-bracelet'
 import { earlyWalkPlaces } from '../../src/core/early-walk'
+import { advanceEarlyGrowth } from '../../src/core/early-growth'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false): GameState {
   let state = input
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
@@ -46,5 +47,11 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   act({ type: 'practice', operation: 'attempt', phase: 2, pulse: 3, expectedSpent: 110 })
   act({ type: 'practice', operation: 'finish', phase: 3, pulse: 3, expectedSpent: 110 })
   expect(state.earlyTraining.practice.phase).toBe(4)
+  if (includeGrowth) for (let step = 0; step < 3; step++) {
+    const result = advanceEarlyGrowth(state, step)
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
   return state
 }

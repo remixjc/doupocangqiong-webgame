@@ -9,7 +9,7 @@ import { earlyLiquidScenes } from '../content/early-liquid'
 import EarlyPractice from './EarlyPractice'
 import EarlyBracelet from './EarlyBracelet'
 
-export default function EarlyWalkInteraction({ state, position }: { state: GameState; position: EarlyWalkPosition }) {
+export default function EarlyWalkInteraction({ state, position, onContinue }: { state: GameState; position: EarlyWalkPosition; onContinue?: () => void }) {
   const place = nearbyEarlyWalkPlace(position)
   if (!place || earlyTrainingBlock(state)) return null
   const task = state.earlyTraining, spent = task.purse.spent, balance = task.purse.borrowed - spent
@@ -39,7 +39,7 @@ export default function EarlyWalkInteraction({ state, position }: { state: GameS
               operation: liquidScene.operation, expectedSpent: spent })}>{liquidScene.action}</button>
           </> : <p>药液已经加水。三种材料由老师依次使用，收据和黑铁片保留。</p>}
           <p className="muted">玩家准备与观察，药老调制；药液不进入口服丹药行囊。</p>
-          <EarlyPractice state={state} onAction={act} />
+          <EarlyPractice state={state} onAction={act} onContinue={onContinue} />
         </>)}
     {place.id === 'xuner' && <>
       <p>薰儿：这笔资金借给你，先把老师的准备单做齐。</p>

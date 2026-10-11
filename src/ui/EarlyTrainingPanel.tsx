@@ -8,7 +8,7 @@ import { earlyLiquidScenes } from '../content/early-liquid'
 import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 
-export default function EarlyTrainingPanel({ state }: { state: GameState }) {
+export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
   const [walking, setWalking] = useState(false)
   const entry = useRef<HTMLButtonElement>(null)
@@ -20,7 +20,7 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
-  if (walking && !blocked) return <EarlyWalk state={state} onBack={() => { returning.current = true; setWalking(false) }} />
+  if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
@@ -75,7 +75,7 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
           </> : <><h3>修炼药液已备好</h3><p>药老已完成调制，药液加入水中。主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
           <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；备好后可在下方进行初期练习。</p>
         </section>}
-        <EarlyPractice state={state} />
+        <EarlyPractice state={state} onContinue={onContinue} />
         {task.receipts.woodCore && task.market.stage < 4 && <p className="muted">三种材料由任务袋保管。先完成坊市往事，带回黑铁片，再请药老调制；现在没有药液、丹药或新的修炼结果。</p>}
       </>}
     </>}

@@ -209,7 +209,7 @@ export default function App() {
         onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
         onSave={() => setPanel('save')} onBack={() => { setPanel(null); setScreen('world') }}>
         <Suspense fallback={<p className="muted" role="status">正在翻开旅途记录…</p>}>
-          {panel === 'recap' ? <StoryRecap state={s} /> : <EarlyTrainingPanel state={s} />}
+          {panel === 'recap' ? <StoryRecap state={s} /> : <EarlyTrainingPanel state={s} onContinue={() => { setPanel(null); setScreen('world') }} />}
         </Suspense>
       </SceneBoundary>}
       {panel === 'bonds' && <BondJournal state={s} visit={enter} />}

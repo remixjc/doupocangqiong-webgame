@@ -7,6 +7,7 @@ export interface EarlyTrainingState {
   liquid: { stage: number; water: boolean; ready: boolean }
   practice: { phase: number; pulse: number; score: number; attempts: number }
   bracelet: { stage: number; gift: 'none' | 'xuner' }
+  growth: { stage: number }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -16,6 +17,7 @@ export const earlySupplies: Record<EarlySupplyId, { label: string; quantity: num
   woodCore: { label: '一阶木属性魔核 · 一枚', quantity: 1, price: 60 },
 }
 export const EARLY_TRAINING_VERSION = '0.15.0'
+export const EARLY_GROWTH_VERSION = '0.16.7'
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
@@ -24,9 +26,9 @@ export function blankEarlyTraining(): EarlyTrainingState {
     market: { stage: 0, blackIron: 0 },
     liquid: { stage: 0, water: false, ready: false },
     practice: { phase: 0, pulse: 0, score: 0, attempts: 0 },
-    bracelet: { stage: 0, gift: 'none' } }
+    bracelet: { stage: 0, gift: 'none' }, growth: { stage: 0 } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -81,5 +83,8 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!integer(bracelet.stage, 6) || bracelet.gift !== (bracelet.stage >= 5 ? 'xuner' : 'none')
     || bracelet.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   result.bracelet = { stage: bracelet.stage, gift: bracelet.gift as 'none' | 'xuner' }
+  const growth = data.growth === undefined && legacyGrowth ? result.growth : object(data.growth)
+  if (!integer(growth.stage, 3) || growth.stage > 0 && practice.phase !== 4) return invalid()
+  result.growth = { stage: growth.stage }
   return result
 }

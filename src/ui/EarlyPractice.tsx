@@ -3,8 +3,9 @@ import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { pulseMarker } from '../core/events'
 import { earlyTrainingBlock, type EarlyTrainingAction } from '../core/early-training'
+import EarlyGrowth from './EarlyGrowth'
 
-export default function EarlyPractice({ state, onAction }: { state: GameState; onAction?: (action: Extract<EarlyTrainingAction, { type: 'practice' }>) => unknown }) {
+export default function EarlyPractice({ state, onAction, onContinue }: { state: GameState; onAction?: (action: Extract<EarlyTrainingAction, { type: 'practice' }>) => unknown; onContinue?: () => void }) {
   const [marker, setMarker] = useState(.5)
   const task = state.earlyTraining, practice = task.practice
   const steady = state.settings.reducedMotion
@@ -56,5 +57,6 @@ export default function EarlyPractice({ state, onAction }: { state: GameState; o
       <p>准备、借资、采购、坊市交涉、老师调制、加水与初期斗技尝试已经记录。采购余额和黑铁片保留，主线仍从原来的篇章继续。</p>
     </>}
     <p className="muted">三次调息、评分与重试是原创练习，不代表原著修炼时长或境界提升；没有新增战斗技能或章节奖励。</p>
+    {practice.phase === 4 && <EarlyGrowth state={state} onContinue={onContinue} />}
   </section>
 }

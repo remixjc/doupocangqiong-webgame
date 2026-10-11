@@ -7,7 +7,7 @@ import EarlyWalkInteraction from './EarlyWalkInteraction'
 import EarlyRoom from './EarlyRoom'
 import './early-walk.css'
 
-export default function EarlyWalk({ state, onBack }: { state: GameState; onBack: () => void }) {
+export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
   const [reading, setReading] = useState<string>()
   const [indoors, setIndoors] = useState(false)
@@ -29,7 +29,7 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (indoors) return <EarlyRoom state={state} position={position} onBack={() => { returning.current = true; setIndoors(false) }} />
+  if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={() => { returning.current = true; setIndoors(false) }} />
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
     <h2>走过街巷，再把准备做齐。</h2>
@@ -73,7 +73,7 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
     {reading && place?.id === reading && <>
       <section className="bond-summary" aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></section>
       {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <button ref={roomEntry} className="primary" onClick={() => setIndoors(true)}>进入药老调制室</button>}
-      <EarlyWalkInteraction state={state} position={position} />
+      <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
     <button className="secondary" onClick={onBack}>回到重修准备单</button>
