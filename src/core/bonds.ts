@@ -1,7 +1,7 @@
 import { bondEvents, bondLines } from '../content/bonds'
 import { findEvent, type ChapterEvent } from '../content/events'
 import { eventBlockReason, eventDone, eventProgress } from './events'
-import type { GameState } from './model'
+import type { GameState, Settings } from './model'
 import { canEnter, isVisible } from './rules'
 
 export type BondStatus = 'done' | 'locked' | 'blocked' | 'available' | 'reading' | 'report'
@@ -34,7 +34,7 @@ export function bondJournal(state: GameState) {
         !progress.started ? 'available' : progress.stage === 2 ? 'report' : 'reading'
       return {
         chapter, eventId: event.id, title: event.title, stage: progress.stage, total: event.stages.length - 1,
-        done, canVisit, status, statusLabel: bondStatusLabels[status], prerequisite: missingPage(state, event),
+        done, started: progress.started, canVisit, status, statusLabel: bondStatusLabels[status], prerequisite: missingPage(state, event),
         response: response?.response, choice: response?.label,
         destination: !progress.started || progress.stage === 2 || done ? event.speaker : event.checkpoints![progress.stage].label,
         hint: !canVisit ? '篇章尚未解锁。' : blocked ||
@@ -52,4 +52,12 @@ export function bondVisitQueue(state: GameState) {
     .map(entry => ({ ...entry, lineId: line.id, name: line.name })))
     .sort((a, b) => priority[a.status]! - priority[b.status]! ||
       Number(b.chapter === state.chapter) - Number(a.chapter === state.chapter) || a.chapter - b.chapter)
+}
+
+export function bondSaveSummary(state: GameState, viewing: Settings) {
+  // A save's own spoiler setting must not reveal progress outside the viewer's range.
+  const entries = bondJournal({ ...state, settings: viewing }).flatMap(line => line.entries)
+  const done = entries.filter(entry => entry.done).length
+  const ongoing = entries.filter(entry => entry.started && !entry.done).length
+  return `可见伙伴记录 ${done} / ${entries.length} · 进行中 ${ongoing} 页`
 }
