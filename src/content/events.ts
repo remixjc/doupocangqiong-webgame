@@ -21,6 +21,7 @@ export interface ChapterEvent {
   dummy?: Point
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
   reflections?: Reflection[]
+  reflectionReward?: number
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
   20: {
@@ -166,6 +167,38 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
       { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
       { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
+    ],
+  },
+  25: {
+    id: 'pure-fire-three-mirrors', kind: 'illusion', introducedVersion: '0.10.4', reflectionReward: 0,
+    title: '妖火 · 三镜辨识', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['前往古图引路牌，开始辨识幻象', '在西侧恩赐镜观察没有影子的丹瓶',
+      '在东侧故人镜放下没有回应的旧影', '在北侧白焰镜耐心看清莲纹变化',
+      '三镜已辨明，返回药老处报告', '幻镜记录已确认，准备净莲收服试炼'],
+    introduction: '妖火空间的许诺也会化成幻象。读古图引路牌后依序走入恩赐、故人、白焰三镜，观察丹瓶、旧影与莲纹的具体线索，再选择行动。错误可免费重选，已辨明镜面保留。',
+    note: '幻镜、古图引路牌、线索与选项为原创妖火改编，不声称复现原著完整古图收集或净莲传承。幻瓶与财富不进入行囊，报告不发材料/金币/积累；本批仍保留原收服投影，专属净化下一批替换。',
+    checkpoints: [
+      { x: 330, y: 220, label: '古图引路牌', text: '无影丹瓶须观察，不回应的旧影须放下，变化的莲纹须耐心面对。三处按顺序辨明，不触碰幻物领资源。' },
+      { x: 650, y: 390, label: '恩赐镜', text: '丹瓶被白焰照亮却没有影子，瓶中的药香也没有变化。' },
+      { x: 1030, y: 650, label: '故人镜', text: '旧影重复熟悉的声音，却从不回应新的问题。' },
+      { x: 1080, y: 300, label: '白焰镜', text: '白焰中莲纹有规律地变化，耐心观察可以看清变化的顺序。' },
+    ],
+    reflections: [
+      { clue: '丹瓶没有影子，只有领取力量的许诺；先观察幻物。', answer: 'observe', options: [
+        { choice: 'observe', label: '观察丹瓶 · 核对光影', response: '无影丹瓶散去，没有材料入袋。继续辨识故人镜。' },
+        { choice: 'grasp', label: '抓取丹瓶 · 吞下白焰赠礼', response: '丹瓶只是幻象，抓取不能获得真实丹药。观察光影，可免费重选。' },
+        { choice: 'deny', label: '闭目否认 · 不看丹瓶', response: '不观察无法辨别无影幻物。核对光影，可免费重选。' },
+      ] },
+      { clue: '旧影不回应新的问题，只在重复；放下幻影的许诺。', answer: 'release', options: [
+        { choice: 'release', label: '放下幻影 · 保存真实记忆', response: '旧影散去，真实记忆仍在。前往北侧白焰镜。' },
+        { choice: 'grasp', label: '留住幻影 · 强求回应', response: '声音继续重复，无法回应现实。放下这道幻影，可免费重选。' },
+        { choice: 'deny', label: '否认记忆 · 抹去旧事', response: '否认真实记忆无法识破幻影。保留记忆、放下许诺，可免费重选。' },
+      ] },
+      { clue: '莲纹变化有迹可循；耐心面对并看清变化。', answer: 'endure', options: [
+        { choice: 'endure', label: '面对白焰 · 静看莲纹变化', response: '莲纹逐渐清晰，三镜已辨明。回药老处报告，不领取幻象财富。' },
+        { choice: 'grasp', label: '强留莲纹 · 抓住白焰', response: '强留打乱观察，莲纹仍在变化。耐心面对，可免费重选。' },
+        { choice: 'deny', label: '否认莲纹 · 立刻转身离开', response: '转身无法看清规律，幻镜依旧。面对莲纹变化，可免费重选。' },
+      ] },
     ],
   },
   24: {

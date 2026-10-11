@@ -121,7 +121,9 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
       p.attempts++; message = option.response
       if (action.choice === reflection.answer) { p.score++; p.stage++ }
     } else if (event.kind === 'illusion' && action.type === 'deliver' && p.stage === 4) {
-      next.xp += 100; p.stage = 5; message = '三境观心已确认 · 100积累。幻境没有材料与金币入袋，前往树前审核后营地结算。'
+      const reward = event.reflectionReward ?? 100
+      next.xp += reward; p.stage = 5
+      message = `${event.title}已确认${reward ? ` · ${reward}积累` : ' · 未发资源'}。幻象财富不进入行囊。${event.stages[p.stage]}。`
     } else if (event.kind === 'tomb' && action.type === 'seal' && action.index === p.stage && p.stage >= 0 && p.stage <= 3) {
       message = event.checkpoints![p.stage].text; p.stage++
       if (p.stage <= 3) p.attempts++

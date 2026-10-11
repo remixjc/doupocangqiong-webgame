@@ -402,12 +402,12 @@ export const ancientMaps: Record<number, MapDefinition> = {
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1080, y: 320 }, safeRadius: 175,
     obstacles: [{ x: 410, y: 110, w: 140, h: 170 }, { x: 760, y: 550, w: 170, h: 120 },
       { x: 960, y: 60, w: 65, h: 140 }, { x: 80, y: 330, w: 90, h: 100 }],
-    herbs: [{ x: 310, y: 440 }, { x: 650, y: 300 }, { x: 1040, y: 650 }, { x: 280, y: 160 }, { x: 650, y: 650 }, { x: 1120, y: 450 }],
+    herbs: [{ x: 310, y: 440 }, { x: 650, y: 270 }, { x: 1050, y: 750 }, { x: 280, y: 100 }, { x: 650, y: 650 }, { x: 1120, y: 450 }],
     enemies: [{ type: 'brute', x: 600, y: 410 }, { type: 'mage', x: 830, y: 330 }, { type: 'hunter', x: 1040, y: 550 },
       { type: 'mage', x: 720, y: 250 }, { type: 'hunter', x: 1130, y: 290 }],
     paths: [[{ x: 150, y: 650 }, { x: 310, y: 430 }, { x: 660, y: 420 }, { x: 1060, y: 400 }, { x: 1150, y: 160 }],
       [{ x: 660, y: 420 }, { x: 660, y: 650 }]],
-    landmarks: [{ x: 680, y: 60, label: '妖火空间 · 净莲之境' }, { x: 660, y: 755, label: '白焰映照 · 净莲台' }],
+    landmarks: [{ x: 680, y: 60, label: '妖火空间 · 净莲之境' }, { x: 660, y: 755, label: '引路牌 → 恩赐 / 故人 / 白焰三镜 → 收服试炼' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? dantaAndRescueMaps[id] ?? ancientMaps[id] ?? legacy }

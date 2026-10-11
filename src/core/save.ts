@@ -58,7 +58,7 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
     throw new Error('天墓探索记录无效。')
   if (definition?.kind === 'illusion' && (p.score !== Math.min(3, Math.max(0, p.stage - 1)) ||
     (p.stage === 0 ? p.attempts !== 0 : p.attempts < p.score)))
-    throw new Error('菩提观心记录无效。')
+    throw new Error(definition.id === 'bodhi-three-reflections' ? '菩提观心记录无效。' : '妖火幻镜记录无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
     throw new Error('控气测试记录无效。')
   if (definition?.kind === 'competition' && (p.stage === 0 ? p.choice !== 'none' : p.choice === 'none' || (p.choice === 'steady' && p.stage < 4)))
@@ -162,7 +162,8 @@ export function validateState(value: unknown): GameState {
     const oldPrison = n === 22 && versionBefore(data.contentVersion as string, '0.9.4')
     const oldTomb = n === 23 && versionBefore(data.contentVersion as string, '0.10.1')
     const oldBodhi = n === 24 && versionBefore(data.contentVersion as string, '0.10.3')
-    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldExpedition ? { herbs: 4, kills: 4, brews: 2 } : oldDanFinal ? { herbs: 0, kills: 0, brews: 2 } : oldTomb || oldBodhi ? { herbs: 4, kills: 5, brews: 0 } : oldThunder || oldLineage || oldStar || oldPrison ? { herbs: 4, kills: 4, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
+    const oldMirrors = n === 25 && versionBefore(data.contentVersion as string, '0.10.4')
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldExpedition ? { herbs: 4, kills: 4, brews: 2 } : oldDanFinal ? { herbs: 0, kills: 0, brews: 2 } : oldTomb || oldBodhi || oldMirrors ? { herbs: 4, kills: 5, brews: 0 } : oldThunder || oldLineage || oldStar || oldPrison ? { herbs: 4, kills: 4, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

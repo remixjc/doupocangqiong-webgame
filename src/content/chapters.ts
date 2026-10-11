@@ -114,6 +114,10 @@ chapters[23].boss = '菩提观心 · 树前审核'
 chapters[23].opening[2].text = '向药老接取，读取树前碑记，再依序前往欲念、旧影与岁月三境。根据卷轴、回忆和树影线索选择观察、放下与面对，错误有原因提示、可免费重选，已识破片段保存。回来确认，再到树前审核后营地结算。'
 chapters[23].trialNote = '三境线索与选择为原创菩提观心，不模拟原著全部轮回；幻境奖励不进普通行囊，击杀不能代替识破。'
 
+chapters[24].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[24].opening[2].text = '向药老接取幻镜辨识，读古图引路牌，再依序到恩赐、故人、白焰三镜，根据丹瓶光影、旧影回应和莲纹变化选择观察、放下与面对。错误免费重选、已辨明片段保存，报告不发幻物资源；本批仍保留原收服投影，专属净化继续下一批。'
+chapters[24].trialNote = '三镜线索与选择为原创妖火辨识，不复现原著全部古图或净莲传承；本批保留收服投影，首通结算才发异火，专属净化接续。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)
