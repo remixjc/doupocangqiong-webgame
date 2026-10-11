@@ -28,10 +28,13 @@ import { advanceEarlyFatherGift } from '../../src/core/early-father-gift'
 import { fatherGiftScenes } from '../../src/content/early-father-gift'
 import { advanceEarlyXunerVisit } from '../../src/core/early-xuner-visit'
 import { xunerVisitScenes } from '../../src/content/early-xuner-visit'
+import { advanceEarlyLongSupplies } from '../../src/core/early-long-supplies'
+import { longSupplyScenes } from '../../src/content/early-long-supplies'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false): GameState {
+  if (includeLongSupplies) includeXunerVisit = true
   if (includeXunerVisit) includeFatherGift = true
   if (includeFatherGift) includeSettlement = true
   if (includeSettlement) includeAuction = true
@@ -158,6 +161,14 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeXunerVisit) for (const scene of xunerVisitScenes) {
     const result = advanceEarlyXunerVisit(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
       { step: scene.step, card: state.earlyTraining.xunerVisit.card, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeLongSupplies) for (const scene of longSupplyScenes) {
+    const task = state.earlyTraining.longSupplies
+    const result = advanceEarlyLongSupplies(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
+      { step: scene.step, herbs: task.herbs, cores: task.cores, operation: scene.operation,
+        item: scene.step === 1 ? 'herbs' : scene.step === 2 ? 'cores' : undefined })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }

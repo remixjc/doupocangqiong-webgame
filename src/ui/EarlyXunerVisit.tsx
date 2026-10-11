@@ -7,7 +7,7 @@ import { gameStore } from '../core/store'
 import './early-walk.css'
 
 const stations = { room: '萧炎房中', corner: '院落转角', council: '议事房外' } as const
-export default function EarlyXunerVisit({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyXunerVisit({ state, position, onBack, onSupplies }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onSupplies?: () => void }) {
   const task = state.earlyTraining.xunerVisit, scene = xunerVisitScenes[task.stage]
   const [station, setStation] = useState<XunerVisitStation>('room')
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlyXunerVisitBlock(state, position)
@@ -42,7 +42,8 @@ export default function EarlyXunerVisit({ state, position, onBack }: { state: Ga
       <button className="primary" onClick={() => submitEarlyXunerVisit(gameStore, position, station,
         { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p></section>}
+      : <section className="bond-summary"><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p>
+        {onSupplies && <button className="primary" onClick={onSupplies}>回看长期物资 · 父亲来访之前</button>}</section>}
     <p className="muted">家族收到的是薰儿的紫金卡，与萧炎的寄售净款39200和采购账分开。这里记录人物事件，不增加玩家金币、物资、技能或关系值。</p>
     <button className="secondary" onClick={onBack}>暂离薰儿事件 · 保留人物断点</button>
   </>
