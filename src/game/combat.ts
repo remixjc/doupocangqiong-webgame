@@ -1,6 +1,6 @@
 import type { Action, Chapter, GameState, Runtime } from '../core/model'
 import { chapterReady, damage, playerStats, skillInfo, skillUnlocked } from '../core/rules'
-import { mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT } from '../content/maps'
+import { hasLineOfSight, mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT, type PatrolDefinition } from '../content/maps'
 import { eventForChapter, eventsForChapter } from '../content/events'
 import { eventProgress, type EventAction } from '../core/events'
 
@@ -9,6 +9,9 @@ export interface Obstacle { x: number; y: number; w: number; h: number }
 export interface Fighter extends Vec {
   id: number; hp: number; maxHp: number; type: 'brute' | 'hunter' | 'mage' | 'boss'
   spawnId?: string
+  patrol?: PatrolDefinition
+  patrolIndex: number
+  alert: number
   timer: number; windup: number; target: Vec; radius: number; burn: number; burnTick: number
   secondary?: Vec[]
 }
@@ -64,7 +67,7 @@ export class CombatWorld {
         const p = eventProgress(cb.state(), chapter.id, event.id)
         return p.started && event.checkpoints?.some((point, index) => index < p.stage && point.guards?.includes(enemy.id!))
       })
-      if (!cleared) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id)
+      if (!cleared) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id, enemy.patrol)
     }
     this.syncMountainRuns()
   }
@@ -124,11 +127,11 @@ export class CombatWorld {
       run.warnings.push({ x: this.player.x, y: this.player.y, time: 1, radius: 85 })
     }
   }
-  spawn(type: Fighter['type'], x: number, y: number, spawnId?: string) {
+  spawn(type: Fighter['type'], x: number, y: number, spawnId?: string, patrol?: PatrolDefinition) {
     const d = this.cb.state().settings.difficulty
     const scale = d === 'story' ? 0.72 : d === 'hard' ? 1.25 : 1
     const hp = Math.round((type === 'boss' ? 280 + this.chapter.id * 46 : 48 + this.chapter.id * 6) * scale)
-    this.enemies.push({ id: this.nextId++, spawnId, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
+    this.enemies.push({ id: this.nextId++, spawnId, patrol, patrolIndex: 0, alert: 0, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
       windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0 })
   }
   guardsRemaining(eventId: string, index: number) {
@@ -148,6 +151,7 @@ export class CombatWorld {
   private hurtEnemy(e: Fighter, amount: number, interrupt = false, applyBurn = true) {
     if (e.hp <= 0) return
     e.hp = Math.max(0, e.hp - amount)
+    if (e.patrol) e.alert = 1
     this.floats.push({ x: e.x, y: e.y - 40, text: String(amount), time: .65, color: '#f4deb4' })
     if (interrupt && e.type !== 'boss') { e.windup = 0; e.timer = 1.4 }
     if (applyBurn && this.cb.state().flame === 'lotus') e.burn = 3
@@ -329,7 +333,18 @@ export class CombatWorld {
       }
       if (e.hp <= 0) continue
       const dist = distance(e, p)
-      if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); continue }
+      if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); e.alert = 0; continue }
+      if (e.patrol && e.alert < 1) {
+        const visible = dist < e.patrol.detectionRadius && hasLineOfSight(this.collisionMap(), e, p)
+        e.alert = clamp(e.alert + dt * (visible ? .8 : -.45), 0, 1)
+        if (e.alert < 1) {
+          const target = e.patrol.route[e.patrolIndex], length = distance(e, target)
+          if (length < 10) e.patrolIndex = (e.patrolIndex + 1) % e.patrol.route.length
+          else this.move(e, (target.x - e.x) / length * dt * 80, (target.y - e.y) / length * dt * 80)
+          e.windup = 0
+          continue
+        }
+      }
       if (dist > (e.type === 'boss' ? 1100 : 370)) continue
       if (e.windup > 0) {
         e.windup -= dt
@@ -383,11 +398,13 @@ export class CombatWorld {
   runtime(): Runtime {
     const stats = playerStats(this.cb.state()), near = this.near()
     const boss = this.enemies.find(e => e.type === 'boss')
+    const patrols = this.enemies.filter(e => e.hp > 0 && e.patrol), alert = Math.max(0, ...patrols.map(e => e.alert))
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
       near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0,
       escort: this.escort ? { hp: this.escort.hp, maxHp: this.escort.maxHp, failed: this.escort.hp <= 0, waiting: this.escort.waiting } : undefined,
-      survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined }
+      survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined,
+      patrol: patrols.length ? { alert: Math.round(alert * 100), alerted: alert >= 1, remaining: patrols.length } : undefined }
   }
 }

@@ -83,7 +83,7 @@ export default class AdventureScene extends Phaser.Scene {
   }
   private drawEnvironment() {
     const { camp, gate, obstacles, style } = this.world.map
-    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : palette[this.world.chapter.theme]
+    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : style === 'fire-cavern' ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
     // All art is native vector drawing, seeded by chapter for repeatable maps.
@@ -294,6 +294,12 @@ export default class AdventureScene extends Phaser.Scene {
     g.lineStyle(1, 0xe3bb7c, reduced ? .35 : .3 + Math.sin(w.elapsed * 2) * .1); g.strokeCircle(gate.x, gate.y, reduced ? 45 : 45 + Math.sin(w.elapsed * 2) * 3)
     for (const e of w.enemies) {
       if (e.hp <= 0) continue
+      if (e.patrol) {
+        g.fillStyle(e.alert >= 1 ? 0xcf7452 : 0xd4b776, e.alert >= 1 ? .08 : .035); g.fillCircle(e.x, e.y, e.patrol.detectionRadius)
+        g.lineStyle(1, e.alert >= 1 ? 0xe29471 : 0xc4b888, .3); g.strokeCircle(e.x, e.y, e.patrol.detectionRadius)
+        g.fillStyle(0x1d2420); g.fillRect(e.x - 24, e.y - 59, 48, 5)
+        g.fillStyle(e.alert >= 1 ? 0xe28b68 : 0xdac18a); g.fillRect(e.x - 24, e.y - 59, e.alert * 48, 5)
+      }
       if (e.windup > 0) {
         for (const target of [e.target, ...(e.secondary ?? [])]) {
           g.fillStyle(0xc75b45, .16); g.fillCircle(target.x, target.y, e.radius)

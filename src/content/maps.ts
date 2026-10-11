@@ -1,9 +1,10 @@
 export interface Point { x: number; y: number }
 export interface MapObstacle extends Point { w: number; h: number }
-export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string }
+export interface PatrolDefinition { route: Point[]; detectionRadius: number }
+export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'legacy'
   trialMode?: 'assessment'
   gateLabel?: string
   camp: Point
@@ -163,9 +164,37 @@ export const desertMaps: Record<number, MapDefinition> = {
     ],
     landmarks: [{ x: 690, y: 60, label: '石漠城 · 漠铁佣兵团' }, { x: 690, y: 750, label: '解救团员 · 原创救援历练' }],
   },
+  8: {
+    id: 'lotus-fire-cavern', style: 'fire-cavern',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 620 },
+    bossSpawn: { x: 1080, y: 510 }, safeRadius: 180,
+    obstacles: [
+      { x: 400, y: 150, w: 100, h: 170 }, { x: 660, y: 520, w: 130, h: 140 },
+      { x: 910, y: 100, w: 100, h: 90 }, { x: 70, y: 320, w: 100, h: 110 },
+    ],
+    herbs: [{ x: 320, y: 480 }, { x: 600, y: 180 }, { x: 850, y: 700 }, { x: 1050, y: 520 }, { x: 240, y: 180 }, { x: 600, y: 450 }],
+    enemies: [
+      { id: 'snake-west-patrol', type: 'hunter', x: 550, y: 350, patrol: { detectionRadius: 180, route: [{ x: 550, y: 350 }, { x: 780, y: 350 }, { x: 780, y: 460 }, { x: 550, y: 460 }] } },
+      { id: 'snake-east-patrol', type: 'hunter', x: 960, y: 250, patrol: { detectionRadius: 180, route: [{ x: 960, y: 250 }, { x: 1150, y: 250 }, { x: 1150, y: 450 }, { x: 960, y: 450 }] } },
+      { id: 'fire-cavern-guard', type: 'mage', x: 1050, y: 580 },
+    ],
+    paths: [
+      [{ x: 150, y: 650 }, { x: 310, y: 400 }, { x: 600, y: 400 }, { x: 850, y: 400 }, { x: 1030, y: 400 }, { x: 1100, y: 620 }],
+      [{ x: 310, y: 400 }, { x: 330, y: 220 }, { x: 570, y: 350 }],
+    ],
+    landmarks: [{ x: 700, y: 70, label: '地底火域 · 蛇人巡逻' }, { x: 1040, y: 350, label: '火域深处 · 收服区域' }],
+  },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)
+}
+export function hasLineOfSight(map: MapDefinition, from: Point, to: Point): boolean {
+  const steps = Math.max(1, Math.ceil(Math.hypot(to.x - from.x, to.y - from.y) / 8))
+  for (let i = 0; i <= steps; i++) {
+    const f = i / steps
+    if (mapCollides(map, { x: from.x + (to.x - from.x) * f, y: from.y + (to.y - from.y) * f }, 0)) return false
+  }
+  return true
 }
