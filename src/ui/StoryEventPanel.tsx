@@ -24,12 +24,14 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
       if (event.kind === 'tournament' && (action.type === 'test' || action.type === 'pulse') &&
         checkpoint !== tournamentRound(progress.stage) + 1) { gameStore.notify('请到当前轮次的赛炉操作。'); return false }
+      if (event.kind === 'auction' && ['bid', 'resolve-bid', 'observe'].includes(action.type) && checkpoint !== 1) { gameStore.notify('请到竞拍台处理出价。'); return false }
+      if (event.kind === 'auction' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回交易执事处登记。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -97,6 +99,15 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </>}
       {checkpoint === undefined && progress.stage === 13 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记大会成绩 · 60金币 / 80积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'auction' && progress.started && <>
+      <p>可用金币 {state.gold} · {progress.stage === 2 ? `已托管 ${progress.quote}` : progress.auctionOutcome === 'won' ? '竞得旅行补给 · 已支付80金币' : progress.auctionOutcome === 'observed' ? '旁观情报 · 未支付' : '没有托管出价'}</p>
+      {checkpoint === 1 && [1, 3].includes(progress.stage) && <div className="camp-options">
+        {(progress.stage === 1 ? [40, 60, 80] : [80]).map(amount => <button className="secondary" key={amount} onClick={() => act({ type: 'bid', amount })}>出价{amount}金币 · 托管</button>)}
+        <button className="secondary" onClick={() => act({ type: 'observe' })}>旁观退场 · 免费取得情报</button>
+      </div>}
+      {checkpoint === 1 && progress.stage === 2 && <button className="primary" onClick={() => act({ type: 'resolve-bid' })}>查看对手回应 · 结算本次出价</button>}
+      {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记交易情报 · 30积累</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

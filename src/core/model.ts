@@ -32,7 +32,7 @@ export interface ChapterProgress {
   intro: boolean
   events: Record<string, ChapterEventProgress>
 }
-export interface ChapterEventProgress { started: boolean; stage: number; quote: number; score: number; attempts: number; choice: 'none' | 'steady' | 'premium'; roundScores?: number[] }
+export interface ChapterEventProgress { started: boolean; stage: number; quote: number; score: number; attempts: number; choice: 'none' | 'steady' | 'premium'; roundScores?: number[]; auctionOutcome?: 'won' | 'observed' }
 export interface Settings {
   difficulty: Difficulty
   volume: number
@@ -73,7 +73,7 @@ export interface Runtime {
   dead: boolean
 }
 export interface Snapshot { state: GameState; runtime: Runtime; notice: string }
-export const CONTENT_VERSION = '0.6.2'
+export const CONTENT_VERSION = '0.7.0'
 export const blankEvent = (): ChapterEventProgress => ({ started: false, stage: 0, quote: 0, score: 0, attempts: 0, choice: 'none' })
 export const blankProgress = (chapter = 1): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false,
   events: Object.fromEntries(eventsForChapter(chapter).map(event => [event.id, blankEvent()])) })

@@ -56,6 +56,9 @@ chapters[10].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[10].boss = '云岚山路 · 安全脱离'
 chapters[10].trialNote = '追击预警与两处掩体为原创撤离机制；不击杀原著高阶追兵，保留完成的安全节点。'
 chapters[10].opening[2].text = '与药老接取退路，到前哨开始撤离，再到北侧岩间和南侧竹林两个掩体，各累计稳住6秒并闪避追击预警。两点通过才允许北侧出口撤离；失败从最近安全点重建，之后营地结算前往黑角域。'
+chapters[11].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[11].trialNote = '旅行补给与竞拍为原创交易玩法；旁观可免费取得情报，出发挑战为原创拦截投影。'
+chapters[11].opening[2].text = '向交易执事接取情报目标，查看公告，再到竞拍台。40 / 60 / 80金币出价托管，被超价全额退款；80竞得补给，不想花钱可旁观推进。回报后再到出发碑通过拦截试炼，前往学院。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

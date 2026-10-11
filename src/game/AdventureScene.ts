@@ -111,7 +111,7 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
       }
     }
-    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town' || style === 'tournament' || style === 'duel') {
+    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town' || style === 'tournament' || style === 'duel' || style === 'auction') {
       bg.lineStyle(1, c[2], .08)
       for (let x = 40; x < WIDTH; x += 40) bg.lineBetween(x, 40, x, HEIGHT - 40)
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
@@ -150,7 +150,7 @@ export default class AdventureScene extends Phaser.Scene {
       } else if (style === 'desert-town') {
         bg.fillStyle(0xc5ab7e, .5); bg.fillRect(o.x - 6, o.y - 8, o.w + 12, 22)
         bg.fillStyle(0x413c32); bg.fillRoundedRect(o.x + o.w / 2 - 17, o.y + 28, 34, 45, 10)
-      } else if (style === 'market') {
+      } else if (style === 'market' || style === 'auction') {
         bg.fillStyle(0x987b56); bg.fillRect(o.x, o.y, o.w, 30)
         for (let x = o.x; x < o.x + o.w; x += 24) {
           bg.fillStyle(Math.floor((x - o.x) / 24) % 2 ? 0x587975 : 0xb4a17b)

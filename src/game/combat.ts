@@ -297,7 +297,7 @@ export class CombatWorld {
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
-        } else if ((['cave', 'certification', 'flame'].includes(event.kind) && index === 1) || (event.kind === 'tournament' && index > 0)) {
+        } else if ((['cave', 'certification', 'flame', 'auction'].includes(event.kind) && index === 1) || (event.kind === 'tournament' && index > 0)) {
           if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify(`先与${event.speaker}交谈，接下本章历练。`)
           else this.cb.storyEvent?.(event.id, index)
         }

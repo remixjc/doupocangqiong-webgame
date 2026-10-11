@@ -1,12 +1,13 @@
 import { certificationTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
-export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' }
+export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' }
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
   | { type: 'strategy'; choice: 'steady' | 'premium' }
   | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
   | { type: 'stabilize'; stage: number }
   | { type: 'evade'; stage: number }
+  | { type: 'bid'; amount: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -33,6 +34,7 @@ export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId
     quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : 0,
     attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
+    ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
 }
 export function migrateLegacyEvents(chapter: number, bossPassed: boolean): Record<string, ChapterEventProgress> {
@@ -106,6 +108,27 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'auction' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'auction' && action.type === 'bid' && [1, 3].includes(p.stage)) {
+      if (![40, 60, 80].includes(action.amount) || (p.stage === 3 && action.amount <= p.score)) return fail('报价需高于对手60金币，才能继续竞拍。')
+      if (next.gold < action.amount) return fail('金币不足，未托管出价。可选择旁观，仍能取得退路情报。')
+      next.gold -= action.amount; p.quote = action.amount; p.attempts++; p.stage = 2
+      message = `已托管${action.amount}金币，等待对手回应。刷新不会再次扣款。`
+    } else if (event.kind === 'auction' && action.type === 'resolve-bid' && p.stage === 2) {
+      if (p.quote < 80) {
+        next.gold += p.quote; p.quote = 0; p.score = 60; p.stage = 3
+        message = '对手报出60金币。你的托管已全额退回，可加价80或旁观退出。'
+      } else {
+        next.inventory.heal += 2; next.inventory.mana += 2; p.auctionOutcome = 'won'; p.stage = 4
+        message = '80金币竞得旅行补给 · 恢复丹2 / 回气丹2。前往学院的退路情报已取得，返回执事登记。'
+      }
+    } else if (event.kind === 'auction' && action.type === 'observe' && [1, 3].includes(p.stage)) {
+      p.auctionOutcome = 'observed'; p.stage = 4
+      message = '旁观交易取得退路情报。未扣金币、没有旅行补给，返回执事登记。'
+    } else if (event.kind === 'auction' && action.type === 'deliver' && p.stage === 4) {
+      next.xp += 30; p.stage = 5
+      message = '交易结果与退路情报已登记 · 30修炼积累。前往出发碑完成路上拦截试炼。'
     } else if (event.kind === 'escape' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'escape' && action.type === 'evade' && action.stage === p.stage && [1, 2].includes(p.stage)) {

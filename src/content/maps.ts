@@ -4,7 +4,7 @@ export interface PatrolDefinition { route: Point[]; detectionRadius: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -224,7 +224,20 @@ export const desertMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 700, y: 70, label: '地底火域 · 蛇人巡逻' }, { x: 1040, y: 350, label: '火域深处 · 收服区域' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? legacy }
+export const blackCornerMaps: Record<number, MapDefinition> = {
+  12: {
+    id: 'black-corner-auction-street', style: 'auction', gateLabel: '出发碑',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 190 }, bossSpawn: { x: 1080, y: 310 }, safeRadius: 170,
+    obstacles: [{ x: 410, y: 100, w: 130, h: 160 }, { x: 610, y: 560, w: 150, h: 120 },
+      { x: 920, y: 390, w: 90, h: 160 }, { x: 80, y: 290, w: 120, h: 110 }],
+    herbs: [{ x: 330, y: 470 }, { x: 600, y: 300 }, { x: 1100, y: 680 }],
+    enemies: [{ id: 'auction-street-brute', type: 'brute', x: 620, y: 450 }, { id: 'auction-street-mage', type: 'mage', x: 1050, y: 620 }],
+    paths: [[{ x: 150, y: 650 }, { x: 330, y: 400 }, { x: 750, y: 400 }, { x: 1100, y: 260 }, { x: 1100, y: 190 }],
+      [{ x: 330, y: 400 }, { x: 330, y: 220 }]],
+    landmarks: [{ x: 710, y: 70, label: '黑角域 · 拍卖街区' }, { x: 650, y: 750, label: '量力出价 · 超价退款 · 旁观也有退路' }],
+  },
+}
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

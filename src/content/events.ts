@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -140,6 +140,17 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 600, y: 240, label: '岩间掩体', text: '岩间退路已记下。穿过中段山口，向南寻找竹林掩体。' },
       { x: 950, y: 560, label: '竹林掩体', text: '竹林退路已记下。沿东侧山路向北，从出口安全离开。' },
       { x: 1130, y: 180, label: '山路出口', text: '已安全脱离追击。返回营地结算，再向黑角域启程。' },
+    ],
+  },
+  12: {
+    id: 'black-corner-travel-auction', kind: 'auction', introducedVersion: '0.7.0',
+    title: '黑角域 · 旅行补给竞拍', speaker: '交易执事', npc: { x: 280, y: 625 },
+    stages: ['查看拍卖公告，了解报价与退场规则', '到竞拍台出价或旁观', '出价已托管，等待对手回应', '对手出价60，选择加价80或退出', '带回拍卖结果与退路情报', '交易结果已登记，准备出发'],
+    introduction: '先看公告，再到竞拍台。旅行补给起价40，对手最多出60，80可竞得。出价先托管，被超价时全额退回；不想花钱就旁观，也能得到前往学院的退路情报。最后回来登记。',
+    note: '旅行补给、对手预算与情报为原创拍卖玩法，不冒用原著拍品。竞得仅奖励一次恢复丹2 / 回气丹2；旁观不扣款也不领奖。缺款操作不改状态，刷新保留已托管出价。',
+    checkpoints: [
+      { x: 330, y: 220, label: '拍卖公告', text: '报价40 / 60 / 80；对手预算60。出价托管、被超价全额退款，80竞得旅行补给。旁观也可完成情报目标，零金币可推进。' },
+      { x: 750, y: 400, label: '竞拍台', text: '请根据金币预算选择参拍或旁观，已通过公告才可出价。' },
     ],
   },
 }
