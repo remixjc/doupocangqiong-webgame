@@ -54,7 +54,7 @@ describe('C10c 海波东守约与相助', () => {
   })
   it('0.12.1旧档保持此前两线完成状态，新海波东页不自动发奖或记录', () => {
     let s = cleared(28)
-    for (const { chapter, event } of bondEvents.filter(item => item.event.bond!.lineId !== 'hai-bodong')) {
+    for (const { chapter, event } of bondEvents.filter(item => ['little-doctor', 'qinglin'].includes(item.event.bond!.lineId))) {
       s.chapter = chapter; s = complete(s, event.id, 'steady')
     }
     s.contentVersion = '0.12.1'

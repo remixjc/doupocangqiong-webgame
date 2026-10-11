@@ -11,6 +11,7 @@ export const bondLines = [
   { id: 'little-doctor', name: '小医仙', title: '同行与自持' },
   { id: 'qinglin', name: '青鳞', title: '被看见的成长' },
   { id: 'hai-bodong', name: '海波东', title: '守约与相助' },
+  { id: 'yun-yun', name: '云韵', title: '相遇与立场' },
 ]
 export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
   {
@@ -227,6 +228,71 @@ export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
         options: [
           { choice: 'steady', label: '珍重旧约 · 祝愿各自安稳', response: '你记得相助的情义，也祝愿彼此的生活安稳。', reward: { xp: 50, heal: 1 } },
           { choice: 'premium', label: '邀谈见闻 · 约定故地再会', response: '你留下故地再会的约定，等下一次慢慢谈起见闻。', reward: { xp: 50, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 5,
+    event: {
+      id: 'yunyun-mountain-memory', kind: 'bond', optional: true, introducedVersion: '0.12.3',
+      requiresCompleted: [5], title: '云韵 · 山谷旧影', speaker: '云韵 · 山谷书简', npc: { x: 420, y: 730 },
+      stages: ['到山风记读取相遇书简', '前往旧影石回应相遇', '返回书简处确认并领取一次补给', '山谷旧影已记入伙伴手札'],
+      introduction: '山谷篇章正式首通后，回访营地中的山风书简，回望相遇时的援手与距离。先读山风记，再到旧影石回应，回来确认。',
+      note: '书简、回应和补给为原创回望，不重放原著洞穴情节或精确相遇时序。双方的关系不会因一次回应变成额外战斗能力，主线避战与狮王实力差距保持。',
+      checkpoints: [
+        { x: 300, y: 440, label: '山风记', text: '山谷里的援手与短暂相处，成为旅途中的一段记忆。' },
+        { x: 650, y: 280, label: '旧影石', text: '面对尚未说尽的身份与心事，留下一份能够守住的回应。' },
+      ],
+      bond: {
+        lineId: 'yun-yun', question: '面对相遇时留下的心事，你愿意怎样回应？',
+        options: [
+          { choice: 'steady', label: '珍重援手 · 尊重尚未说出的事', response: '你将感谢留下，也为她尚未说出的事留出余地。', reward: { xp: 20, heal: 1 } },
+          { choice: 'premium', label: '留住记忆 · 约定以后坦诚相谈', response: '你记得相遇时的信任，愿在能说清的时候坦诚相谈。', reward: { xp: 20, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 10,
+    event: {
+      id: 'yunyun-sect-standpoint', kind: 'bond', optional: true, introducedVersion: '0.12.3',
+      requiresCompleted: [10], requiresHistory: [{ chapter: 5, eventId: 'yunyun-mountain-memory' }],
+      title: '云韵 · 山门两端', speaker: '云韵 · 山门书简', npc: { x: 520, y: 720 },
+      stages: ['到山门记回望彼此立场', '前往两端石写下回应', '返回书简处确认并领取一次补给', '山门两端已记入伙伴手札'],
+      introduction: '三年之约正式首通后，回望山门两端的立场。读取山门记，再回应两端石：旧日相遇与各自责任如何被同时看见，最后回来确认。',
+      note: '回望页为原创关系表达，不改变纳兰决斗、宗门冲突或后续追逃，不用一句回应解除所有立场矛盾。原作各次会面与宗门责任细节留来源校订。',
+      checkpoints: [
+        { x: 650, y: 350, label: '山门记', text: '当相遇的记忆面对各自的责任，有些问题需要继续坦诚说清。' },
+        { x: 880, y: 650, label: '两端石', text: '承认彼此立场，再选择自己能够守住的回应。' },
+      ],
+      bond: {
+        lineId: 'yun-yun', question: '面对立场的距离，你怎样珍重旧日信任？',
+        options: [
+          { choice: 'steady', label: '守住原则 · 也看见她的责任', response: '你明确自己的原则，也承认她有需要面对的责任。', reward: { xp: 35, heal: 1 } },
+          { choice: 'premium', label: '坦诚相谈 · 为各自决定留余地', response: '你愿意把难处说清，将最终决定留给各自。', reward: { xp: 35, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 28,
+    event: {
+      id: 'yunyun-homeward-farewell', kind: 'bond', optional: true, introducedVersion: '0.12.3',
+      requiresCompleted: [28], requiresHistory: [{ chapter: 10, eventId: 'yunyun-sect-standpoint' }],
+      title: '云韵 · 山风回信', speaker: '云韵 · 归途回信', npc: { x: 480, y: 60 },
+      stages: ['到山谷记读取归途回信', '前往远山记回应故人', '返回回信处确认并领取一次补给', '相遇与立场三页已完成'],
+      introduction: '终战正式首通后，重返营地读山风回信。从山谷记走到远山记，回望当年的相遇与距离，回应故人，再回来确认。',
+      note: '回信为原创尾声，不补写原著婚姻、宗门职位或最终去向，也不以选择改变主线人物结局。需前两页真实完成，报告补给只发一次。',
+      checkpoints: [
+        { x: 300, y: 750, label: '山谷记', text: '当年的山风、援手与心事，如今都可以从容记下。' },
+        { x: 960, y: 490, label: '远山记', text: '不同的道路仍可以让彼此珍重曾有的信任。' },
+      ],
+      bond: {
+        lineId: 'yun-yun', question: '历尽旅途后，你怎样回应山风来信？',
+        options: [
+          { choice: 'steady', label: '祝愿安宁 · 珍重各自的道路', response: '你留下安宁的祝愿，珍重彼此已经走出的道路。', reward: { xp: 50, heal: 1 } },
+          { choice: 'premium', label: '邀谈旧事 · 把未尽的话从容说清', response: '你愿意在从容的时候谈起旧事，听彼此把话说完。', reward: { xp: 50, mana: 1 } },
         ],
       },
     },
