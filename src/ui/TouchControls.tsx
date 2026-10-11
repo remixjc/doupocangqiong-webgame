@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { gameStore } from '../core/store'
 import type { Action } from '../core/model'
+import { bindFocusLifecycle } from '../game/focus'
 
 export default function TouchControls({ onMenu }: { onMenu: () => void }) {
   const [knob, setKnob] = useState({ x: 0, y: 0 })
@@ -11,8 +12,7 @@ export default function TouchControls({ onMenu }: { onMenu: () => void }) {
   function stop() { clearInterval(repeat.current); repeat.current = undefined }
   useEffect(() => {
     const release = () => { reset(); stop() }
-    window.addEventListener('blur', release)
-    return () => { window.removeEventListener('blur', release); release() }
+    return bindFocusLifecycle(window, document, release, () => {})
   }, [])
   function move(e: PointerEvent<HTMLDivElement>) {
     if (gameStore.paused) { reset(); return }
@@ -24,6 +24,7 @@ export default function TouchControls({ onMenu }: { onMenu: () => void }) {
   }
   function actionButton(action: Action, label: string, cls = '') {
     return <button className={`touch-button ${cls}`} aria-label={label} onPointerDown={e => {
+      if (gameStore.paused || document.hidden) return
       e.currentTarget.setPointerCapture(e.pointerId)
       gameStore.action(action)
       if (action === 'attack') { stop(); repeat.current = setInterval(() => gameStore.action(action), 400) }
@@ -32,6 +33,7 @@ export default function TouchControls({ onMenu }: { onMenu: () => void }) {
   }
   return <div className="touch-controls">
     <div className="joystick" role="group" aria-label="移动摇杆" onPointerDown={e => {
+      if (gameStore.paused || document.hidden) return
       const box = e.currentTarget.getBoundingClientRect()
       origin.current = { x: box.left + box.width / 2, y: box.top + box.height / 2 }
       active.current = e.pointerId; e.currentTarget.setPointerCapture(e.pointerId); move(e)

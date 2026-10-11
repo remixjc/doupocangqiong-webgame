@@ -7,6 +7,8 @@ import { eventProgress } from '../core/events'
 import type { Action } from '../core/model'
 import { playSound } from './audio'
 import { FixedClock } from './clock'
+import { PauseDrawGate, presentFloat } from './presentation'
+import { bindFocusLifecycle } from './focus'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -22,10 +24,16 @@ export default class AdventureScene extends Phaser.Scene {
   private runtimeTimer = 0
   private aim: { x: number; y: number } | undefined
   private lostFocus = false
+  private drawGate = new PauseDrawGate()
   private environment?: Phaser.GameObjects.Container
   private environmentMapId = ''
   constructor() { super('adventure') }
   create() {
+    this.environmentMapId = ''
+    this.drawGate = new PauseDrawGate()
+    this.clock.reset()
+    this.runtimeTimer = 0
+    this.lostFocus = document.hidden
     const chapter = chapterById(gameStore.getSnapshot().state.chapter)
     this.world = new CombatWorld(chapter, {
       state: () => gameStore.getSnapshot().state,
@@ -47,7 +55,7 @@ export default class AdventureScene extends Phaser.Scene {
     this.ink = this.add.graphics()
     this.floats = Array.from({ length: 30 }, () => this.add.text(0, 0, '', {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
-    }).setOrigin(.5).setDepth(10))
+    }).setOrigin(.5).setDepth(10).setVisible(false))
     const keydown = (event: KeyboardEvent) => {
       if (gameStore.paused || event.ctrlKey || event.altKey || event.metaKey) return
       if (event.target instanceof HTMLElement && ['INPUT', 'SELECT', 'TEXTAREA'].includes(event.target.tagName)) return
@@ -64,20 +72,30 @@ export default class AdventureScene extends Phaser.Scene {
       this.heldKeys.delete(event.key.toLowerCase())
     }
     window.addEventListener('keydown', keydown); window.addEventListener('keyup', keyup)
-    this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+    const pointerdown = (pointer: Phaser.Input.Pointer) => {
+      if (gameStore.paused || document.hidden) return
       if (!document.hidden) this.lostFocus = false
       if (pointer.event instanceof MouseEvent && pointer.event.button === 0) {
         this.aim = { x: pointer.worldX, y: pointer.worldY }
         gameStore.action('attack')
       }
-    })
-    const blur = () => { this.lostFocus = true; this.heldKeys.clear(); gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
-    const focus = () => { this.lostFocus = false }
-    window.addEventListener('blur', blur); window.addEventListener('focus', focus)
+    }
+    this.input.on('pointerdown', pointerdown)
+    const release = () => {
+      this.lostFocus = true; this.heldKeys.clear(); this.aim = undefined; this.clock.reset(); this.runtimeTimer = 0
+      gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
+    }
+    const unbindFocus = bindFocusLifecycle(window, document, release, () => { this.lostFocus = false })
+    let released = false
     const releaseInput = () => {
-      window.removeEventListener('blur', blur); window.removeEventListener('focus', focus)
+      if (released) return
+      released = true
+      unbindFocus()
       window.removeEventListener('keydown', keydown); window.removeEventListener('keyup', keyup)
-      this.heldKeys.clear()
+      this.input.off('pointerdown', pointerdown)
+      this.events.off('shutdown', releaseInput); this.events.off('destroy', releaseInput)
+      this.environment = undefined
+      this.floats = []
     }
     this.events.once('shutdown', releaseInput)
     this.events.once('destroy', releaseInput)
@@ -300,7 +318,13 @@ export default class AdventureScene extends Phaser.Scene {
   update(_time: number, delta: number) {
     if (!this.world) return
     const paused = gameStore.paused || this.lostFocus || document.hidden
-    if (paused) { this.clock.reset(); this.heldKeys.clear(); gameStore.actions.length = 0; this.drawActors(); return }
+    if (paused) {
+      this.clock.reset(); this.heldKeys.clear(); this.aim = undefined; this.runtimeTimer = 0
+      gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
+      if (this.drawGate.shouldDraw(true, gameStore.getSnapshot().state)) this.drawActors()
+      return
+    }
+    this.drawGate.shouldDraw(false, gameStore.getSnapshot().state)
     const input: Input = {
       x: (Number(this.heldKeys.has('d') || this.heldKeys.has('arrowright')) - Number(this.heldKeys.has('a') || this.heldKeys.has('arrowleft'))) + gameStore.move.x,
       y: (Number(this.heldKeys.has('s') || this.heldKeys.has('arrowdown')) - Number(this.heldKeys.has('w') || this.heldKeys.has('arrowup'))) + gameStore.move.y,
@@ -587,9 +611,7 @@ export default class AdventureScene extends Phaser.Scene {
       }
     }
     for (let i = 0; i < this.floats.length; i++) {
-      const text = this.floats[i], f = w.floats[i]
-      if (!f) { text.setVisible(false); continue }
-      text.setVisible(true).setText(f.text).setPosition(f.x, f.y).setColor(f.color).setAlpha(Math.min(1, f.time * 2))
+      presentFloat(this.floats[i], w.floats[i])
     }
   }
   private actor(g: Phaser.GameObjects.Graphics, x: number, y: number, color: number, scale: number, player: boolean) {
