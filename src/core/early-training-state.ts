@@ -22,7 +22,11 @@ export interface EarlyTrainingState {
   longSupplies: { stage: number; herbs: LongSupplyPlace; cores: LongSupplyPlace }
   forestStrike: ForestStrikeState
   seventhRoom: SeventhRoomState
+  palmPair: PalmPairState
 }
+export interface PalmPairState { stage: number; beats: number; attempts: number;
+  first: 'intact' | 'pulled' | 'fragments'; second: 'intact' | 'pulled' | 'dust';
+  teaching: 'unlearned' | 'explained' | 'basic'; period: 'unreviewed' | 'reviewed' }
 export interface SeventhRoomState { stage: number; beats: number; attempts: number; drops: number;
   energy: 'unobserved' | 'active' | 'fading' | 'clear' | 'restored' | 'lighter';
   period: 'unreviewed' | 'reviewed'; result: 'none' | 'seventh-duan' }
@@ -51,6 +55,7 @@ export const EARLY_XUNER_VISIT_VERSION = '0.21.0'
 export const EARLY_LONG_SUPPLIES_VERSION = '0.22.0'
 export const EARLY_FOREST_STRIKE_VERSION = '0.23.0'
 export const EARLY_SEVENTH_ROOM_VERSION = '0.24.0'
+export const EARLY_PALM_PAIR_VERSION = '0.25.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -77,9 +82,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     settlement: { stage: 0, net: 0, vip: false }, fatherGift: { stage: 0 }, xunerVisit: { stage: 0, card: 'xuner' },
     longSupplies: { stage: 0, herbs: 'none', cores: 'none' },
     forestStrike: { stage: 0, beats: 0, attempts: 0, tree: 'intact', result: 'none' },
-    seventhRoom: { stage: 0, beats: 0, attempts: 0, drops: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' } }
+    seventhRoom: { stage: 0, beats: 0, attempts: 0, drops: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' },
+    palmPair: { stage: 0, beats: 0, attempts: 0, first: 'intact', second: 'intact', teaching: 'unlearned', period: 'unreviewed' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -214,7 +220,25 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!validSeventhRoom(seventhRoom) || seventhRoom.stage > 0 && forestStrike.stage !== 7) return invalid()
   result.seventhRoom = { stage: seventhRoom.stage, beats: seventhRoom.beats, attempts: seventhRoom.attempts,
     drops: seventhRoom.drops, energy: seventhRoom.energy, period: seventhRoom.period, result: seventhRoom.result }
+  const palmPair = data.palmPair === undefined && legacyPalmPair ? result.palmPair : object(data.palmPair)
+  if (!validPalmPair(palmPair) || palmPair.stage > 0 && seventhRoom.stage !== 8) return invalid()
+  result.palmPair = { stage: palmPair.stage, beats: palmPair.beats, attempts: palmPair.attempts,
+    first: palmPair.first, second: palmPair.second, teaching: palmPair.teaching, period: palmPair.period }
   return result
+}
+
+export function palmPairAt(stage: number): Pick<PalmPairState, 'first' | 'second' | 'teaching' | 'period'> {
+  return { first: stage >= 4 ? 'fragments' : stage === 3 ? 'pulled' : 'intact',
+    second: stage >= 9 ? 'dust' : stage === 8 ? 'pulled' : 'intact',
+    teaching: stage >= 6 ? 'basic' : stage === 5 ? 'explained' : 'unlearned',
+    period: stage >= 7 ? 'reviewed' : 'unreviewed' }
+}
+export function validPalmPair(task: Record<string, unknown> | PalmPairState): task is PalmPairState {
+  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
+  if (!integer(task.stage, 10) || !integer(task.beats, 2) || !integer(task.attempts, 1_000_000)) return false
+  const expected = palmPairAt(task.stage)
+  return (task.stage < 5 ? task.beats === 0 && task.attempts === 0 : task.stage === 5 ? task.beats < 2 : task.beats === 2)
+    && task.first === expected.first && task.second === expected.second && task.teaching === expected.teaching && task.period === expected.period
 }
 
 export function seventhEnergyAt(stage: number): SeventhRoomState['energy'] {

@@ -33,10 +33,13 @@ import { longSupplyScenes } from '../../src/content/early-long-supplies'
 import { advanceEarlyForestStrike, forestPlaces, type ForestStrikeAction } from '../../src/core/early-forest-strike'
 import { advanceEarlySeventhRoom } from '../../src/core/early-seventh-room'
 import { seventhRoomScenes } from '../../src/content/early-seventh-room'
+import { advanceEarlyPalmPair } from '../../src/core/early-palm-pair'
+import { palmPairScenes } from '../../src/content/early-palm-pair'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false): GameState {
+  if (includePalmPair) includeSeventhRoom = true
   if (includeSeventhRoom) includeForestStrike = true
   if (includeForestStrike) includeLongSupplies = true
   if (includeLongSupplies) includeXunerVisit = true
@@ -200,6 +203,19 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       const result = advanceEarlySeventhRoom(state, teacher, scene.station, { ...task, operation: scene.operation, marker })
       expect(result.ok, result.message).toBe(true)
       if (marker === 0) failed = true
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
+  }
+  if (includePalmPair) {
+    const teacher = earlyWalkPlaces.find(place => place.id === 'teacher')!
+    const failed = new Set<number>()
+    while (state.earlyTraining.palmPair.stage < 10) {
+      const task = state.earlyTraining.palmPair, scene = palmPairScenes[task.stage]
+      const training = task.stage === 5 || task.stage === 8
+      const marker = training ? failed.has(task.stage) ? .5 : 0 : undefined
+      if (marker === 0) failed.add(task.stage)
+      const result = advanceEarlyPalmPair(state, teacher, scene.station, { ...task, operation: scene.operation, marker })
+      expect(result.ok, result.message).toBe(true)
       state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
     }
   }

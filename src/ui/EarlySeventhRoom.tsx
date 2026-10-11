@@ -8,7 +8,7 @@ import { gameStore } from '../core/store'
 import './early-walk.css'
 
 const stations = { window: '窗边 · 时序与回顾', basin: '木盆 · 调息与药色', ring: '古戒 · 老师补液' } as const
-export default function EarlySeventhRoom({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onPalm?: () => void }) {
   const task = state.earlyTraining.seventhRoom, scene = seventhRoomScenes[task.stage]
   const [station, setStation] = useState<SeventhStation>('window')
   const [marker, setMarker] = useState(.5), [paused, setPaused] = useState(false)
@@ -57,7 +57,8 @@ export default function EarlySeventhRoom({ state, position, onBack }: { state: G
       </>}
       <button className="primary" disabled={training && paused} onClick={act}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>房中七段已归档。</h3><p>本轮木盆保留补液后渐淡状态，老师的一滴只补了一次。吸掌与推风组合练习将在后续接续。</p></section>}
+      : <section className="bond-summary"><h3>房中七段已归档。</h3><p>本轮木盆保留补液后渐淡状态，老师的一滴只补了一次。接续吸掌与推风组合练习。</p>
+        {onPalm && <button className="primary" onClick={onPalm}>接续两瓶试验 · 吸掌与吹火掌</button>}</section>}
     <p className="muted">两次与三次调息及35%–65%窗口为原创操作，一小时只作故事时段回顾。七段结果独立记录；既有自用药液仍耗尽，父亲原瓶、房柜原包、主线境界和已结算奖励保留。</p>
     <button className="secondary" onClick={onBack}>暂离七段房中 · 保留补液断点</button>
   </>
