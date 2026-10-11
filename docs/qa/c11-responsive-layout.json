@@ -1,0 +1,454 @@
+{
+  "checkedOn": "2026-10-12",
+  "batch": "C11e-5",
+  "version": "0.37.4",
+  "baseSha": "011a44e5eda0e7a3919e5f2cd189b96b3d368a2d",
+  "sourceHadUncommittedLayoutRepair": true,
+  "browserViewportEmulation": true,
+  "physicalDeviceTest": false,
+  "before": {
+    "version": "0.37.3",
+    "landscapeAfterSkill": {
+      "canvas": {
+        "bottom": 106.5,
+        "height": 238,
+        "left": 314.5,
+        "right": 695.296875,
+        "top": -131.5,
+        "width": 380.796875,
+        "x": 314.5,
+        "y": -131.5
+      },
+      "clientWidth": 829,
+      "height": 390,
+      "scrollWidth": 829,
+      "skillText": "1八极崩18 斗气",
+      "touchActions": [
+        {
+          "name": "交互",
+          "rect": {
+            "bottom": 91.5,
+            "height": 42,
+            "left": 528.5,
+            "right": 570.5,
+            "top": 49.5,
+            "width": 42,
+            "x": 528.5,
+            "y": 49.5
+          }
+        },
+        {
+          "name": "闪避",
+          "rect": {
+            "bottom": 91.5,
+            "height": 42,
+            "left": 579.5,
+            "right": 621.5,
+            "top": 49.5,
+            "width": 42,
+            "x": 579.5,
+            "y": 49.5
+          }
+        },
+        {
+          "name": "普攻",
+          "rect": {
+            "bottom": 91.5,
+            "height": 52,
+            "left": 630.5,
+            "right": 682.5,
+            "top": 39.5,
+            "width": 52,
+            "x": 630.5,
+            "y": 39.5
+          }
+        }
+      ],
+      "width": 844
+    },
+    "portrait390": {
+      "clientWidth": 375,
+      "height": 844,
+      "portraitPromptVisible": true,
+      "qi": "斗气 184 / 184",
+      "questCounters": [
+        {
+          "right": 363,
+          "text": "3 / 3"
+        },
+        {
+          "right": 181.5,
+          "text": "3 / 3"
+        },
+        {
+          "right": 363,
+          "text": "3 / 3"
+        },
+        {
+          "right": 181.5,
+          "text": "3 / 3"
+        },
+        {
+          "right": 363,
+          "text": "3 / 3"
+        },
+        {
+          "right": 181.5,
+          "text": "3 / 3"
+        },
+        {
+          "right": 363,
+          "text": "3 / 3"
+        },
+        {
+          "right": 181.5,
+          "text": "3 / 3"
+        }
+      ],
+      "scrollWidth": 375,
+      "width": 390
+    },
+    "portrait320": {
+      "clientWidth": 305,
+      "headerButtons": [
+        {
+          "left": 16,
+          "name": "炎斗破苍穹异 火 之 路",
+          "right": 183
+        },
+        {
+          "left": 16,
+          "name": "启程",
+          "right": 52
+        },
+        {
+          "left": 75,
+          "name": "大陆舆图",
+          "right": 131
+        },
+        {
+          "left": 154,
+          "name": "修炼手札",
+          "right": 210
+        },
+        {
+          "left": 233,
+          "name": "伙伴手札",
+          "right": 289
+        },
+        {
+          "left": 191,
+          "name": "查看人物",
+          "right": 221
+        },
+        {
+          "left": 225,
+          "name": "存档管理",
+          "right": 255
+        },
+        {
+          "left": 259,
+          "name": "游戏设置",
+          "right": 289
+        }
+      ],
+      "height": 568,
+      "questCounters": [
+        {
+          "right": 293,
+          "text": "3 / 3"
+        },
+        {
+          "right": 146.5,
+          "text": "3 / 3"
+        },
+        {
+          "right": 293,
+          "text": "3 / 3"
+        },
+        {
+          "right": 146.5,
+          "text": "3 / 3"
+        },
+        {
+          "right": 293,
+          "text": "3 / 3"
+        },
+        {
+          "right": 146.5,
+          "text": "3 / 3"
+        },
+        {
+          "right": 293,
+          "text": "3 / 3"
+        },
+        {
+          "right": 146.5,
+          "text": "3 / 3"
+        }
+      ],
+      "requestedWidth": 320,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    "portraitSaveKeyboardEnd": {
+      "dialog": {
+        "bottom": 780.6953125,
+        "height": 717.3984375,
+        "left": 24,
+        "right": 351,
+        "top": 63.296875,
+        "width": 327,
+        "x": 24,
+        "y": 63.296875
+      },
+      "focus": "开启新旅程",
+      "focusRect": {
+        "bottom": 754.734375,
+        "height": 39.5,
+        "left": 45,
+        "right": 105,
+        "top": 715.234375,
+        "width": 60,
+        "x": 45,
+        "y": 715.234375
+      },
+      "scrollTop": 2008.5
+    }
+  },
+  "after": {
+    "landscape844AtPageTop": {
+      "canvas": {
+        "bottom": 326.5,
+        "height": 238,
+        "left": 314.5,
+        "right": 695.296875,
+        "top": 88.5,
+        "width": 380.796875,
+        "x": 314.5,
+        "y": 88.5
+      },
+      "clientWidth": 829,
+      "height": 390,
+      "scrollWidth": 829,
+      "scrollY": 0,
+      "sidebar": {
+        "clientHeight": 314,
+        "rect": {
+          "bottom": 374,
+          "height": 314,
+          "left": 131.5,
+          "right": 301.5,
+          "top": 60,
+          "width": 170,
+          "x": 131.5,
+          "y": 60
+        },
+        "scrollHeight": 610
+      },
+      "skills": [
+        {
+          "name": "1八极崩18 斗气",
+          "rect": {
+            "bottom": 378,
+            "height": 44.5,
+            "left": 313.5,
+            "right": 405.75,
+            "top": 333.5,
+            "width": 92.25,
+            "x": 313.5,
+            "y": 333.5
+          }
+        },
+        {
+          "name": "2焰分噬浪尺28 斗气",
+          "rect": {
+            "bottom": 378,
+            "height": 44.5,
+            "left": 410.75,
+            "right": 503,
+            "top": 333.5,
+            "width": 92.25,
+            "x": 410.75,
+            "y": 333.5
+          }
+        },
+        {
+          "name": "3佛怒火莲48 斗气",
+          "rect": {
+            "bottom": 378,
+            "height": 44.5,
+            "left": 508,
+            "right": 600.25,
+            "top": 333.5,
+            "width": 92.25,
+            "x": 508,
+            "y": 333.5
+          }
+        },
+        {
+          "name": "Q恢复丹持有 17",
+          "rect": {
+            "bottom": 378,
+            "height": 44.5,
+            "left": 605.25,
+            "right": 697.5,
+            "top": 333.5,
+            "width": 92.25,
+            "x": 605.25,
+            "y": 333.5
+          }
+        }
+      ],
+      "width": 844
+    },
+    "landscape568AtPageTop": {
+      "canvas": {
+        "bottom": 256.5,
+        "height": 168,
+        "left": 195,
+        "right": 463.796875,
+        "top": 88.5,
+        "width": 268.796875,
+        "x": 195,
+        "y": 88.5
+      },
+      "clientWidth": 553,
+      "height": 320,
+      "scrollWidth": 553,
+      "scrollY": 0,
+      "sidebar": {
+        "clientHeight": 244,
+        "rect": {
+          "bottom": 304,
+          "height": 244,
+          "left": 12,
+          "right": 182,
+          "top": 60,
+          "width": 170,
+          "x": 12,
+          "y": 60
+        },
+        "scrollHeight": 527
+      },
+      "skills": [
+        {
+          "name": "1八极崩18 斗气",
+          "rect": {
+            "bottom": 305.5,
+            "height": 42,
+            "left": 194,
+            "right": 277,
+            "top": 263.5,
+            "width": 83,
+            "x": 194,
+            "y": 263.5
+          }
+        },
+        {
+          "name": "2焰分噬浪尺28 斗气",
+          "rect": {
+            "bottom": 305.5,
+            "height": 42,
+            "left": 282,
+            "right": 365,
+            "top": 263.5,
+            "width": 83,
+            "x": 282,
+            "y": 263.5
+          }
+        },
+        {
+          "name": "3佛怒火莲48 斗气",
+          "rect": {
+            "bottom": 305.5,
+            "height": 42,
+            "left": 370,
+            "right": 453,
+            "top": 263.5,
+            "width": 83,
+            "x": 370,
+            "y": 263.5
+          }
+        },
+        {
+          "name": "Q恢复丹持有 17",
+          "rect": {
+            "bottom": 305.5,
+            "height": 42,
+            "left": 458,
+            "right": 541,
+            "top": 263.5,
+            "width": 83,
+            "x": 458,
+            "y": 263.5
+          }
+        }
+      ],
+      "width": 568
+    },
+    "sidebarEndKeySettled": {
+      "clientHeight": 244,
+      "container": {
+        "bottom": 282,
+        "height": 244,
+        "left": 12,
+        "right": 182,
+        "top": 38,
+        "width": 170,
+        "x": 12,
+        "y": 38
+      },
+      "focus": "本章历练目标",
+      "lastTask": {
+        "bottom": 274,
+        "height": 45.5,
+        "left": 12,
+        "right": 167,
+        "top": 228.5,
+        "width": 155,
+        "x": 12,
+        "y": 228.5
+      },
+      "scrollHeight": 527,
+      "scrollTop": 283
+    },
+    "finalPortrait390": {
+      "clientWidth": 375,
+      "height": 844,
+      "portraitPrompt": true,
+      "qi": "斗气 184 / 184",
+      "scrollWidth": 375,
+      "width": 390
+    }
+  },
+  "battle": {
+    "portraitSkillRejected": true,
+    "portraitQi": "184 / 184",
+    "landscapeKeyboardSkillQi": "166 / 184",
+    "landscapeKeyboardSkillCooldown": "3.2s",
+    "automationFocusCanScrollPage": true,
+    "doesNotClaimClicksNeverScroll": true
+  },
+  "save": {
+    "portrait0373CompleteStateUnchanged": true,
+    "final0374CompleteStateOnlyVersionChanged": true,
+    "chapter": 28,
+    "clears": 28,
+    "partnerPages": 24,
+    "gold": 19506,
+    "xp": 15582,
+    "manualSlotsOverwritten": false
+  },
+  "viewportOverrideReset": true,
+  "consoleErrors": [],
+  "screenshots": [
+    "c11-responsive-landscape.png",
+    "c11-responsive-landscape-fixed.png",
+    "c11-responsive-568-fixed.png",
+    "c11-responsive-sidebar-keyboard.png",
+    "c11-responsive-portrait.png",
+    "c11-responsive-portrait-save.png",
+    "c11-responsive-landscape-settings.png"
+  ]
+}

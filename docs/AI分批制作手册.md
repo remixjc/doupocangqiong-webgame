@@ -1,5 +1,9 @@
 # AI 分批制作与持续迭代手册
 
+C11e-5交接：0.37.4战斗栏前移、短横屏双栏与可聚焦任务滚动交付，最终683+11全检及真实四种尺寸/终局备份保持通过，读《C11响应布局验收.md》。浏览器viewport现实际生效，宽高由DOM核对；旧0.14.5覆盖未生效的记录仍为历史，不删改。测试结束已reset覆盖；4183仍主dist，标签16保留完整28章档/三manual。最终真实下载`.git/task-responsive-final-export.json`与原完整0.37.3全state只版本变化。部分工具焦点/ControlHome等待曾报超时，后续实际DOM核了动作结果；不能说所有点击不滚动，也不将工具超时当游戏报错。下一批先独立提交/推送核CI，再接未验人物/来源或专项。
+
+011a44e / 0.37.3已远端一致且Game checks38183488407 success、Pages38183488423 skipped；干净源码完整包在`.git/release-candidates/011a44e5eda0e7a3919e5f2cd189b96b3d368a2d/dist`，指纹证据`qa/c11f-release-integrity-011a44e.json`，不可覆盖或拿它代称0.37.4发行。真实实体设备/后台/Beta/公开部署和正文限制继续按门槛追踪，来源不足时不造后文。
+
 C11f-3c交接：0.37.3摘要修复、110文件683Vitest+11Node及完整check、真实完整终局档本地版本切换已完成，详《C11较新存档摘要验收.md》。4183当前控制指向主工作区dist；兼容性测试目录`.git/task-compat-summary-009501a/dist`基于009501a，加待提交save-preview修复及HTML身份标识，不叫历史包。完整旧档由此前正常旅途导出，原生导入/保存/手动3/下载均实际操作；原manual1/2保留。最终完整state SHA256为96df3a177a7376a88b2a984fb34c8b3fac76734527dedccaa077020652867659。下一批先提交推送/核对应CI，再接C0可核资料或未验专项；干净新提交的独立归档不可沿用未提交候选SHA，也不覆盖已有候选。公网/历史发行包/真人设备/Beta和完整原作保持开放。
 
 C11f-3b接续完成：独立4183版本切换已真实UI验收，`.git/task-version-switch-control.json`当前指向原ca529f3的0.37.2归档，标签16保留；原auto68金币草1、槽1旧80、槽2新68，导出整state和摘要时间保持。较低包在`.git/task-compat-protected-ca529f3/dist`，仅package/index差异且有明确标识，不叫历史正式版本。下一批3c直接修SavesPanel的summary catch分支，较新内容/schema应提示更新与原档保持，不建议损坏恢复；正常损坏旧文案保持，防剧透不能暴露较新章名/数量。加准确分类回归，全检/实际兼容性构建切换显示/文档/提交推送；不改保护规则或原用户档。
