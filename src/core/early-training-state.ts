@@ -33,9 +33,11 @@ export interface EarlyTrainingState {
   ceremonyVerdict: CeremonyVerdictState
   qiPavilionEntry: QiPavilionEntryState
   qiPavilionBarrier: QiBarrierState
+  qiPavilionScroll: QiPavilionScrollState
 }
 export interface QiBarrierState { stage: number; path: 0 | 3; beats: number; attempts: number; room37: boolean; room43: boolean; barrier: 'unobserved' | 'intact' | 'touched' | 'broken'; entered: boolean }
 export interface QiPavilionEntryState { stage: number; door: 'closed' | 'open'; other: 'unmeasured' | 'wind'; yan: 'unmeasured' | 'fire'; xuner: 'unmeasured' | 'fire'; crystal: 'intact' | 'cracked' | 'broken'; hint: 'none' | 'fire-3-43'; permission: boolean; entered: boolean }
+export interface QiPavilionScrollState { stage: number; family: 'none' | 'held'; offer: 'none' | 'offered' | 'declined'; owner: 'none' | 'xiaoyan' }
 export interface CeremonyVerdictState { stage: number; yu: 'none' | 'requested' | 'blocked'; xuner: 'none' | 'requested' | 'blocked'; penalty: 0 | 3; verdict: 'pending' | 'xiaoyan'; rite: 'none' | 'continued' | 'ended'; technique: 'none' | 'offered' | 'declined'; method: 'none' | 'offered' | 'declined'; nextHall: 'none' | 'five-days' }
 export interface NingSecondState { stage: number; beats: number; attempts: number; pill: 'ning-held' | 'used'; ignored: boolean; contact: 'none' | 'met' | 'out'; verdict: 'pending' }
 export interface NingFirstState { stage: number; beats: number; attempts: number; pill: 'unseen' | 'ning-held'; verdict: 'none' | 'pending' }
@@ -90,6 +92,7 @@ export const EARLY_NING_SECOND_VERSION = '0.32.0'
 export const EARLY_CEREMONY_VERDICT_VERSION = '0.33.0'
 export const EARLY_QI_PAVILION_ENTRY_VERSION = '0.34.0'
 export const EARLY_QI_BARRIER_VERSION = '0.35.0'
+export const EARLY_QI_SCROLL_VERSION = '0.36.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -127,9 +130,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     ningSecond: { stage: 0, beats: 0, attempts: 0, pill: 'ning-held', ignored: false, contact: 'none', verdict: 'pending' },
     ceremonyVerdict: { stage: 0, ...ceremonyVerdictAt(0) },
     qiPavilionEntry: { stage: 0, ...qiPavilionEntryAt(0) },
-    qiPavilionBarrier: { stage: 0, beats: 0, attempts: 0, ...qiBarrierAt(0) } }
+    qiPavilionBarrier: { stage: 0, beats: 0, attempts: 0, ...qiBarrierAt(0) },
+    qiPavilionScroll: { stage: 0, ...qiPavilionScrollAt(0) } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -301,6 +305,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const qiBarrier = data.qiPavilionBarrier === undefined && legacyQiBarrier ? result.qiPavilionBarrier : object(data.qiPavilionBarrier)
   if (!validQiBarrier(qiBarrier) || (qiBarrier.stage > 0 || qiBarrier.attempts > 0) && qiPavilionEntry.stage !== 12) return invalid()
   result.qiPavilionBarrier = { stage: qiBarrier.stage, beats: qiBarrier.beats, attempts: qiBarrier.attempts, ...qiBarrierAt(qiBarrier.stage) }
+  const qiScroll = data.qiPavilionScroll === undefined && legacyQiPavilionScroll ? result.qiPavilionScroll : object(data.qiPavilionScroll)
+  if (!validQiPavilionScroll(qiScroll) || qiScroll.stage > 0 && qiBarrier.stage !== 10) return invalid()
+  result.qiPavilionScroll = { stage: qiScroll.stage, ...qiPavilionScrollAt(qiScroll.stage) }
   return result
 }
 
@@ -457,5 +464,14 @@ export function validQiBarrier(task: Record<string, unknown> | QiBarrierState): 
   if (!integer(task.stage, 10) || !integer(task.beats, 3) || !integer(task.attempts, task.stage === 0 ? 0 : 1_000_000)
     || (task.stage < 6 ? task.beats !== 0 : task.stage === 6 ? task.beats >= 3 : task.beats !== 3)) return false
   const expected = qiBarrierAt(task.stage)
+  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+}
+
+export function qiPavilionScrollAt(stage: number): Pick<QiPavilionScrollState, 'family' | 'offer' | 'owner'> {
+  return { family: stage >= 2 ? 'held' : 'none', offer: stage >= 4 ? (stage >= 5 ? 'declined' : 'offered') : 'none', owner: stage >= 3 ? 'xiaoyan' : 'none' }
+}
+export function validQiPavilionScroll(task: Record<string, unknown> | QiPavilionScrollState): task is QiPavilionScrollState {
+  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 6) return false
+  const expected = qiPavilionScrollAt(task.stage)
   return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
 }

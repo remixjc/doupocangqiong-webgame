@@ -1,6 +1,6 @@
 import type { GameState } from './model'
 import { isVisible, type Transaction } from './rules'
-import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from './early-training-state'
+import { EARLY_LOAN, earlySupplies, qiPavilionScrollAt, type EarlySupplyId } from './early-training-state'
 
 export function earlyTrainingBlock(state: GameState): string {
   if (!isVisible(state, 2)) return '重修往事超出当前剧透范围。'
@@ -13,6 +13,7 @@ export type EarlyTrainingAction =
   | { type: 'market'; step: number; expectedSpent: number }
   | { type: 'liquid'; step: number; operation: 'identify' | 'water' | 'primary' | 'auxiliary' | 'core' | 'dilute'; expectedSpent: number }
   | { type: 'practice'; operation: 'begin' | 'pulse' | 'attempt' | 'finish'; phase: number; pulse: number; attempts?: number; marker?: number; expectedSpent: number }
+  | { type: 'qi-scroll'; operation: 'inspect' | 'take-family' | 'secure' | 'offer' | 'decline' | 'archive'; stage: number; family: 'none' | 'held'; offer: 'none' | 'offered' | 'declined'; owner: 'none' | 'xiaoyan'; expectedSpent: number }
 
 export function advanceEarlyTraining(state: GameState, action: EarlyTrainingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
@@ -43,6 +44,17 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
     else if (action.operation === 'finish' && practice.phase === 3) updated.phase = 4
     else return fail('当前练习的操作次序无效。')
     return { state: next, ok: true, message: updated.phase === 4 ? '初期重修与斗技尝试已记下，继续踏实修炼。' : '这一步练习已记录；节奏失误可免费重来。' }
+  }
+  if (action.type === 'qi-scroll') {
+    const task = next.earlyTraining.qiPavilionScroll
+    if (task.stage !== action.stage || task.family !== action.family || task.offer !== action.offer || task.owner !== action.owner)
+      return fail('卷轴保管记录已变化，请按当前提示继续。')
+    if (task.stage >= 6 || task.stage !== state.earlyTraining.qiPavilionScroll.stage) return fail('卷轴保管已经归档。')
+    const operations = ['inspect', 'take-family', 'secure', 'offer', 'decline', 'archive']
+    if (action.operation !== operations[task.stage] || state.earlyTraining.qiPavilionBarrier.stage !== 10) return fail('请按四十三号房当前步骤继续。')
+    task.stage++
+    Object.assign(task, qiPavilionScrollAt(task.stage))
+    return { state: next, ok: true, message: task.stage === 6 ? '家族卷已保管归档；登记与离阁结果待后续确认。' : '卷轴保管步骤已保存，不改变焚诀、技能或奖励。' }
   }
   if (action.type === 'liquid') {
     if (!task.receipts.woodCore || task.market.stage !== 4) return fail('先备齐材料，完成坊市交涉并带回黑铁片。')

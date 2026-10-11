@@ -11,12 +11,14 @@ import { isVisible } from '../core/rules'
 import { loadSceneModule } from './scene-load'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
+const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
   const [walking, setWalking] = useState(false)
   const [pavilion, setPavilion] = useState(false)
   const [barrier, setBarrier] = useState(false)
+  const [scroll, setScroll] = useState(false)
   const pavilionEntry = useRef<HTMLButtonElement>(null)
   const returningPavilion = useRef(false)
   const barrierEntry = useRef<HTMLButtonElement>(null)
@@ -37,6 +39,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
   if (barrier) return <Suspense fallback={<p role="status">正在进入火通道与四十三号门障……</p>}><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></Suspense>
+  if (scroll) return <Suspense fallback={<p role="status">正在打开卷轴保管记录……</p>}><EarlyQiScroll state={state} onBack={() => setScroll(false)} /></Suspense>
   if (pavilion) return <Suspense fallback={<p role="status">正在前往五天后的功法阁……</p>}><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></Suspense>
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
@@ -53,6 +56,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 3) && task.qiPavilionEntry.stage === 12 && <section className="bond-summary" aria-label="功法阁门障接续">
         <b>功法阁入阁已归档 · 接续火通道</b><p>沿第三支路核对三十七号与四十三号，再进行独立红幕测试。尚未取得卷轴。</p>
         <button ref={barrierEntry} className="secondary" onClick={() => setBarrier(true)}>进入火通道 · 四十三号门障</button>
+      </section>}
+      {isVisible(state, 3) && task.qiPavilionBarrier.stage === 10 && <section className="bond-summary" aria-label="功法阁卷轴保管接续">
+        <b>四十三号房已入室 · 卷轴保管待续</b><p>先保管唯一家族火属性卷，再分别记录薰儿的额外卷轴提议与婉拒。</p>
+        <button className="secondary" onClick={() => setScroll(true)}>处理四十三号房卷轴</button>
       </section>}
       {task.practice.phase === 4 && <p className="muted">初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</p>}
       <section className="bond-summary" aria-label="重修准备记录">

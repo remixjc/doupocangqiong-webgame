@@ -36,7 +36,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
       earlySettlementSaveSummary, earlyFatherGiftSaveSummary, earlyXunerVisitSaveSummary, earlyLongSuppliesSaveSummary,
       earlyForestStrikeSaveSummary, earlySeventhRoomSaveSummary, earlyPalmPairSaveSummary, earlyPreliminarySaveSummary,
       earlyKeChallengeSaveSummary, earlyEighthTrainingSaveSummary, earlyCeremonyGuestsSaveSummary, earlyCeremonialTestSaveSummary,
-      earlyNingFirstSaveSummary, earlyNingSecondSaveSummary, earlyCeremonyVerdictSaveSummary, earlyQiPavilionEntrySaveSummary, earlyQiBarrierSaveSummary,
+      earlyNingFirstSaveSummary, earlyNingSecondSaveSummary, earlyCeremonyVerdictSaveSummary, earlyQiPavilionEntrySaveSummary, earlyQiBarrierSaveSummary, earlyQiPavilionScrollSaveSummary,
     ]
     summaries.push(...details.map(summary => summary(saved, viewing)))
   } else summaries.push('后续记录 · 当前范围封存')
@@ -258,4 +258,14 @@ export function earlyQiBarrierSaveSummary(saved: GameState, viewing: Settings): 
   return '功法阁门障 · ' + (task.stage === 10 ? '火路、破幕与入室已归档，取卷待续' : task.entered ? '已入室，卷轴仍在桌上'
     : task.barrier === 'broken' ? '红幕已破，收势与入室待续' : task.stage === 6 ? `破幕动作${task.beats}/3，免费重试${task.attempts}次`
     : task.room43 ? '四十三号已核，红幕完整' : task.path === 3 ? '第三路已选，门牌待核' : task.stage > 0 ? '五路辨认中' : '未参与')
+}
+export function earlyQiPavilionScrollSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 3) return '后续记录 · 当前范围封存'
+  const task = saved.earlyTraining.qiPavilionScroll
+  return '功法阁卷轴保管 · ' + (task.stage === 6 ? '家族卷已保管，额外提议已婉拒，登记待续'
+    : task.stage === 5 ? '家族卷已保管，额外提议已婉拒待归档'
+    : task.stage === 4 ? '家族卷已保管，薰儿额外卷轴已提议'
+    : task.stage >= 3 ? '家族卷已由萧炎保管，额外提议待续'
+    : task.stage >= 2 ? '家族卷已取下，待收好'
+    : task.stage === 1 ? '四十三号房卷轴已查看，待取下' : '未参与')
 }

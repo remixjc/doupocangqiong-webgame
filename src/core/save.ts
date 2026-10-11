@@ -9,7 +9,7 @@ import { EARLY_PRELIMINARY_VERSION } from './early-training-state'
 import { EARLY_KE_CHALLENGE_VERSION } from './early-training-state'
 import { EARLY_EIGHTH_TRAINING_VERSION, EARLY_CEREMONY_GUESTS_VERSION, EARLY_CEREMONIAL_TEST_VERSION, EARLY_NING_FIRST_VERSION, EARLY_NING_SECOND_VERSION, EARLY_CEREMONY_VERDICT_VERSION } from './early-training-state'
 import { EARLY_QI_PAVILION_ENTRY_VERSION } from './early-training-state'
-import { EARLY_QI_BARRIER_VERSION } from './early-training-state'
+import { EARLY_QI_BARRIER_VERSION, EARLY_QI_SCROLL_VERSION } from './early-training-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -242,7 +242,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_NING_SECOND_VERSION),
     versionBefore(data.contentVersion as string, EARLY_CEREMONY_VERDICT_VERSION),
     versionBefore(data.contentVersion as string, EARLY_QI_PAVILION_ENTRY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_QI_BARRIER_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_QI_BARRIER_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_QI_SCROLL_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
