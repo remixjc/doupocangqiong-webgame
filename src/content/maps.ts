@@ -8,6 +8,7 @@ export interface MapDefinition {
   style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'dan-realm' | 'star-domain' | 'soul-prison' | 'tomb' | 'bodhi' | 'pure-fire' | 'coalition-front' | 'emperor-vault' | 'final-battle' | 'blood-realm' | 'emperor-flame' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
+  gatePrompt?: string
   camp: Point
   spawn: Point
   gate: Point
@@ -105,7 +106,7 @@ export const wutanMaps: Record<number, MapDefinition> = {
 }
 export const capitalMaps: Record<number, MapDefinition> = {
   9: {
-    id: 'capital-alchemy-tournament', style: 'tournament', trialMode: 'assessment', gateLabel: '领奖台',
+    id: 'capital-alchemy-tournament', style: 'tournament', trialMode: 'assessment', gateLabel: '领奖台', gatePrompt: '提交大会成绩审核',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 200 }, bossSpawn: { x: 1100, y: 200 }, safeRadius: 180,
     obstacles: [{ x: 400, y: 110, w: 150, h: 150 }, { x: 710, y: 140, w: 140, h: 120 },
       { x: 470, y: 540, w: 120, h: 120 }, { x: 820, y: 560, w: 150, h: 100 }],
@@ -179,7 +180,7 @@ export const mountainMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 710, y: 75, label: '紫晶洞外 · 狮王警戒' }, { x: 550, y: 740, label: '采药山谷 · 保护同伴' }],
   },
   6: {
-    id: 'black-rock-alchemy-guild', style: 'guild', trialMode: 'assessment', gateLabel: '审核台',
+    id: 'black-rock-alchemy-guild', style: 'guild', trialMode: 'assessment', gateLabel: '审核台', gatePrompt: '提交公会审核',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1090, y: 180 },
     bossSpawn: { x: 1090, y: 260 }, safeRadius: 1280,
     obstacles: [
@@ -219,7 +220,7 @@ export const desertMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 690, y: 60, label: '石漠城 · 漠铁佣兵团' }, { x: 690, y: 750, label: '解救团员 · 原创救援历练' }],
   },
   8: {
-    id: 'lotus-fire-cavern', style: 'fire-cavern', trialMode: 'attunement', gateLabel: '收服台',
+    id: 'lotus-fire-cavern', style: 'fire-cavern', trialMode: 'attunement', gateLabel: '收服台', gatePrompt: '确认青莲收服',
     heatZone: { x: 600, y: 210, w: 620, h: 470, cooling: [{ x: 680, y: 270 }, { x: 1030, y: 570 }] },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 620 },
     bossSpawn: { x: 1080, y: 510 }, safeRadius: 180,
@@ -255,7 +256,7 @@ export const blackCornerMaps: Record<number, MapDefinition> = {
 }
 export const academyMaps: Record<number, MapDefinition> = {
   13: {
-    id: 'academy-formation-ground', style: 'academy', trialMode: 'assessment', gateLabel: '入院审核',
+    id: 'academy-formation-ground', style: 'academy', trialMode: 'assessment', gateLabel: '入院审核', gatePrompt: '提交入院资格审核',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 190 }, bossSpawn: { x: 1100, y: 190 }, safeRadius: 170,
     obstacles: [{ x: 390, y: 130, w: 120, h: 140 }, { x: 780, y: 600, w: 150, h: 100 }, { x: 1010, y: 90, w: 70, h: 170 }],
     herbs: [{ x: 330, y: 430 }, { x: 630, y: 650 }, { x: 1180, y: 550 }],
@@ -325,7 +326,7 @@ export const returnAndCentralMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 1020, y: 65, label: '中州北域 · 雷云山径' }, { x: 440, y: 750, label: '西侧避雷石 → 穿过山口 → 东侧避雷石 → 撤离' }],
   },
   19: {
-    id: 'star-pavilion-grove', style: 'star-pavilion', gateLabel: '师门联络审核', trialMode: 'assessment',
+    id: 'star-pavilion-grove', style: 'star-pavilion', gateLabel: '师门联络审核', trialMode: 'assessment', gatePrompt: '提交师门联络审核',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1120, y: 160 }, bossSpawn: { x: 1060, y: 270 }, safeRadius: 170,
     obstacles: [{ x: 430, y: 100, w: 170, h: 180 }, { x: 760, y: 540, w: 180, h: 120 }, { x: 80, y: 310, w: 110, h: 100 }],
     herbs: [{ x: 320, y: 440 }, { x: 640, y: 300 }, { x: 1020, y: 620 }, { x: 1080, y: 180 }, { x: 680, y: 640 }, { x: 300, y: 170 }],
@@ -338,7 +339,7 @@ export const returnAndCentralMaps: Record<number, MapDefinition> = {
 }
 export const dantaAndRescueMaps: Record<number, MapDefinition> = {
   20: {
-    id: 'danta-dan-realm-valley', style: 'dan-realm', gateLabel: '大会成绩审核', expeditionDuration: 45, trialMode: 'assessment',
+    id: 'danta-dan-realm-valley', style: 'dan-realm', gateLabel: '大会成绩审核', expeditionDuration: 45, trialMode: 'assessment', gatePrompt: '提交丹会成绩审核',
     lightningTrial: { center: { x: 1080, y: 300 }, radius: 170, duration: 18 },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1080, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 460, y: 110, w: 170, h: 150 }, { x: 740, y: 500, w: 150, h: 160 }, { x: 930, y: 100, w: 70, h: 120 }],
@@ -350,7 +351,7 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '丹界药谷 · 大会历练' }, { x: 620, y: 755, label: '限时药材 → 控火成丹 → 丹雷生存 → 审核' }],
   },
   21: {
-    id: 'danta-star-domain-platforms', style: 'star-domain', gateLabel: '星火收服台', trialMode: 'attunement',
+    id: 'danta-star-domain-platforms', style: 'star-domain', gateLabel: '星火收服台', trialMode: 'attunement', gatePrompt: '确认星火收服',
     starTrial: { center: { x: 980, y: 350 }, radius: 200, cooling: [{ x: 860, y: 420 }, { x: 1110, y: 430 }],
       durations: [10, 12, 14], pressure: [9, 11, 13] },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1060, y: 300 }, safeRadius: 175,
@@ -362,7 +363,7 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '丹塔星域 · 不灭星火' }, { x: 660, y: 755, label: '确认退路 → 星火引流 / 魂力稳固 / 不灭调息 → 收服' }],
   },
   22: {
-    id: 'soul-prison-rescue-corridor', style: 'soul-prison', gateLabel: '撤离确认', trialMode: 'assessment',
+    id: 'soul-prison-rescue-corridor', style: 'soul-prison', gateLabel: '撤离确认', trialMode: 'assessment', gatePrompt: '确认营救撤离',
     eventBarrier: { eventId: 'soul-prison-teacher-extraction', unlockedStage: 2, obstacle: { x: 620, y: 300, w: 70, h: 230 } },
     prisonPursuit: [{ id: 'prison-pursuit-hunter', type: 'hunter', x: 1170, y: 390 },
       { id: 'prison-pursuit-mage', type: 'mage', x: 1040, y: 170 }],
@@ -379,7 +380,7 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
 }
 export const ancientMaps: Record<number, MapDefinition> = {
   23: {
-    id: 'ancient-clan-heaven-tomb', style: 'tomb', gateLabel: '离墓审核', trialMode: 'assessment', tombDurations: [45, 40, 35],
+    id: 'ancient-clan-heaven-tomb', style: 'tomb', gateLabel: '离墓审核', trialMode: 'assessment', gatePrompt: '提交离墓审核', tombDurations: [45, 40, 35],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 160 }, bossSpawn: { x: 1070, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 430, y: 100, w: 140, h: 160 }, { x: 680, y: 550, w: 140, h: 130 },
       { x: 900, y: 90, w: 100, h: 130 }, { x: 60, y: 310, w: 120, h: 100 }],
@@ -392,7 +393,7 @@ export const ancientMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '古族之行 · 天墓石径' }, { x: 650, y: 755, label: '三层限时探索 → 族史心念稳固 → 离墓审核' }],
   },
   24: {
-    id: 'wilderness-bodhi-illusion-grove', style: 'bodhi', gateLabel: '菩提观心审核', trialMode: 'assessment',
+    id: 'wilderness-bodhi-illusion-grove', style: 'bodhi', gateLabel: '菩提观心审核', trialMode: 'assessment', gatePrompt: '提交菩提观心审核',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 170 }, bossSpawn: { x: 1050, y: 330 }, safeRadius: 175,
     obstacles: [{ x: 420, y: 100, w: 150, h: 170 }, { x: 750, y: 550, w: 150, h: 120 },
       { x: 950, y: 70, w: 65, h: 140 }, { x: 70, y: 320, w: 90, h: 100 }],
@@ -403,7 +404,7 @@ export const ancientMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '莽荒古域 · 菩提林' }, { x: 650, y: 755, label: '碑记 → 欲念 / 旧影 / 岁月 → 观心确认' }],
   },
   25: {
-    id: 'pure-lotus-fire-space', style: 'pure-fire', gateLabel: '净莲收服台', trialMode: 'attunement',
+    id: 'pure-lotus-fire-space', style: 'pure-fire', gateLabel: '净莲收服台', trialMode: 'attunement', gatePrompt: '确认净莲收服',
     purificationZones: [
       { center: { x: 620, y: 470 }, radius: 110, duration: 8 },
       { center: { x: 1080, y: 500 }, radius: 110, duration: 10 },
@@ -421,7 +422,7 @@ export const ancientMaps: Record<number, MapDefinition> = {
 }
 export const endgameMaps: Record<number, MapDefinition> = {
   26: {
-    id: 'coalition-ancient-ruins-front', style: 'coalition-front', gateLabel: '联盟出征台', trialMode: 'assessment', defensePosts: true,
+    id: 'coalition-ancient-ruins-front', style: 'coalition-front', gateLabel: '联盟出征台', trialMode: 'assessment', gatePrompt: '确认联盟出征', defensePosts: true,
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1070, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 430, y: 100, w: 140, h: 140 }, { x: 760, y: 540, w: 140, h: 110 },
       { x: 950, y: 70, w: 60, h: 130 }, { x: 60, y: 330, w: 100, h: 100 }],
@@ -432,7 +433,7 @@ export const endgameMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '远古遗迹 · 联盟防线' }, { x: 680, y: 755, label: '西侧前哨 / 东侧联络 / 后方撤离' }],
   },
   27: {
-    id: 'tuoshe-emperor-origin-vault', style: 'emperor-vault', gateLabel: '本源传承审核', trialMode: 'assessment',
+    id: 'tuoshe-emperor-origin-vault', style: 'emperor-vault', gateLabel: '本源传承审核', trialMode: 'assessment', gatePrompt: '提交本源传承审核',
     eventBarrier: { eventId: 'emperor-vault-three-inscriptions', unlockedStage: 5, obstacle: { x: 780, y: 300, w: 70, h: 220 } },
     vaultGuards: [{ id: 'vault-core-hunter', type: 'hunter', x: 1070, y: 410 }, { id: 'vault-core-mage', type: 'mage', x: 1100, y: 260 }],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 150 }, bossSpawn: { x: 1080, y: 310 }, safeRadius: 175,
