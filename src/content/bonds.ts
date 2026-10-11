@@ -10,6 +10,7 @@ export interface BondDefinition { lineId: string; question: string; options: Bon
 export const bondLines = [
   { id: 'little-doctor', name: '小医仙', title: '同行与自持' },
   { id: 'qinglin', name: '青鳞', title: '被看见的成长' },
+  { id: 'hai-bodong', name: '海波东', title: '守约与相助' },
 ]
 export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
   {
@@ -161,6 +162,71 @@ export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
         options: [
           { choice: 'steady', label: '祝愿自在 · 珍重她自己的选择', response: '你祝愿她走得自在，不让旧日恩义成为新的束缚。', reward: { xp: 50, heal: 1 } },
           { choice: 'premium', label: '约定交流 · 分享各自的见闻', response: '你留下交流见闻的约定，彼此都继续成长。', reward: { xp: 50, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 8,
+    event: {
+      id: 'haibodong-desert-agreement', kind: 'bond', optional: true, introducedVersion: '0.12.2',
+      requiresCompleted: [8], title: '海波东 · 沙漠旧约', speaker: '海波东 · 往事书简', npc: { x: 420, y: 730 },
+      stages: ['到沙路记读取往事书简', '前往守约石回应相助之约', '返回书简处确认并领取一次补给', '沙漠旧约已记入伙伴手札'],
+      introduction: '青莲篇章正式首通后，回访营地中的沙漠旧约。读沙路记，再到守约石回应彼此相助的约定，回来确认。书简回望相识与合作，不代表此处的真实会面时序。',
+      note: '书简和回应为原创改编，不代替海波东封印、炼药履约与原作交易的完整过程；不生成原著指定丹药，不恢复人物真实境界。',
+      checkpoints: [
+        { x: 480, y: 470, label: '沙路记', text: '沙漠中的相助，让陌生人之间有了继续合作的理由。将约定记清，再作回应。' },
+        { x: 740, y: 180, label: '守约石', text: '一份能兑现的约定，值得把条件说清楚。' },
+      ],
+      bond: {
+        lineId: 'hai-bodong', question: '面对相助与约定，你会怎样回应？',
+        options: [
+          { choice: 'steady', label: '记清条件 · 按约履行', response: '你将条件逐项记下，愿意按说好的方式履行。', reward: { xp: 25, heal: 1 } },
+          { choice: 'premium', label: '坦诚能力 · 共同安排下一步', response: '你说明眼下能做的事，与他共同安排下一步。', reward: { xp: 25, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 16,
+    event: {
+      id: 'haibodong-yunlan-help', kind: 'bond', optional: true, introducedVersion: '0.12.2',
+      requiresCompleted: [16], requiresHistory: [{ chapter: 8, eventId: 'haibodong-desert-agreement' }],
+      title: '海波东 · 援手余页', speaker: '海波东 · 援手书简', npc: { x: 500, y: 730 },
+      stages: ['到援手记回望共同经历', '前往余诺石回应今后的相助', '返回书简处确认并领取一次补给', '援手余页已记入伙伴手札'],
+      introduction: '再临云岚正式首通后，回望海波东的相助。读取援手记，将沙漠旧约如何延续到险境之后记下来，再回书简处确认。药老离队状态继续由主线管理。',
+      note: '回望卷页不重放原著云岚战斗招式，不增加战斗伙伴或提前营救药老。两种回应是原创承诺，仅报告时发一次补给；人物真实履约细节仍待校订。',
+      checkpoints: [
+        { x: 500, y: 500, label: '援手记', text: '旧约之外，险境中的援手也值得记住。下一程的相助，需要继续说清彼此的能力与退路。' },
+        { x: 700, y: 160, label: '余诺石', text: '将感谢写成可以实践的回应。' },
+      ],
+      bond: {
+        lineId: 'hai-bodong', question: '经历险境之后，如何珍重这份相助？',
+        options: [
+          { choice: 'steady', label: '整理补给 · 为下一程留退路', response: '你把感谢落实在补给与退路的准备中。', reward: { xp: 40, heal: 1 } },
+          { choice: 'premium', label: '共享情报 · 让援手有所依据', response: '你愿意共享可靠情报，共同判断下一程的风险。', reward: { xp: 40, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 28,
+    event: {
+      id: 'haibodong-homeward-message', kind: 'bond', optional: true, introducedVersion: '0.12.2',
+      requiresCompleted: [28], requiresHistory: [{ chapter: 16, eventId: 'haibodong-yunlan-help' }],
+      title: '海波东 · 故人问候', speaker: '海波东 · 归途问候', npc: { x: 1150, y: 750 },
+      stages: ['到沙风记读取故人问候', '前往旧约记回应归途', '返回问候处确认并领取一次补给', '守约与相助三页已完成'],
+      introduction: '终战正式首通后，重返营地读故人的问候。读沙风记、回应旧约记，再回来确认；旧日合作也可以成为轻松谈起的往事。',
+      note: '问候为原创尾声，不补写海波东原著修为、职位或最终去向。此页需前两页完成，不代替主线尾声或重复首通奖励。',
+      checkpoints: [
+        { x: 960, y: 160, label: '沙风记', text: '曾经的沙路与约定，如今都成为归途可以谈起的往事。' },
+        { x: 1170, y: 310, label: '旧约记', text: '回望相助与守约，为故人的问候留下回应。' },
+      ],
+      bond: {
+        lineId: 'hai-bodong', question: '走过漫长旅途，怎样回应故人的问候？',
+        options: [
+          { choice: 'steady', label: '珍重旧约 · 祝愿各自安稳', response: '你记得相助的情义，也祝愿彼此的生活安稳。', reward: { xp: 50, heal: 1 } },
+          { choice: 'premium', label: '邀谈见闻 · 约定故地再会', response: '你留下故地再会的约定，等下一次慢慢谈起见闻。', reward: { xp: 50, mana: 1 } },
         ],
       },
     },

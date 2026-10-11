@@ -1,13 +1,18 @@
 import { bondJournal } from '../core/bonds'
 import type { GameState } from '../core/model'
+import { useState } from 'react'
 
 export default function BondJournal({ state, visit }: { state: GameState; visit: (chapter: number) => void }) {
   const lines = bondJournal(state)
+  const [selected, setSelected] = useState('little-doctor')
+  const active = lines.find(line => line.id === selected) ?? lines[0]
   return <>
     <span className="eyebrow">伙伴手札 / 可选回访</span><h2>记下同行，留有归途。</h2>
     <p className="muted">支线可在主线通关后回访补做。到人物处接取、读取路标、选择回应，返回确认才领取一次补给。卷页之间需要前页完成，旧通关不自动补齐。</p>
     {!lines.length && <p className="quest-hint">当前剧透范围内尚无伙伴卷页。</p>}
-    {lines.map(line => <section className="bond-line" key={line.id}>
+    <div className="panel-tabs" aria-label="选择伙伴">{lines.map(line =>
+      <button className="secondary" key={line.id} aria-pressed={active?.id === line.id} onClick={() => setSelected(line.id)}>{line.name} · {line.completed}/{line.entries.length}</button>)}</div>
+    {(active ? [active] : []).map(line => <section className="bond-line" key={line.id}>
       <h3>{line.name} · {line.title}<small>{line.completed} / {line.entries.length} 可见卷页</small></h3>
       {line.entries.map(entry => <article className="bond-entry" key={entry.eventId}>
         <b>第{String(entry.chapter).padStart(2, '0')}章 · {entry.title}<span>{entry.done ? '已完成 ✓' : `${entry.stage} / ${entry.total}`}</span></b>

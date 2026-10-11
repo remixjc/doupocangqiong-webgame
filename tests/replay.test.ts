@@ -298,13 +298,20 @@ describe('完整主线真实规则战斗回放', () => {
       state = finishChapter(state)
       for (const { event } of bondEvents.filter(item => item.chapter === chapter.id)) {
         const id = event.id
+        let revisitPath: Vec[] = [], revisitTarget: Vec = { x: -999, y: -999 }
         for (let tick = 0; tick < 3600 && !eventDone(state, chapter.id, id); tick++) {
           const p = eventProgress(state, chapter.id, id), target = !p.started || p.stage === 2 ? event.npc : event.checkpoints![p.stage]
-          const path = route(world.player, target, world.collisionMap())
-          while (path.length > 1 && dist(path[0], world.player) < 14) path.shift()
-          const point = path[0] ?? target, dx = point.x - world.player.x, dy = point.y - world.player.y, length = Math.hypot(dx, dy)
+          if (tick % 20 === 0 || !revisitPath.length || dist(target, revisitTarget) > 45) {
+            revisitPath = route(world.player, target, world.collisionMap()); revisitTarget = { ...target }
+          }
+          while (revisitPath.length > 1 && dist(revisitPath[0], world.player) < 14) revisitPath.shift()
+          const point = revisitPath[0] ?? target, dx = point.x - world.player.x, dy = point.y - world.player.y, length = Math.hypot(dx, dy)
           world.step(length > 4 ? { x: dx / length, y: dy / length } : { x: 0, y: 0 })
-          if (tick % 10 === 0) { world.action('interact', { x: 0, y: 0 }); expect(() => validateState(state)).not.toThrow() }
+          if (tick % 10 === 0) {
+            world.action('attack', { x: 0, y: 0 })
+            if (world.player.hp < world.runtime().maxHp * .5) world.action('heal', { x: 0, y: 0 })
+            world.action('interact', { x: 0, y: 0 }); expect(() => validateState(state)).not.toThrow()
+          }
         }
         expect(eventDone(state, chapter.id, id), `${event.title}需合法回访输入完成：progress=${JSON.stringify(eventProgress(state, chapter.id, id))},position=${world.player.x},${world.player.y}`).toBe(true)
       }
