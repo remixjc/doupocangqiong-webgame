@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto'
 import { describe, expect, it } from 'vitest'
 import { initialState, blankProgress, type GameState } from '../src/core/model'
-import { earlyTrainingSaveSummary, savePreviewSummary, saveRecordSummary } from '../src/core/save-preview'
+import { earlyTrainingSaveSummary, earlyBraceletSaveSummary, savePreviewSummary, saveRecordSummary } from '../src/core/save-preview'
 import { validateState, serializeSave, parseSave, saveSlot, listSlots } from '../src/core/save'
 import { replayEarlyTraining } from './helpers/early-training-replay'
 
@@ -64,5 +64,24 @@ describe('重修存档预览', () => {
     const before = structuredClone(done)
     expect(savePreviewSummary(done, state.settings)).toContain('初期尝试已归档')
     expect(done).toEqual(before)
+  })
+  it('完整准备链按顺序加入手链，摘要显示真实阶段，封存不泄露且查看不改状态', async () => {
+    const states: GameState[] = []
+    const done = replayEarlyTraining(eligible(), true, state => states.push(state), true)
+    const viewing = { ...done.settings, spoiler: 'anime' as const, animeLimit: 1 }
+    expect(new Set(states.map(state => state.earlyTraining.bracelet.stage)).size).toBe(7)
+    for (const state of states) {
+      const before = structuredClone(state), summary = earlyBraceletSaveSummary(state, state.settings)
+      expect(savePreviewSummary(state, state.settings)).toContain(summary)
+      expect(earlyBraceletSaveSummary(state, viewing)).toBe('手链往事 · 当前范围封存')
+      await saveSlot(0, state)
+      const records = await listSlots()
+      expect(saveRecordSummary(records.find(record => record.slot === 0)!, state.settings)).toContain(summary)
+      expect(state).toEqual(before)
+    }
+    expect(earlyBraceletSaveSummary(done, done.settings)).toBe('手链往事 · 已归档')
+    expect(done.earlyTraining.practice.phase).toBe(4)
+    expect(done.earlyTraining.market.blackIron).toBe(1)
+    expect(done.earlyTraining.purse.spent).toBe(110)
   })
 })

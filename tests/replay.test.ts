@@ -309,7 +309,7 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
       if (chapter.id === 2) {
-        state = replayEarlyTraining(state, true)
+        state = replayEarlyTraining(state, true, undefined, true)
         expect(state.earlyTraining.practice.attempts).toBe(1)
       }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {
@@ -342,6 +342,7 @@ describe('完整主线真实规则战斗回放', () => {
     }
     expect(state.completed.length).toBe(28)
     expect(state.earlyTraining.practice.phase).toBe(4)
+    expect(state.earlyTraining.bracelet).toEqual({ stage: 6, gift: 'xuner' })
     console.log(`28章纯逻辑输入回放（${difficulty}，非人工通关）：${timings.join(', ')} 秒`)
     const reportDirectory = process.env.DOUPO_REPLAY_REPORT_DIR
     if (reportDirectory) {

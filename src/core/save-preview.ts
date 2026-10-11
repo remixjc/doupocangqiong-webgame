@@ -23,7 +23,13 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const visible = viewing.spoiler === 'novel' || saved.chapter <= viewing.animeLimit
-  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)}`
+  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)} · ${earlyBraceletSaveSummary(saved, viewing)}`
+}
+
+export function earlyBraceletSaveSummary(saved: GameState, viewing: Settings): string {
+  const stage = saved.earlyTraining.bracelet.stage
+  return '手链往事 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 2 ? '当前范围封存'
+    : stage === 6 ? '已归档' : stage === 0 ? '未参与' : `进行中 ${stage}/6`)
 }
 
 export function saveRecordSummary(entry: SaveRecord, viewing: Settings): string {

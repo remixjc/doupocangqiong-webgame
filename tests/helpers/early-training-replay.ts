@@ -5,9 +5,13 @@ import { earlySupplies } from '../../src/core/early-training-state'
 import { earlyLiquidScenes } from '../../src/content/early-liquid'
 import { parseSave, serializeSave } from '../../src/core/save'
 import { pulseMarker } from '../../src/core/events'
+import { advanceEarlyBracelet } from '../../src/core/early-bracelet'
+import { earlyBraceletScenes } from '../../src/content/early-bracelet'
+import { earlyWalkPlaces } from '../../src/core/early-walk'
 
-// Normal panel transactions only; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void): GameState {
+// Normal transactions only; bracelet uses the valid market position.
+// Spatial walking has separate coverage; no progress/material edits or save injection.
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false): GameState {
   let state = input
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
@@ -20,8 +24,18 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   state = parseSave(serializeSave(started.state))
   onCheckpoint?.(state)
   act({ type: 'borrow', expectedSpent: 0 })
-  for (const item of ['boneflower', 'bluegrass', 'woodCore'] as const)
+  for (const item of ['boneflower', 'bluegrass'] as const)
     act({ type: 'purchase', item, price: earlySupplies[item].price, expectedSpent: state.earlyTraining.purse.spent })
+  if (includeBracelet) {
+    const market = earlyWalkPlaces.find(place => place.id === 'market')!
+    for (let stage = 0; stage < earlyBraceletScenes.length; stage++) {
+      const result = advanceEarlyBracelet(state, market, { stage, operation: earlyBraceletScenes[stage].operation })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state))
+      onCheckpoint?.(state)
+    }
+  }
+  act({ type: 'purchase', item: 'woodCore', price: 60, expectedSpent: 50 })
   for (let step = 0; step < 4; step++) act({ type: 'market', step, expectedSpent: 110 })
   for (let step = 0; step < 6; step++) act({ type: 'liquid', step, operation: earlyLiquidScenes[step].operation, expectedSpent: 110 })
   act({ type: 'practice', operation: 'begin', phase: 0, pulse: 0, expectedSpent: 110 })
