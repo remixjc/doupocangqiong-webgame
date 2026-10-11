@@ -22,6 +22,8 @@ export default class AdventureScene extends Phaser.Scene {
   private runtimeTimer = 0
   private aim: { x: number; y: number } | undefined
   private lostFocus = false
+  private environment?: Phaser.GameObjects.Container
+  private environmentMapId = ''
   constructor() { super('adventure') }
   create() {
     const chapter = chapterById(gameStore.getSnapshot().state.chapter)
@@ -41,7 +43,7 @@ export default class AdventureScene extends Phaser.Scene {
       camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message), sound: playSound,
       storyEvent: (id, checkpoint) => gameStore.onStoryEvent?.(id, checkpoint), eventAction: action => { gameStore.event(action) },
     })
-    this.drawEnvironment()
+    this.syncEnvironment()
     this.ink = this.add.graphics()
     this.floats = Array.from({ length: 30 }, () => this.add.text(0, 0, '', {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
@@ -81,6 +83,15 @@ export default class AdventureScene extends Phaser.Scene {
     this.events.once('destroy', releaseInput)
     gameStore.runtime(this.world.runtime())
   }
+  private syncEnvironment() {
+    if (this.environmentMapId === this.world.map.id) return
+    this.environment?.destroy()
+    const previous = new Set(this.children.list)
+    this.drawEnvironment()
+    const objects = this.children.list.filter(object => !previous.has(object))
+    this.environment = this.add.container(0, 0, objects).setDepth(-1)
+    this.environmentMapId = this.world.map.id
+  }
   private drawEnvironment() {
     const { camp, gate, obstacles, style } = this.world.map
     const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : style === 'thunder-path' ? [0x263139, 0x566575, 0xacc7cd]
@@ -90,6 +101,7 @@ export default class AdventureScene extends Phaser.Scene {
       : style === 'pure-fire' ? [0x393039, 0x87777e, 0xe4d4ca]
       : style === 'coalition-front' ? [0x2a303b, 0x697382, 0xc4b38c]
       : style === 'emperor-vault' ? [0x2c293c, 0x6d6586, 0xd6c596] : style === 'final-battle' ? [0x3c2930, 0x805256, 0xf0bc92]
+      : style === 'blood-realm' ? [0x342333, 0x915169, 0xe6a7b9] : style === 'emperor-flame' ? [0x40302a, 0x916742, 0xf8d89f]
       : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
@@ -122,13 +134,18 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xd6c596, .2); bg.lineBetween(x, y, 1050, 310)
       }
       bg.lineStyle(3, 0xd6c596, .25); bg.strokeCircle(1050, 310, 135)
-    } else if (style === 'final-battle') {
-      bg.lineStyle(3, 0xf0bc92, .18)
+    } else if (['final-battle', 'blood-realm', 'emperor-flame'].includes(style)) {
+      bg.lineStyle(3, c[2], .18)
       for (const point of [{ x: 650, y: 220 }, { x: 980, y: 350 }, { x: 1030, y: 650 }]) {
         bg.lineBetween(point.x - 100, point.y - 20, point.x - 15, point.y + 12)
         bg.lineBetween(point.x - 15, point.y + 12, point.x + 90, point.y - 25)
       }
-      bg.lineStyle(2, 0xf0bc92, .2); bg.strokeCircle(980, 350, 230)
+      bg.lineStyle(2, c[2], .2); bg.strokeCircle(980, 350, 230)
+      if (style === 'blood-realm') {
+        for (const radius of [90, 145, 200]) { bg.lineStyle(3, c[2], .22); bg.strokeCircle(1000, 330, radius) }
+      } else if (style === 'emperor-flame') {
+        bg.lineStyle(18, c[2], .09); bg.lineBetween(810, 130, 1190, 510); bg.lineBetween(1190, 130, 810, 510)
+      }
     } else if (style === 'sect') {
       bg.lineStyle(2, 0xc2b99b, .18)
       for (let y = 130; y < 360; y += 24) bg.lineBetween(1000, y, 1210, y)
@@ -293,6 +310,7 @@ export default class AdventureScene extends Phaser.Scene {
     if (this.heldKeys.has('j') && this.world.attackCooldown <= 0) this.world.action('attack', input)
     this.aim = undefined
     this.clock.advance(delta, () => this.world.step(input))
+    this.syncEnvironment()
     this.runtimeTimer += delta
     if (this.runtimeTimer >= 100) { gameStore.runtime(this.world.runtime()); this.runtimeTimer = 0 }
     this.drawActors()

@@ -131,7 +131,7 @@ chapters[26].trialNote = '三铭火纹、实体封门与本源心念评分为原
 
 chapters[27].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[27].opening[2].text = '向药老接取终战准备，依序确认家族、盟友、师徒三处约碑，再到启程碑开始终战。三点魂压、六点血环、交叉帝炎按生命阶段变化，预警锁定后闪避；蓄势减伤40%，收招反击提高35%。战场边界封闭，失败免费休整，战前记录保留，正式首通才进入尾声。'
-chapters[27].trialNote = '战前约碑、三阶段招式与窗口为原创终战表达；当前单战场，跨场景下一批接续。首通一次，尾声后可重返历练。'
+chapters[27].trialNote = '三约碑与大陆/血环/帝炎三场景为原创终战表达；换段生命斗气冷却延续、落点护体1.5秒。失败或刷新从满血第一段重试，约碑保留。胜利后返营首通一次，尾声后可重返历练。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

@@ -5,7 +5,7 @@ export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?
 export interface TowerFloor { center: Point; cooling: Point; duration: number; pressure: number; radius: number }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'dan-realm' | 'star-domain' | 'soul-prison' | 'tomb' | 'bodhi' | 'pure-fire' | 'coalition-front' | 'emperor-vault' | 'final-battle' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'dan-realm' | 'star-domain' | 'soul-prison' | 'tomb' | 'bodhi' | 'pure-fire' | 'coalition-front' | 'emperor-vault' | 'final-battle' | 'blood-realm' | 'emperor-flame' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -23,6 +23,7 @@ export interface MapDefinition {
   heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
   duelArena?: { x: number; y: number; w: number; h: number }
   finalArena?: { x: number; y: number; w: number; h: number }
+  finalLabel?: string
   escapeRoute?: boolean
   thunderRoute?: boolean
   escapeDurations?: number[]
@@ -447,6 +448,7 @@ export const endgameMaps: Record<number, MapDefinition> = {
   28: {
     id: 'continent-final-battlefield', style: 'final-battle', gateLabel: '终战启程碑',
     finalArena: { x: 760, y: 80, w: 480, h: 480 },
+    finalLabel: '大陆战场',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1050, y: 330 }, safeRadius: 175,
     obstacles: [{ x: 420, y: 100, w: 140, h: 130 }, { x: 660, y: 560, w: 150, h: 110 },
       { x: 70, y: 320, w: 100, h: 100 }],
@@ -457,6 +459,22 @@ export const endgameMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '斗气大陆 · 最终战场' }, { x: 680, y: 755, label: '故人之约 / 最后的防线 / 终战与归途' }],
   },
 }
+export const finalPhaseMaps: MapDefinition[] = [
+  endgameMaps[28],
+  {
+    ...endgameMaps[28], id: 'final-blood-realm', style: 'blood-realm', finalLabel: '血环裂界',
+    spawn: { x: 880, y: 330 }, bossSpawn: { x: 1080, y: 330 },
+    obstacles: [...endgameMaps[28].obstacles, { x: 900, y: 180, w: 70, h: 90 }, { x: 1110, y: 420, w: 80, h: 85 }],
+    landmarks: [{ x: 680, y: 60, label: '终战二段 · 血环裂界' }, { x: 680, y: 755, label: '绕开裂石 · 血环锁定后寻找空隙' }],
+  },
+  {
+    ...endgameMaps[28], id: 'final-emperor-flame-realm', style: 'emperor-flame', finalLabel: '帝炎交界',
+    spawn: { x: 900, y: 450 }, bossSpawn: { x: 1080, y: 280 },
+    obstacles: [...endgameMaps[28].obstacles, { x: 790, y: 270, w: 80, h: 80 }, { x: 1020, y: 410, w: 70, h: 80 }],
+    landmarks: [{ x: 680, y: 60, label: '终战三段 · 帝炎交界' }, { x: 680, y: 755, label: '交叉帝炎 · 收招反击后走向归途' }],
+  },
+]
+export function finalMapForPhase(phase: number): MapDefinition { return finalPhaseMaps[phase - 1] ?? finalPhaseMaps[0] }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? dantaAndRescueMaps[id] ?? ancientMaps[id] ?? endgameMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius

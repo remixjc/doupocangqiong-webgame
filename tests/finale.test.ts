@@ -7,6 +7,7 @@ import { canEnter, chapterReady, finishChapter, registerBossVictory } from '../s
 import { teacherSupport } from '../src/core/companions'
 import { validateState } from '../src/core/save'
 import { CombatWorld } from '../src/game/combat'
+import { finalPhaseMaps, mapCollides } from '../src/content/maps'
 
 function finaleState() {
   const s = initialState(); s.chapter = 28; s.completed = Array.from({ length: 27 }, (_, i) => i + 1); s.flame = 'pure'
@@ -24,7 +25,7 @@ function setup(phase = 1) {
   const w = new CombatWorld(chapterById(28), cb)
   Object.assign(w.player, w.map.gate); w.action('interact', { x: 0, y: 0 })
   const e = w.enemies[0]
-  if (phase > 1) { e.hp = e.maxHp * (phase === 2 ? .6 : .3); w.step({ x: 0, y: 0 }) }
+  for (let next = 2; next <= phase; next++) { e.hp = Math.floor(e.maxHp * (next === 2 ? 2 / 3 : 1 / 3)); w.step({ x: 0, y: 0 }) }
   return { world: w, boss: e, state: () => s, notice: () => notice, reload: () => { s = validateState(s); return new CombatWorld(chapterById(28), cb) } }
 }
 describe('C9c-1 终战约碑与三阶段首领', () => {
@@ -108,5 +109,72 @@ describe('C9c-1 终战约碑与三阶段首领', () => {
     old.progress[28].boss = true; old.completed.push(28); old.progress[28].herbs = 4; old.progress[28].kills = 4
     expect(() => validateState(old)).toThrow('条件不完整'); old.progress[28].kills = 5
     const done = validateState(old); expect(eventDone(done)).toBe(true); expect(done.gold).toBe(old.gold); expect(done.inventory).toEqual(old.inventory)
+  })
+})
+describe('C9c-2 终战跨场景与归途', () => {
+  it.each([2, 3])('第%i段同步地图/碰撞/落点，保留生命资源冷却并解除旧预警', phase => {
+    const t = setup(phase - 1), w = t.world, e = t.boss
+    w.player.hp = 300; w.player.qi = 40; w.player.stamina = 30; w.player.roll = .2
+    w.cooldowns.lotus = 5; w.attackCooldown = .3
+    w.effects.push({ x: 1000, y: 300, radius: 50, time: 1, maxTime: 1, color: 0, kind: 'ring' })
+    e.windup = 1; e.secondary = [{ x: 880, y: 330 }]; e.hp = Math.floor(e.maxHp * (phase === 2 ? 2 / 3 : 1 / 3))
+    const before = structuredClone(t.state()), hp = e.hp, id = e.id, herbs = structuredClone(w.herbs)
+    w.step({ x: 0, y: 0 }, 0)
+    expect(w.map.id).toBe(finalPhaseMaps[phase - 1].id); expect(w.runtime().finale?.arena).toBe(w.map.finalLabel)
+    expect(w.collisionMap().obstacles).toEqual(finalPhaseMaps[phase - 1].obstacles)
+    expect(w.player).toMatchObject({ ...w.map.spawn, hp: 300, qi: 40, stamina: 30, roll: 0 })
+    expect(w.cooldowns.lotus).toBe(5); expect(w.attackCooldown).toBe(.3); expect(w.player.invincible).toBeGreaterThanOrEqual(1.5)
+    expect(e).toMatchObject({ ...w.map.bossSpawn, hp, id, windup: 0, secondary: [] })
+    expect(w.effects).toEqual([]); expect(w.herbs).toEqual(herbs); expect(t.state()).toEqual(before)
+    expect(mapCollides(w.map, w.player, 22)).toBe(false); expect(mapCollides(w.map, e, 22)).toBe(false)
+  })
+  it('换段后的实体裂石阻挡移动，第一段原位置可通行', () => {
+    const first = setup().world, second = setup(2).world
+    for (const w of [first, second]) {
+      Object.assign(w.player, { x: 860, y: 225 }); w.player.roll = 0
+      for (let i = 0; i < 20; i++) w.step({ x: 1, y: 0 })
+    }
+    expect(first.player.x).toBeGreaterThan(900); expect(second.player.x).toBeLessThan(884)
+    expect(mapCollides(second.map, { x: 930, y: 225 })).toBe(true)
+  })
+  it('连续攻击不能跨过未进入阶段的生命门槛，每个空间依序进入', () => {
+    const t = setup(), w = t.world, e = t.boss
+    for (const phase of [1, 2, 3]) {
+      const floor = phase < 3 ? Math.floor(e.maxHp * (3 - phase) / 3) : 0
+      Object.assign(w.player, { x: e.x - 45, y: e.y })
+      for (let hit = 0; hit < 100; hit++) { w.attackCooldown = 0; w.action('attack', { x: 0, y: 0, aim: e }) }
+      expect(e.hp).toBe(floor); expect(e.finale!.phase).toBe(phase)
+      if (phase < 3) {
+        expect(t.state().progress[28].boss).toBe(false)
+        w.step({ x: 0, y: 0 }, 0); expect(w.map.id).toBe(finalPhaseMaps[phase].id)
+      }
+    }
+    expect(t.state().progress[28].boss).toBe(true)
+  })
+  it.each([2, 3])('第%i空间退出重建回到第一段，保留三约而不记首通', phase => {
+    const t = setup(phase), w = t.world, e = t.boss
+    w.player.hp = 0; e.windup = .001; e.target = { ...w.player }; w.step({ x: 0, y: 0 })
+    const reloaded = t.reload()
+    expect(reloaded.map.id).toBe(finalPhaseMaps[0].id); expect(reloaded.enemies).toHaveLength(0)
+    expect(eventDone(t.state())).toBe(true); expect(t.state().progress[28].boss).toBe(false)
+    expect(finishChapter(t.state())).toBe(t.state())
+  })
+  it('终战真实胜利恢复大陆地图与返营路径，首通尾声可保存并重返各章', () => {
+    const t = setup(3), w = t.world, e = t.boss
+    e.hp = 1; Object.assign(w.player, { x: e.x - 45, y: e.y }); w.action('attack', { x: 0, y: 0, aim: e })
+    expect(w.map.id).toBe(finalPhaseMaps[0].id); expect(w.runtime().finale).toBeUndefined()
+    for (const target of [{ x: 600, y: w.player.y }, { x: 600, y: 650 }, w.map.camp]) {
+      for (let frame = 0; frame < 600 && Math.hypot(w.player.x - target.x, w.player.y - target.y) > 5; frame++) {
+        const dx = target.x - w.player.x, dy = target.y - w.player.y, d = Math.hypot(dx, dy)
+        w.step({ x: dx / d, y: dy / d })
+      }
+      expect(Math.hypot(w.player.x - target.x, w.player.y - target.y)).toBeLessThanOrEqual(5)
+    }
+    const before = structuredClone(t.state()), done = finishChapter(before)
+    expect(done.completed).toHaveLength(28); expect(done.gold - before.gold).toBe(chapterById(28).reward)
+    expect(validateState(done)).toEqual(done); expect(finishChapter(done)).toBe(done)
+    expect(Array.from({ length: 28 }, (_, i) => canEnter(done, i + 1)).every(Boolean)).toBe(true)
+    const reloaded = new CombatWorld(chapterById(28), { state: () => done, collect: () => {}, kill: () => {}, heal: () => false, camp: () => {}, notify: () => {} })
+    expect(reloaded.map.id).toBe(finalPhaseMaps[0].id)
   })
 })

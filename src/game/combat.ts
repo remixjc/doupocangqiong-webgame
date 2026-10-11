@@ -1,6 +1,6 @@
 import type { Action, Chapter, GameState, Runtime } from '../core/model'
 import { chapterReady, damage, playerStats, skillInfo, skillUnlocked } from '../core/rules'
-import { hasLineOfSight, mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT, type PatrolDefinition } from '../content/maps'
+import { finalMapForPhase, hasLineOfSight, mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT, type MapDefinition, type PatrolDefinition } from '../content/maps'
 import { eventForChapter, eventsForChapter } from '../content/events'
 import { eventProgress, type EventAction } from '../core/events'
 import { teacherSupport } from '../core/companions'
@@ -44,7 +44,8 @@ function distance(a: Vec, b: Vec) { return Math.hypot(a.x - b.x, a.y - b.y) }
 function clamp(n: number, min: number, max: number) { return Math.max(min, Math.min(max, n)) }
 
 export class CombatWorld {
-  readonly map
+  private activeMap: MapDefinition
+  get map() { return this.activeMap }
   player = { x: 0, y: 0, hp: 180, qi: 100, stamina: 100, facing: 0, invincible: 0, roll: 0, hit: 0 }
   enemies: Fighter[] = []
   herbs: Herb[] = []
@@ -81,7 +82,7 @@ export class CombatWorld {
     return this.barrierClosed() ? { ...this.map, obstacles: [...this.map.obstacles, this.map.eventBarrier!.obstacle] } : this.map
   }
   constructor(readonly chapter: Chapter, private cb: CombatCallbacks) {
-    this.map = mapForChapter(chapter.id)
+    this.activeMap = mapForChapter(chapter.id)
     Object.assign(this.player, this.map.spawn)
     this.herbs = this.map.herbs.map(h => ({ ...h, available: true, respawn: 0 }))
     const stats = playerStats(cb.state())
@@ -698,12 +699,21 @@ export class CombatWorld {
     if (e.ranking) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .35 : e.ranking.recovery > 0 ? 1.25 : 1)))
     if (e.sect) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .55 : e.sect.recovery > 0 ? 1.3 : 1)))
     if (e.finale) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .6 : e.finale.recovery > 0 ? 1.35 : 1)))
-    e.hp = Math.max(0, e.hp - amount)
+    // Each realm must be entered before its health segment can be depleted.
+    const floor = e.finale && e.finale.phase < 3 ? Math.floor(e.maxHp * (3 - e.finale.phase) / 3) : 0
+    const nextHp = Math.max(Math.min(e.hp, floor), e.hp - amount)
+    amount = e.hp - nextHp
+    e.hp = nextHp
     if (e.patrol) e.alert = 1
     this.floats.push({ x: e.x, y: e.y - 40, text: String(amount), time: .65, color: '#f4deb4' })
     if (interrupt && e.type !== 'boss') { e.windup = 0; e.timer = 1.4 }
     if (applyBurn && this.cb.state().flame === 'lotus') e.burn = 3
     if (e.hp === 0) {
+      if (e.finale) {
+        this.activeMap = finalMapForPhase(1)
+        e.windup = 0; e.secondary = []
+        this.cb.notify('终战已胜，裂界散去。返回营地完成首通结算，再阅读归途尾声。')
+      }
       this.effect(e.x, e.y, e.type === 'boss' ? 110 : 40, 0xd4bb87)
       if (e.ranking?.practice) this.cb.rankPractice?.()
       else this.cb.kill(e.type === 'boss')
@@ -955,11 +965,16 @@ export class CombatWorld {
   }
   private stepFinale(e: Fighter, dt: number) {
     const finale = e.finale!, p = this.player, arena = this.map.finalArena!
-    const phase = e.hp / e.maxHp <= 1 / 3 ? 3 : e.hp / e.maxHp <= 2 / 3 ? 2 : 1
+    const targetPhase = e.hp <= Math.floor(e.maxHp / 3) ? 3 : e.hp <= Math.floor(e.maxHp * 2 / 3) ? 2 : 1
+    const phase = Math.max(finale.phase, Math.min(finale.phase + 1, targetPhase))
     if (phase !== finale.phase) {
       finale.phase = phase; finale.recovery = 0; e.windup = 0; e.secondary = []; e.timer = 1.6
       finale.move = phase === 2 ? 'blood-ring' : 'emperor-flame'
-      this.cb.notify(`终战第${phase}阶段 · ${phase === 2 ? '六点血环' : '交叉帝炎'}，旧预警解除，留意新招式。`)
+      this.activeMap = finalMapForPhase(phase)
+      Object.assign(p, this.map.spawn); Object.assign(e, this.map.bossSpawn)
+      p.roll = 0; p.invincible = Math.max(p.invincible, 1.5)
+      e.target = { x: e.x, y: e.y }; this.effects = []; this.floats = []
+      this.cb.notify(`终战第${phase}阶段 · ${this.map.finalLabel}，旧预警解除，落点护体1.5秒；生命、斗气和冷却延续。`)
       return
     }
     if (finale.recovery > 0) { finale.recovery = Math.max(0, finale.recovery - dt); return }
@@ -1227,7 +1242,7 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
-      finale: boss?.finale && boss.hp > 0 ? { phase: boss.finale.phase, move: { 'soul-pressure': '三点魂压', 'blood-ring': '六点血环', 'emperor-flame': '交叉帝炎' }[boss.finale.move],
+      finale: boss?.finale && boss.hp > 0 ? { phase: boss.finale.phase, arena: this.map.finalLabel!, move: { 'soul-pressure': '三点魂压', 'blood-ring': '六点血环', 'emperor-flame': '交叉帝炎' }[boss.finale.move],
         shield: boss.windup > 0, recovery: boss.finale.recovery > 0 } : undefined,
       tomb: this.tombRun ? { stage: this.tombRun.stage, remaining: Math.max(0, Math.ceil(this.map.tombDurations![this.tombRun.stage - 1] - this.tombRun.elapsed)), failed: this.tombRun.failed } : undefined,
       prisonEscort: this.prisonEscort ? { hp: this.prisonEscort.hp, maxHp: this.prisonEscort.maxHp, waiting: this.prisonEscort.waiting,

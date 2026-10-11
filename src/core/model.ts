@@ -84,7 +84,7 @@ export interface Runtime {
   tomb?: { stage: number; remaining: number; failed: boolean }
   purification?: { stage: number; remaining: number; corruption: number; inZone: boolean; blocked: boolean; failed: boolean }
   defense?: { stage: number; hp: number; maxHp: number; wave: number; remaining: number; engaged: boolean; failed: boolean }
-  finale?: { phase: number; move: string; shield: boolean; recovery: boolean }
+  finale?: { phase: number; arena: string; move: string; shield: boolean; recovery: boolean }
   dead: boolean
 }
 export interface Snapshot { state: GameState; runtime: Runtime; notice: string }

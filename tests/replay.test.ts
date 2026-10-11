@@ -124,6 +124,7 @@ describe('完整主线真实规则战斗回放', () => {
           }
         },
       })
+      const visitedMaps = new Set([world.map.id])
       let path: Vec[] = [], previousTarget: Vec = { x: -999, y: -999 }, frame = 0
       for (; frame < 60 * 240 && !state.progress[chapter.id].boss && world.player.hp > 0; frame++) {
         const p = state.progress[chapter.id]
@@ -269,11 +270,13 @@ describe('完整主线真实规则战斗回放', () => {
           if (needsHerb || needsTradeHerb || activeEvent || (chapterReady(state) && !living.length)) world.action('interact', input)
         }
         world.step(input)
+        if (!visitedMaps.has(world.map.id)) { visitedMaps.add(world.map.id); path = []; previousTarget = { x: -999, y: -999 } }
         if (frame % 10 === 0) expect(() => validateState(state), `第${chapter.id}章第${frame}帧必须可存档`).not.toThrow()
       }
       expect(state.progress[chapter.id].boss, `第${chapter.id}章未打通：hp=${world.player.hp}, kills=${state.progress[chapter.id].kills}, herbs=${state.progress[chapter.id].herbs}, position=${world.player.x},${world.player.y}, event=${JSON.stringify(eventProgress(state))}, star=${JSON.stringify(world.runtime().starChallenge)}`).toBe(true)
       if (chapter.id === 20) expect(eventProgress(state).attempts, '丹界指定药材应在单次45秒内完成').toBe(1)
       if (chapter.id === 23) expect(eventProgress(state).attempts, '天墓三层应各在单次时限内完成').toBe(3)
+      if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
       expect(validateState(state)).toEqual(state)
       expect(state.completed.length).toBe(chapter.id)
