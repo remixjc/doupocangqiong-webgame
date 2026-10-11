@@ -64,7 +64,7 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
               onClick={() => gameStore.earlyTraining({ type: 'market', step: task.market.stage, expectedSpent: task.purse.spent })}>{marketScene.action}</button>
             {task.market.stage === 3 && !task.receipts.woodCore && <p className="muted">先在上方付清魔核采购订单，再核对附物。</p>}
           </> : <><h3>黑铁片已收好</h3><p>护卫介入后，争执告一段落。魔核和黑铁片来自同一次采购，萧炎带着物品回家，准备请药老辨认。</p><p>任务袋：黑铁片 ×{task.market.blackIron}</p></>}
-          <p className="muted">这是对白与交互的压缩改编；可在上方漫步原创准备路线，交易仍由本准备单操作。黑铁片尚未化为玩家的战斗技能。</p>
+          <p className="muted">这是对白与交互的压缩改编；也可从上方进入准备路线，在地点进行同一笔交易。黑铁片尚未化为玩家的战斗技能。</p>
         </section>}
         {task.market.stage === 4 && <section className="bond-summary" aria-label="药老调制与稀释">
           <span className="eyebrow">重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</span>

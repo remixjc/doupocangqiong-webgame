@@ -1,0 +1,50 @@
+import type { GameState } from '../core/model'
+import { gameStore } from '../core/store'
+import { earlySupplies, type EarlySupplyId } from '../core/early-training-state'
+import { earlyMarketScenes } from '../content/early-market'
+import { submitEarlyWalk, type EarlyWalkAction } from '../core/early-walk-actions'
+import { nearbyEarlyWalkPlace, type EarlyWalkPosition } from '../core/early-walk'
+import { earlyTrainingBlock } from '../core/early-training'
+
+export default function EarlyWalkInteraction({ state, position }: { state: GameState; position: EarlyWalkPosition }) {
+  const place = nearbyEarlyWalkPlace(position)
+  if (!place || earlyTrainingBlock(state)) return null
+  const task = state.earlyTraining, spent = task.purse.spent, balance = task.purse.borrowed - spent
+  const act = (action: EarlyWalkAction) => submitEarlyWalk(gameStore, position, action)
+  const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
+  function order(id: EarlySupplyId) {
+    const item = earlySupplies[id]
+    return <article className="recap-line" key={id}><b>{item.label} · {item.price}采购资金</b>
+      {task.receipts[id] && <p>收据已保留 · {task.supplies[id] ? `任务袋${task.supplies[id]}` : '老师已使用材料'}</p>}
+      <button className="secondary" disabled={!task.started || task.receipts[id] || balance < item.price}
+        onClick={() => act({ type: 'purchase', item: id, price: item.price, expectedSpent: spent })}>
+        {task.receipts[id] ? '购买记录已保留' : `在此购买${item.label}`}
+      </button>
+    </article>
+  }
+  return <section className="bond-summary" aria-label="往事地点事务">
+    <p>采购余额 {balance} · 已付 {spent}。两处采购与准备单共用同一份收据，已买过的订单保留。</p>
+    {place.id === 'teacher' && (!task.started
+      ? <button className="primary" onClick={() => act({ type: 'begin' })}>请老师列重修准备单</button>
+      : <p>准备单已记好。老师调制、稀释和初期练习，可回到准备单继续。</p>)}
+    {place.id === 'xuner' && <>
+      <p>薰儿：这笔资金借给你，先把老师的准备单做齐。</p>
+      <button className="primary" disabled={!task.started || task.purse.borrowed > 0}
+        onClick={() => act({ type: 'borrow', expectedSpent: spent })}>{task.purse.borrowed ? '借资记录已保留' : '在此向薰儿借采购资金'}</button>
+    </>}
+    {place.id === 'pharmacy' && <>{order('bluegrass')}{order('boneflower')}</>}
+    {place.id === 'market' && <>
+      {!herbsReady ? <p>先去药铺买齐两种药草，再回来寻找指定魔核。</p> : <>
+        {order('woodCore')}
+        {earlyMarketScenes[task.market.stage] ? <>
+          <h3>{earlyMarketScenes[task.market.stage].title}</h3>
+          <b>{earlyMarketScenes[task.market.stage].speaker}</b><p>{earlyMarketScenes[task.market.stage].text}</p>
+          <button className="secondary" disabled={task.market.stage === 3 && !task.receipts.woodCore}
+            onClick={() => act({ type: 'market', step: task.market.stage, expectedSpent: spent })}>{earlyMarketScenes[task.market.stage].action}</button>
+        </> : <p>黑铁片已收好 · 任务袋 ×{task.market.blackIron} · 没有再次付账</p>}
+      </>}
+    </>}
+    {!task.started && place.id !== 'teacher' && <p>先到药老的盛水容器处接取准备单。</p>}
+    <p className="muted">资金和价格是游戏折算单位，和行囊金币分账；本次交易不发主线奖励。</p>
+  </section>
+}

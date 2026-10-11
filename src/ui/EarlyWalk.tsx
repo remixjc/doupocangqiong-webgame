@@ -3,6 +3,7 @@ import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { earlyWalkPlaces, earlyWalkObstacles, earlyWalkStart, earlyWalkSize, moveEarlyWalker, nearbyEarlyWalkPlace, type EarlyWalkDirection } from '../core/early-walk'
 import { earlyTrainingSaveSummary } from '../core/save-preview'
+import EarlyWalkInteraction from './EarlyWalkInteraction'
 import './early-walk.css'
 
 export default function EarlyWalk({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -24,7 +25,7 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
     <h2>走过街巷，再把准备做齐。</h2>
-    <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E查看；下方方向按钮也可操作。沿街巷熟悉准备次序，采购和调制继续从准备单操作。</p>
+    <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E交互；下方方向按钮也可操作。可在地点接取准备、借资、采购和交涉，调制和练习继续从准备单操作。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="往事路线地图"
       aria-describedby="early-walk-help" viewBox={`0 0 ${earlyWalkSize.width} ${earlyWalkSize.height}`} onKeyDown={key}>
       <title>萧家院落、药铺与坊市的原创压缩布局</title>
@@ -61,7 +62,10 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
       <button className="secondary" onClick={() => move('right')} aria-label="往事向右走">→</button>
       <button className="primary" disabled={!place} onClick={() => place && setReading(place.id)}>查看附近地点</button>
     </div>
-    {reading && <section className="bond-summary" aria-label="往事地点说明"><b>{earlyWalkPlaces.find(item => item.id === reading)!.label}</b><p>{earlyWalkPlaces.find(item => item.id === reading)!.text}</p></section>}
+    {reading && place?.id === reading && <>
+      <section className="bond-summary" aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></section>
+      <EarlyWalkInteraction state={state} position={position} />
+    </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
     <button className="secondary" onClick={onBack}>回到重修准备单</button>
   </>
