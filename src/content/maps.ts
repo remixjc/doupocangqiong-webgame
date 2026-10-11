@@ -22,6 +22,7 @@ export interface MapDefinition {
   survivalZone?: { x: number; y: number; w: number; h: number }
   heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
   duelArena?: { x: number; y: number; w: number; h: number }
+  finalArena?: { x: number; y: number; w: number; h: number }
   escapeRoute?: boolean
   thunderRoute?: boolean
   escapeDurations?: number[]
@@ -445,13 +446,12 @@ export const endgameMaps: Record<number, MapDefinition> = {
   },
   28: {
     id: 'continent-final-battlefield', style: 'final-battle', gateLabel: '终战启程碑',
+    finalArena: { x: 760, y: 80, w: 480, h: 480 },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1050, y: 330 }, safeRadius: 175,
     obstacles: [{ x: 420, y: 100, w: 140, h: 130 }, { x: 660, y: 560, w: 150, h: 110 },
       { x: 70, y: 320, w: 100, h: 100 }],
     herbs: [{ x: 310, y: 440 }, { x: 650, y: 270 }, { x: 1060, y: 670 }, { x: 280, y: 100 }, { x: 570, y: 670 }, { x: 1140, y: 450 }],
-    enemies: [{ id: 'final-west-brute', type: 'brute', x: 630, y: 410 }, { id: 'final-west-mage', type: 'mage', x: 690, y: 310 },
-      { id: 'final-east-hunter', type: 'hunter', x: 1040, y: 540 }, { id: 'final-north-mage', type: 'mage', x: 760, y: 250 },
-      { id: 'final-core-hunter', type: 'hunter', x: 1120, y: 300 }],
+    enemies: [],
     paths: [[{ x: 150, y: 650 }, { x: 330, y: 440 }, { x: 650, y: 410 }, { x: 1010, y: 410 }, { x: 1150, y: 160 }],
       [{ x: 650, y: 410 }, { x: 570, y: 660 }]],
     landmarks: [{ x: 680, y: 60, label: '斗气大陆 · 最终战场' }, { x: 680, y: 755, label: '故人之约 / 最后的防线 / 终战与归途' }],

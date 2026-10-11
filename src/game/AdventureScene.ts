@@ -308,6 +308,10 @@ export default class AdventureScene extends Phaser.Scene {
       g.lineStyle(active ? 4 : 2, active ? 0xa3ded2 : 0xafbcaa, active ? .8 : .4); g.strokeRect(a.x, a.y, a.w, a.h)
       g.lineStyle(1, 0xacbba5, .25); g.strokeCircle(a.x + a.w / 2, a.y + a.h / 2, 180)
     }
+    if (w.map.finalArena) {
+      const arena = w.map.finalArena, active = w.enemies.some(e => e.finale && e.hp > 0)
+      g.lineStyle(active ? 4 : 1, 0xefb88a, active ? .8 : .2); g.strokeRect(arena.x, arena.y, arena.w, arena.h)
+    }
     if (w.map.escapeRoute) {
       const event = eventsForChapter(w.chapter.id).find(e => e.kind === 'escape')!
       const shelterRadius = w.map.thunderRoute ? 110 : 90
@@ -543,6 +547,7 @@ export default class AdventureScene extends Phaser.Scene {
       this.actor(g, e.x, e.y, color, size, false)
       if (e.ranking && e.windup > 0) { g.fillStyle(0x83c7dc, .12); g.fillCircle(e.x, e.y, 45); g.lineStyle(3, 0x9bd5e0, .8); g.strokeCircle(e.x, e.y, 45) }
       if (e.sect && e.windup > 0) { g.fillStyle(0xc0d1e7, .12); g.fillCircle(e.x, e.y, 52); g.lineStyle(3, 0xc0d1e7, .8); g.strokeCircle(e.x, e.y, 52) }
+      if (e.finale && e.windup > 0) { const color = [0xaf98db, 0xd87586, 0xf2b87f][e.finale.phase - 1]; g.fillStyle(color, .15); g.fillCircle(e.x, e.y, 55); g.lineStyle(3, color, .8); g.strokeCircle(e.x, e.y, 55) }
       if (e.burn > 0) { g.lineStyle(2, 0x6de4bc, .8); g.strokeCircle(e.x, e.y, 23 * size) }
       g.fillStyle(0x0b1718, .8); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size, 5, 2)
       g.fillStyle(e.type === 'boss' ? 0xd38d75 : 0xc8b38d); g.fillRoundedRect(e.x - 23 * size, e.y - 48 * size, 46 * size * e.hp / e.maxHp, 5, 2)

@@ -168,7 +168,8 @@ export function validateState(value: unknown): GameState {
     const oldMirrors = n === 25 && versionBefore(data.contentVersion as string, '0.10.4')
     const oldDefense = n === 26 && versionBefore(data.contentVersion as string, '0.11.1')
     const oldVault = n === 27 && versionBefore(data.contentVersion as string, '0.11.2')
-    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldExpedition ? { herbs: 4, kills: 4, brews: 2 } : oldDanFinal ? { herbs: 0, kills: 0, brews: 2 } : oldTomb || oldBodhi || oldMirrors || oldDefense || oldVault ? { herbs: 4, kills: 5, brews: 0 } : oldThunder || oldLineage || oldStar || oldPrison ? { herbs: 4, kills: 4, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
+    const oldFinal = n === 28 && versionBefore(data.contentVersion as string, '0.11.4')
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldExpedition ? { herbs: 4, kills: 4, brews: 2 } : oldDanFinal ? { herbs: 0, kills: 0, brews: 2 } : oldTomb || oldBodhi || oldMirrors || oldDefense || oldVault || oldFinal ? { herbs: 4, kills: 5, brews: 0 } : oldThunder || oldLineage || oldStar || oldPrison ? { herbs: 4, kills: 4, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

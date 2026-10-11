@@ -84,10 +84,11 @@ export interface Runtime {
   tomb?: { stage: number; remaining: number; failed: boolean }
   purification?: { stage: number; remaining: number; corruption: number; inZone: boolean; blocked: boolean; failed: boolean }
   defense?: { stage: number; hp: number; maxHp: number; wave: number; remaining: number; engaged: boolean; failed: boolean }
+  finale?: { phase: number; move: string; shield: boolean; recovery: boolean }
   dead: boolean
 }
 export interface Snapshot { state: GameState; runtime: Runtime; notice: string }
-export const CONTENT_VERSION = '0.11.3'
+export const CONTENT_VERSION = '0.11.4'
 export const blankEvent = (): ChapterEventProgress => ({ started: false, stage: 0, quote: 0, score: 0, attempts: 0, choice: 'none' })
 export const blankProgress = (chapter = 1): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false,
   events: Object.fromEntries(eventsForChapter(chapter).map(event => [event.id, blankEvent()])) })

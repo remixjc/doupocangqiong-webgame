@@ -129,6 +129,10 @@ chapters[26].boss = '本源传承 · 洞府审核'
 chapters[26].opening[2].text = '向古元接取洞府探索，入口碑后三铭按青莲→心炎→星火解封。清理内殿投影、读取石刻并报告，再向内殿南侧传承引路人接取本源凝定。本源心念台35/65/85%三步合计210分通过、失败免费重试；报告和传承审核后营地首通，前往最终战场。'
 chapters[26].trialNote = '三铭火纹、实体封门与本源心念评分为原创压缩探索，不复述原著古玉/洞府机关或判定真实帝境实力；传承审核不生成可杀的本源投影。'
 
+chapters[27].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[27].opening[2].text = '向药老接取终战准备，依序确认家族、盟友、师徒三处约碑，再到启程碑开始终战。三点魂压、六点血环、交叉帝炎按生命阶段变化，预警锁定后闪避；蓄势减伤40%，收招反击提高35%。战场边界封闭，失败免费休整，战前记录保留，正式首通才进入尾声。'
+chapters[27].trialNote = '战前约碑、三阶段招式与窗口为原创终战表达；当前单战场，跨场景下一批接续。首通一次，尾声后可重返历练。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

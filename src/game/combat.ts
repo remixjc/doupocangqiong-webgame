@@ -18,6 +18,7 @@ export interface Fighter extends Vec {
   duel?: { phase: number; move: 'thrust' | 'fan' | 'cyclone'; sequence: number; origin: Vec; dashTime: number; recovery: number }
   ranking?: { phase: number; recovery: number; practice: boolean; sequence: number }
   sect?: { phase: number; recovery: number; sequence: number }
+  finale?: { phase: number; recovery: number; sequence: number; move: 'soul-pressure' | 'blood-ring' | 'emperor-flame' }
 }
 export interface Herb extends Vec { available: boolean; respawn: number }
 export interface Effect extends Vec { radius: number; time: number; maxTime: number; color: number; kind: 'ring' | 'slash' }
@@ -673,14 +674,16 @@ export class CombatWorld {
       windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0,
       ...(type === 'boss' && this.map.duelArena ? { duel: { phase: 1, move: 'thrust' as const, sequence: 0, origin: { x, y }, dashTime: 0, recovery: 0 } } : {}),
       ...(type === 'boss' && this.map.rankingArena ? { ranking: { phase: 1, recovery: 0, practice: this.cb.state().completed.includes(14), sequence: 0 } } : {}),
-      ...(type === 'boss' && this.map.siegeDurations ? { sect: { phase: 1, recovery: 0, sequence: 0 } } : {}) })
+      ...(type === 'boss' && this.map.siegeDurations ? { sect: { phase: 1, recovery: 0, sequence: 0 } } : {}),
+      ...(type === 'boss' && this.map.finalArena ? { finale: { phase: 1, recovery: 0, sequence: 0, move: 'soul-pressure' as const } } : {}) })
   }
   guardsRemaining(eventId: string, index: number) {
     const guards = eventsForChapter(this.chapter.id).find(e => e.id === eventId)?.checkpoints?.[index]?.guards ?? []
     return this.enemies.filter(e => e.hp > 0 && e.spawnId && guards.includes(e.spawnId)).length
   }
   private move(p: Vec, vx: number, vy: number) {
-    const arena = this.map.duelArena && this.enemies.some(e => e.duel && e.hp > 0) ? this.map.duelArena : undefined
+    const arena = this.map.finalArena && this.enemies.some(e => e.finale && e.hp > 0) ? this.map.finalArena
+      : this.map.duelArena && this.enemies.some(e => e.duel && e.hp > 0) ? this.map.duelArena : undefined
     const nx = clamp(p.x + vx, arena ? arena.x + 22 : 40, arena ? arena.x + arena.w - 22 : WIDTH - 40)
     const ny = clamp(p.y + vy, arena ? arena.y + 22 : 45, arena ? arena.y + arena.h - 22 : HEIGHT - 40)
     const map = this.collisionMap()
@@ -694,6 +697,7 @@ export class CombatWorld {
     if (e.hp <= 0) return
     if (e.ranking) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .35 : e.ranking.recovery > 0 ? 1.25 : 1)))
     if (e.sect) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .55 : e.sect.recovery > 0 ? 1.3 : 1)))
+    if (e.finale) amount = Math.max(1, Math.round(amount * (e.windup > 0 ? .6 : e.finale.recovery > 0 ? 1.35 : 1)))
     e.hp = Math.max(0, e.hp - amount)
     if (e.patrol) e.alert = 1
     this.floats.push({ x: e.x, y: e.y - 40, text: String(amount), time: .65, color: '#f4deb4' })
@@ -949,6 +953,44 @@ export class CombatWorld {
     e.secondary = offsets.map(([x, y]) => ({ x: clamp(p.x + x, 65, WIDTH - 65), y: clamp(p.y + y, 65, HEIGHT - 65) }))
     e.radius = sect.phase === 3 ? 95 : 85; e.windup = sect.phase === 3 ? .85 : 1.15
   }
+  private stepFinale(e: Fighter, dt: number) {
+    const finale = e.finale!, p = this.player, arena = this.map.finalArena!
+    const phase = e.hp / e.maxHp <= 1 / 3 ? 3 : e.hp / e.maxHp <= 2 / 3 ? 2 : 1
+    if (phase !== finale.phase) {
+      finale.phase = phase; finale.recovery = 0; e.windup = 0; e.secondary = []; e.timer = 1.6
+      finale.move = phase === 2 ? 'blood-ring' : 'emperor-flame'
+      this.cb.notify(`终战第${phase}阶段 · ${phase === 2 ? '六点血环' : '交叉帝炎'}，旧预警解除，留意新招式。`)
+      return
+    }
+    if (finale.recovery > 0) { finale.recovery = Math.max(0, finale.recovery - dt); return }
+    if (e.windup > 0) {
+      e.windup -= dt
+      if (e.windup <= 0) {
+        for (const point of [e.target, ...(e.secondary ?? [])]) {
+          if (distance(point, p) < e.radius + 16) this.hurtPlayer([95, 105, 120][phase - 1])
+          this.effect(point.x, point.y, e.radius, [0xaf98db, 0xd87586, 0xf2b87f][phase - 1])
+        }
+        finale.recovery = [1.3, 1.1, .9][phase - 1]; e.timer = .7
+      }
+      return
+    }
+    e.timer -= dt
+    if (e.timer > 0) {
+      const dist = distance(e, p)
+      if (dist > 180) this.move(e, (p.x - e.x) / dist * dt * 95, (p.y - e.y) / dist * dt * 95)
+      return
+    }
+    finale.sequence++
+    const points = phase === 2 ? Array.from({ length: 6 }, (_, i) => {
+      const angle = i * Math.PI / 3 + (finale.sequence % 2 ? Math.PI / 6 : 0)
+      return { x: p.x + Math.cos(angle) * 130, y: p.y + Math.sin(angle) * 130 }
+    }) : (phase === 1 ? [[0, 0], [-100, 0], [100, 0]] : [[0, 0], [-140, 0], [140, 0], [0, -140], [0, 140]])
+      .map(([x, y]) => ({ x: p.x + x, y: p.y + y }))
+    const locked = points.map(point => ({ x: clamp(point.x, arena.x + 28, arena.x + arena.w - 28),
+      y: clamp(point.y, arena.y + 28, arena.y + arena.h - 28) }))
+    e.target = locked[0]; e.secondary = locked.slice(1)
+    e.radius = [55, 55, 65][phase - 1]; e.windup = [1.1, 1.15, .95][phase - 1]
+  }
   private stepRanking(e: Fighter, dt: number) {
     const rank = e.ranking!, p = this.player
     rank.phase = e.hp / e.maxHp < .5 ? 2 : 1
@@ -1068,6 +1110,7 @@ export class CombatWorld {
       if (e.duel) { this.stepDuel(e, dt); continue }
       if (e.ranking) { this.stepRanking(e, dt); continue }
       if (e.sect) { this.stepSect(e, dt); continue }
+      if (e.finale) { this.stepFinale(e, dt); continue }
       const defending = e.spawnId?.startsWith('defense-') && this.defenseRun
       if (defending && (defending.failed || defending.hp <= 0)) { e.windup = 0; continue }
       const ally = this.squad?.holding && this.squad.hp > 0 ? this.squad : this.huntTeam && this.huntTeam.hp > 0 ? this.huntTeam
@@ -1184,6 +1227,8 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
+      finale: boss?.finale && boss.hp > 0 ? { phase: boss.finale.phase, move: { 'soul-pressure': '三点魂压', 'blood-ring': '六点血环', 'emperor-flame': '交叉帝炎' }[boss.finale.move],
+        shield: boss.windup > 0, recovery: boss.finale.recovery > 0 } : undefined,
       tomb: this.tombRun ? { stage: this.tombRun.stage, remaining: Math.max(0, Math.ceil(this.map.tombDurations![this.tombRun.stage - 1] - this.tombRun.elapsed)), failed: this.tombRun.failed } : undefined,
       prisonEscort: this.prisonEscort ? { hp: this.prisonEscort.hp, maxHp: this.prisonEscort.maxHp, waiting: this.prisonEscort.waiting,
         failed: this.prisonEscort.hp <= 0, arrived: this.prisonArrived() } : undefined,

@@ -26,6 +26,18 @@ export interface ChapterEvent {
   mindReward?: number
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  28: {
+    id: 'final-battle-three-vows', kind: 'vow', introducedVersion: '0.11.4',
+    title: '终战 · 故人之约', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['前往家族之约碑确认守护初心', '前往盟友退路碑确认最后防线', '前往师徒之约碑确认终战准备', '三处战前约定已记录，前往终战启程碑'],
+    introduction: '最后一战，也要记清为何而战。按家族、盟友、师徒三处约碑确认，再到启程碑面对终战。生命低于三分之二、三分之一时招式变化；蓄势期间减伤40%，收招窗口反击提高35%。战斗期间边界封闭，倒下免费休整，战前记录保留。',
+    note: '三处约碑、三点魂压/六点血环/交叉帝炎、数值与窗口为原创终战表达，不复述原著完整战斗招式或伤害。药老支援从统一归队规则读取；终局首通奖励只发一次。当前采用单战场，跨场景表现下一批接续。',
+    checkpoints: [
+      { x: 330, y: 220, label: '家族之约', text: '家族之约已记下。守住可以重新开始的家园，再去确认盟友退路。' },
+      { x: 650, y: 410, label: '盟友退路', text: '盟友退路已确认。最后的防线需要共同守护，再到师徒之约碑。' },
+      { x: 950, y: 650, label: '师徒之约', text: '师徒之约已确认。药老支援保持归队；前往启程碑开始终战，闪避预警、趁收招反击。' },
+    ],
+  },
   27: {
     id: 'emperor-vault-three-inscriptions', kind: 'vault', introducedVersion: '0.11.2',
     title: '洞府 · 三铭封门', speaker: '古元', npc: { x: 280, y: 625 },
