@@ -7,6 +7,7 @@ import { nearbyEarlyWalkPlace, type EarlyWalkPosition } from '../core/early-walk
 import { earlyTrainingBlock } from '../core/early-training'
 import { earlyLiquidScenes } from '../content/early-liquid'
 import EarlyPractice from './EarlyPractice'
+import EarlyBracelet from './EarlyBracelet'
 
 export default function EarlyWalkInteraction({ state, position }: { state: GameState; position: EarlyWalkPosition }) {
   const place = nearbyEarlyWalkPlace(position)
@@ -56,6 +57,7 @@ export default function EarlyWalkInteraction({ state, position }: { state: GameS
             onClick={() => act({ type: 'market', step: task.market.stage, expectedSpent: spent })}>{earlyMarketScenes[task.market.stage].action}</button>
         </> : <p>黑铁片已收好 · 任务袋 ×{task.market.blackIron} · 没有再次付账</p>}
       </>}
+      <EarlyBracelet state={state} position={position} />
     </>}
     {!task.started && place.id !== 'teacher' && <p>先到药老的盛水容器处接取准备单。</p>}
     <p className="muted">资金和价格是游戏折算单位，和行囊金币分账；本次交易不发主线奖励。</p>

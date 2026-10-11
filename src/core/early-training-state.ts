@@ -6,6 +6,7 @@ export interface EarlyTrainingState {
   market: { stage: number; blackIron: number }
   liquid: { stage: number; water: boolean; ready: boolean }
   practice: { phase: number; pulse: number; score: number; attempts: number }
+  bracelet: { stage: number; gift: 'none' | 'xuner' }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -22,9 +23,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     receipts: { bluegrass: false, boneflower: false, woodCore: false },
     market: { stage: 0, blackIron: 0 },
     liquid: { stage: 0, water: false, ready: false },
-    practice: { phase: 0, pulse: 0, score: 0, attempts: 0 } }
+    practice: { phase: 0, pulse: 0, score: 0, attempts: 0 },
+    bracelet: { stage: 0, gift: 'none' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -75,5 +77,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (practice.phase === 1 && (practice.pulse > 2 || practice.score > practice.pulse * 100)) return invalid()
   if (practice.phase >= 2 && (practice.pulse !== 3 || practice.score < 180)) return invalid()
   result.practice = { phase: practice.phase, pulse: practice.pulse, score: practice.score, attempts: practice.attempts }
+  const bracelet = data.bracelet === undefined && legacyBracelet ? result.bracelet : object(data.bracelet)
+  if (!integer(bracelet.stage, 6) || bracelet.gift !== (bracelet.stage >= 5 ? 'xuner' : 'none')
+    || bracelet.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
+  result.bracelet = { stage: bracelet.stage, gift: bracelet.gift as 'none' | 'xuner' }
   return result
 }
