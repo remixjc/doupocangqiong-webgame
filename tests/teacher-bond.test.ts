@@ -66,8 +66,9 @@ describe('C10f 师徒传授与归途', () => {
   })
   it('动画上限2仅显示师徒初课，隐藏离队/归队/终局页标题', () => {
     const s = cleared(28); s.settings.spoiler = 'anime'; s.settings.animeLimit = 2
-    const journal = bondJournal(s); expect(journal).toHaveLength(1)
-    expect(journal[0].id).toBe('yao-teacher'); expect(journal[0].entries).toHaveLength(1)
+    const journal = bondJournal(s), teacher = journal.find(line => line.id === 'yao-teacher')!
+    expect(teacher.entries).toHaveLength(1)
+    expect(journal.every(line => line.entries.every(entry => entry.chapter <= 2))).toBe(true)
     expect(JSON.stringify(journal)).not.toContain('留下的日课'); expect(JSON.stringify(journal)).not.toContain('归队之后'); expect(JSON.stringify(journal)).not.toContain('传授未止')
   })
 })

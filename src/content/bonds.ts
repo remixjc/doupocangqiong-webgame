@@ -14,6 +14,8 @@ export const bondLines = [
   { id: 'yun-yun', name: '云韵', title: '相遇与立场' },
   { id: 'medusa', name: '美杜莎', title: '共历与责任' },
   { id: 'yao-teacher', name: '药老', title: '传授与归途' },
+  { id: 'xuner', name: '薰儿', title: '相知与同行' },
+
 ]
 export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
   {
@@ -447,6 +449,93 @@ export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
         options: [
           { choice: 'steady', label: '守住初心 · 认真照看后来的少年', response: '你记得最初的日课，愿意认真照看后来的少年。', reward: { xp: 60, heal: 1 } },
           { choice: 'premium', label: '整理手札 · 将经验与疑问一并留下', response: '你把经验与仍在思考的疑问写下，让后来者继续求索。', reward: { xp: 60, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 1,
+    event: {
+      id: 'xuner-youth-letter', kind: 'bond', optional: true, introducedVersion: '0.12.7',
+      requiresCompleted: [1], title: '薰儿 · 少年书简', speaker: '薰儿 · 同行书简', npc: { x: 450, y: 710 },
+      stages: ['到少年记读重新启程的书简', '前往相知石留下回应', '返回书简处确认并领取一次补给', '少年书简已记入伙伴手札'],
+      introduction: '后山篇章正式首通后，读一页同行书简。经过少年记与相知石，想一想怎样回应曾有的鼓励，再回来确认。',
+      note: '书简为原创少年回望，不指定原著寄信或到场时刻，不复述原著对白。正式首通条件防止跳过药老教学；不会增加斗技、异火或主线奖励。',
+      checkpoints: [
+        { x: 550, y: 430, label: '少年记', text: '曾有人愿意在你尚未走出低谷时认真听你说话。重新启程，也可以记下这份相知。' },
+        { x: 830, y: 730, label: '相知石', text: '把鼓励变成下一程可以实践的行动，为少年书简留下回应。' },
+      ],
+      bond: {
+        lineId: 'xuner', question: '面对重新启程的鼓励，你愿意怎样回应？',
+        options: [
+          { choice: 'steady', label: '踏实启程 · 用每天的行动回应信任', response: '你珍重这份信任，愿意踏实做好每一天的练习。', reward: { xp: 15, heal: 1 } },
+          { choice: 'premium', label: '认真倾听 · 也记下她的愿望', response: '你愿意认真倾听，让彼此的愿望都被看见。', reward: { xp: 15, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 14,
+    event: {
+      id: 'xuner-academy-memory', kind: 'bond', optional: true, introducedVersion: '0.12.7',
+      requiresCompleted: [14], requiresHistory: [{ chapter: 1, eventId: 'xuner-youth-letter' }],
+      title: '薰儿 · 内院同路', speaker: '薰儿 · 内院书简', npc: { x: 420, y: 730 },
+      stages: ['到同路记回望学院生活', '前往共历石回应同行', '返回书简处确认并领取一次补给', '内院同路已记入伙伴手札'],
+      introduction: '内院篇章正式首通后，读一页学院生活的回望。经过同路记与共历石，写下你愿意如何珍重共同经历，再回来确认。',
+      note: '本页为学院共同经历的原创回望，不指定原作寄信或到场时刻。同行记录与猎捕、火能和强榜分别保存；补给只在返回确认时发放一次。',
+      checkpoints: [
+        { x: 500, y: 350, label: '同路记', text: '学院里有竞逐，也有可以共同走过的日常。曾经的相知有了更多新的经历。' },
+        { x: 900, y: 650, label: '共历石', text: '将同行写成能够实践的约定，而非只留在胜负之后。' },
+      ],
+      bond: {
+        lineId: 'xuner', question: '怎样珍重学院里的共同经历？',
+        options: [
+          { choice: 'steady', label: '彼此照看 · 为同行留出退路', response: '你愿意彼此照看，将退路与耐心留给同行者。', reward: { xp: 30, heal: 1 } },
+          { choice: 'premium', label: '共同商量 · 尊重各自的步调', response: '你愿意共同商量，也尊重各自需要走出的步调。', reward: { xp: 30, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 23,
+    event: {
+      id: 'xuner-ancient-road', kind: 'bond', optional: true, introducedVersion: '0.12.7',
+      requiresCompleted: [23], requiresHistory: [{ chapter: 14, eventId: 'xuner-academy-memory' }],
+      title: '薰儿 · 古界余页', speaker: '薰儿 · 古界书简', npc: { x: 430, y: 730 },
+      stages: ['到重逢记回望古族之行', '前往心愿石留下回应', '返回书简处确认并领取一次补给', '古界余页已记入伙伴手札'],
+      introduction: '古族与天墓篇章正式首通后，读一页旧路的回望。从重逢记到心愿石，想清楚新的责任如何与相知同行，再回来确认。',
+      note: '本页承接游戏压缩主线的原创回望，古族关系与原著重逢细节仍需来源校订。不会代替天墓探索或族史传承，不增加血脉、斗技或异火；书简不代表精确原作到场时序。',
+      checkpoints: [
+        { x: 500, y: 440, label: '重逢记', text: '走过不同的道路之后，相知也需要重新听见彼此的心愿。' },
+        { x: 1180, y: 630, label: '心愿石', text: '责任与牵挂都可以认真承担，却不必把彼此的愿望变成束缚。' },
+      ],
+      bond: {
+        lineId: 'xuner', question: '面对新的责任，怎样继续珍重这份相知？',
+        options: [
+          { choice: 'steady', label: '认真承担 · 将承诺落实到行动', response: '你愿意认真承担，将说出的承诺落实到行动。', reward: { xp: 45, heal: 1 } },
+          { choice: 'premium', label: '坦诚商量 · 让各自心愿有位置', response: '你愿意坦诚商量，让各自的心愿都能被认真听见。', reward: { xp: 45, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 28,
+    event: {
+      id: 'xuner-homeward-letter', kind: 'bond', optional: true, introducedVersion: '0.12.7',
+      requiresCompleted: [28], requiresHistory: [{ chapter: 23, eventId: 'xuner-ancient-road' }],
+      title: '薰儿 · 灯下归途', speaker: '薰儿 · 灯下书简', npc: { x: 780, y: 60 },
+      stages: ['到旧灯记读归途书简', '前往新程石回应下一程', '返回书简处确认并领取一次补给', '相知与同行四页已完成'],
+      introduction: '终战正式首通后，重返营地读灯下书简。经过旧灯记与新程石，回望相知与同行，为下一程留下回应，再回来确认。',
+      note: '书简是原创尾声，不补写原著婚姻、家庭、职位或最终去向。前页与正式终战首通必须真实完成，报告一次发放补给，不重复主线终局奖励。',
+      checkpoints: [
+        { x: 380, y: 530, label: '旧灯记', text: '最初的鼓励、学院的日常与重逢时的心愿，如今都成为归途的灯火。' },
+        { x: 850, y: 230, label: '新程石', text: '新的生活仍然可以继续倾听、共同商量，并认真兑现约定。' },
+      ],
+      bond: {
+        lineId: 'xuner', question: '走过终战，怎样回应下一程的灯火？',
+        options: [
+          { choice: 'steady', label: '珍重日常 · 继续兑现共同约定', response: '你珍重新的日常，愿意继续认真兑现共同约定。', reward: { xp: 60, heal: 1 } },
+          { choice: 'premium', label: '共同启程 · 认真商量新的生活', response: '你愿意共同启程，让新的生活也有倾听与商量。', reward: { xp: 60, mana: 1 } },
         ],
       },
     },

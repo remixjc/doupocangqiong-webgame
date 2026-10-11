@@ -21,8 +21,8 @@ function act(s: ReturnType<typeof cleared>, id: string, action: EventAction) {
 describe('C10g-1 回访安排与前页导航', () => {
   it('旧通关只安排每线首张可做页，尾声被前页挡住，规划不改存档', () => {
     const s = cleared(), before = structuredClone(s), queue = bondVisitQueue(s)
-    expect(queue).toHaveLength(6)
-    expect(queue.map(entry => entry.chapter)).toEqual([2, 4, 5, 7, 8, 8])
+    expect(queue).toHaveLength(7)
+    expect(queue.map(entry => entry.chapter)).toEqual([1, 2, 4, 5, 7, 8, 8])
     expect(queue.every(entry => entry.status === 'available')).toBe(true)
     const last = bondJournal(s).find(line => line.id === 'little-doctor')!.entries.at(-1)!
     expect(last.status).toBe('blocked')
@@ -64,12 +64,12 @@ describe('C10g-1 回访安排与前页导航', () => {
   })
   it('剧透范围同时约束队列、前页标题、汇总数字和实际HTML', () => {
     const s = cleared(); s.settings.spoiler = 'anime'; s.settings.animeLimit = 2
-    const queue = bondVisitQueue(s); expect(queue).toHaveLength(1)
-    expect(queue[0].chapter).toBe(2)
+    const queue = bondVisitQueue(s); expect(queue).toHaveLength(2)
+    expect(queue.map(entry => entry.chapter)).toEqual([1, 2])
     const journal = bondJournal(s)
-    expect(journal).toHaveLength(1); expect(journal[0].entries).toHaveLength(1)
+    expect(journal).toHaveLength(2); expect(journal.every(line => line.entries.length === 1)).toBe(true)
     const html = renderToStaticMarkup(<BondJournal state={s} visit={() => {}} />)
-    expect(html).toContain('继续第2章'); expect(html).toContain('可见记录 0 / 1')
+    expect(html).toContain('继续第1章'); expect(html).toContain('可见记录 0 / 2')
     for (const { chapter, event } of bondEvents.filter(item => item.chapter > 2)) {
       expect(html).not.toContain(event.title)
       expect(journal[0].entries.some(entry => entry.chapter === chapter)).toBe(false)

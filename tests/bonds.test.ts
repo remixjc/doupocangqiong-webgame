@@ -101,7 +101,9 @@ describe('C10a 小医仙跨章回访与伙伴手札', () => {
   })
   it('防剧透手札不显示超出范围的伙伴/卷页/回应，主线解锁与卷页前置分别显示', () => {
     const s = cleared(4); s.settings.spoiler = 'anime'; s.settings.animeLimit = 1
-    expect(bondJournal(s)).toEqual([])
+    const earliest = bondJournal(s)
+    expect(earliest).toHaveLength(1); expect(earliest[0].id).toBe('xuner'); expect(earliest[0].entries).toHaveLength(1)
+    expect(JSON.stringify(earliest)).not.toContain('内院同路')
     s.settings.animeLimit = 4
     const visible = bondJournal(s); expect(visible[0].entries).toHaveLength(1)
     expect(JSON.stringify(visible)).not.toContain('毒体'); expect(JSON.stringify(visible)).not.toContain('归途来信')
