@@ -41,7 +41,7 @@ describe('C7a-2 丹界限时指定药材', () => {
       expect(apply(s, { type: 'seal', index })).toBe(s)
     }
     expect(eventProgress(s)).toMatchObject({ stage: 2, score: 7 }); expect(eventDone(s)).toBe(false)
-    s = apply(s, { type: 'deliver' }); expect(eventDone(s)).toBe(true)
+    s = apply(s, { type: 'deliver' }); expect(eventDone(s, 20, 'dan-realm-timed-herbs')).toBe(true)
     expect(apply(s, { type: 'deliver' })).toBe(s); expect(s.inventory).toEqual(before.inventory)
     expect(s.gold).toBe(before.gold); expect(s.xp).toBe(before.xp)
   })
@@ -78,7 +78,7 @@ describe('C7a-2 丹界限时指定药材', () => {
     expect(w.enemies.map(e => e.spawnId)).toEqual(['dan-east-hunter', 'dan-east-mage'])
     expect(t.state()).toEqual(before); expect(w.runtime().expedition?.collected).toBe(2)
   })
-  it('取得三份后停止计时，事件仍不能替代两炉炼药与丹雷试炼', () => {
+  it('取得三份后停止计时，事件仍不能替代控火成丹与丹雷试炼', () => {
     const t = setup(7), w = t.world
     tick(w, 2800); expect(w.expeditionRun).toBeUndefined()
     t.act({ type: 'deliver' }); Object.assign(w.player, w.map.gate); w.action('interact', { x: 0, y: 0 })

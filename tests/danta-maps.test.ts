@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { chapterById } from '../src/content/chapters'
 import { mapCollides, mapForChapter } from '../src/content/maps'
-import { eventForChapter } from '../src/content/events'
+import { eventForChapter, eventsForChapter } from '../src/content/events'
 
 describe('C7a-1 丹界、星域与魂殿场景基础', () => {
   it.each([20, 21, 22])('第%i章资源足够且营地、出口、所有资源与敌人可达', chapter => {
@@ -16,7 +16,7 @@ describe('C7a-1 丹界、星域与魂殿场景基础', () => {
     }
     const event = eventForChapter(chapter)
     for (const p of [map.spawn, map.camp, map.gate, map.bossSpawn, ...map.herbs, ...map.enemies,
-      ...(event ? [event.npc, ...(event.checkpoints ?? [])] : [])]) {
+      ...eventsForChapter(chapter).flatMap(e => [e.npc, ...(e.checkpoints ?? [])])]) {
       expect(mapCollides(map, p), `阻挡点${p.x},${p.y}`).toBe(false)
       expect(queue.some(q => Math.hypot(q.x - p.x, q.y - p.y) < 15), `不可达${p.x},${p.y}`).toBe(true)
     }

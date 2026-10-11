@@ -1,4 +1,4 @@
-import { certificationTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
+import { certificationTargets, danFinalTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' | 'restart' }
@@ -34,8 +34,8 @@ export function eventHint(state: GameState, eventId?: string): string {
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
-    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
-    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification', 'lineage', 'expedition'].includes(event.kind) ? 1 : 0,
+    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
+    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -112,6 +112,23 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'danfinal' && action.type === 'test' && p.stage === 0) {
+      p.stage = 1; p.score = 0; message = '大会丹炉开始。三步火候30 / 70 / 50%，合计210分通过。'
+    } else if (event.kind === 'danfinal' && action.type === 'pulse' && p.stage >= 1 && p.stage <= 3) {
+      if (action.stage !== p.stage || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1) return fail('控火输入已更新或无效。')
+      p.score += Math.max(0, Math.round(100 - Math.abs(action.marker - danFinalTargets[p.stage - 1]) * 200)); p.stage++
+      message = `本步已锁定 · 累计${p.score}/300分。`
+      if (p.stage === 4) {
+        p.attempts++
+        if (p.score < 210) { message = `本次${p.score}分，未达210分。免费重试三步，不扣材料。`; p.stage = 0; p.score = 0 }
+        else message = '控火成丹通过。大会练习丹药不进入行囊，前往丹雷台开始生存。'
+      }
+    } else if (event.kind === 'danfinal' && action.type === 'seal' && action.index === 1 && p.stage === 4) {
+      p.stage = 5; message = event.checkpoints![1].text
+    } else if (event.kind === 'danfinal' && action.type === 'survive' && p.stage === 5) {
+      p.stage = 6; message = '丹雷平息。返回玄空子处登记，再到大会审核台确认。'
+    } else if (event.kind === 'danfinal' && action.type === 'deliver' && p.stage === 6) {
+      next.xp += 80; p.stage = 7; message = '大会成绩已登记 · 80积累。未额外产丹，前往审核台确认。'
     } else if (event.kind === 'expedition' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; p.attempts++; message = event.checkpoints![0].text
     } else if (event.kind === 'expedition' && action.type === 'restart' && p.stage === 1) {
@@ -122,7 +139,7 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
       p.score |= bit; message = event.checkpoints![action.index].text
       if (p.score === 7) { p.stage = 2; message = '三份药材已齐，时限结束。回丹塔执事登记，再准备炼药与丹雷历练。' }
     } else if (event.kind === 'expedition' && action.type === 'deliver' && p.stage === 2) {
-      p.stage = 3; message = '丹界探索已经登记，不增发药材或丹药。继续完成本章炼药目标与丹雷历练。'
+      p.stage = 3; message = '丹界探索已经登记，不增发药材或丹药。向玄空子接取控火成丹与丹雷历练。'
     } else if (event.kind === 'lineage' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'lineage' && action.type === 'seal' && p.stage === 1 && [1, 2].includes(action.index)) {

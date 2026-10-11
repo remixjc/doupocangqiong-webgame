@@ -89,9 +89,10 @@ chapters[18].boss = '星陨师门 · 联络审核'
 chapters[18].trialNote = '两份师门记录、守卫与方向校对为原创联络关卡；第19章不提前营救药老，完整四阁赛事后续扩展。'
 chapters[18].opening[2].text = '与风尊者接取师门联络，看师门牌后清理西林和东侧驻点守卫，带回两份记录，先后不限。到中庭校对台比对下一程，错误免费重试；返回风尊者登记，再到联络审核台确认。'
 
-chapters[19].objectives = { herbs: 0, kills: 0, brews: 2 }
-chapters[19].trialNote = '丹界指定药材限时收集为原创玩法；当前炼制两炉与普通丹雷投影保留，专属控火成丹/丹雷生存继续后续批次。'
-chapters[19].opening[2].text = '向丹塔执事接取药材目标，到药谷任务牌按E开始45秒收集。清理三处守卫，再取得指定药材，顺序不限；普通药草不能替代。超时免费重试，已取得节点保留。回报后仍需炼制两炉丹药并通过丹雷投影。'
+chapters[19].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[19].boss = '丹会成绩 · 大会审核'
+chapters[19].trialNote = '限时药材、三步控火与18秒丹雷生存为原创丹会关卡，不判定原著丹药品级；练习不额外生成玩家丹药。'
+chapters[19].opening[2].text = '先向丹塔执事完成45秒指定药材目标，再到南侧找玄空子。大会丹炉按30/70/50%三步控火，合计210分通过，失败免费重试。到丹雷台累计18秒并躲避三阶段雷击，回玄空子登记，再到审核台通过本章。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

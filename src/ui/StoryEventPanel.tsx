@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { certificationTargets, findEvent, tournamentRound, tournamentRounds } from '../content/events'
+import { certificationTargets, danFinalTargets, findEvent, tournamentRound, tournamentRounds } from '../content/events'
 import { eventDone, eventHint, eventProgress, pulseMarker, type EventAction } from '../core/events'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -9,6 +9,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   const [marker, setMarker] = useState(0)
   useEffect(() => {
     const moving = (event?.kind === 'stone' && progress.stage >= 1 && progress.stage <= 3) ||
+      (event?.kind === 'danfinal' && progress.stage >= 1 && progress.stage <= 3) ||
       (event?.kind === 'certification' && progress.stage >= 2 && progress.stage <= 4) ||
       (event?.kind === 'tournament' && progress.stage >= 2 && progress.stage <= 12 && ![5, 9].includes(progress.stage))
     if (!moving) return
@@ -24,7 +25,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -38,6 +39,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'lineage' && action.type === 'lead' && checkpoint !== 3) { gameStore.notify('请在中庭校对台比对线索。'); return false }
       if (event.kind === 'lineage' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回风尊者处登记。'); return false }
       if (event.kind === 'expedition' && ['restart', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回丹塔执事处重试或登记。'); return false }
+      if (event.kind === 'danfinal' && ['test', 'pulse'].includes(action.type) && checkpoint !== 0) { gameStore.notify('请在大会丹炉操作控火。'); return false }
+      if (event.kind === 'danfinal' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回玄空子处接取或登记。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -148,6 +151,16 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === undefined && progress.stage === 1 && <button className="secondary" onClick={() => { if (act({ type: 'restart' })) close() }}>免费重试 · 保留已取得节点</button>}
       {checkpoint === undefined && progress.stage === 2 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记丹界药材目标</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'danfinal' && progress.started && !done && <>
+      <p>成丹累计 {progress.score}/300 分 · 已完成尝试 {progress.attempts} 次 · 210分通过，免费重试</p>
+      {checkpoint === 0 && progress.stage === 0 && <button className="primary" onClick={() => act({ type: 'test' })}>开始三步成丹 · 免费赛材</button>}
+      {checkpoint === 0 && progress.stage >= 1 && progress.stage <= 3 && <>
+        <p>{['提炼', '融合', '凝丹'][progress.stage - 1]}目标 {danFinalTargets[progress.stage - 1] * 100}%</p>
+        <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="丹会成丹控火指针"><div className="heat-target" style={{ left: `${danFinalTargets[progress.stage - 1] * 100 - 8}%`, width: '16%', background: '#81c99d66' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+        <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定本步火候</button>
+      </>}
+      {checkpoint === undefined && progress.stage === 6 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记大会成绩 · 80积累</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

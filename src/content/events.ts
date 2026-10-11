@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -305,9 +305,23 @@ const mountainEvents: ChapterEvent[] = [{
     { x: 400, y: 450, label: '西侧撤离标记', text: '已安全撤离，返回营地结算。本次没有击杀紫晶翼狮王。' },
   ],
 }]
+export const danFinalTargets = [.3, .7, .5]
+const danFinalEvents: ChapterEvent[] = [{
+  id: 'danta-alchemy-lightning-final', kind: 'danfinal', introducedVersion: '0.9.2', requires: ['dan-realm-timed-herbs'],
+  title: '丹会 · 成丹与丹雷', speaker: '玄空子', npc: { x: 420, y: 700 },
+  stages: ['到大会丹炉开始三步控火', '提炼：锁定30%火候', '融合：锁定70%火候', '凝丹：锁定50%火候',
+    '控火通过，前往丹雷台按E开始生存', '在丹雷台范围内累计18秒，躲避三阶段雷击',
+    '丹雷平息，返回玄空子处登记', '大会成绩已登记，前往审核台'],
+  introduction: '药材目标登记后，再到大会丹炉用30%、70%、50%火候完成三步。合计210分通过，错误可免费重试。接着去丹雷台开始18秒生存，雷击从追踪到双落雷再到五点雷阵逐渐增强；最后回来登记。',
+  note: '控火、分数与丹雷为原创大会改编，不判定原著丹药品级。任务药材仅供大会，练习不扣玩家材料、也不生产行囊丹药。失败免费重建当前阶段；登记一次80积累，营地首通740金币，药老仍待营救。',
+  checkpoints: [
+    { x: 650, y: 390, label: '大会丹炉', text: '练习火候30 / 70 / 50%，三步合计210分；免费练习材料，不生成玩家丹药。' },
+    { x: 1080, y: 300, label: '丹雷台', text: '丹雷生存开始。区域内累计18秒，区外暂停；落雷会锁定脚下，及时闪避。' },
+  ],
+}]
 export function eventsForChapter(id: number): ChapterEvent[] {
   const primary = eventForChapter(id)
-  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : [])]
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : [])]
 }
 export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
   return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)

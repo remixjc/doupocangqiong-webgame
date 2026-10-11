@@ -26,6 +26,7 @@ export interface MapDefinition {
   thunderRoute?: boolean
   escapeDurations?: number[]
   expeditionDuration?: number
+  lightningTrial?: { center: Point; radius: number; duration: number }
   rankingArena?: boolean
   towerFloors?: TowerFloor[]
   siegeDurations?: number[]
@@ -329,7 +330,8 @@ export const returnAndCentralMaps: Record<number, MapDefinition> = {
 }
 export const dantaAndRescueMaps: Record<number, MapDefinition> = {
   20: {
-    id: 'danta-dan-realm-valley', style: 'dan-realm', gateLabel: '丹雷历练台', expeditionDuration: 45,
+    id: 'danta-dan-realm-valley', style: 'dan-realm', gateLabel: '大会成绩审核', expeditionDuration: 45, trialMode: 'assessment',
+    lightningTrial: { center: { x: 1080, y: 300 }, radius: 170, duration: 18 },
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1080, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 460, y: 110, w: 170, h: 150 }, { x: 740, y: 500, w: 150, h: 160 }, { x: 930, y: 100, w: 70, h: 120 }],
     herbs: [{ x: 320, y: 440 }, { x: 680, y: 430 }, { x: 1050, y: 730 }, { x: 280, y: 100 }, { x: 680, y: 650 }, { x: 1100, y: 530 }],
@@ -337,7 +339,7 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
       { id: 'dan-east-mage', type: 'mage', x: 1060, y: 560 }, { id: 'dan-north-hunter', type: 'hunter', x: 1120, y: 320 }],
     paths: [[{ x: 150, y: 650 }, { x: 310, y: 430 }, { x: 650, y: 390 }, { x: 1010, y: 390 }, { x: 1150, y: 160 }],
       [{ x: 650, y: 390 }, { x: 650, y: 680 }, { x: 1060, y: 680 }]],
-    landmarks: [{ x: 680, y: 60, label: '丹界药谷 · 限时收集' }, { x: 620, y: 755, label: '三处指定药材 → 带回登记 → 炼药与丹雷历练' }],
+    landmarks: [{ x: 680, y: 60, label: '丹界药谷 · 大会历练' }, { x: 620, y: 755, label: '限时药材 → 控火成丹 → 丹雷生存 → 审核' }],
   },
   21: {
     id: 'danta-star-domain-platforms', style: 'star-domain', gateLabel: '星火收服台',

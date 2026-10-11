@@ -59,6 +59,7 @@ export class CombatWorld {
   towerRun?: FlameRun
   siegeRun?: { stage: number; channel: number }
   expeditionRun?: { attempt: number; elapsed: number; failed: boolean }
+  danLightning?: SurvivalRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -94,6 +95,7 @@ export class CombatWorld {
     this.syncTower()
     this.syncSiege()
     this.syncExpedition()
+    this.syncDanLightning()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -117,6 +119,47 @@ export class CombatWorld {
     const expedition = eventsForChapter(chapter.id).find(e => e.kind === 'expedition')
     if (expedition && eventProgress(cb.state(), chapter.id, expedition.id).stage === 1)
       Object.assign(this.player, expedition.checkpoints![0])
+    if (this.danLightning) Object.assign(this.player, this.map.lightningTrial!.center)
+  }
+  private syncDanLightning() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'danfinal')
+    const p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage !== 5) this.danLightning = undefined
+    else if (!this.danLightning) this.danLightning = { elapsed: 0, nextWave: 0, warnings: [] }
+  }
+  inDanLightningZone() {
+    const z = this.map.lightningTrial
+    return !!z && distance(this.player, z.center) < z.radius
+  }
+  private stepDanLightning(dt: number) {
+    this.syncDanLightning()
+    const run = this.danLightning, z = this.map.lightningTrial
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'danfinal')
+    if (!run || !z || !e) return
+    if (this.inDanLightningZone()) run.elapsed += dt
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        if (distance(this.player, warning) < warning.radius + 16) this.hurtPlayer(65)
+        this.effect(warning.x, warning.y, warning.radius, 0xc8b1e6)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.elapsed >= z.duration) {
+      this.cb.eventAction?.({ type: 'survive', eventId: e.id }); this.syncDanLightning(); return
+    }
+    run.nextWave -= dt
+    if (run.nextWave <= 0) {
+      const phase = Math.min(3, 1 + Math.floor(run.elapsed / 6))
+      run.nextWave = [2.4, 2, 1.8][phase - 1]
+      const offsets = phase === 1 ? [[0, 0]] : phase === 2 ? [[-75, 0], [75, 0]]
+        : [[0, 0], [-130, 0], [130, 0], [0, -130], [0, 130]]
+      run.warnings.push(...offsets.map(([x, y]) => ({
+        x: clamp(this.player.x + x, 65, WIDTH - 65), y: clamp(this.player.y + y, 65, HEIGHT - 65),
+        radius: [70, 60, 50][phase - 1], time: 1,
+      })))
+    }
   }
   private syncExpedition() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'expedition'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
@@ -488,7 +531,13 @@ export class CombatWorld {
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
+        if (event.kind === 'danfinal') {
+          const stage = eventProgress(s, this.chapter.id, event.id).stage
+          if (index === 0) this.cb.storyEvent?.(event.id, index)
+          else if (stage === 4) this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+          else this.cb.notify('控火通过后在丹雷台开始；生存18秒并躲避预警，E不能跳过丹雷。')
+        }
+        else if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
         else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
         else if (event.kind === 'tower' && index > 0) this.cb.notify('进入当前层阵眼累计镇炎时间；镇心石降热但不计时，E不能代替镇炎。')
         else if (event.kind === 'siege' && index > 0) this.cb.notify(this.guardsRemaining(event.id, index) > 0
@@ -824,6 +873,7 @@ export class CombatWorld {
     }
     this.chargeSquad(dt)
     this.chargeSiege(dt)
+    if (p.hp > 0) this.stepDanLightning(dt)
   }
   nearEvent() {
     return eventsForChapter(this.chapter.id).map(e => e.kind === 'escort' && this.escort ? { ...e, npc: this.escort } : e)
@@ -861,6 +911,8 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
+      danLightning: this.danLightning ? { remaining: Math.max(0, Math.ceil(this.map.lightningTrial!.duration - this.danLightning.elapsed)),
+        inZone: this.inDanLightningZone(), phase: Math.min(3, 1 + Math.floor(this.danLightning.elapsed / 6)) } : undefined,
       expedition: this.expeditionRun ? { remaining: Math.max(0, Math.ceil(this.map.expeditionDuration! - this.expeditionRun.elapsed)),
         failed: this.expeditionRun.failed, collected: [1, 2, 4].filter(bit => eventProgress(this.cb.state()).score & bit).length } : undefined,
       squad: this.squad ? { hp: this.squad.hp, maxHp: this.squad.maxHp, holding: this.squad.holding, failed: this.squad.hp <= 0,

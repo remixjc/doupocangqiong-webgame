@@ -353,6 +353,15 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(3, 0xd6a2e7); g.strokeCircle(warning.x, warning.y, warning.radius)
       }
     }
+    if (w.map.lightningTrial) {
+      const z = w.map.lightningTrial
+      g.fillStyle(0x9b8bc7, .12); g.fillCircle(z.center.x, z.center.y, z.radius)
+      g.lineStyle(2, 0xc8b1e6, .65); g.strokeCircle(z.center.x, z.center.y, z.radius)
+      for (const warning of w.danLightning?.warnings ?? []) {
+        g.fillStyle(0xc8b1e6, .22); g.fillCircle(warning.x, warning.y, warning.radius)
+        g.lineStyle(3, 0xe3c6ff); g.strokeCircle(warning.x, warning.y, warning.radius)
+      }
+    }
     if (w.barrierClosed()) {
       const door = w.map.eventBarrier!.obstacle
       g.fillStyle(0x746c58); g.fillRect(door.x, door.y, door.w, door.h)
@@ -381,10 +390,12 @@ export default class AdventureScene extends Phaser.Scene {
       }
       event.checkpoints?.forEach((point, index) => {
         const step = event.kind === 'competition' ? progress.stage - 1 : event.kind === 'tournament' ? (progress.stage === 0 ? 0 : progress.stage <= 12 ? Math.floor((progress.stage - 1) / 4) + 1 : 4) : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
-        const passed = event.kind === 'expedition' ? index === 0 ? progress.stage > 0 : (progress.score & (1 << (index - 1))) !== 0
+        const passed = event.kind === 'danfinal' ? progress.stage >= (index === 0 ? 4 : 6)
+          : event.kind === 'expedition' ? index === 0 ? progress.stage > 0 : (progress.score & (1 << (index - 1))) !== 0
           : event.kind === 'lineage' ? index === 0 ? progress.stage > 0 : index <= 2 ? (progress.score & (1 << (index - 1))) !== 0 : progress.stage >= 3
           : event.kind === 'alliance' ? index === 0 ? progress.stage > 0 : index < progress.stage - 1 : index < step
-        const active = progress.started && (event.kind === 'expedition' ? progress.stage === 1 ? index > 0 && !passed : progress.stage === 0 && index === 0
+        const active = progress.started && (event.kind === 'danfinal' ? index === (progress.stage <= 3 ? 0 : progress.stage <= 5 ? 1 : -1)
+          : event.kind === 'expedition' ? progress.stage === 1 ? index > 0 && !passed : progress.stage === 0 && index === 0
           : event.kind === 'lineage' ? progress.stage === 1 ? [1, 2].includes(index) && !passed : index === (progress.stage === 2 ? 3 : progress.stage === 0 ? 0 : -1)
           : event.kind === 'alliance' ? index === (progress.stage === 0 ? 0 : [2, 3].includes(progress.stage) ? progress.stage - 1 : -1)
           : index === step && (event.kind !== 'competition' || progress.choice === 'premium'))
@@ -393,7 +404,7 @@ export default class AdventureScene extends Phaser.Scene {
           g.fillStyle(progress.stage >= 3 ? 0x58695c : 0xb39152); g.fillRect(point.x - 24, point.y - 16, 48, 32)
           g.lineStyle(2, 0xebce92); g.strokeRect(point.x - 24, point.y - 16, 48, 32)
         }
-        if ((event.kind === 'certification' && index === 1) || (event.kind === 'tournament' && index > 0)) {
+        if ((event.kind === 'danfinal' && index === 0) || (event.kind === 'certification' && index === 1) || (event.kind === 'tournament' && index > 0)) {
           g.fillStyle(0x8c7556); g.fillRoundedRect(point.x - 28, point.y - 20, 56, 45, 12)
           g.lineStyle(4, 0xd1b382); g.strokeEllipse(point.x, point.y - 20, 56, 18)
           g.fillStyle(progress.stage >= 2 && progress.stage <= 4 ? 0xf0ac68 : 0xad8355); g.fillTriangle(point.x - 18, point.y + 32, point.x, point.y + 3, point.x + 18, point.y + 32)
