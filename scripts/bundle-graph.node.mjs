@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { budgetFailures, initialAssets, deferredAssetFailures } from './check-bundle.mjs'
+import { createReleaseManifest } from './write-release-manifest.mjs'
 
 test('static dependency walk includes shared CSS and cycles but excludes dynamic engine', () => {
   const manifest = {
@@ -32,4 +33,18 @@ test('optional panel must have its own deferred JS entry even when byte budgets 
   assert.match(deferredAssetFailures({ ...manifest, panel: { file: 'panel.css' } }, ['panel'])[0], /Missing deferred module/)
   const eager = { ...manifest, entry: { ...manifest.entry, imports: ['shared', 'panel'] } }
   assert.match(deferredAssetFailures(eager, ['panel'])[0], /outside the initial/)
+})
+test('release manifest binds package, bundle and migration contract', () => {
+  const manifest = createReleaseManifest(
+    { version: '0.37.1' },
+    { version: '0.37.1', engineLazy: true, initialJsBytes: 12, initialJsGzipBytes: 4, totalJsBytes: 30, engineGzipBytes: 9 },
+    'a'.repeat(40),
+  )
+  assert.equal(manifest.schemaVersion, 3)
+  assert.equal(manifest.contentVersion, '0.37.1')
+  assert.equal(manifest.engineLazy, true)
+  assert.equal(manifest.gitSha, 'a'.repeat(40))
+  assert.equal(manifest.migration.olderSaves.includes('schema 1/2'), true)
+  assert.throws(() => createReleaseManifest({ version: '0.37.2' }, { version: '0.37.1', engineLazy: true }, 'unknown'), /does not match/)
+  assert.throws(() => createReleaseManifest({ version: '0.37.1' }, { version: '0.37.1', engineLazy: false }, 'unknown'), /lazy Phaser/)
 })
