@@ -4,15 +4,22 @@ import { earlyTrainingBlock } from '../core/early-training'
 import { earlyWalkPlaces, earlyWalkObstacles, earlyWalkStart, earlyWalkSize, moveEarlyWalker, nearbyEarlyWalkPlace, type EarlyWalkDirection } from '../core/early-walk'
 import { earlyTrainingSaveSummary } from '../core/save-preview'
 import EarlyWalkInteraction from './EarlyWalkInteraction'
+import EarlyRoom from './EarlyRoom'
 import './early-walk.css'
 
 export default function EarlyWalk({ state, onBack }: { state: GameState; onBack: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
   const [reading, setReading] = useState<string>()
+  const [indoors, setIndoors] = useState(false)
   const field = useRef<SVGSVGElement>(null)
+  const roomEntry = useRef<HTMLButtonElement>(null)
+  const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
   useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useEffect(() => {
+    if (!indoors && returning.current) { returning.current = false; roomEntry.current?.focus() }
+  }, [indoors])
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -22,6 +29,7 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
+  if (indoors) return <EarlyRoom state={state} position={position} onBack={() => { returning.current = true; setIndoors(false) }} />
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
     <h2>走过街巷，再把准备做齐。</h2>
@@ -64,6 +72,7 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
     </div>
     {reading && place?.id === reading && <>
       <section className="bond-summary" aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></section>
+      {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <button ref={roomEntry} className="primary" onClick={() => setIndoors(true)}>进入药老调制室</button>}
       <EarlyWalkInteraction state={state} position={position} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>

@@ -1,0 +1,6 @@
+.early-room{margin:20px 0;border:1px solid var(--line);border-radius:4px;background:#1c302c;overflow:hidden}
+.early-room-art{display:block;width:100%;height:auto}
+.early-room-stations{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px;border-top:1px solid var(--line)}
+.early-room-stations button{min-height:44px}.early-room-stations .selected{border-color:var(--gold);color:var(--gold);background:#cfa36518}
+.early-room-state{color:var(--gold);font-size:13px;line-height:1.8}
+@media(max-width:460px){.early-room-stations{gap:6px;padding:10px}.early-room-stations button{flex:1;padding:10px 6px;font-size:12px}}
