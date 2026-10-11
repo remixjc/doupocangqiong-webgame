@@ -9,8 +9,8 @@ import { ningSecondScenes } from '../content/early-ning-second'
 import { startSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
-export default function EarlyNingSecond({ state, position: entryPosition, onBack }: {
-  state: GameState; position: EarlyWalkPosition; onBack: () => void
+export default function EarlyNingSecond({ state, position: entryPosition, onBack, onVerdict }: {
+  state: GameState; position: EarlyWalkPosition; onBack: () => void; onVerdict?: () => void
 }) {
   const task = state.earlyTraining.ningSecond, scene = ningSecondScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...ningPlaces.stairs })
@@ -53,7 +53,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
       <path d="M592 181 V114 Q613 99 634 114 V181Z" fill="#293434" stroke="#93a492" strokeWidth="3" />
       <text x="613" y="130" textAnchor="middle" fill="#e2c273" fontSize="12">复测已记</text>
-      <g transform={`translate(${ningX} ${task.contact === 'out' ? 280 : 146}) rotate(${task.contact === 'out' ? 83 : 0})`} role="img" aria-label={task.contact === 'out' ? '追加拳击后萧宁被击出场，仍待最终裁定' : task.contact === 'met' ? '八极崩已对拳迎击，萧宁尚未出场' : '萧宁违规再攻'}>
+      <g transform={`translate(${ningX} ${task.contact === 'out' ? 280 : 146}) rotate(${task.contact === 'out' ? 83 : 0})`} role="img" aria-label={task.contact === 'out' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '追加拳击后出场的历史画面，最终胜负已宣布' : '追加拳击后萧宁被击出场，仍待最终裁定' : task.contact === 'met' ? '八极崩已对拳迎击，萧宁尚未出场' : '萧宁违规再攻'}>
         <circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /><path d="M-8-3 L-25-6" stroke="#e1bba0" strokeWidth="5" />
         {task.pill === 'used' && <path d="M-23-19 Q-30 0-23 17 M23-19 Q30 0 23 17" stroke="#91c79f" fill="none" strokeWidth="3" />}
       </g>
@@ -64,7 +64,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="违规再攻行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['再攻向上走', '再攻向左走', '再攻向下走', '再攻向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
-    <p role="status">违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · 仍待最终裁定</p>
+    <p role="status">违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</p>
     {scene ? near ? <section className="bond-summary" aria-label="违规再攻步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
       {training ? <>
         {steady && <label className="setting-row"><span>违规迎击时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="违规迎击时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
@@ -79,7 +79,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
         </div>
       </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
     </section> : <p className="muted">下一步请走近{(scene.place === 'arena' ? '台中 · 两步迎击' : ningPlaces[scene.place].label)}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>违规再攻与出场已记，正式裁定仍待续。</h3><p>八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。</p></section>}
+      : <section className="bond-summary"><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <button className="primary" onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</button>}</section>}
     {training && <button className="secondary" onClick={() => act('stop')}>停下迎击 · 免费重新准备</button>}
     <p className="muted">违规药物只由萧宁使用，临时增强不等于永久境界。地图与动作时机为原创；主线钱账、技能、药液、关系和首通奖励保留。</p>
     <button className="secondary" onClick={onBack}>暂离违规再攻 · 保留迎击断点</button>

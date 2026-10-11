@@ -53,7 +53,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
       <path d="M592 181 V114 Q613 99 634 114 V181Z" fill="#293434" stroke="#93a492" strokeWidth="3" />
       <text x="613" y="130" textAnchor="middle" fill="#e2c273" fontSize="12">复测已记</text>
-      {task.stage >= 3 && <g transform={`translate(${ningX} ${task.stage >= 7 ? 181 : 146}) rotate(${task.stage >= 7 ? 83 : 0})`} role="img" aria-label={task.verdict === 'pending' ? '萧宁首轮倒地，裁判尚未最终宣布' : task.beats === 1 ? '萧宁被首次推退' : task.beats === 2 ? '萧宁被吸掌拉近，准备推出' : '萧宁来袭，药物尚未服用'}>
+      {task.stage >= 3 && <g transform={`translate(${ningX} ${task.stage >= 7 ? 181 : 146}) rotate(${task.stage >= 7 ? 83 : 0})`} role="img" aria-label={task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮倒地的历史画面，最终胜负已宣布' : '萧宁首轮倒地，裁判尚未最终宣布' : task.beats === 1 ? '萧宁被首次推退' : task.beats === 2 ? '萧宁被吸掌拉近，准备推出' : '萧宁来袭，药物尚未服用'}>
         <circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /><path d="M-8-3 L-25-6" stroke="#e1bba0" strokeWidth="5" />
       </g>}
       {training && <path d={task.beats === 1 ? 'M607 173 Q535 190 468 173' : 'M468 173 Q535 155 601 173'} fill="none" stroke="#ead093" strokeWidth="3" strokeDasharray="6 5" />}
@@ -64,7 +64,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="萧宁首轮行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['首轮向上走', '首轮向左走', '首轮向下走', '首轮向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
-    <p role="status">萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? '首轮倒地，待最终裁判' : '尚未完成首轮'}</p>
+    <p role="status">萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮当时待裁判，最终胜负已宣布' : '首轮倒地，待最终裁判' : '尚未完成首轮'}</p>
     {scene ? near ? <section className="bond-summary" aria-label="萧宁首轮步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
       {training ? <>
         {steady && <label className="setting-row"><span>萧宁首轮时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧宁首轮时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
@@ -79,7 +79,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
         </div>
       </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
     </section> : <p className="muted">下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>首轮倒地已记，仍待裁判与后续变化。</h3><p>这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。</p>{onSecond && <button className="primary" onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</button>}</section>}
+      : <section className="bond-summary"><h3>首轮倒地历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '正式胜负已宣布，可回看违规再攻。首轮历史仍保留当时待裁判及药物未服的记录。' : '这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。'}</p>{onSecond && <button className="primary" onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</button>}</section>}
     {training && <button className="secondary" onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</button>}
     <p className="muted">药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</p>
     <button className="secondary" onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</button>

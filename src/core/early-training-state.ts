@@ -30,7 +30,9 @@ export interface EarlyTrainingState {
   ceremonialTest: CeremonialTestState
   ningFirst: NingFirstState
   ningSecond: NingSecondState
+  ceremonyVerdict: CeremonyVerdictState
 }
+export interface CeremonyVerdictState { stage: number; yu: 'none' | 'requested' | 'blocked'; xuner: 'none' | 'requested' | 'blocked'; penalty: 0 | 3; verdict: 'pending' | 'xiaoyan'; rite: 'none' | 'continued' | 'ended'; technique: 'none' | 'offered' | 'declined'; method: 'none' | 'offered' | 'declined'; nextHall: 'none' | 'five-days' }
 export interface NingSecondState { stage: number; beats: number; attempts: number; pill: 'ning-held' | 'used'; ignored: boolean; contact: 'none' | 'met' | 'out'; verdict: 'pending' }
 export interface NingFirstState { stage: number; beats: number; attempts: number; pill: 'unseen' | 'ning-held'; verdict: 'none' | 'pending' }
 export interface CeremonialTestState { stage: number; rite: 'none' | 'begun' | 'reviewed' | 'ended'; inspected: boolean; result: 'unmeasured' | 'eighth-duan' }
@@ -81,6 +83,7 @@ export const EARLY_CEREMONY_GUESTS_VERSION = '0.29.0'
 export const EARLY_CEREMONIAL_TEST_VERSION = '0.30.0'
 export const EARLY_NING_FIRST_VERSION = '0.31.0'
 export const EARLY_NING_SECOND_VERSION = '0.32.0'
+export const EARLY_CEREMONY_VERDICT_VERSION = '0.33.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -115,9 +118,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     ceremonyGuests: { stage: 0, sword: 'none', introduced: false },
     ceremonialTest: { stage: 0, rite: 'none', inspected: false, result: 'unmeasured' },
     ningFirst: { stage: 0, beats: 0, attempts: 0, pill: 'unseen', verdict: 'none' },
-    ningSecond: { stage: 0, beats: 0, attempts: 0, pill: 'ning-held', ignored: false, contact: 'none', verdict: 'pending' } }
+    ningSecond: { stage: 0, beats: 0, attempts: 0, pill: 'ning-held', ignored: false, contact: 'none', verdict: 'pending' },
+    ceremonyVerdict: { stage: 0, ...ceremonyVerdictAt(0) } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -280,6 +284,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!validNingSecond(ningSecond) || (ningSecond.stage > 0 || ningSecond.attempts > 0) && ningFirst.stage !== 10) return invalid()
   result.ningSecond = { stage: ningSecond.stage, beats: ningSecond.beats, attempts: ningSecond.attempts, pill: ningSecond.pill,
     ignored: ningSecond.ignored, contact: ningSecond.contact, verdict: ningSecond.verdict }
+  const ceremonyVerdict = data.ceremonyVerdict === undefined && legacyCeremonyVerdict ? result.ceremonyVerdict : object(data.ceremonyVerdict)
+  if (!validCeremonyVerdict(ceremonyVerdict) || ceremonyVerdict.stage > 0 && ningSecond.stage !== 8) return invalid()
+  result.ceremonyVerdict = { stage: ceremonyVerdict.stage, ...ceremonyVerdictAt(ceremonyVerdict.stage) }
   return result
 }
 
@@ -403,4 +410,16 @@ export function validNingSecond(task: Record<string, unknown> | NingSecondState)
     && task.pill === (task.stage === 0 ? 'ning-held' : 'used') && task.ignored === (task.stage >= 2)
     && task.contact === (task.stage >= 5 ? 'out' : task.stage === 4 && task.beats === 1 ? 'met' : 'none')
     && task.verdict === 'pending'
+}
+
+export function ceremonyVerdictAt(stage: number): Omit<CeremonyVerdictState, 'stage'> {
+  return { yu: stage >= 3 ? 'blocked' : stage >= 2 ? 'requested' : 'none', xuner: stage >= 5 ? 'blocked' : stage >= 4 ? 'requested' : 'none',
+    penalty: stage >= 6 ? 3 : 0, verdict: stage >= 7 ? 'xiaoyan' : 'pending', rite: stage >= 10 ? 'ended' : stage >= 8 ? 'continued' : 'none',
+    technique: stage >= 13 ? 'declined' : stage >= 12 ? 'offered' : 'none', method: stage >= 15 ? 'declined' : stage >= 14 ? 'offered' : 'none',
+    nextHall: stage >= 15 ? 'five-days' : 'none' }
+}
+export function validCeremonyVerdict(task: Record<string, unknown> | CeremonyVerdictState): task is CeremonyVerdictState {
+  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 16) return false
+  const expected = ceremonyVerdictAt(task.stage)
+  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
 }
