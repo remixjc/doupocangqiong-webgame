@@ -4,10 +4,11 @@ import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlySettlementBlock, submitEarlySettlement, type SettlementStation } from '../core/early-settlement'
 import { settlementScenes, FIRST_SALE_GROSS, FIRST_SALE_FEE, FIRST_SALE_NET } from '../content/early-settlement'
 import { gameStore } from '../core/store'
+import { appraisalOwnerLabels } from '../content/early-appraisal'
 import './early-walk.css'
 
 const stations = { entrance: '来往入口', meeting: '会面处', desk: '结算桌' } as const
-export default function EarlySettlement({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlySettlement({ state, position, onBack, onFatherGift }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onFatherGift?: () => void }) {
   const task = state.earlyTraining.settlement, scene = settlementScenes[task.stage]
   const [station, setStation] = useState<SettlementStation>('entrance')
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlySettlementBlock(state, position)
@@ -17,7 +18,7 @@ export default function EarlySettlement({ state, position, onBack }: { state: Ga
     <span className="eyebrow">米特尔鉴定室 / 首次寄售手续</span>
     <h2 ref={heading} tabIndex={-1}>一张贵宾卡，一笔寄售款。</h2>
     <p>旁观结束后回原鉴定室。药老代言保密，先接水晶贵宾卡，再核账并收绿色储款卡，两张卡各有用途。</p>
-    <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={`寄售手续：${task.vip ? '已持水晶贵宾卡' : '未领贵宾卡'}；${task.net ? '净款39200已收' : '尚未收款'}；同瓶待交给萧战。`}>
+    <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={`寄售手续：${task.vip ? '已持水晶贵宾卡' : '未领贵宾卡'}；${task.net ? '净款39200已收' : '尚未收款'}；同瓶由${appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管。`}>
       <rect width="720" height="300" fill="#293a33" />
       <path d="M25 25 H695 V275 H25Z" fill="#4b493b" stroke="#b5a073" strokeWidth="3" />
       <rect x="66" y="67" width="96" height="200" fill="#313e36" stroke="#a99064" />
@@ -34,7 +35,7 @@ export default function EarlySettlement({ state, position, onBack }: { state: Ga
     <div className="early-walk-controls" aria-label="寄售手续位置">
       {(Object.keys(stations) as SettlementStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
     </div>
-    <p role="status">寄售手续 {task.stage}/7 · {task.vip ? '水晶贵宾卡已收' : '贵宾卡未领'} · {task.net ? `净款${task.net}已收` : '尚未收款'} · 同瓶拍卖方暂存</p>
+    <p role="status">寄售手续 {task.stage}/7 · {task.vip ? '水晶贵宾卡已收' : '贵宾卡未领'} · {task.net ? `净款${task.net}已收` : '尚未收款'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管</p>
     {task.stage >= 5 && <section className="bond-summary" aria-label="首次寄售账单">
       <p>药液成交 {FIRST_SALE_GROSS} · 贵宾费率2% · 手续费 {FIRST_SALE_FEE} · 净额 {FIRST_SALE_NET}</p>
       <p>{task.net ? '绿色储款卡已接收，唯一收款记录保留。' : '账单已核对，储款卡还未接收。'}</p>
@@ -44,7 +45,8 @@ export default function EarlySettlement({ state, position, onBack }: { state: Ga
       <button className="primary" onClick={() => submitEarlySettlement(gameStore, position, station,
         { step: task.stage, net: task.net, vip: task.vip, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>寄售手续已办完</h3><p>净款和贵宾卡已记录，萧炎带两张卡离场。同瓶仍等待交给买方萧战，之后父亲赠回另行接续。</p></section>}
+      : <section className="bond-summary"><h3>寄售手续已办完</h3><p>净款和贵宾卡已记录，萧炎带两张卡离场。同瓶当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管，父亲来访与赠回独立记录。</p>
+        {onFatherGift && <button className="primary" onClick={onFatherGift}>接续父亲来访 · 回萧家房中</button>}</section>}
     <p className="muted">绿色卡中的故事净款与行囊金币、备料余额分账，只收一次。入场黑卡、水晶贵宾卡、绿色储款卡分别记录；这里不会复制药液或功法。</p>
     <button className="secondary" onClick={onBack}>暂离寄售手续 · 保留收款断点</button>
   </>

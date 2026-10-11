@@ -23,7 +23,7 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
     <span className="eyebrow">乌坦城 / 首次寄售准备</span>
     <h2 ref={heading} tabIndex={-1}>另备一份药液，筹下一程的材料。</h2>
     <p>自用容器中的药力已经耗尽。萧炎提出用较低品质材料另制待售品，药老同意；采购后在隐蔽巷中交由老师调制，再用白玉瓶装好。</p>
-    <svg className="early-walk-map" viewBox="0 0 720 290" role="img" aria-label={`首次寄售准备：${task.product === 'sealed' ? `一个封好待售玉瓶由${appraisalOwnerLabels[task.owner]}保管` : task.product === 'mixture' ? '老师已调制斑杂绿色药液，待装瓶' : '较低品质材料的独立准备路线'}。`}>
+    <svg className="early-walk-map" viewBox="0 0 720 290" role="img" aria-label={`首次寄售准备：${task.product === 'sealed' ? `一个寄售玉瓶由${appraisalOwnerLabels[task.owner]}保管` : task.product === 'mixture' ? '老师已调制斑杂绿色药液，待装瓶' : '较低品质材料的独立准备路线'}。`}>
       <rect width="720" height="290" fill="#293d34" />
       <rect x="28" y="38" width="150" height="165" fill="#5b5641" stroke="#bea16d" />
       <text x="103" y="65" textAnchor="middle" fill="#e7d2a9" fontSize="14">筹款方案</text>
@@ -41,9 +41,9 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
       <g transform="translate(525 124)"><path d="M-22 55 Q-10-15 0-15 Q10-15 22 55Z" fill="#b6cec0" /><circle cy="-24" r="12" fill="#d8deca" />
         {task.stage === 3 && <path d="M22 13 Q30-25 45-34 Q36-5 48 0 Q50 22 22 13Z" fill="#e0ead3" />}</g>
       {task.product === 'mixture' && <g transform="translate(627 143)"><ellipse rx="30" ry="13" fill="#7e9b4e" /><circle cx="8" cy="-4" r="5" fill="#a1aa65" /><circle cx="-12" cy="3" r="4" fill="#637d41" /></g>}
-      {task.product === 'sealed' && <g transform="translate(627 144)"><path d="M-10-25 H10 V-13 Q23-3 19 25 H-19 Q-23-3-10-13Z" fill="#dfdfc7" stroke="#b7bea2" /><rect x="-12" y="-30" width="24" height="7" fill="#957547" /><text y="46" textAnchor="middle" fill="#e4d0a4" fontSize="12">待售 · {appraisalOwnerLabels[task.owner]}保管</text></g>}
+      {task.product === 'sealed' && <g transform="translate(627 144)"><path d="M-10-25 H10 V-13 Q23-3 19 25 H-19 Q-23-3-10-13Z" fill="#dfdfc7" stroke="#b7bea2" /><rect x="-12" y="-30" width="24" height="7" fill="#957547" /><text y="46" textAnchor="middle" fill="#e4d0a4" fontSize="12">{state.earlyTraining.auction.stage >= 6 ? '同瓶' : '待售'} · {appraisalOwnerLabels[task.owner]}保管</text></g>}
       <path d="M104 230 H572" stroke="#a79769" strokeDasharray="8 7" strokeWidth="3" />
-      <text x="360" y="270" textAnchor="middle" fill="#e4d0a4" fontSize="13">另一次备料 · 另一个待售实例 · 自用容器保留</text>
+      <text x="360" y="270" textAnchor="middle" fill="#e4d0a4" fontSize="13">另一次备料 · 同一寄售实例 · 自用容器保留</text>
     </svg>
     <div className="early-walk-controls" aria-label="寄售准备位置">
       {(Object.keys(stations) as ConsignmentStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id}
@@ -51,7 +51,7 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
     </div>
     <p role="status">寄售准备 {task.stage}/5 · 已购 {Object.values(task.receipts).filter(Boolean).length}/4 · 专用余额 {task.funds - task.spent} · 已付 {task.spent}</p>
     <p className="muted">任务余额90和价格10/10/25/5是游戏折算，原作此时剩余900金币。此账本独立于早期借资和行囊金币；采购按批记录，由老师处理材料。</p>
-    {task.stage === 5 ? <section className="bond-summary"><h3>待售玉瓶已装好</h3><p>药老调制的斑杂绿色制品装入白玉瓶，一个封存待售实例当前由{appraisalOwnerLabels[task.owner]}保管。自用药液仍耗尽，没有回补或第二份收入。</p><p>拍卖场的黑袍、老师代言、谷尼鉴定与入场凭据独立记录；{state.earlyTraining.settlement.net ? '寄售净款与贵宾卡已在独立手续中记录。' : state.earlyTraining.settlement.vip ? '水晶贵宾卡已收，寄售款尚待领取。' : '寄售款和贵宾卡尚未领取。'}</p>
+    {task.stage === 5 ? <section className="bond-summary"><h3>寄售玉瓶记录</h3><p>药老调制的斑杂绿色制品装入白玉瓶，一个封存寄售实例当前由{appraisalOwnerLabels[task.owner]}保管。自用药液仍耗尽，没有回补或第二份收入。</p><p>拍卖场的黑袍、老师代言、谷尼鉴定与入场凭据独立记录；{state.earlyTraining.settlement.net ? '寄售净款与贵宾卡已在独立手续中记录。' : state.earlyTraining.settlement.vip ? '水晶贵宾卡已收，寄售款尚待领取。' : '寄售款和贵宾卡尚未领取。'}</p>
       {onAppraise && <button className="primary" onClick={onAppraise}>接续拍卖场 · 遮掩身份并鉴定</button>}</section>
       : station !== expectedStation ? <p className="muted">当前步骤请到{stations[expectedStation]}继续。</p>
       : task.stage === 0 ? <section className="bond-summary"><h3>把寄售方案告诉老师</h3><p>萧炎不愿再借资，提出另买较低品质材料，制出供寄售的药液；获得款项后再买后续修炼材料。药老同意。</p>

@@ -29,7 +29,7 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
         <text y="86" textAnchor="middle" fill="#e8d1a6" fontSize="12">{task.speaker === 'yaolao' ? '药老代言 · 萧炎藏身' : '萧炎'}</text></g>
       <path d="M368 213 H623 V233 H368Z M386 233 V273 M605 233 V273" stroke="#c1a675" fill="#826a48" strokeWidth="3" />
       {task.stage >= 5 && <g transform="translate(560 128)"><path d="M-27 65 L-13 0 H13 L27 65Z" fill="#91a37a" /><circle cy="-15" r="14" fill="#dac4a4" /><path d="M-16-22 Q0-42 16-22" fill="#d7dbbf" /><text y="94" textAnchor="middle" fill="#e8d1a6" fontSize="13">谷尼 · 鉴定者</text></g>}
-      {bottle.owner !== 'auction' && <g transform={`translate(${bottle.owner === 'xiaoyan' ? 295 : 433} 179)`}>
+      {task.stage < 7 && <g transform={`translate(${bottle.owner === 'xiaoyan' ? 295 : 433} 179)`}>
         <path d="M-8-19 H8 V-10 Q17-2 14 18 H-14 Q-17-2-8-10Z" fill="#dedfc8" stroke="#b5bea5" /><rect x="-9" y="-24" width="18" height="6" fill="#98764c" />
       </g>}
       {task.stage === 5 && <g><path d="M480 184 L466 209" stroke="#dbe1d2" strokeWidth="3" /><ellipse cx="463" cy="207" rx="7" ry="4" fill="#8dab68" /><text x="438" y="255" fill="#d5d8bf" fontSize="12">谷尼以银针鉴别</text></g>}
@@ -46,7 +46,7 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
       <button className="primary" onClick={() => submitEarlyAppraisal(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>第一拍卖室已入场</h3><p>同瓶由拍卖方保管，萧炎持黑色入场卡。{state.earlyTraining.auction.stage >= 6 ? '雅妃已敲槌，买方是萧战；寄售款与同瓶交付待接续。' : '入席后可旁观雅妃主持与其他人的竞价。'}</p>
+      : <section className="bond-summary"><h3>第一拍卖室已入场</h3><p>同瓶当前由{appraisalOwnerLabels[bottle.owner]}保管，萧炎持黑色入场卡。{state.earlyTraining.auction.stage >= 6 ? '雅妃已敲槌，买方是萧战；收款和父亲赠回由各自记录接续。' : '入席后可旁观雅妃主持与其他人的竞价。'}</p>
         {onAuction && <button className="primary" onClick={onAuction}>接续拍卖室 · 入席旁观</button>}</section>}
     <p className="muted">二品是这份制品的鉴定结果，不增加人物炼药等级。入场黑卡与后来的贵宾卡不同；{state.earlyTraining.settlement.net ? '寄售净款已在独立收款记录中保存。' : '寄售款尚未收到。'}</p>
     <button className="secondary" onClick={onBack}>暂离鉴定路线 · 保留断点</button>

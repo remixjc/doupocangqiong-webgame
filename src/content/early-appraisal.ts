@@ -24,4 +24,4 @@ export const appraisalScenes = [
     text: '萧炎带着入场卡离开鉴定室，进入第一拍卖室。药液由拍卖方保管等待寄售，尚未成交。',
     action: '凭黑卡入场 · 记录第一拍卖室' },
 ] as const
-export const appraisalOwnerLabels = { none: '尚无制品', xiaoyan: '萧炎', 'inspection-desk': '鉴定接待桌', guni: '谷尼', auction: '拍卖方' } as const
+export const appraisalOwnerLabels = { none: '尚无制品', xiaoyan: '萧炎', 'inspection-desk': '鉴定接待桌', guni: '谷尼', auction: '拍卖方', xiaozhan: '萧战' } as const
