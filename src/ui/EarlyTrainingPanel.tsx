@@ -1,9 +1,12 @@
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
+import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from '../core/early-training-state'
 
 export default function EarlyTrainingPanel({ state }: { state: GameState }) {
   const blocked = earlyTrainingBlock(state)
+  const task = state.earlyTraining
+  const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   return <>
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
@@ -13,9 +16,32 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
       <section className="bond-summary" aria-label="重修准备记录">
         <b>{state.earlyTraining.started ? '准备单已记下' : '尚未接下准备'}</b>
         <p>两种指定草药，分别三株与两株；另需一枚一阶木属性魔核。药老负责调制，萧炎准备容器与水。药液用于修炼。</p>
-        <p className="muted">采购与调制的后续行程尚未展开。现在只记录准备，不代表已经取得材料或完成重修。</p>
         {!state.earlyTraining.started && <button className="primary" onClick={() => gameStore.beginEarlyTraining()}>记下重修准备</button>}
       </section>
+      {task.started && <>
+        <section className="bond-summary" aria-label="重修采购资金">
+          <b>采购余额 {task.purse.borrowed - task.purse.spent} · 已付 {task.purse.spent}</b>
+          <p>薰儿：先把准备做齐。这笔采购资金，我借给你。</p>
+          <p className="muted">借资{EARLY_LOAN}、药草30/20、魔核60均为游戏折算单位，不是原著金钱数额；不计入行囊金币，也不发主线奖励。</p>
+          {!task.purse.borrowed && <button className="primary" onClick={() => gameStore.earlyTraining({ type: 'borrow', expectedSpent: task.purse.spent })}>向薰儿借采购资金</button>}
+        </section>
+        <section className="bond-summary" aria-label="药铺与坊市采购">
+          <h3>{herbsReady ? '萧家坊市 · 寻找魔核' : '药铺 · 配齐药草'}</h3>
+          <p>{herbsReady ? '药草已经齐备。萧炎与薰儿来到萧家坊市，在护卫照看的街道寻找一阶木属性魔核。' : '先按准备单买两种药草，两者可分别购买。买齐后，再去萧家坊市寻找指定魔核。'}</p>
+          {(Object.keys(earlySupplies) as EarlySupplyId[]).filter(id => id !== 'woodCore' || herbsReady).map(id => {
+            const item = earlySupplies[id]
+            return <article className="recap-line" key={id}>
+              <b>{item.label} · {item.price}采购资金</b>
+              <p>{task.receipts[id] ? `已购入 · 任务袋${task.supplies[id]}` : '由卖方交付到重修任务袋。普通行囊材料不能代替。'}</p>
+              <button className="secondary" disabled={task.receipts[id] || task.purse.borrowed - task.purse.spent < item.price}
+                onClick={() => gameStore.earlyTraining({ type: 'purchase', item: id, price: item.price, expectedSpent: task.purse.spent })}>
+                {task.receipts[id] ? '已记购买记录' : `购买${item.label}`}
+              </button>
+            </article>
+          })}
+        </section>
+        {task.receipts.woodCore && <p className="muted">三种材料已齐，仍由任务袋保管。药老调制、稀释与修炼后续展开；现在没有药液、丹药或新的修炼结果。坊市人物交涉与黑铁片过程还会补充。</p>}
+      </>}
     </>}
     <p className="muted">重修往事不会回退已完成主线，也不会重新发放章节奖励。</p>
   </>

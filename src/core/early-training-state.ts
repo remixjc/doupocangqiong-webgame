@@ -2,14 +2,23 @@ export interface EarlyTrainingState {
   started: boolean
   purse: { own: number; borrowed: number; spent: number }
   supplies: { bluegrass: number; boneflower: number; woodCore: number }
+  receipts: Record<EarlySupplyId, boolean>
+}
+export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
+export const EARLY_LOAN = 160
+export const earlySupplies: Record<EarlySupplyId, { label: string; quantity: number; price: number }> = {
+  bluegrass: { label: '主药草 · 三株', quantity: 3, price: 30 },
+  boneflower: { label: '辅药草 · 两株', quantity: 2, price: 20 },
+  woodCore: { label: '一阶木属性魔核 · 一枚', quantity: 1, price: 60 },
 }
 export const EARLY_TRAINING_VERSION = '0.15.0'
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
-    supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 } }
+    supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
+    receipts: { bluegrass: false, boneflower: false, woodCore: false } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[]): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -17,8 +26,26 @@ export function parseEarlyTraining(value: unknown, completed: number[]): EarlyTr
   }
   const data = object(value), purse = object(data.purse), supplies = object(data.supplies)
   if (typeof data.started !== 'boolean' || (data.started && !completed.includes(2))) return invalid()
-  // Only the preparation record is open in C1c-1; no material or funds can exist.
-  for (const key of ['own', 'borrowed', 'spent']) if (purse[key] !== 0) return invalid()
-  for (const key of ['bluegrass', 'boneflower', 'woodCore']) if (supplies[key] !== 0) return invalid()
-  return { ...blankEarlyTraining(), started: data.started }
+  if (data.receipts === undefined && legacyReceipts) {
+    for (const key of ['own', 'borrowed', 'spent']) if (purse[key] !== 0) return invalid()
+    for (const key of ['bluegrass', 'boneflower', 'woodCore']) if (supplies[key] !== 0) return invalid()
+    return { ...blankEarlyTraining(), started: data.started }
+  }
+  const receipts = object(data.receipts)
+  if (purse.own !== 0 || ![0, EARLY_LOAN].includes(purse.borrowed as number)
+    || (!data.started && purse.borrowed !== 0)) return invalid()
+  const result = { ...blankEarlyTraining(), started: data.started }
+  let spent = 0
+  for (const id of Object.keys(earlySupplies) as EarlySupplyId[]) {
+    if (typeof receipts[id] !== 'boolean') return invalid()
+    const purchased = receipts[id] as boolean
+    if (purchased && (!data.started || purse.borrowed !== EARLY_LOAN)) return invalid()
+    if (supplies[id] !== (purchased ? earlySupplies[id].quantity : 0)) return invalid()
+    result.receipts[id] = purchased; result.supplies[id] = supplies[id] as number
+    if (purchased) spent += earlySupplies[id].price
+  }
+  if (result.receipts.woodCore && (!result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
+  if (purse.spent !== spent || spent > (purse.borrowed as number)) return invalid()
+  result.purse = { own: 0, borrowed: purse.borrowed as number, spent }
+  return result
 }
