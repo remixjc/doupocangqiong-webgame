@@ -4,6 +4,7 @@ import { gameStore } from '../core/store'
 import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from '../core/early-training-state'
 import { earlyMarketScenes } from '../content/early-market'
 import { earlyLiquidScenes } from '../content/early-liquid'
+import EarlyPractice from './EarlyPractice'
 
 export default function EarlyTrainingPanel({ state }: { state: GameState }) {
   const blocked = earlyTrainingBlock(state)
@@ -62,8 +63,9 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
             <button className="secondary" onClick={() => gameStore.earlyTraining({ type: 'liquid',
               step: task.liquid.stage, operation: liquidScene.operation, expectedSpent: task.purse.spent })}>{liquidScene.action}</button>
           </> : <><h3>修炼药液已备好</h3><p>药老已完成调制，药液加入水中。主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
-          <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；后续修炼与斗技尝试尚未展开。</p>
+          <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；备好后可在下方进行初期练习。</p>
         </section>}
+        <EarlyPractice state={state} />
         {task.receipts.woodCore && task.market.stage < 4 && <p className="muted">三种材料由任务袋保管。先完成坊市往事，带回黑铁片，再请药老调制；现在没有药液、丹药或新的修炼结果。</p>}
       </>}
     </>}

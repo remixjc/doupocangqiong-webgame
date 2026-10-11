@@ -5,6 +5,7 @@ export interface EarlyTrainingState {
   receipts: Record<EarlySupplyId, boolean>
   market: { stage: number; blackIron: number }
   liquid: { stage: number; water: boolean; ready: boolean }
+  practice: { phase: number; pulse: number; score: number; attempts: number }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -20,9 +21,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
     receipts: { bluegrass: false, boneflower: false, woodCore: false },
     market: { stage: 0, blackIron: 0 },
-    liquid: { stage: 0, water: false, ready: false } }
+    liquid: { stage: 0, water: false, ready: false },
+    practice: { phase: 0, pulse: 0, score: 0, attempts: 0 } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -63,5 +65,15 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (market.stage === 4 && !result.receipts.woodCore) return invalid()
   result.market = { stage: market.stage, blackIron: market.blackIron as number }
   if (liquid.stage > 0 && (!result.receipts.woodCore || market.stage !== 4)) return invalid()
+  const practice = data.practice === undefined && legacyPractice ? result.practice : object(data.practice)
+  const integer = (input: unknown, max: number): input is number =>
+    typeof input === 'number' && Number.isSafeInteger(input) && input >= 0 && input <= max
+  if (!integer(practice.phase, 4) || !integer(practice.pulse, 3)
+    || !integer(practice.score, 300) || !integer(practice.attempts, 1_000_000)) return invalid()
+  if (practice.phase > 0 && !result.liquid.ready) return invalid()
+  if (practice.phase === 0 && (practice.pulse || practice.score || practice.attempts)) return invalid()
+  if (practice.phase === 1 && (practice.pulse > 2 || practice.score > practice.pulse * 100)) return invalid()
+  if (practice.phase >= 2 && (practice.pulse !== 3 || practice.score < 180)) return invalid()
+  result.practice = { phase: practice.phase, pulse: practice.pulse, score: practice.score, attempts: practice.attempts }
   return result
 }

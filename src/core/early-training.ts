@@ -12,6 +12,7 @@ export type EarlyTrainingAction =
   | { type: 'purchase'; item: EarlySupplyId; price: number; expectedSpent: number }
   | { type: 'market'; step: number; expectedSpent: number }
   | { type: 'liquid'; step: number; operation: 'identify' | 'water' | 'primary' | 'auxiliary' | 'core' | 'dilute'; expectedSpent: number }
+  | { type: 'practice'; operation: 'begin' | 'pulse' | 'attempt' | 'finish'; phase: number; pulse: number; attempts?: number; marker?: number; expectedSpent: number }
 
 export function advanceEarlyTraining(state: GameState, action: EarlyTrainingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
@@ -21,6 +22,28 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
   if (!task.started) return fail('先记下重修准备。')
   if (action.expectedSpent !== task.purse.spent) return fail('采购记录已变化，请按当前清单重新操作。')
   const next = structuredClone(state)
+  if (action.type === 'practice') {
+    if (!task.liquid.ready) return fail('先请老师调制并加水，才能开始这次初期练习。')
+    const practice = task.practice
+    if (action.phase !== practice.phase || action.pulse !== practice.pulse
+      || (action.attempts ?? 0) !== practice.attempts || practice.phase === 4)
+      return fail('当前练习已变化或结束，请按当前提示继续。')
+    const updated = next.earlyTraining.practice
+    if (action.operation === 'begin' && practice.phase === 0) updated.phase = 1
+    else if (action.operation === 'pulse' && practice.phase === 1) {
+      if (typeof action.marker !== 'number' || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1
+        || practice.attempts >= 1_000_000) return fail('调息输入无效，没有消耗药液或材料。')
+      updated.score += Math.round(100 - Math.abs(action.marker - .5) * 200)
+      updated.pulse++
+      if (updated.pulse === 3) {
+        if (updated.score >= 180) updated.phase = 2
+        else { updated.attempts++; updated.pulse = 0; updated.score = 0 }
+      }
+    } else if (action.operation === 'attempt' && practice.phase === 2) updated.phase = 3
+    else if (action.operation === 'finish' && practice.phase === 3) updated.phase = 4
+    else return fail('当前练习的操作次序无效。')
+    return { state: next, ok: true, message: updated.phase === 4 ? '初期重修与斗技尝试已记下，继续踏实修炼。' : '这一步练习已记录；节奏失误可免费重来。' }
+  }
   if (action.type === 'liquid') {
     if (!task.receipts.woodCore || task.market.stage !== 4) return fail('先备齐材料，完成坊市交涉并带回黑铁片。')
     if (action.step !== task.liquid.stage || task.liquid.stage === 6) return fail('此步骤已完成，或调制次序无效。')

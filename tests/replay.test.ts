@@ -11,6 +11,7 @@ import { bondEvents } from '../src/content/bonds'
 import { preparationEvents, preparationProtocols } from '../src/content/preparations'
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { replayEarlyTraining } from './helpers/early-training-replay'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -307,6 +308,10 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 23) expect(eventProgress(state).attempts, '天墓三层应各在单次时限内完成').toBe(3)
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
+      if (chapter.id === 2) {
+        state = replayEarlyTraining(state, true)
+        expect(state.earlyTraining.practice.attempts).toBe(1)
+      }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {
         const id = event.id
         let revisitPath: Vec[] = [], revisitTarget: Vec = { x: -999, y: -999 }
@@ -336,6 +341,7 @@ describe('完整主线真实规则战斗回放', () => {
       resources.push({ chapter: chapter.id, hp: Math.round(world.player.hp), gold: state.gold, heal: state.inventory.heal, mana: state.inventory.mana })
     }
     expect(state.completed.length).toBe(28)
+    expect(state.earlyTraining.practice.phase).toBe(4)
     console.log(`28章纯逻辑输入回放（${difficulty}，非人工通关）：${timings.join(', ')} 秒`)
     const reportDirectory = process.env.DOUPO_REPLAY_REPORT_DIR
     if (reportDirectory) {
