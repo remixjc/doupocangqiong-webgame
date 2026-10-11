@@ -10,6 +10,7 @@ import { eventsForChapter } from '../content/events'
 import { mapForChapter } from '../content/maps'
 import { eventDone, eventHint, eventProgress } from '../core/events'
 import StoryEventPanel from './StoryEventPanel'
+import { teacherSupport } from '../core/companions'
 
 const GameView = lazy(() => import('./GameView'))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | null
@@ -30,6 +31,7 @@ export default function App() {
   const flame = flames.find(f => f.id === s.flame)!
   const stats = playerStats(s)
   const completed = s.completed.includes(s.chapter)
+  const support = teacherSupport(s)
 
   useEffect(() => { gameStore.initialize().finally(() => setReady(true)) }, [])
   useEffect(() => { setVolume(s.settings.volume) }, [s.settings.volume])
@@ -167,7 +169,7 @@ export default function App() {
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
           <TouchControls onMenu={() => setPanel('camp')} />
         </div>
-        <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button onClick={() => gameStore.action('support')}><kbd>R</kbd> 支援</button></div>
+        <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button disabled={!support.available} onClick={() => gameStore.action('support')}><kbd>R</kbd> {support.available ? '支援' : '支援暂不可用'}</button></div>
           <div className="skills">{skillInfo.map(skill => {
             const unlocked = skillUnlocked(s, skill.id), cd = r.cooldowns[skill.id]
             const revealed = isVisible(s, skill.unlock)
@@ -185,6 +187,7 @@ export default function App() {
       {panel === 'camp' && <div className="panel-tabs"><button className="secondary" onClick={() => setPanel('alchemy')}>炼药</button><button className="secondary" onClick={() => setPanel('shop')}>坊市</button><button className="secondary" onClick={() => setPanel('save')}>存档</button><button className="secondary" onClick={() => setPanel('settings')}>设置</button></div>}
       {panel === 'character' && <><span className="eyebrow">人物 / 行囊</span><h2>萧炎 <small className="muted">{chapter.realm}</small></h2><div className="stat-grid">{[['生命上限', stats.maxHp], ['斗气上限', stats.maxQi], ['攻击', Math.round(stats.attack)], ['防御', Math.round(stats.defense)], ['金币', s.gold], ['修炼积累', s.xp]].map(([label, value]) => <div key={label}><span>{label}</span><b>{value}</b></div>)}</div><div className="inventory-grid">{[['灵草', s.inventory.herb], ['魔晶', s.inventory.crystal], ['恢复丹', s.inventory.heal], ['回气丹', s.inventory.mana]].map(([label, value]) => <div key={label}><span>◇ {label}</span><b>×{value}</b></div>)}</div><p className="muted">当前火焰：{flame.name}。{flame.description}</p></>}
       {panel === 'character' && s.completed.length >= 13 && isVisible(s, 14) && <div className="mountain-status"><b>火能 {s.fireEnergy} · 磐门修炼</b><span>双路猎捕与强榜胜利取得。完成内院首通后可用于修炼；金币与火能分别记录。</span><button className="secondary" disabled={!s.completed.includes(14) || s.fireEnergy < 2} onClick={() => gameStore.fireTraining()}>火能修炼 · 2火能 / 30积累</button></div>}
+      {panel === 'character' && <div className="mountain-status"><b>药老 · {support.available ? '支援可用' : '支援暂不可用'}</b><span>{support.status === 'away' && !isVisible(s, 16) ? '支援状态随已历练进度变化。' : support.status === 'returned' && !isVisible(s, 22) ? '同行指导' : support.label}</span></div>}
       {panel === 'character' && <><div className="upgrade-row"><button className="secondary" disabled={s.gold < 60 + s.attackUpgrade * 60 || s.attackUpgrade >= 20} onClick={() => gameStore.upgrade('attack')}>兵器磨砺 +{s.attackUpgrade} · {60 + s.attackUpgrade * 60} 金币</button><button className="secondary" disabled={s.gold < 60 + s.armorUpgrade * 60 || s.armorUpgrade >= 20} onClick={() => gameStore.upgrade('armor')}>护具强化 +{s.armorUpgrade} · {60 + s.armorUpgrade * 60} 金币</button><button className="secondary" disabled={s.inventory.elixir < 1} onClick={() => gameStore.update(s => { if (s.inventory.elixir > 0) { s.inventory.elixir--; s.xp += 100 } })}>修炼丹 ×{s.inventory.elixir} · 使用</button></div><span className="section-label">已取得火焰</span><div className="flame-list">{unlockedFlames(s).filter(f => isVisible(s, f.chapter)).map(f => <button key={f.id} className={`flame-card ${s.flame === f.id ? 'active' : ''}`} onClick={() => gameStore.update(s => { s.flame = f.id })}><b style={{ color: f.color }}>◈ {f.name}</b><small>{f.description}</small></button>)}</div></>}
       {panel === 'alchemy' && <AlchemyPanel state={s} />}
       {panel === 'shop' && <ShopPanel state={s} />}

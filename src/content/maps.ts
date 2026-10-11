@@ -5,7 +5,7 @@ export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?
 export interface TowerFloor { center: Point; cooling: Point; duration: number; pressure: number; radius: number }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -276,7 +276,52 @@ export const academyMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 610, y: 70, label: '天焚炼气塔 · 逐层镇炎' }, { x: 650, y: 755, label: '已完成台阶保留 · 镇心石降热 · 首通取得心炎' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? legacy }
+export const returnAndCentralMaps: Record<number, MapDefinition> = {
+  16: {
+    id: 'yunlan-return-sect', style: 'sect', gateLabel: '宗门决战碑',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1160, y: 140 }, bossSpawn: { x: 1090, y: 260 }, safeRadius: 170,
+    obstacles: [{ x: 440, y: 100, w: 200, h: 190 }, { x: 790, y: 550, w: 200, h: 120 }, { x: 90, y: 300, w: 100, h: 110 }],
+    herbs: [{ x: 330, y: 410 }, { x: 680, y: 620 }, { x: 1080, y: 540 }, { x: 280, y: 170 }, { x: 1010, y: 310 }],
+    enemies: [{ type: 'brute', x: 700, y: 460 }, { type: 'hunter', x: 840, y: 360 },
+      { type: 'mage', x: 1080, y: 600 }, { type: 'hunter', x: 750, y: 230 }],
+    paths: [[{ x: 150, y: 650 }, { x: 300, y: 430 }, { x: 650, y: 430 }, { x: 900, y: 380 }, { x: 1160, y: 140 }],
+      [{ x: 300, y: 430 }, { x: 300, y: 170 }]],
+    landmarks: [{ x: 690, y: 65, label: '再临云岚 · 宗门台阶' }, { x: 690, y: 750, label: '重返山门 · 做好战前准备' }],
+  },
+  17: {
+    id: 'flame-alliance-hall', style: 'alliance', gateLabel: '炎盟防线',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 220 }, bossSpawn: { x: 1080, y: 350 }, safeRadius: 170,
+    obstacles: [{ x: 450, y: 100, w: 190, h: 190 }, { x: 800, y: 560, w: 170, h: 120 }, { x: 350, y: 540, w: 120, h: 120 }],
+    herbs: [{ x: 300, y: 400 }, { x: 700, y: 600 }, { x: 1040, y: 630 }, { x: 760, y: 180 }, { x: 280, y: 170 }],
+    enemies: [{ type: 'brute', x: 630, y: 430 }, { type: 'mage', x: 1050, y: 610 },
+      { type: 'hunter', x: 850, y: 340 }, { type: 'brute', x: 740, y: 250 }],
+    paths: [[{ x: 150, y: 650 }, { x: 280, y: 430 }, { x: 670, y: 430 }, { x: 1000, y: 430 }, { x: 1140, y: 220 }],
+      [{ x: 670, y: 430 }, { x: 750, y: 180 }]],
+    landmarks: [{ x: 680, y: 65, label: '炎盟 · 议事与防线' }, { x: 660, y: 750, label: '同心守护 · 整备行囊' }],
+  },
+  18: {
+    id: 'central-thunder-mountain', style: 'thunder-path', gateLabel: '雷云山口',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1120, y: 160 }, bossSpawn: { x: 1080, y: 270 }, safeRadius: 170,
+    obstacles: [{ x: 640, y: 0, w: 70, h: 300 }, { x: 640, y: 520, w: 70, h: 280 }, { x: 850, y: 500, w: 100, h: 100 }],
+    herbs: [{ x: 320, y: 480 }, { x: 540, y: 250 }, { x: 990, y: 210 }, { x: 1120, y: 640 }, { x: 800, y: 410 }, { x: 430, y: 660 }],
+    enemies: [{ type: 'brute', x: 490, y: 430 }, { type: 'hunter', x: 900, y: 350 },
+      { type: 'mage', x: 1090, y: 540 }, { type: 'mage', x: 970, y: 300 }],
+    paths: [[{ x: 150, y: 650 }, { x: 340, y: 480 }, { x: 520, y: 400 }, { x: 760, y: 400 }, { x: 960, y: 320 }, { x: 1120, y: 160 }]],
+    landmarks: [{ x: 1020, y: 65, label: '中州北域 · 雷云山径' }, { x: 440, y: 750, label: '雷云之下 · 留心山路' }],
+  },
+  19: {
+    id: 'star-pavilion-grove', style: 'star-pavilion', gateLabel: '星陨阁试炼',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1120, y: 160 }, bossSpawn: { x: 1060, y: 270 }, safeRadius: 170,
+    obstacles: [{ x: 430, y: 100, w: 170, h: 180 }, { x: 760, y: 540, w: 180, h: 120 }, { x: 80, y: 310, w: 110, h: 100 }],
+    herbs: [{ x: 320, y: 440 }, { x: 640, y: 300 }, { x: 1020, y: 620 }, { x: 1080, y: 180 }, { x: 680, y: 640 }, { x: 300, y: 170 }],
+    enemies: [{ type: 'brute', x: 610, y: 440 }, { type: 'hunter', x: 830, y: 340 },
+      { type: 'mage', x: 1030, y: 580 }, { type: 'hunter', x: 750, y: 240 }],
+    paths: [[{ x: 150, y: 650 }, { x: 300, y: 430 }, { x: 650, y: 420 }, { x: 980, y: 350 }, { x: 1120, y: 160 }],
+      [{ x: 650, y: 420 }, { x: 660, y: 240 }]],
+    landmarks: [{ x: 690, y: 65, label: '星陨阁 · 师门林径' }, { x: 680, y: 750, label: '星光林径 · 再寻师门' }],
+  },
+}
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

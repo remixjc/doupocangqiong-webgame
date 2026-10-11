@@ -83,9 +83,24 @@ export default class AdventureScene extends Phaser.Scene {
   }
   private drawEnvironment() {
     const { camp, gate, obstacles, style } = this.world.map
-    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
+    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : style === 'thunder-path' ? [0x263139, 0x566575, 0xacc7cd]
+      : style === 'star-pavilion' ? [0x243735, 0x547b6d, 0xb9c3a1] : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
+    if (style === 'sect') {
+      bg.lineStyle(2, 0xc2b99b, .18)
+      for (let y = 130; y < 360; y += 24) bg.lineBetween(1000, y, 1210, y)
+    } else if (style === 'alliance') {
+      for (const x of [670, 750]) {
+        bg.lineStyle(3, 0xb69b75, .7); bg.lineBetween(x, 90, x, 190)
+        bg.fillStyle(0x9e6f51, .65); bg.fillTriangle(x, 95, x + 45, 125, x, 150)
+      }
+    } else if (style === 'thunder-path') {
+      bg.lineStyle(4, 0xabcbd7, .22); bg.lineBetween(775, 75, 745, 135); bg.lineBetween(745, 135, 785, 135); bg.lineBetween(785, 135, 750, 200)
+    } else if (style === 'star-pavilion') {
+      bg.lineStyle(2, 0xb9c3a1, .16); bg.strokeCircle(1080, 220, 105); bg.strokeCircle(1080, 220, 120)
+      for (let index = 0; index < 8; index++) { const angle = index * Math.PI / 4; bg.fillStyle(0xcdd0b2, .45); bg.fillCircle(1080 + Math.cos(angle) * 120, 220 + Math.sin(angle) * 120, 4) }
+    }
     // All art is native vector drawing, seeded by chapter for repeatable maps.
     let seed = this.world.chapter.id * 117 + 42
     const rand = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296 }

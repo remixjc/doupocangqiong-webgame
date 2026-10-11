@@ -3,6 +3,7 @@ import { chapterReady, damage, playerStats, skillInfo, skillUnlocked } from '../
 import { hasLineOfSight, mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT, type PatrolDefinition } from '../content/maps'
 import { eventForChapter, eventsForChapter } from '../content/events'
 import { eventProgress, type EventAction } from '../core/events'
+import { teacherSupport } from '../core/companions'
 
 export interface Vec { x: number; y: number }
 export interface Obstacle { x: number; y: number; w: number; h: number }
@@ -497,13 +498,13 @@ export class CombatWorld {
     }
     if (action === 'support') {
       if (this.cooldowns.support > 0) return
-      if (s.completed.includes(16) && !s.completed.includes(22)) { this.cb.notify('药老暂时离队，无法支援。'); return }
-      if (s.completed.length < 2) { this.cb.notify('完成前两章后解锁药老支援。'); return }
+      const support = teacherSupport(s)
+      if (!support.available) { this.cb.notify(support.message); return }
       this.cooldowns.support = 25
       p.qi = Math.min(playerStats(s).maxQi, p.qi + 45)
       p.invincible = 1.4
       this.effect(p.x, p.y, 180, 0x9bd7cb)
-      this.cb.notify('药老支援 · 斗气恢复与短暂护体')
+      this.cb.notify(support.message)
       return
     }
     let amount = playerStats(s).attack, radius = 100, center: Vec = p, color = 0xdfc79a, cone = true
