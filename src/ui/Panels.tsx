@@ -61,7 +61,7 @@ export function SettingsPanel({ state, activeDifficulty }: { state: GameState; a
     <label className="setting-row"><span>剧情范围<small>动画模式由你设置已看进度，不对应未经核实的最新集数。</small></span><select value={state.settings.spoiler} onChange={e => settings({ spoiler: e.target.value as 'novel' | 'anime' })}><option value="novel">小说完整主线</option><option value="anime">动画进度 / 防剧透</option></select></label>
     {state.settings.spoiler === 'anime' && <label className="setting-row"><span>允许揭晓至游戏第几章<small>锁定篇章隐藏标题和概要。修改不会抹除已完成记录。</small></span><select value={Math.min(state.settings.animeLimit, chapters.length)} onChange={e => settings({ animeLimit: Number(e.target.value) })}>{chapters.map(c => <option key={c.id} value={c.id}>第 {c.id} 章</option>)}</select></label>}
     <label className="setting-row"><span>音效音量<small>主动操作后启用；音量实时生效，0 为静音。暂停或切后台时停止音效。</small></span><input aria-label="音效音量" type="range" min="0" max="1" step=".05" value={state.settings.volume} onChange={e => settings({ volume: Number(e.target.value) })} /></label>
-    <label className="setting-row"><span>减弱动态效果<small>降低闪烁、火焰动画与背景粒子。</small></span><input type="checkbox" checked={state.settings.reducedMotion} onChange={e => settings({ reducedMotion: e.target.checked })} /></label>
+    <label className="setting-row"><span>减弱动态效果<small>减少人物摆动、挥动与火焰动画，保留动作提示和危险预警。</small></span><input type="checkbox" checked={state.settings.reducedMotion} onChange={e => settings({ reducedMotion: e.target.checked })} /></label>
     <p className="muted">菜单、剧情和页面后台暂停战斗。手机横屏使用摇杆；普攻按钮可按住连击。所有音效由程序合成。</p>
   </>
 }

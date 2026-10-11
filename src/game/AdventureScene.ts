@@ -9,6 +9,8 @@ import { playSound, stopAudio, unlockAudio } from './audio'
 import { FixedClock } from './clock'
 import { PauseDrawGate, presentFloat } from './presentation'
 import { bindFocusLifecycle } from './focus'
+import { ActorMotion, type ActorPose } from './actor-motion'
+import { drawActor } from './draw-actor'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -25,12 +27,14 @@ export default class AdventureScene extends Phaser.Scene {
   private aim: { x: number; y: number } | undefined
   private lostFocus = false
   private drawGate = new PauseDrawGate()
+  private actorMotion = new ActorMotion()
   private environment?: Phaser.GameObjects.Container
   private environmentMapId = ''
   constructor() { super('adventure') }
   create() {
     this.environmentMapId = ''
     this.drawGate = new PauseDrawGate()
+    this.actorMotion = new ActorMotion()
     this.clock.reset()
     this.runtimeTimer = 0
     this.lostFocus = document.hidden
@@ -48,7 +52,11 @@ export default class AdventureScene extends Phaser.Scene {
         gameStore.update(s => { s.inventory.mana-- })
         return true
       },
-      camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message), sound: playSound,
+      camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message),
+      sound: kind => {
+        if (kind === 'attack' || kind === 'skill') this.actorMotion.cue(kind, this.world.elapsed)
+        playSound(kind)
+      },
       storyEvent: (id, checkpoint) => gameStore.onStoryEvent?.(id, checkpoint), eventAction: action => { gameStore.event(action) },
     })
     this.syncEnvironment()
@@ -345,6 +353,7 @@ export default class AdventureScene extends Phaser.Scene {
     const g = this.ink
     g.clear()
     const w = this.world, p = w.player
+    const reduced = gameStore.getSnapshot().state.settings.reducedMotion
     const { gate } = w.map
     if (w.map.duelArena) {
       const a = w.map.duelArena, active = w.enemies.some(e => e.duel && e.hp > 0)
@@ -380,19 +389,19 @@ export default class AdventureScene extends Phaser.Scene {
         g.fillStyle(0x81c7ba, .08); g.fillCircle(point.x, point.y, 65)
         g.lineStyle(3, w.channeling() ? 0xc8daa0 : 0x92cabd, .5); g.strokeCircle(point.x, point.y, 65)
       }
-      this.actor(g, w.squad.x, w.squad.y, w.squad.hp > 0 ? 0x7f9aa9 : 0x775c58, .95, false)
+      this.actor(g, w.squad.x, w.squad.y, w.squad.hp > 0 ? 0x7f9aa9 : 0x775c58, .95, false, this.actorMotion.pose(w.squad, w.elapsed, reduced))
       g.fillStyle(0x0b1718); g.fillRect(w.squad.x - 25, w.squad.y - 52, 50, 6)
       g.fillStyle(0x86c9b1); g.fillRect(w.squad.x - 25, w.squad.y - 52, 50 * w.squad.hp / w.squad.maxHp, 6)
       if (w.squad.holding) { g.lineStyle(2, 0xa5d9ca, .6); g.strokeCircle(w.squad.x, w.squad.y, 30) }
     }
     if (w.huntTeam) {
-      this.actor(g, w.huntTeam.x, w.huntTeam.y, w.huntTeam.hp > 0 ? 0x929b75 : 0x775c58, .95, false)
+      this.actor(g, w.huntTeam.x, w.huntTeam.y, w.huntTeam.hp > 0 ? 0x929b75 : 0x775c58, .95, false, this.actorMotion.pose(w.huntTeam, w.elapsed, reduced))
       g.fillStyle(0x0b1718); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50, 6)
       g.fillStyle(0xb8c58d); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50 * w.huntTeam.hp / w.huntTeam.maxHp, 6)
     }
     if (w.prisonEscort) {
       const ally = w.prisonEscort
-      this.actor(g, ally.x, ally.y, ally.hp > 0 ? 0xb4b0c7 : 0x775c58, .95, false)
+      this.actor(g, ally.x, ally.y, ally.hp > 0 ? 0xb4b0c7 : 0x775c58, .95, false, this.actorMotion.pose(ally, w.elapsed, reduced))
       g.fillStyle(0x0b1718); g.fillRect(ally.x - 25, ally.y - 52, 50, 6)
       g.fillStyle(0xbca9d8); g.fillRect(ally.x - 25, ally.y - 52, 50 * ally.hp / ally.maxHp, 6)
       g.lineStyle(2, 0xbca9d8, .4); g.strokeCircle(ally.x, ally.y, 28)
@@ -503,7 +512,7 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(3, progress.stage === event.stages.length - 1 ? 0x8ee4b3 : 0xe8c98c); g.strokeRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
       } else {
         const npc = event.kind === 'escort' && w.escort ? w.escort : event.npc
-        this.actor(g, npc.x, npc.y, event.kind === 'escort' && w.escort?.hp === 0 ? 0x775c58 : 0x729d96, 1, false)
+        this.actor(g, npc.x, npc.y, event.kind === 'escort' && w.escort?.hp === 0 ? 0x775c58 : 0x729d96, 1, false, this.actorMotion.pose(npc, w.elapsed, reduced))
       }
       const npc = event.kind === 'escort' && w.escort ? w.escort : event.npc
       g.lineStyle(2, 0x9bd7cb, .5); g.strokeCircle(npc.x, npc.y, 35)
@@ -565,7 +574,6 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(active ? 4 : 1, active ? 0xf0d498 : 0x9da688, .8); g.strokeCircle(point.x, point.y, active ? 34 : 24)
       })
     }
-    const reduced = gameStore.getSnapshot().state.settings.reducedMotion
     for (const h of w.herbs) if (h.available) {
       const glow = reduced ? .22 : .2 + .1 * Math.sin(w.elapsed * 3 + h.x)
       g.fillStyle(0x8ce7ae, glow); g.fillCircle(h.x, h.y, 21)
@@ -591,7 +599,7 @@ export default class AdventureScene extends Phaser.Scene {
       }
       const size = e.type === 'boss' ? 1.65 : 1
       const color = e.duel ? 0x88a8a1 : e.type === 'boss' ? 0x9f5f54 : e.type === 'mage' ? 0x776489 : e.type === 'hunter' ? 0x927750 : 0x7b8061
-      this.actor(g, e.x, e.y, color, size, false)
+      this.actor(g, e.x, e.y, color, size, false, this.actorMotion.pose(e, w.elapsed, reduced))
       if (e.ranking && e.windup > 0) { g.fillStyle(0x83c7dc, .12); g.fillCircle(e.x, e.y, 45); g.lineStyle(3, 0x9bd5e0, .8); g.strokeCircle(e.x, e.y, 45) }
       if (e.sect && e.windup > 0) { g.fillStyle(0xc0d1e7, .12); g.fillCircle(e.x, e.y, 52); g.lineStyle(3, 0xc0d1e7, .8); g.strokeCircle(e.x, e.y, 52) }
       if (e.finale && e.windup > 0) { const color = [0xaf98db, 0xd87586, 0xf2b87f][e.finale.phase - 1]; g.fillStyle(color, .15); g.fillCircle(e.x, e.y, 55); g.lineStyle(3, color, .8); g.strokeCircle(e.x, e.y, 55) }
@@ -602,9 +610,11 @@ export default class AdventureScene extends Phaser.Scene {
     const flame = gameStore.getSnapshot().state.flame
     const color = flame === 'lotus' ? 0x6de4bc : flame === 'star' ? 0xb59af5 : flame === 'pure' ? 0xf4c1d3 : 0xeac18c
     if (p.invincible > 0) { g.lineStyle(2, color, .6); g.strokeCircle(p.x, p.y, 30) }
-    this.actor(g, p.x, p.y, p.hit > 0 ? 0xad6a58 : 0x293d41, 1.05, true)
+    const pose = this.actorMotion.pose(p, w.elapsed, reduced, true)
+    this.actor(g, p.x, p.y, p.hit > 0 ? 0xad6a58 : 0x293d41, 1.05, true, pose)
+    const weaponAngle = p.facing + pose.sweep
     g.lineStyle(3, 0xd1c5ac, .9)
-    g.lineBetween(p.x + Math.cos(p.facing) * 14, p.y + Math.sin(p.facing) * 14, p.x + Math.cos(p.facing) * 43, p.y + Math.sin(p.facing) * 43)
+    g.lineBetween(p.x + Math.cos(weaponAngle) * 14, p.y + Math.sin(weaponAngle) * 14, p.x + Math.cos(weaponAngle) * (43 + pose.reach), p.y + Math.sin(weaponAngle) * (43 + pose.reach))
     for (const effect of w.effects) {
       const f = effect.time / effect.maxTime
       g.lineStyle(3 + f * 4, effect.color, f * .9)
@@ -619,16 +629,7 @@ export default class AdventureScene extends Phaser.Scene {
       presentFloat(this.floats[i], w.floats[i])
     }
   }
-  private actor(g: Phaser.GameObjects.Graphics, x: number, y: number, color: number, scale: number, player: boolean) {
-    g.fillStyle(0x061515, .35); g.fillEllipse(x + 2, y + 13 * scale, 35 * scale, 14 * scale)
-    g.fillStyle(color); g.fillTriangle(x - 16 * scale, y + 12 * scale, x, y - 23 * scale, x + 16 * scale, y + 12 * scale)
-    g.fillRoundedRect(x - 9 * scale, y - 21 * scale, 18 * scale, 25 * scale, 4)
-    g.fillStyle(player ? 0xe3c5a0 : 0xc2ac8c); g.fillCircle(x, y - 28 * scale, 8 * scale)
-    g.fillStyle(0x172426); g.fillEllipse(x, y - 34 * scale, 18 * scale, 9 * scale)
-    g.lineStyle(2 * scale, player ? 0xc4a67d : 0x453f38); g.lineBetween(x - 9 * scale, y - 1 * scale, x + 9 * scale, y - 1 * scale)
-    if (player) {
-      g.lineStyle(2, 0x314747); g.lineBetween(x - 3, y - 37, x - 16, y - 28)
-      g.fillStyle(0x142324); g.fillRoundedRect(x - 18, y - 22, 7, 32, 2)
-    }
+  private actor(g: Phaser.GameObjects.Graphics, x: number, y: number, color: number, scale: number, player: boolean, pose?: ActorPose) {
+    drawActor(g, x, y, color, scale, player, pose)
   }
 }
