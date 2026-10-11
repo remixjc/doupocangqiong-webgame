@@ -23,7 +23,7 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const visible = viewing.spoiler === 'novel' || saved.chapter <= viewing.animeLimit
-  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)} · ${earlyBraceletSaveSummary(saved, viewing)} · ${earlyGrowthSaveSummary(saved, viewing)} · ${earlyHallSaveSummary(saved, viewing)} · ${earlyTeachingSaveSummary(saved, viewing)} · ${earlySupervisionSaveSummary(saved, viewing)} · ${earlyRecoverySaveSummary(saved, viewing)} · ${earlyConsignmentSaveSummary(saved, viewing)} · ${earlyAppraisalSaveSummary(saved, viewing)} · ${earlyAuctionSaveSummary(saved, viewing)} · ${earlySettlementSaveSummary(saved, viewing)} · ${earlyFatherGiftSaveSummary(saved, viewing)} · ${earlyXunerVisitSaveSummary(saved, viewing)} · ${earlyLongSuppliesSaveSummary(saved, viewing)} · ${earlyForestStrikeSaveSummary(saved, viewing)} · ${earlySeventhRoomSaveSummary(saved, viewing)} · ${earlyPalmPairSaveSummary(saved, viewing)} · ${earlyPreliminarySaveSummary(saved, viewing)} · ${earlyKeChallengeSaveSummary(saved, viewing)} · ${earlyEighthTrainingSaveSummary(saved, viewing)} · ${earlyCeremonyGuestsSaveSummary(saved, viewing)}`
+  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)} · ${earlyBraceletSaveSummary(saved, viewing)} · ${earlyGrowthSaveSummary(saved, viewing)} · ${earlyHallSaveSummary(saved, viewing)} · ${earlyTeachingSaveSummary(saved, viewing)} · ${earlySupervisionSaveSummary(saved, viewing)} · ${earlyRecoverySaveSummary(saved, viewing)} · ${earlyConsignmentSaveSummary(saved, viewing)} · ${earlyAppraisalSaveSummary(saved, viewing)} · ${earlyAuctionSaveSummary(saved, viewing)} · ${earlySettlementSaveSummary(saved, viewing)} · ${earlyFatherGiftSaveSummary(saved, viewing)} · ${earlyXunerVisitSaveSummary(saved, viewing)} · ${earlyLongSuppliesSaveSummary(saved, viewing)} · ${earlyForestStrikeSaveSummary(saved, viewing)} · ${earlySeventhRoomSaveSummary(saved, viewing)} · ${earlyPalmPairSaveSummary(saved, viewing)} · ${earlyPreliminarySaveSummary(saved, viewing)} · ${earlyKeChallengeSaveSummary(saved, viewing)} · ${earlyEighthTrainingSaveSummary(saved, viewing)} · ${earlyCeremonyGuestsSaveSummary(saved, viewing)} · ${earlyCeremonialTestSaveSummary(saved, viewing)}`
 }
 
 export function earlyPalmPairSaveSummary(saved: GameState, viewing: Settings): string {
@@ -189,7 +189,18 @@ export function earlyEighthTrainingSaveSummary(saved: GameState, viewing: Settin
 export function earlyCeremonyGuestsSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.ceremonyGuests
   return '礼前宾客 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
-    : task.stage === 12 ? '宾客与收剑已归档，尚待开礼' : task.stage >= 10 ? '父亲介绍已记，待回应与归档'
+    : task.stage === 12 ? saved.earlyTraining.ceremonialTest.stage === 13 ? '宾客与收剑、正式验碑已归档'
+      : saved.earlyTraining.ceremonialTest.stage > 0 ? '宾客与收剑已归档，正式礼进行中' : '宾客与收剑已归档，尚待开礼'
+    : task.stage >= 10 ? '父亲介绍已记，待回应与归档'
     : task.stage >= 7 ? '萧玉已收剑，没有战斗' : task.stage >= 5 ? '佩剑出鞘，尚未交锋'
     : task.stage > 0 ? `候礼观察${task.stage}/4` : '未参与')
+}
+
+export function earlyCeremonialTestSaveSummary(saved: GameState, viewing: Settings): string {
+  const task = saved.earlyTraining.ceremonialTest
+  return '正式验碑 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+    : task.stage === 13 ? '仪式与正式八段已归档，尚待挑战' : task.stage >= 9 ? '正式八段已触碑，反应与归档待续'
+    : task.stage === 8 ? '二长老已验碑，本人尚未测' : task.stage >= 6 ? '仪式结束，尚待验碑'
+    : task.stage === 5 ? '半小时回顾已记，尚待仪式结束' : task.stage === 4 ? '二长老主持中，尚未完成礼程'
+    : task.stage > 0 ? `候礼登台${task.stage}/3` : '未参与')
 }

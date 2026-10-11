@@ -27,7 +27,9 @@ export interface EarlyTrainingState {
   keChallenge: KeChallengeState
   eighthTraining: EighthTrainingState
   ceremonyGuests: CeremonyGuestsState
+  ceremonialTest: CeremonialTestState
 }
+export interface CeremonialTestState { stage: number; rite: 'none' | 'begun' | 'reviewed' | 'ended'; inspected: boolean; result: 'unmeasured' | 'eighth-duan' }
 export interface CeremonyGuestsState { stage: number; sword: 'none' | 'drawn' | 'sheathed'; introduced: boolean }
 export interface EighthTrainingState { stage: number; beats: number; attempts: number;
   outing: 'none' | 'promised' | 'completed'; period: 'none' | 'reviewed';
@@ -72,6 +74,7 @@ export const EARLY_PRELIMINARY_VERSION = '0.26.0'
 export const EARLY_KE_CHALLENGE_VERSION = '0.27.0'
 export const EARLY_EIGHTH_TRAINING_VERSION = '0.28.0'
 export const EARLY_CEREMONY_GUESTS_VERSION = '0.29.0'
+export const EARLY_CEREMONIAL_TEST_VERSION = '0.30.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -103,9 +106,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     preliminary: { stage: 0, mei: 'unmeasured', xuner: 'unmeasured', yan: 'unmeasured' },
     keChallenge: { stage: 0, beats: 0, attempts: 0, verdict: 'none', invitation: 'none' },
     eighthTraining: { stage: 0, beats: 0, attempts: 0, outing: 'none', period: 'none', energy: 'unobserved', result: 'none' },
-    ceremonyGuests: { stage: 0, sword: 'none', introduced: false } }
+    ceremonyGuests: { stage: 0, sword: 'none', introduced: false },
+    ceremonialTest: { stage: 0, rite: 'none', inspected: false, result: 'unmeasured' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -258,6 +262,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const ceremonyGuests = data.ceremonyGuests === undefined && legacyCeremonyGuests ? result.ceremonyGuests : object(data.ceremonyGuests)
   if (!validCeremonyGuests(ceremonyGuests) || ceremonyGuests.stage > 0 && eighthTraining.stage !== 15) return invalid()
   result.ceremonyGuests = { stage: ceremonyGuests.stage, sword: ceremonyGuests.sword, introduced: ceremonyGuests.introduced }
+  const ceremonialTest = data.ceremonialTest === undefined && legacyCeremonialTest ? result.ceremonialTest : object(data.ceremonialTest)
+  if (!validCeremonialTest(ceremonialTest) || ceremonialTest.stage > 0 && ceremonyGuests.stage !== 12) return invalid()
+  result.ceremonialTest = { stage: ceremonialTest.stage, rite: ceremonialTest.rite, inspected: ceremonialTest.inspected, result: ceremonialTest.result }
   return result
 }
 
@@ -355,4 +362,14 @@ export function validCeremonyGuests(task: Record<string, unknown> | CeremonyGues
   if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 12) return false
   const expected = ceremonyGuestsAt(task.stage)
   return task.sword === expected.sword && task.introduced === expected.introduced
+}
+
+export function ceremonialTestAt(stage: number): Omit<CeremonialTestState, 'stage'> {
+  return { rite: stage >= 6 ? 'ended' : stage >= 5 ? 'reviewed' : stage >= 4 ? 'begun' : 'none', inspected: stage >= 8,
+    result: stage >= 9 ? 'eighth-duan' : 'unmeasured' }
+}
+export function validCeremonialTest(task: Record<string, unknown> | CeremonialTestState): task is CeremonialTestState {
+  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 13) return false
+  const expected = ceremonialTestAt(task.stage)
+  return task.rite === expected.rite && task.inspected === expected.inspected && task.result === expected.result
 }

@@ -24,6 +24,7 @@ import { earlyPreliminaryBlock } from '../core/early-preliminary'
 import { earlyKeChallengeBlock } from '../core/early-ke-challenge'
 import { earlyEighthTrainingBlock } from '../core/early-eighth-training'
 import { earlyCeremonyGuestsBlock } from '../core/early-ceremony-guests'
+import { earlyCeremonialTestBlock } from '../core/early-ceremonial-test'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
@@ -45,6 +46,7 @@ const EarlyPreliminary = lazy(() => loadSceneModule(() => import('./EarlyPrelimi
 const EarlyKeChallenge = lazy(() => loadSceneModule(() => import('./EarlyKeChallenge')))
 const EarlyEighthTraining = lazy(() => loadSceneModule(() => import('./EarlyEighthTraining')))
 const EarlyCeremonyGuests = lazy(() => loadSceneModule(() => import('./EarlyCeremonyGuests')))
+const EarlyCeremonialTest = lazy(() => loadSceneModule(() => import('./EarlyCeremonialTest')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -68,6 +70,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const [keChallenge, setKeChallenge] = useState(false)
   const [eighthTraining, setEighthTraining] = useState(false)
   const [ceremonyGuests, setCeremonyGuests] = useState(false)
+  const [ceremonialTest, setCeremonialTest] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
@@ -106,6 +109,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const returningEighth = useRef(false)
   const guestsEntry = useRef<HTMLButtonElement>(null)
   const returningGuests = useRef(false)
+  const ceremonialEntry = useRef<HTMLButtonElement>(null)
+  const returningCeremonial = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -167,6 +172,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!ceremonyGuests && returningGuests.current) { returningGuests.current = false; guestsEntry.current?.focus() }
   }, [ceremonyGuests])
+  useEffect(() => {
+    if (!ceremonialTest && returningCeremonial.current) { returningCeremonial.current = false; ceremonialEntry.current?.focus() }
+  }, [ceremonialTest])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -237,6 +245,11 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setPalmTraining(false); setPreliminary(true)
   }
+  function openCeremonialTest() {
+    const blocked = earlyCeremonialTestBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setCeremonyGuests(false); setCeremonialTest(true)
+  }
   function openCeremonyGuests() {
     const blocked = earlyCeremonyGuestsBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -261,7 +274,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (ceremonyGuests) return <Suspense fallback={<p role="status">正在进入正式礼宾客场地……</p>}><EarlyCeremonyGuests state={state} position={position}
+  if (ceremonialTest) return <Suspense fallback={<p role="status">正在接续正式仪式与验碑……</p>}><EarlyCeremonialTest state={state} position={position}
+    onBack={() => { returningCeremonial.current = true; setCeremonialTest(false) }} /></Suspense>
+  if (ceremonyGuests) return <Suspense fallback={<p role="status">正在进入正式礼宾客场地……</p>}><EarlyCeremonyGuests state={state} position={position} onCeremony={openCeremonialTest}
     onBack={() => { returningGuests.current = true; setCeremonyGuests(false) }} /></Suspense>
   if (eighthTraining) return <Suspense fallback={<p role="status">正在接续同行与礼前训练……</p>}><EarlyEighthTraining state={state} position={position} onGuests={openCeremonyGuests}
     onBack={() => { returningEighth.current = true; setEighthTraining(false) }} /></Suspense>
@@ -374,6 +389,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyKeChallengeBlock(state, position) && <button ref={keChallengeEntry} className="primary" onClick={openKeChallenge}>接续萧克六段挑战 · 侧避与低阶掌法</button>}
       {place.id === 'teacher' && !earlyEighthTrainingBlock(state, position) && <button ref={eighthEntry} className="primary" onClick={openEighthTraining}>接续同行与礼前八段 · 实际训练</button>}
       {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <button ref={guestsEntry} className="primary" onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</button>}
+      {place.id === 'teacher' && !earlyCeremonialTestBlock(state, position) && <button ref={ceremonialEntry} className="primary" onClick={openCeremonialTest}>接续正式仪式 · 二长老验碑与八段</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
