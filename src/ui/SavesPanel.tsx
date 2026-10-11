@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { gameStore } from '../core/store'
 import type { GameState } from '../core/model'
-import { listSlots, parseSave, saveSlot, serializeSave, type SaveRecord } from '../core/save'
+import { listSlots, parseSave, saveSlot, type SaveRecord } from '../core/save'
 import { savePreviewSummary, saveRecordSummary } from '../core/save-preview'
 import SaveStatus from './SaveStatus'
+import SaveBackup from './SaveBackup'
 
 export default function SavesPanel({ state, onLoaded, onReset }: { state: GameState; onLoaded: () => void; onReset: () => void }) {
   const { autosave } = useSyncExternalStore(gameStore.subscribe, gameStore.getSnapshot)
@@ -29,12 +30,6 @@ export default function SavesPanel({ state, onLoaded, onReset }: { state: GameSt
       onLoaded(); gameStore.notify('存档已载入，从营地继续历练。')
     } catch (e) { setError((e as Error).message) } finally { setBusy(false) }
   }
-  function exportJson() {
-    const url = URL.createObjectURL(new Blob([serializeSave(state)], { type: 'application/json' }))
-    const a = document.createElement('a')
-    a.href = url; a.download = `异火之路-第${state.chapter}章-${Date.now()}.json`; a.click()
-    setTimeout(() => URL.revokeObjectURL(url), 1000)
-  }
   async function importFile(file?: File) {
     if (!file) return
     try {
@@ -50,7 +45,7 @@ export default function SavesPanel({ state, onLoaded, onReset }: { state: GameSt
       const summary = entry ? saveRecordSummary(entry, state.settings) : records ? '空白存档' : '正在读取存档…'
       return <div className="save-item" key={slot}><div><b>{slot === 0 ? '自动存档' : `手动存档 ${slot}`}</b><small>{summary}</small>{entry && <small>{new Date(entry.savedAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</small>}</div><div className="save-actions">{slot > 0 && <button className="small-btn" disabled={busy || !records} onClick={() => save(slot)}>保存</button>}<button className="secondary small-btn" disabled={busy || !entry} onClick={() => load(slot)}>载入</button></div></div>
     })}</div>
-    <div className="save-tools"><button className="secondary" onClick={exportJson}>导出 JSON 备份</button><button className="secondary" onClick={() => fileInput.current?.click()}>导入备份</button><input ref={fileInput} aria-label="导入存档文件" type="file" accept=".json,application/json" hidden onChange={e => importFile(e.target.files?.[0])} /></div>
+    <div className="save-tools"><SaveBackup state={state} /><button className="secondary" onClick={() => fileInput.current?.click()}>导入备份</button><input ref={fileInput} aria-label="导入存档文件" type="file" accept=".json,application/json" hidden onChange={e => importFile(e.target.files?.[0])} /></div>
     {imported && <div className="import-preview"><p className="muted">校验通过：{savePreviewSummary(imported, state.settings)}。载入前可先导出现有进度。</p><button className="small-btn" onClick={() => { gameStore.replace(imported); setImported(null); onLoaded() }}>确认载入导入存档</button></div>}
     {records?.filter(r => r.slot === -1).map(entry => <section className="bond-summary" aria-label="上一份自动存档摘要" key={entry.slot}>
       <b>上一份自动存档</b><p>{saveRecordSummary(entry, state.settings)}</p>
