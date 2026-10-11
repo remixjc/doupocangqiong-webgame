@@ -410,6 +410,9 @@ export default class AdventureScene extends Phaser.Scene {
       ...(w.map.towerFloors ?? []).map((floor, index) => ({
         ...floor.cooling, id: `tower-cooling:${index}`, label: `${['一', '二', '三'][index] ?? index + 1}层镇心石`,
       })),
+      ...(w.map.starTrial?.cooling ?? []).map((point, index) => ({
+        ...point, id: `star-cooling:${index}`, label: `${index === 0 ? '西侧' : '东侧'}镇心石`,
+      })),
       ...w.map.landmarks.map((point, index) => ({ ...point, id: `landmark:${index}`, label: point.label })),
     ].map(({ id, label, x, y }) => ({ id, label, x, y }))
   }
