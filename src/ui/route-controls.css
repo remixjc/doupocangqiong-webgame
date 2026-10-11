@@ -1,0 +1,7 @@
+.route-controls{border:1px solid var(--line);background:#142625;padding:10px 12px;margin-top:10px;border-radius:4px}
+.route-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px}
+.route-actions select{flex:1;min-width:120px;max-width:360px;background:#1d302e;color:#e0d5bb;border:1px solid #c6ac8066;padding:8px;border-radius:3px}
+.route-actions button{border:1px solid #c6ac8066;background:#213731;color:#e0d5bb;padding:8px 12px;border-radius:3px;min-height:36px}
+.route-controls p{font-size:11px;line-height:1.6;margin:8px 0 4px;color:#c6d7c4}
+.route-controls small{font-size:10px;color:var(--muted);line-height:1.6}
+@media(max-height:550px) and (orientation:landscape){.route-controls{padding:6px 10px}.route-controls small{display:none}.route-controls p{margin:4px 0}}

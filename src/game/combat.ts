@@ -4,6 +4,7 @@ import { finalMapForPhase, hasLineOfSight, mapForChapter, mapCollides, MAP_WIDTH
 import { eventForChapter, eventsForChapter } from '../content/events'
 import { eventProgress, type EventAction } from '../core/events'
 import { teacherSupport } from '../core/companions'
+import { worldBounds, type WalkBounds } from './navigation'
 
 export interface Vec { x: number; y: number }
 export interface Obstacle { x: number; y: number; w: number; h: number }
@@ -684,11 +685,15 @@ export class CombatWorld {
     const guards = eventsForChapter(this.chapter.id).find(e => e.id === eventId)?.checkpoints?.[index]?.guards ?? []
     return this.enemies.filter(e => e.hp > 0 && e.spawnId && guards.includes(e.spawnId)).length
   }
-  private move(p: Vec, vx: number, vy: number) {
+  movementBounds(): WalkBounds {
     const arena = this.map.finalArena && this.enemies.some(e => e.finale && e.hp > 0) ? this.map.finalArena
       : this.map.duelArena && this.enemies.some(e => e.duel && e.hp > 0) ? this.map.duelArena : undefined
-    const nx = clamp(p.x + vx, arena ? arena.x + 22 : 40, arena ? arena.x + arena.w - 22 : WIDTH - 40)
-    const ny = clamp(p.y + vy, arena ? arena.y + 22 : 45, arena ? arena.y + arena.h - 22 : HEIGHT - 40)
+    return arena ? { left: arena.x + 22, right: arena.x + arena.w - 22, top: arena.y + 22, bottom: arena.y + arena.h - 22 } : worldBounds
+  }
+  private move(p: Vec, vx: number, vy: number) {
+    const bounds = this.movementBounds()
+    const nx = clamp(p.x + vx, bounds.left, bounds.right)
+    const ny = clamp(p.y + vy, bounds.top, bounds.bottom)
     const map = this.collisionMap()
     if (!mapCollides(map, { x: nx, y: p.y })) p.x = nx
     if (!mapCollides(map, { x: p.x, y: ny })) p.y = ny

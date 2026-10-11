@@ -14,6 +14,7 @@ import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
 import { bindDialogFocus } from './dialog-focus'
 import { loadSceneModule } from './scene-load'
+import RouteControls from './RouteControls'
 
 const GameView = lazy(() => loadSceneModule(() => import('./GameView')))
 const StoryRecap = lazy(() => loadSceneModule(() => import('./StoryRecap')))
@@ -52,7 +53,7 @@ export default function App() {
   }, [])
   useEffect(() => {
     gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead || portrait || sceneFailed
-    if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; stopAudio() }
+    if (gameStore.paused) { gameStore.stopTravel(); gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; stopAudio() }
     gameStore.onInteract = () => setPanel('camp')
     gameStore.onStoryEvent = (id, checkpoint) => { setEventId(id); setEventCheckpoint(checkpoint); setPanel('event') }
     return () => { gameStore.onInteract = null; gameStore.onStoryEvent = null }
@@ -193,6 +194,7 @@ export default function App() {
           <TouchControls onMenu={() => setPanel('camp')} />
         </div>
         <p id="scene-keyboard-help" className="visually-hidden">聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。</p>
+        <RouteControls navigation={r.navigation?.chapter === s.chapter ? r.navigation : undefined} disabled={!!panel || !!story || r.dead || portrait || sceneFailed} />
         <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button disabled={!support.available} onClick={() => gameStore.action('support')}><kbd>R</kbd> {support.available ? '支援' : '支援暂不可用'}</button></div>
           <div className="skills">{skillInfo.map(skill => {
             const unlocked = skillUnlocked(s, skill.id), cd = r.cooldowns[skill.id]

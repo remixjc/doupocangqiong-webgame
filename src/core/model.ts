@@ -70,6 +70,7 @@ export interface Runtime {
   prompt: string
   near: 'camp' | 'herb' | 'gate' | 'event' | 'checkpoint' | ''
   bossHp: number; bossMaxHp: number; bossName: string
+  navigation?: { chapter: number; mapId: string; places: { id: string; label: string; x: number; y: number }[]; active?: string; message: string }
   escort?: { hp: number; maxHp: number; failed: boolean; waiting: boolean }
   survival?: { remaining: number; inZone: boolean }
   patrol?: { alert: number; alerted: boolean; remaining: number }

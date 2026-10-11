@@ -20,6 +20,7 @@ export class GameStore {
   private listeners = new Set<() => void>()
   readonly actions: Action[] = []
   move = { x: 0, y: 0 }
+  travelTarget?: string
   paused = true
   onInteract: (() => void) | null = null
   onStoryEvent: ((id: string, checkpoint?: number) => void) | null = null
@@ -64,6 +65,7 @@ export class GameStore {
   replace(state: GameState) {
     this.snapshot = { ...this.snapshot, state, runtime: emptyRuntime(state), notice: '' }
     this.actions.length = 0
+    this.travelTarget = undefined
     this.move = { x: 0, y: 0 }
     this.publish()
     this.onChange?.(state)
@@ -76,7 +78,9 @@ export class GameStore {
     this.onChange?.(state)
   }
   runtime(runtime: Runtime) { this.snapshot = { ...this.snapshot, runtime }; this.publish() }
-  action(action: Action) { if (!this.paused) this.actions.push(action) }
+  travel(id: string) { if (!this.paused) this.travelTarget = id }
+  stopTravel() { this.travelTarget = undefined }
+  action(action: Action) { this.stopTravel(); if (!this.paused) this.actions.push(action) }
   newGame() { this.replace(initialState()) }
   enter(id: number): boolean {
     if (!canEnter(this.snapshot.state, id)) return false

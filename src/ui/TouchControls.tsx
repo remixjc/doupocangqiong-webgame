@@ -34,6 +34,7 @@ export default function TouchControls({ onMenu }: { onMenu: () => void }) {
   return <div className="touch-controls">
     <div className="joystick" role="group" aria-label="移动摇杆" onPointerDown={e => {
       if (gameStore.paused || document.hidden) return
+      gameStore.stopTravel()
       const box = e.currentTarget.getBoundingClientRect()
       origin.current = { x: box.left + box.width / 2, y: box.top + box.height / 2 }
       active.current = e.pointerId; e.currentTarget.setPointerCapture(e.pointerId); move(e)

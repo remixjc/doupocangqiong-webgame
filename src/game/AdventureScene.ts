@@ -13,6 +13,7 @@ import { ActorMotion, type ActorPose } from './actor-motion'
 import { drawActor } from './draw-actor'
 import { acceptsGameplayKey, keyboardSurface, BufferedMovement } from './keyboard'
 import { SceneGuard } from './scene-guard'
+import { RouteWalker } from './navigation'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -25,6 +26,10 @@ export default class AdventureScene extends Phaser.Scene {
   private floats!: Phaser.GameObjects.Text[]
   private heldKeys = new Set<string>()
   private movementTaps = new BufferedMovement()
+  private walker = new RouteWalker()
+  private travelId?: string
+  private travelGround = ''
+  private travelMessage = '选择地图地点，再沿路行走。'
   private clock = new FixedClock()
   private runtimeTimer = 0
   private aim: { x: number; y: number } | undefined
@@ -46,6 +51,7 @@ export default class AdventureScene extends Phaser.Scene {
     this.faultGuard.run(() => this.createWorld())
   }
   private createWorld() {
+    this.stopNavigation('选择地图地点，再沿路行走。')
     this.environmentMapId = ''
     this.drawGate = new PauseDrawGate()
     this.actorMotion = new ActorMotion()
@@ -84,6 +90,7 @@ export default class AdventureScene extends Phaser.Scene {
       unlockAudio()
       if (!document.hidden) this.lostFocus = false
       const key = event.key.toLowerCase()
+      if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) gameStore.stopTravel()
       if ([' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) event.preventDefault()
       this.heldKeys.add(key)
       this.movementTaps.record(key)
@@ -104,6 +111,7 @@ export default class AdventureScene extends Phaser.Scene {
       }
     }
     const release = () => {
+      this.stopNavigation('行走已停止，回到场景后可重新选择。')
       this.lostFocus = true; this.heldKeys.clear(); this.movementTaps.clear(); this.aim = undefined; this.clock.reset(); this.runtimeTimer = 0
       stopAudio()
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
@@ -352,8 +360,11 @@ export default class AdventureScene extends Phaser.Scene {
     if (!this.world) return
     const paused = gameStore.paused || this.lostFocus || document.hidden
     if (paused) {
+      const wasWalking = !!this.travelId
+      this.stopNavigation('行走已停止，关闭菜单后可重新选择。')
       this.clock.reset(); this.heldKeys.clear(); this.movementTaps.clear(); this.aim = undefined; this.runtimeTimer = 0
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
+      if (wasWalking) this.publishRuntime()
       if (this.drawGate.shouldDraw(true, gameStore.getSnapshot().state)) this.drawActors()
       return
     }
@@ -369,18 +380,71 @@ export default class AdventureScene extends Phaser.Scene {
     this.aim = undefined
     this.clock.advance(delta, () => {
       const direction = this.movementTaps.read(this.heldKeys)
-      this.world.step({ ...input, x: direction.x + gameStore.move.x, y: direction.y + gameStore.move.y })
+      let movement = { x: direction.x + gameStore.move.x, y: direction.y + gameStore.move.y }
+      if (movement.x || movement.y) gameStore.stopTravel()
+      this.syncNavigation()
+      if (this.travelId) movement = this.walker.input(this.world.player)
+      const hp = this.world.player.hp
+      this.world.step({ ...input, ...movement })
+      if (this.travelId && this.world.player.hp < hp) this.stopNavigation('受到攻击，行走已停止。请应战或选择退路。')
+      else if (this.travelId && !this.walker.active) this.stopNavigation(this.walker.result === 'blocked'
+        ? '道路受阻，行走已停止。请手动调整站位后重新选择。' : '已到达地点。请手动交互，留意附近威胁。')
       this.movementTaps.clear()
     })
     this.syncEnvironment()
     this.runtimeTimer += delta
-    if (this.runtimeTimer >= 100) { gameStore.runtime(this.world.runtime()); this.runtimeTimer = 0 }
+    if (this.runtimeTimer >= 100) { this.publishRuntime(); this.runtimeTimer = 0 }
     this.drawActors()
+  }
+  private navigationPlaces() {
+    const w = this.world
+    return [
+      { ...w.map.camp, id: 'camp', label: '营地' },
+      { ...w.map.gate, id: 'gate', label: w.map.gateLabel ?? '试炼碑 / 出口' },
+      ...eventsForChapter(w.chapter.id).flatMap(event => [
+        { ...(event.kind === 'escort' && w.escort ? w.escort : event.npc), id: `${event.id}:npc`, label: event.speaker },
+        ...(event.dummy ? [{ ...event.dummy, id: `${event.id}:dummy`, label: '演练木桩' }] : []),
+        ...(event.checkpoints ?? []).map((point, index) => ({ ...point, id: `${event.id}:${index}`, label: point.label })),
+      ]),
+      ...w.herbs.flatMap((herb, index) => herb.available ? [{ x: herb.x, y: herb.y, id: `herb:${index}`, label: `灵草 ${index + 1}` }] : []),
+      ...w.map.landmarks.map((point, index) => ({ ...point, id: `landmark:${index}`, label: point.label })),
+    ].map(({ id, label, x, y }) => ({ id, label, x, y }))
+  }
+  private stopNavigation(message: string) {
+    this.walker.stop(); this.travelId = undefined; gameStore.stopTravel(); this.travelMessage = message
+  }
+  private syncNavigation() {
+    const w = this.world, bounds = w.movementBounds()
+    const ground = `${w.map.id}:${w.barrierClosed()}:${bounds.left}:${bounds.top}:${bounds.right}:${bounds.bottom}`
+    if (this.travelId && ground !== this.travelGround) { this.stopNavigation('道路或战场已变化，请重新选择地点。'); return }
+    if (gameStore.travelTarget === this.travelId) return
+    const id = gameStore.travelTarget
+    if (!id) { if (this.travelId) this.stopNavigation('行走已停止。'); return }
+    const place = this.navigationPlaces().find(p => p.id === id)
+    if (!place || !this.walker.start(w.player, place, w.collisionMap(), bounds)) {
+      this.stopNavigation('当前无法沿路到达该地点。请检查封门、战场边界或手动调整站位。'); return
+    }
+    this.travelId = id; this.travelGround = ground; this.travelMessage = `正在前往：${place.label}。`
+  }
+  private publishRuntime() {
+    gameStore.runtime({ ...this.world.runtime(), navigation: {
+      chapter: this.world.chapter.id, mapId: this.world.map.id,
+      places: this.navigationPlaces(), active: this.travelId, message: this.travelMessage,
+    } })
   }
   private drawActors() {
     const g = this.ink
     g.clear()
     const w = this.world, p = w.player
+    if (this.travelId) {
+      g.lineStyle(2, 0xb6d2b0, .6)
+      let previous: { x: number; y: number } = p
+      for (const next of this.walker.path) {
+        g.lineBetween(previous.x, previous.y, next.x, next.y)
+        previous = next
+      }
+      g.strokeCircle(previous.x, previous.y, 12)
+    }
     const reduced = gameStore.getSnapshot().state.settings.reducedMotion
     const { gate } = w.map
     if (w.map.duelArena) {
