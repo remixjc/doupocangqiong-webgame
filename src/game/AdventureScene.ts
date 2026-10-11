@@ -11,7 +11,7 @@ import { PauseDrawGate, presentFloat } from './presentation'
 import { bindFocusLifecycle } from './focus'
 import { ActorMotion, type ActorPose } from './actor-motion'
 import { drawActor } from './draw-actor'
-import { acceptsGameplayKey, keyboardSurface } from './keyboard'
+import { acceptsGameplayKey, keyboardSurface, BufferedMovement } from './keyboard'
 import { SceneGuard } from './scene-guard'
 
 const palette = {
@@ -24,6 +24,7 @@ export default class AdventureScene extends Phaser.Scene {
   private ink!: Phaser.GameObjects.Graphics
   private floats!: Phaser.GameObjects.Text[]
   private heldKeys = new Set<string>()
+  private movementTaps = new BufferedMovement()
   private clock = new FixedClock()
   private runtimeTimer = 0
   private aim: { x: number; y: number } | undefined
@@ -85,6 +86,7 @@ export default class AdventureScene extends Phaser.Scene {
       const key = event.key.toLowerCase()
       if ([' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) event.preventDefault()
       this.heldKeys.add(key)
+      this.movementTaps.record(key)
       if (event.repeat) return
       const map: Record<string, Action> = { j: 'attack', ' ': 'dodge', '1': 'strike', '2': 'wave', '3': 'lotus', q: 'heal', f: 'mana', e: 'interact', r: 'support' }
       const action = map[key]
@@ -102,7 +104,7 @@ export default class AdventureScene extends Phaser.Scene {
       }
     }
     const release = () => {
-      this.lostFocus = true; this.heldKeys.clear(); this.aim = undefined; this.clock.reset(); this.runtimeTimer = 0
+      this.lostFocus = true; this.heldKeys.clear(); this.movementTaps.clear(); this.aim = undefined; this.clock.reset(); this.runtimeTimer = 0
       stopAudio()
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
     }
@@ -350,21 +352,26 @@ export default class AdventureScene extends Phaser.Scene {
     if (!this.world) return
     const paused = gameStore.paused || this.lostFocus || document.hidden
     if (paused) {
-      this.clock.reset(); this.heldKeys.clear(); this.aim = undefined; this.runtimeTimer = 0
+      this.clock.reset(); this.heldKeys.clear(); this.movementTaps.clear(); this.aim = undefined; this.runtimeTimer = 0
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
       if (this.drawGate.shouldDraw(true, gameStore.getSnapshot().state)) this.drawActors()
       return
     }
     this.drawGate.shouldDraw(false, gameStore.getSnapshot().state)
+    const direction = this.movementTaps.read(this.heldKeys)
     const input: Input = {
-      x: (Number(this.heldKeys.has('d') || this.heldKeys.has('arrowright')) - Number(this.heldKeys.has('a') || this.heldKeys.has('arrowleft'))) + gameStore.move.x,
-      y: (Number(this.heldKeys.has('s') || this.heldKeys.has('arrowdown')) - Number(this.heldKeys.has('w') || this.heldKeys.has('arrowup'))) + gameStore.move.y,
+      x: direction.x + gameStore.move.x,
+      y: direction.y + gameStore.move.y,
       aim: this.aim,
     }
     for (const action of gameStore.actions.splice(0)) this.world.action(action, input)
     if (this.heldKeys.has('j') && this.world.attackCooldown <= 0) this.world.action('attack', input)
     this.aim = undefined
-    this.clock.advance(delta, () => this.world.step(input))
+    this.clock.advance(delta, () => {
+      const direction = this.movementTaps.read(this.heldKeys)
+      this.world.step({ ...input, x: direction.x + gameStore.move.x, y: direction.y + gameStore.move.y })
+      this.movementTaps.clear()
+    })
     this.syncEnvironment()
     this.runtimeTimer += delta
     if (this.runtimeTimer >= 100) { gameStore.runtime(this.world.runtime()); this.runtimeTimer = 0 }

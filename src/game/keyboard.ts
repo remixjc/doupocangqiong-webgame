@@ -13,3 +13,19 @@ export function keyboardSurface(target: Pick<Element, 'closest'> | null): KeySur
   if (target?.closest('button,a[href],[role="button"]')) return 'control'
   return 'scene'
 }
+
+/** A released movement tap survives until one physics step; held keys still move continuously. */
+export class BufferedMovement {
+  private pending = new Set<string>()
+  record(key: string) {
+    const direction = ({ w: 'up', arrowup: 'up', s: 'down', arrowdown: 'down',
+      a: 'left', arrowleft: 'left', d: 'right', arrowright: 'right' } as Record<string, string>)[key.toLowerCase()]
+    if (direction) this.pending.add(direction)
+  }
+  read(held: ReadonlySet<string>) {
+    const active = (direction: string, letter: string, arrow: string) => this.pending.has(direction) || held.has(letter) || held.has(arrow)
+    return { x: Number(active('right', 'd', 'arrowright')) - Number(active('left', 'a', 'arrowleft')),
+      y: Number(active('down', 's', 'arrowdown')) - Number(active('up', 'w', 'arrowup')) }
+  }
+  clear() { this.pending.clear() }
+}
