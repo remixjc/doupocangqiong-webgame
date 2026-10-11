@@ -25,7 +25,7 @@ export default function EarlyWalk({ state, onBack }: { state: GameState; onBack:
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
     <h2>走过街巷，再把准备做齐。</h2>
-    <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E交互；下方方向按钮也可操作。可在地点接取准备、借资、采购和交涉，调制和练习继续从准备单操作。</p>
+    <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E交互；下方方向按钮也可操作。接取、借资、采购和交涉后，回到药老容器处继续调制、加水与初期练习。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="往事路线地图"
       aria-describedby="early-walk-help" viewBox={`0 0 ${earlyWalkSize.width} ${earlyWalkSize.height}`} onKeyDown={key}>
       <title>萧家院落、药铺与坊市的原创压缩布局</title>

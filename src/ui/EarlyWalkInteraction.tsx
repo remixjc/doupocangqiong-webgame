@@ -5,6 +5,8 @@ import { earlyMarketScenes } from '../content/early-market'
 import { submitEarlyWalk, type EarlyWalkAction } from '../core/early-walk-actions'
 import { nearbyEarlyWalkPlace, type EarlyWalkPosition } from '../core/early-walk'
 import { earlyTrainingBlock } from '../core/early-training'
+import { earlyLiquidScenes } from '../content/early-liquid'
+import EarlyPractice from './EarlyPractice'
 
 export default function EarlyWalkInteraction({ state, position }: { state: GameState; position: EarlyWalkPosition }) {
   const place = nearbyEarlyWalkPlace(position)
@@ -12,6 +14,7 @@ export default function EarlyWalkInteraction({ state, position }: { state: GameS
   const task = state.earlyTraining, spent = task.purse.spent, balance = task.purse.borrowed - spent
   const act = (action: EarlyWalkAction) => submitEarlyWalk(gameStore, position, action)
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
+  const liquidScene = earlyLiquidScenes[task.liquid.stage]
   function order(id: EarlySupplyId) {
     const item = earlySupplies[id]
     return <article className="recap-line" key={id}><b>{item.label} · {item.price}采购资金</b>
@@ -26,7 +29,17 @@ export default function EarlyWalkInteraction({ state, position }: { state: GameS
     <p>采购余额 {balance} · 已付 {spent}。两处采购与准备单共用同一份收据，已买过的订单保留。</p>
     {place.id === 'teacher' && (!task.started
       ? <button className="primary" onClick={() => act({ type: 'begin' })}>请老师列重修准备单</button>
-      : <p>准备单已记好。老师调制、稀释和初期练习，可回到准备单继续。</p>)}
+      : task.market.stage !== 4 ? <p>准备单已记好。先去药铺和坊市备齐材料，带回黑铁片，再请老师调制。</p>
+        : <>
+          <span className="eyebrow">药老调制 · {task.liquid.stage}/6</span>
+          {liquidScene ? <>
+            <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
+            <button className="secondary" onClick={() => act({ type: 'liquid', step: task.liquid.stage,
+              operation: liquidScene.operation, expectedSpent: spent })}>{liquidScene.action}</button>
+          </> : <p>药液已经加水。三种材料由老师依次使用，收据和黑铁片保留。</p>}
+          <p className="muted">玩家准备与观察，药老调制；药液不进入口服丹药行囊。</p>
+          <EarlyPractice state={state} onAction={act} />
+        </>)}
     {place.id === 'xuner' && <>
       <p>薰儿：这笔资金借给你，先把老师的准备单做齐。</p>
       <button className="primary" disabled={!task.started || task.purse.borrowed > 0}

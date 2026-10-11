@@ -4,12 +4,12 @@ import type { Transaction } from './rules'
 import { advanceEarlyTraining, beginEarlyTraining, earlyTrainingBlock, type EarlyTrainingAction } from './early-training'
 import { nearbyEarlyWalkPlace, type EarlyWalkPosition } from './early-walk'
 
-export type EarlyWalkAction = { type: 'begin' } | Extract<EarlyTrainingAction, { type: 'borrow' | 'purchase' | 'market' }>
+export type EarlyWalkAction = { type: 'begin' } | EarlyTrainingAction
 export function advanceEarlyWalk(state: GameState, position: EarlyWalkPosition, action: EarlyWalkAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
   const blocked = earlyTrainingBlock(state)
   if (blocked) return fail(blocked)
-  const destination = action.type === 'begin' ? 'teacher' : action.type === 'borrow' ? 'xuner'
+  const destination = ['begin', 'liquid', 'practice'].includes(action.type) ? 'teacher' : action.type === 'borrow' ? 'xuner'
     : action.type === 'market' ? 'market' : action.type === 'purchase'
       ? action.item === 'woodCore' ? 'market' : ['bluegrass', 'boneflower'].includes(action.item) ? 'pharmacy' : undefined
       : undefined

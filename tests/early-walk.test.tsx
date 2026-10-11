@@ -43,7 +43,7 @@ describe('往事准备路线', () => {
     expect(html).toContain('aria-label="往事路线地图"')
     expect(html).toContain('tabindex="0"')
     expect(html).toContain('回到重修准备单')
-    expect(html).toContain('调制和练习继续从准备单操作')
+    expect(html).toContain('回到药老容器处继续调制')
     expect(state).toEqual(before)
     state.settings.spoiler = 'anime'; state.settings.animeLimit = 1
     expect(renderToStaticMarkup(<EarlyWalk state={state} onBack={() => {}} />)).not.toContain('药铺')

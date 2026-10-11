@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { pulseMarker } from '../core/events'
-import { earlyTrainingBlock } from '../core/early-training'
+import { earlyTrainingBlock, type EarlyTrainingAction } from '../core/early-training'
 
-export default function EarlyPractice({ state }: { state: GameState }) {
+export default function EarlyPractice({ state, onAction }: { state: GameState; onAction?: (action: Extract<EarlyTrainingAction, { type: 'practice' }>) => unknown }) {
   const [marker, setMarker] = useState(.5)
   const task = state.earlyTraining, practice = task.practice
   const steady = state.settings.reducedMotion
@@ -18,10 +18,13 @@ export default function EarlyPractice({ state }: { state: GameState }) {
     }, 30)
     return () => window.clearInterval(timer)
   }, [practice.phase, steady, state.settings.spoiler, state.settings.animeLimit])
-  const act = (operation: 'begin' | 'pulse' | 'attempt' | 'finish') => gameStore.earlyTraining({
-    type: 'practice', operation, phase: practice.phase, pulse: practice.pulse,
-    attempts: practice.attempts, marker: operation === 'pulse' ? marker : undefined, expectedSpent: task.purse.spent,
-  })
+  const act = (operation: 'begin' | 'pulse' | 'attempt' | 'finish') => {
+    const action: Extract<EarlyTrainingAction, { type: 'practice' }> = {
+      type: 'practice', operation, phase: practice.phase, pulse: practice.pulse,
+      attempts: practice.attempts, marker: operation === 'pulse' ? marker : undefined, expectedSpent: task.purse.spent,
+    }
+    return onAction ? onAction(action) : gameStore.earlyTraining(action)
+  }
   if (!task.liquid.ready || earlyTrainingBlock(state)) return null
   return <section className="bond-summary" aria-label="初期重修与斗技尝试">
     <span className="eyebrow">后山与静室 / 初期练习</span>
