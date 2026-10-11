@@ -12,6 +12,7 @@ export const bondLines = [
   { id: 'qinglin', name: '青鳞', title: '被看见的成长' },
   { id: 'hai-bodong', name: '海波东', title: '守约与相助' },
   { id: 'yun-yun', name: '云韵', title: '相遇与立场' },
+  { id: 'medusa', name: '美杜莎', title: '共历与责任' },
 ]
 export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
   {
@@ -293,6 +294,71 @@ export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
         options: [
           { choice: 'steady', label: '祝愿安宁 · 珍重各自的道路', response: '你留下安宁的祝愿，珍重彼此已经走出的道路。', reward: { xp: 50, heal: 1 } },
           { choice: 'premium', label: '邀谈旧事 · 把未尽的话从容说清', response: '你愿意在从容的时候谈起旧事，听彼此把话说完。', reward: { xp: 50, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 8,
+    event: {
+      id: 'medusa-fire-road-memory', kind: 'bond', optional: true, introducedVersion: '0.12.4',
+      requiresCompleted: [8], title: '美杜莎 · 火路旧记', speaker: '美杜莎 · 火路书简', npc: { x: 550, y: 730 },
+      stages: ['到火路记回望共同经历', '前往退路石回应合作', '返回书简处确认并领取一次补给', '火路旧记已记入伙伴手札'],
+      introduction: '青莲篇章正式首通后，回访火路书简，回望彼此在危险面前的选择。先读火路记，再到退路石回应合作，回来确认。',
+      note: '这是原创回望，不代替原著进化、吞天蟒与灵魂状态的完整过程，也不通过一次回应收服人物或改变其身份。异火继续只由主线首通授予。',
+      checkpoints: [
+        { x: 550, y: 590, label: '火路记', text: '火路中的风险提醒你们：合作需要说清条件与退路。' },
+        { x: 870, y: 320, label: '退路石', text: '彼此都有需要守住的目标。为合作留下能够兑现的回应。' },
+      ],
+      bond: {
+        lineId: 'medusa', question: '面对暂时相交的目标，你愿意怎样安排合作？',
+        options: [
+          { choice: 'steady', label: '说清条件 · 尊重各自的目标', response: '你将合作条件说清，承认彼此都有自己的目标。', reward: { xp: 25, heal: 1 } },
+          { choice: 'premium', label: '确认退路 · 共同承担当前风险', response: '你先确认退路，愿意共同承担说好的风险。', reward: { xp: 25, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 17,
+    event: {
+      id: 'medusa-coalition-duty', kind: 'bond', optional: true, introducedVersion: '0.12.4',
+      requiresCompleted: [17], requiresHistory: [{ chapter: 8, eventId: 'medusa-fire-road-memory' }],
+      title: '美杜莎 · 共同筹备', speaker: '美杜莎 · 筹备书简', npc: { x: 700, y: 730 },
+      stages: ['到责任记回望共同筹备', '前往同行约选择回应', '返回书简处确认并领取一次补给', '共同筹备已记入伙伴手札'],
+      introduction: '炎盟正式首通后，回望共同面对外部风险时的筹备。读责任记，再到同行约选择回应，回来确认。伙伴卷页与炎盟两条主线物资路线各自保存。',
+      note: '筹备书简为原创关系回望，不重写蛇人族、族群安排和人物身份关系的原著细节。补给不充当额外炎盟物资，不改变药老离队，也不自动授予新伙伴技能。',
+      checkpoints: [
+        { x: 480, y: 340, label: '责任记', text: '同处险境时，各自的责任也需要被看见。将能承担的事说清楚。' },
+        { x: 900, y: 200, label: '同行约', text: '选择下一程愿意共同承担的准备。' },
+      ],
+      bond: {
+        lineId: 'medusa', question: '面对共同的风险，你会如何延续合作？',
+        options: [
+          { choice: 'steady', label: '确认分工 · 各自兑现承诺', response: '你们确认可以承担的分工，按约兑现承诺。', reward: { xp: 40, heal: 1 } },
+          { choice: 'premium', label: '共享退路 · 共同准备补给', response: '你们把退路与补给的准备写下来，彼此有据可依。', reward: { xp: 40, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 28,
+    event: {
+      id: 'medusa-homeward-promise', kind: 'bond', optional: true, introducedVersion: '0.12.4',
+      requiresCompleted: [28], requiresHistory: [{ chapter: 17, eventId: 'medusa-coalition-duty' }],
+      title: '美杜莎 · 归途守望', speaker: '美杜莎 · 归途书简', npc: { x: 120, y: 60 },
+      stages: ['到火路余记读取归途书简', '前往守望记回应新生活', '返回书简处确认并领取一次补给', '共历与责任三页已完成'],
+      introduction: '终战正式首通后，重返营地读归途书简。从火路余记走到守望记，回望共历与责任，留下回应，再回来确认。',
+      note: '书简为原创尾声，不补写或改写原著婚姻、家庭与族群去向。需前两页真实完成，补给一次发放；与其他伙伴各自保存，不增加主线奖励。',
+      checkpoints: [
+        { x: 300, y: 320, label: '火路余记', text: '当年的火路与合作，如今已有漫长的共同经历可以回望。' },
+        { x: 1120, y: 570, label: '守望记', text: '新的生活仍需要将责任落实到可以实践的安排。' },
+      ],
+      bond: {
+        lineId: 'medusa', question: '面对归途之后的生活，怎样回应这份守望？',
+        options: [
+          { choice: 'steady', label: '珍重约定 · 继续兑现承担的责任', response: '你珍重共历，愿意继续兑现自己承担的责任。', reward: { xp: 50, heal: 1 } },
+          { choice: 'premium', label: '共同安排 · 让各自愿望被看见', response: '你愿意共同安排下一程，让各自的愿望被认真听见。', reward: { xp: 50, mana: 1 } },
         ],
       },
     },

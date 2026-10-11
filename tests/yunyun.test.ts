@@ -53,7 +53,7 @@ describe('C10d 云韵相遇与立场', () => {
     for (const { chapter, event } of pages) delete s.progress[chapter].events[event.id]
     const restored = validateState(s)
     expect(restored.xp).toBe(s.xp); expect(restored.gold).toBe(s.gold); expect(restored.inventory).toEqual(s.inventory)
-    expect(bondJournal(restored).filter(line => line.id !== 'yun-yun').every(line => line.completed === line.entries.length)).toBe(true)
+    expect(bondJournal(restored).filter(line => ['little-doctor', 'qinglin', 'hai-bodong'].includes(line.id)).every(line => line.completed === line.entries.length)).toBe(true)
     for (const { chapter, event } of pages) expect(eventDone(restored, chapter, event.id)).toBe(false)
   })
   it('动画上限5显示山谷页，隐藏山门/归途标题及其回应', () => {
