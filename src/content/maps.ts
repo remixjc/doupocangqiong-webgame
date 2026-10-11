@@ -5,7 +5,7 @@ export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?
 export interface TowerFloor { center: Point; cooling: Point; duration: number; pressure: number; radius: number }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'dan-realm' | 'star-domain' | 'soul-prison' | 'tomb' | 'bodhi' | 'pure-fire' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'sect' | 'alliance' | 'thunder-path' | 'star-pavilion' | 'dan-realm' | 'star-domain' | 'soul-prison' | 'tomb' | 'bodhi' | 'pure-fire' | 'coalition-front' | 'emperor-vault' | 'final-battle' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -415,7 +415,48 @@ export const ancientMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '妖火空间 · 净莲之境' }, { x: 660, y: 755, label: '三镜辨识 → 三段净化 → 回报 / 收服确认' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? dantaAndRescueMaps[id] ?? ancientMaps[id] ?? legacy }
+export const endgameMaps: Record<number, MapDefinition> = {
+  26: {
+    id: 'coalition-ancient-ruins-front', style: 'coalition-front', gateLabel: '联盟出征台',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1070, y: 300 }, safeRadius: 175,
+    obstacles: [{ x: 430, y: 100, w: 140, h: 140 }, { x: 760, y: 540, w: 140, h: 110 },
+      { x: 950, y: 70, w: 60, h: 130 }, { x: 60, y: 330, w: 100, h: 100 }],
+    herbs: [{ x: 310, y: 440 }, { x: 640, y: 270 }, { x: 1080, y: 650 }, { x: 280, y: 100 }, { x: 620, y: 670 }, { x: 1140, y: 420 }],
+    enemies: [{ id: 'front-west-brute', type: 'brute', x: 620, y: 410 }, { id: 'front-west-hunter', type: 'hunter', x: 680, y: 350 },
+      { id: 'front-east-mage', type: 'mage', x: 1030, y: 390 }, { id: 'front-east-hunter', type: 'hunter', x: 1070, y: 460 },
+      { id: 'front-rear-brute', type: 'brute', x: 650, y: 620 }],
+    paths: [[{ x: 150, y: 650 }, { x: 330, y: 440 }, { x: 650, y: 400 }, { x: 1030, y: 400 }, { x: 1150, y: 160 }],
+      [{ x: 650, y: 400 }, { x: 650, y: 650 }]],
+    landmarks: [{ x: 680, y: 60, label: '远古遗迹 · 联盟防线' }, { x: 680, y: 755, label: '西侧前哨 / 东侧联络 / 后方撤离' }],
+  },
+  27: {
+    id: 'tuoshe-emperor-origin-vault', style: 'emperor-vault', gateLabel: '本源传承台',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 150 }, bossSpawn: { x: 1080, y: 310 }, safeRadius: 175,
+    obstacles: [{ x: 420, y: 90, w: 140, h: 160 }, { x: 740, y: 550, w: 170, h: 110 },
+      { x: 940, y: 60, w: 70, h: 150 }, { x: 60, y: 320, w: 100, h: 100 }],
+    herbs: [{ x: 310, y: 430 }, { x: 640, y: 270 }, { x: 1080, y: 660 }, { x: 280, y: 100 }, { x: 620, y: 670 }, { x: 1140, y: 430 }],
+    enemies: [{ id: 'vault-outer-brute', type: 'brute', x: 620, y: 410 }, { id: 'vault-west-mage', type: 'mage', x: 670, y: 320 },
+      { id: 'vault-inner-hunter', type: 'hunter', x: 1020, y: 500 }, { id: 'vault-north-mage', type: 'mage', x: 740, y: 240 },
+      { id: 'vault-core-hunter', type: 'hunter', x: 1120, y: 300 }],
+    paths: [[{ x: 150, y: 650 }, { x: 330, y: 430 }, { x: 650, y: 400 }, { x: 1030, y: 400 }, { x: 1150, y: 150 }],
+      [{ x: 650, y: 400 }, { x: 660, y: 670 }]],
+    landmarks: [{ x: 680, y: 60, label: '陀舍古帝洞府 · 本源石殿' }, { x: 680, y: 755, label: '外殿铭文 / 封门 / 本源祭台' }],
+  },
+  28: {
+    id: 'continent-final-battlefield', style: 'final-battle', gateLabel: '终战启程碑',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1050, y: 330 }, safeRadius: 175,
+    obstacles: [{ x: 420, y: 100, w: 140, h: 130 }, { x: 660, y: 560, w: 150, h: 110 },
+      { x: 70, y: 320, w: 100, h: 100 }],
+    herbs: [{ x: 310, y: 440 }, { x: 650, y: 270 }, { x: 1060, y: 670 }, { x: 280, y: 100 }, { x: 570, y: 670 }, { x: 1140, y: 450 }],
+    enemies: [{ id: 'final-west-brute', type: 'brute', x: 630, y: 410 }, { id: 'final-west-mage', type: 'mage', x: 690, y: 310 },
+      { id: 'final-east-hunter', type: 'hunter', x: 1040, y: 540 }, { id: 'final-north-mage', type: 'mage', x: 760, y: 250 },
+      { id: 'final-core-hunter', type: 'hunter', x: 1120, y: 300 }],
+    paths: [[{ x: 150, y: 650 }, { x: 330, y: 440 }, { x: 650, y: 410 }, { x: 1010, y: 410 }, { x: 1150, y: 160 }],
+      [{ x: 650, y: 410 }, { x: 570, y: 660 }]],
+    landmarks: [{ x: 680, y: 60, label: '斗气大陆 · 最终战场' }, { x: 680, y: 755, label: '故人之约 / 最后的防线 / 终战与归途' }],
+  },
+}
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? dantaAndRescueMaps[id] ?? ancientMaps[id] ?? endgameMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

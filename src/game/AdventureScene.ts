@@ -88,6 +88,8 @@ export default class AdventureScene extends Phaser.Scene {
       : style === 'star-domain' ? [0x28243e, 0x686283, 0xc6b4e5] : style === 'soul-prison' ? [0x252933, 0x535869, 0xadb0bb]
       : style === 'tomb' ? [0x293037, 0x667477, 0xb9bba5] : style === 'bodhi' ? [0x24382c, 0x5b7e60, 0xc3c79d]
       : style === 'pure-fire' ? [0x393039, 0x87777e, 0xe4d4ca]
+      : style === 'coalition-front' ? [0x2a303b, 0x697382, 0xc4b38c]
+      : style === 'emperor-vault' ? [0x2c293c, 0x6d6586, 0xd6c596] : style === 'final-battle' ? [0x3c2930, 0x805256, 0xf0bc92]
       : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
@@ -107,6 +109,26 @@ export default class AdventureScene extends Phaser.Scene {
         bg.fillStyle(0xecd9dd, .14); bg.fillEllipse(1050 + Math.cos(angle) * 70, 320 + Math.sin(angle) * 60, 90, 55)
       }
       bg.lineStyle(2, 0xf0dee7, .3); bg.strokeCircle(1050, 320, 110)
+    } else if (style === 'coalition-front') {
+      for (const point of [{ x: 650, y: 400 }, { x: 1030, y: 400 }, { x: 650, y: 650 }]) {
+        bg.lineStyle(3, 0xc4b38c, .3); bg.strokeRect(point.x - 65, point.y - 50, 130, 100)
+        bg.lineBetween(point.x - 45, point.y - 95, point.x - 45, point.y - 35)
+        bg.fillStyle(0x95805f, .6); bg.fillTriangle(point.x - 45, point.y - 90, point.x - 10, point.y - 73, point.x - 45, point.y - 58)
+      }
+    } else if (style === 'emperor-vault') {
+      for (let i = 0; i < 8; i++) {
+        const angle = i * Math.PI / 4, x = 1050 + Math.cos(angle) * 115, y = 310 + Math.sin(angle) * 100
+        bg.fillStyle(0xd6c596, .25); bg.fillCircle(x, y, 9)
+        bg.lineStyle(2, 0xd6c596, .2); bg.lineBetween(x, y, 1050, 310)
+      }
+      bg.lineStyle(3, 0xd6c596, .25); bg.strokeCircle(1050, 310, 135)
+    } else if (style === 'final-battle') {
+      bg.lineStyle(3, 0xf0bc92, .18)
+      for (const point of [{ x: 650, y: 220 }, { x: 980, y: 350 }, { x: 1030, y: 650 }]) {
+        bg.lineBetween(point.x - 100, point.y - 20, point.x - 15, point.y + 12)
+        bg.lineBetween(point.x - 15, point.y + 12, point.x + 90, point.y - 25)
+      }
+      bg.lineStyle(2, 0xf0bc92, .2); bg.strokeCircle(980, 350, 230)
     } else if (style === 'sect') {
       bg.lineStyle(2, 0xc2b99b, .18)
       for (let y = 130; y < 360; y += 24) bg.lineBetween(1000, y, 1210, y)
