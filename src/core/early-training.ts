@@ -11,6 +11,7 @@ export type EarlyTrainingAction =
   | { type: 'borrow'; expectedSpent: number }
   | { type: 'purchase'; item: EarlySupplyId; price: number; expectedSpent: number }
   | { type: 'market'; step: number; expectedSpent: number }
+  | { type: 'liquid'; step: number; operation: 'identify' | 'water' | 'primary' | 'auxiliary' | 'core' | 'dilute'; expectedSpent: number }
 
 export function advanceEarlyTraining(state: GameState, action: EarlyTrainingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
@@ -20,6 +21,21 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
   if (!task.started) return fail('先记下重修准备。')
   if (action.expectedSpent !== task.purse.spent) return fail('采购记录已变化，请按当前清单重新操作。')
   const next = structuredClone(state)
+  if (action.type === 'liquid') {
+    if (!task.receipts.woodCore || task.market.stage !== 4) return fail('先备齐材料，完成坊市交涉并带回黑铁片。')
+    if (action.step !== task.liquid.stage || task.liquid.stage === 6) return fail('此步骤已完成，或调制次序无效。')
+    const operations = ['identify', 'water', 'primary', 'auxiliary', 'core', 'dilute']
+    if (action.operation !== operations[action.step]) return fail('请按老师指导完成当前步骤，材料没有被消耗。')
+    if (action.step === 1) next.earlyTraining.liquid.water = true
+    const consumed = ({ 2: 'bluegrass', 3: 'boneflower', 4: 'woodCore' } as const)[action.step as 2 | 3 | 4]
+    if (consumed) {
+      if (task.supplies[consumed] !== earlySupplies[consumed].quantity) return fail('当前步骤需要的任务材料不齐。')
+      next.earlyTraining.supplies[consumed] = 0
+    }
+    next.earlyTraining.liquid.stage++
+    if (action.step === 5) next.earlyTraining.liquid.ready = true
+    return { state: next, ok: true, message: action.step === 5 ? '药老将药液加入清水，修炼准备已经完成。' : '当前准备与观察已记下，可关闭后继续。' }
+  }
   if (action.type === 'market') {
     if (!task.receipts.bluegrass || !task.receipts.boneflower) return fail('先买齐药草，再回顾坊市采购。')
     if (action.step !== task.market.stage || task.market.stage === 4) return fail('坊市这一段已读过，或操作次序无效。')

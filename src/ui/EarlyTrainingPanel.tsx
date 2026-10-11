@@ -3,12 +3,14 @@ import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
 import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from '../core/early-training-state'
 import { earlyMarketScenes } from '../content/early-market'
+import { earlyLiquidScenes } from '../content/early-liquid'
 
 export default function EarlyTrainingPanel({ state }: { state: GameState }) {
   const blocked = earlyTrainingBlock(state)
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
+  const liquidScene = earlyLiquidScenes[task.liquid.stage]
   return <>
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
@@ -34,7 +36,7 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
             const item = earlySupplies[id]
             return <article className="recap-line" key={id}>
               <b>{item.label} · {item.price}采购资金</b>
-              <p>{task.receipts[id] ? `已购入 · 任务袋${task.supplies[id]}` : '由卖方交付到重修任务袋。普通行囊材料不能代替。'}</p>
+              <p>{task.receipts[id] ? task.supplies[id] ? `已购入 · 任务袋${task.supplies[id]}` : '已购入并由老师使用 · 购买记录保留' : '由卖方交付到重修任务袋。普通行囊材料不能代替。'}</p>
               <button className="secondary" disabled={task.receipts[id] || task.purse.borrowed - task.purse.spent < item.price}
                 onClick={() => gameStore.earlyTraining({ type: 'purchase', item: id, price: item.price, expectedSpent: task.purse.spent })}>
                 {task.receipts[id] ? '已记购买记录' : `购买${item.label}`}
@@ -53,7 +55,16 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
           </> : <><h3>黑铁片已收好</h3><p>护卫介入后，争执告一段落。魔核和黑铁片来自同一次采购，萧炎带着物品回家，准备请药老辨认。</p><p>任务袋：黑铁片 ×{task.market.blackIron}</p></>}
           <p className="muted">这是对白与交互的压缩改编；没有新的坊市行走地图。黑铁片尚未化为玩家的战斗技能。</p>
         </section>}
-        {task.receipts.woodCore && <p className="muted">三种材料已齐，仍由任务袋保管。药老调制、稀释与修炼后续展开；现在没有药液、丹药或新的修炼结果。</p>}
+        {task.market.stage === 4 && <section className="bond-summary" aria-label="药老调制与稀释">
+          <span className="eyebrow">重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</span>
+          {liquidScene ? <>
+            <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
+            <button className="secondary" onClick={() => gameStore.earlyTraining({ type: 'liquid',
+              step: task.liquid.stage, operation: liquidScene.operation, expectedSpent: task.purse.spent })}>{liquidScene.action}</button>
+          </> : <><h3>修炼药液已备好</h3><p>药老已完成调制，药液加入水中。主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
+          <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；后续修炼与斗技尝试尚未展开。</p>
+        </section>}
+        {task.receipts.woodCore && task.market.stage < 4 && <p className="muted">三种材料由任务袋保管。先完成坊市往事，带回黑铁片，再请药老调制；现在没有药液、丹药或新的修炼结果。</p>}
       </>}
     </>}
     <p className="muted">重修往事不会回退已完成主线，也不会重新发放章节奖励。</p>

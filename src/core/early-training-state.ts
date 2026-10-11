@@ -4,6 +4,7 @@ export interface EarlyTrainingState {
   supplies: { bluegrass: number; boneflower: number; woodCore: number }
   receipts: Record<EarlySupplyId, boolean>
   market: { stage: number; blackIron: number }
+  liquid: { stage: number; water: boolean; ready: boolean }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -18,9 +19,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
     supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
     receipts: { bluegrass: false, boneflower: false, woodCore: false },
-    market: { stage: 0, blackIron: 0 } }
+    market: { stage: 0, blackIron: 0 },
+    liquid: { stage: 0, water: false, ready: false } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -37,24 +39,29 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (purse.own !== 0 || ![0, EARLY_LOAN].includes(purse.borrowed as number)
     || (!data.started && purse.borrowed !== 0)) return invalid()
   const result = { ...blankEarlyTraining(), started: data.started }
+  const liquid = data.liquid === undefined && legacyLiquid ? result.liquid : object(data.liquid)
+  if (typeof liquid.stage !== 'number' || !Number.isSafeInteger(liquid.stage) || liquid.stage < 0 || liquid.stage > 6
+    || liquid.water !== (liquid.stage >= 2) || liquid.ready !== (liquid.stage === 6)) return invalid()
+  result.liquid = { stage: liquid.stage, water: liquid.water as boolean, ready: liquid.ready as boolean }
   let spent = 0
   for (const id of Object.keys(earlySupplies) as EarlySupplyId[]) {
     if (typeof receipts[id] !== 'boolean') return invalid()
     const purchased = receipts[id] as boolean
     if (purchased && (!data.started || purse.borrowed !== EARLY_LOAN)) return invalid()
-    if (supplies[id] !== (purchased ? earlySupplies[id].quantity : 0)) return invalid()
+    const consumed = liquid.stage >= ({ bluegrass: 3, boneflower: 4, woodCore: 5 }[id])
+    if (supplies[id] !== (purchased && !consumed ? earlySupplies[id].quantity : 0)) return invalid()
     result.receipts[id] = purchased; result.supplies[id] = supplies[id] as number
     if (purchased) spent += earlySupplies[id].price
   }
   if (result.receipts.woodCore && (!result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   if (purse.spent !== spent || spent > (purse.borrowed as number)) return invalid()
   result.purse = { own: 0, borrowed: purse.borrowed as number, spent }
-  if (data.market === undefined && legacyMarket) return result
-  const market = object(data.market)
+  const market = data.market === undefined && legacyMarket ? result.market : object(data.market)
   if (typeof market.stage !== 'number' || !Number.isSafeInteger(market.stage) || market.stage < 0 || market.stage > 4
     || market.blackIron !== (market.stage === 4 ? 1 : 0)) return invalid()
   if (market.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   if (market.stage === 4 && !result.receipts.woodCore) return invalid()
   result.market = { stage: market.stage, blackIron: market.blackIron as number }
+  if (liquid.stage > 0 && (!result.receipts.woodCore || market.stage !== 4)) return invalid()
   return result
 }
