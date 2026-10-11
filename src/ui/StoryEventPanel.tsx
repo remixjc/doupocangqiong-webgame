@@ -1,29 +1,12 @@
-import { useEffect, useState } from 'react'
 import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../content/events'
-import { eventBlockReason, eventDone, eventHint, eventProgress, pulseMarker, type EventAction } from '../core/events'
+import { eventBlockReason, eventDone, eventHint, eventProgress, type EventAction } from '../core/events'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { preparationLabels, preparationProtocols, type PreparationOperation } from '../content/preparations'
+import HeatControl from './HeatControl'
 
 export default function StoryEventPanel({ state, eventId, checkpoint, close, shop }: { state: GameState; eventId?: string; checkpoint?: number; close: () => void; shop: () => void }) {
   const event = findEvent(state.chapter, eventId), progress = eventProgress(state, state.chapter, eventId)
-  const [marker, setMarker] = useState(0)
-  useEffect(() => {
-    const moving = (event?.kind === 'stone' && progress.stage >= 1 && progress.stage <= 3) ||
-      (event?.kind === 'danfinal' && progress.stage >= 1 && progress.stage <= 3) ||
-      (event?.kind === 'inheritance' && progress.stage >= 1 && progress.stage <= 3) ||
-      (event?.kind === 'certification' && progress.stage >= 2 && progress.stage <= 4) ||
-      (event?.kind === 'tournament' && progress.stage >= 2 && progress.stage <= 12 && ![5, 9].includes(progress.stage))
-    if (!moving) return
-    let last = performance.now(), elapsed = 0
-    setMarker(0)
-    const timer = window.setInterval(() => {
-      const now = performance.now()
-      if (!document.hidden) { elapsed += now - last; setMarker(pulseMarker(elapsed * (event?.kind === 'tournament' ? tournamentRounds[tournamentRound(progress.stage)].speed : 1))) }
-      last = now
-    }, 30)
-    return () => window.clearInterval(timer)
-  }, [event?.kind, progress.stage])
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
@@ -116,8 +99,9 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     {event.kind === 'stone' && progress.started && !done && <>
       <p>累计 {progress.score} / 300 分 · 完成尝试 {progress.attempts} 次</p>
       {progress.stage === 0 ? <button className="primary" onClick={() => act({ type: 'test' })}>开始控气测试</button> : <>
-        <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="控气指针"><div className="heat-target" /><i style={{ left: `${marker * 100}%` }} /></div>
-        <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定第 {progress.stage} 道斗气</button>
+        <HeatControl key={`${event.id}:${progress.stage}`} reducedMotion={state.settings.reducedMotion}
+          markerLabel="控气指针" inputLabel="控气位置" lockLabel={`锁定第 ${progress.stage} 道斗气`}
+          onLock={marker => act({ type: 'pulse', marker, stage: progress.stage })} />
       </>}
     </>}
     {event.kind === 'stone' && done && <p>控气评分 {progress.score} / 300 · 本次练习已记录。</p>}
@@ -143,8 +127,10 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === 1 && progress.stage === 1 && <button className="primary" onClick={() => act({ type: 'test' })}>领取公会练习材料 · 开始认证</button>}
       {checkpoint === 1 && progress.stage >= 2 && progress.stage <= 4 && <>
         <p>当前目标火候 {certificationTargets[progress.stage - 2] * 100}% · 绿色目标区中心得分最高</p>
-        <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="认证控火指针"><div className="heat-target" style={{ left: `${certificationTargets[progress.stage - 2] * 100 - 8}%`, width: '16%', background: '#81c99d66' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定{['提炼', '融合', '凝丹'][progress.stage - 2]}火候</button>
+        <HeatControl key={`${event.id}:${progress.stage}`} reducedMotion={state.settings.reducedMotion}
+          target={certificationTargets[progress.stage - 2]} targetWidth={16} targetColor="#81c99d66" markerLabel="认证控火指针"
+          inputLabel="认证火候位置" lockLabel={`锁定${['提炼', '融合', '凝丹'][progress.stage - 2]}火候`}
+          onLock={marker => act({ type: 'pulse', marker, stage: progress.stage })} />
       </>}
       {checkpoint === undefined && progress.stage === 5 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记认证 · 40金币 / 50修炼积累</button>}
     </>}
@@ -185,8 +171,11 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
         <p>{tournamentRounds[tournamentRound(progress.stage)].name} · 本轮 {progress.score} / 300 分</p>
         {[1, 5, 9].includes(progress.stage) ? <button className="primary" onClick={() => act({ type: 'test' })}>开始{tournamentRounds[tournamentRound(progress.stage)].name} · 免费赛材</button> : <>
           <p>目标火候 {Math.round(tournamentRounds[tournamentRound(progress.stage)].targets[(progress.stage - 2) % 4] * 100)}% · 指针速度 {tournamentRounds[tournamentRound(progress.stage)].speed}倍</p>
-          <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="大会控火指针"><div className="heat-target" style={{ left: `${tournamentRounds[tournamentRound(progress.stage)].targets[(progress.stage - 2) % 4] * 100 - 8}%`, width: '16%', background: '#81c99d66' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-          <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定{tournamentRounds[tournamentRound(progress.stage)].name}{['提炼', '融合', '凝丹'][(progress.stage - 2) % 4]}火候</button>
+          <HeatControl key={`${event.id}:${progress.stage}`} reducedMotion={state.settings.reducedMotion}
+            target={tournamentRounds[tournamentRound(progress.stage)].targets[(progress.stage - 2) % 4]} targetWidth={16} targetColor="#81c99d66"
+            speed={tournamentRounds[tournamentRound(progress.stage)].speed} markerLabel="大会控火指针" inputLabel="大会火候位置"
+            lockLabel={`锁定${tournamentRounds[tournamentRound(progress.stage)].name}${['提炼', '融合', '凝丹'][(progress.stage - 2) % 4]}火候`}
+            onLock={marker => act({ type: 'pulse', marker, stage: progress.stage })} />
         </>}
       </>}
       {checkpoint === undefined && progress.stage === 13 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记大会成绩 · 60金币 / 80积累</button>}
@@ -233,8 +222,9 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === 0 && progress.stage === 0 && <button className="primary" onClick={() => act({ type: 'test' })}>开始三步成丹 · 免费赛材</button>}
       {checkpoint === 0 && progress.stage >= 1 && progress.stage <= 3 && <>
         <p>{['提炼', '融合', '凝丹'][progress.stage - 1]}目标 {danFinalTargets[progress.stage - 1] * 100}%</p>
-        <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="丹会成丹控火指针"><div className="heat-target" style={{ left: `${danFinalTargets[progress.stage - 1] * 100 - 8}%`, width: '16%', background: '#81c99d66' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定本步火候</button>
+        <HeatControl key={`${event.id}:${progress.stage}`} reducedMotion={state.settings.reducedMotion}
+          target={danFinalTargets[progress.stage - 1]} targetWidth={16} targetColor="#81c99d66" markerLabel="丹会成丹控火指针"
+          inputLabel="成丹火候位置" lockLabel="锁定本步火候" onLock={marker => act({ type: 'pulse', marker, stage: progress.stage })} />
       </>}
       {checkpoint === undefined && progress.stage === 6 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记大会成绩 · 80积累</button>}
     </>}
@@ -243,8 +233,9 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === 0 && progress.stage === 0 && <button className="primary" onClick={() => act({ type: 'test' })}>开始传承心念稳固</button>}
       {checkpoint === 0 && progress.stage >= 1 && progress.stage <= 3 && <>
         <p>{event.stages[progress.stage]} · 合计210分通过</p>
-        <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="传承心念指针"><div className="heat-target" style={{ left: `${mindTargets(event)[progress.stage - 1] * 100 - 8}%`, width: '16%', background: '#81c99d66' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定本步心念</button>
+        <HeatControl key={`${event.id}:${progress.stage}`} reducedMotion={state.settings.reducedMotion}
+          target={mindTargets(event)[progress.stage - 1]} targetWidth={16} targetColor="#81c99d66" markerLabel="传承心念指针"
+          inputLabel="传承心念位置" lockLabel="锁定本步心念" onLock={marker => act({ type: 'pulse', marker, stage: progress.stage })} />
       </>}
       {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>确认{event.title} · {event.mindReward ?? 120}积累</button>}
     </>}
