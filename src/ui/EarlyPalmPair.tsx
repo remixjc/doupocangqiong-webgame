@@ -9,7 +9,7 @@ import './early-walk.css'
 const stations = { door: '门边 · 准备与归档', table: '练习桌 · 两只花瓶', teacher: '药老 · 讲解与初练' } as const
 const bottleLabels = { intact: '完好', pulled: '已拉近', fragments: '碎片', dust: '细末' } as const
 const teachingLabels = { unlearned: '尚未学习', explained: '已讲解，尚待初练', basic: '初步掌握' } as const
-export default function EarlyPalmPair({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyPalmPair({ state, position, onBack, onPreliminary }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onPreliminary?: () => void }) {
   const task = state.earlyTraining.palmPair, scene = palmPairScenes[task.stage]
   const [station, setStation] = useState<PalmPairStation>('door')
   const [marker, setMarker] = useState(.5), [paused, setPaused] = useState(false)
@@ -57,7 +57,8 @@ export default function EarlyPalmPair({ state, position, onBack }: { state: Game
       </>}
       <button className="primary" disabled={training && paused} onClick={act}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>两瓶试验与老师初练已归档。</h3><p>第一只碎片和第二只细末分开保留。接下来仍需长期练习，族中预测另行接续。</p></section>}
+      : <section className="bond-summary"><h3>两瓶试验与老师初练已归档。</h3><p>第一只碎片和第二只细末分开保留。接下来仍需长期练习，族中预测另行接续。</p>
+        {onPreliminary && <button className="primary" onClick={onPreliminary}>接续一月前预测 · 同行入场</button>}</section>}
     <p className="muted">站位、两步初练与切换窗口为原创压缩操作，约两小时仅作故事回顾。不会给予大斗师外放能力或重复解锁主线斗技；七段、自用耗尽、老师一滴、父亲原瓶与钱账保留。</p>
     <button className="secondary" onClick={onBack}>暂离吸推练习 · 保留两瓶断点</button>
   </>

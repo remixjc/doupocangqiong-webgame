@@ -23,7 +23,10 @@ export interface EarlyTrainingState {
   forestStrike: ForestStrikeState
   seventhRoom: SeventhRoomState
   palmPair: PalmPairState
+  preliminary: PreliminaryState
 }
+export interface PreliminaryState { stage: number; mei: 'unmeasured' | 'eighth-duan';
+  xuner: 'unmeasured' | 'one-star'; yan: 'unmeasured' | 'seventh-duan' }
 export interface PalmPairState { stage: number; beats: number; attempts: number;
   first: 'intact' | 'pulled' | 'fragments'; second: 'intact' | 'pulled' | 'dust';
   teaching: 'unlearned' | 'explained' | 'basic'; period: 'unreviewed' | 'reviewed' }
@@ -56,6 +59,7 @@ export const EARLY_LONG_SUPPLIES_VERSION = '0.22.0'
 export const EARLY_FOREST_STRIKE_VERSION = '0.23.0'
 export const EARLY_SEVENTH_ROOM_VERSION = '0.24.0'
 export const EARLY_PALM_PAIR_VERSION = '0.25.0'
+export const EARLY_PRELIMINARY_VERSION = '0.26.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -83,9 +87,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
     longSupplies: { stage: 0, herbs: 'none', cores: 'none' },
     forestStrike: { stage: 0, beats: 0, attempts: 0, tree: 'intact', result: 'none' },
     seventhRoom: { stage: 0, beats: 0, attempts: 0, drops: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' },
-    palmPair: { stage: 0, beats: 0, attempts: 0, first: 'intact', second: 'intact', teaching: 'unlearned', period: 'unreviewed' } }
+    palmPair: { stage: 0, beats: 0, attempts: 0, first: 'intact', second: 'intact', teaching: 'unlearned', period: 'unreviewed' },
+    preliminary: { stage: 0, mei: 'unmeasured', xuner: 'unmeasured', yan: 'unmeasured' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -224,7 +229,20 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!validPalmPair(palmPair) || palmPair.stage > 0 && seventhRoom.stage !== 8) return invalid()
   result.palmPair = { stage: palmPair.stage, beats: palmPair.beats, attempts: palmPair.attempts,
     first: palmPair.first, second: palmPair.second, teaching: palmPair.teaching, period: palmPair.period }
+  const preliminary = data.preliminary === undefined && legacyPreliminary ? result.preliminary : object(data.preliminary)
+  if (!validPreliminary(preliminary) || preliminary.stage > 0 && palmPair.stage !== 10) return invalid()
+  result.preliminary = { stage: preliminary.stage, mei: preliminary.mei, xuner: preliminary.xuner, yan: preliminary.yan }
   return result
+}
+
+export function preliminaryAt(stage: number): Omit<PreliminaryState, 'stage'> {
+  return { mei: stage >= 6 ? 'eighth-duan' : 'unmeasured', xuner: stage >= 8 ? 'one-star' : 'unmeasured',
+    yan: stage >= 11 ? 'seventh-duan' : 'unmeasured' }
+}
+export function validPreliminary(task: Record<string, unknown> | PreliminaryState): task is PreliminaryState {
+  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 16) return false
+  const expected = preliminaryAt(task.stage)
+  return task.mei === expected.mei && task.xuner === expected.xuner && task.yan === expected.yan
 }
 
 export function palmPairAt(stage: number): Pick<PalmPairState, 'first' | 'second' | 'teaching' | 'period'> {

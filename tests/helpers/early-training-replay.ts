@@ -35,10 +35,13 @@ import { advanceEarlySeventhRoom } from '../../src/core/early-seventh-room'
 import { seventhRoomScenes } from '../../src/content/early-seventh-room'
 import { advanceEarlyPalmPair } from '../../src/core/early-palm-pair'
 import { palmPairScenes } from '../../src/content/early-palm-pair'
+import { advanceEarlyPreliminary, preliminaryPlaces } from '../../src/core/early-preliminary'
+import { preliminaryScenes } from '../../src/content/early-preliminary'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false): GameState {
+  if (includePreliminary) includePalmPair = true
   if (includePalmPair) includeSeventhRoom = true
   if (includeSeventhRoom) includeForestStrike = true
   if (includeForestStrike) includeLongSupplies = true
@@ -218,6 +221,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       expect(result.ok, result.message).toBe(true)
       state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
     }
+  }
+  if (includePreliminary) for (const scene of preliminaryScenes) {
+    const result = advanceEarlyPreliminary(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, preliminaryPlaces[scene.place],
+      { ...state.earlyTraining.preliminary, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
   return state
 }
