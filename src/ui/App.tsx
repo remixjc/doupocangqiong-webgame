@@ -13,6 +13,7 @@ import StoryEventPanel from './StoryEventPanel'
 import { teacherSupport } from '../core/companions'
 import BondJournal from './BondJournal'
 import SaveStatus from './SaveStatus'
+import SceneBoundary from './SceneBoundary'
 
 const GameView = lazy(() => import('./GameView'))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | null
@@ -27,6 +28,7 @@ export default function App() {
   const [story, setStory] = useState<Story | null>(null)
   const [run, setRun] = useState(0)
   const [ready, setReady] = useState(false)
+  const [sceneFailed, setSceneFailed] = useState(false)
   const [portrait, setPortrait] = useState(() => window.matchMedia('(max-width:720px) and (orientation:portrait)').matches)
   const chapter = chapterById(s.chapter), progress = s.progress[s.chapter]
   const map = mapForChapter(s.chapter)
@@ -44,12 +46,12 @@ export default function App() {
     return () => media.removeEventListener('change', changed)
   }, [])
   useEffect(() => {
-    gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead || portrait
+    gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead || portrait || sceneFailed
     if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
     gameStore.onInteract = () => setPanel('camp')
     gameStore.onStoryEvent = (id, checkpoint) => { setEventId(id); setEventCheckpoint(checkpoint); setPanel('event') }
     return () => { gameStore.onInteract = null; gameStore.onStoryEvent = null }
-  }, [screen, panel, story, r.dead, portrait])
+  }, [screen, panel, story, r.dead, portrait, sceneFailed])
   useEffect(() => {
     if (!notice) return
     const id = window.setTimeout(() => gameStore.notify(''), 3500)
@@ -84,7 +86,7 @@ export default function App() {
     unlockAudio()
     if (!gameStore.enter(id)) { gameStore.notify('该篇章尚未解锁或超出剧透范围。'); return }
     const c = chapterById(id), p = gameStore.getSnapshot().state.progress[id]
-    setPanel(null); setScreen('play'); setRun(n => n + 1)
+    setSceneFailed(false); setPanel(null); setScreen('play'); setRun(n => n + 1)
     if (!p.intro) setStory({ lines: c.opening, index: 0, closing: false })
   }
   function advanceStory() {
@@ -97,6 +99,11 @@ export default function App() {
   }
   function finish() {
     if (gameStore.finish()) { setPanel(null); setStory({ lines: chapter.closing, index: 0, closing: true }) }
+  }
+  async function reloadScene() {
+    gameStore.paused = true
+    if (await gameStore.waitForAutosave()) window.location.reload()
+    else setPanel('save')
   }
   function retry() { gameStore.runtime({ ...r, dead: false }); setRun(n => n + 1) }
 
@@ -178,7 +185,11 @@ export default function App() {
       <section className="stage-wrap">
         <div className="stage-topline"><span>◈ {chapter.location}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
         <div className="stage">
-          <Suspense fallback={<div className="loading">正在展开山川画卷…</div>}><GameView key={`${s.chapter}:${run}`} /></Suspense>
+          <SceneBoundary key={`${s.chapter}:${run}`} onFailure={() => {
+            gameStore.paused = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; setSceneFailed(true)
+          }} onReload={() => { void reloadScene() }} onSave={() => setPanel('save')} onBack={() => setScreen('world')}>
+            <Suspense fallback={<div className="loading" role="status">正在展开山川画卷…</div>}><GameView /></Suspense>
+          </SceneBoundary>
           <div className="player-hud" data-player-x={r.x} data-player-y={r.y}><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
           {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.duel?.phase ?? r.ranking?.phase ?? r.sect?.phase ?? r.finale?.phase ?? (r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1)} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
           {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
