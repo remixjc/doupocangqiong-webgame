@@ -109,6 +109,11 @@ chapters[22].boss = '萧族传承 · 离墓审核'
 chapters[22].opening[2].text = '向薰儿接取天墓探索，到入口牌启动。三层分别45 / 40 / 35秒，清理对应守卫后E读取路标；超时免费重试当前层。探索报告后向萧玄接取传承，到族史祭台锁定25 / 55 / 75%心念，合计210分通过、失败免费重试。返回报告，离墓审核后营地结算。'
 chapters[22].trialNote = '限时探索与传承心念评分为原创机制，不判定原著血脉品级或修炼岁月；离墓审核不生成可击杀的传承投影。'
 
+chapters[23].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[23].boss = '菩提观心 · 树前审核'
+chapters[23].opening[2].text = '向药老接取，读取树前碑记，再依序前往欲念、旧影与岁月三境。根据卷轴、回忆和树影线索选择观察、放下与面对，错误有原因提示、可免费重选，已识破片段保存。回来确认，再到树前审核后营地结算。'
+chapters[23].trialNote = '三境线索与选择为原创菩提观心，不模拟原著全部轮回；幻境奖励不进普通行囊，击杀不能代替识破。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

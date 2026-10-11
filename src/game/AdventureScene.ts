@@ -446,6 +446,11 @@ export default class AdventureScene extends Phaser.Scene {
           g.lineStyle(3, passed ? 0x8ee4b3 : 0xc4c6b0, .7); g.strokeCircle(point.x, point.y, 48)
           g.lineStyle(2, 0xc4c6b0, .5); g.strokeTriangle(point.x, point.y - 20, point.x - 22, point.y + 18, point.x + 22, point.y + 18)
         }
+        if (event.kind === 'illusion' && index > 0) {
+          g.fillStyle(passed ? 0x8ee4b3 : 0xb9bb8e, .12); g.fillCircle(point.x, point.y, 60)
+          g.lineStyle(2, passed ? 0x8ee4b3 : 0xc3c79d, .65); g.strokeCircle(point.x, point.y, 60)
+          g.strokeEllipse(point.x, point.y - 5, 34, 17); g.fillStyle(0xc3c79d, .7); g.fillCircle(point.x, point.y - 5, 4)
+        }
         if (event.kind === 'cave' && index === 2) {
           g.fillStyle(progress.stage >= 3 ? 0x58695c : 0xb39152); g.fillRect(point.x - 24, point.y - 16, 48, 32)
           g.lineStyle(2, 0xebce92); g.strokeRect(point.x - 24, point.y - 16, 48, 32)

@@ -26,7 +26,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -48,6 +48,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'tomb' && ['begin', 'restart', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回薰儿处接取、重试或报告。'); return false }
       if (event.kind === 'inheritance' && ['test', 'pulse'].includes(action.type) && checkpoint !== 0) { gameStore.notify('请在族史祭台操作心念稳固。'); return false }
       if (event.kind === 'inheritance' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回萧玄处接取或报告。'); return false }
+      if (event.kind === 'illusion' && action.type === 'reflect' && checkpoint !== progress.stage) { gameStore.notify('请到当前幻境观察再选择。'); return false }
+      if (event.kind === 'illusion' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回药老处接取或确认。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -188,6 +190,15 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </>}
       {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告传承稳固 · 120积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'flame', 'starfire', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'illusion' && progress.started && !done && <>
+      <p>已识破{progress.score}/3境 · 累计选择{progress.attempts}次 · 幻境资源不入行囊</p>
+      {checkpoint === progress.stage && progress.stage >= 1 && progress.stage <= 3 && <>
+        <p className="quest-hint">{event.reflections![progress.stage - 1].clue}</p>
+        <div className="camp-options">{event.reflections![progress.stage - 1].options.map(option =>
+          <button className="secondary" key={option.choice} onClick={() => act({ type: 'reflect', choice: option.choice, stage: progress.stage })}>{option.label}</button>)}</div>
+      </>}
+      {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>确认三境观心 · 100积累</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'flame', 'starfire', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

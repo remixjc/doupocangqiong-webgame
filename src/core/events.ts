@@ -1,4 +1,4 @@
-import { certificationTargets, danFinalTargets, heritageTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
+import { certificationTargets, danFinalTargets, heritageTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent, type ReflectionChoice } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' | 'restart' }
@@ -11,6 +11,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'breach'; stage: number }
   | { type: 'lead'; destination: 'danta' | 'rescue' | 'thunder' }
   | { type: 'bid'; amount: number }
+  | { type: 'reflect'; choice: ReflectionChoice; stage: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -34,8 +35,8 @@ export function eventHint(state: GameState, eventId?: string): string {
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
-    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal', 'inheritance'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
-    attempts: event.kind === 'tournament' || event.kind === 'tomb' ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance'].includes(event.kind) ? 1 : 0,
+    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal', 'inheritance'].includes(event.kind) ? 300 : ['lineage', 'illusion'].includes(event.kind) ? 3 : event.kind === 'expedition' ? 7 : 0,
+    attempts: ['tournament', 'tomb', 'illusion'].includes(event.kind) ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -112,6 +113,15 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'illusion' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'illusion' && action.type === 'reflect' && p.stage >= 1 && p.stage <= 3) {
+      const reflection = event.reflections![p.stage - 1], option = reflection.options.find(o => o.choice === action.choice)
+      if (action.stage !== p.stage || !option) return fail('本境选择已经更新或无效。')
+      p.attempts++; message = option.response
+      if (action.choice === reflection.answer) { p.score++; p.stage++ }
+    } else if (event.kind === 'illusion' && action.type === 'deliver' && p.stage === 4) {
+      next.xp += 100; p.stage = 5; message = '三境观心已确认 · 100积累。幻境没有材料与金币入袋，前往树前审核后营地结算。'
     } else if (event.kind === 'tomb' && action.type === 'seal' && action.index === p.stage && p.stage >= 0 && p.stage <= 3) {
       message = event.checkpoints![p.stage].text; p.stage++
       if (p.stage <= 3) p.attempts++

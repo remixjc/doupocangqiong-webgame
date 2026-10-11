@@ -637,7 +637,11 @@ export class CombatWorld {
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'inheritance') this.cb.storyEvent?.(event.id, index)
+        if (event.kind === 'illusion' && index > 0) {
+          if (eventProgress(s, this.chapter.id, event.id).stage !== index) this.cb.notify('先读树前碑记，再按欲念、旧影、岁月顺序观心。')
+          else this.cb.storyEvent?.(event.id, index)
+        }
+        else if (event.kind === 'inheritance') this.cb.storyEvent?.(event.id, index)
         else if (event.kind === 'danfinal') {
           const stage = eventProgress(s, this.chapter.id, event.id).stage
           if (index === 0) this.cb.storyEvent?.(event.id, index)

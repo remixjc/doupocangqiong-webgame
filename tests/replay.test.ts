@@ -83,6 +83,10 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'prison' && p.stage === 4 && world.runtime().prisonEscort?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'tomb' && p.stage >= 1 && p.stage <= 3 && world.runtime().tomb?.failed) state = advanceEvent(state, { type: 'restart', eventId }).state
           else if (e.kind === 'tomb' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'illusion') {
+            if (checkpoint === p.stage && p.stage >= 1 && p.stage <= 3) state = advanceEvent(state, { type: 'reflect', choice: e.reflections![p.stage - 1].answer, stage: p.stage, eventId }).state
+            else if (checkpoint === undefined && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          }
           else if (e.kind === 'inheritance') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
@@ -200,6 +204,7 @@ describe('完整主线真实规则战斗回放', () => {
             if (threat) target = threat
           }
           if (event.kind === 'inheritance') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![0]
+          if (event.kind === 'illusion') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))

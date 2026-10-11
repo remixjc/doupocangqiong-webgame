@@ -1,8 +1,14 @@
 import type { Point } from './maps'
 
+export type ReflectionChoice = 'observe' | 'release' | 'endure' | 'grasp' | 'deny'
+export interface Reflection {
+  clue: string
+  answer: ReflectionChoice
+  options: { choice: ReflectionChoice; label: string; response: string }[]
+}
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -14,6 +20,7 @@ export interface ChapterEvent {
   note: string
   dummy?: Point
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
+  reflections?: Reflection[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
   20: {
@@ -159,6 +166,37 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
       { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
       { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
+    ],
+  },
+  24: {
+    id: 'bodhi-three-reflections', kind: 'illusion', introducedVersion: '0.10.3',
+    title: '菩提 · 三境观心', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['前往树前碑记，开始三境观心', '到西侧欲念境观察无痕卷轴', '到东侧旧影境辨别重复的回忆',
+      '到北侧岁月境看清树影的变化', '三境已识破，返回药老处确认', '观心记录已确认，前往菩提树前审核'],
+    introduction: '幻境未必能靠战斗打破。先读碑记，再依序到欲念、旧影和岁月三境；观察各境给出的线索，选择相应行动。错误会说明原因，可免费重选当前境，已识破片段保留。',
+    note: '三境线索、选项与短对白为原创菩提改编，不模拟原著完整轮回经历。幻境财富不会写入行囊；报告一次100积累，重返不重复。普通击杀不能替代观心。',
+    checkpoints: [
+      { x: 330, y: 220, label: '树前碑记', text: '无痕卷轴须观察，重复旧影须放下，变化岁月须耐心面对。沿三境依序走入，答案就在观察之中。' },
+      { x: 630, y: 390, label: '欲念境', text: '卷轴许诺一念登帝，却没有任何修炼痕迹。先看清它是否可信。' },
+      { x: 1020, y: 630, label: '旧影境', text: '回忆一遍遍重复同一句话，留住所有过去的许诺没有新变化。' },
+      { x: 1060, y: 290, label: '岁月境', text: '树影缓慢移动，落叶每次不同。这段岁月仍在变化，面对它而非逃避。' },
+    ],
+    reflections: [
+      { clue: '卷轴只有结果的许诺，没有历练的痕迹；先观察真假。', answer: 'observe', options: [
+        { choice: 'observe', label: '观察卷轴 · 核对历练痕迹', response: '无痕卷轴散去。看清许诺之后，继续走入旧影。' },
+        { choice: 'grasp', label: '抓住卷轴 · 索取登帝之力', response: '许诺没有根基，欲念让幻象再次合拢。观察卷轴的痕迹，可免费重选。' },
+        { choice: 'deny', label: '闭目否认 · 拒绝看卷轴', response: '不看并不能辨别真假。观察缺失的历练痕迹，可免费重选。' },
+      ] },
+      { clue: '旧影只重复相同片段，无法让过去重来；放下许诺才能继续。', answer: 'release', options: [
+        { choice: 'release', label: '放下旧影 · 带着记忆前行', response: '旧影安静下来。记忆仍在，却不再困住脚步。' },
+        { choice: 'grasp', label: '抓住旧影 · 强求过去重来', response: '片段再次重复，无法带回真实过去。放下它的许诺，可免费重选。' },
+        { choice: 'deny', label: '否认记忆 · 抹去所有过去', response: '逃避记忆仍留在旧影之中。带着记忆放下许诺，可免费重选。' },
+      ] },
+      { clue: '树影和落叶不断变化；耐心面对岁月才能走出此境。', answer: 'endure', options: [
+        { choice: 'endure', label: '面对岁月 · 静看树影变化', response: '岁月不再困住心念。三境已识破，回药老处确认。' },
+        { choice: 'grasp', label: '强留树影 · 让时光停止', response: '树影仍在移动，强留无法看清变化。耐心面对岁月，可免费重选。' },
+        { choice: 'deny', label: '否认变化 · 立刻逃离此境', response: '逃离只让幻境重复。观察并面对树影的变化，可免费重选。' },
+      ] },
     ],
   },
   23: {
