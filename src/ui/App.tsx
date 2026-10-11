@@ -144,7 +144,7 @@ export default function App() {
       })}</div>
     </main>}
     {screen === 'play' && <main className="adventure">
-      <aside className="quest-sidebar" tabIndex={0} aria-label="本章历练目标">
+      <aside className="quest-sidebar" tabIndex={0} aria-label="本章历练目标" data-game-input="reading">
         <span className="eyebrow">第 {String(chapter.id).padStart(2, '0')} 章</span><h2>{chapter.title}</h2>
         <p className="muted">{chapter.summary}</p><div className="thin-divider" />
         <span className="section-label">本章历练</span>

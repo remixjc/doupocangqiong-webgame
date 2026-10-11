@@ -1,0 +1,97 @@
+{
+  "checkedOn": "2026-10-12",
+  "batch": "C11e-6",
+  "version": "0.37.5",
+  "baseSha": "bef6d566f1a698ab164e5b40dc29f02c442df7fb",
+  "browserViewport": {
+    "width": 568,
+    "height": 320
+  },
+  "sourceHadUncommittedRepair": true,
+  "before": {
+    "version": "0.37.4",
+    "start": {
+      "qi": "斗气 184 / 184",
+      "sidebarScroll": 283,
+      "x": "210",
+      "y": "625"
+    },
+    "afterOnePhysicsStep": {
+      "focus": "本章历练目标",
+      "height": 320,
+      "hidden": false,
+      "qi": "斗气 184 / 184",
+      "sidebarScroll": 283,
+      "width": 568,
+      "x": "214",
+      "y": "625"
+    },
+    "beforeReload": {
+      "focus": "本章历练目标",
+      "qi": "斗气 184 / 184",
+      "sidebarScroll": 283,
+      "x": "222",
+      "y": "625"
+    }
+  },
+  "after": {
+    "start": {
+      "qi": "斗气 184 / 184",
+      "x": "210",
+      "y": "625"
+    },
+    "readingStable": {
+      "qi": "斗气 184 / 184",
+      "sidebarContent": 527,
+      "sidebarHeight": 244,
+      "sidebarScroll": 283,
+      "x": "210",
+      "y": "625"
+    },
+    "sceneRestored": {
+      "focus": "application",
+      "qi": "斗气 184 / 184",
+      "x": "214",
+      "y": "625"
+    },
+    "sceneSkillObserved": {
+      "qi": "166 / 184",
+      "cooldown": "3.1s",
+      "x": "214",
+      "y": "625"
+    },
+    "readingKeys": [
+      "Home",
+      "ArrowRight",
+      "ArrowDown",
+      "1",
+      "j",
+      "q",
+      "f",
+      "r",
+      "Space",
+      "End"
+    ],
+    "fieldNativeSelected": "终战启程碑",
+    "fieldX": "210",
+    "fieldY": "625",
+    "fieldQi": "184 / 184"
+  },
+  "pendingHeldInput": {
+    "verification": "EventTarget and BufferedMovement regression; not browser held-key evidence"
+  },
+  "downloadedThroughUI": true,
+  "viewportOverrideReset": true,
+  "consoleErrors": [],
+  "physicalDeviceTest": false,
+  "stateComparison": {
+    "previousVersion": "0.37.4",
+    "finalVersion": "0.37.5",
+    "wholeStateOnlyVersionChanged": true,
+    "chapter": 28,
+    "clears": 28,
+    "gold": 19506,
+    "xp": 15582,
+    "canonicalSha256": "ad0a29f18c763e5fe94f4fba3ac7b6cb054105f78934ccfb51a75894737249f4"
+  }
+}

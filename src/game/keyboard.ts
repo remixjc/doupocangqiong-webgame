@@ -1,17 +1,33 @@
 export interface KeyIntent {
   key: string; ctrlKey?: boolean; altKey?: boolean; metaKey?: boolean
 }
-export type KeySurface = 'scene' | 'field' | 'control'
+export type KeySurface = 'scene' | 'field' | 'control' | 'reading'
 
 /** Native button activation wins over gameplay Space; other shortcuts remain available. */
 export function acceptsGameplayKey(event: KeyIntent, surface: KeySurface, paused: boolean, hidden: boolean) {
-  if (paused || hidden || event.ctrlKey || event.altKey || event.metaKey || surface === 'field') return false
+  if (paused || hidden || event.ctrlKey || event.altKey || event.metaKey || surface === 'field' || surface === 'reading') return false
   return !(surface === 'control' && [' ', 'Spacebar', 'Enter'].includes(event.key))
 }
 export function keyboardSurface(target: Pick<Element, 'closest'> | null): KeySurface {
+  if (target?.closest('[data-game-input="reading"]')) return 'reading'
   if (target?.closest('input,select,textarea,[contenteditable]:not([contenteditable="false"])')) return 'field'
   if (target?.closest('button,a[href],[role="button"]')) return 'control'
   return 'scene'
+}
+
+/** Leave queued and held gameplay input behind when focus enters a native reading/input surface. */
+export function bindKeyboardFocusBoundary(target: EventTarget, inspect: (event: Event) => KeySurface, release: () => void) {
+  const focus = (event: Event) => {
+    const surface = inspect(event)
+    if (surface === 'field' || surface === 'reading') release()
+  }
+  target.addEventListener('focusin', focus)
+  let disposed = false
+  return () => {
+    if (disposed) return
+    disposed = true
+    target.removeEventListener('focusin', focus)
+  }
 }
 
 /** A released movement tap survives until one physics step; held keys still move continuously. */

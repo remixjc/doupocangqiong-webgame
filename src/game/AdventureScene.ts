@@ -11,7 +11,7 @@ import { PauseDrawGate, presentFloat } from './presentation'
 import { bindFocusLifecycle } from './focus'
 import { ActorMotion, type ActorPose } from './actor-motion'
 import { drawActor } from './draw-actor'
-import { acceptsGameplayKey, keyboardSurface, BufferedMovement } from './keyboard'
+import { acceptsGameplayKey, keyboardSurface, BufferedMovement, bindKeyboardFocusBoundary } from './keyboard'
 import { SceneGuard } from './scene-guard'
 import { RouteWalker } from './navigation'
 
@@ -117,12 +117,14 @@ export default class AdventureScene extends Phaser.Scene {
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
     }
     let unbindFocus: (() => void) | undefined
+    let unbindKeyboardFocus: (() => void) | undefined
     let released = false
     const releaseInput = () => {
       if (released) return
       released = true
       this.faultGuard.dispose()
       window.removeEventListener('keydown', keydown); window.removeEventListener('keyup', keyup)
+      unbindKeyboardFocus?.()
       this.input?.off('pointerdown', pointerdown)
       if (unbindFocus) unbindFocus()
       else release()
@@ -135,6 +137,12 @@ export default class AdventureScene extends Phaser.Scene {
     this.events.once('shutdown', releaseInput)
     this.events.once('destroy', releaseInput)
     window.addEventListener('keydown', keydown); window.addEventListener('keyup', keyup)
+    unbindKeyboardFocus = bindKeyboardFocusBoundary(window,
+      event => keyboardSurface(event.target instanceof Element ? event.target : null),
+      () => {
+        this.heldKeys.clear(); this.movementTaps.clear(); this.aim = undefined
+        gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
+      })
     this.input.on('pointerdown', pointerdown)
     unbindFocus = bindFocusLifecycle(window, document, release, () => { this.lostFocus = false })
     gameStore.runtime(this.world.runtime())

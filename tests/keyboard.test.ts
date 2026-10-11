@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { acceptsGameplayKey, keyboardSurface, BufferedMovement } from '../src/game/keyboard'
+import { acceptsGameplayKey, keyboardSurface, BufferedMovement, bindKeyboardFocusBoundary, type KeySurface } from '../src/game/keyboard'
 import { FixedClock } from '../src/game/clock'
 
 describe('键盘焦点与游戏快捷键', () => {
@@ -23,13 +23,42 @@ describe('键盘焦点与游戏快捷键', () => {
     }
   })
   it('嵌套图标/标签按祖先分类，输入祖先优先，没有元素时仍可操作场景', () => {
-    const target = (field: boolean, control: boolean) => ({
-      closest: (selector: string) => selector.startsWith('input') ? field ? {} as Element : null : control ? {} as Element : null,
+    const target = (field: boolean, control: boolean, reading = false) => ({
+      closest: (selector: string) => (selector === '[data-game-input="reading"]' ? reading : selector.startsWith('input') ? field : control) ? {} as Element : null,
     })
     expect(keyboardSurface(target(true, true))).toBe('field')
     expect(keyboardSurface(target(false, true))).toBe('control')
     expect(keyboardSurface(target(false, false))).toBe('scene')
     expect(keyboardSurface(null)).toBe('scene')
+    expect(keyboardSurface(target(false, false, true))).toBe('reading')
+    expect(keyboardSurface(target(true, true, true))).toBe('reading')
+  })
+  it('阅读任务时保留所有原生键盘操作，不产生移动、战斗或消耗快捷键', () => {
+    for (const key of ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageDown', 'PageUp',
+      'Tab', 'Enter', ' ', 'w', 'a', 's', 'd', 'j', 'e', '1', '2', '3', 'q', 'f', 'r']) {
+      expect(acceptsGameplayKey({ key }, 'reading', false, false)).toBe(false)
+    }
+  })
+  it('场景输入切到阅读区或表单后不残留按住键、物理步缓冲或排队动作，回到场景可重新输入', () => {
+    const windowTarget = new EventTarget(), held = new Set<string>(), movement = new BufferedMovement(), actions: string[] = []
+    let surface: KeySurface = 'scene', releases = 0
+    const release = bindKeyboardFocusBoundary(windowTarget, () => surface, () => {
+      releases++; held.clear(); movement.clear(); actions.length = 0
+    })
+    for (const next of ['reading', 'field'] as const) {
+      held.add('d'); held.add('j'); movement.record('ArrowDown'); actions.push('strike')
+      surface = next; windowTarget.dispatchEvent(new Event('focusin'))
+      expect(held.size).toBe(0); expect(movement.read(held)).toEqual({ x: 0, y: 0 }); expect(actions).toEqual([])
+    }
+    for (const next of ['scene', 'control'] as const) {
+      surface = next; held.add('w'); movement.record('w'); actions.push('attack')
+      windowTarget.dispatchEvent(new Event('focusin'))
+      expect(movement.read(held)).toEqual({ x: 0, y: -1 }); expect(actions.length).toBeGreaterThan(0)
+    }
+    expect(releases).toBe(2)
+    release(); release()
+    surface = 'reading'; windowTarget.dispatchEvent(new Event('focusin'))
+    expect(releases).toBe(2)
   })
   it('两帧之间已松开的移动点按保留到一次物理步，零步帧不吞输入，多步帧不重复', () => {
     const movement = new BufferedMovement(), clock = new FixedClock(), held = new Set<string>(), directions: { x: number; y: number }[] = []
