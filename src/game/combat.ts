@@ -61,6 +61,7 @@ export class CombatWorld {
   expeditionRun?: { attempt: number; elapsed: number; failed: boolean }
   danLightning?: SurvivalRun
   starRun?: FlameRun
+  prisonEscort?: EscortRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -79,7 +80,7 @@ export class CombatWorld {
     const stats = playerStats(cb.state())
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
-    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations || this.map.expeditionDuration ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
+    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations || this.map.expeditionDuration || this.map.prisonPursuit ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
       const cleared = enemy.id && eventsForChapter(chapter.id).some(event => {
         const p = eventProgress(cb.state(), chapter.id, event.id)
         if (['lineage', 'expedition'].includes(event.kind)) return p.started && event.checkpoints?.some((point, index) =>
@@ -98,6 +99,7 @@ export class CombatWorld {
     this.syncExpedition()
     this.syncDanLightning()
     this.syncStar()
+    this.syncPrison()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -123,6 +125,31 @@ export class CombatWorld {
       Object.assign(this.player, expedition.checkpoints![0])
     if (this.danLightning) Object.assign(this.player, this.map.lightningTrial!.center)
     if (this.starRun) Object.assign(this.player, this.map.starTrial!.cooling[0])
+    const prison = eventsForChapter(chapter.id).find(e => e.kind === 'prison'), prisonProgress = prison && eventProgress(cb.state(), chapter.id, prison.id)
+    if (prison && prisonProgress?.started && prisonProgress.stage >= 1 && prisonProgress.stage <= 4)
+      Object.assign(this.player, prison.checkpoints![prisonProgress.stage - 1])
+  }
+  private syncPrison() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'prison'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage !== 4) this.prisonEscort = undefined
+    else if (!this.prisonEscort) {
+      this.prisonEscort = { ...e!.checkpoints![3], hp: 200, maxHp: 200, stage: 4, waiting: false }
+      for (const enemy of this.map.prisonPursuit!) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id)
+      this.cb.notify('药老已离开囚牢，追击者出现。保护他沿原路撤离，超过180距离会等待。')
+    }
+  }
+  prisonArrived() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'prison')
+    return !!e && !!this.prisonEscort && this.prisonEscort.hp > 0 && this.player.hp > 0 && distance(this.prisonEscort, e.npc) < 65
+  }
+  private stepPrison(dt: number) {
+    this.syncPrison()
+    const ally = this.prisonEscort, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'prison')
+    if (!ally || !e || ally.hp <= 0) return
+    ally.waiting = distance(this.player, ally) > 180
+    const dist = distance(ally, e.npc)
+    if (!ally.waiting && dist > 8) this.move(ally, (e.npc.x - ally.x) / dist * Math.min(dist, dt * 120),
+      (e.npc.y - ally.y) / dist * Math.min(dist, dt * 120))
   }
   private syncStar() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'starfire')
@@ -580,7 +607,9 @@ export class CombatWorld {
       const near = this.near()
       if (near === 'event') {
         const event = this.nearEvent()!, progress = eventProgress(s, this.chapter.id, event.id)
-        if (event.kind === 'escort' && progress.started && progress.stage < 3) {
+        if (event.kind === 'prison' && progress.stage === 4 && !this.prisonArrived())
+          this.cb.notify(this.prisonEscort?.hp === 0 ? '药老受伤倒下，免费休整后从囚牢重新撤离。' : '双方存活并返回会合点才能报告，靠近药老让他跟上。')
+        else if (event.kind === 'escort' && progress.started && progress.stage < 3) {
           if (distance(p, event.checkpoints![progress.stage]) < 75) this.escortCheckpoint(progress.stage)
           else this.cb.notify(this.escort?.hp === 0 ? '同伴受伤倒下，请营地休整后重试。' : '带同伴前往当前药圃；距离太远时同伴会等你。')
         } else this.cb.storyEvent?.(event.id)
@@ -598,6 +627,12 @@ export class CombatWorld {
           if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify('先与丹塔引路人接取星火稳固。')
           else if (eventProgress(s, this.chapter.id, event.id).stage === 1) this.cb.storyEvent?.(event.id, index)
           else this.cb.notify('核心内压力不超过65才计时；镇心石降压，E不能代替三段稳固。')
+        }
+        else if (event.kind === 'prison') {
+          const stage = eventProgress(s, this.chapter.id, event.id).stage
+          if (stage !== index) this.cb.notify('先确认退路，依序破除外廊、内封和囚牢；已完成节点不重复操作。')
+          else if (this.guardsRemaining(event.id, index) > 0) this.cb.notify(`本节点还有${this.guardsRemaining(event.id, index)}名守卫，先清理再破禁。`)
+          else { this.cb.eventAction?.({ type: 'seal', index, eventId: event.id }); this.syncPrison() }
         }
         else if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
         else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
@@ -863,6 +898,7 @@ export class CombatWorld {
     this.stepHuntTeam(dt)
     this.stepTower(dt)
     this.stepExpedition(dt)
+    this.stepPrison(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -874,7 +910,8 @@ export class CombatWorld {
       if (e.duel) { this.stepDuel(e, dt); continue }
       if (e.ranking) { this.stepRanking(e, dt); continue }
       if (e.sect) { this.stepSect(e, dt); continue }
-      const ally = this.squad?.holding && this.squad.hp > 0 ? this.squad : this.huntTeam && this.huntTeam.hp > 0 ? this.huntTeam : undefined
+      const ally = this.squad?.holding && this.squad.hp > 0 ? this.squad : this.huntTeam && this.huntTeam.hp > 0 ? this.huntTeam
+        : this.prisonEscort && this.prisonEscort.hp > 0 ? this.prisonEscort : undefined
       const enemyTarget = ally && distance(e, ally) < distance(e, p) ? ally : p
       const dist = distance(e, enemyTarget)
       if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); e.alert = 0; continue }
@@ -908,6 +945,10 @@ export class CombatWorld {
           if (this.huntTeam && this.huntTeam.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.huntTeam!) < e.radius + 16)) {
             this.huntTeam.hp = Math.max(0, this.huntTeam.hp - damage(30, 1, 10))
             if (this.huntTeam.hp === 0) this.cb.notify('猎捕队友受伤，当前路线中止。已领火能保留，休整后从最近集合节点重试。')
+          }
+          if (this.prisonEscort && this.prisonEscort.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.prisonEscort!) < e.radius + 16)) {
+            this.prisonEscort.hp = Math.max(0, this.prisonEscort.hp - damage(30, s.settings.difficulty === 'story' ? .7 : s.settings.difficulty === 'hard' ? 1.25 : 1, 10))
+            if (this.prisonEscort.hp === 0) this.cb.notify('药老受伤倒下，撤离中断。已破禁节点保留，免费休整后从囚牢重试。')
           }
           if (e.type === 'boss' && this.chapter.pattern === 'dash') {
             e.x = clamp(e.target.x, 60, WIDTH - 60); e.y = clamp(e.target.y, 60, HEIGHT - 60)
@@ -974,6 +1015,8 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
+      prisonEscort: this.prisonEscort ? { hp: this.prisonEscort.hp, maxHp: this.prisonEscort.maxHp, waiting: this.prisonEscort.waiting,
+        failed: this.prisonEscort.hp <= 0, arrived: this.prisonArrived() } : undefined,
       starChallenge: this.starRun ? { phase: this.starRun.phase, remaining: Math.max(0, Math.ceil(this.map.starTrial!.durations[this.starRun.phase - 2] - this.starRun.elapsed)),
         heat: Math.round(this.starRun.heat), inZone: this.inStarZone(), cooling: this.starCooling(), stable: this.starStable(), failed: this.starRun.failed } : undefined,
       danLightning: this.danLightning ? { remaining: Math.max(0, Math.ceil(this.map.lightningTrial!.duration - this.danLightning.elapsed)),

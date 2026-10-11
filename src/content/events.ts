@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -159,6 +159,21 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
       { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
       { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
+    ],
+  },
+  22: {
+    id: 'soul-prison-teacher-extraction', kind: 'prison', introducedVersion: '0.9.4',
+    title: '魂殿 · 破禁与撤离', speaker: '风尊者', npc: { x: 280, y: 625 },
+    stages: ['前往西侧退路牌确认撤离路线', '清理外廊守卫，按E打开禁魂门', '清理内廊两名守卫，按E解除内封',
+      '清理囚牢守卫，按E解锁囚牢', '保护药老沿原路撤离，双方存活回到风尊者处报告',
+      '会合记录完成，前往出口确认安全撤离'],
+    introduction: '先留退路，再深入据点。清理外廊、内封和囚牢守卫，按E逐步破禁。囚牢解锁后会出现追击者，护送药老回到此处；距离超过180时他会等待。双方存活并会合才可报告，最后确认撤离、营地结算。',
+    note: '囚牢节点、投影守卫、追击与护送参数为原创营救改编，不复现原著全部强者时序。药老有独立生命，失败免费从囚牢重新撤离，已破禁节点保留。报告不发补给，正式完成第22章首通后才恢复支援。',
+    checkpoints: [
+      { x: 330, y: 220, label: '据点退路牌', text: '撤离退路已确认。先打开外廊禁魂门，再进入内廊。' },
+      { x: 540, y: 410, label: '外廊禁魂门', guards: ['prison-outer-brute'], text: '外廊禁魂门打开，继续清理内封守卫。' },
+      { x: 830, y: 410, label: '内封阵', guards: ['prison-inner-hunter', 'prison-inner-mage'], text: '内封解除，前往北侧囚牢。' },
+      { x: 1090, y: 280, label: '药老囚牢', guards: ['prison-cell-mage'], text: '囚牢已解锁。药老仍虚弱，清理追击者，沿原路护送回风尊者处。' },
     ],
   },
   21: {

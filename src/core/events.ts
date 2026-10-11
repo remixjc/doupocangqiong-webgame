@@ -112,6 +112,10 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'prison' && action.type === 'seal' && action.index === p.stage && p.stage >= 0 && p.stage <= 3) {
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'prison' && action.type === 'deliver' && p.stage === 4) {
+      p.stage = 5; message = '师徒已安全会合。前往出口确认撤离，再营地首通结算；此时药老支援仍未恢复。'
     } else if (event.kind === 'starfire' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'starfire' && action.type === 'test' && p.stage === 1) {

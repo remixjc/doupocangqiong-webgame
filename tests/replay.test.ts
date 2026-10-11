@@ -80,6 +80,7 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'lineage' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'expedition' && p.stage === 1 && world.runtime().expedition?.failed) state = advanceEvent(state, { type: 'restart', eventId }).state
           else if (e.kind === 'expedition' && p.stage === 2) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'prison' && p.stage === 4 && world.runtime().prisonEscort?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'danfinal') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
@@ -175,6 +176,13 @@ describe('完整主线真实规则战斗回放', () => {
               const z = world.map.starTrial!, cooling = [...z.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
               target = world.starRun.heat > 50 || (world.starCooling() && world.starRun.heat > 10) ? cooling : z.center
             }
+          }
+          if (event.kind === 'prison') {
+            target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
+            const guards = event.checkpoints?.[ep.stage]?.guards
+            const threat = ep.stage < 4 ? living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId)) : living[0]
+            if (threat) target = threat
+            else if (world.prisonEscort && dist(world.player, world.prisonEscort) > 140) target = world.prisonEscort
           }
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)

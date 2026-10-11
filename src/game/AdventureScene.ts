@@ -302,6 +302,13 @@ export default class AdventureScene extends Phaser.Scene {
       g.fillStyle(0x0b1718); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50, 6)
       g.fillStyle(0xb8c58d); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50 * w.huntTeam.hp / w.huntTeam.maxHp, 6)
     }
+    if (w.prisonEscort) {
+      const ally = w.prisonEscort
+      this.actor(g, ally.x, ally.y, ally.hp > 0 ? 0xb4b0c7 : 0x775c58, .95, false)
+      g.fillStyle(0x0b1718); g.fillRect(ally.x - 25, ally.y - 52, 50, 6)
+      g.fillStyle(0xbca9d8); g.fillRect(ally.x - 25, ally.y - 52, 50 * ally.hp / ally.maxHp, 6)
+      g.lineStyle(2, 0xbca9d8, .4); g.strokeCircle(ally.x, ally.y, 28)
+    }
     if (w.map.siegeDurations) {
       const e = eventsForChapter(w.chapter.id).find(event => event.kind === 'siege')!
       const stage = eventProgress(gameStore.getSnapshot().state, w.chapter.id, e.id).stage
@@ -424,9 +431,9 @@ export default class AdventureScene extends Phaser.Scene {
           g.lineStyle(4, 0xd1b382); g.strokeEllipse(point.x, point.y - 20, 56, 18)
           g.fillStyle(progress.stage >= 2 && progress.stage <= 4 ? 0xf0ac68 : 0xad8355); g.fillTriangle(point.x - 18, point.y + 32, point.x, point.y + 3, point.x + 18, point.y + 32)
         }
-        if (event.kind === 'rescue' && index > 0) {
+        if ((event.kind === 'prison' && index === 3) || (event.kind === 'rescue' && index > 0)) {
           const released = progress.started && progress.stage > index
-          this.actor(g, point.x, point.y, released ? 0x729d96 : 0x9c8559, .85, false)
+          if (event.kind !== 'prison' || !released) this.actor(g, point.x, point.y, released ? 0x729d96 : 0x9c8559, .85, false)
           if (!released) {
             g.lineStyle(3, w.guardsRemaining(event.id, index) > 0 ? 0xbe8163 : 0xaab28c)
             g.strokeRect(point.x - 27, point.y - 45, 54, 66)

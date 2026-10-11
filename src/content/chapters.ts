@@ -99,6 +99,11 @@ chapters[20].boss = '三千焱炎火 · 收服确认'
 chapters[20].opening[2].text = '与丹塔引路人接取稳固，确认星域退路，再在核心开启三段10 / 12 / 14秒挑战。核心内且压力不超过65才能累计，镇心石降压但不计时；受击加压，100失控免费重试当前阶段。返回报告、收服台确认后营地首通取得三千焱炎火。'
 chapters[20].trialNote = '星火压力、镇心石与三段稳固为原创收服改编；不能击杀异火投影代替稳固，正式首通后才取得异火，药老仍离队。'
 
+chapters[21].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[21].boss = '救师退路 · 撤离确认'
+chapters[21].opening[2].text = '向风尊者接取，确认退路，清除外廊、内封与囚牢投影守卫并逐点E破禁。解锁囚牢后保护药老原路撤离，清理追击者；双方存活且到达风尊者处才能报告。失败免费重建当前安全段，出口确认后营地首通恢复药老支援。'
+chapters[21].trialNote = '破禁、护送与追击为原创营救机制；囚牢解锁或报告均不提前恢复支援，第22章正式首通才归队。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

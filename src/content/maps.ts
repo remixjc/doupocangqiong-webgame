@@ -28,6 +28,7 @@ export interface MapDefinition {
   expeditionDuration?: number
   lightningTrial?: { center: Point; radius: number; duration: number }
   starTrial?: { center: Point; radius: number; cooling: Point[]; durations: number[]; pressure: number[] }
+  prisonPursuit?: MapEnemy[]
   rankingArena?: boolean
   towerFloors?: TowerFloor[]
   siegeDurations?: number[]
@@ -355,15 +356,19 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 60, label: '丹塔星域 · 不灭星火' }, { x: 660, y: 755, label: '确认退路 → 星火引流 / 魂力稳固 / 不灭调息 → 收服' }],
   },
   22: {
-    id: 'soul-prison-rescue-corridor', style: 'soul-prison', gateLabel: '禁魂深处',
+    id: 'soul-prison-rescue-corridor', style: 'soul-prison', gateLabel: '撤离确认', trialMode: 'assessment',
+    eventBarrier: { eventId: 'soul-prison-teacher-extraction', unlockedStage: 2, obstacle: { x: 620, y: 300, w: 70, h: 230 } },
+    prisonPursuit: [{ id: 'prison-pursuit-hunter', type: 'hunter', x: 1170, y: 390 },
+      { id: 'prison-pursuit-mage', type: 'mage', x: 1040, y: 170 }],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 150 }, bossSpawn: { x: 1090, y: 290 }, safeRadius: 175,
     obstacles: [{ x: 620, y: 0, w: 70, h: 300 }, { x: 620, y: 530, w: 70, h: 270 },
       { x: 910, y: 460, w: 100, h: 110 }, { x: 400, y: 140, w: 100, h: 100 }],
     herbs: [{ x: 310, y: 460 }, { x: 540, y: 310 }, { x: 800, y: 610 }, { x: 1070, y: 650 }, { x: 1000, y: 240 }, { x: 310, y: 170 }],
-    enemies: [{ type: 'brute', x: 510, y: 450 }, { type: 'hunter', x: 830, y: 410 },
-      { type: 'mage', x: 1080, y: 560 }, { type: 'mage', x: 960, y: 330 }],
+    enemies: [{ id: 'prison-outer-brute', type: 'brute', x: 510, y: 450 },
+      { id: 'prison-inner-hunter', type: 'hunter', x: 830, y: 410 }, { id: 'prison-inner-mage', type: 'mage', x: 800, y: 320 },
+      { id: 'prison-cell-mage', type: 'mage', x: 1100, y: 220 }],
     paths: [[{ x: 150, y: 650 }, { x: 330, y: 460 }, { x: 540, y: 410 }, { x: 780, y: 410 }, { x: 1060, y: 400 }, { x: 1140, y: 150 }]],
-    landmarks: [{ x: 920, y: 60, label: '魂殿据点 · 禁魂长廊' }, { x: 410, y: 755, label: '确认退路 · 向深处推进' }],
+    landmarks: [{ x: 920, y: 60, label: '魂殿据点 · 禁魂长廊' }, { x: 500, y: 755, label: '退路 → 外廊 / 内封 / 囚牢 → 护送会合 → 撤离确认' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? dantaAndRescueMaps[id] ?? legacy }

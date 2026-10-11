@@ -25,7 +25,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'prison', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -43,6 +43,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'danfinal' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回玄空子处接取或登记。'); return false }
       if (event.kind === 'starfire' && action.type === 'test' && checkpoint !== 1) { gameStore.notify('请在星火核心开始稳固。'); return false }
       if (event.kind === 'starfire' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回丹塔引路人处接取或报告。'); return false }
+      if (event.kind === 'prison' && action.type === 'deliver' && (checkpoint !== undefined || !runtime.prisonEscort?.arrived)) { gameStore.notify('药老须存活并到达风尊者会合点才能报告。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -108,6 +109,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === 1 && progress.stage === 1 && <button className="primary" onClick={() => { if (act({ type: 'test' })) close() }}>开始星火稳固 · 返回核心</button>}
       {checkpoint === undefined && progress.stage === 5 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告星火稳固 · 准备收服</button>}
     </>}
+    {event.kind === 'prison' && progress.started && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告安全会合 · 准备撤离</button>}
     {event.kind === 'tournament' && progress.started && <>
       <p>已通过 {progress.roundScores?.length ?? 0} / 3 轮 · 分轮成绩 {progress.roundScores?.join(' / ') || '待完成'} · 尝试 {progress.attempts} 次</p>
       {checkpoint === tournamentRound(progress.stage) + 1 && progress.stage >= 1 && progress.stage <= 12 && <>
@@ -167,6 +169,6 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </>}
       {checkpoint === undefined && progress.stage === 6 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记大会成绩 · 80积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'starfire', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'prison', 'flame', 'starfire', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }
