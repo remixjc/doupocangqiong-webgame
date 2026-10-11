@@ -765,7 +765,11 @@ export class CombatWorld {
           return
         }
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'illusion' && index > 0) {
+        if (event.kind === 'preparation') {
+          if (index === 4) this.cb.storyEvent?.(event.id, index)
+          else this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+        }
+        else if (event.kind === 'illusion' && index > 0) {
           if (eventProgress(s, this.chapter.id, event.id).stage !== index) this.cb.notify('先读引路碑记，再按三处幻境顺序观察。')
           else this.cb.storyEvent?.(event.id, index)
         }

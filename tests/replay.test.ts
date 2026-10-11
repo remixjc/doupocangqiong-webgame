@@ -8,6 +8,7 @@ import { certificationTargets, danFinalTargets, mindTargets, findEvent, tourname
 import { advanceEvent, eventDone, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 import { validateState } from '../src/core/save'
 import { bondEvents } from '../src/content/bonds'
+import { preparationEvents, preparationProtocols } from '../src/content/preparations'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -68,6 +69,12 @@ describe('完整主线真实规则战斗回放', () => {
         storyEvent: (eventId, checkpoint) => {
           const p = eventProgress(state, chapter.id, eventId), e = findEvent(chapter.id, eventId)!
           if (!p.started) state = advanceEvent(state, { type: 'begin', eventId }).state
+          else if (e.kind === 'preparation') {
+            if (checkpoint === 4 && p.stage === 2) state = advanceEvent(state, { type: 'strategy', choice: 'steady', eventId }).state
+            else if (checkpoint === 4 && p.stage >= 3 && p.stage <= 5)
+              state = advanceEvent(state, { type: 'contain', operation: preparationProtocols.steady[p.stage - 3], stage: p.stage, attempts: p.attempts, eventId }).state
+            else if (checkpoint === undefined && p.stage === 6) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          }
           else if (e.kind === 'bond') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'strategy', choice: 'steady', eventId }).state
             else if (checkpoint === undefined && p.stage === 2) state = advanceEvent(state, { type: 'deliver', eventId }).state
@@ -296,11 +303,14 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 23) expect(eventProgress(state).attempts, '天墓三层应各在单次时限内完成').toBe(3)
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
-      for (const { event } of bondEvents.filter(item => item.chapter === chapter.id)) {
+      for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {
         const id = event.id
         let revisitPath: Vec[] = [], revisitTarget: Vec = { x: -999, y: -999 }
         for (let tick = 0; tick < 3600 && !eventDone(state, chapter.id, id); tick++) {
-          const p = eventProgress(state, chapter.id, id), target = !p.started || p.stage === 2 ? event.npc : event.checkpoints![p.stage]
+          const p = eventProgress(state, chapter.id, id), target = event.kind === 'preparation'
+            ? !p.started || p.stage === 6 ? event.npc : p.stage === 0 ? event.checkpoints![0]
+              : p.stage === 1 ? event.checkpoints![[1, 2, 3].find(index => !(p.score & (1 << (index - 1))))!] : event.checkpoints![4]
+            : !p.started || p.stage === 2 ? event.npc : event.checkpoints![p.stage]
           if (tick % 20 === 0 || !revisitPath.length || dist(target, revisitTarget) > 45) {
             revisitPath = route(world.player, target, world.collisionMap()); revisitTarget = { ...target }
           }

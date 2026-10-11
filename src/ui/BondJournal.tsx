@@ -1,6 +1,9 @@
 import { bondJournal, bondVisitQueue } from '../core/bonds'
 import type { GameState } from '../core/model'
 import { useState } from 'react'
+import { preparationEvents } from '../content/preparations'
+import { eventBlockReason, eventDone, eventHint, eventProgress } from '../core/events'
+import { canEnter, isVisible } from '../core/rules'
 
 export default function BondJournal({ state, visit }: { state: GameState; visit: (chapter: number) => void }) {
   const lines = bondJournal(state)
@@ -43,6 +46,16 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
         </div>
       </article>)}
     </section>)}
+    {active?.id === 'little-doctor' && preparationEvents.filter(item => isVisible(state, item.chapter)).map(({ chapter, event }) => {
+      const blocked = eventBlockReason(state, chapter, event), p = eventProgress(state, chapter, event.id)
+      return <section className="bond-line" key={event.id} aria-label="小医仙专属历练">
+        <h3>专属历练 · {event.title}</h3>
+        <p>第{chapter}章 · {eventDone(state, chapter, event.id) ? '已归档' : !p.started ? '尚未接取' : event.stages[p.stage]}</p>
+        <p className="muted">{blocked || (state.chapter === chapter ? eventHint(state, event.id) : '回到本章札记处接取，已完成节点可保存恢复。')}</p>
+        <p className="muted">寻找练习凭证、选择方案、控制演练风险。此项不计入24页书简，不表示完整毒体控制已实现。</p>
+        <button className="secondary" disabled={!canEnter(state, chapter)} onClick={() => visit(chapter)}>前往第{chapter}章准备演练</button>
+      </section>
+    })}
     <p className="muted">对白与书简是原创改编；卷页标题与记录按当前剧透范围显示。</p>
   </>
 }

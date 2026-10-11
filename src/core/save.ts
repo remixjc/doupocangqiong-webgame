@@ -41,8 +41,13 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
     (!definition && p.started) || (!['trade', 'auction'].includes(definition?.kind ?? '') && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
-    (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt', 'lineage', 'expedition', 'danfinal', 'inheritance', 'tomb', 'illusion', 'vault'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
-    (!['competition', 'alliance', 'bond'].includes(definition?.kind ?? '') && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+    (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt', 'lineage', 'expedition', 'danfinal', 'inheritance', 'tomb', 'illusion', 'vault', 'preparation'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
+    (!['competition', 'alliance', 'bond', 'preparation'].includes(definition?.kind ?? '') && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+  if (definition?.kind === 'preparation' && (
+    p.stage === 0 ? p.score !== 0 || p.attempts !== 0 || p.choice !== 'none'
+      : p.stage === 1 ? p.score > 6 || p.attempts !== 0 || p.choice !== 'none'
+        : p.score !== 7 || (p.stage === 2 ? p.choice !== 'none' || p.attempts % 3 !== 0 : p.choice === 'none')
+  )) throw new Error('风险准备演练记录无效。')
   if (definition?.kind === 'bond' && (p.stage <= 1 ? p.choice !== 'none' : !definition.bond?.options.some(option => option.choice === p.choice)))
     throw new Error('伙伴书简选择记录无效。')
   if (definition?.kind === 'alliance' && (p.stage <= 1 ? p.choice !== 'none' : p.choice === 'none'))

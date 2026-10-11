@@ -1,5 +1,6 @@
 import { certificationTargets, danFinalTargets, mindTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent, type ReflectionChoice } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
+import { preparationProtocols, type PreparationOperation } from '../content/preparations'
 
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' | 'restart' }
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
@@ -15,6 +16,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'purify'; stage: number }
   | { type: 'defend'; stage: number }
   | { type: 'inscribe'; symbol: 'lotus' | 'fallen' | 'star'; step: number }
+  | { type: 'contain'; operation: PreparationOperation; stage: number; attempts: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -48,7 +50,7 @@ export function eventHint(state: GameState, eventId?: string): string {
 }
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
-  return event && bossPassed && event.kind !== 'bond' ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
+  return event && bossPassed && !['bond', 'preparation'].includes(event.kind) ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
     quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal', 'inheritance'].includes(event.kind) ? 300 : ['lineage', 'illusion'].includes(event.kind) ? 3 : event.kind === 'expedition' ? 7 : 0,
     attempts: ['tournament', 'tomb', 'illusion'].includes(event.kind) ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance', 'vault'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
@@ -79,7 +81,36 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     message = event.stages[0]
   } else {
     if (!progress.started) return fail('先与本章人物交谈，接下剧情任务。')
-    if (event.kind === 'bond' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+    if (event.kind === 'preparation' && action.type === 'seal' && action.index === 0) {
+      if (p.stage === 0) p.stage = 1
+      message = event.checkpoints![0].text
+    } else if (event.kind === 'preparation' && action.type === 'seal' && p.stage === 1 && [1, 2, 3].includes(action.index)) {
+      const bit = 1 << (action.index - 1)
+      if (p.score & bit) return fail('这份练习凭证已经记录。')
+      p.score |= bit
+      if (p.score === 7) p.stage = 2
+      message = `${event.checkpoints![action.index].text}${p.score === 7 ? ' 三份已齐，前往风险演练盘。' : ''}`
+    } else if (event.kind === 'preparation' && action.type === 'strategy' && p.stage === 2) {
+      if (!['steady', 'premium'].includes(action.choice)) return fail('请选择当前演练盘列出的方案。')
+      p.choice = action.choice; p.stage = 3; message = '方案已选定，按盘上三步顺序操作；第三次错误会放弃当前方案。'
+    } else if (event.kind === 'preparation' && action.type === 'contain' && p.stage >= 3 && p.stage <= 5) {
+      if (action.stage !== p.stage || action.attempts !== p.attempts || !['isolate', 'cool', 'rest'].includes(action.operation))
+        return fail('演练步骤或风险记录已更新，请按当前面板操作。')
+      const protocol = preparationProtocols[p.choice as 'steady' | 'premium']
+      if (!protocol) return fail('先在演练盘选定方案。')
+      if (action.operation !== protocol[p.stage - 3]) {
+        p.attempts++
+        if (p.attempts % 3 === 0) {
+          p.stage = 2; p.choice = 'none'
+          message = '演练风险达到上限，当前方案已放弃。三份凭证保留，没有扣材料；在演练盘免费重新选择。'
+        } else message = `顺序不符，演练风险 ${p.attempts % 3 * 35}/100。当前步骤未通过，请按方案操作。`
+      } else { p.stage++; message = p.stage === 6 ? '三步准备通过。返回留存札记报告，不表示毒体已控制。' : event.stages[p.stage] }
+    } else if (event.kind === 'preparation' && action.type === 'deliver' && p.stage === 6) {
+      next.xp += 40
+      if (p.choice === 'steady') next.inventory.heal++
+      else next.inventory.mana++
+      p.stage = 7; message = '准备演练已归档 · 40积累与一次补给。完整毒体控制仍需后续材料与过程。'
+    } else if (event.kind === 'bond' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'bond' && action.type === 'strategy' && p.stage === 1) {
       const option = event.bond!.options.find(option => option.choice === action.choice)

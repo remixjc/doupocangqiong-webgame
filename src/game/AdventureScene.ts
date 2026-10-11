@@ -496,9 +496,9 @@ export default class AdventureScene extends Phaser.Scene {
     }
     for (const event of eventsForChapter(w.chapter.id)) {
       const progress = eventProgress(gameStore.getSnapshot().state, w.chapter.id, event.id)
-      if (event.kind === 'stone') {
+      if (event.kind === 'stone' || event.kind === 'preparation') {
         g.fillStyle(0x939d8f); g.fillRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
-        g.lineStyle(3, progress.stage === 4 ? 0x8ee4b3 : 0xe8c98c); g.strokeRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
+        g.lineStyle(3, progress.stage === event.stages.length - 1 ? 0x8ee4b3 : 0xe8c98c); g.strokeRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
       } else {
         const npc = event.kind === 'escort' && w.escort ? w.escort : event.npc
         this.actor(g, npc.x, npc.y, event.kind === 'escort' && w.escort?.hp === 0 ? 0x775c58 : 0x729d96, 1, false)
@@ -517,13 +517,16 @@ export default class AdventureScene extends Phaser.Scene {
       event.checkpoints?.forEach((point, index) => {
         const step = ['starfire', 'flame'].includes(event.kind) ? progress.stage === 0 ? 0 : progress.stage <= 4 ? 1 : -1
           : event.kind === 'competition' ? progress.stage - 1 : event.kind === 'tournament' ? (progress.stage === 0 ? 0 : progress.stage <= 12 ? Math.floor((progress.stage - 1) / 4) + 1 : 4) : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
-        const passed = event.kind === 'inheritance' ? progress.stage >= 4
+        const passed = event.kind === 'preparation' ? index === 0 ? progress.stage > 0 : index === 4 ? progress.stage >= 6 : !!(progress.score & (1 << (index - 1)))
+          : event.kind === 'inheritance' ? progress.stage >= 4
           : ['starfire', 'flame'].includes(event.kind) ? progress.stage >= (index === 0 ? 1 : 5)
           : event.kind === 'danfinal' ? progress.stage >= (index === 0 ? 4 : 6)
           : event.kind === 'expedition' ? index === 0 ? progress.stage > 0 : (progress.score & (1 << (index - 1))) !== 0
           : event.kind === 'lineage' ? index === 0 ? progress.stage > 0 : index <= 2 ? (progress.score & (1 << (index - 1))) !== 0 : progress.stage >= 3
           : event.kind === 'alliance' ? index === 0 ? progress.stage > 0 : index < progress.stage - 1 : index < step
-        const active = progress.started && (event.kind === 'inheritance' ? progress.stage <= 3
+        const active = progress.started && (event.kind === 'preparation' ? progress.stage === 0 ? index === 0
+          : progress.stage === 1 ? index >= 1 && index <= 3 && !passed : progress.stage >= 2 && progress.stage <= 5 && index === 4
+          : event.kind === 'inheritance' ? progress.stage <= 3
           : event.kind === 'danfinal' ? index === (progress.stage <= 3 ? 0 : progress.stage <= 5 ? 1 : -1)
           : event.kind === 'expedition' ? progress.stage === 1 ? index > 0 && !passed : progress.stage === 0 && index === 0
           : event.kind === 'lineage' ? progress.stage === 1 ? [1, 2].includes(index) && !passed : index === (progress.stage === 2 ? 3 : progress.stage === 0 ? 0 : -1)

@@ -3,6 +3,7 @@ import { certificationTargets, danFinalTargets, mindTargets, findEvent, tourname
 import { eventBlockReason, eventDone, eventHint, eventProgress, pulseMarker, type EventAction } from '../core/events'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
+import { preparationLabels, preparationProtocols, type PreparationOperation } from '../content/preparations'
 
 export default function StoryEventPanel({ state, eventId, checkpoint, close, shop }: { state: GameState; eventId?: string; checkpoint?: number; close: () => void; shop: () => void }) {
   const event = findEvent(state.chapter, eventId), progress = eventProgress(state, state.chapter, eventId)
@@ -26,6 +27,17 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
+    if (event.kind === 'preparation') {
+      const point = checkpoint === undefined ? event.npc : event.checkpoints![checkpoint]
+      const runtime = gameStore.getSnapshot().runtime
+      if (!point || Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) {
+        gameStore.notify('请靠近对应札记或演练盘后再操作。'); return false
+      }
+      if ((['strategy', 'contain'].includes(action.type) && checkpoint !== 4) ||
+        (['begin', 'deliver'].includes(action.type) && checkpoint !== undefined)) {
+        gameStore.notify('选方案和控制操作在演练盘完成，接取与报告请返回札记。'); return false
+      }
+    }
     if (event.kind === 'bond') {
       const runtime = gameStore.getSnapshot().runtime, point = checkpoint === undefined ? event.npc : event.checkpoints![checkpoint]
       if (!point || Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或书简后再操作。'); return false }
@@ -69,6 +81,22 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     <p>{event.introduction}</p><p className="muted">{event.note}</p>
     <p className="quest-hint">{eventHint(state, event.id)}</p>
     {!progress.started && <button className="primary" disabled={!!eventBlockReason(state, state.chapter, event)} onClick={() => { if (act({ type: 'begin' }) && event.kind !== 'stone') close() }}>接下历练{event.kind !== 'stone' && ' · 返回地图'}</button>}
+    {event.kind === 'preparation' && progress.started && <>
+      <p>练习凭证：{['器皿', '隔离区域', '观察记录'].map((label, index) => `${progress.score & (1 << index) ? '✓' : '◇'}${label}`).join(' · ')}</p>
+      {progress.stage >= 2 && <p>演练风险 {progress.attempts % 3 * 35}/100 · 操作失误 {progress.attempts} 次 · 三次错误放弃当前方案，凭证保留。</p>}
+      {checkpoint === 4 && progress.stage === 2 && <div className="camp-options">
+        <button className="secondary" onClick={() => act({ type: 'strategy', choice: 'steady' })}>隔离方案 · 隔离 → 冷却 → 观察</button>
+        <button className="secondary" onClick={() => act({ type: 'strategy', choice: 'premium' })}>缓释方案 · 冷却 → 观察 → 隔离</button>
+      </div>}
+      {checkpoint === 4 && progress.stage >= 3 && progress.stage <= 5 && progress.choice !== 'none' && <>
+        <p>当前方案：{preparationProtocols[progress.choice].map(operation => preparationLabels[operation]).join(' → ')}。正在处理第{progress.stage - 2}步。</p>
+        <div className="camp-options">{(Object.keys(preparationLabels) as PreparationOperation[]).map(operation =>
+          <button className="secondary" key={operation} onClick={() => act({ type: 'contain', operation, stage: progress.stage, attempts: progress.attempts })}>{preparationLabels[operation]}</button>)}</div>
+      </>}
+      {checkpoint === undefined && progress.stage === 6 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告准备演练 · 领取一次补给</button>}
+      <p className="muted">准备演练不生产毒丹，不表示毒体已被压制或控制。</p>
+      <button className="secondary" onClick={close}>返回地图 · 继续准备</button>
+    </>}
     {event.kind === 'bond' && progress.started && <>
       {checkpoint === 1 && progress.stage === 1 && <>
         <p>{event.bond!.question}</p><div className="camp-options">{event.bond!.options.map(option =>
