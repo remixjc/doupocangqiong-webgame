@@ -30,10 +30,12 @@ import { advanceEarlyXunerVisit } from '../../src/core/early-xuner-visit'
 import { xunerVisitScenes } from '../../src/content/early-xuner-visit'
 import { advanceEarlyLongSupplies } from '../../src/core/early-long-supplies'
 import { longSupplyScenes } from '../../src/content/early-long-supplies'
+import { advanceEarlyForestStrike, forestPlaces, type ForestStrikeAction } from '../../src/core/early-forest-strike'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false): GameState {
+  if (includeForestStrike) includeLongSupplies = true
   if (includeLongSupplies) includeXunerVisit = true
   if (includeXunerVisit) includeFatherGift = true
   if (includeFatherGift) includeSettlement = true
@@ -171,6 +173,19 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
         item: scene.step === 1 ? 'herbs' : scene.step === 2 ? 'cores' : undefined })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeForestStrike) {
+    const teacher = earlyWalkPlaces.find(place => place.id === 'teacher')!
+    const forestAct = (place: keyof typeof forestPlaces, operation: ForestStrikeAction['operation'], marker?: number) => {
+      const result = advanceEarlyForestStrike(state, teacher, forestPlaces[place], { ...state.earlyTraining.forestStrike, operation, marker })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
+    forestAct('stone', 'review'); forestAct('tree', 'begin')
+    forestAct('tree', 'steady', 0); forestAct('tree', 'steady', .5); forestAct('tree', 'stop')
+    forestAct('tree', 'begin')
+    forestAct('tree', 'steady', .5); forestAct('tree', 'gather', .5); forestAct('tree', 'strike', .5)
+    forestAct('stone', 'rest'); forestAct('stone', 'ask'); forestAct('stone', 'goal'); forestAct('trail', 'leave')
   }
   return state
 }

@@ -8,7 +8,7 @@ import './early-walk.css'
 
 const stations = { receipt: '批次标签台', herbs: '药材格', cores: '魔核格', cabinet: '房柜' } as const
 const places = { none: '未展开', parcel: '标签台原包', shelf: '分拣格', cabinet: '房柜' } as const
-export default function EarlyLongSupplies({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyLongSupplies({ state, position, onBack, onForest }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onForest?: () => void }) {
   const task = state.earlyTraining.longSupplies, scene = longSupplyScenes[task.stage]
   const [station, setStation] = useState<LongSupplyStation>('receipt')
   const [item, setItem] = useState<LongSupplyItem>()
@@ -49,7 +49,8 @@ export default function EarlyLongSupplies({ state, position, onBack }: { state: 
       <button className="primary" disabled={sorting && !item} onClick={() => submitEarlyLongSupplies(gameStore, position, station,
         { step: task.stage, herbs: task.herbs, cores: task.cores, operation: scene.operation, item: sorting ? item : undefined })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>房柜已合上，另批物资已记下。</h3><p>两包原物都在柜中，没有散落副本。后山首次成功练技、后续补液与七段突破分别继续；这次归档不代签后续修炼结果。</p></section>}
+      : <section className="bond-summary"><h3>房柜已合上，另批物资已记下。</h3><p>两包原物都在柜中，没有散落副本。后山首次成功练技、后续补液与七段突破分别继续；这次归档不代签后续修炼结果。</p>
+        {onForest && <button className="primary" onClick={onForest}>接续后山森林 · 首次成功练技</button>}</section>}
     <p className="muted">包代表物资类别，不代表已核实的数量或容量。这里只归档原作已购批次，没有新增付款、配方或精确价单；寄售净款39200、家族交卡、原瓶和耗尽记录保留。</p>
     <button className="secondary" onClick={onBack}>暂离物资回溯 · 保留同批断点</button>
   </>

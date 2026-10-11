@@ -20,7 +20,9 @@ export interface EarlyTrainingState {
   fatherGift: { stage: number }
   xunerVisit: { stage: number; card: 'xuner' | 'elders' }
   longSupplies: { stage: number; herbs: LongSupplyPlace; cores: LongSupplyPlace }
+  forestStrike: ForestStrikeState
 }
+export interface ForestStrikeState { stage: number; beats: number; attempts: number; tree: 'intact' | 'fallen'; result: 'none' | 'sixth-duan' }
 export type LongSupplyPlace = 'none' | 'parcel' | 'shelf' | 'cabinet'
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -43,6 +45,7 @@ export const EARLY_SETTLEMENT_VERSION = '0.20.1'
 export const EARLY_FATHER_GIFT_VERSION = '0.20.2'
 export const EARLY_XUNER_VISIT_VERSION = '0.21.0'
 export const EARLY_LONG_SUPPLIES_VERSION = '0.22.0'
+export const EARLY_FOREST_STRIKE_VERSION = '0.23.0'
 export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
 export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
   youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
@@ -67,9 +70,10 @@ export function blankEarlyTraining(): EarlyTrainingState {
       supplies: { youngPrimary: 0, youngAuxiliary: 0, woodCore: 0, jadeBottle: 0 }, product: 'none', owner: 'none' },
     appraisal: { stage: 0, cloaked: false, speaker: 'self', tier: 0, card: 'none' }, auction: { stage: 0 },
     settlement: { stage: 0, net: 0, vip: false }, fatherGift: { stage: 0 }, xunerVisit: { stage: 0, card: 'xuner' },
-    longSupplies: { stage: 0, herbs: 'none', cores: 'none' } }
+    longSupplies: { stage: 0, herbs: 'none', cores: 'none' },
+    forestStrike: { stage: 0, beats: 0, attempts: 0, tree: 'intact', result: 'none' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -196,7 +200,20 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     || longSupplies.herbs !== longSupplyPlaceAt(longSupplies.stage, 'herbs')
     || longSupplies.cores !== longSupplyPlaceAt(longSupplies.stage, 'cores')) return invalid()
   result.longSupplies = { stage: longSupplies.stage, herbs: longSupplies.herbs as LongSupplyPlace, cores: longSupplies.cores as LongSupplyPlace }
+  const forestStrike = data.forestStrike === undefined && legacyForestStrike ? result.forestStrike : object(data.forestStrike)
+  if (!validForestStrike(forestStrike) || forestStrike.stage > 0 && longSupplies.stage !== 6) return invalid()
+  result.forestStrike = { stage: forestStrike.stage, beats: forestStrike.beats, attempts: forestStrike.attempts,
+    tree: forestStrike.tree, result: forestStrike.result }
   return result
+}
+
+export function validForestStrike(task: Record<string, unknown> | ForestStrikeState): task is ForestStrikeState {
+  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
+  return integer(task.stage, 7) && integer(task.beats, 3) && integer(task.attempts, 1_000_000)
+    && (task.stage >= 3 ? task.beats === 3 : task.stage === 2 ? task.beats <= 2 : task.beats === 0)
+    && (task.stage !== 0 || task.attempts === 0)
+    && task.tree === (task.stage >= 3 ? 'fallen' : 'intact')
+    && task.result === (task.stage > 0 ? 'sixth-duan' : 'none')
 }
 
 export function longSupplyPlaceAt(stage: number, item: 'herbs' | 'cores'): LongSupplyPlace {
