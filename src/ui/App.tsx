@@ -15,8 +15,9 @@ import BondJournal from './BondJournal'
 import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
 import { bindDialogFocus } from './dialog-focus'
+import { loadSceneModule } from './scene-load'
 
-const GameView = lazy(() => import('./GameView'))
+const GameView = lazy(() => loadSceneModule(() => import('./GameView')))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
@@ -178,7 +179,7 @@ export default function App() {
         <div className="stage-topline"><span>◈ {chapter.location} · {{ story: '剧情', normal: '普通', hard: '挑战' }[r.difficulty]}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
         <div className="stage">
           <SceneBoundary key={`${s.chapter}:${run}`} onFailure={() => {
-            gameStore.paused = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; setSceneFailed(true)
+            gameStore.paused = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; stopAudio(); setSceneFailed(true)
           }} onReload={() => { void reloadScene() }} onSave={() => setPanel('save')} onBack={() => setScreen('world')}>
             <Suspense fallback={<div className="loading" role="status">正在展开山川画卷…</div>}><GameView /></Suspense>
           </SceneBoundary>
