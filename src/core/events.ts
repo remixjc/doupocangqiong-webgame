@@ -12,6 +12,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'lead'; destination: 'danta' | 'rescue' | 'thunder' }
   | { type: 'bid'; amount: number }
   | { type: 'reflect'; choice: ReflectionChoice; stage: number }
+  | { type: 'purify'; stage: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -113,6 +114,12 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'purification' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'purification' && action.type === 'purify' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {
+      p.stage++; message = p.stage === 4 ? '三段净化完成，返回引路人处报告。' : `安全阶段已记录。${event.stages[p.stage]}`
+    } else if (event.kind === 'purification' && action.type === 'deliver' && p.stage === 4) {
+      p.stage = 5; message = '净化登记完成，未发资源或异火。收服台确认后，营地正式首通才取得净莲妖火。'
     } else if (event.kind === 'illusion' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'illusion' && action.type === 'reflect' && p.stage >= 1 && p.stage <= 3) {

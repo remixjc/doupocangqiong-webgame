@@ -27,6 +27,7 @@ export interface EscortRun extends Vec { hp: number; maxHp: number; stage: numbe
 export interface SurvivalRun { elapsed: number; nextWave: number; warnings: (Vec & { time: number; radius: number })[] }
 export interface FlameRun extends SurvivalRun { phase: number; heat: number; failed: boolean; wave: number }
 export interface EscapeRun extends SurvivalRun { stage: number; wave: number }
+export interface PurificationRun extends SurvivalRun { stage: number; corruption: number; blocked: number; failed: boolean; wave: number }
 export interface SquadRun extends EscortRun { holding: boolean; channel: number }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
@@ -63,6 +64,7 @@ export class CombatWorld {
   starRun?: FlameRun
   prisonEscort?: EscortRun
   tombRun?: { stage: number; attempt: number; elapsed: number; failed: boolean }
+  purificationRun?: PurificationRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -102,6 +104,7 @@ export class CombatWorld {
     this.syncStar()
     this.syncPrison()
     this.syncTomb()
+    this.syncPurification()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -132,6 +135,67 @@ export class CombatWorld {
       Object.assign(this.player, prison.checkpoints![prisonProgress.stage - 1])
     const tomb = eventsForChapter(chapter.id).find(e => e.kind === 'tomb')
     if (tomb && this.tombRun) Object.assign(this.player, tomb.checkpoints![this.tombRun.stage - 1])
+    const purification = eventsForChapter(chapter.id).find(e => e.kind === 'purification')
+    if (purification && this.purificationRun)
+      Object.assign(this.player, purification.checkpoints![this.purificationRun.stage - 1])
+  }
+  private syncPurification() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'purification')
+    const p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage < 1 || p.stage > 3) this.purificationRun = undefined
+    else if (!this.purificationRun || this.purificationRun.stage !== p.stage)
+      this.purificationRun = { stage: p.stage, elapsed: 0, nextWave: 0, warnings: [], wave: 0, corruption: 0, blocked: 0, failed: false }
+  }
+  inPurificationZone() {
+    const run = this.purificationRun, zone = run && this.map.purificationZones?.[run.stage - 1]
+    return !!zone && distance(this.player, zone.center) < zone.radius
+  }
+  private stepPurification(dt: number) {
+    this.syncPurification()
+    const run = this.purificationRun, zone = run && this.map.purificationZones?.[run.stage - 1]
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'purification')
+    if (!run || !zone || !e || run.failed) return
+    run.blocked = Math.max(0, run.blocked - dt)
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        const hp = this.player.hp
+        if (distance(this.player, warning) < warning.radius + 16) this.hurtPlayer(70)
+        if (this.player.hp < hp) {
+          run.elapsed = Math.max(0, run.elapsed - 2); run.blocked = 1
+          run.corruption = clamp(run.corruption + 30, 0, 100)
+        }
+        this.effect(warning.x, warning.y, warning.radius, 0xf4c1d3)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.corruption >= 100) {
+      run.failed = true; run.warnings = []
+      this.cb.notify('妖火侵蚀满格，本段净化失败。已完成段保留，免费休整或刷新从最近安全点重建当前段。')
+      return
+    }
+    const inZone = this.inPurificationZone()
+    if (!inZone) run.corruption = Math.max(0, run.corruption - dt * 12)
+    if (inZone && run.blocked === 0) run.elapsed += dt
+    if (run.elapsed >= zone.duration && inZone && run.blocked === 0) {
+      this.cb.eventAction?.({ type: 'purify', stage: run.stage, eventId: e.id }); this.syncPurification(); return
+    }
+    run.nextWave -= dt
+    if (run.nextWave <= 0 && inZone) {
+      run.nextWave = run.stage === 3 ? 1.9 : 2.4
+      if (run.stage === 2) {
+        run.warnings.push(...Array.from({ length: 4 }, (_, i) => {
+          const angle = i * Math.PI / 2 + (run.wave % 2 ? Math.PI / 4 : 0)
+          return { x: zone.center.x + Math.cos(angle) * 75, y: zone.center.y + Math.sin(angle) * 75, radius: 38, time: 1.1 }
+        }))
+      } else {
+        const offsets = run.stage === 3 ? [[0, 0], [-100, 0], [100, 0], [0, -100], [0, 100]] : [[0, 0]]
+        run.warnings.push(...offsets.map(([x, y]) => ({ x: clamp(this.player.x + x, 65, WIDTH - 65),
+          y: clamp(this.player.y + y, 65, HEIGHT - 65), radius: run.stage === 3 ? 45 : 65, time: 1 })))
+      }
+      run.wave++
+    }
   }
   private syncTomb() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'tomb'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
@@ -641,6 +705,10 @@ export class CombatWorld {
           if (eventProgress(s, this.chapter.id, event.id).stage !== index) this.cb.notify('先读引路碑记，再按三处幻境顺序观察。')
           else this.cb.storyEvent?.(event.id, index)
         }
+        else if (event.kind === 'purification') {
+          if (index === 0) this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+          else this.cb.notify('进入当前白色净化区累计时间，受击倒退2秒并增加侵蚀；E不能代替净化。')
+        }
         else if (event.kind === 'inheritance') this.cb.storyEvent?.(event.id, index)
         else if (event.kind === 'danfinal') {
           const stage = eventProgress(s, this.chapter.id, event.id).stage
@@ -718,7 +786,7 @@ export class CombatWorld {
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
         else if (this.map.survivalZone || this.map.trialMode || this.map.escapeRoute) {
           this.cb.kill(true)
-          this.cb.notify(this.map.trialMode === 'assessment' ? `${this.map.gateLabel ?? '资格'}审核通过，返回营地结算并继续旅程。` : this.map.trialMode === 'attunement' ? `收服已确认，返回营地正式结算取得${this.map.starTrial ? '三千焱炎火' : '青莲地心火'}。` : '已安全撤离，返回营地结算。')
+          this.cb.notify(this.map.trialMode === 'assessment' ? `${this.map.gateLabel ?? '资格'}审核通过，返回营地结算并继续旅程。` : this.map.trialMode === 'attunement' ? `收服已确认，返回营地正式结算取得${this.map.purificationZones ? '净莲妖火' : this.map.starTrial ? '三千焱炎火' : '青莲地心火'}。` : '已安全撤离，返回营地结算。')
         }
         else if (!this.bossSpawned) {
           this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
@@ -1012,6 +1080,7 @@ export class CombatWorld {
     this.chargeSiege(dt)
     if (p.hp > 0) this.stepDanLightning(dt)
     if (p.hp > 0) this.stepStar(dt)
+    if (p.hp > 0) this.stepPurification(dt)
   }
   nearEvent() {
     return eventsForChapter(this.chapter.id).map(e => e.kind === 'escort' && this.escort ? { ...e, npc: this.escort } : e)
@@ -1054,6 +1123,8 @@ export class CombatWorld {
         failed: this.prisonEscort.hp <= 0, arrived: this.prisonArrived() } : undefined,
       starChallenge: this.starRun ? { phase: this.starRun.phase, remaining: Math.max(0, Math.ceil(this.map.starTrial!.durations[this.starRun.phase - 2] - this.starRun.elapsed)),
         heat: Math.round(this.starRun.heat), inZone: this.inStarZone(), cooling: this.starCooling(), stable: this.starStable(), failed: this.starRun.failed } : undefined,
+      purification: this.purificationRun ? { stage: this.purificationRun.stage, remaining: Math.max(0, Math.ceil(this.map.purificationZones![this.purificationRun.stage - 1].duration - this.purificationRun.elapsed)),
+        corruption: Math.round(this.purificationRun.corruption), inZone: this.inPurificationZone(), blocked: this.purificationRun.blocked > 0, failed: this.purificationRun.failed } : undefined,
       danLightning: this.danLightning ? { remaining: Math.max(0, Math.ceil(this.map.lightningTrial!.duration - this.danLightning.elapsed)),
         inZone: this.inDanLightningZone(), phase: Math.min(3, 1 + Math.floor(this.danLightning.elapsed / 6)) } : undefined,
       expedition: this.expeditionRun ? { remaining: Math.max(0, Math.ceil(this.map.expeditionDuration! - this.expeditionRun.elapsed)),

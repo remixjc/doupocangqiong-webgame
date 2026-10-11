@@ -87,6 +87,7 @@ describe('完整主线真实规则战斗回放', () => {
             if (checkpoint === p.stage && p.stage >= 1 && p.stage <= 3) state = advanceEvent(state, { type: 'reflect', choice: e.reflections![p.stage - 1].answer, stage: p.stage, eventId }).state
             else if (checkpoint === undefined && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           }
+          else if (e.kind === 'purification' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'inheritance') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
@@ -205,16 +206,18 @@ describe('完整主线真实规则战斗回放', () => {
           }
           if (event.kind === 'inheritance') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![0]
           if (event.kind === 'illusion') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
+          if (event.kind === 'purification') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
         }
-        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
+        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? []), ...(world.purificationRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
         if (warning) {
           const direction = world.player.x < 850 ? 1 : -1
           input = world.towerRun || world.flameRun?.phase === 3 ? { x: 0, y: world.player.y < warning.y ? -1 : 1 } : { x: direction, y: 0 }
-          if (world.starRun) {
+          if (world.starRun || world.purificationRun) {
             // Choose a visible escape direction that avoids locked warnings and stays near the current goal.
-            const z = world.map.starTrial!, warnings = world.starRun.warnings
+            const z = world.starRun ? world.map.starTrial! : world.map.purificationZones![world.purificationRun!.stage - 1]
+            const warnings = world.starRun?.warnings ?? world.purificationRun!.warnings
             const options = Array.from({ length: 8 }, (_, i) => {
               const x = Math.cos(i * Math.PI / 4), y = Math.sin(i * Math.PI / 4)
               const point = { x: world.player.x + x * 140, y: world.player.y + y * 140 }

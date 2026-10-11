@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { chapterById } from '../src/content/chapters'
-import { eventForChapter } from '../src/content/events'
+import { eventForChapter, eventsForChapter } from '../src/content/events'
 import { mapForChapter } from '../src/content/maps'
 import { advanceEvent, eventDone, eventProgress, migrateLegacyEvents, type EventAction } from '../src/core/events'
 import { blankProgress, initialState } from '../src/core/model'
@@ -48,9 +48,13 @@ describe('C8c-1 妖火三镜辨识', () => {
     }
     expect(act(s, { type: 'deliver' }).state.inventory).toEqual(before.inventory)
     s = act(s, { type: 'deliver' }).state
-    expect(eventDone(s)).toBe(true); expect(s.gold).toBe(before.gold); expect(s.xp).toBe(before.xp)
-    expect(s.flame).toBe('star'); expect(chapterReady(s)).toBe(true); expect(finishChapter(s)).toBe(s)
+    expect(eventDone(s, 25, e.id)).toBe(true); expect(s.gold).toBe(before.gold); expect(s.xp).toBe(before.xp)
+    expect(s.flame).toBe('star'); expect(chapterReady(s)).toBe(false); expect(finishChapter(s)).toBe(s)
     expect(act(s, { type: 'deliver' }).state).toBe(s)
+    const eventId = eventsForChapter(25)[1].id
+    s = act(act(s, { type: 'begin', eventId }).state, { type: 'seal', index: 0, eventId }).state
+    for (const stage of [1, 2, 3]) s = act(s, { type: 'purify', stage, eventId }).state
+    s = act(s, { type: 'deliver', eventId }).state
     const bossPassed = registerBossVictory(s), done = finishChapter(bossPassed)
     expect(done.flame).toBe('pure'); expect(done.gold).toBe(before.gold + chapterById(25).reward)
     expect(finishChapter(done)).toBe(done); expect(validateState(done)).toEqual(done)

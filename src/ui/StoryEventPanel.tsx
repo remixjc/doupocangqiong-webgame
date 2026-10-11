@@ -26,7 +26,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'purification', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -50,6 +50,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'inheritance' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回萧玄处接取或报告。'); return false }
       if (event.kind === 'illusion' && action.type === 'reflect' && checkpoint !== progress.stage) { gameStore.notify('请到当前幻境观察再选择。'); return false }
       if (event.kind === 'illusion' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify(`请返回${event.speaker}处接取或确认。`); return false }
+      if (event.kind === 'purification' && ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回净化引路人处接取或报告。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -100,6 +101,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </>}
       {checkpoint === undefined && progress.stage === 5 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记认证 · 40金币 / 50修炼积累</button>}
     </>}
+    {event.kind === 'purification' && progress.started && checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记三段净化 · 未发资源</button>}
     {event.kind === 'rescue' && progress.started && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>向萧鼎报告 · 50金币</button>}
     {event.kind === 'squad' && progress.started && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记协作资格 · 40积累</button>}
     {event.kind === 'hunt' && progress.started && <>

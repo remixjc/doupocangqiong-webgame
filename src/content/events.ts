@@ -8,7 +8,7 @@ export interface Reflection {
 }
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -443,9 +443,24 @@ const heritageEvents: ChapterEvent[] = [{
   note: '心念指针、评分和三步名称为原创传承交互，不判定原著血脉品级、不模拟原著修炼岁月或复述传承原文。报告一次120积累，不发异火或材料；营地首通才结算章节奖励。',
   checkpoints: [{ x: 1000, y: 680, label: '族史祭台', text: '族史回望25% → 血脉承接55% → 责任凝定75%。合计210分通过，免费重试。' }],
 }]
+const purificationEvents: ChapterEvent[] = [{
+  id: 'pure-lotus-segment-purification', kind: 'purification', introducedVersion: '0.10.5', requires: ['pure-fire-three-mirrors'],
+  title: '妖火 · 三段净化', speaker: '净化引路人', npc: { x: 420, y: 700 },
+  stages: ['前往净化退路牌，按E启动第一段', '外焰剥离：区域内净化8秒，闪避追踪白焰',
+    '莲环消解：区域内净化10秒，避开交替莲环', '核心澄明：区域内净化12秒，避开交叉白焰',
+    '三段已净化，返回引路人处报告', '净化已登记，前往净莲收服台'],
+  introduction: '先辨明三镜，再来净化。确认退路后依序到三处白色净化区，累计8、10、12秒。落焰预警锁定位置，及时闪避；受击倒退2秒并增加30侵蚀。侵蚀100时本段失败，已完成段保留，休整或刷新免费重建当前段。',
+  note: '区域、时长、侵蚀与净化引路人为原创压缩玩法，不复述原著传承或判定妖火真实实力。离区暂停计时并降侵蚀，已生成预警仍会落下；受击后1秒不计时。报告与收服确认都不发资源，正式第25章首通才取得净莲妖火。',
+  checkpoints: [
+    { x: 500, y: 600, label: '净化退路牌', text: '退路已确认。外焰剥离8秒 → 莲环消解10秒 → 核心澄明12秒。受击倒退2秒，侵蚀满格请免费重建。' },
+    { x: 620, y: 470, label: '外焰剥离区', text: '进入白色圈内净化8秒，避开锁定脚下的白焰。' },
+    { x: 1080, y: 500, label: '莲环消解区', text: '进入圈内净化10秒，交替莲环会预警四处危险。' },
+    { x: 720, y: 240, label: '核心澄明区', text: '进入圈内净化12秒，躲避交叉白焰，完成后回报。' },
+  ],
+}]
 export function eventsForChapter(id: number): ChapterEvent[] {
   const primary = eventForChapter(id)
-  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : [])]
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : id === 25 ? purificationEvents : [])]
 }
 export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
   return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)
