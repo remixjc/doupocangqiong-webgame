@@ -7,16 +7,18 @@ import { parseSave, serializeSave } from '../../src/core/save'
 import { pulseMarker } from '../../src/core/events'
 
 // Normal panel transactions only; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void): GameState {
   let state = input
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
     const result = advanceEarlyTraining(state, input)
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
   }
   const started = beginEarlyTraining(state); expect(started.ok).toBe(true)
   state = parseSave(serializeSave(started.state))
+  onCheckpoint?.(state)
   act({ type: 'borrow', expectedSpent: 0 })
   for (const item of ['boneflower', 'bluegrass', 'woodCore'] as const)
     act({ type: 'purchase', item, price: earlySupplies[item].price, expectedSpent: state.earlyTraining.purse.spent })

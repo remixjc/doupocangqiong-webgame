@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { recipes, itemNames } from '../content/recipes'
 import { gameStore } from '../core/store'
-import { chapterById, chapters } from '../content/chapters'
+import { chapters } from '../content/chapters'
 import { craft, prices, unlockedChapter, flames, isVisible } from '../core/rules'
 import type { GameState, ItemId } from '../core/model'
 import { listSlots, parseSave, saveSlot, serializeSave, type SaveRecord } from '../core/save'
-import { bondSaveSummary } from '../core/bonds'
+import { savePreviewSummary, saveRecordSummary } from '../core/save-preview'
 import SaveStatus from './SaveStatus'
 
 export function AlchemyPanel({ state }: { state: GameState }) {
@@ -107,19 +107,15 @@ export function SavesPanel({ state, onLoaded, onReset }: { state: GameState; onL
     <SaveStatus />
     <div className="save-list">{[0, 1, 2, 3].map(slot => {
       const entry = records?.find(r => r.slot === slot)
-      let summary = records ? '空白存档' : '正在读取存档…'
-      if (entry) {
-        try {
-          const saved = parseSave(entry.text)
-          const visible = state.settings.spoiler === 'novel' || saved.chapter <= state.settings.animeLimit
-          summary = `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, state.settings)}`
-        } catch { summary = '存档异常，可尝试恢复上一份自动备份' }
-      }
+      const summary = entry ? saveRecordSummary(entry, state.settings) : records ? '空白存档' : '正在读取存档…'
       return <div className="save-item" key={slot}><div><b>{slot === 0 ? '自动存档' : `手动存档 ${slot}`}</b><small>{summary}</small>{entry && <small>{new Date(entry.savedAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</small>}</div><div className="save-actions">{slot > 0 && <button className="small-btn" disabled={busy || !records} onClick={() => save(slot)}>保存</button>}<button className="secondary small-btn" disabled={busy || !entry} onClick={() => load(slot)}>载入</button></div></div>
     })}</div>
     <div className="save-tools"><button className="secondary" onClick={exportJson}>导出 JSON 备份</button><button className="secondary" onClick={() => fileInput.current?.click()}>导入备份</button><input ref={fileInput} aria-label="导入存档文件" type="file" accept=".json,application/json" hidden onChange={e => importFile(e.target.files?.[0])} /></div>
-    {imported && <div className="import-preview"><p className="muted">校验通过：第 {imported.chapter} 章，已完成 {imported.completed.length} 章。{bondSaveSummary(imported, state.settings)}。载入前可先导出现有进度。</p><button className="small-btn" onClick={() => { gameStore.replace(imported); setImported(null); onLoaded() }}>确认载入导入存档</button></div>}
-    {records?.some(r => r.slot === -1) && <button className="text-button" disabled={busy} onClick={() => load(-1)}>恢复上一份自动存档</button>}
+    {imported && <div className="import-preview"><p className="muted">校验通过：{savePreviewSummary(imported, state.settings)}。载入前可先导出现有进度。</p><button className="small-btn" onClick={() => { gameStore.replace(imported); setImported(null); onLoaded() }}>确认载入导入存档</button></div>}
+    {records?.filter(r => r.slot === -1).map(entry => <section className="bond-summary" aria-label="上一份自动存档摘要" key={entry.slot}>
+      <b>上一份自动存档</b><p>{saveRecordSummary(entry, state.settings)}</p>
+      <button className="text-button" disabled={busy} onClick={() => load(-1)}>恢复上一份自动存档</button>
+    </section>)}
     {error && <p className="error" role="alert">{error}</p>}
     <div className="thin-divider" />{confirm ? <><p className="muted">新旅程会替换自动存档，三个手动存档保留。请先保存或导出当前进度。</p><button className="secondary" onClick={() => { gameStore.newGame(); onReset() }}>确认开启新旅程</button><button className="text-button" onClick={() => setConfirm(false)}>取消</button></> : <button className="text-button" onClick={() => setConfirm(true)}>开启新旅程</button>}
   </>
