@@ -4,7 +4,7 @@ import { gameStore } from '../core/store'
 import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
 import { AlchemyPanel, SavesPanel, SettingsPanel, ShopPanel } from './Panels'
 import TouchControls from './TouchControls'
-import { setVolume, unlockAudio } from '../game/audio'
+import { setVolume, unlockAudio, stopAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
 import { eventsForChapter } from '../content/events'
 import { mapForChapter } from '../content/maps'
@@ -47,7 +47,7 @@ export default function App() {
   }, [])
   useEffect(() => {
     gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead || portrait || sceneFailed
-    if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
+    if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; stopAudio() }
     gameStore.onInteract = () => setPanel('camp')
     gameStore.onStoryEvent = (id, checkpoint) => { setEventId(id); setEventCheckpoint(checkpoint); setPanel('event') }
     return () => { gameStore.onInteract = null; gameStore.onStoryEvent = null }
@@ -107,7 +107,7 @@ export default function App() {
   }
   function retry() { gameStore.runtime({ ...r, dead: false }); setRun(n => n + 1) }
 
-  return <div className={`shell ${screen === 'play' ? 'playing' : ''} ${s.settings.reducedMotion ? 'reduced' : ''}`}>
+  return <div onPointerDown={unlockAudio} className={`shell ${screen === 'play' ? 'playing' : ''} ${s.settings.reducedMotion ? 'reduced' : ''}`}>
     <header className="topbar">
       <button className="brand brand-button" onClick={() => { setScreen('home'); setPanel(null); setStory(null) }}><span className="brand-seal">炎</span><span>斗破苍穹<small>异 火 之 路</small></span></button>
       <nav aria-label="主导航">

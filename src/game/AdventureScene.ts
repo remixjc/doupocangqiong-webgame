@@ -5,7 +5,7 @@ import { CombatWorld, HEIGHT, WIDTH, type Input } from './combat'
 import { eventsForChapter } from '../content/events'
 import { eventProgress } from '../core/events'
 import type { Action } from '../core/model'
-import { playSound } from './audio'
+import { playSound, stopAudio, unlockAudio } from './audio'
 import { FixedClock } from './clock'
 import { PauseDrawGate, presentFloat } from './presentation'
 import { bindFocusLifecycle } from './focus'
@@ -57,8 +57,9 @@ export default class AdventureScene extends Phaser.Scene {
       fontFamily: 'Microsoft YaHei, sans-serif', fontSize: '18px', fontStyle: 'bold', stroke: '#162525', strokeThickness: 4,
     }).setOrigin(.5).setDepth(10).setVisible(false))
     const keydown = (event: KeyboardEvent) => {
-      if (gameStore.paused || event.ctrlKey || event.altKey || event.metaKey) return
+      if (gameStore.paused || document.hidden || event.ctrlKey || event.altKey || event.metaKey) return
       if (event.target instanceof HTMLElement && ['INPUT', 'SELECT', 'TEXTAREA'].includes(event.target.tagName)) return
+      unlockAudio()
       if (!document.hidden) this.lostFocus = false
       const key = event.key.toLowerCase()
       if ([' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) event.preventDefault()
@@ -83,6 +84,7 @@ export default class AdventureScene extends Phaser.Scene {
     this.input.on('pointerdown', pointerdown)
     const release = () => {
       this.lostFocus = true; this.heldKeys.clear(); this.aim = undefined; this.clock.reset(); this.runtimeTimer = 0
+      stopAudio()
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
     }
     const unbindFocus = bindFocusLifecycle(window, document, release, () => { this.lostFocus = false })
