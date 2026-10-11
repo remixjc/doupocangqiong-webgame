@@ -13,6 +13,37 @@ function eligible() {
 }
 
 describe('重修存档预览', () => {
+  it('自动、备份与导入共用摘要按查看者隐藏未来事件名称、章号与完成数量', () => {
+    const states: GameState[] = [eligible()]
+    replayEarlyTraining(eligible(), true, state => states.push(state), true, true, true, true)
+    for (const state of states) {
+      const before = structuredClone(state)
+      for (const animeLimit of [1, 2]) {
+        const viewing = { ...state.settings, spoiler: 'anime' as const, animeLimit }
+        const summary = savePreviewSummary(state, viewing)
+        expect(saveRecordSummary({ slot: -1, savedAt: 0, text: serializeSave(state) }, viewing)).toBe(summary)
+        expect(summary).toContain('后续记录 · 当前范围封存')
+        for (const title of ['成长过渡', '斗技堂', '老师传技', '首次拍卖', '萧克挑战', '萧宁再攻', '礼终裁定'])
+          expect(summary).not.toContain(title)
+        if (animeLimit === 1) {
+          expect(summary).toContain('封存篇章 · 已完成 1 章')
+          expect(summary).not.toContain('第 2 章')
+          expect(summary).not.toContain('重修记录')
+          expect(summary).not.toContain('手链往事')
+        } else {
+          expect(summary).toContain('第 2 章 · 三年之约 · 已完成 2 章')
+          expect(summary).toContain(earlyTrainingSaveSummary(state, viewing))
+          expect(summary).toContain(earlyBraceletSaveSummary(state, viewing))
+        }
+      }
+      const revealed = { ...state.settings, spoiler: 'anime' as const, animeLimit: 3 }
+      const animeSummary = savePreviewSummary(state, revealed), novelSummary = savePreviewSummary(state, state.settings)
+      expect(animeSummary).toContain('可见伙伴记录 0 / 2')
+      expect(animeSummary.slice(animeSummary.indexOf('重修记录')))
+        .toBe(novelSummary.slice(novelSummary.indexOf('重修记录')))
+      expect(state).toEqual(before)
+    }
+  })
   it('正常事务断点在JSON与手动/自动/备份槽提供同样摘要，不改写进度', async () => {
     const checkpoints: GameState[] = []
     replayEarlyTraining(eligible(), true, state => checkpoints.push(state))

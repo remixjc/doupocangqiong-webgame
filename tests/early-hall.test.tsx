@@ -81,7 +81,9 @@ describe('斗技堂到访与两区基础', () => {
     for (const slot of [0, 1]) {
       const record = records.find(entry => entry.slot === slot)!
       expect(saveRecordSummary(record, visited.settings)).toContain('斗技堂 · 已到访，待借卷')
-      expect(saveRecordSummary(record, { ...visited.settings, spoiler: 'anime', animeLimit: 2 })).toContain('斗技堂 · 当前范围封存')
+      const hidden = saveRecordSummary(record, { ...visited.settings, spoiler: 'anime', animeLimit: 2 })
+      expect(hidden).toContain('后续记录 · 当前范围封存')
+      expect(hidden).not.toContain('斗技堂')
     }
     expect(saveRecordSummary(records.find(entry => entry.slot === -1)!, state.settings)).toContain('斗技堂 · 未到访')
     expect(earlyHallSaveSummary(state, state.settings)).toBe('斗技堂 · 未到访')

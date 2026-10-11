@@ -74,7 +74,8 @@ describe('持续修炼与后续考核过渡', () => {
     for (const animeLimit of [1, 2]) {
       const viewing = { ...state.settings, spoiler: 'anime' as const, animeLimit }
       expect(earlyGrowthSaveSummary(state, viewing)).toBe('成长过渡 · 当前范围封存')
-      expect(savePreviewSummary(state, viewing)).toContain('成长过渡 · 当前范围封存')
+      expect(savePreviewSummary(state, viewing)).toContain('后续记录 · 当前范围封存')
+      expect(savePreviewSummary(state, viewing)).not.toContain('成长过渡')
       expect(savePreviewSummary(state, viewing)).not.toContain('成长过渡 · 已翻阅')
     }
     state.settings.spoiler = 'anime'; state.settings.animeLimit = 2

@@ -22,8 +22,25 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 }
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
-  const visible = viewing.spoiler === 'novel' || saved.chapter <= viewing.animeLimit
-  return `第 ${saved.chapter} 章 · ${visible ? chapterById(saved.chapter).title : '封存篇章'} · 已完成 ${saved.completed.length} 章 · ${bondSaveSummary(saved, viewing)} · ${earlyTrainingSaveSummary(saved, viewing)} · ${earlyBraceletSaveSummary(saved, viewing)} · ${earlyGrowthSaveSummary(saved, viewing)} · ${earlyHallSaveSummary(saved, viewing)} · ${earlyTeachingSaveSummary(saved, viewing)} · ${earlySupervisionSaveSummary(saved, viewing)} · ${earlyRecoverySaveSummary(saved, viewing)} · ${earlyConsignmentSaveSummary(saved, viewing)} · ${earlyAppraisalSaveSummary(saved, viewing)} · ${earlyAuctionSaveSummary(saved, viewing)} · ${earlySettlementSaveSummary(saved, viewing)} · ${earlyFatherGiftSaveSummary(saved, viewing)} · ${earlyXunerVisitSaveSummary(saved, viewing)} · ${earlyLongSuppliesSaveSummary(saved, viewing)} · ${earlyForestStrikeSaveSummary(saved, viewing)} · ${earlySeventhRoomSaveSummary(saved, viewing)} · ${earlyPalmPairSaveSummary(saved, viewing)} · ${earlyPreliminarySaveSummary(saved, viewing)} · ${earlyKeChallengeSaveSummary(saved, viewing)} · ${earlyEighthTrainingSaveSummary(saved, viewing)} · ${earlyCeremonyGuestsSaveSummary(saved, viewing)} · ${earlyCeremonialTestSaveSummary(saved, viewing)} · ${earlyNingFirstSaveSummary(saved, viewing)} · ${earlyNingSecondSaveSummary(saved, viewing)} · ${earlyCeremonyVerdictSaveSummary(saved, viewing)}`
+  const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
+  const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
+  const completed = saved.completed.filter(id => id <= limit).length
+  const summaries = [
+    chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
+  ]
+  if (limit >= 2) summaries.push(earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 3) {
+    const details = [
+      earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,
+      earlyRecoverySaveSummary, earlyConsignmentSaveSummary, earlyAppraisalSaveSummary, earlyAuctionSaveSummary,
+      earlySettlementSaveSummary, earlyFatherGiftSaveSummary, earlyXunerVisitSaveSummary, earlyLongSuppliesSaveSummary,
+      earlyForestStrikeSaveSummary, earlySeventhRoomSaveSummary, earlyPalmPairSaveSummary, earlyPreliminarySaveSummary,
+      earlyKeChallengeSaveSummary, earlyEighthTrainingSaveSummary, earlyCeremonyGuestsSaveSummary, earlyCeremonialTestSaveSummary,
+      earlyNingFirstSaveSummary, earlyNingSecondSaveSummary, earlyCeremonyVerdictSaveSummary,
+    ]
+    summaries.push(...details.map(summary => summary(saved, viewing)))
+  } else summaries.push('后续记录 · 当前范围封存')
+  return summaries.join(' · ')
 }
 
 export function earlyPalmPairSaveSummary(saved: GameState, viewing: Settings): string {
