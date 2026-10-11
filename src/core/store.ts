@@ -2,7 +2,7 @@ import { initialState, blankProgress, type Action, type Runtime, type Snapshot, 
 import { canEnter, registerBossVictory, rankPracticeReward, trainFireEnergy, finishChapter, playerStats } from './rules'
 import { buy, craft, upgrade } from './rules'
 import type { ItemId } from './model'
-import { loadSlot, saveSlot } from './save'
+import { AutoSaveSession } from './save-session'
 import { advanceEvent, type EventAction } from './events'
 import { mapForChapter } from '../content/maps'
 import { AutoSaveQueue } from './autosave'
@@ -25,8 +25,8 @@ export class GameStore {
   onChange: ((s: GameState) => void) | null = null
   private initialization: Promise<void> | null = null
   private saves: AutoSaveQueue
-  constructor(private persistence = { load: loadSlot, write: (state: GameState) => saveSlot(0, state) }) {
-    this.saves = new AutoSaveQueue(persistence.write, autosave => { this.snapshot = { ...this.snapshot, autosave }; this.publish() })
+  constructor(private persistence: { load: (slot: number) => Promise<GameState | null>; write: (state: GameState) => Promise<void> } = new AutoSaveSession()) {
+    this.saves = new AutoSaveQueue(state => persistence.write(state), autosave => { this.snapshot = { ...this.snapshot, autosave }; this.publish() })
   }
   initialize(): Promise<void> {
     if (!this.initialization) this.initialization = (async () => {
@@ -51,6 +51,13 @@ export class GameStore {
   getSnapshot = () => this.snapshot
   waitForAutosave = () => this.saves.flush()
   retryAutosave = () => this.saves.retry()
+  async loadSavedSlot(slot: number): Promise<boolean> {
+    await this.saves.flush()
+    const state = await this.persistence.load(slot)
+    if (!state) return false
+    this.replace(state)
+    return true
+  }
   private publish() { for (const listener of this.listeners) listener() }
   notify(text: string) { this.snapshot = { ...this.snapshot, notice: text }; this.publish() }
   replace(state: GameState) {

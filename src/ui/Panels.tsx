@@ -4,7 +4,7 @@ import { gameStore } from '../core/store'
 import { chapterById, chapters } from '../content/chapters'
 import { craft, prices, unlockedChapter, flames, isVisible } from '../core/rules'
 import type { GameState, ItemId } from '../core/model'
-import { listSlots, loadSlot, parseSave, saveSlot, serializeSave, type SaveRecord } from '../core/save'
+import { listSlots, parseSave, saveSlot, serializeSave, type SaveRecord } from '../core/save'
 import { bondSaveSummary } from '../core/bonds'
 import SaveStatus from './SaveStatus'
 
@@ -84,10 +84,8 @@ export function SavesPanel({ state, onLoaded, onReset }: { state: GameState; onL
   async function load(slot: number) {
     setBusy(true); setError('')
     try {
-      await gameStore.waitForAutosave()
-      const s = await loadSlot(slot)
-      if (!s) throw new Error('此存档槽为空。')
-      gameStore.replace(s); onLoaded(); gameStore.notify('存档已载入，从营地继续历练。')
+      if (!await gameStore.loadSavedSlot(slot)) throw new Error('此存档槽为空。')
+      onLoaded(); gameStore.notify('存档已载入，从营地继续历练。')
     } catch (e) { setError((e as Error).message) } finally { setBusy(false) }
   }
   function exportJson() {

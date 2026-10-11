@@ -228,16 +228,28 @@ function openDatabase(): Promise<IDBDatabase> {
   database.catch(() => { database = undefined })
   return database
 }
-export async function saveSlot(slot: number, state: GameState): Promise<void> {
+export class AutoSaveConflictError extends Error {
+  constructor() {
+    super('另一个游戏标签已更新自动存档。当前进度未覆盖它；可先保存到手动槽或导出备份，再载入最新自动存档。')
+    this.name = 'AutoSaveConflictError'
+  }
+}
+async function writeSlot(slot: number, state: GameState, expected?: { autoText: string | null }): Promise<string> {
   if (![0, 1, 2, 3].includes(slot)) throw new Error('存档槽无效。')
   const text = serializeSave(validateState(state))
   const db = await openDatabase()
   await new Promise<void>((resolve, reject) => {
     const tx = db.transaction('slots', 'readwrite')
+    let conflict: AutoSaveConflictError | undefined
     // Keep the previous valid auto-save as a recovery slot in the same transaction.
     if (slot === 0) {
       const previous = tx.objectStore('slots').get(0)
       previous.onsuccess = () => {
+        if (expected && (previous.result?.text ?? null) !== expected.autoText) {
+          conflict = new AutoSaveConflictError()
+          tx.abort()
+          return
+        }
         if (previous.result) {
           try {
             parseSave(previous.result.text)
@@ -246,13 +258,21 @@ export async function saveSlot(slot: number, state: GameState): Promise<void> {
             // A damaged current slot must never replace a valid recovery copy.
           }
         }
+        tx.objectStore('slots').put({ slot, savedAt: Date.now(), text } satisfies SaveRecord)
       }
-    }
-    tx.objectStore('slots').put({ slot, savedAt: Date.now(), text } satisfies SaveRecord)
+    } else tx.objectStore('slots').put({ slot, savedAt: Date.now(), text } satisfies SaveRecord)
     tx.oncomplete = () => resolve()
     tx.onerror = () => reject(new Error('本地存档写入失败，请立即导出 JSON 备份。'))
-    tx.onabort = () => reject(new Error('存档写入中断，原有存档保留。'))
+    tx.onabort = () => reject(conflict ?? new Error('存档写入中断，原有存档保留。'))
   })
+  return text
+}
+export async function saveSlot(slot: number, state: GameState): Promise<void> {
+  await writeSlot(slot, state)
+}
+export function saveAutoSlot(state: GameState, expectedAutoText: string | null): Promise<string> {
+  // Compare and commit within one IDB transaction; a preceding read alone is insufficient.
+  return writeSlot(0, state, { autoText: expectedAutoText })
 }
 export async function listSlots(): Promise<SaveRecord[]> {
   const db = await openDatabase()
