@@ -4,7 +4,7 @@ export interface PatrolDefinition { route: Point[]; detectionRadius: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -83,6 +83,19 @@ export const wutanMaps: Record<number, MapDefinition> = {
       [{ x: 270, y: 430 }, { x: 650, y: 700 }, { x: 1090, y: 700 }],
     ],
     landmarks: [{ x: 820, y: 85, label: '乌坦城 · 萧家坊市' }, { x: 680, y: 765, label: '补货与议价 · 原创经营历练' }],
+  },
+}
+export const capitalMaps: Record<number, MapDefinition> = {
+  9: {
+    id: 'capital-alchemy-tournament', style: 'tournament', trialMode: 'assessment', gateLabel: '领奖台',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1100, y: 200 }, bossSpawn: { x: 1100, y: 200 }, safeRadius: 180,
+    obstacles: [{ x: 400, y: 110, w: 150, h: 150 }, { x: 710, y: 140, w: 140, h: 120 },
+      { x: 470, y: 540, w: 120, h: 120 }, { x: 820, y: 560, w: 150, h: 100 }],
+    herbs: [{ x: 330, y: 400 }, { x: 650, y: 300 }, { x: 980, y: 700 }],
+    enemies: [],
+    paths: [[{ x: 150, y: 650 }, { x: 330, y: 400 }, { x: 1100, y: 400 }, { x: 1100, y: 200 }],
+      [{ x: 330, y: 400 }, { x: 330, y: 220 }]],
+    landmarks: [{ x: 650, y: 70, label: '帝都大会 · 岩枭之名' }, { x: 650, y: 750, label: '初赛 → 复赛 → 决赛 · 成绩分轮保留' }],
   },
 }
 export const mountainMaps: Record<number, MapDefinition> = {
@@ -187,7 +200,7 @@ export const desertMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 700, y: 70, label: '地底火域 · 蛇人巡逻' }, { x: 1040, y: 350, label: '火域深处 · 收服区域' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? legacy }
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

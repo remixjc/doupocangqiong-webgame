@@ -45,6 +45,10 @@ chapters[7].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[7].boss = '青莲地心火 · 收服确认'
 chapters[7].trialNote = '三段控火、热量与冷却点为原创收服机制；第八章首通正式结算后取得青莲地心火。'
 chapters[7].opening[2].text = '先与药老交谈，穿过巡逻区确认地底入口，再到控火坛开始三段挑战。各段坚持12秒，离开火域不计时；躲避预警并利用青色冷却点降温，失控可休整重试。回报后到收服台确认，再结算取得异火。'
+chapters[8].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[8].boss = '大会领奖 · 成绩审核'
+chapters[8].trialNote = '三轮赛制与火候为原创大会机制，各轮独立210分通过；免费重试，不重复产丹。'
+chapters[8].opening[2].text = '先与法犸报名，查看赛程牌，再依序前往初赛、复赛、决赛炉。每轮三步210分通过，后两轮指针加快；失败只重试当前轮。返回法犸登记，再到领奖台审核后营地结算。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

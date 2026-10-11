@@ -4,7 +4,7 @@ import { blankProgress, initialState } from '../src/core/model'
 import { chapterReady, craft, finishChapter, skillUnlocked } from '../src/core/rules'
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
-import { certificationTargets, findEvent } from '../src/content/events'
+import { certificationTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
 import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
@@ -72,6 +72,12 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'flame') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          } else if (e.kind === 'tournament') {
+            const round = tournamentRound(p.stage), marker = pulseMarker(world.elapsed * 1000 * tournamentRounds[round].speed)
+            if (checkpoint === round + 1 && [1, 5, 9].includes(p.stage)) state = advanceEvent(state, { type: 'test', eventId }).state
+            else if (checkpoint === round + 1 && p.stage >= 2 && p.stage <= 12 && ![5, 9].includes(p.stage) &&
+              Math.abs(marker - tournamentRounds[round].targets[(p.stage - 2) % 4]) < .07) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
+            else if (checkpoint === undefined && p.stage === 13) state = advanceEvent(state, { type: 'deliver', eventId }).state
           }
         },
       })
@@ -94,6 +100,7 @@ describe('完整主线真实规则战斗回放', () => {
             : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : ['certification', 'flame'].includes(event.kind) ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
           if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
           if (event.kind === 'flame' && ep.stage >= 2 && ep.stage <= 4) target = [...world.map.heatZone!.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
+          if (event.kind === 'tournament') target = !ep.started || ep.stage === 13 ? event.npc : event.checkpoints![ep.stage === 0 ? 0 : tournamentRound(ep.stage) + 1]
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))

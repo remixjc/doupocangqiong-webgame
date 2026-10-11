@@ -41,7 +41,7 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
     (!definition && p.started) || (definition?.kind !== 'trade' && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
-    (!['stone', 'cave', 'certification'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
+    (!['stone', 'cave', 'certification', 'tournament'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
     (definition?.kind !== 'competition' && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
     throw new Error('控气测试记录无效。')
@@ -52,6 +52,18 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if (definition?.kind === 'certification' && (p.stage <= 2 ? p.score !== 0 : p.stage === 3 ? p.score > 100 : p.stage === 4 ? p.score > 200 : p.score < 210 || p.attempts < 1))
     throw new Error('认证控火记录无效。')
   if (definition?.kind === 'certification' && p.stage === 0 && p.attempts !== 0) throw new Error('认证尝试记录无效。')
+  if (definition?.kind === 'tournament') {
+    if (p.started || e.roundScores !== undefined) {
+      if (!Array.isArray(e.roundScores)) throw new Error('大会分轮成绩缺失。')
+      p.roundScores = e.roundScores.map(value => number(value, 300))
+      const passed = Math.min(3, Math.max(0, Math.floor((p.stage - 1) / 4)))
+      if (p.roundScores.length !== passed || p.roundScores.some(score => score < 210) || p.attempts < passed ||
+        (!p.started && p.roundScores.length > 0)) throw new Error('大会分轮成绩无效。')
+    }
+    const step = p.stage >= 2 && p.stage <= 12 ? (p.stage - 2) % 4 : -1
+    if (p.score > (step === 1 ? 100 : step === 2 ? 200 : 0) || (p.stage === 0 && p.attempts !== 0))
+      throw new Error('大会当前轮记录无效。')
+  } else if (e.roundScores !== undefined) throw new Error('此事件不包含大会成绩。')
   return p
 }
 export function validateState(value: unknown): GameState {
@@ -95,7 +107,8 @@ export function validateState(value: unknown): GameState {
       throw new Error('事件前置条件不完整。')
     const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2')) || (n === 5 && versionBefore(data.contentVersion as string, '0.4.0')) || (n === 7 && versionBefore(data.contentVersion as string, '0.5.0')) || (n === 8 && versionBefore(data.contentVersion as string, '0.5.2'))
     const oldCertification = n === 6 && versionBefore(data.contentVersion as string, '0.4.1')
-    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : chapterById(n).objectives
+    const oldTournament = n === 9 && versionBefore(data.contentVersion as string, '0.6.0')
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

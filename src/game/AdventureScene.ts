@@ -111,7 +111,7 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
       }
     }
-    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town') {
+    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town' || style === 'tournament') {
       bg.lineStyle(1, c[2], .08)
       for (let x = 40; x < WIDTH; x += 40) bg.lineBetween(x, 40, x, HEIGHT - 40)
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
@@ -124,6 +124,14 @@ export default class AdventureScene extends Phaser.Scene {
     for (let i = 0; i < 95; i++) {
       const t = rand(), point = path.getPoint(t), x = point.x + (rand() - .5) * 50, y = point.y + (rand() - .5) * 50
       bg.fillStyle(c[2], .12); bg.fillEllipse(x, y, 12 + rand() * 14, 7)
+    }
+    if (style === 'tournament') {
+      for (const [i, x] of [580, 850, 1100].entries()) {
+        bg.lineStyle(3, [0x88beaa, 0xc7b483, 0xcda0a4][i], .5); bg.strokeCircle(x, 400, 70)
+        bg.fillStyle(0x182824, .5); bg.fillCircle(x, 400, 50)
+        this.add.text(x, 470, ['初赛 · 25 / 55 / 45', '复赛 · 65 / 40 / 70', '决赛 · 35 / 75 / 50'][i],
+          { fontSize: '14px', color: '#cebd98', fontFamily: 'serif' }).setOrigin(.5)
+      }
     }
     }
     for (let i = 0; i < (style === 'cave' ? 10 : 48); i++) {

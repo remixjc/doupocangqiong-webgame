@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -102,8 +102,30 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 1000, y: 400, label: '控火坛', text: '进入火域后开始计时。保持走位，靠近青色冷却点，别让热量满格。' },
     ],
   },
+  9: {
+    id: 'capital-three-round-tournament', kind: 'tournament', introducedVersion: '0.6.0',
+    title: '帝都 · 三轮炼药大会', speaker: '法犸', npc: { x: 280, y: 625 },
+    stages: ['查看北侧赛程牌，确认三轮规则', '前往初赛炉，开始初赛', '初赛提炼：25%', '初赛融合：55%', '初赛凝丹：45%',
+      '初赛通过，前往复赛炉', '复赛提炼：65%', '复赛融合：40%', '复赛凝丹：70%',
+      '复赛通过，前往决赛炉', '决赛提炼：35%', '决赛融合：75%', '决赛凝丹：50%',
+      '三轮通过，返回法犸处登记', '大会成绩已登记，前往领奖台'],
+    introduction: '以岩枭之名报名，先看赛程，再到初赛、复赛和决赛三座炉台。每轮三步火候合计210分才通过，目标和指针速度每轮不同。失败仅重试当前轮，已通过成绩保留，最后回来登记。',
+    note: '赛炉、火候与计分为原创大会玩法，不判定原著丹药品级。练习材料免费提供，不扣行囊或额外产丹。登记一次60金币 / 80修炼积累；领奖台审核后再营地结算。',
+    checkpoints: [
+      { x: 330, y: 220, label: '赛程牌', text: '各轮210/300分：初赛25 / 55 / 45%，复赛65 / 40 / 70%，决赛35 / 75 / 50%。后两轮指针加快；失败免费重试当前轮。' },
+      { x: 580, y: 400, label: '初赛炉', text: '初赛：先稳定提炼，随后融合凝丹。' },
+      { x: 850, y: 400, label: '复赛炉', text: '复赛：火候目标改变，注意更快的指针。' },
+      { x: 1100, y: 400, label: '决赛炉', text: '决赛：冷静完成最后三步。' },
+    ],
+  },
 }
 export const certificationTargets = [.35, .6, .5] as const
+export const tournamentRounds = [
+  { name: '初赛', targets: [.25, .55, .45], speed: 1 },
+  { name: '复赛', targets: [.65, .4, .7], speed: 1.3 },
+  { name: '决赛', targets: [.35, .75, .5], speed: 1.6 },
+] as const
+export function tournamentRound(stage: number) { return Math.min(2, Math.max(0, Math.floor((stage - 1) / 4))) }
 export function eventForChapter(id: number): ChapterEvent | undefined { return chapterEvents[id] }
 const adultEvents: ChapterEvent[] = [
   {

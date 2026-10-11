@@ -1,4 +1,4 @@
-import { certificationTargets, eventsForChapter, findEvent, type ChapterEvent } from '../content/events'
+import { certificationTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' }
@@ -30,7 +30,9 @@ export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
     quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : 0,
-    attempts: ['stone', 'certification'].includes(event.kind) ? 1 : 0, choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
+    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification'].includes(event.kind) ? 1 : 0,
+    ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
+    choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
 }
 export function migrateLegacyEvents(chapter: number, bossPassed: boolean): Record<string, ChapterEventProgress> {
   return Object.fromEntries(eventsForChapter(chapter).map(e => [e.id, migrateLegacyEvent(chapter, bossPassed, e.id)]))
@@ -50,6 +52,7 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
   if (action.type === 'begin') {
     if (progress.started) return fail('已接下任务，继续完成当前目标。')
     p.started = true
+    if (event.kind === 'tournament') p.roundScores = []
     message = event.stages[0]
   } else {
     if (!progress.started) return fail('先与本章人物交谈，接下剧情任务。')
@@ -102,6 +105,29 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'tournament' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'tournament' && action.type === 'test' && [1, 5, 9].includes(p.stage)) {
+      p.stage++; p.score = 0; message = event.stages[p.stage]
+    } else if (event.kind === 'tournament' && action.type === 'pulse' && p.stage >= 2 && p.stage <= 12 && ![5, 9].includes(p.stage)) {
+      if (action.stage !== p.stage || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1) return fail('本步火候已更新或输入无效。')
+      const round = tournamentRound(p.stage), step = p.stage - (round * 4 + 2)
+      p.score += Math.max(0, Math.round(100 - Math.abs(action.marker - tournamentRounds[round].targets[step]) * 200))
+      p.stage++; message = `本轮已锁定 · ${p.score} / 300 分。`
+      if ([5, 9, 13].includes(p.stage)) {
+        p.attempts++
+        if (p.score < 210) {
+          message = `${tournamentRounds[round].name}${p.score}分，未达210分。已通过轮次保留，可免费重试本轮。`
+          p.stage = round * 4 + 1
+        } else {
+          p.roundScores!.push(p.score)
+          message = `${tournamentRounds[round].name}${p.score}分通过 · ${event.stages[p.stage]}`
+        }
+        p.score = 0
+      }
+    } else if (event.kind === 'tournament' && action.type === 'deliver' && p.stage === 13) {
+      next.gold += 60; next.xp += 80; p.stage = 14
+      message = `大会成绩登记 · ${p.roundScores!.join(' / ')}分，60金币 / 80修炼积累。前往领奖台审核。`
     } else if (event.kind === 'rescue' && action.type === 'seal' && action.index === 0 && p.stage >= 1) {
       message = event.checkpoints![0].text
     } else if (event.kind === 'rescue' && action.type === 'seal' && action.index === p.stage && p.stage < 3) {

@@ -250,7 +250,7 @@ export class CombatWorld {
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
-        } else if (['cave', 'certification', 'flame'].includes(event.kind) && index === 1) {
+        } else if ((['cave', 'certification', 'flame'].includes(event.kind) && index === 1) || (event.kind === 'tournament' && index > 0)) {
           if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify(`先与${event.speaker}交谈，接下本章历练。`)
           else this.cb.storyEvent?.(event.id, index)
         }
@@ -266,7 +266,7 @@ export class CombatWorld {
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
         else if (this.map.survivalZone || this.map.trialMode) {
           this.cb.kill(true)
-          this.cb.notify(this.map.trialMode === 'assessment' ? '公会审核通过，返回营地结算并继续旅程。' : this.map.trialMode === 'attunement' ? '火域收服已确认，返回营地正式结算取得青莲地心火。' : '已安全撤离，返回营地结算。')
+          this.cb.notify(this.map.trialMode === 'assessment' ? `${this.map.gateLabel ?? '资格'}审核通过，返回营地结算并继续旅程。` : this.map.trialMode === 'attunement' ? '火域收服已确认，返回营地正式结算取得青莲地心火。' : '已安全撤离，返回营地结算。')
         }
         else if (!this.bossSpawned) {
           this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
