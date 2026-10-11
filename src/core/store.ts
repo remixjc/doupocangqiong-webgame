@@ -5,6 +5,7 @@ import type { ItemId } from './model'
 import { loadSlot, saveSlot } from './save'
 import { advanceEvent, type EventAction } from './events'
 import { mapForChapter } from '../content/maps'
+import { AutoSaveQueue } from './autosave'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
@@ -13,8 +14,8 @@ function emptyRuntime(s: GameState): Runtime {
     cooldowns: { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 },
     prompt: '', near: '', bossHp: 0, bossMaxHp: 0, bossName: '', dead: false }
 }
-class GameStore {
-  private snapshot: Snapshot = { state: initialState(), runtime: emptyRuntime(initialState()), notice: '' }
+export class GameStore {
+  private snapshot: Snapshot = { state: initialState(), runtime: emptyRuntime(initialState()), notice: '', autosave: { phase: 'idle', pending: 0 } }
   private listeners = new Set<() => void>()
   readonly actions: Action[] = []
   move = { x: 0, y: 0 }
@@ -23,32 +24,37 @@ class GameStore {
   onStoryEvent: ((id: string, checkpoint?: number) => void) | null = null
   onChange: ((s: GameState) => void) | null = null
   private initialization: Promise<void> | null = null
+  private saves: AutoSaveQueue
+  constructor(private persistence = { load: loadSlot, write: (state: GameState) => saveSlot(0, state) }) {
+    this.saves = new AutoSaveQueue(persistence.write, autosave => { this.snapshot = { ...this.snapshot, autosave }; this.publish() })
+  }
   initialize(): Promise<void> {
     if (!this.initialization) this.initialization = (async () => {
       try {
-        const saved = await loadSlot(0)
-        if (saved) this.replace(saved)
+        const saved = await this.persistence.load(0)
+        if (saved) { this.replace(saved); this.saves.loaded() }
       } catch (error) {
         try {
-          const recovery = await loadSlot(-1)
-          if (recovery) { this.replace(recovery); this.notify('自动存档异常，已恢复上一份备份。') }
+          const recovery = await this.persistence.load(-1)
+          if (recovery) { this.replace(recovery); this.saves.loaded(); this.notify('自动存档异常，已恢复上一份备份。') }
           else this.notify((error as Error).message)
         } catch { this.notify((error as Error).message) }
       }
       this.onChange = state => {
-        // Persistent events are infrequent; start each write immediately.
-        // Frame-by-frame runtime updates never enter this path.
-        void saveSlot(0, state).catch(e => this.notify(e.message))
+        // Runtime-only frames never enter the ordered persistent write queue.
+        this.saves.enqueue(state)
       }
     })()
     return this.initialization
   }
   subscribe = (fn: () => void) => { this.listeners.add(fn); return () => { this.listeners.delete(fn) } }
   getSnapshot = () => this.snapshot
+  waitForAutosave = () => this.saves.flush()
+  retryAutosave = () => this.saves.retry()
   private publish() { for (const listener of this.listeners) listener() }
   notify(text: string) { this.snapshot = { ...this.snapshot, notice: text }; this.publish() }
   replace(state: GameState) {
-    this.snapshot = { state, runtime: emptyRuntime(state), notice: '' }
+    this.snapshot = { ...this.snapshot, state, runtime: emptyRuntime(state), notice: '' }
     this.actions.length = 0
     this.move = { x: 0, y: 0 }
     this.publish()

@@ -1,0 +1,6 @@
+.autosave-status{padding:12px 14px;border:1px solid var(--line);margin:18px 0;font-size:12px;line-height:1.8}
+.autosave-status small{display:block;font-size:11px;color:var(--muted)}
+.autosave-status.compact{padding:0;border:0;margin:0 0 0 12px;font-size:10px;white-space:nowrap;color:var(--muted)}
+.autosave-status.saved{color:#b5ccab}.autosave-status.error{border-color:#c9836944;color:#e4a88f}
+.autosave-status.compact.error{color:#e4a88f}
+@media(max-width:1100px){.topbar>.autosave-status.compact{display:none}}

@@ -12,6 +12,7 @@ import { eventDone, eventHint, eventProgress } from '../core/events'
 import StoryEventPanel from './StoryEventPanel'
 import { teacherSupport } from '../core/companions'
 import BondJournal from './BondJournal'
+import SaveStatus from './SaveStatus'
 
 const GameView = lazy(() => import('./GameView'))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | null
@@ -109,6 +110,7 @@ export default function App() {
         <button className="nav" onClick={() => setPanel('bonds')}>伙伴手札</button>
       </nav>
       <span className="version-label">{screen === 'play' ? `${s.gold} 金币 · ${chapter.realm}` : '浏览器单机 · 章节式冒险'}</span>
+      <SaveStatus compact />
       <div className="top-tools"><button className="icon-button" onClick={() => setPanel('character')} aria-label="查看人物">◈</button><button className="icon-button" onClick={() => setPanel('save')} aria-label="存档管理">▤</button><button className="icon-button" onClick={() => setPanel('settings')} aria-label="游戏设置">⚙</button></div>
     </header>
     {screen === 'home' && <main className="landing">

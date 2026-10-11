@@ -1,5 +1,6 @@
 import { eventsForChapter } from '../content/events'
 import { version } from '../../package.json'
+import type { AutoSaveStatus } from './autosave'
 export type Theme = 'city' | 'forest' | 'desert' | 'temple' | 'void' | 'fire'
 export type Pattern = 'slam' | 'dash' | 'volley' | 'storm'
 export type FlameId = 'ember' | 'lotus' | 'fallen' | 'star' | 'pure'
@@ -88,7 +89,7 @@ export interface Runtime {
   finale?: { phase: number; arena: string; move: string; shield: boolean; recovery: boolean }
   dead: boolean
 }
-export interface Snapshot { state: GameState; runtime: Runtime; notice: string }
+export interface Snapshot { state: GameState; runtime: Runtime; notice: string; autosave: AutoSaveStatus }
 export const CONTENT_VERSION = version
 export const blankEvent = (): ChapterEventProgress => ({ started: false, stage: 0, quote: 0, score: 0, attempts: 0, choice: 'none' })
 export const blankProgress = (chapter = 1): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false,
