@@ -16,9 +16,10 @@ import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
 import { bindDialogFocus } from './dialog-focus'
 import { loadSceneModule } from './scene-load'
+import StoryRecap from './StoryRecap'
 
 const GameView = lazy(() => loadSceneModule(() => import('./GameView')))
-type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | null
+type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | 'recap' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
 export default function App() {
@@ -173,7 +174,7 @@ export default function App() {
         {r.purification && <div className="mountain-status heat-status"><b>{['外焰剥离', '莲环消解', '核心澄明'][r.purification.stage - 1]} · 剩余{r.purification.remaining}秒</b><span>侵蚀 {r.purification.corruption}/100 · {r.purification.failed ? '失控 · 免费休整重建当前段' : r.purification.blocked ? '受击倒退2秒 · 暂停1秒' : r.purification.inZone ? '净化计时中 · 闪避粉色预警' : '前往当前白色圈 · 离区暂停并降侵蚀'}</span></div>}
         <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
         <p className="quest-hint">{completed ? '本章已结算，可自由修炼或返回大陆舆图继续旅途。' : progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? `准备完成。前往${map.gateLabel ?? '地图上的试炼碑'}，按 E ${map.trialMode === 'assessment' ? '提交审核' : map.trialMode === 'attunement' ? '确认火域收服' : '开始挑战'}。` : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
-        <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
+        <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('recap')}>篇章回顾 ↗</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
       </aside>
       <section className="stage-wrap">
         <div className="stage-topline"><span>◈ {chapter.location} · {{ story: '剧情', normal: '普通', hard: '挑战' }[r.difficulty]}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
@@ -200,11 +201,12 @@ export default function App() {
       </section>
     </main>}
     {notice && <div className="toast" role="status">{notice}</div>}
-    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件',bonds:'伙伴手札'}[panel]}>
+    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件',bonds:'伙伴手札',recap:'篇章回顾'}[panel]}>
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
+      {panel === 'recap' && <StoryRecap state={s} />}
       {panel === 'bonds' && <BondJournal state={s} visit={enter} />}
       {panel === 'event' && <StoryEventPanel key={`${eventId}:${eventCheckpoint}`} state={s} eventId={eventId} checkpoint={eventCheckpoint} close={() => setPanel(null)} shop={() => setPanel('shop')} />}
-      {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">按左侧目标完成本章事件：前三章先与药老、萧战或坊市执事交谈，分别练习斗技、走完立约路线和交付订单。采集、击杀与炼药仅在目标列出时必做。目标完成后到试炼碑挑战首领，再回到营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '人物 / 路标 / 采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><button className="primary" onClick={() => setPanel(null)}>记下了</button></>}
+      {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">按左侧目标完成本章事件：前三章先与药老、萧战或坊市执事交谈，分别练习斗技、走完立约路线和交付订单。采集、击杀与炼药仅在目标列出时必做。目标完成后到试炼碑挑战首领，再回到营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '人物 / 路标 / 采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><div className="panel-tabs"><button className="primary" onClick={() => setPanel(null)}>记下了</button><button className="secondary" onClick={() => setPanel('recap')}>篇章回顾 · 重读已看对白</button></div></>}
       {panel === 'camp' && <><span className="eyebrow">灯火与归途 / 营地</span><h2>{completed ? '本章已经完成。' : progress.boss ? '这一程，你做到了。' : '整装，再赴历练。'}</h2><p className="muted">休整会回到营地并恢复状态，已结算的资源和任务进度保留。</p><div className="camp-options"><button className="secondary" onClick={() => { setPanel(null); retry() }}>营地休整 · 恢复状态</button>{progress.boss && !completed && <button className="primary" onClick={finish}>结算本章 · {chapter.reward} 金币 ↗</button>}<button className="secondary" onClick={() => { setPanel(null); setScreen('world') }}>返回大陆舆图</button></div><p className="muted">{chapter.trialNote}</p></>}
       {panel === 'camp' && <div className="panel-tabs"><button className="secondary" onClick={() => setPanel('alchemy')}>炼药</button><button className="secondary" onClick={() => setPanel('shop')}>坊市</button><button className="secondary" onClick={() => setPanel('save')}>存档</button><button className="secondary" onClick={() => setPanel('settings')}>设置</button></div>}
       {panel === 'character' && <><span className="eyebrow">人物 / 行囊</span><h2>萧炎 <small className="muted">{chapter.realm}</small></h2><div className="stat-grid">{[['生命上限', stats.maxHp], ['斗气上限', stats.maxQi], ['攻击', Math.round(stats.attack)], ['防御', Math.round(stats.defense)], ['金币', s.gold], ['修炼积累', s.xp]].map(([label, value]) => <div key={label}><span>{label}</span><b>{value}</b></div>)}</div><div className="inventory-grid">{[['灵草', s.inventory.herb], ['魔晶', s.inventory.crystal], ['恢复丹', s.inventory.heal], ['回气丹', s.inventory.mana]].map(([label, value]) => <div key={label}><span>◇ {label}</span><b>×{value}</b></div>)}</div><p className="muted">当前火焰：{flame.name}。{flame.description}</p></>}
