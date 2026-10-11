@@ -1,4 +1,5 @@
 import type { Point } from './maps'
+import { bondEvents, type BondDefinition } from './bonds'
 
 export type ReflectionChoice = 'observe' | 'release' | 'endure' | 'grasp' | 'deny'
 export interface Reflection {
@@ -8,10 +9,13 @@ export interface Reflection {
 }
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification' | 'defense' | 'vault'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification' | 'defense' | 'vault' | 'bond'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
+  requiresHistory?: { chapter: number; eventId: string }[]
+  requiresCompleted?: number[]
+  bond?: BondDefinition
   title: string
   speaker: string
   npc: Point
@@ -515,7 +519,7 @@ const originEvents: ChapterEvent[] = [{
 export function mindTargets(event: ChapterEvent): number[] { return event.mindTargets ?? heritageTargets }
 export function eventsForChapter(id: number): ChapterEvent[] {
   const primary = eventForChapter(id)
-  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : id === 25 ? purificationEvents : id === 27 ? originEvents : [])]
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : id === 25 ? purificationEvents : id === 27 ? originEvents : []), ...bondEvents.filter(item => item.chapter === id).map(item => item.event)]
 }
 export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
   return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)

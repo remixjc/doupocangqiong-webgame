@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../content/events'
-import { eventDone, eventHint, eventProgress, pulseMarker, type EventAction } from '../core/events'
+import { eventBlockReason, eventDone, eventHint, eventProgress, pulseMarker, type EventAction } from '../core/events'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 
@@ -26,6 +26,13 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
+    if (event.kind === 'bond') {
+      const runtime = gameStore.getSnapshot().runtime, point = checkpoint === undefined ? event.npc : event.checkpoints![checkpoint]
+      if (!point || Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或书简后再操作。'); return false }
+      if (action.type === 'strategy' ? checkpoint !== 1 : ['begin', 'deliver'].includes(action.type) && checkpoint !== undefined) {
+        gameStore.notify(action.type === 'strategy' ? '请到回应书简选择。' : '请返回人物处接取或报告。'); return false
+      }
+    }
     if (['cave', 'certification', 'rescue', 'prison', 'tomb', 'inheritance', 'illusion', 'purification', 'defense', 'vault', 'flame', 'starfire', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition', 'danfinal'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
@@ -61,7 +68,16 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     <span className="eyebrow">{event.speaker} / 本章事件</span><h2>{event.title}</h2>
     <p>{event.introduction}</p><p className="muted">{event.note}</p>
     <p className="quest-hint">{eventHint(state, event.id)}</p>
-    {!progress.started && <button className="primary" onClick={() => { if (act({ type: 'begin' }) && event.kind !== 'stone') close() }}>接下历练{event.kind !== 'stone' && ' · 返回地图'}</button>}
+    {!progress.started && <button className="primary" disabled={!!eventBlockReason(state, state.chapter, event)} onClick={() => { if (act({ type: 'begin' }) && event.kind !== 'stone') close() }}>接下历练{event.kind !== 'stone' && ' · 返回地图'}</button>}
+    {event.kind === 'bond' && progress.started && <>
+      {checkpoint === 1 && progress.stage === 1 && <>
+        <p>{event.bond!.question}</p><div className="camp-options">{event.bond!.options.map(option =>
+          <button key={option.choice} className="secondary" onClick={() => act({ type: 'strategy', choice: option.choice })}>{option.label} · {option.reward.xp}积累 / {option.reward.heal ? `恢复丹${option.reward.heal}` : `回气丹${option.reward.mana}`}</button>)}</div>
+      </>}
+      {progress.choice !== 'none' && <p className="muted">{event.bond!.options.find(option => option.choice === progress.choice)?.response}</p>}
+      {checkpoint === undefined && progress.stage === 2 && <button className="primary" onClick={() => act({ type: 'deliver' })}>确认伙伴记录 · 领取一次补给</button>}
+      {!done && <button className="secondary" onClick={close}>返回地图 · 继续回访</button>}
+    </>}
     {progress.started && event.kind === 'trade' && progress.stage === 0 && <div className="camp-options">
       {[42, 60, 90].map(amount => <button className="secondary" key={amount} onClick={() => act({ type: 'quote', amount })}>报价 {amount} 金币</button>)}
     </div>}

@@ -758,6 +758,12 @@ export class CombatWorld {
       }
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
+        if (event.kind === 'bond') {
+          const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
+          if (index === 0) this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+          else this.cb.storyEvent?.(event.id, index)
+          return
+        }
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
         if (event.kind === 'illusion' && index > 0) {
           if (eventProgress(s, this.chapter.id, event.id).stage !== index) this.cb.notify('先读引路碑记，再按三处幻境顺序观察。')

@@ -5,7 +5,7 @@ import { chapterReady, craft, finishChapter, skillUnlocked, registerBossVictory 
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
 import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
-import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
+import { advanceEvent, eventDone, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 import { validateState } from '../src/core/save'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
@@ -55,6 +55,10 @@ describe('完整主线真实规则战斗回放', () => {
         storyEvent: (eventId, checkpoint) => {
           const p = eventProgress(state, chapter.id, eventId), e = findEvent(chapter.id, eventId)!
           if (!p.started) state = advanceEvent(state, { type: 'begin', eventId }).state
+          else if (e.kind === 'bond') {
+            if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'strategy', choice: 'steady', eventId }).state
+            else if (checkpoint === undefined && p.stage === 2) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          }
           else if (e.kind === 'trade') state = advanceEvent(state, p.stage === 0 ? { type: 'quote', amount: 60, eventId } : { type: 'deliver', eventId }).state
           else if (e.kind === 'stone') {
             const marker = pulseMarker(world.elapsed * 1000)
@@ -218,6 +222,7 @@ describe('完整主线真实规则战斗回放', () => {
             target = !ep.started || ep.stage === 6 ? event.npc : event.checkpoints![ep.stage]
             if (ep.stage === 5 && living.length) target = living[0]
           }
+          if (event.kind === 'bond') target = !ep.started || ep.stage === 2 ? event.npc : event.checkpoints![ep.stage]
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? []), ...(world.purificationRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
@@ -278,6 +283,18 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 23) expect(eventProgress(state).attempts, '天墓三层应各在单次时限内完成').toBe(3)
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
+      if (chapter.id === 28) {
+        const id = 'doctor-epilogue-letter', event = findEvent(28, id)!
+        for (let tick = 0; tick < 3600 && !eventDone(state, 28, id); tick++) {
+          const p = eventProgress(state, 28, id), target = !p.started || p.stage === 2 ? event.npc : event.checkpoints![p.stage]
+          const path = route(world.player, target, world.collisionMap())
+          while (path.length > 1 && dist(path[0], world.player) < 14) path.shift()
+          const point = path[0] ?? target, dx = point.x - world.player.x, dy = point.y - world.player.y, length = Math.hypot(dx, dy)
+          world.step(length > 4 ? { x: dx / length, y: dy / length } : { x: 0, y: 0 })
+          if (tick % 10 === 0) { world.action('interact', { x: 0, y: 0 }); expect(() => validateState(state)).not.toThrow() }
+        }
+        expect(eventDone(state, 28, id), '小医仙尾声需合法回访输入完成').toBe(true)
+      }
       expect(validateState(state)).toEqual(state)
       expect(state.completed.length).toBe(chapter.id)
       timings.push(Math.round(frame / 60))

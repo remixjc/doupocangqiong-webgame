@@ -27,17 +27,28 @@ export function eventDone(state: GameState, chapter = state.chapter, eventId?: s
   return events.every(e => { const p = eventProgress(state, chapter, e.id); return p.started && p.stage === e.stages.length - 1 })
 }
 export function nextEvent(state: GameState, includeOptional = false): ChapterEvent | undefined {
-  return eventsForChapter(state.chapter).find(e => (includeOptional || !e.optional) && !eventDone(state, state.chapter, e.id))
+  return eventsForChapter(state.chapter).find(e => (includeOptional || !e.optional) && !eventDone(state, state.chapter, e.id) && (!e.optional || !eventBlockReason(state, state.chapter, e)))
+}
+export function eventBlockReason(state: GameState, chapter: number, event: ChapterEvent): string {
+  if (state.settings.spoiler === 'anime' && chapter > state.settings.animeLimit) return '此页超出当前剧透范围。'
+  if (event.requiresCompleted?.some(id => !state.completed.includes(id))) return '先完成本章正式首通，再重返阅读归途卷页。'
+  if (event.requires?.some(id => !eventDone(state, chapter, id))) return '先完成本章前置历练，再接下此项任务。'
+  const missing = event.requiresHistory?.find(item => !eventDone(state, item.chapter, item.eventId))
+  if (missing) return state.settings.spoiler === 'anime' && missing.chapter > state.settings.animeLimit
+    ? '前置卷页超出当前剧透范围。' : `先回访第${missing.chapter}章，完成前一页伙伴记录。`
+  return ''
 }
 export function eventHint(state: GameState, eventId?: string): string {
   const event = eventId ? findEvent(state.chapter, eventId) : nextEvent(state)
   if (!event) return ''
+  const blocked = eventBlockReason(state, state.chapter, event)
+  if (blocked) return blocked
   const p = eventProgress(state, state.chapter, event.id)
   return p.started ? event.stages[p.stage] : `靠近${event.speaker}，按 E 接下「${event.title}」`
 }
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
-  return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
+  return event && bossPassed && event.kind !== 'bond' ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
     quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal', 'inheritance'].includes(event.kind) ? 300 : ['lineage', 'illusion'].includes(event.kind) ? 3 : event.kind === 'expedition' ? 7 : 0,
     attempts: ['tournament', 'tomb', 'illusion'].includes(event.kind) ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance', 'vault'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
@@ -57,7 +68,8 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
   const fail = (message: string): EventResult => ({ state, ok: false, message })
   if (!event) return fail('此篇章没有该剧情事件。')
   if (eventDone(state, state.chapter, event.id)) return fail('本次事件已经完成，奖励不会重复发放。')
-  if (event.requires?.some(id => !eventDone(state, state.chapter, id))) return fail('先完成前置历练，再接下此项任务。')
+  const blocked = eventBlockReason(state, state.chapter, event)
+  if (blocked) return fail(blocked)
   const next = structuredClone(state), p = next.progress[state.chapter].events[event.id] ??= blankEvent()
   let message = ''
   if (action.type === 'begin') {
@@ -67,7 +79,17 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     message = event.stages[0]
   } else {
     if (!progress.started) return fail('先与本章人物交谈，接下剧情任务。')
-    if (event.kind === 'training' && ((action.type === 'strike' && p.stage === 0) || (action.type === 'dodge' && p.stage === 1))) {
+    if (event.kind === 'bond' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'bond' && action.type === 'strategy' && p.stage === 1) {
+      const option = event.bond!.options.find(option => option.choice === action.choice)
+      if (!option) return fail('此页没有该回应，请按当前书简选择。')
+      p.choice = option.choice; p.stage = 2; message = `${option.response} 返回人物处确认后才领取补给。`
+    } else if (event.kind === 'bond' && action.type === 'deliver' && p.stage === 2) {
+      const reward = event.bond!.options.find(option => option.choice === p.choice)!.reward
+      next.xp += reward.xp; next.inventory.heal += reward.heal ?? 0; next.inventory.mana += reward.mana ?? 0
+      p.stage = 3; message = `伙伴记录已确认 · 积累+${reward.xp}${reward.heal ? ` / 恢复丹+${reward.heal}` : ''}${reward.mana ? ` / 回气丹+${reward.mana}` : ''}。`
+    } else if (event.kind === 'training' && ((action.type === 'strike' && p.stage === 0) || (action.type === 'dodge' && p.stage === 1))) {
       p.stage++
       message = event.stages[p.stage]
     } else if (event.kind === 'vow' && action.type === 'seal' && action.index === p.stage) {

@@ -42,7 +42,9 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
     (!definition && p.started) || (!['trade', 'auction'].includes(definition?.kind ?? '') && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
     (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt', 'lineage', 'expedition', 'danfinal', 'inheritance', 'tomb', 'illusion', 'vault'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
-    (!['competition', 'alliance'].includes(definition?.kind ?? '') && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+    (!['competition', 'alliance', 'bond'].includes(definition?.kind ?? '') && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+  if (definition?.kind === 'bond' && (p.stage <= 1 ? p.choice !== 'none' : !definition.bond?.options.some(option => option.choice === p.choice)))
+    throw new Error('伙伴书简选择记录无效。')
   if (definition?.kind === 'alliance' && (p.stage <= 1 ? p.choice !== 'none' : p.choice === 'none'))
     throw new Error('炎盟筹备方案记录无效。')
   if (definition?.kind === 'lineage' && (p.stage === 0 ? p.score !== 0 || p.attempts !== 0
@@ -175,6 +177,12 @@ export function validateState(value: unknown): GameState {
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')
   }
   if (!s.progress[s.chapter] || s.completed.some(id => !s.progress[id]?.boss)) throw new Error('章节进度缺失。')
+  // Validate cross-chapter dependencies after every entry has been read, regardless of JSON key order.
+  for (const [chapter, progress] of Object.entries(s.progress)) for (const definition of eventsForChapter(Number(chapter))) {
+    if (!progress.events[definition.id].started) continue
+    if (definition.requiresHistory?.some(item => !eventDone(s, item.chapter, item.eventId)) ||
+      definition.requiresCompleted?.some(id => !s.completed.includes(id))) throw new Error('伙伴记录的跨章前置条件不完整。')
+  }
   s.gold = number(data.gold); s.xp = number(data.xp, 100_000_000)
   s.fireEnergy = data.fireEnergy === undefined && versionBefore(data.contentVersion as string, '0.7.2') ? 0 : number(data.fireEnergy, 1_000_000)
   s.totalKills = number(data.totalKills); s.totalBrews = number(data.totalBrews)

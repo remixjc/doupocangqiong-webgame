@@ -11,9 +11,10 @@ import { mapForChapter } from '../content/maps'
 import { eventDone, eventHint, eventProgress } from '../core/events'
 import StoryEventPanel from './StoryEventPanel'
 import { teacherSupport } from '../core/companions'
+import BondJournal from './BondJournal'
 
 const GameView = lazy(() => import('./GameView'))
-type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | null
+type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
 export default function App() {
@@ -105,6 +106,7 @@ export default function App() {
         <button className={screen === 'home' ? 'nav active' : 'nav'} onClick={() => { setScreen('home'); setStory(null) }}>启程</button>
         <button className={screen === 'world' ? 'nav active' : 'nav'} onClick={() => { setScreen('world'); setStory(null) }}>大陆舆图</button>
         <button className="nav" onClick={() => setPanel('guide')}>修炼手札</button>
+        <button className="nav" onClick={() => setPanel('bonds')}>伙伴手札</button>
       </nav>
       <span className="version-label">{screen === 'play' ? `${s.gold} 金币 · ${chapter.realm}` : '浏览器单机 · 章节式冒险'}</span>
       <div className="top-tools"><button className="icon-button" onClick={() => setPanel('character')} aria-label="查看人物">◈</button><button className="icon-button" onClick={() => setPanel('save')} aria-label="存档管理">▤</button><button className="icon-button" onClick={() => setPanel('settings')} aria-label="游戏设置">⚙</button></div>
@@ -191,8 +193,9 @@ export default function App() {
       </section>
     </main>}
     {notice && <div className="toast" role="status">{notice}</div>}
-    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件'}[panel]}>
+    {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件',bonds:'伙伴手札'}[panel]}>
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
+      {panel === 'bonds' && <BondJournal state={s} visit={enter} />}
       {panel === 'event' && <StoryEventPanel key={`${eventId}:${eventCheckpoint}`} state={s} eventId={eventId} checkpoint={eventCheckpoint} close={() => setPanel(null)} shop={() => setPanel('shop')} />}
       {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">按左侧目标完成本章事件：前三章先与药老、萧战或坊市执事交谈，分别练习斗技、走完立约路线和交付订单。采集、击杀与炼药仅在目标列出时必做。目标完成后到试炼碑挑战首领，再回到营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '人物 / 路标 / 采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><button className="primary" onClick={() => setPanel(null)}>记下了</button></>}
       {panel === 'camp' && <><span className="eyebrow">灯火与归途 / 营地</span><h2>{completed ? '本章已经完成。' : progress.boss ? '这一程，你做到了。' : '整装，再赴历练。'}</h2><p className="muted">休整会回到营地并恢复状态，已结算的资源和任务进度保留。</p><div className="camp-options"><button className="secondary" onClick={() => { setPanel(null); retry() }}>营地休整 · 恢复状态</button>{progress.boss && !completed && <button className="primary" onClick={finish}>结算本章 · {chapter.reward} 金币 ↗</button>}<button className="secondary" onClick={() => { setPanel(null); setScreen('world') }}>返回大陆舆图</button></div><p className="muted">{chapter.trialNote}</p></>}
