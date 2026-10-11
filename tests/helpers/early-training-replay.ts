@@ -18,10 +18,13 @@ import { advanceEarlyRecovery } from '../../src/core/early-recovery'
 import { earlyRecoveryScenes } from '../../src/content/early-recovery'
 import { advanceEarlyConsignment } from '../../src/core/early-consignment'
 import { consignmentSupplies, type ConsignmentSupplyId } from '../../src/core/early-training-state'
+import { advanceEarlyAppraisal } from '../../src/core/early-appraisal'
+import { appraisalScenes } from '../../src/content/early-appraisal'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false): GameState {
+  if (includeAppraisal) includeConsignment = true
   let state = input
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
@@ -114,6 +117,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       expect(result.ok, result.message).toBe(true)
       state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
     }
+  }
+  if (includeAppraisal) for (const scene of appraisalScenes) {
+    const result = advanceEarlyAppraisal(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
+      { step: scene.step, owner: state.earlyTraining.consignment.owner, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
   return state
 }
