@@ -6,7 +6,7 @@ import { earlyTeachingScenes } from '../content/early-teaching'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 
-export default function EarlyTeaching({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyTeaching({ state, position, onBack, onSupervise }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onSupervise?: () => void }) {
   const [station, setStation] = useState<EarlyTeachingStation>('table')
   const first = useRef<HTMLButtonElement>(null)
   const blocked = earlyTeachingRoomBlock(state, position)
@@ -45,7 +45,8 @@ export default function EarlyTeaching({ state, position, onBack }: { state: Game
       {station === scene.station ? <section className="bond-summary" aria-label="老师正式传技步骤"><h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
         <button className="primary" onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</button></section>
         : <p className="muted">下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</p>}
-    </> : <section className="bond-summary"><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。后山监督训练、药液恢复和实际掌握另行继续。</p></section>}
+    </> : <section className="bond-summary"><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>
+      {onSupervise && <button className="primary" onClick={onSupervise}>接续后山 · 接受老师督练</button>}</section>}
     <button className="secondary" onClick={onBack}>暂离传技房间 · 回准备路线</button>
   </>
 }

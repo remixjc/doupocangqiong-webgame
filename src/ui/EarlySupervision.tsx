@@ -1,0 +1,64 @@
+import { useEffect, useRef, useState } from 'react'
+import type { GameState } from '../core/model'
+import type { EarlyWalkPosition } from '../core/early-walk'
+import { earlySupervisionBlock, submitEarlySupervision, type EarlySupervisionAction } from '../core/early-supervision'
+import { gameStore } from '../core/store'
+import { startSupervisionPointer } from './supervision-pointer'
+import './early-walk.css'
+
+export default function EarlySupervision({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+  const task = state.earlyTraining.supervision
+  const [marker, setMarker] = useState(.5)
+  const [paused, setPaused] = useState(false)
+  const entry = useRef<HTMLButtonElement>(null)
+  const blocked = earlySupervisionBlock(state, position)
+  const steady = state.settings.reducedMotion
+  useEffect(() => { if (!blocked) entry.current?.focus() }, [blocked, task.stage, task.attempts])
+  useEffect(() => { if (steady) setPaused(false) }, [steady])
+  useEffect(() => {
+    setMarker(.5); setPaused(false)
+  }, [task.stage, task.attempts])
+  useEffect(() => {
+    if (blocked || task.stage !== 1 || steady || paused) return
+    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
+      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    setMarker, () => setPaused(true))
+  }, [blocked, task.stage, task.attempts, steady, paused])
+  function act(operation: EarlySupervisionAction['operation']) {
+    if (operation === 'brace' && (paused || document.hidden)) return
+    submitEarlySupervision(gameStore, position, { stage: task.stage, pulses: task.pulses, attempts: task.attempts,
+      operation, marker: operation === 'brace' ? marker : undefined })
+  }
+  if (blocked) return <p>{blocked}</p>
+  return <>
+    <span className="eyebrow">后山 / 药老监督训练</span>
+    <h2>承接斗气，也学会停下。</h2>
+    <p>药老在后山指导萧炎打好身体基础。这一轮用四次抽象斗气脉冲表现姿态承接，绿色时机区为35%–65%；次数、负荷与节奏都是游戏折算。</p>
+    <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={task.stage === 2 ? '本轮督练结束，萧炎停下等待回房恢复' : '药老在后山监督萧炎承接斗气脉冲'}>
+      <rect width="720" height="300" fill="#203934" /><path d="M0 120 L90 32 L200 105 L350 15 L480 110 L610 40 L720 116 V0 H0Z" fill="#496359" />
+      <path d="M0 255 Q130 200 250 245 T720 230 V300 H0Z" fill="#606346" />
+      <ellipse cx="205" cy="234" rx="60" ry="20" fill="#73786a" />
+      <g transform="translate(205 125)" opacity=".85"><path d="M-22 80 Q-10 15 0 0 Q10 15 22 80Z" fill="#bdd4cb" /><circle cy="-10" r="12" fill="#e0e4d5" /><text x="0" y="107" textAnchor="middle" fill="#ead9b6" fontSize="14">药老 · 督练</text></g>
+      <g transform="translate(475 170)"><ellipse cy="65" rx="28" ry="8" fill="#0004" /><path d="M-20 55 L-10 0 H10 L20 55Z" fill="#cda46b" /><circle cy="-14" r="12" fill="#edc9a2" /><path d="M-13-21 Q0-35 13-21" fill="#24312c" />
+        {task.stage === 1 && <path d="M-32-25 Q40-30 40 34 Q0 75-32 36" fill="none" stroke="#a8cbaa" strokeWidth="3" />}
+      </g>
+      {task.stage === 1 && <path d="M233 145 Q320 103 430 166" fill="none" stroke="#d99078" strokeWidth="4" strokeDasharray="7 10" />}
+      <text x="360" y="286" textAnchor="middle" fill="#d5ceb2" fontSize="13">{task.stage === 2 ? '本轮已停下 · 恢复过程尚未记录' : '后山督练 · 留意负荷'}</text>
+    </svg>
+    <p role="status">督练承接 {task.pulses}/4 · 本轮负荷 {task.pulses * 25}% · 重新开练 {task.attempts} 次</p>
+    {task.stage === 0 && <><p className="muted">开始后可以随时免费停练。失误结束当前轮，不扣金币、材料或药液；再次开始后从第一道脉冲练起。</p>
+      <button ref={entry} className="primary" onClick={() => act('begin')}>开始本轮后山督练</button></>}
+    {task.stage === 1 && <>
+      <p>{task.pulses >= 3 ? '药老：负荷已接近本轮边界。最后一次承接后便停下，也可现在停练。' : '药老：先稳住姿态，看准脉冲再承接；不要为了次数忽略负荷。'}</p>
+      {steady && <label className="setting-row"><span>督练承接时机<small>减弱动态：用方向键调至35%–65%后承接。当前 {Math.round(marker * 100)}%。</small></span>
+        <input type="range" aria-label="督练承接时机" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />
+      </label>}
+      <div className="heat-meter" aria-label="督练时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+      {!steady && paused && <><p role="status">督练时机已暂停，请确认后继续；后台时不推进。</p><button className="secondary" onClick={() => setPaused(false)}>继续本轮督练 · 恢复时机</button></>}
+      <button ref={entry} className="primary" disabled={paused} onClick={() => act('brace')}>承接第{task.pulses + 1}次斗气脉冲</button>
+      <button className="secondary" onClick={() => act('stop')}>停练 · 免费重新准备</button>
+    </>}
+    {task.stage === 2 && <section className="bond-summary"><h3>这一轮督练已记下</h3><p>萧炎停下，药老提醒他回房使用修炼药液恢复。本轮没有自动完成恢复、持续训练时段或五段结果，后续过程另行继续。</p></section>}
+    <button className="secondary" onClick={onBack}>暂离后山督练 · 保留断点</button>
+  </>
+}
