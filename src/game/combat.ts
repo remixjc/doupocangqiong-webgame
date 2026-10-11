@@ -8,6 +8,7 @@ export interface Vec { x: number; y: number }
 export interface Obstacle { x: number; y: number; w: number; h: number }
 export interface Fighter extends Vec {
   id: number; hp: number; maxHp: number; type: 'brute' | 'hunter' | 'mage' | 'boss'
+  spawnId?: string
   timer: number; windup: number; target: Vec; radius: number; burn: number; burnTick: number
   secondary?: Vec[]
 }
@@ -58,7 +59,13 @@ export class CombatWorld {
     const stats = playerStats(cb.state())
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
-    for (const enemy of this.map.enemies.slice(0, Math.max(3, chapter.objectives.kills))) this.spawn(enemy.type, enemy.x, enemy.y)
+    for (const enemy of this.map.enemies.slice(0, Math.max(3, chapter.objectives.kills))) {
+      const cleared = enemy.id && eventsForChapter(chapter.id).some(event => {
+        const p = eventProgress(cb.state(), chapter.id, event.id)
+        return p.started && event.checkpoints?.some((point, index) => index < p.stage && point.guards?.includes(enemy.id!))
+      })
+      if (!cleared) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id)
+    }
     this.syncMountainRuns()
   }
   private syncMountainRuns() {
@@ -117,12 +124,16 @@ export class CombatWorld {
       run.warnings.push({ x: this.player.x, y: this.player.y, time: 1, radius: 85 })
     }
   }
-  spawn(type: Fighter['type'], x: number, y: number) {
+  spawn(type: Fighter['type'], x: number, y: number, spawnId?: string) {
     const d = this.cb.state().settings.difficulty
     const scale = d === 'story' ? 0.72 : d === 'hard' ? 1.25 : 1
     const hp = Math.round((type === 'boss' ? 280 + this.chapter.id * 46 : 48 + this.chapter.id * 6) * scale)
-    this.enemies.push({ id: this.nextId++, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
+    this.enemies.push({ id: this.nextId++, spawnId, x, y, hp, maxHp: hp, type, timer: type === 'boss' ? 1.8 : 1,
       windup: 0, target: { x, y }, radius: 0, burn: 0, burnTick: 0 })
+  }
+  guardsRemaining(eventId: string, index: number) {
+    const guards = eventsForChapter(this.chapter.id).find(e => e.id === eventId)?.checkpoints?.[index]?.guards ?? []
+    return this.enemies.filter(e => e.hp > 0 && e.spawnId && guards.includes(e.spawnId)).length
   }
   private move(p: Vec, vx: number, vy: number) {
     const nx = clamp(p.x + vx, 40, WIDTH - 40)
@@ -183,7 +194,8 @@ export class CombatWorld {
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'escort') this.escortCheckpoint(index)
+        if (event.kind === 'rescue' && this.guardsRemaining(event.id, index) > 0) this.cb.notify(`区域守卫尚有${this.guardsRemaining(event.id, index)}名，请先清理威胁再解救。`)
+        else if (event.kind === 'escort') this.escortCheckpoint(index)
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }

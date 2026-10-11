@@ -1,9 +1,9 @@
 export interface Point { x: number; y: number }
 export interface MapObstacle extends Point { w: number; h: number }
-export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage' }
+export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'legacy'
   trialMode?: 'assessment'
   gateLabel?: string
   camp: Point
@@ -139,7 +139,32 @@ export const mountainMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 770, y: 70, label: '黑岩城 · 炼药师公会' }, { x: 720, y: 735, label: '练习材料由公会提供 · 认证不是丹药生产' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? legacy }
+export const desertMaps: Record<number, MapDefinition> = {
+  7: {
+    id: 'stone-desert-rescue-town', style: 'desert-town',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1090, y: 650 },
+    bossSpawn: { x: 1050, y: 550 }, safeRadius: 175,
+    eventBarrier: { eventId: 'stone-desert-rescue', unlockedStage: 2, obstacle: { x: 870, y: 320, w: 40, h: 130 } },
+    obstacles: [
+      { x: 870, y: 0, w: 40, h: 320 }, { x: 870, y: 450, w: 40, h: 350 },
+      { x: 440, y: 100, w: 170, h: 160 }, { x: 440, y: 540, w: 150, h: 140 },
+      { x: 80, y: 330, w: 100, h: 100 },
+    ],
+    herbs: [{ x: 320, y: 480 }, { x: 700, y: 580 }, { x: 690, y: 180 }, { x: 1050, y: 400 }],
+    enemies: [
+      { id: 'sand-alley-guard', type: 'brute', x: 700, y: 430 },
+      { id: 'sand-well-hunter', type: 'hunter', x: 1050, y: 320 },
+      { id: 'sand-well-mage', type: 'mage', x: 1120, y: 260 },
+    ],
+    paths: [
+      [{ x: 150, y: 650 }, { x: 300, y: 420 }, { x: 350, y: 220 }],
+      [{ x: 350, y: 220 }, { x: 350, y: 400 }, { x: 700, y: 400 }, { x: 950, y: 380 }, { x: 1060, y: 230 }],
+      [{ x: 950, y: 380 }, { x: 1090, y: 650 }],
+    ],
+    landmarks: [{ x: 690, y: 60, label: '石漠城 · 漠铁佣兵团' }, { x: 690, y: 750, label: '解救团员 · 原创救援历练' }],
+  },
+}
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

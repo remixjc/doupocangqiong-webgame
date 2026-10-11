@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -13,7 +13,7 @@ export interface ChapterEvent {
   introduction: string
   note: string
   dummy?: Point
-  checkpoints?: (Point & { label: string; text: string })[]
+  checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
   1: {
@@ -75,6 +75,18 @@ export const chapterEvents: Record<number, ChapterEvent> = {
     checkpoints: [
       { x: 330, y: 220, label: '丹方台', text: '公会练习丹方：提炼35% → 融合60% → 凝丹50%。合计210/300分通过；考核材料由公会提供。' },
       { x: 740, y: 400, label: '公会药炉', text: '公会药炉已备好练习材料，可以免费进行三步控火认证。' },
+    ],
+  },
+  7: {
+    id: 'stone-desert-rescue', kind: 'rescue', introducedVersion: '0.5.0',
+    title: '石漠城 · 失散团员', speaker: '萧鼎', npc: { x: 280, y: 625 },
+    stages: ['前往青鳞线索点，按 E 确认失散团员方位', '清除后巷守卫，在囚栏前按 E 解救第一位团员', '穿过开放巷道，清除水井守卫并解救第二位团员', '返回萧鼎处，报告两位团员已经脱险', '失散团员救援完成'],
+    introduction: '有两位团员在城外失散。青鳞留下了他们最后的方向，先读巷口线索，再清除守在囚栏和水井旁的敌人。解救第一人后巷道才会开放，救出第二人后回来报平安。',
+    note: '失散团员、守卫和封门是原创救援关卡，不复现原著具体绑架事件。各救援节点奖励一次恢复丹，最后报告一次50金币。重试保留已解救节点，未解救节点的守卫会重新出现。',
+    checkpoints: [
+      { x: 350, y: 220, label: '青鳞线索', text: '青鳞留下的方向：先找南侧后巷囚栏，再去北侧水井。囚栏附近还有守卫，必须清理后才能解救。' },
+      { x: 700, y: 400, label: '后巷囚栏', text: '第一位团员已经脱险 · 恢复丹×1。后巷门已打开，继续寻找水井旁的同伴。', guards: ['sand-alley-guard'] },
+      { x: 1060, y: 230, label: '水井囚栏', text: '第二位团员已经脱险 · 恢复丹×1。返回萧鼎处报告，不再深入沙漠。', guards: ['sand-well-hunter', 'sand-well-mage'] },
     ],
   },
 }

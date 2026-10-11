@@ -101,6 +101,13 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'rescue' && action.type === 'seal' && action.index === 0 && p.stage >= 1) {
+      message = event.checkpoints![0].text
+    } else if (event.kind === 'rescue' && action.type === 'seal' && action.index === p.stage && p.stage < 3) {
+      if (p.stage > 0) next.inventory.heal++
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'rescue' && action.type === 'deliver' && p.stage === 3) {
+      next.gold += 50; p.stage = 4; message = '两位团员脱险的消息已带回 · 50金币。前往城外试炼碑，准备下一程。'
     } else if (event.kind === 'trade' && action.type === 'quote' && p.stage === 0) {
       if (![42, 60].includes(action.amount)) return fail('报价超过买方预算，订单未签订，也没有消耗材料。')
       p.quote = action.amount

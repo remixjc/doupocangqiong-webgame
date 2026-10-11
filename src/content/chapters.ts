@@ -37,6 +37,10 @@ chapters[5].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[5].boss = '公会审核 · 控火资格'
 chapters[5].trialNote = '三步控火认证与登记为原创练习，专用材料由公会提供，不额外生产丹药。'
 chapters[5].opening[2].text = '先与认证执事交谈，读丹方台的35% / 60% / 50%三步火候，再到公会药炉锁定提炼、融合、凝丹。合计210分通过，失败免费重试；返回登记后到审核台完成本章。'
+chapters[6].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[6].boss = '沙城出发 · 护卫投影'
+chapters[6].trialNote = '失散团员与守卫为原创救援，解救和回报后再完成出发试炼；青鳞完整支线后续扩充。'
+chapters[6].opening[2].text = '先与萧鼎接取救援，读青鳞线索，清除后巷守卫并按E解救团员。巷门打开后寻找水井旁的第二人；已解救节点保存，回报萧鼎后开启城外试炼。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

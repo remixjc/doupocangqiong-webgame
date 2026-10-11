@@ -68,7 +68,7 @@ describe('完整主线真实规则战斗回放', () => {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === 1 && p.stage >= 2 && p.stage <= 4 && Math.abs(marker - certificationTargets[p.stage - 2]) < .08) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
-          }
+          } else if (e.kind === 'rescue' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
         },
       })
       let path: Vec[] = [], previousTarget: Vec = { x: -999, y: -999 }, frame = 0
@@ -86,7 +86,7 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (event.kind === 'cave' && ep.stage === 3) || (event.kind === 'certification' && ep.stage === 5) ? event.npc
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue'].includes(event.kind) && ep.stage === 3) || (event.kind === 'certification' && ep.stage === 5) ? event.npc
             : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : event.kind === 'certification' ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
           if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
         }

@@ -111,7 +111,7 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
       }
     }
-    if (style === 'courtyard' || style === 'market' || style === 'guild') {
+    if (style === 'courtyard' || style === 'market' || style === 'guild' || style === 'desert-town') {
       bg.lineStyle(1, c[2], .08)
       for (let x = 40; x < WIDTH; x += 40) bg.lineBetween(x, 40, x, HEIGHT - 40)
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
@@ -139,6 +139,9 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xc5b991, .25)
         bg.lineBetween(o.x + o.w * .25, o.y + 8, o.x + o.w * .6, o.y + o.h * .45)
         bg.lineBetween(o.x + o.w * .6, o.y + o.h * .45, o.x + o.w * .4, o.y + o.h - 8)
+      } else if (style === 'desert-town') {
+        bg.fillStyle(0xc5ab7e, .5); bg.fillRect(o.x - 6, o.y - 8, o.w + 12, 22)
+        bg.fillStyle(0x413c32); bg.fillRoundedRect(o.x + o.w / 2 - 17, o.y + 28, 34, 45, 10)
       } else if (style === 'market') {
         bg.fillStyle(0x987b56); bg.fillRect(o.x, o.y, o.w, 30)
         for (let x = o.x; x < o.x + o.w; x += 24) {
@@ -268,6 +271,15 @@ export default class AdventureScene extends Phaser.Scene {
           g.fillStyle(0x8c7556); g.fillRoundedRect(point.x - 28, point.y - 20, 56, 45, 12)
           g.lineStyle(4, 0xd1b382); g.strokeEllipse(point.x, point.y - 20, 56, 18)
           g.fillStyle(progress.stage >= 2 && progress.stage <= 4 ? 0xf0ac68 : 0xad8355); g.fillTriangle(point.x - 18, point.y + 32, point.x, point.y + 3, point.x + 18, point.y + 32)
+        }
+        if (event.kind === 'rescue' && index > 0) {
+          const released = progress.started && progress.stage > index
+          this.actor(g, point.x, point.y, released ? 0x729d96 : 0x9c8559, .85, false)
+          if (!released) {
+            g.lineStyle(3, w.guardsRemaining(event.id, index) > 0 ? 0xbe8163 : 0xaab28c)
+            g.strokeRect(point.x - 27, point.y - 45, 54, 66)
+            for (let x = -15; x < 25; x += 15) g.lineBetween(point.x + x, point.y - 45, point.x + x, point.y + 21)
+          }
         }
         g.lineStyle(active ? 4 : 1, active ? 0xf0d498 : 0x9da688, .8); g.strokeCircle(point.x, point.y, active ? 34 : 24)
       })
