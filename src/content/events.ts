@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -166,9 +166,9 @@ export const chapterEvents: Record<number, ChapterEvent> = {
     title: '天墓 · 三层限时探索', speaker: '薰儿', npc: { x: 280, y: 625 },
     stages: ['前往天墓入口牌启动探索', '45秒内清理外层守卫并读取外层路标',
       '40秒内清理中层两名守卫并读取中层路标', '35秒内清理深层两名守卫并读取深层路标',
-      '三层路线已确认，返回薰儿处报告', '探索记录已登记，前往天墓深处试炼'],
+      '三层路线已确认，返回薰儿处报告', '探索记录已登记，前往萧玄处接取传承稳固'],
     introduction: '进入天墓先记下退路。三层分别45、40、35秒，清理对应守卫后到路标按E确认；读取路标即开始下一层。超时本层不能推进，可回来免费重试，已完成层保留。',
-    note: '三层时长、守卫与路标为原创探索改编，不等于原著天墓修炼时间。普通药草不能代交记录。死亡/刷新/休整从最近完成路标重建当前层及其未完成守卫；报告不发资源，完整传承机制继续后续批次。',
+    note: '三层时长、守卫与路标为原创探索改编，不等于原著天墓修炼时间。普通药草不能代交记录。死亡/刷新/休整从最近完成路标重建当前层及其未完成守卫；报告不发资源，随后接取传承稳固。',
     checkpoints: [
       { x: 330, y: 220, label: '天墓入口牌', text: '外层45秒开始。清理外层守卫，到外层石阶读取路标。' },
       { x: 630, y: 390, label: '外层石阶', guards: ['tomb-outer-brute'], text: '外层路标已记录，中层40秒开始。' },
@@ -362,9 +362,19 @@ const danFinalEvents: ChapterEvent[] = [{
     { x: 1080, y: 300, label: '丹雷台', text: '丹雷生存开始。区域内累计18秒，区外暂停；落雷会锁定脚下，及时闪避。' },
   ],
 }]
+export const heritageTargets = [.25, .55, .75]
+const heritageEvents: ChapterEvent[] = [{
+  id: 'heaven-tomb-clan-inheritance', kind: 'inheritance', introducedVersion: '0.10.2', requires: ['heaven-tomb-timed-layers'],
+  title: '萧族 · 传承稳固', speaker: '萧玄', npc: { x: 980, y: 520 },
+  stages: ['前往族史祭台开始心念稳固', '族史回望：心念25%', '血脉承接：心念55%', '责任凝定：心念75%',
+    '稳固通过，返回萧玄处报告', '传承记录已确认，前往离墓审核台'],
+  introduction: '走过天墓，也要看清族史与责任。到族史祭台依序锁定25%、55%、75%的心念，三步合计210分通过。失败免费重试，已有部分成绩可保存；完成后回来报告，再到离墓台确认。',
+  note: '心念指针、评分和三步名称为原创传承交互，不判定原著血脉品级、不模拟原著修炼岁月或复述传承原文。报告一次120积累，不发异火或材料；营地首通才结算章节奖励。',
+  checkpoints: [{ x: 1000, y: 680, label: '族史祭台', text: '族史回望25% → 血脉承接55% → 责任凝定75%。合计210分通过，免费重试。' }],
+}]
 export function eventsForChapter(id: number): ChapterEvent[] {
   const primary = eventForChapter(id)
-  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : [])]
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : [])]
 }
 export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
   return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)

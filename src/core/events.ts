@@ -1,4 +1,4 @@
-import { certificationTargets, danFinalTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
+import { certificationTargets, danFinalTargets, heritageTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' | 'restart' }
@@ -34,8 +34,8 @@ export function eventHint(state: GameState, eventId?: string): string {
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
-    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
-    attempts: event.kind === 'tournament' || event.kind === 'tomb' ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal'].includes(event.kind) ? 1 : 0,
+    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification', 'danfinal', 'inheritance'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
+    attempts: event.kind === 'tournament' || event.kind === 'tomb' ? 3 : ['stone', 'certification', 'lineage', 'expedition', 'danfinal', 'inheritance'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -118,7 +118,20 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'tomb' && action.type === 'restart' && p.stage >= 1 && p.stage <= 3) {
       p.attempts++; message = '当前层重新计时，已完成层保留，不扣材料。刷新/休整会重建未完成层守卫。'
     } else if (event.kind === 'tomb' && action.type === 'deliver' && p.stage === 4) {
-      p.stage = 5; message = '天墓探索登记完成，未发资源。前往天墓深处试炼，传承交互继续后续扩充。'
+      p.stage = 5; message = '天墓探索登记完成，未发资源。前往萧玄处接取传承稳固。'
+    } else if (event.kind === 'inheritance' && action.type === 'test' && p.stage === 0) {
+      p.stage = 1; p.score = 0; message = '族史祭台开始稳固。三步心念25 / 55 / 75%，合计210分通过。'
+    } else if (event.kind === 'inheritance' && action.type === 'pulse' && p.stage >= 1 && p.stage <= 3) {
+      if (action.stage !== p.stage || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1) return fail('心念输入已更新或无效。')
+      p.score += Math.max(0, Math.round(100 - Math.abs(action.marker - heritageTargets[p.stage - 1]) * 200)); p.stage++
+      message = `心念已记录 · 累计${p.score}/300分。`
+      if (p.stage === 4) {
+        p.attempts++
+        if (p.score < 210) { message = `本次${p.score}分，未达到210分，免费重试。`; p.stage = 0; p.score = 0 }
+        else message = '三步心念已稳固。返回萧玄处报告，成绩不判定血脉品级。'
+      }
+    } else if (event.kind === 'inheritance' && action.type === 'deliver' && p.stage === 4) {
+      next.xp += 120; p.stage = 5; message = '传承稳固已报告 · 120修炼积累。前往离墓台审核，再营地结算，不发异火或材料。'
     } else if (event.kind === 'prison' && action.type === 'seal' && action.index === p.stage && p.stage >= 0 && p.stage <= 3) {
       message = event.checkpoints![p.stage].text; p.stage++
     } else if (event.kind === 'prison' && action.type === 'deliver' && p.stage === 4) {

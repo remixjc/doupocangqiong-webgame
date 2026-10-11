@@ -43,7 +43,7 @@ describe('C8a-2 天墓限时分层探索', () => {
       expect(act(s, { type: 'seal', index })).toBe(s)
     }
     expect(eventProgress(s)).toMatchObject({ stage: 4, attempts: 3 })
-    s = act(s, { type: 'deliver' }); expect(eventDone(s)).toBe(true)
+    s = act(s, { type: 'deliver' }); expect(eventDone(s, 23, 'heaven-tomb-timed-layers')).toBe(true)
     expect(act(s, { type: 'deliver' })).toBe(s); expect(s.inventory).toEqual(before.inventory)
     expect(s.gold).toBe(before.gold); expect(s.xp).toBe(before.xp)
   })

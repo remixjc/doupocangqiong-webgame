@@ -41,7 +41,7 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
     (!definition && p.started) || (!['trade', 'auction'].includes(definition?.kind ?? '') && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
-    (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt', 'lineage', 'expedition', 'danfinal', 'tomb'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
+    (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt', 'lineage', 'expedition', 'danfinal', 'inheritance', 'tomb'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
     (!['competition', 'alliance'].includes(definition?.kind ?? '') && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
   if (definition?.kind === 'alliance' && (p.stage <= 1 ? p.choice !== 'none' : p.choice === 'none'))
     throw new Error('炎盟筹备方案记录无效。')
@@ -51,9 +51,9 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if (definition?.kind === 'expedition' && (p.stage === 0 ? p.score !== 0 || p.attempts !== 0
     : p.attempts < 1 || (p.stage === 1 ? p.score > 6 : p.score !== 7)))
     throw new Error('丹界指定药材记录无效。')
-  if (definition?.kind === 'danfinal' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100
+  if (['danfinal', 'inheritance'].includes(definition?.kind ?? '') && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100
     : p.stage === 3 ? p.score > 200 : p.score < 210 || p.attempts < 1))
-    throw new Error('丹会成丹成绩无效。')
+    throw new Error(definition?.kind === 'inheritance' ? '传承心念成绩无效。' : '丹会成丹成绩无效。')
   if (definition?.kind === 'tomb' && (p.score !== 0 || (p.stage === 0 ? p.attempts !== 0 : p.attempts < Math.min(p.stage, 3))))
     throw new Error('天墓探索记录无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))

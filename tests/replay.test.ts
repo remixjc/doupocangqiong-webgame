@@ -4,7 +4,7 @@ import { blankProgress, initialState } from '../src/core/model'
 import { chapterReady, craft, finishChapter, skillUnlocked, registerBossVictory } from '../src/core/rules'
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
-import { certificationTargets, danFinalTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
+import { certificationTargets, danFinalTargets, heritageTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
 import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 import { validateState } from '../src/core/save'
 
@@ -83,6 +83,13 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'prison' && p.stage === 4 && world.runtime().prisonEscort?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'tomb' && p.stage >= 1 && p.stage <= 3 && world.runtime().tomb?.failed) state = advanceEvent(state, { type: 'restart', eventId }).state
           else if (e.kind === 'tomb' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'inheritance') {
+            const marker = pulseMarker(world.elapsed * 1000)
+            if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
+            else if (checkpoint === 0 && p.stage >= 1 && p.stage <= 3 && Math.abs(marker - heritageTargets[p.stage - 1]) < .08)
+              state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
+            else if (checkpoint === undefined && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          }
           else if (e.kind === 'danfinal') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
@@ -192,6 +199,7 @@ describe('完整主线真实规则战斗回放', () => {
             const threat = !world.runtime().tomb?.failed && living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
             if (threat) target = threat
           }
+          if (event.kind === 'inheritance') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![0]
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))

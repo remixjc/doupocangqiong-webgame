@@ -374,17 +374,17 @@ export const dantaAndRescueMaps: Record<number, MapDefinition> = {
 }
 export const ancientMaps: Record<number, MapDefinition> = {
   23: {
-    id: 'ancient-clan-heaven-tomb', style: 'tomb', gateLabel: '天墓深处', tombDurations: [45, 40, 35],
+    id: 'ancient-clan-heaven-tomb', style: 'tomb', gateLabel: '离墓审核', trialMode: 'assessment', tombDurations: [45, 40, 35],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1140, y: 160 }, bossSpawn: { x: 1070, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 430, y: 100, w: 140, h: 160 }, { x: 680, y: 550, w: 140, h: 130 },
       { x: 900, y: 90, w: 100, h: 130 }, { x: 60, y: 310, w: 120, h: 100 }],
-    herbs: [{ x: 310, y: 440 }, { x: 640, y: 300 }, { x: 1010, y: 640 }, { x: 280, y: 170 }, { x: 620, y: 660 }, { x: 1120, y: 420 }],
+    herbs: [{ x: 310, y: 440 }, { x: 640, y: 300 }, { x: 920, y: 730 }, { x: 280, y: 170 }, { x: 620, y: 660 }, { x: 1120, y: 420 }],
     enemies: [{ id: 'tomb-outer-brute', type: 'brute', x: 620, y: 410 }, { id: 'tomb-middle-hunter', type: 'hunter', x: 850, y: 390 },
       { id: 'tomb-middle-mage', type: 'mage', x: 810, y: 260 }, { id: 'tomb-deep-hunter', type: 'hunter', x: 1030, y: 580 },
       { id: 'tomb-deep-mage', type: 'mage', x: 1150, y: 320 }],
     paths: [[{ x: 150, y: 650 }, { x: 310, y: 430 }, { x: 630, y: 390 }, { x: 830, y: 400 }, { x: 1090, y: 380 }, { x: 1140, y: 160 }],
       [{ x: 630, y: 390 }, { x: 610, y: 660 }]],
-    landmarks: [{ x: 680, y: 60, label: '古族之行 · 天墓石径' }, { x: 650, y: 755, label: '入口 → 外层45秒 → 中层40秒 → 深层35秒 → 报告' }],
+    landmarks: [{ x: 680, y: 60, label: '古族之行 · 天墓石径' }, { x: 650, y: 755, label: '三层限时探索 → 族史心念稳固 → 离墓审核' }],
   },
   24: {
     id: 'wilderness-bodhi-illusion-grove', style: 'bodhi', gateLabel: '菩提树前',
