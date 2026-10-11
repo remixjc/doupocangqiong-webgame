@@ -7,7 +7,7 @@ import { gameStore } from '../core/store'
 import './early-walk.css'
 
 const stations = { entrance: '拍卖室入口', seat: '偏僻座位', stage: '主持台' } as const
-export default function EarlyAuction({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyAuction({ state, position, onBack, onSettle }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onSettle?: () => void }) {
   const task = state.earlyTraining.auction, scene = auctionScenes[task.stage]
   const bid = auctionBidAt(task.stage), sold = task.stage >= 6
   const [station, setStation] = useState<AuctionStation>('entrance')
@@ -35,13 +35,14 @@ export default function EarlyAuction({ state, position, onBack }: { state: GameS
     <div className="early-walk-controls" aria-label="拍卖观察位置">
       {(Object.keys(stations) as AuctionStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
     </div>
-    <p role="status">首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶拍卖方保管 · 尚未结算</p>
+    <p role="status">首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶拍卖方保管 · {state.earlyTraining.settlement.net ? '净款已收' : '尚未结算'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="首次拍卖步骤">
       <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
       <button className="primary" onClick={() => submitEarlyAuction(gameStore, position, station,
         { step: task.stage, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>药液成交，等待办理寄售款。</h3><p>萧战买得同瓶，药液仍由拍卖方暂存；萧炎的寄售收款、贵宾卡与后续同瓶交付接着办理。</p></section>}
+      : <section className="bond-summary"><h3>药液成交，接续寄售手续。</h3><p>萧战买得同瓶，药液仍由拍卖方暂存。{state.earlyTraining.settlement.net ? '寄售净款已收到，后续同瓶交付另行接续。' : '先观察功法卷成交，再回鉴定室办理凭据与收款。'}</p>
+        {onSettle && <button className="primary" onClick={onSettle}>接续寄售手续 · 回鉴定室</button>}</section>}
     <p className="muted">这里的报价是故事金币金额，只记录其他人的竞价。观察与落槌不增减行囊金币或备料余额，不获得功法卷或新技能。</p>
     <button className="secondary" onClick={onBack}>暂离拍卖室 · 保留旁观断点</button>
   </>
