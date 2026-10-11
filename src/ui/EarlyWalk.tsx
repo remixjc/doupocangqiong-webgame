@@ -7,20 +7,25 @@ import EarlyWalkInteraction from './EarlyWalkInteraction'
 import EarlyRoom from './EarlyRoom'
 import { earlyHallBlock, submitEarlyHallEntry } from '../core/early-hall'
 import { gameStore } from '../core/store'
+import { earlyTeachingRoomBlock } from '../core/early-teaching'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
 const EarlyHall = lazy(() => loadSceneModule(() => import('./EarlyHall')))
+const EarlyTeaching = lazy(() => loadSceneModule(() => import('./EarlyTeaching')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
   const [reading, setReading] = useState<string>()
   const [indoors, setIndoors] = useState(false)
   const [hall, setHall] = useState(false)
+  const [teaching, setTeaching] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
   const returningHall = useRef(false)
+  const teachingEntry = useRef<HTMLButtonElement>(null)
+  const returningTeaching = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -31,6 +36,14 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!hall && returningHall.current) { returningHall.current = false; hallEntry.current?.focus() }
   }, [hall])
+  useEffect(() => {
+    if (!teaching && returningTeaching.current) { returningTeaching.current = false; teachingEntry.current?.focus() }
+  }, [teaching])
+  function openTeaching() {
+    const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setHall(false); setTeaching(true)
+  }
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -40,7 +53,10 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
+  if (teaching) return <Suspense fallback={<p role="status">正在打开老师传技房间……</p>}><EarlyTeaching state={state} position={position}
+    onBack={() => { returningTeaching.current = true; setTeaching(false) }} /></Suspense>
   if (hall) return <Suspense fallback={<p role="status">正在展开斗技堂……</p>}><EarlyHall state={state}
+    onTeach={openTeaching}
     onBack={() => { returningHall.current = true; setHall(false) }} /></Suspense>
   if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={() => { returning.current = true; setIndoors(false) }} />
   return <>
@@ -89,6 +105,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyHallBlock(state) && <button ref={hallEntry} className="secondary" onClick={() => {
         if (submitEarlyHallEntry(gameStore, position)) setHall(true)
       }}>接续往事 · 前往斗技堂</button>}
+      {place.id === 'teacher' && !earlyTeachingRoomBlock(state, position) && <button ref={teachingEntry} className="primary" onClick={openTeaching}>回房请药老正式传技</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>

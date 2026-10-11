@@ -9,6 +9,7 @@ export interface EarlyTrainingState {
   bracelet: { stage: number; gift: 'none' | 'xuner' }
   growth: { stage: number }
   hall: { stage: number; scroll: 'none' | 'reading-first' | 'selected-second' | 'borrowed-second' }
+  teaching: { stage: number }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -21,6 +22,7 @@ export const EARLY_TRAINING_VERSION = '0.15.0'
 export const EARLY_GROWTH_VERSION = '0.16.7'
 export const EARLY_HALL_VERSION = '0.17.0'
 export const EARLY_HALL_SCROLL_VERSION = '0.17.1'
+export const EARLY_TEACHING_VERSION = '0.17.2'
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
@@ -29,9 +31,9 @@ export function blankEarlyTraining(): EarlyTrainingState {
     market: { stage: 0, blackIron: 0 },
     liquid: { stage: 0, water: false, ready: false },
     practice: { phase: 0, pulse: 0, score: 0, attempts: 0 },
-    bracelet: { stage: 0, gift: 'none' }, growth: { stage: 0 }, hall: { stage: 0, scroll: 'none' } }
+    bracelet: { stage: 0, gift: 'none' }, growth: { stage: 0 }, hall: { stage: 0, scroll: 'none' }, teaching: { stage: 0 } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -96,5 +98,8 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     : hall.stage >= 2 && hall.stage <= 5 ? 'reading-first' : 'none'
   if (scroll !== expectedScroll) return invalid()
   result.hall = { stage: hall.stage, scroll: scroll as EarlyTrainingState['hall']['scroll'] }
+  const teaching = data.teaching === undefined && legacyTeaching ? result.teaching : object(data.teaching)
+  if (!integer(teaching.stage, 5) || teaching.stage > 0 && hall.stage !== 9) return invalid()
+  result.teaching = { stage: teaching.stage }
   return result
 }

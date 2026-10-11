@@ -6,7 +6,7 @@ import { gameStore } from '../core/store'
 import type { EarlyWalkDirection } from '../core/early-walk'
 import './early-walk.css'
 
-export default function EarlyHall({ state, onBack }: { state: GameState; onBack: () => void }) {
+export default function EarlyHall({ state, onBack, onTeach }: { state: GameState; onBack: () => void; onTeach?: () => void }) {
   const [position, setPosition] = useState({ ...earlyHallStart })
   const [reading, setReading] = useState<string>()
   const field = useRef<SVGSVGElement>(null)
@@ -79,7 +79,8 @@ export default function EarlyHall({ state, onBack }: { state: GameState; onBack:
       {scene?.place === place.id && <><h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
         <button className="primary" onClick={() => submitEarlyHall(gameStore, position, { step: scene.stage, operation: scene.operation })}>{scene.action}</button></>}
     </section>}
-    {task.stage === 9 && <section className="bond-summary"><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授仍须在回房后继续，不由本次借阅代签。</p></section>}
+    {task.stage === 9 && <section className="bond-summary"><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>
+      {onTeach && <button className="primary" onClick={onTeach}>接续回房 · 请药老正式传技</button>}</section>}
     <p className="muted">动作、分段图形和对白为原创压缩改编。查看不推进记录；确认当前步骤才保存，不改变主线战斗技能、金币或境界。</p>
     <button className="secondary" onClick={onBack}>{task.stage === 9 ? '离开斗技堂 · 回准备路线' : '暂回准备路线 · 保留堂内断点'}</button>
   </>

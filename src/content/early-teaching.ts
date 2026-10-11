@@ -1,0 +1,17 @@
+export const earlyTeachingScenes = [
+  { step: 0, station: 'table', operation: 'review', title: '借卷与眼前的准备', speaker: '药老',
+    text: '卷册已经放在桌上。药老翻看过后，询问萧炎为什么借来这卷；萧炎说起成年仪式前的准备。',
+    action: '请老师查看借卷 · 保管记录不变' },
+  { step: 1, station: 'teacher', operation: 'ask', title: '向老师请教', speaker: '萧炎',
+    text: '只靠已有的修炼，还不足以应对将来的交手。萧炎请老师传授斗技，药老答应教一门近身技法。',
+    action: '请教近身斗技 · 八极崩' },
+  { step: 2, station: 'teacher', operation: 'focus', title: '凝神接受传授', speaker: '药老',
+    text: '萧炎闭目凝神，药老点向他的额头，将八极崩的技法知识传入。收到知识，仍不等于已能在实战中运用。',
+    action: '凝神记下技法 · 不重复解锁战斗技能' },
+  { step: 3, station: 'teacher', operation: 'limits', title: '身体基础的要求', speaker: '药老',
+    text: '这门近身技法需要身体基础。萧炎想立刻尝试，药老提醒他先做准备，再在指导下训练。',
+    action: '记下身体基础要求 · 暂不强行出招' },
+  { step: 4, station: 'teacher', operation: 'finish', title: '接下来仍要训练', speaker: '往事手札',
+    text: '借卷仍由萧炎保管，老师传授已记录。后山监督训练与回室恢复将另行继续，不能靠翻阅或传授记录直接完成。',
+    action: '归档正式传技 · 留待监督训练' },
+] as const
