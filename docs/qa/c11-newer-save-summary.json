@@ -1,0 +1,70 @@
+{
+  "checkedOn": "2026-10-12",
+  "batch": "C11f-3c",
+  "currentWorkingCandidate": {
+    "contentVersion": "0.37.3",
+    "baseSha": "009501a1a0c4436c0786145e58ec87274472da98",
+    "sourceHadUncommittedRepair": true
+  },
+  "lowerFixture": {
+    "purpose": "C11f-3c protected summary classification fixture; not historical release",
+    "sourceSha": "009501a1a0c4436c0786145e58ec87274472da98",
+    "contentVersion": "0.37.2",
+    "changes": [
+      "src/core/save-preview.ts copied from current working repair",
+      "HTML title and visible test marker"
+    ],
+    "savePreviewSha256": "f32e75fba5841e5e2b500bbb5e6559d0a0ab7430b7ca6b494b980d166dd0f118",
+    "fixtureRoot": ".git/task-compat-summary-009501a",
+    "modifiesBrowserState": false
+  },
+  "sourceFullSave": {
+    "generatedByPreviousNormalBrowserPlay": true,
+    "contentVersion": "0.37.1",
+    "chapter": 28,
+    "clears": 28,
+    "partnerPages": 24
+  },
+  "browser": {
+    "sourceImportedThroughNativeFileChooser": true,
+    "confirmsImportInUI": true,
+    "newerPromptCount": 3,
+    "newerAutoManualAndBackupClassification": true,
+    "inaccurateDamagePromptAbsent": true,
+    "futureChapterTitleAndClearCountAbsent": true,
+    "futurePartnerCompletionCountAbsent": true,
+    "newerManual3Rejected": true,
+    "compatibleManual2CannotOverwriteFutureAuto": true,
+    "retryBlocked": true,
+    "fullAutomaticSummaryAndTimeRestored": true,
+    "fullManual3SummaryAndTimeRestored": true,
+    "originalManual1And2SummaryAndTimeUnchanged": true,
+    "terminalChapterEntered": true,
+    "canvasCount": 1,
+    "partnerJournal": "可见记录 24 / 24 · 当前可做 0 页",
+    "consoleErrors": []
+  },
+  "stateComparison": {
+    "migratedOldFullStateOnlyVersionChanged": true,
+    "restorationCompleteStateMatched": true,
+    "finalCompleteStateMatched": true,
+    "canonicalStateSha256": "96df3a177a7376a88b2a984fb34c8b3fac76734527dedccaa077020652867659",
+    "gold": 19506,
+    "xp": 15582,
+    "herb": 5,
+    "crystal": 89,
+    "heal": 17,
+    "mana": 16,
+    "fireEnergy": 4,
+    "flame": "pure",
+    "exchangeStage": 8,
+    "aidStage": 10
+  },
+  "publicDeployment": false,
+  "historicalBinaryRollback": false,
+  "screenshots": [
+    "c11-newer-summary-auto.png",
+    "c11-newer-summary-manual-backup.png",
+    "c11-newer-summary-full-restored.png"
+  ]
+}

@@ -1,7 +1,7 @@
 import { chapterById } from '../content/chapters'
 import type { GameState, Settings } from './model'
 import { bondSaveSummary } from './bonds'
-import { parseSave, type SaveRecord } from './save'
+import { NewerSaveVersionError, parseSave, type SaveRecord } from './save'
 
 export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '重修记录 · 当前范围封存'
@@ -190,7 +190,11 @@ export function earlyBraceletSaveSummary(saved: GameState, viewing: Settings): s
 
 export function saveRecordSummary(entry: SaveRecord, viewing: Settings): string {
   try { return savePreviewSummary(parseSave(entry.text), viewing) }
-  catch { return '存档异常，可尝试恢复上一份自动备份' }
+  catch (error) {
+    return error instanceof NewerSaveVersionError
+      ? '存档来自较新版本，请更新游戏后读取；原有记录保持。'
+      : '存档异常，可尝试恢复上一份自动备份'
+  }
 }
 
 export function earlyEighthTrainingSaveSummary(saved: GameState, viewing: Settings): string {
