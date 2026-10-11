@@ -2,20 +2,48 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
 
+const phaserDefines = {
+  global: 'globalThis',
+  'typeof CANVAS_RENDERER': 'true',
+  'typeof WEBGL_RENDERER': 'true',
+  'typeof WEBGL_DEBUG': 'false',
+  'typeof PLUGIN_CAMERA3D': 'false',
+  'typeof PLUGIN_FBINSTANT': 'false',
+  'typeof FEATURE_SOUND': 'false',
+}
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), {
+    name: 'verify-phaser-source',
+    apply: 'build',
+    generateBundle() {
+      const modules = [...this.getModuleIds()].map(id => id.replaceAll('\\', '/'))
+        .filter(id => id.includes('/phaser/src/'))
+      const required = ['core/Game.js', 'scene/Scene.js', 'gameobjects/graphics/Graphics.js',
+        'gameobjects/text/Text.js', 'gameobjects/container/Container.js', 'curves/path/Path.js',
+        'renderer/canvas/CanvasRenderer.js', 'renderer/webgl/WebGLRenderer.js']
+      const missing = required.filter(file => !modules.some(id => id.endsWith(`/phaser/src/${file}`)))
+      const excluded = modules.filter(id => /\/phaser\/src\/(physics|sound|tilemaps)\//.test(id))
+      if (missing.length || excluded.length) this.error(`Phaser source contract failed: ${JSON.stringify({ missing, excluded })}`)
+      this.emitFile({ type: 'asset', fileName: 'engine-module-report.json',
+        source: JSON.stringify({ required, excluded: [], moduleCount: modules.length,
+          modules: modules.map(id => id.slice(id.lastIndexOf('/phaser/src/') + 1)).sort() }, null, 2) + '\n' })
+    },
+  }],
   base: './',
+  define: phaserDefines,
   resolve: {
-    // CombatWorld owns collision and movement; Phaser's Matter module is unused.
-    // Keep the official renderer/input bundle and the same locked engine version.
-    alias: [{ find: /^phaser$/, replacement: fileURLToPath(new URL('./node_modules/phaser/dist/phaser-arcade-physics.js', import.meta.url)) }],
+    // CombatWorld owns physics; audio uses our Web Audio lifecycle.
+    // The source entry retains Phaser core plus Container and Curves.Path.
+    alias: [{ find: /^phaser$/, replacement: fileURLToPath(new URL('./src/game/phaser-entry.cjs', import.meta.url)) }],
   },
+  optimizeDeps: { include: ['phaser'], rolldownOptions: { transform: { define: phaserDefines } } },
   build: {
     manifest: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('/phaser/')) return 'phaser'
+          if (id.includes('/phaser/') || id.endsWith('/phaser-entry.cjs')) return 'phaser'
         },
       },
     },
