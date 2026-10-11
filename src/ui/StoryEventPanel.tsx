@@ -24,7 +24,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -89,6 +89,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       <p>本次猎捕取得 {progress.score} 火能 · 当前持有 {state.fireEnergy}</p>
       {progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记磐门资格 · 消耗2火能 / 30积累</button>}
     </>}
+    {event.kind === 'tower' && progress.started && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>向苏千报告 · 准备塔底危机</button>}
     {event.kind === 'flame' && progress.started && <>
       {checkpoint === 1 && progress.stage === 1 && <button className="primary" onClick={() => { if (act({ type: 'test' })) close() }}>开始三段控火 · 返回火域</button>}
       {checkpoint === undefined && progress.stage === 5 && <button className="primary" onClick={() => act({ type: 'deliver' })}>向药老确认控火准备</button>}
@@ -114,6 +115,6 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === 1 && progress.stage === 2 && <button className="primary" onClick={() => act({ type: 'resolve-bid' })}>查看对手回应 · 结算本次出价</button>}
       {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记交易情报 · 30积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

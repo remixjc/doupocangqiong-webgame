@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -176,6 +176,20 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 500, y: 520, label: '猎捕集合点', text: '队伍已集合。先去西路清理守卫。' },
       { x: 740, y: 350, label: '西路火能台', text: '西路火能已登记 · 火能+2。保护队友继续东路。', guards: ['hunt-west-brute'] },
       { x: 1050, y: 500, label: '东路火能台', text: '东路火能已登记 · 火能+2。带队友返回胡嘉处。', guards: ['hunt-east-mage', 'hunt-east-hunter'] },
+    ],
+  },
+  15: {
+    id: 'blazing-tower-descent', kind: 'tower', introducedVersion: '0.7.3',
+    title: '火塔 · 三层镇炎', speaker: '苏千', npc: { x: 280, y: 625 },
+    stages: ['前往塔门石，按E确认下塔退路', '第一层：在阵眼内镇炎8秒，避开追踪落焰', '第二层：在阵眼内镇炎10秒，避开交替双焰',
+      '第三层：在阵眼内镇炎12秒，避开心炎回涌并及时镇心', '三层已稳定，返回苏千处报告', '塔底退路已登记，准备面对韩枫投影'],
+    introduction: '先确认塔门退路，再按一、二、三层阵眼逐层镇炎。阵眼内才累计时间，镇心石附近可以降热但不计时；热量满格会失控。完成层数保留，失败可从最近完成的台阶重试。最后回来报告，再去塔底挑战。',
+    note: '三层阵眼、镇心石、热量和韩枫投影是压缩主线的原创玩法，具体原著层数与时序待校订。镇炎与报告不发异火或材料；陨落心炎只在第十五章首次正式结算时取得。重试不消耗金币或火能。',
+    checkpoints: [
+      { x: 500, y: 650, label: '塔门退路', text: '退路已确认，向第一层阵眼推进。' },
+      { x: 700, y: 520, label: '一层阵眼', text: '在一层阵眼内镇炎8秒；青色镇心石可降热。' },
+      { x: 900, y: 380, label: '二层阵眼', text: '在二层阵眼内镇炎10秒，躲开交替双焰。' },
+      { x: 1080, y: 220, label: '三层阵眼', text: '在三层阵眼内镇炎12秒；热量上涨更快，及时退到镇心石。' },
     ],
   },
 }

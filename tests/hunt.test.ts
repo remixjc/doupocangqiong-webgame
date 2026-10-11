@@ -10,7 +10,7 @@ import { CombatWorld } from '../src/game/combat'
 
 function academy() {
   const s = initialState(); s.chapter = 14; s.completed = Array.from({ length: 13 }, (_, n) => n + 1)
-  for (const n of s.completed) s.progress[n] = { ...blankProgress(n), herbs: 3, kills: 3, brews: n === 6 ? 1 : n === 9 ? 2 : 0,
+  for (const n of s.completed) s.progress[n] = { ...blankProgress(n), herbs: 3, kills: n >= 12 ? 4 : 3, brews: n === 6 ? 1 : n === 9 ? 2 : 0,
     boss: true, events: migrateLegacyEvents(n, true) }
   s.progress[14] = blankProgress(14); s.settings.difficulty = 'story'; s.armorUpgrade = 20; s.attackUpgrade = 8
   return s
@@ -138,7 +138,7 @@ describe('C5c 火能猎捕与强榜', () => {
     const reload = t.reload(), next = challenge(reload); defeat(reload, next.id)
     expect(t.practiceWins()).toBe(2); expect(t.state().fireEnergy).toBe(before.fireEnergy + 2)
   })
-  it.each([1, 2, 3])('schema%i旧内院按3草3战迁移，不补火能和登记奖', schema => {
+  it.each([1, 2, 3])('schema%i旧内院按3草4战迁移，不补火能和登记奖', schema => {
     const old = JSON.parse(JSON.stringify(academy())); old.schemaVersion = schema; old.contentVersion = schema === 1 ? '0.1.0' : schema === 2 ? '0.2.0' : '0.7.1'
     delete old.fireEnergy; old.progress[14].events = {}; old.progress[14].herbs = 3; old.progress[14].kills = 2
     if (schema < 3) for (const [key, p] of Object.entries(old.progress) as [string, Record<string, unknown>][]) {
@@ -149,6 +149,8 @@ describe('C5c 火能猎捕与强榜', () => {
     old.completed.push(14); old.progress[14].boss = true
     expect(() => validateState(old)).toThrow('条件不完整')
     old.progress[14].kills = 3
+    expect(() => validateState(old)).toThrow('条件不完整')
+    old.progress[14].kills = 4
     const migrated = validateState(old)
     expect(eventProgress(migrated).huntOutcome).toBe('legacy'); expect(migrated.fireEnergy).toBe(0)
     expect(migrated.xp).toBe(old.xp); expect(migrated.gold).toBe(old.gold)

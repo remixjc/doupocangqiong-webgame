@@ -83,7 +83,7 @@ export default class AdventureScene extends Phaser.Scene {
   }
   private drawEnvironment() {
     const { camp, gate, obstacles, style } = this.world.map
-    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : style === 'fire-cavern' ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
+    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : ['fire-cavern', 'fire-tower'].includes(style) ? [0x3a3030, 0x78614e, 0xd39b74] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
     // All art is native vector drawing, seeded by chapter for repeatable maps.
@@ -263,6 +263,20 @@ export default class AdventureScene extends Phaser.Scene {
       this.actor(g, w.huntTeam.x, w.huntTeam.y, w.huntTeam.hp > 0 ? 0x929b75 : 0x775c58, .95, false)
       g.fillStyle(0x0b1718); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50, 6)
       g.fillStyle(0xb8c58d); g.fillRect(w.huntTeam.x - 25, w.huntTeam.y - 52, 50 * w.huntTeam.hp / w.huntTeam.maxHp, 6)
+    }
+    if (w.map.towerFloors) {
+      const stage = eventProgress(gameStore.getSnapshot().state, w.chapter.id).stage
+      for (const [index, floor] of w.map.towerFloors.entries()) {
+        const active = w.towerRun?.phase === index + 1, passed = stage > index + 1
+        g.fillStyle(passed ? 0x85c9b1 : active ? 0xd08259 : 0x9b7463, .08); g.fillCircle(floor.center.x, floor.center.y, floor.radius)
+        g.lineStyle(active ? 3 : 1, passed ? 0x85c9b1 : 0xdaab80, .6); g.strokeCircle(floor.center.x, floor.center.y, floor.radius)
+        g.fillStyle(0x82cdb5, .13); g.fillCircle(floor.cooling.x, floor.cooling.y, 50)
+        g.lineStyle(2, 0x8bdcc4, .6); g.strokeCircle(floor.cooling.x, floor.cooling.y, 50)
+      }
+      for (const warning of w.towerRun?.warnings ?? []) {
+        g.fillStyle(0xda805d, .16); g.fillCircle(warning.x, warning.y, warning.radius)
+        g.lineStyle(3, 0xf2ac87, .8); g.strokeCircle(warning.x, warning.y, warning.radius)
+      }
     }
     if (w.map.heatZone) {
       const z = w.map.heatZone

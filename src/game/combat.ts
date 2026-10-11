@@ -54,6 +54,7 @@ export class CombatWorld {
   escapeRun?: EscapeRun
   squad?: SquadRun
   huntTeam?: EscortRun
+  towerRun?: FlameRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -84,6 +85,7 @@ export class CombatWorld {
     this.syncEscapeRun()
     this.syncSquad()
     this.syncHuntTeam()
+    this.syncTower()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -96,6 +98,61 @@ export class CombatWorld {
     const huntProgress = huntEvent && eventProgress(cb.state(), chapter.id, huntEvent.id)
     if (huntEvent && huntProgress?.started && huntProgress.stage >= 1 && huntProgress.stage <= 3)
       Object.assign(this.player, huntEvent.checkpoints![huntProgress.stage - 1])
+    const towerEvent = eventsForChapter(chapter.id).find(e => e.kind === 'tower')
+    const towerProgress = towerEvent && eventProgress(cb.state(), chapter.id, towerEvent.id)
+    if (towerEvent && towerProgress?.started && towerProgress.stage >= 1 && towerProgress.stage <= 3)
+      Object.assign(this.player, towerEvent.checkpoints![towerProgress.stage - 1])
+  }
+  private syncTower() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'tower'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage < 1 || p.stage > 3) this.towerRun = undefined
+    else if (!this.towerRun || this.towerRun.phase !== p.stage)
+      this.towerRun = { phase: p.stage, elapsed: 0, heat: 0, failed: false, nextWave: 0, warnings: [], wave: 0 }
+  }
+  towerCooling() {
+    const run = this.towerRun, floor = run && this.map.towerFloors?.[run.phase - 1]
+    return !!floor && distance(this.player, floor.cooling) < 50
+  }
+  inTowerFloor() {
+    const run = this.towerRun, floor = run && this.map.towerFloors?.[run.phase - 1]
+    return !!floor && distance(this.player, floor.center) < floor.radius && !this.towerCooling()
+  }
+  private stepTower(dt: number) {
+    this.syncTower()
+    const run = this.towerRun, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'tower')
+    if (!run || !e || run.failed) return
+    const floor = this.map.towerFloors![run.phase - 1], inZone = this.inTowerFloor()
+    run.heat = clamp(run.heat + dt * (this.towerCooling() ? -32 : inZone ? floor.pressure : -6), 0, 100)
+    if (inZone) run.elapsed += dt
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        if (distance(this.player, warning) < warning.radius + 16 && this.player.invincible <= 0) {
+          this.hurtPlayer(55); run.heat = clamp(run.heat + 15, 0, 100)
+        }
+        this.effect(warning.x, warning.y, warning.radius, 0xd18b76)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.heat >= 100) {
+      run.failed = true; run.warnings = []
+      this.cb.notify('心炎热量满格，本层失控。已完成楼层保留，休整后从安全台阶重试。')
+      return
+    }
+    if (run.elapsed >= floor.duration) {
+      this.cb.eventAction?.({ type: 'descend', stage: run.phase, eventId: e.id }); return
+    }
+    if (!inZone) return
+    run.nextWave -= dt
+    if (run.nextWave <= 0) {
+      run.wave++; run.nextWave = run.phase === 1 ? 2.6 : run.phase === 2 ? 2.2 : 1.9
+      if (run.phase === 2) run.warnings.push(...[-55, 55].map(x => ({ x: floor.center.x + x, y: floor.center.y + (run.wave % 2 ? 35 : -35), radius: 55, time: .9 })))
+      else {
+        run.warnings.push({ x: this.player.x, y: this.player.y, radius: run.phase === 1 ? 48 : 55, time: .9 })
+        if (run.phase === 3) run.warnings.push({ ...floor.center, radius: 55, time: 1.1 })
+      }
+    }
   }
   private syncHuntTeam() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'hunt'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
@@ -370,6 +427,7 @@ export class CombatWorld {
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
         if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
         else if (event.kind === 'hunt') this.huntCheckpoint(event.id, index)
+        else if (event.kind === 'tower' && index > 0) this.cb.notify('进入当前层阵眼累计镇炎时间；镇心石降热但不计时，E不能代替镇炎。')
         else if (event.kind === 'escape' && [1, 2].includes(index)) this.cb.notify('继续在当前掩体附近稳住脚步，躲避追击；两处按顺序通过后才开放出口。')
         else if (event.kind === 'escape' && index === 3) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
@@ -589,6 +647,7 @@ export class CombatWorld {
     this.stepEscape(dt)
     this.stepSquad(dt)
     this.stepHuntTeam(dt)
+    this.stepTower(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -691,6 +750,8 @@ export class CombatWorld {
       huntTeam: this.huntTeam ? { hp: this.huntTeam.hp, maxHp: this.huntTeam.maxHp, failed: this.huntTeam.hp <= 0, waiting: this.huntTeam.waiting,
         arrived: this.huntTeam.hp > 0 && this.huntTeam.stage === 3 && distance(this.huntTeam, eventForChapter(this.chapter.id)!.npc) < 65 } : undefined,
       ranking: boss?.ranking && boss.hp > 0 ? { phase: boss.ranking.phase, shield: boss.windup > 0, recovery: boss.ranking.recovery > 0, practice: boss.ranking.practice } : undefined,
+      tower: this.towerRun ? { floor: this.towerRun.phase, remaining: Math.max(0, Math.ceil(this.map.towerFloors![this.towerRun.phase - 1].duration - this.towerRun.elapsed)),
+        heat: Math.round(this.towerRun.heat), failed: this.towerRun.failed, inZone: this.inTowerFloor(), cooling: this.towerCooling() } : undefined,
       squad: this.squad ? { hp: this.squad.hp, maxHp: this.squad.maxHp, holding: this.squad.holding, failed: this.squad.hp <= 0,
         waiting: this.squad.waiting, remaining: Math.max(0, Math.ceil(3 - this.squad.channel)), channeling: this.channeling() } : undefined }
   }

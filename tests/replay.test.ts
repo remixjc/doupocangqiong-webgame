@@ -72,6 +72,7 @@ describe('完整主线真实规则战斗回放', () => {
           } else if (e.kind === 'rescue' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'squad' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'hunt' && p.stage === 3 && world.runtime().huntTeam?.arrived) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'tower' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'flame') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
@@ -120,13 +121,20 @@ describe('完整主线真实规则战斗回放', () => {
             const threat = living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
             if (threat) target = threat
           }
+          if (event.kind === 'tower') {
+            if (ep.stage === 4) target = event.npc
+            else if (world.towerRun) {
+              const floor = world.map.towerFloors![world.towerRun.phase - 1]
+              target = world.towerRun.heat > 55 || (world.towerCooling() && world.towerRun.heat > 10) ? floor.cooling : floor.center
+            }
+          }
         }
-        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
+        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
         if (warning) {
           const direction = world.player.x < 850 ? 1 : -1
-          input = world.flameRun?.phase === 3 ? { x: 0, y: world.player.y < warning.y ? -1 : 1 } : { x: direction, y: 0 }
+          input = world.towerRun || world.flameRun?.phase === 3 ? { x: 0, y: world.player.y < warning.y ? -1 : 1 } : { x: direction, y: 0 }
           world.action('dodge', input); path = []
         } else if (threat) {
           const point = [threat.target, ...(threat.secondary ?? [])].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]

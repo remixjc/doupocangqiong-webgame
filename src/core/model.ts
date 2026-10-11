@@ -74,10 +74,11 @@ export interface Runtime {
   squad?: { hp: number; maxHp: number; holding: boolean; failed: boolean; waiting: boolean; remaining: number; channeling: boolean }
   huntTeam?: { hp: number; maxHp: number; failed: boolean; waiting: boolean; arrived: boolean }
   ranking?: { phase: number; shield: boolean; recovery: boolean; practice: boolean }
+  tower?: { floor: number; remaining: number; heat: number; failed: boolean; inZone: boolean; cooling: boolean }
   dead: boolean
 }
 export interface Snapshot { state: GameState; runtime: Runtime; notice: string }
-export const CONTENT_VERSION = '0.7.2'
+export const CONTENT_VERSION = '0.7.3'
 export const blankEvent = (): ChapterEventProgress => ({ started: false, stage: 0, quote: 0, score: 0, attempts: 0, choice: 'none' })
 export const blankProgress = (chapter = 1): ChapterProgress => ({ herbs: 0, kills: 0, brews: 0, boss: false, intro: false,
   events: Object.fromEntries(eventsForChapter(chapter).map(event => [event.id, blankEvent()])) })

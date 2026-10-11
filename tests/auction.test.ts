@@ -104,6 +104,8 @@ describe('C5a 黑角域拍卖与托管', () => {
     old.completed.push(12); old.progress[12].boss = true
     expect(() => validateState(old)).toThrow('条件不完整')
     old.progress[12].herbs = 3
+    expect(() => validateState(old)).toThrow('条件不完整')
+    old.progress[12].kills = 4
     const done = validateState(old)
     expect(eventDone(done)).toBe(true); expect(eventProgress(done).auctionOutcome).toBe('observed')
     expect(done.inventory).toEqual(old.inventory); expect(done.gold).toBe(old.gold)

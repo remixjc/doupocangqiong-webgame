@@ -2,9 +2,10 @@ export interface Point { x: number; y: number }
 export interface MapObstacle extends Point { w: number; h: number }
 export interface PatrolDefinition { route: Point[]; detectionRadius: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }
+export interface TowerFloor { center: Point; cooling: Point; duration: number; pressure: number; radius: number }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'auction' | 'academy' | 'fire-tower' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -23,6 +24,7 @@ export interface MapDefinition {
   duelArena?: { x: number; y: number; w: number; h: number }
   escapeRoute?: boolean
   rankingArena?: boolean
+  towerFloors?: TowerFloor[]
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -258,6 +260,20 @@ export const academyMaps: Record<number, MapDefinition> = {
     paths: [[{ x: 150, y: 650 }, { x: 500, y: 520 }, { x: 740, y: 350 }, { x: 1050, y: 500 }, { x: 280, y: 625 }],
       [{ x: 1050, y: 500 }, { x: 1120, y: 160 }]],
     landmarks: [{ x: 670, y: 60, label: '迦南内院 · 磐门共同历练' }, { x: 900, y: 740, label: '双路猎捕 · 火能独立收支 · 强榜复练' }],
+  },
+  15: {
+    id: 'blazing-tower-three-landings', style: 'fire-tower', gateLabel: '塔底危机',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1160, y: 120 }, bossSpawn: { x: 1110, y: 310 }, safeRadius: 150,
+    obstacles: [{ x: 590, y: 250, w: 140, h: 110 }, { x: 800, y: 560, w: 140, h: 140 }, { x: 920, y: 60, w: 80, h: 100 }],
+    herbs: [{ x: 330, y: 400 }, { x: 500, y: 180 }, { x: 1150, y: 700 }], enemies: [],
+    towerFloors: [
+      { center: { x: 700, y: 520 }, cooling: { x: 600, y: 520 }, duration: 8, pressure: 5, radius: 95 },
+      { center: { x: 900, y: 380 }, cooling: { x: 800, y: 380 }, duration: 10, pressure: 7, radius: 95 },
+      { center: { x: 1080, y: 220 }, cooling: { x: 980, y: 220 }, duration: 12, pressure: 9, radius: 95 },
+    ],
+    paths: [[{ x: 150, y: 650 }, { x: 500, y: 650 }, { x: 700, y: 520 }, { x: 900, y: 380 }, { x: 1080, y: 220 }, { x: 1160, y: 120 }],
+      [{ x: 280, y: 625 }, { x: 500, y: 520 }, { x: 900, y: 450 }, { x: 1080, y: 220 }]],
+    landmarks: [{ x: 610, y: 70, label: '天焚炼气塔 · 逐层镇炎' }, { x: 650, y: 755, label: '已完成台阶保留 · 镇心石降热 · 首通取得心炎' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? legacy }
