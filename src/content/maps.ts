@@ -417,7 +417,10 @@ export const ancientMaps: Record<number, MapDefinition> = {
     enemies: [],
     paths: [[{ x: 150, y: 650 }, { x: 310, y: 430 }, { x: 660, y: 420 }, { x: 1060, y: 400 }, { x: 1150, y: 160 }],
       [{ x: 660, y: 420 }, { x: 660, y: 650 }]],
-    landmarks: [{ x: 680, y: 60, label: '妖火空间 · 净莲之境' }, { x: 660, y: 755, label: '三镜辨识 → 三段净化 → 回报 / 收服确认' }],
+    landmarks: [{ x: 680, y: 60, label: '妖火空间 · 净莲之境' }, { x: 660, y: 755, label: '三镜辨识 → 三段净化 → 回报 / 收服确认' },
+      { x: 532, y: 470, label: '外焰西缘' }, { x: 708, y: 470, label: '外焰东缘' },
+      { x: 992, y: 500, label: '莲环西缘' }, { x: 1168, y: 500, label: '莲环东缘' },
+      { x: 658, y: 178, label: '核心西北缘' }, { x: 782, y: 302, label: '核心东南缘' }],
   },
 }
 export const endgameMaps: Record<number, MapDefinition> = {
