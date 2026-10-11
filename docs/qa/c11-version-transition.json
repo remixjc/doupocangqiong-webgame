@@ -1,0 +1,51 @@
+{
+  "checkedOn": "2026-10-12",
+  "batch": "C11f-3b",
+  "actualArtifact": {
+    "version": "0.37.2",
+    "sourceSha": "ca529f3c1df6e25665f76c2c67c71741a158c7dc"
+  },
+  "lowerFixture": {
+    "contentVersion": "0.37.1",
+    "sourceSha": "ca529f3c1df6e25665f76c2c67c71741a158c7dc",
+    "historicalRelease": false,
+    "differences": [
+      "package.json version 0.37.2 -> 0.37.1",
+      "HTML title and visible compatibility-fixture banner"
+    ],
+    "buildVerified": true
+  },
+  "localOrigin": "http://127.0.0.1:4183/",
+  "browser": {
+    "fixtureCreatedThroughNormalUI": true,
+    "newVersionPurchase": {
+      "goldBefore": 80,
+      "cost": 12,
+      "goldAfter": 68,
+      "herbAfter": 1
+    },
+    "newerManualRejected": true,
+    "olderManualLoadedIntoMemory": true,
+    "automaticWriteAndRetryBlocked": true,
+    "settingsWriteBlocked": true,
+    "originalAutoSummaryAndTimeMatched": true,
+    "manual1SummaryAndTimeMatched": true,
+    "manual2SummaryAndTimeMatched": true,
+    "restoredCanvasCount": 1,
+    "consoleErrors": []
+  },
+  "downloads": {
+    "oldMemoryFullStateMatchedOldFile": true,
+    "restoredFullStateMatchedNewFile": true,
+    "restoredSaveRefreshFullStateMatched": true,
+    "canonicalStateSha256": "5d69f712ee2f18c2dcc3de4241bbfba3ca940a41599a245960b9283706949130"
+  },
+  "discoveredIssue": "SavesPanel summaries label newer content as damaged and recommend backup recovery; follow-up C11f-3c",
+  "publicDeployment": false,
+  "historicalBinaryRollback": false,
+  "screenshots": [
+    "c11-version-transition-fixture.png",
+    "c11-version-transition-write-blocked.png",
+    "c11-version-transition-restored.png"
+  ]
+}
