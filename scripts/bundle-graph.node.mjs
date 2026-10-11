@@ -1,5 +1,10 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { mkdtempSync, copyFileSync, existsSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { dirname, join, resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
+import { spawnSync } from 'node:child_process'
 import { budgetFailures, initialAssets, deferredAssetFailures } from './check-bundle.mjs'
 import { createReleaseManifest } from './write-release-manifest.mjs'
 
@@ -47,4 +52,23 @@ test('release manifest binds package, bundle and migration contract', () => {
   assert.equal(manifest.migration.olderSaves.includes('schema 1/2'), true)
   assert.throws(() => createReleaseManifest({ version: '0.37.2' }, { version: '0.37.1', engineLazy: true }, 'unknown'), /does not match/)
   assert.throws(() => createReleaseManifest({ version: '0.37.1' }, { version: '0.37.1', engineLazy: false }, 'unknown'), /lazy Phaser/)
+})
+test('release manifest module imports without package or dist and only its CLI reads build output', () => {
+  const directory = mkdtempSync(join(tmpdir(), 'doupo-manifest-import-'))
+  try {
+    const script = join(directory, 'write-release-manifest.mjs')
+    copyFileSync(new URL('./write-release-manifest.mjs', import.meta.url), script)
+    const imported = spawnSync(process.execPath, ['--input-type=module', '-e',
+      `import { createReleaseManifest } from ${JSON.stringify(pathToFileURL(script).href)}; if (typeof createReleaseManifest !== 'function') process.exit(2)`],
+    { cwd: directory, encoding: 'utf8' })
+    assert.equal(imported.status, 0, imported.stderr)
+    assert.equal(imported.stdout, '')
+    assert.equal(existsSync(join(directory, 'dist')), false)
+    const invoked = spawnSync(process.execPath, [script], { cwd: directory, encoding: 'utf8' })
+    assert.equal(invoked.status, 1)
+    assert.match(invoked.stderr, /ENOENT/)
+  } finally {
+    assert.equal(dirname(resolve(directory)), resolve(tmpdir()))
+    rmSync(directory, { recursive: true, force: true })
+  }
 })

@@ -31,9 +31,15 @@ function revision() {
   try { return execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim() } catch { return 'unknown' }
 }
 
-const root = fileURLToPath(new URL('..', import.meta.url))
-const pkg = JSON.parse(await readFile(resolve(root, 'package.json'), 'utf8'))
-const report = JSON.parse(await readFile(resolve(root, 'dist/bundle-report.json'), 'utf8'))
-const manifest = createReleaseManifest(pkg, report, revision())
-await writeFile(resolve(root, 'dist/release-manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
-console.log(`Release manifest: ${manifest.version} @ ${manifest.gitSha}`)
+async function main() {
+  const root = fileURLToPath(new URL('..', import.meta.url))
+  const pkg = JSON.parse(await readFile(resolve(root, 'package.json'), 'utf8'))
+  const report = JSON.parse(await readFile(resolve(root, 'dist/bundle-report.json'), 'utf8'))
+  const manifest = createReleaseManifest(pkg, report, revision())
+  await writeFile(resolve(root, 'dist/release-manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
+  console.log(`Release manifest: ${manifest.version} @ ${manifest.gitSha}`)
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch(error => { console.error(error.message); process.exitCode = 1 })
+}
