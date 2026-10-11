@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -127,6 +127,19 @@ export const chapterEvents: Record<number, ChapterEvent> = {
     checkpoints: [
       { x: 330, y: 220, label: '山门约碑', text: '三年的路已走到这里。前往演武台入口，用自己的行动回应约定。' },
       { x: 880, y: 400, label: '演武台入口', text: '突进沿锁定路线、三叠风刃封锁横向区域、旋风围绕对手。预警出现后离开范围，收招时再反击；决斗期间演武台边界封闭。' },
+    ],
+  },
+  11: {
+    id: 'yunlan-pursuit-escape', kind: 'escape', introducedVersion: '0.6.2',
+    title: '云岚山外 · 追击退路', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['前往退路前哨，按 E 开始撤离', '到北侧岩间掩体，躲避追击并累计稳住6秒', '穿过中段山口，到南侧竹林掩体累计稳住6秒', '追击暂缓，前往北侧出口按 E 离开', '已安全离开追击山路'],
+    introduction: '这场追击需要的是退路。先到前哨，再依次去岩间和竹林两个掩体；每处在青色区域累计坚持6秒，躲开锁定预警。两处都通过后才开放出口。失败或休整从最近通过的安全点继续。',
+    note: '追击投影、掩体计时和路线为原创撤离玩法，不击杀原著高阶追兵。每次失败不扣材料；安全节点存档，当前节点计时重建。出口只确认撤离，营地首通才发章节奖励。',
+    checkpoints: [
+      { x: 350, y: 560, label: '退路前哨', text: '追击开始。向北进入岩间掩体，在预警之间稳住脚步。' },
+      { x: 600, y: 240, label: '岩间掩体', text: '岩间退路已记下。穿过中段山口，向南寻找竹林掩体。' },
+      { x: 950, y: 560, label: '竹林掩体', text: '竹林退路已记下。沿东侧山路向北，从出口安全离开。' },
+      { x: 1130, y: 180, label: '山路出口', text: '已安全脱离追击。返回营地结算，再向黑角域启程。' },
     ],
   },
 }

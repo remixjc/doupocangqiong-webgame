@@ -23,6 +23,7 @@ export interface Input { x: number; y: number; aim?: Vec }
 export interface EscortRun extends Vec { hp: number; maxHp: number; stage: number; waiting: boolean }
 export interface SurvivalRun { elapsed: number; nextWave: number; warnings: (Vec & { time: number; radius: number })[] }
 export interface FlameRun extends SurvivalRun { phase: number; heat: number; failed: boolean; wave: number }
+export interface EscapeRun extends SurvivalRun { stage: number }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
@@ -47,6 +48,7 @@ export class CombatWorld {
   escort?: EscortRun
   survival?: SurvivalRun
   flameRun?: FlameRun
+  escapeRun?: EscapeRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -74,6 +76,44 @@ export class CombatWorld {
     }
     this.syncMountainRuns()
     this.syncFlameRun()
+    this.syncEscapeRun()
+    const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
+    const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
+    if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
+      Object.assign(this.player, retreat.checkpoints![retreatProgress.stage - 1])
+  }
+  private syncEscapeRun() {
+    const event = eventsForChapter(this.chapter.id).find(e => e.kind === 'escape')
+    const p = event && eventProgress(this.cb.state(), this.chapter.id, event.id)
+    if (!p?.started || ![1, 2].includes(p.stage)) this.escapeRun = undefined
+    else if (!this.escapeRun || this.escapeRun.stage !== p.stage)
+      this.escapeRun = { stage: p.stage, elapsed: 0, nextWave: 0, warnings: [] }
+  }
+  sheltered() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'escape')
+    return !!this.escapeRun && !!e && distance(this.player, e.checkpoints![this.escapeRun.stage]) < 90
+  }
+  private stepEscape(dt: number) {
+    this.syncEscapeRun()
+    const run = this.escapeRun, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'escape')
+    if (!run || !e) return
+    if (this.sheltered()) run.elapsed += dt
+    for (const warning of run.warnings) {
+      warning.time -= dt
+      if (warning.time <= 0) {
+        if (distance(this.player, warning) < warning.radius + 16) this.hurtPlayer(60)
+        this.effect(warning.x, warning.y, warning.radius, 0x9fa9c9)
+      }
+    }
+    run.warnings = run.warnings.filter(w => w.time > 0)
+    if (this.player.hp <= 0) return
+    if (run.elapsed >= 6) { this.cb.eventAction?.({ type: 'evade', stage: run.stage, eventId: e.id }); return }
+    run.nextWave -= dt
+    if (run.nextWave <= 0) {
+      run.nextWave = run.stage === 1 ? 2.4 : 2.2
+      run.warnings.push({ x: this.player.x, y: this.player.y, radius: run.stage === 1 ? 80 : 65, time: run.stage === 1 ? 1 : .9 })
+      if (run.stage === 2) run.warnings.push({ x: this.player.x, y: clamp(this.player.y + 130, 50, HEIGHT - 50), radius: 65, time: .9 })
+    }
   }
   private syncFlameRun() {
     const event = eventsForChapter(this.chapter.id).find(e => e.kind === 'flame')
@@ -248,7 +288,11 @@ export class CombatWorld {
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'rescue' && this.guardsRemaining(event.id, index) > 0) this.cb.notify(`区域守卫尚有${this.guardsRemaining(event.id, index)}名，请先清理威胁再解救。`)
+        if (event.kind === 'escape' && [1, 2].includes(index)) this.cb.notify('继续在当前掩体附近稳住脚步，躲避追击；两处按顺序通过后才开放出口。')
+        else if (event.kind === 'escape' && index === 3) {
+          this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+          if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
+        } else if (event.kind === 'rescue' && this.guardsRemaining(event.id, index) > 0) this.cb.notify(`区域守卫尚有${this.guardsRemaining(event.id, index)}名，请先清理威胁再解救。`)
         else if (event.kind === 'escort') this.escortCheckpoint(index)
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
@@ -267,7 +311,7 @@ export class CombatWorld {
       } else if (near === 'gate') {
         if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
-        else if (this.map.survivalZone || this.map.trialMode) {
+        else if (this.map.survivalZone || this.map.trialMode || this.map.escapeRoute) {
           this.cb.kill(true)
           this.cb.notify(this.map.trialMode === 'assessment' ? `${this.map.gateLabel ?? '资格'}审核通过，返回营地结算并继续旅程。` : this.map.trialMode === 'attunement' ? '火域收服已确认，返回营地正式结算取得青莲地心火。' : '已安全撤离，返回营地结算。')
         }
@@ -425,6 +469,7 @@ export class CombatWorld {
     }
     this.stepMountain(dt)
     this.stepFlame(dt)
+    this.stepEscape(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -510,6 +555,7 @@ export class CombatWorld {
       patrol: patrols.length ? { alert: Math.round(alert * 100), alerted: alert >= 1, remaining: patrols.length } : undefined,
       heatChallenge: this.flameRun ? { phase: this.flameRun.phase, remaining: Math.max(0, Math.ceil(12 - this.flameRun.elapsed)), heat: Math.round(this.flameRun.heat), cooling: this.cooling(), inZone: this.inHeatZone(), failed: this.flameRun.failed } : undefined,
       duel: boss?.duel && boss.hp > 0 ? { phase: boss.duel.phase, move: { thrust: '踏风突进', fan: '三叠风刃', cyclone: '旋风回旋' }[boss.duel.move],
-        warning: boss.windup > 0, recovery: boss.duel.recovery > 0 && boss.duel.dashTime <= 0 } : undefined }
+        warning: boss.windup > 0, recovery: boss.duel.recovery > 0 && boss.duel.dashTime <= 0 } : undefined,
+      escape: this.escapeRun ? { stage: this.escapeRun.stage, remaining: Math.max(0, Math.ceil(6 - this.escapeRun.elapsed)), sheltered: this.sheltered() } : undefined }
   }
 }

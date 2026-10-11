@@ -237,6 +237,17 @@ export default class AdventureScene extends Phaser.Scene {
       g.lineStyle(active ? 4 : 2, active ? 0xa3ded2 : 0xafbcaa, active ? .8 : .4); g.strokeRect(a.x, a.y, a.w, a.h)
       g.lineStyle(1, 0xacbba5, .25); g.strokeCircle(a.x + a.w / 2, a.y + a.h / 2, 180)
     }
+    if (w.map.escapeRoute) {
+      const event = eventsForChapter(w.chapter.id).find(e => e.kind === 'escape')!
+      for (const point of event.checkpoints!.slice(1, 3)) {
+        g.fillStyle(0x80c7b0, .07); g.fillCircle(point.x, point.y, 90)
+        g.lineStyle(2, 0x92caba, .45); g.strokeCircle(point.x, point.y, 90)
+      }
+      for (const warning of w.escapeRun?.warnings ?? []) {
+        g.fillStyle(0xa194bf, .16); g.fillCircle(warning.x, warning.y, warning.radius)
+        g.lineStyle(3, 0xc8b3da, .8); g.strokeCircle(warning.x, warning.y, warning.radius)
+      }
+    }
     if (w.map.heatZone) {
       const z = w.map.heatZone
       g.fillStyle(0xcb6e45, .06); g.fillRect(z.x, z.y, z.w, z.h)
@@ -288,7 +299,7 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(2, 0xe8c98c, .5); g.strokeCircle(event.dummy.x, event.dummy.y, 28)
       }
       event.checkpoints?.forEach((point, index) => {
-        const step = event.kind === 'competition' ? progress.stage - 1 : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
+        const step = event.kind === 'competition' ? progress.stage - 1 : event.kind === 'tournament' ? (progress.stage === 0 ? 0 : progress.stage <= 12 ? Math.floor((progress.stage - 1) / 4) + 1 : 4) : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
         const active = progress.started && index === step && (event.kind !== 'competition' || progress.choice === 'premium')
         g.fillStyle(index < step ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
         if (event.kind === 'cave' && index === 2) {

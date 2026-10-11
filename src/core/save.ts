@@ -105,7 +105,7 @@ export function validateState(value: unknown): GameState {
     s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), events }
     for (const definition of definitions) if (events[definition.id].started && definition.requires?.some(id => !eventDone(s, n, id)))
       throw new Error('事件前置条件不完整。')
-    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2')) || (n === 5 && versionBefore(data.contentVersion as string, '0.4.0')) || (n === 7 && versionBefore(data.contentVersion as string, '0.5.0')) || (n === 8 && versionBefore(data.contentVersion as string, '0.5.2')) || (n === 10 && versionBefore(data.contentVersion as string, '0.6.1'))
+    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2')) || (n === 5 && versionBefore(data.contentVersion as string, '0.4.0')) || (n === 7 && versionBefore(data.contentVersion as string, '0.5.0')) || (n === 8 && versionBefore(data.contentVersion as string, '0.5.2')) || (n === 10 && versionBefore(data.contentVersion as string, '0.6.1')) || (n === 11 && versionBefore(data.contentVersion as string, '0.6.2'))
     const oldCertification = n === 6 && versionBefore(data.contentVersion as string, '0.4.1')
     const oldTournament = n === 9 && versionBefore(data.contentVersion as string, '0.6.0')
     const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives

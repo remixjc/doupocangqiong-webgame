@@ -4,7 +4,7 @@ export interface PatrolDefinition { route: Point[]; detectionRadius: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'desert-town' | 'fire-cavern' | 'tournament' | 'duel' | 'escape' | 'legacy'
   trialMode?: 'assessment' | 'attunement'
   gateLabel?: string
   camp: Point
@@ -21,6 +21,7 @@ export interface MapDefinition {
   survivalZone?: { x: number; y: number; w: number; h: number }
   heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
   duelArena?: { x: number; y: number; w: number; h: number }
+  escapeRoute?: boolean
 }
 
 export const MAP_WIDTH = 1280, MAP_HEIGHT = 800
@@ -108,6 +109,17 @@ export const capitalMaps: Record<number, MapDefinition> = {
     paths: [[{ x: 150, y: 650 }, { x: 300, y: 400 }, { x: 880, y: 400 }, { x: 1100, y: 220 }],
       [{ x: 300, y: 400 }, { x: 330, y: 220 }]],
     landmarks: [{ x: 810, y: 80, label: '云岚宗 · 三年之约' }, { x: 840, y: 740, label: '踏风突进 · 三叠风刃 · 旋风回旋' }],
+  },
+  11: {
+    id: 'yunlan-mountain-escape', style: 'escape', escapeRoute: true, gateLabel: '山路出口',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1130, y: 180 }, bossSpawn: { x: 1130, y: 180 }, safeRadius: 150,
+    obstacles: [{ x: 720, y: 0, w: 60, h: 320 }, { x: 720, y: 470, w: 60, h: 330 },
+      { x: 390, y: 340, w: 120, h: 90 }, { x: 1020, y: 320, w: 100, h: 110 }, { x: 80, y: 320, w: 110, h: 110 }],
+    herbs: [{ x: 300, y: 480 }, { x: 630, y: 680 }, { x: 1130, y: 640 }],
+    enemies: [],
+    paths: [[{ x: 150, y: 650 }, { x: 350, y: 560 }, { x: 600, y: 460 }, { x: 600, y: 240 }],
+      [{ x: 600, y: 240 }, { x: 630, y: 400 }, { x: 850, y: 400 }, { x: 950, y: 560 }, { x: 1160, y: 460 }, { x: 1130, y: 180 }]],
+    landmarks: [{ x: 660, y: 70, label: '云岚山外 · 留得退路' }, { x: 600, y: 750, label: '岩间掩体 → 中段山口 → 竹林掩体 → 出口' }],
   },
 }
 export const mountainMaps: Record<number, MapDefinition> = {

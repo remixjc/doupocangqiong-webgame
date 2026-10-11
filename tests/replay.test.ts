@@ -102,7 +102,7 @@ describe('完整主线真实规则战斗回放', () => {
           if (event.kind === 'flame' && ep.stage >= 2 && ep.stage <= 4) target = [...world.map.heatZone!.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
           if (event.kind === 'tournament') target = !ep.started || ep.stage === 13 ? event.npc : event.checkpoints![ep.stage === 0 ? 0 : tournamentRound(ep.stage) + 1]
         }
-        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
+        const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
         if (warning) {

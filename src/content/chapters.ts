@@ -52,6 +52,10 @@ chapters[8].opening[2].text = '先与法犸报名，查看赛程牌，再依序�
 chapters[9].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[9].trialNote = '独立演武台、三阶段风系招式和反击窗口为原创决斗机制；正式首通结算约定之战。'
 chapters[9].opening[2].text = '与药老交谈，依序确认山门约碑和演武台入口，再到决斗碑开始约定之战。注意锁定突进路线、三叠风刃和旋风，闪避后趁收招反击。失败可休整，赴约准备保留。'
+chapters[10].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[10].boss = '云岚山路 · 安全脱离'
+chapters[10].trialNote = '追击预警与两处掩体为原创撤离机制；不击杀原著高阶追兵，保留完成的安全节点。'
+chapters[10].opening[2].text = '与药老接取退路，到前哨开始撤离，再到北侧岩间和南侧竹林两个掩体，各累计稳住6秒并闪避追击预警。两点通过才允许北侧出口撤离；失败从最近安全点重建，之后营地结算前往黑角域。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)

@@ -6,6 +6,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'strategy'; choice: 'steady' | 'premium' }
   | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
   | { type: 'stabilize'; stage: number }
+  | { type: 'evade'; stage: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -105,6 +106,12 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'escape' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'escape' && action.type === 'evade' && action.stage === p.stage && [1, 2].includes(p.stage)) {
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'escape' && action.type === 'seal' && action.index === 3 && p.stage === 3) {
+      p.stage = 4; message = event.checkpoints![3].text
     } else if (event.kind === 'tournament' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'tournament' && action.type === 'test' && [1, 5, 9].includes(p.stage)) {
