@@ -14,7 +14,7 @@ export default function GameView() {
       if (!container.current) throw new Error('Scene container is unavailable')
       return new Phaser.Game({
         type: Phaser.AUTO, parent: container.current, width: WIDTH, height: HEIGHT,
-        backgroundColor: '#213b33', scene: [AdventureScene],
+        backgroundColor: '#213b33', scene: [new AdventureScene(error => setFailure(error instanceof Error ? error : new Error('Scene execution failed')))],
         scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
         render: { antialias: true, pixelArt: false }, audio: { noAudio: true },
         input: { keyboard: { capture: [] } },

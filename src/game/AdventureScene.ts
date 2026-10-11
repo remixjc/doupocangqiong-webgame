@@ -12,6 +12,7 @@ import { bindFocusLifecycle } from './focus'
 import { ActorMotion, type ActorPose } from './actor-motion'
 import { drawActor } from './draw-actor'
 import { acceptsGameplayKey, keyboardSurface } from './keyboard'
+import { SceneGuard } from './scene-guard'
 
 const palette = {
   city: [0x263831, 0x70816a, 0xb69a6e], forest: [0x213b33, 0x46735b, 0x8eb190],
@@ -31,8 +32,19 @@ export default class AdventureScene extends Phaser.Scene {
   private actorMotion = new ActorMotion()
   private environment?: Phaser.GameObjects.Container
   private environmentMapId = ''
-  constructor() { super('adventure') }
+  private cleanupInput?: () => void
+  private faultGuard: SceneGuard
+  constructor(onFailure: (error: unknown) => void) {
+    super('adventure')
+    this.faultGuard = new SceneGuard(() => {
+      gameStore.paused = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
+      stopAudio(); this.cleanupInput?.()
+    }, onFailure)
+  }
   create() {
+    this.faultGuard.run(() => this.createWorld())
+  }
+  private createWorld() {
     this.environmentMapId = ''
     this.drawGate = new PauseDrawGate()
     this.actorMotion = new ActorMotion()
@@ -81,7 +93,6 @@ export default class AdventureScene extends Phaser.Scene {
     const keyup = (event: KeyboardEvent) => {
       this.heldKeys.delete(event.key.toLowerCase())
     }
-    window.addEventListener('keydown', keydown); window.addEventListener('keyup', keyup)
     const pointerdown = (pointer: Phaser.Input.Pointer) => {
       if (gameStore.paused || document.hidden) return
       if (!document.hidden) this.lostFocus = false
@@ -90,26 +101,32 @@ export default class AdventureScene extends Phaser.Scene {
         gameStore.action('attack')
       }
     }
-    this.input.on('pointerdown', pointerdown)
     const release = () => {
       this.lostFocus = true; this.heldKeys.clear(); this.aim = undefined; this.clock.reset(); this.runtimeTimer = 0
       stopAudio()
       gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0
     }
-    const unbindFocus = bindFocusLifecycle(window, document, release, () => { this.lostFocus = false })
+    let unbindFocus: (() => void) | undefined
     let released = false
     const releaseInput = () => {
       if (released) return
       released = true
-      unbindFocus()
+      this.faultGuard.dispose()
       window.removeEventListener('keydown', keydown); window.removeEventListener('keyup', keyup)
-      this.input.off('pointerdown', pointerdown)
+      this.input?.off('pointerdown', pointerdown)
+      if (unbindFocus) unbindFocus()
+      else release()
       this.events.off('shutdown', releaseInput); this.events.off('destroy', releaseInput)
       this.environment = undefined
       this.floats = []
+      this.cleanupInput = undefined
     }
+    this.cleanupInput = releaseInput
     this.events.once('shutdown', releaseInput)
     this.events.once('destroy', releaseInput)
+    window.addEventListener('keydown', keydown); window.addEventListener('keyup', keyup)
+    this.input.on('pointerdown', pointerdown)
+    unbindFocus = bindFocusLifecycle(window, document, release, () => { this.lostFocus = false })
     gameStore.runtime(this.world.runtime())
   }
   private syncEnvironment() {
@@ -327,6 +344,9 @@ export default class AdventureScene extends Phaser.Scene {
     }
   }
   update(_time: number, delta: number) {
+    this.faultGuard.run(() => this.updateWorld(delta))
+  }
+  private updateWorld(delta: number) {
     if (!this.world) return
     const paused = gameStore.paused || this.lostFocus || document.hidden
     if (paused) {

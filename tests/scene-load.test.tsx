@@ -65,7 +65,7 @@ describe('关卡模块加载期限', () => {
     expect(timeout).toContain('等待超过20秒')
     for (const text of ['保存后刷新页面', '打开存档管理', '返回大陆舆图']) expect(timeout).toContain(text)
     boundary.state = SceneBoundary.getDerivedStateFromError(new Error('render failed'))
-    expect(renderToStaticMarkup(boundary.render())).toContain('本次场景未能加载')
+    expect(renderToStaticMarkup(boundary.render())).toContain('本次场景遇到问题')
     expect(renderToStaticMarkup(boundary.render())).not.toContain('等待超过20秒')
   })
 })
