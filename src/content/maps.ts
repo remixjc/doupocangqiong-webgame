@@ -3,7 +3,7 @@ export interface MapObstacle extends Point { w: number; h: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage' }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'legacy'
   camp: Point
   spawn: Point
   gate: Point
@@ -79,7 +79,29 @@ export const wutanMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 820, y: 85, label: '乌坦城 · 萧家坊市' }, { x: 680, y: 765, label: '补货与议价 · 原创经营历练' }],
   },
 }
-export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? legacy }
+export const mountainMaps: Record<number, MapDefinition> = {
+  4: {
+    id: 'qingshan-hidden-cave', style: 'cave',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1090, y: 650 },
+    bossSpawn: { x: 1050, y: 550 }, safeRadius: 170,
+    obstacles: [
+      { x: 810, y: 0, w: 45, h: 350 }, { x: 810, y: 450, w: 45, h: 350 },
+      { x: 380, y: 140, w: 110, h: 80 }, { x: 480, y: 570, w: 130, h: 100 },
+      { x: 970, y: 80, w: 120, h: 80 },
+    ],
+    herbs: [{ x: 300, y: 550 }, { x: 400, y: 300 }, { x: 700, y: 700 },
+      { x: 1060, y: 300 }, { x: 1120, y: 500 }, { x: 250, y: 170 }],
+    enemies: [{ type: 'brute', x: 480, y: 450 }, { type: 'hunter', x: 740, y: 370 }, { type: 'mage', x: 1050, y: 480 }],
+    paths: [
+      [{ x: 150, y: 650 }, { x: 280, y: 410 }, { x: 320, y: 215 }],
+      [{ x: 280, y: 410 }, { x: 650, y: 400 }, { x: 895, y: 400 }, { x: 1060, y: 215 }],
+      [{ x: 895, y: 400 }, { x: 1090, y: 650 }],
+    ],
+    landmarks: [{ x: 300, y: 100, label: '青山镇 · 洞口山径' }, { x: 650, y: 300, label: '机关石室' },
+      { x: 1070, y: 210, label: '洞穴深处 · 寻宝区域' }],
+  },
+}
+export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? legacy }
 export function mapCollides(map: MapDefinition, point: Point, radius = 17): boolean {
   return map.obstacles.some(o => point.x > o.x - radius && point.x < o.x + o.w + radius
     && point.y > o.y - radius && point.y < o.y + o.h + radius)

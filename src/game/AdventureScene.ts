@@ -83,7 +83,7 @@ export default class AdventureScene extends Phaser.Scene {
   }
   private drawEnvironment() {
     const { camp, gate, obstacles, style } = this.world.map
-    const c = palette[this.world.chapter.theme]
+    const c = style === 'cave' ? [0x222d2b, 0x52645b, 0xb3a785] : palette[this.world.chapter.theme]
     const bg = this.add.graphics()
     bg.fillStyle(c[0]); bg.fillRect(0, 0, WIDTH, HEIGHT)
     // All art is native vector drawing, seeded by chapter for repeatable maps.
@@ -126,7 +126,7 @@ export default class AdventureScene extends Phaser.Scene {
       bg.fillStyle(c[2], .12); bg.fillEllipse(x, y, 12 + rand() * 14, 7)
     }
     }
-    for (let i = 0; i < 48; i++) {
+    for (let i = 0; i < (style === 'cave' ? 10 : 48); i++) {
       const x = rand() * WIDTH, y = rand() > .5 ? rand() * 120 + 30 : 710 + rand() * 60
       this.tree(bg, x, y, .7 + rand() * .8, c)
     }
@@ -134,8 +134,12 @@ export default class AdventureScene extends Phaser.Scene {
       bg.fillStyle(0x0a1715, .28); bg.fillEllipse(o.x + o.w * .55, o.y + o.h, o.w + 35, o.h * .65)
       bg.fillStyle(c[1], .95); bg.fillRoundedRect(o.x, o.y, o.w, o.h, 18)
       bg.fillStyle(c[2], .14); bg.fillTriangle(o.x + 10, o.y + 12, o.x + o.w - 15, o.y + 8, o.x + 25, o.y + o.h * .5)
-      if (this.world.chapter.theme === 'forest') this.tree(bg, o.x + o.w * .7, o.y + 25, .9, c)
-      if (style === 'market') {
+      if (style !== 'cave' && this.world.chapter.theme === 'forest') this.tree(bg, o.x + o.w * .7, o.y + 25, .9, c)
+      if (style === 'cave') {
+        bg.lineStyle(2, 0xc5b991, .25)
+        bg.lineBetween(o.x + o.w * .25, o.y + 8, o.x + o.w * .6, o.y + o.h * .45)
+        bg.lineBetween(o.x + o.w * .6, o.y + o.h * .45, o.x + o.w * .4, o.y + o.h - 8)
+      } else if (style === 'market') {
         bg.fillStyle(0x987b56); bg.fillRect(o.x, o.y, o.w, 30)
         for (let x = o.x; x < o.x + o.w; x += 24) {
           bg.fillStyle(Math.floor((x - o.x) / 24) % 2 ? 0x587975 : 0xb4a17b)
