@@ -12,6 +12,14 @@ import { EARLY_QI_PAVILION_ENTRY_VERSION } from './early-training-state'
 import { EARLY_QI_AID_VERSION, EARLY_QI_BARRIER_VERSION, EARLY_QI_SCROLL_VERSION } from './early-training-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
+export class NewerSaveVersionError extends Error {
+  constructor(protectedAutomatic = false) {
+    super(protectedAutomatic
+      ? '这是较新版本的存档，请先更新游戏。原有自动档已保护，本版本不会覆盖它；当前旅途可导出JSON备份。'
+      : '这是较新版本的存档，请先更新游戏。原有存档没有被修改。')
+    this.name = 'NewerSaveVersionError'
+  }
+}
 function record(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('存档结构无效。')
   return value as Record<string, unknown>
@@ -33,7 +41,7 @@ function checkVersion(value: unknown) {
   if (typeof value !== 'string' || !/^\d+\.\d+\.\d+$/.test(value)) throw new Error('内容版本无效。')
   const imported = value.split('.').map(Number), current = CONTENT_VERSION.split('.').map(Number)
   for (let i = 0; i < 3; i++) {
-    if (imported[i] > current[i]) throw new Error('这是较新版本的存档，请先更新游戏。')
+    if (imported[i] > current[i]) throw new NewerSaveVersionError()
     if (imported[i] < current[i]) break
   }
 }
@@ -125,6 +133,8 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
 }
 export function validateState(value: unknown): GameState {
   const data = record(value)
+  if (typeof data.schemaVersion === 'number' && Number.isSafeInteger(data.schemaVersion) && data.schemaVersion > 3)
+    throw new NewerSaveVersionError()
   if (![1, 2, 3].includes(Number(data.schemaVersion)) || typeof data.schemaVersion !== 'number') throw new Error('不支持此存档版本，现有存档没有被修改。')
   checkVersion(data.contentVersion)
   const s = initialState()

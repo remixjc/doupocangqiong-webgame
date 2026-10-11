@@ -7,6 +7,7 @@ import { advanceEvent, type EventAction } from './events'
 import { mapForChapter } from '../content/maps'
 import { AutoSaveQueue } from './autosave'
 import { beginEarlyTraining, advanceEarlyTraining, type EarlyTrainingAction } from './early-training'
+import { NewerSaveVersionError } from './save'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
@@ -36,7 +37,8 @@ export class GameStore {
         const saved = await this.persistence.load(0)
         if (saved) { this.replace(saved); this.saves.loaded() }
       } catch (error) {
-        try {
+        if (error instanceof NewerSaveVersionError) this.notify(error.message)
+        else try {
           const recovery = await this.persistence.load(-1)
           if (recovery) { this.replace(recovery); this.saves.loaded(); this.notify('自动存档异常，已恢复上一份备份。') }
           else this.notify((error as Error).message)
