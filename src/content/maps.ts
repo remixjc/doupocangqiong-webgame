@@ -3,7 +3,9 @@ export interface MapObstacle extends Point { w: number; h: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage' }
 export interface MapDefinition {
   id: string
-  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'legacy'
+  style: 'wilderness' | 'courtyard' | 'market' | 'cave' | 'guild' | 'legacy'
+  trialMode?: 'assessment'
+  gateLabel?: string
   camp: Point
   spawn: Point
   gate: Point
@@ -120,6 +122,21 @@ export const mountainMaps: Record<number, MapDefinition> = {
       [{ x: 920, y: 230 }, { x: 800, y: 450 }, { x: 400, y: 450 }],
     ],
     landmarks: [{ x: 710, y: 75, label: '紫晶洞外 · 狮王警戒' }, { x: 550, y: 740, label: '采药山谷 · 保护同伴' }],
+  },
+  6: {
+    id: 'black-rock-alchemy-guild', style: 'guild', trialMode: 'assessment', gateLabel: '审核台',
+    camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1090, y: 180 },
+    bossSpawn: { x: 1090, y: 260 }, safeRadius: 1280,
+    obstacles: [
+      { x: 440, y: 100, w: 190, h: 160 }, { x: 450, y: 540, w: 180, h: 130 },
+      { x: 875, y: 520, w: 170, h: 130 }, { x: 80, y: 330, w: 100, h: 100 },
+    ],
+    herbs: [], enemies: [],
+    paths: [
+      [{ x: 150, y: 650 }, { x: 300, y: 420 }, { x: 330, y: 220 }],
+      [{ x: 330, y: 220 }, { x: 330, y: 400 }, { x: 740, y: 400 }, { x: 1090, y: 400 }, { x: 1090, y: 180 }],
+    ],
+    landmarks: [{ x: 770, y: 70, label: '黑岩城 · 炼药师公会' }, { x: 720, y: 735, label: '练习材料由公会提供 · 认证不是丹药生产' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? legacy }

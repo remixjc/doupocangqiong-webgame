@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -66,7 +66,19 @@ export const chapterEvents: Record<number, ChapterEvent> = {
       { x: 280, y: 625, label: '洞口会合点', text: '同伴已安全返营。去北侧寻找云韵，了解洞外的警戒。' },
     ],
   },
+  6: {
+    id: 'black-rock-certification', kind: 'certification', introducedVersion: '0.4.1',
+    title: '黑岩城 · 控火认证', speaker: '认证执事', npc: { x: 280, y: 625 },
+    stages: ['前往丹方台，按 E 记下三步火候', '前往公会药炉，开始控火认证', '提炼：指针靠近三成半火候时锁定', '融合：指针靠近六成火候时锁定', '凝丹：指针靠近五成火候时锁定', '考核通过，返回执事处登记', '控火认证已经登记'],
+    introduction: '公会为认证准备了专用练习材料。先查看丹方台上的三步火候，再去药炉提炼、融合、凝丹。三次合计达到210分即可通过，最后回到执事处登记。',
+    note: '认证丹方和分数为原创练习，不判定原著丹药品级。公会练习材料仅供认证、不进入行囊；失败免费重试，登记奖励40金币与50修炼积累，不额外生成丹药。',
+    checkpoints: [
+      { x: 330, y: 220, label: '丹方台', text: '公会练习丹方：提炼35% → 融合60% → 凝丹50%。合计210/300分通过；考核材料由公会提供。' },
+      { x: 740, y: 400, label: '公会药炉', text: '公会药炉已备好练习材料，可以免费进行三步控火认证。' },
+    ],
+  },
 }
+export const certificationTargets = [.35, .6, .5] as const
 export function eventForChapter(id: number): ChapterEvent | undefined { return chapterEvents[id] }
 const adultEvents: ChapterEvent[] = [
   {

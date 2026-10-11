@@ -111,7 +111,7 @@ export default class AdventureScene extends Phaser.Scene {
         bg.lineStyle(2, 0xf2b879, .12); bg.lineBetween(x, y, x + 100, y + 38)
       }
     }
-    if (style === 'courtyard' || style === 'market') {
+    if (style === 'courtyard' || style === 'market' || style === 'guild') {
       bg.lineStyle(1, c[2], .08)
       for (let x = 40; x < WIDTH; x += 40) bg.lineBetween(x, 40, x, HEIGHT - 40)
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
@@ -162,8 +162,8 @@ export default class AdventureScene extends Phaser.Scene {
     bg.fillStyle(0x182423); bg.fillRoundedRect(gate.x - 18, gate.y - 55, 36, 55, 6)
     bg.lineStyle(1, c[2], .85); bg.strokeRoundedRect(gate.x - 18, gate.y - 55, 36, 55, 6)
     this.add.text(camp.x, camp.y + 50, '营 地', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
-    this.add.text(gate.x, gate.y + 65, '试 炼 碑', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
-    this.add.text(gate.x, gate.y - 29, '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
+    this.add.text(gate.x, gate.y + 65, this.world.map.gateLabel ?? '试 炼 碑', { fontSize: '16px', color: '#d8c4a0', fontFamily: 'serif' }).setOrigin(.5)
+    this.add.text(gate.x, gate.y - 29, this.world.map.trialMode === 'assessment' ? '审' : '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(50, 35, this.world.chapter.location, { fontSize: '20px', color: '#cbd1b7', fontFamily: 'serif' }).setAlpha(.8)
     for (const point of this.world.map.landmarks) this.add.text(point.x, point.y, point.label, { fontSize: '16px', color: '#cbd1b7' }).setOrigin(.5)
     for (const event of eventsForChapter(this.world.chapter.id)) {
@@ -263,6 +263,11 @@ export default class AdventureScene extends Phaser.Scene {
         if (event.kind === 'cave' && index === 2) {
           g.fillStyle(progress.stage >= 3 ? 0x58695c : 0xb39152); g.fillRect(point.x - 24, point.y - 16, 48, 32)
           g.lineStyle(2, 0xebce92); g.strokeRect(point.x - 24, point.y - 16, 48, 32)
+        }
+        if (event.kind === 'certification' && index === 1) {
+          g.fillStyle(0x8c7556); g.fillRoundedRect(point.x - 28, point.y - 20, 56, 45, 12)
+          g.lineStyle(4, 0xd1b382); g.strokeEllipse(point.x, point.y - 20, 56, 18)
+          g.fillStyle(progress.stage >= 2 && progress.stage <= 4 ? 0xf0ac68 : 0xad8355); g.fillTriangle(point.x - 18, point.y + 32, point.x, point.y + 3, point.x + 18, point.y + 32)
         }
         g.lineStyle(active ? 4 : 1, active ? 0xf0d498 : 0x9da688, .8); g.strokeCircle(point.x, point.y, active ? 34 : 24)
       })

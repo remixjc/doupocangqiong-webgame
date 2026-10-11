@@ -41,7 +41,7 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
   if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
     (!definition && p.started) || (definition?.kind !== 'trade' && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
-    (!['stone', 'cave'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
+    (!['stone', 'cave', 'certification'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
     (definition?.kind !== 'competition' && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
     throw new Error('控气测试记录无效。')
@@ -49,6 +49,9 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
     throw new Error('竞争路线进度无效。')
   if (definition?.kind === 'cave' && (p.score > 2 || (p.stage !== 1 && p.score !== 0) || (p.stage === 0 && p.attempts !== 0)))
     throw new Error('洞穴机关记录无效。')
+  if (definition?.kind === 'certification' && (p.stage <= 2 ? p.score !== 0 : p.stage === 3 ? p.score > 100 : p.stage === 4 ? p.score > 200 : p.score < 210 || p.attempts < 1))
+    throw new Error('认证控火记录无效。')
+  if (definition?.kind === 'certification' && p.stage === 0 && p.attempts !== 0) throw new Error('认证尝试记录无效。')
   return p
 }
 export function validateState(value: unknown): GameState {
@@ -91,7 +94,8 @@ export function validateState(value: unknown): GameState {
     for (const definition of definitions) if (events[definition.id].started && definition.requires?.some(id => !eventDone(s, n, id)))
       throw new Error('事件前置条件不完整。')
     const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2')) || (n === 5 && versionBefore(data.contentVersion as string, '0.4.0'))
-    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : chapterById(n).objectives
+    const oldCertification = n === 6 && versionBefore(data.contentVersion as string, '0.4.1')
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

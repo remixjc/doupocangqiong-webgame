@@ -1,4 +1,4 @@
-import { eventsForChapter, findEvent, type ChapterEvent } from '../content/events'
+import { certificationTargets, eventsForChapter, findEvent, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
 export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' }
@@ -28,8 +28,8 @@ export function eventHint(state: GameState, eventId?: string): string {
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
-    quote: event.kind === 'trade' ? 60 : 0, score: event.kind === 'stone' ? 300 : 0,
-    attempts: event.kind === 'stone' ? 1 : 0, choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
+    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : 0,
+    attempts: ['stone', 'certification'].includes(event.kind) ? 1 : 0, choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
 }
 export function migrateLegacyEvents(chapter: number, bossPassed: boolean): Record<string, ChapterEventProgress> {
   return Object.fromEntries(eventsForChapter(chapter).map(e => [e.id, migrateLegacyEvent(chapter, bossPassed, e.id)]))
@@ -85,6 +85,22 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
       p.stage = 2; message = '撤离窗口已开。前往西侧撤离标记，按 E 安全离开。'
     } else if (event.kind === 'survival' && action.type === 'seal' && action.index === 1 && p.stage === 2) {
       p.stage = 3; message = event.checkpoints![1].text
+    } else if (event.kind === 'certification' && action.type === 'seal' && action.index === 0 && p.stage <= 1) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'certification' && action.type === 'test' && p.stage === 1) {
+      p.stage = 2; p.score = 0; message = '公会已提供本次练习材料。先提炼，再融合，最后凝丹。'
+    } else if (event.kind === 'certification' && action.type === 'pulse' && p.stage >= 2 && p.stage <= 4) {
+      if (action.stage !== p.stage || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1) return fail('这一步火候已锁定或输入无效。')
+      p.score += Math.max(0, Math.round(100 - Math.abs(action.marker - certificationTargets[p.stage - 2]) * 200))
+      p.stage++; message = `本步控火记录完成 · 累计 ${p.score} / 300 分。`
+      if (p.stage === 5) {
+        p.attempts++
+        if (p.score < 210) { message = `本次 ${p.score} 分，未达到210分。公会材料已回收，可免费重试。`; p.stage = 1; p.score = 0 }
+        else message = `三步控火通过 · ${p.score} / 300 分。返回认证执事处登记。`
+      }
+    } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
+      next.gold += 40; next.xp += 50; p.stage = 6
+      message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
     } else if (event.kind === 'trade' && action.type === 'quote' && p.stage === 0) {
       if (![42, 60].includes(action.amount)) return fail('报价超过买方预算，订单未签订，也没有消耗材料。')
       p.quote = action.amount

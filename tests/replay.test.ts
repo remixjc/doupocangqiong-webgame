@@ -4,7 +4,7 @@ import { blankProgress, initialState } from '../src/core/model'
 import { chapterReady, craft, finishChapter, skillUnlocked } from '../src/core/rules'
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
-import { findEvent } from '../src/content/events'
+import { certificationTargets, findEvent } from '../src/content/events'
 import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
@@ -63,6 +63,11 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'cave') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'rune', symbol: (['leaf', 'moon', 'fire'] as const)[p.score], step: p.score, eventId }).state
             else if (checkpoint === undefined && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          } else if (e.kind === 'certification') {
+            const marker = pulseMarker(world.elapsed * 1000)
+            if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
+            else if (checkpoint === 1 && p.stage >= 2 && p.stage <= 4 && Math.abs(marker - certificationTargets[p.stage - 2]) < .08) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
+            else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
           }
         },
       })
@@ -81,8 +86,8 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (event.kind === 'cave' && ep.stage === 3) ? event.npc
-            : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : event.checkpoints![ep.stage]
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (event.kind === 'cave' && ep.stage === 3) || (event.kind === 'certification' && ep.stage === 5) ? event.npc
+            : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : event.kind === 'certification' ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
           if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
         }
         const warning = world.survival?.warnings.find(w => dist(w, world.player) < w.radius + 25)

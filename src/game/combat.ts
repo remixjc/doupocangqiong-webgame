@@ -187,8 +187,8 @@ export class CombatWorld {
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
-        } else if (event.kind === 'cave' && index === 1) {
-          if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify('先到洞口与小医仙交谈，再探索机关。')
+        } else if (['cave', 'certification'].includes(event.kind) && index === 1) {
+          if (!eventProgress(s, this.chapter.id, event.id).started) this.cb.notify(`先与${event.speaker}交谈，接下本章历练。`)
           else this.cb.storyEvent?.(event.id, index)
         }
         else this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
@@ -201,7 +201,7 @@ export class CombatWorld {
       } else if (near === 'gate') {
         if (s.progress[s.chapter].boss) this.cb.notify('本章试炼已通过，返回左下营地结算。')
         else if (!chapterReady(s)) this.cb.notify('先完成左侧本章历练与剧情事件，再开启试炼。')
-        else if (this.map.survivalZone) { this.cb.kill(true); this.cb.notify('已安全撤离，返回营地结算。') }
+        else if (this.map.survivalZone || this.map.trialMode === 'assessment') { this.cb.kill(true); this.cb.notify(this.map.trialMode === 'assessment' ? '公会审核通过，返回营地结算并继续旅程。' : '已安全撤离，返回营地结算。') }
         else if (!this.bossSpawned) {
           this.spawn('boss', this.map.bossSpawn.x, this.map.bossSpawn.y); this.bossSpawned = true
           this.cb.notify(`${this.chapter.boss} · 注意脚下的攻击预警`)
@@ -373,7 +373,7 @@ export class CombatWorld {
     const boss = this.enemies.find(e => e.type === 'boss')
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
-      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
+      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 查看线索 / 操作机关 / 交互路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : this.map.trialMode === 'assessment' ? 'E · 提交公会审核' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0,
       escort: this.escort ? { hp: this.escort.hp, maxHp: this.escort.maxHp, failed: this.escort.hp <= 0, waiting: this.escort.waiting } : undefined,
       survival: this.survival ? { remaining: Math.max(0, Math.ceil(24 - this.survival.elapsed)), inZone: this.inSurvivalZone() } : undefined }

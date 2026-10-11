@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { findEvent } from '../content/events'
+import { certificationTargets, findEvent } from '../content/events'
 import { eventDone, eventHint, eventProgress, pulseMarker, type EventAction } from '../core/events'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -8,7 +8,9 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   const event = findEvent(state.chapter, eventId), progress = eventProgress(state, state.chapter, eventId)
   const [marker, setMarker] = useState(0)
   useEffect(() => {
-    if (event?.kind !== 'stone' || progress.stage < 1 || progress.stage > 3) return
+    const moving = (event?.kind === 'stone' && progress.stage >= 1 && progress.stage <= 3) ||
+      (event?.kind === 'certification' && progress.stage >= 2 && progress.stage <= 4)
+    if (!moving) return
     let last = performance.now(), elapsed = 0
     setMarker(0)
     const timer = window.setInterval(() => {
@@ -21,7 +23,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (event.kind === 'cave') {
+    if (['cave', 'certification'].includes(event.kind)) {
       const point = checkpoint === 1 ? event.checkpoints![1] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -65,6 +67,16 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </>}
       {checkpoint === undefined && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>与小医仙会合 · 确认返程</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'certification' && progress.started && <>
+      <p>认证累计 {progress.score} / 300 分 · 已完成尝试 {progress.attempts} 次</p>
+      {checkpoint === 1 && progress.stage === 1 && <button className="primary" onClick={() => act({ type: 'test' })}>领取公会练习材料 · 开始认证</button>}
+      {checkpoint === 1 && progress.stage >= 2 && progress.stage <= 4 && <>
+        <p>当前目标火候 {certificationTargets[progress.stage - 2] * 100}% · 绿色目标区中心得分最高</p>
+        <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="认证控火指针"><div className="heat-target" style={{ left: `${certificationTargets[progress.stage - 2] * 100 - 8}%`, width: '16%', background: '#81c99d66' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+        <button className="primary" onClick={() => act({ type: 'pulse', marker, stage: progress.stage })}>锁定{['提炼', '融合', '凝丹'][progress.stage - 2]}火候</button>
+      </>}
+      {checkpoint === undefined && progress.stage === 5 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记认证 · 40金币 / 50修炼积累</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }
