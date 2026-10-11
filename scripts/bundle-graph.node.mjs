@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url'
 import { spawnSync } from 'node:child_process'
 import { budgetFailures, initialAssets, deferredAssetFailures } from './check-bundle.mjs'
 import { createReleaseManifest } from './write-release-manifest.mjs'
+import { requiredReleaseFiles } from './release-files.mjs'
 
 test('static dependency walk includes shared CSS and cycles but excludes dynamic engine', () => {
   const manifest = {
@@ -44,6 +45,7 @@ test('release manifest binds package, bundle and migration contract', () => {
     { version: '0.37.1' },
     { version: '0.37.1', engineLazy: true, initialJsBytes: 12, initialJsGzipBytes: 4, totalJsBytes: 30, engineGzipBytes: 9 },
     'a'.repeat(40),
+    requiredReleaseFiles.map(file => ({ file, bytes: 1, sha256: 'a'.repeat(64) })),
   )
   assert.equal(manifest.schemaVersion, 3)
   assert.equal(manifest.contentVersion, '0.37.1')
@@ -58,6 +60,7 @@ test('release manifest module imports without package or dist and only its CLI r
   try {
     const script = join(directory, 'write-release-manifest.mjs')
     copyFileSync(new URL('./write-release-manifest.mjs', import.meta.url), script)
+    copyFileSync(new URL('./release-files.mjs', import.meta.url), join(directory, 'release-files.mjs'))
     const imported = spawnSync(process.execPath, ['--input-type=module', '-e',
       `import { createReleaseManifest } from ${JSON.stringify(pathToFileURL(script).href)}; if (typeof createReleaseManifest !== 'function') process.exit(2)`],
     { cwd: directory, encoding: 'utf8' })

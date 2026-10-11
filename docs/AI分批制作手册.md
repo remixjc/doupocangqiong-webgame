@@ -1,5 +1,7 @@
 # AI 分批制作与持续迭代手册
 
+C11f-2a当前：发行清单增加完整文件SHA256与artifactFormat 1；build/check执行只读核验，`pnpm release:verify`可复查dist，`node scripts/verify-release.mjs <独立目录> <完整SHA>`可审查保存包。不要把该命令当上传/部署或玩家存档迁移。源码版仍0.37.1，下一步在干净已推送提交重构建、复制独立保存目录并核SHA与文件指纹，再以真实网页完成本地切换/回滚；公网、真机/Beta和完整来源分别留待。ee3d05d远端Game checks38180981494 success、Pages38180981500 skipped。
+
 C11f-1a接续：已修发行清单导入时读取未构建dist导致干净CI失败，674Vitest+6Node/类型/迁移/三难度与28章回放/构建通过。35b488e/ca7d589的远端Game checks均失败，不误签成功。下一批C11f-2a生成生产包完整文件SHA256清单与只读核验，覆盖缺失/篡改/额外文件/非法路径；采用独立fixture，不改用户浏览器或存档。CLI功能必须以空产物目录的导入回归防止再次提前执行。
 
 适用工程：斗破苍穹 · 异火之路；当前基线：0.1.0 压缩主线 Alpha。
