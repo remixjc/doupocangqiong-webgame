@@ -14,6 +14,7 @@ import { teacherSupport } from '../core/companions'
 import BondJournal from './BondJournal'
 import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
+import { bindDialogFocus } from './dialog-focus'
 
 const GameView = lazy(() => import('./GameView'))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | null
@@ -66,20 +67,11 @@ export default function App() {
   }, [story, screen, panel])
   useEffect(() => {
     if (!panel && !story && !r.dead) return
-    const previous = document.activeElement as HTMLElement | null
     const dialogs = document.querySelectorAll<HTMLElement>('[role="dialog"]')
     const dialog = dialogs[dialogs.length - 1]
     if (!dialog) return
-    const focusable = () => [...dialog.querySelectorAll<HTMLElement>('button:not(:disabled),select,input:not([hidden]),a[href]')]
-    focusable()[0]?.focus()
-    const trap = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') return
-      const controls = focusable(), first = controls[0], last = controls[controls.length - 1]
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus() }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus() }
-    }
-    document.addEventListener('keydown', trap)
-    return () => { document.removeEventListener('keydown', trap); previous?.focus() }
+    return bindDialogFocus(dialog, document, () =>
+      document.querySelector<HTMLElement>('.game-canvas') ?? document.querySelector<HTMLElement>('.brand-button'))
   }, [panel, story, r.dead])
 
   function enter(id: number) {
