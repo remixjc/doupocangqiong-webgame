@@ -365,8 +365,12 @@ export default class AdventureScene extends Phaser.Scene {
       }
       event.checkpoints?.forEach((point, index) => {
         const step = event.kind === 'competition' ? progress.stage - 1 : event.kind === 'tournament' ? (progress.stage === 0 ? 0 : progress.stage <= 12 ? Math.floor((progress.stage - 1) / 4) + 1 : 4) : event.kind === 'survival' ? (progress.stage === 0 ? 0 : progress.stage === 2 ? 1 : progress.stage === 3 ? 2 : -1) : progress.stage
-        const active = progress.started && index === step && (event.kind !== 'competition' || progress.choice === 'premium')
-        g.fillStyle(index < step ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
+        const passed = event.kind === 'lineage' ? index === 0 ? progress.stage > 0 : index <= 2 ? (progress.score & (1 << (index - 1))) !== 0 : progress.stage >= 3
+          : event.kind === 'alliance' ? index === 0 ? progress.stage > 0 : index < progress.stage - 1 : index < step
+        const active = progress.started && (event.kind === 'lineage' ? progress.stage === 1 ? [1, 2].includes(index) && !passed : index === (progress.stage === 2 ? 3 : progress.stage === 0 ? 0 : -1)
+          : event.kind === 'alliance' ? index === (progress.stage === 0 ? 0 : [2, 3].includes(progress.stage) ? progress.stage - 1 : -1)
+          : index === step && (event.kind !== 'competition' || progress.choice === 'premium'))
+        g.fillStyle(passed ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
         if (event.kind === 'cave' && index === 2) {
           g.fillStyle(progress.stage >= 3 ? 0x58695c : 0xb39152); g.fillRect(point.x - 24, point.y - 16, 48, 32)
           g.lineStyle(2, 0xebce92); g.strokeRect(point.x - 24, point.y - 16, 48, 32)

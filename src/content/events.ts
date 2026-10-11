@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -16,6 +16,20 @@ export interface ChapterEvent {
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  19: {
+    id: 'star-pavilion-master-leads', kind: 'lineage', introducedVersion: '0.8.4',
+    title: '星陨阁 · 师门线索', speaker: '风尊者', npc: { x: 280, y: 625 },
+    stages: ['到师门牌确认本次联络目标', '清理驻点守卫，收集西林札记与东侧联络簿，顺序不限',
+      '到中庭校对台，比对两份线索并决定下一程', '返回风尊者处登记丹塔之行', '师门线索已经登记，前往联络审核台'],
+    introduction: '药尘还没有归来。先看师门牌，再到西林与东侧驻点带回两份线索，守卫清理后才能领取。顺序由你决定；两份齐全后在中庭校对下一程，最后回来登记。救人需要力量，也需要可信的退路。',
+    note: '两份记录、投影守卫与联络审核为原创师门关卡。线索不是原著信物；校对错误免费重试，已取得记录保存，登记一次50积累。此处不提前营救药老，完整四阁赛事留后续扩展。',
+    checkpoints: [
+      { x: 300, y: 170, label: '师门牌', text: '目标：带回西林札记与东侧联络簿，再校对行动方向。两驻点顺序不限，清理守卫后领取。' },
+      { x: 640, y: 300, label: '西林札记', text: '札记：当前应提升炼药与灵魂实力，前往圣丹城丹塔寻求更进一步的修炼。', guards: ['star-west-hunter'] },
+      { x: 1020, y: 620, label: '东侧联络簿', text: '联络簿：营救所需的可靠路线仍在整理，不能仓促直闯魂殿；下一程先去丹塔。', guards: ['star-east-mage', 'star-east-brute'] },
+      { x: 750, y: 420, label: '中庭校对台', text: '两份线索都指向炼药与灵魂成长。比对后选择下一程，师门还会继续整理营救退路。' },
+    ],
+  },
   18: {
     id: 'central-thunder-retreat', kind: 'escape', introducedVersion: '0.8.3',
     title: '雷云山径 · 避战撤离', speaker: '山路向导', npc: { x: 280, y: 625 },

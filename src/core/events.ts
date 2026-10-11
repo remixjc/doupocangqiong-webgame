@@ -9,6 +9,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'evade'; stage: number }
   | { type: 'descend'; stage: number }
   | { type: 'breach'; stage: number }
+  | { type: 'lead'; destination: 'danta' | 'rescue' | 'thunder' }
   | { type: 'bid'; amount: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
@@ -33,8 +34,8 @@ export function eventHint(state: GameState, eventId?: string): string {
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
-    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : 0,
-    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification'].includes(event.kind) ? 1 : 0,
+    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : 0,
+    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification', 'lineage'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -111,6 +112,20 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'lineage' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'lineage' && action.type === 'seal' && p.stage === 1 && [1, 2].includes(action.index)) {
+      const bit = 1 << (action.index - 1)
+      if (p.score & bit) return fail('这份师门记录已取得，不重复领取。')
+      p.score |= bit; message = event.checkpoints![action.index].text
+      if (p.score === 3) { p.stage = 2; message += ' 两份记录已齐，前往中庭校对台。' }
+    } else if (event.kind === 'lineage' && action.type === 'lead' && p.stage === 2) {
+      if (!['danta', 'rescue', 'thunder'].includes(action.destination)) return fail('联络方向无效。')
+      p.attempts++
+      if (action.destination === 'danta') { p.stage = 3; message = '两份记录均指向丹塔。返回风尊者处登记，师门继续整理营救退路。' }
+      else message = '与两份记录不符。下一程需要提升炼药与灵魂实力，先去丹塔；未消耗材料，可重新校对。'
+    } else if (event.kind === 'lineage' && action.type === 'deliver' && p.stage === 3) {
+      next.xp += 50; p.stage = 4; message = '丹塔之行已登记 · 50积累。药老仍待营救；前往联络审核台确认出发。'
     } else if (event.kind === 'alliance' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'alliance' && action.type === 'strategy' && p.stage === 1) {

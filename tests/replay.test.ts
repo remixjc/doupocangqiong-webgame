@@ -76,6 +76,8 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'siege' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'alliance' && p.stage === 1) state = advanceEvent(state, { type: 'strategy', choice: 'steady', eventId }).state
           else if (e.kind === 'alliance' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'lineage' && p.stage === 2 && checkpoint === 3) state = advanceEvent(state, { type: 'lead', destination: 'danta', eventId }).state
+          else if (e.kind === 'lineage' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'flame') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
@@ -141,6 +143,13 @@ describe('完整主线真实规则战斗回放', () => {
             target = !ep.started || [1, 4].includes(ep.stage) ? event.npc : event.checkpoints![ep.stage === 0 ? 0 : ep.stage - 1]
             const guards = event.checkpoints?.[ep.stage - 1]?.guards
             const threat = ep.choice === 'steady' && living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
+            if (threat) target = threat
+          }
+          if (event.kind === 'lineage') {
+            const index = ep.stage === 0 ? 0 : ep.stage === 1 ? ep.score & 1 ? 2 : 1 : 3
+            target = !ep.started || ep.stage === 3 ? event.npc : event.checkpoints![index]
+            const guards = event.checkpoints?.[index]?.guards
+            const threat = ep.stage === 1 && living.find(enemy => enemy.spawnId && guards?.includes(enemy.spawnId))
             if (threat) target = threat
           }
         }

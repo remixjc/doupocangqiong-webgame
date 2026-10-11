@@ -24,7 +24,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -35,6 +35,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'hunt' && action.type === 'deliver' && !runtime.huntTeam?.arrived) { gameStore.notify('队友须存活并返回胡嘉处，等待队友跟上。'); return false }
       if (event.kind === 'siege' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回药老处确认决战准备。'); return false }
       if (event.kind === 'alliance' && ['strategy', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回海波东处选择方案或报告。'); return false }
+      if (event.kind === 'lineage' && action.type === 'lead' && checkpoint !== 3) { gameStore.notify('请在中庭校对台比对线索。'); return false }
+      if (event.kind === 'lineage' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回风尊者处登记。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -129,6 +131,17 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {progress.stage >= 2 && <p>{progress.choice === 'premium' ? '补给方案已支付60金币 · 两处物资不另扣材料' : '免费巡防 · 清理对应驻点守卫后登记'}</p>}
       {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告筹备 · 领取{progress.choice === 'premium' ? '恢复丹2 / 回气丹1' : '恢复丹1'}与40积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'lineage' && progress.started && <>
+      <p>西林札记：{progress.score & 1 ? '已取得' : '待寻找'} · 东侧联络簿：{progress.score & 2 ? '已取得' : '待寻找'} · 校对{progress.attempts}次</p>
+      {progress.score & 1 ? <p className="muted">西林札记：先提升炼药与灵魂实力，前往圣丹城丹塔。</p> : null}
+      {progress.score & 2 ? <p className="muted">东侧联络簿：营救退路仍在整理，不能仓促直闯魂殿；下一程先去丹塔。</p> : null}
+      {checkpoint === 3 && progress.stage === 2 && <div className="camp-options">
+        <button className="primary" onClick={() => act({ type: 'lead', destination: 'danta' })}>前往丹塔 · 提升炼药与灵魂</button>
+        <button className="secondary" onClick={() => act({ type: 'lead', destination: 'rescue' })}>立即营救 · 直接闯入魂殿</button>
+        <button className="secondary" onClick={() => act({ type: 'lead', destination: 'thunder' })}>重返雷区 · 继续争夺</button>
+      </div>}
+      {checkpoint === undefined && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记丹塔之行 · 50积累</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

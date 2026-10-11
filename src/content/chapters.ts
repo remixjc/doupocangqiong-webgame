@@ -84,6 +84,11 @@ chapters[17].boss = '雷云山径 · 安全撤离'
 chapters[17].trialNote = '两段避雷石与三点/交叉雷阵为原创避战撤离；不击杀原作强者，不表示此处首次获得三千雷动。'
 chapters[17].opening[2].text = '向山路向导询问退路，到前哨按E开始撤离；在西侧避雷石附近累计8秒，再穿过山口到东侧累计10秒。落雷会锁定脚下，及时闪避；两段通过后到北侧出口撤离。失败免费重建最近安全点，当前段计时重新开始。'
 
+chapters[18].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[18].boss = '星陨师门 · 联络审核'
+chapters[18].trialNote = '两份师门记录、守卫与方向校对为原创联络关卡；第19章不提前营救药老，完整四阁赛事后续扩展。'
+chapters[18].opening[2].text = '与风尊者接取师门联络，看师门牌后清理西林和东侧驻点守卫，带回两份记录，先后不限。到中庭校对台比对下一程，错误免费重试；返回风尊者登记，再到联络审核台确认。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

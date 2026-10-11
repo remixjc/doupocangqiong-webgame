@@ -315,15 +315,15 @@ export const returnAndCentralMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 1020, y: 65, label: '中州北域 · 雷云山径' }, { x: 440, y: 750, label: '西侧避雷石 → 穿过山口 → 东侧避雷石 → 撤离' }],
   },
   19: {
-    id: 'star-pavilion-grove', style: 'star-pavilion', gateLabel: '星陨阁试炼',
+    id: 'star-pavilion-grove', style: 'star-pavilion', gateLabel: '师门联络审核', trialMode: 'assessment',
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1120, y: 160 }, bossSpawn: { x: 1060, y: 270 }, safeRadius: 170,
     obstacles: [{ x: 430, y: 100, w: 170, h: 180 }, { x: 760, y: 540, w: 180, h: 120 }, { x: 80, y: 310, w: 110, h: 100 }],
     herbs: [{ x: 320, y: 440 }, { x: 640, y: 300 }, { x: 1020, y: 620 }, { x: 1080, y: 180 }, { x: 680, y: 640 }, { x: 300, y: 170 }],
-    enemies: [{ type: 'brute', x: 610, y: 440 }, { type: 'hunter', x: 830, y: 340 },
-      { type: 'mage', x: 1030, y: 580 }, { type: 'hunter', x: 750, y: 240 }],
+    enemies: [{ id: 'star-west-hunter', type: 'hunter', x: 650, y: 370 },
+      { id: 'star-east-mage', type: 'mage', x: 1030, y: 580 }, { id: 'star-east-brute', type: 'brute', x: 1000, y: 680 }],
     paths: [[{ x: 150, y: 650 }, { x: 300, y: 430 }, { x: 650, y: 420 }, { x: 980, y: 350 }, { x: 1120, y: 160 }],
       [{ x: 650, y: 420 }, { x: 660, y: 240 }]],
-    landmarks: [{ x: 690, y: 65, label: '星陨阁 · 师门林径' }, { x: 680, y: 750, label: '星光林径 · 再寻师门' }],
+    landmarks: [{ x: 690, y: 65, label: '星陨阁 · 师门林径' }, { x: 680, y: 750, label: '两份记录 → 校对丹塔之行 → 返回登记 → 联络审核' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? mountainMaps[id] ?? desertMaps[id] ?? capitalMaps[id] ?? blackCornerMaps[id] ?? academyMaps[id] ?? returnAndCentralMaps[id] ?? legacy }
