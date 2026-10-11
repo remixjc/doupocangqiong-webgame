@@ -35,7 +35,7 @@ describe('C10a 小医仙跨章回访与伙伴手札', () => {
       stack.delete(key); visited.add(key)
     }
     for (const { chapter, event } of bondEvents) visit(chapter, event.id)
-    expect(bondEvents).toHaveLength(4)
+    expect(bondEvents.filter(item => item.event.bond?.lineId === 'little-doctor')).toHaveLength(4)
     const s = cleared(27); s.chapter = 28; s.progress[28] = blankProgress(28)
     expect(act(s, bondEvents[3].event.id, { type: 'begin' }).message).toContain('正式首通')
   })
@@ -68,6 +68,7 @@ describe('C10a 小医仙跨章回访与伙伴手札', () => {
     }
     const journal = bondJournal(s)[0]; expect(journal.completed).toBe(4)
     expect(journal.entries.every(entry => entry.choice && entry.response && entry.done)).toBe(true)
+    expect(bondJournal(s).every(line => line.completed === line.entries.length)).toBe(true)
   })
   it('只在正确路标触发阅读或回应面板，远处E不能推进记录', () => {
     let s = cleared(4), opened: [string, number | undefined] | undefined

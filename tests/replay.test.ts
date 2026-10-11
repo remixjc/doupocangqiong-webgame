@@ -7,6 +7,7 @@ import { mapCollides, type MapDefinition } from '../src/content/maps'
 import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
 import { advanceEvent, eventDone, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 import { validateState } from '../src/core/save'
+import { bondEvents } from '../src/content/bonds'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -15,7 +16,19 @@ function route(from: Vec, to: Vec, map: MapDefinition): Vec[] {
   const key = (x: number, y: number) => y * columns + x
   const pos = (n: number) => ({ x: (n % columns) * cell + cell / 2, y: Math.floor(n / columns) * cell + cell / 2 })
   const index = (p: Vec) => key(Math.min(columns - 2, Math.max(1, Math.floor(p.x / cell))), Math.min(rows - 2, Math.max(1, Math.floor(p.y / cell))))
-  const start = index(from), end = index(to), parents = new Map<number, number>([[start, -1]]), queue = [start]
+  const start = index(from)
+  let end = index(to)
+  // An interaction point may be clear while its coarse grid cell overlaps a nearby wall.
+  // Approach through the nearest clear cell, then use normal movement/E within range.
+  if (mapCollides(map, pos(end), 22)) {
+    const candidates = Array.from({ length: columns * rows }, (_, n) => n).filter(n => {
+      const p = pos(n)
+      return p.x >= 40 && p.x <= WIDTH - 40 && p.y >= 50 && p.y <= HEIGHT - 40 &&
+        Math.hypot(p.x - to.x, p.y - to.y) < 64 && !mapCollides(map, p, 22)
+    }).sort((a, b) => Math.hypot(pos(a).x - to.x, pos(a).y - to.y) - Math.hypot(pos(b).x - to.x, pos(b).y - to.y))
+    end = candidates[0] ?? end
+  }
+  const parents = new Map<number, number>([[start, -1]]), queue = [start]
   for (let head = 0; head < queue.length; head++) {
     const current = queue[head]
     if (current === end) break
@@ -283,17 +296,17 @@ describe('完整主线真实规则战斗回放', () => {
       if (chapter.id === 23) expect(eventProgress(state).attempts, '天墓三层应各在单次时限内完成').toBe(3)
       if (chapter.id === 28) expect([...visitedMaps], '终战必须真实进入三个战场').toEqual(['continent-final-battlefield', 'final-blood-realm', 'final-emperor-flame-realm'])
       state = finishChapter(state)
-      if (chapter.id === 28) {
-        const id = 'doctor-epilogue-letter', event = findEvent(28, id)!
-        for (let tick = 0; tick < 3600 && !eventDone(state, 28, id); tick++) {
-          const p = eventProgress(state, 28, id), target = !p.started || p.stage === 2 ? event.npc : event.checkpoints![p.stage]
+      for (const { event } of bondEvents.filter(item => item.chapter === chapter.id)) {
+        const id = event.id
+        for (let tick = 0; tick < 3600 && !eventDone(state, chapter.id, id); tick++) {
+          const p = eventProgress(state, chapter.id, id), target = !p.started || p.stage === 2 ? event.npc : event.checkpoints![p.stage]
           const path = route(world.player, target, world.collisionMap())
           while (path.length > 1 && dist(path[0], world.player) < 14) path.shift()
           const point = path[0] ?? target, dx = point.x - world.player.x, dy = point.y - world.player.y, length = Math.hypot(dx, dy)
           world.step(length > 4 ? { x: dx / length, y: dy / length } : { x: 0, y: 0 })
           if (tick % 10 === 0) { world.action('interact', { x: 0, y: 0 }); expect(() => validateState(state)).not.toThrow() }
         }
-        expect(eventDone(state, 28, id), '小医仙尾声需合法回访输入完成').toBe(true)
+        expect(eventDone(state, chapter.id, id), `${event.title}需合法回访输入完成：progress=${JSON.stringify(eventProgress(state, chapter.id, id))},position=${world.player.x},${world.player.y}`).toBe(true)
       }
       expect(validateState(state)).toEqual(state)
       expect(state.completed.length).toBe(chapter.id)

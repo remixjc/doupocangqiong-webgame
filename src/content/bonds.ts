@@ -7,7 +7,10 @@ export interface BondChoice {
   reward: { xp: number; heal?: number; mana?: number }
 }
 export interface BondDefinition { lineId: string; question: string; options: BondChoice[] }
-export const bondLines = [{ id: 'little-doctor', name: '小医仙', title: '同行与自持' }]
+export const bondLines = [
+  { id: 'little-doctor', name: '小医仙', title: '同行与自持' },
+  { id: 'qinglin', name: '青鳞', title: '被看见的成长' },
+]
 export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
   {
     chapter: 4,
@@ -93,6 +96,71 @@ export const bondEvents: { chapter: number; event: ChapterEvent }[] = [
         options: [
           { choice: 'steady', label: '祝愿安稳 · 保留她的选择', response: '你将祝愿写入归途，不用往日恩义替她决定将来。', reward: { xp: 50, heal: 1 } },
           { choice: 'premium', label: '约定再会 · 各自继续前行', response: '你留下再会的约定，也为各自的旅途留出辽阔天地。', reward: { xp: 50, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 7,
+    event: {
+      id: 'qinglin-desert-listening', kind: 'bond', optional: true, introducedVersion: '0.12.1',
+      requires: ['stone-desert-rescue'], title: '青鳞 · 沙城听风', speaker: '青鳞 · 往事书简', npc: { x: 520, y: 750 },
+      stages: ['到听风石读取青鳞留下的线索', '前往沙城书简回应她的心事', '返回书简处确认并领取一次补给', '沙城听风已记入伙伴手札'],
+      introduction: '团员脱险后，回访营地中的往事书简。读听风石，再回应青鳞的心事：她的价值并不只在能为旁人做什么。确认记录后领取一次补给。',
+      note: '书简与回应为原创回望，不把团员救援写成青鳞被带离的完整原作事件；后续去向和成长细节仍需校订。两种回应均可推进，不判定人物真实实力。',
+      checkpoints: [
+        { x: 500, y: 400, label: '听风石', text: '青鳞留下的方向帮助了众人，也让人看见她的细心。先倾听，再回应。' },
+        { x: 740, y: 300, label: '沙城书简', text: '你会怎样回应那份希望被认可的心情？' },
+      ],
+      bond: {
+        lineId: 'qinglin', question: '青鳞担心自己只是给旁人添麻烦。你的回应是？',
+        options: [
+          { choice: 'steady', label: '肯定细心 · 不以出身定义她', response: '你记得她的细心，让认可落在她自己的行动上。', reward: { xp: 20, heal: 1 } },
+          { choice: 'premium', label: '邀请同行 · 给她选择的余地', response: '你留下邀请，也说明同行是她可以选择的道路。', reward: { xp: 20, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 19,
+    event: {
+      id: 'qinglin-growth-notes', kind: 'bond', optional: true, introducedVersion: '0.12.1',
+      requires: ['star-pavilion-master-leads'], requiresHistory: [{ chapter: 7, eventId: 'qinglin-desert-listening' }],
+      title: '青鳞 · 成长回望', speaker: '青鳞 · 成长书简', npc: { x: 520, y: 700 },
+      stages: ['到旧沙记读取成长书简', '前往远行记回应新的道路', '返回书简处确认并领取一次补给', '成长回望已记入伙伴手札'],
+      introduction: '师门联络登记后，打开营地中的成长书简，回望青鳞从拘谨到敢于选择的道路。卷页承接沙城听风，不表示她实际在此时此地重逢。',
+      note: '回望、节点和两种回应为原创改编，不以数值模拟原著特殊能力、宗门训练或完整成长岁月。没有免费境界提升或新战斗支援，材料不会被扣除。',
+      checkpoints: [
+        { x: 500, y: 450, label: '旧沙记', text: '沙城旧约不要求她永远停在当年的位置。成长也包括决定自己愿意怎样前行。' },
+        { x: 710, y: 190, label: '远行记', text: '面对新的力量与道路，留下你愿意长期守住的回应。' },
+      ],
+      bond: {
+        lineId: 'qinglin', question: '当青鳞开始拥有自己的道路，你怎样延续当年的认可？',
+        options: [
+          { choice: 'steady', label: '尊重决定 · 不替她选路', response: '你承认她已经能够选择，不拿旧日照顾替代她的判断。', reward: { xp: 35, heal: 1 } },
+          { choice: 'premium', label: '交换见闻 · 将彼此视作同行者', response: '你愿意听她的见闻，也将自己的经历坦诚相告。', reward: { xp: 35, mana: 1 } },
+        ],
+      },
+    },
+  },
+  {
+    chapter: 28,
+    event: {
+      id: 'qinglin-homeward-letter', kind: 'bond', optional: true, introducedVersion: '0.12.1',
+      requiresCompleted: [28], requiresHistory: [{ chapter: 19, eventId: 'qinglin-growth-notes' }],
+      title: '青鳞 · 远行来信', speaker: '青鳞 · 归途来信', npc: { x: 800, y: 700 },
+      stages: ['到旧城记读取归途来信', '前往风灯记回应远行', '返回来信处确认并领取一次补给', '被看见的成长三页已完成'],
+      introduction: '终战正式首通后，重返营地读青鳞来信。走过旧城记与风灯记，回望从沙城听风到各自远行的约定，再回来确认。',
+      note: '来信为原创尾声，不补写原著宗门、修为和最终去向。需前两页真实完成与终战正式首通；不影响小医仙卷页，不重复主线或支线奖励。',
+      checkpoints: [
+        { x: 500, y: 300, label: '旧城记', text: '当年的沙城线索，如今成为可以坦然谈起的往事。' },
+        { x: 760, y: 430, label: '风灯记', text: '风灯照着归途，也照着她愿意继续走的路。' },
+      ],
+      bond: {
+        lineId: 'qinglin', question: '面对归途来信，你会怎样回应？',
+        options: [
+          { choice: 'steady', label: '祝愿自在 · 珍重她自己的选择', response: '你祝愿她走得自在，不让旧日恩义成为新的束缚。', reward: { xp: 50, heal: 1 } },
+          { choice: 'premium', label: '约定交流 · 分享各自的见闻', response: '你留下交流见闻的约定，彼此都继续成长。', reward: { xp: 50, mana: 1 } },
         ],
       },
     },
