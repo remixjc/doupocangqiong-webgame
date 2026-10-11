@@ -1,3 +1,5 @@
+import { advanceEarlyNingSecond, ningSecondOperation } from '../../src/core/early-ning-second'
+import { ningSecondScenes } from '../../src/content/early-ning-second'
 import { advanceEarlyNingFirst, ningPlaces, ningFirstOperation } from '../../src/core/early-ning-first'
 import { ningFirstScenes } from '../../src/content/early-ning-first'
 import { advanceEarlyCeremonialTest, ceremonialPlaces } from '../../src/core/early-ceremonial-test'
@@ -50,7 +52,8 @@ import { keChallengeScenes } from '../../src/content/early-ke-challenge'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false, includeKeChallenge = false, includeEighthTraining = false, includeCeremonyGuests = false, includeCeremonialTest = false, includeNingFirst = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false, includeAppraisal = false, includeAuction = false, includeSettlement = false, includeFatherGift = false, includeXunerVisit = false, includeLongSupplies = false, includeForestStrike = false, includeSeventhRoom = false, includePalmPair = false, includePreliminary = false, includeKeChallenge = false, includeEighthTraining = false, includeCeremonyGuests = false, includeCeremonialTest = false, includeNingFirst = false, includeNingSecond = false): GameState {
+  if (includeNingSecond) includeNingFirst = true
   if (includeNingFirst) includeCeremonialTest = true
   if (includeCeremonialTest) includeCeremonyGuests = true
   if (includeCeremonyGuests) includeEighthTraining = true
@@ -290,6 +293,18 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       if (marker === 0) failed = true
       const result = advanceEarlyNingFirst(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, ningPlaces[scene.place],
         { ...task, actor: scene.actor, operation: ningFirstOperation(task), marker })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
+  }
+  if (includeNingSecond) {
+    let failed = false
+    while (state.earlyTraining.ningSecond.stage < 8) {
+      const task = state.earlyTraining.ningSecond, scene = ningSecondScenes[task.stage]
+      const marker = task.stage === 4 ? failed ? .5 : 0 : undefined
+      if (marker === 0) failed = true
+      const result = advanceEarlyNingSecond(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, ningPlaces[scene.place],
+        { ...task, actor: scene.actor, operation: ningSecondOperation(task), marker })
       expect(result.ok, result.message).toBe(true)
       state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
     }

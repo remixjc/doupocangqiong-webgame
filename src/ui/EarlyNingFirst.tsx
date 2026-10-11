@@ -9,8 +9,8 @@ import { ningFirstScenes } from '../content/early-ning-first'
 import { startSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
-export default function EarlyNingFirst({ state, position: entryPosition, onBack }: {
-  state: GameState; position: EarlyWalkPosition; onBack: () => void
+export default function EarlyNingFirst({ state, position: entryPosition, onBack, onSecond }: {
+  state: GameState; position: EarlyWalkPosition; onBack: () => void; onSecond?: () => void
 }) {
   const task = state.earlyTraining.ningFirst, scene = ningFirstScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...ningPlaces.waiting })
@@ -79,7 +79,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack 
         </div>
       </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
     </section> : <p className="muted">下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>首轮倒地已记，仍待裁判与后续变化。</h3><p>这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。</p></section>}
+      : <section className="bond-summary"><h3>首轮倒地已记，仍待裁判与后续变化。</h3><p>这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。</p>{onSecond && <button className="primary" onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</button>}</section>}
     {training && <button className="secondary" onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</button>}
     <p className="muted">药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</p>
     <button className="secondary" onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</button>

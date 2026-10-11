@@ -26,6 +26,7 @@ import { earlyEighthTrainingBlock } from '../core/early-eighth-training'
 import { earlyCeremonyGuestsBlock } from '../core/early-ceremony-guests'
 import { earlyCeremonialTestBlock } from '../core/early-ceremonial-test'
 import { earlyNingFirstBlock } from '../core/early-ning-first'
+import { earlyNingSecondBlock } from '../core/early-ning-second'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
@@ -49,6 +50,7 @@ const EarlyEighthTraining = lazy(() => loadSceneModule(() => import('./EarlyEigh
 const EarlyCeremonyGuests = lazy(() => loadSceneModule(() => import('./EarlyCeremonyGuests')))
 const EarlyCeremonialTest = lazy(() => loadSceneModule(() => import('./EarlyCeremonialTest')))
 const EarlyNingFirst = lazy(() => loadSceneModule(() => import('./EarlyNingFirst')))
+const EarlyNingSecond = lazy(() => loadSceneModule(() => import('./EarlyNingSecond')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -74,6 +76,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const [ceremonyGuests, setCeremonyGuests] = useState(false)
   const [ceremonialTest, setCeremonialTest] = useState(false)
   const [ningFirst, setNingFirst] = useState(false)
+  const [ningSecond, setNingSecond] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
@@ -116,6 +119,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const returningCeremonial = useRef(false)
   const ningFirstEntry = useRef<HTMLButtonElement>(null)
   const returningNingFirst = useRef(false)
+  const ningSecondEntry = useRef<HTMLButtonElement>(null)
+  const returningNingSecond = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -253,6 +258,14 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setPalmTraining(false); setPreliminary(true)
   }
+  useEffect(() => {
+    if (!ningSecond && returningNingSecond.current) { returningNingSecond.current = false; ningSecondEntry.current?.focus() }
+  }, [ningSecond])
+  function openNingSecond() {
+    const blocked = earlyNingSecondBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setNingFirst(false); setNingSecond(true)
+  }
   function openNingFirst() {
     const blocked = earlyNingFirstBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -287,7 +300,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (ningFirst) return <Suspense fallback={<p role="status">正在接续萧宁首轮推拉交锋……</p>}><EarlyNingFirst state={state} position={position}
+  if (ningSecond) return <Suspense fallback={<p role="status">正在接续违规再攻与迎击……</p>}><EarlyNingSecond state={state} position={position}
+    onBack={() => { returningNingSecond.current = true; setNingSecond(false) }} /></Suspense>
+  if (ningFirst) return <Suspense fallback={<p role="status">正在接续萧宁首轮推拉交锋……</p>}><EarlyNingFirst state={state} position={position} onSecond={openNingSecond}
     onBack={() => { returningNingFirst.current = true; setNingFirst(false) }} /></Suspense>
   if (ceremonialTest) return <Suspense fallback={<p role="status">正在接续正式仪式与验碑……</p>}><EarlyCeremonialTest state={state} position={position} onChallenge={openNingFirst}
     onBack={() => { returningCeremonial.current = true; setCeremonialTest(false) }} /></Suspense>
@@ -406,6 +421,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <button ref={guestsEntry} className="primary" onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</button>}
       {place.id === 'teacher' && !earlyCeremonialTestBlock(state, position) && <button ref={ceremonialEntry} className="primary" onClick={openCeremonialTest}>接续正式仪式 · 二长老验碑与八段</button>}
       {place.id === 'teacher' && !earlyNingFirstBlock(state, position) && <button ref={ningFirstEntry} className="primary" onClick={openNingFirst}>接续萧宁首轮 · 推拉推与待裁判</button>}
+      {place.id === 'teacher' && !earlyNingSecondBlock(state, position) && <button ref={ningSecondEntry} className="primary" onClick={openNingSecond}>接续违规再攻 · 八极崩与追加拳击</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
