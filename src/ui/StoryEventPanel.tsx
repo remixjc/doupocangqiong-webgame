@@ -24,7 +24,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -37,6 +37,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'alliance' && ['strategy', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回海波东处选择方案或报告。'); return false }
       if (event.kind === 'lineage' && action.type === 'lead' && checkpoint !== 3) { gameStore.notify('请在中庭校对台比对线索。'); return false }
       if (event.kind === 'lineage' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回风尊者处登记。'); return false }
+      if (event.kind === 'expedition' && ['restart', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回丹塔执事处重试或登记。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -142,6 +143,11 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       </div>}
       {checkpoint === undefined && progress.stage === 3 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记丹塔之行 · 50积累</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'expedition' && progress.started && !done && <>
+      <p>已取得 {[1, 2, 4].filter(bit => progress.score & bit).length}/3 份指定药材 · 已启动 {progress.attempts} 次</p>
+      {checkpoint === undefined && progress.stage === 1 && <button className="secondary" onClick={() => { if (act({ type: 'restart' })) close() }}>免费重试 · 保留已取得节点</button>}
+      {checkpoint === undefined && progress.stage === 2 && <button className="primary" onClick={() => act({ type: 'deliver' })}>登记丹界药材目标</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance', 'lineage', 'expedition'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

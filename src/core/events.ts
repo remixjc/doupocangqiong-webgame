@@ -1,7 +1,7 @@
 import { certificationTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
-export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' }
+export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' | 'restart' }
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
   | { type: 'strategy'; choice: 'steady' | 'premium' }
   | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
@@ -34,8 +34,8 @@ export function eventHint(state: GameState, eventId?: string): string {
 export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId?: string): ChapterEventProgress {
   const event = findEvent(chapter, eventId)
   return event && bossPassed ? { ...blankEvent(), started: true, stage: event.stages.length - 1,
-    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : 0,
-    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification', 'lineage'].includes(event.kind) ? 1 : 0,
+    quote: event.kind === 'trade' ? 60 : 0, score: ['stone', 'certification'].includes(event.kind) ? 300 : event.kind === 'lineage' ? 3 : event.kind === 'expedition' ? 7 : 0,
+    attempts: event.kind === 'tournament' ? 3 : ['stone', 'certification', 'lineage', 'expedition'].includes(event.kind) ? 1 : 0,
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
@@ -112,6 +112,17 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'expedition' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; p.attempts++; message = event.checkpoints![0].text
+    } else if (event.kind === 'expedition' && action.type === 'restart' && p.stage === 1) {
+      p.attempts++; message = '当前未采节点重新计时45秒，已取得记录保留，未消耗金币或材料。'
+    } else if (event.kind === 'expedition' && action.type === 'seal' && p.stage === 1 && [1, 2, 3].includes(action.index)) {
+      const bit = 1 << (action.index - 1)
+      if (p.score & bit) return fail('这份指定药材已取得，不重复领取。')
+      p.score |= bit; message = event.checkpoints![action.index].text
+      if (p.score === 7) { p.stage = 2; message = '三份药材已齐，时限结束。回丹塔执事登记，再准备炼药与丹雷历练。' }
+    } else if (event.kind === 'expedition' && action.type === 'deliver' && p.stage === 2) {
+      p.stage = 3; message = '丹界探索已经登记，不增发药材或丹药。继续完成本章炼药目标与丹雷历练。'
     } else if (event.kind === 'lineage' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'lineage' && action.type === 'seal' && p.stage === 1 && [1, 2].includes(action.index)) {

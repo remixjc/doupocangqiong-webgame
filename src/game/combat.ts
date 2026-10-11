@@ -58,6 +58,7 @@ export class CombatWorld {
   huntTeam?: EscortRun
   towerRun?: FlameRun
   siegeRun?: { stage: number; channel: number }
+  expeditionRun?: { attempt: number; elapsed: number; failed: boolean }
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -76,11 +77,11 @@ export class CombatWorld {
     const stats = playerStats(cb.state())
     this.player.hp = stats.maxHp
     this.player.qi = stats.maxQi
-    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
+    for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations || this.map.expeditionDuration ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
       const cleared = enemy.id && eventsForChapter(chapter.id).some(event => {
         const p = eventProgress(cb.state(), chapter.id, event.id)
-        if (event.kind === 'lineage') return p.started && event.checkpoints?.some((point, index) =>
-          [1, 2].includes(index) && (p.score & (1 << (index - 1))) !== 0 && point.guards?.includes(enemy.id!))
+        if (['lineage', 'expedition'].includes(event.kind)) return p.started && event.checkpoints?.some((point, index) =>
+          index > 0 && (p.score & (1 << (index - 1))) !== 0 && point.guards?.includes(enemy.id!))
         return p.started && event.checkpoints?.some((point, index) => index < (event.kind === 'alliance' ? p.stage - 1 : p.stage) && point.guards?.includes(enemy.id!))
       })
       if (!cleared) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id, enemy.patrol)
@@ -92,6 +93,7 @@ export class CombatWorld {
     this.syncHuntTeam()
     this.syncTower()
     this.syncSiege()
+    this.syncExpedition()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
@@ -112,6 +114,25 @@ export class CombatWorld {
     const siegeProgress = siegeEvent && eventProgress(cb.state(), chapter.id, siegeEvent.id)
     if (siegeEvent && siegeProgress?.started && siegeProgress.stage >= 1 && siegeProgress.stage <= 4)
       Object.assign(this.player, siegeEvent.checkpoints![siegeProgress.stage - 1])
+    const expedition = eventsForChapter(chapter.id).find(e => e.kind === 'expedition')
+    if (expedition && eventProgress(cb.state(), chapter.id, expedition.id).stage === 1)
+      Object.assign(this.player, expedition.checkpoints![0])
+  }
+  private syncExpedition() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'expedition'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage !== 1) this.expeditionRun = undefined
+    else if (!this.expeditionRun || this.expeditionRun.attempt !== p.attempts)
+      this.expeditionRun = { attempt: p.attempts, elapsed: 0, failed: false }
+  }
+  private stepExpedition(dt: number) {
+    this.syncExpedition()
+    const run = this.expeditionRun
+    if (!run || run.failed) return
+    run.elapsed += dt
+    if (run.elapsed >= this.map.expeditionDuration!) {
+      run.failed = true
+      this.cb.notify('丹界收集超时，已取得节点保留。免费休整/刷新或回执事重试，当前未采节点重新计时。')
+    }
   }
   private syncSiege() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'siege'), p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
@@ -485,6 +506,13 @@ export class CombatWorld {
           if (eventProgress(s, this.chapter.id, event.id).stage !== 2) this.cb.notify('先带回两份记录，再来校对下一程。')
           else this.cb.storyEvent?.(event.id, index)
         }
+        else if (event.kind === 'expedition' && index > 0) {
+          this.syncExpedition()
+          const run = this.expeditionRun
+          if (!run || run.failed || run.elapsed >= this.map.expeditionDuration!) this.cb.notify('当前收集未开始或已超时。回执事重试，或免费休整/刷新重建当前未采节点。')
+          else if (this.guardsRemaining(event.id, index) > 0) this.cb.notify(`驻点还有${this.guardsRemaining(event.id, index)}名守卫，先清理威胁。`)
+          else this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
+        }
         else if (event.kind === 'escort') this.escortCheckpoint(index)
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
@@ -723,6 +751,7 @@ export class CombatWorld {
     this.stepSquad(dt)
     this.stepHuntTeam(dt)
     this.stepTower(dt)
+    this.stepExpedition(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -832,6 +861,8 @@ export class CombatWorld {
       siege: this.siegeRun ? { stage: this.siegeRun.stage, remaining: Math.max(0, Math.ceil(this.map.siegeDurations![this.siegeRun.stage - 1] - this.siegeRun.channel)),
         guards: this.guardsRemaining(eventForChapter(this.chapter.id)!.id, this.siegeRun.stage), channeling: this.siegeChanneling() } : undefined,
       sect: boss?.sect && boss.hp > 0 ? { phase: boss.sect.phase, shield: boss.windup > 0, recovery: boss.sect.recovery > 0 } : undefined,
+      expedition: this.expeditionRun ? { remaining: Math.max(0, Math.ceil(this.map.expeditionDuration! - this.expeditionRun.elapsed)),
+        failed: this.expeditionRun.failed, collected: [1, 2, 4].filter(bit => eventProgress(this.cb.state()).score & bit).length } : undefined,
       squad: this.squad ? { hp: this.squad.hp, maxHp: this.squad.maxHp, holding: this.squad.holding, failed: this.squad.hp <= 0,
         waiting: this.squad.waiting, remaining: Math.max(0, Math.ceil(3 - this.squad.channel)), channeling: this.channeling() } : undefined }
   }

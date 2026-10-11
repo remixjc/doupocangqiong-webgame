@@ -26,8 +26,11 @@ describe('全主线配置与任务可达性', () => {
       if (c.id < 28) expect(canEnter(s, c.id + 1)).toBe(false)
       s.chapter = c.id; s.progress[c.id] = blankProgress(c.id)
       s.progress[c.id].intro = true
-      for (let i = 0; i < c.objectives.herbs; i++) { s.progress[c.id].herbs++; s.inventory.herb++ }
-      for (let i = 0; i < c.objectives.kills; i++) { s.progress[c.id].kills++; s.inventory.crystal++ }
+      // Provide optional raw materials for production goals even when exploration uses a dedicated event.
+      const herbs = Math.max(c.objectives.herbs, c.objectives.brews * 2 - s.inventory.herb)
+      const crystals = Math.max(c.objectives.kills, c.objectives.brews - s.inventory.crystal)
+      for (let i = 0; i < herbs; i++) { s.progress[c.id].herbs++; s.inventory.herb++ }
+      for (let i = 0; i < crystals; i++) { s.progress[c.id].kills++; s.inventory.crystal++ }
       for (let i = 0; i < c.objectives.brews; i++) {
         const result = craft(s, 'heal')
         expect(result.ok).toBe(true)

@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -16,6 +16,20 @@ export interface ChapterEvent {
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  20: {
+    id: 'dan-realm-timed-herbs', kind: 'expedition', introducedVersion: '0.9.1',
+    title: '丹界 · 限时药材目标', speaker: '丹塔执事', npc: { x: 280, y: 625 },
+    stages: ['到药谷任务牌按E开始45秒收集', '清理三驻点守卫，45秒内取得三份指定药材，顺序不限',
+      '三份药材已齐，返回丹塔执事登记', '丹界药材目标已登记'],
+    introduction: '先到任务牌确认45秒时限，再清理三处驻点守卫，按E取得指定药材。顺序由你决定，普通行囊药草不能替代。三份都取得后不再计时，返回登记。超时可免费重试，已取得驻点记录保留。',
+    note: '三份指定药材、45秒和投影守卫为原创丹界探索。指定药材仅供任务、不进入行囊；不扣玩家材料。刷新或重试从任务牌重新给当前未采节点45秒，已取得记录保留、不重复生成守卫；本次只登记探索，炼药与丹雷仍需继续。',
+    checkpoints: [
+      { x: 330, y: 220, label: '药谷任务牌', text: '限时45秒，从这里开始；清理三驻点守卫后取得指定药材。可以选择路线，超时免费重试，已取得节点保留。' },
+      { x: 650, y: 310, label: '西侧指定药材', text: '西侧药材已记录，不进入行囊。继续寻找剩余驻点。', guards: ['dan-west-brute'] },
+      { x: 1030, y: 620, label: '东侧指定药材', text: '东侧药材已记录，不进入行囊。继续寻找剩余驻点。', guards: ['dan-east-hunter', 'dan-east-mage'] },
+      { x: 1100, y: 390, label: '北侧指定药材', text: '北侧药材已记录，不进入行囊。三份齐全后回丹塔执事登记。', guards: ['dan-north-hunter'] },
+    ],
+  },
   19: {
     id: 'star-pavilion-master-leads', kind: 'lineage', introducedVersion: '0.8.4',
     title: '星陨阁 · 师门线索', speaker: '风尊者', npc: { x: 280, y: 625 },
