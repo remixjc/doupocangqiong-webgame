@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { chapterById } from '../src/content/chapters'
-import { eventForChapter } from '../src/content/events'
+import { eventForChapter, eventsForChapter, mindTargets } from '../src/content/events'
 import { mapCollides } from '../src/content/maps'
 import { advanceEvent, eventDone, eventProgress, migrateLegacyEvents, type EventAction } from '../src/core/events'
 import { blankProgress, initialState } from '../src/core/model'
@@ -84,10 +84,14 @@ describe('C9b-1 洞府三铭封门', () => {
     const restored = t.reload(); expect(restored.enemies).toHaveLength(2); expect(restored.enemies.every(e => e.hp > 0)).toBe(true)
     expect(restored.player).toMatchObject(e.checkpoints![4])
     Object.assign(w.player, e.checkpoints![5]); w.action('interact', { x: 0, y: 0 }); expect(eventProgress(t.state()).stage).toBe(6)
-    const before = structuredClone(t.state()); t.act({ type: 'deliver' }); expect(eventDone(t.state())).toBe(true)
+    const before = structuredClone(t.state()); t.act({ type: 'deliver' }); expect(eventDone(t.state(), 27, e.id)).toBe(true)
     expect(t.state().gold).toBe(before.gold); expect(t.state().xp).toBe(before.xp); expect(t.state().inventory).toEqual(before.inventory)
-    expect(t.reload().enemies).toHaveLength(0); expect(chapterReady(t.state())).toBe(true)
+    expect(t.reload().enemies).toHaveLength(0); expect(chapterReady(t.state())).toBe(false)
     expect(finishChapter(t.state())).toBe(t.state())
+    const origin = eventsForChapter(27)[1], eventId = origin.id
+    t.act({ type: 'begin', eventId }); t.act({ type: 'test', eventId })
+    for (const [index, marker] of mindTargets(origin).entries()) t.act({ type: 'pulse', marker, stage: index + 1, eventId })
+    t.act({ type: 'deliver', eventId })
     const done = finishChapter(registerBossVictory(t.state())); expect(done.gold).toBe(before.gold + chapterById(27).reward)
     expect(finishChapter(done)).toBe(done)
   })

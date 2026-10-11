@@ -4,7 +4,7 @@ import { blankProgress, initialState } from '../src/core/model'
 import { chapterReady, craft, finishChapter, skillUnlocked, registerBossVictory } from '../src/core/rules'
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
-import { certificationTargets, danFinalTargets, heritageTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
+import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
 import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 import { validateState } from '../src/core/save'
 
@@ -96,7 +96,7 @@ describe('完整主线真实规则战斗回放', () => {
           else if (e.kind === 'inheritance') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
-            else if (checkpoint === 0 && p.stage >= 1 && p.stage <= 3 && Math.abs(marker - heritageTargets[p.stage - 1]) < .08)
+            else if (checkpoint === 0 && p.stage >= 1 && p.stage <= 3 && Math.abs(marker - mindTargets(e)[p.stage - 1]) < .08)
               state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
             else if (checkpoint === undefined && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           }

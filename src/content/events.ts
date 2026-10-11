@@ -22,6 +22,8 @@ export interface ChapterEvent {
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
   reflections?: Reflection[]
   reflectionReward?: number
+  mindTargets?: number[]
+  mindReward?: number
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
   27: {
@@ -30,7 +32,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
     stages: ['前往洞府入口碑读取铭文规则', '读取北侧青莲铭文', '读取南侧心炎铭文', '读取西侧星火铭文',
       '前往封门盘，按三铭顺序输入火纹', '封門已开，清理内殿守卫后读取内殿石刻', '返回古元处报告洞府路线', '洞府路线已经登记，准备本源传承'],
     introduction: '先读入口碑，再按北、南、西三铭顺序观察。三处铭文分别指向青莲、心炎、星火；到封门盘照此输入火纹。错误免费复位当前机关，已读线索保留且可以重读。封门打开后，清理内殿投影守卫、读取石刻，再回来报告。',
-    note: '三铭、火纹顺序、投影守卫与封门是原创压缩探索，不复述原著古帝洞府机关或古玉细节。输入不扣异火或材料，报告不发资源。本源传承继续下一批，本批仍保留原传承试炼投影。',
+    note: '三铭、火纹顺序、投影守卫与封门是原创压缩探索，不复述原著古帝洞府机关或古玉细节。输入不扣异火或材料，报告不发资源；路线登记后再接取本源心念传承。',
     checkpoints: [
       { x: 330, y: 220, label: '入口碑', text: '北铭 → 南铭 → 西铭。三处铭文指出火纹顺序；到封门盘输入，错误可免费复位并重读线索。' },
       { x: 620, y: 290, label: '北侧青莲铭', text: '第一纹：地底青莲。封门第一步选青莲火纹。' },
@@ -489,9 +491,19 @@ const purificationEvents: ChapterEvent[] = [{
     { x: 720, y: 240, label: '核心澄明区', text: '进入圈内净化12秒，躲避交叉白焰，完成后回报。' },
   ],
 }]
+const originEvents: ChapterEvent[] = [{
+  id: 'emperor-origin-mind-inheritance', kind: 'inheritance', introducedVersion: '0.11.3', requires: ['emperor-vault-three-inscriptions'],
+  title: '本源 · 传承凝定', speaker: '传承引路人', npc: { x: 1050, y: 640 }, mindTargets: [.35, .65, .85], mindReward: 150,
+  stages: ['前往本源心念台开始传承凝定', '本源接引：心念35%', '诸火归合：心念65%', '守护凝定：心念85%',
+    '凝定通过，返回传承引路人处报告', '本源记录已确认，前往传承审核台'],
+  introduction: '先完成洞府路线登记，再在本源心念台锁定35%、65%、85%的三步心念，合计210分通过。错误可免费重试，部分成绩可保存；完成后回来报告，再到传承台审核，营地正式首通后继续最终战场。',
+  note: '心念指针、评分、引路人与三步名称为原创本源交互，不模拟原著传承修炼岁月或判定真实帝境实力。报告一次150积累，不增加材料、不重发已有异火；审核不生成可杀的传承投影，章节首通奖励幂等。',
+  checkpoints: [{ x: 1090, y: 540, label: '本源心念台', text: '本源接引35% → 诸火归合65% → 守护凝定85%。三步合计210分通过，失败免费重试。' }],
+}]
+export function mindTargets(event: ChapterEvent): number[] { return event.mindTargets ?? heritageTargets }
 export function eventsForChapter(id: number): ChapterEvent[] {
   const primary = eventForChapter(id)
-  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : id === 25 ? purificationEvents : [])]
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : id === 5 ? mountainEvents : id === 20 ? danFinalEvents : id === 23 ? heritageEvents : id === 25 ? purificationEvents : id === 27 ? originEvents : [])]
 }
 export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
   return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)
