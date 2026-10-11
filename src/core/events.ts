@@ -38,7 +38,7 @@ export function migrateLegacyEvent(chapter: number, bossPassed: boolean, eventId
     ...(event.kind === 'tournament' ? { roundScores: [300, 300, 300] } : {}),
     ...(event.kind === 'auction' ? { auctionOutcome: 'observed' as const } : {}),
     ...(event.kind === 'hunt' ? { huntOutcome: 'legacy' as const } : {}),
-    choice: event.kind === 'competition' ? 'steady' : 'none' } : blankEvent()
+    choice: ['competition', 'alliance'].includes(event.kind) ? 'steady' : 'none' } : blankEvent()
 }
 export function migrateLegacyEvents(chapter: number, bossPassed: boolean): Record<string, ChapterEventProgress> {
   return Object.fromEntries(eventsForChapter(chapter).map(e => [e.id, migrateLegacyEvent(chapter, bossPassed, e.id)]))
@@ -111,6 +111,21 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'alliance' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'alliance' && action.type === 'strategy' && p.stage === 1) {
+      if (!['steady', 'premium'].includes(action.choice)) return fail('筹备方案无效。')
+      if (action.choice === 'premium' && next.gold < 60) return fail('补给筹备需60金币，金币不足未扣款。可选免费巡防。')
+      if (action.choice === 'premium') next.gold -= 60
+      p.choice = action.choice; p.stage = 2
+      message = action.choice === 'steady' ? '免费巡防已确定。清理西侧和东侧驻点守卫，再逐处登记。' : '补给方案已支付60金币。物资由炎盟调拨，去两处驻点登记，不再扣材料。'
+    } else if (event.kind === 'alliance' && action.type === 'seal' && action.index === p.stage - 1 && [2, 3].includes(p.stage)) {
+      message = event.checkpoints![action.index].text; p.stage++
+    } else if (event.kind === 'alliance' && action.type === 'deliver' && p.stage === 4) {
+      next.inventory.heal += p.choice === 'premium' ? 2 : 1
+      if (p.choice === 'premium') next.inventory.mana++
+      next.xp += 40; p.stage = 5
+      message = `炎盟筹备已完成 · 恢复丹${p.choice === 'premium' ? '2 / 回气丹1' : '1'}、40积累。前往边境防线完成试炼，再准备中州之行。`
     } else if (event.kind === 'siege' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'siege' && action.type === 'breach' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {

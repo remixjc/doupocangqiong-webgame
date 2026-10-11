@@ -42,7 +42,9 @@ function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): 
     (!definition && p.started) || (!['trade', 'auction'].includes(definition?.kind ?? '') && p.quote !== 0) ||
     (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
     (!['stone', 'cave', 'certification', 'tournament', 'auction', 'hunt'].includes(definition?.kind ?? '') && (p.score !== 0 || p.attempts !== 0)) ||
-    (definition?.kind !== 'competition' && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+    (!['competition', 'alliance'].includes(definition?.kind ?? '') && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+  if (definition?.kind === 'alliance' && (p.stage <= 1 ? p.choice !== 'none' : p.choice === 'none'))
+    throw new Error('炎盟筹备方案记录无效。')
   if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
     throw new Error('控气测试记录无效。')
   if (definition?.kind === 'competition' && (p.stage === 0 ? p.choice !== 'none' : p.choice === 'none' || (p.choice === 'steady' && p.stage < 4)))
@@ -137,7 +139,8 @@ export function validateState(value: unknown): GameState {
     const oldHunt = n === 14 && versionBefore(data.contentVersion as string, '0.7.2')
     const oldTower = n === 15 && versionBefore(data.contentVersion as string, '0.7.3')
     const oldSiege = n === 16 && versionBefore(data.contentVersion as string, '0.8.1')
-    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
+    const oldAlliance = n === 17 && versionBefore(data.contentVersion as string, '0.8.2')
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

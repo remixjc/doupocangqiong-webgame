@@ -24,7 +24,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   if (!event) return null
   const done = eventDone(state, state.chapter, event.id)
   const act = (action: EventAction) => {
-    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege'].includes(event.kind)) {
+    if (['cave', 'certification', 'rescue', 'flame', 'tournament', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance'].includes(event.kind)) {
       const point = checkpoint !== undefined ? event.checkpoints![checkpoint] : event.npc
       const runtime = gameStore.getSnapshot().runtime
       if (Math.hypot(runtime.x - point.x, runtime.y - point.y) >= 75) { gameStore.notify('请靠近对应人物或机关后再操作。'); return false }
@@ -34,6 +34,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       if (event.kind === 'auction' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回交易执事处登记。'); return false }
       if (event.kind === 'hunt' && action.type === 'deliver' && !runtime.huntTeam?.arrived) { gameStore.notify('队友须存活并返回胡嘉处，等待队友跟上。'); return false }
       if (event.kind === 'siege' && action.type === 'deliver' && checkpoint !== undefined) { gameStore.notify('请返回药老处确认决战准备。'); return false }
+      if (event.kind === 'alliance' && ['strategy', 'deliver'].includes(action.type) && checkpoint !== undefined) { gameStore.notify('请返回海波东处选择方案或报告。'); return false }
     }
     return gameStore.event({ ...action, eventId: event.id })
   }
@@ -120,6 +121,14 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       <p>三阵按序通过；离阵或受击清空当前计时，已通过阵眼保留。</p>
       {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>确认决战准备</button>}
     </>}
-    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
+    {event.kind === 'alliance' && progress.started && !done && <>
+      {checkpoint === undefined && progress.stage === 1 && <div className="camp-options">
+        <button className="primary" onClick={() => { if (act({ type: 'strategy', choice: 'steady' })) close() }}>免费巡防 · 清理两处守卫</button>
+        <button className="secondary" disabled={state.gold < 60} onClick={() => { if (act({ type: 'strategy', choice: 'premium' })) close() }}>出资补给 · 支付60金币</button>
+      </div>}
+      {progress.stage >= 2 && <p>{progress.choice === 'premium' ? '补给方案已支付60金币 · 两处物资不另扣材料' : '免费巡防 · 清理对应驻点守卫后登记'}</p>}
+      {checkpoint === undefined && progress.stage === 4 && <button className="primary" onClick={() => act({ type: 'deliver' })}>报告筹备 · 领取{progress.choice === 'premium' ? '恢复丹2 / 回气丹1' : '恢复丹1'}与40积累</button>}
+    </>}
+    {(done || (progress.started && ['training', 'vow', 'competition', 'cave', 'escort', 'survival', 'certification', 'rescue', 'flame', 'tournament', 'escape', 'auction', 'squad', 'hunt', 'tower', 'siege', 'alliance'].includes(event.kind))) && <button className="primary" onClick={close}>{done ? '事件完成 · 继续探索' : '返回地图 · 完成操作'}</button>}
   </>
 }

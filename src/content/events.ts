@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -16,6 +16,21 @@ export interface ChapterEvent {
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  17: {
+    id: 'flame-alliance-foundation', kind: 'alliance', introducedVersion: '0.8.2',
+    title: '炎盟 · 根基筹备', speaker: '海波东', npc: { x: 280, y: 625 },
+    stages: ['到议事牌确认炎盟筹备方案', '回海波东处选择免费巡防或60金币补给',
+      '前往西侧驻点：巡防路线需清理守卫，补给路线登记物资',
+      '前往东侧驻点：巡防路线需清理守卫，补给路线登记物资',
+      '返回海波东处报告两处驻点准备', '炎盟筹备完成，前往边境防线试炼'],
+    introduction: '炎盟需要自己的根基。先看议事牌，再回来选一条路线：亲自巡防不用金币，两处驻点须清理守卫；出资补给支付60金币，到两处登记物资即可。选择后不能更换，最后回来报告。',
+    note: '两条筹备路线为原创势力机制。巡防报告得恢复丹1、40积累；补给报告得恢复丹2、回气丹1、40积累。路线与成本在选择时保存，报告只奖励一次；零金币可以巡防推进，药老仍暂时离队。',
+    checkpoints: [
+      { x: 330, y: 220, label: '议事牌', text: '巡防：0金币，两处清理守卫，报告恢复丹1。补给：60金币，两处登记，报告恢复丹2/回气丹1。两路线均得40积累，之后仍需边境试炼。' },
+      { x: 670, y: 430, label: '西侧驻点', text: '西侧驻点筹备已登记。继续前往东侧驻点。', guards: ['alliance-west-brute'] },
+      { x: 1000, y: 430, label: '东侧驻点', text: '东侧驻点筹备已登记。返回海波东处报告。', guards: ['alliance-east-mage', 'alliance-east-hunter'] },
+    ],
+  },
   16: {
     id: 'yunlan-three-sigil-siege', kind: 'siege', introducedVersion: '0.8.1',
     title: '再临云岚 · 三阵破门', speaker: '药老', npc: { x: 280, y: 625 },

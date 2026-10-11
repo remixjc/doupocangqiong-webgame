@@ -79,7 +79,7 @@ export class CombatWorld {
     for (const enemy of this.map.enemies.slice(0, this.map.siegeDurations ? this.map.enemies.length : Math.max(3, chapter.objectives.kills))) {
       const cleared = enemy.id && eventsForChapter(chapter.id).some(event => {
         const p = eventProgress(cb.state(), chapter.id, event.id)
-        return p.started && event.checkpoints?.some((point, index) => index < p.stage && point.guards?.includes(enemy.id!))
+        return p.started && event.checkpoints?.some((point, index) => index < (event.kind === 'alliance' ? p.stage - 1 : p.stage) && point.guards?.includes(enemy.id!))
       })
       if (!cleared) this.spawn(enemy.type, enemy.x, enemy.y, enemy.id, enemy.patrol)
     }
@@ -464,7 +464,9 @@ export class CombatWorld {
         else if (event.kind === 'escape' && index === 3) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
-        } else if (event.kind === 'rescue' && this.guardsRemaining(event.id, index) > 0) this.cb.notify(`区域守卫尚有${this.guardsRemaining(event.id, index)}名，请先清理威胁再解救。`)
+        } else if (event.kind === 'alliance' && index > 0 && eventProgress(s, this.chapter.id, event.id).choice === 'steady' && this.guardsRemaining(event.id, index) > 0)
+          this.cb.notify(`巡防驻点尚有${this.guardsRemaining(event.id, index)}名守卫，先清理威胁再登记。`)
+        else if (event.kind === 'rescue' && this.guardsRemaining(event.id, index) > 0) this.cb.notify(`区域守卫尚有${this.guardsRemaining(event.id, index)}名，请先清理威胁再解救。`)
         else if (event.kind === 'escort') this.escortCheckpoint(index)
         else if (event.kind === 'survival' && index === 1) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })

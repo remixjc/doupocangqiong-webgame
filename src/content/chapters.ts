@@ -75,6 +75,10 @@ chapters[15].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[15].trialNote = '三阵攻防、守阵投影和云山三阶段招式为原创宗门关卡；首通收尾后药老离队，营救仍需后续主线。'
 chapters[15].opening[2].text = '与药老确认路线，到战前约碑后依次清理三处守卫，在山阶/中庭/前殿阵眼连续破阵3/4/5秒。离阵或受击清空当前计时，已破阵节点保留。回报药老后到决战碑挑战云山，注意护盾蓄势和收招窗口。'
 
+chapters[16].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[16].trialNote = '免费巡防与出资补给为原创炎盟筹备，两路线均能推进；完成边境投影才可首通启程中州，药老仍离队。'
+chapters[16].opening[2].text = '向海波东接取筹备，先看议事牌，再回人物处选择免费巡防或60金币补给。巡防需要清理两处驻点守卫，补给可直接登记物资；回报一次领取相应丹药和40积累，再到边境防线完成试炼。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)
