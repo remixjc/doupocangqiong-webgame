@@ -16,10 +16,12 @@ import { earlyTeachingScenes } from '../../src/content/early-teaching'
 import { advanceEarlySupervision, type EarlySupervisionAction } from '../../src/core/early-supervision'
 import { advanceEarlyRecovery } from '../../src/core/early-recovery'
 import { earlyRecoveryScenes } from '../../src/content/early-recovery'
+import { advanceEarlyConsignment } from '../../src/core/early-consignment'
+import { consignmentSupplies, type ConsignmentSupplyId } from '../../src/core/early-training-state'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
-export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false): GameState {
+export function replayEarlyTraining(input: GameState, failFirstBreath = false, onCheckpoint?: (state: GameState) => void, includeBracelet = false, includeGrowth = false, includeHall = false, includeTeaching = false, includeSupervision = false, includeRecovery = false, includeConsignment = false): GameState {
   let state = input
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
@@ -60,7 +62,7 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)
   }
-  if (includeHall || includeTeaching || includeSupervision || includeRecovery) {
+  if (includeHall || includeTeaching || includeSupervision || includeRecovery || includeConsignment) {
     const entered = enterEarlyHall(state, earlyWalkPlaces.find(place => place.id === 'teacher')!)
     expect(entered.ok, entered.message).toBe(true)
     state = parseSave(serializeSave(entered.state)); onCheckpoint?.(state)
@@ -71,13 +73,13 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
       state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
     }
   }
-  if (includeTeaching || includeSupervision || includeRecovery) for (const scene of earlyTeachingScenes) {
+  if (includeTeaching || includeSupervision || includeRecovery || includeConsignment) for (const scene of earlyTeachingScenes) {
     const result = advanceEarlyTeaching(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
       { step: scene.step, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
-  if (includeSupervision || includeRecovery) {
+  if (includeSupervision || includeRecovery || includeConsignment) {
     const supervised = (operation: EarlySupervisionAction['operation'], marker?: number) => {
       const result = advanceEarlySupervision(state, earlyWalkPlaces.find(place => place.id === 'teacher')!,
         { ...state.earlyTraining.supervision, operation, marker })
@@ -89,11 +91,29 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     supervised('begin')
     for (let pulse = 0; pulse < 4; pulse++) supervised('brace', .5)
   }
-  if (includeRecovery) for (const scene of earlyRecoveryScenes) {
+  if (includeRecovery || includeConsignment) for (const scene of earlyRecoveryScenes) {
     const result = advanceEarlyRecovery(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
       { step: scene.step, energy: state.earlyTraining.recovery.energy, operation: scene.operation, marker: .5 })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeConsignment) {
+    const teacher = earlyWalkPlaces.find(place => place.id === 'teacher')!
+    const planned = advanceEarlyConsignment(state, teacher, 'plan', { stage: 0, spent: 0, operation: 'plan' })
+    expect(planned.ok, planned.message).toBe(true)
+    state = parseSave(serializeSave(planned.state)); onCheckpoint?.(state)
+    for (const id of Object.keys(consignmentSupplies) as ConsignmentSupplyId[]) {
+      const result = advanceEarlyConsignment(state, teacher, 'pharmacy', { stage: 1, spent: state.earlyTraining.consignment.spent,
+        operation: 'buy', item: id, price: consignmentSupplies[id].price })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
+    for (const operation of ['deliver', 'refine', 'bottle'] as const) {
+      const result = advanceEarlyConsignment(state, teacher, 'alley', { stage: state.earlyTraining.consignment.stage,
+        spent: state.earlyTraining.consignment.spent, operation })
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+    }
   }
   return state
 }

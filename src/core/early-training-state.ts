@@ -12,6 +12,8 @@ export interface EarlyTrainingState {
   teaching: { stage: number }
   supervision: { stage: number; pulses: number; attempts: number }
   recovery: { stage: number; energy: 'unobserved' | 'active' | 'fading' | 'spent'; period: 'unreviewed' | 'reviewed'; result: 'none' | 'fifth-duan' }
+  consignment: { stage: number; funds: number; spent: number; receipts: Record<ConsignmentSupplyId, boolean>;
+    supplies: Record<ConsignmentSupplyId, number>; product: 'none' | 'mixture' | 'sealed'; owner: 'none' | 'xiaoyan' }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -27,6 +29,15 @@ export const EARLY_HALL_SCROLL_VERSION = '0.17.1'
 export const EARLY_TEACHING_VERSION = '0.17.2'
 export const EARLY_SUPERVISION_VERSION = '0.18.0'
 export const EARLY_RECOVERY_VERSION = '0.18.1'
+export const EARLY_CONSIGNMENT_VERSION = '0.19.0'
+export type ConsignmentSupplyId = 'youngPrimary' | 'youngAuxiliary' | 'woodCore' | 'jadeBottle'
+export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; price: number }> = {
+  youngPrimary: { label: '较低品质主药 · 一笔订单', price: 10 },
+  youngAuxiliary: { label: '较低品质辅药 · 一笔订单', price: 10 },
+  woodCore: { label: '廉价木属性魔核 · 一笔订单', price: 25 },
+  jadeBottle: { label: '装售品的白玉瓶', price: 5 },
+}
+export const CONSIGNMENT_FUNDS = 90
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
@@ -37,9 +48,12 @@ export function blankEarlyTraining(): EarlyTrainingState {
     practice: { phase: 0, pulse: 0, score: 0, attempts: 0 },
     bracelet: { stage: 0, gift: 'none' }, growth: { stage: 0 }, hall: { stage: 0, scroll: 'none' }, teaching: { stage: 0 },
     supervision: { stage: 0, pulses: 0, attempts: 0 },
-    recovery: { stage: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' } }
+    recovery: { stage: 0, energy: 'unobserved', period: 'unreviewed', result: 'none' },
+    consignment: { stage: 0, funds: 0, spent: 0,
+      receipts: { youngPrimary: false, youngAuxiliary: false, woodCore: false, jadeBottle: false },
+      supplies: { youngPrimary: 0, youngAuxiliary: 0, woodCore: 0, jadeBottle: 0 }, product: 'none', owner: 'none' } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -121,6 +135,25 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     || recovery.result !== (recovery.stage === 7 ? 'fifth-duan' : 'none')) return invalid()
   result.recovery = { stage: recovery.stage, energy: recovery.energy as EarlyTrainingState['recovery']['energy'],
     period: recovery.period as EarlyTrainingState['recovery']['period'], result: recovery.result as EarlyTrainingState['recovery']['result'] }
+  const consignment = data.consignment === undefined && legacyConsignment ? result.consignment : object(data.consignment)
+  if (!integer(consignment.stage, 5) || consignment.stage > 0 && recovery.stage !== 7
+    || consignment.funds !== (consignment.stage > 0 ? CONSIGNMENT_FUNDS : 0)) return invalid()
+  const saleReceipts = object(consignment.receipts), saleSupplies = object(consignment.supplies)
+  let saleSpent = 0, saleOrders = 0
+  const parsed = structuredClone(result.consignment)
+  for (const id of Object.keys(consignmentSupplies) as ConsignmentSupplyId[]) {
+    if (typeof saleReceipts[id] !== 'boolean' || saleReceipts[id] && consignment.stage === 0) return invalid()
+    const bought = saleReceipts[id] as boolean
+    if (saleSupplies[id] !== (bought && consignment.stage < (id === 'jadeBottle' ? 5 : 3) ? 1 : 0)) return invalid()
+    parsed.receipts[id] = bought; parsed.supplies[id] = saleSupplies[id] as number
+    if (bought) { saleSpent += consignmentSupplies[id].price; saleOrders++ }
+  }
+  if (consignment.spent !== saleSpent || saleSpent > (consignment.funds as number)
+    || consignment.stage >= 2 && saleOrders !== 4 || consignment.stage === 1 && saleOrders >= 4
+    || consignment.product !== (consignment.stage === 5 ? 'sealed' : consignment.stage === 4 ? 'mixture' : 'none')
+    || consignment.owner !== (consignment.stage === 5 ? 'xiaoyan' : 'none')) return invalid()
+  result.consignment = { ...parsed, stage: consignment.stage, funds: consignment.funds as number, spent: saleSpent,
+    product: consignment.product as EarlyTrainingState['consignment']['product'], owner: consignment.owner as EarlyTrainingState['consignment']['owner'] }
   return result
 }
 

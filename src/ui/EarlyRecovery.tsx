@@ -7,7 +7,7 @@ import { gameStore } from '../core/store'
 import './early-walk.css'
 
 const stations = { door: '门边', container: '盛水容器', window: '晨光窗边' } as const
-export default function EarlyRecovery({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function EarlyRecovery({ state, position, onBack, onConsign }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onConsign?: () => void }) {
   const task = state.earlyTraining.recovery, scene = earlyRecoveryScenes[task.stage]
   const [station, setStation] = useState<EarlyRecoveryStation>('door')
   const [marker, setMarker] = useState(.5)
@@ -59,8 +59,9 @@ export default function EarlyRecovery({ state, position, onBack }: { state: Game
       <button className="primary" onClick={() => submitEarlyRecovery(gameStore, position, station,
         { step: task.stage, energy: task.energy, operation: scene.operation, marker: breathing ? marker : undefined })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。首次寄售的准备另行接续。</p>
-        <p className="muted">这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</p></section>}
+      : <section className="bond-summary"><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。</p>
+        <p className="muted">这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</p>
+        {onConsign && <button className="primary" onClick={onConsign}>接续筹款 · 准备首次寄售</button>}</section>}
     <button className="secondary" onClick={onBack}>暂离恢复房间 · 保留断点</button>
   </>
 }
