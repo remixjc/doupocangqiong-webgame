@@ -23,6 +23,7 @@ import { earlyPalmPairBlock } from '../core/early-palm-pair'
 import { earlyPreliminaryBlock } from '../core/early-preliminary'
 import { earlyKeChallengeBlock } from '../core/early-ke-challenge'
 import { earlyEighthTrainingBlock } from '../core/early-eighth-training'
+import { earlyCeremonyGuestsBlock } from '../core/early-ceremony-guests'
 import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
@@ -43,6 +44,7 @@ const EarlyPalmPair = lazy(() => loadSceneModule(() => import('./EarlyPalmPair')
 const EarlyPreliminary = lazy(() => loadSceneModule(() => import('./EarlyPreliminary')))
 const EarlyKeChallenge = lazy(() => loadSceneModule(() => import('./EarlyKeChallenge')))
 const EarlyEighthTraining = lazy(() => loadSceneModule(() => import('./EarlyEighthTraining')))
+const EarlyCeremonyGuests = lazy(() => loadSceneModule(() => import('./EarlyCeremonyGuests')))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -65,6 +67,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const [preliminary, setPreliminary] = useState(false)
   const [keChallenge, setKeChallenge] = useState(false)
   const [eighthTraining, setEighthTraining] = useState(false)
+  const [ceremonyGuests, setCeremonyGuests] = useState(false)
   const field = useRef<SVGSVGElement>(null)
   const roomEntry = useRef<HTMLButtonElement>(null)
   const hallEntry = useRef<HTMLButtonElement>(null)
@@ -101,6 +104,8 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const returningKeChallenge = useRef(false)
   const eighthEntry = useRef<HTMLButtonElement>(null)
   const returningEighth = useRef(false)
+  const guestsEntry = useRef<HTMLButtonElement>(null)
+  const returningGuests = useRef(false)
   const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
@@ -159,6 +164,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   useEffect(() => {
     if (!eighthTraining && returningEighth.current) { returningEighth.current = false; eighthEntry.current?.focus() }
   }, [eighthTraining])
+  useEffect(() => {
+    if (!ceremonyGuests && returningGuests.current) { returningGuests.current = false; guestsEntry.current?.focus() }
+  }, [ceremonyGuests])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -229,6 +237,11 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setPalmTraining(false); setPreliminary(true)
   }
+  function openCeremonyGuests() {
+    const blocked = earlyCeremonyGuestsBlock(gameStore.getSnapshot().state, position)
+    if (blocked) { gameStore.notify(blocked); return }
+    setEighthTraining(false); setCeremonyGuests(true)
+  }
   function openEighthTraining() {
     const blocked = earlyEighthTrainingBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -248,7 +261,9 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (eighthTraining) return <Suspense fallback={<p role="status">正在接续同行与礼前训练……</p>}><EarlyEighthTraining state={state} position={position}
+  if (ceremonyGuests) return <Suspense fallback={<p role="status">正在进入正式礼宾客场地……</p>}><EarlyCeremonyGuests state={state} position={position}
+    onBack={() => { returningGuests.current = true; setCeremonyGuests(false) }} /></Suspense>
+  if (eighthTraining) return <Suspense fallback={<p role="status">正在接续同行与礼前训练……</p>}><EarlyEighthTraining state={state} position={position} onGuests={openCeremonyGuests}
     onBack={() => { returningEighth.current = true; setEighthTraining(false) }} /></Suspense>
   if (keChallenge) return <Suspense fallback={<p role="status">正在接续萧克六段挑战……</p>}><EarlyKeChallenge state={state} position={position} onTraining={openEighthTraining}
     onBack={() => { returningKeChallenge.current = true; setKeChallenge(false) }} /></Suspense>
@@ -358,6 +373,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyPreliminaryBlock(state, position) && <button ref={preliminaryEntry} className="secondary" onClick={openPreliminary}>前往一月前预测 · 名簿与黑碑</button>}
       {place.id === 'teacher' && !earlyKeChallengeBlock(state, position) && <button ref={keChallengeEntry} className="primary" onClick={openKeChallenge}>接续萧克六段挑战 · 侧避与低阶掌法</button>}
       {place.id === 'teacher' && !earlyEighthTrainingBlock(state, position) && <button ref={eighthEntry} className="primary" onClick={openEighthTraining}>接续同行与礼前八段 · 实际训练</button>}
+      {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <button ref={guestsEntry} className="primary" onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</button>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>

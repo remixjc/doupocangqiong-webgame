@@ -7,8 +7,8 @@ import { eighthTrainingScenes } from '../content/early-eighth-training'
 import { startSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
-export default function EarlyEighthTraining({ state, position: entryPosition, onBack }: {
-  state: GameState; position: EarlyWalkPosition; onBack: () => void
+export default function EarlyEighthTraining({ state, position: entryPosition, onBack, onGuests }: {
+  state: GameState; position: EarlyWalkPosition; onBack: () => void; onGuests?: () => void
 }) {
   const task = state.earlyTraining.eighthTraining, scene = eighthTrainingScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...eighthPlaces.fork })
@@ -72,7 +72,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
           {task.stage === 7 && <button className="secondary" disabled={paused} onClick={() => act(task.beats === 0 ? 'push' : 'pull')}>{task.beats === 0 ? '尝试先推 · 重新调整次序' : '继续吸掌 · 重新调整次序'}</button>}</div>
       </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
     </section> : <p className="muted">下一步请走近{eighthPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p></section>}
+      : <section className="bond-summary"><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p>{onGuests && <button className="primary" onClick={onGuests}>前往正式礼宾客 · 观察收剑中止</button>}</section>}
     {target > 0 && <button className="secondary" onClick={() => act('stop')}>停下本轮礼前训练 · 免费重新开始</button>}
     <p className="muted">时段是压缩回顾，练技与调息为代表性操作。药液只呈现本章既有木盆的定性药力；早先耗尽自用液、老师一滴记录与父亲原封瓶独立保留，不重复领材料或成长奖励。</p>
     <button className="secondary" onClick={onBack}>暂离礼前训练 · 保留同行与练习断点</button>
