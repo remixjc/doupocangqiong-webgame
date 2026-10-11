@@ -6,8 +6,8 @@ import { AlchemyPanel, SavesPanel, SettingsPanel, ShopPanel } from './Panels'
 import TouchControls from './TouchControls'
 import { setVolume, unlockAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
-import { eventForChapter } from '../content/events'
-import { eventDone, eventHint } from '../core/events'
+import { eventsForChapter } from '../content/events'
+import { eventDone, eventHint, eventProgress } from '../core/events'
 import StoryEventPanel from './StoryEventPanel'
 
 const GameView = lazy(() => import('./GameView'))
@@ -18,6 +18,7 @@ export default function App() {
   const { state: s, runtime: r, notice } = useSyncExternalStore(gameStore.subscribe, gameStore.getSnapshot)
   const [screen, setScreen] = useState<'home' | 'world' | 'play'>('home')
   const [panel, setPanel] = useState<Panel>(null)
+  const [eventId, setEventId] = useState<string>()
   const [story, setStory] = useState<Story | null>(null)
   const [run, setRun] = useState(0)
   const [ready, setReady] = useState(false)
@@ -39,7 +40,7 @@ export default function App() {
     gameStore.paused = screen !== 'play' || panel !== null || story !== null || r.dead || portrait
     if (gameStore.paused) { gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0 }
     gameStore.onInteract = () => setPanel('camp')
-    gameStore.onStoryEvent = () => setPanel('event')
+    gameStore.onStoryEvent = id => { setEventId(id); setPanel('event') }
     return () => { gameStore.onInteract = null; gameStore.onStoryEvent = null }
   }, [screen, panel, story, r.dead, portrait])
   useEffect(() => {
@@ -134,12 +135,12 @@ export default function App() {
         <span className="eyebrow">第 {String(chapter.id).padStart(2, '0')} 章</span><h2>{chapter.title}</h2>
         <p className="muted">{chapter.summary}</p><div className="thin-divider" />
         <span className="section-label">本章历练</span>
-        {eventForChapter(s.chapter) && <><div className={`quest-line ${eventDone(s) ? 'checked' : ''}`}><span>{eventDone(s) ? '✓' : '◇'}</span><div>{eventForChapter(s.chapter)!.title}<small>{eventHint(s)}</small></div><b>{progress.event.stage} / {eventForChapter(s.chapter)!.stages.length - 1}</b></div></>}
+        {eventsForChapter(s.chapter).map(event => <div key={event.id} className={`quest-line ${eventDone(s, s.chapter, event.id) ? 'checked' : ''}`}><span>{eventDone(s, s.chapter, event.id) ? '✓' : '◇'}</span><div>{event.title}{event.optional && ' · 支线'}<small>{eventHint(s, event.id)}</small></div><b>{eventProgress(s, s.chapter, event.id).stage} / {event.stages.length - 1}</b></div>)}
         {chapter.objectives.herbs > 0 && <Quest text="采集灵草" current={progress.herbs} target={chapter.objectives.herbs} />}
         {chapter.objectives.kills > 0 && <Quest text="击败普通敌人" current={progress.kills} target={chapter.objectives.kills} />}
         {chapter.objectives.brews > 0 && <Quest text="炼制丹药" current={progress.brews} target={chapter.objectives.brews} />}
         <div className={`quest-line ${progress.boss ? 'checked' : ''}`}><span>{progress.boss ? '✓' : '◇'}</span><div>通过章节试炼<small>{chapter.boss}</small></div></div>
-        <p className="quest-hint">{progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? '准备完成。前往右上方试炼碑，按 E 开始挑战。' : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
+        <p className="quest-hint">{completed ? '本章已结算，可自由修炼或返回大陆舆图继续旅途。' : progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? '准备完成。前往右上方试炼碑，按 E 开始挑战。' : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
         <div className="sidebar-bottom"><button className="secondary" onClick={() => setPanel('alchemy')}>开炉炼药</button><button className="secondary" onClick={() => setPanel('camp')}>营地与休整</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
       </aside>
       <section className="stage-wrap">
@@ -164,7 +165,7 @@ export default function App() {
     {notice && <div className="toast" role="status">{notice}</div>}
     {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件'}[panel]}>
       <button className="close" onClick={() => setPanel(null)} aria-label="关闭">×</button>
-      {panel === 'event' && <StoryEventPanel state={s} close={() => setPanel(null)} shop={() => setPanel('shop')} />}
+      {panel === 'event' && <StoryEventPanel key={eventId} state={s} eventId={eventId} close={() => setPanel(null)} shop={() => setPanel('shop')} />}
       {panel === 'guide' && <><span className="eyebrow">修炼手札 / 操作指引</span><h2>每一份力量，都来自历练。</h2><p className="muted">按左侧目标完成本章事件：前三章先与药老、萧战或坊市执事交谈，分别练习斗技、走完立约路线和交付订单。采集、击杀与炼药仅在目标列出时必做。目标完成后到右上试炼碑挑战首领，再回到营地结算。</p><div className="guide-grid">{[['WASD / 方向键', '移动'], ['J / 鼠标', '普攻'], ['空格', '闪避'], ['1 · 2 · 3', '斗技'], ['E', '人物 / 路标 / 采集 / 营地 / 试炼碑'], ['Q / R', '恢复丹 / 药老支援']].map(([key, label]) => <div key={label}><kbd>{key}</kbd><span>{label}</span></div>)}</div><p className="muted">浅红色圆形是敌人的攻击预警，及时离开范围。菜单、对白、切换后台时暂停战斗。失败可重试，已获得的资源不会消失。</p><button className="primary" onClick={() => setPanel(null)}>记下了</button></>}
       {panel === 'camp' && <><span className="eyebrow">灯火与归途 / 营地</span><h2>{completed ? '本章已经完成。' : progress.boss ? '这一程，你做到了。' : '整装，再赴历练。'}</h2><p className="muted">休整会回到营地并恢复状态，已结算的资源和任务进度保留。</p><div className="camp-options"><button className="secondary" onClick={() => { setPanel(null); retry() }}>营地休整 · 恢复状态</button>{progress.boss && !completed && <button className="primary" onClick={finish}>结算本章 · {chapter.reward} 金币 ↗</button>}<button className="secondary" onClick={() => { setPanel(null); setScreen('world') }}>返回大陆舆图</button></div><p className="muted">{chapter.trialNote}</p></>}
       {panel === 'camp' && <div className="panel-tabs"><button className="secondary" onClick={() => setPanel('alchemy')}>炼药</button><button className="secondary" onClick={() => setPanel('shop')}>坊市</button><button className="secondary" onClick={() => setPanel('save')}>存档</button><button className="secondary" onClick={() => setPanel('settings')}>设置</button></div>}

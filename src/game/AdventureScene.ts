@@ -2,7 +2,8 @@ import Phaser from 'phaser'
 import { gameStore } from '../core/store'
 import { chapterById } from '../content/chapters'
 import { CombatWorld, HEIGHT, WIDTH, type Input } from './combat'
-import { eventForChapter } from '../content/events'
+import { eventsForChapter } from '../content/events'
+import { eventProgress } from '../core/events'
 import type { Action } from '../core/model'
 import { playSound } from './audio'
 import { FixedClock } from './clock'
@@ -38,7 +39,7 @@ export default class AdventureScene extends Phaser.Scene {
         return true
       },
       camp: () => gameStore.onInteract?.(), notify: message => gameStore.notify(message), sound: playSound,
-      storyEvent: () => gameStore.onStoryEvent?.(), eventAction: action => { gameStore.event(action) },
+      storyEvent: id => gameStore.onStoryEvent?.(id), eventAction: action => { gameStore.event(action) },
     })
     this.drawEnvironment()
     this.ink = this.add.graphics()
@@ -161,8 +162,7 @@ export default class AdventureScene extends Phaser.Scene {
     this.add.text(gate.x, gate.y - 29, '试', { fontSize: '19px', color: '#c6b588', fontFamily: 'serif' }).setOrigin(.5)
     this.add.text(50, 35, this.world.chapter.location, { fontSize: '20px', color: '#cbd1b7', fontFamily: 'serif' }).setAlpha(.8)
     for (const point of this.world.map.landmarks) this.add.text(point.x, point.y, point.label, { fontSize: '16px', color: '#cbd1b7' }).setOrigin(.5)
-    const event = eventForChapter(this.world.chapter.id)
-    if (event) {
+    for (const event of eventsForChapter(this.world.chapter.id)) {
       this.add.text(event.npc.x, event.npc.y - 55, event.speaker, { fontSize: '17px', color: '#b5ded4' }).setOrigin(.5)
       if (event.dummy) this.add.text(event.dummy.x, event.dummy.y + 35, '木桩 · 1 斗技 / 空格闪避', { fontSize: '14px', color: '#d8c4a0' }).setOrigin(.5)
       event.checkpoints?.forEach((point, index) => this.add.text(point.x, point.y + 35, `${index + 1} · ${point.label}`, { fontSize: '15px', color: '#d8c4a0' }).setOrigin(.5))
@@ -216,9 +216,12 @@ export default class AdventureScene extends Phaser.Scene {
     g.clear()
     const w = this.world, p = w.player
     const { gate } = w.map
-    const event = eventForChapter(w.chapter.id), progress = gameStore.getSnapshot().state.progress[w.chapter.id].event
-    if (event) {
-      this.actor(g, event.npc.x, event.npc.y, 0x729d96, 1, false)
+    for (const event of eventsForChapter(w.chapter.id)) {
+      const progress = eventProgress(gameStore.getSnapshot().state, w.chapter.id, event.id)
+      if (event.kind === 'stone') {
+        g.fillStyle(0x939d8f); g.fillRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
+        g.lineStyle(3, progress.stage === 4 ? 0x8ee4b3 : 0xe8c98c); g.strokeRoundedRect(event.npc.x - 23, event.npc.y - 35, 46, 55, 6)
+      } else this.actor(g, event.npc.x, event.npc.y, 0x729d96, 1, false)
       g.lineStyle(2, 0x9bd7cb, .5); g.strokeCircle(event.npc.x, event.npc.y, 35)
       if (event.dummy) {
         g.fillStyle(progress.stage > 0 ? 0xcdb786 : 0x9d7757); g.fillRect(event.dummy.x - 9, event.dummy.y - 32, 18, 50)
@@ -226,8 +229,9 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(2, 0xe8c98c, .5); g.strokeCircle(event.dummy.x, event.dummy.y, 28)
       }
       event.checkpoints?.forEach((point, index) => {
-        const active = progress.started && index === progress.stage
-        g.fillStyle(index < progress.stage ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
+        const step = event.kind === 'competition' ? progress.stage - 1 : progress.stage
+        const active = progress.started && index === step && (event.kind !== 'competition' || progress.choice === 'premium')
+        g.fillStyle(index < step ? 0x739e8e : 0x6a6557); g.fillRoundedRect(point.x - 14, point.y - 28, 28, 42, 4)
         g.lineStyle(active ? 4 : 1, active ? 0xf0d498 : 0x9da688, .8); g.strokeCircle(point.x, point.y, active ? 34 : 24)
       })
     }

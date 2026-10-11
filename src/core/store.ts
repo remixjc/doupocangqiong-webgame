@@ -20,7 +20,7 @@ class GameStore {
   move = { x: 0, y: 0 }
   paused = true
   onInteract: (() => void) | null = null
-  onStoryEvent: (() => void) | null = null
+  onStoryEvent: ((id: string) => void) | null = null
   onChange: ((s: GameState) => void) | null = null
   private initialization: Promise<void> | null = null
   initialize(): Promise<void> {
@@ -66,7 +66,7 @@ class GameStore {
   newGame() { this.replace(initialState()) }
   enter(id: number): boolean {
     if (!canEnter(this.snapshot.state, id)) return false
-    this.update(s => { s.chapter = id; s.progress[id] ??= blankProgress() })
+    this.update(s => { s.chapter = id; s.progress[id] ??= blankProgress(id) })
     return true
   }
   introSeen() { this.update(s => { s.progress[s.chapter].intro = true }) }

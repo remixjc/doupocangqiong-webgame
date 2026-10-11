@@ -47,7 +47,7 @@ describe('战斗和章节规则', () => {
     expect(finishChapter(state)).toBe(state)
     state.progress[1].herbs = 3; state.progress[1].kills = 3
     expect(finishChapter(state)).toBe(state)
-    state.progress[1].event = { started: true, stage: 2, quote: 0 }
+    state.progress[1].events["yao-training"] = { started: true, stage: 2, quote: 0, score: 0, attempts: 0, choice: "none" }
     const result = finishChapter(state)
     expect(result.gold).toBe(state.gold + chapterById(1).reward)
     expect(finishChapter(result)).toBe(result)

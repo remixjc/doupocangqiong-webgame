@@ -2,7 +2,9 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition'
+  optional?: boolean
+  requires?: string[]
   title: string
   speaker: string
   npc: Point
@@ -41,3 +43,31 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
 }
 export function eventForChapter(id: number): ChapterEvent | undefined { return chapterEvents[id] }
+const adultEvents: ChapterEvent[] = [
+  {
+    id: 'adult-test-stone', kind: 'stone', title: '成人礼 · 控气测试', speaker: '测试石',
+    npc: { x: 640, y: 165 }, requires: ['family-market-order'],
+    stages: ['准备测试，失败可免费重试', '锁定第一道斗气', '锁定第二道斗气', '锁定第三道斗气', '控气测试通过'],
+    introduction: '完成供货后，到测试石前练习稳定斗气。开始后，指针往返移动，在中央区域锁定三次。累计达到 180 / 300 分即通过；未达标可免费再试。',
+    note: '评分属于游戏控气练习，不用于判定原著境界。关闭或刷新保留本次已锁定步数，重新打开后指针重新起动。',
+  },
+  {
+    id: 'market-competition', kind: 'competition', optional: true, title: '坊市 · 竞争委托', speaker: '采购商',
+    npc: { x: 730, y: 700 }, requires: ['family-market-order'],
+    stages: ['选择稳妥或精品路线', '考察药材摊', '考察晶石摊', '考察交货台', '返回采购商处交付材料', '竞争委托完成'],
+    introduction: '竞争订单只接一份。稳妥路线需灵草 ×2、魔晶 ×1，收入 70 金币；精品路线需依序考察三处摊位，再交灵草 ×4、魔晶 ×2，收入 135 金币与修炼丹 ×1。接单前比较材料和时间成本。',
+    note: '原创经营支线，可选完成；选择后不能换路线，缺料可以补货，失败不扣材料，首通后不重复结算。',
+    checkpoints: [
+      { x: 310, y: 390, label: '药材摊', text: '先查看药材的新鲜度，再与店家核对来源。' },
+      { x: 700, y: 390, label: '晶石摊', text: '记录晶石品相，为精品委托准备稳定的材料。' },
+      { x: 1080, y: 700, label: '交货台', text: '精品路线考察完成，带齐材料返回采购商。' },
+    ],
+  },
+]
+export function eventsForChapter(id: number): ChapterEvent[] {
+  const primary = eventForChapter(id)
+  return [...(primary ? [primary] : []), ...(id === 3 ? adultEvents : [])]
+}
+export function findEvent(chapter: number, eventId?: string): ChapterEvent | undefined {
+  return eventId ? eventsForChapter(chapter).find(e => e.id === eventId) : eventForChapter(chapter)
+}

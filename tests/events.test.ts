@@ -8,14 +8,14 @@ import { chapterById } from '../src/content/chapters'
 import { CombatWorld } from '../src/game/combat'
 
 function fixture(chapter: number) {
-  const s = initialState(); s.chapter = chapter; s.progress[chapter] = blankProgress()
+  const s = initialState(); s.chapter = chapter; s.progress[chapter] = blankProgress(chapter)
   return s
 }
 function legacy() {
   const s = initialState()
   const old = JSON.parse(JSON.stringify(s))
   old.schemaVersion = 1; old.contentVersion = '0.1.0'
-  delete old.progress[1].event
+  delete old.progress[1].events["yao-training"]
   return old
 }
 describe('剧情事件事务与场景', () => {
@@ -43,7 +43,7 @@ describe('剧情事件事务与场景', () => {
     let s = advanceEvent(fixture(1), { type: 'begin' }).state
     const world = new CombatWorld(chapterById(1), { state: () => s, collect: () => {}, kill: () => {},
       camp: () => {}, heal: () => false, notify: () => {}, eventAction: action => { s = advanceEvent(s, action).state } })
-    world.action('strike', { x: 0, y: 0 }); expect(s.progress[1].event.stage).toBe(1)
+    world.action('strike', { x: 0, y: 0 }); expect(s.progress[1].events["yao-training"].stage).toBe(1)
     world.player.stamina = 0; world.action('dodge', { x: 0, y: 0 }); expect(eventDone(s)).toBe(false)
     world.player.stamina = 100; world.action('dodge', { x: 0, y: 0 }); expect(eventDone(s)).toBe(true)
     expect(world.player.stamina).toBe(72)
@@ -53,7 +53,7 @@ describe('剧情事件事务与场景', () => {
     const world = new CombatWorld(chapterById(1), { state: () => s, collect: () => {}, kill: () => {},
       camp: () => {}, heal: () => false, notify: () => {}, eventAction: action => { s = advanceEvent(s, action).state } })
     world.action('strike', { x: 0, y: 0, aim: { x: 0, y: 615 } })
-    expect(s.progress[1].event.stage).toBe(0)
+    expect(s.progress[1].events["yao-training"].stage).toBe(0)
   })
   it('前三章的出生点、首领点和所有交互点处于可达空间', () => {
     const ids = new Set<string>()
@@ -78,8 +78,8 @@ describe('旧存档迁移与事件校验', () => {
   it('未过首领的旧存档保留资源，并从未接取事件继续', () => {
     const old = legacy(); old.progress[1].herbs = 2; old.gold = 333
     const s = validateState(old)
-    expect(s.schemaVersion).toBe(2); expect(s.gold).toBe(333)
-    expect(s.progress[1].herbs).toBe(2); expect(s.progress[1].event.started).toBe(false)
+    expect(s.schemaVersion).toBe(3); expect(s.gold).toBe(333)
+    expect(s.progress[1].herbs).toBe(2); expect(s.progress[1].events["yao-training"].started).toBe(false)
   })
   it('保留旧存档已完成三章的记录，拒绝伪造的旧目标完成', () => {
     const old = legacy(); old.chapter = 3; old.completed = [1, 2, 3]
@@ -97,12 +97,12 @@ describe('旧存档迁移与事件校验', () => {
   })
   it('拒绝事件越界、未开始已完成、非法报价及过关缺事件', () => {
     for (const event of [{ started: true, stage: 3, quote: 0 }, { started: false, stage: 2, quote: 0 }, { started: true, stage: 0, quote: 60 }]) {
-      const s = initialState(); s.progress[1].event = event
+      const s = initialState(); s.progress[1].events["yao-training"] = { score: 0, attempts: 0, choice: "none", ...event }
       expect(() => validateState(s)).toThrow()
     }
     const s = initialState(); s.progress[1] = { ...blankProgress(), herbs: 3, kills: 3, boss: true }
     expect(() => validateState(s)).toThrow('剧情事件不完整')
-    s.progress[1].event = migrateLegacyEvent(1, true)
+    s.progress[1].events["yao-training"] = migrateLegacyEvent(1, true)
     expect(validateState(s)).toEqual(s)
   })
 })

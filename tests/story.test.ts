@@ -4,7 +4,7 @@ import { blankProgress, initialState } from '../src/core/model'
 import { canEnter, craft, finishChapter, isVisible, unlockedFlames } from '../src/core/rules'
 import { parseSave, serializeSave } from '../src/core/save'
 import { CombatWorld } from '../src/game/combat'
-import { migrateLegacyEvent } from '../src/core/events'
+import { migrateLegacyEvents } from '../src/core/events'
 
 describe('全主线配置与任务可达性', () => {
   it('28 章连续且每章都有目标、开场、结局与足够敌人', () => {
@@ -13,7 +13,7 @@ describe('全主线配置与任务可达性', () => {
     for (const chapter of chapters) {
       expect(chapter.opening.length).toBeGreaterThanOrEqual(2)
       expect(chapter.closing.length).toBeGreaterThanOrEqual(2)
-      const s = initialState(); s.chapter = chapter.id; s.progress[chapter.id] = blankProgress()
+      const s = initialState(); s.chapter = chapter.id; s.progress[chapter.id] = blankProgress(chapter.id)
       const world = new CombatWorld(chapter, { state: () => s, collect: () => {}, kill: () => {}, heal: () => true, camp: () => {}, notify: () => {} })
       expect(world.enemies.length).toBeGreaterThanOrEqual(chapter.objectives.kills)
       expect(world.herbs.length).toBeGreaterThanOrEqual(chapter.objectives.herbs)
@@ -24,7 +24,7 @@ describe('全主线配置与任务可达性', () => {
     for (const c of chapters) {
       expect(canEnter(s, c.id)).toBe(true)
       if (c.id < 28) expect(canEnter(s, c.id + 1)).toBe(false)
-      s.chapter = c.id; s.progress[c.id] = blankProgress()
+      s.chapter = c.id; s.progress[c.id] = blankProgress(c.id)
       s.progress[c.id].intro = true
       for (let i = 0; i < c.objectives.herbs; i++) { s.progress[c.id].herbs++; s.inventory.herb++ }
       for (let i = 0; i < c.objectives.kills; i++) { s.progress[c.id].kills++; s.inventory.crystal++ }
@@ -34,7 +34,7 @@ describe('全主线配置与任务可达性', () => {
         s = result.state
       }
       s.progress[c.id].boss = true
-      s.progress[c.id].event = migrateLegacyEvent(c.id, true)
+      s.progress[c.id].events = migrateLegacyEvents(c.id, true)
       const oldGold = s.gold
       s = finishChapter(s)
       expect(s.completed.length).toBe(c.id)

@@ -1,8 +1,8 @@
 import { chapterById, chapters } from '../content/chapters'
-import { CONTENT_VERSION, initialState, type FlameId, type GameState, type ItemId } from './model'
+import { CONTENT_VERSION, initialState, blankEvent, type ChapterEventProgress, type FlameId, type GameState, type ItemId } from './model'
 import { unlockedFlames } from './rules'
-import { eventForChapter } from '../content/events'
-import { eventDone, migrateLegacyEvent } from './events'
+import { eventForChapter, eventsForChapter, type ChapterEvent } from '../content/events'
+import { eventDone, migrateLegacyEvents } from './events'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 function record(value: unknown): Record<string, unknown> {
@@ -25,9 +25,28 @@ function checkVersion(value: unknown) {
     if (imported[i] < current[i]) break
   }
 }
+function parseEvent(value: unknown, definition?: ChapterEvent, legacy = false): ChapterEventProgress {
+  const e = record(value), p: ChapterEventProgress = { ...blankEvent(), started: bool(e.started),
+    stage: number(e.stage, definition ? definition.stages.length - 1 : 0), quote: number(e.quote, 90) }
+  if (!legacy) {
+    p.score = number(e.score, 300); p.attempts = number(e.attempts)
+    if (!['none', 'steady', 'premium'].includes(String(e.choice))) throw new Error('事件路线无效。')
+    p.choice = e.choice as ChapterEventProgress['choice']
+  }
+  if ((!p.started && (p.stage || p.quote || p.score || p.attempts || p.choice !== 'none')) ||
+    (!definition && p.started) || (definition?.kind !== 'trade' && p.quote !== 0) ||
+    (definition?.kind === 'trade' && (p.stage === 0 ? p.quote !== 0 : ![42, 60].includes(p.quote))) ||
+    (definition?.kind !== 'stone' && (p.score !== 0 || p.attempts !== 0)) ||
+    (definition?.kind !== 'competition' && p.choice !== 'none')) throw new Error('剧情事件进度无效。')
+  if (definition?.kind === 'stone' && (p.stage <= 1 ? p.score !== 0 : p.stage === 2 ? p.score > 100 : p.stage === 3 ? p.score > 200 : p.score < 180 || p.attempts < 1))
+    throw new Error('控气测试记录无效。')
+  if (definition?.kind === 'competition' && (p.stage === 0 ? p.choice !== 'none' : p.choice === 'none' || (p.choice === 'steady' && p.stage < 4)))
+    throw new Error('竞争路线进度无效。')
+  return p
+}
 export function validateState(value: unknown): GameState {
   const data = record(value)
-  if (data.schemaVersion !== 1 && data.schemaVersion !== 2) throw new Error('不支持此存档版本，现有存档没有被修改。')
+  if (![1, 2, 3].includes(Number(data.schemaVersion)) || typeof data.schemaVersion !== 'number') throw new Error('不支持此存档版本，现有存档没有被修改。')
   checkVersion(data.contentVersion)
   const s = initialState()
   s.contentVersion = CONTENT_VERSION
@@ -45,18 +64,19 @@ export function validateState(value: unknown): GameState {
     const n = Number(id)
     if (!Number.isInteger(n) || n < 1 || n > Math.min(chapters.length, s.completed.length + 1)) throw new Error('任务章节无效。')
     const p = record(value)
-    const boss = bool(p.boss), definition = eventForChapter(n)
-    let event = migrateLegacyEvent(n, boss)
+    const boss = bool(p.boss), definitions = eventsForChapter(n)
+    const events = migrateLegacyEvents(n, data.schemaVersion < 3 && boss)
     if (data.schemaVersion === 2) {
-      const e = record(p.event)
-      event = { started: bool(e.started), stage: number(e.stage, definition ? definition.stages.length - 1 : 0), quote: number(e.quote, 90) }
-      if ((!event.started && (event.stage !== 0 || event.quote !== 0)) ||
-        (!definition && event.started) ||
-        (definition?.kind !== 'trade' && event.quote !== 0) ||
-        (definition?.kind === 'trade' && (event.stage === 0 ? event.quote !== 0 : ![42, 60].includes(event.quote))))
-        throw new Error('剧情事件进度无效。')
+      const definition = eventForChapter(n), primary = parseEvent(p.event, definition, true)
+      if (definition) events[definition.id] = primary
+    } else if (data.schemaVersion === 3) {
+      const entries = record(p.events)
+      if (Object.keys(entries).some(id => !definitions.some(e => e.id === id))) throw new Error('未知剧情事件。')
+      for (const definition of definitions) events[definition.id] = parseEvent(entries[definition.id], definition)
     }
-    s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), event }
+    s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), events }
+    for (const definition of definitions) if (events[definition.id].started && definition.requires?.some(id => !eventDone(s, n, id)))
+      throw new Error('事件前置条件不完整。')
     const o = data.schemaVersion === 1 && [2, 3].includes(n) ? { herbs: 3, kills: 3, brews: 0 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')

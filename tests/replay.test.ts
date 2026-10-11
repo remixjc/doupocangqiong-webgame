@@ -4,8 +4,8 @@ import { blankProgress, initialState } from '../src/core/model'
 import { chapterReady, craft, finishChapter, skillUnlocked } from '../src/core/rules'
 import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
-import { eventForChapter } from '../src/content/events'
-import { advanceEvent, eventDone } from '../src/core/events'
+import { findEvent } from '../src/content/events'
+import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -39,7 +39,7 @@ describe('完整主线真实规则战斗回放', () => {
     state.settings.difficulty = 'story'
     const timings: number[] = []
     for (const chapter of chapters) {
-      state.chapter = chapter.id; state.progress[chapter.id] = blankProgress()
+      state.chapter = chapter.id; state.progress[chapter.id] = blankProgress(chapter.id)
       const world = new CombatWorld(chapter, {
         state: () => state,
         collect: () => { state.progress[chapter.id].herbs++; state.inventory.herb++ },
@@ -51,10 +51,15 @@ describe('完整主线真实规则战斗回放', () => {
         mana: () => { if (!state.inventory.mana) return false; state.inventory.mana--; return true },
         camp: () => {}, notify: () => {},
         eventAction: action => { state = advanceEvent(state, action).state },
-        storyEvent: () => {
-          const p = state.progress[chapter.id].event, e = eventForChapter(chapter.id)!
-          if (!p.started) state = advanceEvent(state, { type: 'begin' }).state
-          else if (e.kind === 'trade') state = advanceEvent(state, p.stage === 0 ? { type: 'quote', amount: 60 } : { type: 'deliver' }).state
+        storyEvent: eventId => {
+          const p = eventProgress(state, chapter.id, eventId), e = findEvent(chapter.id, eventId)!
+          if (!p.started) state = advanceEvent(state, { type: 'begin', eventId }).state
+          else if (e.kind === 'trade') state = advanceEvent(state, p.stage === 0 ? { type: 'quote', amount: 60, eventId } : { type: 'deliver', eventId }).state
+          else if (e.kind === 'stone') {
+            const marker = pulseMarker(world.elapsed * 1000)
+            if (p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
+            else if (marker >= .4 && marker <= .6) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
+          } else if (e.kind === 'competition') state = advanceEvent(state, p.stage === 0 ? { type: 'strategy', choice: 'steady', eventId } : { type: 'deliver', eventId }).state
         },
       })
       let path: Vec[] = [], previousTarget: Vec = { x: -999, y: -999 }, frame = 0
@@ -64,14 +69,15 @@ describe('完整主线真实规则战斗回放', () => {
           const result = craft(state, 'heal', .5); if (result.ok) state = result.state
         }
         const needsHerb = p.herbs < chapter.objectives.herbs || (p.brews < chapter.objectives.brews && state.inventory.herb < 2)
-        const event = eventForChapter(chapter.id), activeEvent = event && !eventDone(state)
-        const needsTradeHerb = activeEvent && event.kind === 'trade' && p.event.stage === 1 && state.inventory.herb < 2
+        const event = nextEvent(state, true), activeEvent = !!event, ep = eventProgress(state, chapter.id, event?.id)
+        const supplying = event && ((event.kind === 'trade' && ep.stage === 1) || (event.kind === 'competition' && ep.stage === 4))
+        const needsTradeHerb = supplying && state.inventory.herb < 2
         const living = world.enemies.filter(e => e.hp > 0).sort((a, b) => dist(a, world.player) - dist(b, world.player))
         let target: Vec = world.map.gate
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
-        if (activeEvent && !needsTradeHerb && !(event.kind === 'trade' && p.event.stage === 1 && state.inventory.crystal < 1)) {
-          target = !p.event.started || event.kind === 'trade' ? event.npc : event.kind === 'training' ? event.dummy! : event.checkpoints![p.event.stage]
+        if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) ? event.npc : event.kind === 'training' ? event.dummy! : event.checkpoints![ep.stage]
         }
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
         let input = { x: 0, y: 0 }
@@ -98,8 +104,8 @@ describe('完整主线真实规则战斗回放', () => {
           if (world.player.hp < world.runtime().maxHp * .5) world.action('heal', input)
           if (world.player.qi < 20) world.action('mana', input)
           world.action('support', input)
-          if (activeEvent && event.kind === 'training' && p.event.started && dist(world.player, event.dummy!) < 145) {
-            if (p.event.stage === 0) world.action('strike', { ...input, aim: event.dummy })
+          if (event?.kind === 'training' && ep.started && dist(world.player, event.dummy!) < 145) {
+            if (ep.stage === 0) world.action('strike', { ...input, aim: event.dummy })
             else world.action('dodge', input)
           }
           if (needsHerb || needsTradeHerb || activeEvent || (chapterReady(state) && !living.length)) world.action('interact', input)

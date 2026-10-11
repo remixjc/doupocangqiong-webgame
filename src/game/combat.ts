@@ -1,8 +1,8 @@
 import type { Action, Chapter, GameState, Runtime } from '../core/model'
 import { chapterReady, damage, playerStats, skillInfo, skillUnlocked } from '../core/rules'
 import { mapForChapter, mapCollides, MAP_WIDTH, MAP_HEIGHT } from '../content/maps'
-import { eventForChapter } from '../content/events'
-import type { EventAction } from '../core/events'
+import { eventForChapter, eventsForChapter } from '../content/events'
+import { eventProgress, type EventAction } from '../core/events'
 
 export interface Vec { x: number; y: number }
 export interface Obstacle { x: number; y: number; w: number; h: number }
@@ -19,7 +19,7 @@ export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
   sound?: (kind: 'attack' | 'skill' | 'dodge' | 'hurt' | 'collect' | 'victory') => void
-  storyEvent?: () => void
+  storyEvent?: (id: string) => void
   eventAction?: (action: EventAction) => void
 }
 export const WIDTH = MAP_WIDTH, HEIGHT = MAP_HEIGHT
@@ -91,7 +91,7 @@ export class CombatWorld {
   }
   private aim(input: Input): Vec {
     if (input.aim) return input.aim
-    const event = eventForChapter(this.chapter.id), progress = this.cb.state().progress[this.chapter.id].event
+    const event = eventForChapter(this.chapter.id), progress = eventProgress(this.cb.state(), this.chapter.id)
     if (event?.dummy && progress.started && progress.stage === 0 && distance(event.dummy, this.player) < 170) return event.dummy
     const nearest = this.enemies.filter(e => e.hp > 0).sort((a, b) => distance(a, this.player) - distance(b, this.player))[0]
     if (nearest && distance(nearest, this.player) < 440) return nearest
@@ -104,11 +104,11 @@ export class CombatWorld {
     if (action !== 'interact') p.facing = Math.atan2(target.y - p.y, target.x - p.x)
     if (action === 'interact') {
       const near = this.near()
-      if (near === 'event') this.cb.storyEvent?.()
+      if (near === 'event') this.cb.storyEvent?.(this.nearEvent()!.id)
       else if (near === 'checkpoint') {
-        const event = eventForChapter(this.chapter.id)!
+        const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        this.cb.eventAction?.({ type: 'seal', index })
+        this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
       } else if (near === 'herb') {
         const herb = this.herbs.find(h => h.available && distance(h, p) < 75)!
         herb.available = false; herb.respawn = 22
@@ -132,7 +132,7 @@ export class CombatWorld {
         : { x: Math.cos(p.facing), y: Math.sin(p.facing) }
       p.stamina -= 28; p.roll = .22; p.invincible = .28; this.cooldowns.dodge = .7
       this.cb.sound?.('dodge')
-      const event = eventForChapter(this.chapter.id), progress = s.progress[this.chapter.id].event
+      const event = eventForChapter(this.chapter.id), progress = eventProgress(s, this.chapter.id)
       if (event?.dummy && progress.started && progress.stage === 1 && distance(p, event.dummy) < 170) this.cb.eventAction?.({ type: 'dodge' })
       return
     }
@@ -186,7 +186,7 @@ export class CombatWorld {
     }
     this.effect(center.x, center.y, radius, color, cone ? 'slash' : 'ring')
     this.cb.sound?.(action === 'attack' ? 'attack' : 'skill')
-    const event = eventForChapter(this.chapter.id), progress = s.progress[this.chapter.id].event
+    const event = eventForChapter(this.chapter.id), progress = eventProgress(s, this.chapter.id)
     if (action === 'strike' && event?.dummy && progress.started && progress.stage === 0 && distance(p, event.dummy) <= radius + 20) {
       const angle = Math.atan2(event.dummy.y - p.y, event.dummy.x - p.x) - p.facing
       if (Math.abs(Math.atan2(Math.sin(angle), Math.cos(angle))) <= 1.2) {
@@ -265,11 +265,13 @@ export class CombatWorld {
       }
     }
   }
+  nearEvent() {
+    return eventsForChapter(this.chapter.id).filter(e => distance(this.player, e.npc) < 75).sort((a, b) => distance(this.player, a.npc) - distance(this.player, b.npc))[0]
+  }
   near(): Runtime['near'] {
     const p = this.player
-    const event = eventForChapter(this.chapter.id)
-    if (event && distance(p, event.npc) < 75) return 'event'
-    if (event?.checkpoints?.some(point => distance(p, point) < 75)) return 'checkpoint'
+    if (this.nearEvent()) return 'event'
+    if (eventsForChapter(this.chapter.id).some(e => e.checkpoints?.some(point => distance(p, point) < 75))) return 'checkpoint'
     if (distance(p, this.map.camp) < 110) return 'camp'
     if (this.herbs.some(h => h.available && distance(p, h) < 75)) return 'herb'
     if (distance(p, this.map.gate) < 115) return 'gate'
@@ -280,7 +282,7 @@ export class CombatWorld {
     const boss = this.enemies.find(e => e.type === 'boss')
     return { x: Math.round(this.player.x), y: Math.round(this.player.y), hp: Math.round(this.player.hp), maxHp: stats.maxHp, qi: Math.round(this.player.qi),
       maxQi: stats.maxQi, stamina: Math.round(this.player.stamina), cooldowns: { ...this.cooldowns },
-      near, prompt: near === 'event' ? `E · 与${eventForChapter(this.chapter.id)!.speaker}交谈` : near === 'checkpoint' ? 'E · 确认立约路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
+      near, prompt: near === 'event' ? `E · 与${this.nearEvent()!.speaker}交谈` : near === 'checkpoint' ? 'E · 确认当前路标' : near === 'camp' ? 'E · 营地休整 / 章节结算' : near === 'herb' ? 'E · 采集灵草' : near === 'gate' ? (this.cb.state().progress[this.chapter.id].boss ? '试炼已通过 · 返回营地结算' : 'E · 开启章节试炼') : '',
       bossHp: boss?.hp ?? 0, bossMaxHp: boss?.maxHp ?? 0, bossName: this.chapter.boss, dead: this.player.hp <= 0 }
   }
 }

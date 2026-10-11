@@ -69,14 +69,14 @@ export const wutanMaps: Record<number, MapDefinition> = {
       { x: 795, y: 540, w: 180, h: 100 },
     ],
     herbs: [{ x: 310, y: 480 }, { x: 600, y: 200 }, { x: 730, y: 460 },
-      { x: 1080, y: 670 }, { x: 215, y: 200 }, { x: 710, y: 680 }],
+      { x: 1050, y: 600 }, { x: 215, y: 200 }, { x: 630, y: 680 }],
     enemies: [{ type: 'brute', x: 620, y: 420 }, { type: 'hunter', x: 1040, y: 530 }, { type: 'mage', x: 1060, y: 340 }],
     paths: [
       [{ x: 130, y: 650 }, { x: 270, y: 430 }, { x: 1100, y: 430 }, { x: 1100, y: 180 }],
       [{ x: 270, y: 430 }, { x: 280, y: 185 }, { x: 980, y: 185 }],
       [{ x: 270, y: 430 }, { x: 650, y: 700 }, { x: 1090, y: 700 }],
     ],
-    landmarks: [{ x: 620, y: 115, label: '乌坦城 · 萧家坊市' }, { x: 680, y: 765, label: '补货与议价 · 原创经营历练' }],
+    landmarks: [{ x: 820, y: 85, label: '乌坦城 · 萧家坊市' }, { x: 680, y: 765, label: '补货与议价 · 原创经营历练' }],
   },
 }
 export function mapForChapter(id: number): MapDefinition { return wutanMaps[id] ?? legacy }
