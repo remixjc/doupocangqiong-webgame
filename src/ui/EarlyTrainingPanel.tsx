@@ -2,11 +2,13 @@ import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
 import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from '../core/early-training-state'
+import { earlyMarketScenes } from '../content/early-market'
 
 export default function EarlyTrainingPanel({ state }: { state: GameState }) {
   const blocked = earlyTrainingBlock(state)
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
+  const marketScene = earlyMarketScenes[task.market.stage]
   return <>
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
@@ -22,7 +24,7 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
         <section className="bond-summary" aria-label="重修采购资金">
           <b>采购余额 {task.purse.borrowed - task.purse.spent} · 已付 {task.purse.spent}</b>
           <p>薰儿：先把准备做齐。这笔采购资金，我借给你。</p>
-          <p className="muted">借资{EARLY_LOAN}、药草30/20、魔核60均为游戏折算单位，不是原著金钱数额；不计入行囊金币，也不发主线奖励。</p>
+          <p className="muted">借资{EARLY_LOAN}、药草30/20、魔核及附物60均为游戏折算单位，不是原著金钱数额；不计入行囊金币，也不发主线奖励。</p>
           {!task.purse.borrowed && <button className="primary" onClick={() => gameStore.earlyTraining({ type: 'borrow', expectedSpent: task.purse.spent })}>向薰儿借采购资金</button>}
         </section>
         <section className="bond-summary" aria-label="药铺与坊市采购">
@@ -40,7 +42,18 @@ export default function EarlyTrainingPanel({ state }: { state: GameState }) {
             </article>
           })}
         </section>
-        {task.receipts.woodCore && <p className="muted">三种材料已齐，仍由任务袋保管。药老调制、稀释与修炼后续展开；现在没有药液、丹药或新的修炼结果。坊市人物交涉与黑铁片过程还会补充。</p>}
+        {herbsReady && <section className="bond-summary" aria-label="坊市往事与黑铁片">
+          <span className="eyebrow">坊市往事 · {Math.min(task.market.stage + 1, 4)} / 4</span>
+          <p className="muted">回顾采购中的交涉。已付款的魔核记录保留，这里核对同一笔交易的黑铁片附物。</p>
+          {marketScene ? <>
+            <h3>{marketScene.title}</h3><b>{marketScene.speaker}</b><p>{marketScene.text}</p>
+            <button className="secondary" disabled={task.market.stage === 3 && !task.receipts.woodCore}
+              onClick={() => gameStore.earlyTraining({ type: 'market', step: task.market.stage, expectedSpent: task.purse.spent })}>{marketScene.action}</button>
+            {task.market.stage === 3 && !task.receipts.woodCore && <p className="muted">先在上方付清魔核采购订单，再核对附物。</p>}
+          </> : <><h3>黑铁片已收好</h3><p>护卫介入后，争执告一段落。魔核和黑铁片来自同一次采购，萧炎带着物品回家，准备请药老辨认。</p><p>任务袋：黑铁片 ×{task.market.blackIron}</p></>}
+          <p className="muted">这是对白与交互的压缩改编；没有新的坊市行走地图。黑铁片尚未化为玩家的战斗技能。</p>
+        </section>}
+        {task.receipts.woodCore && <p className="muted">三种材料已齐，仍由任务袋保管。药老调制、稀释与修炼后续展开；现在没有药液、丹药或新的修炼结果。</p>}
       </>}
     </>}
     <p className="muted">重修往事不会回退已完成主线，也不会重新发放章节奖励。</p>

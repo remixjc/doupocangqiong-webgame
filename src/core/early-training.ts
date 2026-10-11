@@ -10,6 +10,7 @@ export function earlyTrainingBlock(state: GameState): string {
 export type EarlyTrainingAction =
   | { type: 'borrow'; expectedSpent: number }
   | { type: 'purchase'; item: EarlySupplyId; price: number; expectedSpent: number }
+  | { type: 'market'; step: number; expectedSpent: number }
 
 export function advanceEarlyTraining(state: GameState, action: EarlyTrainingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
@@ -19,6 +20,14 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
   if (!task.started) return fail('先记下重修准备。')
   if (action.expectedSpent !== task.purse.spent) return fail('采购记录已变化，请按当前清单重新操作。')
   const next = structuredClone(state)
+  if (action.type === 'market') {
+    if (!task.receipts.bluegrass || !task.receipts.boneflower) return fail('先买齐药草，再回顾坊市采购。')
+    if (action.step !== task.market.stage || task.market.stage === 4) return fail('坊市这一段已读过，或操作次序无效。')
+    if (action.step === 3 && !task.receipts.woodCore) return fail('先付清魔核采购订单，再核对附物交付。')
+    next.earlyTraining.market.stage++
+    if (action.step === 3) next.earlyTraining.market.blackIron = 1
+    return { state: next, ok: true, message: action.step === 3 ? '魔核交易附物已核对：黑铁片由任务袋保管，未再次付账。' : '坊市往事已记下，继续交涉。' }
+  }
   if (action.type === 'borrow') {
     if (task.purse.borrowed !== 0) return fail('借资已经记账，不能重复领取。')
     next.earlyTraining.purse.borrowed = EARLY_LOAN

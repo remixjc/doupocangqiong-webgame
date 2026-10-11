@@ -209,7 +209,7 @@ export function validateState(value: unknown): GameState {
   if (data.earlyTraining === undefined && versionBefore(data.contentVersion as string, EARLY_TRAINING_VERSION)) {
     // Keep the initial empty task record; old main clears cannot grant supplies.
   } else s.earlyTraining = parseEarlyTraining(data.earlyTraining, s.completed,
-    versionBefore(data.contentVersion as string, '0.15.1'))
+    versionBefore(data.contentVersion as string, '0.15.1'), versionBefore(data.contentVersion as string, '0.15.3'))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

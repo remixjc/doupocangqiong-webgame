@@ -3,6 +3,7 @@ export interface EarlyTrainingState {
   purse: { own: number; borrowed: number; spent: number }
   supplies: { bluegrass: number; boneflower: number; woodCore: number }
   receipts: Record<EarlySupplyId, boolean>
+  market: { stage: number; blackIron: number }
 }
 export type EarlySupplyId = 'bluegrass' | 'boneflower' | 'woodCore'
 export const EARLY_LOAN = 160
@@ -16,9 +17,10 @@ export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
   return { started: false, purse: { own: 0, borrowed: 0, spent: 0 },
     supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
-    receipts: { bluegrass: false, boneflower: false, woodCore: false } }
+    receipts: { bluegrass: false, boneflower: false, woodCore: false },
+    market: { stage: 0, blackIron: 0 } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -47,5 +49,12 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (result.receipts.woodCore && (!result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   if (purse.spent !== spent || spent > (purse.borrowed as number)) return invalid()
   result.purse = { own: 0, borrowed: purse.borrowed as number, spent }
+  if (data.market === undefined && legacyMarket) return result
+  const market = object(data.market)
+  if (typeof market.stage !== 'number' || !Number.isSafeInteger(market.stage) || market.stage < 0 || market.stage > 4
+    || market.blackIron !== (market.stage === 4 ? 1 : 0)) return invalid()
+  if (market.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
+  if (market.stage === 4 && !result.receipts.woodCore) return invalid()
+  result.market = { stage: market.stage, blackIron: market.blackIron as number }
   return result
 }
