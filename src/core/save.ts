@@ -140,7 +140,8 @@ export function validateState(value: unknown): GameState {
     const oldTower = n === 15 && versionBefore(data.contentVersion as string, '0.7.3')
     const oldSiege = n === 16 && versionBefore(data.contentVersion as string, '0.8.1')
     const oldAlliance = n === 17 && versionBefore(data.contentVersion as string, '0.8.2')
-    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
+    const oldThunder = n === 18 && versionBefore(data.contentVersion as string, '0.8.3')
+    const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldThunder ? { herbs: 4, kills: 4, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

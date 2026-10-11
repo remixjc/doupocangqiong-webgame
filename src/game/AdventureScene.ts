@@ -254,13 +254,20 @@ export default class AdventureScene extends Phaser.Scene {
     }
     if (w.map.escapeRoute) {
       const event = eventsForChapter(w.chapter.id).find(e => e.kind === 'escape')!
+      const shelterRadius = w.map.thunderRoute ? 110 : 90
       for (const point of event.checkpoints!.slice(1, 3)) {
-        g.fillStyle(0x80c7b0, .07); g.fillCircle(point.x, point.y, 90)
-        g.lineStyle(2, 0x92caba, .45); g.strokeCircle(point.x, point.y, 90)
+        g.fillStyle(0x80c7b0, .07); g.fillCircle(point.x, point.y, shelterRadius)
+        g.lineStyle(2, 0x92caba, .45); g.strokeCircle(point.x, point.y, shelterRadius)
       }
       for (const warning of w.escapeRun?.warnings ?? []) {
         g.fillStyle(0xa194bf, .16); g.fillCircle(warning.x, warning.y, warning.radius)
         g.lineStyle(3, 0xc8b3da, .8); g.strokeCircle(warning.x, warning.y, warning.radius)
+        if (w.map.thunderRoute) {
+          g.lineStyle(2, 0xd1e7f3, .9)
+          g.lineBetween(warning.x + 5, warning.y - 20, warning.x - 8, warning.y)
+          g.lineBetween(warning.x - 8, warning.y, warning.x + 8, warning.y)
+          g.lineBetween(warning.x + 8, warning.y, warning.x - 5, warning.y + 20)
+        }
       }
     }
     if (w.squad) {

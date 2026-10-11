@@ -26,7 +26,7 @@ export interface Input { x: number; y: number; aim?: Vec }
 export interface EscortRun extends Vec { hp: number; maxHp: number; stage: number; waiting: boolean }
 export interface SurvivalRun { elapsed: number; nextWave: number; warnings: (Vec & { time: number; radius: number })[] }
 export interface FlameRun extends SurvivalRun { phase: number; heat: number; failed: boolean; wave: number }
-export interface EscapeRun extends SurvivalRun { stage: number }
+export interface EscapeRun extends SurvivalRun { stage: number; wave: number }
 export interface SquadRun extends EscortRun { holding: boolean; channel: number }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
@@ -249,11 +249,11 @@ export class CombatWorld {
     const p = event && eventProgress(this.cb.state(), this.chapter.id, event.id)
     if (!p?.started || ![1, 2].includes(p.stage)) this.escapeRun = undefined
     else if (!this.escapeRun || this.escapeRun.stage !== p.stage)
-      this.escapeRun = { stage: p.stage, elapsed: 0, nextWave: 0, warnings: [] }
+      this.escapeRun = { stage: p.stage, elapsed: 0, nextWave: 0, warnings: [], wave: 0 }
   }
   sheltered() {
     const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'escape')
-    return !!this.escapeRun && !!e && distance(this.player, e.checkpoints![this.escapeRun.stage]) < 90
+    return !!this.escapeRun && !!e && distance(this.player, e.checkpoints![this.escapeRun.stage]) < (this.map.thunderRoute ? 110 : 90)
   }
   private stepEscape(dt: number) {
     this.syncEscapeRun()
@@ -269,9 +269,19 @@ export class CombatWorld {
     }
     run.warnings = run.warnings.filter(w => w.time > 0)
     if (this.player.hp <= 0) return
-    if (run.elapsed >= 6) { this.cb.eventAction?.({ type: 'evade', stage: run.stage, eventId: e.id }); return }
+    if (run.elapsed >= (this.map.escapeDurations?.[run.stage - 1] ?? 6)) { this.cb.eventAction?.({ type: 'evade', stage: run.stage, eventId: e.id }); return }
     run.nextWave -= dt
     if (run.nextWave <= 0) {
+      if (this.map.thunderRoute) {
+        run.nextWave = run.stage === 1 ? 2.4 : 2
+        const offsets = run.stage === 1 ? (run.wave % 2 ? [[0, -125], [0, 125]] : [[-125, 0], [125, 0]])
+          : run.wave % 2 ? [[-100, -100], [100, 100], [-100, 100], [100, -100]] : [[-130, 0], [130, 0], [0, -130], [0, 130]]
+        run.warnings.push(...[[0, 0], ...offsets].map(([x, y]) => ({
+          x: clamp(this.player.x + x, 65, WIDTH - 65), y: clamp(this.player.y + y, 65, HEIGHT - 65),
+          radius: run.stage === 1 ? 45 : 50, time: run.stage === 1 ? 1.1 : .95,
+        })))
+        run.wave++; return
+      }
       run.nextWave = run.stage === 1 ? 2.4 : 2.2
       run.warnings.push({ x: this.player.x, y: this.player.y, radius: run.stage === 1 ? 80 : 65, time: run.stage === 1 ? 1 : .9 })
       if (run.stage === 2) run.warnings.push({ x: this.player.x, y: clamp(this.player.y + 130, 50, HEIGHT - 50), radius: 65, time: .9 })
@@ -805,7 +815,7 @@ export class CombatWorld {
       heatChallenge: this.flameRun ? { phase: this.flameRun.phase, remaining: Math.max(0, Math.ceil(12 - this.flameRun.elapsed)), heat: Math.round(this.flameRun.heat), cooling: this.cooling(), inZone: this.inHeatZone(), failed: this.flameRun.failed } : undefined,
       duel: boss?.duel && boss.hp > 0 ? { phase: boss.duel.phase, move: { thrust: '踏风突进', fan: '三叠风刃', cyclone: '旋风回旋' }[boss.duel.move],
         warning: boss.windup > 0, recovery: boss.duel.recovery > 0 && boss.duel.dashTime <= 0 } : undefined,
-      escape: this.escapeRun ? { stage: this.escapeRun.stage, remaining: Math.max(0, Math.ceil(6 - this.escapeRun.elapsed)), sheltered: this.sheltered() } : undefined,
+      escape: this.escapeRun ? { stage: this.escapeRun.stage, remaining: Math.max(0, Math.ceil((this.map.escapeDurations?.[this.escapeRun.stage - 1] ?? 6) - this.escapeRun.elapsed)), sheltered: this.sheltered() } : undefined,
       huntTeam: this.huntTeam ? { hp: this.huntTeam.hp, maxHp: this.huntTeam.maxHp, failed: this.huntTeam.hp <= 0, waiting: this.huntTeam.waiting,
         arrived: this.huntTeam.hp > 0 && this.huntTeam.stage === 3 && distance(this.huntTeam, eventForChapter(this.chapter.id)!.npc) < 65 } : undefined,
       ranking: boss?.ranking && boss.hp > 0 ? { phase: boss.ranking.phase, shield: boss.windup > 0, recovery: boss.ranking.recovery > 0, practice: boss.ranking.practice } : undefined,

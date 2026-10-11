@@ -79,6 +79,11 @@ chapters[16].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[16].trialNote = '免费巡防与出资补给为原创炎盟筹备，两路线均能推进；完成边境投影才可首通启程中州，药老仍离队。'
 chapters[16].opening[2].text = '向海波东接取筹备，先看议事牌，再回人物处选择免费巡防或60金币补给。巡防需要清理两处驻点守卫，补给可直接登记物资；回报一次领取相应丹药和40积累，再到边境防线完成试炼。'
 
+chapters[17].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[17].boss = '雷云山径 · 安全撤离'
+chapters[17].trialNote = '两段避雷石与三点/交叉雷阵为原创避战撤离；不击杀原作强者，不表示此处首次获得三千雷动。'
+chapters[17].opening[2].text = '向山路向导询问退路，到前哨按E开始撤离；在西侧避雷石附近累计8秒，再穿过山口到东侧累计10秒。落雷会锁定脚下，及时闪避；两段通过后到北侧出口撤离。失败免费重建最近安全点，当前段计时重新开始。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)

@@ -16,6 +16,20 @@ export interface ChapterEvent {
   checkpoints?: (Point & { label: string; text: string; guards?: string[] })[]
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  18: {
+    id: 'central-thunder-retreat', kind: 'escape', introducedVersion: '0.8.3',
+    title: '雷云山径 · 避战撤离', speaker: '山路向导', npc: { x: 280, y: 625 },
+    stages: ['到雷云前哨确认退路，按E开始撤离', '在西侧避雷石附近累计8秒，避开三点落雷',
+      '穿过山口，在东侧避雷石附近累计10秒，避开交叉雷阵', '雷云暂缓，前往北侧山口按E撤离', '已安全通过雷云山路'],
+    introduction: '先确认前哨，再去西侧避雷石稳住8秒，穿过山口到东侧稳住10秒。避雷石附近能整理退路，落雷预警仍会锁定脚下；两段雷阵分别封住三点与交叉五点，要及时闪避。两处通过后从北侧出口离开。',
+    note: '避雷石、雷阵和安全点为原创撤离关卡，不击杀原著风雷强者，也不宣称此处首次取得三千雷动。区外暂停计时但仍有雷击；失败或刷新保留已通过节点，当前段重新计时，不扣材料。',
+    checkpoints: [
+      { x: 350, y: 550, label: '雷云前哨', text: '退路已确认。先向北到西侧避雷石，躲开锁定落雷。' },
+      { x: 490, y: 280, label: '西侧避雷石', text: '西侧退路已记录。沿中段缺口穿过山口，去东侧避雷石。' },
+      { x: 1030, y: 590, label: '东侧避雷石', text: '东侧退路已记录。沿东侧向北，从雷云山口安全撤离。' },
+      { x: 1120, y: 160, label: '雷云山口', text: '已安全通过雷云山路。返回营地结算，再去寻找星陨阁。' },
+    ],
+  },
   17: {
     id: 'flame-alliance-foundation', kind: 'alliance', introducedVersion: '0.8.2',
     title: '炎盟 · 根基筹备', speaker: '海波东', npc: { x: 280, y: 625 },

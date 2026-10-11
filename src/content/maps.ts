@@ -23,6 +23,8 @@ export interface MapDefinition {
   heatZone?: { x: number; y: number; w: number; h: number; cooling: Point[] }
   duelArena?: { x: number; y: number; w: number; h: number }
   escapeRoute?: boolean
+  thunderRoute?: boolean
+  escapeDurations?: number[]
   rankingArena?: boolean
   towerFloors?: TowerFloor[]
   siegeDurations?: number[]
@@ -304,14 +306,13 @@ export const returnAndCentralMaps: Record<number, MapDefinition> = {
     landmarks: [{ x: 680, y: 65, label: '炎盟 · 议事与防线' }, { x: 660, y: 750, label: '免费巡防 / 60金币补给 → 双驻点登记 → 边境试炼' }],
   },
   18: {
-    id: 'central-thunder-mountain', style: 'thunder-path', gateLabel: '雷云山口',
+    id: 'central-thunder-mountain', style: 'thunder-path', gateLabel: '雷云山口', escapeRoute: true, thunderRoute: true, escapeDurations: [8, 10],
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1120, y: 160 }, bossSpawn: { x: 1080, y: 270 }, safeRadius: 170,
     obstacles: [{ x: 640, y: 0, w: 70, h: 300 }, { x: 640, y: 520, w: 70, h: 280 }, { x: 850, y: 500, w: 100, h: 100 }],
     herbs: [{ x: 320, y: 480 }, { x: 540, y: 250 }, { x: 990, y: 210 }, { x: 1120, y: 640 }, { x: 800, y: 410 }, { x: 430, y: 660 }],
-    enemies: [{ type: 'brute', x: 490, y: 430 }, { type: 'hunter', x: 900, y: 350 },
-      { type: 'mage', x: 1090, y: 540 }, { type: 'mage', x: 970, y: 300 }],
+    enemies: [],
     paths: [[{ x: 150, y: 650 }, { x: 340, y: 480 }, { x: 520, y: 400 }, { x: 760, y: 400 }, { x: 960, y: 320 }, { x: 1120, y: 160 }]],
-    landmarks: [{ x: 1020, y: 65, label: '中州北域 · 雷云山径' }, { x: 440, y: 750, label: '雷云之下 · 留心山路' }],
+    landmarks: [{ x: 1020, y: 65, label: '中州北域 · 雷云山径' }, { x: 440, y: 750, label: '西侧避雷石 → 穿过山口 → 东侧避雷石 → 撤离' }],
   },
   19: {
     id: 'star-pavilion-grove', style: 'star-pavilion', gateLabel: '星陨阁试炼',
