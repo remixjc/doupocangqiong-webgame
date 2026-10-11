@@ -3,7 +3,7 @@ import { gameStore } from '../core/store'
 import './autosave.css'
 
 export default function SaveStatus({ compact = false }: { compact?: boolean }) {
-  const { autosave } = useSyncExternalStore(gameStore.subscribe, gameStore.getSnapshot)
+  const { autosave } = useSyncExternalStore(gameStore.subscribe, gameStore.getSnapshot, gameStore.getSnapshot)
   const labels = { idle: '尚未保存新进度', loaded: '当前旅途已读取', saving: '正在保存…', saved: '已保存', error: '保存未完成' }
   return <div className={`autosave-status ${compact ? 'compact' : ''} ${autosave.phase}`}>
     <span role="status" aria-live="polite">自动存档 · {labels[autosave.phase]}</span>

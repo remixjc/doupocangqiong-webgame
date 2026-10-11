@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react
 import { chapters, chapterById } from '../content/chapters'
 import { gameStore } from '../core/store'
 import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
-import { AlchemyPanel, SavesPanel, SettingsPanel, ShopPanel } from './Panels'
+import { AlchemyPanel, SettingsPanel, ShopPanel } from './Panels'
 import TouchControls from './TouchControls'
 import { setVolume, unlockAudio, stopAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
@@ -20,6 +20,7 @@ import { loadSceneModule } from './scene-load'
 const GameView = lazy(() => loadSceneModule(() => import('./GameView')))
 const StoryRecap = lazy(() => loadSceneModule(() => import('./StoryRecap')))
 const EarlyTrainingPanel = lazy(() => loadSceneModule(() => import('./EarlyTrainingPanel')))
+const SavesPanel = lazy(() => loadSceneModule(() => import('./SavesPanel')))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | 'recap' | 'early' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 
@@ -224,7 +225,13 @@ export default function App() {
       {panel === 'alchemy' && <AlchemyPanel state={s} />}
       {panel === 'shop' && <ShopPanel state={s} />}
       {panel === 'settings' && <SettingsPanel state={s} activeDifficulty={screen === 'play' ? r.difficulty : undefined} />}
-      {panel === 'save' && <SavesPanel state={s} onLoaded={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} onReset={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} />}
+      {panel === 'save' && <SceneBoundary context="save"
+        onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
+        onBack={() => { setPanel(null); setScreen('world') }}>
+        <Suspense fallback={<><p className="muted" role="status">正在打开存档管理…</p><SaveStatus /></>}>
+          <SavesPanel state={s} onLoaded={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} onReset={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} />
+        </Suspense>
+      </SceneBoundary>}
     </section></div>}
     {story && <div className="story-backdrop"><section className="story-box" role="dialog" aria-modal="true" aria-label="剧情对白"><div className="story-portrait">{story.lines[story.index].speaker.slice(0, 1)}</div><div className="story-content"><span className="eyebrow">{story.closing ? '历练归来' : chapter.location}</span><h2>{story.lines[story.index].speaker}</h2><p>{story.lines[story.index].text}</p><button className="primary" onClick={advanceStory}>{story.index < story.lines.length - 1 ? '继续' : story.closing ? '展开新的旅途' : '开始探索'} <span>→</span></button><small>{story.index + 1} / {story.lines.length}</small></div></section></div>}
     {screen === 'play' && r.dead && !story && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label="历练失败"><span className="eyebrow">暂歇，不是终点</span><h2>这一次，记住预警与退路。</h2><p className="muted">任务进度、金币和材料已保留。{map.escapeRoute ? '重试会返回最近完成的安全点。前往当前青色掩体，追击锁定后离开紫色区域，再回来稳住退路。' : map.heatZone ? '重试会从当前控火阶段恢复。离开预警范围，并利用青色冷却点降温。' : map.duelArena ? '决斗会重新开始，赴约足迹保留。躲开锁定招式，在收招窗口反击。' : '在蓄力预警时离开危险区域，再用八极崩打断普通敌人。'}</p><button className="primary" onClick={retry}>{map.escapeRoute ? '返回安全点，继续撤离' : '回到营地，重新挑战'}</button><button className="text-button" onClick={() => setScreen('world')}>返回舆图</button></section></div>}

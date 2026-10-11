@@ -2,8 +2,9 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
 import SceneBoundary from '../src/ui/SceneBoundary'
 import { loadSceneModule, SceneLoadTimeout, SCENE_LOAD_TIMEOUT_MS } from '../src/ui/scene-load'
+import { gameStore } from '../src/core/store'
 
-afterEach(() => vi.useRealTimers())
+afterEach(() => { vi.useRealTimers(); vi.restoreAllMocks() })
 function pending<T>() {
   let resolve!: (value: T) => void, reject!: (error: unknown) => void
   const promise = new Promise<T>((yes, no) => { resolve = yes; reject = no })
@@ -81,5 +82,28 @@ describe('关卡模块加载期限', () => {
     boundary.state = SceneBoundary.getDerivedStateFromError(new Error('recap render failed'))
     expect(renderToStaticMarkup(boundary.render())).toContain('本页遇到问题')
     expect(renderToStaticMarkup(boundary.render())).not.toContain('20秒')
+  })
+  it('存档管理超时显示同步保存状态且没有自指恢复入口', () => {
+    const props = { children: 'save', context: 'save' as const, onFailure: vi.fn(), onReload: vi.fn(), onBack: vi.fn() }
+    const boundary = new SceneBoundary(props)
+    boundary.state = SceneBoundary.getDerivedStateFromError(new SceneLoadTimeout())
+    boundary.componentDidCatch()
+    const html = renderToStaticMarkup(boundary.render())
+    expect(props.onFailure).toHaveBeenCalledOnce()
+    for (const text of ['存档管理暂时无法打开', '打开存档管理已等待超过20秒', '自动存档', '保存后刷新页面', '返回大陆舆图']) expect(html).toContain(text)
+    expect(html).not.toContain('>打开存档管理</button>')
+  })
+  it('存档窗口普通故障仍显示实际自动保存错误和重试按钮', () => {
+    const snapshot = gameStore.getSnapshot()
+    vi.spyOn(gameStore, 'getSnapshot').mockReturnValue({
+      ...snapshot, autosave: { phase: 'error', pending: 0, error: '磁盘写入失败' },
+    })
+    const props = { children: 'save', context: 'save' as const, onFailure: vi.fn(), onReload: vi.fn(), onBack: vi.fn() }
+    const boundary = new SceneBoundary(props)
+    boundary.state = SceneBoundary.getDerivedStateFromError(new Error('save module missing'))
+    const html = renderToStaticMarkup(boundary.render())
+    for (const text of ['存档窗口遇到问题', '自动存档', '保存未完成', '磁盘写入失败', '重试自动保存']) expect(html).toContain(text)
+    expect(html).not.toContain('等待超过20秒')
+    expect(html).not.toContain('>打开存档管理</button>')
   })
 })
