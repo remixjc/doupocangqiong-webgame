@@ -248,6 +248,17 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(3, 0xc8b3da, .8); g.strokeCircle(warning.x, warning.y, warning.radius)
       }
     }
+    if (w.squad) {
+      const e = eventsForChapter(w.chapter.id).find(e => e.kind === 'squad')!
+      for (const point of e.checkpoints!.slice(1)) {
+        g.fillStyle(0x81c7ba, .08); g.fillCircle(point.x, point.y, 65)
+        g.lineStyle(3, w.channeling() ? 0xc8daa0 : 0x92cabd, .5); g.strokeCircle(point.x, point.y, 65)
+      }
+      this.actor(g, w.squad.x, w.squad.y, w.squad.hp > 0 ? 0x7f9aa9 : 0x775c58, .95, false)
+      g.fillStyle(0x0b1718); g.fillRect(w.squad.x - 25, w.squad.y - 52, 50, 6)
+      g.fillStyle(0x86c9b1); g.fillRect(w.squad.x - 25, w.squad.y - 52, 50 * w.squad.hp / w.squad.maxHp, 6)
+      if (w.squad.holding) { g.lineStyle(2, 0xa5d9ca, .6); g.strokeCircle(w.squad.x, w.squad.y, 30) }
+    }
     if (w.map.heatZone) {
       const z = w.map.heatZone
       g.fillStyle(0xcb6e45, .06); g.fillRect(z.x, z.y, z.w, z.h)

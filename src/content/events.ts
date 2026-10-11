@@ -2,7 +2,7 @@ import type { Point } from './maps'
 
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -151,6 +151,18 @@ export const chapterEvents: Record<number, ChapterEvent> = {
     checkpoints: [
       { x: 330, y: 220, label: '拍卖公告', text: '报价40 / 60 / 80；对手预算60。出价托管、被超价全额退款，80竞得旅行补给。旁观也可完成情报目标，零金币可推进。' },
       { x: 750, y: 400, label: '竞拍台', text: '请根据金币预算选择参拍或旁观，已通过公告才可出价。' },
+    ],
+  },
+  13: {
+    id: 'academy-dual-sigil-trial', kind: 'squad', introducedVersion: '0.7.1',
+    title: '外院 · 双阵协作', speaker: '若琳', npc: { x: 280, y: 625 },
+    stages: ['带试炼同伴到集合点，两人靠近后按 E', '带同伴到西阵，按 E 安排守阵', '同伴守西阵，前往东阵持续共鸣3秒', '双阵已经连通，返回若琳处登记', '协作资格已经登记，前往入院审核'],
+    introduction: '外院看重配合。先带试炼同伴到集合点，再到西阵安排守阵；同伴留下守住西阵，你去东阵连续共鸣3秒。离开东阵会中断，投影守卫也会威胁同伴。清理威胁、安排好阵位，再回来登记。',
+    note: '双阵、试炼同伴与投影守卫为原创资格关，不代替薰儿等完整伙伴支线。同伴生命140、远离时等待；受伤可免费休整，同伴从最近集合节点重建，守阵阶段保留。登记一次40修炼积累。',
+    checkpoints: [
+      { x: 500, y: 520, label: '集合点', text: '集合已经确认。前往西阵，保护同伴跟上。' },
+      { x: 700, y: 400, label: '西阵', text: '同伴已经守住西阵。清理投影威胁，再到东阵连续共鸣3秒。' },
+      { x: 1000, y: 400, label: '东阵', text: '双阵连通。返回若琳处登记，准备入院审核。' },
     ],
   },
 }

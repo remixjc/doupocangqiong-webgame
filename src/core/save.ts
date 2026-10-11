@@ -122,7 +122,8 @@ export function validateState(value: unknown): GameState {
     const oldCertification = n === 6 && versionBefore(data.contentVersion as string, '0.4.1')
     const oldTournament = n === 9 && versionBefore(data.contentVersion as string, '0.6.0')
     const oldAuction = n === 12 && versionBefore(data.contentVersion as string, '0.7.0')
-    const o = oldChecklist || oldAuction ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
+    const oldSquad = n === 13 && versionBefore(data.contentVersion as string, '0.7.1')
+    const o = oldChecklist || oldAuction || oldSquad ? { herbs: 3, kills: 3, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
     if ((s.completed.includes(n) || boss) && !eventDone(s, n)) throw new Error('已完成章节的剧情事件不完整。')

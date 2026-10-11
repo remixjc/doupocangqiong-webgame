@@ -6,6 +6,7 @@ import { CombatWorld, HEIGHT, WIDTH, type Vec } from '../src/game/combat'
 import { mapCollides, type MapDefinition } from '../src/content/maps'
 import { certificationTargets, findEvent, tournamentRound, tournamentRounds } from '../src/content/events'
 import { advanceEvent, eventProgress, nextEvent, pulseMarker } from '../src/core/events'
+import { validateState } from '../src/core/save'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -69,6 +70,7 @@ describe('完整主线真实规则战斗回放', () => {
             else if (checkpoint === 1 && p.stage >= 2 && p.stage <= 4 && Math.abs(marker - certificationTargets[p.stage - 2]) < .08) state = advanceEvent(state, { type: 'pulse', marker, stage: p.stage, eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
           } else if (e.kind === 'rescue' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'squad' && p.stage === 3) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'flame') {
             if (checkpoint === 1 && p.stage === 1) state = advanceEvent(state, { type: 'test', eventId }).state
             else if (checkpoint === undefined && p.stage === 5) state = advanceEvent(state, { type: 'deliver', eventId }).state
@@ -101,12 +103,16 @@ describe('完整主线真实规则战斗回放', () => {
         if (needsHerb || needsTradeHerb) target = world.herbs.filter(h => h.available).sort((a, b) => dist(a, world.player) - dist(b, world.player))[0] ?? world.map.gate
         else if (living.length) target = living[0]
         if (event && !needsTradeHerb && !(supplying && state.inventory.crystal < 1)) {
-          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue'].includes(event.kind) && ep.stage === 3) || (['certification', 'flame'].includes(event.kind) && ep.stage === 5) ? event.npc
+          target = !ep.started || ['trade', 'stone', 'competition'].includes(event.kind) || (['cave', 'rescue', 'squad'].includes(event.kind) && ep.stage === 3) || (['certification', 'flame'].includes(event.kind) && ep.stage === 5) ? event.npc
             : event.kind === 'training' ? event.dummy! : event.kind === 'survival' ? event.checkpoints![ep.stage === 2 ? 1 : 0] : ['certification', 'flame'].includes(event.kind) ? event.checkpoints![ep.stage === 0 ? 0 : 1] : event.checkpoints![ep.stage]
           if (event.kind === 'escort' && world.escort && dist(world.player, world.escort) > 140) target = world.escort
           if (event.kind === 'flame' && ep.stage >= 2 && ep.stage <= 4) target = [...world.map.heatZone!.cooling].sort((a, b) => dist(a, world.player) - dist(b, world.player))[0]
           if (event.kind === 'tournament') target = !ep.started || ep.stage === 13 ? event.npc : event.checkpoints![ep.stage === 0 ? 0 : tournamentRound(ep.stage) + 1]
           if (event.kind === 'auction') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage === 0 ? 0 : 1]
+          if (event.kind === 'squad' && world.squad) {
+            if (!world.squad.holding && dist(world.player, world.squad) > 140) target = world.squad
+            if (world.squad.holding && living.length) target = living[0]
+          }
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))
@@ -145,9 +151,11 @@ describe('完整主线真实规则战斗回放', () => {
           if (needsHerb || needsTradeHerb || activeEvent || (chapterReady(state) && !living.length)) world.action('interact', input)
         }
         world.step(input)
+        if (frame % 10 === 0) expect(() => validateState(state), `第${chapter.id}章第${frame}帧必须可存档`).not.toThrow()
       }
       expect(state.progress[chapter.id].boss, `第${chapter.id}章未打通：hp=${world.player.hp}, kills=${state.progress[chapter.id].kills}, herbs=${state.progress[chapter.id].herbs}, position=${world.player.x},${world.player.y}`).toBe(true)
       state = finishChapter(state)
+      expect(validateState(state)).toEqual(state)
       expect(state.completed.length).toBe(chapter.id)
       timings.push(Math.round(frame / 60))
     }

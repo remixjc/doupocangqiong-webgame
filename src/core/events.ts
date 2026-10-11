@@ -1,7 +1,7 @@
 import { certificationTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 
-export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' }
+export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 'test' | 'survive' | 'resolve-bid' | 'observe' | 'formation' }
   | { type: 'seal'; index: number } | { type: 'quote'; amount: number }
   | { type: 'strategy'; choice: 'steady' | 'premium' }
   | { type: 'rune'; symbol: 'leaf' | 'moon' | 'fire'; step: number }
@@ -108,6 +108,12 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'squad' && action.type === 'seal' && action.index === p.stage && p.stage <= 1) {
+      message = event.checkpoints![p.stage].text; p.stage++
+    } else if (event.kind === 'squad' && action.type === 'formation' && p.stage === 2) {
+      p.stage = 3; message = event.checkpoints![2].text
+    } else if (event.kind === 'squad' && action.type === 'deliver' && p.stage === 3) {
+      next.xp += 40; p.stage = 4; message = '协作资格已经登记 · 40修炼积累。前往入院审核台。'
     } else if (event.kind === 'auction' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'auction' && action.type === 'bid' && [1, 3].includes(p.stage)) {

@@ -24,6 +24,7 @@ export interface EscortRun extends Vec { hp: number; maxHp: number; stage: numbe
 export interface SurvivalRun { elapsed: number; nextWave: number; warnings: (Vec & { time: number; radius: number })[] }
 export interface FlameRun extends SurvivalRun { phase: number; heat: number; failed: boolean; wave: number }
 export interface EscapeRun extends SurvivalRun { stage: number }
+export interface SquadRun extends EscortRun { holding: boolean; channel: number }
 export interface CombatCallbacks {
   state: () => GameState; collect: () => void; kill: (boss: boolean) => void
   heal: () => boolean; mana?: () => boolean; camp: () => void; notify: (text: string) => void
@@ -49,6 +50,7 @@ export class CombatWorld {
   survival?: SurvivalRun
   flameRun?: FlameRun
   escapeRun?: EscapeRun
+  squad?: SquadRun
   private nextId = 1
   private lastHit = -10
   private bossSpawned = false
@@ -77,10 +79,52 @@ export class CombatWorld {
     this.syncMountainRuns()
     this.syncFlameRun()
     this.syncEscapeRun()
+    this.syncSquad()
     const retreat = eventsForChapter(chapter.id).find(e => e.kind === 'escape')
     const retreatProgress = retreat && eventProgress(cb.state(), chapter.id, retreat.id)
     if (retreat && retreatProgress?.started && retreatProgress.stage >= 1 && retreatProgress.stage <= 3)
       Object.assign(this.player, retreat.checkpoints![retreatProgress.stage - 1])
+    const squadEvent = eventsForChapter(chapter.id).find(e => e.kind === 'squad')
+    const squadProgress = squadEvent && eventProgress(cb.state(), chapter.id, squadEvent.id)
+    if (squadEvent && squadProgress?.started && [1, 2].includes(squadProgress.stage))
+      Object.assign(this.player, squadEvent.checkpoints![squadProgress.stage - 1])
+  }
+  private syncSquad() {
+    const e = eventsForChapter(this.chapter.id).find(e => e.kind === 'squad')
+    const p = e && eventProgress(this.cb.state(), this.chapter.id, e.id)
+    if (!p?.started || p.stage >= 3) this.squad = undefined
+    else if (!this.squad) {
+      const point = p.stage === 0 ? e!.npc : e!.checkpoints![p.stage - 1]
+      this.squad = { ...point, hp: 140, maxHp: 140, stage: p.stage, holding: p.stage === 2, waiting: false, channel: 0 }
+    } else { this.squad.stage = p.stage; this.squad.holding = p.stage === 2 }
+  }
+  private stepSquad(dt: number) {
+    this.syncSquad()
+    const squad = this.squad, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'squad')
+    if (!squad || !e || squad.hp <= 0 || squad.holding) return
+    squad.waiting = distance(this.player, squad) > 180
+    const target = e.checkpoints![squad.stage], dist = distance(squad, target)
+    if (!squad.waiting && dist > 8) this.move(squad, (target.x - squad.x) / dist * Math.min(dist, dt * 125), (target.y - squad.y) / dist * Math.min(dist, dt * 125))
+  }
+  channeling() {
+    const squad = this.squad, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'squad')
+    return !!squad?.holding && squad.hp > 0 && !!e && distance(squad, e.checkpoints![1]) < 65 && distance(this.player, e.checkpoints![2]) < 65
+  }
+  private chargeSquad(dt: number) {
+    const squad = this.squad, e = eventsForChapter(this.chapter.id).find(e => e.kind === 'squad')
+    if (!squad || !e) return
+    squad.channel = this.channeling() ? squad.channel + dt : 0
+    if (squad.channel >= 3 && this.player.hp > 0) this.cb.eventAction?.({ type: 'formation', eventId: e.id })
+  }
+  private squadCheckpoint(eventId: string, index: number) {
+    const e = eventsForChapter(this.chapter.id).find(e => e.id === eventId)!, p = eventProgress(this.cb.state(), this.chapter.id, eventId)
+    this.syncSquad()
+    if (!p.started) { this.cb.notify('先与若琳接取协作试炼。'); return }
+    if (!this.squad || this.squad.hp <= 0) { this.cb.notify(p.stage >= 3 ? '双阵已完成，返回若琳处登记。' : '试炼同伴受伤，请休整后从安全节点重试。'); return }
+    if (p.stage === 2 && index === 2) { this.cb.notify('持续站在东阵3秒，同伴须存活并守住西阵；离开会中断共鸣。'); return }
+    if (index !== p.stage || index > 1) { this.cb.notify('按集合点、西阵、东阵的顺序配合。'); return }
+    if (distance(this.squad, e.checkpoints![index]) >= 65) { this.cb.notify('同伴尚未到达，靠近同伴让他继续前进。'); return }
+    this.cb.eventAction?.({ type: 'seal', index, eventId })
   }
   private syncEscapeRun() {
     const event = eventsForChapter(this.chapter.id).find(e => e.kind === 'escape')
@@ -288,7 +332,8 @@ export class CombatWorld {
       else if (near === 'checkpoint') {
         const event = eventsForChapter(this.chapter.id).find(e => e.checkpoints?.some(point => distance(p, point) < 75))!
         const index = event.checkpoints!.findIndex(point => distance(p, point) < 75)
-        if (event.kind === 'escape' && [1, 2].includes(index)) this.cb.notify('继续在当前掩体附近稳住脚步，躲避追击；两处按顺序通过后才开放出口。')
+        if (event.kind === 'squad') this.squadCheckpoint(event.id, index)
+        else if (event.kind === 'escape' && [1, 2].includes(index)) this.cb.notify('继续在当前掩体附近稳住脚步，躲避追击；两处按顺序通过后才开放出口。')
         else if (event.kind === 'escape' && index === 3) {
           this.cb.eventAction?.({ type: 'seal', index, eventId: event.id })
           if (chapterReady(this.cb.state()) && !this.cb.state().progress[this.chapter.id].boss) { this.cb.kill(true); this.cb.sound?.('victory') }
@@ -470,6 +515,7 @@ export class CombatWorld {
     this.stepMountain(dt)
     this.stepFlame(dt)
     this.stepEscape(dt)
+    this.stepSquad(dt)
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
       if (e.hp <= 0) continue
@@ -479,7 +525,8 @@ export class CombatWorld {
       }
       if (e.hp <= 0) continue
       if (e.duel) { this.stepDuel(e, dt); continue }
-      const dist = distance(e, p)
+      const enemyTarget = this.squad?.holding && this.squad.hp > 0 && distance(e, this.squad) < distance(e, p) ? this.squad : p
+      const dist = distance(e, enemyTarget)
       if (e.type !== 'boss' && distance(p, this.map.camp) < this.map.safeRadius) { e.windup = 0; e.timer = Math.max(e.timer, 1); e.alert = 0; continue }
       if (e.patrol && e.alert < 1) {
         const visible = dist < e.patrol.detectionRadius && hasLineOfSight(this.collisionMap(), e, p)
@@ -504,6 +551,10 @@ export class CombatWorld {
             this.escort.hp = Math.max(0, this.escort.hp - damage(30, 1, 10))
             if (this.escort.hp === 0) this.cb.notify('采药同伴受伤倒下。已采药草保留，营地休整后从安全节点重试。')
           }
+          if (this.squad?.holding && this.squad.hp > 0 && [e.target, ...(e.secondary ?? [])].some(point => distance(point, this.squad!) < e.radius + 16)) {
+            this.squad.hp = Math.max(0, this.squad.hp - damage(30, 1, 10))
+            if (this.squad.hp === 0) this.cb.notify('试炼同伴受伤，共鸣中断。休整可从已完成的集合节点重试。')
+          }
           if (e.type === 'boss' && this.chapter.pattern === 'dash') {
             e.x = clamp(e.target.x, 60, WIDTH - 60); e.y = clamp(e.target.y, 60, HEIGHT - 60)
           }
@@ -518,16 +569,17 @@ export class CombatWorld {
       const ranged = e.type === 'mage' || (e.type === 'boss' && ['volley', 'storm'].includes(this.chapter.pattern))
       if (e.timer <= 0 && (dist < 90 || ranged || e.type === 'boss')) {
         e.windup = e.type === 'boss' ? .95 : e.type === 'mage' ? .8 : .58
-        e.target = ranged || e.type === 'boss' ? { x: p.x, y: p.y } : { x: e.x, y: e.y }
+        e.target = ranged || e.type === 'boss' ? { x: enemyTarget.x, y: enemyTarget.y } : { x: e.x, y: e.y }
         e.radius = e.type === 'boss' ? (this.chapter.pattern === 'storm' ? 150 : this.chapter.pattern === 'dash' ? 100 : 135) : ranged ? 85 : 70
         const phase = e.hp / e.maxHp
         e.secondary = e.type === 'boss' && ['storm', 'volley'].includes(this.chapter.pattern) && phase < .7
           ? [{ x: clamp(p.x + 200, 65, WIDTH - 65), y: p.y }, ...(phase < .35 ? [{ x: clamp(p.x - 200, 65, WIDTH - 65), y: clamp(p.y + 140, 65, HEIGHT - 65) }] : [])] : []
       } else if (dist > (ranged ? 240 : 70)) {
         const speed = e.type === 'hunter' ? 135 : e.type === 'boss' ? 95 : 80
-        this.move(e, (p.x - e.x) / dist * dt * speed, (p.y - e.y) / dist * dt * speed)
+        this.move(e, (enemyTarget.x - e.x) / dist * dt * speed, (enemyTarget.y - e.y) / dist * dt * speed)
       }
     }
+    this.chargeSquad(dt)
   }
   nearEvent() {
     return eventsForChapter(this.chapter.id).map(e => e.kind === 'escort' && this.escort ? { ...e, npc: this.escort } : e)
@@ -556,6 +608,8 @@ export class CombatWorld {
       heatChallenge: this.flameRun ? { phase: this.flameRun.phase, remaining: Math.max(0, Math.ceil(12 - this.flameRun.elapsed)), heat: Math.round(this.flameRun.heat), cooling: this.cooling(), inZone: this.inHeatZone(), failed: this.flameRun.failed } : undefined,
       duel: boss?.duel && boss.hp > 0 ? { phase: boss.duel.phase, move: { thrust: '踏风突进', fan: '三叠风刃', cyclone: '旋风回旋' }[boss.duel.move],
         warning: boss.windup > 0, recovery: boss.duel.recovery > 0 && boss.duel.dashTime <= 0 } : undefined,
-      escape: this.escapeRun ? { stage: this.escapeRun.stage, remaining: Math.max(0, Math.ceil(6 - this.escapeRun.elapsed)), sheltered: this.sheltered() } : undefined }
+      escape: this.escapeRun ? { stage: this.escapeRun.stage, remaining: Math.max(0, Math.ceil(6 - this.escapeRun.elapsed)), sheltered: this.sheltered() } : undefined,
+      squad: this.squad ? { hp: this.squad.hp, maxHp: this.squad.maxHp, holding: this.squad.holding, failed: this.squad.hp <= 0,
+        waiting: this.squad.waiting, remaining: Math.max(0, Math.ceil(3 - this.squad.channel)), channeling: this.channeling() } : undefined }
   }
 }

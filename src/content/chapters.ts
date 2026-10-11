@@ -59,6 +59,10 @@ chapters[10].opening[2].text = '与药老接取退路，到前哨开始撤离，
 chapters[11].objectives = { herbs: 0, kills: 0, brews: 0 }
 chapters[11].trialNote = '旅行补给与竞拍为原创交易玩法；旁观可免费取得情报，出发挑战为原创拦截投影。'
 chapters[11].opening[2].text = '向交易执事接取情报目标，查看公告，再到竞拍台。40 / 60 / 80金币出价托管，被超价全额退款；80竞得补给，不想花钱可旁观推进。回报后再到出发碑通过拦截试炼，前往学院。'
+chapters[12].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[12].boss = '外院资格 · 协作审核'
+chapters[12].trialNote = '双阵协作与试炼同伴为原创资格玩法，完整伙伴支线后续扩充。'
+chapters[12].opening[2].text = '若琳提供双阵协作试炼。先带同伴到集合点，再到西阵按E守阵；同伴保持西阵，你到东阵连续3秒共鸣。投影守卫能威胁同伴，失败可免费休整。登记后入院审核完成本章。'
 
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
