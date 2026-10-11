@@ -29,6 +29,7 @@ export interface MapDefinition {
   lightningTrial?: { center: Point; radius: number; duration: number }
   starTrial?: { center: Point; radius: number; cooling: Point[]; durations: number[]; pressure: number[] }
   purificationZones?: { center: Point; radius: number; duration: number }[]
+  defensePosts?: boolean
   prisonPursuit?: MapEnemy[]
   tombDurations?: number[]
   rankingArena?: boolean
@@ -417,14 +418,12 @@ export const ancientMaps: Record<number, MapDefinition> = {
 }
 export const endgameMaps: Record<number, MapDefinition> = {
   26: {
-    id: 'coalition-ancient-ruins-front', style: 'coalition-front', gateLabel: '联盟出征台',
+    id: 'coalition-ancient-ruins-front', style: 'coalition-front', gateLabel: '联盟出征台', trialMode: 'assessment', defensePosts: true,
     camp: { x: 150, y: 650 }, spawn: { x: 210, y: 625 }, gate: { x: 1150, y: 160 }, bossSpawn: { x: 1070, y: 300 }, safeRadius: 175,
     obstacles: [{ x: 430, y: 100, w: 140, h: 140 }, { x: 760, y: 540, w: 140, h: 110 },
       { x: 950, y: 70, w: 60, h: 130 }, { x: 60, y: 330, w: 100, h: 100 }],
-    herbs: [{ x: 310, y: 440 }, { x: 640, y: 270 }, { x: 1080, y: 650 }, { x: 280, y: 100 }, { x: 620, y: 670 }, { x: 1140, y: 420 }],
-    enemies: [{ id: 'front-west-brute', type: 'brute', x: 620, y: 410 }, { id: 'front-west-hunter', type: 'hunter', x: 680, y: 350 },
-      { id: 'front-east-mage', type: 'mage', x: 1030, y: 390 }, { id: 'front-east-hunter', type: 'hunter', x: 1070, y: 460 },
-      { id: 'front-rear-brute', type: 'brute', x: 650, y: 620 }],
+    herbs: [{ x: 310, y: 440 }, { x: 640, y: 270 }, { x: 1080, y: 650 }, { x: 280, y: 100 }, { x: 560, y: 750 }, { x: 1140, y: 420 }],
+    enemies: [],
     paths: [[{ x: 150, y: 650 }, { x: 330, y: 440 }, { x: 650, y: 400 }, { x: 1030, y: 400 }, { x: 1150, y: 160 }],
       [{ x: 650, y: 400 }, { x: 650, y: 650 }]],
     landmarks: [{ x: 680, y: 60, label: '远古遗迹 · 联盟防线' }, { x: 680, y: 755, label: '西侧前哨 / 东侧联络 / 后方撤离' }],

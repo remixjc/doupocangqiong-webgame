@@ -13,6 +13,7 @@ export type EventAction = ({ type: 'begin' | 'strike' | 'dodge' | 'deliver' | 't
   | { type: 'bid'; amount: number }
   | { type: 'reflect'; choice: ReflectionChoice; stage: number }
   | { type: 'purify'; stage: number }
+  | { type: 'defend'; stage: number }
   | { type: 'pulse'; marker: number; stage: number }) & { eventId?: string }
 export interface EventResult { state: GameState; ok: boolean; message: string }
 export function eventProgress(state: GameState, chapter = state.chapter, eventId?: string): ChapterEventProgress {
@@ -114,6 +115,12 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
     } else if (event.kind === 'certification' && action.type === 'deliver' && p.stage === 5) {
       next.gold += 40; next.xp += 50; p.stage = 6
       message = '控火认证已经登记 · 40金币、50修炼积累。练习不另生成丹药，继续前往审核台。'
+    } else if (event.kind === 'defense' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
+      p.stage = 1; message = event.checkpoints![0].text
+    } else if (event.kind === 'defense' && action.type === 'defend' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {
+      p.stage++; message = p.stage === 4 ? '三处守线记录完成，返回药老处报告。' : `防线安全阶段已保存。${event.stages[p.stage]}`
+    } else if (event.kind === 'defense' && action.type === 'deliver' && p.stage === 4) {
+      p.stage = 5; message = '联盟防线已登记，未额外发资源。失去的族群不会由守线复活；前往出征台确认下一程。'
     } else if (event.kind === 'purification' && action.type === 'seal' && action.index === 0 && p.stage === 0) {
       p.stage = 1; message = event.checkpoints![0].text
     } else if (event.kind === 'purification' && action.type === 'purify' && action.stage === p.stage && p.stage >= 1 && p.stage <= 3) {

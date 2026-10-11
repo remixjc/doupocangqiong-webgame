@@ -88,6 +88,7 @@ describe('完整主线真实规则战斗回放', () => {
             else if (checkpoint === undefined && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           }
           else if (e.kind === 'purification' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
+          else if (e.kind === 'defense' && p.stage === 4) state = advanceEvent(state, { type: 'deliver', eventId }).state
           else if (e.kind === 'inheritance') {
             const marker = pulseMarker(world.elapsed * 1000)
             if (checkpoint === 0 && p.stage === 0) state = advanceEvent(state, { type: 'test', eventId }).state
@@ -207,6 +208,7 @@ describe('完整主线真实规则战斗回放', () => {
           if (event.kind === 'inheritance') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![0]
           if (event.kind === 'illusion') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
           if (event.kind === 'purification') target = !ep.started || ep.stage === 4 ? event.npc : event.checkpoints![ep.stage]
+          if (event.kind === 'defense') target = !ep.started || ep.stage === 4 ? event.npc : world.defenseEnemies()[0] ?? event.checkpoints![ep.stage]
         }
         const warning = [...(world.survival?.warnings ?? []), ...(world.flameRun?.warnings ?? []), ...(world.escapeRun?.warnings ?? []), ...(world.towerRun?.warnings ?? []), ...(world.danLightning?.warnings ?? []), ...(world.starRun?.warnings ?? []), ...(world.purificationRun?.warnings ?? [])].find(w => dist(w, world.player) < w.radius + 25)
         const threat = living.find(e => e.windup > 0 && [e.target, ...(e.secondary ?? [])].some(t => dist(t, world.player) < e.radius + 25))

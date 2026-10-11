@@ -389,6 +389,13 @@ export default class AdventureScene extends Phaser.Scene {
         g.lineStyle(3, 0xe0bcff); g.strokeCircle(warning.x, warning.y, warning.radius)
       }
     }
+    if (w.defenseRun) {
+      const post = w.defenseRun
+      g.fillStyle(post.failed ? 0x88575a : 0x9aacaa, .18); g.fillCircle(post.x, post.y, 55)
+      g.lineStyle(3, post.failed ? 0xdb8b86 : 0xc4b38c, .8); g.strokeCircle(post.x, post.y, 55)
+      g.fillStyle(0x182926); g.fillRect(post.x - 45, post.y - 70, 90, 7)
+      g.fillStyle(post.failed ? 0xdb8b86 : 0x85cbb2); g.fillRect(post.x - 45, post.y - 70, 90 * post.hp / post.maxHp, 7)
+    }
     if (w.map.purificationZones) {
       const e = eventsForChapter(w.chapter.id).find(e => e.kind === 'purification')!
       const p = eventProgress(gameStore.getSnapshot().state, w.chapter.id, e.id)

@@ -8,7 +8,7 @@ export interface Reflection {
 }
 export interface ChapterEvent {
   id: string
-  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification'
+  kind: 'training' | 'vow' | 'trade' | 'stone' | 'competition' | 'cave' | 'escort' | 'survival' | 'certification' | 'rescue' | 'flame' | 'tournament' | 'escape' | 'auction' | 'squad' | 'hunt' | 'tower' | 'siege' | 'alliance' | 'lineage' | 'expedition' | 'danfinal' | 'starfire' | 'prison' | 'tomb' | 'inheritance' | 'illusion' | 'purification' | 'defense'
   introducedVersion?: string
   optional?: boolean
   requires?: string[]
@@ -24,6 +24,20 @@ export interface ChapterEvent {
   reflectionReward?: number
 }
 export const chapterEvents: Record<number, ChapterEvent> = {
+  26: {
+    id: 'coalition-three-post-defense', kind: 'defense', introducedVersion: '0.11.1',
+    title: '联盟 · 三处守线', speaker: '药老', npc: { x: 280, y: 625 },
+    stages: ['前往联盟战报牌确认守线退路', '守住西侧前哨，击退两波袭击者', '守住东侧联络点，击退两波袭击者',
+      '守住后方撤离点，击退两波袭击者', '防线已稳，返回药老处报告', '防线已经登记，前往出征台'],
+    introduction: '先读战报，再按西哨、东哨、后方撤离点守线。靠近当前驻点140距离会开始两波袭击，每点280生命；袭击者会攻击驻点，退回营地也不会停。击退两波、双方存活才能记录该段。已守住段保留，失败免费休整或刷新重建当前段。',
+    note: '驻点、两波袭击者和280生命为灾难后联盟筹备的原创玩法，不改写药族等失去族群的结局，不表示本章已战胜魂天帝。各段从最近安全点重建，报告不额外发资源，出征台确认后营地正式首通结算。',
+    checkpoints: [
+      { x: 330, y: 220, label: '联盟战报牌', text: '守线顺序：西哨 → 东侧联络 → 后方撤离。靠近当前驻点开始两波防守；保住280生命，击退全部袭击者。' },
+      { x: 650, y: 400, label: '西侧前哨', text: '西哨需要守住两波袭击者。' },
+      { x: 1030, y: 400, label: '东侧联络', text: '东侧联络需要守住两波袭击者。' },
+      { x: 650, y: 650, label: '后方撤离', text: '保护后方撤离点，击退两波袭击者后回报。' },
+    ],
+  },
   20: {
     id: 'dan-realm-timed-herbs', kind: 'expedition', introducedVersion: '0.9.1',
     title: '丹界 · 限时药材目标', speaker: '丹塔执事', npc: { x: 280, y: 625 },

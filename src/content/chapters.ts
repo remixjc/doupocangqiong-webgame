@@ -119,6 +119,11 @@ chapters[24].boss = '净莲妖火 · 收服确认'
 chapters[24].opening[2].text = '向药老接取三镜辨识，读引路牌，依序根据丹瓶光影、旧影回应和莲纹变化选择观察、放下与面对。报告后向南侧净化引路人接取，确认退路，再到三处区域净化8/10/12秒。受击倒退2秒并增加侵蚀，满格失败免费重建当前段。回报、收服台确认后营地正式首通才取得净莲妖火。'
 chapters[24].trialNote = '三镜选择与三段净化为原创压缩玩法，不复现原著全部古图或净莲传承；没有可杀的异火投影，正式首通才发异火。'
 
+chapters[25].objectives = { herbs: 0, kills: 0, brews: 0 }
+chapters[25].boss = '联盟防线 · 出征确认'
+chapters[25].opening[2].text = '向药老接取守线，读联盟战报牌，再依序靠近西哨、东侧联络、后方撤离点开始各两波防守。驻点280生命，敌人会攻击驻点；击退两波且双方存活才能记录该段。失败免费重建当前段，已守住段保留，回报与出征确认后营地首通。'
+chapters[25].trialNote = '三处驻点、独立生命与两波袭击为灾难后联盟筹备的原创玩法，不改变已失去族群的结局；本章不提前战胜魂天帝。'
+
 export function chapterById(id: number): Chapter {
   const chapter = chapters.find(c => c.id === id)
   if (!chapter) throw new Error(`不存在的章节 ${id}`)
