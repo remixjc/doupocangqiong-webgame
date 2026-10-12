@@ -1,3 +1,4 @@
+import { refiningAt, refiningLiquidMinimum, validRefining, type RefiningState } from './early-refining-state'
 import { ironAt, validIron, type IronState } from './early-iron-state'
 import { marketReturnAt, validMarketReturn, type MarketReturnState } from './early-market-return-state'
 import { marketTradeAt, marketTradeMinimum, validMarketTrade, type MarketTradeState } from './early-market-trade-state'
@@ -35,6 +36,7 @@ export interface EarlyTrainingState {
   marketStandoff: MarketStandoffState
   marketDiscovery: MarketDiscoveryState
   marketTrade: MarketTradeState
+  refining: RefiningState
   iron: IronState
   marketReturn: MarketReturnState
   started: boolean
@@ -147,7 +149,7 @@ export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; p
 export const CONSIGNMENT_FUNDS = 90
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
-  return { familyVisit: familyVisitAt(0), familyCompensation: familyCompensationAt(0), familyContract: familyContractAt(0), mountainRing: mountainRingAt(0), apprentice: apprenticeAt(0), methodDiscussion: methodDiscussionAt(0), preparationBrief: preparationBriefAt(0), mountainVisitor: mountainVisitorAt(0), morningCard: morningCardAt(0), cityPharmacy: cityPharmacyAt(0), marketEscort: marketEscortAt(0), marketSearch: marketSearchAt(0), marketBracelets: marketBraceletsAt(0), marketStandoff: marketStandoffAt(0), marketDiscovery: marketDiscoveryAt(0), marketTrade: marketTradeAt(0), marketReturn: marketReturnAt(0), iron: ironAt(0), started: false, purse: { own: 0, borrowed: 0, spent: 0 },
+  return { familyVisit: familyVisitAt(0), familyCompensation: familyCompensationAt(0), familyContract: familyContractAt(0), mountainRing: mountainRingAt(0), apprentice: apprenticeAt(0), methodDiscussion: methodDiscussionAt(0), preparationBrief: preparationBriefAt(0), mountainVisitor: mountainVisitorAt(0), morningCard: morningCardAt(0), cityPharmacy: cityPharmacyAt(0), marketEscort: marketEscortAt(0), marketSearch: marketSearchAt(0), marketBracelets: marketBraceletsAt(0), marketStandoff: marketStandoffAt(0), marketDiscovery: marketDiscoveryAt(0), marketTrade: marketTradeAt(0), marketReturn: marketReturnAt(0), iron: ironAt(0), refining: refiningAt(0), started: false, purse: { own: 0, borrowed: 0, spent: 0 },
     supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
     receipts: { bluegrass: false, boneflower: false, woodCore: false },
     market: { stage: 0, blackIron: 0 },
@@ -179,7 +181,7 @@ export function blankEarlyTraining(): EarlyTrainingState {
     qiPavilionAid: { stage: 0, beats: 0, attempts: 0, ...qiPavilionAidAt(0) },
     qiPavilionExchange: { stage: 0, ...qiPavilionExchangeAt(0) } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false, legacyQiPavilionAid = false, legacyFamilyVisit = false, legacyFamilyCompensation = false, legacyFamilyContract = false, legacyMountainRing = false, legacyApprentice = false, legacyMethodDiscussion = false, legacyPreparationBrief = false, legacyMountainVisitor = false, legacyMorningCard = false, legacyCityPharmacy = false, legacyMarketEscort = false, legacyMarketSearch = false, legacyMarketBracelets = false, legacyMarketStandoff = false, legacyMarketDiscovery = false, legacyMarketTrade = false, legacyMarketReturn = false, legacyIron = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false, legacyQiPavilionAid = false, legacyFamilyVisit = false, legacyFamilyCompensation = false, legacyFamilyContract = false, legacyMountainRing = false, legacyApprentice = false, legacyMethodDiscussion = false, legacyPreparationBrief = false, legacyMountainVisitor = false, legacyMorningCard = false, legacyCityPharmacy = false, legacyMarketEscort = false, legacyMarketSearch = false, legacyMarketBracelets = false, legacyMarketStandoff = false, legacyMarketDiscovery = false, legacyMarketTrade = false, legacyMarketReturn = false, legacyIron = false, legacyRefining = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -196,30 +198,22 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (purse.own !== 0 || ![0, EARLY_LOAN].includes(purse.borrowed as number)
     || (!data.started && purse.borrowed !== 0)) return invalid()
   const result = { ...blankEarlyTraining(), started: data.started }
-  const familyVisit = data.familyVisit === undefined && legacyFamilyVisit ? result.familyVisit : object(data.familyVisit)
-  if (!validFamilyVisit(familyVisit) || familyVisit.stage > 0 && !completed.includes(2)) return invalid()
-  result.familyVisit = familyVisitAt(familyVisit.stage)
-  const familyCompensation = data.familyCompensation === undefined && legacyFamilyCompensation ? result.familyCompensation : object(data.familyCompensation)
-  if (!validFamilyCompensation(familyCompensation) || familyCompensation.stage > 0 && familyVisit.stage !== 17) return invalid()
-  result.familyCompensation = familyCompensationAt(familyCompensation.stage)
-  const familyContract = data.familyContract === undefined && legacyFamilyContract ? result.familyContract : object(data.familyContract)
-  if (!validFamilyContract(familyContract) || familyContract.stage > 0 && familyCompensation.stage !== 15) return invalid()
-  result.familyContract = familyContractAt(familyContract.stage)
-  const mountainRing = data.mountainRing === undefined && legacyMountainRing ? result.mountainRing : object(data.mountainRing)
-  if (!validMountainRing(mountainRing) || mountainRing.stage > 0 && familyContract.stage !== 33) return invalid()
-  result.mountainRing = mountainRingAt(mountainRing.stage)
-  const apprentice = data.apprentice === undefined && legacyApprentice ? result.apprentice : object(data.apprentice)
-  if (!validApprentice(apprentice) || apprentice.stage > 0 && mountainRing.stage !== 21) return invalid()
-  result.apprentice = apprenticeAt(apprentice.stage)
-  const methodDiscussion = data.methodDiscussion === undefined && legacyMethodDiscussion ? result.methodDiscussion : object(data.methodDiscussion)
-  if (!validMethodDiscussion(methodDiscussion) || methodDiscussion.stage > 0 && apprentice.stage !== 25) return invalid()
-  result.methodDiscussion = methodDiscussionAt(methodDiscussion.stage)
-  const preparationBrief = data.preparationBrief === undefined && legacyPreparationBrief ? result.preparationBrief : object(data.preparationBrief)
-  if (!validPreparationBrief(preparationBrief) || preparationBrief.stage > 0 && methodDiscussion.stage !== 28) return invalid()
-  result.preparationBrief = preparationBriefAt(preparationBrief.stage)
-  const mountainVisitor = data.mountainVisitor === undefined && legacyMountainVisitor ? result.mountainVisitor : object(data.mountainVisitor)
-  if (!validMountainVisitor(mountainVisitor) || mountainVisitor.stage > 0 && preparationBrief.stage !== 20) return invalid()
-  result.mountainVisitor = mountainVisitorAt(mountainVisitor.stage)
+  function history<T extends { stage: number }>(key: string, legacy: boolean,
+    valid: (value: Record<string, unknown> | T) => value is T, derive: (stage: number) => T, prerequisite: boolean): T {
+    const candidate = data[key] === undefined && legacy ? derive(0) : object(data[key])
+    if (!valid(candidate) || candidate.stage > 0 && !prerequisite) return invalid()
+    const parsed = derive(candidate.stage)
+    ;(result as unknown as Record<string, unknown>)[key] = parsed
+    return parsed
+  }
+  const familyVisit = history('familyVisit', legacyFamilyVisit, validFamilyVisit, familyVisitAt, !(!completed.includes(2)))
+  const familyCompensation = history('familyCompensation', legacyFamilyCompensation, validFamilyCompensation, familyCompensationAt, !(familyVisit.stage !== 17))
+  const familyContract = history('familyContract', legacyFamilyContract, validFamilyContract, familyContractAt, !(familyCompensation.stage !== 15))
+  const mountainRing = history('mountainRing', legacyMountainRing, validMountainRing, mountainRingAt, !(familyContract.stage !== 33))
+  const apprentice = history('apprentice', legacyApprentice, validApprentice, apprenticeAt, !(mountainRing.stage !== 21))
+  const methodDiscussion = history('methodDiscussion', legacyMethodDiscussion, validMethodDiscussion, methodDiscussionAt, !(apprentice.stage !== 25))
+  const preparationBrief = history('preparationBrief', legacyPreparationBrief, validPreparationBrief, preparationBriefAt, !(methodDiscussion.stage !== 28))
+  const mountainVisitor = history('mountainVisitor', legacyMountainVisitor, validMountainVisitor, mountainVisitorAt, !(preparationBrief.stage !== 20))
   const morningCard = data.morningCard === undefined && legacyMorningCard ? result.morningCard : object(data.morningCard)
   if (!validMorningCard(morningCard) || morningCard.stage > 0 && mountainVisitor.stage !== 26
     || morningCard.stage >= 9 && (!data.started || purse.borrowed !== EARLY_LOAN)) return invalid()
@@ -228,34 +222,22 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!validCityPharmacy(cityPharmacy) || cityPharmacy.stage > 0 && morningCard.stage !== 14
     || cityPharmacy.stage >= 11 && receipts.bluegrass !== true || cityPharmacy.stage >= 12 && receipts.boneflower !== true) return invalid()
   result.cityPharmacy = cityPharmacyAt(cityPharmacy.stage, cityPharmacy.primaryOrder, cityPharmacy.auxiliaryOrder)
-  const marketEscort = data.marketEscort === undefined && legacyMarketEscort ? result.marketEscort : object(data.marketEscort)
-  if (!validMarketEscort(marketEscort) || marketEscort.stage > 0 && cityPharmacy.stage !== 15) return invalid()
-  result.marketEscort = marketEscortAt(marketEscort.stage)
-  const marketSearch = data.marketSearch === undefined && legacyMarketSearch ? result.marketSearch : object(data.marketSearch)
-  if (!validMarketSearch(marketSearch) || marketSearch.stage > 0 && marketEscort.stage !== 24) return invalid()
-  result.marketSearch = marketSearchAt(marketSearch.stage)
-  const marketBracelets = data.marketBracelets === undefined && legacyMarketBracelets ? result.marketBracelets : object(data.marketBracelets)
-  if (!validMarketBracelets(marketBracelets) || marketBracelets.stage > 0 && marketSearch.stage !== 20) return invalid()
-  result.marketBracelets = marketBraceletsAt(marketBracelets.stage)
-  const marketStandoff = data.marketStandoff === undefined && legacyMarketStandoff ? result.marketStandoff : object(data.marketStandoff)
-  if (!validMarketStandoff(marketStandoff) || marketStandoff.stage > 0 && marketBracelets.stage !== 28) return invalid()
-  result.marketStandoff = marketStandoffAt(marketStandoff.stage)
-  const marketDiscovery = data.marketDiscovery === undefined && legacyMarketDiscovery ? result.marketDiscovery : object(data.marketDiscovery)
-  if (!validMarketDiscovery(marketDiscovery) || marketDiscovery.stage > 0 && marketStandoff.stage !== 34) return invalid()
-  result.marketDiscovery = marketDiscoveryAt(marketDiscovery.stage)
+  const marketEscort = history('marketEscort', legacyMarketEscort, validMarketEscort, marketEscortAt, !(cityPharmacy.stage !== 15))
+  const marketSearch = history('marketSearch', legacyMarketSearch, validMarketSearch, marketSearchAt, !(marketEscort.stage !== 24))
+  const marketBracelets = history('marketBracelets', legacyMarketBracelets, validMarketBracelets, marketBraceletsAt, !(marketSearch.stage !== 20))
+  const marketStandoff = history('marketStandoff', legacyMarketStandoff, validMarketStandoff, marketStandoffAt, !(marketBracelets.stage !== 28))
+  const marketDiscovery = history('marketDiscovery', legacyMarketDiscovery, validMarketDiscovery, marketDiscoveryAt, !(marketStandoff.stage !== 34))
   const marketTrade = data.marketTrade === undefined && legacyMarketTrade ? result.marketTrade : object(data.marketTrade)
   if (!validMarketTrade(marketTrade) || marketTrade.stage > 0 && marketDiscovery.stage !== 10) return invalid()
   result.marketTrade = marketTradeAt(marketTrade.stage, marketTrade.settlement)
-  const marketReturn = data.marketReturn === undefined && legacyMarketReturn ? result.marketReturn : object(data.marketReturn)
-  if (!validMarketReturn(marketReturn) || marketReturn.stage > 0 && marketTrade.stage !== 17) return invalid()
-  result.marketReturn = marketReturnAt(marketReturn.stage)
-  const iron = data.iron === undefined && legacyIron ? result.iron : object(data.iron)
-  if (!validIron(iron) || iron.stage > 0 && marketReturn.stage !== 9) return invalid()
-  result.iron = ironAt(iron.stage)
+  const marketReturn = history('marketReturn', legacyMarketReturn, validMarketReturn, marketReturnAt, !(marketTrade.stage !== 17))
+  const iron = history('iron', legacyIron, validIron, ironAt, !(marketReturn.stage !== 9))
+  const refining = history('refining', legacyRefining, validRefining, refiningAt, iron.stage === 18)
   const liquid = data.liquid === undefined && legacyLiquid ? result.liquid : object(data.liquid)
   if (!boundedInteger(liquid.stage, 6)
     || liquid.water !== (liquid.stage >= 2) || liquid.ready !== (liquid.stage === 6)) return invalid()
   result.liquid = { stage: liquid.stage, water: liquid.water as boolean, ready: liquid.ready as boolean }
+  if (liquid.stage < refiningLiquidMinimum(refining.stage)) return invalid()
   let spent = 0
   for (const id of Object.keys(earlySupplies) as EarlySupplyId[]) {
     if (typeof receipts[id] !== 'boolean') return invalid()
@@ -442,8 +424,7 @@ export function preliminaryAt(stage: number): Omit<PreliminaryState, 'stage'> {
 }
 export function validPreliminary(task: Record<string, unknown> | PreliminaryState): task is PreliminaryState {
   if (!boundedInteger(task.stage, 16)) return false
-  const expected = preliminaryAt(task.stage)
-  return task.mei === expected.mei && task.xuner === expected.xuner && task.yan === expected.yan
+  return fieldsMatch(task, preliminaryAt(task.stage))
 }
 
 export function palmPairAt(stage: number): Pick<PalmPairState, 'first' | 'second' | 'teaching' | 'period'> {
@@ -505,8 +486,7 @@ export function ceremonyGuestsAt(stage: number): Omit<CeremonyGuestsState, 'stag
 }
 export function validCeremonyGuests(task: Record<string, unknown> | CeremonyGuestsState): task is CeremonyGuestsState {
   if (!boundedInteger(task.stage, 12)) return false
-  const expected = ceremonyGuestsAt(task.stage)
-  return task.sword === expected.sword && task.introduced === expected.introduced
+  return fieldsMatch(task, ceremonyGuestsAt(task.stage))
 }
 
 export function ceremonialTestAt(stage: number): Omit<CeremonialTestState, 'stage'> {
@@ -515,8 +495,7 @@ export function ceremonialTestAt(stage: number): Omit<CeremonialTestState, 'stag
 }
 export function validCeremonialTest(task: Record<string, unknown> | CeremonialTestState): task is CeremonialTestState {
   if (!boundedInteger(task.stage, 13)) return false
-  const expected = ceremonialTestAt(task.stage)
-  return task.rite === expected.rite && task.inspected === expected.inspected && task.result === expected.result
+  return fieldsMatch(task, ceremonialTestAt(task.stage))
 }
 
 export function validNingFirst(task: Record<string, unknown> | NingFirstState): task is NingFirstState {

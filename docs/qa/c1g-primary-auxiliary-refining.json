@@ -1,0 +1,392 @@
+{
+  "batch": "C1g-4e1",
+  "version": "0.56.0",
+  "date": "2026-10-12",
+  "vitestFiles": 130,
+  "vitestTests": 797,
+  "nodeTests": 11,
+  "onlyIntendedHistoryAndSingleLedgerChanged": true,
+  "wholeStateEqualPairs": 12,
+  "actualWalk": "7left from260370 to120370 forwater",
+  "observerYanRemains": "260370",
+  "backFocus": true,
+  "mapEquality": {
+    "allExportsMaps28Phases3AndEventsDeepEqual": true,
+    "simpleMapPoints": 492,
+    "rectangles": 125,
+    "eventPoints": 36
+  },
+  "consoleErrors": [],
+  "inputs": [
+    {
+      "name": "refiningNewMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791802982132.json",
+      "sourceVersion": "0.56.0",
+      "stage": 0,
+      "liquid": 0,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "d93f7ce59101b1dd96d36e49a84fc28952bec5b3ce025131e3dc55581ebba840"
+    },
+    {
+      "name": "refiningWrongActor",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791802997363.json",
+      "sourceVersion": "0.56.0",
+      "stage": 0,
+      "liquid": 0,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "6a825f3025f308f93584e1d01e8d1e1bef7b0329b8c47a9d99fcc57c46f1c7af"
+    },
+    {
+      "name": "refiningRestoreRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791802999559.json",
+      "sourceVersion": "0.56.0",
+      "stage": 0,
+      "liquid": 0,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "c23d1737ec87746a0e4dbeabd7f7f03bd3f3354b8ca21ad14906de982597eeb9"
+    },
+    {
+      "name": "refiningNew1",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803002090.json",
+      "sourceVersion": "0.56.0",
+      "stage": 1,
+      "liquid": 1,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "2569bab123eb42800d31996b12cb946968aeeaffbfc8498b6095175149e2d82f"
+    },
+    {
+      "name": "refiningNew2",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803017798.json",
+      "sourceVersion": "0.56.0",
+      "stage": 2,
+      "liquid": 1,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "d7b6da4e7ea13a4ee985aea312e3e195d0c3402be919c1b3e6fadc990d0bb93a"
+    },
+    {
+      "name": "refiningFarWater",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803019926.json",
+      "sourceVersion": "0.56.0",
+      "stage": 2,
+      "liquid": 1,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "63303a729794984ccd30cc1d226147032946c0c9a8c454e5917949653570f080"
+    },
+    {
+      "name": "refiningNew3",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803024017.json",
+      "sourceVersion": "0.56.0",
+      "stage": 3,
+      "liquid": 2,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "8b9a887572a934349fc061f113de340540b5d7d1e1fd1a69713a6a0b33757b0d"
+    },
+    {
+      "name": "refiningNew4",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803038459.json",
+      "sourceVersion": "0.56.0",
+      "stage": 4,
+      "liquid": 2,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "1dd2652bb9e39ee4de3804ee58f33e2ed6e85e328caa3c62f637599d7cdcc853"
+    },
+    {
+      "name": "refiningDrinkRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803040801.json",
+      "sourceVersion": "0.56.0",
+      "stage": 4,
+      "liquid": 2,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "3bb1eee9ac9470f05b3b8050b519c26543c5569e600069c4bf7cf1c47c0e6139"
+    },
+    {
+      "name": "refiningNew5",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803043271.json",
+      "sourceVersion": "0.56.0",
+      "stage": 5,
+      "liquid": 2,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "56ac941592b213f0ea06f9a5a097dc0b7fc89b95903e97ecb50e9baf173fc9ba"
+    },
+    {
+      "name": "refiningNew6",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803045892.json",
+      "sourceVersion": "0.56.0",
+      "stage": 6,
+      "liquid": 3,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "f56abe9903096d59431b77e5a4b128a70187b7c517fbb48f646886dcdabf7751"
+    },
+    {
+      "name": "refiningNew7",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803061112.json",
+      "sourceVersion": "0.56.0",
+      "stage": 7,
+      "liquid": 3,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "dc956d841dde54b9f84e8b8e56ce6828323d5a0515fa2f696adff355b755004a"
+    },
+    {
+      "name": "refiningNew8",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803063741.json",
+      "sourceVersion": "0.56.0",
+      "stage": 8,
+      "liquid": 3,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "c9fedeac328f3285b0ca27e07789aeb22a8c78175d92df2e63c9af1ce952733a"
+    },
+    {
+      "name": "refiningAuxRestoreRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803066116.json",
+      "sourceVersion": "0.56.0",
+      "stage": 8,
+      "liquid": 3,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "d81e31b96977536a515483d5070e3bcf6cabf2c82ddfa35a7fa9866a22fcb45d"
+    },
+    {
+      "name": "refiningNew9",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803068618.json",
+      "sourceVersion": "0.56.0",
+      "stage": 9,
+      "liquid": 4,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 1
+      },
+      "sha256": "a450225a2c8577fa74b54053796f2a6798669d98400119068f77560f4108d984"
+    },
+    {
+      "name": "refiningFinishRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803085531.json",
+      "sourceVersion": "0.56.0",
+      "stage": 9,
+      "liquid": 4,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 1
+      },
+      "sha256": "c00162da4045cd5e221c1c2a5689e98cf4e42e785dd4809abf73061364c0a55f"
+    },
+    {
+      "name": "refiningNew10",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803087987.json",
+      "sourceVersion": "0.56.0",
+      "stage": 10,
+      "liquid": 4,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 1
+      },
+      "sha256": "fe0d055d082e9f67fb879feb386ddf3705f8fc25b3477c64a09c81ea5c91ad82"
+    },
+    {
+      "name": "refiningNew11",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803090374.json",
+      "sourceVersion": "0.56.0",
+      "stage": 11,
+      "liquid": 4,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 1
+      },
+      "sha256": "bdff2ffdbbbe5e67aff6d31a5b55975ea01177a1e19b5add188bd1e8b06d3bb9"
+    },
+    {
+      "name": "refiningNewReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803092432.json",
+      "sourceVersion": "0.56.0",
+      "stage": 11,
+      "liquid": 4,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 1
+      },
+      "sha256": "3c7738e72006be9ed321bcd72621a6a51b5b84f6cbc6cc0071dec55f3a3cd922"
+    },
+    {
+      "name": "refiningOldMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803096366.json",
+      "sourceVersion": "0.56.0",
+      "stage": 0,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "c212afe8c93e92ee50c2e3ae40316c16fa0e236d564b7c0e7fc8701147a9e3a1"
+    },
+    {
+      "name": "refiningOldRestoreRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803117638.json",
+      "sourceVersion": "0.56.0",
+      "stage": 0,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "5b82a34cdb19113be7c54582865a940f6ed3a1b511c9f0f4124549833a958524"
+    },
+    {
+      "name": "refiningOld2",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803120643.json",
+      "sourceVersion": "0.56.0",
+      "stage": 2,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "526d55db7ba9530be33264ba76f476c540a7d7c3ba4ecd2cb8f653cf5f0a18e6"
+    },
+    {
+      "name": "refiningOld3",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803125173.json",
+      "sourceVersion": "0.56.0",
+      "stage": 3,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "403c934221e0266f9c3cf432021683540f5a2625d82920b3dd022e1288cdae26"
+    },
+    {
+      "name": "refiningOld6",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803141332.json",
+      "sourceVersion": "0.56.0",
+      "stage": 6,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "d895663b1f4dda45ea6a137057baef8b8a1c8eeafe2bcf86ed37376a6cdf2302"
+    },
+    {
+      "name": "refiningOld9",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803145070.json",
+      "sourceVersion": "0.56.0",
+      "stage": 9,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "23314ae5a730a9509c8c25822d1ab09cb19d399103a96a6b85fba8a1072ac97c"
+    },
+    {
+      "name": "refiningOld11",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803148252.json",
+      "sourceVersion": "0.56.0",
+      "stage": 11,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "6ad91fd8ee2a9a243e387e38f84acc06aaa496b4c4a0927b31011b50833450d8"
+    },
+    {
+      "name": "refiningOldReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803150333.json",
+      "sourceVersion": "0.56.0",
+      "stage": 11,
+      "liquid": 6,
+      "supplies": {
+        "bluegrass": 0,
+        "boneflower": 0,
+        "woodCore": 0
+      },
+      "sha256": "ba2bd6e53a0bfde9231d189bca2f79216c60d9877f1489ac2f955abef0a76e1f"
+    },
+    {
+      "name": "refiningIntactMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803153996.json",
+      "sourceVersion": "0.56.0",
+      "stage": 0,
+      "liquid": 0,
+      "supplies": {
+        "bluegrass": 3,
+        "boneflower": 2,
+        "woodCore": 1
+      },
+      "sha256": "a396052b8ce878f29b3529efc195acdcb86dc46d9af86a3dda442bb5217f73c8"
+    }
+  ],
+  "initialJs": 495536,
+  "totalJs": 1849769,
+  "budgets": [
+    500000,
+    1850000
+  ]
+}

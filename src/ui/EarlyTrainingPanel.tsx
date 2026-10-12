@@ -31,6 +31,7 @@ const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMar
 const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
 const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
+const EarlyRefining = lazy(() => loadSceneModule(() => import('./EarlyRefining')))
 const EarlyIron = lazy(() => loadSceneModule(() => import('./EarlyIron')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
@@ -53,6 +54,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy] = useState(false)
   const [marketEscort, setMarketEscort] = useState(false)
   const [marketSearch, setMarketSearch] = useState(false)
+  const [refining, setRefining] = useState(false)
+  const refiningEntry = useRef<HTMLButtonElement>(null), returningRefining = useRef(false)
   const [iron, setIron] = useState(false)
   const ironEntry = useRef<HTMLButtonElement>(null), returningIron = useRef(false)
   const [marketReturn, setMarketReturn] = useState(false)
@@ -113,12 +116,14 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!marketStandoff && returningStandoff.current) { returningStandoff.current = false; standoffEntry.current?.focus() } }, [marketStandoff])
   useEffect(() => { if (!marketDiscovery && returningDiscovery.current) { returningDiscovery.current = false; discoveryEntry.current?.focus() } }, [marketDiscovery])
   useEffect(() => { if (!marketTrade && returningTrade.current) { returningTrade.current = false; tradeEntry.current?.focus() } }, [marketTrade])
+  useEffect(() => { if (!refining && returningRefining.current) { returningRefining.current = false; refiningEntry.current?.focus() } }, [refining])
   useEffect(() => { if (!iron && returningIron.current) { returningIron.current = false; ironEntry.current?.focus() } }, [iron])
   useEffect(() => { if (!marketReturn && returningRoom.current) { returningRoom.current = false; returnEntry.current?.focus() } }, [marketReturn])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (refining) return <Suspense fallback={<p role="status">正在接续清水与主辅药……</p>}><EarlyRefining state={state} onBack={() => { returningRefining.current = true; setRefining(false) }} /></Suspense>
   if (iron) return <Suspense fallback={<p role="status">正在接续铁片辨认……</p>}><EarlyIron state={state} onBack={() => { returningIron.current = true; setIron(false) }} /></Suspense>
   if (marketReturn) return <Suspense fallback={<p role="status">正在接续回族与房中准备……</p>}><EarlyMarketDiscovery key="return" returning state={state}
     onBack={() => { returningRoom.current = true; setMarketReturn(false) }} /></Suspense>
@@ -219,6 +224,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.marketReturn.stage === 9 && <section className="bond-summary" aria-label="铁片辨认接续">
         <b>房中准备归档 · 接续铁片辨认</b><p>老师和本人分别操作，取出、接过、放下、拾回与收好分存，不把名称当作掌握。</p>
         <button ref={ironEntry} className="secondary" onClick={() => setIron(true)}>接续铁片辨认与限制</button>
+      </section>}
+      {isVisible(state, 2) && task.iron.stage === 18 && <section className="bond-summary" aria-label="主辅药调制接续">
+        <b>铁片已归档 · 接续清水与主辅药</b><p>备水、白焰、三株主药与两株辅药依次保存，沿原材料账单次消耗。</p>
+        <button ref={refiningEntry} className="secondary" onClick={() => setRefining(true)}>接续清水与主辅药调制</button>
       </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">

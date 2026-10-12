@@ -1,4 +1,4 @@
-import type { Point } from './maps'
+import { point, type Point } from './maps'
 import { bondEvents, type BondDefinition } from './bonds'
 import { preparationEvents } from './preparations'
 
@@ -33,7 +33,7 @@ export interface ChapterEvent {
 export const chapterEvents: Record<number, ChapterEvent> = {
   28: {
     id: 'final-battle-three-vows', kind: 'vow', introducedVersion: '0.11.4',
-    title: '终战 · 故人之约', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '终战 · 故人之约', speaker: '药老', npc: point(280, 625),
     stages: ['前往家族之约碑确认守护初心', '前往盟友退路碑确认最后防线', '前往师徒之约碑确认终战准备', '三处战前约定已记录，前往终战启程碑'],
     introduction: '最后一战，也要记清为何而战。按家族、盟友、师徒三处约碑确认，再到启程碑面对终战。生命低于三分之二、三分之一时招式变化；蓄势期间减伤40%，收招窗口反击提高35%。战斗期间边界封闭，倒下免费休整，战前记录保留。',
     note: '三处约碑、三点魂压/六点血环/交叉帝炎、数值与窗口为原创终战表达，不复述原著完整战斗招式或伤害。药老支援从统一归队规则读取；终局首通奖励只发一次。大陆、血环、帝炎三场景依序切换；换段延续生命斗气冷却，落点护体1.5秒。失败或刷新回完整第一段，战前足迹保留。',
@@ -45,7 +45,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   27: {
     id: 'emperor-vault-three-inscriptions', kind: 'vault', introducedVersion: '0.11.2',
-    title: '洞府 · 三铭封门', speaker: '古元', npc: { x: 280, y: 625 },
+    title: '洞府 · 三铭封门', speaker: '古元', npc: point(280, 625),
     stages: ['前往洞府入口碑读取铭文规则', '读取北侧青莲铭文', '读取南侧心炎铭文', '读取西侧星火铭文',
       '前往封门盘，按三铭顺序输入火纹', '封門已开，清理内殿守卫后读取内殿石刻', '返回古元处报告洞府路线', '洞府路线已经登记，准备本源传承'],
     introduction: '先读入口碑，再按北、南、西三铭顺序观察。三处铭文分别指向青莲、心炎、星火；到封门盘照此输入火纹。错误免费复位当前机关，已读线索保留且可以重读。封门打开后，清理内殿投影守卫、读取石刻，再回来报告。',
@@ -62,7 +62,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   26: {
     id: 'coalition-three-post-defense', kind: 'defense', introducedVersion: '0.11.1',
-    title: '联盟 · 三处守线', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '联盟 · 三处守线', speaker: '药老', npc: point(280, 625),
     stages: ['前往联盟战报牌确认守线退路', '守住西侧前哨，击退两波袭击者', '守住东侧联络点，击退两波袭击者',
       '守住后方撤离点，击退两波袭击者', '防线已稳，返回药老处报告', '防线已经登记，前往出征台'],
     introduction: '先读战报，再按西哨、东哨、后方撤离点守线。靠近当前驻点140距离会开始两波袭击，每点280生命；袭击者会攻击驻点，退回营地也不会停。击退两波、双方存活才能记录该段。已守住段保留，失败免费休整或刷新重建当前段。',
@@ -76,7 +76,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   20: {
     id: 'dan-realm-timed-herbs', kind: 'expedition', introducedVersion: '0.9.1',
-    title: '丹界 · 限时药材目标', speaker: '丹塔执事', npc: { x: 280, y: 625 },
+    title: '丹界 · 限时药材目标', speaker: '丹塔执事', npc: point(280, 625),
     stages: ['到药谷任务牌按E开始45秒收集', '清理三驻点守卫，45秒内取得三份指定药材，顺序不限',
       '三份药材已齐，返回丹塔执事登记', '丹界药材目标已登记'],
     introduction: '先到任务牌确认45秒时限，再清理三处驻点守卫，按E取得指定药材。顺序由你决定，普通行囊药草不能替代。三份都取得后不再计时，返回登记。超时可免费重试，已取得驻点记录保留。',
@@ -90,7 +90,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   19: {
     id: 'star-pavilion-master-leads', kind: 'lineage', introducedVersion: '0.8.4',
-    title: '星陨阁 · 师门线索', speaker: '风尊者', npc: { x: 280, y: 625 },
+    title: '星陨阁 · 师门线索', speaker: '风尊者', npc: point(280, 625),
     stages: ['到师门牌确认本次联络目标', '清理驻点守卫，收集西林札记与东侧联络簿，顺序不限',
       '到中庭校对台，比对两份线索并决定下一程', '返回风尊者处登记丹塔之行', '师门线索已经登记，前往联络审核台'],
     introduction: '药尘还没有归来。先看师门牌，再到西林与东侧驻点带回两份线索，守卫清理后才能领取。顺序由你决定；两份齐全后在中庭校对下一程，最后回来登记。救人需要力量，也需要可信的退路。',
@@ -104,7 +104,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   18: {
     id: 'central-thunder-retreat', kind: 'escape', introducedVersion: '0.8.3',
-    title: '雷云山径 · 避战撤离', speaker: '山路向导', npc: { x: 280, y: 625 },
+    title: '雷云山径 · 避战撤离', speaker: '山路向导', npc: point(280, 625),
     stages: ['到雷云前哨确认退路，按E开始撤离', '在西侧避雷石附近累计8秒，避开三点落雷',
       '穿过山口，在东侧避雷石附近累计10秒，避开交叉雷阵', '雷云暂缓，前往北侧山口按E撤离', '已安全通过雷云山路'],
     introduction: '先确认前哨，再去西侧避雷石稳住8秒，穿过山口到东侧稳住10秒。避雷石附近能整理退路，落雷预警仍会锁定脚下；两段雷阵分别封住三点与交叉五点，要及时闪避。两处通过后从北侧出口离开。',
@@ -118,7 +118,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   17: {
     id: 'flame-alliance-foundation', kind: 'alliance', introducedVersion: '0.8.2',
-    title: '炎盟 · 根基筹备', speaker: '海波东', npc: { x: 280, y: 625 },
+    title: '炎盟 · 根基筹备', speaker: '海波东', npc: point(280, 625),
     stages: ['到议事牌确认炎盟筹备方案', '回海波东处选择免费巡防或60金币补给',
       '前往西侧驻点：巡防路线需清理守卫，补给路线登记物资',
       '前往东侧驻点：巡防路线需清理守卫，补给路线登记物资',
@@ -133,7 +133,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   16: {
     id: 'yunlan-three-sigil-siege', kind: 'siege', introducedVersion: '0.8.1',
-    title: '再临云岚 · 三阵破门', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '再临云岚 · 三阵破门', speaker: '药老', npc: point(280, 625),
     stages: ['到战前约碑确认破阵路线', '清理山阶守卫，在第一阵眼连续破阵3秒',
       '清理中庭守卫，在第二阵眼连续破阵4秒', '清理前殿守卫，在第三阵眼连续破阵5秒',
       '山门已开，返回药老处确认决战准备', '决战准备完成，前往宗门决战碑'],
@@ -148,14 +148,14 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   1: {
     id: 'yao-training', kind: 'training', title: '药老指导', speaker: '药老',
-    npc: { x: 285, y: 625 }, dummy: { x: 370, y: 630 },
+    npc: point(285, 625), dummy: point(370, 630),
     stages: ['靠近木桩，使用八极崩命中一次', '在木桩附近完成一次闪避', '斗技与闪避演练完成'],
     introduction: '先把力量用准，再把退路留好。接下演练后，向东走到木桩旁，按 1 释放八极崩；随后在木桩附近按空格闪避。手机可用下方斗技和闪避按钮。',
     note: '木桩演练是游戏原创教学，指导区域内普通敌人停止追击。',
   },
   2: {
     id: 'three-year-vow', kind: 'vow', title: '立约与启程', speaker: '萧战',
-    npc: { x: 280, y: 630 },
+    npc: point(280, 630),
     stages: ['前往祖训碑，按 E 记下初心', '前往演武台，按 E 立下约定', '前往出门路，按 E 确认启程', '三处立约足迹已完成'],
     introduction: '有些决定，得由你亲自迈出去。先走到祖训碑，再穿过演武台，最后到出门路。每到一处，按 E 留下一段誓言。三年后的胜负，仍由未来的你来回答。',
     note: '立约路线为游戏改编交互；本章的约定之战尚未发生。',
@@ -167,14 +167,14 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   3: {
     id: 'family-market-order', kind: 'trade', title: '坊市供货', speaker: '坊市执事',
-    npc: { x: 280, y: 640 },
+    npc: point(280, 640),
     stages: ['和执事议定供货价格', '备好灵草 ×2、魔晶 ×1，回到执事处交付', '家族供货完成'],
     introduction: '家里的生意也需要你出一份力。这份订单收灵草两株、魔晶一枚，买方预算最多六十金币。先议价，再备货，最后到我这里交付；不够的材料可以采集、击败护卫投影或在坊市购买。',
     note: '订单与报价为游戏原创经营机制，只结算一次；不会重演原著中的商业细节。',
   },
   4: {
     id: 'hidden-cave-treasure', kind: 'cave', introducedVersion: '0.3.2',
-    title: '洞穴 · 三符寻宝', speaker: '小医仙', npc: { x: 280, y: 625 },
+    title: '洞穴 · 三符寻宝', speaker: '小医仙', npc: point(280, 625),
     stages: ['前往北侧石刻，读出机关线索', '前往机关盘，按线索解开三符封门', '穿过开启的石门，打开洞内宝匣', '带着材料回到洞口，与小医仙确认返程', '洞穴探索完成'],
     introduction: '洞内的石门封住了去路。先到北侧石刻寻找提示，再到岩壁前的机关盘依序触碰三枚符文。开门后带回宝匣里的材料，我们在洞口会合。',
     note: '石刻、三符机关与材料宝匣为原创游戏化设计；不是原著宝物清单。错误输入免费重试，刷新保留已解开的符文与领取记录。',
@@ -186,7 +186,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   5: {
     id: 'mountain-herb-escort', kind: 'escort', introducedVersion: '0.4.0',
-    title: '山谷 · 采药保护', speaker: '采药同伴', npc: { x: 280, y: 625 },
+    title: '山谷 · 采药保护', speaker: '采药同伴', npc: point(280, 625),
     stages: ['带同伴到南坡药圃，双方靠近后按 E 采药', '带同伴到山涧药圃，双方靠近后按 E 采药', '护送同伴返回洞口会合点', '采药同伴安全返营'],
     introduction: '山谷药圃沿途有魔兽。走在前方清理威胁，但不要把同伴甩在身后。同伴只在你附近时继续前进，双方都到达药圃后按 E 采药，最后返回洞口。',
     note: '采药保护为原创历练。同伴有独立生命，受伤倒下可营地休整免费重试。每处药圃只奖励一次灵草；刷新从最近完成的安全节点重建同伴。',
@@ -198,7 +198,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   6: {
     id: 'black-rock-certification', kind: 'certification', introducedVersion: '0.4.1',
-    title: '黑岩城 · 控火认证', speaker: '认证执事', npc: { x: 280, y: 625 },
+    title: '黑岩城 · 控火认证', speaker: '认证执事', npc: point(280, 625),
     stages: ['前往丹方台，按 E 记下三步火候', '前往公会药炉，开始控火认证', '提炼：指针靠近三成半火候时锁定', '融合：指针靠近六成火候时锁定', '凝丹：指针靠近五成火候时锁定', '考核通过，返回执事处登记', '控火认证已经登记'],
     introduction: '公会为认证准备了专用练习材料。先查看丹方台上的三步火候，再去药炉提炼、融合、凝丹。三次合计达到210分即可通过，最后回到执事处登记。',
     note: '认证丹方和分数为原创练习，不判定原著丹药品级。公会练习材料仅供认证、不进入行囊；失败免费重试，登记奖励40金币与50修炼积累，不额外生成丹药。',
@@ -209,7 +209,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   7: {
     id: 'stone-desert-rescue', kind: 'rescue', introducedVersion: '0.5.0',
-    title: '石漠城 · 失散团员', speaker: '萧鼎', npc: { x: 280, y: 625 },
+    title: '石漠城 · 失散团员', speaker: '萧鼎', npc: point(280, 625),
     stages: ['前往青鳞线索点，按 E 确认失散团员方位', '清除后巷守卫，在囚栏前按 E 解救第一位团员', '穿过开放巷道，清除水井守卫并解救第二位团员', '返回萧鼎处，报告两位团员已经脱险', '失散团员救援完成'],
     introduction: '有两位团员在城外失散。青鳞留下了他们最后的方向，先读巷口线索，再清除守在囚栏和水井旁的敌人。解救第一人后巷道才会开放，救出第二人后回来报平安。',
     note: '失散团员、守卫和封门是原创救援关卡，不复现原著具体绑架事件。各救援节点奖励一次恢复丹，最后报告一次50金币。重试保留已解救节点，未解救节点的守卫会重新出现。',
@@ -221,7 +221,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   25: {
     id: 'pure-fire-three-mirrors', kind: 'illusion', introducedVersion: '0.10.4', reflectionReward: 0,
-    title: '妖火 · 三镜辨识', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '妖火 · 三镜辨识', speaker: '药老', npc: point(280, 625),
     stages: ['前往古图引路牌，开始辨识幻象', '在西侧恩赐镜观察没有影子的丹瓶',
       '在东侧故人镜放下没有回应的旧影', '在北侧白焰镜耐心看清莲纹变化',
       '三镜已辨明，返回药老处报告', '幻镜记录已确认，准备净莲收服试炼'],
@@ -253,7 +253,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   24: {
     id: 'bodhi-three-reflections', kind: 'illusion', introducedVersion: '0.10.3',
-    title: '菩提 · 三境观心', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '菩提 · 三境观心', speaker: '药老', npc: point(280, 625),
     stages: ['前往树前碑记，开始三境观心', '到西侧欲念境观察无痕卷轴', '到东侧旧影境辨别重复的回忆',
       '到北侧岁月境看清树影的变化', '三境已识破，返回药老处确认', '观心记录已确认，前往菩提树前审核'],
     introduction: '幻境未必能靠战斗打破。先读碑记，再依序到欲念、旧影和岁月三境；观察各境给出的线索，选择相应行动。错误会说明原因，可免费重选当前境，已识破片段保留。',
@@ -284,7 +284,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   23: {
     id: 'heaven-tomb-timed-layers', kind: 'tomb', introducedVersion: '0.10.1',
-    title: '天墓 · 三层限时探索', speaker: '薰儿', npc: { x: 280, y: 625 },
+    title: '天墓 · 三层限时探索', speaker: '薰儿', npc: point(280, 625),
     stages: ['前往天墓入口牌启动探索', '45秒内清理外层守卫并读取外层路标',
       '40秒内清理中层两名守卫并读取中层路标', '35秒内清理深层两名守卫并读取深层路标',
       '三层路线已确认，返回薰儿处报告', '探索记录已登记，前往萧玄处接取传承稳固'],
@@ -299,7 +299,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   22: {
     id: 'soul-prison-teacher-extraction', kind: 'prison', introducedVersion: '0.9.4',
-    title: '魂殿 · 破禁与撤离', speaker: '风尊者', npc: { x: 280, y: 625 },
+    title: '魂殿 · 破禁与撤离', speaker: '风尊者', npc: point(280, 625),
     stages: ['前往西侧退路牌确认撤离路线', '清理外廊守卫，按E打开禁魂门', '清理内廊两名守卫，按E解除内封',
       '清理囚牢守卫，按E解锁囚牢', '保护药老沿原路撤离，双方存活回到风尊者处报告',
       '会合记录完成，前往出口确认安全撤离'],
@@ -314,7 +314,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   21: {
     id: 'star-domain-undying-attunement', kind: 'starfire', introducedVersion: '0.9.3',
-    title: '星域 · 不灭星火', speaker: '丹塔引路人', npc: { x: 280, y: 625 },
+    title: '星域 · 不灭星火', speaker: '丹塔引路人', npc: point(280, 625),
     stages: ['前往星域退路牌确认安全路线', '前往星火核心开始三段稳固',
       '星火引流：压力不超过65，核心内累计10秒', '魂力稳固：压力不超过65，核心内累计12秒',
       '不灭调息：压力不超过65，核心内累计14秒', '返回引路人报告星火稳定', '星火已稳固，前往收服台'],
@@ -327,7 +327,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   8: {
     id: 'lotus-fire-attunement', kind: 'flame', introducedVersion: '0.5.2',
-    title: '青莲火域 · 三段控火', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '青莲火域 · 三段控火', speaker: '药老', npc: point(280, 625),
     stages: ['穿过巡逻区，到地底入口按 E 确认退路', '前往控火坛，开始三段火焰挑战',
       '火焰引流：躲开追踪落焰，坚持12秒', '熔脉绕行：避开交替火脉，坚持12秒', '火息凝定：避开大范围回涌，坚持12秒',
       '控火稳定，返回药老处确认', '控火准备完成，前往收服台'],
@@ -340,7 +340,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   9: {
     id: 'capital-three-round-tournament', kind: 'tournament', introducedVersion: '0.6.0',
-    title: '帝都 · 三轮炼药大会', speaker: '法犸', npc: { x: 280, y: 625 },
+    title: '帝都 · 三轮炼药大会', speaker: '法犸', npc: point(280, 625),
     stages: ['查看北侧赛程牌，确认三轮规则', '前往初赛炉，开始初赛', '初赛提炼：25%', '初赛融合：55%', '初赛凝丹：45%',
       '初赛通过，前往复赛炉', '复赛提炼：65%', '复赛融合：40%', '复赛凝丹：70%',
       '复赛通过，前往决赛炉', '决赛提炼：35%', '决赛融合：75%', '决赛凝丹：50%',
@@ -356,7 +356,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   10: {
     id: 'yunlan-duel-approach', kind: 'vow', introducedVersion: '0.6.1',
-    title: '云岚 · 赴约足迹', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '云岚 · 赴约足迹', speaker: '药老', npc: point(280, 625),
     stages: ['到山门约碑，确认三年之约', '到演武台入口，确认决斗规则', '赴约准备完成，前往决斗碑'],
     introduction: '先到北侧山门约碑记下这一路，再到演武台入口。决斗开始后只能在演武台内交锋；突进、三叠风刃、旋风有不同预警，招式结束后留下反击机会。',
     note: '赴约路线与三阶段招式为原创战斗设计，不代表原著招式参数。失败可休整重试，已确认路线保留；获胜后营地结算约定之战。',
@@ -367,7 +367,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   11: {
     id: 'yunlan-pursuit-escape', kind: 'escape', introducedVersion: '0.6.2',
-    title: '云岚山外 · 追击退路', speaker: '药老', npc: { x: 280, y: 625 },
+    title: '云岚山外 · 追击退路', speaker: '药老', npc: point(280, 625),
     stages: ['前往退路前哨，按 E 开始撤离', '到北侧岩间掩体，躲避追击并累计稳住6秒', '穿过中段山口，到南侧竹林掩体累计稳住6秒', '追击暂缓，前往北侧出口按 E 离开', '已安全离开追击山路'],
     introduction: '这场追击需要的是退路。先到前哨，再依次去岩间和竹林两个掩体；每处在青色区域累计坚持6秒，躲开锁定预警。两处都通过后才开放出口。失败或休整从最近通过的安全点继续。',
     note: '追击投影、掩体计时和路线为原创撤离玩法，不击杀原著高阶追兵。每次失败不扣材料；安全节点存档，当前节点计时重建。出口只确认撤离，营地首通才发章节奖励。',
@@ -380,7 +380,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   12: {
     id: 'black-corner-travel-auction', kind: 'auction', introducedVersion: '0.7.0',
-    title: '黑角域 · 旅行补给竞拍', speaker: '交易执事', npc: { x: 280, y: 625 },
+    title: '黑角域 · 旅行补给竞拍', speaker: '交易执事', npc: point(280, 625),
     stages: ['查看拍卖公告，了解报价与退场规则', '到竞拍台出价或旁观', '出价已托管，等待对手回应', '对手出价60，选择加价80或退出', '带回拍卖结果与退路情报', '交易结果已登记，准备出发'],
     introduction: '先看公告，再到竞拍台。旅行补给起价40，对手最多出60，80可竞得。出价先托管，被超价时全额退回；不想花钱就旁观，也能得到前往学院的退路情报。最后回来登记。',
     note: '旅行补给、对手预算与情报为原创拍卖玩法，不冒用原著拍品。竞得仅奖励一次恢复丹2 / 回气丹2；旁观不扣款也不领奖。缺款操作不改状态，刷新保留已托管出价。',
@@ -391,7 +391,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   13: {
     id: 'academy-dual-sigil-trial', kind: 'squad', introducedVersion: '0.7.1',
-    title: '外院 · 双阵协作', speaker: '若琳', npc: { x: 280, y: 625 },
+    title: '外院 · 双阵协作', speaker: '若琳', npc: point(280, 625),
     stages: ['带试炼同伴到集合点，两人靠近后按 E', '带同伴到西阵，按 E 安排守阵', '同伴守西阵，前往东阵持续共鸣3秒', '双阵已经连通，返回若琳处登记', '协作资格已经登记，前往入院审核'],
     introduction: '外院看重配合。先带试炼同伴到集合点，再到西阵安排守阵；同伴留下守住西阵，你去东阵连续共鸣3秒。离开东阵会中断，投影守卫也会威胁同伴。清理威胁、安排好阵位，再回来登记。',
     note: '双阵、试炼同伴与投影守卫为原创资格关，不代替薰儿等完整伙伴支线。同伴生命140、远离时等待；受伤可免费休整，同伴从最近集合节点重建，守阵阶段保留。登记一次40修炼积累。',
@@ -403,7 +403,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   14: {
     id: 'inner-academy-fire-hunt', kind: 'hunt', introducedVersion: '0.7.2',
-    title: '磐门 · 火能猎捕', speaker: '胡嘉', npc: { x: 280, y: 625 },
+    title: '磐门 · 火能猎捕', speaker: '胡嘉', npc: point(280, 625),
     stages: ['带队友到猎捕集合点，两人靠近后按E', '带队友清理西路投影，两人到火能台按E', '带队友清理东路投影，两人到火能台按E',
       '返回胡嘉处，支付2火能登记磐门修炼资格', '磐门资格已登记，前往强榜演武台'],
     introduction: '先集合，再共同走两条猎捕路线。清理每处投影守卫，两人到火能台按E，各领取一次2火能；队友受伤倒下可休整重试。回来支付2火能登记修炼资格，然后挑战强榜投影。',
@@ -416,7 +416,7 @@ export const chapterEvents: Record<number, ChapterEvent> = {
   },
   15: {
     id: 'blazing-tower-descent', kind: 'tower', introducedVersion: '0.7.3',
-    title: '火塔 · 三层镇炎', speaker: '苏千', npc: { x: 280, y: 625 },
+    title: '火塔 · 三层镇炎', speaker: '苏千', npc: point(280, 625),
     stages: ['前往塔门石，按E确认下塔退路', '第一层：在阵眼内镇炎8秒，避开追踪落焰', '第二层：在阵眼内镇炎10秒，避开交替双焰',
       '第三层：在阵眼内镇炎12秒，避开心炎回涌并及时镇心', '三层已稳定，返回苏千处报告', '塔底退路已登记，准备面对韩枫投影'],
     introduction: '先确认塔门退路，再按一、二、三层阵眼逐层镇炎。阵眼内才累计时间，镇心石附近可以降热但不计时；热量满格会失控。完成层数保留，失败可从最近完成的台阶重试。最后回来报告，再去塔底挑战。',
@@ -440,14 +440,14 @@ export function eventForChapter(id: number): ChapterEvent | undefined { return c
 const adultEvents: ChapterEvent[] = [
   {
     id: 'adult-test-stone', kind: 'stone', title: '成人礼 · 控气测试', speaker: '测试石',
-    npc: { x: 640, y: 165 }, requires: ['family-market-order'],
+    npc: point(640, 165), requires: ['family-market-order'],
     stages: ['准备测试，失败可免费重试', '锁定第一道斗气', '锁定第二道斗气', '锁定第三道斗气', '控气测试通过'],
     introduction: '完成供货后，到测试石前练习稳定斗气。开始后，指针往返移动，在中央区域锁定三次。累计达到 180 / 300 分即通过；未达标可免费再试。',
     note: '评分属于游戏控气练习，不用于判定原著境界。关闭或刷新保留本次已锁定步数，重新打开后指针重新起动。',
   },
   {
     id: 'market-competition', kind: 'competition', optional: true, title: '坊市 · 竞争委托', speaker: '采购商',
-    npc: { x: 730, y: 700 }, requires: ['family-market-order'],
+    npc: point(730, 700), requires: ['family-market-order'],
     stages: ['选择稳妥或精品路线', '考察药材摊', '考察晶石摊', '考察交货台', '返回采购商处交付材料', '竞争委托完成'],
     introduction: '竞争订单只接一份。稳妥路线需灵草 ×2、魔晶 ×1，收入 70 金币；精品路线需依序考察三处摊位，再交灵草 ×4、魔晶 ×2，收入 135 金币与修炼丹 ×1。接单前比较材料和时间成本。',
     note: '原创经营支线，可选完成；选择后不能换路线，缺料可以补货，失败不扣材料，首通后不重复结算。',
@@ -460,7 +460,7 @@ const adultEvents: ChapterEvent[] = [
 ]
 const mountainEvents: ChapterEvent[] = [{
   id: 'lion-escape', kind: 'survival', introducedVersion: '0.4.0', requires: ['mountain-herb-escort'],
-  title: '紫晶洞外 · 警戒撤离', speaker: '云韵', npc: { x: 330, y: 220 },
+  title: '紫晶洞外 · 警戒撤离', speaker: '云韵', npc: point(330, 220),
   stages: ['前往洞外警戒石，按 E 开始生存遭遇', '在紫色警戒区躲避预警，坚持 24 秒', '撤离窗口已开，前往西侧撤离标记', '已经安全撤离'],
   introduction: '狮王的力量远非你现在能对抗。到警戒石观察洞外动静，在紫色区域躲开落焰预警，坚持到撤离窗口开启，然后从西侧离开。攻击无法伤害狮王。',
   note: '此处是原创生存机制，不改写早期实力差距。菜单暂停计时，离开警戒区不计时；刷新或死亡重试从本段开始重新计时，已完成节点保留。',
@@ -472,7 +472,7 @@ const mountainEvents: ChapterEvent[] = [{
 export const danFinalTargets = [.3, .7, .5]
 const danFinalEvents: ChapterEvent[] = [{
   id: 'danta-alchemy-lightning-final', kind: 'danfinal', introducedVersion: '0.9.2', requires: ['dan-realm-timed-herbs'],
-  title: '丹会 · 成丹与丹雷', speaker: '玄空子', npc: { x: 420, y: 700 },
+  title: '丹会 · 成丹与丹雷', speaker: '玄空子', npc: point(420, 700),
   stages: ['到大会丹炉开始三步控火', '提炼：锁定30%火候', '融合：锁定70%火候', '凝丹：锁定50%火候',
     '控火通过，前往丹雷台按E开始生存', '在丹雷台范围内累计18秒，躲避三阶段雷击',
     '丹雷平息，返回玄空子处登记', '大会成绩已登记，前往审核台'],
@@ -486,7 +486,7 @@ const danFinalEvents: ChapterEvent[] = [{
 export const heritageTargets = [.25, .55, .75]
 const heritageEvents: ChapterEvent[] = [{
   id: 'heaven-tomb-clan-inheritance', kind: 'inheritance', introducedVersion: '0.10.2', requires: ['heaven-tomb-timed-layers'],
-  title: '萧族 · 传承稳固', speaker: '萧玄', npc: { x: 980, y: 520 },
+  title: '萧族 · 传承稳固', speaker: '萧玄', npc: point(980, 520),
   stages: ['前往族史祭台开始心念稳固', '族史回望：心念25%', '血脉承接：心念55%', '责任凝定：心念75%',
     '稳固通过，返回萧玄处报告', '传承记录已确认，前往离墓审核台'],
   introduction: '走过天墓，也要看清族史与责任。到族史祭台依序锁定25%、55%、75%的心念，三步合计210分通过。失败免费重试，已有部分成绩可保存；完成后回来报告，再到离墓台确认。',
@@ -495,7 +495,7 @@ const heritageEvents: ChapterEvent[] = [{
 }]
 const purificationEvents: ChapterEvent[] = [{
   id: 'pure-lotus-segment-purification', kind: 'purification', introducedVersion: '0.10.5', requires: ['pure-fire-three-mirrors'],
-  title: '妖火 · 三段净化', speaker: '净化引路人', npc: { x: 420, y: 700 },
+  title: '妖火 · 三段净化', speaker: '净化引路人', npc: point(420, 700),
   stages: ['前往净化退路牌，按E启动第一段', '外焰剥离：区域内净化8秒，闪避追踪白焰',
     '莲环消解：区域内净化10秒，避开交替莲环', '核心澄明：区域内净化12秒，避开交叉白焰',
     '三段已净化，返回引路人处报告', '净化已登记，前往净莲收服台'],
@@ -510,7 +510,7 @@ const purificationEvents: ChapterEvent[] = [{
 }]
 const originEvents: ChapterEvent[] = [{
   id: 'emperor-origin-mind-inheritance', kind: 'inheritance', introducedVersion: '0.11.3', requires: ['emperor-vault-three-inscriptions'],
-  title: '本源 · 传承凝定', speaker: '传承引路人', npc: { x: 1050, y: 640 }, mindTargets: [.35, .65, .85], mindReward: 150,
+  title: '本源 · 传承凝定', speaker: '传承引路人', npc: point(1050, 640), mindTargets: [.35, .65, .85], mindReward: 150,
   stages: ['前往本源心念台开始传承凝定', '本源接引：心念35%', '诸火归合：心念65%', '守护凝定：心念85%',
     '凝定通过，返回传承引路人处报告', '本源记录已确认，前往传承审核台'],
   introduction: '先完成洞府路线登记，再在本源心念台锁定35%、65%、85%的三步心念，合计210分通过。错误可免费重试，部分成绩可保存；完成后回来报告，再到传承台审核，营地正式首通后继续最终战场。',

@@ -1,3 +1,5 @@
+import { advanceEarlyRefining, refiningWater } from '../../src/core/early-refining'
+import { refiningScenes } from '../../src/content/early-refining'
 import { advanceEarlyIron, ironPlaces } from '../../src/core/early-iron'
 import { ironScenes } from '../../src/content/early-iron'
 import { advanceEarlyMarketReturn, marketReturnPlaces } from '../../src/core/early-market-return'
@@ -266,7 +268,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   }
   if (!state.earlyTraining.receipts.woodCore) act({ type: 'purchase', item: 'woodCore', price: 60, expectedSpent: 50 })
   for (let step = state.earlyTraining.market.stage; step < 4; step++) act({ type: 'market', step, expectedSpent: 110 })
-  for (let step = 0; step < 6; step++) act({ type: 'liquid', step, operation: earlyLiquidScenes[step].operation, expectedSpent: 110 })
+  if (includeQiAid) for (const scene of refiningScenes) {
+    const result = advanceEarlyRefining(state, refiningWater, { ...state.earlyTraining.refining, expectedLedger: marketTradeLedger(state),
+      expectedIron: { ...state.earlyTraining.iron }, teacherPosition: { ...ironPlaces.teacher }, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  for (let step = state.earlyTraining.liquid.stage; step < 6; step++) act({ type: 'liquid', step, operation: earlyLiquidScenes[step].operation, expectedSpent: 110 })
   act({ type: 'practice', operation: 'begin', phase: 0, pulse: 0, expectedSpent: 110 })
   if (failFirstBreath) for (let pulse = 0; pulse < 3; pulse++)
     act({ type: 'practice', operation: 'pulse', phase: 1, pulse, marker: pulseMarker(0), expectedSpent: 110 })
