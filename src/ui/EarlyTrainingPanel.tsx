@@ -57,6 +57,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy, cityEntry, cityPharmacyBack] = useReturningScene()
   const [marketEscort, setMarketEscort, escortEntry, marketEscortBack] = useReturningScene()
   const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
+  const [firstReview, setFirstReview, reviewEntry, reviewBack] = useReturningScene()
   const [firstTraining, setFirstTraining, trainingEntry, trainingBack] = useReturningScene()
   const [refining, setRefining, refiningEntry, refiningBack] = useReturningScene()
   const [infusion, setInfusion, infusionEntry, infusionBack] = useReturningScene()
@@ -70,6 +71,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (firstReview) return <DeferredScene message="正在接续半月回顾……"><FirstTraining continuation state={state} onBack={reviewBack} /></DeferredScene>
   if (firstTraining) return <DeferredScene message="正在接续持续调息……"><FirstTraining state={state} onBack={trainingBack} /></DeferredScene>
   if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={refiningBack} /></DeferredScene>
   if (infusion) return <DeferredScene message="正在接续魔核炼化与入水……"><EarlyRefining continuation state={state} onBack={infusionBack} /></DeferredScene>
@@ -185,6 +187,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.refining.stage === 22 && <section className="bond-summary" aria-label="持续调息接续">
         <b>魔核入水已归档 · 接续当前一轮</b><p>坐定、手动调息与收束分存，两个月五段仅为预计。</p>
         <button ref={trainingEntry} className="secondary" onClick={() => setFirstTraining(true)}>接续当前一轮持续调息</button>
+      </section>}
+      {isVisible(state, 2) && task.firstTraining.stage >= 10 && <section className="bond-summary" aria-label="半月修炼接续">
+        <b>当前一轮归档 · 半月回顾</b><p>当时四段、老师反应、药色与衣着分存。</p>
+        <button ref={reviewEntry} className="secondary" onClick={() => setFirstReview(true)}>接续半月回顾与当时四段</button>
       </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">

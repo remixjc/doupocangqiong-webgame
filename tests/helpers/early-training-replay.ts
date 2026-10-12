@@ -1,3 +1,4 @@
+import { firstReviewInput } from './first-review-replay'
 import { firstTrainingInput, firstTrainingPosition } from './first-training-replay'
 import { advanceFirstTraining } from '../../src/core/first-training'
 import { advanceEarlyRefining, refiningWater } from '../../src/core/early-refining'
@@ -277,6 +278,11 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   }
   if (includeQiAid) while (state.earlyTraining.firstTraining.stage < 10) {
     const result = advanceFirstTraining(state, firstTrainingPosition(state), firstTrainingInput(state))
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.firstTraining.stage < 17) {
+    const result = advanceFirstTraining(state, { x: 160, y: 370 }, firstReviewInput(state))
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }

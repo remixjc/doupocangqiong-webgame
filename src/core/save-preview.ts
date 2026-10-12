@@ -231,7 +231,8 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 export function firstTrainingSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.firstTraining
-  return '持续调息 · ' + (t.stage === 10 ? '当前轮归档，预计五段尚非实际结果' : t.forecast === 'two-months' ? '两个月五段仅为预计'
+  return '持续调息 · ' + (t.stage === 17 ? '半月四段与衣着已归档，五段仍是预计' : t.result === 'fourth-duan' ? '当时四段已记，药色衣着接续'
+    : t.period === 'half-month' ? '半月已回顾，实际结果待记' : t.stage === 10 ? '当前轮归档，预计五段尚非实际结果' : t.forecast === 'two-months' ? '两个月五段仅为预计'
     : t.stage === 8 ? '已离容器，预计待记' : t.stage === 7 ? '本轮收束，离容器待续' : t.stage === 2 ? `调息${t.beats}/3，重试${t.attempts}` : t.seated ? '坐定中' : t.stage ? '当前轮待续' : '未参与')
 }
 

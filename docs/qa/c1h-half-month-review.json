@@ -1,0 +1,359 @@
+{
+  "version": "0.59.0",
+  "date": "2026-10-12",
+  "vitestFiles": 134,
+  "vitestTests": 816,
+  "nodeTests": 11,
+  "initialJs": 496839,
+  "totalJs": 1849766,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "sourceChapter": 15,
+  "chineseAndAnime": "pending",
+  "browser": [
+    {
+      "name": "reviewStart",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 0/7 · 持续调息 · 当前轮归档，预计五段尚非实际结果\n  - heading \"回看此前半月\" [level=3]\n  - paragraph: 此前半月以修炼为主，只在饮食等需要时暂离。单独回顾这段时日，不把当前一轮当作整个半月。\n  - paragraph: 当前人物：萧炎本人\n  - button \"回顾此前半月修炼\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage11",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 1/7 · 持续调息 · 半月已回顾，实际结果待记\n  - heading \"当时实际四段\" [level=3]\n  - paragraph: 当时已达四段，比老师预计更早。与两个月五段预测分别记录，保持如今的主线境界。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录当时实际四段\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "forecastCannotActual",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 1/7 · 持续调息 · 半月已回顾，实际结果待记\n  - heading \"当时实际四段\" [level=3]\n  - paragraph: 当时已达四段，比老师预计更早。与两个月五段预测分别记录，保持如今的主线境界。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录当时实际四段\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\" [active]\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage12",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 2/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"老师的反应\" [level=3]\n  - paragraph: 老师原估约一个月，见半月成果也感惊讶。这是当时反应，尚未授新技能。\n  - paragraph: 先明确选择本步人物。\n  - button \"旁观老师确认修炼速度\" [disabled] [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "teacherNotSelected",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 2/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"老师的反应\" [level=3]\n  - paragraph: 老师原估约一个月，见半月成果也感惊讶。这是当时反应，尚未授新技能。\n  - paragraph: 先明确选择本步人物。\n  - button \"旁观老师确认修炼速度\" [disabled]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "teacherDirectionNoMove",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\"\n  - button \"旁观房中的老师\" [pressed]\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 2/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"老师的反应\" [level=3]\n  - paragraph: 老师原估约一个月，见半月成果也感惊讶。这是当时反应，尚未授新技能。\n  - paragraph: 当前人物：房中的老师\n  - button \"旁观老师确认修炼速度\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage13",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\"\n  - button \"旁观房中的老师\" [pressed]\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 回望处\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 3/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"离容器回望\" [level=3]\n  - paragraph: 由本人走近容器外回望，药液绿意变淡。只记当时观察，不恢复旧药液。\n  - paragraph: 先明确选择本步人物。\n  - button \"观察当时药色变淡\" [disabled] [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "farLookRejected",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 回望处\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 3/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"离容器回望\" [level=3]\n  - paragraph: 由本人走近容器外回望，药液绿意变淡。只记当时观察，不恢复旧药液。\n  - paragraph: 先切回本人，走近当前交接地点。\n  - button \"观察当时药色变淡\" [disabled]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage14",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 4/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"余期疑问\" [level=3]\n  - paragraph: 本人担心余下药性还能否支撑一个半月。这是疑问，并未得到新的保证或补药。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记下药液余期疑问\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "paleCannotRefill",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 4/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"余期疑问\" [level=3]\n  - paragraph: 本人担心余下药性还能否支撑一个半月。这是疑问，并未得到新的保证或补药。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记下药液余期疑问\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\" [active]\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage15",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 5/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"整理衣着\" [level=3]\n  - paragraph: 擦去水迹，换好衣着后再研究铁片。画面保持衣着剪影。\n  - paragraph: 当前人物：萧炎本人\n  - button \"擦净水迹并整理衣着\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage16",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 6/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"半月回顾归档\" [level=3]\n  - paragraph: 时段、四段、老师反应与药色衣着分别归档。铁片试招和出门由下一段接续。\n  - paragraph: 当前人物：萧炎本人\n  - button \"归档半月回顾\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewStage17",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewFinalRefresh",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewMaterials13",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\"\n  - button \"旁观房中的老师\" [pressed]\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 回望处\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 3/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"离容器回望\" [level=3]\n  - paragraph: 由本人走近容器外回望，药液绿意变淡。只记当时观察，不恢复旧药液。\n  - paragraph: 先明确选择本步人物。\n  - button \"观察当时药色变淡\" [disabled] [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "materials-观察当时药色变淡",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 4/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"余期疑问\" [level=3]\n  - paragraph: 本人担心余下药性还能否支撑一个半月。这是疑问，并未得到新的保证或补药。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记下药液余期疑问\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "materials-记下药液余期疑问",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 5/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"整理衣着\" [level=3]\n  - paragraph: 擦去水迹，换好衣着后再研究铁片。画面保持衣着剪影。\n  - paragraph: 当前人物：萧炎本人\n  - button \"擦净水迹并整理衣着\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "materials-擦净水迹并整理衣着",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - button \"半月回顾向上走\": ↑\n  - button \"半月回顾向左走\": ←\n  - button \"半月回顾向下走\": ↓\n  - button \"半月回顾向右走\": →\n  - status: 半月回顾 6/7 · 持续调息 · 当时四段已记，药色衣着接续\n  - heading \"半月回顾归档\" [level=3]\n  - paragraph: 时段、四段、老师反应与药色衣着分别归档。铁片试招和出门由下一段接续。\n  - paragraph: 当前人物：萧炎本人\n  - button \"归档半月回顾\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "materials-归档半月回顾",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewMaterialsRefresh",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "reviewLastVisible",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "reviewMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791808817995.json",
+      "sha256": "22fbb3a898f75f5ed9e9d8f630d91158f6b0d952702f94ce45a442d8f11120e5",
+      "stage": 10,
+      "period": "none",
+      "result": "none",
+      "forecast": "two-months",
+      "teacherReaction": false,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791808826005.json",
+      "sha256": "851bc1d65dc5dc2ca32523fd7ef5c53a58670c6b507c12e4e90fb8de18ea2987",
+      "stage": 11,
+      "period": "half-month",
+      "result": "none",
+      "forecast": "two-months",
+      "teacherReaction": false,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewRejectFifth",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791808833368.json",
+      "sha256": "c1dcee89dae06778ad535f5813a5edc8dc6a247456aa6f051c8a7f2ac33caeee",
+      "stage": 11,
+      "period": "half-month",
+      "result": "none",
+      "forecast": "two-months",
+      "teacherReaction": false,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809009691.json",
+      "sha256": "fc8224a69ccfc5362dce1ba7766286a6869369191396efe938d70f7bd3a0bedf",
+      "stage": 12,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": false,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809018150.json",
+      "sha256": "ff228d48726dea62a97393ed77799db516b1d611b5ce32b69dfffeea7d4b1c91",
+      "stage": 13,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewFarLook",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809023775.json",
+      "sha256": "f18392f1c8d51db30323af34b3a2d1cc51caeb342a227ea5d7c1fba6f34b4b65",
+      "stage": 13,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage14",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809052862.json",
+      "sha256": "9d97b744aa62e3e2864c2577c2b5063cb1843f5be99180722b62d2444be12e08",
+      "stage": 14,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewPaleRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809061270.json",
+      "sha256": "5440f360e32f8e4abf0fb1f51e55b5ac5edd4a7322e54e5c04a25f3ee95045f1",
+      "stage": 14,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage15",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809069294.json",
+      "sha256": "191637ba74bf3a156288dc86d8c74d3f4e2ace70ee6c7df0546ede37d4514b21",
+      "stage": 15,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage16",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809075727.json",
+      "sha256": "b33b7e82d0964efccd558999bcc90ea3b3ad3e10ec3b28eab253945ec29b4018",
+      "stage": 16,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": true,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewStage17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809118557.json",
+      "sha256": "be5a7c11230eeac2d80cb4602926b2c252f78a3c820c3a516702b8ee88e43b75",
+      "stage": 17,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": true,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809125919.json",
+      "sha256": "42dbd2079365307712a3cd2caf9c2dbcd77b25b5c9c333438158f03a0473ffbc",
+      "stage": 17,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": true,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809128288.json",
+      "sha256": "12dda0571e5e93c00b792e28c0d4c52404f571f07db4465d375be2b4695080c2",
+      "stage": 10,
+      "period": "none",
+      "result": "none",
+      "forecast": "two-months",
+      "teacherReaction": false,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewMaterials13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809139319.json",
+      "sha256": "5d05b5e291a99c4252dc66ae62888092de7b64f75fa610cc3d6382ae51cb982b",
+      "stage": 13,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809173218.json",
+      "sha256": "130b4162dde30df0ac8cf0d98c1d11ba9afc16dc8a1587f1a4e395e9b3ebe038",
+      "stage": 17,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": true,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewMaterialsRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809179572.json",
+      "sha256": "0ac555dfd8b988a7a69b1214bd00316267a576c5efee1f6146dbf5da29f461bf",
+      "stage": 17,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": true,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "reviewIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809181921.json",
+      "sha256": "3724acf50988f38f526f4eb87f522d370c874221e795f91fadb8893b38da16bb",
+      "stage": 0,
+      "period": "none",
+      "result": "none",
+      "forecast": "none",
+      "teacherReaction": false,
+      "pale": false,
+      "dressed": false,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": 5,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "returnFocus": "接续半月回顾与当时四段",
+  "intactReviewEntryCount": 0,
+  "oldSpent": "rule-tests-only",
+  "actualBrowserOldBranch": {
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  }
+}

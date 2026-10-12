@@ -1,4 +1,4 @@
-import { FIRST_TRAINING_VERSION } from './first-training-state'
+import { FIRST_TRAINING_VERSION, FIRST_REVIEW_VERSION } from './first-training-state'
 import { EARLY_REFINING_VERSION, EARLY_INFUSION_VERSION } from './early-refining-state'
 import { EARLY_IRON_VERSION } from './early-iron-state'
 import { EARLY_MARKET_RETURN_VERSION } from './early-market-return-state'
@@ -294,11 +294,14 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_MARKET_RETURN_VERSION),
     versionBefore(data.contentVersion as string, EARLY_IRON_VERSION),
     versionBefore(data.contentVersion as string, EARLY_REFINING_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_TRAINING_VERSION))
+    versionBefore(data.contentVersion as string, FIRST_TRAINING_VERSION),
+    versionBefore(data.contentVersion as string, FIRST_REVIEW_VERSION))
   if (s.earlyTraining.refining.stage > 11 && versionBefore(data.contentVersion as string, EARLY_INFUSION_VERSION))
     throw new Error('魔核入水记录不属于此版本。')
   if (s.earlyTraining.firstTraining.stage > 0 && versionBefore(data.contentVersion as string, FIRST_TRAINING_VERSION))
     throw new Error('首次持续调息记录不属于此版本。')
+  if (s.earlyTraining.firstTraining.stage > 10 && versionBefore(data.contentVersion as string, FIRST_REVIEW_VERSION))
+    throw new Error('半月回顾记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
