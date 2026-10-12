@@ -21,6 +21,7 @@ import { EARLY_MOUNTAIN_VISITOR_VERSION } from './early-mountain-visitor-state'
 import { EARLY_MORNING_CARD_VERSION } from './early-morning-card-state'
 import { EARLY_CITY_PHARMACY_VERSION } from './early-city-pharmacy-state'
 import { EARLY_MARKET_ESCORT_VERSION } from './early-market-escort-state'
+import { EARLY_MARKET_SEARCH_VERSION } from './early-market-search-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 export class NewerSaveVersionError extends Error {
@@ -276,7 +277,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_VISITOR_VERSION),
     versionBefore(data.contentVersion as string, EARLY_MORNING_CARD_VERSION),
     versionBefore(data.contentVersion as string, EARLY_CITY_PHARMACY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_ESCORT_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_MARKET_ESCORT_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_MARKET_SEARCH_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

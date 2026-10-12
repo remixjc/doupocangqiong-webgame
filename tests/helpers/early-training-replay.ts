@@ -28,6 +28,8 @@ import { cityPharmacyScenes } from '../../src/content/early-city-pharmacy'
 import { advanceEarlyMarketEscort, marketEscortPlaces } from '../../src/core/early-market-escort'
 import { marketEscortObserver } from '../../src/core/early-market-escort-state'
 import { marketEscortScenes } from '../../src/content/early-market-escort'
+import { advanceEarlyMarketSearch, marketSearchPlaces } from '../../src/core/early-market-search'
+import { marketSearchScenes } from '../../src/content/early-market-search'
 import type { GameState } from '../../src/core/model'
 import { advanceEarlyTraining, beginEarlyTraining, type EarlyTrainingAction } from '../../src/core/early-training'
 import { earlySupplies } from '../../src/core/early-training-state'
@@ -199,6 +201,11 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     const task = state.earlyTraining.marketEscort
     const view = marketEscortObserver(task.stage) ? { kind: 'observer' as const, place: scene.place } : { kind: 'yan' as const, position: marketEscortPlaces[scene.place] }
     const result = advanceEarlyMarketEscort(state, view, { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) for (const scene of marketSearchScenes) {
+    const task = state.earlyTraining.marketSearch
+    const result = advanceEarlyMarketSearch(state, { kind: scene.view, position: marketSearchPlaces[scene.place] }, { ...task, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
   for (const item of ['boneflower', 'bluegrass'] as const) if (!state.earlyTraining.receipts[item])
