@@ -1,23 +1,10 @@
-export const xunerVisitScenes = [
-  { step: 0, station: 'room', operation: 'appear', title: '薰儿从角落走出', speaker: '萧炎',
-    text: '父亲离开后，萧炎看向房中角落，招呼听见父子谈话的薰儿。她从角落走出来，笑着来到他身旁。',
-    action: '看见薰儿 · 接续房中谈话' },
-  { step: 1, station: 'room', operation: 'talk', title: '谈起父亲，也问下午去向', speaker: '薰儿',
-    text: '薰儿谈起萧战对儿子的支持，又问萧炎下午去了哪里。萧炎只说出去走了走，未向她说明寄售经过。',
-    action: '接续交谈 · 保留各自所知' },
-  { step: 2, station: 'room', operation: 'promise', title: '三年之约，她愿同行', speaker: '薰儿',
-    text: '薰儿告诉萧炎，等他去云岚宗面对三年之约时，她愿意同行。这是一份承诺，此时还没有启程。',
-    action: '记下同行承诺' },
-  { step: 3, station: 'corner', operation: 'leave', title: '薰儿离开，手札转向她', speaker: '往事手札',
-    text: '薰儿离开萧炎的房间。接下来的这一页跟随她走向转角；萧炎留在房中，并不在场。',
-    action: '转向薰儿视角 · 走至转角' },
-  { step: 4, station: 'corner', operation: 'hear', title: '转角听见长老争执', speaker: '薰儿视角',
-    text: '薰儿在转角听见萧战与三位长老为今天的支出争执。她停下脚步，取出自己的紫金卡。',
-    action: '听见争执 · 随薰儿取出紫金卡' },
-  { step: 5, station: 'council', operation: 'give', title: '紫金卡交给家族', speaker: '薰儿视角',
-    text: '薰儿把含100000金币的紫金卡抛向萧战与长老争执的房间，要求他们别再为难萧战。这笔钱从薰儿交给家族，萧炎没有领取。',
-    action: '记录薰儿交卡 · 家族取得100000' },
-  { step: 6, station: 'council', operation: 'accept', title: '长老接受，答应不再为难', speaker: '往事手札',
-    text: '长老收下紫金卡，答应不再为此为难萧战。手札记下薰儿独自处理的这件事；房中的萧炎并不知道这场交易。',
-    action: '记下长老回应 · 归档人物事件' },
-] as const
+import { defineSceneRows } from './scene-rows'
+export const xunerVisitScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+  [0,"room","appear","薰儿从角落走出","萧炎","父亲离开后，萧炎看向房中角落，招呼听见父子谈话的薰儿。她从角落走出来，笑着来到他身旁。","看见薰儿 · 接续房中谈话"],
+  [1,"room","talk","谈起父亲，也问下午去向","薰儿","薰儿谈起萧战对儿子的支持，又问萧炎下午去了哪里。萧炎只说出去走了走，未向她说明寄售经过。","接续交谈 · 保留各自所知"],
+  [2,"room","promise","三年之约，她愿同行","薰儿","薰儿告诉萧炎，等他去云岚宗面对三年之约时，她愿意同行。这是一份承诺，此时还没有启程。","记下同行承诺"],
+  [3,"corner","leave","薰儿离开，手札转向她","往事手札","薰儿离开萧炎的房间。接下来的这一页跟随她走向转角；萧炎留在房中，并不在场。","转向薰儿视角 · 走至转角"],
+  [4,"corner","hear","转角听见长老争执","薰儿视角","薰儿在转角听见萧战与三位长老为今天的支出争执。她停下脚步，取出自己的紫金卡。","听见争执 · 随薰儿取出紫金卡"],
+  [5,"council","give","紫金卡交给家族","薰儿视角","薰儿把含100000金币的紫金卡抛向萧战与长老争执的房间，要求他们别再为难萧战。这笔钱从薰儿交给家族，萧炎没有领取。","记录薰儿交卡 · 家族取得100000"],
+  [6,"council","accept","长老接受，答应不再为难","往事手札","长老收下紫金卡，答应不再为此为难萧战。手札记下薰儿独自处理的这件事；房中的萧炎并不知道这场交易。","记下长老回应 · 归档人物事件"]
+] as const)

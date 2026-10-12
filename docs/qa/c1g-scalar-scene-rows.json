@@ -1,0 +1,53 @@
+{
+  "version": "0.55.1",
+  "date": "2026-10-12",
+  "rows": {
+    "modules": 9,
+    "rows": 61,
+    "allKeysValuesAndOrderIdentical": true
+  },
+  "sharedPureGuards": 4,
+  "onlyVersionChanged": true,
+  "wholeStateEqualPairs": 3,
+  "initialJs": 499160,
+  "totalJs": 1845479,
+  "initialSaved": 92,
+  "totalSaved": 2162,
+  "originalBudgets": [
+    500000,
+    1850000
+  ],
+  "vitestFiles": 129,
+  "vitestTests": 791,
+  "nodeTests": 11,
+  "consoleErrors": [],
+  "inputs": [
+    {
+      "name": "scalarNewReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791801511485.json",
+      "sha256": "bdc4141533b45289b3873a08489259fab5fafb835883e56fac4607b0b9339778",
+      "ironStage": 18,
+      "core": 1,
+      "liquid": 0,
+      "completed": 28
+    },
+    {
+      "name": "scalarConsumedReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791801513604.json",
+      "sha256": "b85aa861ce3f5a642fda7b7908b952ea097d0438ffd8e127081892b8bc5289ce",
+      "ironStage": 18,
+      "core": 0,
+      "liquid": 6,
+      "completed": 28
+    },
+    {
+      "name": "scalarIntactReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791801515701.json",
+      "sha256": "ea879bce240ad1fae6eb500242b45c53fafed40d24aee5c973d5c654ab079b22",
+      "ironStage": 0,
+      "core": 1,
+      "liquid": 0,
+      "completed": 28
+    }
+  ]
+}

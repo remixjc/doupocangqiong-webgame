@@ -3,7 +3,7 @@ import { marketReturnAt, validMarketReturn, type MarketReturnState } from './ear
 import { marketTradeAt, marketTradeMinimum, validMarketTrade, type MarketTradeState } from './early-market-trade-state'
 import { marketDiscoveryAt, validMarketDiscovery, type MarketDiscoveryState } from './early-market-discovery-state'
 import { marketStandoffAt, validMarketStandoff, type MarketStandoffState } from './early-market-standoff-state'
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, stagedFieldsMatch } from './state-guards'
 import { familyVisitAt, validFamilyVisit, type FamilyVisitState } from './early-family-visit-state'
 import { familyCompensationAt, validFamilyCompensation, type FamilyCompensationState } from './early-family-compensation-state'
 import { familyContractAt, validFamilyContract, type FamilyContractState } from './early-family-contract-state'
@@ -540,9 +540,7 @@ export function ceremonyVerdictAt(stage: number): Omit<CeremonyVerdictState, 'st
     nextHall: stage >= 15 ? 'five-days' : 'none' }
 }
 export function validCeremonyVerdict(task: Record<string, unknown> | CeremonyVerdictState): task is CeremonyVerdictState {
-  if (!boundedInteger(task.stage, 16)) return false
-  const expected = ceremonyVerdictAt(task.stage)
-  return fieldsMatch(task, expected)
+  return stagedFieldsMatch(task, 16, ceremonyVerdictAt)
 }
 export function qiPavilionEntryAt(stage: number): Omit<QiPavilionEntryState, 'stage'> {
   return { door: stage >= 3 ? 'open' : 'closed', other: stage >= 4 ? 'wind' : 'unmeasured',
@@ -551,9 +549,7 @@ export function qiPavilionEntryAt(stage: number): Omit<QiPavilionEntryState, 'st
     hint: stage >= 6 ? 'fire-3-43' : 'none', permission: stage >= 8, entered: stage >= 10 }
 }
 export function validQiPavilionEntry(task: Record<string, unknown> | QiPavilionEntryState): task is QiPavilionEntryState {
-  if (!boundedInteger(task.stage, 12)) return false
-  const expected = qiPavilionEntryAt(task.stage)
-  return fieldsMatch(task, expected)
+  return stagedFieldsMatch(task, 12, qiPavilionEntryAt)
 }
 export function qiBarrierAt(stage: number): Pick<QiBarrierState, 'path' | 'room37' | 'room43' | 'barrier' | 'entered'> {
   return { path: stage >= 2 ? 3 : 0, room37: stage >= 3, room43: stage >= 4,
@@ -570,9 +566,7 @@ export function qiPavilionScrollAt(stage: number): Pick<QiPavilionScrollState, '
   return { family: stage >= 2 ? 'held' : 'none', offer: stage >= 4 ? (stage >= 5 ? 'declined' : 'offered') : 'none', owner: stage >= 3 ? 'xiaoyan' : 'none' }
 }
 export function validQiPavilionScroll(task: Record<string, unknown> | QiPavilionScrollState): task is QiPavilionScrollState {
-  if (!boundedInteger(task.stage, 6)) return false
-  const expected = qiPavilionScrollAt(task.stage)
-  return fieldsMatch(task, expected)
+  return stagedFieldsMatch(task, 6, qiPavilionScrollAt)
 }
 export function qiPavilionAidAt(stage: number): Omit<QiPavilionAidState, 'stage' | 'beats' | 'attempts'> {
   return { group: stage >= 1 ? 'together' : 'none', xunerScroll: stage >= 2 ? 'xuner' : 'none',
@@ -590,7 +584,5 @@ export function qiPavilionExchangeAt(stage: number): Omit<QiPavilionExchangeStat
     support: stage >= 4 ? 'shown' : 'hidden', reply: stage >= 6 ? 'declined' : 'none' }
 }
 export function validQiPavilionExchange(task: Record<string, unknown> | QiPavilionExchangeState): task is QiPavilionExchangeState {
-  if (!boundedInteger(task.stage, 8)) return false
-  const expected = qiPavilionExchangeAt(task.stage)
-  return fieldsMatch(task, expected)
+  return stagedFieldsMatch(task, 8, qiPavilionExchangeAt)
 }

@@ -1,26 +1,11 @@
-export const earlyHallScenes = [
-  { stage: 1, place: 'shelves', operation: 'read', title: '先读一卷族内斗技', speaker: '萧炎',
-    text: '东侧书架安静些。先看看这卷的运气路线，也留意另一侧的切磋。',
-    action: '展开第一卷 · 留在堂内阅读' },
-  { stage: 2, place: 'practice', operation: 'observe', title: '场上两人的切磋', speaker: '场边观察',
-    text: '萧宁连续进攻，薰儿从容应对。萧炎只是观察，场上的攻击和胜负都不属于他。',
-    action: '观察薰儿避开这一轮进攻' },
-  { stage: 3, place: 'practice', operation: 'counter', title: '避让之后的回应', speaker: '场边观察',
-    text: '薰儿看见书架旁的萧炎。她避开攻势，随即回击，萧宁退到了练习区外。',
-    action: '记下切磋结果 · 薰儿获胜' },
-  { stage: 4, place: 'shelves', operation: 'greet', title: '薰儿来到书架旁', speaker: '薰儿',
-    text: '这阵子一直忙着修炼吧？能看出你已有进步。萧炎点头回应，重新看向手中的卷册。',
-    action: '记下会面 · 不折算玩家境界' },
-  { stage: 5, place: 'shelves', operation: 'return', title: '堂内的挑衅', speaker: '萧炎',
-    text: '萧宁走近，言语间提出挑战。薰儿出声回应，萧炎把正在读的卷册归回书架，没有就此开战。',
-    action: '归回第一卷 · 留下现场交涉记录' },
-  { stage: 6, place: 'shelves', operation: 'select', title: '另取一卷', speaker: '萧炎',
-    text: '萧宁提到来年成年仪式。萧炎回应后另取一卷，准备离堂；先到堂口办理登记。',
-    action: '选好另一卷 · 前往登记处' },
-  { stage: 7, place: 'registry', operation: 'register', title: '离堂前的登记', speaker: '斗技堂管理者',
-    text: '将这一卷记入借阅记录。登记之前，它仍由堂内保管；登记完成后，才随萧炎带走。',
-    action: '办理借阅登记 · 第二卷由萧炎保管' },
-  { stage: 8, place: 'registry', operation: 'leave', title: '与薰儿一同离堂', speaker: '往事手札',
-    text: '两人交谈着离开斗技堂，随后同行到山间。傍晚萧炎回到房间，把借来的卷册放在桌上。',
-    action: '记下离堂与回房 · 借卷记录保留' },
-] as const
+import { defineSceneRows } from './scene-rows'
+export const earlyHallScenes = defineSceneRows(["stage","place","operation","title","speaker","text","action"], [
+  [1,"shelves","read","先读一卷族内斗技","萧炎","东侧书架安静些。先看看这卷的运气路线，也留意另一侧的切磋。","展开第一卷 · 留在堂内阅读"],
+  [2,"practice","observe","场上两人的切磋","场边观察","萧宁连续进攻，薰儿从容应对。萧炎只是观察，场上的攻击和胜负都不属于他。","观察薰儿避开这一轮进攻"],
+  [3,"practice","counter","避让之后的回应","场边观察","薰儿看见书架旁的萧炎。她避开攻势，随即回击，萧宁退到了练习区外。","记下切磋结果 · 薰儿获胜"],
+  [4,"shelves","greet","薰儿来到书架旁","薰儿","这阵子一直忙着修炼吧？能看出你已有进步。萧炎点头回应，重新看向手中的卷册。","记下会面 · 不折算玩家境界"],
+  [5,"shelves","return","堂内的挑衅","萧炎","萧宁走近，言语间提出挑战。薰儿出声回应，萧炎把正在读的卷册归回书架，没有就此开战。","归回第一卷 · 留下现场交涉记录"],
+  [6,"shelves","select","另取一卷","萧炎","萧宁提到来年成年仪式。萧炎回应后另取一卷，准备离堂；先到堂口办理登记。","选好另一卷 · 前往登记处"],
+  [7,"registry","register","离堂前的登记","斗技堂管理者","将这一卷记入借阅记录。登记之前，它仍由堂内保管；登记完成后，才随萧炎带走。","办理借阅登记 · 第二卷由萧炎保管"],
+  [8,"registry","leave","与薰儿一同离堂","往事手札","两人交谈着离开斗技堂，随后同行到山间。傍晚萧炎回到房间，把借来的卷册放在桌上。","记下离堂与回房 · 借卷记录保留"]
+] as const)
