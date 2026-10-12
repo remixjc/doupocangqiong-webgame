@@ -1,0 +1,391 @@
+{
+  "batch": "C1g-4d2",
+  "version": "0.55.0",
+  "date": "2026-10-12",
+  "onlyNewHistoryAndEmptyMigrationOrVersionChanged": true,
+  "wholeStateEqualPairs": 14,
+  "vitestFiles": 129,
+  "vitestTests": 791,
+  "nodeTests": 11,
+  "browser": "4185 new and4190 consumed complete18; main every checkpoint reload; 3right receive and3right pickup; observer arrows do not move Yan; errors rejected; backfocus true.4191 intact migration.",
+  "source": "English14 previously fully verified; Chinese exact/current anime still pending",
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "consoleErrors": [],
+  "inputs": [
+    {
+      "name": "ironNewMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800571634.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 0,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "be8503db125c622a2686da1bcc5e725f90da1c2075514cda0b89aa168e40f3ee"
+    },
+    {
+      "name": "ironWrongActor",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800586485.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 0,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "be0d4193e21269655525c58a525e6c1114c679d7384805776228e58490080beb"
+    },
+    {
+      "name": "ironNew1",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800600956.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 1,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "1a34908e27461eb613d58fd2c958a775b8ea2abec22a453e929aad14a66e89eb"
+    },
+    {
+      "name": "ironNew2",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800603287.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 2,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "c8fb0852ae628b053f063ed8882c76472aec83cd4c947f3317f34365203deb99"
+    },
+    {
+      "name": "ironNew3",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800605653.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 3,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "63f9258319f0efa499f33307630c28eedeaf04e03ce7db91c68e545b438c7b4a"
+    },
+    {
+      "name": "ironNew4",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800628892.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 4,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "fde1ffd7fc75f958261c9f2dd676cd91f1e1c6f630727181bbe0befa2f33ee58"
+    },
+    {
+      "name": "ironFarReceive",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800631279.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 4,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "df96375dc6b5bcfb2537cd49467d0540713748c4eee8fe84ace64953a09c9804"
+    },
+    {
+      "name": "ironNew5",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800648834.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 5,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "43dc7c11cd26fdd6675bedd837fcfc180dff299c9e93154b340171498831a707"
+    },
+    {
+      "name": "ironNew6",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800651452.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 6,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "30d3ccb10c552992f46d6029156065c71f41987495fc142824b6e1fbbb444aa8"
+    },
+    {
+      "name": "ironNew7",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800667863.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 7,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "90e9cff2875b2cadeac134f7ec4563c2e179b66bd5e338481b7d7dc8d7c4f03b"
+    },
+    {
+      "name": "ironNew8",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800670246.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 8,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "fa7c194ec7091ce9728e855a429358ed826a895a3c8b334461cfc3ba404b329f"
+    },
+    {
+      "name": "ironNameRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800683211.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 8,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "a5bb473d40dbbce861b65f4cb299eb1c45cad2d6355e8a9fc9a04559e74a835e"
+    },
+    {
+      "name": "ironNew9",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800685677.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 9,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "ba7a108cb8e07f6a2bdb6fe3ba5dfc490570468b7705938fd89f4fbfd69d9150"
+    },
+    {
+      "name": "ironNew10",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800688354.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 10,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "821cf491dd5ba2ae50ee32d863f88d09b0b046d5fcff1582b11eaa8086b9572f"
+    },
+    {
+      "name": "ironNew11",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800703922.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 11,
+      "owner": "teacher",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "ae720d58a700b511f1a23040ebc0fc2a799dbec4b2d1fba1494e6e9c803e1dae"
+    },
+    {
+      "name": "ironNew12",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800706602.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 12,
+      "owner": "table",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "b8d8b1891e807d24e4d89158b54258e7cbad166efe85206f641e7a60178f9f3e"
+    },
+    {
+      "name": "ironFarPickup",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800708717.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 12,
+      "owner": "table",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "a8b7162c30c7386d9ec58927b8cb2bc26e94e2f49a0e5ced8c6f4e06d179f813"
+    },
+    {
+      "name": "ironDuplicateRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800724886.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 12,
+      "owner": "table",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "3158de71bcd6b94807e8cfe1aac97883050d70808be88d85c5278ae1a6ca88c7"
+    },
+    {
+      "name": "ironNew13",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800727881.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 13,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "7796e506c4c5edd1ab61a34ebf8eb065a242172973e8ff979f4a3f55cf1aac64"
+    },
+    {
+      "name": "ironWishRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800730313.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 13,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "88dfc7da7cbb34ee12428bfaaefecbb67fbc2b536aa9c18dfd9537c081c44f5e"
+    },
+    {
+      "name": "ironNew14",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800732488.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 14,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "a24b38f5d6070baf6c1afbcd7c0b030c1e02f422c57a876d8715549f6d74e7a7"
+    },
+    {
+      "name": "ironNew15",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800746826.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 15,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "4c681e3202d8195445622aaa055571e0ae93c0749294291cb950bf839b092e06"
+    },
+    {
+      "name": "ironNew16",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800749204.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 16,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "265f3b792ac1ba862049c903182288e8cd80b8ef901ff58cc5e0260b45bae35d"
+    },
+    {
+      "name": "ironRefineRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800751557.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 16,
+      "owner": "yan",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "80991f57f82b5f9056d4241540c03d1de0f2769827a95d073643f3f60411d6f7"
+    },
+    {
+      "name": "ironNew17",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800753769.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 17,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "4a9d1ebb7e7b5c492f4a726518daae876209f9d2c90cb083525aaca8091f1049"
+    },
+    {
+      "name": "ironNew18",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800770340.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 18,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "a0a3d6cd39eee8725b21190ac9ec2508b8d39a890e38917938862e370c8f7b3c"
+    },
+    {
+      "name": "ironNewReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800772422.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 18,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "8d95da8176e3528d8de405b856abd79dfc789e2f3349d6883fb5395ce3d05a0d"
+    },
+    {
+      "name": "ironOldMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800775953.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 0,
+      "owner": "bag",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "025d1f6d5f722b0511d0064777bbaf1b1de5de228f268307f50b4847e27f82ae"
+    },
+    {
+      "name": "ironOld4",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800795062.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 4,
+      "owner": "yan",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "ea8eee8953da42170824c065cd3ff86bf365e5e36d4a160ed3bc9a40243f3e86"
+    },
+    {
+      "name": "ironOld5",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800798552.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 5,
+      "owner": "teacher",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "a9cc8470ea3eff9406bf7ab348d01d63f7cdbfe7f3eba03166755e3333ec48e5"
+    },
+    {
+      "name": "ironOld12",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800815899.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 12,
+      "owner": "table",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "9006d1960eb1fecf95cdef9c13d1e0e208ad9c419f9d75f1f842459e4dc6629c"
+    },
+    {
+      "name": "ironOldDuplicateRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800819106.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 12,
+      "owner": "table",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "8fc556a1ee8db8b240080b98ec69a42465f56f305cb7f292de3651d914d4f1a4"
+    },
+    {
+      "name": "ironOld13",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800822400.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 13,
+      "owner": "yan",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "3130291693aa09b7dde8b722f644673e95ab65b105ad9576f263b443ffec5050"
+    },
+    {
+      "name": "ironOld18",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800842372.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 18,
+      "owner": "bag",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "ac9c86a1da5159fca7ebfad30195d4249bcd9a350ff70d8a1407d3e4255bf299"
+    },
+    {
+      "name": "ironOldReload",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800844466.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 18,
+      "owner": "bag",
+      "core": 0,
+      "liquid": 6,
+      "sha256": "ebd5bd7f1d545465dfdac8701dc38db115e98353a6b3262607164481dcd8e107"
+    },
+    {
+      "name": "ironIntactMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800847728.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 0,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "237bab6a1fd1a3fa204fcfee874463399a9cf34d57b37e097f300b5777949cf1"
+    },
+    {
+      "name": "ironIntactRoomBounds",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791800996859.json",
+      "sourceVersion": "0.55.0",
+      "ironStage": 0,
+      "owner": "bag",
+      "core": 1,
+      "liquid": 0,
+      "sha256": "de15ac31b15025166f42a7376bb8a0c062efa8e23b3db15e358b5abca3c900bc"
+    }
+  ],
+  "initialJs": 499252,
+  "totalJs": 1847641
+}

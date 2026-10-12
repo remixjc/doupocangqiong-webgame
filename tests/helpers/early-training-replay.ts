@@ -1,3 +1,5 @@
+import { advanceEarlyIron, ironPlaces } from '../../src/core/early-iron'
+import { ironScenes } from '../../src/content/early-iron'
 import { advanceEarlyMarketReturn, marketReturnPlaces } from '../../src/core/early-market-return'
 import { marketReturnScenes } from '../../src/content/early-market-return'
 import { advanceEarlyMarketTrade, marketTradeExit, marketTradeLedger } from '../../src/core/early-market-trade'
@@ -254,6 +256,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) for (const scene of marketReturnScenes) {
     const result = advanceEarlyMarketReturn(state, marketReturnPlaces[scene.place],
       { ...state.earlyTraining.marketReturn, expectedLedger: marketTradeLedger(state), actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) for (const scene of ironScenes) {
+    const result = advanceEarlyIron(state, scene.operation === 'pickup' ? ironPlaces.table : ironPlaces.teacher,
+      { ...state.earlyTraining.iron, expectedLedger: marketTradeLedger(state), expectedReturn: { ...state.earlyTraining.marketReturn },
+        actor: scene.actor, teacherPosition: { ...ironPlaces.teacher }, operation: scene.operation })
     expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
   if (!state.earlyTraining.receipts.woodCore) act({ type: 'purchase', item: 'woodCore', price: 60, expectedSpent: 50 })
