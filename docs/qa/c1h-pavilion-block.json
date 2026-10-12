@@ -1,0 +1,67 @@
+{
+  "version": "0.75.2",
+  "date": "2026-10-13",
+  "fullSourceInverseEqual": true,
+  "blockComparisons": 4272,
+  "entireNativeParseEqual": true,
+  "decodedOriginals": 178,
+  "native": [
+    {
+      "name": "pavilionBlockMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791842492547.json",
+      "sha256": "f3620b5cfa224badc68c6b2e0839a1d5252e1d17f95b53d39714177514cea0be",
+      "entireStateEqual": true
+    },
+    {
+      "name": "pavilionBlockMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791842494886.json",
+      "sha256": "01596d14eaec88bf17be9d656cc43fda1f61d6df8443ce66eb5c374080650404",
+      "entireStateEqual": true
+    },
+    {
+      "name": "pavilionBlockIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791842497217.json",
+      "sha256": "5d32ae9f30ebd98727960c243043868df6a067b0dc118fdeb298f8ce191169e7",
+      "entireStateEqual": true
+    },
+    {
+      "name": "pavilionBlockMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791842506480.json",
+      "sha256": "39710a822a75d3419e7598855af4a11e58d94f489217285b2a507665f9ae89fe",
+      "entireStateEqual": true
+    }
+  ],
+  "initialEntrySceneStringsAbsent": true,
+  "deferredEntrySceneStringsPresent": true,
+  "vitest": {
+    "files": 152,
+    "tests": 904
+  },
+  "nodeTests": 11,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "initialJs": 487731,
+  "initialGzip": 162899,
+  "totalJs": 1847719,
+  "savedInitialJs": 4670,
+  "savedInitialGzip": 2097,
+  "totalDelta": 250,
+  "budgets": [
+    500000,
+    165000,
+    1850000
+  ],
+  "prerequisite": {
+    "sha": "aa0bff0a398851a200f946721feb40d64c15b77b",
+    "checks": 38313539552,
+    "conclusion": "success",
+    "pages": 38313539520,
+    "pagesConclusion": "skipped",
+    "files": 118,
+    "bytes": 1981574
+  },
+  "limits": "ExtractsameearlyQiPavilionBlock andreexportforcompatibility. No prerequisite/narrative/history/custody/reward/spoiler changes. Actualproductioninitialentryexcludesentryscenenarrative; totalJSincreases250, fixedallbudgetsremainpassed."
+}

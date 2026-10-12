@@ -4,8 +4,8 @@ import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
 import type { EarlyWalkPosition, EarlyWalkDirection } from './early-walk'
-import { earlyTrainingBlock } from './early-training'
-import { isVisible } from './rules'
+import { earlyQiPavilionBlock } from './early-qi-pavilion-block'
+export { earlyQiPavilionBlock } from './early-qi-pavilion-block'
 import { qiPavilionEntryAt, validQiPavilionEntry, type QiPavilionEntryState } from './early-training-state'
 import { qiPavilionEntryScenes } from '../content/early-qi-pavilion'
 
@@ -38,11 +38,6 @@ export function moveQiPavilionWalker(position: EarlyWalkPosition, direction: Ear
 export function nearQiPavilionPlace(position: EarlyWalkPosition, place: keyof typeof qiPavilionPlaces, stage: number): boolean {
   const target = qiPavilionPlaces[place]
   return validQiPavilionPosition(position, stage) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
-}
-export function earlyQiPavilionBlock(state: GameState): string {
-  if (!isVisible(state, 3)) return '这段往事超出当前剧透范围。'
-  return earlyTrainingBlock(state)
-    || (state.earlyTraining.ceremonyVerdict.stage !== 16 ? '先归档成人礼的正式裁定与离场，再赴五天后的功法阁。' : '')
 }
 export type QiPavilionEntryAction = QiPavilionEntryState & {
   actor: typeof qiPavilionEntryScenes[number]['actor']

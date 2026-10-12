@@ -3,7 +3,7 @@ import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
-import { earlyQiPavilionBlock } from './early-qi-pavilion'
+import { earlyQiPavilionBlock } from './early-qi-pavilion-block'
 import { qiPavilionScrollAt, validQiPavilionScroll, type QiPavilionScrollState } from './early-training-state'
 import { qiScrollScenes } from '../content/early-qi-scroll'
 
