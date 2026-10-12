@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_MOUNTAIN_RING_VERSION = '0.41.0'
 export const EARLY_MOUNTAIN_RING_ID = 'early-mountain-ring'
 export interface MountainRingState {
@@ -26,7 +27,7 @@ export function mountainRingAt(stage: number): MountainRingState {
     future: stage >= 20 ? 'asked' : 'unasked' }
 }
 export function validMountainRing(value: Record<string, unknown> | MountainRingState): value is MountainRingState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 21) return false
+  if (!boundedInteger(value.stage, 21)) return false
   const expected = mountainRingAt(value.stage)
-  return (Object.keys(expected) as (keyof MountainRingState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }

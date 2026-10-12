@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_MORNING_CARD_VERSION = '0.46.0'
 export interface MorningCardState {
   stage: number
@@ -19,8 +20,8 @@ export function morningCardAt(stage: number, funds: MorningCardState['funds'] = 
     funds: stage >= 9 ? funds : 'pending', exchange: stage >= 12 ? 'answered' : stage >= 11 ? 'yan-spoken' : 'none' }
 }
 export function validMorningCard(value: Record<string, unknown> | MorningCardState): value is MorningCardState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 14
+  if (!boundedInteger(value.stage, 14)
     || (value.stage < 9 ? value.funds !== 'pending' : !['credited', 'existing'].includes(String(value.funds)))) return false
   const expected = morningCardAt(value.stage, value.funds as MorningCardState['funds'])
-  return (Object.keys(expected) as (keyof MorningCardState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }

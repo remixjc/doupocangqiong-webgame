@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_FAMILY_VISIT_VERSION = '0.38.0'
 export const EARLY_FAMILY_VISIT_ID = 'early-family-visit'
 
@@ -22,7 +23,7 @@ export function familyVisitAt(stage: number): FamilyVisitState {
   }
 }
 export function validFamilyVisit(value: Record<string, unknown> | FamilyVisitState): value is FamilyVisitState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 17) return false
+  if (!boundedInteger(value.stage, 17)) return false
   const expected = familyVisitAt(value.stage)
-  return (Object.keys(expected) as (keyof FamilyVisitState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }

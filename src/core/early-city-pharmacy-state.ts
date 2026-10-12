@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_CITY_PHARMACY_VERSION = '0.47.0'
 export interface CityPharmacyState {
   stage: number
@@ -17,9 +18,9 @@ export function cityPharmacyAt(stage: number, primary: CityPharmacyState['primar
     review: stage >= 13 ? 'herbs-only' : 'none' }
 }
 export function validCityPharmacy(value: Record<string, unknown> | CityPharmacyState): value is CityPharmacyState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 15
+  if (!boundedInteger(value.stage, 15)
     || (value.stage < 11 ? value.primaryOrder !== 'pending' : !['new', 'existing'].includes(String(value.primaryOrder)))
     || (value.stage < 12 ? value.auxiliaryOrder !== 'pending' : !['new', 'existing'].includes(String(value.auxiliaryOrder)))) return false
   const expected = cityPharmacyAt(value.stage, value.primaryOrder as CityPharmacyState['primaryOrder'], value.auxiliaryOrder as CityPharmacyState['auxiliaryOrder'])
-  return (Object.keys(expected) as (keyof CityPharmacyState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }

@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_APPRENTICE_VERSION = '0.42.0'
 export const EARLY_APPRENTICE_ID = 'early-apprentice'
 export interface ApprenticeState {
@@ -28,7 +29,7 @@ export function apprenticeAt(stage: number): ApprenticeState {
     name: stage >= 24 ? 'yaolao' : 'unknown' }
 }
 export function validApprentice(value: Record<string, unknown> | ApprenticeState): value is ApprenticeState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 25) return false
+  if (!boundedInteger(value.stage, 25)) return false
   const expected = apprenticeAt(value.stage)
-  return (Object.keys(expected) as (keyof ApprenticeState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }

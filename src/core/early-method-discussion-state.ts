@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_METHOD_DISCUSSION_VERSION = '0.43.0'
 export interface MethodDiscussionState {
   stage: number
@@ -29,7 +30,7 @@ export function methodDiscussionAt(stage: number): MethodDiscussionState {
     viewing: stage >= 27 ? 'deferred' : stage >= 26 ? 'requested' : 'unasked' }
 }
 export function validMethodDiscussion(value: Record<string, unknown> | MethodDiscussionState): value is MethodDiscussionState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 28) return false
+  if (!boundedInteger(value.stage, 28)) return false
   const expected = methodDiscussionAt(value.stage)
-  return (Object.keys(expected) as (keyof MethodDiscussionState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }

@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 import { familyVisitAt, validFamilyVisit, type FamilyVisitState } from './early-family-visit-state'
 import { familyCompensationAt, validFamilyCompensation, type FamilyCompensationState } from './early-family-compensation-state'
 import { familyContractAt, validFamilyContract, type FamilyContractState } from './early-family-contract-state'
@@ -222,7 +223,7 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (!validMarketSearch(marketSearch) || marketSearch.stage > 0 && marketEscort.stage !== 24) return invalid()
   result.marketSearch = marketSearchAt(marketSearch.stage)
   const liquid = data.liquid === undefined && legacyLiquid ? result.liquid : object(data.liquid)
-  if (typeof liquid.stage !== 'number' || !Number.isSafeInteger(liquid.stage) || liquid.stage < 0 || liquid.stage > 6
+  if (!boundedInteger(liquid.stage, 6)
     || liquid.water !== (liquid.stage >= 2) || liquid.ready !== (liquid.stage === 6)) return invalid()
   result.liquid = { stage: liquid.stage, water: liquid.water as boolean, ready: liquid.ready as boolean }
   let spent = 0
@@ -239,48 +240,46 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (purse.spent !== spent || spent > (purse.borrowed as number)) return invalid()
   result.purse = { own: 0, borrowed: purse.borrowed as number, spent }
   const market = data.market === undefined && legacyMarket ? result.market : object(data.market)
-  if (typeof market.stage !== 'number' || !Number.isSafeInteger(market.stage) || market.stage < 0 || market.stage > 4
+  if (!boundedInteger(market.stage, 4)
     || market.blackIron !== (market.stage === 4 ? 1 : 0)) return invalid()
   if (market.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   if (market.stage === 4 && !result.receipts.woodCore) return invalid()
   result.market = { stage: market.stage, blackIron: market.blackIron as number }
   if (liquid.stage > 0 && (!result.receipts.woodCore || market.stage !== 4)) return invalid()
   const practice = data.practice === undefined && legacyPractice ? result.practice : object(data.practice)
-  const integer = (input: unknown, max: number): input is number =>
-    typeof input === 'number' && Number.isSafeInteger(input) && input >= 0 && input <= max
-  if (!integer(practice.phase, 4) || !integer(practice.pulse, 3)
-    || !integer(practice.score, 300) || !integer(practice.attempts, 1_000_000)) return invalid()
+  if (!boundedInteger(practice.phase, 4) || !boundedInteger(practice.pulse, 3)
+    || !boundedInteger(practice.score, 300) || !boundedInteger(practice.attempts, 1_000_000)) return invalid()
   if (practice.phase > 0 && !result.liquid.ready) return invalid()
   if (practice.phase === 0 && (practice.pulse || practice.score || practice.attempts)) return invalid()
   if (practice.phase === 1 && (practice.pulse > 2 || practice.score > practice.pulse * 100)) return invalid()
   if (practice.phase >= 2 && (practice.pulse !== 3 || practice.score < 180)) return invalid()
   result.practice = { phase: practice.phase, pulse: practice.pulse, score: practice.score, attempts: practice.attempts }
   const bracelet = data.bracelet === undefined && legacyBracelet ? result.bracelet : object(data.bracelet)
-  if (!integer(bracelet.stage, 6) || bracelet.gift !== (bracelet.stage >= 5 ? 'xuner' : 'none')
+  if (!boundedInteger(bracelet.stage, 6) || bracelet.gift !== (bracelet.stage >= 5 ? 'xuner' : 'none')
     || bracelet.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   result.bracelet = { stage: bracelet.stage, gift: bracelet.gift as 'none' | 'xuner' }
   const growth = data.growth === undefined && legacyGrowth ? result.growth : object(data.growth)
-  if (!integer(growth.stage, 3) || growth.stage > 0 && practice.phase !== 4) return invalid()
+  if (!boundedInteger(growth.stage, 3) || growth.stage > 0 && practice.phase !== 4) return invalid()
   result.growth = { stage: growth.stage }
   const hall = data.hall === undefined && legacyHall ? result.hall : object(data.hall)
-  if (!integer(hall.stage, 9) || hall.stage > 0 && practice.phase !== 4) return invalid()
+  if (!boundedInteger(hall.stage, 9) || hall.stage > 0 && practice.phase !== 4) return invalid()
   const scroll = hall.scroll === undefined && legacyHallScroll && hall.stage <= 1 ? 'none' : hall.scroll
   const expectedScroll = hall.stage >= 8 ? 'borrowed-second' : hall.stage === 7 ? 'selected-second'
     : hall.stage >= 2 && hall.stage <= 5 ? 'reading-first' : 'none'
   if (scroll !== expectedScroll) return invalid()
   result.hall = { stage: hall.stage, scroll: scroll as EarlyTrainingState['hall']['scroll'] }
   const teaching = data.teaching === undefined && legacyTeaching ? result.teaching : object(data.teaching)
-  if (!integer(teaching.stage, 5) || teaching.stage > 0 && hall.stage !== 9) return invalid()
+  if (!boundedInteger(teaching.stage, 5) || teaching.stage > 0 && hall.stage !== 9) return invalid()
   result.teaching = { stage: teaching.stage }
   const supervision = data.supervision === undefined && legacySupervision ? result.supervision : object(data.supervision)
-  if (!integer(supervision.stage, 2) || !integer(supervision.pulses, 4) || !integer(supervision.attempts, 1_000_000)
+  if (!boundedInteger(supervision.stage, 2) || !boundedInteger(supervision.pulses, 4) || !boundedInteger(supervision.attempts, 1_000_000)
     || ((supervision.stage > 0 || supervision.attempts > 0) && teaching.stage !== 5)
     || supervision.stage === 0 && supervision.pulses !== 0
     || supervision.stage === 1 && supervision.pulses >= 4
     || supervision.stage === 2 && supervision.pulses !== 4) return invalid()
   result.supervision = { stage: supervision.stage, pulses: supervision.pulses, attempts: supervision.attempts }
   const recovery = data.recovery === undefined && legacyRecovery ? result.recovery : object(data.recovery)
-  if (!integer(recovery.stage, 7) || recovery.stage > 0 && supervision.stage !== 2
+  if (!boundedInteger(recovery.stage, 7) || recovery.stage > 0 && supervision.stage !== 2
     || recovery.energy !== recoveryEnergyAt(recovery.stage)
     || recovery.period !== (recovery.stage >= 6 ? 'reviewed' : 'unreviewed')
     || recovery.result !== (recovery.stage === 7 ? 'fifth-duan' : 'none')) return invalid()
@@ -288,15 +287,15 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     period: recovery.period as EarlyTrainingState['recovery']['period'], result: recovery.result as EarlyTrainingState['recovery']['result'] }
   const consignment = data.consignment === undefined && legacyConsignment ? result.consignment : object(data.consignment)
   const appraisal = data.appraisal === undefined && legacyAppraisal ? result.appraisal : object(data.appraisal)
-  if (!integer(appraisal.stage, 8) || appraisal.stage > 0 && consignment.stage !== 5
+  if (!boundedInteger(appraisal.stage, 8) || appraisal.stage > 0 && consignment.stage !== 5
     || appraisal.cloaked !== (appraisal.stage >= 1) || appraisal.speaker !== (appraisal.stage >= 4 ? 'yaolao' : 'self')
     || appraisal.tier !== (appraisal.stage >= 6 ? 2 : 0) || appraisal.card !== (appraisal.stage >= 7 ? 'black-entry' : 'none')) return invalid()
   result.appraisal = { stage: appraisal.stage, cloaked: appraisal.cloaked as boolean, speaker: appraisal.speaker as EarlyTrainingState['appraisal']['speaker'],
     tier: appraisal.tier as number, card: appraisal.card as EarlyTrainingState['appraisal']['card'] }
   const fatherGift = data.fatherGift === undefined && legacyFatherGift ? result.fatherGift : object(data.fatherGift)
-  if (!integer(fatherGift.stage, 6)) return invalid()
+  if (!boundedInteger(fatherGift.stage, 6)) return invalid()
   result.fatherGift = { stage: fatherGift.stage }
-  if (!integer(consignment.stage, 5) || consignment.stage > 0 && recovery.stage !== 7
+  if (!boundedInteger(consignment.stage, 5) || consignment.stage > 0 && recovery.stage !== 7
     || consignment.funds !== (consignment.stage > 0 ? CONSIGNMENT_FUNDS : 0)) return invalid()
   const saleReceipts = object(consignment.receipts), saleSupplies = object(consignment.supplies)
   let saleSpent = 0, saleOrders = 0
@@ -315,19 +314,19 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   result.consignment = { ...parsed, stage: consignment.stage, funds: consignment.funds as number, spent: saleSpent,
     product: consignment.product as EarlyTrainingState['consignment']['product'], owner: consignment.owner as EarlyTrainingState['consignment']['owner'] }
   const auction = data.auction === undefined && legacyAuction ? result.auction : object(data.auction)
-  if (!integer(auction.stage, 7) || auction.stage > 0 && appraisal.stage !== 8) return invalid()
+  if (!boundedInteger(auction.stage, 7) || auction.stage > 0 && appraisal.stage !== 8) return invalid()
   result.auction = { stage: auction.stage }
   const settlement = data.settlement === undefined && legacySettlement ? result.settlement : object(data.settlement)
-  if (!integer(settlement.stage, 7) || settlement.stage > 0 && auction.stage !== 7
+  if (!boundedInteger(settlement.stage, 7) || settlement.stage > 0 && auction.stage !== 7
     || settlement.vip !== (settlement.stage >= 4) || settlement.net !== (settlement.stage >= 6 ? 39200 : 0)) return invalid()
   result.settlement = { stage: settlement.stage, net: settlement.net as number, vip: settlement.vip as boolean }
   if (fatherGift.stage > 0 && settlement.stage !== 7) return invalid()
   const xunerVisit = data.xunerVisit === undefined && legacyXunerVisit ? result.xunerVisit : object(data.xunerVisit)
-  if (!integer(xunerVisit.stage, 7) || xunerVisit.stage > 0 && fatherGift.stage !== 6
+  if (!boundedInteger(xunerVisit.stage, 7) || xunerVisit.stage > 0 && fatherGift.stage !== 6
     || xunerVisit.card !== xunerCardAt(xunerVisit.stage)) return invalid()
   result.xunerVisit = { stage: xunerVisit.stage, card: xunerVisit.card as EarlyTrainingState['xunerVisit']['card'] }
   const longSupplies = data.longSupplies === undefined && legacyLongSupplies ? result.longSupplies : object(data.longSupplies)
-  if (!integer(longSupplies.stage, 6) || longSupplies.stage > 0 && xunerVisit.stage !== 7
+  if (!boundedInteger(longSupplies.stage, 6) || longSupplies.stage > 0 && xunerVisit.stage !== 7
     || longSupplies.herbs !== longSupplyPlaceAt(longSupplies.stage, 'herbs')
     || longSupplies.cores !== longSupplyPlaceAt(longSupplies.stage, 'cores')) return invalid()
   result.longSupplies = { stage: longSupplies.stage, herbs: longSupplies.herbs as LongSupplyPlace, cores: longSupplies.cores as LongSupplyPlace }
@@ -393,16 +392,14 @@ export function eighthTrainingAt(stage: number): Pick<EighthTrainingState, 'outi
     energy: stage >= 12 ? 'little' : stage >= 3 ? 'active' : 'unobserved', result: stage >= 14 ? 'eighth-duan' : 'none' }
 }
 export function validEighthTraining(task: Record<string, unknown> | EighthTrainingState): task is EighthTrainingState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  if (!integer(task.stage, 15) || !integer(task.beats, task.stage === 8 ? 2 : task.stage === 7 || task.stage === 12 ? 1 : 0)
-    || !integer(task.attempts, task.stage < 7 ? 0 : 1_000_000)) return false
+  if (!boundedInteger(task.stage, 15) || !boundedInteger(task.beats, task.stage === 8 ? 2 : task.stage === 7 || task.stage === 12 ? 1 : 0)
+    || !boundedInteger(task.attempts, task.stage < 7 ? 0 : 1_000_000)) return false
   const expected = eighthTrainingAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }
 
 export function validKeChallenge(task: Record<string, unknown> | KeChallengeState): task is KeChallengeState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  return integer(task.stage, 12) && integer(task.beats, 2) && integer(task.attempts, 1_000_000)
+  return boundedInteger(task.stage, 12) && boundedInteger(task.beats, 2) && boundedInteger(task.attempts, 1_000_000)
     && (task.stage < 2 ? task.beats === 0 && task.attempts === 0 : task.stage === 2 ? task.beats === 0 : task.stage === 3 ? task.beats < 2 : task.beats === 2)
     && task.verdict === (task.stage >= 5 ? 'xiaoyan' : task.stage === 4 ? 'pending' : 'none')
     && task.invitation === (task.stage >= 11 ? 'offered' : 'none')
@@ -413,7 +410,7 @@ export function preliminaryAt(stage: number): Omit<PreliminaryState, 'stage'> {
     yan: stage >= 11 ? 'seventh-duan' : 'unmeasured' }
 }
 export function validPreliminary(task: Record<string, unknown> | PreliminaryState): task is PreliminaryState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 16) return false
+  if (!boundedInteger(task.stage, 16)) return false
   const expected = preliminaryAt(task.stage)
   return task.mei === expected.mei && task.xuner === expected.xuner && task.yan === expected.yan
 }
@@ -425,8 +422,7 @@ export function palmPairAt(stage: number): Pick<PalmPairState, 'first' | 'second
     period: stage >= 7 ? 'reviewed' : 'unreviewed' }
 }
 export function validPalmPair(task: Record<string, unknown> | PalmPairState): task is PalmPairState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  if (!integer(task.stage, 10) || !integer(task.beats, 2) || !integer(task.attempts, 1_000_000)) return false
+  if (!boundedInteger(task.stage, 10) || !boundedInteger(task.beats, 2) || !boundedInteger(task.attempts, 1_000_000)) return false
   const expected = palmPairAt(task.stage)
   return (task.stage < 5 ? task.beats === 0 && task.attempts === 0 : task.stage === 5 ? task.beats < 2 : task.beats === 2)
     && task.first === expected.first && task.second === expected.second && task.teaching === expected.teaching && task.period === expected.period
@@ -437,8 +433,7 @@ export function seventhEnergyAt(stage: number): SeventhRoomState['energy'] {
     : stage === 3 ? 'clear' : stage === 4 ? 'restored' : 'lighter'
 }
 export function validSeventhRoom(task: Record<string, unknown> | SeventhRoomState): task is SeventhRoomState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  return integer(task.stage, 8) && integer(task.beats, 3) && integer(task.attempts, 1_000_000)
+  return boundedInteger(task.stage, 8) && boundedInteger(task.beats, 3) && boundedInteger(task.attempts, 1_000_000)
     && (task.stage === 0 ? task.beats === 0 && task.attempts === 0
       : task.stage === 1 ? task.beats <= 1 : task.stage <= 3 ? task.beats === 2
       : task.stage === 4 ? task.beats <= 2 : task.beats === 3)
@@ -448,8 +443,7 @@ export function validSeventhRoom(task: Record<string, unknown> | SeventhRoomStat
 }
 
 export function validForestStrike(task: Record<string, unknown> | ForestStrikeState): task is ForestStrikeState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  return integer(task.stage, 7) && integer(task.beats, 3) && integer(task.attempts, 1_000_000)
+  return boundedInteger(task.stage, 7) && boundedInteger(task.beats, 3) && boundedInteger(task.attempts, 1_000_000)
     && (task.stage >= 3 ? task.beats === 3 : task.stage === 2 ? task.beats <= 2 : task.beats === 0)
     && (task.stage !== 0 || task.attempts === 0)
     && task.tree === (task.stage >= 3 ? 'fallen' : 'intact')
@@ -479,7 +473,7 @@ export function ceremonyGuestsAt(stage: number): Omit<CeremonyGuestsState, 'stag
   return { sword: stage >= 7 ? 'sheathed' : stage >= 5 ? 'drawn' : 'none', introduced: stage >= 10 }
 }
 export function validCeremonyGuests(task: Record<string, unknown> | CeremonyGuestsState): task is CeremonyGuestsState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 12) return false
+  if (!boundedInteger(task.stage, 12)) return false
   const expected = ceremonyGuestsAt(task.stage)
   return task.sword === expected.sword && task.introduced === expected.introduced
 }
@@ -489,21 +483,19 @@ export function ceremonialTestAt(stage: number): Omit<CeremonialTestState, 'stag
     result: stage >= 9 ? 'eighth-duan' : 'unmeasured' }
 }
 export function validCeremonialTest(task: Record<string, unknown> | CeremonialTestState): task is CeremonialTestState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 13) return false
+  if (!boundedInteger(task.stage, 13)) return false
   const expected = ceremonialTestAt(task.stage)
   return task.rite === expected.rite && task.inspected === expected.inspected && task.result === expected.result
 }
 
 export function validNingFirst(task: Record<string, unknown> | NingFirstState): task is NingFirstState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  return integer(task.stage, 10) && integer(task.beats, 3) && integer(task.attempts, task.stage < 5 ? 0 : 1_000_000)
+  return boundedInteger(task.stage, 10) && boundedInteger(task.beats, 3) && boundedInteger(task.attempts, task.stage < 5 ? 0 : 1_000_000)
     && (task.stage < 6 ? task.beats === 0 : task.stage === 6 ? task.beats < 3 : task.beats === 3)
     && task.pill === (task.stage >= 2 ? 'ning-held' : 'unseen') && task.verdict === (task.stage >= 7 ? 'pending' : 'none')
 }
 
 export function validNingSecond(task: Record<string, unknown> | NingSecondState): task is NingSecondState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  return integer(task.stage, 8) && integer(task.beats, 2) && integer(task.attempts, task.stage < 3 ? 0 : 1_000_000)
+  return boundedInteger(task.stage, 8) && boundedInteger(task.beats, 2) && boundedInteger(task.attempts, task.stage < 3 ? 0 : 1_000_000)
     && (task.stage < 4 ? task.beats === 0 : task.stage === 4 ? task.beats < 2 : task.beats === 2)
     && task.pill === (task.stage === 0 ? 'ning-held' : 'used') && task.ignored === (task.stage >= 2)
     && task.contact === (task.stage >= 5 ? 'out' : task.stage === 4 && task.beats === 1 ? 'met' : 'none')
@@ -517,9 +509,9 @@ export function ceremonyVerdictAt(stage: number): Omit<CeremonyVerdictState, 'st
     nextHall: stage >= 15 ? 'five-days' : 'none' }
 }
 export function validCeremonyVerdict(task: Record<string, unknown> | CeremonyVerdictState): task is CeremonyVerdictState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 16) return false
+  if (!boundedInteger(task.stage, 16)) return false
   const expected = ceremonyVerdictAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }
 export function qiPavilionEntryAt(stage: number): Omit<QiPavilionEntryState, 'stage'> {
   return { door: stage >= 3 ? 'open' : 'closed', other: stage >= 4 ? 'wind' : 'unmeasured',
@@ -528,29 +520,28 @@ export function qiPavilionEntryAt(stage: number): Omit<QiPavilionEntryState, 'st
     hint: stage >= 6 ? 'fire-3-43' : 'none', permission: stage >= 8, entered: stage >= 10 }
 }
 export function validQiPavilionEntry(task: Record<string, unknown> | QiPavilionEntryState): task is QiPavilionEntryState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 12) return false
+  if (!boundedInteger(task.stage, 12)) return false
   const expected = qiPavilionEntryAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }
 export function qiBarrierAt(stage: number): Pick<QiBarrierState, 'path' | 'room37' | 'room43' | 'barrier' | 'entered'> {
   return { path: stage >= 2 ? 3 : 0, room37: stage >= 3, room43: stage >= 4,
     barrier: stage >= 7 ? 'broken' : stage >= 5 ? 'touched' : stage >= 4 ? 'intact' : 'unobserved', entered: stage >= 9 }
 }
 export function validQiBarrier(task: Record<string, unknown> | QiBarrierState): task is QiBarrierState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  if (!integer(task.stage, 10) || !integer(task.beats, 3) || !integer(task.attempts, task.stage === 0 ? 0 : 1_000_000)
+  if (!boundedInteger(task.stage, 10) || !boundedInteger(task.beats, 3) || !boundedInteger(task.attempts, task.stage === 0 ? 0 : 1_000_000)
     || (task.stage < 6 ? task.beats !== 0 : task.stage === 6 ? task.beats >= 3 : task.beats !== 3)) return false
   const expected = qiBarrierAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }
 
 export function qiPavilionScrollAt(stage: number): Pick<QiPavilionScrollState, 'family' | 'offer' | 'owner'> {
   return { family: stage >= 2 ? 'held' : 'none', offer: stage >= 4 ? (stage >= 5 ? 'declined' : 'offered') : 'none', owner: stage >= 3 ? 'xiaoyan' : 'none' }
 }
 export function validQiPavilionScroll(task: Record<string, unknown> | QiPavilionScrollState): task is QiPavilionScrollState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 6) return false
+  if (!boundedInteger(task.stage, 6)) return false
   const expected = qiPavilionScrollAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }
 export function qiPavilionAidAt(stage: number): Omit<QiPavilionAidState, 'stage' | 'beats' | 'attempts'> {
   return { group: stage >= 1 ? 'together' : 'none', xunerScroll: stage >= 2 ? 'xuner' : 'none',
@@ -558,18 +549,17 @@ export function qiPavilionAidAt(stage: number): Omit<QiPavilionAidState, 'stage'
     returned: stage >= 6, solo: stage >= 7, thanks: stage >= 8 ? 'spoken' : 'none' }
 }
 export function validQiPavilionAid(task: Record<string, unknown> | QiPavilionAidState): task is QiPavilionAidState {
-  const integer = (value: unknown, max: number): value is number => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= max
-  if (!integer(task.stage, 10) || !integer(task.attempts, task.stage < 6 ? 0 : 1_000_000)
-    || !integer(task.beats, task.stage < 6 ? 0 : task.stage === 6 ? 1 : 2) || task.stage > 6 && task.beats !== 2) return false
+  if (!boundedInteger(task.stage, 10) || !boundedInteger(task.attempts, task.stage < 6 ? 0 : 1_000_000)
+    || !boundedInteger(task.beats, task.stage < 6 ? 0 : task.stage === 6 ? 1 : 2) || task.stage > 6 && task.beats !== 2) return false
   const expected = qiPavilionAidAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }
 export function qiPavilionExchangeAt(stage: number): Omit<QiPavilionExchangeState, 'stage'> {
   return { familyOwner: stage >= 3 && stage < 5 ? 'xuner' : 'xiaoyan',
     support: stage >= 4 ? 'shown' : 'hidden', reply: stage >= 6 ? 'declined' : 'none' }
 }
 export function validQiPavilionExchange(task: Record<string, unknown> | QiPavilionExchangeState): task is QiPavilionExchangeState {
-  if (typeof task.stage !== 'number' || !Number.isSafeInteger(task.stage) || task.stage < 0 || task.stage > 8) return false
+  if (!boundedInteger(task.stage, 8)) return false
   const expected = qiPavilionExchangeAt(task.stage)
-  return (Object.keys(expected) as (keyof typeof expected)[]).every(key => task[key] === expected[key])
+  return fieldsMatch(task, expected)
 }

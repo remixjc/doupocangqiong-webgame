@@ -1,3 +1,4 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
 export const EARLY_MOUNTAIN_VISITOR_VERSION = '0.45.0'
 export interface MountainVisitorState {
   stage: number
@@ -27,7 +28,7 @@ export function mountainVisitorAt(stage: number): MountainVisitorState {
     xuner: stage >= 25 ? 'reflected' : stage >= 24 ? 'after-departure' : 'meeting' }
 }
 export function validMountainVisitor(value: Record<string, unknown> | MountainVisitorState): value is MountainVisitorState {
-  if (typeof value.stage !== 'number' || !Number.isSafeInteger(value.stage) || value.stage < 0 || value.stage > 26) return false
+  if (!boundedInteger(value.stage, 26)) return false
   const expected = mountainVisitorAt(value.stage)
-  return (Object.keys(expected) as (keyof MountainVisitorState)[]).every(key => value[key] === expected[key])
+  return fieldsMatch(value, expected)
 }
