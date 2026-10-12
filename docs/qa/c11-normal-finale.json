@@ -1,0 +1,920 @@
+{
+  "batch": "C11c-3m/C9c",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "892e59f32405e7cacc2bbbcb3df1e64814e93c68",
+  "previousCI": {
+    "id": 38198508246,
+    "conclusion": "success",
+    "pagesId": 38198508283,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "native UI same ordinary journey, real unmodified downloads, official parseSave outside browser; HP/phase separately read live DOM",
+  "records": [
+    {
+      "key": "28-prepared",
+      "file": ".git/task-normal-ch28-prepared-export.json",
+      "bytes": 23071,
+      "fileSha256": "85573fb3ae70575ab14b8a09ca4bdbe207639b56616069823a480cce3b4a7dbf",
+      "stateSha256": "c43ce8862c250efd3e86164751f85ca62b785ec81f19aae986f6919333d90988",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "gold": 17738,
+      "xp": 13670,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "28-blood",
+      "file": ".git/task-normal-ch28-blood-export.json",
+      "bytes": 23071,
+      "fileSha256": "04e60e6de28bd1207727e0d7420d9ce2c63a875f31669781d641084103efa0bb",
+      "stateSha256": "c43ce8862c250efd3e86164751f85ca62b785ec81f19aae986f6919333d90988",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "gold": 17738,
+      "xp": 13670,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "28-flame",
+      "file": ".git/task-normal-ch28-flame-export.json",
+      "bytes": 23071,
+      "fileSha256": "d2b18e0c71e98a483298942526585cec051c88e217b035e576fbb57b849472fa",
+      "stateSha256": "c43ce8862c250efd3e86164751f85ca62b785ec81f19aae986f6919333d90988",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "gold": 17738,
+      "xp": 13670,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "28-victory",
+      "file": ".git/task-normal-ch28-victory-export.json",
+      "bytes": 23070,
+      "fileSha256": "3f9bb85be2de74c2aa805734695da5126aeb75445a58298672856ce9025db9da",
+      "stateSha256": "84e2046e28dba1ba043343e5fe2fff0c7d30f4ef65d14f15697dd3fc1f6f2160",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "gold": 17738,
+      "xp": 13670,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "28",
+      "file": ".git/task-normal-ch28-export.json",
+      "bytes": 23080,
+      "fileSha256": "91e196397e890a8c265eabf7f1cfc9526656a1485544ec9110daed527037ca0f",
+      "stateSha256": "453c547f7ec7d3a51625f180f2116533d644d93ae7f79548a1a44c9edde8cc05",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "gold": 18718,
+      "xp": 14470,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "28-refreshed",
+      "file": ".git/task-normal-ch28-refreshed-export.json",
+      "bytes": 23080,
+      "fileSha256": "e833583e6d5bc6c47fe436d0bd21cf2ef4346ada4e43304b8128012df81209f2",
+      "stateSha256": "453c547f7ec7d3a51625f180f2116533d644d93ae7f79548a1a44c9edde8cc05",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "gold": 18718,
+      "xp": 14470,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "28-reentry",
+      "file": ".git/task-normal-ch28-reentry-export.json",
+      "bytes": 23080,
+      "fileSha256": "bbd8690157ee02d173471588ca6c5250b6479fdfb29c8cc078801b0406b54d9d",
+      "stateSha256": "453c547f7ec7d3a51625f180f2116533d644d93ae7f79548a1a44c9edde8cc05",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "gold": 18718,
+      "xp": 14470,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "final-battle-three-vows": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-epilogue-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-homeward-message": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-homeward-farewell": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-homeward-promise": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-epilogue-teaching": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-homeward-letter": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "entireStateRefreshAndReentryEqual": true,
+  "first27ProgressUnchanged": true,
+  "preparedBloodAndFlamePersistentStateEqual": true,
+  "observations": {
+    "bossMaxHp": 1568,
+    "bossHpObserved": [
+      1568,
+      1174,
+      1045,
+      522,
+      286
+    ],
+    "phaseOrder": [
+      "大陆战场",
+      "血环裂界",
+      "帝炎交界"
+    ],
+    "playerHpAtEachPhaseStart": [
+      706,
+      706,
+      706
+    ],
+    "playerHpAfterFirstFlameWarning": 621,
+    "playerHpAtVictory": 536,
+    "ordinaryKillsAdded": 0,
+    "healUsed": 0,
+    "manaItemsUsed": 0,
+    "restOrRefreshDuringBattle": false,
+    "death": false,
+    "lateNativeNavigationToGateBeforeCounterattack": true,
+    "victoryReturnedToCampViaNativeNavigation": [
+      150,
+      650
+    ],
+    "firstClearGold": 980,
+    "firstClearXp": 800,
+    "worldMapCompleted": 28,
+    "worldMapOrdinaryKills": 75,
+    "worldMapBrews": 0,
+    "optionalPartnerPages": "unstarted; no manufactured completion",
+    "manualSlots": "three empty",
+    "reentryBossMeterCount": 0,
+    "reentryNoFirstClearButton": true,
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop not physical devices or player Beta",
+    "Three realms and actual HP carryover observed, not exact multiplier or 1.5s shield timing acceptance",
+    "No artificial death final-frame or failure-save claim; no battle reload this run",
+    "Persistent JSON omits live boss HP/phase; runtime DOM and screenshots supply phase evidence separately",
+    "28 compressed chapters playable does not complete full novel, current anime, character, rights or public deployment gates",
+    "No runtime/browser-store/coordinate or save fabrication"
+  ]
+}
