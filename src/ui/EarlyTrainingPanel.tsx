@@ -1,5 +1,6 @@
 import DeferredScene from './DeferredScene'
-import { lazy, useEffect, useRef, useState } from 'react'
+import { lazy } from 'react'
+import { useReturningScene } from './use-returning-scene'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
@@ -37,133 +38,73 @@ const EarlyIron = lazy(() => loadSceneModule(() => import('./EarlyIron')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
-  const [walking, setWalking] = useState(false)
-  const [pavilion, setPavilion] = useState(false)
-  const [barrier, setBarrier] = useState(false)
-  const [scroll, setScroll] = useState(false)
-  const [aid, setAid] = useState(false)
-  const [exchange, setExchange] = useState(false)
-  const [familyVisit, setFamilyVisit] = useState(false)
-  const [familyCompensation, setFamilyCompensation] = useState(false)
-  const [familyContract, setFamilyContract] = useState(false)
-  const [mountainRing, setMountainRing] = useState(false)
-  const [apprentice, setApprentice] = useState(false)
-  const [methodDiscussion, setMethodDiscussion] = useState(false)
-  const [preparationBrief, setPreparationBrief] = useState(false)
-  const [mountainVisitor, setMountainVisitor] = useState(false)
-  const [morningCard, setMorningCard] = useState(false)
-  const [cityPharmacy, setCityPharmacy] = useState(false)
-  const [marketEscort, setMarketEscort] = useState(false)
-  const [marketSearch, setMarketSearch] = useState(false)
-  const [refining, setRefining] = useState(false)
-  const refiningEntry = useRef<HTMLButtonElement>(null), returningRefining = useRef(false)
-  const [infusion, setInfusion] = useState(false)
-  const infusionEntry = useRef<HTMLButtonElement>(null), returningInfusion = useRef(false)
-  const [iron, setIron] = useState(false)
-  const ironEntry = useRef<HTMLButtonElement>(null), returningIron = useRef(false)
-  const [marketReturn, setMarketReturn] = useState(false)
-  const returnEntry = useRef<HTMLButtonElement>(null), returningRoom = useRef(false)
-  const [marketTrade, setMarketTrade] = useState(false)
-  const tradeEntry = useRef<HTMLButtonElement>(null), returningTrade = useRef(false)
-  const [marketDiscovery, setMarketDiscovery] = useState(false)
-  const discoveryEntry = useRef<HTMLButtonElement>(null), returningDiscovery = useRef(false)
-  const [marketStandoff, setMarketStandoff] = useState(false)
-  const standoffEntry = useRef<HTMLButtonElement>(null), returningStandoff = useRef(false)
-  const [marketBracelets, setMarketBracelets] = useState(false)
-  const braceletsEntry = useRef<HTMLButtonElement>(null), returningBracelets = useRef(false)
-  const searchEntry = useRef<HTMLButtonElement>(null), returningSearch = useRef(false)
-  const escortEntry = useRef<HTMLButtonElement>(null), returningEscort = useRef(false)
-  const cityEntry = useRef<HTMLButtonElement>(null), returningCity = useRef(false)
-  const morningEntry = useRef<HTMLButtonElement>(null), returningMorning = useRef(false)
-  const visitorEntry = useRef<HTMLButtonElement>(null), returningVisitor = useRef(false)
-  const briefEntry = useRef<HTMLButtonElement>(null), returningBrief = useRef(false)
-  const methodEntry = useRef<HTMLButtonElement>(null), returningMethod = useRef(false)
-  const apprenticeEntry = useRef<HTMLButtonElement>(null), returningApprentice = useRef(false)
-  const mountainRingEntry = useRef<HTMLButtonElement>(null), returningMountainRing = useRef(false)
-  const contractEntry = useRef<HTMLButtonElement>(null), returningContract = useRef(false)
-  const compensationEntry = useRef<HTMLButtonElement>(null), returningCompensation = useRef(false)
-  const familyVisitEntry = useRef<HTMLButtonElement>(null), returningFamilyVisit = useRef(false)
-  const scrollEntry = useRef<HTMLButtonElement>(null), aidEntry = useRef<HTMLButtonElement>(null), exchangeEntry = useRef<HTMLButtonElement>(null)
-  const returningScroll = useRef(false), returningAid = useRef(false), returningExchange = useRef(false)
-  const pavilionEntry = useRef<HTMLButtonElement>(null)
-  const returningPavilion = useRef(false)
-  const barrierEntry = useRef<HTMLButtonElement>(null)
-  const returningBarrier = useRef(false)
-  const entry = useRef<HTMLButtonElement>(null)
-  const returning = useRef(false)
-  useEffect(() => {
-    if (!walking && returning.current) { returning.current = false; entry.current?.focus() }
-  }, [walking])
-  useEffect(() => {
-    if (!pavilion && returningPavilion.current) { returningPavilion.current = false; pavilionEntry.current?.focus() }
-  }, [pavilion])
-  useEffect(() => {
-    if (!barrier && returningBarrier.current) { returningBarrier.current = false; barrierEntry.current?.focus() }
-  }, [barrier])
-  useEffect(() => { if (!scroll && returningScroll.current) { returningScroll.current = false; scrollEntry.current?.focus() } }, [scroll])
-  useEffect(() => { if (!exchange && returningExchange.current) { returningExchange.current = false; exchangeEntry.current?.focus() } }, [exchange])
-  useEffect(() => { if (!aid && returningAid.current) { returningAid.current = false; aidEntry.current?.focus() } }, [aid])
-  useEffect(() => { if (!familyVisit && returningFamilyVisit.current) { returningFamilyVisit.current = false; familyVisitEntry.current?.focus() } }, [familyVisit])
-  useEffect(() => { if (!familyCompensation && returningCompensation.current) { returningCompensation.current = false; compensationEntry.current?.focus() } }, [familyCompensation])
-  useEffect(() => { if (!familyContract && returningContract.current) { returningContract.current = false; contractEntry.current?.focus() } }, [familyContract])
-  useEffect(() => { if (!mountainRing && returningMountainRing.current) { returningMountainRing.current = false; mountainRingEntry.current?.focus() } }, [mountainRing])
-  useEffect(() => { if (!apprentice && returningApprentice.current) { returningApprentice.current = false; apprenticeEntry.current?.focus() } }, [apprentice])
-  useEffect(() => { if (!methodDiscussion && returningMethod.current) { returningMethod.current = false; methodEntry.current?.focus() } }, [methodDiscussion])
-  useEffect(() => { if (!preparationBrief && returningBrief.current) { returningBrief.current = false; briefEntry.current?.focus() } }, [preparationBrief])
-  useEffect(() => { if (!mountainVisitor && returningVisitor.current) { returningVisitor.current = false; visitorEntry.current?.focus() } }, [mountainVisitor])
-  useEffect(() => { if (!morningCard && returningMorning.current) { returningMorning.current = false; morningEntry.current?.focus() } }, [morningCard])
-  useEffect(() => { if (!cityPharmacy && returningCity.current) { returningCity.current = false; cityEntry.current?.focus() } }, [cityPharmacy])
-  useEffect(() => { if (!marketEscort && returningEscort.current) { returningEscort.current = false; escortEntry.current?.focus() } }, [marketEscort])
-  useEffect(() => { if (!marketSearch && returningSearch.current) { returningSearch.current = false; searchEntry.current?.focus() } }, [marketSearch])
-  useEffect(() => { if (!marketBracelets && returningBracelets.current) { returningBracelets.current = false; braceletsEntry.current?.focus() } }, [marketBracelets])
-  useEffect(() => { if (!marketStandoff && returningStandoff.current) { returningStandoff.current = false; standoffEntry.current?.focus() } }, [marketStandoff])
-  useEffect(() => { if (!marketDiscovery && returningDiscovery.current) { returningDiscovery.current = false; discoveryEntry.current?.focus() } }, [marketDiscovery])
-  useEffect(() => { if (!marketTrade && returningTrade.current) { returningTrade.current = false; tradeEntry.current?.focus() } }, [marketTrade])
-  useEffect(() => { if (!refining && returningRefining.current) { returningRefining.current = false; refiningEntry.current?.focus() } }, [refining])
-  useEffect(() => { if (!infusion && returningInfusion.current) { returningInfusion.current = false; infusionEntry.current?.focus() } }, [infusion])
-  useEffect(() => { if (!iron && returningIron.current) { returningIron.current = false; ironEntry.current?.focus() } }, [iron])
-  useEffect(() => { if (!marketReturn && returningRoom.current) { returningRoom.current = false; returnEntry.current?.focus() } }, [marketReturn])
+  const [walking, setWalking, entry, walkingBack] = useReturningScene()
+  const [pavilion, setPavilion, pavilionEntry, pavilionBack] = useReturningScene()
+  const [barrier, setBarrier, barrierEntry, barrierBack] = useReturningScene()
+  const [scroll, setScroll, scrollEntry, scrollBack] = useReturningScene()
+  const [aid, setAid, aidEntry, aidBack] = useReturningScene()
+  const [exchange, setExchange, exchangeEntry, exchangeBack] = useReturningScene()
+  const [familyVisit, setFamilyVisit, familyVisitEntry, familyVisitBack] = useReturningScene()
+  const [familyCompensation, setFamilyCompensation, compensationEntry, familyCompensationBack] = useReturningScene()
+  const [familyContract, setFamilyContract, contractEntry, familyContractBack] = useReturningScene()
+  const [mountainRing, setMountainRing, mountainRingEntry, mountainRingBack] = useReturningScene()
+  const [apprentice, setApprentice, apprenticeEntry, apprenticeBack] = useReturningScene()
+  const [methodDiscussion, setMethodDiscussion, methodEntry, methodDiscussionBack] = useReturningScene()
+  const [preparationBrief, setPreparationBrief, briefEntry, preparationBriefBack] = useReturningScene()
+  const [mountainVisitor, setMountainVisitor, visitorEntry, mountainVisitorBack] = useReturningScene()
+  const [morningCard, setMorningCard, morningEntry, morningCardBack] = useReturningScene()
+  const [cityPharmacy, setCityPharmacy, cityEntry, cityPharmacyBack] = useReturningScene()
+  const [marketEscort, setMarketEscort, escortEntry, marketEscortBack] = useReturningScene()
+  const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
+  const [refining, setRefining, refiningEntry, refiningBack] = useReturningScene()
+  const [infusion, setInfusion, infusionEntry, infusionBack] = useReturningScene()
+  const [iron, setIron, ironEntry, ironBack] = useReturningScene()
+  const [marketReturn, setMarketReturn, returnEntry, marketReturnBack] = useReturningScene()
+  const [marketTrade, setMarketTrade, tradeEntry, marketTradeBack] = useReturningScene()
+  const [marketDiscovery, setMarketDiscovery, discoveryEntry, marketDiscoveryBack] = useReturningScene()
+  const [marketStandoff, setMarketStandoff, standoffEntry, marketStandoffBack] = useReturningScene()
+  const [marketBracelets, setMarketBracelets, braceletsEntry, marketBraceletsBack] = useReturningScene()
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
-  if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={() => { returningRefining.current = true; setRefining(false) }} /></DeferredScene>
-  if (infusion) return <DeferredScene message="正在接续魔核炼化与入水……"><EarlyRefining continuation state={state} onBack={() => { returningInfusion.current = true; setInfusion(false) }} /></DeferredScene>
-  if (iron) return <DeferredScene message="正在接续铁片辨认……"><EarlyIron state={state} onBack={() => { returningIron.current = true; setIron(false) }} /></DeferredScene>
+  if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={refiningBack} /></DeferredScene>
+  if (infusion) return <DeferredScene message="正在接续魔核炼化与入水……"><EarlyRefining continuation state={state} onBack={infusionBack} /></DeferredScene>
+  if (iron) return <DeferredScene message="正在接续铁片辨认……"><EarlyIron state={state} onBack={ironBack} /></DeferredScene>
   if (marketReturn) return <DeferredScene message="正在接续回族与房中准备……"><EarlyMarketDiscovery key="return" returning state={state}
-    onBack={() => { returningRoom.current = true; setMarketReturn(false) }} /></DeferredScene>
+    onBack={marketReturnBack} /></DeferredScene>
   if (marketTrade) return <DeferredScene message="正在接续询价与唯一成交……"><EarlyMarketDiscovery key="trade" trade state={state}
-    onBack={() => { returningTrade.current = true; setMarketTrade(false) }} /></DeferredScene>
+    onBack={marketTradeBack} /></DeferredScene>
   if (marketDiscovery) return <DeferredScene message="正在接续摊位发现与心中建议……"><EarlyMarketDiscovery state={state}
-    onBack={() => { returningDiscovery.current = true; setMarketDiscovery(false) }} /></DeferredScene>
+    onBack={marketDiscoveryBack} /></DeferredScene>
   if (marketStandoff) return <DeferredScene message="正在接续围堵与非战斗离场……"><EarlyMarketStandoff state={state}
-    onBack={() => { returningStandoff.current = true; setMarketStandoff(false) }} /></DeferredScene>
+    onBack={marketStandoffBack} /></DeferredScene>
   if (marketBracelets) return <DeferredScene message="正在接续让路与两条手链……"><EarlyMarketBracelets state={state}
-    onBack={() => { returningBracelets.current = true; setMarketBracelets(false) }} /></DeferredScene>
+    onBack={marketBraceletsBack} /></DeferredScene>
   if (marketSearch) return <DeferredScene message="正在接续寻核与手链摊……"><EarlyMarketSearch state={state}
-    onBack={() => { returningSearch.current = true; setMarketSearch(false) }} /></DeferredScene>
+    onBack={marketSearchBack} /></DeferredScene>
   if (marketEscort) return <DeferredScene message="正在接续南坊与巡卫……"><EarlyMarketEscort state={state}
-    onBack={() => { returningEscort.current = true; setMarketEscort(false) }} /></DeferredScene>
+    onBack={marketEscortBack} /></DeferredScene>
   if (cityPharmacy) return <DeferredScene message="正在接续实际同行与药铺采购……"><EarlyCityPharmacy state={state}
-    onBack={() => { returningCity.current = true; setCityPharmacy(false) }} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></DeferredScene>
+    onBack={cityPharmacyBack} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></DeferredScene>
   if (morningCard) return <DeferredScene message="正在接续晨间普通黑卡交接……"><EarlyMorningCard state={state}
-    onBack={() => { returningMorning.current = true; setMorningCard(false) }} onRoute={() => { setMorningCard(false); setWalking(true) }} /></DeferredScene>
-  if (mountainVisitor) return <DeferredScene message="正在接续当晚来访与借资问答……"><EarlyMountainVisitor state={state} onBack={() => { returningVisitor.current = true; setMountainVisitor(false) }} /></DeferredScene>
+    onBack={morningCardBack} onRoute={() => { setMorningCard(false); setWalking(true) }} /></DeferredScene>
+  if (mountainVisitor) return <DeferredScene message="正在接续当晚来访与借资问答……"><EarlyMountainVisitor state={state} onBack={mountainVisitorBack} /></DeferredScene>
   if (preparationBrief) return <DeferredScene message="正在接续准备说明与老师返戒……"><EarlyPreparationBrief state={state}
-    onBack={() => { returningBrief.current = true; setPreparationBrief(false) }}
+    onBack={preparationBriefBack}
     onRoute={() => { setPreparationBrief(false); setWalking(true) }} /></DeferredScene>
-  if (methodDiscussion) return <DeferredScene message="正在打开青石前的功法说明……"><EarlyMethodDiscussion state={state} onBack={() => { returningMethod.current = true; setMethodDiscussion(false) }} /></DeferredScene>
-  if (apprentice) return <DeferredScene message="正在接续援助交涉与本人拜师……"><EarlyApprentice state={state} onBack={() => { returningApprentice.current = true; setApprentice(false) }} /></DeferredScene>
-  if (mountainRing) return <DeferredScene message="正在走上后山，察看古戒……"><EarlyMountainRing state={state} onBack={() => { returningMountainRing.current = true; setMountainRing(false) }} /></DeferredScene>
-  if (familyContract) return <DeferredScene message="正在接续文书与双方离厅……"><EarlyFamilyContract state={state} onBack={() => { returningContract.current = true; setFamilyContract(false) }} /></DeferredScene>
-  if (familyCompensation) return <DeferredScene message="正在接续补偿与本人发言……"><EarlyFamilyCompensation state={state} onBack={() => { returningCompensation.current = true; setFamilyCompensation(false) }} /></DeferredScene>
-  if (familyVisit) return <DeferredScene message="正在回到拜师前的接待厅……"><EarlyFamilyVisit state={state} onBack={() => { returningFamilyVisit.current = true; setFamilyVisit(false) }} /></DeferredScene>
-  if (barrier) return <DeferredScene message="正在进入火通道与四十三号门障……"><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></DeferredScene>
-  if (scroll) return <DeferredScene message="正在打开卷轴保管记录……"><EarlyQiScroll state={state} onBack={() => { returningScroll.current = true; setScroll(false) }} /></DeferredScene>
-  if (exchange) return <DeferredScene message="正在回看双卷交接……"><EarlyQiExchange state={state} onBack={() => { returningExchange.current = true; setExchange(false) }} /></DeferredScene>
-  if (aid) return <DeferredScene message="正在打开同行与援助记录……"><EarlyQiAid state={state} onBack={() => { returningAid.current = true; setAid(false) }} /></DeferredScene>
-  if (pavilion) return <DeferredScene message="正在前往五天后的功法阁……"><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></DeferredScene>
-  if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
+  if (methodDiscussion) return <DeferredScene message="正在打开青石前的功法说明……"><EarlyMethodDiscussion state={state} onBack={methodDiscussionBack} /></DeferredScene>
+  if (apprentice) return <DeferredScene message="正在接续援助交涉与本人拜师……"><EarlyApprentice state={state} onBack={apprenticeBack} /></DeferredScene>
+  if (mountainRing) return <DeferredScene message="正在走上后山，察看古戒……"><EarlyMountainRing state={state} onBack={mountainRingBack} /></DeferredScene>
+  if (familyContract) return <DeferredScene message="正在接续文书与双方离厅……"><EarlyFamilyContract state={state} onBack={familyContractBack} /></DeferredScene>
+  if (familyCompensation) return <DeferredScene message="正在接续补偿与本人发言……"><EarlyFamilyCompensation state={state} onBack={familyCompensationBack} /></DeferredScene>
+  if (familyVisit) return <DeferredScene message="正在回到拜师前的接待厅……"><EarlyFamilyVisit state={state} onBack={familyVisitBack} /></DeferredScene>
+  if (barrier) return <DeferredScene message="正在进入火通道与四十三号门障……"><EarlyQiBarrier state={state} onBack={barrierBack} /></DeferredScene>
+  if (scroll) return <DeferredScene message="正在打开卷轴保管记录……"><EarlyQiScroll state={state} onBack={scrollBack} /></DeferredScene>
+  if (exchange) return <DeferredScene message="正在回看双卷交接……"><EarlyQiExchange state={state} onBack={exchangeBack} /></DeferredScene>
+  if (aid) return <DeferredScene message="正在打开同行与援助记录……"><EarlyQiAid state={state} onBack={aidBack} /></DeferredScene>
+  if (pavilion) return <DeferredScene message="正在前往五天后的功法阁……"><EarlyQiPavilion state={state} onBack={pavilionBack} /></DeferredScene>
+  if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={walkingBack} />
   return <>
     {!blocked && <section className="bond-summary" aria-label="拜师之前的来访">
       <b>拜师之前 · {task.familyVisit.stage === 17 ? '来访前半程已归档' : `来访 ${task.familyVisit.stage}/17`}</b>

@@ -1,0 +1,262 @@
+{
+  "version": "0.57.1",
+  "date": "2026-10-12",
+  "vitestFiles": 131,
+  "vitestTests": 803,
+  "nodeTests": 11,
+  "proof": {
+    "routes": 26,
+    "originalBodyAndCallbacksEqual": true,
+    "mappings": [
+      {
+        "state": "walking",
+        "set": "setWalking",
+        "returning": "returning",
+        "entry": "entry",
+        "back": "walkingBack"
+      },
+      {
+        "state": "pavilion",
+        "set": "setPavilion",
+        "returning": "returningPavilion",
+        "entry": "pavilionEntry",
+        "back": "pavilionBack"
+      },
+      {
+        "state": "barrier",
+        "set": "setBarrier",
+        "returning": "returningBarrier",
+        "entry": "barrierEntry",
+        "back": "barrierBack"
+      },
+      {
+        "state": "scroll",
+        "set": "setScroll",
+        "returning": "returningScroll",
+        "entry": "scrollEntry",
+        "back": "scrollBack"
+      },
+      {
+        "state": "aid",
+        "set": "setAid",
+        "returning": "returningAid",
+        "entry": "aidEntry",
+        "back": "aidBack"
+      },
+      {
+        "state": "exchange",
+        "set": "setExchange",
+        "returning": "returningExchange",
+        "entry": "exchangeEntry",
+        "back": "exchangeBack"
+      },
+      {
+        "state": "familyVisit",
+        "set": "setFamilyVisit",
+        "returning": "returningFamilyVisit",
+        "entry": "familyVisitEntry",
+        "back": "familyVisitBack"
+      },
+      {
+        "state": "familyCompensation",
+        "set": "setFamilyCompensation",
+        "returning": "returningCompensation",
+        "entry": "compensationEntry",
+        "back": "familyCompensationBack"
+      },
+      {
+        "state": "familyContract",
+        "set": "setFamilyContract",
+        "returning": "returningContract",
+        "entry": "contractEntry",
+        "back": "familyContractBack"
+      },
+      {
+        "state": "mountainRing",
+        "set": "setMountainRing",
+        "returning": "returningMountainRing",
+        "entry": "mountainRingEntry",
+        "back": "mountainRingBack"
+      },
+      {
+        "state": "apprentice",
+        "set": "setApprentice",
+        "returning": "returningApprentice",
+        "entry": "apprenticeEntry",
+        "back": "apprenticeBack"
+      },
+      {
+        "state": "methodDiscussion",
+        "set": "setMethodDiscussion",
+        "returning": "returningMethod",
+        "entry": "methodEntry",
+        "back": "methodDiscussionBack"
+      },
+      {
+        "state": "preparationBrief",
+        "set": "setPreparationBrief",
+        "returning": "returningBrief",
+        "entry": "briefEntry",
+        "back": "preparationBriefBack"
+      },
+      {
+        "state": "mountainVisitor",
+        "set": "setMountainVisitor",
+        "returning": "returningVisitor",
+        "entry": "visitorEntry",
+        "back": "mountainVisitorBack"
+      },
+      {
+        "state": "morningCard",
+        "set": "setMorningCard",
+        "returning": "returningMorning",
+        "entry": "morningEntry",
+        "back": "morningCardBack"
+      },
+      {
+        "state": "cityPharmacy",
+        "set": "setCityPharmacy",
+        "returning": "returningCity",
+        "entry": "cityEntry",
+        "back": "cityPharmacyBack"
+      },
+      {
+        "state": "marketEscort",
+        "set": "setMarketEscort",
+        "returning": "returningEscort",
+        "entry": "escortEntry",
+        "back": "marketEscortBack"
+      },
+      {
+        "state": "marketSearch",
+        "set": "setMarketSearch",
+        "returning": "returningSearch",
+        "entry": "searchEntry",
+        "back": "marketSearchBack"
+      },
+      {
+        "state": "refining",
+        "set": "setRefining",
+        "returning": "returningRefining",
+        "entry": "refiningEntry",
+        "back": "refiningBack"
+      },
+      {
+        "state": "infusion",
+        "set": "setInfusion",
+        "returning": "returningInfusion",
+        "entry": "infusionEntry",
+        "back": "infusionBack"
+      },
+      {
+        "state": "iron",
+        "set": "setIron",
+        "returning": "returningIron",
+        "entry": "ironEntry",
+        "back": "ironBack"
+      },
+      {
+        "state": "marketReturn",
+        "set": "setMarketReturn",
+        "returning": "returningRoom",
+        "entry": "returnEntry",
+        "back": "marketReturnBack"
+      },
+      {
+        "state": "marketTrade",
+        "set": "setMarketTrade",
+        "returning": "returningTrade",
+        "entry": "tradeEntry",
+        "back": "marketTradeBack"
+      },
+      {
+        "state": "marketDiscovery",
+        "set": "setMarketDiscovery",
+        "returning": "returningDiscovery",
+        "entry": "discoveryEntry",
+        "back": "marketDiscoveryBack"
+      },
+      {
+        "state": "marketStandoff",
+        "set": "setMarketStandoff",
+        "returning": "returningStandoff",
+        "entry": "standoffEntry",
+        "back": "marketStandoffBack"
+      },
+      {
+        "state": "marketBracelets",
+        "set": "setMarketBracelets",
+        "returning": "returningBracelets",
+        "entry": "braceletsEntry",
+        "back": "marketBraceletsBack"
+      }
+    ]
+  },
+  "initialJs": 495745,
+  "totalJs": 1844665,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "realFocus": [
+    {
+      "entry": "回到家族来访 · 入席与公开请求",
+      "focused": "回到家族来访 · 入席与公开请求"
+    },
+    {
+      "entry": "接续晨间交卡 · 普通黑卡与采购账",
+      "focused": "接续晨间交卡 · 普通黑卡与采购账"
+    },
+    {
+      "entry": "接续同行药铺 · 入城与两药原收据",
+      "focused": "接续同行药铺 · 入城与两药原收据"
+    },
+    {
+      "entry": "接续回族与房中准备",
+      "focused": "接续回族与房中准备"
+    },
+    {
+      "entry": "接续铁片辨认与限制",
+      "focused": "接续铁片辨认与限制"
+    },
+    {
+      "entry": "接续清水与主辅药调制",
+      "focused": "接续清水与主辅药调制"
+    },
+    {
+      "entry": "接续魔核炼化与入水",
+      "focused": "接续魔核炼化与入水"
+    },
+    {
+      "entry": "漫步往事准备路线",
+      "focused": "漫步往事准备路线"
+    }
+  ],
+  "consoleErrors": [],
+  "inputs": [
+    {
+      "name": "routeNew",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791805225265.json",
+      "sha256": "dff233e5e2c138bd718d683dc979634af97819369f09d08c4d6247ec434f8924",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "routeConsumed",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791805231686.json",
+      "sha256": "10e68ed00f4bf76aff913332484ac54fdcdb7b351b52709df9c95e91fbb7911b",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "routeIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791805238092.json",
+      "sha256": "cdbd90e9c7ba5245c1cc6b578e8a61df60485744fd74d0ab1028c150ac7a1330",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "routeAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791805312550.json",
+      "sha256": "1b5b5978e9802cb9035c9cc4d7cdbe1bdc72d74ed2101ba1ea174990e113767b",
+      "onlyVersionChanged": true
+    }
+  ]
+}
