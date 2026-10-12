@@ -1,0 +1,589 @@
+{
+  "batch": "C11c-3d/C5b-east-interruption",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "f251037bbffb5fae0dcf63f857e4a43a6fddcd12",
+  "previousCI": {
+    "gameChecks": 38189413924,
+    "conclusion": "success",
+    "pages": 38189413898,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "same normal journey, actual UI/downloads; official parser outside browser; no save edits or coordinate injection",
+  "records": [
+    {
+      "key": "10",
+      "file": ".git/task-normal-ch10-export.json",
+      "bytes": 11773,
+      "fileSha256": "84598e4ea775fbed1b408a4e8754e4c73b4c878769af7aaea4cf002dbe354401",
+      "stateSha256": "c5572fd041e536edb458e1de84ac51a4aab30ae56d0d88a3018b971f34a59dbb",
+      "chapter": 10,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "gold": 3560,
+      "xp": 2765,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "yunlan-duel-approach": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-sect-standpoint": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "11-safe",
+      "file": ".git/task-normal-ch11-safe-export.json",
+      "bytes": 12138,
+      "fileSha256": "11509e1d9a2b19832aee6720e3d1e5817668fc58c532689887785ec8ecf482de",
+      "stateSha256": "98181db56af08f641b068b27e9eb227ecbddc183c077a7e82a3a9c2de9f20b28",
+      "chapter": 11,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "gold": 3560,
+      "xp": 2765,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "yunlan-pursuit-escape": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "11",
+      "file": ".git/task-normal-ch11-export.json",
+      "bytes": 12147,
+      "fileSha256": "fe96a6bedfb0362babe36ba692286aa5e07a5bf421744726b7598b46ba73f385",
+      "stateSha256": "44ee2be3a524cf718e118be8adbe332dffd89cf8f19a4e92ad1c982623a192cd",
+      "chapter": 11,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gold": 4030,
+      "xp": 3140,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "yunlan-pursuit-escape": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "12-pending",
+      "file": ".git/task-normal-ch12-pending-export.json",
+      "bytes": 12561,
+      "fileSha256": "a3d022b3e2d7d629d2efd4b44c8d48e57974819f0a5c791890221c6fabb09dfa",
+      "stateSha256": "c9aaefa1e248fec956b1b55d460646446a299ed09d0cf94b60da485521dd4ecc",
+      "chapter": 12,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gold": 4030,
+      "xp": 3140,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "black-corner-travel-auction": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 60,
+            "attempts": 1,
+            "choice": "none",
+            "auctionOutcome": "observed"
+          }
+        }
+      }
+    },
+    {
+      "key": "12",
+      "file": ".git/task-normal-ch12-export.json",
+      "bytes": 12570,
+      "fileSha256": "21241cf45218a975730c2dd496f0c9c0426f57d3f6c298b0f3af7837139f123a",
+      "stateSha256": "13c296cbba830ebffd1775d19c20dbfdaf83db48974fb4efdf8499e3abd9239a",
+      "chapter": 12,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "gold": 4530,
+      "xp": 3570,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "black-corner-travel-auction": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 60,
+            "attempts": 1,
+            "choice": "none",
+            "auctionOutcome": "observed"
+          }
+        }
+      }
+    },
+    {
+      "key": "13-start",
+      "file": ".git/task-normal-ch13-start-export.json",
+      "bytes": 12938,
+      "fileSha256": "417a8957500bd48fb78064518a07120fe821864e4eca55b3e7b9db93e064ec46",
+      "stateSha256": "510f3181d0a59b28f0eeb77c13eb463540c0ef0d2a8eed8797a2b56d465a7458",
+      "chapter": 13,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "gold": 4530,
+      "xp": 3570,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "academy-dual-sigil-trial": {
+            "started": true,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "13-guard",
+      "file": ".git/task-normal-ch13-guard-export.json",
+      "bytes": 12938,
+      "fileSha256": "4478eda980687491c51de94aca9bb16f2e087caa5fd70853749c6023232429ff",
+      "stateSha256": "b78589f7e36945ebc0413fff4b86f49e8ee9273b33ce04ccf020801d6ee3d1ec",
+      "chapter": 13,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "gold": 4598,
+      "xp": 3590,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 29,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 28,
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "academy-dual-sigil-trial": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "13-pending",
+      "file": ".git/task-normal-ch13-pending-export.json",
+      "bytes": 12938,
+      "fileSha256": "4ebdbb099bb69bd7a0bfa8b1402e937bd61ae4f7958aed46e2a1dee1af2e3177",
+      "stateSha256": "9ebc861a216cc75004112cb4fdfa97db2482956a368e5573bfb2ecb92b0e3513",
+      "chapter": 13,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "gold": 4598,
+      "xp": 3590,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 29,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 28,
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "academy-dual-sigil-trial": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "13",
+      "file": ".git/task-normal-ch13-export.json",
+      "bytes": 12947,
+      "fileSha256": "db7d900ae2a4f1ef9953216e8c0dcde7ec8586fa2939459f4f3167dd2d6d51fa",
+      "stateSha256": "161c952692297a7f73e56942e3e07a955f1de12337adeeb4fab65a78f11c50d9",
+      "chapter": 13,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "gold": 5128,
+      "xp": 4055,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 29,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 28,
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "academy-dual-sigil-trial": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "13-refreshed",
+      "file": ".git/task-normal-ch13-refreshed-export.json",
+      "bytes": 12947,
+      "fileSha256": "5f141bb8f9b2ca23140a567db1bac20a0c1cc2e001f22b32032f9587573d0011",
+      "stateSha256": "161c952692297a7f73e56942e3e07a955f1de12337adeeb4fab65a78f11c50d9",
+      "chapter": 13,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "gold": 5128,
+      "xp": 4055,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 29,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 28,
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "academy-dual-sigil-trial": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapter13EntireStateRefreshEqual": true,
+  "firstNineChapterProgressUnchanged": true,
+  "observations": {
+    "duel": {
+      "approach": 2,
+      "firstRoundBossHp": 436,
+      "phaseObserved": 2,
+      "playerHpAfterVictory": 276,
+      "healUsed": 0
+    },
+    "escape": {
+      "firstNodeHp": 246,
+      "secondNodeHp": 296,
+      "healUsed": 1,
+      "eachNodeSeconds": 6
+    },
+    "auction": {
+      "bid": 40,
+      "goldAfterBid": 3990,
+      "goldAfterOutbidRefund": 4030,
+      "then": "free exit; no supply awarded",
+      "reportXp": 30
+    },
+    "eastSigilSequence": [
+      {
+        "position": {
+          "x": 1000,
+          "y": 400
+        },
+        "stage": 2,
+        "allyHp": 140,
+        "visibleText": "持续共鸣 · 剩余2秒"
+      },
+      {
+        "position": {
+          "x": 773,
+          "y": 400
+        },
+        "stage": 2,
+        "allyHp": 140,
+        "visibleText": "同伴守住西阵 · 保护同伴，到东阵共鸣"
+      },
+      {
+        "position": {
+          "x": 1000,
+          "y": 400
+        },
+        "stage": 2,
+        "allyHp": 140,
+        "visibleText": "持续共鸣 · 剩余3秒"
+      },
+      {
+        "stage": 3,
+        "after": "actual new full3s; pending report downloaded"
+      }
+    ],
+    "eastEvidence": "live DOM and read-only data-player attributes, screenshots show pause menus and blurred background, not legible countdown proof",
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "AI desktop with menu pauses, not physical devices or player Beta",
+    "Historical0.7.1 save rollback cause not established",
+    "Complete source/character storyline and public release not accepted",
+    "C6b free patrol still pending"
+  ]
+}
