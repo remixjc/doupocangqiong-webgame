@@ -1,7 +1,8 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import { advanceEarlyTraining } from './early-training'
 import type { EarlyWalkDirection, EarlyWalkPosition } from './early-walk'
 import { cityPharmacyAt, validCityPharmacy, type CityPharmacyState } from './early-city-pharmacy-state'
@@ -28,8 +29,8 @@ export function cityPharmacyNear(p: EarlyWalkPosition, place: keyof typeof cityP
   return cityPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
 }
 export function earlyCityPharmacyBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.morningCard.stage === 14 ? '' : '先完成晨间普通黑卡与同一采购账归档。'
 }
 export type CityPharmacyAction = CityPharmacyState & {

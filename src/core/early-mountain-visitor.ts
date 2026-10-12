@@ -1,14 +1,15 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { mountainRingNear, mountainRingPlaces } from './early-mountain-ring'
 import { mountainVisitorAt, validMountainVisitor, type MountainVisitorState } from './early-mountain-visitor-state'
 import { mountainVisitorScenes } from '../content/early-mountain-visitor'
 export function earlyMountainVisitorBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.preparationBrief.stage === 20 ? '' : '先完成准备说明与正式返戒，再接紫衣来访与当晚借资问答。'
 }
 export type MountainVisitorView = { kind: 'yan'; position: EarlyWalkPosition } | { kind: 'observer'; place: keyof typeof mountainRingPlaces }

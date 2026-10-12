@@ -1,15 +1,16 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { mountainRingNear } from './early-mountain-ring'
 import { methodDiscussionAt, validMethodDiscussion, type MethodDiscussionState } from './early-method-discussion-state'
 import { methodDiscussionScenes } from '../content/early-method-discussion'
 
 export function earlyMethodDiscussionBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.apprentice.stage === 25 ? '' : '先完成援助交涉与本人拜师，再听功法说明。'
 }
 export type MethodDiscussionAction = MethodDiscussionState & {

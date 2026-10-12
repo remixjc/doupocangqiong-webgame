@@ -1,8 +1,9 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import { ironNear, ironPlaces } from './early-iron'
 import { marketTradeLedger } from './early-market-trade'
 import { advanceEarlyTraining, type EarlyTrainingAction } from './early-training'
@@ -17,8 +18,8 @@ export function refiningNear(yan: EarlyWalkPosition, stage: number): boolean {
   return ironNear(yan, 0) && (![2, 17].includes(stage) || Math.hypot(yan.x - refiningWater.x, yan.y - refiningWater.y) <= 38)
 }
 export function earlyRefiningBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.iron.stage === 18 ? '' : '先完成铁片辨认与限制归档。'
 }
 export type RefiningAction = RefiningState & {

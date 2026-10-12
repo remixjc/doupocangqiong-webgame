@@ -1,7 +1,8 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkDirection, EarlyWalkPosition } from './early-walk'
 import { mountainRingAt, validMountainRing, type MountainRingState } from './early-mountain-ring-state'
 import { mountainRingScenes } from '../content/early-mountain-ring'
@@ -34,8 +35,8 @@ export function mountainRingNear(position: EarlyWalkPosition, place: keyof typeo
   return !!target && mountainRingPositionValid(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
 }
 export function earlyMountainRingBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.familyContract.stage === 33 ? '' : '先完成文书与双方离厅，再独自走上后山。'
 }
 export type MountainRingAction = MountainRingState & {

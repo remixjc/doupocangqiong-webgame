@@ -1,7 +1,8 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { cityPositionValid } from './early-city-pharmacy'
 import { marketStandoffAt, validMarketStandoff, type MarketStandoffState } from './early-market-standoff-state'
@@ -16,8 +17,8 @@ export function standoffNear(p: EarlyWalkPosition, place: keyof typeof standoffP
   return cityPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
 }
 export function earlyMarketStandoffBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.marketBracelets.stage === 28 ? '' : '先完成让路与两条手链归档。'
 }
 export type MarketStandoffView = { kind: 'yan' | 'xuner'; position: EarlyWalkPosition }

@@ -1,7 +1,8 @@
+import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import { ironNear, ironPlaces } from './early-iron'
 import { refiningWater } from './early-refining'
 import { marketTradeLedger } from './early-market-trade'
@@ -13,8 +14,8 @@ export function firstTrainingNear(yan: EarlyWalkPosition, stage: number): boolea
   return ironNear(yan, 0) && (stage <= 6 ? fieldsMatch(yan, refiningWater) : stage === 7 ? yan.x >= 160 : true)
 }
 export function firstTrainingBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.refining.stage === 22 ? '' : '先完成魔核入水与期限归档。'
 }
 export type FirstTrainingAction = FirstTrainingState & {

@@ -1,13 +1,14 @@
+import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { marketSearchNear } from './early-market-search'
 import { braceletMinimum, marketBraceletsAt, validMarketBracelets, type MarketBraceletsState } from './early-market-bracelets-state'
 import { marketBraceletsScenes } from '../content/early-market-bracelets'
 export function earlyMarketBraceletsBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.marketSearch.stage === 20 ? '' : '先完成寻核与放回手链归档。'
 }
 export type MarketBraceletsView = { kind: 'yan' | 'xuner'; position: EarlyWalkPosition }

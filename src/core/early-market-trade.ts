@@ -1,7 +1,8 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import { advanceEarlyTraining } from './early-training'
 import type { EarlyWalkPosition } from './early-walk'
 import { cityPositionValid } from './early-city-pharmacy'
@@ -15,8 +16,8 @@ export function tradeNear(position: EarlyWalkPosition, stage: number): boolean {
     : cityPositionValid(position) && Math.hypot(position.x - marketTradeExit.x, position.y - marketTradeExit.y) <= 38
 }
 export function earlyMarketTradeBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.marketDiscovery.stage === 10 ? '' : '先完成摊位发现与心中建议归档。'
 }
 export function marketTradeLedger(state: GameState) {

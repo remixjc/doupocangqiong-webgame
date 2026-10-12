@@ -1,6 +1,7 @@
+import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkDirection, EarlyWalkPosition } from './early-walk'
 import { EARLY_LOAN } from './early-training-state'
 import { morningCardAt, validMorningCard, type MorningCardState } from './early-morning-card-state'
@@ -26,8 +27,8 @@ export function morningCardNear(p: EarlyWalkPosition, place: keyof typeof mornin
   return morningPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
 }
 export function earlyMorningCardBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.mountainVisitor.stage === 26 ? '' : '先完成当晚来访与本人离山归档。'
 }
 export type MorningCardAction = MorningCardState & {

@@ -1,8 +1,9 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import { cityPositionValid } from './early-city-pharmacy'
 import { marketTradeLedger } from './early-market-trade'
 import { fieldsMatch } from './state-guards'
@@ -19,8 +20,8 @@ export function ironNear(yan: EarlyWalkPosition, stage: number): boolean {
     : yan.y >= 330 && yan.x >= 100 && yan.x <= 300
 }
 export function earlyIronBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.marketReturn.stage === 9 ? '' : '先完成回族与房中准备归档。'
 }
 export type IronAction = IronState & {

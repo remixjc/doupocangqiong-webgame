@@ -3,8 +3,15 @@ import type { GameState, Settings } from './model'
 import { bondSaveSummary } from './bonds'
 import { NewerSaveVersionError, parseSave, type SaveRecord } from './save'
 
+function earlySummarySealed(viewing: Settings, chapter: number): boolean {
+  return viewing.spoiler === 'anime' && viewing.animeLimit < chapter
+}
+export function compactSaveSummaries(summaries: string[]): string {
+  return summaries.filter((text, i) => !summaries.some((other, j) => j !== i && (other.length > text.length || j < i) && other.includes(text))).join(' · ')
+}
+
 export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '重修记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '重修记录 · 当前范围封存'
   if (!saved.completed.includes(2)) return '重修记录 · 第2章首通后开放'
   const task = saved.earlyTraining
   if (!task.started) return '重修记录 · 尚未接取'
@@ -22,7 +29,7 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 }
 
 export function earlyFamilyVisitSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.familyVisit
   return '家族来访 · ' + (task.stage === 17 ? saved.earlyTraining.familyContract.stage > 0 ? '前半程归档，' + earlyFamilyContractSaveSummary(saved, viewing)
     : saved.earlyTraining.familyCompensation.stage === 15 ? '前半程与后续交涉已归档，文书待续'
@@ -34,7 +41,7 @@ export function earlyFamilyVisitSaveSummary(saved: GameState, viewing: Settings)
 }
 
 export function earlyFamilyCompensationSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.familyCompensation
   return '补偿交涉 · ' + (task.stage === 15 ? saved.earlyTraining.familyContract.stage > 0 ? '前段归档，' + earlyFamilyContractSaveSummary(saved, viewing) : '前段已归档，文书与立约待续'
     : task.terms === 'offer-only' ? '已核追加条件未领取，待归档' : task.extra === 'offered' ? '追加条件已提出，仍未领物入宗'
@@ -44,7 +51,7 @@ export function earlyFamilyCompensationSaveSummary(saved: GameState, viewing: Se
 }
 
 export function earlyFamilyContractSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.familyContract
   return '文书与离厅 · ' + (task.stage === 33 ? '赴约、文书与双方离厅已归档'
     : task.guests === 'left' ? '来客已离厅，待归档' : task.box === 'ring' ? '本人已离厅，玉匣回纳戒'
@@ -57,7 +64,7 @@ export function earlyFamilyContractSaveSummary(saved: GameState, viewing: Settin
 }
 
 export function earlyMountainRingSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.mountainRing
   return '后山与古戒 · ' + (task.stage === 21 ? saved.earlyTraining.apprentice.stage > 0
     ? '前段归档，' + earlyApprenticeSaveSummary(saved, viewing) : '前段归档，取气答复与本人拜师待续'
@@ -69,7 +76,7 @@ export function earlyMountainRingSaveSummary(saved: GameState, viewing: Settings
 }
 
 export function earlyApprenticeSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.apprentice
   return '援助与拜师 · ' + (task.stage === 25 ? saved.earlyTraining.methodDiscussion.stage
     ? '本人礼成归档，' + earlyMethodDiscussionSaveSummary(saved, viewing) : '本人行礼与老师名字已归档，功法说明与正式返戒待续'
@@ -88,7 +95,7 @@ export function earlyApprenticeSaveSummary(saved: GameState, viewing: Settings):
 }
 
 export function earlyMethodDiscussionSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.methodDiscussion
   return '功法说明 · ' + (task.stage === 28 ? saved.earlyTraining.preparationBrief.stage
     ? '仅说明已归档，未授卷；' + earlyPreparationBriefSaveSummary(saved, viewing) : '仅说明已归档，未授卷，准备与返戒待续'
@@ -107,7 +114,7 @@ export function earlyMethodDiscussionSaveSummary(saved: GameState, viewing: Sett
 }
 
 export function earlyPreparationBriefSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.preparationBrief
   return '准备与返戒 · ' + (task.stage === 20 ? saved.earlyTraining.mountainVisitor.stage
     ? '历史说明归档，同戒返手；' + earlyMountainVisitorSaveSummary(saved, viewing) : '历史说明归档，同戒返手；既有借资采购进度保留'
@@ -124,7 +131,7 @@ export function earlyPreparationBriefSaveSummary(saved: GameState, viewing: Sett
 }
 
 export function earlyMountainVisitorSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.mountainVisitor
   return '当晚来访 · ' + (task.stage === 26 ? saved.earlyTraining.morningCard.stage ? '当晚问答归档；' + earlyMorningCardSaveSummary(saved, viewing) : '本人离山与当晚问答归档，次晨交卡待续'
     : task.yan === 'left' ? '本人已离山，薰儿旁观反应待续'
@@ -143,7 +150,7 @@ export function earlyMountainVisitorSaveSummary(saved: GameState, viewing: Setti
 }
 
 export function earlyMorningCardSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.morningCard
   return '晨间交卡 · ' + (task.stage === 14 ? saved.earlyTraining.cityPharmacy.stage ? '晨间交卡归档；' + earlyCityPharmacySaveSummary(saved, viewing) : '普通黑卡与同一采购账归档，入城待续'
     : task.stage >= 9 ? task.funds === 'credited' ? '本人接卡，唯一折算160已记账' : '本人接卡，旧账保持未重发'
@@ -155,7 +162,7 @@ export function earlyMorningCardSaveSummary(saved: GameState, viewing: Settings)
 }
 
 export function earlyCityPharmacySaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.cityPharmacy
   return '同行药铺 · ' + (task.stage === 15 ? saved.earlyTraining.marketEscort.stage ? '同行两药归档；' + earlyMarketEscortSaveSummary(saved, viewing) : '同行两药归档，历史木核待后段'
     : task.stage >= 12 ? '两药原收据已核，不重复采购'
@@ -166,7 +173,7 @@ export function earlyCityPharmacySaveSummary(saved: GameState, viewing: Settings
 }
 
 export function earlyMarketEscortSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.marketEscort
   return '入坊巡卫 · ' + (task.stage === 24 ? saved.earlyTraining.marketSearch.stage ? '入坊护卫归档；' + earlyMarketSearchSaveSummary(saved, viewing) : '入坊与护卫归档，寻核待续'
     : task.patrol ? '队长巡街，三人跟随，同行待续' : task.following ? '三人已实际跟随，队长巡街待续'
@@ -175,7 +182,7 @@ export function earlyMarketEscortSaveSummary(saved: GameState, viewing: Settings
 }
 
 export function earlyMarketSearchSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.marketSearch
   return '坊市寻核 · ' + (task.stage === 20 ? saved.earlyTraining.marketBracelets.stage ? '寻核放回归档；' + earlyMarketBraceletsSaveSummary(saved, viewing) : '寻核与放回归档，来人交谈待续'
     : task.stranger === 'seen' ? '已看见来人，姓名未揭' : task.stranger === 'heard' ? '听见招呼，尚未看清来人'
@@ -184,7 +191,7 @@ export function earlyMarketSearchSaveSummary(saved: GameState, viewing: Settings
 }
 
 export function earlyMarketBraceletsSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.marketBracelets
   return '让路手链 · ' + (task.stage === 28 ? saved.earlyTraining.marketStandoff.stage ? '两手链归档；' + earlyMarketStandoffSaveSummary(saved, viewing) : '两手链分别归档，围堵待续'
     : task.thanked ? '普通绿链已戴并致谢，蓝金未交付' : task.green === 'worn' ? '绿链已戴，致谢待续'
@@ -194,7 +201,7 @@ export function earlyMarketBraceletsSaveSummary(saved: GameState, viewing: Setti
 }
 
 export function earlyMarketStandoffSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.marketStandoff
   return '围堵离场 · ' + (task.stage === 34 ? saved.earlyTraining.marketDiscovery.stage ? '离场归档；' + earlyMarketDiscoverySaveSummary(saved, viewing) : '非战斗离场归档，发现成交待续' : task.walkedDeep ? '二人已深入，尚未发现成交'
     : task.guards === 'left' ? '护卫已离开，继续寻核待续' : task.chase === 'stopped' ? '已阻止追赶，护卫尚在'
@@ -206,7 +213,7 @@ export function earlyMarketStandoffSaveSummary(saved: GameState, viewing: Settin
 }
 
 export function earlyMarketDiscoverySaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.marketDiscovery
   return '摊位发现 · ' + (task.stage === 10 ? '发现与建议归档，未询价成交' : task.advice ? '老师心中建议购买，尚未成交'
     : task.iron === 'examined' ? '只见铁片古旧，尚未辨明' : task.iron === 'noticed' ? '看到黑铁片，未取得'
@@ -214,7 +221,7 @@ export function earlyMarketDiscoverySaveSummary(saved: GameState, viewing: Setti
 }
 
 export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.marketTrade
   return '唯一成交 · ' + (t.stage === 17 ? '成交离摊归档，回族解释待续' : t.left ? '已离摊，心中交谈待续'
     : t.settlement !== 'none' ? '已核唯一订单，尚未离摊' : t.bundle === 'agreed' ? '卖家同意，尚未实际付款'
@@ -222,14 +229,14 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 }
 
 export function firstTrainingSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.firstTraining
   return '持续调息 · ' + (t.stage === 10 ? '当前轮归档，预计五段尚非实际结果' : t.forecast === 'two-months' ? '两个月五段仅为预计'
     : t.stage === 8 ? '已离容器，预计待记' : t.stage === 7 ? '本轮收束，离容器待续' : t.stage === 2 ? `调息${t.beats}/3，重试${t.attempts}` : t.seated ? '坐定中' : t.stage ? '当前轮待续' : '未参与')
 }
 
 export function earlyRefiningSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.refining
   return '主辅药调制 · ' + (t.stage === 22 ? '魔核入水与期限已归档' : t.stage >= 18 ? '已入水，回应与期限待续'
     : t.stage >= 14 ? '白焰已熄，尚未入水' : t.stage >= 12 ? '魔核炼化中'
@@ -237,13 +244,13 @@ export function earlyRefiningSaveSummary(saved: GameState, viewing: Settings): s
 }
 
 export function earlyIronSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.iron
   return '铁片辨认 · ' + (t.stage === 18 ? '已收好归档，详细调制待续' : t.limit ? '当时能力限制已说明' : t.tier ? '名称与品阶已说明，未授技能' : t.technique ? '斗技记录已说明' : t.stage ? '取出与交接待续' : '未参与')
 }
 
 export function earlyMarketReturnSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.marketReturn
   return '回族房中 · ' + (t.stage === 9 ? '准备归档，铁片解释待续' : t.materials ? '当时材料已摆桌，尚未炼化'
     : t.locked ? '已锁门，材料待摆桌' : t.room ? '已到房中，尚未锁门' : t.parted ? '已分路，独自回房待续'
@@ -269,12 +276,12 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
     ]
     summaries.push(...details.map(summary => summary(saved, viewing)))
   } else summaries.push('后续记录 · 当前范围封存')
-  return summaries.join(' · ')
+  return compactSaveSummaries(summaries)
 }
 
 export function earlyPalmPairSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.palmPair
-  return '吸推两瓶 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '吸推两瓶 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 10 ? '第一只碎片与第二只细末已归档' : task.stage === 9 ? '第二只已成细末，待归档'
     : task.stage === 8 ? '第二只已吸近，待吹火掌切换' : task.stage === 7 ? '时段已记，第二只待吸'
     : task.stage === 6 ? '老师初练已过，待回顾时段' : task.stage === 5 ? `老师已讲解，初练${task.beats}/2`
@@ -284,7 +291,7 @@ export function earlyPalmPairSaveSummary(saved: GameState, viewing: Settings): s
 
 export function earlyPreliminarySaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.preliminary
-  return '一月前预测 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '一月前预测 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 0 ? '未参与' : task.stage === 16 ? saved.earlyTraining.keChallenge.stage === 12 ? '三人结果与后续应战已归档'
       : saved.earlyTraining.keChallenge.stage > 0 ? '三人结果已归档，后续应战进行中' : '三人结果已归档，待挑战'
     : task.stage >= 15 ? '预测已结束，待归档' : task.stage >= 13 ? '萧炎七段已宣读合格'
@@ -295,7 +302,7 @@ export function earlyPreliminarySaveSummary(saved: GameState, viewing: Settings)
 
 export function earlyKeChallengeSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.keChallenge
-  return '萧克挑战 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '萧克挑战 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 0 ? '未参与' : task.stage === 12 ? '胜负与离场邀请已归档'
     : task.stage >= 11 ? '次日邀请已记，待归档' : task.stage >= 5 ? `父亲已宣布胜负，离场${task.stage - 5}/6`
     : task.stage === 4 ? '萧克倒地，待父亲宣布' : task.stage === 3 ? `侧避反击${task.beats}/2，重开${task.attempts}次` : '准备应战')
@@ -303,7 +310,7 @@ export function earlyKeChallengeSaveSummary(saved: GameState, viewing: Settings)
 
 export function earlySeventhRoomSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.seventhRoom
-  return '房中七段 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '房中七段 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 8 ? '故事七段已归档，一滴补液保留' : task.stage === 7 ? '故事七段已感知，待归档'
     : task.stage === 6 ? '时段已回顾，尚待感知七段' : task.stage === 5 ? '补液后调息已完成，待回顾时段'
     : task.stage === 4 ? `老师一滴已入水，继续调息${task.beats}/3` : task.stage === 3 ? '本次水已清，尚待老师补液'
@@ -313,7 +320,7 @@ export function earlySeventhRoomSaveSummary(saved: GameState, viewing: Settings)
 
 export function earlyLongSuppliesSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.longSupplies
-  return '长期物资回溯 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '长期物资回溯 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 6 ? '两类物资已藏柜归档' : task.stage === 5 ? '原包已移入柜，待合柜'
     : task.stage === 4 ? '标签已核，待藏柜' : task.stage === 3 ? '两格已分好，待核标签'
     : task.stage === 2 ? '药材已分格，魔核待分' : task.stage === 1 ? '已展开另购原包，待分拣' : '未参与')
@@ -321,7 +328,7 @@ export function earlyLongSuppliesSaveSummary(saved: GameState, viewing: Settings
 
 export function earlyForestStrikeSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.forestStrike
-  return '林中首次练技 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '林中首次练技 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 7 ? '成功与下山已归档，当时七段仍是目标'
     : task.stage >= 4 ? '首次成功后已休息，待下山'
     : task.stage === 3 ? '树倒后当前耗尽，待青石休息'
@@ -331,7 +338,7 @@ export function earlyForestStrikeSaveSummary(saved: GameState, viewing: Settings
 
 export function earlyXunerVisitSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.xunerVisit
-  return '薰儿事件 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '薰儿事件 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 7 ? '长老收卡并回应，萧炎不知情'
     : task.stage === 6 ? '家族取得100000，待长老回应' : task.stage >= 4 ? '薰儿独自行动，尚未交卡'
     : task.stage > 0 ? `房中来访 ${task.stage}/7` : '未参与')
@@ -339,7 +346,7 @@ export function earlyXunerVisitSaveSummary(saved: GameState, viewing: Settings):
 
 export function earlyFatherGiftSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.fatherGift
-  return '父亲赠回 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '父亲赠回 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 6 ? '同瓶已收好，由萧炎保管'
     : task.stage >= 4 ? '同瓶已交萧炎，待归档' : task.stage >= 2 ? '父亲携原瓶，待赠回'
     : task.stage > 0 ? '已回房，待来访' : '未参与')
@@ -347,7 +354,7 @@ export function earlyFatherGiftSaveSummary(saved: GameState, viewing: Settings):
 
 export function earlySettlementSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.settlement
-  return '寄售手续 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '寄售手续 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 7 ? '净款39200与贵宾卡已收，已离场'
     : task.net ? '净款39200已收，待离场' : task.stage === 5 ? '账单已核，待收绿色卡'
     : task.vip ? '贵宾卡已收，尚未收款' : task.stage > 0 ? `进行中 ${task.stage}/7` : '未参与')
@@ -355,14 +362,14 @@ export function earlySettlementSaveSummary(saved: GameState, viewing: Settings):
 
 export function earlyAuctionSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.auction
-  return '首次拍卖 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '首次拍卖 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage >= 6 ? saved.earlyTraining.fatherGift.stage >= 4 ? '成交后父亲已赠回同瓶' : saved.earlyTraining.fatherGift.stage >= 2 ? '萧战已携同瓶来访' : saved.earlyTraining.settlement.net ? '成交归萧战，净款已收，待交付' : '成交归萧战，待结算与交付'
     : task.stage === 5 ? '萧战已出价，待落槌'
     : task.stage > 0 ? `旁观 ${task.stage}/7` : '未参与')
 }
 export function earlyAppraisalSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.appraisal
-  return '寄售鉴定 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '寄售鉴定 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 8 ? saved.earlyTraining.fatherGift.stage >= 4 ? '鉴定与入场已记，同瓶已赠回萧炎' : saved.earlyTraining.fatherGift.stage >= 2 ? '鉴定与入场已记，同瓶由萧战保管' : '持黑卡已入场，药液由拍卖方保管'
     : task.stage >= 7 ? '持入场黑卡，待入场' : task.stage >= 6 ? '二品已鉴定，待委托'
     : task.stage > 0 ? `进行中 ${task.stage}/8` : '未参与')
@@ -370,7 +377,7 @@ export function earlyAppraisalSaveSummary(saved: GameState, viewing: Settings): 
 
 export function earlyConsignmentSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.consignment
-  return '首次寄售准备 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '首次寄售准备 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 5 ? saved.earlyTraining.fatherGift.stage >= 4 ? '父亲已赠回同瓶，萧炎保管' : task.owner === 'xiaozhan' ? '寄售同瓶由父亲萧战保管' : task.owner === 'xiaoyan' ? '待售玉瓶由萧炎保管，待鉴定' : task.owner === 'auction' ? '待售玉瓶由拍卖方保管' : '待售玉瓶已交鉴定'
     : task.stage === 4 ? '老师已调制，待装瓶' : task.stage >= 2 ? `齐备，巷中进行 ${task.stage}/5`
     : task.stage === 1 ? `采购 ${Object.values(task.receipts).filter(Boolean).length}/4 · 余额${task.funds - task.spent}` : '未参与')
@@ -378,7 +385,7 @@ export function earlyConsignmentSaveSummary(saved: GameState, viewing: Settings)
 
 export function earlyRecoverySaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.recovery
-  return '回房恢复 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '回房恢复 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 7 ? '药力耗尽，五段故事结果已记下'
     : task.stage === 6 ? '时段已回顾，待感知结果'
     : task.stage >= 4 ? `药力耗尽，进行中 ${task.stage}/7`
@@ -387,33 +394,33 @@ export function earlyRecoverySaveSummary(saved: GameState, viewing: Settings): s
 
 export function earlySupervisionSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.supervision
-  return '后山督练 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '后山督练 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 2 ? saved.earlyTraining.recovery.stage >= 5 ? '本轮已记下，已回房恢复' : '本轮已记下，待恢复' : task.stage === 1 ? `承接 ${task.pulses}/4`
     : task.attempts > 0 ? `本轮已停下，重开${task.attempts}次` : '未参与')
 }
 
 export function earlyTeachingSaveSummary(saved: GameState, viewing: Settings): string {
   const stage = saved.earlyTraining.teaching.stage
-  return '老师传技 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '老师传技 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : stage === 0 ? '未参与' : stage === 5 ? saved.earlyTraining.supervision.stage > 0 ? '已归档' : '已归档，尚待监督训练' : `进行中 ${stage}/5`)
 }
 
 export function earlyHallSaveSummary(saved: GameState, viewing: Settings): string {
   const stage = saved.earlyTraining.hall.stage
-  return '斗技堂 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '斗技堂 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : stage === 0 ? '未到访' : stage === 1 ? '已到访，待借卷' : stage === 9 ? '已离堂，借卷由萧炎保管'
     : stage >= 8 ? '借阅已登记，待离堂' : stage === 7 ? '已选另一卷，待登记' : `堂内进行中 ${stage - 1}/8`)
 }
 
 export function earlyGrowthSaveSummary(saved: GameState, viewing: Settings): string {
   const stage = saved.earlyTraining.growth.stage
-  return '成长过渡 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '成长过渡 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : stage === 3 ? '已翻阅' : stage === 0 ? '未翻阅' : `翻阅中 ${stage}/3`)
 }
 
 export function earlyBraceletSaveSummary(saved: GameState, viewing: Settings): string {
   const stage = saved.earlyTraining.bracelet.stage
-  return '手链往事 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 2 ? '当前范围封存'
+  return '手链往事 · ' + (earlySummarySealed(viewing, 2) ? '当前范围封存'
     : stage === 6 ? '已归档' : stage === 0 ? '未参与' : `进行中 ${stage}/6`)
 }
 
@@ -428,7 +435,7 @@ export function saveRecordSummary(entry: SaveRecord, viewing: Settings): string 
 
 export function earlyEighthTrainingSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.eighthTraining
-  return '礼前八段 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '礼前八段 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 15 ? '同行与故事八段已归档' : task.stage === 14 ? '故事八段已感知，待归档'
     : task.stage === 13 ? '夜间调息已过，尚待感知八段' : task.stage === 12 ? `夜间少量药力，调息${task.beats}/2`
     : task.stage >= 10 ? '未突破的时段已记，待夜间练习' : task.stage === 9 ? '本轮练技与调息已过，待回顾时段'
@@ -438,7 +445,7 @@ export function earlyEighthTrainingSaveSummary(saved: GameState, viewing: Settin
 
 export function earlyCeremonyGuestsSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.ceremonyGuests
-  return '礼前宾客 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '礼前宾客 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 12 ? saved.earlyTraining.ceremonialTest.stage === 13 ? '宾客与收剑、正式验碑已归档'
       : saved.earlyTraining.ceremonialTest.stage > 0 ? '宾客与收剑已归档，正式礼进行中' : '宾客与收剑已归档，尚待开礼'
     : task.stage >= 10 ? '父亲介绍已记，待回应与归档'
@@ -448,7 +455,7 @@ export function earlyCeremonyGuestsSaveSummary(saved: GameState, viewing: Settin
 
 export function earlyCeremonialTestSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.ceremonialTest
-  return '正式验碑 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '正式验碑 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 13 ? saved.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '仪式与正式八段已归档，挑战胜负已宣布' : saved.earlyTraining.ningFirst.stage > 0 ? '仪式与正式八段已归档，萧宁挑战待裁定' : '仪式与正式八段已归档，尚待挑战' : task.stage >= 9 ? '正式八段已触碑，反应与归档待续'
     : task.stage === 8 ? '二长老已验碑，本人尚未测' : task.stage >= 6 ? '仪式结束，尚待验碑'
     : task.stage === 5 ? '半小时回顾已记，尚待仪式结束' : task.stage === 4 ? '二长老主持中，尚未完成礼程'
@@ -457,28 +464,28 @@ export function earlyCeremonialTestSaveSummary(saved: GameState, viewing: Settin
 
 export function earlyNingFirstSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.ningFirst
-  return '萧宁首轮 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '萧宁首轮 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage >= 7 ? saved.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮历史已记，最终胜负已宣布' : saved.earlyTraining.ningSecond.stage > 0 ? '首轮已记，违规再攻仍待裁判' : '首轮倒地，仍待裁判与后续变化' : task.stage === 6 ? `推拉推${task.beats}/3，重开${task.attempts}次`
     : task.stage >= 2 ? '药物由萧宁持有未服，挑战准备中' : task.stage > 0 ? '规则已听，待场边交付' : '未参与')
 }
 
 export function earlyNingSecondSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.ningSecond
-  return '萧宁再攻 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '萧宁再攻 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage >= 5 ? saved.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '违规出场已记，最终胜负已宣布' : '追加拳击后已出场，仍待最终裁定' : task.stage === 4 ? task.beats === 1 ? '八极崩已迎击，尚待追加拳击' : '迎击准备中'
     : task.stage >= 2 ? '药物已用、叫停无效，迎击待续' : task.stage === 1 ? '违规增力再攻，尚待叫停' : '未参与')
 }
 
 export function earlyCeremonyVerdictSaveSummary(saved: GameState, viewing: Settings): string {
   const task = saved.earlyTraining.ceremonyVerdict
-  return '礼终裁定 · ' + (viewing.spoiler === 'anime' && viewing.animeLimit < 3 ? '当前范围封存'
+  return '礼终裁定 · ' + (earlySummarySealed(viewing, 3) ? '当前范围封存'
     : task.stage === 16 ? '胜负、礼终离场与两次婉拒已归档' : task.stage >= 15 ? '两次婉拒已记，五天后功法阁待归档'
     : task.stage >= 10 ? '午后礼终，离场与提议待续' : task.stage >= 7 ? '正式萧炎获胜，整场礼程待续'
     : task.stage === 6 ? '萧宁禁足三个月已宣布，胜负尚待宣布' : task.stage >= 5 ? '双方请求被阻止，处分待宣布'
     : task.stage > 0 ? '场外交接与双请求待续' : '未参与')
 }
 export function earlyQiPavilionEntrySaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 3) return '后续记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 3)) return '后续记录 · 当前范围封存'
   const task = saved.earlyTraining.qiPavilionEntry
   return '功法阁入阁 · ' + (task.stage === 12 ? saved.earlyTraining.qiPavilionScroll.family === 'held' ? '测定与入阁已归档，后续已取得家族卷' : '测定与入阁已归档，择卷待续'
     : task.entered ? '已实际入阁，归档待续' : task.permission ? '已许可，实际过门待续'
@@ -486,14 +493,14 @@ export function earlyQiPavilionEntrySaveSummary(saved: GameState, viewing: Setti
     : task.stage > 0 ? '阁前规则与候测进行中' : '未参与')
 }
 export function earlyQiBarrierSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 3) return '后续记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 3)) return '后续记录 · 当前范围封存'
   const task = saved.earlyTraining.qiPavilionBarrier
   return '功法阁门障 · ' + (task.stage === 10 ? saved.earlyTraining.qiPavilionScroll.family === 'held' ? '火路、破幕与入室已归档，后续已取得家族卷' : '火路、破幕与入室已归档，取卷待续' : task.entered ? '已入室，卷轴仍在桌上'
     : task.barrier === 'broken' ? '红幕已破，收势与入室待续' : task.stage === 6 ? `破幕动作${task.beats}/3，免费重试${task.attempts}次`
     : task.room43 ? '四十三号已核，红幕完整' : task.path === 3 ? '第三路已选，门牌待核' : task.stage > 0 ? '五路辨认中' : '未参与')
 }
 export function earlyQiPavilionScrollSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 3) return '后续记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 3)) return '后续记录 · 当前范围封存'
   const task = saved.earlyTraining.qiPavilionScroll
   return '功法阁卷轴保管 · ' + (task.stage === 6 ? '家族卷已保管，额外提议已婉拒，登记待续'
     : task.stage === 5 ? '家族卷已保管，额外提议已婉拒待归档'
@@ -503,7 +510,7 @@ export function earlyQiPavilionScrollSaveSummary(saved: GameState, viewing: Sett
     : task.stage === 1 ? '四十三号房卷轴已查看，待取下' : '未参与')
 }
 export function earlyQiPavilionAidSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 3) return '后续记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 3)) return '后续记录 · 当前范围封存'
   const task = saved.earlyTraining.qiPavilionAid
   return '功法阁同行援助 · ' + (task.stage === 10 ? '独自破障与阁内会合已归档，登记待续'
     : task.stage >= 8 ? '致谢道歉已记，阁内会合待归档'
@@ -515,7 +522,7 @@ export function earlyQiPavilionAidSaveSummary(saved: GameState, viewing: Setting
     : task.stage === 1 ? '同行已开始，待记下薰儿选择' : '未参与')
 }
 export function earlyQiPavilionExchangeSaveSummary(saved: GameState, viewing: Settings): string {
-  if (viewing.spoiler === 'anime' && viewing.animeLimit < 3) return '后续记录 · 当前范围封存'
+  if (earlySummarySealed(viewing, 3)) return '后续记录 · 当前范围封存'
   const task = saved.earlyTraining.qiPavilionExchange
   return '功法阁双卷回看 · ' + (task.stage === 8 ? '同卷拿看、展示、取回与婉拒已归档' : task.stage >= 6 ? '已婉拒，说明与归档待续'
     : task.stage === 5 ? '家族卷已取回，支持卷仍属薰儿'

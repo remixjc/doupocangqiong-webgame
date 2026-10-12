@@ -1,7 +1,8 @@
+import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
-import { isVisible, type Transaction } from './rules'
+import { type Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { familyVisitPlaces, familyVisitPositionValid } from './early-family-visit'
 import { familyContractAt, validFamilyContract, type FamilyContractState } from './early-family-contract-state'
@@ -19,8 +20,8 @@ export function familyContractNear(position: EarlyWalkPosition, place: keyof typ
   return !!target && familyVisitPositionValid(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
 }
 export function earlyFamilyContractBlock(state: GameState): string {
-  if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
-  if (!state.completed.includes(2)) return '完成第2章首通后，可回补这段往事。'
+  const blocked = earlyHistoryBlock(state)
+  if (blocked) return blocked
   return state.earlyTraining.familyCompensation.stage === 15 ? '' : '先完成补偿交涉，再面对三年条件与本人文书。'
 }
 export type FamilyContractAction = FamilyContractState & {
