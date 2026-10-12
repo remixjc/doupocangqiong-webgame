@@ -180,6 +180,11 @@
       "name": "finalCleanRuntime",
       "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 斗技堂 / 东侧同一第一卷\n  - heading \"走到书架，展开当时的黑卷。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近东侧书架按E逐步阅读。靠架后保持阅读位置；刷新恢复断点，不代签学习与奖励。\n  - button \"本人行走与阅读\" [pressed]\n  - button \"只关注西侧声音\"\n  - group \"东侧阅读地图\" [active]:\n    - generic: 西侧训练场 · 比赛待续\n    - generic: 东侧书架\n    - generic: 堂内门口\n    - generic \"同一第一黑卷\":\n      - generic: 黄阶中级\n    - generic \"萧炎本人阅读位置\":\n      - generic: 本人 · 靠架阅读\n  - status: 东侧阅读 8/8 · 东侧阅读 · 同一第一卷归档，西赛待续\n  - paragraph: 当前卷轴保管：正在阅读第一卷。同一第一卷沿原保管账衔接，不新增库存。\n  - heading \"东侧第一卷阅读已归档。\" [level=3]\n  - paragraph: 本人仍在东侧读卷。西侧切磋与后续交涉待接续，旧技能与奖励保持。\n  - button \"暂离东侧阅读 · 保留断点\"",
       "position": "translate(400 250)"
+    },
+    {
+      "name": "cleanCommitRefresh",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 斗技堂 / 东侧同一第一卷\n  - heading \"走到书架，展开当时的黑卷。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近东侧书架按E逐步阅读。靠架后保持阅读位置；刷新恢复断点，不代签学习与奖励。\n  - button \"本人行走与阅读\" [pressed]\n  - button \"只关注西侧声音\"\n  - group \"东侧阅读地图\" [active]:\n    - generic: 西侧训练场 · 比赛待续\n    - generic: 东侧书架\n    - generic: 堂内门口\n    - generic \"同一第一黑卷\":\n      - generic: 黄阶中级\n    - generic \"萧炎本人阅读位置\":\n      - generic: 本人 · 靠架阅读\n  - status: 东侧阅读 8/8 · 东侧阅读 · 同一第一卷归档，西赛待续\n  - paragraph: 当前卷轴保管：正在阅读第一卷。同一第一卷沿原保管账衔接，不新增库存。\n  - heading \"东侧第一卷阅读已归档。\" [level=3]\n  - paragraph: 本人仍在东侧读卷。西侧切磋与后续交涉待接续，旧技能与奖励保持。\n  - button \"暂离东侧阅读 · 保留断点\"",
+      "position": "translate(400 250)"
     }
   ],
   "nativeDownloads": [
@@ -358,9 +363,20 @@
         "scroll": "reading-first"
       },
       "allOtherStateKept": true
+    },
+    {
+      "name": "readingCleanCommitRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791819245201.json",
+      "sha256": "60098bf82f17568ab5d5900ea1308d72ea6a1497ebb037dafcc4c865aa9e9c62",
+      "stage": 8,
+      "hall": {
+        "stage": 2,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
     }
   ],
-  "equalPairs": 5,
+  "equalPairs": 6,
   "errors": {
     "main": [
       {
