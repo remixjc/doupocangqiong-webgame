@@ -1,0 +1,137 @@
+{
+  "batch": "C1g-2b",
+  "version": "0.40.0",
+  "date": "2026-10-12",
+  "browser": "production 127.0.0.1:4185",
+  "evidence": "Real UI downloads; official parseSave outside browser; no game save/position/clock injection",
+  "migration": "0.39.0 adds only empty familyContract and updates contentVersion",
+  "stageRefreshes": [
+    7,
+    15,
+    17,
+    22,
+    24,
+    28,
+    33
+  ],
+  "allOtherStateUnchanged": true,
+  "earlyDuelAndVictoryRefusalWholeStateEqual": true,
+  "finalRefreshWholeStateEqual": true,
+  "manualSlots": "all three empty; none overwritten",
+  "coins": 18718,
+  "experience": 14470,
+  "completedChapters": 28,
+  "familyContract": {
+    "stage": 33,
+    "mood": "calm",
+    "sword": "departed",
+    "challenge": "pledged",
+    "decision": "refused",
+    "paper": "nalan",
+    "declaration": "explained",
+    "yan": "left",
+    "box": "ring",
+    "warning": "glimpse",
+    "guests": "left"
+  },
+  "checks": "113 Vitest files / 702 tests; 11 Node contracts; types / production / integrity pass",
+  "sourceBoundary": "Previously verified authorized English chapter 7; Chinese/anime exact mapping pending.",
+  "inputs": [
+    {
+      "name": "old",
+      "originalFile": ".git/task-compensation-done-export.json",
+      "sha256": "1794100b5947f188564b2f975a8c39758c6007e315f00708095433994b092013",
+      "bytes": 23601,
+      "sourceVersion": "0.39.0",
+      "stage": 0
+    },
+    {
+      "name": "initial",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780623211.json",
+      "sha256": "8963f8de3d3cdcd6073b170f60b6785426ab06fc63a1174bf18b1a3440ace79b",
+      "bytes": 23936,
+      "sourceVersion": "0.40.0",
+      "stage": 0
+    },
+    {
+      "name": "proposed",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780770004.json",
+      "sha256": "aca491850dba7f64fcdd13437b8b9b9749095f0d63d74699fc99a1588016db5b",
+      "bytes": 23938,
+      "sourceVersion": "0.40.0",
+      "stage": 7
+    },
+    {
+      "name": "rejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780797952.json",
+      "sha256": "8c245f99e319bbe9ec3e7aaffe127b6055b5569e0e22feebc5fc46fdff484f4e",
+      "bytes": 23938,
+      "sourceVersion": "0.40.0",
+      "stage": 7
+    },
+    {
+      "name": "written",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780864487.json",
+      "sha256": "56c154c1d30bbedf6ea04ee27946e98b428e60cf6d6c95b63a8609bf4f4aadb2",
+      "bytes": 23940,
+      "sourceVersion": "0.40.0",
+      "stage": 15
+    },
+    {
+      "name": "table",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780887776.json",
+      "sha256": "6ca50ca51609863b8ab2f6d48113229c5819a37f74e0656e337f6cc54acd84d0",
+      "bytes": 23938,
+      "sourceVersion": "0.40.0",
+      "stage": 17
+    },
+    {
+      "name": "pledged",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780932833.json",
+      "sha256": "153fe4374a39c320db65d61135c3a52a31f43d31f2140a9a7d058084ae63a51d",
+      "bytes": 23939,
+      "sourceVersion": "0.40.0",
+      "stage": 22
+    },
+    {
+      "name": "left",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780968113.json",
+      "sha256": "f297bdb87b4770cdd9bb450aaf2c14537a8381ac3d385213daea3932015fc865",
+      "bytes": 23939,
+      "sourceVersion": "0.40.0",
+      "stage": 24
+    },
+    {
+      "name": "returned",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791780997241.json",
+      "sha256": "cd8cc363eabdca5cb13d7937553f45053728af5df1d0ea815772b229a0f15df8",
+      "bytes": 23939,
+      "sourceVersion": "0.40.0",
+      "stage": 28
+    },
+    {
+      "name": "done",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791781071854.json",
+      "sha256": "73893add8300308e00436133185656e1547f671364b56dde8b5843abaeee250c",
+      "bytes": 23936,
+      "sourceVersion": "0.40.0",
+      "stage": 33
+    },
+    {
+      "name": "refreshed",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791781072796.json",
+      "sha256": "6f7377815d4c151fee3ffad443af493663dd5a6abfb4d092a41ec7885a5f145f",
+      "bytes": 23936,
+      "sourceVersion": "0.40.0",
+      "stage": 33
+    },
+    {
+      "name": "finalBuild",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791781216867.json",
+      "sha256": "5b4d3c2432aca74ae50adee85061cb5e5426c8535e65d3251cf7deb16214a8c1",
+      "bytes": 23936,
+      "sourceVersion": "0.40.0",
+      "stage": 33
+    }
+  ]
+}

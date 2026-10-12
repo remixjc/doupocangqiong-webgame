@@ -24,7 +24,8 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 export function earlyFamilyVisitSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.familyVisit
-  return '家族来访 · ' + (task.stage === 17 ? saved.earlyTraining.familyCompensation.stage === 15 ? '前半程与后续交涉已归档，文书待续'
+  return '家族来访 · ' + (task.stage === 17 ? saved.earlyTraining.familyContract.stage > 0 ? '前半程归档，' + earlyFamilyContractSaveSummary(saved, viewing)
+    : saved.earlyTraining.familyCompensation.stage === 15 ? '前半程与后续交涉已归档，文书待续'
     : saved.earlyTraining.familyCompensation.stage > 0 ? '前半程已归档，后续交涉进行中' : '前半程归档，补偿与文书待续'
     : task.box === 'presented' ? '玉匣已展示，仍属来客' : task.pressure === 'withdrawn' ? '父亲已收势，补偿待展示'
     : task.pressure === 'raised' ? '双方戒备，尚未交手' : task.request === 'spoken' ? '请求已公开，双方反应待续'
@@ -35,11 +36,24 @@ export function earlyFamilyVisitSaveSummary(saved: GameState, viewing: Settings)
 export function earlyFamilyCompensationSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.familyCompensation
-  return '补偿交涉 · ' + (task.stage === 15 ? '前段已归档，文书与立约待续'
+  return '补偿交涉 · ' + (task.stage === 15 ? saved.earlyTraining.familyContract.stage > 0 ? '前段归档，' + earlyFamilyContractSaveSummary(saved, viewing) : '前段已归档，文书与立约待续'
     : task.terms === 'offer-only' ? '已核追加条件未领取，待归档' : task.extra === 'offered' ? '追加条件已提出，仍未领物入宗'
     : task.consent === 'not-given' ? '祖父未同意已听清' : task.consent === 'asked' ? '已问祖辈同意，尚待答复'
     : task.elders === 'seated' ? '薰儿支持发言，长老已落座' : task.objection === 'spoken' ? '本人提出异议，交涉待续'
     : task.stage ? '丹药与炼药师知识说明进行中' : '未参与')
+}
+
+export function earlyFamilyContractSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.familyContract
+  return '文书与离厅 · ' + (task.stage === 33 ? '赴约、文书与双方离厅已归档'
+    : task.guests === 'left' ? '来客已离厅，待归档' : task.box === 'ring' ? '本人已离厅，玉匣回纳戒'
+    : task.box === 'returned' ? '本人已离厅，已退匣未入纳戒' : task.paper === 'nalan' ? '本人已离厅，纳兰持文书'
+    : task.yan === 'left' ? '本人已离厅，旁观尚待纳兰持文书' : task.challenge === 'pledged' ? '本人已承诺赴约，仍未离厅'
+    : task.declaration === 'explained' ? '文书含义已说明，父亲处致意待续' : task.paper === 'table' ? '文书已置桌，仍未解释'
+    : task.paper === 'marked' ? '文书已有印记，尚未置桌' : task.paper === 'written' ? '文书已写成，尚未标记或置桌'
+    : task.paper === 'preparing' ? '已备纸，尚未写成' : task.challenge === 'renewed' ? '再次约定，尚待本人承诺'
+    : task.challenge === 'proposed' ? '仅提出三年条件，尚未本人承诺' : task.stage ? '情绪与立场交涉进行中' : '未参与')
 }
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
@@ -49,7 +63,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

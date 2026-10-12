@@ -9,6 +9,7 @@ import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
 import { loadSceneModule } from './scene-load'
+import { earlyFamilyContractSaveSummary } from '../core/save-preview'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
@@ -16,6 +17,7 @@ const EarlyQiAid = lazy(() => loadSceneModule(() => import('./EarlyQiAid')))
 const EarlyQiExchange = lazy(() => loadSceneModule(() => import('./EarlyQiExchange')))
 const EarlyFamilyVisit = lazy(() => loadSceneModule(() => import('./EarlyFamilyVisit')))
 const EarlyFamilyCompensation = lazy(() => loadSceneModule(() => import('./EarlyFamilyCompensation')))
+const EarlyFamilyContract = lazy(() => loadSceneModule(() => import('./EarlyFamilyContract')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -27,6 +29,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [exchange, setExchange] = useState(false)
   const [familyVisit, setFamilyVisit] = useState(false)
   const [familyCompensation, setFamilyCompensation] = useState(false)
+  const [familyContract, setFamilyContract] = useState(false)
+  const contractEntry = useRef<HTMLButtonElement>(null), returningContract = useRef(false)
   const compensationEntry = useRef<HTMLButtonElement>(null), returningCompensation = useRef(false)
   const familyVisitEntry = useRef<HTMLButtonElement>(null), returningFamilyVisit = useRef(false)
   const scrollEntry = useRef<HTMLButtonElement>(null), aidEntry = useRef<HTMLButtonElement>(null), exchangeEntry = useRef<HTMLButtonElement>(null)
@@ -51,10 +55,12 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!aid && returningAid.current) { returningAid.current = false; aidEntry.current?.focus() } }, [aid])
   useEffect(() => { if (!familyVisit && returningFamilyVisit.current) { returningFamilyVisit.current = false; familyVisitEntry.current?.focus() } }, [familyVisit])
   useEffect(() => { if (!familyCompensation && returningCompensation.current) { returningCompensation.current = false; compensationEntry.current?.focus() } }, [familyCompensation])
+  useEffect(() => { if (!familyContract && returningContract.current) { returningContract.current = false; contractEntry.current?.focus() } }, [familyContract])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (familyContract) return <Suspense fallback={<p role="status">正在接续文书与双方离厅……</p>}><EarlyFamilyContract state={state} onBack={() => { returningContract.current = true; setFamilyContract(false) }} /></Suspense>
   if (familyCompensation) return <Suspense fallback={<p role="status">正在接续补偿与本人发言……</p>}><EarlyFamilyCompensation state={state} onBack={() => { returningCompensation.current = true; setFamilyCompensation(false) }} /></Suspense>
   if (familyVisit) return <Suspense fallback={<p role="status">正在回到拜师前的接待厅……</p>}><EarlyFamilyVisit state={state} onBack={() => { returningFamilyVisit.current = true; setFamilyVisit(false) }} /></Suspense>
   if (barrier) return <Suspense fallback={<p role="status">正在进入火通道与四十三号门障……</p>}><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></Suspense>
@@ -69,8 +75,9 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       <p>回到家族接待厅，分别记录入席、来客身份、公开请求与玉匣展示，再接拜师后的准备。</p>
       <button ref={familyVisitEntry} className="secondary" onClick={() => setFamilyVisit(true)}>回到家族来访 · 入席与公开请求</button>
       {task.familyVisit.stage === 17 && <>
-        <p>{task.familyCompensation.stage === 15 ? '补偿交涉前段已归档，文书与三年约定待续。' : `接续补偿与本人发言 ${task.familyCompensation.stage}/15`}</p>
+        <p>{task.familyCompensation.stage === 15 ? task.familyContract.stage > 0 ? earlyFamilyContractSaveSummary(state, state.settings) : '补偿交涉前段已归档，文书与三年约定待续。' : `接续补偿与本人发言 ${task.familyCompensation.stage}/15`}</p>
         <button ref={compensationEntry} className="secondary" onClick={() => setFamilyCompensation(true)}>接续补偿交涉 · 本人发言与追加条件</button>
+        {task.familyCompensation.stage === 15 && <button ref={contractEntry} className="secondary" onClick={() => setFamilyContract(true)}>接续文书与离厅 · 三年约定和原物保管</button>}
       </>}
     </section>}
     <span className="eyebrow">重修往事 / 拜师之后</span>

@@ -65,6 +65,8 @@ import { advanceEarlyFamilyVisit, familyVisitPlaces } from '../../src/core/early
 import { familyVisitScenes } from '../../src/content/early-family-visit'
 import { advanceEarlyFamilyCompensation } from '../../src/core/early-family-compensation'
 import { familyCompensationScenes } from '../../src/content/early-family-compensation'
+import { advanceEarlyFamilyContract, familyContractPlaces, type FamilyContractView } from '../../src/core/early-family-contract'
+import { familyContractScenes } from '../../src/content/early-family-contract'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
@@ -104,6 +106,14 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) while (state.earlyTraining.familyCompensation.stage < familyCompensationScenes.length) {
     const task = state.earlyTraining.familyCompensation, scene = familyCompensationScenes[task.stage]
     const result = advanceEarlyFamilyCompensation(state, familyVisitPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.familyContract.stage < familyContractScenes.length) {
+    const task = state.earlyTraining.familyContract, scene = familyContractScenes[task.stage]
+    const view: FamilyContractView = task.yan === 'left' ? { kind: 'observer', place: scene.place } : { kind: 'yan', position: familyContractPlaces[scene.place] }
+    const result = advanceEarlyFamilyContract(state, view, { ...task, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)
