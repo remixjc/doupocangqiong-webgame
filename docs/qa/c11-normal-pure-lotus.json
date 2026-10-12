@@ -1,0 +1,559 @@
+{
+  "batch": "C11c-3j/C8c",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "f24d1ef",
+  "site": "http://127.0.0.1:4184/",
+  "method": "same normal journey using native UI, real unmodified downloads, official parseSave outside browser",
+  "records": [
+    {
+      "key": "25-mirrors",
+      "file": ".git/task-normal-ch25-mirrors-export.json",
+      "bytes": 20238,
+      "fileSha256": "bfa8aae3422be5e0ec4a9a842789ee8f4ba1b5338580d0b880943cf466c555d7",
+      "stateSha256": "8d81490227e150134c020dbd1bbf2b531f61e6e512eed7e4955800bf678273c6",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "25-stage2",
+      "file": ".git/task-normal-ch25-stage2-export.json",
+      "bytes": 20237,
+      "fileSha256": "87e67f7863e4e7bced1f350983aad10c291fd2afe710f737c0972b3d14c2b300",
+      "stateSha256": "fddf6a9d850d11047785007a7142134fb54d5792e36db62c96b239d19672360d",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "25-stage3",
+      "file": ".git/task-normal-ch25-stage3-export.json",
+      "bytes": 20237,
+      "fileSha256": "fd1e96e0126ac51726f45798416b0874498585cf197a8bdc1b267d06d1005492",
+      "stateSha256": "f81764e0a0d546f6f545539099f48812040af372fe89ab95d0c4ce63bd7aff7d",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "25-pending",
+      "file": ".git/task-normal-ch25-pending-export.json",
+      "bytes": 20237,
+      "fileSha256": "e78f3b932a8307ba44d1b762158e97592cd7366889a9fcd7e90326cb9d1f7a3f",
+      "stateSha256": "7ce72c14a40ddcbc495c1f355c8e8bfaaf222dfdbc35339c03389383862650e5",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "25-gate",
+      "file": ".git/task-normal-ch25-gate-export.json",
+      "bytes": 20236,
+      "fileSha256": "10d16082a906bc05eead20ed710f1685937d16348b3673f2e6564a274ffbaaae",
+      "stateSha256": "885673328ff2b28c8edbdfb78ea0d19eec72de85fe0af4cf641d28e3ed0a0cb5",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "25",
+      "file": ".git/task-normal-ch25-export.json",
+      "bytes": 20246,
+      "fileSha256": "ff9af3835f6d2c6d183366a157fcffca3320c56259132ba41b224b4532331d80",
+      "stateSha256": "2342939654625641f6611e65eb0ee8e1f231798af8b8733daff032012e3751ff",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "gold": 15204,
+      "xp": 11885,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "25-refreshed",
+      "file": ".git/task-normal-ch25-refreshed-export.json",
+      "bytes": 20246,
+      "fileSha256": "d7dab0cc87d1b2b8f94b31c3beef33ff8a6f7e9d58c16a6b2ed32afa7ec08beb",
+      "stateSha256": "2342939654625641f6611e65eb0ee8e1f231798af8b8733daff032012e3751ff",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "gold": 15204,
+      "xp": 11885,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "pure-fire-three-mirrors": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "pure-lotus-segment-purification": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "entireStateRefreshEqual": true,
+  "first24ProgressUnchanged": true,
+  "observations": {
+    "mirrorCorrectChoices": 3,
+    "mirrorWrongChoices": 0,
+    "mirrorAndPurificationAndConfirmationRewards": 0,
+    "durations": [
+      8,
+      10,
+      12
+    ],
+    "outerRemainingObserved": [
+      8,
+      7,
+      3,
+      2
+    ],
+    "outerCorruptionObserved": [
+      0,
+      60,
+      35,
+      30,
+      60
+    ],
+    "outerOutOfZoneRemaining": 7,
+    "lotusRemainingObserved": [
+      10,
+      9,
+      5
+    ],
+    "lotusCorruption": 0,
+    "coreRemainingObserved": [
+      12,
+      5,
+      4,
+      5
+    ],
+    "coreCorruptionObserved": [
+      30,
+      90,
+      66,
+      0,
+      60,
+      6
+    ],
+    "coreRetreatsToWhiteFlameMirror": 2,
+    "coreFinishHp": 604,
+    "healUsed": 0,
+    "deathOrCorruption100FailureObserved": false,
+    "restOrRefreshBetweenStartAndFinish": false,
+    "starRecoveryActive": true,
+    "firstClearGold": 890,
+    "flameOnlyAfterFirstClear": "pure",
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop, not physical devices, player Beta or flawless/no-hit balance",
+    "Damaging warnings remained live; ordinary navigation and dodge used, no automatic immunity",
+    "Completion screenshot is camp only; reentry screenshot shows completed tasks and loading, not loaded canvas",
+    "Full sources/characters, death final frame, historical rollback and public deployment stay open",
+    "No browser store/runtime/coordinates or save fabrication"
+  ]
+}
