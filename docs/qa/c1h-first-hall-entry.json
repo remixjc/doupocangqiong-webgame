@@ -1,0 +1,211 @@
+{
+  "version": "0.64.0",
+  "date": "2026-10-12",
+  "vitestFiles": 140,
+  "vitestTests": 847,
+  "nodeTests": 11,
+  "initialJs": 499412,
+  "totalJs": 1844454,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "sourceChapter": 16,
+  "source16": "previous batch actual browser full text to NEXT",
+  "chineseAndAnime": "pending",
+  "browser": [
+    {
+      "name": "bystanderNoMove",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 族内后部 / 实际入堂\n  - heading \"走到堂门，再看见东西两区。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。\n  - button \"本人行走与观察\"\n  - button \"只关注旁观声音\" [pressed]\n  - group \"实际入堂地图\" [active]:\n    - generic: 前方房屋\n    - generic: 转角\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 门外\n  - status: 实际入堂 0/9 · 当前门外 · 实际入堂 · 未参与\n  - heading \"绕过前面的转角\" [level=3]\n  - paragraph: 会面已结束，本人继续沿路走过转角。堂门还在前方。\n  - paragraph: 旁观声音不能替本人入堂。\n  - button \"确认本人已绕过转角\" [disabled]\n  - button \"站在堂门代签取得卷轴\"\n  - button \"把欢呼算作本人胜利\"\n  - button \"暂离实际入堂 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "atHallDoor",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 族内后部 / 实际入堂\n  - heading \"走到堂门，再看见东西两区。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。\n  - button \"本人行走与观察\" [pressed]\n  - button \"只关注旁观声音\"\n  - group \"实际入堂地图\":\n    - generic: 前方房屋\n    - generic: 转角\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 门外\n  - button \"入堂向上走\": ↑\n  - button \"入堂向左走\": ←\n  - button \"入堂向下走\": ↓\n  - button \"入堂向右走\" [active]: →\n  - status: 实际入堂 1/9 · 当前门外 · 实际入堂 · 转角已过，堂门待行\n  - heading \"堂门上方的字\" [level=3]\n  - paragraph: 走到宽敞房屋前，抬头看见堂牌上的斗技堂三字。看见堂牌并不等于已经入堂。\n  - paragraph: 当前人物：萧炎本人\n  - button \"看见斗技堂堂牌\"\n  - button \"站在堂门代签取得卷轴\"\n  - button \"把欢呼算作本人胜利\"\n  - button \"暂离实际入堂 · 保留断点\"",
+      "position": "translate(340 250)"
+    },
+    {
+      "name": "immediateHallEntry",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 实际入堂断点已保存，旧奖励与卷轴保管保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 族内后部 / 实际入堂\n  - heading \"走到堂门，再看见东西两区。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。\n  - button \"本人行走与观察\" [pressed]\n  - button \"只关注旁观声音\"\n  - group \"实际入堂地图\":\n    - generic: 场地\n    - generic: 书架\n    - generic: 堂内门口\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 堂内\n  - button \"入堂向上走\": ↑\n  - button \"入堂向左走\": ←\n  - button \"入堂向下走\": ↓\n  - button \"入堂向右走\": →\n  - button \"从堂内返回门外 · 不追加历史\"\n  - status: 实际入堂 4/9 · 当前堂内 · 实际入堂 · 本人已入堂，所见待续\n  - heading \"入堂后所闻\" [level=3]\n  - paragraph: 堂内族人的欢呼迎面传来。本人不是当前切磋的参赛者，没有本人胜利或奖励。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录入堂后听到的欢呼\" [active]\n  - button \"站在堂门代签取得卷轴\"\n  - button \"把欢呼算作本人胜利\"\n  - button \"暂离实际入堂 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "normalReturnNoWrite",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 族内后部 / 实际入堂\n  - heading \"走到堂门，再看见东西两区。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。\n  - button \"本人行走与观察\" [pressed]\n  - button \"只关注旁观声音\"\n  - group \"实际入堂地图\" [active]:\n    - generic: 斗技堂\n    - generic: 转角\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 门外\n  - button \"入堂向上走\": ↑\n  - button \"入堂向左走\": ←\n  - button \"入堂向下走\": ↓\n  - button \"入堂向右走\": →\n  - button \"再从堂门进入堂内 · 不追加历史\"\n  - status: 实际入堂 4/9 · 当前门外 · 实际入堂 · 本人已入堂，所见待续\n  - heading \"入堂后所闻\" [level=3]\n  - paragraph: 堂内族人的欢呼迎面传来。本人不是当前切磋的参赛者，没有本人胜利或奖励。\n  - paragraph: 本人先实际走到本步门外或堂内地点。\n  - button \"记录入堂后听到的欢呼\" [disabled]\n  - button \"站在堂门代签取得卷轴\"\n  - button \"把欢呼算作本人胜利\"\n  - button \"暂离实际入堂 · 保留断点\"",
+      "position": "translate(340 250)"
+    },
+    {
+      "name": "mainFinal",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 族内后部 / 实际入堂\n  - heading \"走到堂门，再看见东西两区。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。\n  - button \"本人行走与观察\" [pressed]\n  - button \"只关注旁观声音\"\n  - group \"实际入堂地图\" [active]:\n    - generic: 西侧训练场\n    - generic: 东侧书架\n    - generic: 堂内门口\n    - generic \"训练场中的薰儿与对手\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 堂内\n  - status: 实际入堂 9/9 · 当前堂内 · 实际入堂 · 入堂与东西区归档，东卷待续\n  - heading \"实际入堂与东西分区已归档。\" [level=3]\n  - paragraph: 本人已入堂并先看向训练场。东侧拿卷、阅读和西侧比赛由下一段继续，旧借卷保管保持。\n  - button \"暂离实际入堂 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "materialsEntered",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 实际入堂断点已保存，旧奖励与卷轴保管保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 族内后部 / 实际入堂\n  - heading \"走到堂门，再看见东西两区。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。\n  - button \"本人行走与观察\" [pressed]\n  - button \"只关注旁观声音\"\n  - group \"实际入堂地图\":\n    - generic: 场地\n    - generic: 书架\n    - generic: 堂内门口\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 堂内\n  - button \"入堂向上走\": ↑\n  - button \"入堂向左走\": ←\n  - button \"入堂向下走\": ↓\n  - button \"入堂向右走\": →\n  - button \"从堂内返回门外 · 不追加历史\"\n  - status: 实际入堂 4/9 · 当前堂内 · 实际入堂 · 本人已入堂，所见待续\n  - heading \"入堂后所闻\" [level=3]\n  - paragraph: 堂内族人的欢呼迎面传来。本人不是当前切磋的参赛者，没有本人胜利或奖励。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录入堂后听到的欢呼\" [active]\n  - button \"站在堂门代签取得卷轴\"\n  - button \"把欢呼算作本人胜利\"\n  - button \"暂离实际入堂 · 保留断点\"",
+      "position": "translate(140 310)"
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "hallEntryMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815361249.json",
+      "sha256": "5cd06c9d74a77d293a2de59de7a70e3250df78daaed214f48bc0b4fb66997225",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryFarTurnRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815386102.json",
+      "sha256": "3a69dd8ba61ff8737e9dcb7a96c0a23fcdcd62179bd300ef3898f416edeceea2",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryBystanderRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815394117.json",
+      "sha256": "c9cdceb2f367588d2f69845680bf777e125c8f163f87497ace6231786b7cd59d",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815410173.json",
+      "sha256": "b7c71c8ac6920c5a64c813edf15a9c2b855b22bb084744dbd09ab28a7c326097",
+      "stage": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815422573.json",
+      "sha256": "b50d7801fad8354e54269fc1cd95da7592df7d5bd1311c6867a3519dfde1e6f4",
+      "stage": 2,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815445145.json",
+      "sha256": "cc242a3c667f8d8946b8f4745ea5e22c7cfd2e11e0aebc2e8d3f3219c69f679a",
+      "stage": 3,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815452469.json",
+      "sha256": "219d753728a85ebab5b24a08eb6d426dc44aaa15e050568064216f3ca19680c3",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryReturnNoWrite",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815459789.json",
+      "sha256": "8ff464894be50bf888d9ba8fcc53b3ef06ef59061dc0a8103dbc586626680dc5",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryRoundTripNoWrite",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815468824.json",
+      "sha256": "8cefa562f37346ed8db7de048810258672b17672a17dd977da97b712486c97d3",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815476851.json",
+      "sha256": "497b91764414e8dd0e49b651a3cd054c5b53aacb62a0144d22715d74c484c6d2",
+      "stage": 5,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815500671.json",
+      "sha256": "9c97cacf312b6d3bdb597953882ce89988687c6aebdb53da857d94f6773c461f",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryScrollRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815507995.json",
+      "sha256": "0238c3239a501ce35688d70a429ad7458e8c8f91d1601ce44fb68f1534ca553f",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryWinRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815516028.json",
+      "sha256": "c5b5ec386c2a6575a969e88f4e37d6be86abf691b5b8f41240940afe2577d43f",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815524067.json",
+      "sha256": "bc31036a9567933baf0da7d845316bae6b80628854d1d87b149b71098b1cf766",
+      "stage": 7,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815531480.json",
+      "sha256": "311593278e000f47bfb90145a866ead71c5645d85b31de47e7e0f7c477fdc65c",
+      "stage": 8,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815537929.json",
+      "sha256": "ff28bbb14fed338d4a37b372b3a58a8747aed0dfe28775b76021b491f1d0cbaf",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryMainRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815565285.json",
+      "sha256": "776e0b1f417757a11751fe29fdaeffb4716d18c8e2ca782ccc8a718c038804f3",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815567622.json",
+      "sha256": "bfd1f39c11e5dbc9c24172ff4bf95ea1ecd4c1d16de4e0894748b53124d8fdc3",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815596746.json",
+      "sha256": "8801f027b002caecc84ea8a6adaa00c09c2c1bf0ccd509c30ae2071412bb3219",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryMaterialsRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815616043.json",
+      "sha256": "eabf16d904a5b16fb90d4603f59f7cc5bccb25e9f3cbc11e901b27466f18aa9e",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815618367.json",
+      "sha256": "5131a46b6eac556be965e5b5d39e331a2571eaa380eb0c70302617f79d91d8ee",
+      "stage": 0,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": 8,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "intactEntryCount": 0,
+  "returnFocus": "接续实际入堂与东西分区",
+  "oldSpent": "rule-tests-only",
+  "actualBrowserOldBranch": {
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  }
+}

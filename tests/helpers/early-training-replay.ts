@@ -1,3 +1,6 @@
+import { firstHallEntryInput } from './first-hall-entry-replay'
+import { advanceFirstHallEntry, hallEntryPlaces } from '../../src/core/first-hall-entry'
+import { firstHallEntryScenes } from '../../src/content/first-hall-entry'
 import { firstRoadMeetingInput } from './first-road-meeting-replay'
 import { advanceFirstRoadMeeting, roadMeetingPlaces } from '../../src/core/first-road-meeting'
 import { firstRoadMeetingScenes } from '../../src/content/first-road-meeting'
@@ -314,6 +317,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) while (state.earlyTraining.firstRoadMeeting.stage < 12) {
     const scene = firstRoadMeetingScenes[state.earlyTraining.firstRoadMeeting.stage]
     const result = advanceFirstRoadMeeting(state, roadMeetingPlaces[scene.place], firstRoadMeetingInput(state))
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.firstHallEntry.stage < 9) {
+    const scene = firstHallEntryScenes[state.earlyTraining.firstHallEntry.stage]
+    const result = advanceFirstHallEntry(state, hallEntryPlaces[scene.place], scene.space, firstHallEntryInput(state))
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }

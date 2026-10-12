@@ -236,9 +236,16 @@
       "sha256": "1e5323f5b697a7222cc3e1a23436afc4434d1081e0cdc575d6b2c2b9a1cdd617",
       "stage": 0,
       "allOtherStateKept": true
+    },
+    {
+      "name": "roadCleanCommitRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814956999.json",
+      "sha256": "bb7352af10db9512581d9f648f468e73483f77775671b3129d235b7127443c83",
+      "stage": 12,
+      "allOtherStateKept": true
     }
   ],
-  "equalPairs": 8,
+  "equalPairs": 9,
   "errors": {
     "main": [],
     "materials": [],
@@ -252,5 +259,14 @@
     "practice": 0,
     "recovery": "unobserved"
   },
-  "futureSpectatingCorrection": "Player reads at eastern bookshelf and watches western match; no forced move west."
+  "futureSpectatingCorrection": "Player reads at eastern bookshelf and watches western match; no forced move west.",
+  "cleanCommit": {
+    "sha": "d116d03802f19e8b6344c058afc790159403a35e",
+    "gameChecks": 38262317967,
+    "conclusion": "success",
+    "pages": 38262317919,
+    "pagesConclusion": "skipped",
+    "files": 107,
+    "bytes": 1961826
+  }
 }
