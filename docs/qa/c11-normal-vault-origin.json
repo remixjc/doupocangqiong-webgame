@@ -1,0 +1,793 @@
+{
+  "batch": "C11c-3l/C9b",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "a76cad6855e14e8adee2022bcfd0037f344b2ef1",
+  "previousCI": {
+    "id": 38197707902,
+    "conclusion": "success",
+    "pagesId": 38197707890,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "native normal journey real unmodified downloads and official parseSave outside browser",
+  "records": [
+    {
+      "key": "27-north",
+      "file": ".git/task-normal-ch27-north-export.json",
+      "bytes": 21221,
+      "fileSha256": "f7834066fd4b3f4d6f7edbd6eac452f1c7c754c7210df3ad36a46443fd0d5c62",
+      "stateSha256": "8bb5a03a81056ef412c64caf42377d03e2c3d47f888f77a85a2fe939c25fade8",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16664,
+      "xp": 12725,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-wrong",
+      "file": ".git/task-normal-ch27-wrong-export.json",
+      "bytes": 21221,
+      "fileSha256": "48011f4c3eea1fb22a38059469c0c74f2083ec536721be9120d368c545897c5f",
+      "stateSha256": "a1da2d0db44a79f0fff272d0ba096bbe531c2d20a625c3e193ad49e350cd208d",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16664,
+      "xp": 12725,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 2,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-reread",
+      "file": ".git/task-normal-ch27-reread-export.json",
+      "bytes": 21221,
+      "fileSha256": "fe00f3423d6ad2d89a8d862a57af191fcb2daeb65ff01ff5b27b8bca06a98895",
+      "stateSha256": "a1da2d0db44a79f0fff272d0ba096bbe531c2d20a625c3e193ad49e350cd208d",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16664,
+      "xp": 12725,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 2,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-open",
+      "file": ".git/task-normal-ch27-open-export.json",
+      "bytes": 21221,
+      "fileSha256": "6a481fe6255ab3a47d75fb8504b58175411b602e2ff912fbb442a2936c068acf",
+      "stateSha256": "7b2342fe1bbc0993508349c78d1b61eeb6423619ee61cbf2ec411a370ebee208",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16664,
+      "xp": 12725,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-route",
+      "file": ".git/task-normal-ch27-route-export.json",
+      "bytes": 21221,
+      "fileSha256": "aff773bc6b91aa52feef6b2f5c41c6bd52374808cbe0b6695091aca8d469b026",
+      "stateSha256": "0f4664e7147694a1879c3f1985ec0ae1d52e97b6b73b9c4a41540e49833b9040",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16788,
+      "xp": 12745,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-reported",
+      "file": ".git/task-normal-ch27-reported-export.json",
+      "bytes": 21221,
+      "fileSha256": "bf1c105bd2605f600820ad773abbdf3d2b1389b1857b751e823e856ea8688614",
+      "stateSha256": "f96e9969983d41ba3abd0d97d7dad76c823e16fdcc0f477c0486795e108e2799",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16788,
+      "xp": 12745,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-mind",
+      "file": ".git/task-normal-ch27-mind-export.json",
+      "bytes": 21222,
+      "fileSha256": "4c74e30865b09289db2fdf4a4dae606baafedd63566435446f6e4fabaa7c7cba",
+      "stateSha256": "9657d3b552bec156fd23c2200bf28a579a3cd65a232d9d81ba308e3375ab7c93",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16788,
+      "xp": 12745,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-mind-reported",
+      "file": ".git/task-normal-ch27-mind-reported-export.json",
+      "bytes": 21222,
+      "fileSha256": "140551763fb832a53abd1d9b7b334c519dedabe7ce7c49af454b887a62918fff",
+      "stateSha256": "0d9d76b6185a4311d37eb28b6290805fb8bcde5de11c9e7f0f52c252fa61f60a",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16788,
+      "xp": 12895,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27",
+      "file": ".git/task-normal-ch27-export.json",
+      "bytes": 21231,
+      "fileSha256": "4283c820277026077a340a98ed80f8f36ecc238c34fc8e9c7873023bdf010cc6",
+      "stateSha256": "1bb37d83a0abf2c9c86be96a7892818f9fa63f378c64e7495530cd12f6d2bc97",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "gold": 17738,
+      "xp": 13670,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "27-refreshed",
+      "file": ".git/task-normal-ch27-refreshed-export.json",
+      "bytes": 21231,
+      "fileSha256": "78954c355b7bd4ab7c37a564606de02234acfa54046d8475be35b89dcde7869b",
+      "stateSha256": "1bb37d83a0abf2c9c86be96a7892818f9fa63f378c64e7495530cd12f6d2bc97",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "gold": 17738,
+      "xp": 13670,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 75,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "emperor-vault-three-inscriptions": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "emperor-origin-mind-inheritance": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "entireStateRefreshEqual": true,
+  "first26ProgressUnchanged": true,
+  "wrongVersusRereadEntireStateEqual": true,
+  "observations": {
+    "inscriptionsRereadLiveBeforeAndAfterErrors": [
+      "north",
+      "south",
+      "west"
+    ],
+    "wrongInputSequences": [
+      [
+        "star"
+      ],
+      [
+        "lotus",
+        "fallen",
+        "lotus"
+      ]
+    ],
+    "wrongInputImmediateReasonRead": true,
+    "successfulSequence": [
+      "lotus",
+      "fallen",
+      "star"
+    ],
+    "ordinaryKillsAdded": 2,
+    "ordinaryRewards": {
+      "gold": 124,
+      "xp": 20,
+      "crystals": 2
+    },
+    "healUsed": 0,
+    "hpAfterCombat": 578,
+    "nativeNavigationStoppedByDamageAndResumed": true,
+    "routeReportAdditionalRewards": 0,
+    "originSliders": [
+      0.35,
+      0.65,
+      0.85
+    ],
+    "originScore": 300,
+    "originAttempts": 1,
+    "originReportXp": 150,
+    "firstClearGold": 950,
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop not physical devices or player Beta",
+    "Actual rereads and two additional wrong orders, not all possible invalid sequences",
+    "No new sealed-door blocking or death final-frame claim; previous separate evidence stays",
+    "Full sources/characters, historical rollback and public deployment remain open",
+    "No runtime/browser-store/coordinate or save fabrication"
+  ]
+}
