@@ -1,0 +1,93 @@
+{
+  "batch": "C11e-7",
+  "date": "2026-10-12",
+  "version": "0.37.6",
+  "site": "http://127.0.0.1:4185/",
+  "previousCommit": "4583a27b6c2e46842e9ae715d3950af69eb2e4f7",
+  "previousCI": {
+    "id": 38199328895,
+    "conclusion": "success",
+    "pagesId": 38199328928,
+    "pagesConclusion": "skipped"
+  },
+  "method": "Native real unchanged journey backup import, UI pause/resume/ordinary lock, close before final craft, restore preference, actual downloads and official parseSave outside browser",
+  "records": [
+    {
+      "file": ".git/task-normal-ch28-export.json",
+      "bytes": 23080,
+      "fileSha256": "91e196397e890a8c265eabf7f1cfc9526656a1485544ec9110daed527037ca0f",
+      "parsedStateSha256": "a9f03d0d463e29ad19699aae319c25399442ac45b086bfcad896d005c095a66a"
+    },
+    {
+      "file": ".git/task-heat-pause-migrated-export.json",
+      "bytes": 23080,
+      "fileSha256": "16c5d1bf575d2c5b98593c7caf50c3985df4789ffbb386fa3f42288b35594f1b",
+      "parsedStateSha256": "a9f03d0d463e29ad19699aae319c25399442ac45b086bfcad896d005c095a66a"
+    },
+    {
+      "file": ".git/task-heat-pause-final-export.json",
+      "bytes": 23080,
+      "fileSha256": "35b371341ab31875ce51bbf159e9bff24f8f4daeb74c598024b2adedc1321f6c",
+      "parsedStateSha256": "a9f03d0d463e29ad19699aae319c25399442ac45b086bfcad896d005c095a66a"
+    },
+    {
+      "file": ".git/task-heat-pause-refreshed-export.json",
+      "bytes": 23080,
+      "fileSha256": "bdd55969e811d69e0db52c7983ea744895f854694173e628017ee4abc050ee40",
+      "parsedStateSha256": "a9f03d0d463e29ad19699aae319c25399442ac45b086bfcad896d005c095a66a"
+    },
+    {
+      "file": ".git/task-heat-pause-restored-export.json",
+      "bytes": 23080,
+      "fileSha256": "d39b033611714d1abe9c00368a91206e83bc7d455bfe225e94af8a881ed6e018",
+      "parsedStateSha256": "a9f03d0d463e29ad19699aae319c25399442ac45b086bfcad896d005c095a66a"
+    }
+  ],
+  "wholePersistentStateExceptVersionPreserved": true,
+  "observations": {
+    "finalBuildPausedMarker": "0.852",
+    "laterPausedMarker": "0.852",
+    "pausedLockEnabled": false,
+    "explicitResumeThenOrdinaryLockReached": "第 2 步 / 融合 · 协调药性",
+    "nextStepPauseLockEnabled": false,
+    "reducedModeRangeCount": 1,
+    "reducedModePauseButtonCount": 0,
+    "gold": 18718,
+    "xp": 14470,
+    "completed": 28,
+    "totalKills": 75,
+    "totalBrews": 0,
+    "inventory": {
+      "herb": 9,
+      "crystal": 76,
+      "heal": 4,
+      "mana": 2,
+      "elixir": 0
+    },
+    "finalReducedMotion": true,
+    "manualSlots": "three empty; none overwritten",
+    "consoleErrors": []
+  },
+  "verification": {
+    "fullVitest": 686,
+    "fullTestFiles": 110,
+    "node": 11,
+    "finalFocusedTests": 15,
+    "finalFocusedFiles": 3,
+    "typeAndProductionBuild": "passed",
+    "files": 71,
+    "bytes": 1736021,
+    "entryBytes": 489229,
+    "entryGzip": 158978,
+    "totalJsBytes": 1626138,
+    "engineGzip": 173297,
+    "engineLazy": true
+  },
+  "limits": [
+    "Explicit pause/resume actually observed; physical background/window blur remains rule evidence, not device acceptance",
+    "No precision timing or all individual later story panel browser claim",
+    "No third craft lock or inventory consumption; entire state preserved except content version",
+    "Original ordinary journey on port4184 remains untouched; this is a separate real-backup migration copy",
+    "No new story source, full-character completion, rights, public deployment or Beta acceptance"
+  ]
+}
