@@ -1,0 +1,430 @@
+{
+  "version": "0.69.1",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 146,
+    "tests": 878
+  },
+  "nodeTests": 11,
+  "initialJs": 499456,
+  "totalJs": 1847780,
+  "freedTotalJs": 2020,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "literalReplacements": 113,
+  "reverseSource": {
+    "path": "src/core/save-preview.ts",
+    "originalSha256": "616532924b28f8d8a8f531204bb72013c5546573e19f13335668adb8a7a23435",
+    "restoredSha256": "616532924b28f8d8a8f531204bb72013c5546573e19f13335668adb8a7a23435"
+  },
+  "cases": [
+    {
+      "name": "matchMainMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchRejected0",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMainStage1",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMainStage4",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMainWrongFocus4",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMainStage11",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMaterialsMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchIntactMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMainFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMaterialsFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchMainFinalRepeat",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "matchIntactAfterNavigation",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "snapshotMainMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "snapshotMaterialsMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "snapshotIntactMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "snapshotMainAfterRoutes",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMaterialsMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnIntactMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainRejected12",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainStage16",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainStage17",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMaterialsFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnIntactAfterNavigation",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainOriginalEntry",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "returnMainVisualRefresh",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "buttonsMainMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "buttonsMaterialsMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "buttonsIntactMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "buttonsMainAfterRoutes",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMaterialsMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkIntactMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainRejected0",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainStage5",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainStage9",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainStage15",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainStage17",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMaterialsStage5",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMaterialsStage9",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMaterialsStage17",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMaterialsFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainOriginalEntry",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkIntactAfterNavigation",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "talkMainFinalRefresh",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapMain",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapMaterials",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapIntact",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapMainAfterScenes",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapMainFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapMaterialsFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "mapIntactFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMaterialsMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachIntactMigrated",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainRejected0",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainStage7",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainStage8",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainStage9",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainStage13",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainOriginalEntry",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMaterialsStage7",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMaterialsStage8",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMaterialsStage9",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMaterialsStage13",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMaterialsFinal",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainFinalRefresh",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachIntactAfterNavigation",
+      "functions": 59,
+      "assertions": 295
+    },
+    {
+      "name": "approachMainAfterDirectionScenes",
+      "functions": 59,
+      "assertions": 295
+    }
+  ],
+  "totalSummaryAssertions": 21240,
+  "native": [
+    {
+      "name": "summaryMain",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830736613.json",
+      "sha256": "d8404907b977012e932dcf8d47e55741259237e9f82d2740e46207e648be04ce",
+      "baseline": "approachMainAfterDirectionScenes",
+      "entireStateEqual": true
+    },
+    {
+      "name": "summaryMaterials",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830738714.json",
+      "sha256": "fdae9f0510dd7f855f34498bdb9d7c3aab2bc14bbfe80e98a85f8b5ffd848cbe",
+      "baseline": "approachMaterialsFinal",
+      "entireStateEqual": true
+    },
+    {
+      "name": "summaryIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830740887.json",
+      "sha256": "4e40144b51f3edb3ef5e9e5bef8ae6b0c3f2d670e053227455563bf2be9c6a09",
+      "baseline": "approachIntactAfterNavigation",
+      "entireStateEqual": true
+    },
+    {
+      "name": "summaryMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830755244.json",
+      "sha256": "eadad5894fdafd067ac20b13ec31a9c4833c1dfb9a945bc237b46e10a0321aa1",
+      "baseline": "summaryMain",
+      "entireStateEqual": true
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "limits": "Only repeated literal storage changed; full original summary function output compared across immutable downloaded states and current/1/2/3/28 viewing scopes. No new story checkpoints, device or release completion claimed.",
+  "prerequisite": {
+    "sha": "bcdaadbb41debdb450b754bdf57be772e59e7bed",
+    "ci": 38292626346,
+    "conclusion": "success",
+    "pages": 38292626310,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1983905
+  }
+}
