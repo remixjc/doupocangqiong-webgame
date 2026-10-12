@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -42,7 +44,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
   }
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">预测之后 / 同行与礼前训练</span>
+    <Eyebrow>预测之后 / 同行与礼前训练</Eyebrow>
     <h2>日复一日，灯下偶得突破。</h2>
     <p id="eighth-help">方向键或WASD行走，走近地点按E接续静态步骤；训练使用下方时机与动作按钮。地图把房间、城市和后山压缩为行程节点。重入从分路出发，训练断点保留。</p>
     <EarlyMap ref={field} aria-label="同行与礼前训练地图" aria-describedby="eighth-help" viewBox="0 0 720 420" onKeyDown={key}>
@@ -63,7 +65,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       {Object.entries(eighthPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="礼前训练行走操作">{<WalkDirectionButtons prefix="礼前" onMove={move} />}</div>
+    <WalkControls aria-label="礼前训练行走操作">{<WalkDirectionButtons prefix="礼前" onMove={move} />}</WalkControls>
     <StatusParagraph>礼前训练 {task.stage}/15 · {target ? `本轮 ${task.beats}/${target}` : '地点步骤'} · 重开 {task.attempts} 次 · {task.outing === 'none' ? '尚待回应' : task.outing === 'promised' ? '已约好，同行未完成' : '次日同行已记'} · {task.result === 'none' ? '故事八段尚未感知' : '故事八段已感知'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="礼前训练步骤"><SceneHeading title={scene.title} text={scene.text} />
       {target ? <>
@@ -71,8 +73,8 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
         <div className="heat-meter" aria-label="礼前训练时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停礼前训练时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续礼前训练 · 恢复时机</SecondaryButton></>}
-        <div className="early-walk-controls"><PrimaryButton disabled={paused} onClick={() => act(eighthTrainingOperation(task))}>{task.stage === 7 ? task.beats === 0 ? '吸掌 · 收定风痕' : '吹火掌 · 将风痕推出' : scene.action}</PrimaryButton>
-          {task.stage === 7 && <SecondaryButton disabled={paused} onClick={() => act(task.beats === 0 ? 'push' : 'pull')}>{task.beats === 0 ? '尝试先推 · 重新调整次序' : '继续吸掌 · 重新调整次序'}</SecondaryButton>}</div>
+        <WalkControls><PrimaryButton disabled={paused} onClick={() => act(eighthTrainingOperation(task))}>{task.stage === 7 ? task.beats === 0 ? '吸掌 · 收定风痕' : '吹火掌 · 将风痕推出' : scene.action}</PrimaryButton>
+          {task.stage === 7 && <SecondaryButton disabled={paused} onClick={() => act(task.beats === 0 ? 'push' : 'pull')}>{task.beats === 0 ? '尝试先推 · 重新调整次序' : '继续吸掌 · 重新调整次序'}</SecondaryButton>}</WalkControls>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
     </BondSummary> : <p className="muted">下一步请走近{eighthPlaces[scene.place].label}：{scene.title}。</p>
       : <BondSummary><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p>{onGuests && <PrimaryButton onClick={onGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}</BondSummary>}

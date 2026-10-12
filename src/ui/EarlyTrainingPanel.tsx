@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import DeferredScene from './DeferredScene'
@@ -191,7 +192,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         </>}
       </>}
     </BondSummary>}
-    <span className="eyebrow">重修往事 / 拜师之后</span>
+    <Eyebrow>重修往事 / 拜师之后</Eyebrow>
     <h2>从一份准备单，重新开始。</h2>
     {blocked ? <p className="muted">{blocked}</p> : <>
       <p>三年约定之后，药老在后山现身，萧炎拜师。重修的下一步，是筹措资金、找到指定药材，再由老师调制供修炼使用的药液。</p>
@@ -318,7 +319,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
           })}
         </BondSummary>
         {herbsReady && <BondSummary aria-label="坊市往事与黑铁片">
-          <span className="eyebrow">坊市往事 · {Math.min(task.market.stage + 1, 4)} / 4</span>
+          <Eyebrow>坊市往事 · {Math.min(task.market.stage + 1, 4)} / 4</Eyebrow>
           <p className="muted">回顾采购中的交涉。已付款的魔核记录保留，这里核对同一笔交易的黑铁片附物。</p>
           {marketScene ? <>
             <h3>{marketScene.title}</h3><b>{marketScene.speaker}</b><p>{marketScene.text}</p>
@@ -329,7 +330,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
           <p className="muted">这是对白与交互的压缩改编；也可从上方进入准备路线，在地点进行同一笔交易。黑铁片尚未化为玩家的战斗技能。</p>
         </BondSummary>}
         {task.market.stage === 4 && <BondSummary aria-label="药老调制与稀释">
-          <span className="eyebrow">重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</span>
+          <Eyebrow>重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</Eyebrow>
           {liquidScene ? <>
             <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
             <SecondaryButton onClick={() => gameStore.earlyTraining({ type: 'liquid',

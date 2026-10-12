@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -23,7 +24,7 @@ export default function EarlyApprentice({ state, onBack }: { state: GameState; o
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">后山 / 援助与本人拜师</span><h2>先谈清条件，再亲自完成师徒礼。</h2>
+    <Eyebrow>后山 / 援助与本人拜师</Eyebrow><h2>先谈清条件，再亲自完成师徒礼。</h2>
     <p id="apprentice-help">方向键或WASD行走，近当前地点后按E。本人愿学、实际青石前行礼、听老师名字各自保存。</p>
     <MountainWalkMap label="援助拜师行走地图" helpId="apprentice-help" prefix="拜师" position={position} place={scene?.place}
       ring="floating" elderVisible={true} elderNamed={task.name === 'yaolao'} seated={task.stage >= 20} bowed={task.rite === 'bowed'}

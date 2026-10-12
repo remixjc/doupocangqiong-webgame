@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import { chapterRecaps } from '../core/story-recap'
@@ -7,7 +8,7 @@ export default function StoryRecap({ state }: { state: GameState }) {
   const recaps = chapterRecaps(state)
   const current = recaps.find(chapter => chapter.id === selected) ?? recaps[0]
   return <>
-    <span className="eyebrow">篇章回顾 / 旅途对白</span>
+    <Eyebrow>篇章回顾 / 旅途对白</Eyebrow>
     <h2>重读一路走来的故事。</h2>
     <p className="muted">查看已读开场与首通后的收尾。这里展示当前版本的游戏对白；修订后可重新阅读。</p>
     {!current ? <p className="muted">还没有可回顾的篇章。读完第一章开场后，再来翻阅。</p> : <>

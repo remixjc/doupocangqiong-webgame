@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -34,7 +36,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
   }
   if (blocked || state.earlyTraining.hall.stage === 0) return <p>{blocked || '先从药老处接续前往斗技堂。'}</p>
   return <>
-    <span className="eyebrow">重修往事 / 斗技堂到访</span>
+    <Eyebrow>重修往事 / 斗技堂到访</Eyebrow>
     <h2>东侧藏卷，西侧习武。</h2>
     <p className="muted" id="early-hall-help">方向键或WASD行走，靠近路标按E查看；也可使用下方按钮。堂内位置在退出或刷新后回堂口，到访记录保留。</p>
     <EarlyMap ref={field} aria-label="斗技堂地图"
@@ -72,10 +74,10 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
       <MapText x="360" y="406" fill="#dbc59e">堂口 · 原创比例与陈设</MapText>
     </EarlyMap>
     <StatusParagraph className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</StatusParagraph>
-    <div className="early-walk-controls" aria-label="斗技堂行走操作">
+    <WalkControls aria-label="斗技堂行走操作">
       <WalkDirectionButtons prefix="堂内" onMove={move} />
       <PrimaryButton disabled={!place} onClick={() => place && setReading(place.id)}>查看堂内地点</PrimaryButton>
-    </div>
+    </WalkControls>
     <StatusParagraph>堂内记录 {Math.max(0, task.stage - 1)}/8 · {task.scroll === 'borrowed-second' ? '第二卷已登记，由萧炎保管'
       : task.scroll === 'selected-second' ? '第二卷已选好，尚由堂内保管' : task.scroll === 'reading-first' ? '第一卷在堂内阅读，尚未借出' : '尚无卷册借出'}</StatusParagraph>
     {scene && <p className="muted">下一步：{earlyHallPlaces.find(place => place.id === scene.place)?.label} · {scene.title}</p>}

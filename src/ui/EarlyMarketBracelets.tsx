@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
@@ -44,7 +46,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">坊市 / 让路与两条手链</span><h2>先请让路，再分清两件赠礼。</h2>
+    <Eyebrow>坊市 / 让路与两条手链</Eyebrow><h2>先请让路，再分清两件赠礼。</h2>
     <p id="market-bracelets-help">明确选择本步人物，方向或WASD行走，近街角按E。两人独立行走，换人物和刷新需重选；位置不保存，街坊不可穿过。</p>
     <EarlyMap ref={field} aria-label="让路与两条手链地图" aria-describedby="market-bracelets-help"
       viewBox="0 0 720 420" onKeyDown={key}>
@@ -66,9 +68,9 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
         {(task.green === 'received' || task.green === 'worn') && <circle aria-label={task.green === 'worn' ? '薰儿已戴普通绿链' : '薰儿收到但尚未戴上普通绿链'} cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
     </EarlyMap>
-    {scene && <div className="early-walk-controls"><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
+    {scene && <WalkControls><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>
-      {active && <WalkDirectionButtons prefix="手链" onMove={move} />}</div>}
+      {active && <WalkDirectionButtons prefix="手链" onMove={move} />}</WalkControls>}
     <StatusParagraph>让路手链 {task.stage}/28 · {earlyMarketBraceletsSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 蓝金手链：{task.expensive === 'unoffered' ? '尚未提出' : '来人持有，未交付'}
       {' · '}普通绿链：{task.green === 'unshown' ? '尚未拿出' : task.green === 'shown' ? '萧炎持有，未交付' : task.green === 'received' ? '薰儿已收到，尚未戴上' : '薰儿已戴上'}</p>

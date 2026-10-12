@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
@@ -42,7 +44,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">{returning ? '回族与房中准备' : `坊市 / ${trade ? '询价与唯一成交' : '发现与心中购买建议'}`}</span><h2>{returning ? '走回族内，锁门后再摆材料。' : trade ? '同意之后，才付清同一笔订单。' : '一枚绿核，一片尚未辨明的黑铁。'}</h2>
+    <Eyebrow>{returning ? '回族与房中准备' : `坊市 / ${trade ? '询价与唯一成交' : '发现与心中购买建议'}`}</Eyebrow><h2>{returning ? '走回族内，锁门后再摆材料。' : trade ? '同意之后，才付清同一笔订单。' : '一枚绿核，一片尚未辨明的黑铁。'}</h2>
     <p id="market-discovery-help">{returning ? '先同行出坊回族、分路后本人独自回房。方向/WASD行走，近当前地点按E；街坊不可穿过。位置不保存，刷新回到已完成地点；摆材料不恢复后来已耗物资。' : '由本人带薰儿走近前方摊位。方向/WASD行走，近摊按E；街坊不可穿过。历史逐步保存，行走位置不保存。老师的声音只在本人心中。'}{trade && '成交后需实际走到离摊标记。'}</p>
     <EarlyMap ref={field} aria-label={returning ? '回族与房中准备地图' : trade ? '询价与唯一成交地图' : '发现魔核与黑铁片地图'} aria-describedby="market-discovery-help"
       viewBox="0 0 720 420" onKeyDown={key}>
@@ -64,7 +66,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
       <g aria-label="萧炎本人行走位置" transform={`translate(${position.x} ${position.y})`}><MarketWalker /></g>
       {(!returning || !home.parted) && <g aria-label="薰儿同行位置" transform={`translate(${position.x + 25} ${position.y})`}><MarketWalker xuner /></g>}
     </EarlyMap>
-    {scene && <div className="early-walk-controls">{<WalkDirectionButtons prefix="发现" onMove={move} />}</div>}
+    {scene && <WalkControls>{<WalkDirectionButtons prefix="发现" onMove={move} />}</WalkControls>}
     <StatusParagraph>{returning ? '回族房中' : trade ? '唯一成交' : '摊位发现'} {task.stage}/{returning ? 9 : trade ? 17 : 10} · {(returning ? earlyMarketReturnSaveSummary : trade ? earlyMarketTradeSaveSummary : earlyMarketDiscoverySaveSummary)(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。'} />
       <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>

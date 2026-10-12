@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useState } from 'react'
@@ -30,7 +31,7 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
   }
   if (!task.liquid.ready || earlyTrainingBlock(state)) return null
   return <BondSummary aria-label="初期重修与斗技尝试">
-    <span className="eyebrow">后山与静室 / 初期练习</span>
+    <Eyebrow>后山与静室 / 初期练习</Eyebrow>
     {practice.phase === 0 && <>
       <h3>先调息，再尝试</h3>
       <p>药液准备好后，萧炎继续修炼。把呼吸和斗气稳住，再试试黑铁片中的斗技。</p>

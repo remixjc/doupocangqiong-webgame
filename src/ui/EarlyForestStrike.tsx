@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -43,7 +45,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
   const operation = (['steady', 'gather', 'strike'] as const)[Math.min(task.beats, 2)]
   const actionLabel = ['稳身 · 承接第一步', '凝气 · 承接第二步', '肘击 · 完成这一击'][Math.min(task.beats, 2)]
   return <>
-    <span className="eyebrow">后山森林 / 首次成功练技</span>
+    <Eyebrow>后山森林 / 首次成功练技</Eyebrow>
     <h2>走到树前，连成这一击。</h2>
     <p id="forest-strike-help">聚焦地图用方向键或WASD行走，走近青石、练技树和山径；静态步骤可按E。练技按下方按钮依次稳身、凝气、肘击，绿色时机区为35%–65%。地点与节奏是原创压缩操作。</p>
     <EarlyMap ref={field} aria-label="林中练技地图" aria-describedby="forest-strike-help" viewBox="0 0 720 380" onKeyDown={key}>
@@ -61,9 +63,9 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
       <MapText x="360" y="369" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</MapText>
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="林中行走操作">
+    <WalkControls aria-label="林中行走操作">
       <WalkDirectionButtons prefix="林中" onMove={move} />
-    </div>
+    </WalkControls>
     <StatusParagraph>林中练技 {task.stage}/7 · {task.result === 'none' ? '六段回顾未记录' : '故事六段'} · 连贯动作 {task.beats}/3 · 重试 {task.attempts} 次 · {task.tree === 'intact' ? '树木完好' : '同一棵树已倒下'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="林中练技步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>

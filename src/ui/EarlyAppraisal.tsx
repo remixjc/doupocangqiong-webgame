@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -20,7 +22,7 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
   useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">米特尔拍卖场 / 首次寄售鉴定</span>
+    <Eyebrow>米特尔拍卖场 / 首次寄售鉴定</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>黑袍遮面，一瓶只交一次。</h2>
     <p>选择侧巷、大厅入口或鉴定桌，接续身份遮掩、药老代言与谷尼鉴别。这里交接的仍是此前装好的同一只白玉瓶。</p>
     <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={`鉴定室：萧炎${task.cloaked ? '已穿黑袍' : '尚未穿黑袍'}；玉瓶由${appraisalOwnerLabels[bottle.owner]}保管；${task.tier === 2 ? '谷尼已确认二品' : '尚未确认品阶'}。`}>
@@ -41,9 +43,9 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
       {task.card === 'black-entry' && <g><rect x="204" y="99" width="65" height="37" rx="3" fill="#202a29" stroke="#a88f63" /><MapText x="237" y="122" fill="#cfba85">入场卡</MapText></g>}
       <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">待售实例保管：{appraisalOwnerLabels[bottle.owner]}</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="鉴定路线位置">
+    <WalkControls aria-label="鉴定路线位置">
       {(Object.keys(stations) as AppraisalStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>寄售鉴定 {task.stage}/8 · {task.cloaked ? '黑袍已穿' : '身份尚未遮掩'} · {task.tier === 2 ? '制品二品' : '品阶待核'} · {task.card === 'black-entry' ? '持黑色入场卡' : '尚无入场卡'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="寄售鉴定步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />

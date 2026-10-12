@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -23,7 +24,7 @@ export default function EarlyMethodDiscussion({ state, onBack }: { state: GameSt
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">青石前 / 功法说明</span><h2>问清前置和依据，保留尚未授卷。</h2>
+    <Eyebrow>青石前 / 功法说明</Eyebrow><h2>问清前置和依据，保留尚未授卷。</h2>
     <p id="method-discussion-help">方向或WASD走近青石后按E。老师说明、本人追问与暂缓授卷分别保存。</p>
     <MountainWalkMap label="功法说明行走地图" helpId="method-discussion-help" prefix="问法" position={position} place={scene ? 'stone' : undefined}
       ring="floating" elderVisible={true} elderNamed={true} seated={true} bowed={true}

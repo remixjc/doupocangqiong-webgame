@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
@@ -39,12 +41,12 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">{title}</span><h2>{heading}</h2>
+    <Eyebrow>{title}</Eyebrow><h2>{heading}</h2>
     <p id="teacher-room-help">{help}</p>
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>旁观房中的老师</SecondaryButton>
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label={mapLabel} aria-describedby="teacher-room-help" viewBox="80 290 245 125" onKeyDown={key}>
       <MapBackground /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
       <g aria-label="老师固定房中位置" transform="translate(220 370)"><MarketWalker /><text y="-52" textAnchor="middle" fill="#eed7ad">老师</text></g>
@@ -52,7 +54,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
       <g aria-label="萧炎本人行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad">本人</text></g>
       {draw(yan)}
     </EarlyMap>
-    {scene && movable && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix={prefix} onMove={move} /></div>}
+    {scene && movable && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix={prefix} onMove={move} /></WalkControls>}
     <StatusParagraph>{prefix} {stage}/{total} · {summary}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>

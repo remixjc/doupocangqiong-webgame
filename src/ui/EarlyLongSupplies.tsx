@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -22,7 +24,7 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
   if (blocked) return <p>{blocked}</p>
   const sorting = task.stage === 1 || task.stage === 2
   return <>
-    <span className="eyebrow">房中物资 / 回溯父亲来访之前</span>
+    <Eyebrow>房中物资 / 回溯父亲来访之前</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>收好这一批，继续后来的修炼。</h2>
     <p>回看首次寄售后已经买回的另批物资。在标签台核对、分拣药材与魔核，再藏入房柜。此页接入次序是手札回溯，故事时间在父亲来访之前。</p>
     <svg className="early-walk-map" viewBox="0 0 720 280" role="img" aria-label={`长期物资：药材包在${places[task.herbs]}，魔核包在${places[task.cores]}；同瓶仍由萧炎保管，自用药液耗尽。`}>
@@ -40,16 +42,16 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
       {task.stage === 6 && <path d="M621 67 V217 M617 151 H625" stroke="#b5a073" strokeWidth="3" />}
       <MapText x="360" y="262" fill="#e8d1a6" fontSize="13">另购批次 · 八个月用量是故事概述 · 分拣位置为原创布局</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="长期物资位置">
+    <WalkControls aria-label="长期物资位置">
       {(Object.keys(stations) as LongSupplyStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>物资归档 {task.stage}/6 · 药材包{places[task.herbs]} · 魔核包{places[task.cores]}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="物资归档步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-      {sorting && <div className="early-walk-controls" aria-label="选择物资包">
+      {sorting && <WalkControls aria-label="选择物资包">
         <SecondaryButton aria-pressed={item === 'herbs'} disabled={task.herbs !== 'parcel'} onClick={() => setItem('herbs')}>拿起药材包</SecondaryButton>
         <SecondaryButton aria-pressed={item === 'cores'} disabled={task.cores !== 'parcel'} onClick={() => setItem('cores')}>拿起魔核包</SecondaryButton>
-      </div>}
+      </WalkControls>}
       <PrimaryButton disabled={sorting && !item} onClick={() => submitEarlyLongSupplies(gameStore, position, station,
         { step: task.stage, herbs: task.herbs, cores: task.cores, operation: scene.operation, item: sorting ? item : undefined })}>{scene.action}</PrimaryButton>
     </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>

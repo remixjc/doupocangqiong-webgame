@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -15,7 +16,7 @@ export default function EarlyBracelet({ state, position }: { state: GameState; p
     || !task.started || !task.receipts.bluegrass || !task.receipts.boneflower) return null
   const scene = earlyBraceletScenes[bracelet.stage]
   return <BondSummary aria-label="坊市手链往事">
-    <span className="eyebrow">护卫介入之前 / 手链 {bracelet.stage}/6</span>
+    <Eyebrow>护卫介入之前 / 手链 {bracelet.stage}/6</Eyebrow>
     {scene ? <><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <SecondaryButton onClick={() => submitEarlyBracelet(gameStore, position, { stage: bracelet.stage, operation: scene.operation })}>{scene.action}</SecondaryButton>
     </> : <><h3>手链往事已归档</h3><p>普通绿链由薰儿收好；加列奥提出的赠核手链没有接取。魔核材料仍以采购收据为准。</p></>}

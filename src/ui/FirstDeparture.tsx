@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
@@ -49,12 +51,12 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">房门 / 出门与石路</span><h2>起身、跨门，再走上石路。</h2>
+    <Eyebrow>房门 / 出门与石路</Eyebrow><h2>起身、跨门，再走上石路。</h2>
     <p id="departure-help">方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。</p>
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'ring'} onClick={() => setActor('ring')}>只看静止古戒</SecondaryButton>
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label="出门与石路地图" aria-describedby="departure-help" viewBox={space === 'room' ? '80 290 245 125' : '80 215 280 125'} onKeyDown={key}>
       <MapBackground />
       {space === 'room' ? <>
@@ -74,7 +76,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
       </>}
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</HallText></g>
     </EarlyMap>
-    {scene && task.risen && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="出门" onMove={move} /></div>}
+    {scene && task.risen && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix="出门" onMove={move} /></WalkControls>}
     {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}
     <StatusParagraph>出门石路 {task.stage}/9 · 当前{space === 'room' ? '房内' : '室外'} · {firstDepartureSaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

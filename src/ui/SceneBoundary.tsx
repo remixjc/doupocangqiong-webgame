@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
 import { Component, createRef, type ReactNode } from 'react'
 import './scene-failure.css'
@@ -14,7 +15,7 @@ export default class SceneBoundary extends Component<Props, { failed: boolean; t
   render() {
     if (!this.state.failed) return this.props.children
     return <section className={`scene-failure${this.props.context === 'panel' || this.props.context === 'save' ? ' in-panel' : ''}`} role="alert" ref={this.recovery}>
-      <span className="eyebrow">旅途暂歇</span><h3>{this.props.context === 'save' ? '存档管理暂时无法打开。' : this.props.context === 'panel' ? '这页旅途暂时无法展开。' : '山川画卷暂时停笔。'}</h3>
+      <Eyebrow>旅途暂歇</Eyebrow><h3>{this.props.context === 'save' ? '存档管理暂时无法打开。' : this.props.context === 'panel' ? '这页旅途暂时无法展开。' : '山川画卷暂时停笔。'}</h3>
       <p>{this.props.context === 'save'
         ? this.state.timedOut ? '打开存档管理已等待超过20秒。自动保存状态如下；网络恢复后，可以等进度保存完成再刷新页面。' : '存档窗口遇到问题，旅途已暂停。请查看下方自动保存状态；保存完成后可以刷新，或返回大陆舆图。'
         : this.props.context === 'panel'

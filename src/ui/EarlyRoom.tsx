@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -23,7 +24,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
   useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
   if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton></>
   return <>
-    <span className="eyebrow">拜师之后 / 室内调制</span>
+    <Eyebrow>拜师之后 / 室内调制</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>把材料交给老师，留心每一步。</h2>
     <p className="muted">点选室内位置查看。萧炎备水，药老依次处理材料并将药液加入清水；这里接续准备单中的同一次调制。</p>
     <div className="early-room">
@@ -82,7 +83,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
     </div>
     <StatusParagraph className="early-room-state">调制 {task.liquid.stage}/6 · {view.water} · {view.mixture}</StatusParagraph>
     <BondSummary aria-label="室内当前操作">
-      <span className="eyebrow">{stations[station]}</span>
+      <Eyebrow>{stations[station]}</Eyebrow>
       {station === 'materials' ? <>
         <h3>用掉的材料，不再留一份。</h3>
         {(Object.keys(earlySupplies) as EarlySupplyId[]).map(id => <p key={id}>{earlySupplies[id].label}：任务袋{task.supplies[id]} · {task.supplies[id] ? '待交老师处理' : '已由老师使用，收据保留'}</p>)}

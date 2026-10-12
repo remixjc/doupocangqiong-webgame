@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -34,7 +36,7 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
   if (blocked) return <p>{blocked}</p>
   const color = task.energy === 'clear' ? '#93b3af' : task.energy === 'restored' ? '#30614b' : task.energy === 'active' ? '#578967' : '#739b7d'
   return <>
-    <span className="eyebrow">萧家房中 / 冲向七段</span>
+    <Eyebrow>萧家房中 / 冲向七段</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>一滴补液，接住这一轮。</h2>
     <p>林中成功之后，房中继续修炼。本次木盆与早先耗尽的自用记录分开；古戒补液由药老完成，父亲赠回的原瓶仍收好。</p>
     <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={`七段房中独立木盆：${seventhEnergyLabels[task.energy]}；药老从古戒补液${task.drops}滴；${task.result === 'none' ? '七段尚未成立' : '故事七段已成立'}`}>
@@ -48,9 +50,9 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
       {task.drops === 1 && <g><path d="M524 177 Q511 196 524 200 Q537 196 524 177Z" fill="#88bda1" /><path d="M503 197 L465 200" stroke="#9dcead" strokeDasharray="4 5" /><MapText x="558" y="250" fill="#e5d5b7" fontSize="13">一滴已入水 · 不重复补入</MapText></g>}
       <MapText x="360" y="291" fill="#e5d5b7" fontSize="13">{seventhEnergyLabels[task.energy]} · {task.result === 'none' ? '尚待合法感知结果' : '本轮故事七段'}</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="七段房中位置">
+    <WalkControls aria-label="七段房中位置">
       {(Object.keys(stations) as SeventhStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>房中七段 {task.stage}/8 · 调息 {task.beats}/{task.stage <= 3 ? 2 : 3} · 补液 {task.drops}/1 滴 · 重试 {task.attempts} 次 · {task.result === 'none' ? '故事七段未成立' : '故事七段已成立'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="七段房中步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training && <>

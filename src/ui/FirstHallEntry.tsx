@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
@@ -45,12 +47,12 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">族内后部 / 实际入堂</span><h2>走到堂门，再看见东西两区。</h2>
+    <Eyebrow>族内后部 / 实际入堂</Eyebrow><h2>走到堂门，再看见东西两区。</h2>
     <p id="hall-entry-help">方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。</p>
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与观察</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注旁观声音</SecondaryButton>
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label="实际入堂地图" aria-describedby="hall-entry-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />
       {space === 'outside' ? <>
@@ -69,7 +71,7 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
       </>}
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{space === 'hall' ? '本人 · 堂内' : '本人 · 门外'}</HallText></g>
     </EarlyMap>
-    {scene && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="入堂" onMove={move} /></div>}
+    {scene && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix="入堂" onMove={move} /></WalkControls>}
     {scene && task.entered && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'hall' ? hallEntryPlaces.entry : hallEntryPlaces.door)} onClick={crossBack}>{space === 'hall' ? '从堂内返回门外' : '再从堂门进入堂内'} · 不追加历史</SecondaryButton>}
     <StatusParagraph>实际入堂 {task.stage}/9 · 当前{space === 'hall' ? '堂内' : '门外'} · {firstHallEntrySaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

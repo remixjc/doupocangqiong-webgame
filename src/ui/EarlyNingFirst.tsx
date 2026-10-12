@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -44,7 +46,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
   if (blocked) return <p>{blocked}</p>
   const ningX = task.stage >= 7 ? 550 : task.beats === 1 ? 610 : task.beats === 2 ? 478 : 535
   return <>
-    <span className="eyebrow">正式礼挑战 / 萧宁首轮</span>
+    <Eyebrow>正式礼挑战 / 萧宁首轮</Eyebrow>
     <h2>先推、再拉、再推，倒地仍待裁定。</h2>
     <p id="ning-first-help">方向键或WASD行走，近地点按E接静态步骤。沿南侧阶梯登台，首轮用35%–65%窗口选择动作；错序、错时机或停下免费重开。重入从台下出发，推拉断点保留。</p>
     <EarlyMap ref={field} aria-label="萧宁首轮推拉推地图" aria-describedby="ning-first-help" viewBox="0 0 720 420" onKeyDown={key}>
@@ -66,7 +68,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="萧宁首轮行走操作">{<WalkDirectionButtons prefix="首轮" onMove={move} />}</div>
+    <WalkControls aria-label="萧宁首轮行走操作">{<WalkDirectionButtons prefix="首轮" onMove={move} />}</WalkControls>
     <StatusParagraph>萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮当时待裁判，最终胜负已宣布' : '首轮倒地，待最终裁判' : '尚未完成首轮'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="萧宁首轮步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
@@ -75,11 +77,11 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停萧宁首轮时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续萧宁首轮 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '先吹火掌推退来袭。' : task.beats === 1 ? '再吸掌拉近对手。' : '最后吹火掌推出，仍须等待裁判。'}</p>
-        <div className="early-walk-controls">
+        <WalkControls>
           <PrimaryButton disabled={paused} onClick={() => act(ningFirstOperation(task))}>{task.beats === 0 ? '吹火掌 · 首次推退' : task.beats === 1 ? '吸掌 · 拉近萧宁' : '吹火掌 · 最后推出'}</PrimaryButton>
           <SecondaryButton disabled={paused} onClick={() => act(task.beats === 1 ? 'push' : 'pull')}>{task.beats === 1 ? '尝试直接推 · 尚未拉近' : '尝试吸掌 · 当前次序不符'}</SecondaryButton>
           <SecondaryButton disabled={paused} onClick={() => act('octane')}>尝试八极崩 · 首轮次序不符</SecondaryButton>
-        </div>
+        </WalkControls>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
     </BondSummary> : <p className="muted">下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</p>
       : <BondSummary><h3>首轮倒地历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '正式胜负已宣布，可回看违规再攻。首轮历史仍保留当时待裁判及药物未服的记录。' : '这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。'}</p>{onSecond && <PrimaryButton onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}</BondSummary>}

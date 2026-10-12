@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -19,7 +21,7 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
   useEffect(() => { if (!blocked) first.current?.focus() }, [blocked])
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">往事回房 / 药老正式传技</span>
+    <Eyebrow>往事回房 / 药老正式传技</Eyebrow>
     <h2>技法记下，还须打好基础。</h2>
     <p className="muted">选择卷册桌或老师处查看，再确认当前步骤。这里记录传授过程；第一章提前展示的八极崩教学保留，不重复发放技能或提高攻击。</p>
     <svg className="early-walk-map" role="img" aria-label={stage >= 3 ? '药老已传授八极崩知识，萧炎仍须准备身体基础' : '借卷放在房间桌上，萧炎向药老请教'} viewBox="0 0 720 320">
@@ -39,10 +41,10 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
       </g>}
       <MapText x="360" y="310" fill="#bfb79b">原创房间与静态演出 · 无额外奖励</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="传技房间位置">
+    <WalkControls aria-label="传技房间位置">
       <SecondaryButton ref={first} aria-pressed={station === 'table'} onClick={() => setStation('table')}>查看卷册桌</SecondaryButton>
       <SecondaryButton aria-pressed={station === 'teacher'} onClick={() => setStation('teacher')}>走到老师处 · 请教</SecondaryButton>
-    </div>
+    </WalkControls>
     <StatusParagraph>正式传技 {stage}/5 · {stage >= 3 ? '技法知识已记下' : '尚未接受技法知识'} · {stage >= 4 ? '身体要求已记下' : '身体要求待确认'}</StatusParagraph>
     {station === 'table' && <BondSummary><h3>房间的卷册桌</h3><p>这里是斗技堂登记借出的第二卷；第一卷此前已归回书架。借卷仍由萧炎保管，不进入可售行囊，也没有新增副本。</p></BondSummary>}
     {scene ? <>

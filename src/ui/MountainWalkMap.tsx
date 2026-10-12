@@ -1,3 +1,4 @@
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -55,7 +56,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
       </g>}
       {bowed && <MapText x="300" y="180" fill="#edcea0">本人行礼已记录</MapText>}
     </EarlyMap>
-    {!observerOnly && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></div>
+    {!observerOnly && <WalkControls aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></WalkControls>
     }
   </>
 }

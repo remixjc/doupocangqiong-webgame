@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
@@ -36,12 +38,12 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">石路 / 路口会面</span><h2>转路、招呼，再各自前行。</h2>
+    <Eyebrow>石路 / 路口会面</Eyebrow><h2>转路、招呼，再各自前行。</h2>
     <p id="road-meeting-help">方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。</p>
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与答话</SecondaryButton>
       {task.identified && <SecondaryButton aria-pressed={actor === 'mei'} onClick={() => setActor('mei')}>关注萧媚发言</SecondaryButton>}
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label="石路会面地图" aria-describedby="road-meeting-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />
       <path d="M140 310 H240 V250 H440 M300 250 V210" stroke="#bfa46a" strokeWidth="18" opacity=".4" fill="none" />
@@ -55,7 +57,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
       </g>}
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">本人</HallText></g>
     </EarlyMap>
-    {scene && actor === 'yan' && !talking && <div className="early-walk-controls"><WalkDirectionButtons prefix="会面" onMove={move} /></div>}
+    {scene && actor === 'yan' && !talking && <WalkControls><WalkDirectionButtons prefix="会面" onMove={move} /></WalkControls>}
     <StatusParagraph>路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{!near ? '本人先实际走到本步位置。' : actor !== scene.actor ? '请选择当前发言人物。' : actor === 'mei' ? '当前关注：萧媚发言，本人位置保持。' : '当前人物：萧炎本人'}</p>

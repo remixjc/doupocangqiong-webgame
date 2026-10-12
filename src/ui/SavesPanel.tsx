@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
@@ -40,7 +41,7 @@ export default function SavesPanel({ state, onLoaded, onReset }: { state: GameSt
     } catch (e) { setImported(null); setError((e as Error).message) }
     if (fileInput.current) fileInput.current.value = ''
   }
-  return <><span className="eyebrow">存档 / 留住这一程</span><h2>长路漫漫，记下足迹。</h2><p className="muted">自动存档保存章节与行囊，战斗重开时回到营地。清理浏览器数据会删除本地存档，请导出 JSON 备份。载入会替换当前进度。</p>
+  return <><Eyebrow>存档 / 留住这一程</Eyebrow><h2>长路漫漫，记下足迹。</h2><p className="muted">自动存档保存章节与行囊，战斗重开时回到营地。清理浏览器数据会删除本地存档，请导出 JSON 备份。载入会替换当前进度。</p>
     <SaveStatus />
     <div className="save-list">{[0, 1, 2, 3].map(slot => {
       const entry = records?.find(r => r.slot === slot)

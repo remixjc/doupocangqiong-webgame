@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../content/events'
 import { eventBlockReason, eventDone, eventHint, eventProgress, type EventAction } from '../core/events'
@@ -61,7 +62,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     return gameStore.event({ ...action, eventId: event.id })
   }
   return <>
-    <span className="eyebrow">{event.speaker} / 本章事件</span><h2>{event.title}</h2>
+    <Eyebrow>{event.speaker} / 本章事件</Eyebrow><h2>{event.title}</h2>
     <p>{event.introduction}</p><p className="muted">{event.note}</p>
     <p className="quest-hint">{eventHint(state, event.id)}</p>
     {!progress.started && <PrimaryButton disabled={!!eventBlockReason(state, state.chapter, event)} onClick={() => { if (act({ type: 'begin' }) && event.kind !== 'stone') close() }}>接下历练{event.kind !== 'stone' && ' · 返回地图'}</PrimaryButton>}

@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
@@ -43,7 +45,7 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">坊市 / 寻核与普通手链</span><h2>一个继续寻核，一个停在手链摊。</h2>
+    <Eyebrow>坊市 / 寻核与普通手链</Eyebrow><h2>一个继续寻核，一个停在手链摊。</h2>
     <p id="market-search-help">先明确选择本步人物，再用方向或WASD行走、近当前地点按E。两人的位置各自记录在本次行走中；换人物和刷新需重新选择。街坊不可穿过，位置不保存。</p>
     <EarlyMap ref={field} aria-label="两人分路寻核与手链地图" aria-describedby="market-search-help"
       viewBox="0 0 720 420" onKeyDown={key}>
@@ -60,9 +62,9 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
       </g>
       {task.stranger === 'seen' && <g aria-label="姓名尚未揭出的华衣来人" transform="translate(145 310)"><path d="M-13 16 L-7-7 H7 L13 16Z" fill="#b6a58a" /><circle cy="-15" r="9" fill="#dcc6ae" /></g>}
     </EarlyMap>
-    {scene && <div className="early-walk-controls"><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
+    {scene && <WalkControls><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>
-      {active && <WalkDirectionButtons prefix="寻核" onMove={move} />}</div>}
+      {active && <WalkDirectionButtons prefix="寻核" onMove={move} />}</WalkControls>}
     <StatusParagraph>坊市寻核 {task.stage}/20 · {earlyMarketSearchSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 普通手链：{task.bracelet === 'xuner-viewing' ? '薰儿拿看，仍属摊主' : task.bracelet === 'returned' ? '已放回，仍属摊主' : '仍在摊上'}</p>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`

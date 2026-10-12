@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -34,7 +35,7 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
   }
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">后山 / 药老监督训练</span>
+    <Eyebrow>后山 / 药老监督训练</Eyebrow>
     <h2>承接斗气，也学会停下。</h2>
     <p>药老在后山指导萧炎打好身体基础。这一轮用四次抽象斗气脉冲表现姿态承接，绿色时机区为35%–65%；次数、负荷与节奏都是游戏折算。</p>
     <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={task.stage === 2 ? state.earlyTraining.recovery.stage >= 5 ? '本轮督练结束，萧炎已经回房恢复' : '本轮督练结束，萧炎停下等待接续恢复' : '药老在后山监督萧炎承接斗气脉冲'}>

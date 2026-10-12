@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -11,7 +12,7 @@ export default function EarlyGrowth({ state, onContinue }: { state: GameState; o
   if (earlyGrowthBlock(state)) return null
   const stage = state.earlyTraining.growth.stage, scene = earlyGrowthScenes[Math.min(stage, 2)]
   return <section className="bond-summary early-growth" aria-label="持续修炼的时日">
-    <span className="eyebrow">从初期尝试到后续历练 / 成长过渡</span>
+    <Eyebrow>从初期尝试到后续历练 / 成长过渡</Eyebrow>
     <svg viewBox="0 0 640 220" role="img" aria-label={`修炼过渡插画：${scene.time}，萧炎继续打好基础。`}>
       <rect width="640" height="220" fill={scene.sky} />
       <circle cx={stage === 0 ? 510 : stage === 1 ? 120 : 350} cy={stage === 0 ? 45 : stage === 1 ? 100 : 42} r="22" fill={scene.sun} />

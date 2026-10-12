@@ -1,3 +1,4 @@
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -49,6 +50,6 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
       </g>}
       {observer && <MapText x="465" y="390" fill="#a6e1d3" fontSize="13">{departed ? '旁观厅外 · 双方已离厅，纳兰携原文书' : '旁观厅内 · 萧炎已离厅'}</MapText>}
     </EarlyMap>
-    {!observer && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></div>}
+    {!observer && <WalkControls aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></WalkControls>}
   </>
 }

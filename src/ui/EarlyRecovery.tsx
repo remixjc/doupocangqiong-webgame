@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -24,7 +26,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
   const waterColor = task.energy === 'spent' ? '#9badb0' : task.energy === 'fading' ? '#9faf94' : '#75ad87'
   const breathing = scene?.operation === 'breathe' || scene?.operation === 'rest'
   return <>
-    <span className="eyebrow">往事回房 / 训练后的恢复</span>
+    <Eyebrow>往事回房 / 训练后的恢复</Eyebrow>
     <h2 ref={entry} tabIndex={-1}>药色淡去，晨光照来。</h2>
     <p>药老督练后，回房使用此前准备的同一份药液。选择房间位置，完成调息、离开容器，再分别记下持续时段回顾与故事结果。</p>
     <svg className="early-walk-map" viewBox="0 0 720 310" role="img"
@@ -46,10 +48,10 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       </g>
       <MapText x="355" y="300" fill="#ebd6b1" fontSize="13">原有自用容器 · {recoveryEnergyLabels[task.energy]}</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="恢复房间位置">
+    <WalkControls aria-label="恢复房间位置">
       {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => <SecondaryButton key={id}
         aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>回房恢复 {task.stage}/7 · {recoveryEnergyLabels[task.energy]} · {task.period === 'reviewed' ? '持续时段已回顾' : '持续时段待回顾'} · {task.result === 'fifth-duan' ? '五段故事结果已记下' : '故事结果尚未记录'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="回房恢复步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />

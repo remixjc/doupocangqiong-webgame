@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -19,7 +21,7 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
   if (blocked) return <p>{blocked}</p>
   const xunerView = task.stage >= 4
   return <>
-    <span className="eyebrow">萧家 / 薰儿来访与长老争执</span>
+    <Eyebrow>萧家 / 薰儿来访与长老争执</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>房中一句承诺，转角另一份心意。</h2>
     <p>{xunerView ? '当前跟随薰儿独自行动。萧炎留在房中，不知道长老房里的交卡交易。'
       : '先在房中接续萧炎与薰儿的谈话，再随手札转向离开的薰儿。'}</p>
@@ -37,9 +39,9 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
       {task.stage >= 5 && <rect x={task.card === 'xuner' ? 452 : 598} y="161" width="24" height="15" rx="2" fill="#9c75b7" stroke="#e6bc65" />}
       <MapText x="360" y="266" fill="#e8d1a6" fontSize="13">{task.card === 'xuner' ? '紫金卡由薰儿保管，尚未交给家族' : '紫金卡已交长老 · 家族取得100000 · 萧炎未领取'}</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="薰儿事件位置">
+    <WalkControls aria-label="薰儿事件位置">
       {(Object.keys(stations) as XunerVisitStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="薰儿事件步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />

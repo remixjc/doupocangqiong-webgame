@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground, MapText } from './MapPrimitives'
@@ -37,12 +39,12 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">斗技堂 / 东侧同一第一卷</span><h2>走到书架，展开当时的黑卷。</h2>
+    <Eyebrow>斗技堂 / 东侧同一第一卷</Eyebrow><h2>走到书架，展开当时的黑卷。</h2>
     <p id="hall-reading-help">方向或WASD由本人实际行走，近东侧书架按E逐步阅读。靠架后保持阅读位置；刷新恢复断点，不代签学习与奖励。</p>
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与阅读</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注西侧声音</SecondaryButton>
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label="东侧阅读地图" aria-describedby="hall-reading-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />
       <rect x="100" y="200" width="380" height="125" fill="#937954" opacity=".15" />
@@ -57,7 +59,7 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
         {task.grade && <MapText x="434" y="255" fill="#e9c877" fontSize="7">黄阶中级</MapText>}</g>}
       <g aria-label="萧炎本人阅读位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{task.leaned ? '本人 · 靠架阅读' : '本人 · 堂内'}</HallText></g>
     </EarlyMap>
-    {scene && actor === 'yan' && !task.leaned && <div className="early-walk-controls"><WalkDirectionButtons prefix="阅读" onMove={move} /></div>}
+    {scene && actor === 'yan' && !task.leaned && <WalkControls><WalkDirectionButtons prefix="阅读" onMove={move} /></WalkControls>}
     <StatusParagraph>东侧阅读 {task.stage}/8 · {firstHallReadingSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前卷轴保管：{{ none: '当前未持卷', 'reading-first': '正在阅读第一卷', 'selected-second': '已另选第二卷', 'borrowed-second': '借出的第二卷由本人保管' }[t.hall.scroll]}。{task.record === 'recalled' || !task.picked && t.hall.stage >= 6 ? '本段明确回顾当时第一卷阅读，当前已归架或第二卷保管保持。' : '同一第一卷沿原保管账衔接，不新增库存。'}</p>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

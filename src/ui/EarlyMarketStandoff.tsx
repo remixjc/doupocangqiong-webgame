@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
@@ -48,7 +50,7 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
   const select = (focus: StandoffFocus) => { setSelected(focus); field.current?.focus() }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">坊市 / 围堵与非战斗离场</span><h2>呼叫护卫，拒绝单挑，继续寻核。</h2>
+    <Eyebrow>坊市 / 围堵与非战斗离场</Eyebrow><h2>呼叫护卫，拒绝单挑，继续寻核。</h2>
     <p id="market-standoff-help">每一步先选人物或明确旁观焦点。本人方向/WASD行走，近地点按E；旁观没有移动，不能代签本人。刷新后重新选焦点，位置不保存。</p>
     <EarlyMap ref={field} aria-label="围堵与非战斗离场地图" aria-describedby="market-standoff-help"
       viewBox="0 0 720 420" onKeyDown={key}>
@@ -64,11 +66,11 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
       <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /></g>
       <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}><MarketWalker xuner /><circle cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" /></g>
     </EarlyMap>
-    {scene && <div className="early-walk-controls">
+    {scene && <WalkControls>
       <SecondaryButton onClick={() => select('yan')}>选择萧炎视角</SecondaryButton><SecondaryButton onClick={() => select('xuner')}>选择薰儿视角</SecondaryButton>
       {observer && <SecondaryButton onClick={() => select(scene.view)}>旁观{standoffNames[scene.view]} · {standoffPlaces[scene.place].label}</SecondaryButton>}
       {active && !observer && <WalkDirectionButtons prefix="围堵" onMove={move} />}
-    </div>}
+    </WalkControls>}
     <StatusParagraph>围堵离场 {task.stage}/34 · {earlyMarketStandoffSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前焦点：{selected ? standoffNames[selected] : '尚未选择'} · {observer ? '旁观没有本人行走' : '本人或薰儿独立行走'} · 普通绿链仍由薰儿戴着</p>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`} />

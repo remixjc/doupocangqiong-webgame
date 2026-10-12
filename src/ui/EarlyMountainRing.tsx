@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -23,7 +24,7 @@ export default function EarlyMountainRing({ state, onBack }: { state: GameState;
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">拜师之前 / 后山与古戒</span><h2>声音从哪里来，古戒又去了哪里。</h2>
+    <Eyebrow>拜师之前 / 后山与古戒</Eyebrow><h2>声音从哪里来，古戒又去了哪里。</h2>
     <p id="mountain-ring-help">方向键或WASD沿安全山径行走，近当前地点后按E或回应。崖外和山石会阻挡，不提供跳崖操作。</p>
     <MountainWalkMap label="后山古戒行走地图" helpId="mountain-ring-help" position={position} place={scene?.place}
       ring={task.ring} elderVisible={task.elder === 'visible'} near={near} onMove={move} onInteract={() => { if (scene) act(scene.operation) }} />

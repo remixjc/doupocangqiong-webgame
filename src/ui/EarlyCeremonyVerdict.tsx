@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -32,7 +34,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
   }
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">正式礼 / 双请求、裁定与离场</span>
+    <Eyebrow>正式礼 / 双请求、裁定与离场</Eyebrow>
     <h2>裁判宣布之后，礼程仍要继续。</h2>
     <p id="ceremony-verdict-help">方向键或WASD行走，靠近当前地点按E或下方按钮。三个月是萧宁的叙事处分，五天是功法阁的故事安排；都不让玩家现实等待。关闭与刷新保留每一步，重入从阶梯出发。</p>
     <EarlyMap ref={field} aria-label="成人礼正式裁定地图" aria-describedby="ceremony-verdict-help" viewBox="0 0 720 420" onKeyDown={key}>
@@ -50,7 +52,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
       {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 50} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</div>
+    <WalkControls aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</WalkControls>
     <StatusParagraph>礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</StatusParagraph>
     {scene ? nearVerdictPlace(position, scene.place) ? <BondSummary aria-label="正式裁定步骤">
       <SceneHeading title={scene.title} text={scene.text} />

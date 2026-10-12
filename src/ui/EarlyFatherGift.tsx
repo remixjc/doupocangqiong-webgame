@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -19,7 +21,7 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
   useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">萧家房中 / 父亲赠回同瓶</span>
+    <Eyebrow>萧家房中 / 父亲赠回同瓶</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>绕了一程，回到少年手中。</h2>
     <p>在房门、父子会面处与收瓶处接续来访。同瓶曾由老师调制、谷尼鉴定、雅妃主持成交，这次是父亲买得后交回。</p>
     <svg className="early-walk-map" viewBox="0 0 720 300" role="img" aria-label={`父子来访：${task.stage >= 2 && task.stage < 6 ? '萧战在场' : '父亲尚未在场或已离开'}；同瓶由${appraisalOwnerLabels[bottle.owner]}保管；自用药液仍耗尽。`}>
@@ -36,9 +38,9 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
       </g>}
       <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">同瓶保管：{appraisalOwnerLabels[bottle.owner]} · 非新增制品</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="父子来访位置">
+    <WalkControls aria-label="父子来访位置">
       {(Object.keys(stations) as FatherGiftStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>父亲赠回 {task.stage}/6 · 同瓶{appraisalOwnerLabels[bottle.owner]}保管 · 净款{state.earlyTraining.settlement.net}保留 · 自用药力耗尽</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="父子来访步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />

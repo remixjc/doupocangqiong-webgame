@@ -7,3 +7,11 @@ export function StatusParagraph(props: ComponentProps<'p'>) {
 export function BondSummary(props: ComponentProps<'section'>) {
   return <section className="bond-summary" {...props} />
 }
+
+export function WalkControls(props: ComponentProps<'div'>) {
+  return <div className="early-walk-controls" {...props} />
+}
+
+export function Eyebrow(props: ComponentProps<'span'>) {
+  return <span className="eyebrow" {...props} />
+}

@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -23,7 +24,7 @@ export default function EarlyFamilyVisit({ state, onBack }: { state: GameState; 
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">拜师之前 / 家族来访</span><h2>这一场来访，从入席说起。</h2>
+    <Eyebrow>拜师之前 / 家族来访</Eyebrow><h2>这一场来访，从入席说起。</h2>
     <p id="family-visit-help">方向键或WASD行走，靠近当前人物或地点后按E。每次交谈与观察独立保存，可暂离后继续。</p>
     <FamilyHallMap label="家族来访行走地图" helpId="family-visit-help" prefix="来访" position={position}
       place={scene?.place} box={task.box === 'presented' && state.earlyTraining.familyContract.box !== 'ring'}

@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -27,7 +29,7 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">拜师之前 / 文书与双方离厅</span><h2>亲手写下决定，再面对三年之后。</h2>
+    <Eyebrow>拜师之前 / 文书与双方离厅</Eyebrow><h2>亲手写下决定，再面对三年之后。</h2>
     <p id="family-contract-help">{observer
       ? '萧炎已离厅。选择旁观焦点，再按E或确认当前片段；视角移动不会让本人回厅。'
       : '方向键或WASD行走，走近当前地点后按E。写成、置桌、向父亲承诺与实际离厅分别保存。'}</p>
@@ -35,10 +37,10 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       position={position} place={scene?.place} box={task.box !== 'ring'} boxLabel={task.box === 'returned' ? '已退回待葛叶接住的同一玉匣' : '仍未接取的来客玉匣'}
       paper={task.paper} departed={task.guests === 'left'} extraPlaces={familyContractExtraPlaces} observer={observer} focusPlace={focus}
       near={near} onMove={move} onInteract={() => { if (scene) act(scene.operation) }} />
-    {observer && scene && <div className="early-walk-controls" aria-label="旁观焦点选择">
+    {observer && scene && <WalkControls aria-label="旁观焦点选择">
       {(['guests', 'father', 'entrance', 'xuner', 'outside'] as const).map(id =>
         <SecondaryButton key={id} aria-pressed={focus === id} onClick={() => setFocus(id)}>旁观 · {familyContractPlaces[id].label}</SecondaryButton>)}
-    </div>}
+    </WalkControls>}
     <StatusParagraph>文书与离厅 {task.stage}/33 · {earlyFamilyContractSaveSummary(state, state.settings)}</StatusParagraph>
     <p>三年条件：{task.challenge === 'pledged' ? '本人已向父亲承诺赴约' : task.challenge === 'renewed' ? '再次约定，尚待本人向父亲承诺' : task.challenge === 'proposed' ? '仅提出，尚未亲口承诺' : '尚未提出'} · 文书：{{
       none: '尚无', preparing: '备纸未写成', written: '写成未标记', marked: '有印记未置桌', table: '同一文书已置桌', nalan: '同一文书由纳兰持有',

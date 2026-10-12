@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -26,7 +27,7 @@ export default function EarlyMountainVisitor({ state, onBack }: { state: GameSta
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">当晚 / 薰儿来访与借资问答</span><h2>先听清借资提议，次晨交卡另记。</h2>
+    <Eyebrow>当晚 / 薰儿来访与借资问答</Eyebrow><h2>先听清借资提议，次晨交卡另记。</h2>
     <p id="mountain-visitor-help">{observer ? '本人已经离山。选择青石旁薰儿的旁观焦点，记录她留山的反应。' : '方向或WASD行走，近当前地点按E。问候、本人道歉、借资提议与紫金卡收回分别保存。'}</p>
     <MountainWalkMap label="当晚来访行走与旁观地图" helpId="mountain-visitor-help" prefix="来访" position={position} place={scene?.place}
       ring="worn" elderVisible={false} purpleVisible={true} purpleNamed={task.identity === 'xuner'}

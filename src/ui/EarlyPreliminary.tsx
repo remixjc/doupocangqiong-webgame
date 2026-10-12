@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -34,7 +36,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
     : task.mei !== 'unmeasured' ? '萧媚 · 八段' : '尚无测试结果'
   const activeName = task.stage === 5 ? '萧媚' : task.stage === 7 ? '薰儿' : task.stage === 9 || task.stage === 10 ? '萧炎' : '等待下一步'
   return <>
-    <span className="eyebrow">成年礼前一个月 / 族中预测</span>
+    <Eyebrow>成年礼前一个月 / 族中预测</Eyebrow>
     <h2>按名簿候测，走到黑碑前。</h2>
     <p id="preliminary-help">聚焦地图用方向键或WASD行走，走近地点按E或操作按钮。高台、树丛与候测设施不可穿越；每次进入从房门起点走回当前步骤，行走位置不写入存档。布局与距离为原创压缩设计。</p>
     <EarlyMap ref={field} aria-label="一月前预测地图" aria-describedby="preliminary-help" viewBox="0 0 720 420" onKeyDown={key}>
@@ -52,9 +54,9 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="预测行走操作">
+    <WalkControls aria-label="预测行走操作">
       {<WalkDirectionButtons prefix="预测" onMove={move} />}
-    </div>
+    </WalkControls>
     <StatusParagraph>预测 {task.stage}/16 · 当前点名：{activeName} · 最近碑面：{lastResult}</StatusParagraph>
     <ul aria-label="三人预测名簿">
       <li>萧媚：{task.mei === 'unmeasured' ? '未测' : '八段'}</li>

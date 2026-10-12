@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -22,7 +23,7 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">后山 / 温和方案与正式返戒</span><h2>记清准备要求，再看同一古戒返手。</h2>
+    <Eyebrow>后山 / 温和方案与正式返戒</Eyebrow><h2>记清准备要求，再看同一古戒返手。</h2>
     <p id="preparation-brief-help">方向或WASD行走，近当前地点按E。老师入戒、古戒返手与借资打算分开保存。</p>
     <MountainWalkMap label="准备返戒行走地图" helpId="preparation-brief-help" prefix="返戒" position={position} place={scene?.place}
       ring={task.ring} elderVisible={task.elder === 'outside'} elderNamed={true} seated={true} bowed={true}

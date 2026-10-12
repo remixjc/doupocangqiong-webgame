@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -23,7 +24,7 @@ export default function EarlyFamilyCompensation({ state, onBack }: { state: Game
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
-    <span className="eyebrow">拜师之前 / 补偿与本人发言</span><h2>提议的价值，不能替本人答复。</h2>
+    <Eyebrow>拜师之前 / 补偿与本人发言</Eyebrow><h2>提议的价值，不能替本人答复。</h2>
     <p id="family-compensation-help">方向键或WASD行走，走近当前地点后按E或选择回应。交谈独立保存，可暂离再继续。</p>
     <FamilyHallMap label="补偿答复行走地图" helpId="family-compensation-help" prefix="补偿" position={position}
       place={scene?.place} box={state.earlyTraining.familyContract.box !== 'ring'}

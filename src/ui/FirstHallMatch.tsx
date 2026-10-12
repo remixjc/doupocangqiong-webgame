@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField } from './HallShelves'
@@ -34,12 +36,12 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">斗技堂 / {prefix}</span><h2>读卷的位置，始终在东侧。</h2>
+    <Eyebrow>斗技堂 / {prefix}</Eyebrow><h2>读卷的位置，始终在东侧。</h2>
     <p id="hall-match-help">选择本人目光或西场旁观焦点，按E记录现场。重新进入后须重新选择旁观；本人没有进入训练场。</p>
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人目光与读卷</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'spectator'} onClick={() => setActor('spectator')}>{continuation ? '旁观赛后人物' : '旁观西场人物'}</SecondaryButton>
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label="东架旁观地图" aria-describedby="hall-match-help" viewBox="100 190 390 115" onKeyDown={key}>
       <HallBackground />
       <HallWestField />

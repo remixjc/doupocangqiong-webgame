@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
@@ -43,17 +45,17 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">斗技堂 / {prefix}</span><h2>{aftermath ? '堂内留下轻掌印，两人仍在堂外。' : leaving ? '持借卷同行跨门。' : checkout ? '向管理者登记本人所持的同一第二卷。' : exitResponse ? '持同一第二卷移步，回应来年的话。' : threat ? '来年的威胁，当前仍持同一第二卷。' : conflict ? '分清她的临时卷与本人第二卷。' : continuation ? '回应提议，把同一第一卷放回书架。' : '他走近东架，本人收起同一卷。'}</h2>
+    <Eyebrow>斗技堂 / {prefix}</Eyebrow><h2>{aftermath ? '堂内留下轻掌印，两人仍在堂外。' : leaving ? '持借卷同行跨门。' : checkout ? '向管理者登记本人所持的同一第二卷。' : exitResponse ? '持同一第二卷移步，回应来年的话。' : threat ? '来年的威胁，当前仍持同一第二卷。' : conflict ? '分清她的临时卷与本人第二卷。' : continuation ? '回应提议，把同一第一卷放回书架。' : '他走近东架，本人收起同一卷。'}</h2>
     <p id="hall-approach-help">选人物后按E记录本步。刷新关注本人，三人位置独立；{current ? '她放卷与本人另取分存。' : '收卷与归架分存。'}</p>
     {!moving && task.stage >= 41 && <p>明确回顾当时的东架位置，后段已存堂内移步记录保持。</p>}
     {!checkout && !departing && task.stage >= 47 && <p>明确回顾登记前的断点，后段同卷借阅记录保持。</p>}
     {!departing && task.stage >= 50 && <p>明确回顾同行跨门前的位置。</p>}
-    <div className="early-walk-controls">
+    <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人读卷与察觉</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'ning'} onClick={() => setActor('ning')}>{aftermath ? '旁观萧宁离堂后反应' : exitResponse ? '旁观萧宁误解与脸色' : threat ? '旁观萧宁威胁与未动手' : conflict ? '旁观萧宁讥讽与提议' : continuation ? '旁观萧宁提议与说法' : '旁观萧宁整衣与行走'}</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
       {(conflict || departing) && <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>{departing ? '薰儿同行' : '旁观薰儿放卷与回应'}</SecondaryButton>}
-    </div>
+    </WalkControls>
     <EarlyMap ref={field} aria-label={`${prefix}地图`} aria-describedby="hall-approach-help"
       viewBox={departing ? '20 190 470 175' : moving ? '100 190 390 175' : '100 190 390 120'} onKeyDown={key}>
       <HallBackground height={moving ? 175 : 120} />

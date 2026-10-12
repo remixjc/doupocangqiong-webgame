@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
 import { bondJournal, bondVisitQueue } from '../core/bonds'
@@ -17,7 +18,7 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
   const completed = lines.reduce((total, line) => total + line.completed, 0)
   const total = lines.reduce((total, line) => total + line.entries.length, 0)
   return <>
-    <span className="eyebrow">伙伴手札 / 可选回访</span><h2>记下同行，留有归途。</h2>
+    <Eyebrow>伙伴手札 / 可选回访</Eyebrow><h2>记下同行，留有归途。</h2>
     <p className="muted">支线可在主线通关后回访补做。到人物处接取、读取路标、选择回应，返回确认才领取一次补给。卷页之间需要前页完成，旧通关不自动补齐。</p>
     {!!lines.length && <BondSummary aria-label="回访安排">
       <p>可见记录 {completed} / {total} · 当前可做 {queue.length} 页</p>

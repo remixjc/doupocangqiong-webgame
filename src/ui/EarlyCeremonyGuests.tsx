@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -31,7 +33,7 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
   }
   if (blocked) return <p>{blocked}</p>
   return <>
-    <span className="eyebrow">正式礼当天 / 宾客与收剑</span>
+    <Eyebrow>正式礼当天 / 宾客与收剑</Eyebrow>
     <h2>木台已备，先平息树下争执。</h2>
     <p id="ceremony-guests-help">方向键或WASD行走，走近地点按E观察与交谈，也可用下方方向和步骤按钮。木台现在尚未开放；入口、树荫与接待处是原创压缩布局。重入从场口出发。</p>
     <EarlyMap ref={field} aria-label="正式礼宾客与收剑地图" aria-describedby="ceremony-guests-help" viewBox="0 0 720 420" onKeyDown={key}>
@@ -52,7 +54,7 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 56} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</div>
+    <WalkControls aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</WalkControls>
     <StatusParagraph>宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="宾客与收剑步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
       : <p className="muted">下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</p>

@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -53,7 +55,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
   const operation = qiBarrierOperation(task)
   const actionLabel = task.stage === 6 ? ['稳身 · 连接第一步', '运气 · 连接第二步', '八极崩 · 破幕出击'][task.beats] : scene?.action
   return <>
-    <span className="eyebrow">功法阁 / 火通道与四十三号门障</span>
+    <Eyebrow>功法阁 / 火通道与四十三号门障</Eyebrow>
     <h2>走到四十三号，再破开最后一道红幕。</h2>
     <p id="qi-barrier-help">沿火属性通道行走，按顺序核对第三路、三十七号与四十三号。门障前先触幕，再退步蓄势；练习失败只免费重开，不会取得卷轴。</p>
     <EarlyMap ref={field} aria-label="功法阁火通道与红幕地图" aria-describedby="qi-barrier-help" viewBox="0 0 720 420" onKeyDown={key}>
@@ -67,10 +69,10 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
       {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 43} fill="#ead9b6" fontSize="10">{place.label}</MapText></g>)}
     </EarlyMap>
-    <div className="early-walk-controls" aria-label="火通道行走操作"><WalkDirectionButtons prefix="火通道" onMove={move} /></div>
+    <WalkControls aria-label="火通道行走操作"><WalkDirectionButtons prefix="火通道" onMove={move} /></WalkControls>
     <StatusParagraph>门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="火通道门障步骤"><SceneHeading title={scene.title} text={scene.text} />
-      {task.stage === 1 ? <div className="early-walk-controls">{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</div>
+      {task.stage === 1 ? <WalkControls>{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</WalkControls>
         : task.stage === 6 ? <>
           {steady && <label className="setting-row"><span>破幕时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="破幕时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
           <div className="heat-meter" aria-label="破幕时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>

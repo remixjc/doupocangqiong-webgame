@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -32,7 +34,7 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">次晨之后 / 实际同行与药铺</span><h2>走到药铺，两笔旧账各核一次。</h2>
+    <Eyebrow>次晨之后 / 实际同行与药铺</Eyebrow><h2>走到药铺，两笔旧账各核一次。</h2>
     <p id="city-pharmacy-help">方向或WASD行走，近当前地点按E。先族内同行和离族，再入城逛摊、走到药铺；房屋不可穿过。位置不保存。</p>
     <EarlyMap ref={field} aria-label="族门入城与药铺同行地图" aria-describedby="city-pharmacy-help"
       viewBox="0 0 720 420" onKeyDown={key}>
@@ -45,7 +47,7 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
       <g aria-label="萧炎入城行走位置" transform={`translate(${position.x} ${position.y})`}><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
         <circle aria-label="同一古戒仍佩戴" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" /></g>
     </EarlyMap>
-    <div className="early-walk-controls">{<WalkDirectionButtons prefix="药铺" onMove={move} />}</div>
+    <WalkControls>{<WalkDirectionButtons prefix="药铺" onMove={move} />}</WalkControls>
     <StatusParagraph>同行药铺 {task.stage}/15 · {earlyCityPharmacySaveSummary(state, state.settings)}</StatusParagraph>
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent}</p>
     <p>实际任务袋主药{ledger.supplies.bluegrass}株 / 辅药{ledger.supplies.boneflower}株 / 木核{ledger.supplies.woodCore}枚 · 主药收据{ledger.receipts.bluegrass ? '已付' : '未购'} / 辅药收据{ledger.receipts.boneflower ? '已付' : '未购'} / 木核收据{ledger.receipts.woodCore ? '旧进度已付保留' : '尚未购'}</p>

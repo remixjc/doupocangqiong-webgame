@@ -1,3 +1,5 @@
+import { Eyebrow } from './NativeRegions'
+import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -23,7 +25,7 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
     submitEarlyConsignment(gameStore, position, station, { stage: task.stage, spent: task.spent, operation })
   }
   return <>
-    <span className="eyebrow">乌坦城 / 首次寄售准备</span>
+    <Eyebrow>乌坦城 / 首次寄售准备</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>另备一份药液，筹下一程的材料。</h2>
     <p>自用容器中的药力已经耗尽。萧炎提出用较低品质材料另制待售品，药老同意；采购后在隐蔽巷中交由老师调制，再用白玉瓶装好。</p>
     <svg className="early-walk-map" viewBox="0 0 720 290" role="img" aria-label={`首次寄售准备：${task.product === 'sealed' ? `一个寄售玉瓶由${appraisalOwnerLabels[task.owner]}保管` : task.product === 'mixture' ? '老师已调制斑杂绿色药液，待装瓶' : '较低品质材料的独立准备路线'}。`}>
@@ -48,10 +50,10 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
       <path d="M104 230 H572" stroke="#a79769" strokeDasharray="8 7" strokeWidth="3" />
       <MapText x="360" y="270" fill="#e4d0a4" fontSize="13">另一次备料 · 同一寄售实例 · 自用容器保留</MapText>
     </svg>
-    <div className="early-walk-controls" aria-label="寄售准备位置">
+    <WalkControls aria-label="寄售准备位置">
       {(Object.keys(stations) as ConsignmentStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id}
         onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
-    </div>
+    </WalkControls>
     <StatusParagraph>寄售准备 {task.stage}/5 · 已购 {Object.values(task.receipts).filter(Boolean).length}/4 · 专用余额 {task.funds - task.spent} · 已付 {task.spent}</StatusParagraph>
     <p className="muted">任务余额90和价格10/10/25/5是游戏折算，原作此时剩余900金币。此账本独立于早期借资和行囊金币；采购按批记录，由老师处理材料。</p>
     {task.stage === 5 ? <BondSummary><h3>寄售玉瓶记录</h3><p>药老调制的斑杂绿色制品装入白玉瓶，一个封存寄售实例当前由{appraisalOwnerLabels[task.owner]}保管。自用药液仍耗尽，没有回补或第二份收入。</p><p>拍卖场的黑袍、老师代言、谷尼鉴定与入场凭据独立记录；{state.earlyTraining.settlement.net ? '寄售净款与贵宾卡已在独立手续中记录。' : state.earlyTraining.settlement.vip ? '水晶贵宾卡已收，寄售款尚待领取。' : '寄售款和贵宾卡尚未领取。'}</p>

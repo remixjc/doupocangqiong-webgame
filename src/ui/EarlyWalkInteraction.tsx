@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import type { GameState } from '../core/model'
@@ -34,7 +35,7 @@ export default function EarlyWalkInteraction({ state, position, onContinue }: { 
       ? <PrimaryButton onClick={() => act({ type: 'begin' })}>请老师列重修准备单</PrimaryButton>
       : task.market.stage !== 4 ? <p>准备单已记好。先去药铺和坊市备齐材料，带回黑铁片，再请老师调制。</p>
         : <>
-          <span className="eyebrow">药老调制 · {task.liquid.stage}/6</span>
+          <Eyebrow>药老调制 · {task.liquid.stage}/6</Eyebrow>
           {liquidScene ? <>
             <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
             <SecondaryButton onClick={() => act({ type: 'liquid', step: task.liquid.stage,

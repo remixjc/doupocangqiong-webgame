@@ -1,3 +1,4 @@
+import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -14,7 +15,7 @@ export default function EarlyQiExchange({ state, onBack }: { state: GameState; o
   useEffect(() => { if (!blocked) title.current?.focus() }, [blocked])
   if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>返回重修准备</SecondaryButton></>
   return <>
-    <span className="eyebrow">功法阁 / 双卷交接回看</span><h2 ref={title} tabIndex={-1}>同一卷递去，再取回。</h2>
+    <Eyebrow>功法阁 / 双卷交接回看</Eyebrow><h2 ref={title} tabIndex={-1}>同一卷递去，再取回。</h2>
     <p>简略保管的结局记录保留，这里回看过程。操作不会重新取卷或改变主线。</p>
     <svg role="img" aria-label={`家族卷由${task.familyOwner === 'xiaoyan' ? '萧炎' : '薰儿'}拿看；支持卷${task.support === 'shown' ? '展示中，仍归薰儿' : '未展示'}`} viewBox="0 0 600 150" className="early-walk-map">
       <rect width="600" height="150" fill="#293e35" /><text x="60" y="40" fill="#edcea0">萧炎</text><text x="450" y="40" fill="#edcea0">薰儿</text>
