@@ -117,6 +117,11 @@
       "name": "reviewLastVisible",
       "position": "translate(260 370)",
       "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
+    },
+    {
+      "name": "cleanCommitReload",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 半月回顾与当时四段\n  - heading \"分别回顾时段、成果与药色。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"半月回顾房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic: 当时绿意变淡\n    - generic: 衣着已整理\n    - generic \"当时日光渐弱\"\n  - status: 半月回顾 7/7 · 持续调息 · 半月四段与衣着已归档，五段仍是预计\n  - heading \"半月回顾已归档。\" [level=3]\n  - paragraph: 半月回顾已归档，当时四段与五段预测分开。铁片试招和出门待接续，旧药液及后期境界保持。\n  - button \"暂离半月回顾 · 保留断点\""
     }
   ],
   "nativeDownloads": [
@@ -340,9 +345,22 @@
       "pale": false,
       "dressed": false,
       "allOtherStateKept": true
+    },
+    {
+      "name": "reviewCleanCommit",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809518640.json",
+      "sha256": "83ee01ff9b7a2527cf165906cda1c84e791ff0a8366cced7ef524fba884e9a38",
+      "stage": 17,
+      "period": "half-month",
+      "result": "fourth-duan",
+      "forecast": "two-months",
+      "teacherReaction": true,
+      "pale": true,
+      "dressed": true,
+      "allOtherStateKept": true
     }
   ],
-  "equalPairs": 5,
+  "equalPairs": 6,
   "errors": {
     "main": [],
     "materials": [],
@@ -355,5 +373,22 @@
     "liquid": 6,
     "practice": 0,
     "recovery": "unobserved"
+  },
+  "verifiedSourceCommit": "96323e0c445016cff74bb05d85be36660feffccd",
+  "ci": {
+    "gameChecks": {
+      "id": 38251467706,
+      "conclusion": "success"
+    },
+    "pages": {
+      "id": 38251467480,
+      "conclusion": "skipped"
+    }
+  },
+  "cleanBuild": {
+    "version": "0.59.0",
+    "commit": "96323e0c445016cff74bb05d85be36660feffccd",
+    "files": 102,
+    "totalBytes": 1977007
   }
 }
