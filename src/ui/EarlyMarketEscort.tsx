@@ -1,3 +1,6 @@
+import MarketWalker from './MarketWalker'
+import MarketStreetBuildings from './MarketStreetBuildings'
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -39,7 +42,7 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
     <svg ref={field} role="group" aria-label="南坊入市与巡卫地图" aria-describedby="market-escort-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" /><path d="M70 310 H640 M260 230 H540 V130 H630" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
-      <rect x="300" y="50" width="160" height="150" rx="5" fill="#59664a" /><text x="380" y="120" fill="#e1d1a7" textAnchor="middle">街坊房屋 · 不可穿行</text>
+      <MarketStreetBuildings />
       {Object.entries(marketEscortPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
         <text x={p.x} y={p.y + 40} textAnchor="middle" fill="#eed7ad" fontSize="11">{p.label}</text></g>)}
       {[240, 280].map(x => <g key={x} aria-label="门前家族护卫" transform={`translate(${x} 280)`}><path d="M-9 12 L-5-5 H5 L9 12Z" fill="#697a87" /><circle cy="-12" r="7" fill="#ddb894" /></g>)}
@@ -48,12 +51,11 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
       {task.following === 3 && [0, 1, 2].map(i => <g key={i} aria-label="人群中的跟随护卫" transform={`translate(${490 + i * 20} 205)`}><path d="M-7 10 L-4-5 H4 L7 10Z" fill="#7b8d86" /><circle cy="-10" r="6" fill="#dbb795" /></g>)}
       <g aria-label={observer ? '人群中同行的萧炎与薰儿 · 旁观时不移动' : '萧炎坊市行走位置'}
         transform={`translate(${observer ? 540 : position.x} ${observer ? 230 : position.y})`}>
-        <path d="M-11 14 L-6-5 H6 L11 14Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
+        <MarketWalker />
         <path d="M20 10 L25-12 H37 L42 10Z" fill="#9dbca4" /><circle cx="31" cy="-18" r="8" fill="#edcfbd" />
       </g>
     </svg>
-    {canWalk && <div className="early-walk-controls">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary"
-      aria-label={`入坊${['向上走', '向左走', '向下走', '向右走'][i]}`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>}
+    {canWalk && <div className="early-walk-controls">{<WalkDirectionButtons prefix="入坊" onMove={move} />}</div>}
     {observer && scene && <button className="secondary" onClick={() => setFocus(scene.place)}>选择旁观焦点 · {marketEscortPlaces[scene.place].label}</button>}
     {!observer && task.stage >= 18 && !returned && <button className="secondary" onClick={() => { setReturned(true); field.current?.focus() }}>回到本人视角 · 与薰儿继续同行</button>}
     <p role="status">入坊巡卫 {task.stage}/24 · {earlyMarketEscortSaveSummary(state, state.settings)}</p>

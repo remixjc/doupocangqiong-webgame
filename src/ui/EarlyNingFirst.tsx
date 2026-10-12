@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -63,7 +64,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
-    <div className="early-walk-controls" aria-label="萧宁首轮行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['首轮向上走', '首轮向左走', '首轮向下走', '首轮向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="萧宁首轮行走操作">{<WalkDirectionButtons prefix="首轮" onMove={move} />}</div>
     <p role="status">萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮当时待裁判，最终胜负已宣布' : '首轮倒地，待最终裁判' : '尚未完成首轮'}</p>
     {scene ? near ? <section className="bond-summary" aria-label="萧宁首轮步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
       {training ? <>

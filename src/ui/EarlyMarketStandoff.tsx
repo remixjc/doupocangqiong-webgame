@@ -1,3 +1,6 @@
+import MarketWalker from './MarketWalker'
+import MarketStreetBuildings from './MarketStreetBuildings'
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -46,7 +49,7 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
     <svg ref={field} role="group" aria-label="围堵与非战斗离场地图" aria-describedby="market-standoff-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" /><path d="M80 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
-      <rect x="300" y="50" width="160" height="150" rx="5" fill="#59664a" /><text x="380" y="120" fill="#e1d1a7" textAnchor="middle">街坊房屋 · 不可穿行</text>
+      <MarketStreetBuildings />
       {Object.entries(standoffPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="28" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" /><text x={p.x} y={p.y + 65} textAnchor="middle" fill="#eed7ad" fontSize="12">{p.label}</text></g>)}
       {task.opponent !== 'left' && <g aria-label={task.opponent === 'paused' ? '来人停步尚未离开' : task.opponent === 'withdrawing' ? '来人正向外走' : '来人仍在街角'} transform={`translate(${task.opponent === 'present' ? 150 : 80} 310)`}>
         <path d="M-13 16 L-7-7 H7 L13 16Z" fill="#b6a58a" /><circle cy="-15" r="9" fill="#dcc6ae" />
@@ -54,13 +57,13 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
       {task.ring === 'closed' && <g aria-label="随从围堵尚未解除">{[[185, 275], [270, 280], [250, 345]].map(([x, y]) => <circle key={x} cx={x} cy={y} r="9" fill="#b89070" />)}</g>}
       {(task.guards === 'approaching' || task.guards === 'surrounding') && <g aria-label={task.guards === 'approaching' ? '护卫已到场尚未外层围住' : '护卫在外层控制局面'}>
         {(task.guards === 'approaching' ? [[360, 350], [390, 350], [420, 350]] : [[160, 250], [300, 265], [300, 355], [170, 355]]).map(([x, y]) => <circle key={x} cx={x} cy={y} r="10" fill="#b6bb90" />)}</g>}
-      <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}><path d="M-11 14 L-6-5 H6 L11 14Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-      <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}><path d="M-11 14 L-6-5 H6 L11 14Z" fill="#9dbca4" /><circle cy="-13" r="8" fill="#edcfbd" /><circle cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" /></g>
+      <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /></g>
+      <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}><MarketWalker xuner /><circle cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" /></g>
     </svg>
     {scene && <div className="early-walk-controls">
       <button className="secondary" onClick={() => select('yan')}>选择萧炎视角</button><button className="secondary" onClick={() => select('xuner')}>选择薰儿视角</button>
       {observer && <button className="secondary" onClick={() => select(scene.view)}>旁观{standoffNames[scene.view]} · {standoffPlaces[scene.place].label}</button>}
-      {active && !observer && (['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={`围堵向${['上', '左', '下', '右'][i]}走`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}
+      {active && !observer && <WalkDirectionButtons prefix="围堵" onMove={move} />}
     </div>}
     <p role="status">围堵离场 {task.stage}/34 · {earlyMarketStandoffSaveSummary(state, state.settings)}</p>
     <p>当前焦点：{selected ? standoffNames[selected] : '尚未选择'} · {observer ? '旁观没有本人行走' : '本人或薰儿独立行走'} · 普通绿链仍由薰儿戴着</p>

@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -58,7 +59,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       {Object.entries(keChallengePlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 57} textAnchor="middle" fill="#ead9b6" fontSize="12">{place.label}</text></g>)}
       <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
-    <div className="early-walk-controls" aria-label="萧克挑战行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['应战向上走', '应战向左走', '应战向下走', '应战向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="萧克挑战行走操作">{<WalkDirectionButtons prefix="应战" onMove={move} />}</div>
     <p role="status">萧克挑战 {task.stage}/12 · 动作 {task.beats}/2 · 重开 {task.attempts} 次 · {task.verdict === 'none' ? '尚未完成交锋' : task.verdict === 'pending' ? '萧克倒地，待父亲宣布' : '父亲已宣布萧克败'}</p>
     {scene ? near ? <section className="bond-summary" aria-label="萧克挑战步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
       {training ? <>

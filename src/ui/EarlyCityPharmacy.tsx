@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -40,7 +41,7 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
       <g aria-label="萧炎入城行走位置" transform={`translate(${position.x} ${position.y})`}><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
         <circle aria-label="同一古戒仍佩戴" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" /></g>
     </svg>
-    <div className="early-walk-controls">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={`药铺${['向上走', '向左走', '向下走', '向右走'][i]}`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls">{<WalkDirectionButtons prefix="药铺" onMove={move} />}</div>
     <p role="status">同行药铺 {task.stage}/15 · {earlyCityPharmacySaveSummary(state, state.settings)}</p>
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent}</p>
     <p>实际任务袋主药{ledger.supplies.bluegrass}株 / 辅药{ledger.supplies.boneflower}株 / 木核{ledger.supplies.woodCore}枚 · 主药收据{ledger.receipts.bluegrass ? '已付' : '未购'} / 辅药收据{ledger.receipts.boneflower ? '已付' : '未购'} / 木核收据{ledger.receipts.woodCore ? '旧进度已付保留' : '尚未购'}</p>

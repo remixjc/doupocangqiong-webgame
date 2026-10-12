@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -45,7 +46,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
       {Object.entries(qiPavilionPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 47} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
-    <div className="early-walk-controls" aria-label="功法阁行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['功法阁向上走', '功法阁向左走', '功法阁向下走', '功法阁向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="功法阁行走操作">{<WalkDirectionButtons prefix="功法阁" onMove={move} />}</div>
     <p role="status">入阁 {task.stage}/12 · 萧炎{task.yan === 'fire' ? '火属性' : '未测'} · 薰儿{task.xuner === 'fire' ? '火属性' : '未测'} · 水晶{task.crystal === 'broken' ? '已碎' : task.crystal === 'cracked' ? '有裂纹尚未碎' : '完整'} · {task.entered ? '已实际入阁' : task.permission ? '有许可尚未过门' : '尚未许可入阁'} · 尚无新卷轴</p>
     {scene ? nearQiPavilionPlace(position, scene.place, task.stage) ? <section className="bond-summary" aria-label="功法阁入阁步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
       <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>

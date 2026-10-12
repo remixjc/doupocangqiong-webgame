@@ -51,6 +51,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy] = useState(false)
   const [marketEscort, setMarketEscort] = useState(false)
   const [marketSearch, setMarketSearch] = useState(false)
+  const [marketTrade, setMarketTrade] = useState(false)
+  const tradeEntry = useRef<HTMLButtonElement>(null), returningTrade = useRef(false)
   const [marketDiscovery, setMarketDiscovery] = useState(false)
   const discoveryEntry = useRef<HTMLButtonElement>(null), returningDiscovery = useRef(false)
   const [marketStandoff, setMarketStandoff] = useState(false)
@@ -104,10 +106,13 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!marketBracelets && returningBracelets.current) { returningBracelets.current = false; braceletsEntry.current?.focus() } }, [marketBracelets])
   useEffect(() => { if (!marketStandoff && returningStandoff.current) { returningStandoff.current = false; standoffEntry.current?.focus() } }, [marketStandoff])
   useEffect(() => { if (!marketDiscovery && returningDiscovery.current) { returningDiscovery.current = false; discoveryEntry.current?.focus() } }, [marketDiscovery])
+  useEffect(() => { if (!marketTrade && returningTrade.current) { returningTrade.current = false; tradeEntry.current?.focus() } }, [marketTrade])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (marketTrade) return <Suspense fallback={<p role="status">正在接续询价与唯一成交……</p>}><EarlyMarketDiscovery key="trade" trade state={state}
+    onBack={() => { returningTrade.current = true; setMarketTrade(false) }} /></Suspense>
   if (marketDiscovery) return <Suspense fallback={<p role="status">正在接续摊位发现与心中建议……</p>}><EarlyMarketDiscovery state={state}
     onBack={() => { returningDiscovery.current = true; setMarketDiscovery(false) }} /></Suspense>
   if (marketStandoff) return <Suspense fallback={<p role="status">正在接续围堵与非战斗离场……</p>}><EarlyMarketStandoff state={state}
@@ -191,6 +196,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.marketStandoff.stage === 34 && <section className="bond-summary" aria-label="摊位发现接续">
         <b>非战斗离场归档 · 接续深处摊位</b><p>先实际走近，再分别发现绿核、感应黑铁片和听见心中建议，现有收据保留。</p>
         <button ref={discoveryEntry} className="secondary" onClick={() => setMarketDiscovery(true)}>接续摊位发现与心中建议</button>
+      </section>}
+      {isVisible(state, 2) && task.marketDiscovery.stage === 10 && <section className="bond-summary" aria-label="询价与唯一成交接续">
+        <b>发现与建议归档 · 接续摊主交涉</b><p>询问来源、议价、明确同意、实际付款与走离分存，沿同一折算60订单保留已购或耗尽材料。</p>
+        <button ref={tradeEntry} className="secondary" onClick={() => setMarketTrade(true)}>接续询价与唯一成交</button>
       </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">

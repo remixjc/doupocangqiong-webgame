@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -50,7 +51,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="预测行走操作">
-      {(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['预测向上走', '预测向左走', '预测向下走', '预测向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}
+      {<WalkDirectionButtons prefix="预测" onMove={move} />}
     </div>
     <p role="status">预测 {task.stage}/16 · 当前点名：{activeName} · 最近碑面：{lastResult}</p>
     <ul aria-label="三人预测名簿">

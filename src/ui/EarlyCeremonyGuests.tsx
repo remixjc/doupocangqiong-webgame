@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -49,7 +50,7 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 56} textAnchor="middle" fill="#ead9b6" fontSize="12">{place.label}</text></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
-    <div className="early-walk-controls" aria-label="宾客场地行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['候礼向上走', '候礼向左走', '候礼向下走', '候礼向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</div>
     <p role="status">宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</p>
     {scene ? near ? <section className="bond-summary" aria-label="宾客与收剑步骤"><h3>{scene.title}</h3><p>{scene.text}</p><button className="primary" onClick={act}>{scene.action}</button></section>
       : <p className="muted">下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</p>

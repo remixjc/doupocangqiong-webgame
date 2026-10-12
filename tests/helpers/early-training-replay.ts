@@ -1,3 +1,5 @@
+import { advanceEarlyMarketTrade, marketTradeExit, marketTradeLedger } from '../../src/core/early-market-trade'
+import { marketTradeScenes } from '../../src/content/early-market-trade'
 import { advanceEarlyCeremonyVerdict, verdictPlaces } from '../../src/core/early-ceremony-verdict'
 import { ceremonyVerdictScenes } from '../../src/content/early-ceremony-verdict'
 import { advanceEarlyQiPavilionEntry, qiPavilionPlaces } from '../../src/core/early-qi-pavilion'
@@ -241,8 +243,14 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     const result = advanceEarlyMarketDiscovery(state, marketDiscoveryPlace, { ...state.earlyTraining.marketDiscovery, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
-  act({ type: 'purchase', item: 'woodCore', price: 60, expectedSpent: 50 })
-  for (let step = 0; step < 4; step++) act({ type: 'market', step, expectedSpent: 110 })
+  if (includeQiAid) for (const scene of marketTradeScenes) {
+    const task = state.earlyTraining.marketTrade
+    const result = advanceEarlyMarketTrade(state, task.stage < 13 ? marketDiscoveryPlace : marketTradeExit,
+      { ...task, expectedLedger: marketTradeLedger(state), actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (!state.earlyTraining.receipts.woodCore) act({ type: 'purchase', item: 'woodCore', price: 60, expectedSpent: 50 })
+  for (let step = state.earlyTraining.market.stage; step < 4; step++) act({ type: 'market', step, expectedSpent: 110 })
   for (let step = 0; step < 6; step++) act({ type: 'liquid', step, operation: earlyLiquidScenes[step].operation, expectedSpent: 110 })
   act({ type: 'practice', operation: 'begin', phase: 0, pulse: 0, expectedSpent: 110 })
   if (failFirstBreath) for (let pulse = 0; pulse < 3; pulse++)

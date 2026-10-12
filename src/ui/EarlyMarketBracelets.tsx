@@ -1,3 +1,6 @@
+import MarketWalker from './MarketWalker'
+import MarketStreetBuildings from './MarketStreetBuildings'
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -42,7 +45,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
     <svg ref={field} role="group" aria-label="让路与两条手链地图" aria-describedby="market-bracelets-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" /><path d="M160 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
-      <rect x="300" y="50" width="160" height="150" rx="5" fill="#59664a" /><text x="380" y="120" fill="#e1d1a7" textAnchor="middle">街坊房屋 · 不可穿行</text>
+      <MarketStreetBuildings />
       <circle cx="220" cy="310" r="38" fill="none" stroke="#f7d699" strokeDasharray="4 5" />
       <text x="220" y="365" textAnchor="middle" fill="#eed7ad">拦路街角</text>
       <text x="540" y="365" textAnchor="middle" fill="#eed7ad">萧炎原先寻核处</text>
@@ -51,17 +54,17 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
         {task.expensive !== 'unoffered' && <g aria-label="蓝金手链与木核仍由来人持有"><circle cx="17" cy="3" r="8" fill="none" stroke="#8fb9d9" strokeWidth="3" /><circle cx="17" cy="11" r="4" fill="#75bd7e" /></g>}
       </g>
       <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}>
-        <path d="M-11 14 L-6-5 H6 L11 14Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
+        <MarketWalker />
         {task.green === 'shown' && <circle aria-label="普通绿链仍由萧炎持有" cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
       <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}>
-        <path d="M-11 14 L-6-5 H6 L11 14Z" fill="#9dbca4" /><circle cy="-13" r="8" fill="#edcfbd" />
+        <MarketWalker xuner />
         {(task.green === 'received' || task.green === 'worn') && <circle aria-label={task.green === 'worn' ? '薰儿已戴普通绿链' : '薰儿收到但尚未戴上普通绿链'} cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
     </svg>
     {scene && <div className="early-walk-controls"><button className="secondary" onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</button>
       <button className="secondary" onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</button>
-      {active && (['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={`手链向${['上', '左', '下', '右'][i]}走`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>}
+      {active && <WalkDirectionButtons prefix="手链" onMove={move} />}</div>}
     <p role="status">让路手链 {task.stage}/28 · {earlyMarketBraceletsSaveSummary(state, state.settings)}</p>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 蓝金手链：{task.expensive === 'unoffered' ? '尚未提出' : '来人持有，未交付'}
       {' · '}普通绿链：{task.green === 'unshown' ? '尚未拿出' : task.green === 'shown' ? '萧炎持有，未交付' : task.green === 'received' ? '薰儿已收到，尚未戴上' : '薰儿已戴上'}</p>

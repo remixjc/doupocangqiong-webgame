@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -47,7 +48,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
       {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 50} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
-    <div className="early-walk-controls" aria-label="正式裁定行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={['裁定向上走', '裁定向左走', '裁定向下走', '裁定向右走'][i]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</div>
     <p role="status">礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</p>
     {scene ? nearVerdictPlace(position, scene.place) ? <section className="bond-summary" aria-label="正式裁定步骤">
       <h3>{scene.title}</h3><p>{scene.text}</p>

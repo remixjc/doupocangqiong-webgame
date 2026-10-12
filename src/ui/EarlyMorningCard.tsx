@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -44,7 +45,7 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
         <circle aria-label="右手佩戴同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />
         {task.card === 'yan' && <rect aria-label="本人已接同一普通黑卡" x="15" y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />}</g>
     </svg>
-    <div className="early-walk-controls">{(['up', 'left', 'down', 'right'] as const).map((direction, i) => <button key={direction} className="secondary" aria-label={`晨卡${['向上走', '向左走', '向下走', '向右走'][i]}`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+    <div className="early-walk-controls">{<WalkDirectionButtons prefix="晨卡" onMove={move} />}</div>
     <p role="status">晨间交卡 {task.stage}/14 · {earlyMorningCardSaveSummary(state, state.settings)}</p>
     <p>普通黑卡：{task.card === 'yan' ? '本人已接' : task.card === 'offered' ? '薰儿递出，本人尚未接' : '仍由薰儿持有'} · 当晚紫金卡仍由薰儿保管 · 老师仍在戒中</p>
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent} · {task.funds === 'existing' ? '旧账衔接，没有再发160' : task.funds === 'credited' ? '本人接卡时唯一折算160已入账' : '本段还未办理接卡到账，旧账保持'}</p>
