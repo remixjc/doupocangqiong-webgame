@@ -33,6 +33,7 @@ const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMar
 const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
 const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
+const FirstTechnique = lazy(() => loadSceneModule(() => import('./FirstTechnique')))
 const FirstTraining = lazy(() => loadSceneModule(() => import('./FirstTraining')))
 const EarlyRefining = lazy(() => loadSceneModule(() => import('./EarlyRefining')))
 const EarlyIron = lazy(() => loadSceneModule(() => import('./EarlyIron')))
@@ -57,6 +58,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy, cityEntry, cityPharmacyBack] = useReturningScene()
   const [marketEscort, setMarketEscort, escortEntry, marketEscortBack] = useReturningScene()
   const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
+  const [firstTechnique, setFirstTechnique, techniqueEntry, techniqueBack] = useReturningScene()
   const [firstReview, setFirstReview, reviewEntry, reviewBack] = useReturningScene()
   const [firstTraining, setFirstTraining, trainingEntry, trainingBack] = useReturningScene()
   const [refining, setRefining, refiningEntry, refiningBack] = useReturningScene()
@@ -71,6 +73,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (firstTechnique) return <DeferredScene message="正在接续铁片研究……"><FirstTechnique state={state} onBack={techniqueBack} /></DeferredScene>
   if (firstReview) return <DeferredScene message="正在接续半月回顾……"><FirstTraining continuation state={state} onBack={reviewBack} /></DeferredScene>
   if (firstTraining) return <DeferredScene message="正在接续持续调息……"><FirstTraining state={state} onBack={trainingBack} /></DeferredScene>
   if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={refiningBack} /></DeferredScene>
@@ -191,6 +194,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstTraining.stage >= 10 && <section className="bond-summary" aria-label="半月修炼接续">
         <b>当前一轮归档 · 半月回顾</b><p>当时四段、老师反应、药色与衣着分存。</p>
         <button ref={reviewEntry} className="secondary" onClick={() => setFirstReview(true)}>接续半月回顾与当时四段</button>
+      </section>}
+      {isVisible(state, 2) && task.firstTraining.stage === 17 && <section className="bond-summary" aria-label="首次铁片研究接续">
+        <b>半月回顾归档 · 同一铁片研究</b><p>实际取片、研究回顾与本人感知分存。</p>
+        <button ref={techniqueEntry} className="secondary" onClick={() => setFirstTechnique(true)}>接续同一铁片研究与感知</button>
       </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">
