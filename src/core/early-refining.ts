@@ -14,7 +14,7 @@ export function refiningStart(stage: number): EarlyWalkPosition {
   return stage >= 3 ? refiningWater : ironPlaces.table
 }
 export function refiningNear(yan: EarlyWalkPosition, stage: number): boolean {
-  return ironNear(yan, 0) && (stage !== 2 || Math.hypot(yan.x - refiningWater.x, yan.y - refiningWater.y) <= 38)
+  return ironNear(yan, 0) && (![2, 17].includes(stage) || Math.hypot(yan.x - refiningWater.x, yan.y - refiningWater.y) <= 38)
 }
 export function earlyRefiningBlock(state: GameState): string {
   if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'
@@ -26,7 +26,7 @@ export type RefiningAction = RefiningState & {
   expectedIron: GameState['earlyTraining']['iron']
   teacherPosition: EarlyWalkPosition
   actor: typeof refiningScenes[number]['actor']
-  operation: typeof refiningScenes[number]['operation'] | 'restore' | 'drink' | 'finish'
+  operation: typeof refiningScenes[number]['operation'] | 'restore' | 'drink' | 'finish' | 'wait'
 }
 export function advanceEarlyRefining(state: GameState, yan: EarlyWalkPosition, action: RefiningAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
@@ -36,11 +36,12 @@ export function advanceEarlyRefining(state: GameState, yan: EarlyWalkPosition, a
   if (!validRefining(task) || !fieldsMatch(action, task) || !action.expectedLedger
     || !fieldsMatch(action.expectedLedger, marketTradeLedger(state)) || !action.expectedIron
     || !fieldsMatch(action.expectedIron, state.earlyTraining.iron)) return fail('调制历史或原材料账已变化，请按当前断点继续。')
-  if (!scene) return fail('清水与主辅药处理已归档。')
+  if (!scene) return fail('清水、主辅药与魔核入水已归档。')
   if (!action.teacherPosition || !fieldsMatch(action.teacherPosition, ironPlaces.teacher)) return fail('老师必须在房中自己的位置。')
   if (!refiningNear(yan, task.stage)) return fail('先由本人走到盛水处备水。')
   if (action.operation === 'restore') return fail('旧耗材与药液不能重新领取，手中魔核只是当时历史。')
-  if (action.operation === 'drink') return fail('这份调制不是口服；此刻尚未入水。')
+  if (action.operation === 'drink') return fail('这份调制不能口服，应加入清水用于后续修炼。')
+  if (action.operation === 'wait') return fail('期限是当时说明，不会按现实时间补药、自动修炼或提升境界。')
   if (action.operation === 'finish') return fail('主辅药融合不等于魔核炼化、熄焰或入水完成。')
   if (scene.actor !== action.actor || scene.operation !== action.operation) return fail('请明确选择本步人物并按次序操作。')
   let next = structuredClone(state)

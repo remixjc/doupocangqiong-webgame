@@ -1,4 +1,4 @@
-import { EARLY_REFINING_VERSION } from './early-refining-state'
+import { EARLY_REFINING_VERSION, EARLY_INFUSION_VERSION } from './early-refining-state'
 import { EARLY_IRON_VERSION } from './early-iron-state'
 import { EARLY_MARKET_RETURN_VERSION } from './early-market-return-state'
 import { EARLY_MARKET_TRADE_VERSION } from './early-market-trade-state'
@@ -293,6 +293,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_MARKET_RETURN_VERSION),
     versionBefore(data.contentVersion as string, EARLY_IRON_VERSION),
     versionBefore(data.contentVersion as string, EARLY_REFINING_VERSION))
+  if (s.earlyTraining.refining.stage > 11 && versionBefore(data.contentVersion as string, EARLY_INFUSION_VERSION))
+    throw new Error('魔核入水记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

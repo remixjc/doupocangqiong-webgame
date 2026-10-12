@@ -57,6 +57,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [marketSearch, setMarketSearch] = useState(false)
   const [refining, setRefining] = useState(false)
   const refiningEntry = useRef<HTMLButtonElement>(null), returningRefining = useRef(false)
+  const [infusion, setInfusion] = useState(false)
+  const infusionEntry = useRef<HTMLButtonElement>(null), returningInfusion = useRef(false)
   const [iron, setIron] = useState(false)
   const ironEntry = useRef<HTMLButtonElement>(null), returningIron = useRef(false)
   const [marketReturn, setMarketReturn] = useState(false)
@@ -118,6 +120,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!marketDiscovery && returningDiscovery.current) { returningDiscovery.current = false; discoveryEntry.current?.focus() } }, [marketDiscovery])
   useEffect(() => { if (!marketTrade && returningTrade.current) { returningTrade.current = false; tradeEntry.current?.focus() } }, [marketTrade])
   useEffect(() => { if (!refining && returningRefining.current) { returningRefining.current = false; refiningEntry.current?.focus() } }, [refining])
+  useEffect(() => { if (!infusion && returningInfusion.current) { returningInfusion.current = false; infusionEntry.current?.focus() } }, [infusion])
   useEffect(() => { if (!iron && returningIron.current) { returningIron.current = false; ironEntry.current?.focus() } }, [iron])
   useEffect(() => { if (!marketReturn && returningRoom.current) { returningRoom.current = false; returnEntry.current?.focus() } }, [marketReturn])
   const task = state.earlyTraining
@@ -125,6 +128,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
   if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={() => { returningRefining.current = true; setRefining(false) }} /></DeferredScene>
+  if (infusion) return <DeferredScene message="正在接续魔核炼化与入水……"><EarlyRefining continuation state={state} onBack={() => { returningInfusion.current = true; setInfusion(false) }} /></DeferredScene>
   if (iron) return <DeferredScene message="正在接续铁片辨认……"><EarlyIron state={state} onBack={() => { returningIron.current = true; setIron(false) }} /></DeferredScene>
   if (marketReturn) return <DeferredScene message="正在接续回族与房中准备……"><EarlyMarketDiscovery key="return" returning state={state}
     onBack={() => { returningRoom.current = true; setMarketReturn(false) }} /></DeferredScene>
@@ -229,6 +233,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.iron.stage === 18 && <section className="bond-summary" aria-label="主辅药调制接续">
         <b>铁片已归档 · 接续清水与主辅药</b><p>备水、白焰、三株主药与两株辅药依次保存，沿原材料账单次消耗。</p>
         <button ref={refiningEntry} className="secondary" onClick={() => setRefining(true)}>接续清水与主辅药调制</button>
+      </section>}
+      {isVisible(state, 2) && task.refining.stage >= 11 && <section className="bond-summary" aria-label="魔核入水接续">
+        <b>主辅药已归档 · 接续魔核入水</b><p>魔核柔化、熄焰、否决口服、实际入水与期限分存，不重复领取材料。</p>
+        <button ref={infusionEntry} className="secondary" onClick={() => setInfusion(true)}>接续魔核炼化与入水</button>
       </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">

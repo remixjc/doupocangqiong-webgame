@@ -224,7 +224,9 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 export function earlyRefiningSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.refining
-  return '主辅药调制 · ' + (t.fused ? '药性已融合，魔核与入水待续' : t.primary ? '主药处理中' : t.water ? '清水已备' : t.stage ? '备水待续' : '未参与')
+  return '主辅药调制 · ' + (t.stage === 22 ? '魔核入水与期限已归档' : t.stage >= 18 ? '已入水，回应与期限待续'
+    : t.stage >= 14 ? '白焰已熄，尚未入水' : t.stage >= 12 ? '魔核炼化中'
+      : t.fused ? '药性已融合，魔核与入水待续' : t.primary ? '主药处理中' : t.water ? '清水已备' : t.stage ? '备水待续' : '未参与')
 }
 
 export function earlyIronSaveSummary(saved: GameState, viewing: Settings): string {
