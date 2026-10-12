@@ -56,6 +56,17 @@ export function earlyFamilyContractSaveSummary(saved: GameState, viewing: Settin
     : task.challenge === 'proposed' ? '仅提出三年条件，尚未本人承诺' : task.stage ? '情绪与立场交涉进行中' : '未参与')
 }
 
+export function earlyMountainRingSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.mountainRing
+  return '后山与古戒 · ' + (task.stage === 21 ? '前段归档，取气答复与本人拜师待续'
+    : task.future === 'asked' ? '已问今后取气，尚待答复' : task.ring === 'floating' ? '古戒浮空返回，尚未再佩戴'
+    : task.ring === 'thrown' ? '古戒已抛出，尚未返回' : task.qi === 'admitted' ? '流失原因已承认，未补资源'
+    : task.qi === 'asked' ? '已问流失原因，尚待承认' : task.qi === 'hinted' ? '已听供养线索，仍待问答'
+    : task.voice === 'located' ? '声音已定位古戒，身份未公开' : task.voice === 'hinted' ? '已听手指提示，未定位'
+    : task.voice !== 'silent' ? '已听声音，尚未定位' : task.stage ? '独自上山与心愿回顾' : '未参与')
+}
+
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
@@ -63,7 +74,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

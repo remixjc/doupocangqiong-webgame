@@ -6,7 +6,7 @@ import { familyVisitPlaces, moveFamilyVisitWalker } from '../core/early-family-v
 import { earlyFamilyContractBlock, familyContractExtraPlaces, familyContractPlaces, familyContractNear,
   submitEarlyFamilyContract, type FamilyContractAction, type FamilyContractView } from '../core/early-family-contract'
 import { familyContractScenes } from '../content/early-family-contract'
-import { earlyFamilyContractSaveSummary } from '../core/save-preview'
+import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary } from '../core/save-preview'
 import FamilyHallMap from './FamilyHallMap'
 
 export default function EarlyFamilyContract({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -50,7 +50,8 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       {task.stage === 19 && <button className="secondary" disabled={!near} onClick={() => act('give-paper-father')}>尝试把文书交给父亲</button>}
       {task.stage === 27 && <button className="secondary" disabled={!near} onClick={() => act('take-box')}>尝试先把玉匣收入行囊</button>}
     </section> : <section className="bond-summary"><h3>文书与双方离厅已归档。</h3>
-      <p>萧炎亲口承诺赴约后已离厅；纳兰持同一文书，葛叶收回玉匣并带来客离去。后山交涉尚待接续。</p></section>}
+      <p>萧炎亲口承诺赴约后已离厅；纳兰持同一文书，葛叶收回玉匣并带来客离去。{state.earlyTraining.mountainRing.stage
+        ? earlyMountainRingSaveSummary(state, state.settings) + '。' : '后山交涉尚待接续。'}</p></section>}
     <p className="muted">厅院布局、行走与核对选项为游戏改编；印记只作抽象回顾。本段不改变主线能力、行囊、生命或已结算奖励。事件断点保存，位置与旁观焦点不保存。</p>
     <button className="secondary" onClick={onBack}>暂离文书与离厅 · 保留断点</button>
   </>

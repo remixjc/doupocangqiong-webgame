@@ -67,6 +67,8 @@ import { advanceEarlyFamilyCompensation } from '../../src/core/early-family-comp
 import { familyCompensationScenes } from '../../src/content/early-family-compensation'
 import { advanceEarlyFamilyContract, familyContractPlaces, type FamilyContractView } from '../../src/core/early-family-contract'
 import { familyContractScenes } from '../../src/content/early-family-contract'
+import { advanceEarlyMountainRing, mountainRingPlaces } from '../../src/core/early-mountain-ring'
+import { mountainRingScenes } from '../../src/content/early-mountain-ring'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
@@ -114,6 +116,13 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     const task = state.earlyTraining.familyContract, scene = familyContractScenes[task.stage]
     const view: FamilyContractView = task.yan === 'left' ? { kind: 'observer', place: scene.place } : { kind: 'yan', position: familyContractPlaces[scene.place] }
     const result = advanceEarlyFamilyContract(state, view, { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.mountainRing.stage < mountainRingScenes.length) {
+    const task = state.earlyTraining.mountainRing, scene = mountainRingScenes[task.stage]
+    const result = advanceEarlyMountainRing(state, mountainRingPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)

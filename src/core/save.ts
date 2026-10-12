@@ -13,6 +13,7 @@ import { EARLY_QI_AID_VERSION, EARLY_QI_BARRIER_VERSION, EARLY_QI_SCROLL_VERSION
 import { EARLY_FAMILY_VISIT_VERSION } from './early-family-visit-state'
 import { EARLY_FAMILY_COMPENSATION_VERSION } from './early-family-compensation-state'
 import { EARLY_FAMILY_CONTRACT_VERSION } from './early-family-contract-state'
+import { EARLY_MOUNTAIN_RING_VERSION } from './early-mountain-ring-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 export class NewerSaveVersionError extends Error {
@@ -260,7 +261,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_QI_AID_VERSION),
     versionBefore(data.contentVersion as string, EARLY_FAMILY_VISIT_VERSION),
     versionBefore(data.contentVersion as string, EARLY_FAMILY_COMPENSATION_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_FAMILY_CONTRACT_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_FAMILY_CONTRACT_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_RING_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

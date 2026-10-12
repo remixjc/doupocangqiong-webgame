@@ -1,11 +1,13 @@
 import { familyVisitAt, validFamilyVisit, type FamilyVisitState } from './early-family-visit-state'
 import { familyCompensationAt, validFamilyCompensation, type FamilyCompensationState } from './early-family-compensation-state'
 import { familyContractAt, validFamilyContract, type FamilyContractState } from './early-family-contract-state'
+import { mountainRingAt, validMountainRing, type MountainRingState } from './early-mountain-ring-state'
 
 export interface EarlyTrainingState {
   familyVisit: FamilyVisitState
   familyCompensation: FamilyCompensationState
   familyContract: FamilyContractState
+  mountainRing: MountainRingState
   started: boolean
   purse: { own: number; borrowed: number; spent: number }
   supplies: { bluegrass: number; boneflower: number; woodCore: number }
@@ -116,7 +118,7 @@ export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; p
 export const CONSIGNMENT_FUNDS = 90
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
-  return { familyVisit: familyVisitAt(0), familyCompensation: familyCompensationAt(0), familyContract: familyContractAt(0), started: false, purse: { own: 0, borrowed: 0, spent: 0 },
+  return { familyVisit: familyVisitAt(0), familyCompensation: familyCompensationAt(0), familyContract: familyContractAt(0), mountainRing: mountainRingAt(0), started: false, purse: { own: 0, borrowed: 0, spent: 0 },
     supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
     receipts: { bluegrass: false, boneflower: false, woodCore: false },
     market: { stage: 0, blackIron: 0 },
@@ -148,7 +150,7 @@ export function blankEarlyTraining(): EarlyTrainingState {
     qiPavilionAid: { stage: 0, beats: 0, attempts: 0, ...qiPavilionAidAt(0) },
     qiPavilionExchange: { stage: 0, ...qiPavilionExchangeAt(0) } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false, legacyQiPavilionAid = false, legacyFamilyVisit = false, legacyFamilyCompensation = false, legacyFamilyContract = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false, legacyQiPavilionAid = false, legacyFamilyVisit = false, legacyFamilyCompensation = false, legacyFamilyContract = false, legacyMountainRing = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -174,6 +176,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const familyContract = data.familyContract === undefined && legacyFamilyContract ? result.familyContract : object(data.familyContract)
   if (!validFamilyContract(familyContract) || familyContract.stage > 0 && familyCompensation.stage !== 15) return invalid()
   result.familyContract = familyContractAt(familyContract.stage)
+  const mountainRing = data.mountainRing === undefined && legacyMountainRing ? result.mountainRing : object(data.mountainRing)
+  if (!validMountainRing(mountainRing) || mountainRing.stage > 0 && familyContract.stage !== 33) return invalid()
+  result.mountainRing = mountainRingAt(mountainRing.stage)
   const liquid = data.liquid === undefined && legacyLiquid ? result.liquid : object(data.liquid)
   if (typeof liquid.stage !== 'number' || !Number.isSafeInteger(liquid.stage) || liquid.stage < 0 || liquid.stage > 6
     || liquid.water !== (liquid.stage >= 2) || liquid.ready !== (liquid.stage === 6)) return invalid()
