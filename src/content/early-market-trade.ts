@@ -1,20 +1,21 @@
+import { defineSceneRows } from './scene-rows'
 // Original concise scenes following English14. Species Chinese name remains unverified.
-export const marketTradeScenes = [
-  { actor: 'yan', operation: 'pick', title: '先拿起魔核查看', text: '萧炎暂不显露对铁片的兴趣，拿起绿核查看；物品仍属摊主。', action: '本人拿起绿核查看' },
-  { actor: 'yan', operation: 'ask', title: '询问来源', text: '先问清这枚魔核来自哪种魔兽。', action: '本人询问魔核来源' },
-  { actor: 'vendor', operation: 'source', title: '摊主介绍', text: '摊主称来自一阶Swallow Wood Fox。中文物种名待核，此处只记录卖方说法。', action: '听摊主说明魔兽来源' },
-  { actor: 'vendor', operation: 'rarity', title: '卖方的经历', text: '摊主又称队伍等了三天，伏击五只才得到这一枚核；这是他的销售陈述。', action: '听摊主讲述取核经历' },
-  { actor: 'vendor', operation: 'quote', title: '开价五百', text: '摊主开价500。这里记录交涉报价，实际账本沿用已有折算订单。', action: '听摊主开价500' },
-  { actor: 'yan', operation: 'inspect', title: '查看魔核与徽记', text: '萧炎擦拭查看魔核，注意到摊主胸前两星徽记。观察不改变本人境界。', action: '本人查看绿核与两星徽记' },
-  { actor: 'yan', operation: 'compare', title: '提出价格异议', text: '萧炎提出同阶通常400至450的比较，质疑对方的说辞。', action: '本人提出400至450的比较' },
-  { actor: 'vendor', operation: 'revise', title: '改报四百七十', text: '摊主改报470，仍未成交。', action: '听摊主改报470' },
-  { actor: 'yan', operation: 'select', title: '挑选一组货物', text: '萧炎把黑铁片混在其他所选货物中，准备一并议价。', action: '本人选取含黑铁片的一组货物' },
-  { actor: 'yan', operation: 'offer', title: '提出捆绑价', text: '萧炎提出这些一起470。提出条件不等于卖家同意。', action: '本人提出整组470' },
-  { actor: 'vendor', operation: 'check', title: '摊主核看所选物品', text: '摊主检查这组货物，尚未收款。', action: '等摊主核看整组货物' },
-  { actor: 'vendor', operation: 'agree', title: '卖家明确同意', text: '摊主同意这笔交易。还须实际付款，物品才交付。', action: '听摊主同意捆绑成交' },
-  { actor: 'yan', operation: 'pay', title: '实际付账并接过货物', text: '货款与魔核、黑铁片同次记账。新订单只扣折算60；旧收据已购或已耗只补这段历史，不再扣款或补货。', action: '本人实际付账并核对唯一交付' },
-  { actor: 'yan', operation: 'leave', title: '实际走离摊位', text: '成交后沿巷道退到离摊标记，才能继续记下离开。', action: '本人带薰儿实际走离摊位' },
-  { actor: 'teacher', operation: 'comment', title: '心中响起评论', text: '药老在心中调侃萧炎买东西也如此谨慎。没有传授斗技。', action: '听见老师心中评论' },
-  { actor: 'yan', operation: 'reply', title: '解释谨慎的理由', text: '萧炎回应，显露兴趣容易让卖家抬价。', action: '本人回应避免被抬价' },
-  { actor: 'yan', operation: 'archive', title: '唯一成交与离摊归档', text: '回族、分路、锁门、摆材料及解释铁片还待后续。', action: '归档询价与唯一成交' },
-] as const
+export const marketTradeScenes = defineSceneRows(["actor","operation","title","text","action"], [
+  ["yan","pick","先拿起魔核查看","萧炎暂不显露对铁片的兴趣，拿起绿核查看；物品仍属摊主。","本人拿起绿核查看"],
+  ["yan","ask","询问来源","先问清这枚魔核来自哪种魔兽。","本人询问魔核来源"],
+  ["vendor","source","摊主介绍","摊主称来自一阶Swallow Wood Fox。中文物种名待核，此处只记录卖方说法。","听摊主说明魔兽来源"],
+  ["vendor","rarity","卖方的经历","摊主又称队伍等了三天，伏击五只才得到这一枚核；这是他的销售陈述。","听摊主讲述取核经历"],
+  ["vendor","quote","开价五百","摊主开价500。这里记录交涉报价，实际账本沿用已有折算订单。","听摊主开价500"],
+  ["yan","inspect","查看魔核与徽记","萧炎擦拭查看魔核，注意到摊主胸前两星徽记。观察不改变本人境界。","本人查看绿核与两星徽记"],
+  ["yan","compare","提出价格异议","萧炎提出同阶通常400至450的比较，质疑对方的说辞。","本人提出400至450的比较"],
+  ["vendor","revise","改报四百七十","摊主改报470，仍未成交。","听摊主改报470"],
+  ["yan","select","挑选一组货物","萧炎把黑铁片混在其他所选货物中，准备一并议价。","本人选取含黑铁片的一组货物"],
+  ["yan","offer","提出捆绑价","萧炎提出这些一起470。提出条件不等于卖家同意。","本人提出整组470"],
+  ["vendor","check","摊主核看所选物品","摊主检查这组货物，尚未收款。","等摊主核看整组货物"],
+  ["vendor","agree","卖家明确同意","摊主同意这笔交易。还须实际付款，物品才交付。","听摊主同意捆绑成交"],
+  ["yan","pay","实际付账并接过货物","货款与魔核、黑铁片同次记账。新订单只扣折算60；旧收据已购或已耗只补这段历史，不再扣款或补货。","本人实际付账并核对唯一交付"],
+  ["yan","leave","实际走离摊位","成交后沿巷道退到离摊标记，才能继续记下离开。","本人带薰儿实际走离摊位"],
+  ["teacher","comment","心中响起评论","药老在心中调侃萧炎买东西也如此谨慎。没有传授斗技。","听见老师心中评论"],
+  ["yan","reply","解释谨慎的理由","萧炎回应，显露兴趣容易让卖家抬价。","本人回应避免被抬价"],
+  ["yan","archive","唯一成交与离摊归档","回族、分路、锁门、摆材料及解释铁片还待后续。","归档询价与唯一成交"]
+] as const)

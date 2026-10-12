@@ -1,7 +1,7 @@
 import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
-import { earlyWalkDirections as directions } from '../core/early-walk-keys'
+import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -26,11 +26,9 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false }: {
     if (trade) submitEarlyMarketTrade(gameStore, position, { ...order, expectedLedger: marketTradeLedger(state), actor: scene.actor, operation } as MarketTradeAction)
     else submitEarlyMarketDiscovery(gameStore, position, { ...discovery, actor: scene.actor, operation } as MarketDiscoveryAction)
   }
-  const key = (event: KeyboardEvent<SVGSVGElement>) => {
-    if (document.hidden || event.ctrlKey || event.altKey || event.metaKey) return
-    const value = event.key.length === 1 ? event.key.toLowerCase() : event.key
-    if (directions[value]) { event.preventDefault(); move(directions[value]) }
-    else if (value === 'e') { event.preventDefault(); if (scene) act(scene.operation) }
+  function key(event: KeyboardEvent<SVGSVGElement>) {
+    if (document.hidden) return
+    walkKey(event, move, () => { if (scene) act(scene.operation) })
   }
   if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
   return <>

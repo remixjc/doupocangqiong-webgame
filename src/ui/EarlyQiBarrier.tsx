@@ -1,4 +1,4 @@
-import { earlyWalkDirections as directions } from '../core/early-walk-keys'
+import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -41,10 +41,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
     })
   }
   function key(event: KeyboardEvent<SVGSVGElement>) {
-    if (event.altKey || event.ctrlKey || event.metaKey) return
-    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
-    if (direction) { event.preventDefault(); move(direction) }
-    if (event.key.toLowerCase() === 'e' && scene && near) { event.preventDefault(); act(scene.place === 'path' ? 'path' : qiBarrierOperation(task), scene.place === 'path' ? 3 : undefined) }
+    walkKey(event, move, scene && near ? () => act(scene.place === 'path' ? 'path' : qiBarrierOperation(task), scene.place === 'path' ? 3 : undefined) : undefined)
   }
   if (blocked) return <p>{blocked}</p>
   const operation = qiBarrierOperation(task)

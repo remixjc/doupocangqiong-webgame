@@ -1,5 +1,5 @@
 import WalkDirectionButtons from './WalkDirectionButtons'
-import { earlyWalkDirections as directions } from '../core/early-walk-keys'
+import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -22,10 +22,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
     submitEarlyPreliminary(gameStore, entryPosition, position, { ...task, actor: scene.actor, operation: scene.operation })
   }
   function key(event: KeyboardEvent<SVGSVGElement>) {
-    if (event.altKey || event.ctrlKey || event.metaKey) return
-    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
-    if (direction) { event.preventDefault(); move(direction) }
-    if (event.key.toLowerCase() === 'e') { event.preventDefault(); act() }
+    walkKey(event, move, () => act())
   }
   if (blocked) return <p>{blocked}</p>
   const lastResult = task.yan !== 'unmeasured' ? '萧炎 · 七段' : task.xuner !== 'unmeasured' ? '薰儿 · 一星斗者'

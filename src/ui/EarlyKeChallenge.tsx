@@ -1,5 +1,5 @@
 import WalkDirectionButtons from './WalkDirectionButtons'
-import { earlyWalkDirections as directions } from '../core/early-walk-keys'
+import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -33,10 +33,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       marker: training && operation !== 'stop' ? marker : undefined })
   }
   function key(event: KeyboardEvent<SVGSVGElement>) {
-    if (event.altKey || event.ctrlKey || event.metaKey) return
-    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
-    if (direction) { event.preventDefault(); move(direction) }
-    if (event.key.toLowerCase() === 'e' && scene && !training) { event.preventDefault(); act(scene.operation) }
+    walkKey(event, move, scene && !training ? () => act(scene.operation) : undefined)
   }
   if (blocked) return <p>{blocked}</p>
   return <>

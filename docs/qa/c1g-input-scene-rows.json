@@ -1,0 +1,170 @@
+{
+  "batch": "C1g-4d package prerequisite",
+  "version": "0.53.1",
+  "date": "2026-10-12",
+  "sharedHandlers": 19,
+  "sceneModules": 6,
+  "sceneRows": 133,
+  "allFieldsValuesOrderIdentical": true,
+  "bytesBefore": 1849743,
+  "bytesAfter": 1842205,
+  "bytesSaved": 7538,
+  "initialUnchanged": 499133,
+  "totalBudgetUnchanged": 1850000,
+  "browser": "4191 native unchanged true0.53 intact-core import; keyboard8/modifiers3/wall/farE/full17;4185new and4190consumed final refresh.",
+  "positions": [
+    {
+      "key": "ArrowUp",
+      "position": "translate(620 210)"
+    },
+    {
+      "key": "w",
+      "position": "translate(620 190)"
+    },
+    {
+      "key": "s",
+      "position": "translate(620 210)"
+    },
+    {
+      "key": "ArrowDown",
+      "position": "translate(620 230)"
+    },
+    {
+      "key": "ArrowLeft",
+      "position": "translate(600 230)"
+    },
+    {
+      "key": "Shift+A",
+      "position": "translate(580 230)"
+    },
+    {
+      "key": "d",
+      "position": "translate(600 230)"
+    },
+    {
+      "key": "ArrowRight",
+      "position": "translate(620 230)"
+    },
+    {
+      "key": "Control+ArrowUp",
+      "position": "translate(620 230)"
+    },
+    {
+      "key": "Alt+ArrowUp",
+      "position": "translate(620 230)"
+    },
+    {
+      "key": "Meta+ArrowUp",
+      "position": "translate(620 230)"
+    }
+  ],
+  "wall": "480/210",
+  "newConsoleErrors": [],
+  "onlyVersionOrExpectedHistoryChanged": true,
+  "inputs": [
+    {
+      "name": "mainDone",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797163104.json",
+      "stage": 17,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "1c582643304b9098b046702b8aa4c1b12c6c4631a9180b3dc4369f5107191b4e"
+    },
+    {
+      "name": "oldCoreIntact",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797219250.json",
+      "stage": 0,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "7e3c28e35a8f329e006bbc0955bbdbcafcdf671a85c5c2ded7c59df0e941cd09"
+    },
+    {
+      "name": "oldDone",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797258676.json",
+      "stage": 17,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "38c65e64f1df8d91a7f88fb3ffca8bfe2abd8173902611e7aed947ffd8b5e2ca"
+    },
+    {
+      "name": "inputImported",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797948888.json",
+      "stage": 0,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "218d0880419c2e4539a3b6a094fc176a4815d03538e3fce333c3d50b2ba4b09f"
+    },
+    {
+      "name": "inputFarRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797990698.json",
+      "stage": 0,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "d427d76d099a7a89b5e97689715058b0fda8421e79a0fcbe8ab4880371e7e01b"
+    },
+    {
+      "name": "inputStage1",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797992657.json",
+      "stage": 1,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "bf9946c7763748064b157ef37a4d7e5d1c0dd6f8b62eae5ca011b24cf0a37539"
+    },
+    {
+      "name": "inputAgreed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791797995064.json",
+      "stage": 12,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "708399fb495e80f8ff94ee2e1c5dfb31a4bcbba72c8bb0f68c945aaebdf946b2"
+    },
+    {
+      "name": "inputPaidHistory",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798016921.json",
+      "stage": 13,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "e31c6754cd80d6f02c6d2e718955623cd6bbcb5552d7790eb31562866740fdbe"
+    },
+    {
+      "name": "inputFarLeaveRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798019028.json",
+      "stage": 13,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "8842dca06e62f7fb18a5093de30c7d6b4e4b39ce88e98165604b1786f8698b37"
+    },
+    {
+      "name": "inputDone",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798021205.json",
+      "stage": 17,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "fa20f5a18ad6819a04d33a655c3560c3dacbfc80986f5ab4c3b4a0f556254da9"
+    },
+    {
+      "name": "inputRefreshed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798023298.json",
+      "stage": 17,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "d0a31e30ed0513b271246c5ec097cfa8a86c4be790a9e2960fcda1e63df31b5d"
+    },
+    {
+      "name": "inputMainRefreshed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798026497.json",
+      "stage": 17,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "3d313ac62c3d457d6e9879a1c9c13a84d37d007b07c95dcb81e43ce102efb7bd"
+    },
+    {
+      "name": "inputConsumedRefreshed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798029719.json",
+      "stage": 17,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "9d3a1cf2df8e7e91389164f5cb518fae7b3b3c4a4335dc4c86d845826afa2f1e"
+    }
+  ]
+}

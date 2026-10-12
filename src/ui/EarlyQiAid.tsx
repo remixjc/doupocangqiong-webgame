@@ -1,4 +1,4 @@
-import { earlyWalkDirections as directions } from '../core/early-walk-keys'
+import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -31,10 +31,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
     submitEarlyQiAid(gameStore, position, { ...task, actor: scene.actor, operation, marker: timed ? marker : undefined })
   }
   function key(event: KeyboardEvent<SVGSVGElement>) {
-    if (event.altKey || event.ctrlKey || event.metaKey) return
-    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
-    if (direction) { event.preventDefault(); move(direction) }
-    if (event.key.toLowerCase() === 'e' && scene && near) { event.preventDefault(); act(qiAidOperation(task)) }
+    walkKey(event, move, scene && near ? () => act(qiAidOperation(task)) : undefined)
   }
   if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回重修准备</button></>
   return <>

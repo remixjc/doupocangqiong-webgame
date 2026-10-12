@@ -1,4 +1,4 @@
-import { earlyWalkDirections as directions } from '../core/early-walk-keys'
+import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition, EarlyWalkDirection } from '../core/early-walk'
@@ -31,10 +31,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       operation, marker: training && operation !== 'stop' ? marker : undefined })
   }
   function key(event: KeyboardEvent<SVGSVGElement>) {
-    if (event.altKey || event.ctrlKey || event.metaKey) return
-    const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
-    if (direction) { event.preventDefault(); move(direction) }
-    if (event.key.toLowerCase() === 'e' && near && !training && scene) { event.preventDefault(); act(scene.operation) }
+    walkKey(event, move, near && !training && scene ? () => act(scene.operation) : undefined)
   }
   if (blocked) return <p>{blocked}</p>
   const operation = (['steady', 'gather', 'strike'] as const)[Math.min(task.beats, 2)]
