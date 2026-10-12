@@ -14,6 +14,7 @@ import { resolve } from 'node:path'
 import { replayEarlyTraining } from './helpers/early-training-replay'
 import { firstHallTalkStep } from './helpers/first-hall-talk-replay'
 import { firstHallApproachStep } from './helpers/first-hall-approach-replay'
+import { firstHallConflictStep } from './helpers/first-hall-conflict-replay'
 import { firstHallFirstReturnStep } from './helpers/first-hall-first-return-replay'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
@@ -320,6 +321,7 @@ describe('完整主线真实规则战斗回放', () => {
         while (state.earlyTraining.firstHallTalk.stage < 20) state = firstHallTalkStep(state)
         while (state.earlyTraining.firstHallApproach.stage < 14) state = firstHallApproachStep(state)
         while (state.earlyTraining.firstHallApproach.stage < 19) state = firstHallFirstReturnStep(state)
+        while (state.earlyTraining.firstHallApproach.stage < 31) state = firstHallConflictStep(state)
         expect(state.earlyTraining.practice.attempts).toBe(1)
       }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {

@@ -1,0 +1,1184 @@
+{
+  "version": "0.71.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 148,
+    "tests": 888
+  },
+  "focused": {
+    "files": 4,
+    "tests": 19
+  },
+  "nodeTests": 11,
+  "initialJs": 491492,
+  "totalJs": 1845718,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "native": [
+    {
+      "name": "conflictMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834065991.json",
+      "sha256": "907d5287b2d20022976713116b69c5e90e73335a555ccd6eb7cd6614ba65ae63",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834079112.json",
+      "sha256": "735d8765c9e1fa28138111be78d03180fc9a2fa6bd3518857918f270336db8d9",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834158234.json",
+      "sha256": "e40c37364e2c0a40d783eeed93958ef99cabc8abd871a6ff6e3ccc3f060f14c5",
+      "stage": 24,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834175962.json",
+      "sha256": "175f7e179d610cbfb8a9e9464062b46d927bab3fda989ea3e0165402a68445eb",
+      "stage": 25,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834210169.json",
+      "sha256": "40a639b70ef7472c23dff7338815909b936c61cc8ac19369aae819c0fc0a18bc",
+      "stage": 27,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834227888.json",
+      "sha256": "0e5900381a805afae1597bd47d4098aefcd3ea24c150d1fe4bc0705835c3865b",
+      "stage": 28,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834266919.json",
+      "sha256": "4940b9889d745835b445efeee2a13f9ef19b9679aa44277b9841d774b2d8a763",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834295968.json",
+      "sha256": "064befb030c4ed5eeb507c6a38bdce500d4d33d05fafa3d840eab72cb1bc03e2",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMaterialsStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834357474.json",
+      "sha256": "cb71381628f1a188fde514538c07c2a4e49fde43aa3c19a4ab788bd6de0ebaf9",
+      "stage": 25,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMaterialsStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834399960.json",
+      "sha256": "2f3ff41ab69e97d92f407051df07781e5bfac1cf75857af682fc575cef1214d2",
+      "stage": 28,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834443483.json",
+      "sha256": "b4c95380a876073d0f58eb7225d8866e1de33c091ae8cf57b6dd62621e5fbbd1",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainOldEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834491692.json",
+      "sha256": "2846cb79a39f372add3ea4e24240d125cfb17e4e74a0a41897109e53c546fd2c",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834501880.json",
+      "sha256": "8fa36b734e3c721b037d4eb611cbd14c5066531035d0199791bd2e5ede3caa8b",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834535288.json",
+      "sha256": "ec5cde5794c8a539f5f6306bac04414206a7d450a83e5ffdfdaf85311c5af0d3",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "conflictMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791834544763.json",
+      "sha256": "827070217a85d22a00e44725ec402c28a5f52fe7c2f29d58fb3583dd3350c70e",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    }
+  ],
+  "pairs": [
+    [
+      "conflictMainMigrated",
+      "conflictMainRejected0"
+    ],
+    [
+      "conflictMainFinal",
+      "conflictMainOldEntry"
+    ],
+    [
+      "conflictMainFinal",
+      "conflictMainFinalRefresh"
+    ],
+    [
+      "conflictIntactMigrated",
+      "conflictIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "MainMigrated",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 0/12 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRejected0",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "明确选择当前人物，依次记录整衣、靠近与收卷。",
+        "交锋与第二卷 0/12 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage1",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 1/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 1/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 2/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 2/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 3/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 3/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage4",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 4/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 4/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage5",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 5/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 5/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage6",
+      "actor": [
+        "旁观薰儿放卷与回应"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 6/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh6",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 6/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage7",
+      "actor": [
+        "旁观薰儿放卷与回应"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 7/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 7/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage8",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 8/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 8/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 9/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 9/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage10",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 10/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh10",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 10/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 11/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 11/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsMigrated",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 0/12 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage1",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 1/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 1/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 2/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 2/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 3/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 3/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage4",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 4/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 4/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage5",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 5/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": true,
+      "ning": "translate(450 280)",
+      "own": false,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 5/12 · 整衣靠近 · 言语交锋进行中，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage6",
+      "actor": [
+        "旁观薰儿放卷与回应"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 6/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh6",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 6/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage7",
+      "actor": [
+        "旁观薰儿放卷与回应"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 7/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 7/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage8",
+      "actor": [
+        "旁观萧宁讥讽与提议"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 8/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 8/12 · 整衣靠近 · 她的临时卷已放下，本人未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 9/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 9/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage10",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 10/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh10",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 10/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 11/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 11/12 · 整衣靠近 · 本人另取第二卷，未离堂"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "交锋断点已存，本人两卷与她的临时卷分存。",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainFinalVisible",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsFinalVisible",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainFinalRefresh",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "交锋与第二卷 12/12 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [
+      {
+        "level": "error",
+        "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4190/assets/EarlyTrainingPanel-CbrSNgMx.js",
+        "timestamp": "2026-10-12T19:01:06.127Z",
+        "url": "http://127.0.0.1:4190/assets/index-t2nRT4mk.js"
+      }
+    ],
+    "intact": []
+  },
+  "savedRefreshes": 24,
+  "returnFocus": "接续东架交锋与本人第二卷",
+  "intactEntries": 0,
+  "originalEntry": "5/5 explicit recall; entire state equal after exit",
+  "atomicCustody": {
+    "ownPlacedStage": 25,
+    "secondSelectedStage": 28,
+    "hall": 7,
+    "scroll": "selected-second"
+  },
+  "keyboard": "Wrong-focus E/ArrowRight/Ctrl+E and premature return/own scroll transfer denied at0; correct E performed own scroll placement6 and actual second pick9 on both branches",
+  "prerequisite": {
+    "sha": "3f414341ddfc05aa4dbfd2c532a8927a9950f16b",
+    "ci": 38298126250,
+    "conclusion": "success",
+    "pages": 38298126205,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1975517
+  },
+  "source": "Retained normal full English17; adjacent18 normal NEXT navigation/full body toNEXT19. Chinese/current anime pending.18 confirms manager checkout after17;51 remains separate later Qi pavilion.",
+  "failures": "One premature intact-entry observation saw actual loading rather than stable panel; waited actual loading to hide and observed stable full DOM, then zero entry checked and navigation whole-state download equality. Prior0.70 material old lazy block error retained unchanged; no new page errors. Initial source18 snapshot still showed17 while navigation completed; current URL and full18 body subsequently observed and archived.",
+  "limits": "No current fight, repayment, skill, second registration or leaving. Later18 historical checkout must not be conflated with original game hall8 mechanism or51 Qi pavilion."
+}
