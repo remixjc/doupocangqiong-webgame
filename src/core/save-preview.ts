@@ -236,7 +236,7 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 export function firstHallApproachSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return sealedEarly
   const t = saved.earlyTraining.firstHallApproach
-  return '整衣靠近 · ' + (t.stage === 14 ? '收卷归档，实际归架待续' : t.first === 'rolled' ? '同一第一卷仅卷起' : t.memorized ? '读法已记，无授技' : t.ning === 'east' ? '萧宁已到东架前' : t.ning === 'aisle' ? '萧宁已到堂中' : t.clothes ? '整衣已记，尚未走近' : t.stage ? '西侧情绪进行中' : notStarted)
+  return '整衣靠近 · ' + (t.stage === 19 ? '同卷归架归档，第二卷待续' : t.first === 'returned' ? '第一卷已归架，未取第二卷' : t.stage >= 15 ? '帮选交涉进行中，未归架' : t.stage === 14 ? '收卷归档，实际归架待续' : t.first === 'rolled' ? '同一第一卷仅卷起' : t.memorized ? '读法已记，无授技' : t.ning === 'east' ? '萧宁已到东架前' : t.ning === 'aisle' ? '萧宁已到堂中' : t.clothes ? '整衣已记，尚未走近' : t.stage ? '西侧情绪进行中' : notStarted)
 }
 export function firstHallTalkSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return sealedEarly

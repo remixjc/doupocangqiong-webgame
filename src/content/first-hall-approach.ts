@@ -16,3 +16,14 @@ export const firstHallApproachScenes = defineSceneRows(['actor', 'operation', 't
   ['yan', 'roll', '收起同一第一卷', '本人叹气，把同一第一卷卷起，尚未归架。薰儿仍持她自己的临时卷。', '卷起同一第一卷'],
   ['yan', 'archive', '靠近前段归档', '整衣、靠近与收卷分存，帮选提议与归架待续。', '归档靠近与收卷'],
 ] as const)
+
+export const firstHallFirstReturnScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+  ['ning', 'offer', '帮选的提议', '萧宁笑着提出替本人挑选几门高阶斗技，卷轴尚未交付。', '听见帮选提议'],
+  ['ning', 'access', '访问资格的说法', '他称本人无权查看某些斗技，这一说法不改变技能。', '听见访问资格说法'],
+  ['yan', 'decline', '本人婉拒', '本人摇头婉拒，第一卷仍在手中。', '本人婉拒帮选'],
+  ['yan', 'return-first', '同一第一卷归架', '把已经卷起的同一第一卷实际放回原书架。薰儿仍持她自己的临时卷，第二卷尚未取。', '实际放回同一第一卷'],
+  ['yan', 'archive-return', '同卷归架归档', '帮选与归架已分存，交锋与第二卷待续。', '归档同卷归架'],
+] as const)
+export function firstHallApproachScene(stage: number, continuation = false) {
+  return continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
+}

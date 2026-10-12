@@ -53,7 +53,7 @@ describe('C1h-3b1 西侧整衣与实际靠近', () => {
       const bad = structuredClone(base); Object.assign(bad.earlyTraining.firstHallApproach, { [key]: 'invalid' })
       expect(() => validateState(bad)).toThrow()
     }
-    for (const stage of [-1, 15, 1.5, Infinity]) {
+    for (const stage of [-1, 20, 1.5, Infinity]) {
       const bad = structuredClone(base); bad.earlyTraining.firstHallApproach = firstHallApproachAt(stage)
       expect(() => validateState(bad)).toThrow()
     }

@@ -1,4 +1,4 @@
-import { FIRST_HALL_APPROACH_VERSION } from './first-hall-approach-state'
+import { FIRST_HALL_APPROACH_VERSION, FIRST_HALL_FIRST_RETURN_VERSION } from './first-hall-approach-state'
 import { FIRST_HALL_TALK_VERSION } from './first-hall-talk-state'
 import { FIRST_HALL_MATCH_VERSION, FIRST_HALL_RETURN_VERSION } from './first-hall-match-state'
 import { FIRST_HALL_READING_VERSION } from './first-hall-reading-state'
@@ -313,34 +313,26 @@ export function validateState(value: unknown): GameState {
     before(FIRST_HALL_READING_VERSION),
 before(FIRST_HALL_MATCH_VERSION),
     before(FIRST_HALL_TALK_VERSION),
-    before(FIRST_HALL_APPROACH_VERSION))
+    before(FIRST_HALL_APPROACH_VERSION),
+    before(FIRST_HALL_FIRST_RETURN_VERSION))
   const early = s.earlyTraining
-  if (early.refining.stage > 11 && before(EARLY_INFUSION_VERSION))
-    throw new Error('魔核入水记录不属于此版本。')
-  if (early.firstTraining.stage > 0 && before(FIRST_TRAINING_VERSION))
-    throw new Error('首次持续调息记录不属于此版本。')
-  if (early.firstTraining.stage > 10 && before(FIRST_REVIEW_VERSION))
-    throw new Error('半月回顾记录不属于此版本。')
-  if (early.firstTechnique.stage > 0 && before(FIRST_TECHNIQUE_VERSION))
-    throw new Error('首次铁片研究记录不属于此版本。')
-  if (early.firstTechnique.stage > 9 && before(FIRST_BOTTLE_VERSION))
-    throw new Error('首次瓷瓶试招记录不属于此版本。')
-  if (early.firstDeparture.stage > 0 && before(FIRST_DEPARTURE_VERSION))
-    throw new Error('首次出门石路记录不属于此版本。')
-  if (early.firstRoadMeeting.stage > 0 && before(FIRST_ROAD_MEETING_VERSION))
-    throw new Error('首次路口会面记录不属于此版本。')
-  if (early.firstHallEntry.stage > 0 && before(FIRST_HALL_ENTRY_VERSION))
-    throw new Error('首次实际入堂记录不属于此版本。')
-  if (early.firstHallReading.stage > 0 && before(FIRST_HALL_READING_VERSION))
-    throw new Error('首次东侧阅读记录不属于此版本。')
-  if (early.firstHallMatch.stage > 0 && before(FIRST_HALL_MATCH_VERSION))
-    throw new Error('首次东架旁观记录不属于此版本。')
-  if (early.firstHallMatch.stage > 12 && before(FIRST_HALL_RETURN_VERSION))
-    throw new Error('赛后走向东架记录不属于此版本。')
-  if (early.firstHallTalk.stage > 0 && before(FIRST_HALL_TALK_VERSION))
-    throw new Error('首次东架会面记录不属于此版本。')
-  if (early.firstHallApproach.stage > 0 && before(FIRST_HALL_APPROACH_VERSION))
-    throw new Error('首次整衣靠近记录不属于此版本。')
+  function requireHistoryVersion(task: { stage: number }, threshold: number, version: string, message: string) {
+    if (task.stage > threshold && before(version)) throw new Error(message)
+  }
+  requireHistoryVersion(early.refining, 11, EARLY_INFUSION_VERSION, '魔核入水记录不属于此版本。')
+  requireHistoryVersion(early.firstTraining, 0, FIRST_TRAINING_VERSION, '首次持续调息记录不属于此版本。')
+  requireHistoryVersion(early.firstTraining, 10, FIRST_REVIEW_VERSION, '半月回顾记录不属于此版本。')
+  requireHistoryVersion(early.firstTechnique, 0, FIRST_TECHNIQUE_VERSION, '首次铁片研究记录不属于此版本。')
+  requireHistoryVersion(early.firstTechnique, 9, FIRST_BOTTLE_VERSION, '首次瓷瓶试招记录不属于此版本。')
+  requireHistoryVersion(early.firstDeparture, 0, FIRST_DEPARTURE_VERSION, '首次出门石路记录不属于此版本。')
+  requireHistoryVersion(early.firstRoadMeeting, 0, FIRST_ROAD_MEETING_VERSION, '首次路口会面记录不属于此版本。')
+  requireHistoryVersion(early.firstHallEntry, 0, FIRST_HALL_ENTRY_VERSION, '首次实际入堂记录不属于此版本。')
+  requireHistoryVersion(early.firstHallReading, 0, FIRST_HALL_READING_VERSION, '首次东侧阅读记录不属于此版本。')
+  requireHistoryVersion(early.firstHallMatch, 0, FIRST_HALL_MATCH_VERSION, '首次东架旁观记录不属于此版本。')
+  requireHistoryVersion(early.firstHallMatch, 12, FIRST_HALL_RETURN_VERSION, '赛后走向东架记录不属于此版本。')
+  requireHistoryVersion(early.firstHallTalk, 0, FIRST_HALL_TALK_VERSION, '首次东架会面记录不属于此版本。')
+  requireHistoryVersion(early.firstHallApproach, 0, FIRST_HALL_APPROACH_VERSION, '首次整衣靠近记录不属于此版本。')
+  requireHistoryVersion(early.firstHallApproach, 14, FIRST_HALL_FIRST_RETURN_VERSION, '同一第一卷归架记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

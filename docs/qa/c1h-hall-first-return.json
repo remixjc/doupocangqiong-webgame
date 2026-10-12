@@ -1,0 +1,597 @@
+{
+  "version": "0.70.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 147,
+    "tests": 883
+  },
+  "focused": {
+    "files": 3,
+    "tests": 17
+  },
+  "nodeTests": 11,
+  "initialJs": 499638,
+  "totalJs": 1849953,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "native": [
+    {
+      "name": "firstReturnMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831446990.json",
+      "sha256": "8734679d4893a95380483e92bdeb25a7fd8eb88a8d06a5ffd1150fac0be95a7e",
+      "stage": 14,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831449182.json",
+      "sha256": "bd77f53c2725b953195144526b90776117ba3822e637cc90e58067d3e16fdd02",
+      "stage": 14,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831451635.json",
+      "sha256": "28ef886185559c877a870257693712770c00437c43c0bb7dc5550f9ea405f5d6",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831551515.json",
+      "sha256": "8d674b53cbe5c8d889f8bcde0cf804c792d5c6e8450c6e2135157b938d225d09",
+      "stage": 14,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMainStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831593647.json",
+      "sha256": "ee8a4c23db52418d668220de917c550f4d14380b2113e29c626800be968e55bf",
+      "stage": 17,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMainStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831608111.json",
+      "sha256": "662d6e823b11c8a30d1e9cdfc964fff3b1c3c5d5239513aa269667f28045d5c0",
+      "stage": 18,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831622774.json",
+      "sha256": "431169b963796ba0ea134740c908fc2bf5e6fa3dbd5970f2943355b414673714",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMainOriginalEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831656481.json",
+      "sha256": "a335d819c65683a1809f0b3b90704fead36f0e4c96c3be2a6f58358d56889321",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMaterialsStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831723494.json",
+      "sha256": "c5bf2ba7052ab59d7d40d7681983876ac867d795b1be2dc801fabf54e05d9051",
+      "stage": 17,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMaterialsStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831737192.json",
+      "sha256": "7ccb0d34eb407d43ce536fe41bb087acb85ec7ed1731cc958aa3cce7ddae943a",
+      "stage": 18,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831751878.json",
+      "sha256": "abb6ff4baad03ac52048b9046f371df2aaa1980c78e65d47d54fa9d740f24934",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831765168.json",
+      "sha256": "c6afef731e80ec902811fb6ceaa27b619275fb2e867c4c79e5445348de680b36",
+      "stage": 19,
+      "hall": {
+        "stage": 6,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    },
+    {
+      "name": "firstReturnIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791831828072.json",
+      "sha256": "b28e79561feeabbfcf7a2d63603d593ecbb68047861223fb8470d1f17b83b4fb",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateKept": true
+    }
+  ],
+  "pairs": [
+    [
+      "firstReturnMainMigrated",
+      "firstReturnMainRejected0"
+    ],
+    [
+      "firstReturnMainFinal",
+      "firstReturnMainOriginalEntry"
+    ],
+    [
+      "firstReturnMainFinal",
+      "firstReturnMainFinalRefresh"
+    ],
+    [
+      "firstReturnIntactMigrated",
+      "firstReturnIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "firstReturnMainRejected0",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "明确选择当前人物，依次记录整衣、靠近与收卷。",
+        "同卷归架 0/5 · 整衣靠近 · 收卷归档，实际归架待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainStage1",
+      "actor": [
+        "旁观萧宁提议与说法"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 1/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 1/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainStage2",
+      "actor": [
+        "旁观萧宁提议与说法"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 2/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 2/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainStage3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 3/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 3/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainStage4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 4/5 · 整衣靠近 · 第一卷已归架，未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 4/5 · 整衣靠近 · 第一卷已归架，未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainStage5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 5/5 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 5/5 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsStage1",
+      "actor": [
+        "旁观萧宁提议与说法"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 1/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 1/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsStage2",
+      "actor": [
+        "旁观萧宁提议与说法"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 2/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 2/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsStage3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 3/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 3/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsBeforeActualReturn",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 3/5 · 整衣靠近 · 帮选交涉进行中，未归架"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsStage4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 4/5 · 整衣靠近 · 第一卷已归架，未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 4/5 · 整衣靠近 · 第一卷已归架，未取第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsStage5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 已保存",
+        "同卷交涉已存，现有卷账与奖励保持。",
+        "同卷归架 5/5 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMaterialsRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 5/5 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "firstReturnMainFinalRefresh",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "ning": "translate(450 280)",
+      "own": true,
+      "returned": true,
+      "scrollY": "215",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "同卷归架 5/5 · 整衣靠近 · 同卷归架归档，第二卷待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [
+      {
+        "level": "error",
+        "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4190/assets/EarlyTrainingPanel-CbrSNgMx.js",
+        "timestamp": "2026-10-12T19:01:06.127Z",
+        "url": "http://127.0.0.1:4190/assets/index-t2nRT4mk.js"
+      }
+    ],
+    "intact": []
+  },
+  "recovered": [
+    {
+      "level": "error",
+      "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4190/assets/EarlyTrainingPanel-CbrSNgMx.js",
+      "timestamp": "2026-10-12T19:01:06.127Z",
+      "url": "http://127.0.0.1:4190/assets/index-t2nRT4mk.js"
+    }
+  ],
+  "versionGuardProof": {
+    "guards": 14,
+    "originalSha256": "b5fc5d9b5fa18287bb4cf1cdef851ca857bd37f8c549ec99f657ef9630380070",
+    "restoredSha256": "b5fc5d9b5fa18287bb4cf1cdef851ca857bd37f8c549ec99f657ef9630380070",
+    "equivalentOutputs": 534
+  },
+  "returnFocus": "接续帮选交涉与同卷归架",
+  "intactEntries": 0,
+  "originalEntry": "14/14 and explicit recall after actual hall6; no state change",
+  "keyboard": "Wrong-focus E, ArrowRight, Ctrl+E and premature return/second rejected at0; correctly selected E completed actual return4. Enter returned exact entry.",
+  "atomicActualReturn": {
+    "stage": 18,
+    "hall": 6,
+    "scroll": "none",
+    "returnRecord": "current"
+  },
+  "source": "Retained lawful complete English17; Chinese/current anime unverified",
+  "limits": "Current practice0/unobserved remains, own Xuner scroll still held, no second scroll or reward. Higher legacy custody/spent/five-duan are rules tests only.",
+  "failures": "Initial total budget exceeded374; fourteen version guards share identical helper with full reverse-source and output proof, concise original dialogue restored fixed budget. One manager export during initial redraw failed; one four-read readiness guard remained too early and stopped, subsequently read stable manager and exported. Material lazy asset from earlier build changed during check; one genuine fetch failure retained, normal reload resumed unchanged14, all five saved-refresh checkpoints then passed. First material screenshot empty compositor frame; observed actual map and recaptured/inspected.",
+  "prerequisite": {
+    "sha": "3f7812ea60ccf1f3a46a2689d3f7c2375675e8e1",
+    "ci": 38293355577,
+    "conclusion": "success",
+    "pages": 38293355574,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1981885
+  }
+}
