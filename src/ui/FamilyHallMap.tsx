@@ -1,3 +1,4 @@
+import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { familyVisitPlaces, familyVisitWalls } from '../core/early-family-visit'
@@ -15,7 +16,6 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
   useEffect(() => { field.current?.focus() }, [])
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (document.hidden || event.altKey || event.ctrlKey || event.metaKey) return
-    const directions: Record<string, EarlyWalkDirection> = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' }
     const value = event.key.length === 1 ? event.key.toLowerCase() : event.key
     if (!observer && directions[value]) { event.preventDefault(); onMove(directions[value]) }
     else if (value === 'e' && near) { event.preventDefault(); onInteract() }

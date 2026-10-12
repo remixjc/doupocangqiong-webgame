@@ -1,3 +1,4 @@
+import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition, EarlyWalkDirection } from '../core/early-walk'
@@ -22,7 +23,6 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
   }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
-    const directions: Record<string, EarlyWalkDirection> = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right' }
     const direction = directions[event.key.length === 1 ? event.key.toLowerCase() : event.key]
     if (direction) { event.preventDefault(); move(direction) }
     if (event.key.toLowerCase() === 'e' && scene) { event.preventDefault(); act(scene.operation) }
