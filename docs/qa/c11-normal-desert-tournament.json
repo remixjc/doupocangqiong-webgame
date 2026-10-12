@@ -1,0 +1,420 @@
+{
+  "batch": "C11c-3c",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "5562045ca06ce02b140a722f1605db8ed0571fd1",
+  "site": "http://127.0.0.1:4184/",
+  "method": "same independent normal journey; native game UI, actual downloads; official save parsing outside browser",
+  "records": [
+    {
+      "key": "07-rescue",
+      "file": ".git/task-normal-ch07-rescue-export.json",
+      "bytes": 9905,
+      "fileSha256": "d2ce6a0558897cdbcb8ed3d6438b8f3e846b8e2c94e00ac201ead8bda809a4d9",
+      "stateSha256": "f0c7d48e053b9e0ef8c625a419c67c2be37e3f3357b78f4d3e4a6974976efd53",
+      "chapter": 7,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "gold": 1798,
+      "xp": 1405,
+      "flame": "ember",
+      "inventory": {
+        "herb": 6,
+        "crystal": 24,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 23,
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "stone-desert-rescue": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-desert-listening": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "07",
+      "file": ".git/task-normal-ch07-export.json",
+      "bytes": 9913,
+      "fileSha256": "2f934b352e7b9a750a876e78c1dfb8c4e109174c472e68d49c283c219aef3ab7",
+      "stateSha256": "75f0b8432213b1bc6873976712b32798e6678ebc4142dcbfd76dcc5d01d0dfda",
+      "chapter": 7,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "gold": 2198,
+      "xp": 1680,
+      "flame": "ember",
+      "inventory": {
+        "herb": 6,
+        "crystal": 24,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 23,
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "stone-desert-rescue": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-desert-listening": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "08-pending",
+      "file": ".git/task-normal-ch08-pending-export.json",
+      "bytes": 10700,
+      "fileSha256": "2262267f676baecd86d9fa8530d475bccf85b492b584359e89f79a2c81f4e2dc",
+      "stateSha256": "00e3cda9a9ae89e7ced584817d09196b900d894efd9388706bbcf0bb0ea986bb",
+      "chapter": 8,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "gold": 2270,
+      "xp": 1710,
+      "flame": "ember",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "lotus-fire-attunement": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-desert-agreement": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-fire-road-memory": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "08",
+      "file": ".git/task-normal-ch08-export.json",
+      "bytes": 10708,
+      "fileSha256": "ecd3792ccc3a39856904c792e868ad5df489f713ac5111d1cbc14cee4a41a4c9",
+      "stateSha256": "49799da5399fd792fb8953d763a241444f08582fe2a14aa9935dba29256d7fe7",
+      "chapter": 8,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "gold": 2650,
+      "xp": 2010,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "lotus-fire-attunement": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-desert-agreement": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-fire-road-memory": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "09-pending",
+      "file": ".git/task-normal-ch09-pending-export.json",
+      "bytes": 11182,
+      "fileSha256": "ddb66df58684819c872d8d1e214d79c4d40796f24851bf874e46bb86af9726aa",
+      "stateSha256": "c08b7fc60c3a19694e0f326e6ef2134f95e4f9fa8959daa09f113bf74e57aa3a",
+      "chapter": 9,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "gold": 2650,
+      "xp": 2010,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "capital-three-round-tournament": {
+            "started": true,
+            "stage": 13,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none",
+            "roundScores": [
+              300,
+              300,
+              300
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "09",
+      "file": ".git/task-normal-ch09-export.json",
+      "bytes": 11190,
+      "fileSha256": "66a4ad7d460136913f192377faecf2003a9e2720f0b6c912e6fac603310be598",
+      "stateSha256": "2b8c0fbe8ac3ed3bef64356a1ccc7a2e750947ff84eaa9c3bd633ad5244410d3",
+      "chapter": 9,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "gold": 3120,
+      "xp": 2415,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "capital-three-round-tournament": {
+            "started": true,
+            "stage": 14,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none",
+            "roundScores": [
+              300,
+              300,
+              300
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "09-refreshed",
+      "file": ".git/task-normal-ch09-refreshed-export.json",
+      "bytes": 11190,
+      "fileSha256": "955c5a1fe97ec66d858725bed2cabc30b532e81396e514ce8e51fc425095abc8",
+      "stateSha256": "2b8c0fbe8ac3ed3bef64356a1ccc7a2e750947ff84eaa9c3bd633ad5244410d3",
+      "chapter": 9,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "gold": 3120,
+      "xp": 2415,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 27,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 26,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "capital-three-round-tournament": {
+            "started": true,
+            "stage": 14,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none",
+            "roundScores": [
+              300,
+              300,
+              300
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "chapter9EntireStateRefreshEqual": true,
+  "firstSixChapterProgressUnchanged": true,
+  "flameAwardOnlyAtFirstClear": true,
+  "tournamentAndFirstClear": {
+    "goldDelta": 470,
+    "xpDelta": 405,
+    "inventoryUnchanged": true
+  },
+  "observations": {
+    "rescueGuardBlockedBeforeSecondRescue": 1,
+    "flamePhases": "three actual12s phases at cooling point; damage taken; heal2 used; HP59 before reporting",
+    "flameHeat": "observed0 during cooling",
+    "tournamentScores": [
+      300,
+      300,
+      300
+    ],
+    "tournamentAttempts": 3,
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "AI desktop play with menu pauses between tools, not physical devices or player Beta",
+    "No new source verification or full character storyline acceptance",
+    "C5b leaving east sigil and C6b free patrol remain pending"
+  ]
+}
