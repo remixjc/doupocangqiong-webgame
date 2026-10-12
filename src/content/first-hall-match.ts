@@ -12,4 +12,15 @@ export const firstHallMatchScenes = defineSceneRows(['actor', 'operation', 'titl
   ['spectator', 'turn', '转身化力与退场', '薰儿转身化去力量，萧宁连续后退，退到训练区之外。', '旁观转身化力与萧宁退场'],
   ['spectator', 'applause', '喝彩属于薰儿', '群众为薰儿击退对手喝彩。本人仍在东架，没有胜利、奖励或新技能。', '记录薰儿取胜与群众喝彩'],
   ['yan', 'archive', '东架旁观断点归档', '比赛结果已保存；萧宁返回、薰儿向东架走来与后续问答待接续。', '归档东架旁观比赛'],
+  ['spectator', 'return', '萧宁返回', '萧宁带着笑意，走回西场中央。', '旁观萧宁返回西场中央'],
+  ['spectator', 'praise', '赛后称赞', '萧宁称赞薰儿的实力，目光热切。', '听见萧宁称赞'],
+  ['spectator', 'reply', '薰儿礼貌回应', '薰儿回应对方让招，没有等待答复。', '听见薰儿回应'],
+  ['spectator', 'aisle', '走向东架', '薰儿径直离开西场，先走到堂中。本人仍在东架读卷。', '旁观薰儿走到堂中'],
+  ['spectator', 'arrive', '到本人旁边', '薰儿继续走到东架本人旁边，尚未招呼。', '旁观薰儿实际到达东架'],
+  ['spectator', 'gaze', '群众目光随行', '人群顺着薰儿行进方向，看见东架读卷的本人。', '旁观群众目光转向东架'],
+  ['yan', 'continue', '本人继续读卷', '本人没有因群众的目光抬头，仍读同一第一卷。', '本人继续看同一卷'],
+  ['yan', 'record', '赛后东架归档', '赛后行走已保存。招呼、薰儿自己的阅读卷和问答由下一段接续。', '归档赛后走到东架'],
 ] as const)
+export function firstHallMatchScene(stage: number, continuation = false) {
+  return (continuation ? stage >= 12 : stage < 12) ? firstHallMatchScenes[stage] : undefined
+}

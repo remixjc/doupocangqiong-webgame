@@ -231,7 +231,7 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 export function firstHallMatchSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.firstHallMatch
-  return '东架旁观 · ' + (t.stage === 12 ? '比赛归档，走向东架待续' : t.applauded ? '薰儿取胜，非本人胜利' : t.outside ? '萧宁已退场' : t.palm ? '金色掌击已见' : t.attacks ? '西场攻防已见' : t.identified ? '对手已辨认' : '未参与')
+  return '东架旁观 · ' + (t.stage === 20 ? '赛后东架归档，问答待续' : t.stage >= 17 ? '薰儿已到东架，问答待续' : t.stage >= 13 ? '赛后行走进行中' : t.stage === 12 ? '比赛归档，走向东架待续' : t.applauded ? '薰儿取胜，非本人胜利' : t.outside ? '萧宁已退场' : t.palm ? '金色掌击已见' : t.attacks ? '西场攻防已见' : t.identified ? '对手已辨认' : '未参与')
 }
 export function firstHallReadingSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'

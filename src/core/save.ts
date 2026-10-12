@@ -1,4 +1,4 @@
-import { FIRST_HALL_MATCH_VERSION } from './first-hall-match-state'
+import { FIRST_HALL_MATCH_VERSION, FIRST_HALL_RETURN_VERSION } from './first-hall-match-state'
 import { FIRST_HALL_READING_VERSION } from './first-hall-reading-state'
 import { FIRST_HALL_ENTRY_VERSION } from './first-hall-entry-state'
 import { FIRST_ROAD_MEETING_VERSION } from './first-road-meeting-state'
@@ -330,6 +330,8 @@ export function validateState(value: unknown): GameState {
     throw new Error('首次东侧阅读记录不属于此版本。')
   if (s.earlyTraining.firstHallMatch.stage > 0 && before(FIRST_HALL_MATCH_VERSION))
     throw new Error('首次东架旁观记录不属于此版本。')
+  if (s.earlyTraining.firstHallMatch.stage > 12 && before(FIRST_HALL_RETURN_VERSION))
+    throw new Error('赛后走向东架记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

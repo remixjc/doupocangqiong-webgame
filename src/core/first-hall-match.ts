@@ -5,16 +5,17 @@ import type { EarlyWalkPosition } from './early-walk'
 import { firstHallReadingBlock, hallReadingNear, hallReadingSnapshotMatches, type FirstHallReadingAction } from './first-hall-reading'
 import { fieldsMatch } from './state-guards'
 import { firstHallMatchAt, hallMatchMinimum, validFirstHallMatch, type FirstHallMatchState } from './first-hall-match-state'
-import { firstHallMatchScenes } from '../content/first-hall-match'
-export type FirstHallMatchAction = Omit<FirstHallReadingAction, 'actor'> & { actor: 'yan' | 'spectator'; expectedMatch: FirstHallMatchState }
-export function firstHallMatchBlock(state: GameState): string {
+import { firstHallMatchScene } from '../content/first-hall-match'
+export type FirstHallMatchAction = Omit<FirstHallReadingAction, 'actor'> & { actor: 'yan' | 'spectator'; expectedMatch: FirstHallMatchState; continuation?: boolean }
+export function firstHallMatchBlock(state: GameState, continuation = false): string {
   return firstHallReadingBlock(state) || (state.earlyTraining.firstHallReading.stage === 8 ? '' : '先归档东侧同一第一卷阅读。')
+    || (continuation && state.earlyTraining.firstHallMatch.stage < 12 ? '先归档西侧比赛旁观。' : '')
 }
 export function advanceFirstHallMatch(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallMatchAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
-  const blocked = firstHallMatchBlock(state)
+  const blocked = firstHallMatchBlock(state, action.continuation === true)
   if (blocked) return fail(blocked)
-  const t = state.earlyTraining, task = t.firstHallMatch, scene = firstHallMatchScenes[task.stage]
+  const t = state.earlyTraining, task = t.firstHallMatch, scene = firstHallMatchScene(task.stage, action.continuation === true)
   if (!validFirstHallMatch(task) || !action.expectedMatch || !fieldsMatch(action.expectedMatch, task)
     || !fieldsMatch(action, t.firstHallReading) || !hallReadingSnapshotMatches(state, action))
     return fail('旁观、阅读或旧卷账已变化，请按当前断点继续。')

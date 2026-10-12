@@ -1,0 +1,821 @@
+{
+  "version": "0.67.0",
+  "date": "2026-10-13",
+  "vitestFiles": 144,
+  "vitestTests": 866,
+  "nodeTests": 11,
+  "focusBeforeVisual": {
+    "files": 3,
+    "tests": 17
+  },
+  "focusAfterVisual": {
+    "files": 2,
+    "tests": 11
+  },
+  "initialJs": 499146,
+  "totalJs": 1849101,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "nativeDownloads": [
+    {
+      "name": "returnMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823293469.json",
+      "sha256": "b244f818809001c7157c81bb41794a2bb02899d0f0e9e1370d954628575c6c23",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823294711.json",
+      "sha256": "b427d49d1dace7e7e44c94c2a30c6bd51016481c4c01b2299a9cc84ccbd822bc",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823295070.json",
+      "sha256": "198e4c0ddfe0b4d1df6e3e3304834ffb47a391e15b50379d94ee5407d0163122",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMainRejected12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823337339.json",
+      "sha256": "3b7919bb322bdc2c35b17c842ad4fb4cb5a8913aec12e4ac8c9c6d6f07ae3990",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMainStage16",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823371795.json",
+      "sha256": "3f034884a1e9f4e7d536b08359a6fd21f2fc1e5a819b2561183306f19581cfd5",
+      "stage": 16,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMainStage17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823403718.json",
+      "sha256": "9d15c618be351f5bd23e1673b5eb6d5a02ae119f18d4edbb34ae00cd93eae8fe",
+      "stage": 17,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823451487.json",
+      "sha256": "7b9660e3d8321ca4bcbae78f3ae2f07d6781a02f9faca5758343a36a10872ef7",
+      "stage": 20,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823496671.json",
+      "sha256": "17e6933be277b355792d6b6ed5249d655e349f5eb3b69bd80a77510e6af4b7d5",
+      "stage": 20,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823614578.json",
+      "sha256": "5896004e37310c3dd2f79fa3cf1b8aa48349502e7e6d87d372ba0fae31547424",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMainOriginalEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823718131.json",
+      "sha256": "fb2ef3b3a5280bbf9e2ea3ccea73fb02a12f1c2c509e311645ca7033423dde59",
+      "stage": 20,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "returnMainVisualRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791823897128.json",
+      "sha256": "8e3e751052e7e80f83b391f8103d836d4ffcbeeae259199deb08d5fa1b32eb1d",
+      "stage": 20,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": [
+    [
+      "returnMainMigrated",
+      "returnMainRejected12"
+    ],
+    [
+      "returnMainFinal",
+      "returnMainOriginalEntry"
+    ],
+    [
+      "returnMainFinal",
+      "returnMainVisualRefresh"
+    ],
+    [
+      "returnIntactMigrated",
+      "returnIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "returnMainRejected12",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观萧宁返回西场中央"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(295 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "请明确选择当前人物或旁观焦点，依现场顺序记录。",
+        "赛后走向东架 12/20 · 东架旁观 · 比赛归档，走向东架待续"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage13",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "听见萧宁称赞"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 13/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh13",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "听见萧宁称赞"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 13/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage14",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "听见薰儿回应"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 14/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh14",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "听见薰儿回应"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 14/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage15",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "旁观薰儿走到堂中"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 15/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh15",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观薰儿走到堂中"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 15/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage16",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "旁观薰儿实际到达东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 16/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(320 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh16",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观薰儿实际到达东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 16/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(320 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainWrongFocus16",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观薰儿实际到达东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 16/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(320 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage17",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "旁观群众目光转向东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 17/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh17",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观群众目光转向东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 17/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage18",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "本人继续看同一卷"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 18/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh18",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "本人继续看同一卷"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 18/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage19",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "归档赛后走到东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 19/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh19",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "归档赛后走到东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 19/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainStage20",
+      "buttons": [],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 20/20 · 东架旁观 · 赛后东架归档，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainRefresh20",
+      "buttons": [],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 20/20 · 东架旁观 · 赛后东架归档，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage13",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "听见萧宁称赞"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 13/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage14",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "听见薰儿回应"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 14/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage15",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "旁观薰儿走到堂中"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 15/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(190 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage16",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "旁观薰儿实际到达东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 16/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(320 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsRefresh16",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观薰儿实际到达东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 16/20 · 东架旁观 · 赛后行走进行中"
+      ],
+      "xuner": "translate(320 244)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage17",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "旁观群众目光转向东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 17/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsRefresh17",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "旁观群众目光转向东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 17/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage18",
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "本人继续看同一卷"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 18/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage19",
+      "buttons": [
+        {
+          "disabled": false,
+          "text": "归档赛后走到东架"
+        },
+        {
+          "disabled": false,
+          "text": "本人入西场参赛"
+        },
+        {
+          "disabled": false,
+          "text": "提前取第二卷"
+        }
+      ],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 19/20 · 东架旁观 · 薰儿已到东架，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsStage20",
+      "buttons": [],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 已保存",
+        "本人东架位置保持，旁观断点与必要旧卷账已保存。",
+        "赛后走向东架 20/20 · 东架旁观 · 赛后东架归档，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsRefresh20",
+      "buttons": [],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 20/20 · 东架旁观 · 赛后东架归档，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMainVisualRefresh",
+      "buttons": [],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 20/20 · 东架旁观 · 赛后东架归档，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "returnMaterialsVisualRefresh",
+      "buttons": [],
+      "ning": "translate(235 244)",
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "赛后走向东架 20/20 · 东架旁观 · 赛后东架归档，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "returnFocus": "接续赛后返回与薰儿走向东架",
+  "intactReturnEntries": 0,
+  "toolFailures": "two native-export locator timeouts after overly fast modal switching on intact and main original-entry checks; stable UI observed and exports retried successfully; originals retained",
+  "visualFix": "actual screenshot showed Xuner name overlapping player caption after east arrival; moved Xuner name above actor, focused tests/types/production repeated; original .git/task-hall-return-overlap.png retained",
+  "oldHigherBranches": "rule migration tests only; browser materials remains practice0/recoveryunobserved",
+  "source16": "retained full lawful prior reading reread for this implementation; Chinese/currentanime pending",
+  "snapshotsPrerequisite": {
+    "commit": "19aec135d015412b78cc2c212faa300d98739b28",
+    "ci": 38278379652,
+    "conclusion": "success",
+    "pages": 38278379628,
+    "pagesConclusion": "skipped"
+  }
+}
