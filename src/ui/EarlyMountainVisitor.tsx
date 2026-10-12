@@ -39,7 +39,7 @@ export default function EarlyMountainVisitor({ state, onBack }: { state: GameSta
       {task.stage === 14 && <button className="secondary" disabled={!near} onClick={() => act('take-purple')}>尝试取得薰儿展示的紫金卡</button>}
       {task.stage === 15 && <button className="secondary" disabled={!near} onClick={() => act('claim-rank')}>尝试据五纹卡授斗灵境界</button>}
       {task.stage === 18 && <button className="secondary" disabled={!near} onClick={() => act('clear-debt')}>尝试按不必还的回应清空采购账</button>}
-    </section> : <section className="bond-summary"><h3>当晚来访与问答已归档。</h3><p>本人已经离山，紫金卡仍由薰儿收回保管。当晚提议没有发款，次晨普通黑卡和实际账本衔接继续接续。</p></section>}
+    </section> : <section className="bond-summary"><h3>当晚来访与问答已归档。</h3><p>本人已经离山，紫金卡仍由薰儿收回保管。当晚提议没有发款。{state.earlyTraining.morningCard.stage ? earlyMountainVisitorSaveSummary(state, state.settings) : '次晨普通黑卡和实际账本衔接继续接续。'}</p></section>}
     <p className="muted">山路比例、核对选择与短对白为改编。卡片展示不授境界；日后还款承诺不执行还款，不重置旧借资或已付记录。位置不保存。</p>
     <button className="secondary" onClick={onBack}>暂离当晚来访 · 保留断点</button>
   </>

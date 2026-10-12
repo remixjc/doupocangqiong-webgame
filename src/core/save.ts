@@ -18,6 +18,7 @@ import { EARLY_APPRENTICE_VERSION } from './early-apprentice-state'
 import { EARLY_METHOD_DISCUSSION_VERSION } from './early-method-discussion-state'
 import { EARLY_PREPARATION_BRIEF_VERSION } from './early-preparation-brief-state'
 import { EARLY_MOUNTAIN_VISITOR_VERSION } from './early-mountain-visitor-state'
+import { EARLY_MORNING_CARD_VERSION } from './early-morning-card-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 export class NewerSaveVersionError extends Error {
@@ -270,7 +271,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_APPRENTICE_VERSION),
     versionBefore(data.contentVersion as string, EARLY_METHOD_DISCUSSION_VERSION),
     versionBefore(data.contentVersion as string, EARLY_PREPARATION_BRIEF_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_VISITOR_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_VISITOR_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_MORNING_CARD_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

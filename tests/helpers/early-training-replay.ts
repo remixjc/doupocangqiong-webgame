@@ -21,6 +21,8 @@ import { ceremonyGuestScenes } from '../../src/content/early-ceremony-guests'
 import { advanceEarlyEighthTraining, eighthPlaces, eighthTrainingBeats, eighthTrainingOperation } from '../../src/core/early-eighth-training'
 import { eighthTrainingScenes } from '../../src/content/early-eighth-training'
 import { expect } from 'vitest'
+import { advanceEarlyMorningCard, morningCardPlaces } from '../../src/core/early-morning-card'
+import { morningCardScenes } from '../../src/content/early-morning-card'
 import type { GameState } from '../../src/core/model'
 import { advanceEarlyTraining, beginEarlyTraining, type EarlyTrainingAction } from '../../src/core/early-training'
 import { earlySupplies } from '../../src/core/early-training-state'
@@ -174,7 +176,13 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   const started = beginEarlyTraining(state); expect(started.ok).toBe(true)
   state = parseSave(serializeSave(started.state))
   onCheckpoint?.(state)
-  act({ type: 'borrow', expectedSpent: 0 })
+  if (includeQiAid) for (const scene of morningCardScenes) {
+    const task = state.earlyTraining.morningCard, ledger = state.earlyTraining
+    const result = advanceEarlyMorningCard(state, morningCardPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation,
+      expectedStarted: ledger.started, expectedBorrowed: ledger.purse.borrowed, expectedSpent: ledger.purse.spent })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (!state.earlyTraining.purse.borrowed) act({ type: 'borrow', expectedSpent: 0 })
   for (const item of ['boneflower', 'bluegrass'] as const)
     act({ type: 'purchase', item, price: earlySupplies[item].price, expectedSpent: state.earlyTraining.purse.spent })
   if (includeBracelet) {

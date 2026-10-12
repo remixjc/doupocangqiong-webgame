@@ -126,7 +126,7 @@ export function earlyPreparationBriefSaveSummary(saved: GameState, viewing: Sett
 export function earlyMountainVisitorSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.mountainVisitor
-  return '当晚来访 · ' + (task.stage === 26 ? '本人离山与当晚问答归档，次晨交卡待续'
+  return '当晚来访 · ' + (task.stage === 26 ? saved.earlyTraining.morningCard.stage ? '当晚问答归档；' + earlyMorningCardSaveSummary(saved, viewing) : '本人离山与当晚问答归档，次晨交卡待续'
     : task.yan === 'left' ? '本人已离山，薰儿旁观反应待续'
     : task.yan === 'descending' ? '本人已走山径，离山确认待续'
     : task.invitation === 'tomorrow' ? '次日同行已邀请，尚未离山'
@@ -142,6 +142,18 @@ export function earlyMountainVisitorSaveSummary(saved: GameState, viewing: Setti
     : task.identity === 'xuner' ? '来人已确认，问候与相见进行中' : '未参与')
 }
 
+export function earlyMorningCardSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.morningCard
+  return '晨间交卡 · ' + (task.stage === 14 ? '普通黑卡与同一采购账归档，入城待续'
+    : task.stage >= 9 ? task.funds === 'credited' ? '本人接卡，唯一折算160已记账' : '本人接卡，旧账保持未重发'
+      : task.card === 'offered' ? '普通卡已递出，本人未接，未新增到账'
+        : task.yan === 'outside' ? '本人已出门，普通卡尚未递出'
+          : task.savings === 'taken' ? '原有积蓄已取，仅历史回顾'
+            : task.call === 'heard' ? '已听门外招呼，本人尚未出门'
+              : task.stage ? '房中收气与感受回顾' : '未参与')
+}
+
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
@@ -149,7 +161,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

@@ -1,0 +1,16 @@
+export const morningCardScenes = [
+  { place: 'room', actor: 'observer', operation: 'review-night', title: '清晨光线与一夜调息回顾', text: '清晨窗光照进房中。夜间调息只是故事回顾，不计真实后台时间或奖励。', action: '回顾清晨与夜间调息' },
+  { place: 'room', actor: 'yan', operation: 'end-meditation', title: '本人收气结束调息', text: '本人结束这次调息。此时主线生命、斗气和经验不变。', action: '本人收气结束调息' },
+  { place: 'room', actor: 'yan', operation: 'feel-qi', title: '本人感受斗气返回', text: '本人感受到熟悉的斗气。这是当时感受，不是发放新境界或恢复当前战斗值。', action: '本人记录斗气感受' },
+  { place: 'room', actor: 'yan', operation: 'dress', title: '起身整理衣装', text: '本人起身活动并整理衣装。薰儿还在门外，老师仍在古戒中。', action: '本人起身整理衣装' },
+  { place: 'room', actor: 'xuner', operation: 'hear-call', title: '门外的招呼先传进来', text: '薰儿在门外问他是否还在睡。听见招呼不等于已经出门或收到卡。', action: '听门外薰儿招呼' },
+  { place: 'chest', actor: 'yan', operation: 'take-savings', title: '本人取出原有积蓄盒', text: '本人从抽屉取出旧积蓄盒。只记录历史动作，不增加400金币或重写游戏的独立采购账。', action: '本人从抽屉取旧积蓄' },
+  { place: 'door', actor: 'yan', operation: 'exit-room', title: '本人实际出门相见', text: '走到门前，记录本人出门。薰儿此晨衣着为浅绿，普通黑卡仍由她持有。', action: '本人走到门前出门' },
+  { place: 'door', actor: 'xuner', operation: 'offer-black', title: '薰儿递出另一张普通黑卡', text: '薰儿递出普通黑卡，等待本人接下。它与当晚已收回的紫金卡是两件。', action: '记录薰儿递出普通黑卡' },
+  { place: 'door', actor: 'yan', operation: 'receive-black', title: '本人接同一普通黑卡', text: '本人接卡时核对当前准备单和采购账。未借资则唯一折算160到账；旧已领取、已付或已用药档只补交接历史。', action: '本人接普通黑卡 · 同步唯一账本' },
+  { place: 'door', actor: 'observer', operation: 'note-capacity', title: '卡容量并非当前余额', text: '普通卡的容量说明不是余额证明，不派5000金币，也不授紫金卡身份。', action: '记普通卡说明 · 容量非余额' },
+  { place: 'door', actor: 'yan', operation: 'speak', title: '本人接卡后交谈', text: '本人笑着问起她为这次同行所作的准备。交谈不发关系奖励。', action: '本人接卡后回应同行' },
+  { place: 'door', actor: 'xuner', operation: 'answer', title: '薰儿回应次日邀约', text: '薰儿回应，这是三年来第一次收到他的同行邀请。只记录她此时的回应。', action: '听薰儿回应同行邀请' },
+  { place: 'door', actor: 'yan', operation: 'ready-outing', title: '准备一起走向城中', text: '双方交谈后准备同行。实际离族、入城和药铺采购另段接续。', action: '本人记下出门同行准备' },
+  { place: 'door', actor: 'observer', operation: 'archive', title: '晨间普通黑卡交接归档', text: '收气、招呼、原积蓄、出门、递卡与本人接卡依序留存。药草与木核收据不由归档自动生成。', action: '归档晨间交卡 · 入城采购待续' },
+] as const
