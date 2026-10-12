@@ -1,3 +1,4 @@
+import { marketDiscoveryAt, validMarketDiscovery, type MarketDiscoveryState } from './early-market-discovery-state'
 import { marketStandoffAt, validMarketStandoff, type MarketStandoffState } from './early-market-standoff-state'
 import { boundedInteger, fieldsMatch } from './state-guards'
 import { familyVisitAt, validFamilyVisit, type FamilyVisitState } from './early-family-visit-state'
@@ -29,6 +30,7 @@ export interface EarlyTrainingState {
   marketSearch: MarketSearchState
   marketBracelets: MarketBraceletsState
   marketStandoff: MarketStandoffState
+  marketDiscovery: MarketDiscoveryState
   started: boolean
   purse: { own: number; borrowed: number; spent: number }
   supplies: { bluegrass: number; boneflower: number; woodCore: number }
@@ -139,7 +141,7 @@ export const consignmentSupplies: Record<ConsignmentSupplyId, { label: string; p
 export const CONSIGNMENT_FUNDS = 90
 export const EARLY_TRAINING_ID = 'early-training-supplies'
 export function blankEarlyTraining(): EarlyTrainingState {
-  return { familyVisit: familyVisitAt(0), familyCompensation: familyCompensationAt(0), familyContract: familyContractAt(0), mountainRing: mountainRingAt(0), apprentice: apprenticeAt(0), methodDiscussion: methodDiscussionAt(0), preparationBrief: preparationBriefAt(0), mountainVisitor: mountainVisitorAt(0), morningCard: morningCardAt(0), cityPharmacy: cityPharmacyAt(0), marketEscort: marketEscortAt(0), marketSearch: marketSearchAt(0), marketBracelets: marketBraceletsAt(0), marketStandoff: marketStandoffAt(0), started: false, purse: { own: 0, borrowed: 0, spent: 0 },
+  return { familyVisit: familyVisitAt(0), familyCompensation: familyCompensationAt(0), familyContract: familyContractAt(0), mountainRing: mountainRingAt(0), apprentice: apprenticeAt(0), methodDiscussion: methodDiscussionAt(0), preparationBrief: preparationBriefAt(0), mountainVisitor: mountainVisitorAt(0), morningCard: morningCardAt(0), cityPharmacy: cityPharmacyAt(0), marketEscort: marketEscortAt(0), marketSearch: marketSearchAt(0), marketBracelets: marketBraceletsAt(0), marketStandoff: marketStandoffAt(0), marketDiscovery: marketDiscoveryAt(0), started: false, purse: { own: 0, borrowed: 0, spent: 0 },
     supplies: { bluegrass: 0, boneflower: 0, woodCore: 0 },
     receipts: { bluegrass: false, boneflower: false, woodCore: false },
     market: { stage: 0, blackIron: 0 },
@@ -171,7 +173,7 @@ export function blankEarlyTraining(): EarlyTrainingState {
     qiPavilionAid: { stage: 0, beats: 0, attempts: 0, ...qiPavilionAidAt(0) },
     qiPavilionExchange: { stage: 0, ...qiPavilionExchangeAt(0) } }
 }
-export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false, legacyQiPavilionAid = false, legacyFamilyVisit = false, legacyFamilyCompensation = false, legacyFamilyContract = false, legacyMountainRing = false, legacyApprentice = false, legacyMethodDiscussion = false, legacyPreparationBrief = false, legacyMountainVisitor = false, legacyMorningCard = false, legacyCityPharmacy = false, legacyMarketEscort = false, legacyMarketSearch = false, legacyMarketBracelets = false, legacyMarketStandoff = false): EarlyTrainingState {
+export function parseEarlyTraining(value: unknown, completed: number[], legacyReceipts = false, legacyMarket = false, legacyLiquid = false, legacyPractice = false, legacyBracelet = false, legacyGrowth = false, legacyHall = false, legacyHallScroll = false, legacyTeaching = false, legacySupervision = false, legacyRecovery = false, legacyConsignment = false, legacyAppraisal = false, legacyAuction = false, legacySettlement = false, legacyFatherGift = false, legacyXunerVisit = false, legacyLongSupplies = false, legacyForestStrike = false, legacySeventhRoom = false, legacyPalmPair = false, legacyPreliminary = false, legacyKeChallenge = false, legacyEighthTraining = false, legacyCeremonyGuests = false, legacyCeremonialTest = false, legacyNingFirst = false, legacyNingSecond = false, legacyCeremonyVerdict = false, legacyQiPavilionEntry = false, legacyQiBarrier = false, legacyQiPavilionScroll = false, legacyQiPavilionAid = false, legacyFamilyVisit = false, legacyFamilyCompensation = false, legacyFamilyContract = false, legacyMountainRing = false, legacyApprentice = false, legacyMethodDiscussion = false, legacyPreparationBrief = false, legacyMountainVisitor = false, legacyMorningCard = false, legacyCityPharmacy = false, legacyMarketEscort = false, legacyMarketSearch = false, legacyMarketBracelets = false, legacyMarketStandoff = false, legacyMarketDiscovery = false): EarlyTrainingState {
   const invalid = () => { throw new Error('重修往事的任务记录无效。') }
   const object = (input: unknown): Record<string, unknown> => {
     if (!input || typeof input !== 'object' || Array.isArray(input)) return invalid()
@@ -232,6 +234,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const marketStandoff = data.marketStandoff === undefined && legacyMarketStandoff ? result.marketStandoff : object(data.marketStandoff)
   if (!validMarketStandoff(marketStandoff) || marketStandoff.stage > 0 && marketBracelets.stage !== 28) return invalid()
   result.marketStandoff = marketStandoffAt(marketStandoff.stage)
+  const marketDiscovery = data.marketDiscovery === undefined && legacyMarketDiscovery ? result.marketDiscovery : object(data.marketDiscovery)
+  if (!validMarketDiscovery(marketDiscovery) || marketDiscovery.stage > 0 && marketStandoff.stage !== 34) return invalid()
+  result.marketDiscovery = marketDiscoveryAt(marketDiscovery.stage)
   const liquid = data.liquid === undefined && legacyLiquid ? result.liquid : object(data.liquid)
   if (!boundedInteger(liquid.stage, 6)
     || liquid.water !== (liquid.stage >= 2) || liquid.ready !== (liquid.stage === 6)) return invalid()

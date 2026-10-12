@@ -196,13 +196,21 @@ export function earlyMarketBraceletsSaveSummary(saved: GameState, viewing: Setti
 export function earlyMarketStandoffSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.marketStandoff
-  return '围堵离场 · ' + (task.stage === 34 ? '非战斗离场归档，发现成交待续' : task.walkedDeep ? '二人已深入，尚未发现成交'
+  return '围堵离场 · ' + (task.stage === 34 ? saved.earlyTraining.marketDiscovery.stage ? '离场归档；' + earlyMarketDiscoverySaveSummary(saved, viewing) : '非战斗离场归档，发现成交待续' : task.walkedDeep ? '二人已深入，尚未发现成交'
     : task.guards === 'left' ? '护卫已离开，继续寻核待续' : task.chase === 'stopped' ? '已阻止追赶，护卫尚在'
       : task.opponent === 'left' ? '来人已离开，护卫尚在' : task.opponent === 'paused' ? '来人停步讥讽，尚未离开'
         : task.opponent === 'withdrawing' ? '来人开始撤走，尚未离开' : task.challenge === 'refused' ? '本人拒绝单挑，来人仍在'
           : task.challenge === 'proposed' ? '来人提出单挑，未交战' : task.guards === 'surrounding' ? '护卫控制外层，未交战'
             : task.guards === 'approaching' ? '护卫已赶到，外层待续' : task.called ? '本人已呼叫，护卫未到'
               : task.ring === 'closed' ? '随从已围住二人，尚未呼叫' : task.stage ? '来人怒意，围堵未起' : '未参与')
+}
+
+export function earlyMarketDiscoverySaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.marketDiscovery
+  return '摊位发现 · ' + (task.stage === 10 ? '发现与建议归档，未询价成交' : task.advice ? '老师心中建议购买，尚未成交'
+    : task.iron === 'examined' ? '只见铁片古旧，尚未辨明' : task.iron === 'noticed' ? '看到黑铁片，未取得'
+      : task.feeling ? '感应异常，铁片尚未注意' : task.core === 'seen' ? '只见绿核，未询价成交' : task.stage ? '已到摊前，尚未发现' : '未参与')
 }
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
@@ -212,7 +220,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyCityPharmacySaveSummary(saved, viewing), earlyMarketEscortSaveSummary(saved, viewing), earlyMarketSearchSaveSummary(saved, viewing), earlyMarketBraceletsSaveSummary(saved, viewing), earlyMarketStandoffSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyCityPharmacySaveSummary(saved, viewing), earlyMarketEscortSaveSummary(saved, viewing), earlyMarketSearchSaveSummary(saved, viewing), earlyMarketBraceletsSaveSummary(saved, viewing), earlyMarketStandoffSaveSummary(saved, viewing), earlyMarketDiscoverySaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

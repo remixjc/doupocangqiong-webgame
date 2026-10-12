@@ -1,3 +1,4 @@
+import { EARLY_MARKET_DISCOVERY_VERSION } from './early-market-discovery-state'
 import { EARLY_MARKET_STANDOFF_VERSION } from './early-market-standoff-state'
 import { chapterById, chapters } from '../content/chapters'
 import { CONTENT_VERSION, initialState, blankEvent, type ChapterEventProgress, type FlameId, type GameState, type ItemId } from './model'
@@ -282,7 +283,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_MARKET_ESCORT_VERSION),
     versionBefore(data.contentVersion as string, EARLY_MARKET_SEARCH_VERSION),
     versionBefore(data.contentVersion as string, EARLY_MARKET_BRACELETS_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_STANDOFF_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_MARKET_STANDOFF_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_MARKET_DISCOVERY_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
