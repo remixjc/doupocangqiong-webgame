@@ -192,9 +192,16 @@
       "sha256": "5131a46b6eac556be965e5b5d39e331a2571eaa380eb0c70302617f79d91d8ee",
       "stage": 0,
       "allOtherStateKept": true
+    },
+    {
+      "name": "hallEntryCleanCommitRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791815782205.json",
+      "sha256": "55760560b8419baa6a83d3c56a67c84c77e0ea9ba4a8601e844f0f83b6a319f7",
+      "stage": 9,
+      "allOtherStateKept": true
     }
   ],
-  "equalPairs": 8,
+  "equalPairs": 9,
   "errors": {
     "main": [],
     "materials": [],
@@ -207,5 +214,14 @@
     "liquid": 6,
     "practice": 0,
     "recovery": "unobserved"
+  },
+  "cleanCommit": {
+    "sha": "eee0edeec2fb7a8a9dc9c4d35c4cca86243daaeb",
+    "gameChecks": 38264068612,
+    "conclusion": "success",
+    "pages": 38264068591,
+    "pagesConclusion": "skipped",
+    "files": 109,
+    "bytes": 1974165
   }
 }
