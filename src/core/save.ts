@@ -1,3 +1,4 @@
+import { FIRST_HALL_READING_VERSION } from './first-hall-reading-state'
 import { FIRST_HALL_ENTRY_VERSION } from './first-hall-entry-state'
 import { FIRST_ROAD_MEETING_VERSION } from './first-road-meeting-state'
 import { FIRST_DEPARTURE_VERSION } from './first-departure-state'
@@ -305,7 +306,8 @@ export function validateState(value: unknown): GameState {
     before(FIRST_BOTTLE_VERSION),
     before(FIRST_DEPARTURE_VERSION),
     before(FIRST_ROAD_MEETING_VERSION),
-    before(FIRST_HALL_ENTRY_VERSION))
+    before(FIRST_HALL_ENTRY_VERSION),
+    before(FIRST_HALL_READING_VERSION))
   if (s.earlyTraining.refining.stage > 11 && before(EARLY_INFUSION_VERSION))
     throw new Error('魔核入水记录不属于此版本。')
   if (s.earlyTraining.firstTraining.stage > 0 && before(FIRST_TRAINING_VERSION))
@@ -322,6 +324,8 @@ export function validateState(value: unknown): GameState {
     throw new Error('首次路口会面记录不属于此版本。')
   if (s.earlyTraining.firstHallEntry.stage > 0 && before(FIRST_HALL_ENTRY_VERSION))
     throw new Error('首次实际入堂记录不属于此版本。')
+  if (s.earlyTraining.firstHallReading.stage > 0 && before(FIRST_HALL_READING_VERSION))
+    throw new Error('首次东侧阅读记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

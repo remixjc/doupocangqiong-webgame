@@ -1,3 +1,4 @@
+import { firstHallReadingStep } from './first-hall-reading-replay'
 import { firstHallEntryInput } from './first-hall-entry-replay'
 import { advanceFirstHallEntry, hallEntryPlaces } from '../../src/core/first-hall-entry'
 import { firstHallEntryScenes } from '../../src/content/first-hall-entry'
@@ -326,6 +327,9 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
+  if (includeQiAid) while (state.earlyTraining.firstHallReading.stage < 8) {
+    state = firstHallReadingStep(state); onCheckpoint?.(state)
+  }
   for (let step = state.earlyTraining.liquid.stage; step < 6; step++) act({ type: 'liquid', step, operation: earlyLiquidScenes[step].operation, expectedSpent: 110 })
   act({ type: 'practice', operation: 'begin', phase: 0, pulse: 0, expectedSpent: 110 })
   if (failFirstBreath) for (let pulse = 0; pulse < 3; pulse++)
@@ -345,7 +349,7 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     const entered = enterEarlyHall(state, earlyWalkPlaces.find(place => place.id === 'teacher')!)
     expect(entered.ok, entered.message).toBe(true)
     state = parseSave(serializeSave(entered.state)); onCheckpoint?.(state)
-    for (const scene of earlyHallScenes) {
+    for (const scene of earlyHallScenes.filter(row => row.stage >= state.earlyTraining.hall.stage)) {
       const result = advanceEarlyHall(state, earlyHallPlaces.find(place => place.id === scene.place)!,
         { step: scene.stage, operation: scene.operation })
       expect(result.ok, result.message).toBe(true)

@@ -33,6 +33,7 @@ const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMar
 const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
 const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
+const FirstHallReading = lazy(() => loadSceneModule(() => import('./FirstHallReading')))
 const FirstHallEntry = lazy(() => loadSceneModule(() => import('./FirstHallEntry')))
 const FirstRoadMeeting = lazy(() => loadSceneModule(() => import('./FirstRoadMeeting')))
 const FirstDeparture = lazy(() => loadSceneModule(() => import('./FirstDeparture')))
@@ -61,6 +62,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy, cityEntry, cityPharmacyBack] = useReturningScene()
   const [marketEscort, setMarketEscort, escortEntry, marketEscortBack] = useReturningScene()
   const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
+  const [firstHallReading, setFirstHallReading, hallReadingEntry, hallReadingBack] = useReturningScene()
   const [firstHallEntry, setFirstHallEntry, hallEntryEntry, hallEntryBack] = useReturningScene()
   const [firstRoadMeeting, setFirstRoadMeeting, roadMeetingEntry, roadMeetingBack] = useReturningScene()
   const [firstDeparture, setFirstDeparture, departureEntry, departureBack] = useReturningScene()
@@ -80,6 +82,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (firstHallReading) return <DeferredScene message="正在接续东侧同一卷阅读……"><FirstHallReading state={state} onBack={hallReadingBack} /></DeferredScene>
   if (firstHallEntry) return <DeferredScene message="正在接续实际入堂……"><FirstHallEntry state={state} onBack={hallEntryBack} /></DeferredScene>
   if (firstRoadMeeting) return <DeferredScene message="正在接续石路会面……"><FirstRoadMeeting state={state} onBack={roadMeetingBack} /></DeferredScene>
   if (firstDeparture) return <DeferredScene message="正在接续出门石路……"><FirstDeparture state={state} onBack={departureBack} /></DeferredScene>
@@ -225,6 +228,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstRoadMeeting.stage === 12 && <section className="bond-summary" aria-label="实际入堂接续">
         <b>路口分路归档 · 实际入堂</b><p>转角、堂牌、门外声音、本人跨门与东西分区分存。</p>
         <button ref={hallEntryEntry} className="secondary" onClick={() => setFirstHallEntry(true)}>接续实际入堂与东西分区</button>
+        {task.firstHallEntry.stage === 9 && <button ref={hallReadingEntry} className="secondary" onClick={() => setFirstHallReading(true)}>接续东侧同一第一卷阅读</button>}
       </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">
