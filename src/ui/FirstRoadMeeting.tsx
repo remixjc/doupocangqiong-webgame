@@ -4,7 +4,7 @@ import type { EarlyWalkDirection } from '../core/early-walk'
 import { gameStore } from '../core/store'
 import { firstRoadMeetingBlock, moveRoadMeetingWalker, roadMeetingNear, roadMeetingPlaces, submitFirstRoadMeeting } from '../core/first-road-meeting'
 import { firstRoadMeetingScenes } from '../content/first-road-meeting'
-import { marketTradeLedger } from '../core/early-market-trade'
+import { earlySnapshots } from '../core/early-snapshots'
 import { firstRoadMeetingSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import SceneHeading from './SceneHeading'
@@ -25,9 +25,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
   }
   const act = (operation: string) => {
     if (!scene || document.hidden) return
-    submitFirstRoadMeeting(gameStore, p, { ...task, expectedDeparture: { ...t.firstDeparture }, expectedTechnique: { ...t.firstTechnique },
-      expectedTraining: { ...t.firstTraining }, expectedIron: { ...t.iron }, expectedLedger: marketTradeLedger(state),
-      expectedPractice: { ...t.practice }, expectedRecovery: { ...t.recovery }, expectedHall: { ...t.hall }, actor, operation })
+    submitFirstRoadMeeting(gameStore, p, { ...task, ...earlySnapshots(state, ['Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (!document.hidden) walkKey(event, move, () => { if (scene && near && actor === scene.actor) act(scene.operation) })

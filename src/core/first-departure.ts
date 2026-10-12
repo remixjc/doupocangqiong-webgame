@@ -1,3 +1,4 @@
+import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -43,12 +44,7 @@ export function advanceFirstDeparture(state: GameState, p: EarlyWalkPosition, sp
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstDeparture, scene = firstDepartureScenes[task.stage]
   if (!validFirstDeparture(task) || !fieldsMatch(action, task)
-    || !action.expectedTechnique || !fieldsMatch(action.expectedTechnique, t.firstTechnique)
-    || !action.expectedTraining || !fieldsMatch(action.expectedTraining, t.firstTraining)
-    || !action.expectedIron || !fieldsMatch(action.expectedIron, t.iron)
-    || !action.expectedLedger || !fieldsMatch(action.expectedLedger, marketTradeLedger(state))
-    || !action.expectedPractice || !fieldsMatch(action.expectedPractice, t.practice)
-    || !action.expectedRecovery || !fieldsMatch(action.expectedRecovery, t.recovery))
+    || !earlySnapshotsMatch(state, action, ['Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery']))
     return fail('出门断点或旧修炼账已变化，请按当前记录继续。')
   if (!scene) return fail('出门与石路已归档，路口会面待接续。')
   if (!departureNear(p, space, task.stage)) return fail('先由本人走到本步地点；房内与室外不能互相代签。')

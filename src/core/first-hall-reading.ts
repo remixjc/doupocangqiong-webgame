@@ -6,7 +6,7 @@ import type { FirstHallEntryAction } from './first-hall-entry'
 import { firstHallEntryBlock, hallEntryPlaces, hallEntryPositionValid } from './first-hall-entry'
 import type { FirstHallEntryState } from './first-hall-entry-state'
 import { fieldsMatch } from './state-guards'
-import { marketTradeLedger } from './early-market-trade'
+import { earlySnapshotsMatch } from './early-snapshots'
 import { firstHallReadingAt, validFirstHallReading, type FirstHallReadingState } from './first-hall-reading-state'
 import { firstHallReadingScenes } from '../content/first-hall-reading'
 export const hallReadingPlaces = { start: hallEntryPlaces.entry, shelf: { x: 400, y: 250 } }
@@ -20,17 +20,7 @@ export function hallReadingNear(p: EarlyWalkPosition, space: 'hall' | 'outside')
   return space === 'hall' && hallEntryPositionValid(p) && fieldsMatch(p, hallReadingPlaces.shelf)
 }
 export function hallReadingSnapshotMatches(state: GameState, action: Omit<FirstHallReadingAction, 'actor'>): boolean {
-  const t = state.earlyTraining
-  return !!action.expectedEntry && fieldsMatch(action.expectedEntry, t.firstHallEntry)
-    && !!action.expectedMeeting && fieldsMatch(action.expectedMeeting, t.firstRoadMeeting)
-    && !!action.expectedDeparture && fieldsMatch(action.expectedDeparture, t.firstDeparture)
-    && !!action.expectedTechnique && fieldsMatch(action.expectedTechnique, t.firstTechnique)
-    && !!action.expectedTraining && fieldsMatch(action.expectedTraining, t.firstTraining)
-    && !!action.expectedIron && fieldsMatch(action.expectedIron, t.iron)
-    && !!action.expectedLedger && fieldsMatch(action.expectedLedger, marketTradeLedger(state))
-    && !!action.expectedPractice && fieldsMatch(action.expectedPractice, t.practice)
-    && !!action.expectedRecovery && fieldsMatch(action.expectedRecovery, t.recovery)
-    && !!action.expectedHall && fieldsMatch(action.expectedHall, t.hall)
+  return earlySnapshotsMatch(state, action, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall'])
 }
 export function advanceFirstHallReading(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallReadingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })

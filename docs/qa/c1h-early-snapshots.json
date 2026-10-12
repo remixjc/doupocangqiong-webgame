@@ -1,0 +1,155 @@
+{
+  "version": "0.66.1",
+  "date": "2026-10-13",
+  "source": [
+    {
+      "path": "src/ui/FirstDeparture.tsx",
+      "originalSha256": "c3e16bccbff7b644a8f579b5c32ce630679c712e74ac70af047140ae7debe272",
+      "restoredSha256": "c3e16bccbff7b644a8f579b5c32ce630679c712e74ac70af047140ae7debe272",
+      "replacements": 2
+    },
+    {
+      "path": "src/ui/FirstHallEntry.tsx",
+      "originalSha256": "6553e841ca91b43eb1c2f545c8f63c3100afb9731dea2425d94dec2a5cd8e904",
+      "restoredSha256": "6553e841ca91b43eb1c2f545c8f63c3100afb9731dea2425d94dec2a5cd8e904",
+      "replacements": 2
+    },
+    {
+      "path": "src/ui/FirstHallMatch.tsx",
+      "originalSha256": "3e8e5c3d22ff2a03b262c6d46f246b7a8179b5f6fef3386c294c745ba2d1ef7f",
+      "restoredSha256": "3e8e5c3d22ff2a03b262c6d46f246b7a8179b5f6fef3386c294c745ba2d1ef7f",
+      "replacements": 2
+    },
+    {
+      "path": "src/ui/FirstHallReading.tsx",
+      "originalSha256": "b0f39b9baf71d378dd186141171b43b1e5295333c67ed114e7269533ba1f5b4c",
+      "restoredSha256": "b0f39b9baf71d378dd186141171b43b1e5295333c67ed114e7269533ba1f5b4c",
+      "replacements": 2
+    },
+    {
+      "path": "src/ui/FirstRoadMeeting.tsx",
+      "originalSha256": "6532755063b20e144edbd0c3d5a028497c1040521b1fd089598e3a9eb57493e1",
+      "restoredSha256": "6532755063b20e144edbd0c3d5a028497c1040521b1fd089598e3a9eb57493e1",
+      "replacements": 2
+    },
+    {
+      "path": "src/ui/FirstTechnique.tsx",
+      "originalSha256": "437f58c1094762f7c5a441895e3ffe3adb831a8a1477de316888e31b2a5bee49",
+      "restoredSha256": "437f58c1094762f7c5a441895e3ffe3adb831a8a1477de316888e31b2a5bee49",
+      "replacements": 2
+    },
+    {
+      "path": "src/core/first-departure.ts",
+      "originalSha256": "ee7e0c59e118c8353b540b1436e9e88262508050de7b4daddb345dbcd89b87b6",
+      "restoredSha256": "ee7e0c59e118c8353b540b1436e9e88262508050de7b4daddb345dbcd89b87b6",
+      "replacements": 2
+    },
+    {
+      "path": "src/core/first-hall-entry.ts",
+      "originalSha256": "188ef4386e3505a2e7c4ceffdbe4f3906fe27afcb45397de82f79e5d41448914",
+      "restoredSha256": "188ef4386e3505a2e7c4ceffdbe4f3906fe27afcb45397de82f79e5d41448914",
+      "replacements": 2
+    },
+    {
+      "path": "src/core/first-road-meeting.ts",
+      "originalSha256": "53a929ca6ccef4cd6471472a1c40a933ec5685a7cb6bd403a9719cdabfb6ff5d",
+      "restoredSha256": "53a929ca6ccef4cd6471472a1c40a933ec5685a7cb6bd403a9719cdabfb6ff5d",
+      "replacements": 2
+    },
+    {
+      "path": "src/core/first-technique.ts",
+      "originalSha256": "35836f9e0ccbff913264730782609169df83ef0c8bb4680a5ff1249e2e291054",
+      "restoredSha256": "35836f9e0ccbff913264730782609169df83ef0c8bb4680a5ff1249e2e291054",
+      "replacements": 2
+    },
+    {
+      "path": "src/core/first-hall-reading.ts",
+      "originalSha256": "17e55ad0d7f68107cd4ef4c9309998a3853e253fd389fe1359b0f732bf267fcf",
+      "restoredSha256": "17e55ad0d7f68107cd4ef4c9309998a3853e253fd389fe1359b0f732bf267fcf",
+      "replacements": 2
+    }
+  ],
+  "uiFiles": 6,
+  "coreFiles": 5,
+  "vitestFiles": 143,
+  "vitestTests": 861,
+  "nodeTests": 11,
+  "initialJs": 499022,
+  "totalJs": 1847058,
+  "totalJsSaved": 2107,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "nativeDownloads": [
+    {
+      "name": "snapshotMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791822766363.json",
+      "sha256": "f75f0ff5ba602969b7739c95e019399252dd3ffb0a472cc9f895a9ae05614f54",
+      "allStateEqual": true
+    },
+    {
+      "name": "snapshotMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791822767598.json",
+      "sha256": "45bff18c5ac3dfb1192afc762f28e4ca050bd8673b14d9f7c929ffad174d4a00",
+      "allStateEqual": true
+    },
+    {
+      "name": "snapshotIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791822767869.json",
+      "sha256": "2df3e95736ae322c79cf8aceab739165148fdb96ef49a19863a844ef2a3d307e",
+      "allStateEqual": true
+    },
+    {
+      "name": "snapshotMainAfterRoutes",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791822798153.json",
+      "sha256": "a713a8e6a48498b29d15b5cce23a30bdb8e5167943833df6204ed736b3c293da",
+      "allStateEqual": true
+    }
+  ],
+  "returns": [
+    {
+      "name": "接续实际出门与石路",
+      "back": "暂离出门石路 · 保留断点",
+      "focus": "接续实际出门与石路"
+    },
+    {
+      "name": "接续石路会面与分路",
+      "back": "暂离路口会面 · 保留断点",
+      "focus": "接续石路会面与分路"
+    },
+    {
+      "name": "接续实际入堂与东西分区",
+      "back": "暂离实际入堂 · 保留断点",
+      "focus": "接续实际入堂与东西分区"
+    },
+    {
+      "name": "接续东侧同一第一卷阅读",
+      "back": "暂离东侧阅读 · 保留断点",
+      "focus": "接续东侧同一第一卷阅读"
+    },
+    {
+      "name": "接续东架旁观西侧比赛",
+      "back": "暂离西赛旁观 · 保留断点",
+      "focus": "接续东架旁观西侧比赛"
+    },
+    {
+      "name": "接续同一铁片研究与感知",
+      "back": "暂离铁片研究 · 保留断点",
+      "focus": "接续同一铁片研究与感知"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "noHistoryAdded": true,
+  "matchSourceCommit": "72b037af37c05fb8b1211d27880683fd45943a10",
+  "matchCI": {
+    "checks": 38276797071,
+    "conclusion": "success",
+    "pages": 38276797078,
+    "pagesConclusion": "skipped"
+  }
+}

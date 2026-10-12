@@ -4,7 +4,7 @@ import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
 import { firstHallMatchBlock, submitFirstHallMatch } from '../core/first-hall-match'
 import { firstHallMatchScenes } from '../content/first-hall-match'
-import { marketTradeLedger } from '../core/early-market-trade'
+import { earlySnapshots } from '../core/early-snapshots'
 import { firstHallMatchSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import SceneHeading from './SceneHeading'
@@ -19,10 +19,7 @@ export default function FirstHallMatch({ state, onBack }: { state: GameState; on
   const act = (operation: string) => {
     if (!scene || document.hidden) return
     submitFirstHallMatch(gameStore, p, 'hall', { ...t.firstHallReading, expectedMatch: { ...task },
-      expectedEntry: { ...t.firstHallEntry }, expectedMeeting: { ...t.firstRoadMeeting }, expectedDeparture: { ...t.firstDeparture },
-      expectedTechnique: { ...t.firstTechnique }, expectedTraining: { ...t.firstTraining }, expectedIron: { ...t.iron },
-      expectedLedger: marketTradeLedger(state), expectedPractice: { ...t.practice }, expectedRecovery: { ...t.recovery },
-      expectedHall: { ...t.hall }, actor, operation })
+      ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (event.key.toLowerCase() !== 'e' || event.ctrlKey || event.altKey || event.metaKey || event.repeat) return

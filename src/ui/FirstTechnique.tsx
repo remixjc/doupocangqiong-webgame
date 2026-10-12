@@ -5,7 +5,7 @@ import { firstTechniqueBed, firstTechniqueBlock, firstTechniqueNear, submitFirst
 import { firstTechniqueScenes } from '../content/first-technique'
 import { firstBottleScenes } from '../content/first-bottle'
 import { ironPlaces } from '../core/early-iron'
-import { marketTradeLedger } from '../core/early-market-trade'
+import { earlySnapshots } from '../core/early-snapshots'
 import { firstTechniqueSaveSummary } from '../core/save-preview'
 import TeacherRoom from './TeacherRoom'
 
@@ -35,9 +35,7 @@ export default function FirstTechnique({ state, onBack, continuation = false }: 
     controls={continuation && task.stage === 11 ? <label>有限吸力标记 {Math.round(marker * 100)}% · {task.beats}/2 · 重试{task.attempts}
       <input aria-label="有限吸力标记" type="range" min="0" max="1" step=".05" value={marker} onChange={e => setMarker(Number(e.target.value))} /></label> : undefined}
     errors={[{ operation: 'duplicate', label: '研究就再发一片铁片' }, { operation: 'learn', label: '感知就授新技能' }, { operation: 'absorb-person', label: '成爪就签吸人成功' }]}
-    onAction={(yan, actor, operation) => submitFirstTechnique(gameStore, yan, { ...task, expectedLedger: marketTradeLedger(state),
-      expectedTraining: { ...t.firstTraining }, expectedIron: { ...t.iron }, expectedPractice: { ...t.practice }, expectedRecovery: { ...t.recovery },
-      teacherPosition: { ...ironPlaces.teacher }, actor, operation, marker: task.stage === 11 ? marker : undefined })}
+    onAction={(yan, actor, operation) => submitFirstTechnique(gameStore, yan, { ...task, ...earlySnapshots(state, ['Ledger', 'Training', 'Iron', 'Practice', 'Recovery']), teacherPosition: { ...ironPlaces.teacher }, actor, operation, marker: task.stage === 11 ? marker : undefined })}
     onBack={onBack} finished={continuation ? '有限瓷瓶试招已归档，碎片没有发战利品，七段仅为条件。实际起身与出门待接续，旧技能和后期两瓶保持。' : '本人取片、观察、研究回顾与感知成爪已归档。有限瓷瓶试招由独立入口接续，旧技能与后期两瓶记录保持。'}
     back={`暂离${prefix}`} />
 }

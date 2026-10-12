@@ -1,3 +1,4 @@
+import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -43,14 +44,7 @@ export function advanceFirstRoadMeeting(state: GameState, p: EarlyWalkPosition, 
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstRoadMeeting, scene = firstRoadMeetingScenes[task.stage]
   if (!validFirstRoadMeeting(task) || !fieldsMatch(action, task)
-    || !action.expectedDeparture || !fieldsMatch(action.expectedDeparture, t.firstDeparture)
-    || !action.expectedTechnique || !fieldsMatch(action.expectedTechnique, t.firstTechnique)
-    || !action.expectedTraining || !fieldsMatch(action.expectedTraining, t.firstTraining)
-    || !action.expectedIron || !fieldsMatch(action.expectedIron, t.iron)
-    || !action.expectedLedger || !fieldsMatch(action.expectedLedger, marketTradeLedger(state))
-    || !action.expectedPractice || !fieldsMatch(action.expectedPractice, t.practice)
-    || !action.expectedRecovery || !fieldsMatch(action.expectedRecovery, t.recovery)
-    || !action.expectedHall || !fieldsMatch(action.expectedHall, t.hall))
+    || !earlySnapshotsMatch(state, action, ['Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']))
     return fail('路口断点或旧修炼与借卷账已变化，请按当前记录继续。')
   if (!scene) return fail('路口会面已归档，实际入堂待接续。')
   if (!roadMeetingNear(p, task.stage)) return fail('本人先实际走到本步路口或离开位置。')

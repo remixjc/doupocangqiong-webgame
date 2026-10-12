@@ -4,7 +4,7 @@ import type { EarlyWalkDirection } from '../core/early-walk'
 import { gameStore } from '../core/store'
 import { departureNear, departurePlaces, firstDepartureBlock, moveDepartureWalker, submitFirstDeparture, type DepartureSpace } from '../core/first-departure'
 import { firstDepartureScenes } from '../content/first-departure'
-import { marketTradeLedger } from '../core/early-market-trade'
+import { earlySnapshots } from '../core/early-snapshots'
 import { fieldsMatch } from '../core/state-guards'
 import { firstDepartureSaveSummary } from '../core/save-preview'
 import MarketWalker from './MarketWalker'
@@ -31,8 +31,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
   }
   const act = (operation: string) => {
     if (!scene || document.hidden) return
-    const committed = submitFirstDeparture(gameStore, p, space, { ...task, expectedTechnique: { ...t.firstTechnique }, expectedTraining: { ...t.firstTraining },
-      expectedIron: { ...t.iron }, expectedLedger: marketTradeLedger(state), expectedPractice: { ...t.practice }, expectedRecovery: { ...t.recovery }, actor, operation })
+    const committed = submitFirstDeparture(gameStore, p, space, { ...task, ...earlySnapshots(state, ['Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery']), actor, operation })
     if (committed && task.stage === 3) setSpace('outside')
   }
   const changeSpace = () => {

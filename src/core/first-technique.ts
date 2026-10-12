@@ -1,3 +1,4 @@
+import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -37,11 +38,7 @@ export function advanceFirstTechnique(state: GameState, yan: EarlyWalkPosition, 
   const t = state.earlyTraining, task = t.firstTechnique
   const scene = task.stage < 9 ? firstTechniqueScenes[task.stage] : firstBottleScenes[task.stage - 9]
   if (!validFirstTechnique(task) || !fieldsMatch(action, task)
-    || !action.expectedLedger || !fieldsMatch(action.expectedLedger, marketTradeLedger(state))
-    || !action.expectedTraining || !fieldsMatch(action.expectedTraining, t.firstTraining)
-    || !action.expectedIron || !fieldsMatch(action.expectedIron, t.iron)
-    || !action.expectedPractice || !fieldsMatch(action.expectedPractice, t.practice)
-    || !action.expectedRecovery || !fieldsMatch(action.expectedRecovery, t.recovery))
+    || !earlySnapshotsMatch(state, action, ['Ledger', 'Training', 'Iron', 'Practice', 'Recovery']))
     return fail('铁片研究或旧修炼账已变化，请按当前断点继续。')
   if (!scene) return fail('有限瓷瓶试招已归档，实际出门待接续。')
   if (!action.teacherPosition || !fieldsMatch(action.teacherPosition, ironPlaces.teacher))

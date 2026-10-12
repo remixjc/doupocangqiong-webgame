@@ -5,7 +5,7 @@ import { gameStore } from '../core/store'
 import { firstHallEntryBlock, hallEntryNear, hallEntryPlaces, moveHallEntryWalker, submitFirstHallEntry, type HallEntrySpace } from '../core/first-hall-entry'
 import { firstHallEntryScenes } from '../content/first-hall-entry'
 import { fieldsMatch } from '../core/state-guards'
-import { marketTradeLedger } from '../core/early-market-trade'
+import { earlySnapshots } from '../core/early-snapshots'
 import { firstHallEntrySaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import SceneHeading from './SceneHeading'
@@ -29,10 +29,7 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
   }
   const act = (operation: string) => {
     if (!scene || document.hidden) return
-    const committed = submitFirstHallEntry(gameStore, p, space, { ...task, expectedMeeting: { ...t.firstRoadMeeting },
-      expectedDeparture: { ...t.firstDeparture }, expectedTechnique: { ...t.firstTechnique }, expectedTraining: { ...t.firstTraining },
-      expectedIron: { ...t.iron }, expectedLedger: marketTradeLedger(state), expectedPractice: { ...t.practice }, expectedRecovery: { ...t.recovery },
-      expectedHall: { ...t.hall }, actor, operation })
+    const committed = submitFirstHallEntry(gameStore, p, space, { ...task, ...earlySnapshots(state, ['Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation })
     if (committed && task.stage === 3) setSpace('hall')
   }
   const crossBack = () => {
