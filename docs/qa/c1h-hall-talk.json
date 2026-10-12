@@ -1,0 +1,1258 @@
+{
+  "version": "0.68.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 145,
+    "tests": 872
+  },
+  "focused": {
+    "files": 3,
+    "tests": 17
+  },
+  "nodeTests": 11,
+  "initialJs": 499162,
+  "totalJs": 1847588,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "nativeDownloads": [
+    {
+      "name": "talkMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825965084.json",
+      "sha256": "7116b34d082426a3eac8bfffeae97738f40e53209ba7d7574ae1b924dc32b725",
+      "stage": 0,
+      "hall": {
+        "stage": 4,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825966329.json",
+      "sha256": "07b3dd3ac290268509743d807aab3b799219e3e9efbb6932a29cd4d7a9aff93e",
+      "stage": 0,
+      "hall": {
+        "stage": 4,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825966575.json",
+      "sha256": "2ff2134cab2e3f164dace2e9ae9bd2e82103b047b8d8159c26bdfa7bf973a267",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826027784.json",
+      "sha256": "875ef3d63bc695edc670df6f763d03fb77b190b63b0de02ebeeca7269fb0fb84",
+      "stage": 0,
+      "hall": {
+        "stage": 4,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826078111.json",
+      "sha256": "74ea787de51328e98277697ce30ab73bf43f1e85e564e8b1b860e04a43797f50",
+      "stage": 5,
+      "hall": {
+        "stage": 4,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826100234.json",
+      "sha256": "ef9d9a3dd877f3fb009d606b6b43b279ecb44571a00b259f0a039cd892a632e1",
+      "stage": 9,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainStage15",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826253271.json",
+      "sha256": "23bf9d62f353718b926ac9d24a711cb3689777e05c3ac40d0ea0d987b4cf52ab",
+      "stage": 15,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainStage17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826268230.json",
+      "sha256": "b6a416001b288d5cc1d4f2b5de54f3549803e3b903c8e5ef3e0becf0bb34095c",
+      "stage": 17,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826297448.json",
+      "sha256": "1c1ff925f8237c3db085935afc58c0841ed92e97f1775f3e478c2eab73e17037",
+      "stage": 20,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMaterialsStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826331980.json",
+      "sha256": "0fbcd4b7b0f5ce6c7417b675f1fd5c8f03c6d80f6277e1d43396ff43eb560d81",
+      "stage": 5,
+      "hall": {
+        "stage": 4,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMaterialsStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826348686.json",
+      "sha256": "3667b3a9cd906632b3bb6e5fc707e525b5a6a93d8ee9c27e6cdf398df6f0a4a3",
+      "stage": 9,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMaterialsStage17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826401605.json",
+      "sha256": "a455f6b44ca9c7ab891313203da00b1df8228e4d103ee43dc8eb336ec54ea4d0",
+      "stage": 17,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826416256.json",
+      "sha256": "fd69ae5c92c4cdb77b79844a81d21de22b2b2b77fff0c3cf42612d8cdf6054e3",
+      "stage": 20,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainOriginalEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826479924.json",
+      "sha256": "e531018d877f2db3827ad31e31571bb607391d8c0299afffb1d86db312f9f6a2",
+      "stage": 20,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826492708.json",
+      "sha256": "fc68b5314241764219ab4d0d77f83159f28ce1d3677520421601334624344c06",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "allOtherStateKept": true
+    },
+    {
+      "name": "talkMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791826502284.json",
+      "sha256": "93d31798dc147f684addee3dc950e35905f0c84f7171c7161de8584bf5349186",
+      "stage": 20,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      },
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": [
+    [
+      "talkMainMigrated",
+      "talkMainRejected0"
+    ],
+    [
+      "talkMainFinal",
+      "talkMainOriginalEntry"
+    ],
+    [
+      "talkMainFinal",
+      "talkMainFinalRefresh"
+    ],
+    [
+      "talkIntactMigrated",
+      "talkIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "talkMainStage1",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 1/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh1",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 1/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage2",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 2/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh2",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 2/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage3",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 3/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh3",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 3/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage4",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 4/20 · 东架会面 · 薰儿已坐旁，临时卷未取"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh4",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 4/20 · 东架会面 · 薰儿已坐旁，临时卷未取"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage5",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 5/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh5",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 5/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage6",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 6/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh6",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 6/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage7",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 7/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh7",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 7/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage8",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 8/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh8",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 8/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage9",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 9/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh9",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 9/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage10",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 10/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh10",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 10/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage11",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 11/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh11",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 11/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage12",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 12/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh12",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 12/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage13",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 13/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh13",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 13/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage14",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 14/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh14",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 14/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage15",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 15/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh15",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 15/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage16",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 16/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh16",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 16/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage17",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 17/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh17",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 17/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage18",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 18/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh18",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 18/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage19",
+      "actor": [
+        "旁观堂中人群"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 19/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh19",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 19/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainStage20",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 20/20 · 东架会面 · 问答归档，两卷交涉待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainRefresh20",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 20/20 · 东架会面 · 问答归档，两卷交涉待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage1",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 1/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage2",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 2/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage3",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": false,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 3/20 · 东架会面 · 当面招呼，问答待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage4",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": false,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 4/20 · 东架会面 · 薰儿已坐旁，临时卷未取"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage5",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 5/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsRefresh5",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 5/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage6",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 6/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage7",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 7/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage8",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 8/20 · 东架会面 · 她自己的卷拿看，非本人第二卷"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage9",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 9/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsRefresh9",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 9/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage10",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 10/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage11",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 11/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage12",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 12/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage13",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 13/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage14",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 14/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage15",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 15/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage16",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 16/20 · 东架会面 · 当时四段已确认，问答继续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage17",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 17/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsRefresh17",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 17/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage18",
+      "actor": [
+        "旁观薰儿动作与发言"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 18/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage19",
+      "actor": [
+        "旁观堂中人群"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 19/20 · 东架会面 · 时间承诺已记，借资未还"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsStage20",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 已保存",
+        "东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。",
+        "东架会面 20/20 · 东架会面 · 问答归档，两卷交涉待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMaterialsRefresh20",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 20/20 · 东架会面 · 问答归档，两卷交涉待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "talkMainFinalRefresh",
+      "actor": [
+        "本人目光与答话"
+      ],
+      "ning": "translate(235 244)",
+      "ownScroll": true,
+      "seated": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "东架会面 20/20 · 东架会面 · 问答归档，两卷交涉待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "returnFocus": "接续东架会面与半月问答",
+  "intactEntries": 0,
+  "actualKeyboard": "wrong-focus E, directions, Ctrl+E kept stage; correctly selected E completed checkpoint14; Enter returned focus",
+  "atomicCheckpoint": 9,
+  "ownScrollCheckpoint": 5,
+  "loanKept": {
+    "borrowed": 160,
+    "spent": 110
+  },
+  "currentDeviceBranch": "materials remains practice0/recoveryunobserved; higher custody/spent/five-duan are rule tests only",
+  "toolFailures": "Exact-replacement integration script stopped on a nonunique version guard; completed remaining edits sequentially then types/build/focused/full checks passed. One CUA call exceeded its 30-second timeout after native stage9 export, reset bindings; read actual current UI and persisted evidence, resumed from saved9 without repeating actions. Subsequent calls limited and explicitly bounded.",
+  "source": "Lawfully normally read retained complete English chapter17, actual visible source tab reviewed; Chinese names/current anime remain pending",
+  "prerequisite": {
+    "commit": "73481bd667e7a345d0d367b6df6fffb72141663f",
+    "ci": 38283207369,
+    "conclusion": "success",
+    "pages": 38283207314,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 114,
+    "cleanBytes": 1967416
+  }
+}

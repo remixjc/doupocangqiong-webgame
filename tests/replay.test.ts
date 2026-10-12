@@ -12,6 +12,7 @@ import { preparationEvents, preparationProtocols } from '../src/content/preparat
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { replayEarlyTraining } from './helpers/early-training-replay'
+import { firstHallTalkStep } from './helpers/first-hall-talk-replay'
 
 // A test-only player: it uses the same movement, combat, collection and crafting rules.
 // It never changes enemy HP, player position or task counters outside normal callbacks.
@@ -314,6 +315,7 @@ describe('完整主线真实规则战斗回放', () => {
         earlyReplay[4] = true
         earlyReplay[30] = true
         state = replayEarlyTraining(...earlyReplay)
+        while (state.earlyTraining.firstHallTalk.stage < 20) state = firstHallTalkStep(state)
         expect(state.earlyTraining.practice.attempts).toBe(1)
       }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {

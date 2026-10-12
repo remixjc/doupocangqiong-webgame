@@ -19,7 +19,7 @@ export type FirstHallReadingAction = FirstHallReadingState & Omit<FirstHallEntry
 export function hallReadingNear(p: EarlyWalkPosition, space: 'hall' | 'outside'): boolean {
   return space === 'hall' && hallEntryPositionValid(p) && fieldsMatch(p, hallReadingPlaces.shelf)
 }
-export function hallReadingSnapshotMatches(state: GameState, action: Omit<FirstHallReadingAction, 'actor'>): boolean {
+export function hallReadingSnapshotMatches(state: GameState, action: Omit<FirstHallReadingAction, keyof FirstHallReadingState | 'actor'>): boolean {
   return earlySnapshotsMatch(state, action, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall'])
 }
 export function advanceFirstHallReading(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallReadingAction): Transaction {
