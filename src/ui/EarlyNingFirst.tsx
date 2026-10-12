@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -83,10 +84,10 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
           <SecondaryButton disabled={paused} onClick={() => act('octane')}>尝试八极崩 · 首轮次序不符</SecondaryButton>
         </WalkControls>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
-    </BondSummary> : <p className="muted">下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>首轮倒地历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '正式胜负已宣布，可回看违规再攻。首轮历史仍保留当时待裁判及药物未服的记录。' : '这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。'}</p>{onSecond && <PrimaryButton onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</SecondaryButton>}
-    <p className="muted">药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</p>
+    <MutedParagraph>药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</SecondaryButton>
   </>
 }

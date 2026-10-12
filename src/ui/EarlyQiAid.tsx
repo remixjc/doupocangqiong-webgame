@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -66,10 +67,10 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
         <SecondaryButton onClick={() => act('group-attack')}>尝试多人同攻</SecondaryButton>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
       {task.stage >= 3 && <SecondaryButton onClick={() => act('take-scroll')}>尝试收取第二卷</SecondaryButton>}
-    </BondSummary> : <p className="muted">先走近{qiAidPlaces[scene.place].label}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>先走近{qiAidPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>同行与独自援助已归档。</h3><p>萧媚门障已破；家族卷归萧炎，薰儿自选卷归她。正式登记与实际离阁仍待续。</p></BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮 · 免费重新站定</SecondaryButton>}
-    <p className="muted">地图、陈设、20步长与出手时机为原创操作；时限采用回顾，未实现现实两小时或超时离阁。</p>
+    <MutedParagraph>地图、陈设、20步长与出手时机为原创操作；时限采用回顾，未实现现实两小时或超时离阁。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离同行与援助 · 保留断点</SecondaryButton>
   </>
 }

@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -41,7 +42,7 @@ export default function EarlyApprentice({ state, onBack }: { state: GameState; o
       {task.stage === 24 && <SecondaryButton disabled={!near} onClick={() => act('wear-ring')}>尝试在返戒之前重新佩戴古戒</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>援助与本人拜师已归档。</h3><p>本人完成行礼后才听名字；未授取气许可，七段仍为当时目标，本段当时古戒仍浮空。{state.earlyTraining.methodDiscussion.stage
       ? earlyMethodDiscussionSaveSummary(state, state.settings) + '。' : '功法与准备衔接待续。'}</p></BondSummary>}
-    <p className="muted">山路与核对选项为改编；故事期限没有现实计时。本段只写独立事件记录，不改变主线境界、职业、技能、生命、库存或已结算奖励。位置不保存。</p>
+    <MutedParagraph>山路与核对选项为改编；故事期限没有现实计时。本段只写独立事件记录，不改变主线境界、职业、技能、生命、库存或已结算奖励。位置不保存。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离援助与拜师 · 保留断点</SecondaryButton>
   </>
 }

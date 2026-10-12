@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -61,12 +62,12 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
         </label>
         <div className="heat-meter" aria-label="恢复时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
       </>}
-      {scene.operation === 'review' && <p className="muted">此处是压缩往事回顾：老师提及半月前的耐受变化，成长叙述另回顾四段后一个半月到五段。没有实际等待，也不把这一轮四次脉冲当成全部时日。调息次数与时机区间均为原创折算。</p>}
+      {scene.operation === 'review' && <MutedParagraph>此处是压缩往事回顾：老师提及半月前的耐受变化，成长叙述另回顾四段后一个半月到五段。没有实际等待，也不把这一轮四次脉冲当成全部时日。调息次数与时机区间均为原创折算。</MutedParagraph>}
       <PrimaryButton onClick={() => submitEarlyRecovery(gameStore, position, station,
         { step: task.stage, energy: task.energy, operation: scene.operation, marker: breathing ? marker : undefined })}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。</p>
-        <p className="muted">这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</p>
+        <MutedParagraph>这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</MutedParagraph>
         {onConsign && <PrimaryButton onClick={onConsign}>接续筹款 · 准备首次寄售</PrimaryButton>}</BondSummary>}
     <SecondaryButton onClick={onBack}>暂离恢复房间 · 保留断点</SecondaryButton>
   </>

@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -40,7 +41,7 @@ export default function EarlyMethodDiscussion({ state, onBack }: { state: GameSt
       {task.stage === 27 && <SecondaryButton disabled={!near} onClick={() => act('claim-scroll')}>尝试在暂缓传授后取得卷轴</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>功法说明已归档。</h3><p>火属性与斗者前置、未来功法的说法与未试验依据留存。本片段未授卷。{state.earlyTraining.preparationBrief.stage
       ? earlyPreparationBriefSaveSummary(state, state.settings) + '。' : '温和准备方案与老师返戒继续接续。'}</p></BondSummary>}
-    <p className="muted">本段为原创短摘要与核对操作，只补历史事件。主线当前功法、境界、职业、资源、准备链和已结算奖励保留，位置不保存。</p>
+    <MutedParagraph>本段为原创短摘要与核对操作，只补历史事件。主线当前功法、境界、职业、资源、准备链和已结算奖励保留，位置不保存。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离功法说明 · 保留断点</SecondaryButton>
   </>
 }

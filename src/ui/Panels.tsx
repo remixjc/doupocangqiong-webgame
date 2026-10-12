@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -36,19 +37,19 @@ export function AlchemyPanel({ state }: { state: GameState }) {
     } else setPhase(phase + 1)
   }
   return <><Eyebrow>炼药 / 控火成丹</Eyebrow><h2>掌中之火，也需要耐心。</h2>
-    <p className="muted">三个阶段分别锁定火力。指针越靠近中间的金色区域，品质越高；上品额外产出一枚。丹药名称与数值为游戏设计。</p>
+    <MutedParagraph>三个阶段分别锁定火力。指针越靠近中间的金色区域，品质越高；上品额外产出一枚。丹药名称与数值为游戏设计。</MutedParagraph>
     <div className="recipe-tabs">{recipes.filter(r => unlockedChapter(state) >= r.unlock && isVisible(state, r.unlock)).map(r => <button key={r.id} className={r.id === recipeId ? 'selected' : ''} disabled={phase >= 0 && phase <= 2} onClick={() => { setRecipeId(r.id); setPhase(-1) }}>{r.name}</button>)}</div>
-    <p className="muted">{recipe.description}</p><div className="ingredient-row">{(Object.entries(recipe.cost) as [ItemId, number][]).map(([id, n]) => <span key={id} className={state.inventory[id] < n ? 'insufficient' : ''}>{itemNames[id]} {state.inventory[id]} / {n}</span>)}</div>
-    {phase < 0 && <div className="alchemy-idle"><div className="cauldron">鼎</div><div className="camp-options"><PrimaryButton disabled={!preview.ok} onClick={() => { resolved.current = false; setScores([]); setPhase(0) }}>开炉 · 手动控火</PrimaryButton><SecondaryButton disabled={!preview.ok} onClick={() => gameStore.craft(recipeId, .5)}>稳火炼制 · 固定良品</SecondaryButton></div>{!preview.ok && <p className="muted">{preview.message}</p>}</div>}
+    <MutedParagraph>{recipe.description}</MutedParagraph><div className="ingredient-row">{(Object.entries(recipe.cost) as [ItemId, number][]).map(([id, n]) => <span key={id} className={state.inventory[id] < n ? 'insufficient' : ''}>{itemNames[id]} {state.inventory[id]} / {n}</span>)}</div>
+    {phase < 0 && <div className="alchemy-idle"><div className="cauldron">鼎</div><div className="camp-options"><PrimaryButton disabled={!preview.ok} onClick={() => { resolved.current = false; setScores([]); setPhase(0) }}>开炉 · 手动控火</PrimaryButton><SecondaryButton disabled={!preview.ok} onClick={() => gameStore.craft(recipeId, .5)}>稳火炼制 · 固定良品</SecondaryButton></div>{!preview.ok && <MutedParagraph>{preview.message}</MutedParagraph>}</div>}
     {phase >= 0 && phase <= 2 && <div className="alchemy-active"><div className="cauldron burning">鼎</div><Eyebrow>第 {phase + 1} 步 / {['提炼 · 除去杂质', '融合 · 协调药性', '凝丹 · 收束火焰'][phase]}</Eyebrow>
       <HeatControl key={`${recipeId}:${phase}`} reducedMotion={state.settings.reducedMotion} alchemyPeriod={phase === 2 ? 290 : 420}
         markerLabel="炼药控火指针" inputLabel="炼药火力位置" lockLabel="锁定火力" onLock={lock} />
-      <p className="muted">中途关闭不会消耗材料。第三步结算时统一扣除并产出。</p></div>}
-    {phase === 3 && <div className="alchemy-result"><div className="cauldron">丹</div><h2>一炉已成</h2><p className="muted">控火评分 {Math.round(scores.reduce((a, b) => a + b, 0) / 3 * 100)} / 100，产物已经放入行囊。</p><PrimaryButton onClick={() => setPhase(-1)}>继续炼制</PrimaryButton></div>}
+      <MutedParagraph>中途关闭不会消耗材料。第三步结算时统一扣除并产出。</MutedParagraph></div>}
+    {phase === 3 && <div className="alchemy-result"><div className="cauldron">丹</div><h2>一炉已成</h2><MutedParagraph>控火评分 {Math.round(scores.reduce((a, b) => a + b, 0) / 3 * 100)} / 100，产物已经放入行囊。</MutedParagraph><PrimaryButton onClick={() => setPhase(-1)}>继续炼制</PrimaryButton></div>}
   </>
 }
 export function ShopPanel({ state }: { state: GameState }) {
-  return <><Eyebrow>坊市 / 行囊补给</Eyebrow><h2>备好行囊，再向远方。</h2><p className="muted">持有金币：{state.gold}。金币来自普通战与章节首通，重复首通不会再次发放奖励。</p><div className="shop-list">{(Object.keys(itemNames) as ItemId[]).map(id => <div className="shop-item" key={id}><span className="item-glyph">{id === 'herb' ? '草' : id === 'crystal' ? '晶' : '丹'}</span><div><b>{itemNames[id]}</b><small>行囊 ×{state.inventory[id]}</small></div><button className="small-btn" disabled={state.gold < prices[id]} onClick={() => gameStore.buy(id)}>{prices[id]} 金币 · 购入</button></div>)}</div></>
+  return <><Eyebrow>坊市 / 行囊补给</Eyebrow><h2>备好行囊，再向远方。</h2><MutedParagraph>持有金币：{state.gold}。金币来自普通战与章节首通，重复首通不会再次发放奖励。</MutedParagraph><div className="shop-list">{(Object.keys(itemNames) as ItemId[]).map(id => <div className="shop-item" key={id}><span className="item-glyph">{id === 'herb' ? '草' : id === 'crystal' ? '晶' : '丹'}</span><div><b>{itemNames[id]}</b><small>行囊 ×{state.inventory[id]}</small></div><button className="small-btn" disabled={state.gold < prices[id]} onClick={() => gameStore.buy(id)}>{prices[id]} 金币 · 购入</button></div>)}</div></>
 }
 export function SettingsPanel({ state, activeDifficulty }: { state: GameState; activeDifficulty?: GameState['settings']['difficulty'] }) {
   function settings(part: Partial<GameState['settings']>) {
@@ -65,6 +66,6 @@ export function SettingsPanel({ state, activeDifficulty }: { state: GameState; a
     {state.settings.spoiler === 'anime' && <label className="setting-row"><span>允许揭晓至游戏第几章<small>锁定篇章隐藏标题和概要。修改不会抹除已完成记录。</small></span><select value={Math.min(state.settings.animeLimit, chapters.length)} onChange={e => settings({ animeLimit: Number(e.target.value) })}>{chapters.map(c => <option key={c.id} value={c.id}>第 {c.id} 章</option>)}</select></label>}
     <label className="setting-row"><span>音效音量<small>主动操作后启用；音量实时生效，0 为静音。暂停或切后台时停止音效。</small></span><input aria-label="音效音量" type="range" min="0" max="1" step=".05" value={state.settings.volume} onChange={e => settings({ volume: Number(e.target.value) })} /></label>
     <label className="setting-row"><span>减弱动态效果<small>减少人物与火焰动画，控气、控火和心念改用键盘滑杆；保留动作提示和危险预警。</small></span><input type="checkbox" checked={state.settings.reducedMotion} onChange={e => settings({ reducedMotion: e.target.checked })} /></label>
-    <p className="muted">菜单、剧情和页面后台暂停战斗。手机横屏使用摇杆；普攻按钮可按住连击。所有音效由程序合成。</p>
+    <MutedParagraph>菜单、剧情和页面后台暂停战斗。手机横屏使用摇杆；普攻按钮可按住连击。所有音效由程序合成。</MutedParagraph>
   </>
 }

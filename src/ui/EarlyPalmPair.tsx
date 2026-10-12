@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -62,10 +63,10 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
         {paused && <><StatusParagraph>吸推时机已暂停，需要明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续吸推练习 · 恢复时机</SecondaryButton></>}
       </>}
       <PrimaryButton disabled={training && paused} onClick={act}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>两瓶试验与老师初练已归档。</h3><p>第一只碎片和第二只细末分开保留。接下来仍需长期练习，族中预测另行接续。</p>
         {onPreliminary && <PrimaryButton onClick={onPreliminary}>接续一月前预测 · 同行入场</PrimaryButton>}</BondSummary>}
-    <p className="muted">站位、两步初练与切换窗口为原创压缩操作，约两小时仅作故事回顾。不会给予大斗师外放能力或重复解锁主线斗技；七段、自用耗尽、老师一滴、父亲原瓶与钱账保留。</p>
+    <MutedParagraph>站位、两步初练与切换窗口为原创压缩操作，约两小时仅作故事回顾。不会给予大斗师外放能力或重复解锁主线斗技；七段、自用耗尽、老师一滴、父亲原瓶与钱账保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离吸推练习 · 保留两瓶断点</SecondaryButton>
   </>
 }

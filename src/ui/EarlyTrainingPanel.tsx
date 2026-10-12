@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -194,9 +195,9 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
     </BondSummary>}
     <Eyebrow>重修往事 / 拜师之后</Eyebrow>
     <h2>从一份准备单，重新开始。</h2>
-    {blocked ? <p className="muted">{blocked}</p> : <>
+    {blocked ? <MutedParagraph>{blocked}</MutedParagraph> : <>
       <p>三年约定之后，药老在后山现身，萧炎拜师。重修的下一步，是筹措资金、找到指定药材，再由老师调制供修炼使用的药液。</p>
-      <p className="muted">这段往事独立记录。任务资金和材料专用于重修，不与行囊金币、灵草或魔晶混用。</p>
+      <MutedParagraph>这段往事独立记录。任务资金和材料专用于重修，不与行囊金币、灵草或魔晶混用。</MutedParagraph>
       {isVisible(state, 2) && task.marketSearch.stage === 20 && <BondSummary aria-label="让路与两条手链接续">
         <b>寻核与放回归档 · 接续街角交谈</b><p>请求让路、分别核对两条手链的提议与交付，已有唯一赠礼记录保留。</p>
         <SecondaryButton ref={braceletsEntry} onClick={() => setMarketBracelets(true)}>接续让路与两条手链</SecondaryButton>
@@ -290,7 +291,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         <b>双卷交接已核 · {task.qiPavilionAid.stage === 10 ? '同行援助已归档' : '接续同行与援助'}</b><p>薰儿另选卷、近时限与萧媚风属性房门，先经过再独自回返。</p>
         <SecondaryButton ref={aidEntry} onClick={() => setAid(true)}>进入同行与援助记录</SecondaryButton>
       </BondSummary>}
-      {task.practice.phase === 4 && <p className="muted">初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</p>}
+      {task.practice.phase === 4 && <MutedParagraph>初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</MutedParagraph>}
       <BondSummary aria-label="重修准备记录">
         <b>{state.earlyTraining.started ? '准备单已记下' : '尚未接下准备'}</b>
         <p>两种指定草药，分别三株与两株；另需一枚一阶木属性魔核。药老负责调制，萧炎准备容器与水。药液用于修炼。</p>
@@ -300,7 +301,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         <BondSummary aria-label="重修采购资金">
           <b>采购余额 {task.purse.borrowed - task.purse.spent} · 已付 {task.purse.spent}</b>
           <p>薰儿：先把准备做齐。这笔采购资金，我借给你。</p>
-          <p className="muted">借资{EARLY_LOAN}、药草30/20、魔核及附物60均为游戏折算单位，不是原著金钱数额；不计入行囊金币，也不发主线奖励。</p>
+          <MutedParagraph>借资{EARLY_LOAN}、药草30/20、魔核及附物60均为游戏折算单位，不是原著金钱数额；不计入行囊金币，也不发主线奖励。</MutedParagraph>
           {!task.purse.borrowed && <PrimaryButton onClick={() => gameStore.earlyTraining({ type: 'borrow', expectedSpent: task.purse.spent })}>向薰儿借采购资金</PrimaryButton>}
         </BondSummary>
         <BondSummary aria-label="药铺与坊市采购">
@@ -320,14 +321,14 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         </BondSummary>
         {herbsReady && <BondSummary aria-label="坊市往事与黑铁片">
           <Eyebrow>坊市往事 · {Math.min(task.market.stage + 1, 4)} / 4</Eyebrow>
-          <p className="muted">回顾采购中的交涉。已付款的魔核记录保留，这里核对同一笔交易的黑铁片附物。</p>
+          <MutedParagraph>回顾采购中的交涉。已付款的魔核记录保留，这里核对同一笔交易的黑铁片附物。</MutedParagraph>
           {marketScene ? <>
             <h3>{marketScene.title}</h3><b>{marketScene.speaker}</b><p>{marketScene.text}</p>
             <SecondaryButton disabled={task.market.stage === 3 && !task.receipts.woodCore}
               onClick={() => gameStore.earlyTraining({ type: 'market', step: task.market.stage, expectedSpent: task.purse.spent })}>{marketScene.action}</SecondaryButton>
-            {task.market.stage === 3 && !task.receipts.woodCore && <p className="muted">先在上方付清魔核采购订单，再核对附物。</p>}
+            {task.market.stage === 3 && !task.receipts.woodCore && <MutedParagraph>先在上方付清魔核采购订单，再核对附物。</MutedParagraph>}
           </> : <><h3>黑铁片已收好</h3><p>护卫介入后，争执告一段落。魔核和黑铁片来自同一次采购，萧炎带着物品回家，准备请药老辨认。</p><p>任务袋：黑铁片 ×{task.market.blackIron}</p></>}
-          <p className="muted">这是对白与交互的压缩改编；也可从上方进入准备路线，在地点进行同一笔交易。黑铁片尚未化为玩家的战斗技能。</p>
+          <MutedParagraph>这是对白与交互的压缩改编；也可从上方进入准备路线，在地点进行同一笔交易。黑铁片尚未化为玩家的战斗技能。</MutedParagraph>
         </BondSummary>}
         {task.market.stage === 4 && <BondSummary aria-label="药老调制与稀释">
           <Eyebrow>重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</Eyebrow>
@@ -337,12 +338,12 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
               step: task.liquid.stage, operation: liquidScene.operation, expectedSpent: task.purse.spent })}>{liquidScene.action}</SecondaryButton>
           </> : <><h3>{task.recovery.energy === 'spent' ? '自用药液已耗尽' : task.recovery.energy === 'fading' ? '恢复中药色渐淡' : '修炼药液已备好'}</h3>
             <p>{task.recovery.energy === 'spent' ? '此前药老调制并加水的药液已用于恢复，现只余清水，后续需另筹材料。' : '药老已完成调制，药液加入水中。'}主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
-          <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；备好后可在下方进行初期练习。</p>
+          <MutedParagraph>玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；备好后可在下方进行初期练习。</MutedParagraph>
         </BondSummary>}
         <EarlyPractice state={state} onContinue={onContinue} />
-        {task.receipts.woodCore && task.market.stage < 4 && <p className="muted">三种材料由任务袋保管。先完成坊市往事，带回黑铁片，再请药老调制；现在没有药液、丹药或新的修炼结果。</p>}
+        {task.receipts.woodCore && task.market.stage < 4 && <MutedParagraph>三种材料由任务袋保管。先完成坊市往事，带回黑铁片，再请药老调制；现在没有药液、丹药或新的修炼结果。</MutedParagraph>}
       </>}
     </>}
-    <p className="muted">重修往事不会回退已完成主线，也不会重新发放章节奖励。</p>
+    <MutedParagraph>重修往事不会回退已完成主线，也不会重新发放章节奖励。</MutedParagraph>
   </>
 }

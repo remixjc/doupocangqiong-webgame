@@ -15,3 +15,7 @@ export function WalkControls(props: ComponentProps<'div'>) {
 export function Eyebrow(props: ComponentProps<'span'>) {
   return <span className="eyebrow" {...props} />
 }
+
+export function MutedParagraph(props: ComponentProps<'p'>) {
+  return <p className="muted" {...props} />
+}

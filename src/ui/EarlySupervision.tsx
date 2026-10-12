@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
@@ -50,7 +51,7 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
       <MapText x="360" y="286" fill="#d5ceb2" fontSize="13">{task.stage === 2 ? state.earlyTraining.recovery.stage > 0 ? '本轮已停下 · 恢复有独立记录' : '本轮已停下 · 待回房恢复' : '后山督练 · 留意负荷'}</MapText>
     </svg>
     <StatusParagraph>督练承接 {task.pulses}/4 · 本轮负荷 {task.pulses * 25}% · 重新开练 {task.attempts} 次</StatusParagraph>
-    {task.stage === 0 && <><p className="muted">开始后可以随时免费停练。失误结束当前轮，不扣金币、材料或药液；再次开始后从第一道脉冲练起。</p>
+    {task.stage === 0 && <><MutedParagraph>开始后可以随时免费停练。失误结束当前轮，不扣金币、材料或药液；再次开始后从第一道脉冲练起。</MutedParagraph>
       <PrimaryButton ref={entry} onClick={() => act('begin')}>开始本轮后山督练</PrimaryButton></>}
     {task.stage === 1 && <>
       <p>{task.pulses >= 3 ? '药老：负荷已接近本轮边界。最后一次承接后便停下，也可现在停练。' : '药老：先稳住姿态，看准脉冲再承接；不要为了次数忽略负荷。'}</p>

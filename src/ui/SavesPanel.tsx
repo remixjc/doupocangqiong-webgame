@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
@@ -41,7 +42,7 @@ export default function SavesPanel({ state, onLoaded, onReset }: { state: GameSt
     } catch (e) { setImported(null); setError((e as Error).message) }
     if (fileInput.current) fileInput.current.value = ''
   }
-  return <><Eyebrow>存档 / 留住这一程</Eyebrow><h2>长路漫漫，记下足迹。</h2><p className="muted">自动存档保存章节与行囊，战斗重开时回到营地。清理浏览器数据会删除本地存档，请导出 JSON 备份。载入会替换当前进度。</p>
+  return <><Eyebrow>存档 / 留住这一程</Eyebrow><h2>长路漫漫，记下足迹。</h2><MutedParagraph>自动存档保存章节与行囊，战斗重开时回到营地。清理浏览器数据会删除本地存档，请导出 JSON 备份。载入会替换当前进度。</MutedParagraph>
     <SaveStatus />
     <div className="save-list">{[0, 1, 2, 3].map(slot => {
       const entry = records?.find(r => r.slot === slot)
@@ -49,12 +50,12 @@ export default function SavesPanel({ state, onLoaded, onReset }: { state: GameSt
       return <div className="save-item" key={slot}><div><b>{slot === 0 ? '自动存档' : `手动存档 ${slot}`}</b><small>{summary}</small>{entry && <small>{new Date(entry.savedAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</small>}</div><div className="save-actions">{slot > 0 && <button className="small-btn" disabled={busy || !records} onClick={() => save(slot)}>保存</button>}<button className="secondary small-btn" disabled={busy || !entry} onClick={() => load(slot)}>载入</button></div></div>
     })}</div>
     <div className="save-tools"><SaveBackup state={state} /><SecondaryButton onClick={() => fileInput.current?.click()}>导入备份</SecondaryButton><input ref={fileInput} aria-label="导入存档文件" type="file" accept=".json,application/json" hidden onChange={e => importFile(e.target.files?.[0])} /></div>
-    {imported && <div className="import-preview"><p className="muted">校验通过：{savePreviewSummary(imported, state.settings)}。载入前可先导出现有进度。</p><button className="small-btn" onClick={() => { gameStore.replace(imported); setImported(null); onLoaded() }}>确认载入导入存档</button></div>}
+    {imported && <div className="import-preview"><MutedParagraph>校验通过：{savePreviewSummary(imported, state.settings)}。载入前可先导出现有进度。</MutedParagraph><button className="small-btn" onClick={() => { gameStore.replace(imported); setImported(null); onLoaded() }}>确认载入导入存档</button></div>}
     {records?.filter(r => r.slot === -1).map(entry => <BondSummary aria-label="上一份自动存档摘要" key={entry.slot}>
       <b>上一份自动存档</b><p>{saveRecordSummary(entry, state.settings)}</p>
       <button className="text-button" disabled={busy} onClick={() => load(-1)}>恢复上一份自动存档</button>
     </BondSummary>)}
     {error && <p className="error" role="alert">{error}</p>}
-    <div className="thin-divider" />{confirm ? <><p className="muted">新旅程会替换自动存档，三个手动存档保留。请先保存或导出当前进度。</p><SecondaryButton onClick={() => { gameStore.newGame(); onReset() }}>确认开启新旅程</SecondaryButton><button className="text-button" onClick={() => setConfirm(false)}>取消</button></> : <button className="text-button" onClick={() => setConfirm(true)}>开启新旅程</button>}
+    <div className="thin-divider" />{confirm ? <><MutedParagraph>新旅程会替换自动存档，三个手动存档保留。请先保存或导出当前进度。</MutedParagraph><SecondaryButton onClick={() => { gameStore.newGame(); onReset() }}>确认开启新旅程</SecondaryButton><button className="text-button" onClick={() => setConfirm(false)}>取消</button></> : <button className="text-button" onClick={() => setConfirm(true)}>开启新旅程</button>}
   </>
 }

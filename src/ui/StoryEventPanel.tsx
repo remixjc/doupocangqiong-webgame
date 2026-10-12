@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { certificationTargets, danFinalTargets, mindTargets, findEvent, tournamentRound, tournamentRounds } from '../content/events'
@@ -63,7 +64,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
   }
   return <>
     <Eyebrow>{event.speaker} / 本章事件</Eyebrow><h2>{event.title}</h2>
-    <p>{event.introduction}</p><p className="muted">{event.note}</p>
+    <p>{event.introduction}</p><MutedParagraph>{event.note}</MutedParagraph>
     <p className="quest-hint">{eventHint(state, event.id)}</p>
     {!progress.started && <PrimaryButton disabled={!!eventBlockReason(state, state.chapter, event)} onClick={() => { if (act({ type: 'begin' }) && event.kind !== 'stone') close() }}>接下历练{event.kind !== 'stone' && ' · 返回地图'}</PrimaryButton>}
     {event.kind === 'preparation' && progress.started && <>
@@ -79,7 +80,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
           <SecondaryButton key={operation} onClick={() => act({ type: 'contain', operation, stage: progress.stage, attempts: progress.attempts })}>{preparationLabels[operation]}</SecondaryButton>)}</div>
       </>}
       {checkpoint === undefined && progress.stage === 6 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>报告准备演练 · 领取一次补给</PrimaryButton>}
-      <p className="muted">准备演练不生产毒丹，不表示毒体已被压制或控制。</p>
+      <MutedParagraph>准备演练不生产毒丹，不表示毒体已被压制或控制。</MutedParagraph>
       <SecondaryButton onClick={close}>返回地图 · 继续准备</SecondaryButton>
     </>}
     {event.kind === 'bond' && progress.started && <>
@@ -87,7 +88,7 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
         <p>{event.bond!.question}</p><div className="camp-options">{event.bond!.options.map(option =>
           <SecondaryButton key={option.choice} onClick={() => act({ type: 'strategy', choice: option.choice })}>{option.label} · {option.reward.xp}积累 / {option.reward.heal ? `恢复丹${option.reward.heal}` : `回气丹${option.reward.mana}`}</SecondaryButton>)}</div>
       </>}
-      {progress.choice !== 'none' && <p className="muted">{event.bond!.options.find(option => option.choice === progress.choice)?.response}</p>}
+      {progress.choice !== 'none' && <MutedParagraph>{event.bond!.options.find(option => option.choice === progress.choice)?.response}</MutedParagraph>}
       {checkpoint === undefined && progress.stage === 2 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>确认伙伴记录 · 领取一次补给</PrimaryButton>}
       {!done && <SecondaryButton onClick={close}>返回地图 · 继续回访</SecondaryButton>}
     </>}
@@ -205,8 +206,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     </>}
     {event.kind === 'lineage' && progress.started && <>
       <p>西林札记：{progress.score & 1 ? '已取得' : '待寻找'} · 东侧联络簿：{progress.score & 2 ? '已取得' : '待寻找'} · 校对{progress.attempts}次</p>
-      {progress.score & 1 ? <p className="muted">西林札记：先提升炼药与灵魂实力，前往圣丹城丹塔。</p> : null}
-      {progress.score & 2 ? <p className="muted">东侧联络簿：营救退路仍在整理，不能仓促直闯魂殿；下一程先去丹塔。</p> : null}
+      {progress.score & 1 ? <MutedParagraph>西林札记：先提升炼药与灵魂实力，前往圣丹城丹塔。</MutedParagraph> : null}
+      {progress.score & 2 ? <MutedParagraph>东侧联络簿：营救退路仍在整理，不能仓促直闯魂殿；下一程先去丹塔。</MutedParagraph> : null}
       {checkpoint === 3 && progress.stage === 2 && <div className="camp-options">
         <PrimaryButton onClick={() => act({ type: 'lead', destination: 'danta' })}>前往丹塔 · 提升炼药与灵魂</PrimaryButton>
         <SecondaryButton onClick={() => act({ type: 'lead', destination: 'rescue' })}>立即营救 · 直接闯入魂殿</SecondaryButton>

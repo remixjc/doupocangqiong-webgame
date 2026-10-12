@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -62,10 +63,10 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
         {paused && <><StatusParagraph>房中时机已暂停，返回前台后需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续房中调息 · 恢复时机</SecondaryButton></>}
       </>}
       <PrimaryButton disabled={training && paused} onClick={act}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>房中七段已归档。</h3><p>本轮木盆保留补液后渐淡状态，老师的一滴只补了一次。接续吸掌与推风组合练习。</p>
         {onPalm && <PrimaryButton onClick={onPalm}>接续两瓶试验 · 吸掌与吹火掌</PrimaryButton>}</BondSummary>}
-    <p className="muted">两次与三次调息及35%–65%窗口为原创操作，一小时只作故事时段回顾。七段结果独立记录；既有自用药液仍耗尽，父亲原瓶、房柜原包、主线境界和已结算奖励保留。</p>
+    <MutedParagraph>两次与三次调息及35%–65%窗口为原创操作，一小时只作故事时段回顾。七段结果独立记录；既有自用药液仍耗尽，父亲原瓶、房柜原包、主线境界和已结算奖励保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离七段房中 · 保留补液断点</SecondaryButton>
   </>
 }

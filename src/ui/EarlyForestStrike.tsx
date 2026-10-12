@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -75,11 +76,11 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
         {paused && <><StatusParagraph>练技时机已暂停，返回前台后需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续林中练技 · 恢复时机</SecondaryButton></>}
         <PrimaryButton disabled={paused} onClick={() => act(operation)}>{actionLabel}</PrimaryButton>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
-    </BondSummary> : <p className="muted">下一步请走近{forestPlaces[scene.place].label}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请走近{forestPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>首次成功与下山已归档。</h3><p>这次树倒与耗尽各自有记录，七段结果须由后续房中调息建立。</p>
         {onSeventh && <PrimaryButton onClick={onSeventh}>接续房中七段 · 观察老师补液</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下这一轮 · 免费重新稳身</SecondaryButton>}
-    <p className="muted">本次只新增往事练技记录，不重复解锁主线八极崩、不改变人物攻击或已结算奖励。三个月是压缩故事回顾；药液耗尽、房柜物资、同瓶与所有钱账保留。</p>
+    <MutedParagraph>本次只新增往事练技记录，不重复解锁主线八极崩、不改变人物攻击或已结算奖励。三个月是压缩故事回顾；药液耗尽、房柜物资、同瓶与所有钱账保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离林中练技 · 保留成功断点</SecondaryButton>
   </>
 }

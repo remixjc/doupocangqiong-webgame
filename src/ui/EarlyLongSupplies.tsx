@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -54,10 +55,10 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
       </WalkControls>}
       <PrimaryButton disabled={sorting && !item} onClick={() => submitEarlyLongSupplies(gameStore, position, station,
         { step: task.stage, herbs: task.herbs, cores: task.cores, operation: scene.operation, item: sorting ? item : undefined })}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>房柜已合上，另批物资已记下。</h3><p>两包原物都在柜中，没有散落副本。后山首次成功练技、后续补液与七段突破分别继续；这次归档不代签后续修炼结果。</p>
         {onForest && <PrimaryButton onClick={onForest}>接续后山森林 · 首次成功练技</PrimaryButton>}</BondSummary>}
-    <p className="muted">包代表物资类别，不代表已核实的数量或容量。这里只归档原作已购批次，没有新增付款、配方或精确价单；寄售净款39200、家族交卡、原瓶和耗尽记录保留。</p>
+    <MutedParagraph>包代表物资类别，不代表已核实的数量或容量。这里只归档原作已购批次，没有新增付款、配方或精确价单；寄售净款39200、家族交卡、原瓶和耗尽记录保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离物资回溯 · 保留同批断点</SecondaryButton>
   </>
 }

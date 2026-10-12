@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -56,9 +57,9 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
       <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage >= 5 && <SecondaryButton onClick={() => act('take-scroll')}>尝试取卷 · 尚未择卷</SecondaryButton>}
       {task.crystal !== 'intact' && <SecondaryButton onClick={() => act('take-crystal')}>尝试拾水晶 · 无玩家物品</SecondaryButton>}
-    </BondSummary> : <p className="muted">下一步请走近{qiPavilionPlaces[scene.place].label}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请走近{qiPavilionPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>测定与入阁已归档。</h3><p>火通道第三路四十三号房线索保留。门障、取得功法、回应薰儿与出阁登记还待接续；此前斗技堂借卷与主线技能分别保持。</p></BondSummary>}
-    <p className="muted">布局与步长为原创，五天与两小时为故事时段；本段不发金币、功法、技能或境界。</p>
+    <MutedParagraph>布局与步长为原创，五天与两小时为故事时段；本段不发金币、功法、技能或境界。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离功法阁 · 保留入阁断点</SecondaryButton>
   </>
 }

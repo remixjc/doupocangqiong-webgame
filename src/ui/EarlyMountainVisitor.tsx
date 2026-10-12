@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -45,7 +46,7 @@ export default function EarlyMountainVisitor({ state, onBack }: { state: GameSta
       {task.stage === 15 && <SecondaryButton disabled={!near} onClick={() => act('claim-rank')}>尝试据五纹卡授斗灵境界</SecondaryButton>}
       {task.stage === 18 && <SecondaryButton disabled={!near} onClick={() => act('clear-debt')}>尝试按不必还的回应清空采购账</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>当晚来访与问答已归档。</h3><p>本人已经离山，紫金卡仍由薰儿收回保管。当晚提议没有发款。{state.earlyTraining.morningCard.stage ? earlyMountainVisitorSaveSummary(state, state.settings) : '次晨普通黑卡和实际账本衔接继续接续。'}</p></BondSummary>}
-    <p className="muted">山路比例、核对选择与短对白为改编。卡片展示不授境界；日后还款承诺不执行还款，不重置旧借资或已付记录。位置不保存。</p>
+    <MutedParagraph>山路比例、核对选择与短对白为改编。卡片展示不授境界；日后还款承诺不执行还款，不重置旧借资或已付记录。位置不保存。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离当晚来访 · 保留断点</SecondaryButton>
   </>
 }

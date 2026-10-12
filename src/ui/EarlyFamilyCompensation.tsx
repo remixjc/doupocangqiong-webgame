@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -41,7 +42,7 @@ export default function EarlyFamilyCompensation({ state, onBack }: { state: Game
     </BondSummary> : <BondSummary><h3>补偿交涉前段已归档。</h3><p>当时玉匣与追加条件均未接取；{state.earlyTraining.familyContract.stage > 0
       ? earlyFamilyContractSaveSummary(state, state.settings) + '。'
       : '文书与三年约定待续，萧炎仍在厅内。'}既有主线结局与奖励保留。</p></BondSummary>}
-    <p className="muted">厅院比例、行走步长与核对选项是游戏改编。此次知识回顾不授予职业、功法或能力，不发丹药、金币或关系奖励。事件断点保存，行走位置不保存。</p>
+    <MutedParagraph>厅院比例、行走步长与核对选项是游戏改编。此次知识回顾不授予职业、功法或能力，不发丹药、金币或关系奖励。事件断点保存，行走位置不保存。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离补偿交涉 · 保留断点</SecondaryButton>
   </>
 }

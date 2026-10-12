@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -88,7 +89,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
         {task.stage === 7 && <SecondaryButton disabled={!near} onClick={() => act('refine')}>材料齐备就算完成炼化</SecondaryButton>}
       </>}
     </BondSummary> : <BondSummary><h3>{returning ? '回族与房中准备已归档。' : trade ? '询价与唯一成交已归档。' : '发现与心中购买建议已归档。'}</h3><p>{returning ? '已回族分路、锁门并摆出当时材料；辨认黑铁片与详细炼化尚待接续，现有账与耗材保持。' : trade ? '已核同一采购并离摊；回族、分路和回房解释待续，尚未因成交授予斗技。' : '此刻魔核与黑铁片仍在摊上，未询价或成交。原有唯一采购、附物和已耗药液记录保留。'}</p></BondSummary>}
-    {state.earlyTraining.receipts.woodCore && <p className="muted">后来的已购或已耗材料记录保留；回补历史不重新发放木核、黑铁片或药液。</p>}
+    {state.earlyTraining.receipts.woodCore && <MutedParagraph>后来的已购或已耗材料记录保留；回补历史不重新发放木核、黑铁片或药液。</MutedParagraph>}
     <SecondaryButton onClick={onBack}>{returning ? '暂离回族准备' : trade ? '暂离询价成交' : '暂离摊位发现'} · 保留断点</SecondaryButton>
   </>
 }

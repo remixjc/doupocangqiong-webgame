@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -23,7 +24,7 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
   return <>
     <Eyebrow>往事回房 / 药老正式传技</Eyebrow>
     <h2>技法记下，还须打好基础。</h2>
-    <p className="muted">选择卷册桌或老师处查看，再确认当前步骤。这里记录传授过程；第一章提前展示的八极崩教学保留，不重复发放技能或提高攻击。</p>
+    <MutedParagraph>选择卷册桌或老师处查看，再确认当前步骤。这里记录传授过程；第一章提前展示的八极崩教学保留，不重复发放技能或提高攻击。</MutedParagraph>
     <svg className="early-walk-map" role="img" aria-label={stage >= 3 ? '药老已传授八极崩知识，萧炎仍须准备身体基础' : '借卷放在房间桌上，萧炎向药老请教'} viewBox="0 0 720 320">
       <rect width="720" height="320" fill="#243633" />
       <path d="M20 20 H700 V285 H20Z" fill="#3c4137" stroke="#baa072" strokeWidth="3" />
@@ -50,7 +51,7 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
     {scene ? <>
       {station === scene.station ? <BondSummary aria-label="老师正式传技步骤"><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
         <PrimaryButton onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</PrimaryButton></BondSummary>
-        : <p className="muted">下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</p>}
+        : <MutedParagraph>下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</MutedParagraph>}
     </> : <BondSummary><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>
       {onSupervise && <PrimaryButton onClick={onSupervise}>接续后山 · 接受老师督练</PrimaryButton>}</BondSummary>}
     <SecondaryButton onClick={onBack}>暂离传技房间 · 回准备路线</SecondaryButton>

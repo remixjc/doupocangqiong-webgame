@@ -1,0 +1,371 @@
+{
+  "version": "0.76.2",
+  "date": "2026-10-13",
+  "reverse": [
+    {
+      "file": "src/ui/App.tsx",
+      "originalSha256": "09f897092bdbff5192b0e8e89717992755eb7c32d5256cf85ca1d74c384a22a2",
+      "restoredSha256": "09f897092bdbff5192b0e8e89717992755eb7c32d5256cf85ca1d74c384a22a2"
+    },
+    {
+      "file": "src/ui/BondJournal.tsx",
+      "originalSha256": "3cb304e518ef87a029ff8f370b09b6602dd428e581d8b168a89cd0801ff0a1d8",
+      "restoredSha256": "3cb304e518ef87a029ff8f370b09b6602dd428e581d8b168a89cd0801ff0a1d8"
+    },
+    {
+      "file": "src/ui/EarlyAppraisal.tsx",
+      "originalSha256": "7262f522d03bd39dedaea1b10352c246dac6f62391a95ef7cb4ee707605783b2",
+      "restoredSha256": "7262f522d03bd39dedaea1b10352c246dac6f62391a95ef7cb4ee707605783b2"
+    },
+    {
+      "file": "src/ui/EarlyApprentice.tsx",
+      "originalSha256": "8a786ca0e957e01fa76a15181eb5ff8d32cd9254f07825091fda8ddea3a79392",
+      "restoredSha256": "8a786ca0e957e01fa76a15181eb5ff8d32cd9254f07825091fda8ddea3a79392"
+    },
+    {
+      "file": "src/ui/EarlyAuction.tsx",
+      "originalSha256": "9911147776ed0f8c9761573949f6a3ddac99e12d9c7462fe7d321039afd55a01",
+      "restoredSha256": "9911147776ed0f8c9761573949f6a3ddac99e12d9c7462fe7d321039afd55a01"
+    },
+    {
+      "file": "src/ui/EarlyBracelet.tsx",
+      "originalSha256": "38f3e80cce9adea87d13b35d90cdadb0eb62c89b1a4ebd6389a24d815e73ae23",
+      "restoredSha256": "38f3e80cce9adea87d13b35d90cdadb0eb62c89b1a4ebd6389a24d815e73ae23"
+    },
+    {
+      "file": "src/ui/EarlyCeremonialTest.tsx",
+      "originalSha256": "70d0e49ff18c489f81c8596cebbd9654978cd438d838ea16600cde6fb0af1b8a",
+      "restoredSha256": "70d0e49ff18c489f81c8596cebbd9654978cd438d838ea16600cde6fb0af1b8a"
+    },
+    {
+      "file": "src/ui/EarlyCeremonyGuests.tsx",
+      "originalSha256": "5bcae0c1ab0a74a05ff02e0160c2b68e19cf1c20e769e51c8a6f1b76b9b444ca",
+      "restoredSha256": "5bcae0c1ab0a74a05ff02e0160c2b68e19cf1c20e769e51c8a6f1b76b9b444ca"
+    },
+    {
+      "file": "src/ui/EarlyCeremonyVerdict.tsx",
+      "originalSha256": "f8ff832a8882cc5361d65cbec75e1272ad111758071cfdd9c0baf0cb02bd0424",
+      "restoredSha256": "f8ff832a8882cc5361d65cbec75e1272ad111758071cfdd9c0baf0cb02bd0424"
+    },
+    {
+      "file": "src/ui/EarlyCityPharmacy.tsx",
+      "originalSha256": "c3302f1a53aadb34cffef922debbbce80968ac5d3dc7a261bc67d05ac76c93df",
+      "restoredSha256": "c3302f1a53aadb34cffef922debbbce80968ac5d3dc7a261bc67d05ac76c93df"
+    },
+    {
+      "file": "src/ui/EarlyConsignment.tsx",
+      "originalSha256": "b310b4af7a89a1de4d5f8345611dcee3554cc1edc61746ed458b97945d7115af",
+      "restoredSha256": "b310b4af7a89a1de4d5f8345611dcee3554cc1edc61746ed458b97945d7115af"
+    },
+    {
+      "file": "src/ui/EarlyEighthTraining.tsx",
+      "originalSha256": "2b505b53063bd593cea0ef3220b68c750cdd004ef7548c53209074147ebdc792",
+      "restoredSha256": "2b505b53063bd593cea0ef3220b68c750cdd004ef7548c53209074147ebdc792"
+    },
+    {
+      "file": "src/ui/EarlyFamilyCompensation.tsx",
+      "originalSha256": "44ba776e6b6a68b165a7ca55dc5ee2cc0ffd561b3e5f3d7a2e9e37ea8d3b1864",
+      "restoredSha256": "44ba776e6b6a68b165a7ca55dc5ee2cc0ffd561b3e5f3d7a2e9e37ea8d3b1864"
+    },
+    {
+      "file": "src/ui/EarlyFamilyContract.tsx",
+      "originalSha256": "4c19edc0e5657c6b1b0eeaebd18117a9d0fadfd41479429829a36a7d901fb729",
+      "restoredSha256": "4c19edc0e5657c6b1b0eeaebd18117a9d0fadfd41479429829a36a7d901fb729"
+    },
+    {
+      "file": "src/ui/EarlyFamilyVisit.tsx",
+      "originalSha256": "ddb771b1ea0b6d9a35b4dfb13a0ca1e478b06fd2f5490748006a32fa86cacfce",
+      "restoredSha256": "ddb771b1ea0b6d9a35b4dfb13a0ca1e478b06fd2f5490748006a32fa86cacfce"
+    },
+    {
+      "file": "src/ui/EarlyFatherGift.tsx",
+      "originalSha256": "0f2521f0903c0aae44ea718876efcf78bac373b805efc0e0f2ad77b62a4c4d83",
+      "restoredSha256": "0f2521f0903c0aae44ea718876efcf78bac373b805efc0e0f2ad77b62a4c4d83"
+    },
+    {
+      "file": "src/ui/EarlyForestStrike.tsx",
+      "originalSha256": "73fddb3d9edc79f5065d9b9983e3e127e1ae0c31ceba21f1a87eec33a3752674",
+      "restoredSha256": "73fddb3d9edc79f5065d9b9983e3e127e1ae0c31ceba21f1a87eec33a3752674"
+    },
+    {
+      "file": "src/ui/EarlyGrowth.tsx",
+      "originalSha256": "aff9cebd4da388e77855ab5211d62892f6568b96c1a628c10e53748f9957fddd",
+      "restoredSha256": "aff9cebd4da388e77855ab5211d62892f6568b96c1a628c10e53748f9957fddd"
+    },
+    {
+      "file": "src/ui/EarlyHall.tsx",
+      "originalSha256": "9f360408bb6958734e78d4ee07468a8aaea498641570c7798167157919a1d238",
+      "restoredSha256": "9f360408bb6958734e78d4ee07468a8aaea498641570c7798167157919a1d238"
+    },
+    {
+      "file": "src/ui/EarlyKeChallenge.tsx",
+      "originalSha256": "1ac1fc2db40c87db272153318ba7ef5bc21da20db3df561501edff093b7c26bd",
+      "restoredSha256": "1ac1fc2db40c87db272153318ba7ef5bc21da20db3df561501edff093b7c26bd"
+    },
+    {
+      "file": "src/ui/EarlyLongSupplies.tsx",
+      "originalSha256": "02d4aadafd27a7a8c86a8c6196e3a1555e6c0cd9c12c1c67410b076e80274399",
+      "restoredSha256": "02d4aadafd27a7a8c86a8c6196e3a1555e6c0cd9c12c1c67410b076e80274399"
+    },
+    {
+      "file": "src/ui/EarlyMarketBracelets.tsx",
+      "originalSha256": "65052a0c66638670088919a8cbf837565f88dbe0b39efe7b36e54113103ffb74",
+      "restoredSha256": "65052a0c66638670088919a8cbf837565f88dbe0b39efe7b36e54113103ffb74"
+    },
+    {
+      "file": "src/ui/EarlyMarketDiscovery.tsx",
+      "originalSha256": "aae153b0b4e2fd07b7fc82c887585a3d1f5920a6d29eb4fe4f61d7e3ef885153",
+      "restoredSha256": "aae153b0b4e2fd07b7fc82c887585a3d1f5920a6d29eb4fe4f61d7e3ef885153"
+    },
+    {
+      "file": "src/ui/EarlyMarketSearch.tsx",
+      "originalSha256": "603adb0c64f7f3d2af4f36d5a7e1818812e2d816a640220d9cba4d71b4123562",
+      "restoredSha256": "603adb0c64f7f3d2af4f36d5a7e1818812e2d816a640220d9cba4d71b4123562"
+    },
+    {
+      "file": "src/ui/EarlyMethodDiscussion.tsx",
+      "originalSha256": "6c9bc39fffc254d7a1076c773aa5755179bbb4c2fb8644293364a33090a00844",
+      "restoredSha256": "6c9bc39fffc254d7a1076c773aa5755179bbb4c2fb8644293364a33090a00844"
+    },
+    {
+      "file": "src/ui/EarlyMorningCard.tsx",
+      "originalSha256": "550ff53f813ce70d08dcc3fdd0a2f23f509abd84c6dc5c371b081fc86a81a216",
+      "restoredSha256": "550ff53f813ce70d08dcc3fdd0a2f23f509abd84c6dc5c371b081fc86a81a216"
+    },
+    {
+      "file": "src/ui/EarlyMountainRing.tsx",
+      "originalSha256": "3045a8c0087de067ca26ea466cd74cd3cbe26b4e7afb06f61134f4a8ee2100de",
+      "restoredSha256": "3045a8c0087de067ca26ea466cd74cd3cbe26b4e7afb06f61134f4a8ee2100de"
+    },
+    {
+      "file": "src/ui/EarlyMountainVisitor.tsx",
+      "originalSha256": "4f6ba6be511fee8a5a9784fd434f677d766714eb8c313d65b2a8942efb0c7eb8",
+      "restoredSha256": "4f6ba6be511fee8a5a9784fd434f677d766714eb8c313d65b2a8942efb0c7eb8"
+    },
+    {
+      "file": "src/ui/EarlyNingFirst.tsx",
+      "originalSha256": "d78fb8a8cfcd3b33f53fafa8c642464e4e71da2520a13635509039e48cc38252",
+      "restoredSha256": "d78fb8a8cfcd3b33f53fafa8c642464e4e71da2520a13635509039e48cc38252"
+    },
+    {
+      "file": "src/ui/EarlyNingSecond.tsx",
+      "originalSha256": "ae6335f5e77d62ed8a3379308141d3fb123241328d43b45984385951dd87ed37",
+      "restoredSha256": "ae6335f5e77d62ed8a3379308141d3fb123241328d43b45984385951dd87ed37"
+    },
+    {
+      "file": "src/ui/EarlyPalmPair.tsx",
+      "originalSha256": "c322a16a6234dfb7ca0ca0359ad93ee17eb8fc9be0b5d52c04e1f14a2b177f59",
+      "restoredSha256": "c322a16a6234dfb7ca0ca0359ad93ee17eb8fc9be0b5d52c04e1f14a2b177f59"
+    },
+    {
+      "file": "src/ui/EarlyPractice.tsx",
+      "originalSha256": "f93e07dcd6931da2f76dab799d123b6cf6621acbfefcc078994883ab82a9336a",
+      "restoredSha256": "f93e07dcd6931da2f76dab799d123b6cf6621acbfefcc078994883ab82a9336a"
+    },
+    {
+      "file": "src/ui/EarlyPreliminary.tsx",
+      "originalSha256": "746f9fb3782a80b8903d838f47c2b05b481d09694aafeb6e4f98f7aaef9781b0",
+      "restoredSha256": "746f9fb3782a80b8903d838f47c2b05b481d09694aafeb6e4f98f7aaef9781b0"
+    },
+    {
+      "file": "src/ui/EarlyPreparationBrief.tsx",
+      "originalSha256": "399386fb82179cfe6421e5e2cee55e9e542c3b97107c219c80bcd7116c4c8097",
+      "restoredSha256": "399386fb82179cfe6421e5e2cee55e9e542c3b97107c219c80bcd7116c4c8097"
+    },
+    {
+      "file": "src/ui/EarlyQiAid.tsx",
+      "originalSha256": "c3038aa144048ad4bbcd489c92faaad9edd05de3799f8fa251b714f5d333fa5e",
+      "restoredSha256": "c3038aa144048ad4bbcd489c92faaad9edd05de3799f8fa251b714f5d333fa5e"
+    },
+    {
+      "file": "src/ui/EarlyQiBarrier.tsx",
+      "originalSha256": "0f16b2695c323ade40e7bca851fa1ddb4c9beba87a591ec73d67f7d7efdfa3d9",
+      "restoredSha256": "0f16b2695c323ade40e7bca851fa1ddb4c9beba87a591ec73d67f7d7efdfa3d9"
+    },
+    {
+      "file": "src/ui/EarlyQiPavilion.tsx",
+      "originalSha256": "d08fcfd14e2908b61fc8c81753fa31ea8602a7bfe028a97ff69a2163e3fcf999",
+      "restoredSha256": "d08fcfd14e2908b61fc8c81753fa31ea8602a7bfe028a97ff69a2163e3fcf999"
+    },
+    {
+      "file": "src/ui/EarlyQiScroll.tsx",
+      "originalSha256": "9580056d2f790c114ee5b4e6966424a452f622b68b38bed9f8beaf94a40a695a",
+      "restoredSha256": "9580056d2f790c114ee5b4e6966424a452f622b68b38bed9f8beaf94a40a695a"
+    },
+    {
+      "file": "src/ui/EarlyRecovery.tsx",
+      "originalSha256": "277e7aa3e93677d80d0c734c124b51a209ef39fb32064929dab754b6923e8fc5",
+      "restoredSha256": "277e7aa3e93677d80d0c734c124b51a209ef39fb32064929dab754b6923e8fc5"
+    },
+    {
+      "file": "src/ui/EarlyRoom.tsx",
+      "originalSha256": "74e83740c1e36b47c0dad46a889d7b37457d0c87d5b7b950fe743d5d5c89c064",
+      "restoredSha256": "74e83740c1e36b47c0dad46a889d7b37457d0c87d5b7b950fe743d5d5c89c064"
+    },
+    {
+      "file": "src/ui/EarlySettlement.tsx",
+      "originalSha256": "7b62959ae5a389fd2daae5775810cf0a574d7f15ec2ce39f22c9f300c4a70760",
+      "restoredSha256": "7b62959ae5a389fd2daae5775810cf0a574d7f15ec2ce39f22c9f300c4a70760"
+    },
+    {
+      "file": "src/ui/EarlySeventhRoom.tsx",
+      "originalSha256": "c0db3bc75a0ae8795cdf272643c185598800c2d4e1255e9970210978201677e5",
+      "restoredSha256": "c0db3bc75a0ae8795cdf272643c185598800c2d4e1255e9970210978201677e5"
+    },
+    {
+      "file": "src/ui/EarlySupervision.tsx",
+      "originalSha256": "cdaed1894ac95279b81c25d9b2754188ca2186e85b4f8e050aa56ece435ed039",
+      "restoredSha256": "cdaed1894ac95279b81c25d9b2754188ca2186e85b4f8e050aa56ece435ed039"
+    },
+    {
+      "file": "src/ui/EarlyTeaching.tsx",
+      "originalSha256": "9290489dcb24d5e06a7382fd0f0aa7f0c6181c4431cdba73e0fdcd40c3110684",
+      "restoredSha256": "9290489dcb24d5e06a7382fd0f0aa7f0c6181c4431cdba73e0fdcd40c3110684"
+    },
+    {
+      "file": "src/ui/EarlyTrainingPanel.tsx",
+      "originalSha256": "aea433cc3e579b0378e117b9d8a70617c8b16782d9e0e662adcdc03897e01865",
+      "restoredSha256": "aea433cc3e579b0378e117b9d8a70617c8b16782d9e0e662adcdc03897e01865"
+    },
+    {
+      "file": "src/ui/EarlyWalk.tsx",
+      "originalSha256": "a930696f3c38b40f9aa4e9ecbbd534aa819598be88d32cfad3f7a65132a0f466",
+      "restoredSha256": "a930696f3c38b40f9aa4e9ecbbd534aa819598be88d32cfad3f7a65132a0f466"
+    },
+    {
+      "file": "src/ui/EarlyWalkInteraction.tsx",
+      "originalSha256": "31144f4e678e853409b0e6c499ae156ade33b0d6ae125c7c0800b01698f906bc",
+      "restoredSha256": "31144f4e678e853409b0e6c499ae156ade33b0d6ae125c7c0800b01698f906bc"
+    },
+    {
+      "file": "src/ui/EarlyXunerVisit.tsx",
+      "originalSha256": "0a52be43a39f5f6437626d644321955209896788f4d4b03ca57c9c4be36da0c0",
+      "restoredSha256": "0a52be43a39f5f6437626d644321955209896788f4d4b03ca57c9c4be36da0c0"
+    },
+    {
+      "file": "src/ui/Panels.tsx",
+      "originalSha256": "02a202388806da00b8df356d88cc6072fd1f5963da17a073ecedb70c6f448344",
+      "restoredSha256": "02a202388806da00b8df356d88cc6072fd1f5963da17a073ecedb70c6f448344"
+    },
+    {
+      "file": "src/ui/SavesPanel.tsx",
+      "originalSha256": "b544f05feedb000b7c9b2b7d26e5e4abf6d0267f47b264d79fd45cdbd1f10052",
+      "restoredSha256": "b544f05feedb000b7c9b2b7d26e5e4abf6d0267f47b264d79fd45cdbd1f10052"
+    },
+    {
+      "file": "src/ui/StoryEventPanel.tsx",
+      "originalSha256": "eb729f3c5bf09013240390c379bcc9e24d816b231d79ac07ede3ee31f9470bc1",
+      "restoredSha256": "eb729f3c5bf09013240390c379bcc9e24d816b231d79ac07ede3ee31f9470bc1"
+    },
+    {
+      "file": "src/ui/StoryRecap.tsx",
+      "originalSha256": "435c830715e7de8c075c204fd205b72de1e53ad2b98cf6df253e577d4b436f2d",
+      "restoredSha256": "435c830715e7de8c075c204fd205b72de1e53ad2b98cf6df253e577d4b436f2d"
+    }
+  ],
+  "paragraphs": {
+    "files": 52,
+    "nodes": 124
+  },
+  "nativeAttributesRefCallbackEqual": true,
+  "decodedPrior": 200,
+  "native": [
+    {
+      "name": "mutedMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791847601082.json",
+      "prior": "nativeControlsMainAfterNavigation",
+      "sha256": "eaf819d41f9a2a40ae94ea8918b74dc42edc4fafb3b03bd72326a5d2e82ba350",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mutedMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791847683707.json",
+      "prior": "nativeControlsMaterialsMigrated",
+      "sha256": "4ad4c0e3433d0a204af0d6adf3a3eeeb5f8aa2f9b464fd7adf6b868c5a2a6d3f",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mutedIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791847704942.json",
+      "prior": "nativeControlsIntactMigrated",
+      "sha256": "01bdebb7fc3b356c8e6b9b8afcb60237f1203620518d4e22e2ce49de6f8b946b",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mutedMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791847711366.json",
+      "prior": "mutedMainMigrated",
+      "sha256": "7f1d7165970b1f253f49ae087db2db6c8b9f83d12806f8a54b608ea5b49a8c2b",
+      "entireStateEqual": true
+    }
+  ],
+  "browser": [
+    {
+      "label": "MutedMain",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MutedMainReopened",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MutedMaterials",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "vitest": {
+    "files": 153,
+    "tests": 908
+  },
+  "nodeTests": 11,
+  "initialJs": 487675,
+  "initialGzip": 163047,
+  "totalJs": 1844447,
+  "savedTotalJs": 2197,
+  "initialChange": -106,
+  "gzipChange": 15,
+  "budgets": [
+    500000,
+    165000,
+    1850000
+  ],
+  "prerequisite": {
+    "sha": "62baa6b41b979537a7f9db8218f5dd4d68acc3a0",
+    "checks": 38318101641,
+    "conclusion": "success",
+    "pages": 38318101717,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 119,
+    "cleanBytes": 1981198
+  },
+  "limits": "Onlysame nativemutedparagraphs shared acrosswhole-sourceinverse files. Original attributes/children/callback/ref/classoverrideorder identical. No story,migrationfields,reward,spoilerorstatebehaviorchanged. Wholeafternoonuntilnight needsnextindependentimplementation. Production measured, budgetsneverraised."
+}

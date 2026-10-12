@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -40,7 +41,7 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
     </BondSummary> : <BondSummary><h3>准备说明与正式返戒已归档。</h3><p>老师入戒、同戒返手、资金顾虑与紫衣来人分别留存。已有借资/采购/药液进度和任务袋保持。{state.earlyTraining.mountainVisitor.stage ? earlyMountainVisitorSaveSummary(state, state.settings) + '。' : ''}</p>
       <PrimaryButton onClick={onRoute}>接续既有准备路线 · 接取与借资</PrimaryButton>
     </BondSummary>}
-    <p className="muted">历史准备要求不代表新增库存；借资打算不代表到账。本段不自动接取或重置已有准备，不增发资金，不改主线装备与已结算奖励。位置不保存。</p>
+    <MutedParagraph>历史准备要求不代表新增库存；借资打算不代表到账。本段不自动接取或重置已有准备，不增发资金，不改主线装备与已结算奖励。位置不保存。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离准备与返戒 · 保留断点</SecondaryButton>
   </>
 }

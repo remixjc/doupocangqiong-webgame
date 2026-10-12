@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -28,7 +29,7 @@ export default function EarlyGrowth({ state, onContinue }: { state: GameState; o
       {stage === 0 && <g><path d="M98 205 V171" stroke="#af9157" strokeWidth="4" /><path d="M86 172 Q97 146 108 172Z" fill="#e5bc72" /></g>}
       <text x="28" y="36" fill="#e8d8b6" fontSize="14">{scene.time} · 修炼仍在继续</text>
     </svg>
-    <p className="muted">以日夜画面压缩持续练习，翻页记录只代表已读过渡，不对应固定天数、境界提升或考核成绩。</p>
+    <MutedParagraph>以日夜画面压缩持续练习，翻页记录只代表已读过渡，不对应固定天数、境界提升或考核成绩。</MutedParagraph>
     {stage < 3 ? <>
       <StatusParagraph>过渡翻阅 {stage}/3 · 可中途关闭</StatusParagraph>
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />

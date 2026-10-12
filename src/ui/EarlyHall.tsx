@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -38,7 +39,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
   return <>
     <Eyebrow>重修往事 / 斗技堂到访</Eyebrow>
     <h2>东侧藏卷，西侧习武。</h2>
-    <p className="muted" id="early-hall-help">方向键或WASD行走，靠近路标按E查看；也可使用下方按钮。堂内位置在退出或刷新后回堂口，到访记录保留。</p>
+    <MutedParagraph id="early-hall-help">方向键或WASD行走，靠近路标按E查看；也可使用下方按钮。堂内位置在退出或刷新后回堂口，到访记录保留。</MutedParagraph>
     <EarlyMap ref={field} aria-label="斗技堂地图"
       aria-describedby="early-hall-help" viewBox="0 0 720 420" onKeyDown={key}>
       <title>斗技堂东西两区原创布局</title>
@@ -80,7 +81,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     </WalkControls>
     <StatusParagraph>堂内记录 {Math.max(0, task.stage - 1)}/8 · {task.scroll === 'borrowed-second' ? '第二卷已登记，由萧炎保管'
       : task.scroll === 'selected-second' ? '第二卷已选好，尚由堂内保管' : task.scroll === 'reading-first' ? '第一卷在堂内阅读，尚未借出' : '尚无卷册借出'}</StatusParagraph>
-    {scene && <p className="muted">下一步：{earlyHallPlaces.find(place => place.id === scene.place)?.label} · {scene.title}</p>}
+    {scene && <MutedParagraph>下一步：{earlyHallPlaces.find(place => place.id === scene.place)?.label} · {scene.title}</MutedParagraph>}
     {reading && place?.id === reading && <BondSummary aria-label="斗技堂地点说明">
       <h3>{place.label}</h3><p>{place.text}</p>
       {scene?.place === place.id && <><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
@@ -88,7 +89,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     </BondSummary>}
     {task.stage === 9 && <BondSummary><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>
       {onTeach && <PrimaryButton onClick={onTeach}>接续回房 · 请药老正式传技</PrimaryButton>}</BondSummary>}
-    <p className="muted">动作、分段图形和对白为原创压缩改编。查看不推进记录；确认当前步骤才保存，不改变主线战斗技能、金币或境界。</p>
+    <MutedParagraph>动作、分段图形和对白为原创压缩改编。查看不推进记录；确认当前步骤才保存，不改变主线战斗技能、金币或境界。</MutedParagraph>
     <SecondaryButton onClick={onBack}>{task.stage === 9 ? '离开斗技堂 · 回准备路线' : '暂回准备路线 · 保留堂内断点'}</SecondaryButton>
   </>
 }

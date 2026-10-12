@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -59,7 +60,7 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
       <h3>重修往事 · 本次已归档</h3>
       <p>准备、借资、采购、坊市交涉、老师调制、加水与初期斗技尝试已经记录。采购余额和黑铁片保留，主线仍从原来的篇章继续。</p>
     </>}
-    <p className="muted">三次调息、评分与重试是原创练习，不代表原著修炼时长或境界提升；没有新增战斗技能或章节奖励。</p>
+    <MutedParagraph>三次调息、评分与重试是原创练习，不代表原著修炼时长或境界提升；没有新增战斗技能或章节奖励。</MutedParagraph>
     {practice.phase === 4 && <EarlyGrowth state={state} onContinue={onContinue} />}
   </BondSummary>
 }

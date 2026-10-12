@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -41,7 +42,7 @@ export default function EarlyWalkInteraction({ state, position, onContinue }: { 
             <SecondaryButton onClick={() => act({ type: 'liquid', step: task.liquid.stage,
               operation: liquidScene.operation, expectedSpent: spent })}>{liquidScene.action}</SecondaryButton>
           </> : <p>{task.recovery.energy === 'spent' ? '药液曾经加水，现已在恢复中耗尽；容器保留。' : task.recovery.energy === 'fading' ? '药液已经加水，恢复中药色渐淡。' : '药液已经加水。'}三种材料由老师依次使用，收据和黑铁片保留。</p>}
-          <p className="muted">玩家准备与观察，药老调制；药液不进入口服丹药行囊。</p>
+          <MutedParagraph>玩家准备与观察，药老调制；药液不进入口服丹药行囊。</MutedParagraph>
           <EarlyPractice state={state} onAction={act} onContinue={onContinue} />
         </>)}
     {place.id === 'xuner' && <>
@@ -63,6 +64,6 @@ export default function EarlyWalkInteraction({ state, position, onContinue }: { 
       <EarlyBracelet state={state} position={position} />
     </>}
     {!task.started && place.id !== 'teacher' && <p>先到药老的盛水容器处接取准备单。</p>}
-    <p className="muted">资金和价格是游戏折算单位，和行囊金币分账；本次交易不发主线奖励。</p>
+    <MutedParagraph>资金和价格是游戏折算单位，和行囊金币分账；本次交易不发主线奖励。</MutedParagraph>
   </BondSummary>
 }

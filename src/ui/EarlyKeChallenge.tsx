@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -77,10 +78,10 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
             : <><PrimaryButton disabled={paused} onClick={() => act('low-palm')}>族内低阶掌法 · 反击肩部</PrimaryButton><SecondaryButton disabled={paused} onClick={() => act('octane-blast')}>尝试八极崩 · 本段动作不符</SecondaryButton></>}
         </WalkControls>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
-    </BondSummary> : <p className="muted">下一步请走近{keChallengePlaces[scene.place].label}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请走近{keChallengePlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p>{onTraining && <PrimaryButton onClick={onTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮应战 · 免费重新准备</SecondaryButton>}
-    <p className="muted">这次不是萧宁正式礼挑战；低阶掌法不新增主线技能，错误八极崩选项只会重开练习。钱账、材料、故事七段、预测名簿与伙伴关系值保留。</p>
+    <MutedParagraph>这次不是萧宁正式礼挑战；低阶掌法不新增主线技能，错误八极崩选项只会重开练习。钱账、材料、故事七段、预测名簿与伙伴关系值保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离萧克挑战 · 保留应战断点</SecondaryButton>
   </>
 }

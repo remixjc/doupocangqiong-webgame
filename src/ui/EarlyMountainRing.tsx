@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -38,7 +39,7 @@ export default function EarlyMountainRing({ state, onBack }: { state: GameState;
       {task.stage === 20 && <SecondaryButton disabled={!near} onClick={() => act('claim-promise')}>尝试把问话算作已经承诺或拜师</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>后山与古戒前段已归档。</h3><p>当时老人未公开姓名，同一古戒在他身旁浮空。{state.earlyTraining.apprentice.stage
       ? earlyApprenticeSaveSummary(state, state.settings) + '。' : '取气边界答复、期限援助谈判与本人行礼拜师继续接续。'}</p></BondSummary>}
-    <p className="muted">山路比例、障碍与20步长/38接近距离为原创。抛戒只作抽象回顾，事件不删除主线装备，不改变生命、资源、技能或已结算奖励。位置不保存，断点保存。</p>
+    <MutedParagraph>山路比例、障碍与20步长/38接近距离为原创。抛戒只作抽象回顾，事件不删除主线装备，不改变生命、资源、技能或已结算奖励。位置不保存，断点保存。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离后山与古戒 · 保留断点</SecondaryButton>
   </>
 }

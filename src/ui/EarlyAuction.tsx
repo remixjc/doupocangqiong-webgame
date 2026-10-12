@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -47,10 +48,10 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlyAuction(gameStore, position, station,
         { step: task.stage, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>药液成交，接续寄售手续。</h3><p>萧战买得同瓶，药液当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管。{state.earlyTraining.settlement.net ? '寄售净款已收到，父亲来访独立记录。' : '先观察功法卷成交，再回鉴定室办理凭据与收款。'}</p>
         {onSettle && <PrimaryButton onClick={onSettle}>接续寄售手续 · 回鉴定室</PrimaryButton>}</BondSummary>}
-    <p className="muted">这里的报价是故事金币金额，只记录其他人的竞价。观察与落槌不增减行囊金币或备料余额，不获得功法卷或新技能。</p>
+    <MutedParagraph>这里的报价是故事金币金额，只记录其他人的竞价。观察与落槌不增减行囊金币或备料余额，不获得功法卷或新技能。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离拍卖室 · 保留旁观断点</SecondaryButton>
   </>
 }

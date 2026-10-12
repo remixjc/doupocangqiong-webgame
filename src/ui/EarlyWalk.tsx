@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -267,7 +268,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   return <>
     <Eyebrow>乌坦城 / 往事准备路线</Eyebrow>
     <h2>走过街巷，再把准备做齐。</h2>
-    <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E交互；下方方向按钮也可操作。接取、借资、采购和交涉后，回到药老容器处继续调制、加水与初期练习。</p>
+    <MutedParagraph id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E交互；下方方向按钮也可操作。接取、借资、采购和交涉后，回到药老容器处继续调制、加水与初期练习。</MutedParagraph>
     <EarlyMap ref={field} aria-label="往事路线地图"
       aria-describedby="early-walk-help" viewBox={`0 0 ${earlyWalkSize.width} ${earlyWalkSize.height}`} onKeyDown={key}>
       <title>萧家院落、药铺与坊市的原创压缩布局</title>
@@ -333,7 +334,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       {place.id === 'teacher' && !earlyCeremonyVerdictBlock(state, position) && <PrimaryButton ref={verdictEntry} onClick={openCeremonyVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
-    <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
+    <MutedParagraph>{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</MutedParagraph>
     <SecondaryButton onClick={onBack}>回到重修准备单</SecondaryButton>
   </>
 }

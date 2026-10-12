@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -57,9 +58,9 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
     <WalkControls aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</WalkControls>
     <StatusParagraph>宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="宾客与收剑步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
-      : <p className="muted">下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</p>
+      : <MutedParagraph>下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>宾客与收剑已归档。</h3><p>萧玉收剑离去，父亲介绍与雅妃询问已记。正式仪式和八段石碑复测接下来继续。</p>{onCeremony && <PrimaryButton onClick={onCeremony}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}</BondSummary>}
-    <p className="muted">本段以观察和交谈平息争执，没有战斗结算；剑由萧玉保管，钱账、原封瓶、人物与伙伴记录保留。</p>
+    <MutedParagraph>本段以观察和交谈平息争执，没有战斗结算；剑由萧玉保管，钱账、原封瓶、人物与伙伴记录保留。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离宾客场地 · 保留收剑断点</SecondaryButton>
   </>
 }

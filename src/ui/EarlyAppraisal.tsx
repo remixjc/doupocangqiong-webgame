@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -51,10 +52,10 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlyAppraisal(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>第一拍卖室已入场</h3><p>同瓶当前由{appraisalOwnerLabels[bottle.owner]}保管，萧炎持黑色入场卡。{state.earlyTraining.auction.stage >= 6 ? '雅妃已敲槌，买方是萧战；收款和父亲赠回由各自记录接续。' : '入席后可旁观雅妃主持与其他人的竞价。'}</p>
         {onAuction && <PrimaryButton onClick={onAuction}>接续拍卖室 · 入席旁观</PrimaryButton>}</BondSummary>}
-    <p className="muted">二品是这份制品的鉴定结果，不增加人物炼药等级。入场黑卡与后来的贵宾卡不同；{state.earlyTraining.settlement.net ? '寄售净款已在独立收款记录中保存。' : '寄售款尚未收到。'}</p>
+    <MutedParagraph>二品是这份制品的鉴定结果，不增加人物炼药等级。入场黑卡与后来的贵宾卡不同；{state.earlyTraining.settlement.net ? '寄售净款已在独立收款记录中保存。' : '寄售款尚未收到。'}</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离鉴定路线 · 保留断点</SecondaryButton>
   </>
 }

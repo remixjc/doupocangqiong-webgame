@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -55,10 +56,10 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
         onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </WalkControls>
     <StatusParagraph>寄售准备 {task.stage}/5 · 已购 {Object.values(task.receipts).filter(Boolean).length}/4 · 专用余额 {task.funds - task.spent} · 已付 {task.spent}</StatusParagraph>
-    <p className="muted">任务余额90和价格10/10/25/5是游戏折算，原作此时剩余900金币。此账本独立于早期借资和行囊金币；采购按批记录，由老师处理材料。</p>
+    <MutedParagraph>任务余额90和价格10/10/25/5是游戏折算，原作此时剩余900金币。此账本独立于早期借资和行囊金币；采购按批记录，由老师处理材料。</MutedParagraph>
     {task.stage === 5 ? <BondSummary><h3>寄售玉瓶记录</h3><p>药老调制的斑杂绿色制品装入白玉瓶，一个封存寄售实例当前由{appraisalOwnerLabels[task.owner]}保管。自用药液仍耗尽，没有回补或第二份收入。</p><p>拍卖场的黑袍、老师代言、谷尼鉴定与入场凭据独立记录；{state.earlyTraining.settlement.net ? '寄售净款与贵宾卡已在独立手续中记录。' : state.earlyTraining.settlement.vip ? '水晶贵宾卡已收，寄售款尚待领取。' : '寄售款和贵宾卡尚未领取。'}</p>
       {onAppraise && <PrimaryButton onClick={onAppraise}>接续拍卖场 · 遮掩身份并鉴定</PrimaryButton>}</BondSummary>
-      : station !== expectedStation ? <p className="muted">当前步骤请到{stations[expectedStation]}继续。</p>
+      : station !== expectedStation ? <MutedParagraph>当前步骤请到{stations[expectedStation]}继续。</MutedParagraph>
       : task.stage === 0 ? <BondSummary><h3>把寄售方案告诉老师</h3><p>萧炎不愿再借资，提出另买较低品质材料，制出供寄售的药液；获得款项后再买后续修炼材料。药老同意。</p>
         <PrimaryButton onClick={() => act('plan')}>请老师同意寄售方案 · 记下专用余额</PrimaryButton></BondSummary>
       : task.stage === 1 ? <BondSummary aria-label="首次寄售采购">

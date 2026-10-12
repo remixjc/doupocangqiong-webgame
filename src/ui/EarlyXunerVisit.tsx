@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -47,10 +48,10 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlyXunerVisit(gameStore, position, station,
         { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+    </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p>
         {onSupplies && <PrimaryButton onClick={onSupplies}>回看长期物资 · 父亲来访之前</PrimaryButton>}</BondSummary>}
-    <p className="muted">家族收到的是薰儿的紫金卡，与萧炎的寄售净款39200和采购账分开。这里记录人物事件，不增加玩家金币、物资、技能或关系值。</p>
+    <MutedParagraph>家族收到的是薰儿的紫金卡，与萧炎的寄售净款39200和采购账分开。这里记录人物事件，不增加玩家金币、物资、技能或关系值。</MutedParagraph>
     <SecondaryButton onClick={onBack}>暂离薰儿事件 · 保留人物断点</SecondaryButton>
   </>
 }

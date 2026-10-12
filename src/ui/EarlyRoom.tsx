@@ -1,3 +1,4 @@
+import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
@@ -26,7 +27,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
   return <>
     <Eyebrow>拜师之后 / 室内调制</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>把材料交给老师，留心每一步。</h2>
-    <p className="muted">点选室内位置查看。萧炎备水，药老依次处理材料并将药液加入清水；这里接续准备单中的同一次调制。</p>
+    <MutedParagraph>点选室内位置查看。萧炎备水，药老依次处理材料并将药液加入清水；这里接续准备单中的同一次调制。</MutedParagraph>
     <div className="early-room">
       <svg className="early-room-art" viewBox="0 0 720 360" role="img"
         aria-label={`静室调制场景：${view.water}；${view.mixture}；材料盘主药${view.supplies.bluegrass}株、辅药${view.supplies.boneflower}株、魔核${view.supplies.woodCore}枚。`}>
@@ -96,7 +97,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
         : `下一步请查看${stations[view.station]}：${scene?.title}。`}</p>}
     </BondSummary>
     <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} onContinue={onContinue} />
-    <p className="muted">场景位置与器物外观为原创表现。调制断点沿用准备单，离开室内不退材料、不重炼；这里没有口服丹药产出。</p>
+    <MutedParagraph>场景位置与器物外观为原创表现。调制断点沿用准备单，离开室内不退材料、不重炼；这里没有口服丹药产出。</MutedParagraph>
     <SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton>
   </>
 }
