@@ -1,0 +1,256 @@
+{
+  "version": "0.63.0",
+  "date": "2026-10-12",
+  "vitestFiles": 139,
+  "vitestTests": 841,
+  "nodeTests": 11,
+  "initialJs": 498973,
+  "totalJs": 1833304,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "sourceChapters": [
+    15,
+    16
+  ],
+  "source16": "actual browser full text to next chapter; one click timeout recovered via observed link",
+  "chineseAndAnime": "pending",
+  "browser": [
+    {
+      "name": "farTurnRejected",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - group \"石路会面地图\" [active]:\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - button \"会面向上走\": ↑\n  - button \"会面向左走\": ←\n  - button \"会面向下走\": ↓\n  - button \"会面向右走\": →\n  - status: 路口会面 0/12 · 路口会面 · 未参与\n  - heading \"转向另一条路\" [level=3]\n  - paragraph: 沿石路实际走到拐口，再转向另一条路。堂内过程还没有开始。\n  - paragraph: 本人先实际走到本步位置。\n  - button \"确认本人已转入另一条路\" [disabled]\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "atTurn",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - group \"石路会面地图\":\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - button \"会面向上走\" [active]: ↑\n  - button \"会面向左走\": ←\n  - button \"会面向下走\": ↓\n  - button \"会面向右走\": →\n  - status: 路口会面 0/12 · 路口会面 · 未参与\n  - heading \"转向另一条路\" [level=3]\n  - paragraph: 沿石路实际走到拐口，再转向另一条路。堂内过程还没有开始。\n  - paragraph: 当前人物：萧炎本人\n  - button \"确认本人已转入另一条路\"\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(240 250)"
+    },
+    {
+      "name": "heardBeforeIdentity",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 路口会面断点已保存，旧奖励与借卷账保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - group \"石路会面地图\":\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - button \"会面向上走\": ↑\n  - button \"会面向左走\": ←\n  - button \"会面向下走\": ↓\n  - button \"会面向右走\": →\n  - status: 路口会面 2/12 · 路口会面 · 听到笑声，来人待看\n  - heading \"顺着声音看过去\" [level=3]\n  - paragraph: 本人循声看见几名少女从另一条路走来，其中一人被同伴簇拥。\n  - paragraph: 当前人物：萧炎本人\n  - button \"看见路口走来的几名少女\" [active]\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(240 250)"
+    },
+    {
+      "name": "anonymousGroup",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 路口会面断点已保存，旧奖励与借卷账保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - group \"石路会面地图\":\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"尚未辨认的少女们\":\n      - generic: 几名少女\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - button \"会面向上走\": ↑\n  - button \"会面向左走\": ←\n  - button \"会面向下走\": ↓\n  - button \"会面向右走\": →\n  - status: 路口会面 3/12 · 路口会面 · 看见来人，身份待辨认\n  - heading \"辨认来人\" [level=3]\n  - paragraph: 先辨认被同伴簇拥的少女，再记录她与此前族内测试的联系。\n  - paragraph: 当前人物：萧炎本人\n  - button \"辨认路口来人\" [active]\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(240 250)"
+    },
+    {
+      "name": "identified",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 路口会面断点已保存，旧奖励与借卷账保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - button \"关注萧媚发言\"\n  - group \"石路会面地图\":\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧媚与同伴\":\n      - generic: 萧媚与同伴\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - button \"会面向上走\": ↑\n  - button \"会面向左走\": ←\n  - button \"会面向下走\": ↓\n  - button \"会面向右走\": →\n  - status: 路口会面 4/12 · 路口会面 · 已辨认来人，走过与对话待续\n  - heading \"萧媚与过去的相处\" [level=3]\n  - paragraph: 本人认出萧媚，想起她过去常跟在身旁。摇头收回目光，保持自己的行路。此处没有修复关系或发伙伴奖励。\n  - paragraph: 当前人物：萧炎本人\n  - button \"收回目光，继续自己的路\" [active]\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(240 250)"
+    },
+    {
+      "name": "meiWrongActorNoMove",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\"\n  - button \"关注萧媚发言\" [pressed]\n  - group \"石路会面地图\" [active]:\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧媚与同伴\":\n      - generic: 萧媚与同伴\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - status: 路口会面 4/12 · 路口会面 · 已辨认来人，走过与对话待续\n  - heading \"萧媚与过去的相处\" [level=3]\n  - paragraph: 本人认出萧媚，想起她过去常跟在身旁。摇头收回目光，保持自己的行路。此处没有修复关系或发伙伴奖励。\n  - paragraph: 请选择当前发言人物。\n  - button \"收回目光，继续自己的路\" [disabled]\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(240 250)"
+    },
+    {
+      "name": "pauseWrongSpeakerNoMove",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - button \"关注萧媚发言\"\n  - group \"石路会面地图\" [active]:\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧媚与同伴\":\n      - generic: 萧媚与同伴\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - status: 路口会面 6/12 · 路口会面 · 本人已走过一行人\n  - heading \"身后传来招呼\" [level=3]\n  - paragraph: 萧媚在本人走过后出声招呼。当前关注她的发言，本人的方向位置保持。\n  - paragraph: 请选择当前发言人物。\n  - button \"记录萧媚在身后招呼\" [disabled]\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(340 250)"
+    },
+    {
+      "name": "leftMeeting",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - button \"关注萧媚发言\"\n  - group \"石路会面地图\":\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧媚与同伴\":\n      - generic: 萧媚与同伴\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - button \"会面向上走\": ↑\n  - button \"会面向左走\": ←\n  - button \"会面向下走\": ↓\n  - button \"会面向右走\" [active]: →\n  - status: 路口会面 9/12 · 路口会面 · 来人答话结束\n  - heading \"再次向前行走\" [level=3]\n  - paragraph: 本人摇头后继续前行，实际走离会面位置。抵达后再记录双方分路。\n  - paragraph: 当前人物：萧炎本人\n  - button \"确认本人已继续向前\"\n  - button \"把招呼算作本人战斗胜利\"\n  - button \"在路口直接签入堂借卷\"\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(440 250)"
+    },
+    {
+      "name": "mainFinal",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - button \"关注萧媚发言\"\n  - group \"石路会面地图\" [active]:\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧媚与同伴\":\n      - generic: 萧媚与同伴\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - status: 路口会面 12/12 · 路口会面 · 双方分路归档，实际入堂待续\n  - heading \"路口会面与分路已归档。\" [level=3]\n  - paragraph: 双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(440 250)"
+    },
+    {
+      "name": "materialsFinal",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 路口会面断点已保存，旧奖励与借卷账保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 石路 / 路口会面\n  - heading \"转路、招呼，再各自前行。\" [level=2]\n  - paragraph: 方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。\n  - button \"本人行走与答话\" [pressed]\n  - button \"关注萧媚发言\"\n  - group \"石路会面地图\":\n    - generic: 石路起点\n    - generic: 转路口\n    - generic: 继续前行\n    - generic \"萧媚与同伴\":\n      - generic: 萧媚与同伴\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n  - status: 路口会面 12/12 · 路口会面 · 双方分路归档，实际入堂待续\n  - heading \"路口会面与分路已归档。\" [level=3]\n  - paragraph: 双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。\n  - button \"暂离路口会面 · 保留断点\"",
+      "position": "translate(440 250)"
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "roadMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814466078.json",
+      "sha256": "a6c353e4b33da3537820a2afab7922b68175185a128cbdf6abc913adaf844366",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadFarTurnRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814485136.json",
+      "sha256": "5cc4cd49b935861a2ec94c9d442ce6bfbb181f3b7be35837828b74b27fde3652",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814501207.json",
+      "sha256": "db70399889c7f17e3726e5b6bcb942f784bd26fd0b3e31722233a7ded9068b11",
+      "stage": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814508608.json",
+      "sha256": "fd0665740c75a5f2024be532a5b6ff495a32eea90bf97f8ce82de64dc32caf57",
+      "stage": 2,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814527093.json",
+      "sha256": "e77dd0adce3429c59acb2ee8eabdeb5eb081bf0b4147cbda516e4185acd2bf4b",
+      "stage": 3,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814534565.json",
+      "sha256": "0c7f497d28549e968a08019615d87705fc37ca0e7f232989ae465ce9488dfd61",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadWrongActorRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814541955.json",
+      "sha256": "e048b48cfea3724a935ce471a3021d95b3b42446b9731712f7cc4c435d004c02",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814549994.json",
+      "sha256": "1472f759fd5f234bd22a6393b8cf84856b0ae538bf47872429403527ac1597de",
+      "stage": 5,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadFarPassRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814568296.json",
+      "sha256": "a819ffec06163958c39f2ab2c0e3d41b08ccdd86c5df8de1a3d9ebcaf4fce49f",
+      "stage": 5,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814581329.json",
+      "sha256": "f71ddb7f9e97835205db34f85054e1a0ecd2d1a65465196d81f65227f1783d12",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadCallWrongSpeakerRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814586736.json",
+      "sha256": "08f10cd099bbd0928d46e2def35930d10cc281993f13b8cfbbbe629ab98ad840",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814595760.json",
+      "sha256": "3699360c43512919be4f988e21896e9fadc04b38eb645c87a4a6f3ccffc1d78e",
+      "stage": 7,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814620498.json",
+      "sha256": "3822080e51c05df6b0ce87400945ba3fcf374fd98b345f90e00c7bce8422fbc9",
+      "stage": 8,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814628874.json",
+      "sha256": "3b1d9fb0457831ac24b9d4ac32044db378ef1d9e524ecfe10110ecb06f151d6d",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadFightRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814636240.json",
+      "sha256": "840034132ecc0b23f52a397b6f3aac8ccec840237b44954874aecd0bf1ac2011",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadHallRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814644247.json",
+      "sha256": "6e8e281b3c9f5b5d6794199efef8023dffb4fe535abc1a48d6d367d2f41c5ef5",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814657296.json",
+      "sha256": "3b31759d4bd603f293fbf2173c527189d9fb6cb8d1736317fc1bd9d1249b8aa3",
+      "stage": 10,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814677289.json",
+      "sha256": "eef82fa3f6c16ee299a3d61aee4b1dd61b4d292b3aa69c1776dbe15cb6a782a9",
+      "stage": 11,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadStage12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814684819.json",
+      "sha256": "e31d208aafc1a4e222f1e28cdfda1aef634300ffa9e5dc23a15a7bcc002a015d",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadMainRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814691202.json",
+      "sha256": "201736f5549e39fe9de80f5eba4c37ae15e6e9ad3d8a68fce49ab9c38a18366a",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814693561.json",
+      "sha256": "47a7efeadd9f7d4c26b0318768c48ce8196f021faaaacb6d9bfb124843f0ca8b",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814762259.json",
+      "sha256": "e373d7a21121afcc523799a7ad1df4473bed2ad133712496ad56760f2ceab527",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadMaterialsRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814780319.json",
+      "sha256": "38943841dee99f04f53b12f753ea38ab6b2ac75123afac669015694d1858ec3b",
+      "stage": 12,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "roadIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791814782699.json",
+      "sha256": "1e5323f5b697a7222cc3e1a23436afc4434d1081e0cdc575d6b2c2b9a1cdd617",
+      "stage": 0,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": 8,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "intactEntryCount": 0,
+  "returnFocus": "接续石路会面与分路",
+  "oldSpent": "rule-tests-only",
+  "actualBrowserOldBranch": {
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  },
+  "futureSpectatingCorrection": "Player reads at eastern bookshelf and watches western match; no forced move west."
+}

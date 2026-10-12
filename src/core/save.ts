@@ -1,3 +1,4 @@
+import { FIRST_ROAD_MEETING_VERSION } from './first-road-meeting-state'
 import { FIRST_DEPARTURE_VERSION } from './first-departure-state'
 import { FIRST_TECHNIQUE_VERSION, FIRST_BOTTLE_VERSION } from './first-technique-state'
 import { FIRST_TRAINING_VERSION, FIRST_REVIEW_VERSION } from './first-training-state'
@@ -300,7 +301,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, FIRST_REVIEW_VERSION),
     versionBefore(data.contentVersion as string, FIRST_TECHNIQUE_VERSION),
     versionBefore(data.contentVersion as string, FIRST_BOTTLE_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_DEPARTURE_VERSION))
+    versionBefore(data.contentVersion as string, FIRST_DEPARTURE_VERSION),
+    versionBefore(data.contentVersion as string, FIRST_ROAD_MEETING_VERSION))
   if (s.earlyTraining.refining.stage > 11 && versionBefore(data.contentVersion as string, EARLY_INFUSION_VERSION))
     throw new Error('魔核入水记录不属于此版本。')
   if (s.earlyTraining.firstTraining.stage > 0 && versionBefore(data.contentVersion as string, FIRST_TRAINING_VERSION))
@@ -313,6 +315,8 @@ export function validateState(value: unknown): GameState {
     throw new Error('首次瓷瓶试招记录不属于此版本。')
   if (s.earlyTraining.firstDeparture.stage > 0 && versionBefore(data.contentVersion as string, FIRST_DEPARTURE_VERSION))
     throw new Error('首次出门石路记录不属于此版本。')
+  if (s.earlyTraining.firstRoadMeeting.stage > 0 && versionBefore(data.contentVersion as string, FIRST_ROAD_MEETING_VERSION))
+    throw new Error('首次路口会面记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

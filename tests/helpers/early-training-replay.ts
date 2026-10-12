@@ -1,3 +1,6 @@
+import { firstRoadMeetingInput } from './first-road-meeting-replay'
+import { advanceFirstRoadMeeting, roadMeetingPlaces } from '../../src/core/first-road-meeting'
+import { firstRoadMeetingScenes } from '../../src/content/first-road-meeting'
 import { firstTechniqueInput } from './first-technique-replay'
 import { firstBottleInput } from './first-bottle-replay'
 import { firstDepartureInput } from './first-departure-replay'
@@ -305,6 +308,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) while (state.earlyTraining.firstDeparture.stage < 9) {
     const scene = firstDepartureScenes[state.earlyTraining.firstDeparture.stage]
     const result = advanceFirstDeparture(state, departurePlaces[scene.place], scene.space, firstDepartureInput(state))
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.firstRoadMeeting.stage < 12) {
+    const scene = firstRoadMeetingScenes[state.earlyTraining.firstRoadMeeting.stage]
+    const result = advanceFirstRoadMeeting(state, roadMeetingPlaces[scene.place], firstRoadMeetingInput(state))
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
