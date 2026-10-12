@@ -1,0 +1,47 @@
+{
+  "batch": "C1g-4e包体前置",
+  "version": "0.56.1",
+  "date": "2026-10-12",
+  "vitestFiles": 130,
+  "vitestTests": 797,
+  "nodeTests": 11,
+  "wrappers": 46,
+  "sourceEquality": {
+    "wrappers": 46,
+    "originalFallbacksCallbacksAndChildrenEqual": true
+  },
+  "initialJs": 495536,
+  "totalJs": 1847604,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "backFocus": true,
+  "consoleErrors": [],
+  "inputs": [
+    {
+      "name": "deferredNew",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803861977.json",
+      "sha256": "d63315c06b1ca05834764f349d162ccfd0c616bc1d57af0a7e984a4ed7b3dd94",
+      "onlyVersionChanged": true,
+      "refining": 11,
+      "iron": 18
+    },
+    {
+      "name": "deferredConsumed",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803864123.json",
+      "sha256": "60499c45a6e5d9e03dc0089c97fd030b03c8471cc82add9098c128a35e78cc75",
+      "onlyVersionChanged": true,
+      "refining": 11,
+      "iron": 18
+    },
+    {
+      "name": "deferredIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791803866268.json",
+      "sha256": "fe1a8b493e66216268ceaa27429ce041b6f8109ce40b5e034ca5297bb569a5f0",
+      "onlyVersionChanged": true,
+      "refining": 0,
+      "iron": 0
+    }
+  ]
+}

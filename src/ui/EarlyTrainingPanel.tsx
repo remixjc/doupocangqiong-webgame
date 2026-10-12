@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import DeferredScene from './DeferredScene'
+import { lazy, useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { gameStore } from '../core/store'
@@ -123,41 +124,41 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
-  if (refining) return <Suspense fallback={<p role="status">正在接续清水与主辅药……</p>}><EarlyRefining state={state} onBack={() => { returningRefining.current = true; setRefining(false) }} /></Suspense>
-  if (iron) return <Suspense fallback={<p role="status">正在接续铁片辨认……</p>}><EarlyIron state={state} onBack={() => { returningIron.current = true; setIron(false) }} /></Suspense>
-  if (marketReturn) return <Suspense fallback={<p role="status">正在接续回族与房中准备……</p>}><EarlyMarketDiscovery key="return" returning state={state}
-    onBack={() => { returningRoom.current = true; setMarketReturn(false) }} /></Suspense>
-  if (marketTrade) return <Suspense fallback={<p role="status">正在接续询价与唯一成交……</p>}><EarlyMarketDiscovery key="trade" trade state={state}
-    onBack={() => { returningTrade.current = true; setMarketTrade(false) }} /></Suspense>
-  if (marketDiscovery) return <Suspense fallback={<p role="status">正在接续摊位发现与心中建议……</p>}><EarlyMarketDiscovery state={state}
-    onBack={() => { returningDiscovery.current = true; setMarketDiscovery(false) }} /></Suspense>
-  if (marketStandoff) return <Suspense fallback={<p role="status">正在接续围堵与非战斗离场……</p>}><EarlyMarketStandoff state={state}
-    onBack={() => { returningStandoff.current = true; setMarketStandoff(false) }} /></Suspense>
-  if (marketBracelets) return <Suspense fallback={<p role="status">正在接续让路与两条手链……</p>}><EarlyMarketBracelets state={state}
-    onBack={() => { returningBracelets.current = true; setMarketBracelets(false) }} /></Suspense>
-  if (marketSearch) return <Suspense fallback={<p role="status">正在接续寻核与手链摊……</p>}><EarlyMarketSearch state={state}
-    onBack={() => { returningSearch.current = true; setMarketSearch(false) }} /></Suspense>
-  if (marketEscort) return <Suspense fallback={<p role="status">正在接续南坊与巡卫……</p>}><EarlyMarketEscort state={state}
-    onBack={() => { returningEscort.current = true; setMarketEscort(false) }} /></Suspense>
-  if (cityPharmacy) return <Suspense fallback={<p role="status">正在接续实际同行与药铺采购……</p>}><EarlyCityPharmacy state={state}
-    onBack={() => { returningCity.current = true; setCityPharmacy(false) }} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></Suspense>
-  if (morningCard) return <Suspense fallback={<p role="status">正在接续晨间普通黑卡交接……</p>}><EarlyMorningCard state={state}
-    onBack={() => { returningMorning.current = true; setMorningCard(false) }} onRoute={() => { setMorningCard(false); setWalking(true) }} /></Suspense>
-  if (mountainVisitor) return <Suspense fallback={<p role="status">正在接续当晚来访与借资问答……</p>}><EarlyMountainVisitor state={state} onBack={() => { returningVisitor.current = true; setMountainVisitor(false) }} /></Suspense>
-  if (preparationBrief) return <Suspense fallback={<p role="status">正在接续准备说明与老师返戒……</p>}><EarlyPreparationBrief state={state}
+  if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={() => { returningRefining.current = true; setRefining(false) }} /></DeferredScene>
+  if (iron) return <DeferredScene message="正在接续铁片辨认……"><EarlyIron state={state} onBack={() => { returningIron.current = true; setIron(false) }} /></DeferredScene>
+  if (marketReturn) return <DeferredScene message="正在接续回族与房中准备……"><EarlyMarketDiscovery key="return" returning state={state}
+    onBack={() => { returningRoom.current = true; setMarketReturn(false) }} /></DeferredScene>
+  if (marketTrade) return <DeferredScene message="正在接续询价与唯一成交……"><EarlyMarketDiscovery key="trade" trade state={state}
+    onBack={() => { returningTrade.current = true; setMarketTrade(false) }} /></DeferredScene>
+  if (marketDiscovery) return <DeferredScene message="正在接续摊位发现与心中建议……"><EarlyMarketDiscovery state={state}
+    onBack={() => { returningDiscovery.current = true; setMarketDiscovery(false) }} /></DeferredScene>
+  if (marketStandoff) return <DeferredScene message="正在接续围堵与非战斗离场……"><EarlyMarketStandoff state={state}
+    onBack={() => { returningStandoff.current = true; setMarketStandoff(false) }} /></DeferredScene>
+  if (marketBracelets) return <DeferredScene message="正在接续让路与两条手链……"><EarlyMarketBracelets state={state}
+    onBack={() => { returningBracelets.current = true; setMarketBracelets(false) }} /></DeferredScene>
+  if (marketSearch) return <DeferredScene message="正在接续寻核与手链摊……"><EarlyMarketSearch state={state}
+    onBack={() => { returningSearch.current = true; setMarketSearch(false) }} /></DeferredScene>
+  if (marketEscort) return <DeferredScene message="正在接续南坊与巡卫……"><EarlyMarketEscort state={state}
+    onBack={() => { returningEscort.current = true; setMarketEscort(false) }} /></DeferredScene>
+  if (cityPharmacy) return <DeferredScene message="正在接续实际同行与药铺采购……"><EarlyCityPharmacy state={state}
+    onBack={() => { returningCity.current = true; setCityPharmacy(false) }} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></DeferredScene>
+  if (morningCard) return <DeferredScene message="正在接续晨间普通黑卡交接……"><EarlyMorningCard state={state}
+    onBack={() => { returningMorning.current = true; setMorningCard(false) }} onRoute={() => { setMorningCard(false); setWalking(true) }} /></DeferredScene>
+  if (mountainVisitor) return <DeferredScene message="正在接续当晚来访与借资问答……"><EarlyMountainVisitor state={state} onBack={() => { returningVisitor.current = true; setMountainVisitor(false) }} /></DeferredScene>
+  if (preparationBrief) return <DeferredScene message="正在接续准备说明与老师返戒……"><EarlyPreparationBrief state={state}
     onBack={() => { returningBrief.current = true; setPreparationBrief(false) }}
-    onRoute={() => { setPreparationBrief(false); setWalking(true) }} /></Suspense>
-  if (methodDiscussion) return <Suspense fallback={<p role="status">正在打开青石前的功法说明……</p>}><EarlyMethodDiscussion state={state} onBack={() => { returningMethod.current = true; setMethodDiscussion(false) }} /></Suspense>
-  if (apprentice) return <Suspense fallback={<p role="status">正在接续援助交涉与本人拜师……</p>}><EarlyApprentice state={state} onBack={() => { returningApprentice.current = true; setApprentice(false) }} /></Suspense>
-  if (mountainRing) return <Suspense fallback={<p role="status">正在走上后山，察看古戒……</p>}><EarlyMountainRing state={state} onBack={() => { returningMountainRing.current = true; setMountainRing(false) }} /></Suspense>
-  if (familyContract) return <Suspense fallback={<p role="status">正在接续文书与双方离厅……</p>}><EarlyFamilyContract state={state} onBack={() => { returningContract.current = true; setFamilyContract(false) }} /></Suspense>
-  if (familyCompensation) return <Suspense fallback={<p role="status">正在接续补偿与本人发言……</p>}><EarlyFamilyCompensation state={state} onBack={() => { returningCompensation.current = true; setFamilyCompensation(false) }} /></Suspense>
-  if (familyVisit) return <Suspense fallback={<p role="status">正在回到拜师前的接待厅……</p>}><EarlyFamilyVisit state={state} onBack={() => { returningFamilyVisit.current = true; setFamilyVisit(false) }} /></Suspense>
-  if (barrier) return <Suspense fallback={<p role="status">正在进入火通道与四十三号门障……</p>}><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></Suspense>
-  if (scroll) return <Suspense fallback={<p role="status">正在打开卷轴保管记录……</p>}><EarlyQiScroll state={state} onBack={() => { returningScroll.current = true; setScroll(false) }} /></Suspense>
-  if (exchange) return <Suspense fallback={<p role="status">正在回看双卷交接……</p>}><EarlyQiExchange state={state} onBack={() => { returningExchange.current = true; setExchange(false) }} /></Suspense>
-  if (aid) return <Suspense fallback={<p role="status">正在打开同行与援助记录……</p>}><EarlyQiAid state={state} onBack={() => { returningAid.current = true; setAid(false) }} /></Suspense>
-  if (pavilion) return <Suspense fallback={<p role="status">正在前往五天后的功法阁……</p>}><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></Suspense>
+    onRoute={() => { setPreparationBrief(false); setWalking(true) }} /></DeferredScene>
+  if (methodDiscussion) return <DeferredScene message="正在打开青石前的功法说明……"><EarlyMethodDiscussion state={state} onBack={() => { returningMethod.current = true; setMethodDiscussion(false) }} /></DeferredScene>
+  if (apprentice) return <DeferredScene message="正在接续援助交涉与本人拜师……"><EarlyApprentice state={state} onBack={() => { returningApprentice.current = true; setApprentice(false) }} /></DeferredScene>
+  if (mountainRing) return <DeferredScene message="正在走上后山，察看古戒……"><EarlyMountainRing state={state} onBack={() => { returningMountainRing.current = true; setMountainRing(false) }} /></DeferredScene>
+  if (familyContract) return <DeferredScene message="正在接续文书与双方离厅……"><EarlyFamilyContract state={state} onBack={() => { returningContract.current = true; setFamilyContract(false) }} /></DeferredScene>
+  if (familyCompensation) return <DeferredScene message="正在接续补偿与本人发言……"><EarlyFamilyCompensation state={state} onBack={() => { returningCompensation.current = true; setFamilyCompensation(false) }} /></DeferredScene>
+  if (familyVisit) return <DeferredScene message="正在回到拜师前的接待厅……"><EarlyFamilyVisit state={state} onBack={() => { returningFamilyVisit.current = true; setFamilyVisit(false) }} /></DeferredScene>
+  if (barrier) return <DeferredScene message="正在进入火通道与四十三号门障……"><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></DeferredScene>
+  if (scroll) return <DeferredScene message="正在打开卷轴保管记录……"><EarlyQiScroll state={state} onBack={() => { returningScroll.current = true; setScroll(false) }} /></DeferredScene>
+  if (exchange) return <DeferredScene message="正在回看双卷交接……"><EarlyQiExchange state={state} onBack={() => { returningExchange.current = true; setExchange(false) }} /></DeferredScene>
+  if (aid) return <DeferredScene message="正在打开同行与援助记录……"><EarlyQiAid state={state} onBack={() => { returningAid.current = true; setAid(false) }} /></DeferredScene>
+  if (pavilion) return <DeferredScene message="正在前往五天后的功法阁……"><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></DeferredScene>
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
     {!blocked && <section className="bond-summary" aria-label="拜师之前的来访">

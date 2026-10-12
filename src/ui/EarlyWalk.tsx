@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import DeferredScene from './DeferredScene'
+import { lazy, useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { earlyWalkPlaces, earlyWalkObstacles, earlyWalkStart, earlyWalkSize, moveEarlyWalker, nearbyEarlyWalkPlace, type EarlyWalkDirection } from '../core/early-walk'
@@ -313,63 +314,63 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (ceremonyVerdict) return <Suspense fallback={<p role="status">正在接续正式裁定与礼终……</p>}><EarlyCeremonyVerdict state={state} position={position}
-    onBack={() => { returningVerdict.current = true; setCeremonyVerdict(false) }} /></Suspense>
-  if (ningSecond) return <Suspense fallback={<p role="status">正在接续违规再攻与迎击……</p>}><EarlyNingSecond state={state} position={position} onVerdict={openCeremonyVerdict}
-    onBack={() => { returningNingSecond.current = true; setNingSecond(false) }} /></Suspense>
-  if (ningFirst) return <Suspense fallback={<p role="status">正在接续萧宁首轮推拉交锋……</p>}><EarlyNingFirst state={state} position={position} onSecond={openNingSecond}
-    onBack={() => { returningNingFirst.current = true; setNingFirst(false) }} /></Suspense>
-  if (ceremonialTest) return <Suspense fallback={<p role="status">正在接续正式仪式与验碑……</p>}><EarlyCeremonialTest state={state} position={position} onChallenge={openNingFirst}
-    onBack={() => { returningCeremonial.current = true; setCeremonialTest(false) }} /></Suspense>
-  if (ceremonyGuests) return <Suspense fallback={<p role="status">正在进入正式礼宾客场地……</p>}><EarlyCeremonyGuests state={state} position={position} onCeremony={openCeremonialTest}
-    onBack={() => { returningGuests.current = true; setCeremonyGuests(false) }} /></Suspense>
-  if (eighthTraining) return <Suspense fallback={<p role="status">正在接续同行与礼前训练……</p>}><EarlyEighthTraining state={state} position={position} onGuests={openCeremonyGuests}
-    onBack={() => { returningEighth.current = true; setEighthTraining(false) }} /></Suspense>
-  if (keChallenge) return <Suspense fallback={<p role="status">正在接续萧克六段挑战……</p>}><EarlyKeChallenge state={state} position={position} onTraining={openEighthTraining}
-    onBack={() => { returningKeChallenge.current = true; setKeChallenge(false) }} /></Suspense>
-  if (preliminary) return <Suspense fallback={<p role="status">正在进入一月前预测……</p>}><EarlyPreliminary state={state} position={position} onChallenge={openKeChallenge}
-    onBack={() => { returningPreliminary.current = true; setPreliminary(false) }} /></Suspense>
-  if (palmTraining) return <Suspense fallback={<p role="status">正在展开吸推两瓶练习……</p>}><EarlyPalmPair state={state} position={position} onPreliminary={openPreliminary}
-    onBack={() => { returningPalm.current = true; setPalmTraining(false) }} /></Suspense>
-  if (seventhTraining) return <Suspense fallback={<p role="status">正在回房接续七段调息……</p>}><EarlySeventhRoom state={state} position={position}
+  if (ceremonyVerdict) return <DeferredScene message="正在接续正式裁定与礼终……"><EarlyCeremonyVerdict state={state} position={position}
+    onBack={() => { returningVerdict.current = true; setCeremonyVerdict(false) }} /></DeferredScene>
+  if (ningSecond) return <DeferredScene message="正在接续违规再攻与迎击……"><EarlyNingSecond state={state} position={position} onVerdict={openCeremonyVerdict}
+    onBack={() => { returningNingSecond.current = true; setNingSecond(false) }} /></DeferredScene>
+  if (ningFirst) return <DeferredScene message="正在接续萧宁首轮推拉交锋……"><EarlyNingFirst state={state} position={position} onSecond={openNingSecond}
+    onBack={() => { returningNingFirst.current = true; setNingFirst(false) }} /></DeferredScene>
+  if (ceremonialTest) return <DeferredScene message="正在接续正式仪式与验碑……"><EarlyCeremonialTest state={state} position={position} onChallenge={openNingFirst}
+    onBack={() => { returningCeremonial.current = true; setCeremonialTest(false) }} /></DeferredScene>
+  if (ceremonyGuests) return <DeferredScene message="正在进入正式礼宾客场地……"><EarlyCeremonyGuests state={state} position={position} onCeremony={openCeremonialTest}
+    onBack={() => { returningGuests.current = true; setCeremonyGuests(false) }} /></DeferredScene>
+  if (eighthTraining) return <DeferredScene message="正在接续同行与礼前训练……"><EarlyEighthTraining state={state} position={position} onGuests={openCeremonyGuests}
+    onBack={() => { returningEighth.current = true; setEighthTraining(false) }} /></DeferredScene>
+  if (keChallenge) return <DeferredScene message="正在接续萧克六段挑战……"><EarlyKeChallenge state={state} position={position} onTraining={openEighthTraining}
+    onBack={() => { returningKeChallenge.current = true; setKeChallenge(false) }} /></DeferredScene>
+  if (preliminary) return <DeferredScene message="正在进入一月前预测……"><EarlyPreliminary state={state} position={position} onChallenge={openKeChallenge}
+    onBack={() => { returningPreliminary.current = true; setPreliminary(false) }} /></DeferredScene>
+  if (palmTraining) return <DeferredScene message="正在展开吸推两瓶练习……"><EarlyPalmPair state={state} position={position} onPreliminary={openPreliminary}
+    onBack={() => { returningPalm.current = true; setPalmTraining(false) }} /></DeferredScene>
+  if (seventhTraining) return <DeferredScene message="正在回房接续七段调息……"><EarlySeventhRoom state={state} position={position}
     onPalm={openPalm}
-    onBack={() => { returningSeventh.current = true; setSeventhTraining(false) }} /></Suspense>
-  if (forestTraining) return <Suspense fallback={<p role="status">正在走入练技森林……</p>}><EarlyForestStrike state={state} position={position}
+    onBack={() => { returningSeventh.current = true; setSeventhTraining(false) }} /></DeferredScene>
+  if (forestTraining) return <DeferredScene message="正在走入练技森林……"><EarlyForestStrike state={state} position={position}
     onSeventh={openSeventh}
-    onBack={() => { returningForest.current = true; setForestTraining(false) }} /></Suspense>
-  if (storingSupplies) return <Suspense fallback={<p role="status">正在回看房中物资……</p>}><EarlyLongSupplies state={state} position={position}
+    onBack={() => { returningForest.current = true; setForestTraining(false) }} /></DeferredScene>
+  if (storingSupplies) return <DeferredScene message="正在回看房中物资……"><EarlyLongSupplies state={state} position={position}
     onForest={openForest}
-    onBack={() => { returningLongSupplies.current = true; setStoringSupplies(false) }} /></Suspense>
-  if (xunerVisiting) return <Suspense fallback={<p role="status">正在接续薰儿来访……</p>}><EarlyXunerVisit state={state} position={position}
+    onBack={() => { returningLongSupplies.current = true; setStoringSupplies(false) }} /></DeferredScene>
+  if (xunerVisiting) return <DeferredScene message="正在接续薰儿来访……"><EarlyXunerVisit state={state} position={position}
     onSupplies={openLongSupplies}
-    onBack={() => { returningXunerVisit.current = true; setXunerVisiting(false) }} /></Suspense>
-  if (fatherVisiting) return <Suspense fallback={<p role="status">正在回房接续父亲来访……</p>}><EarlyFatherGift state={state} position={position}
+    onBack={() => { returningXunerVisit.current = true; setXunerVisiting(false) }} /></DeferredScene>
+  if (fatherVisiting) return <DeferredScene message="正在回房接续父亲来访……"><EarlyFatherGift state={state} position={position}
     onXunerVisit={openXunerVisit}
-    onBack={() => { returningFatherGift.current = true; setFatherVisiting(false) }} /></Suspense>
-  if (settling) return <Suspense fallback={<p role="status">正在展开寄售手续……</p>}><EarlySettlement state={state} position={position}
+    onBack={() => { returningFatherGift.current = true; setFatherVisiting(false) }} /></DeferredScene>
+  if (settling) return <DeferredScene message="正在展开寄售手续……"><EarlySettlement state={state} position={position}
     onFatherGift={openFatherGift}
-    onBack={() => { returningSettlement.current = true; setSettling(false) }} /></Suspense>
-  if (auctioning) return <Suspense fallback={<p role="status">正在进入第一拍卖室……</p>}><EarlyAuction state={state} position={position}
+    onBack={() => { returningSettlement.current = true; setSettling(false) }} /></DeferredScene>
+  if (auctioning) return <DeferredScene message="正在进入第一拍卖室……"><EarlyAuction state={state} position={position}
     onSettle={openSettlement}
-    onBack={() => { returningAuction.current = true; setAuctioning(false) }} /></Suspense>
-  if (appraising) return <Suspense fallback={<p role="status">正在展开寄售鉴定路线……</p>}><EarlyAppraisal state={state} position={position}
+    onBack={() => { returningAuction.current = true; setAuctioning(false) }} /></DeferredScene>
+  if (appraising) return <DeferredScene message="正在展开寄售鉴定路线……"><EarlyAppraisal state={state} position={position}
     onAuction={openAuction}
-    onBack={() => { returningAppraisal.current = true; setAppraising(false) }} /></Suspense>
-  if (consigning) return <Suspense fallback={<p role="status">正在展开首次寄售准备……</p>}><EarlyConsignment state={state} position={position}
+    onBack={() => { returningAppraisal.current = true; setAppraising(false) }} /></DeferredScene>
+  if (consigning) return <DeferredScene message="正在展开首次寄售准备……"><EarlyConsignment state={state} position={position}
     onAppraise={openAppraisal}
-    onBack={() => { returningConsignment.current = true; setConsigning(false) }} /></Suspense>
-  if (recovering) return <Suspense fallback={<p role="status">正在打开训练后的恢复房间……</p>}><EarlyRecovery state={state} position={position}
+    onBack={() => { returningConsignment.current = true; setConsigning(false) }} /></DeferredScene>
+  if (recovering) return <DeferredScene message="正在打开训练后的恢复房间……"><EarlyRecovery state={state} position={position}
     onConsign={openConsignment}
-    onBack={() => { returningRecovery.current = true; setRecovering(false) }} /></Suspense>
-  if (supervising) return <Suspense fallback={<p role="status">正在展开后山督练……</p>}><EarlySupervision state={state} position={position}
+    onBack={() => { returningRecovery.current = true; setRecovering(false) }} /></DeferredScene>
+  if (supervising) return <DeferredScene message="正在展开后山督练……"><EarlySupervision state={state} position={position}
     onRecover={openRecovery}
-    onBack={() => { returningSupervision.current = true; setSupervising(false) }} /></Suspense>
-  if (teaching) return <Suspense fallback={<p role="status">正在打开老师传技房间……</p>}><EarlyTeaching state={state} position={position}
+    onBack={() => { returningSupervision.current = true; setSupervising(false) }} /></DeferredScene>
+  if (teaching) return <DeferredScene message="正在打开老师传技房间……"><EarlyTeaching state={state} position={position}
     onSupervise={openSupervision}
-    onBack={() => { returningTeaching.current = true; setTeaching(false) }} /></Suspense>
-  if (hall) return <Suspense fallback={<p role="status">正在展开斗技堂……</p>}><EarlyHall state={state}
+    onBack={() => { returningTeaching.current = true; setTeaching(false) }} /></DeferredScene>
+  if (hall) return <DeferredScene message="正在展开斗技堂……"><EarlyHall state={state}
     onTeach={openTeaching}
-    onBack={() => { returningHall.current = true; setHall(false) }} /></Suspense>
+    onBack={() => { returningHall.current = true; setHall(false) }} /></DeferredScene>
   if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={() => { returning.current = true; setIndoors(false) }} />
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
