@@ -1,3 +1,4 @@
+import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -40,17 +41,17 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
       {task.identified && <SecondaryButton aria-pressed={actor === 'mei'} onClick={() => setActor('mei')}>关注萧媚发言</SecondaryButton>}
     </div>
     <svg ref={field} role="group" aria-label="石路会面地图" aria-describedby="road-meeting-help" tabIndex={0} viewBox="80 185 425 155" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" />
+      <MapBackground />
       <path d="M140 310 H240 V250 H440 M300 250 V210" stroke="#bfa46a" strokeWidth="18" opacity=".4" fill="none" />
-      <text x="140" y="295" textAnchor="middle" fill="#eed7ad" fontSize="10">石路起点</text>
-      <text x="240" y="278" textAnchor="middle" fill="#eed7ad" fontSize="10">转路口</text>
-      <text x="440" y="278" textAnchor="middle" fill="#eed7ad" fontSize="10">继续前行</text>
+      <HallText x="140" y="295">石路起点</HallText>
+      <HallText x="240" y="278">转路口</HallText>
+      <HallText x="440" y="278">继续前行</HallText>
       {task.group && <g aria-label={task.identified ? '萧媚与同伴' : '尚未辨认的少女们'} transform={`translate(300 ${task.parted ? 210 : 230})`}>
         <circle r="7" fill="#eed7ad" /><path d="M-6 9 L-10 27 H10 L6 9Z" fill="#b77f9c" />
         <circle cx="-18" r="5" fill="#d8c6a7" /><circle cx="18" r="5" fill="#d8c6a7" />
-        <text y="-13" textAnchor="middle" fill="#eed7ad" fontSize="10">{task.identified ? '萧媚与同伴' : '几名少女'}</text>
+        <HallText y="-13">{task.identified ? '萧媚与同伴' : '几名少女'}</HallText>
       </g>}
-      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad" fontSize="10">本人</text></g>
+      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">本人</HallText></g>
     </svg>
     {scene && actor === 'yan' && !talking && <div className="early-walk-controls"><WalkDirectionButtons prefix="会面" onMove={move} /></div>}
     <p role="status">路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</p>

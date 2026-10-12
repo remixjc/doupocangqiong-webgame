@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -33,7 +34,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
     <h2>裁判宣布之后，礼程仍要继续。</h2>
     <p id="ceremony-verdict-help">方向键或WASD行走，靠近当前地点按E或下方按钮。三个月是萧宁的叙事处分，五天是功法阁的故事安排；都不让玩家现实等待。关闭与刷新保留每一步，重入从阶梯出发。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="成人礼正式裁定地图" aria-describedby="ceremony-verdict-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#34463b" />
+      <MapBackground fill="#34463b" />
       <path d="M160 340 L240 280 H676 M440 280 V240" fill="none" stroke="#79816b" strokeWidth="28" strokeLinejoin="round" />
       <rect {...ceremonyPlatform} rx="6" fill="#89704b" stroke="#b79b65" strokeWidth="3" />
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
@@ -44,7 +45,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
       {task.yu !== 'none' && task.stage < 5 && <g transform="translate(525 168)" role="img" aria-label={task.yu === 'blocked' ? '萧玉挑战资格已被否定' : '萧玉仅提出挑战请求'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#9e83a6" /></g>}
       <g transform={`translate(${task.xuner === 'requested' || task.stage === 9 ? 360 : task.stage >= 11 ? 195 : 270} ${task.xuner === 'requested' || task.stage === 9 ? 168 : task.stage >= 11 ? 335 : 280})`} role="img" aria-label={task.xuner === 'requested' ? '薰儿提出代战，尚未获准' : task.stage === 9 ? '薰儿参加自己的仪式' : '薰儿观礼或离场同行'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       {task.stage < 2 && <g transform="translate(676 280) rotate(83)" role="img" aria-label="场外昏迷萧宁，交由族人照看"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /></g>}
-      {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 50} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
+      {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 50} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</div>

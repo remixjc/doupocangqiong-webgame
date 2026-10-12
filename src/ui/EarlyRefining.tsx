@@ -1,3 +1,4 @@
+import { HallText } from './MapPrimitives'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { earlyRefiningBlock, refiningNear, refiningStart, submitEarlyRefining, type RefiningAction } from '../core/early-refining'
@@ -18,7 +19,7 @@ export default function EarlyRefining({ state, onBack, continuation = false }: {
     start={continuation ? task.stage < 18 ? ironPlaces.table : refiningStart(task.stage) : refiningStart(task.stage)} near={yan => refiningNear(yan, task.stage)}
     draw={() => <>
       <path aria-label={shown.stage >= 18 ? '当时药团已入清水' : shown.water ? '当时已备清水，尚未入药' : '盛水处，尚未备水'} d="M88 350 Q100 375 112 350 Z" fill={shown.stage >= 18 ? '#75bd7e' : shown.water ? '#6ba4bb' : '#937954'} />
-      <text x="100" y="340" textAnchor="middle" fill="#eed7ad" fontSize="10">清水</text>
+      <HallText x="100" y="340">清水</HallText>
       {shown.flame && <path aria-label="老师掌中白焰，尚未熄灭" d="M230 348 Q222 340 230 327 Q238 340 230 348" fill="#fff4dc" />}
       <circle aria-label={`当时魔核药性：${({ table: '桌面', teacher: '老师手中', flame: '白焰中', softened: '已柔化', suspended: '悬浮药团', water: '水中' })[shown.core]}`}
         cx={shown.core === 'table' ? 260 : shown.core === 'water' ? 100 : shown.core === 'flame' || shown.core === 'suspended' ? 230 : 210}

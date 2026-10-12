@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -43,7 +44,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
     <h2>日复一日，灯下偶得突破。</h2>
     <p id="eighth-help">方向键或WASD行走，走近地点按E接续静态步骤；训练使用下方时机与动作按钮。地图把房间、城市和后山压缩为行程节点。重入从分路出发，训练断点保留。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="同行与礼前训练地图" aria-describedby="eighth-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill={task.stage >= 11 ? '#202f3c' : '#304d43'} />
+      <MapBackground fill={task.stage >= 11 ? '#202f3c' : '#304d43'} />
       <path d="M100 300 H540 M220 300 V120 H520 V300" fill="none" stroke="#78836c" strokeWidth="28" strokeLinejoin="round" />
       <path d="M430 90 L500 26 L558 92 L614 43 L687 113Z" fill="#51645a" />
       <path d="M174 100 V61 H266 V100 M167 64 L220 31 L273 64" fill="#987a57" stroke="#b69e72" strokeWidth="5" />
@@ -57,7 +58,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       <path d="M580 285 V250" stroke="#b59457" strokeWidth="4" /><circle cx="580" cy="250" r="9" fill="#f1c270" />
       {task.stage >= 4 && task.stage <= 5 && <g transform={`translate(${task.stage === 4 ? 246 : 546} 104)`} role="img" aria-label="薰儿同行"><circle cy="-10" r="7" fill="#dfbca3" /><path d="M-11 14 L-6-3 H6 L11 14Z" fill="#73a98a" /></g>}
       {task.stage === 7 && <g role="img" aria-label={task.beats ? '吸掌已记，准备吹火掌' : '准备吸掌，再接吹火掌'}><path d={task.beats ? 'M500 135 Q535 115 566 140' : 'M566 140 Q535 160 500 135'} fill="none" stroke="#d5d4a1" strokeWidth="3" strokeDasharray="6 5" /><path d="M555 129 Q581 118 571 142 Q561 146 555 129" fill="#b9c480" /></g>}
-      {Object.entries(eighthPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 57} textAnchor="middle" fill="#ead9b6" fontSize="12">{place.label}</text></g>)}
+      {Object.entries(eighthPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="礼前训练行走操作">{<WalkDirectionButtons prefix="礼前" onMove={move} />}</div>

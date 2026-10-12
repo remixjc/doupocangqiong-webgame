@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -26,17 +27,17 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
     <svg className="early-walk-map" viewBox="0 0 720 280" role="img" aria-label={`长期物资：药材包在${places[task.herbs]}，魔核包在${places[task.cores]}；同瓶仍由萧炎保管，自用药液耗尽。`}>
       <rect width="720" height="280" fill="#293a33" />
       <rect x="35" y="110" width="175" height="110" fill="#685d42" stroke="#b5a073" />
-      <text x="123" y="82" textAnchor="middle" fill="#e8d1a6" fontSize="15">批次标签台</text>
-      {[{ x: 272, title: '药材格' }, { x: 408, title: '魔核格' }].map(tray => <g key={tray.x}><rect x={tray.x} y="129" width="99" height="91" fill="#414c3b" stroke="#b5a073" /><text x={tray.x + 50} y="105" textAnchor="middle" fill="#e8d1a6" fontSize="15">{tray.title}</text></g>)}
+      <MapText x="123" y="82" fill="#e8d1a6" fontSize="15">批次标签台</MapText>
+      {[{ x: 272, title: '药材格' }, { x: 408, title: '魔核格' }].map(tray => <g key={tray.x}><rect x={tray.x} y="129" width="99" height="91" fill="#414c3b" stroke="#b5a073" /><MapText x={tray.x + 50} y="105" fill="#e8d1a6" fontSize="15">{tray.title}</MapText></g>)}
       <rect x="552" y="64" width="138" height="156" fill="#685d42" stroke="#b5a073" />
-      <text x="621" y="46" textAnchor="middle" fill="#e8d1a6" fontSize="15">房柜{task.stage === 6 ? ' · 已合上' : ''}</text>
+      <MapText x="621" y="46" fill="#e8d1a6" fontSize="15">房柜{task.stage === 6 ? ' · 已合上' : ''}</MapText>
       {task.stage < 6 && (['herbs', 'cores'] as const).map(id => task[id] !== 'none' && <g key={id} transform={`translate(${task[id] === 'cabinet' ? id === 'herbs' ? 591 : 651 : task[id] === 'shelf' ? id === 'herbs' ? 322 : 458 : id === 'herbs' ? 84 : 163} 174)`}>
         <path d="M-22 19 Q-30-5-7-17 H7 Q30-5 22 19Z" fill={id === 'herbs' ? '#aab57d' : '#96b7b8'} stroke="#d0c398" />
         <path d="M-9-15 H9" stroke="#d0c398" strokeWidth="4" />
-        <text y="39" textAnchor="middle" fill="#e8d1a6" fontSize="12">{id === 'herbs' ? '药材包' : '魔核包'}</text>
+        <MapText y="39" fill="#e8d1a6">{id === 'herbs' ? '药材包' : '魔核包'}</MapText>
       </g>)}
       {task.stage === 6 && <path d="M621 67 V217 M617 151 H625" stroke="#b5a073" strokeWidth="3" />}
-      <text x="360" y="262" textAnchor="middle" fill="#e8d1a6" fontSize="13">另购批次 · 八个月用量是故事概述 · 分拣位置为原创布局</text>
+      <MapText x="360" y="262" fill="#e8d1a6" fontSize="13">另购批次 · 八个月用量是故事概述 · 分拣位置为原创布局</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="长期物资位置">
       {(Object.keys(stations) as LongSupplyStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}

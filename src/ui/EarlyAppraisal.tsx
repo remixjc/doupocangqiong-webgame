@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -25,19 +26,19 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
       <rect width="720" height="300" fill="#293a33" />
       <path d="M25 25 H695 V276 H25Z" fill="#4b493b" stroke="#b5a073" strokeWidth="3" />
       <rect x="72" y="67" width="96" height="200" fill="#313e36" stroke="#a99064" />
-      <text x="120" y="50" textAnchor="middle" fill="#e8d1a6" fontSize="14">大厅入口</text>
+      <MapText x="120" y="50" fill="#e8d1a6" fontSize="14">大厅入口</MapText>
       <g transform="translate(252 172)"><path d={task.cloaked ? 'M-27 65 Q-40-10 0-43 Q40-10 27 65Z' : 'M-22 65 L-12 0 H12 L22 65Z'} fill={task.cloaked ? '#20282a' : '#c7a06a'} />
         {!task.cloaked && <circle cy="-13" r="12" fill="#e5c499" />}
-        <text y="86" textAnchor="middle" fill="#e8d1a6" fontSize="12">{task.speaker === 'yaolao' ? '药老代言 · 萧炎藏身' : '萧炎'}</text></g>
+        <MapText y="86" fill="#e8d1a6">{task.speaker === 'yaolao' ? '药老代言 · 萧炎藏身' : '萧炎'}</MapText></g>
       <path d="M368 213 H623 V233 H368Z M386 233 V273 M605 233 V273" stroke="#c1a675" fill="#826a48" strokeWidth="3" />
-      {task.stage >= 5 && <g transform="translate(560 128)"><path d="M-27 65 L-13 0 H13 L27 65Z" fill="#91a37a" /><circle cy="-15" r="14" fill="#dac4a4" /><path d="M-16-22 Q0-42 16-22" fill="#d7dbbf" /><text y="94" textAnchor="middle" fill="#e8d1a6" fontSize="13">谷尼 · 鉴定者</text></g>}
+      {task.stage >= 5 && <g transform="translate(560 128)"><path d="M-27 65 L-13 0 H13 L27 65Z" fill="#91a37a" /><circle cy="-15" r="14" fill="#dac4a4" /><path d="M-16-22 Q0-42 16-22" fill="#d7dbbf" /><MapText y="94" fill="#e8d1a6" fontSize="13">谷尼 · 鉴定者</MapText></g>}
       {task.stage < 7 && <g transform={`translate(${bottle.owner === 'xiaoyan' ? 295 : 433} 179)`}>
         <path d="M-8-19 H8 V-10 Q17-2 14 18 H-14 Q-17-2-8-10Z" fill="#dedfc8" stroke="#b5bea5" /><rect x="-9" y="-24" width="18" height="6" fill="#98764c" />
       </g>}
       {task.stage === 5 && <g><path d="M480 184 L466 209" stroke="#dbe1d2" strokeWidth="3" /><ellipse cx="463" cy="207" rx="7" ry="4" fill="#8dab68" /><text x="438" y="255" fill="#d5d8bf" fontSize="12">谷尼以银针鉴别</text></g>}
       {task.stage >= 6 && <text x="427" y="110" fill="#e4d59b" fontSize="14">二品制品 · 鉴定已记</text>}
-      {task.card === 'black-entry' && <g><rect x="204" y="99" width="65" height="37" rx="3" fill="#202a29" stroke="#a88f63" /><text x="237" y="122" textAnchor="middle" fill="#cfba85" fontSize="12">入场卡</text></g>}
-      <text x="360" y="294" textAnchor="middle" fill="#e8d1a6" fontSize="13">待售实例保管：{appraisalOwnerLabels[bottle.owner]}</text>
+      {task.card === 'black-entry' && <g><rect x="204" y="99" width="65" height="37" rx="3" fill="#202a29" stroke="#a88f63" /><MapText x="237" y="122" fill="#cfba85">入场卡</MapText></g>}
+      <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">待售实例保管：{appraisalOwnerLabels[bottle.owner]}</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="鉴定路线位置">
       {(Object.keys(stations) as AppraisalStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}

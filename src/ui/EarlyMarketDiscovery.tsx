@@ -1,3 +1,4 @@
+import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -43,7 +44,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
     <p id="market-discovery-help">{returning ? '先同行出坊回族、分路后本人独自回房。方向/WASD行走，近当前地点按E；街坊不可穿过。位置不保存，刷新回到已完成地点；摆材料不恢复后来已耗物资。' : '由本人带薰儿走近前方摊位。方向/WASD行走，近摊按E；街坊不可穿过。历史逐步保存，行走位置不保存。老师的声音只在本人心中。'}{trade && '成交后需实际走到离摊标记。'}</p>
     <svg ref={field} role="group" aria-label={returning ? '回族与房中准备地图' : trade ? '询价与唯一成交地图' : '发现魔核与黑铁片地图'} aria-describedby="market-discovery-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" /><path d={returning ? 'M540 310 H140 V370' : 'M500 310 H620 V230'} fill="none" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
+      <MapBackground /><path d={returning ? 'M540 310 H140 V370' : 'M500 310 H620 V230'} fill="none" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       {returning ? <>
         {Object.entries(marketReturnPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke="#f7d699" strokeDasharray="4 5" />

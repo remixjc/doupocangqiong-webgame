@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -41,12 +42,12 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
         {status === 'fragments' ? <path d="M-24 0 L-11-13 L-2 0Z M1 0 L14-16 L20 0Z M24 0 L30-9 L39 0Z" fill="#b9c9c6" />
           : status === 'dust' ? <ellipse rx="32" ry="6" fill="#dfe3d4" />
           : <path d="M-11-47 H11 V-30 Q28-16 20 0 H-20 Q-28-16-11-30Z" fill="#aac5bf" stroke="#d5d7ba" />}
-        <text y="38" textAnchor="middle" fill="#e4d4b6" fontSize="13">{index ? '第二只' : '第一只'} · {status === 'intact' ? '完好' : status === 'pulled' ? '已拉近' : status === 'dust' ? '细末' : '碎片'}</text>
+        <MapText y="38" fill="#e4d4b6" fontSize="13">{index ? '第二只' : '第一只'} · {status === 'intact' ? '完好' : status === 'pulled' ? '已拉近' : status === 'dust' ? '细末' : '碎片'}</MapText>
       </g>)}
       {task.stage === 2 && <path d="M285 155 Q325 148 356 157" fill="none" stroke="#b9c6ac" strokeWidth="2" />}
       {(task.stage === 3 || task.stage === 8) && <path d="M342 128 L286 128 M291 122 L282 128 L291 134" fill="none" stroke="#93c6bf" strokeWidth="3" />}
-      {task.stage >= 5 && <g transform="translate(104 145)" opacity=".8"><circle cy="-21" r="11" fill="#d7e4db" /><path d="M-20 62 L-9-3 H9 L20 62Z" fill="#b3cabe" /><text y="84" textAnchor="middle" fill="#e4d4b6" fontSize="13">药老</text></g>}
-      <text x="360" y="269" textAnchor="middle" fill="#e4d4b6" fontSize="13">{task.teaching === 'basic' ? '吹火掌初步掌握 · 仍需练习' : task.teaching === 'explained' ? '吹火掌已讲解 · 尚待初练' : '尚未学习吹火掌 · 直接推风仅是初次试验'}</text>
+      {task.stage >= 5 && <g transform="translate(104 145)" opacity=".8"><circle cy="-21" r="11" fill="#d7e4db" /><path d="M-20 62 L-9-3 H9 L20 62Z" fill="#b3cabe" /><MapText y="84" fill="#e4d4b6" fontSize="13">药老</MapText></g>}
+      <MapText x="360" y="269" fill="#e4d4b6" fontSize="13">{task.teaching === 'basic' ? '吹火掌初步掌握 · 仍需练习' : task.teaching === 'explained' ? '吹火掌已讲解 · 尚待初练' : '尚未学习吹火掌 · 直接推风仅是初次试验'}</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}</div>
     <p role="status">吸推练习 {task.stage}/10 · 基础 {task.beats}/2 · 重试 {task.attempts} 次 · 第一只{task.first === 'fragments' ? '已碎' : task.first === 'pulled' ? '已拉近' : '完好'} · 第二只{task.second === 'dust' ? '已成细末' : task.second === 'pulled' ? '已拉近' : '完好'}</p>

@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -39,12 +40,12 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
       <rect width="720" height="300" fill="#203934" /><path d="M0 120 L90 32 L200 105 L350 15 L480 110 L610 40 L720 116 V0 H0Z" fill="#496359" />
       <path d="M0 255 Q130 200 250 245 T720 230 V300 H0Z" fill="#606346" />
       <ellipse cx="205" cy="234" rx="60" ry="20" fill="#73786a" />
-      <g transform="translate(205 125)" opacity=".85"><path d="M-22 80 Q-10 15 0 0 Q10 15 22 80Z" fill="#bdd4cb" /><circle cy="-10" r="12" fill="#e0e4d5" /><text x="0" y="107" textAnchor="middle" fill="#ead9b6" fontSize="14">药老 · 督练</text></g>
+      <g transform="translate(205 125)" opacity=".85"><path d="M-22 80 Q-10 15 0 0 Q10 15 22 80Z" fill="#bdd4cb" /><circle cy="-10" r="12" fill="#e0e4d5" /><MapText x="0" y="107" fill="#ead9b6" fontSize="14">药老 · 督练</MapText></g>
       <g transform="translate(475 170)"><ellipse cy="65" rx="28" ry="8" fill="#0004" /><path d="M-20 55 L-10 0 H10 L20 55Z" fill="#cda46b" /><circle cy="-14" r="12" fill="#edc9a2" /><path d="M-13-21 Q0-35 13-21" fill="#24312c" />
         {task.stage === 1 && <path d="M-32-25 Q40-30 40 34 Q0 75-32 36" fill="none" stroke="#a8cbaa" strokeWidth="3" />}
       </g>
       {task.stage === 1 && <path d="M233 145 Q320 103 430 166" fill="none" stroke="#d99078" strokeWidth="4" strokeDasharray="7 10" />}
-      <text x="360" y="286" textAnchor="middle" fill="#d5ceb2" fontSize="13">{task.stage === 2 ? state.earlyTraining.recovery.stage > 0 ? '本轮已停下 · 恢复有独立记录' : '本轮已停下 · 待回房恢复' : '后山督练 · 留意负荷'}</text>
+      <MapText x="360" y="286" fill="#d5ceb2" fontSize="13">{task.stage === 2 ? state.earlyTraining.recovery.stage > 0 ? '本轮已停下 · 恢复有独立记录' : '本轮已停下 · 待回房恢复' : '后山督练 · 留意负荷'}</MapText>
     </svg>
     <p role="status">督练承接 {task.pulses}/4 · 本轮负荷 {task.pulses * 25}% · 重新开练 {task.attempts} 次</p>
     {task.stage === 0 && <><p className="muted">开始后可以随时免费停练。失误结束当前轮，不扣金币、材料或药液；再次开始后从第一道脉冲练起。</p>

@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -27,24 +28,24 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
     <svg className="early-walk-map" viewBox="0 0 720 290" role="img" aria-label={`首次寄售准备：${task.product === 'sealed' ? `一个寄售玉瓶由${appraisalOwnerLabels[task.owner]}保管` : task.product === 'mixture' ? '老师已调制斑杂绿色药液，待装瓶' : '较低品质材料的独立准备路线'}。`}>
       <rect width="720" height="290" fill="#293d34" />
       <rect x="28" y="38" width="150" height="165" fill="#5b5641" stroke="#bea16d" />
-      <text x="103" y="65" textAnchor="middle" fill="#e7d2a9" fontSize="14">筹款方案</text>
+      <MapText x="103" y="65" fill="#e7d2a9" fontSize="14">筹款方案</MapText>
       <path d="M40 154 H163 M55 154 V190 M148 154 V190" stroke="#ba9d6f" strokeWidth="6" />
       <rect x="73" y="139" width="50" height="12" fill="#c1ae80" />
       <rect x="218" y="38" width="202" height="165" fill="#555d44" stroke="#bea16d" />
-      <text x="319" y="65" textAnchor="middle" fill="#e7d2a9" fontSize="14">药铺采购</text>
+      <MapText x="319" y="65" fill="#e7d2a9" fontSize="14">药铺采购</MapText>
       <path d="M242 123 H396 M242 165 H396" stroke="#bea16d" strokeWidth="6" />
       {(Object.keys(consignmentSupplies) as ConsignmentSupplyId[]).map((id, index) => <g key={id} transform={`translate(${258 + index * 44} 105)`}>
         <circle r="11" fill={task.receipts[id] ? '#a3b77a' : '#88765a'} />
-        <text y="42" textAnchor="middle" fill="#e4d0a4" fontSize="11">{task.receipts[id] ? '已购' : '待购'}</text>
+        <MapText y="42" fill="#e4d0a4" fontSize="11">{task.receipts[id] ? '已购' : '待购'}</MapText>
       </g>)}
       <rect x="458" y="38" width="230" height="165" fill="#344139" stroke="#bea16d" />
-      <text x="573" y="65" textAnchor="middle" fill="#e7d2a9" fontSize="14">隐蔽巷 · 药老调制</text>
+      <MapText x="573" y="65" fill="#e7d2a9" fontSize="14">隐蔽巷 · 药老调制</MapText>
       <g transform="translate(525 124)"><path d="M-22 55 Q-10-15 0-15 Q10-15 22 55Z" fill="#b6cec0" /><circle cy="-24" r="12" fill="#d8deca" />
         {task.stage === 3 && <path d="M22 13 Q30-25 45-34 Q36-5 48 0 Q50 22 22 13Z" fill="#e0ead3" />}</g>
       {task.product === 'mixture' && <g transform="translate(627 143)"><ellipse rx="30" ry="13" fill="#7e9b4e" /><circle cx="8" cy="-4" r="5" fill="#a1aa65" /><circle cx="-12" cy="3" r="4" fill="#637d41" /></g>}
-      {task.product === 'sealed' && <g transform="translate(627 144)"><path d="M-10-25 H10 V-13 Q23-3 19 25 H-19 Q-23-3-10-13Z" fill="#dfdfc7" stroke="#b7bea2" /><rect x="-12" y="-30" width="24" height="7" fill="#957547" /><text y="46" textAnchor="middle" fill="#e4d0a4" fontSize="12">{state.earlyTraining.auction.stage >= 6 ? '同瓶' : '待售'} · {appraisalOwnerLabels[task.owner]}保管</text></g>}
+      {task.product === 'sealed' && <g transform="translate(627 144)"><path d="M-10-25 H10 V-13 Q23-3 19 25 H-19 Q-23-3-10-13Z" fill="#dfdfc7" stroke="#b7bea2" /><rect x="-12" y="-30" width="24" height="7" fill="#957547" /><MapText y="46" fill="#e4d0a4">{state.earlyTraining.auction.stage >= 6 ? '同瓶' : '待售'} · {appraisalOwnerLabels[task.owner]}保管</MapText></g>}
       <path d="M104 230 H572" stroke="#a79769" strokeDasharray="8 7" strokeWidth="3" />
-      <text x="360" y="270" textAnchor="middle" fill="#e4d0a4" fontSize="13">另一次备料 · 同一寄售实例 · 自用容器保留</text>
+      <MapText x="360" y="270" fill="#e4d0a4" fontSize="13">另一次备料 · 同一寄售实例 · 自用容器保留</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="寄售准备位置">
       {(Object.keys(stations) as ConsignmentStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id}

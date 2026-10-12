@@ -1,3 +1,4 @@
+import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -44,10 +45,10 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
     <p id="market-search-help">先明确选择本步人物，再用方向或WASD行走、近当前地点按E。两人的位置各自记录在本次行走中；换人物和刷新需重新选择。街坊不可穿过，位置不保存。</p>
     <svg ref={field} role="group" aria-label="两人分路寻核与手链地图" aria-describedby="market-search-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" /><path d="M180 310 H650 M220 230 H620 V130 H580" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
+      <MapBackground /><path d="M180 310 H650 M220 230 H620 V130 H580" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       {Object.entries(marketSearchPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
-        <text x={p.x} y={p.y + 40} textAnchor="middle" fill="#eed7ad" fontSize="11">{p.label}</text></g>)}
+        <HallText x={p.x} y={p.y + 40} fontSize="11">{p.label}</HallText></g>)}
       <g aria-label="普通手链摊主" transform="translate(190 210)"><path d="M-10 12 L-5-5 H5 L10 12Z" fill="#b2a480" /><circle cy="-12" r="7" fill="#ddb894" /></g>
       {task.bracelet !== 'xuner-viewing' && <circle aria-label="普通手链在摊上" cx="220" cy="214" r="7" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /></g>

@@ -1,3 +1,4 @@
+import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -42,10 +43,10 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
       : '方向或WASD行走，近当前地点按E。街坊不可穿过；返回本人视角后继续与薰儿同行。位置不保存。'}</p>
     <svg ref={field} role="group" aria-label="南坊入市与巡卫地图" aria-describedby="market-escort-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" /><path d="M70 310 H640 M260 230 H540 V130 H630" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
+      <MapBackground /><path d="M70 310 H640 M260 230 H540 V130 H630" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       {Object.entries(marketEscortPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
-        <text x={p.x} y={p.y + 40} textAnchor="middle" fill="#eed7ad" fontSize="11">{p.label}</text></g>)}
+        <HallText x={p.x} y={p.y + 40} fontSize="11">{p.label}</HallText></g>)}
       {[240, 280].map(x => <g key={x} aria-label="门前家族护卫" transform={`translate(${x} 280)`}><path d="M-9 12 L-5-5 H5 L9 12Z" fill="#697a87" /><circle cy="-12" r="7" fill="#ddb894" /></g>)}
       <g aria-label={task.captain === 'introduced' ? '已自我介绍的巡卫队长' : '尚未自报身份的护卫'} transform={`translate(${task.patrol ? 260 : 540} ${task.patrol ? 210 : 290})`}>
         <path d="M-11 15 L-6-5 H6 L11 15Z" fill="#809298" /><circle cy="-13" r="8" fill="#d8b796" /></g>

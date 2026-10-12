@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -28,12 +29,12 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
     <span className="eyebrow">五天之后 / 功法阁入阁</span><h2>先认属性，再过阁门。</h2>
     <p id="qi-pavilion-help">方向键或WASD行走，靠近当前地点按E或按钮。门开、许可与跨门分别记录；关闭或刷新保留步骤，重入从阁前出发。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="功法阁属性测定地图" aria-describedby="qi-pavilion-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#34463b" /><rect width="720" height="170" fill="#273834" />
+      <MapBackground fill="#34463b" /><rect width="720" height="170" fill="#273834" />
       <path d="M180 350 H360 V100 M360 310 L500 290" fill="none" stroke="#85856f" strokeWidth="24" strokeLinejoin="round" />
       {qiPavilionWalls.map((rect, i) => <rect key={i} {...rect} fill="#9c8861" />)}
       <rect {...qiPavilionGate} fill={task.door === 'open' ? '#425448' : '#483b2c'} stroke="#dec18d" />
-      {task.stage < 9 && <text x="360" y="183" textAnchor="middle" fill="#ead9b6" fontSize="10">{task.door === 'open' ? '门已开 · 候测与听讲' : '大门未开'}</text>}
-      <text x="360" y="60" textAnchor="middle" fill="#dec18d" fontSize="18">功法阁 · 入阁后择卷待续</text>
+      {task.stage < 9 && <MapText x="360" y="183" fill="#ead9b6" fontSize="10">{task.door === 'open' ? '门已开 · 候测与听讲' : '大门未开'}</MapText>}
+      <MapText x="360" y="60" fill="#dec18d" fontSize="18">功法阁 · 入阁后择卷待续</MapText>
       <g transform="translate(500 290)" role="img" aria-label={`水晶球${task.crystal === 'broken' ? '已碎，无玩家拾取' : task.crystal === 'cracked' ? '出现细裂，尚未碎' : '仍完整'}`}>
         <rect x="-10" y="3" width="20" height="20" fill="#a1a38a" />
         {task.crystal !== 'broken' ? <><circle cy="-9" r="15" fill={task.xuner === 'fire' ? '#e5a87d' : task.yan === 'fire' ? '#d38a6a' : task.other === 'wind' ? '#7ea48b' : '#bacac7'} stroke="#e6e2c2" />
@@ -42,7 +43,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
       </g>
       <g transform="translate(385 310)" aria-hidden="true"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#b6bba8" /></g>
       <g transform={`translate(${task.entered ? 395 : 465} ${task.entered ? 105 : 325})`} aria-hidden="true"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
-      {Object.entries(qiPavilionPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 47} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
+      {Object.entries(qiPavilionPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 47} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="功法阁行走操作">{<WalkDirectionButtons prefix="功法阁" onMove={move} />}</div>

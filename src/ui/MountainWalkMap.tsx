@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { SecondaryButton } from './Buttons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
@@ -26,15 +27,15 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
   return <>
     <svg ref={field} role="group" aria-label={label} aria-describedby={helpId} tabIndex={0}
       className="early-walk-map" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#243b37" />
+      <MapBackground fill="#243b37" />
       <path d="M0 330 L180 80 L380 185 L600 35 L720 115 V0 H0Z" fill="#77998d" opacity=".25" />
       <path d="M80 330 H300 V110 H540" fill="none" stroke="#b6a178" strokeWidth="23" opacity=".35" />
       {mountainRingObstacles.map((rect, i) => <rect key={i} {...rect} rx="6" fill={i === 2 ? '#132824' : '#435649'} />)}
-      <text x="675" y="220" textAnchor="middle" fill="#c9bc99" fontSize="12">崖外</text>
-      <text x="675" y="240" textAnchor="middle" fill="#c9bc99" fontSize="11">不可通行</text>
+      <MapText x="675" y="220" fill="#c9bc99">崖外</MapText>
+      <MapText x="675" y="240" fill="#c9bc99" fontSize="11">不可通行</MapText>
       {Object.entries(mountainRingPlaces).map(([id, target]) => <g key={id}>
         <circle cx={target.x} cy={target.y} r="24" fill="none" stroke={place === id ? '#f7d699' : '#a69065'} strokeDasharray="4 5" />
-        <text x={target.x} y={target.y + 37} textAnchor="middle" fill="#ead0a4" fontSize="12">{target.label}</text>
+        <MapText x={target.x} y={target.y + 37} fill="#ead0a4">{target.label}</MapText>
       </g>)}
       {elderVisible && <g aria-label={elderNamed ? '已报名字的药老' : '身份尚未公开的古戒老人'} transform={`translate(${elderPoint.x} ${elderPoint.y})`} opacity=".65">
         <path d={seated ? 'M-15 20 L-8-6 H8 L15 20Z' : 'M-15 20 L-9-6 H9 L15 20Z'} fill="#b2d6cb" /><circle cy="-13" r="9" fill="#cbded2" />
@@ -52,7 +53,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
         <ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
         {ring === 'worn' && <circle aria-label="右手佩戴的同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />}
       </g>}
-      {bowed && <text x="300" y="180" textAnchor="middle" fill="#edcea0" fontSize="12">本人行礼已记录</text>}
+      {bowed && <MapText x="300" y="180" fill="#edcea0">本人行礼已记录</MapText>}
     </svg>
     {!observerOnly && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}>{(['up', 'left', 'down', 'right'] as const).map((direction, i) =>
       <SecondaryButton key={direction} aria-label={`${prefix}${['向上走', '向左走', '向下走', '向右走'][i]}`} onClick={() => onMove(direction)}>{['↑', '←', '↓', '→'][i]}</SecondaryButton>)}</div>

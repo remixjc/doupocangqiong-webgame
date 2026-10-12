@@ -1,3 +1,4 @@
+import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -43,7 +44,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
       <SecondaryButton aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>旁观房中的老师</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label={mapLabel} aria-describedby="teacher-room-help" tabIndex={0} viewBox="80 290 245 125" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
+      <MapBackground /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
       <g aria-label="老师固定房中位置" transform="translate(220 370)"><MarketWalker /><text y="-52" textAnchor="middle" fill="#eed7ad">老师</text></g>
       <rect x="250" y="346" width="35" height="15" fill="#937954" /><text x="250" y="338" fill="#eed7ad">桌面</text>
       <g aria-label="萧炎本人行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad">本人</text></g>

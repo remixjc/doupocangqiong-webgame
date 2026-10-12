@@ -1,3 +1,4 @@
+import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -45,7 +46,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
     <p id="market-bracelets-help">明确选择本步人物，方向或WASD行走，近街角按E。两人独立行走，换人物和刷新需重选；位置不保存，街坊不可穿过。</p>
     <svg ref={field} role="group" aria-label="让路与两条手链地图" aria-describedby="market-bracelets-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" /><path d="M160 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
+      <MapBackground /><path d="M160 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       <circle cx="220" cy="310" r="38" fill="none" stroke="#f7d699" strokeDasharray="4 5" />
       <text x="220" y="365" textAnchor="middle" fill="#eed7ad">拦路街角</text>

@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -45,22 +46,22 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
     <h2>先推、再拉、再推，倒地仍待裁定。</h2>
     <p id="ning-first-help">方向键或WASD行走，近地点按E接静态步骤。沿南侧阶梯登台，首轮用35%–65%窗口选择动作；错序、错时机或停下免费重开。重入从台下出发，推拉断点保留。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="萧宁首轮推拉推地图" aria-describedby="ning-first-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#34463b" />
+      <MapBackground fill="#34463b" />
       <path d="M240 280 H440 V240" fill="none" stroke="#79816b" strokeWidth="32" strokeLinejoin="round" />
       <rect {...ceremonyPlatform} rx="6" fill="#89704b" stroke="#b79b65" strokeWidth="3" />
       {[100, 128, 156, 184, 212].map(y => <path key={y} d={`M304 ${y} H656`} stroke="#b39464" strokeWidth="2" />)}
       <rect x="412" y="220" width="56" height="36" fill="#a38a61" />
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
       <path d="M592 181 V114 Q613 99 634 114 V181Z" fill="#293434" stroke="#93a492" strokeWidth="3" />
-      <text x="613" y="130" textAnchor="middle" fill="#e2c273" fontSize="12">复测已记</text>
+      <MapText x="613" y="130" fill="#e2c273">复测已记</MapText>
       {task.stage >= 3 && <g transform={`translate(${ningX} ${task.stage >= 7 ? 181 : 146}) rotate(${task.stage >= 7 ? 83 : 0})`} role="img" aria-label={task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮倒地的历史画面，最终胜负已宣布' : '萧宁首轮倒地，裁判尚未最终宣布' : task.beats === 1 ? '萧宁被首次推退' : task.beats === 2 ? '萧宁被吸掌拉近，准备推出' : '萧宁来袭，药物尚未服用'}>
         <circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /><path d="M-8-3 L-25-6" stroke="#e1bba0" strokeWidth="5" />
       </g>}
       {training && <path d={task.beats === 1 ? 'M607 173 Q535 190 468 173' : 'M468 173 Q535 155 601 173'} fill="none" stroke="#ead093" strokeWidth="3" strokeDasharray="6 5" />}
-      <text x="544" y="204" textAnchor="middle" fill="#ead9b6" fontSize="11">萧宁 · {task.verdict === 'pending' ? '倒地待裁判' : '首轮交锋'}</text>
+      <MapText x="544" y="204" fill="#ead9b6" fontSize="11">萧宁 · {task.verdict === 'pending' ? '倒地待裁判' : '首轮交锋'}</MapText>
       <g transform="translate(272 272)" aria-label="薰儿台下观礼" role="img"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       {task.stage >= 1 && task.stage <= 2 && <g transform="translate(174 271)" role="img" aria-label={task.pill === 'ning-held' ? '场边镜头：萧宁持有增气药物，未服用' : '场边镜头：萧玉准备交药'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#9e83a6" /><circle cx="20" cy="-1" r="5" fill="#8bbc87" /></g>}
-      {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} textAnchor="middle" fill="#ead9b6" fontSize="11">{place.label}</text></g>)}
+      {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="萧宁首轮行走操作">{<WalkDirectionButtons prefix="首轮" onMove={move} />}</div>

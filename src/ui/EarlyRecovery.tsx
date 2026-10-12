@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -42,7 +43,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
         <ellipse rx="86" ry="24" cy="-10" fill={waterColor} stroke="#c6aa79" strokeWidth="3" />
         <path d="M-58-10 Q-28-20 0-10 T58-10" stroke="#d6e3d1" fill="none" strokeWidth="2" />
       </g>
-      <text x="355" y="300" textAnchor="middle" fill="#ebd6b1" fontSize="13">原有自用容器 · {recoveryEnergyLabels[task.energy]}</text>
+      <MapText x="355" y="300" fill="#ebd6b1" fontSize="13">原有自用容器 · {recoveryEnergyLabels[task.energy]}</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="恢复房间位置">
       {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => <SecondaryButton key={id}

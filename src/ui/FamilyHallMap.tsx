@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { SecondaryButton } from './Buttons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
@@ -24,18 +25,18 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
   return <>
     <svg ref={field} role="group" aria-label={label} aria-describedby={helpId} tabIndex={0}
       className="early-walk-map" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#22352f" />
+      <MapBackground fill="#22352f" />
       <rect x="35" y="255" width="180" height="140" rx="8" fill="#3d4839" />
       <rect x="255" y="30" width="425" height="315" rx="8" fill="#4b4335" />
       <path d="M100 330 H210 V270 H270 H400 V100 H550 M350 170 V310 H610 V270" fill="none" stroke="#9c8960" strokeWidth="18" opacity=".3" />
       {familyVisitWalls.map((wall, index) => <rect key={index} {...wall} rx="3" fill="#17251f" />)}
-      <text x="125" y="285" textAnchor="middle" fill="#dfc9a0" fontSize="12">清晨 · 拜师之前</text>
-      <text x="465" y="58" textAnchor="middle" fill="#dfc9a0" fontSize="15">萧家接待厅</text>
-      <text x="480" y="230" textAnchor="middle" fill="#c8ac7b" fontSize="11">厅中陈设</text>
+      <MapText x="125" y="285" fill="#dfc9a0">清晨 · 拜师之前</MapText>
+      <MapText x="465" y="58" fill="#dfc9a0" fontSize="15">萧家接待厅</MapText>
+      <MapText x="480" y="230" fill="#c8ac7b" fontSize="11">厅中陈设</MapText>
       {Object.entries({ ...familyVisitPlaces, ...extraPlaces }).map(([id, target]) => <g key={id}>
         <circle cx={target.x} cy={target.y} r="24" fill="none" stroke={place === id ? '#f7d699' : '#b09b71'} strokeDasharray="4 5" />
         {observer && focusPlace === id && <circle cx={target.x} cy={target.y} r="29" fill="none" stroke="#a6e1d3" strokeWidth="3" aria-label="旁观焦点" />}
-        <text x={target.x} y={target.y + 37} textAnchor="middle" fill="#edcea0" fontSize="11">{target.label}</text>
+        <MapText x={target.x} y={target.y + 37} fill="#edcea0" fontSize="11">{target.label}</MapText>
       </g>)}
       {box && <g aria-label={boxLabel}><rect x="580" y="242" width="28" height="16" rx="3" fill="#9da778" /><circle cx="595" cy="248" r="4" fill="#d5cf91" /></g>}
       {paper !== 'none' && <g aria-label={paper === 'nalan' ? '纳兰持有的同一文书' : paper === 'table' ? '已置桌的同一文书' : paper === 'marked' ? '萧炎携带的同一文书' : paper === 'preparing' ? '备好的纸张，尚无成文' : '文书桌上的同一文书'}
@@ -46,7 +47,7 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
       {!observer && <g aria-label="萧炎行走位置" transform={`translate(${position.x} ${position.y})`}>
         <ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
       </g>}
-      {observer && <text x="465" y="390" textAnchor="middle" fill="#a6e1d3" fontSize="13">{departed ? '旁观厅外 · 双方已离厅，纳兰携原文书' : '旁观厅内 · 萧炎已离厅'}</text>}
+      {observer && <MapText x="465" y="390" fill="#a6e1d3" fontSize="13">{departed ? '旁观厅外 · 双方已离厅，纳兰携原文书' : '旁观厅内 · 萧炎已离厅'}</MapText>}
     </svg>
     {!observer && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}>{(['up', 'left', 'down', 'right'] as const).map((direction, index) =>
       <SecondaryButton key={direction} aria-label={`${prefix}${['向上走', '向左走', '向下走', '向右走'][index]}`} onClick={() => onMove(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>}

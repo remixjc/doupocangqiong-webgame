@@ -1,3 +1,4 @@
+import { HallText } from './MapPrimitives'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -40,21 +41,21 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
     <svg ref={field} role="group" aria-label="东架会面地图" aria-describedby="hall-talk-help" tabIndex={0} viewBox="100 190 390 115" className="early-walk-map" onKeyDown={key}>
       <rect x="100" y="190" width="390" height="115" fill="#293e36" />
       <rect x="160" y="220" width="110" height="45" fill="none" stroke="#bfa46a" />
-      <text x="215" y="211" textAnchor="middle" fill="#eed7ad" fontSize="10">西侧训练场</text>
+      <HallText x="215" y="211">西侧训练场</HallText>
       <g aria-label="萧宁仍在西场" transform="translate(235 244)">
-        <circle r="7" fill="#bd8d6b" /><text y="21" textAnchor="middle" fill="#eed7ad" fontSize="9">萧宁</text>
+        <circle r="7" fill="#bd8d6b" /><HallText y="21" fontSize="9">萧宁</HallText>
       </g>
       <rect x="345" y="210" width="110" height="20" fill="#937954" />
-      <text x="400" y="201" textAnchor="middle" fill="#eed7ad" fontSize="10">东侧书架</text>
+      <HallText x="400" y="201">东侧书架</HallText>
       <g aria-label={task.seated ? '薰儿已坐旁边' : '薰儿仍站东架'} transform="translate(380 250)">
         <circle cy={task.seated ? 5 : 0} r="7" fill="#ae8dbd" />
-        <text y="-13" textAnchor="middle" fill="#eed7ad" fontSize="9">薰儿</text>
+        <HallText y="-13" fontSize="9">薰儿</HallText>
       </g>
       {task.ownScroll === 'xuner' && <rect aria-label="薰儿自己的临时阅读卷" x="360" y="257" width="13" height="9" fill="#604572" stroke="#c2a679" />}
       <g aria-label="萧炎本人东架位置" transform="translate(400 250)">
         <MarketWalker />
         {task.stage >= 17 && <path aria-label="轻拍头部的历史动作" d="M0 4 L-15 -5" fill="none" stroke="#eac49b" strokeWidth="3" />}
-        <text y="26" textAnchor="middle" fill="#eed7ad" fontSize="9">本人 · {task.stage >= 16 || task.stage >= 2 && task.stage < 12 ? '抬眼答话' : '读第一卷'}</text>
+        <HallText y="26" fontSize="9">本人 · {task.stage >= 16 || task.stage >= 2 && task.stage < 12 ? '抬眼答话' : '读第一卷'}</HallText>
       </g>
       <rect aria-label="本人同一第一卷的位置或明确回顾" x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
     </svg>

@@ -1,3 +1,4 @@
+import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -53,23 +54,23 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
       <SecondaryButton aria-pressed={actor === 'ring'} onClick={() => setActor('ring')}>只看静止古戒</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="出门与石路地图" aria-describedby="departure-help" tabIndex={0} viewBox={space === 'room' ? '80 290 245 125' : '80 215 280 125'} className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" />
+      <MapBackground />
       {space === 'room' ? <>
         <rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
         <rect x="115" y="345" width="55" height="15" fill="#937954" />
-        <text x="140" y="332" textAnchor="middle" fill="#eed7ad" fontSize="10">床边</text>
+        <HallText x="140" y="332">床边</HallText>
         <circle aria-label="静止古戒" cx="175" cy="350" r="5" fill="none" stroke="#222" strokeWidth="3" />
         <rect x="292" y="345" width="15" height="40" fill="#937954" />
-        <text x="300" y="334" textAnchor="middle" fill="#eed7ad" fontSize="10">房门</text>
+        <HallText x="300" y="334">房门</HallText>
       </> : <>
         <path d="M300 310 H140" stroke="#bfa46a" strokeWidth="20" opacity=".4" />
         <rect x="280" y="245" width="42" height="42" fill="#59664a" />
         <rect aria-label={task.closed ? '同一房门已关' : '同一房门仍开'} x="295" y="263" width="12" height="24" fill={task.closed ? '#937954' : '#293e36'} />
-        <text x="300" y="238" textAnchor="middle" fill="#eed7ad" fontSize="10">门外</text>
-        <text x="140" y="293" textAnchor="middle" fill="#eed7ad" fontSize="10">石路</text>
+        <HallText x="300" y="238">门外</HallText>
+        <HallText x="140" y="293">石路</HallText>
         {[140, 195, 245].map(x => <g key={x} aria-label="石路旁绿柳"><path d={`M${x} 280 V247`} stroke="#a39c6b" strokeWidth="3" /><path d={`M${x - 13} 276 Q${x} 235 ${x + 13} 276`} stroke="#75bd7e" strokeWidth="6" fill="none" /></g>)}
       </>}
-      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad" fontSize="10">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</text></g>
+      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</HallText></g>
     </svg>
     {scene && task.risen && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="出门" onMove={move} /></div>}
     {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}

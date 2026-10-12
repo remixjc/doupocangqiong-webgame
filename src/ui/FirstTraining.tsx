@@ -1,3 +1,4 @@
+import { HallText } from './MapPrimitives'
 import { useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -24,7 +25,7 @@ export default function FirstTraining({ state, onBack, continuation = false }: {
     near={yan => firstTrainingNear(yan, task.stage)}
     draw={() => <>
       <rect x="94" y="365" width="44" height="28" rx="9" fill="#6b835f" aria-label="衣着剪影与容器遮挡" />
-      <text x="115" y="320" textAnchor="middle" fill="#eed7ad" fontSize="10">{task.seated ? '保持坐定' : '修炼容器'}</text>
+      <HallText x="115" y="320">{task.seated ? '保持坐定' : '修炼容器'}</HallText>
       {continuation && task.stage === 13 && <text x="160" y="342" fill="#eed7ad" fontSize="10">回望处</text>}
       {continuation && task.pale && <text x="115" y="356" fontSize="10" fill="#eed7ad">当时绿意变淡</text>}
       {continuation && task.dressed && <text x="260" y="405" fontSize="10" fill="#eed7ad">衣着已整理</text>}

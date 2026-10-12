@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -36,7 +37,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="斗技堂地图"
       aria-describedby="early-hall-help" viewBox="0 0 720 420" onKeyDown={key}>
       <title>斗技堂东西两区原创布局</title>
-      <rect width="720" height="420" fill="#202d2c" />
+      <MapBackground fill="#202d2c" />
       <rect x="24" y="24" width="672" height="372" rx="5" fill="#394139" stroke="#b59864" strokeWidth="3" />
       <path d="M360 45 V260 M300 390 H420" stroke="#c8b082" strokeWidth="3" strokeDasharray="9 9" />
       <rect x="115" y="70" width="185" height="200" fill="#78674b" stroke="#c2ac7d" />
@@ -46,26 +47,26 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
         {index === 0 && Array.from({ length: 10 }, (_, i) => <path key={i} d={`M${446 + i * 21} 52 v30`} stroke={i % 2 ? '#b8c3a0' : '#d0ad75'} strokeWidth="10" />)}
       </g>)}
       <rect x="320" y="285" width="80" height="15" fill="#79613e" stroke="#dac28f" />
-      <text x="550" y="185" textAnchor="middle" fill="#dec99f" fontSize="17">藏 卷 区</text>
-      <text x="180" y="240" textAnchor="middle" fill="#dec99f" fontSize="17">练 习 区</text>
+      <MapText x="550" y="185" fill="#dec99f" fontSize="17">藏 卷 区</MapText>
+      <MapText x="180" y="240" fill="#dec99f" fontSize="17">练 习 区</MapText>
       {task.stage >= 2 && task.stage <= 4 && <g role="img" aria-label={task.stage >= 4 ? '薰儿胜出，萧宁退至练习区外' : '薰儿与萧宁切磋，萧炎在旁观察'}>
-        <g transform={`translate(${task.stage === 3 ? 155 : 180} 145)`}><path d="M-10 14 L-6-2 H6 L11 14Z" fill="#bfb3db" /><circle cy="-9" r="7" fill="#edc79f" /><text y="35" textAnchor="middle" fill="#f3dfb7" fontSize="12">薰儿</text></g>
-        <g transform={`translate(${task.stage >= 4 ? 325 : 245} 145)`}><path d="M-10 14 L-6-2 H6 L11 14Z" fill="#7190a3" /><circle cy="-9" r="7" fill="#edc79f" /><text y="35" textAnchor="middle" fill="#f3dfb7" fontSize="12">萧宁</text></g>
+        <g transform={`translate(${task.stage === 3 ? 155 : 180} 145)`}><path d="M-10 14 L-6-2 H6 L11 14Z" fill="#bfb3db" /><circle cy="-9" r="7" fill="#edc79f" /><MapText y="35">薰儿</MapText></g>
+        <g transform={`translate(${task.stage >= 4 ? 325 : 245} 145)`}><path d="M-10 14 L-6-2 H6 L11 14Z" fill="#7190a3" /><circle cy="-9" r="7" fill="#edc79f" /><MapText y="35">萧宁</MapText></g>
         {task.stage === 3 && <path d="M218 145 L177 145" stroke="#e3c890" strokeWidth="3" strokeDasharray="4 4" />}
       </g>}
       {task.stage >= 5 && task.stage <= 7 && <g role="img" aria-label="薰儿与萧宁在藏卷处交涉">
-        <circle cx="585" cy="163" r="8" fill="#bfb3db" /><text x="585" y="189" textAnchor="middle" fill="#ead8ef" fontSize="12">薰儿</text>
-        <circle cx="475" cy="180" r="8" fill="#7190a3" /><text x="475" y="203" textAnchor="middle" fill="#dce8ec" fontSize="12">萧宁</text>
+        <circle cx="585" cy="163" r="8" fill="#bfb3db" /><MapText x="585" y="189" fill="#ead8ef">薰儿</MapText>
+        <circle cx="475" cy="180" r="8" fill="#7190a3" /><MapText x="475" y="203" fill="#dce8ec">萧宁</MapText>
       </g>}
       {earlyHallPlaces.map(item => <g key={item.id}>
         <circle cx={item.x} cy={item.y} r="27" fill={place?.id === item.id ? '#f0c57940' : '#f0c57912'} stroke="#dfc18a" />
-        <text x={item.x} y={item.y - 35} textAnchor="middle" fill="#f3dfb7" fontSize="13">{item.label}</text>
+        <MapText x={item.x} y={item.y - 35} fontSize="13">{item.label}</MapText>
       </g>)}
       <g aria-hidden="true" data-player-x={position.x} data-player-y={position.y} transform={`translate(${position.x} ${position.y})`}>
         <ellipse cy="14" rx="13" ry="5" fill="#0005" /><path d="M-10 12 L-6-2 H6 L11 12Z" fill="#d3a567" />
         <circle cy="-8" r="7" fill="#edc79f" /><path d="M-7-11 Q0-20 7-10" fill="#26322f" />
       </g>
-      <text x="360" y="406" textAnchor="middle" fill="#dbc59e" fontSize="12">堂口 · 原创比例与陈设</text>
+      <MapText x="360" y="406" fill="#dbc59e">堂口 · 原创比例与陈设</MapText>
     </svg>
     <p role="status" className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</p>
     <div className="early-walk-controls" aria-label="斗技堂行走操作">

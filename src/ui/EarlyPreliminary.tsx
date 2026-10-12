@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -35,18 +36,18 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
     <h2>按名簿候测，走到黑碑前。</h2>
     <p id="preliminary-help">聚焦地图用方向键或WASD行走，走近地点按E或操作按钮。高台、树丛与候测设施不可穿越；每次进入从房门起点走回当前步骤，行走位置不写入存档。布局与距离为原创压缩设计。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="一月前预测地图" aria-describedby="preliminary-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#273c37" />
+      <MapBackground fill="#273c37" />
       <path d="M100 360 L240 300 H380 L580 180" fill="none" stroke="#69776b" strokeWidth="38" strokeLinejoin="round" />
       {preliminaryObstacles.map((rect, i) => <rect key={i} {...rect} rx="7" fill={i === 0 ? '#776650' : i === 1 ? '#566751' : '#425e46'} stroke="#9a9478" />)}
-      <text x="165" y="64" textAnchor="middle" fill="#ead9b6" fontSize="13">高台 · 萧战与三长老</text>
+      <MapText x="165" y="64" fill="#ead9b6" fontSize="13">高台 · 萧战与三长老</MapText>
       {[95, 140, 185, 230].map((x, i) => <g key={x} transform={`translate(${x} 110)`}><circle cy="-14" r="8" fill="#dbb799" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill={i === 1 ? '#b7945b' : '#899594'} /></g>)}
       <path d="M68 371 V306 H132 V371 M80 349 V321 H120 V349" fill="#8a7351" stroke="#c0a779" strokeWidth="3" />
       <path d="M220 299 V251 M260 299 V251 M214 251 H266" fill="none" stroke="#c0a779" strokeWidth="7" />
-      <g role="img" aria-label={`预测黑碑 · ${lastResult}`}><path d="M555 195 V98 L580 87 L605 98 V195Z" fill="#182927" stroke="#b8a472" strokeWidth="3" /><text x="580" y="149" textAnchor="middle" fill="#eed38b" fontSize="12">{task.yan !== 'unmeasured' ? '七段' : task.xuner !== 'unmeasured' ? '一星斗者' : task.mei !== 'unmeasured' ? '八段' : '待测'}</text></g>
-      <g transform="translate(636 172)"><circle cy="-17" r="8" fill="#dbb799" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#91a49c" /><path d="M-10 0 H12 V10 H-10Z" fill="#c1a46d" /><text y="34" textAnchor="middle" fill="#ead9b6" fontSize="12">测试员</text></g>
-      <g transform={`translate(${task.stage < 2 ? 156 : task.stage === 7 ? 535 : 340} ${task.stage < 2 ? 350 : task.stage === 7 ? 180 : 284})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><text y="34" textAnchor="middle" fill="#ead9b6" fontSize="11">薰儿</text></g>
-      {task.stage >= 5 && <g transform={`translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#c07b79" /><text y="34" textAnchor="middle" fill="#ead9b6" fontSize="11">萧媚</text></g>}
-      {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 57} textAnchor="middle" fill="#ead9b6" fontSize="12">{place.label}</text></g>)}
+      <g role="img" aria-label={`预测黑碑 · ${lastResult}`}><path d="M555 195 V98 L580 87 L605 98 V195Z" fill="#182927" stroke="#b8a472" strokeWidth="3" /><MapText x="580" y="149" fill="#eed38b">{task.yan !== 'unmeasured' ? '七段' : task.xuner !== 'unmeasured' ? '一星斗者' : task.mei !== 'unmeasured' ? '八段' : '待测'}</MapText></g>
+      <g transform="translate(636 172)"><circle cy="-17" r="8" fill="#dbb799" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#91a49c" /><path d="M-10 0 H12 V10 H-10Z" fill="#c1a46d" /><MapText y="34" fill="#ead9b6">测试员</MapText></g>
+      <g transform={`translate(${task.stage < 2 ? 156 : task.stage === 7 ? 535 : 340} ${task.stage < 2 ? 350 : task.stage === 7 ? 180 : 284})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
+      {task.stage >= 5 && <g transform={`translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#c07b79" /><MapText y="34" fill="#ead9b6" fontSize="11">萧媚</MapText></g>}
+      {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="预测行走操作">

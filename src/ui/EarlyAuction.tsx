@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -26,14 +27,14 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
       <rect width="720" height="300" fill="#252f2c" />
       <path d="M25 25 H695 V275 H25Z" fill="#393c34" stroke="#b5a073" strokeWidth="3" />
       <path d="M325 68 H651 V177 H325Z" fill="#59463c" />
-      <g transform="translate(489 93)"><circle cy="-18" r="12" fill="#e6c8a2" /><path d="M-25 55 L-11-2 H11 L25 55Z" fill="#a34640" /><text x="0" y="-38" textAnchor="middle" fill="#ebd4a9" fontSize="14">雅妃 · 主持</text></g>
+      <g transform="translate(489 93)"><circle cy="-18" r="12" fill="#e6c8a2" /><path d="M-25 55 L-11-2 H11 L25 55Z" fill="#a34640" /><MapText x="0" y="-38" fill="#ebd4a9" fontSize="14">雅妃 · 主持</MapText></g>
       <path d="M403 147 H585 V167 H403Z M419 167 V185 M567 167 V185" fill="#8b704b" stroke="#c1a675" strokeWidth="3" />
       {task.stage >= 2 && task.stage < 7 && <g transform="translate(445 127)"><ellipse cy="16" rx="31" ry="4" fill="#adb99a" /><path d="M-7-10 H7 V-3 Q15 3 12 13 H-12 Q-15 3-7-3Z" fill="#dedfc8" /><rect x="-8" y="-14" width="16" height="5" fill="#98764c" /></g>}
-      {task.stage === 7 && <g><ellipse cx="444" cy="144" rx="35" ry="6" fill="#c7cdcf" /><rect x="417" y="130" width="54" height="11" rx="4" fill="#83a877" /><text x="489" y="201" textAnchor="middle" fill="#e8d1a6" fontSize="12">下一拍品 · 只观察</text></g>}
+      {task.stage === 7 && <g><ellipse cx="444" cy="144" rx="35" ry="6" fill="#c7cdcf" /><rect x="417" y="130" width="54" height="11" rx="4" fill="#83a877" /><MapText x="489" y="201" fill="#e8d1a6">下一拍品 · 只观察</MapText></g>}
       {sold && <path d="M548 130 L568 117 M561 111 L573 123" stroke="#e1bf87" strokeWidth="6" />}
-      <g transform="translate(109 176)"><path d="M-24 70 Q-35-5 0-37 Q35-5 24 70Z" fill="#171f21" /><text y="92" textAnchor="middle" fill="#e8d1a6" fontSize="13">黑袍萧炎 · 旁观</text></g>
-      {[275, 355, 635].map((x, index) => <g key={x} transform={`translate(${x} 223)`}><circle cy="-14" r="10" fill="#d1ba97" /><path d="M-17 36 L-10 0 H10 L17 36Z" fill={index === 0 ? '#a88a59' : '#687969'} /><text y="53" textAnchor="middle" fill="#e8d1a6" fontSize="12">{['萧战', '加列毕', '奥巴帕'][index]}</text></g>)}
-      <text x="360" y="294" textAnchor="middle" fill="#e8d1a6" fontSize="13">{sold ? `成交：萧战 / 40000 · 同瓶${appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管` : bid ? `当前报价：${bid} · 尚未落槌` : '同瓶等待介绍 · 萧炎不出价'}</text>
+      <g transform="translate(109 176)"><path d="M-24 70 Q-35-5 0-37 Q35-5 24 70Z" fill="#171f21" /><MapText y="92" fill="#e8d1a6" fontSize="13">黑袍萧炎 · 旁观</MapText></g>
+      {[275, 355, 635].map((x, index) => <g key={x} transform={`translate(${x} 223)`}><circle cy="-14" r="10" fill="#d1ba97" /><path d="M-17 36 L-10 0 H10 L17 36Z" fill={index === 0 ? '#a88a59' : '#687969'} /><MapText y="53" fill="#e8d1a6">{['萧战', '加列毕', '奥巴帕'][index]}</MapText></g>)}
+      <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">{sold ? `成交：萧战 / 40000 · 同瓶${appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管` : bid ? `当前报价：${bid} · 尚未落槌` : '同瓶等待介绍 · 萧炎不出价'}</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="拍卖观察位置">
       {(Object.keys(stations) as AuctionStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}

@@ -1,3 +1,4 @@
+import { HallText, MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -41,18 +42,18 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注西侧声音</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="东侧阅读地图" aria-describedby="hall-reading-help" tabIndex={0} viewBox="80 185 425 155" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" />
+      <MapBackground />
       <rect x="100" y="200" width="380" height="125" fill="#937954" opacity=".15" />
       <path d="M140 310 H400 V250" stroke="#bfa46a" strokeWidth="14" opacity=".25" fill="none" />
       <rect x="160" y="220" width="110" height="45" fill="none" stroke="#bfa46a" />
-      <text x="215" y="211" textAnchor="middle" fill="#eed7ad" fontSize="10">西侧训练场 · 比赛待续</text>
+      <HallText x="215" y="211">西侧训练场 · 比赛待续</HallText>
       <circle cx="200" cy="244" r="7" fill="#ae8dbd" /><circle cx="235" cy="244" r="7" fill="#bd8d6b" />
       <rect x="345" y="210" width="110" height="20" fill="#937954" />
-      <text x="400" y="201" textAnchor="middle" fill="#eed7ad" fontSize="10">东侧书架</text>
-      <text x="140" y="290" textAnchor="middle" fill="#eed7ad" fontSize="10">堂内门口</text>
+      <HallText x="400" y="201">东侧书架</HallText>
+      <HallText x="140" y="290">堂内门口</HallText>
       {task.picked && <g aria-label={task.record === 'recalled' ? '回顾当时第一卷' : '同一第一黑卷'}><rect x="420" y="245" width={task.opened ? 28 : 8} height="15" fill="#161e20" stroke="#bfa46a" />
-        {task.grade && <text x="434" y="255" textAnchor="middle" fill="#e9c877" fontSize="7">黄阶中级</text>}</g>}
-      <g aria-label="萧炎本人阅读位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad" fontSize="10">{task.leaned ? '本人 · 靠架阅读' : '本人 · 堂内'}</text></g>
+        {task.grade && <MapText x="434" y="255" fill="#e9c877" fontSize="7">黄阶中级</MapText>}</g>}
+      <g aria-label="萧炎本人阅读位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{task.leaned ? '本人 · 靠架阅读' : '本人 · 堂内'}</HallText></g>
     </svg>
     {scene && actor === 'yan' && !task.leaned && <div className="early-walk-controls"><WalkDirectionButtons prefix="阅读" onMove={move} /></div>}
     <p role="status">东侧阅读 {task.stage}/8 · {firstHallReadingSaveSummary(state, state.settings)}</p>

@@ -1,0 +1,2250 @@
+{
+  "version": "0.68.1",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 145,
+    "tests": 872
+  },
+  "nodeTests": 11,
+  "initialJs": 499027,
+  "totalJs": 1841955,
+  "freedTotalJs": 5633,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "files": 47,
+  "elements": 184,
+  "reverseSource": [
+    {
+      "path": "src/ui/EarlyAppraisal.tsx",
+      "originalSha256": "63cc24eea2df555bb0cd3f6d2b5e0c5c56c3fc3f1bffff71d0092cb53f1d955a",
+      "restoredSha256": "63cc24eea2df555bb0cd3f6d2b5e0c5c56c3fc3f1bffff71d0092cb53f1d955a",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyAuction.tsx",
+      "originalSha256": "23111e6a0845de2850f9e26ba518b3d7cf78c49a844812d8d196bc54acd39112",
+      "restoredSha256": "23111e6a0845de2850f9e26ba518b3d7cf78c49a844812d8d196bc54acd39112",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyCeremonialTest.tsx",
+      "originalSha256": "98a81d0378cbfd416b1a6585c08f03feed243c3a7328eaf52b40ed3c324f1acb",
+      "restoredSha256": "98a81d0378cbfd416b1a6585c08f03feed243c3a7328eaf52b40ed3c324f1acb",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyCeremonyGuests.tsx",
+      "originalSha256": "475bdde3f2308691333353494afd48726c34cd94198e5af2296a057db738a6f3",
+      "restoredSha256": "475bdde3f2308691333353494afd48726c34cd94198e5af2296a057db738a6f3",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyCeremonyVerdict.tsx",
+      "originalSha256": "ffaaeae243daa6d80eeeb10846120a1c8ccf06a2492bb23906636e705f417f9b",
+      "restoredSha256": "ffaaeae243daa6d80eeeb10846120a1c8ccf06a2492bb23906636e705f417f9b",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyCityPharmacy.tsx",
+      "originalSha256": "2e8c9121541e42d9cae0f1a3e66d6776ca18b5b372cd4e0251d3051686f8c18b",
+      "restoredSha256": "2e8c9121541e42d9cae0f1a3e66d6776ca18b5b372cd4e0251d3051686f8c18b",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyConsignment.tsx",
+      "originalSha256": "383eaec14107d2a69ec39bee6f0d8ac8ea4a29d054dc61cdd1fb9b9d96a877ad",
+      "restoredSha256": "383eaec14107d2a69ec39bee6f0d8ac8ea4a29d054dc61cdd1fb9b9d96a877ad",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyEighthTraining.tsx",
+      "originalSha256": "6e3d78d6819d104c0d1576a5d1b18e60b62736b27507ef34b8df1b7f39f29194",
+      "restoredSha256": "6e3d78d6819d104c0d1576a5d1b18e60b62736b27507ef34b8df1b7f39f29194",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyFatherGift.tsx",
+      "originalSha256": "6fc88471e895680ce960bf3bc8c779c0be22608238a102a6bf23afc2a2844c90",
+      "restoredSha256": "6fc88471e895680ce960bf3bc8c779c0be22608238a102a6bf23afc2a2844c90",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyForestStrike.tsx",
+      "originalSha256": "65e6c5afafb33a748826aad7b4cc00244e826896f2e353cf485c5d7b0d0dc670",
+      "restoredSha256": "65e6c5afafb33a748826aad7b4cc00244e826896f2e353cf485c5d7b0d0dc670",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyHall.tsx",
+      "originalSha256": "761e675118d0932db04a3fcc51cac295a1b19ffc048b9429eb8ca4e2410f281c",
+      "restoredSha256": "761e675118d0932db04a3fcc51cac295a1b19ffc048b9429eb8ca4e2410f281c",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#f3dfb7\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#f3dfb7\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#f3dfb7\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyKeChallenge.tsx",
+      "originalSha256": "8871496030530ff6271e90183be2b8a7b8c2e04cdec1ba8e3a1972d624050609",
+      "restoredSha256": "8871496030530ff6271e90183be2b8a7b8c2e04cdec1ba8e3a1972d624050609",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyLongSupplies.tsx",
+      "originalSha256": "f3dd8f5c9b1a5a92b17d9da94803e2c0627be3de16f61b155ac4d0ba73a4ab31",
+      "restoredSha256": "f3dd8f5c9b1a5a92b17d9da94803e2c0627be3de16f61b155ac4d0ba73a4ab31",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyMarketBracelets.tsx",
+      "originalSha256": "37a9e25f70125eafbcb698bbb3fad21b70bb3c1e998ce9983bd7d260d2b30fb4",
+      "restoredSha256": "37a9e25f70125eafbcb698bbb3fad21b70bb3c1e998ce9983bd7d260d2b30fb4",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyMarketDiscovery.tsx",
+      "originalSha256": "2c3d4326645b9c1dc078e2da009983c52cf1797b40b8de02fde474d085623da4",
+      "restoredSha256": "2c3d4326645b9c1dc078e2da009983c52cf1797b40b8de02fde474d085623da4",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyMarketEscort.tsx",
+      "originalSha256": "3a1be359aeb9a0026720d8e436ad192c75ee540810f64279832bf5882d5bbf9b",
+      "restoredSha256": "3a1be359aeb9a0026720d8e436ad192c75ee540810f64279832bf5882d5bbf9b",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyMarketSearch.tsx",
+      "originalSha256": "c560613aade79d0a0d0522b67260c07649040200a4ecc01fc95ea2bc0f19858f",
+      "restoredSha256": "c560613aade79d0a0d0522b67260c07649040200a4ecc01fc95ea2bc0f19858f",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyMarketStandoff.tsx",
+      "originalSha256": "a6394f6e78d34659e93d2c22bcd1e837282b43d4c9d4de5392608f12f4a647f9",
+      "restoredSha256": "a6394f6e78d34659e93d2c22bcd1e837282b43d4c9d4de5392608f12f4a647f9",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyMorningCard.tsx",
+      "originalSha256": "6bd4c6b70c3b3028f0d6e20c566425fbb16eb292d400c15d62e3b255caf2f193",
+      "restoredSha256": "6bd4c6b70c3b3028f0d6e20c566425fbb16eb292d400c15d62e3b255caf2f193",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyNingFirst.tsx",
+      "originalSha256": "5986095797afa7dbe288828460a8f3ea9f5be9f46c56f6b2b6a2a14ae382e06e",
+      "restoredSha256": "5986095797afa7dbe288828460a8f3ea9f5be9f46c56f6b2b6a2a14ae382e06e",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyNingSecond.tsx",
+      "originalSha256": "47fd3b1682870b7db6c4f4c66097cff767a8f8b0d7fcee98e5b5bf3da136a438",
+      "restoredSha256": "47fd3b1682870b7db6c4f4c66097cff767a8f8b0d7fcee98e5b5bf3da136a438",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyPalmPair.tsx",
+      "originalSha256": "e820bce6c9e0d611a7c1f4bdeb17afd6b9a99023b6a9768f28a6e8ce8ddb7508",
+      "restoredSha256": "e820bce6c9e0d611a7c1f4bdeb17afd6b9a99023b6a9768f28a6e8ce8ddb7508",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyPreliminary.tsx",
+      "originalSha256": "8a7f7f6a67efb1c85d2986bdbba745be1611b057e9cf1028d3976a0ae7bb71ef",
+      "restoredSha256": "8a7f7f6a67efb1c85d2986bdbba745be1611b057e9cf1028d3976a0ae7bb71ef",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyQiAid.tsx",
+      "originalSha256": "98814dfdb08921e94da0a432de99126cdc454524fee975830a439c6563ee57a7",
+      "restoredSha256": "98814dfdb08921e94da0a432de99126cdc454524fee975830a439c6563ee57a7",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyQiBarrier.tsx",
+      "originalSha256": "d7f91688ba46a28e5521e03174fa2297836516c5978efa093e2a830933b22672",
+      "restoredSha256": "d7f91688ba46a28e5521e03174fa2297836516c5978efa093e2a830933b22672",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyQiPavilion.tsx",
+      "originalSha256": "a5cfa8337f1b9c518a924cb191de8f1754664da6e22f52b6109a9c77f30b375e",
+      "restoredSha256": "a5cfa8337f1b9c518a924cb191de8f1754664da6e22f52b6109a9c77f30b375e",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyRecovery.tsx",
+      "originalSha256": "eb56f7014d2d575651cd2aa8d76dfe1e47b5059f0038699dd1395b193e6cb99e",
+      "restoredSha256": "eb56f7014d2d575651cd2aa8d76dfe1e47b5059f0038699dd1395b193e6cb99e",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyRefining.tsx",
+      "originalSha256": "ee1aef167368140bbe490a634f4b38ef20d9b6e0af15f3ad5cc69d3f89c26694",
+      "restoredSha256": "ee1aef167368140bbe490a634f4b38ef20d9b6e0af15f3ad5cc69d3f89c26694",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyRoom.tsx",
+      "originalSha256": "c2acbb954317e149c0ac42135b5fe3524a2fb704f119681266fd6081dfae2a54",
+      "restoredSha256": "c2acbb954317e149c0ac42135b5fe3524a2fb704f119681266fd6081dfae2a54",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlySettlement.tsx",
+      "originalSha256": "465d8f4eb0ca6acda18b3f756478f5a4c439eaa6400397d6ec1ab6e4f9fbcc59",
+      "restoredSha256": "465d8f4eb0ca6acda18b3f756478f5a4c439eaa6400397d6ec1ab6e4f9fbcc59",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlySeventhRoom.tsx",
+      "originalSha256": "77197c698b7cd1a8f268243eb5443ff3583c174368de6f31ad6b26fba90ccceb",
+      "restoredSha256": "77197c698b7cd1a8f268243eb5443ff3583c174368de6f31ad6b26fba90ccceb",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlySupervision.tsx",
+      "originalSha256": "ea8612eae18d794ff51aa202b8113a8859daa1a0af6d1bfa8354dc299157614e",
+      "restoredSha256": "ea8612eae18d794ff51aa202b8113a8859daa1a0af6d1bfa8354dc299157614e",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyTeaching.tsx",
+      "originalSha256": "66622a76a2c5614d6382141ac4f1e6592c38ec9011cfcc37346ba83b09276590",
+      "restoredSha256": "66622a76a2c5614d6382141ac4f1e6592c38ec9011cfcc37346ba83b09276590",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyWalk.tsx",
+      "originalSha256": "6b3b602bdfe9b282718643e7f60cd63811025c12259938444ab56b56167a4981",
+      "restoredSha256": "6b3b602bdfe9b282718643e7f60cd63811025c12259938444ab56b56167a4981",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/EarlyXunerVisit.tsx",
+      "originalSha256": "4a26da69165815413aab483f1862e663b62b898f42ec4369583d7eba6fe6fd86",
+      "restoredSha256": "4a26da69165815413aab483f1862e663b62b898f42ec4369583d7eba6fe6fd86",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FamilyHallMap.tsx",
+      "originalSha256": "6bfdc97c6ccbec69469f3bb3649971a8664d77f315963a38a03e6b70ea155f9a",
+      "restoredSha256": "6bfdc97c6ccbec69469f3bb3649971a8664d77f315963a38a03e6b70ea155f9a",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstDeparture.tsx",
+      "originalSha256": "4843e1be8f83d34e2a6785df9132b5f961587123e332650994dd682599b12338",
+      "restoredSha256": "4843e1be8f83d34e2a6785df9132b5f961587123e332650994dd682599b12338",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstHallEntry.tsx",
+      "originalSha256": "632d4377eff59b692b8494ef91587673c36cfac3476cc475d3876e502c2330b7",
+      "restoredSha256": "632d4377eff59b692b8494ef91587673c36cfac3476cc475d3876e502c2330b7",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstHallMatch.tsx",
+      "originalSha256": "f4ce3fbbe97d8f032247eb98c52e926314c2657e88c87dad157edadc2a1d3f4e",
+      "restoredSha256": "f4ce3fbbe97d8f032247eb98c52e926314c2657e88c87dad157edadc2a1d3f4e",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstHallReading.tsx",
+      "originalSha256": "63c0e4865de67512c1897581e97dc8d869df36bf094d62202f4393c11eb8ba5e",
+      "restoredSha256": "63c0e4865de67512c1897581e97dc8d869df36bf094d62202f4393c11eb8ba5e",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstHallTalk.tsx",
+      "originalSha256": "85f31c1ae6ef7ef957330a0f2de82db15a965a8bbfd42e809c9a55a614022fbe",
+      "restoredSha256": "85f31c1ae6ef7ef957330a0f2de82db15a965a8bbfd42e809c9a55a614022fbe",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstRoadMeeting.tsx",
+      "originalSha256": "22a73bb86242a2a4fd30fccb72f72a25fbe6c58b607b1b738966258c13596cef",
+      "restoredSha256": "22a73bb86242a2a4fd30fccb72f72a25fbe6c58b607b1b738966258c13596cef",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstTechnique.tsx",
+      "originalSha256": "5678648c7bb0d8deb4062f855d28e659101d35e0f6e5041dfffa3e158a2fbd51",
+      "restoredSha256": "5678648c7bb0d8deb4062f855d28e659101d35e0f6e5041dfffa3e158a2fbd51",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/FirstTraining.tsx",
+      "originalSha256": "54020cb516b696c82af4733d98fd7293d411a8e744e6e3f7644cd9eea9feb04a",
+      "restoredSha256": "54020cb516b696c82af4733d98fd7293d411a8e744e6e3f7644cd9eea9feb04a",
+      "elements": [
+        {
+          "tag": "text",
+          "kind": "HallText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fill=\"#eed7ad\"",
+            "fontSize=\"10\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/MountainWalkMap.tsx",
+      "originalSha256": "075ce383d6254392e6a4b83018db6203cbe68634b981621a4239aaaca9c4a1f2",
+      "restoredSha256": "075ce383d6254392e6a4b83018db6203cbe68634b981621a4239aaaca9c4a1f2",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        },
+        {
+          "tag": "text",
+          "kind": "MapText",
+          "removed": [
+            "textAnchor=\"middle\"",
+            "fontSize=\"12\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/ui/TeacherRoom.tsx",
+      "originalSha256": "d12b5cbe7b6b09099f27471e5281663267f3a43102625765a49305c4aabb8688",
+      "restoredSha256": "d12b5cbe7b6b09099f27471e5281663267f3a43102625765a49305c4aabb8688",
+      "elements": [
+        {
+          "tag": "rect",
+          "kind": "MapBackground",
+          "removed": [
+            "width=\"720\"",
+            "height=\"420\"",
+            "fill=\"#293e36\""
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/core/save.ts",
+      "originalSha256": "147d3eeaa953a4a56b3f01f807f6b10255e96547ded4ba3efb837863d7471fa5",
+      "restoredSha256": "147d3eeaa953a4a56b3f01f807f6b10255e96547ded4ba3efb837863d7471fa5",
+      "elements": []
+    }
+  ],
+  "native": [
+    {
+      "name": "mapMain",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791828791386.json",
+      "sha256": "d300b880b0cde9c7f53c686d544172649f500f3cff49d610872f45c952d27134",
+      "baseline": "talkMainFinal",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mapMaterials",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791828792999.json",
+      "sha256": "ea5e4de4bc0fdb11794c6256c17f50d517a3410700be0532f84df3fe3c104714",
+      "baseline": "talkMaterialsFinal",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mapIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791828794635.json",
+      "sha256": "049d91d71c4742df14319d8208c1ce06652190f37e88c7100de4752efd89c17a",
+      "baseline": "talkIntactAfterNavigation",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mapMainAfterScenes",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791828879800.json",
+      "sha256": "95a8e9b02de18cc2e8afe80d16e246d12004a93f7c362d1f6832bd2cb2291f08",
+      "baseline": "mapMain",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mapMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829157941.json",
+      "sha256": "94b3827150aff5a5d416ba4686695ab5c0b4a01cec22fa95585310d2fd6ff727",
+      "baseline": "mapMain",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mapMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829160164.json",
+      "sha256": "dd2e5d5ed1dc26baa72a722f443059df933d01d5115da0107ed4b09be1a46850",
+      "baseline": "mapMaterials",
+      "entireStateEqual": true
+    },
+    {
+      "name": "mapIntactFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829162388.json",
+      "sha256": "a5b63b53178f8a8dff9c0fc324a93bb5b0f138d94b45fa68333e5ea2a037bd29",
+      "baseline": "mapIntact",
+      "entireStateEqual": true
+    }
+  ],
+  "browser": [
+    {
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "115",
+          "width": "390"
+        },
+        {
+          "fill": "none",
+          "height": "45",
+          "width": "110"
+        },
+        {
+          "fill": "#937954",
+          "height": "20",
+          "width": "110"
+        },
+        {
+          "fill": "#604572",
+          "height": "9",
+          "width": "13"
+        },
+        {
+          "fill": "#161e20",
+          "height": "15",
+          "width": "28"
+        }
+      ],
+      "scene": "各自拿着阅读卷，说起这半月。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "西侧训练场"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "9",
+          "text": "萧宁"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "东侧书架"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "9",
+          "text": "薰儿"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "9",
+          "text": "本人 · 抬眼答话"
+        }
+      ]
+    },
+    {
+      "route": "接续东架旁观西侧比赛",
+      "back": [
+        "暂离西赛旁观 · 保留断点"
+      ],
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "115",
+          "width": "390"
+        },
+        {
+          "fill": "none",
+          "height": "45",
+          "width": "110"
+        },
+        {
+          "fill": "#937954",
+          "height": "20",
+          "width": "110"
+        },
+        {
+          "fill": "#161e20",
+          "height": "15",
+          "width": "28"
+        }
+      ],
+      "scene": "读卷的位置，始终在东侧。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "西侧训练场"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "9",
+          "text": "薰儿"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "9",
+          "text": "萧宁"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "东侧书架"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "9",
+          "text": "本人 · 靠架阅读"
+        }
+      ],
+      "focus": "接续东架旁观西侧比赛"
+    },
+    {
+      "route": "接续东侧同一第一卷阅读",
+      "back": [
+        "暂离东侧阅读 · 保留断点"
+      ],
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "420",
+          "width": "720"
+        },
+        {
+          "fill": "#937954",
+          "height": "125",
+          "width": "380"
+        },
+        {
+          "fill": "none",
+          "height": "45",
+          "width": "110"
+        },
+        {
+          "fill": "#937954",
+          "height": "20",
+          "width": "110"
+        },
+        {
+          "fill": "#161e20",
+          "height": "15",
+          "width": "28"
+        }
+      ],
+      "scene": "走到书架，展开当时的黑卷。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "西侧训练场 · 比赛待续"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "东侧书架"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "堂内门口"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#e9c877",
+          "size": "7",
+          "text": "黄阶中级"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "本人 · 靠架阅读"
+        }
+      ],
+      "focus": "接续东侧同一第一卷阅读"
+    },
+    {
+      "route": "接续实际入堂与东西分区",
+      "back": [
+        "暂离实际入堂 · 保留断点"
+      ],
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "420",
+          "width": "720"
+        },
+        {
+          "fill": "#937954",
+          "height": "125",
+          "width": "380"
+        },
+        {
+          "fill": "none",
+          "height": "45",
+          "width": "110"
+        },
+        {
+          "fill": "#937954",
+          "height": "20",
+          "width": "110"
+        }
+      ],
+      "scene": "走到堂门，再看见东西两区。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "西侧训练场"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "东侧书架"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "堂内门口"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "本人 · 堂内"
+        }
+      ],
+      "focus": "接续实际入堂与东西分区"
+    },
+    {
+      "route": "接续石路会面与分路",
+      "back": [
+        "暂离路口会面 · 保留断点"
+      ],
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "420",
+          "width": "720"
+        }
+      ],
+      "scene": "转路、招呼，再各自前行。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "石路起点"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "转路口"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "继续前行"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "萧媚与同伴"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "本人"
+        }
+      ],
+      "focus": "接续石路会面与分路"
+    },
+    {
+      "route": "接续有限瓷瓶试招",
+      "back": [
+        "暂离有限试瓶 · 保留断点"
+      ],
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "420",
+          "width": "720"
+        },
+        {
+          "fill": "#937954",
+          "height": "82",
+          "width": "220"
+        },
+        {
+          "fill": "#937954",
+          "height": "15",
+          "width": "35"
+        },
+        {
+          "fill": "#937954",
+          "height": "15",
+          "width": "55"
+        },
+        {
+          "fill": "#eed7ad",
+          "height": "8",
+          "width": "15"
+        },
+        {
+          "fill": "#222",
+          "height": "8",
+          "width": "12"
+        }
+      ],
+      "scene": "以当时有限功力，面对桌上的瓷瓶。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": null,
+          "text": "老师"
+        },
+        {
+          "anchor": null,
+          "fill": "#eed7ad",
+          "size": null,
+          "text": "桌面"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": null,
+          "text": "本人"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "床边 · 枕后"
+        }
+      ],
+      "focus": "接续有限瓷瓶试招"
+    },
+    {
+      "route": "接续清水与主辅药调制",
+      "back": [
+        "暂离主辅药调制 · 保留断点"
+      ],
+      "background": [
+        {
+          "fill": "#293e36",
+          "height": "420",
+          "width": "720"
+        },
+        {
+          "fill": "#937954",
+          "height": "82",
+          "width": "220"
+        },
+        {
+          "fill": "#937954",
+          "height": "15",
+          "width": "35"
+        }
+      ],
+      "scene": "先备清水，再看白焰中的药性。",
+      "texts": [
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": null,
+          "text": "老师"
+        },
+        {
+          "anchor": null,
+          "fill": "#eed7ad",
+          "size": null,
+          "text": "桌面"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": null,
+          "text": "本人"
+        },
+        {
+          "anchor": "middle",
+          "fill": "#eed7ad",
+          "size": "10",
+          "text": "清水"
+        }
+      ],
+      "focus": "接续清水与主辅药调制"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "failures": "One export click during modal redraw failed; observed stable save manager and downloaded successfully. First screenshot compositor still showed preparation navigation; observed stable hall DOM and captured/inspected the correct screenshot. The verifier initially assumed every SVG text had a font-size; unchanged original teacher/table labels intentionally omit it. Narrowed the check to transformed font-bearing labels and retained those originals. No downloads modified.",
+  "limits": "Main and materials practice0/recoveryunobserved. No true-device or later storyline completion claim."
+}

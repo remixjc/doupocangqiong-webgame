@@ -1,3 +1,4 @@
+import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -49,9 +50,9 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
     <p id="market-standoff-help">每一步先选人物或明确旁观焦点。本人方向/WASD行走，近地点按E；旁观没有移动，不能代签本人。刷新后重新选焦点，位置不保存。</p>
     <svg ref={field} role="group" aria-label="围堵与非战斗离场地图" aria-describedby="market-standoff-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#293e36" /><path d="M80 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
+      <MapBackground /><path d="M80 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
-      {Object.entries(standoffPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="28" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" /><text x={p.x} y={p.y + 65} textAnchor="middle" fill="#eed7ad" fontSize="12">{p.label}</text></g>)}
+      {Object.entries(standoffPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="28" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" /><HallText x={p.x} y={p.y + 65} fontSize="12">{p.label}</HallText></g>)}
       {task.opponent !== 'left' && <g aria-label={task.opponent === 'paused' ? '来人停步尚未离开' : task.opponent === 'withdrawing' ? '来人正向外走' : '来人仍在街角'} transform={`translate(${task.opponent === 'present' ? 150 : 80} 310)`}>
         <path d="M-13 16 L-7-7 H7 L13 16Z" fill="#b6a58a" /><circle cy="-15" r="9" fill="#dcc6ae" />
       </g>}

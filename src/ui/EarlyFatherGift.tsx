@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -24,15 +25,15 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
       <rect width="720" height="300" fill="#293a33" />
       <path d="M25 25 H695 V275 H25Z" fill="#4b493b" stroke="#b5a073" strokeWidth="3" />
       <rect x="60" y="55" width="97" height="210" fill="#313e36" stroke="#a99064" />
-      <text x="108" y="46" textAnchor="middle" fill="#e8d1a6" fontSize="14">房门</text>
-      <g transform="translate(375 155)"><circle cy="-21" r="13" fill="#e6c8a2" /><path d="M-25 68 L-12-5 H12 L25 68Z" fill="#c79e66" /><text y="92" textAnchor="middle" fill="#e8d1a6" fontSize="13">萧炎</text></g>
-      {task.stage >= 2 && task.stage < 6 && <g transform="translate(260 148)"><circle cy="-23" r="15" fill="#dec4a2" /><path d="M-29 76 L-14-5 H14 L29 76Z" fill="#a08252" /><text y="100" textAnchor="middle" fill="#e8d1a6" fontSize="13">萧战</text></g>}
+      <MapText x="108" y="46" fill="#e8d1a6" fontSize="14">房门</MapText>
+      <g transform="translate(375 155)"><circle cy="-21" r="13" fill="#e6c8a2" /><path d="M-25 68 L-12-5 H12 L25 68Z" fill="#c79e66" /><MapText y="92" fill="#e8d1a6" fontSize="13">萧炎</MapText></g>
+      {task.stage >= 2 && task.stage < 6 && <g transform="translate(260 148)"><circle cy="-23" r="15" fill="#dec4a2" /><path d="M-29 76 L-14-5 H14 L29 76Z" fill="#a08252" /><MapText y="100" fill="#e8d1a6" fontSize="13">萧战</MapText></g>}
       <rect x="540" y="110" width="98" height="138" fill="#685d42" stroke="#b5a073" />
-      <text x="589" y="96" textAnchor="middle" fill="#e8d1a6" fontSize="14">收瓶处</text>
+      <MapText x="589" y="96" fill="#e8d1a6" fontSize="14">收瓶处</MapText>
       {task.stage >= 2 && <g transform={`translate(${task.stage >= 6 ? 589 : bottle.owner === 'xiaozhan' ? 297 : 412} ${task.stage >= 6 ? 162 : 184})`}>
         <path d="M-7-15 H7 V-8 Q15-1 12 17 H-12 Q-15-1-7-8Z" fill="#dedfc8" stroke="#b5bea5" /><rect x="-8" y="-20" width="16" height="5" fill="#98764c" />
       </g>}
-      <text x="360" y="294" textAnchor="middle" fill="#e8d1a6" fontSize="13">同瓶保管：{appraisalOwnerLabels[bottle.owner]} · 非新增制品</text>
+      <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">同瓶保管：{appraisalOwnerLabels[bottle.owner]} · 非新增制品</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="父子来访位置">
       {(Object.keys(stations) as FatherGiftStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}

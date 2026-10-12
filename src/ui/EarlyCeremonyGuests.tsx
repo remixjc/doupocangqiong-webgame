@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -32,21 +33,21 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
     <h2>木台已备，先平息树下争执。</h2>
     <p id="ceremony-guests-help">方向键或WASD行走，走近地点按E观察与交谈，也可用下方方向和步骤按钮。木台现在尚未开放；入口、树荫与接待处是原创压缩布局。重入从场口出发。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="正式礼宾客与收剑地图" aria-describedby="ceremony-guests-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#34463b" />
+      <MapBackground fill="#34463b" />
       <path d="M100 320 L240 280 L520 300" fill="none" stroke="#79816b" strokeWidth="34" strokeLinejoin="round" />
       <rect {...ceremonyPlatform} rx="6" fill="#89704b" stroke="#b79b65" strokeWidth="5" />
       {[100, 128, 156, 184, 212].map(y => <path key={y} d={`M304 ${y} H656`} stroke="#b39464" strokeWidth="2" />)}
-      <text x="480" y="145" textAnchor="middle" fill="#f0dfb9" fontSize="16">成年礼木台 · 尚待开礼</text>
+      <MapText x="480" y="145" fill="#f0dfb9" fontSize="16">成年礼木台 · 尚待开礼</MapText>
       <path d="M195 298 V200" stroke="#957454" strokeWidth="12" /><circle cx="195" cy="194" r="60" fill="#496b4f" /><circle cx="156" cy="200" r="32" fill="#56765a" />
       <g transform="translate(266 260)" aria-label="薰儿候礼" role="img"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       {task.stage >= 4 && task.stage <= 7 && <g transform="translate(330 270)" role="img" aria-label={task.sword === 'drawn' ? '萧玉佩剑已出鞘，尚未交锋' : '萧玉佩剑仍由本人保管'}>
         <circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#9e83a6" />
         <path d={task.sword === 'drawn' ? 'M-12 0 L-67-5' : 'M16-5 L19 24'} stroke={task.sword === 'drawn' ? '#dddcd3' : '#827361'} strokeWidth="5" />
-        <text y="42" textAnchor="middle" fill="#ead9b6" fontSize="11">萧玉</text>
+        <MapText y="42" fill="#ead9b6" fontSize="11">萧玉</MapText>
       </g>}
-      <g transform="translate(550 268)" role="img" aria-label="雅妃与宾客"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#b86c65" /><text y="36" textAnchor="middle" fill="#ead9b6" fontSize="11">雅妃</text></g>
+      <g transform="translate(550 268)" role="img" aria-label="雅妃与宾客"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#b86c65" /><MapText y="36" fill="#ead9b6" fontSize="11">雅妃</MapText></g>
       {task.stage >= 6 && task.stage < 12 && <g transform={`translate(${task.stage >= 9 ? 490 : 290} 260)`} role="img" aria-label="萧战已走近"><circle cy="-13" r="8" fill="#d5b491" /><path d="M-14 17 L-8-5 H8 L14 17Z" fill="#7f8cba" /></g>}
-      {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 56} textAnchor="middle" fill="#ead9b6" fontSize="12">{place.label}</text></g>)}
+      {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 56} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</div>

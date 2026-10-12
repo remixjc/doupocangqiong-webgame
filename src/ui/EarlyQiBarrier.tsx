@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
@@ -53,15 +54,15 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
     <h2>走到四十三号，再破开最后一道红幕。</h2>
     <p id="qi-barrier-help">沿火属性通道行走，按顺序核对第三路、三十七号与四十三号。门障前先触幕，再退步蓄势；练习失败只免费重开，不会取得卷轴。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="功法阁火通道与红幕地图" aria-describedby="qi-barrier-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#2e3934" />
+      <MapBackground fill="#2e3934" />
       <path d="M80 350 H640 M100 350 V300 M220 350 V300 M360 350 V300 M500 350 V300 M620 350 V300 M360 300 V100" fill="none" stroke="#716a4c" strokeWidth="24" strokeLinejoin="round" />
       <path d="M360 100 H520 V180 H390" fill="none" stroke="#675141" strokeWidth="26" strokeLinejoin="round" />
       <rect x="392" y="104" width="10" height="76" fill={task.barrier === 'broken' ? '#4b6b52' : '#cc6257'} />
-      <text x="360" y="58" textAnchor="middle" fill="#e5c48e" fontSize="17">火通道 · 第三路 · 四十三号</text>
-      {qiPaths.map((x, index) => <g key={x}><circle cx={x} cy="350" r="25" fill={task.path === 3 && index === 2 ? '#a18456' : '#465a4d'} /><text x={x} y="355" textAnchor="middle" fill="#ead9b6" fontSize="12">{index + 1}</text></g>)}
+      <MapText x="360" y="58" fill="#e5c48e" fontSize="17">火通道 · 第三路 · 四十三号</MapText>
+      {qiPaths.map((x, index) => <g key={x}><circle cx={x} cy="350" r="25" fill={task.path === 3 && index === 2 ? '#a18456' : '#465a4d'} /><MapText x={x} y="355" fill="#ead9b6">{index + 1}</MapText></g>)}
       <text x="335" y="285" fill="#e6d4ad" fontSize="11">37</text><text x="335" y="112" fill="#e6d4ad" fontSize="11">43</text>
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-      {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 43} textAnchor="middle" fill="#ead9b6" fontSize="10">{place.label}</text></g>)}
+      {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 43} fill="#ead9b6" fontSize="10">{place.label}</MapText></g>)}
     </svg>
     <div className="early-walk-controls" aria-label="火通道行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['火通道向上走', '火通道向左走', '火通道向下走', '火通道向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>
     <p role="status">门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</p>

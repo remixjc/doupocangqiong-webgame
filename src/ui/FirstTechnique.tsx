@@ -1,3 +1,4 @@
+import { HallText } from './MapPrimitives'
 import { useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -22,11 +23,11 @@ export default function FirstTechnique({ state, onBack, continuation = false }: 
     start={task.stage ? firstTechniqueBed : ironPlaces.table} movable={task.eyes !== 'closed' && !(task.stage >= 9 && task.stage < 19)}
     near={firstTechniqueNear}
     draw={yan => <>
-      <g aria-label="床边枕后铁片取出位置"><rect x="115" y="345" width="55" height="15" fill="#937954" /><rect x="117" y="341" width="15" height="8" fill="#eed7ad" /><text x="140" y="332" textAnchor="middle" fill="#eed7ad" fontSize="10">床边 · 枕后</text></g>
+      <g aria-label="床边枕后铁片取出位置"><rect x="115" y="345" width="55" height="15" fill="#937954" /><rect x="117" y="341" width="15" height="8" fill="#eed7ad" /><HallText x="140" y="332">床边 · 枕后</HallText></g>
       <rect aria-label={`同一铁片：${task.iron === 'hands' ? '本人持有' : '枕后保存'}`} x={task.iron === 'hands' ? yan.x - 6 : 122} y={task.iron === 'hands' ? 340 : 339}
         width="12" height="8" fill="#222" stroke={task.clean ? '#dac6a1' : '#9f886b'} />
-      {task.eyes === 'closed' && <text x={yan.x} y="407" textAnchor="middle" fill="#eed7ad" fontSize="10">夹片 · 闭眼感知</text>}
-      {task.claw && <text x={yan.x} y="407" textAnchor="middle" fill="#eed7ad" fontSize="10">右手成爪{task.stage <= 9 ? ' · 尚未试瓶' : ''}</text>}
+      {task.eyes === 'closed' && <HallText x={yan.x} y="407">夹片 · 闭眼感知</HallText>}
+      {task.claw && <HallText x={yan.x} y="407">右手成爪{task.stage <= 9 ? ' · 尚未试瓶' : ''}</HallText>}
       {continuation && <g aria-label={`当时瓷瓶：${({ unobserved: '尚未面对', intact: '完整', turning: '转动', fallen: '从桌上落下', fragments: '地面碎片' })[task.bottle]}`}>
         {task.bottle === 'fragments' ? <path d="M256 393 l7 -2 l-4 4 M271 394 l4 -2 l-2 4" stroke="#eadbbb" fill="none" />
           : <path d="M264 335 h8 v4 l3 4 v10 h-14 v-10 l3 -4 Z" fill="#eadbbb" transform={task.bottle === 'turning' ? 'rotate(24 268 349)' : task.bottle === 'fallen' ? 'translate(0 30) rotate(70 268 349)' : undefined} />}

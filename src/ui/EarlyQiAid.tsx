@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
@@ -40,12 +41,12 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
     <span className="eyebrow">功法阁 / 同行与独自援助</span><h2>先走过，再独自走回。</h2>
     <p id="qi-aid-help">方向键或WASD移动，靠近目标按E。取卷、看时间、经过、回返、踢破、回应与会合按顺序保存。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="功法阁同行与风属性门障地图" aria-describedby="qi-aid-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#2c4036" />
+      <MapBackground fill="#2c4036" />
       <path d="M100 320 V140 H540 V320 L640 360" fill="none" stroke="#726349" strokeWidth="38" />
       <rect x="260" y="220" width="180" height="100" rx="12" fill="#535d4c" />
-      <text x="350" y="270" textAnchor="middle" fill="#dcc89f" fontSize="15">阁内陈设 · 不可穿行</text>
+      <MapText x="350" y="270" fill="#dcc89f" fontSize="15">阁内陈设 · 不可穿行</MapText>
       <rect x="573" y="278" width="9" height="65" fill={task.door === 'broken' ? '#8bb78a' : '#bf6559'} />
-      {Object.entries(qiAidPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="28" stroke={scene?.place === id ? '#f8dba4' : '#9ca487'} fill="none" strokeDasharray="4 5" /><text x={place.x} y={place.y + 44} textAnchor="middle" fill="#edcea0" fontSize="11">{place.label}</text></g>)}
+      {Object.entries(qiAidPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="28" stroke={scene?.place === id ? '#f8dba4' : '#9ca487'} fill="none" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 44} fill="#edcea0" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="同行援助行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['援助向上走', '援助向左走', '援助向下走', '援助向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>

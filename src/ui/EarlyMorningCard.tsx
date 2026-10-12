@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -33,13 +34,13 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
     <p id="morning-card-help">方向或WASD行走，近当前地点按E。先房中收气与门外招呼，再抽屉取原积蓄，最后门前出门和接卡。夜间没有现实等待或后台奖励。</p>
     <svg ref={field} role="group" aria-label="晨间房内与门前交卡地图" aria-describedby="morning-card-help" tabIndex={0}
       viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
-      <rect width="720" height="420" fill="#21362f" />
+      <MapBackground fill="#21362f" />
       <path d="M24 156 H420 V24 H24Z" fill="#354239" /><rect x="70" y="40" width="116" height="78" fill="#d1c08b" opacity=".35" />
       <path d="M100 62 H158 M128 40 V118" stroke="#b59b70" /><rect x="278" y="95" width="88" height="59" rx="3" fill="#7f6848" />
       <rect x="437" y="28" width="151" height="126" fill="#70845b" opacity=".3" /><path d="M24 156 H696" stroke="#b3a476" strokeWidth="4" />
       <text x="180" y="145" fill="#ddd0a4" textAnchor="middle">房内</text><text x="530" y="145" fill="#ddd0a4" textAnchor="middle">门前</text>
       {Object.entries(morningCardPlaces).map(([id, point]) => <g key={id}><circle cx={point.x} cy={point.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#a69065'} strokeDasharray="4 5" />
-        <text x={point.x} y={point.y + 41} textAnchor="middle" fill="#ead0a4" fontSize="12">{point.label}</text></g>)}
+        <MapText x={point.x} y={point.y + 41} fill="#ead0a4">{point.label}</MapText></g>)}
       <g aria-label="门外浅绿衣的薰儿" transform="translate(567 188)"><path d="M-12 15 L-6-7 H6 L12 15Z" fill="#92b69c" /><circle cy="-14" r="8" fill="#edcfbd" />
         {task.card !== 'yan' && <rect aria-label={task.card === 'offered' ? '薰儿递出待接的普通黑卡' : '薰儿持有另一张普通黑卡'} x={task.card === 'offered' ? -45 : 12} y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />}</g>
       <g aria-label="萧炎晨间行走位置" transform={`translate(${position.x} ${position.y})`}><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />

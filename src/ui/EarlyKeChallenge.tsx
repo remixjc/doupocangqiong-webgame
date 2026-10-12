@@ -1,3 +1,4 @@
+import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -43,19 +44,19 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
     <h2>避开来掌，再以低阶掌法回应。</h2>
     <p id="ke-challenge-help">地图用方向键或WASD行走，静态步骤走近按E；应战用下方动作按钮与35%–65%窗口。错动作、错时机或主动停下可免费重开，位置与时机都是原创压缩设计。重入从候测区出发。</p>
     <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="萧克挑战与离场地图" aria-describedby="ke-challenge-help" viewBox="0 0 720 420" onKeyDown={key}>
-      <rect width="720" height="420" fill="#273c37" />
+      <MapBackground fill="#273c37" />
       <path d="M100 360 L240 300 H380 L580 180" fill="none" stroke="#69776b" strokeWidth="38" strokeLinejoin="round" />
       {preliminaryObstacles.map((rect, i) => <rect key={i} {...rect} rx="7" fill={i === 0 ? '#776650' : '#566751'} stroke="#9a9478" />)}
-      <text x="165" y="100" textAnchor="middle" fill="#ead9b6" fontSize="13">高台 · 萧战宣布胜负</text>
+      <MapText x="165" y="100" fill="#ead9b6" fontSize="13">高台 · 萧战宣布胜负</MapText>
       <circle cx="580" cy="180" r="74" fill="#446355" stroke="#9a9478" />
       {task.stage >= 2 && task.stage <= 5 && <g role="img" aria-label={task.stage >= 4 ? '萧克已倒地，低阶掌法击肩已记' : task.beats === 1 ? '萧炎已向左侧避，准备低阶掌法击肩' : '萧克来掌，等待左侧避'}>
         <g transform={`translate(${task.stage >= 4 ? 626 : 608} ${task.stage >= 4 ? 202 : 160}) rotate(${task.stage >= 4 ? 78 : 0})`}><circle cy="-15" r="8" fill="#dbb799" /><path d="M-12 18 L-7-5 H7 L12 18Z" fill="#b88775" /><path d="M-8-3 L-36 2" stroke="#dbb799" strokeWidth="5" /></g>
         {task.stage === 3 && <path d={task.beats === 0 ? 'M594 161 L553 179 L582 196Z' : 'M535 176 Q559 159 596 163'} fill={task.beats === 0 ? '#d7967c55' : 'none'} stroke="#d4bd79" strokeDasharray="4 3" />}
-        <text x="630" y="232" textAnchor="middle" fill="#ead9b6" fontSize="11">萧克 · 六段</text>
+        <MapText x="630" y="232" fill="#ead9b6" fontSize="11">萧克 · 六段</MapText>
       </g>}
-      <g transform="translate(342 278)"><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><text y="34" textAnchor="middle" fill="#ead9b6" fontSize="11">薰儿</text></g>
+      <g transform="translate(342 278)"><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
       <path d="M87 345 V295 M61 304 Q86 280 112 305 M54 316 Q86 283 120 316" fill="none" stroke="#86a383" strokeWidth="7" />
-      {Object.entries(keChallengePlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 57} textAnchor="middle" fill="#ead9b6" fontSize="12">{place.label}</text></g>)}
+      {Object.entries(keChallengePlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="萧克挑战行走操作">{<WalkDirectionButtons prefix="应战" onMove={move} />}</div>

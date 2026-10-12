@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
@@ -44,8 +45,8 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
             : <g key={item} transform={`translate(${(item - 1) * 13} 0)`}>
               <path d="M0 15 V-15 M0 0 Q-17-16-9-15 M0-5 Q17-21 10-19" fill="none" stroke={id === 'bluegrass' ? '#94b7a3' : '#d6c0ab'} strokeWidth="3" />
             </g>)}
-          {!task.supplies[id] && <text y="5" textAnchor="middle" fill="#b4baa3" fontSize="11">已使用</text>}
-          <text y="41" textAnchor="middle" fill="#e4cea0" fontSize="12">{['主药', '辅药', '木魔核'][index]} ×{task.supplies[id]}</text>
+          {!task.supplies[id] && <MapText y="5" fill="#b4baa3" fontSize="11">已使用</MapText>}
+          <MapText y="41" fill="#e4cea0">{['主药', '辅药', '木魔核'][index]} ×{task.supplies[id]}</MapText>
         </g>)}
         <g transform="translate(470 130)">
           <ellipse cy="78" rx="45" ry="12" fill="#1118" />
@@ -55,23 +56,23 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
           <path d={task.liquid.stage >= 2 && task.liquid.stage <= 5 ? 'M-19 9 L-53 17 L-75 0 M19 9 L44 30' : 'M-19 9 L-35 39 M19 9 L35 39'} fill="none" stroke="#d2ded1" strokeWidth="9" strokeLinecap="round" />
           {view.flame && <g data-room-flame="teacher"><path d="M-93-3 Q-110-22-82-53 Q-87-26-72-31 Q-49-12-66-3Z" fill="#edf5e6" /><path d="M-82-5 Q-90-16-77-32 Q-80-17-72-14Z" fill="#b9ddd1" /></g>}
           {task.liquid.stage >= 3 && task.liquid.stage <= 5 && <path d="M-80-23 Q-99-3-80 2 Q-61-3-80-23Z" fill="#75ad87" stroke="#d3e8ad" />}
-          <text y="100" textAnchor="middle" fill="#e6d4a6" fontSize="13">药老 · {view.flame ? '掌中处理材料' : task.liquid.ready ? '调制完成' : task.liquid.stage === 5 ? '药液待入水' : '指导准备'}</text>
+          <MapText y="100" fill="#e6d4a6" fontSize="13">药老 · {view.flame ? '掌中处理材料' : task.liquid.ready ? '调制完成' : task.liquid.stage === 5 ? '药液待入水' : '指导准备'}</MapText>
         </g>
         <g transform="translate(224 255)">
           <ellipse cy="37" rx="29" ry="9" fill="#1118" /><path d="M-24 27 L-16-11 H16 L24 27Z" fill="#c29862" />
           <circle cy="-25" r="15" fill="#ebc59e" /><path d="M-15-29 Q0-51 16-29" fill="#202c29" />
           <path d="M-13 0 L-35 16 M13 0 L35 16" stroke="#d4aa75" strokeWidth="7" strokeLinecap="round" />
-          <text y="59" textAnchor="middle" fill="#e6d4a6" fontSize="13">萧炎 · {task.liquid.stage === 1 ? '准备容器与清水' : '在旁观察'}</text>
+          <MapText y="59" fill="#e6d4a6" fontSize="13">萧炎 · {task.liquid.stage === 1 ? '准备容器与清水' : '在旁观察'}</MapText>
         </g>
         <g transform="translate(530 280)">
           <path d="M-74-7 L-62 38 Q0 58 62 38 L74-7Z" fill="#786448" stroke="#bda16e" strokeWidth="2" />
           <ellipse rx="74" ry="24" cy="-7" fill={task.recovery.energy === 'spent' ? '#9badb0' : task.recovery.energy === 'fading' ? '#9faf94' : task.liquid.ready ? '#75ad87' : task.liquid.water ? '#709c99' : '#2e3d34'} stroke="#c3aa7b" strokeWidth="3" />
           {task.liquid.water && <path d="M-45-7 Q-25-15-5-7 T40-7" fill="none" stroke={task.liquid.ready ? '#d3e8ad' : '#b2d3ce'} strokeWidth="2" />}
           <path d="M-52 8 L-48 35 M-15 17 V45 M22 16 V45 M55 7 L50 35" stroke="#ae9366" strokeWidth="2" />
-          <text y="68" textAnchor="middle" fill="#e6d4a6" fontSize="13">{view.water}</text>
+          <MapText y="68" fill="#e6d4a6" fontSize="13">{view.water}</MapText>
         </g>
         <rect x="84" y="247" width="44" height="28" rx="3" fill="#282e2c" stroke="#858d7a" transform="rotate(-10 106 260)" />
-        <text x="106" y="298" textAnchor="middle" fill="#c9c4a8" fontSize="11">黑铁片保留</text>
+        <MapText x="106" y="298" fill="#c9c4a8" fontSize="11">黑铁片保留</MapText>
       </svg>
       <div className="early-room-stations" aria-label="室内位置">
         {(Object.keys(stations) as EarlyRoomStation[]).map(id => <button key={id} className={`secondary ${station === id ? 'selected' : ''}`}

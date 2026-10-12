@@ -1,3 +1,4 @@
+import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
@@ -52,10 +53,10 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
         <path d={task.tree === 'intact' ? 'M-13 15 V-70 H13 V15Z' : 'M-13 15 V-21 L-3-30 L4-17 L13-29 V15Z M20 10 L88 38 L100 19 L34-12Z'} fill="#9b7952" stroke="#c4a376" />
         <circle cx={task.tree === 'intact' ? 0 : 116} cy={task.tree === 'intact' ? -77 : 36} r="29" fill="#59734b" />
       </g>
-      {task.stage >= 4 && <g transform="translate(104 176)" opacity=".8"><circle cy="-19" r="10" fill="#e0e4d5" /><path d="M-18 35 L-8-3 H8 L18 35Z" fill="#bdd4cb" /><text y="52" textAnchor="middle" fill="#ead9b6" fontSize="11">药老</text></g>}
-      {Object.entries(forestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke="#c9ab70" strokeDasharray="4 5" /><text x={place.x} y={place.y + 64} textAnchor="middle" fill="#ead9b6" fontSize="13">{place.label}</text></g>)}
+      {task.stage >= 4 && <g transform="translate(104 176)" opacity=".8"><circle cy="-19" r="10" fill="#e0e4d5" /><path d="M-18 35 L-8-3 H8 L18 35Z" fill="#bdd4cb" /><MapText y="52" fill="#ead9b6" fontSize="11">药老</MapText></g>}
+      {Object.entries(forestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke="#c9ab70" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 64} fill="#ead9b6" fontSize="13">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-      <text x="360" y="369" textAnchor="middle" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</text>
+      <MapText x="360" y="369" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="林中行走操作">
       {(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['林中向上走', '林中向左走', '林中向下走', '林中向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}
