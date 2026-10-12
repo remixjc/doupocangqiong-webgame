@@ -1,0 +1,302 @@
+{
+  "version": "0.62.0",
+  "date": "2026-10-12",
+  "vitestFiles": 138,
+  "vitestTests": 835,
+  "nodeTests": 11,
+  "initialJs": 498486,
+  "totalJs": 1822970,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "sourceChapter": 15,
+  "chineseAndAnime": "pending",
+  "browser": [
+    {
+      "name": "departureStart",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - status: 出门石路 0/9 · 当前房内 · 出门石路 · 未参与\n  - heading \"本人从床边起身\" [level=3]\n  - paragraph: 有限试招已结束。本人从床边起身，才开始这次出门。\n  - paragraph: 当前人物：萧炎本人\n  - button \"本人从床边起身\"\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "departureRingNoAction",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\"\n  - button \"只看静止古戒\" [pressed]\n  - group \"出门与石路地图\" [active]:\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - status: 出门石路 0/9 · 当前房内 · 出门石路 · 未参与\n  - heading \"本人从床边起身\" [level=3]\n  - paragraph: 有限试招已结束。本人从床边起身，才开始这次出门。\n  - paragraph: 静止古戒不能替本人行动。\n  - button \"本人从床边起身\" [disabled]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "departureStage1",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 1/9 · 当前房内 · 出门石路 · 本人已起身，古戒待看\n  - heading \"看一眼静止古戒\" [level=3]\n  - paragraph: 本人看向静止的黑色古戒。戒指没有替本人移动，也没有在此再次拜师或授技。\n  - paragraph: 当前人物：萧炎本人\n  - button \"本人看一眼静止古戒\" [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "departureStage2",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 2/9 · 当前房内 · 出门石路 · 古戒仍静止，门口待行\n  - heading \"实际走到房门\" [level=3]\n  - paragraph: 沿房内地面走到门口。还在房内，不用回顾一句话代签离房。\n  - paragraph: 本人先走到当前房内或室外地点。\n  - button \"确认本人已到房门\" [disabled] [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "farDoorRejected",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 2/9 · 当前房内 · 出门石路 · 古戒仍静止，门口待行\n  - heading \"实际走到房门\" [level=3]\n  - paragraph: 沿房内地面走到门口。还在房内，不用回顾一句话代签离房。\n  - paragraph: 本人先走到当前房内或室外地点。\n  - button \"确认本人已到房门\" [disabled]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "ringCannotWalk",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\"\n  - button \"只看静止古戒\" [pressed]\n  - group \"出门与石路地图\" [active]:\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - status: 出门石路 2/9 · 当前房内 · 出门石路 · 古戒仍静止，门口待行\n  - heading \"实际走到房门\" [level=3]\n  - paragraph: 沿房内地面走到门口。还在房内，不用回顾一句话代签离房。\n  - paragraph: 静止古戒不能替本人行动。\n  - button \"确认本人已到房门\" [disabled]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "atRoomDoor",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\" [active]: →\n  - status: 出门石路 2/9 · 当前房内 · 出门石路 · 古戒仍静止，门口待行\n  - heading \"实际走到房门\" [level=3]\n  - paragraph: 沿房内地面走到门口。还在房内，不用回顾一句话代签离房。\n  - paragraph: 当前人物：萧炎本人\n  - button \"确认本人已到房门\"\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 370)"
+    },
+    {
+      "name": "stage3",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 3/9 · 当前房内 · 出门石路 · 已到房门，尚未跨出\n  - heading \"真正离开房间\" [level=3]\n  - paragraph: 从当前门口跨到室外，房内和门外使用各自位置。室外关门仍待本人完成。\n  - paragraph: 当前人物：萧炎本人\n  - button \"本人跨出房门\" [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 370)"
+    },
+    {
+      "name": "stage4Outside",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - button \"再从房门到室外 · 不追加历史\"\n  - status: 出门石路 4/9 · 当前房内 · 出门石路 · 已跨门，室外关门待续\n  - heading \"适应室外日光\" [level=3]\n  - paragraph: 在门外眯眼适应炽热日光。此刻门还没有关，石路行程也尚未开始。\n  - paragraph: 本人先走到当前房内或室外地点。\n  - button \"适应室外明亮日光\" [disabled] [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 370)"
+    },
+    {
+      "name": "normalReturnRoom",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - button \"再从房门到室外 · 不追加历史\"\n  - status: 出门石路 4/9 · 当前房内 · 出门石路 · 已跨门，室外关门待续\n  - heading \"适应室外日光\" [level=3]\n  - paragraph: 在门外眯眼适应炽热日光。此刻门还没有关，石路行程也尚未开始。\n  - paragraph: 本人先走到当前房内或室外地点。\n  - button \"适应室外明亮日光\" [disabled]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 370)"
+    },
+    {
+      "name": "stage4RefreshedOutside",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic \"同一房门仍开\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - button \"从门外返回房内 · 不追加历史\"\n  - status: 出门石路 4/9 · 当前室外 · 出门石路 · 已跨门，室外关门待续\n  - heading \"适应室外日光\" [level=3]\n  - paragraph: 在门外眯眼适应炽热日光。此刻门还没有关，石路行程也尚未开始。\n  - paragraph: 当前人物：萧炎本人\n  - button \"适应室外明亮日光\"\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 310)"
+    },
+    {
+      "name": "roundTripOutside",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic \"同一房门仍开\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - button \"从门外返回房内 · 不追加历史\"\n  - status: 出门石路 4/9 · 当前室外 · 出门石路 · 已跨门，室外关门待续\n  - heading \"适应室外日光\" [level=3]\n  - paragraph: 在门外眯眼适应炽热日光。此刻门还没有关，石路行程也尚未开始。\n  - paragraph: 当前人物：萧炎本人\n  - button \"适应室外明亮日光\"\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 310)"
+    },
+    {
+      "name": "stage5",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic \"同一房门仍开\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - button \"从门外返回房内 · 不追加历史\"\n  - status: 出门石路 5/9 · 当前室外 · 出门石路 · 日光已适应，门尚待关\n  - heading \"从室外关门\" [level=3]\n  - paragraph: 本人在门外仔细将同一房门关好。不能站在房内签室外关门。\n  - paragraph: 当前人物：萧炎本人\n  - button \"本人从室外仔细关门\" [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 310)"
+    },
+    {
+      "name": "stage6Closed",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic \"同一房门已关\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 6/9 · 当前室外 · 出门石路 · 室外已关门，石路待行\n  - heading \"实际踏上石路\" [level=3]\n  - paragraph: 离开门外，沿地面走到通向族内后部的石路。路口会面由下一段接续。\n  - paragraph: 本人先走到当前房内或室外地点。\n  - button \"确认本人已进入石路\" [disabled]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 310)"
+    },
+    {
+      "name": "atStonePath",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic \"同一房门已关\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\" [active]: ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 6/9 · 当前室外 · 出门石路 · 室外已关门，石路待行\n  - heading \"实际踏上石路\" [level=3]\n  - paragraph: 离开门外，沿地面走到通向族内后部的石路。路口会面由下一段接续。\n  - paragraph: 当前人物：萧炎本人\n  - button \"确认本人已进入石路\"\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "stage7Refreshed",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic \"同一房门已关\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 7/9 · 当前室外 · 出门石路 · 已入石路，尚未转路\n  - heading \"石路旁的绿柳\" [level=3]\n  - paragraph: 石路两侧绿柳带来些许清凉，与烈日相映。本人尚未转向另一条路，也未遇见来人。\n  - paragraph: 当前人物：萧炎本人\n  - button \"观察石路两侧的绿柳\"\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "departureMainFinal",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\" [active]:\n    - generic \"同一房门已关\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - status: 出门石路 9/9 · 当前室外 · 出门石路 · 室外关门与石路归档，路口待续\n  - heading \"出门与石路已归档。\" [level=3]\n  - paragraph: 已真实跨门、室外关门并进入石路。转向另一条路与会面由下一段继续，旧材料与奖励保持。\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 310)"
+    },
+    {
+      "name": "materialsStage3",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic: 床边\n    - generic \"静止古戒\"\n    - generic: 房门\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 房内\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - status: 出门石路 3/9 · 当前房内 · 出门石路 · 已到房门，尚未跨出\n  - heading \"真正离开房间\" [level=3]\n  - paragraph: 从当前门口跨到室外，房内和门外使用各自位置。室外关门仍待本人完成。\n  - paragraph: 当前人物：萧炎本人\n  - button \"本人跨出房门\" [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 370)"
+    },
+    {
+      "name": "materialsStage4Immediate",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic \"同一房门仍开\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - button \"出门向上走\": ↑\n  - button \"出门向左走\": ←\n  - button \"出门向下走\": ↓\n  - button \"出门向右走\": →\n  - button \"从门外返回房内 · 不追加历史\"\n  - status: 出门石路 4/9 · 当前室外 · 出门石路 · 已跨门，室外关门待续\n  - heading \"适应室外日光\" [level=3]\n  - paragraph: 在门外眯眼适应炽热日光。此刻门还没有关，石路行程也尚未开始。\n  - paragraph: 当前人物：萧炎本人\n  - button \"适应室外明亮日光\" [active]\n  - button \"用一句回顾代签全部出门\"\n  - button \"未转路就签人物会面\"\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(300 310)"
+    },
+    {
+      "name": "materialsFinal",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人出门断点已保存，旧奖励与试招结果保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房门 / 出门与石路\n  - heading \"起身、跨门，再走上石路。\" [level=2]\n  - paragraph: 方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。\n  - button \"本人行走与操作\" [pressed]\n  - button \"只看静止古戒\"\n  - group \"出门与石路地图\":\n    - generic \"同一房门已关\"\n    - generic: 门外\n    - generic: 石路\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"石路旁绿柳\"\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人 · 室外\n  - status: 出门石路 9/9 · 当前室外 · 出门石路 · 室外关门与石路归档，路口待续\n  - heading \"出门与石路已归档。\" [level=3]\n  - paragraph: 已真实跨门、室外关门并进入石路。转向另一条路与会面由下一段继续，旧材料与奖励保持。\n  - button \"暂离出门石路 · 保留断点\"",
+      "position": "translate(140 310)"
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "departureMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813128799.json",
+      "sha256": "a8793e4b50bd8fd17cc7a68ae922af4f461c51d69480de08aa96c84af362ef14",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureRingRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813136842.json",
+      "sha256": "9c748260f2a6353fc082c22e1509e36d1fce8772bd0a46a477cacc8938b855f0",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureFinishRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813144867.json",
+      "sha256": "0432040e11d8e0d677b8c4d9489b80db51eb94414d3139df44cf74b2f26e9ff6",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813152879.json",
+      "sha256": "5d33d87455f865b71178138ccd4f08746fcf38f7d3e1678aad5ab7bffa80758a",
+      "stage": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813160229.json",
+      "sha256": "2f0a9eacc3f3901ac617d899ac33511bfa1c18aff6cbfbf5c7af4cb3cd24855e",
+      "stage": 2,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureFarDoorRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813369689.json",
+      "sha256": "4fc56fadab6993c149805357ea95d662cfc2a6e846e871b5409a155476b1c7b0",
+      "stage": 2,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureRingCannotWalk",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813377718.json",
+      "sha256": "84473d34ba57bf58f5e34b7cbbb791c766dc773ae5dc040b836226bf45f26f97",
+      "stage": 2,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813405664.json",
+      "sha256": "f0e4a7f8807dd378dbda2720630a3fa21ee997de6c30dda99e094b84c11848fa",
+      "stage": 3,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813413048.json",
+      "sha256": "c6ff1760202dcbc2f346dcebbe48998e58475a9dfacaba0ad6fecaccb26e10b1",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureReturnNoWrite",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813419462.json",
+      "sha256": "1803cf8be0be9b9b790343ecc0c71dd19acca72b03851ceae632b5cbb9e4c654",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureRoundTripNoWrite",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813565702.json",
+      "sha256": "807f02ada26d52597167f3fe64a459018d1e5ced55d67c72512abc59272fe86b",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813573733.json",
+      "sha256": "3412f84f146a6572ac07f090ef7d2a9de3b542e3657d9bbd80c6029b73343088",
+      "stage": 5,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813593215.json",
+      "sha256": "016afb006649a77bacd60322598b67c592b86e83c470ce29cc080f4ab07f3ff3",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureFarPathRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813599669.json",
+      "sha256": "1a72caebf3eacd00a2e5fedca262b4d91670e26b428315acdacac4dc2e61c298",
+      "stage": 6,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813624979.json",
+      "sha256": "3171901d37c6bcaddd77881610ab102c5766942ef9cc1f5ce5481b0f101d8003",
+      "stage": 7,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureEarlyMeetRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813643427.json",
+      "sha256": "87c369c6cc954681452e3a0b3a4556b9a39983273a4140be5e9968c2c582cc69",
+      "stage": 7,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813651447.json",
+      "sha256": "48a80810f9033806f8b693c9a469b18e379bd9e597cfaa8348babf498e43582b",
+      "stage": 8,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813670633.json",
+      "sha256": "8d54b7bac2caae8d8570b84ae07ae84ed7a07838c7eaadcdc4b7e39cfa7e4d15",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureMainRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813677997.json",
+      "sha256": "ea32d555b705ed776d8aedffbce466a84c47ded13bbcd07372d186ed7e1fa3e7",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813680470.json",
+      "sha256": "f9a7032092efd25f5f29a0bc22712c39bbef1e103b22cb69062dea0eaea728f1",
+      "stage": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureMaterialsStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813726416.json",
+      "sha256": "7057f1b2540de1c642f8fe3059b53be2c2e19b1dfc6d3a40b532e41fa7aab378",
+      "stage": 4,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813746481.json",
+      "sha256": "04027808b0cbef99f1e1dc090c1ead3384cdca1f37399e2851e6e22fac9d6be7",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureMaterialsRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813763595.json",
+      "sha256": "149eab49b3ca1b2132853ead0b6fd31afa87f967a8fd8df7438d7c4021e46091",
+      "stage": 9,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "departureIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791813765980.json",
+      "sha256": "1a72bbadb7690794289a8563bf7b6499ef10fabfc0f2979a9ad0a647f60b9a79",
+      "stage": 0,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": 10,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "intactEntryCount": 0,
+  "returnFocus": "接续实际出门与石路",
+  "fixedDuringTrial": "Crossing initially rendered room briefly; successful crossing now sets outside immediately, verified in actual materials branch.",
+  "oldSpent": "rule-tests-only",
+  "actualBrowserOldBranch": {
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  }
+}

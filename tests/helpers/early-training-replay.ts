@@ -1,5 +1,8 @@
 import { firstTechniqueInput } from './first-technique-replay'
 import { firstBottleInput } from './first-bottle-replay'
+import { firstDepartureInput } from './first-departure-replay'
+import { advanceFirstDeparture, departurePlaces } from '../../src/core/first-departure'
+import { firstDepartureScenes } from '../../src/content/first-departure'
 import { advanceFirstTechnique, firstTechniqueBed } from '../../src/core/first-technique'
 import { firstReviewInput } from './first-review-replay'
 import { firstTrainingInput, firstTrainingPosition } from './first-training-replay'
@@ -296,6 +299,12 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   }
   if (includeQiAid) while (state.earlyTraining.firstTechnique.stage < 19) {
     const result = advanceFirstTechnique(state, firstTechniqueBed, firstBottleInput(state))
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.firstDeparture.stage < 9) {
+    const scene = firstDepartureScenes[state.earlyTraining.firstDeparture.stage]
+    const result = advanceFirstDeparture(state, departurePlaces[scene.place], scene.space, firstDepartureInput(state))
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
