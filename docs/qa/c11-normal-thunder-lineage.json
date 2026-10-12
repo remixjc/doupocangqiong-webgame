@@ -1,0 +1,415 @@
+{
+  "batch": "C11c-3f",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "db3cd93659d0ac15336b978841fd0ed2127909e6",
+  "previousCI": {
+    "id": 38192082929,
+    "conclusion": "success",
+    "pagesId": 38192082935,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "same normal journey via native UI and real downloads; official parseSave outside browser",
+  "records": [
+    {
+      "key": "18-safe",
+      "file": ".git/task-normal-ch18-safe-export.json",
+      "bytes": 16109,
+      "fileSha256": "a5571a2d5c59df572aac9cacb20add90a06fd15f9d3f0887f5aa0225b843d37d",
+      "stateSha256": "02ed421a16affe52927c97e9464615ee8c5347d0bb9dc5b19cf2ecba000c2645",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "gold": 7904,
+      "xp": 6235,
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 8,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "central-thunder-retreat": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "18",
+      "file": ".git/task-normal-ch18-export.json",
+      "bytes": 16118,
+      "fileSha256": "8dfdf849e69dd3a84e86d4863dfaf545784433dffac98a9b77608499551515e7",
+      "stateSha256": "03610798f77055d2a13ff1ba6f44d79f5d75fcb986c26fa542f817862029e098",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "gold": 8584,
+      "xp": 6785,
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "central-thunder-retreat": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "19-west",
+      "file": ".git/task-normal-ch19-west-export.json",
+      "bytes": 16695,
+      "fileSha256": "59b67098c74997d81515a1231e055028848900f26096210dd2d5907178ef8578",
+      "stateSha256": "393199db8c4ae556774d5f46f3b7381e0534cf0ff91b021fb69a1d34b6d161ef",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "gold": 8630,
+      "xp": 6795,
+      "inventory": {
+        "herb": 7,
+        "crystal": 46,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 1,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "star-pavilion-master-leads": {
+            "started": true,
+            "stage": 1,
+            "quote": 0,
+            "score": 1,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "qinglin-growth-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "19-pending",
+      "file": ".git/task-normal-ch19-pending-export.json",
+      "bytes": 16695,
+      "fileSha256": "17e8a343afbb5ff7b7f6a91cbd6d2ec77c677c06c2961bc85fff6aca2c54c9c3",
+      "stateSha256": "4e65843852907f3c762276eb2405aa3cfe917a4c4cc2a5e688f87e4f9d458acb",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "gold": 8722,
+      "xp": 6815,
+      "inventory": {
+        "herb": 7,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "star-pavilion-master-leads": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 3,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "qinglin-growth-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "19",
+      "file": ".git/task-normal-ch19-export.json",
+      "bytes": 16704,
+      "fileSha256": "1a1d229a41191bed5dbb90988ed9b63b978dc94d4d52515ba24ddafe19676ea7",
+      "stateSha256": "1c1efb61471cf34a65083ba2eecbcb564866a377a0cb4a26c779c64f0e736738",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "gold": 9432,
+      "xp": 7440,
+      "inventory": {
+        "herb": 8,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 1,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "star-pavilion-master-leads": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 3,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "qinglin-growth-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "19-refreshed",
+      "file": ".git/task-normal-ch19-refreshed-export.json",
+      "bytes": 16704,
+      "fileSha256": "2afb6f16f0e0acfe8cd5dc49464150fde25acc3b4daa458a08c140022034d7c3",
+      "stateSha256": "1c1efb61471cf34a65083ba2eecbcb564866a377a0cb4a26c779c64f0e736738",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "gold": 9432,
+      "xp": 7440,
+      "inventory": {
+        "herb": 8,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 1,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "star-pavilion-master-leads": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 3,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "qinglin-growth-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapter19EntireStateRefreshEqual": true,
+  "first17ProgressUnchanged": true,
+  "observations": {
+    "thunder": {
+      "durations": [
+        8,
+        10
+      ],
+      "westHp": 385,
+      "eastArrivalHp": 338,
+      "eastHealUsed": 1,
+      "eastRemainingObserved": 4,
+      "killsAdded": 0
+    },
+    "lineage": {
+      "order": [
+        "west",
+        "east"
+      ],
+      "westSingleRecordActualRefresh": true,
+      "westGuardBlocked": 1,
+      "attempts": 1,
+      "correctChoice": "dan-tower",
+      "reportXp": 50,
+      "herbAtAssessment": 1,
+      "teacherStillUnavailable": true
+    },
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "menu-paused AI desktop, not physical devices or player Beta",
+    "No source/full character/public deployment acceptance",
+    "Historical save rollback cause still open"
+  ]
+}
