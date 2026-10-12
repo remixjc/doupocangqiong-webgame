@@ -1,0 +1,224 @@
+{
+  "batch": "C1g-4c4",
+  "version": "0.51.0",
+  "date": "2026-10-12",
+  "browser": "Production4185/tab23 normal continuation of actual0.50 journey, no manufacturedimport/store/position/clock injection.",
+  "refreshes": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    11,
+    14,
+    19,
+    20,
+    21,
+    23,
+    27,
+    28,
+    32,
+    33,
+    34
+  ],
+  "observer": "No movement buttons; ArrowRight leaves Yan220,310 unchanged; explicit focus reset every step and reload.",
+  "jointWalk": "Only after guards depart and actual joint movement Yan540,310 Xuner display565,310.",
+  "entryRefocused": true,
+  "newConsoleErrors": [],
+  "allOtherStateUnchanged": true,
+  "zeroWritePairs": {
+    "wrongObserver": "migrated",
+    "fightRejected": "challenged",
+    "lootRejected": "opponentLeft",
+    "recruitRejected": "captainReplied",
+    "deepFarRejected": "beforeDeep",
+    "coreRejected": "walkedDeep",
+    "refreshed": "done",
+    "navigation": "done"
+  },
+  "inputs": [
+    {
+      "name": "baseline",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791793684881.json",
+      "sourceVersion": "0.50.0",
+      "stage": 0,
+      "sha256": "72fc66143a18880a7d96855a07906fa9a15b8ec5a289b0b93b7849b813bdd474"
+    },
+    {
+      "name": "migrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794522752.json",
+      "sourceVersion": "0.51.0",
+      "stage": 0,
+      "sha256": "1f868c95819ca59f25c66f09f1567fd118ae92d52451b9fd79b03db2271b8854"
+    },
+    {
+      "name": "wrongObserver",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794525301.json",
+      "sourceVersion": "0.51.0",
+      "stage": 0,
+      "sha256": "05186d69f741829105309721380170caeafe1137e4b7e01855a284cd2848be6c"
+    },
+    {
+      "name": "ringClosed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794528322.json",
+      "sourceVersion": "0.51.0",
+      "stage": 2,
+      "sha256": "120d784fa386d3881ef2e22ea3f38408282735eae8668fa378a998d36e1afe39"
+    },
+    {
+      "name": "beforeWhistle",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794530979.json",
+      "sourceVersion": "0.51.0",
+      "stage": 3,
+      "sha256": "da521eac544689cef222aa7255bb8672610fe00e83cbabf223e19a430f08e380"
+    },
+    {
+      "name": "called",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794533609.json",
+      "sourceVersion": "0.51.0",
+      "stage": 4,
+      "sha256": "1d1e870022b63e35d306c1faae660860b6084bbdd6c3048148b7c678d01cbcec"
+    },
+    {
+      "name": "guardsArrived",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794536242.json",
+      "sourceVersion": "0.51.0",
+      "stage": 5,
+      "sha256": "947a8ffc09548e9897a7733aa5a8dc280dca57cf64bfcb9282b1f2cbefcd3cac"
+    },
+    {
+      "name": "outerRing",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794539187.json",
+      "sourceVersion": "0.51.0",
+      "stage": 6,
+      "sha256": "fc2d13122c6eb3eaaad207813c120b3529dfcc5668a8644617be9e09e0687869"
+    },
+    {
+      "name": "challenged",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794564916.json",
+      "sourceVersion": "0.51.0",
+      "stage": 11,
+      "sha256": "9c9218f538ee8e2bff083310654120e0f68fa88107c528468b65414b29c4cea8"
+    },
+    {
+      "name": "fightRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794567521.json",
+      "sourceVersion": "0.51.0",
+      "stage": 11,
+      "sha256": "ad8d1c21df4ed3a4ceccb991b3235c86a5af8b9c2eeeda779d50e2ff60a2234e"
+    },
+    {
+      "name": "refused",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794571083.json",
+      "sourceVersion": "0.51.0",
+      "stage": 14,
+      "sha256": "002dfab301670271eda1a819f5f2b56723b02a42e9e934be0b7910e4168fda91"
+    },
+    {
+      "name": "withdrawing",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794575878.json",
+      "sourceVersion": "0.51.0",
+      "stage": 19,
+      "sha256": "efcb50434d37c8acff0032d839a20f2aa7ddfe14e081ce4ca4a677190c1ec5b6"
+    },
+    {
+      "name": "paused",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794578530.json",
+      "sourceVersion": "0.51.0",
+      "stage": 20,
+      "sha256": "79b246642cbf6d47e760654cb1d26c46c63a53a093a584374256f2819b6abc65"
+    },
+    {
+      "name": "opponentLeft",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794597316.json",
+      "sourceVersion": "0.51.0",
+      "stage": 21,
+      "sha256": "2bc7cd3daf0ddfbeb2c3b7b672e011afaa32960b198e943ec69288522b656167"
+    },
+    {
+      "name": "lootRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794599975.json",
+      "sourceVersion": "0.51.0",
+      "stage": 21,
+      "sha256": "f154e54ac752a60da7ff16ce9d0b8162bb59f85498622dc554c89e6d2700d3d2"
+    },
+    {
+      "name": "chaseStopped",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794602999.json",
+      "sourceVersion": "0.51.0",
+      "stage": 23,
+      "sha256": "188ee632a719386d78227f14f0c2fd3253ee91eec1f6f305991b25ad61ac9bf9"
+    },
+    {
+      "name": "captainReplied",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794607225.json",
+      "sourceVersion": "0.51.0",
+      "stage": 27,
+      "sha256": "3b8b9a32dbc73984672f0a144485a0f2b9a59d79cb09ff1f4ee0f918b61d7ff9"
+    },
+    {
+      "name": "recruitRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794609859.json",
+      "sourceVersion": "0.51.0",
+      "stage": 27,
+      "sha256": "72c86fc3fed66882c9db743c8bc98acf3fb8a5d8b551fba79f740c9a89ed46a5"
+    },
+    {
+      "name": "guardsLeft",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794612352.json",
+      "sourceVersion": "0.51.0",
+      "stage": 28,
+      "sha256": "92361a297188cf942e4c6538b0a4133cee6f8c31f7f40035a9f640129ff7d69c"
+    },
+    {
+      "name": "beforeDeep",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794616566.json",
+      "sourceVersion": "0.51.0",
+      "stage": 32,
+      "sha256": "92d5ab1a01d89d5da5490cbca227e91e424c5f6ea58f4a443a106d3dd8cdee38"
+    },
+    {
+      "name": "deepFarRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794618937.json",
+      "sourceVersion": "0.51.0",
+      "stage": 32,
+      "sha256": "81235bd94d75fc3a50d749d065a8c03b6126a96632f22393642e15f7a5870dd9"
+    },
+    {
+      "name": "walkedDeep",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794643622.json",
+      "sourceVersion": "0.51.0",
+      "stage": 33,
+      "sha256": "f575993bf52fb51ec76efe3660a40a3d5a0335a3428283a3ab3e53e44e726146"
+    },
+    {
+      "name": "coreRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794646257.json",
+      "sourceVersion": "0.51.0",
+      "stage": 33,
+      "sha256": "d09eecc6296fcb71fee90667f58a8907fa7d541198e3b330c3dbd73959e1b3a0"
+    },
+    {
+      "name": "done",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794648695.json",
+      "sourceVersion": "0.51.0",
+      "stage": 34,
+      "sha256": "a0c2d6af517522bde4322a5f664777a57dd63488ac7ef138f58648c06d29ff48"
+    },
+    {
+      "name": "refreshed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794650799.json",
+      "sourceVersion": "0.51.0",
+      "stage": 34,
+      "sha256": "b9c90107c85d40eaf914a8030af9c48e7b1c8d8b0ab3afc0156207e4ebe31cc9"
+    },
+    {
+      "name": "navigation",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791794653015.json",
+      "sourceVersion": "0.51.0",
+      "stage": 34,
+      "sha256": "3282e44d6863d3839ad5f48c191f55baf8d47b48191ea40311d874f46db00196"
+    }
+  ]
+}
