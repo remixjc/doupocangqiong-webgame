@@ -1,3 +1,4 @@
+import { EARLY_MARKET_RETURN_VERSION } from './early-market-return-state'
 import { EARLY_MARKET_TRADE_VERSION } from './early-market-trade-state'
 import { EARLY_MARKET_DISCOVERY_VERSION } from './early-market-discovery-state'
 import { EARLY_MARKET_STANDOFF_VERSION } from './early-market-standoff-state'
@@ -286,7 +287,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_MARKET_BRACELETS_VERSION),
     versionBefore(data.contentVersion as string, EARLY_MARKET_STANDOFF_VERSION),
     versionBefore(data.contentVersion as string, EARLY_MARKET_DISCOVERY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_TRADE_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_MARKET_TRADE_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_MARKET_RETURN_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

@@ -1,0 +1,243 @@
+{
+  "batch": "C1g-4d1",
+  "version": "0.54.0",
+  "date": "2026-10-12",
+  "browser": "Production4185 new-core and4190 consumed-liquid; both9 actual checkpoints; main allstage reloads and6rejections; oldtable/refill rejection+reload.",
+  "initialJs": 499555,
+  "totalJs": 1849218,
+  "initialBudget": 500000,
+  "totalBudget": 1850000,
+  "onlyNewHistoryOrEmptyMigrationAndVersionChanged": true,
+  "wholeStateEqualPairs": 11,
+  "actualWalk": "12leftgate300310/8leftclan140310/3downroom140370",
+  "xunerHiddenAfterPart": true,
+  "returnFocus": "接续回族与房中准备",
+  "newConsoleErrors": [],
+  "inputs": [
+    {
+      "name": "priorMain",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791798026497.json",
+      "sourceVersion": "0.53.1",
+      "stage": 0,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "3d313ac62c3d457d6e9879a1c9c13a84d37d007b07c95dcb81e43ce102efb7bd"
+    },
+    {
+      "name": "priorOld",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791798029719.json",
+      "sourceVersion": "0.53.1",
+      "stage": 0,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "9d3a1cf2df8e7e91389164f5cb518fae7b3b3c4a4335dc4c86d845826afa2f1e"
+    },
+    {
+      "name": "returnMigrated",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798741855.json",
+      "sourceVersion": "0.54.0",
+      "stage": 0,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "3d8be218e0461e0f4554f319abc14666a72b205821856df62f28dbb0fcf2babf"
+    },
+    {
+      "name": "returnFarExitRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798743816.json",
+      "sourceVersion": "0.54.0",
+      "stage": 0,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "81ebbf852aeecd4b89f1ac5d52faf7ad2f9b1a6b8be7d6faf9a9f6caadecd121"
+    },
+    {
+      "name": "returnDeparted",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798770506.json",
+      "sourceVersion": "0.54.0",
+      "stage": 1,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "ef1ad4f766da5b28ea49e4a51fe18219fed9458e7f5148f9dfcdc98ede28dfa2"
+    },
+    {
+      "name": "returnFarHomeRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798772616.json",
+      "sourceVersion": "0.54.0",
+      "stage": 1,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "949a837c33bbcc9a2ee196eb3c9ae91df4953aa94e879fcf9f5f41adf9ea2e24"
+    },
+    {
+      "name": "returnHome",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798774984.json",
+      "sourceVersion": "0.54.0",
+      "stage": 2,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "c22a26194c8ccbbdff25290439099e2b36a329c451386a846066d20297e1a3d9"
+    },
+    {
+      "name": "returnParted",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798777396.json",
+      "sourceVersion": "0.54.0",
+      "stage": 3,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "6fd8a65ca22d92ed79488e67be79ecb70dc4487f0865f268b7b16766c808ec15"
+    },
+    {
+      "name": "returnFarRoomRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798779503.json",
+      "sourceVersion": "0.54.0",
+      "stage": 3,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "63164c05664a6488b65a5dc3d00d59364532406a1958ae5c86d1a36738a9a990"
+    },
+    {
+      "name": "returnRoom",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798808408.json",
+      "sourceVersion": "0.54.0",
+      "stage": 4,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "c0b2c1f9e31d5adf443320f6cae12b3c7aaefd11b503d98452985d311c3eaaa0"
+    },
+    {
+      "name": "returnLearnRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798810728.json",
+      "sourceVersion": "0.54.0",
+      "stage": 4,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "2d1a3e524c51f6114ded65cb3373bc37e9e876de71173f8cb36e7ed79d0d5c26"
+    },
+    {
+      "name": "returnLocked",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798812923.json",
+      "sourceVersion": "0.54.0",
+      "stage": 5,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "d299bc0341610f020dd0aebaf157ea6292cc10e13c61cc10f19f34bb48207c8e"
+    },
+    {
+      "name": "returnTeacher",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798815282.json",
+      "sourceVersion": "0.54.0",
+      "stage": 6,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "113959df67be0388c05e230492b8d299af9bbd3e4236789851791481dfb9a846"
+    },
+    {
+      "name": "returnRestoreRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798817627.json",
+      "sourceVersion": "0.54.0",
+      "stage": 6,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "4578cd789377ea17e1b0890b0db42dcec79f5d8a4744f4c9b566444f9fb13e9d"
+    },
+    {
+      "name": "returnTable",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798819804.json",
+      "sourceVersion": "0.54.0",
+      "stage": 7,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "2c103ccb37a73211398f600bea912339afc20fa6045e34d95ba9d22a62e47186"
+    },
+    {
+      "name": "returnRefineRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798822168.json",
+      "sourceVersion": "0.54.0",
+      "stage": 7,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "3d2e5eb1afd41bed7bdf68b50c369a8ed0a797b16668c3d9a9887a42d28cae33"
+    },
+    {
+      "name": "returnAsked",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798842047.json",
+      "sourceVersion": "0.54.0",
+      "stage": 8,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "bcf834a8afc23931e02da50a9eddb5038d40e793f076bc7368e2bcd64f85a639"
+    },
+    {
+      "name": "returnDone",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798844386.json",
+      "sourceVersion": "0.54.0",
+      "stage": 9,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "9f6439ce8afdc6a3077725aade74d5f46ed3b97908c8901148085eaf640dc0eb"
+    },
+    {
+      "name": "returnRefreshed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798846456.json",
+      "sourceVersion": "0.54.0",
+      "stage": 9,
+      "core": 1,
+      "liquid": 0,
+      "sha256": "9a4febdba918c1ee4525824f29fc20d00801c4c77e1e69550d067e1f467a444f"
+    },
+    {
+      "name": "returnOldBaseline",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798849984.json",
+      "sourceVersion": "0.54.0",
+      "stage": 0,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "e4338c994afa960a68398537e2573de38cadc296a5dbd8122d5a9832c32f47ce"
+    },
+    {
+      "name": "returnOldTeacher",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798884713.json",
+      "sourceVersion": "0.54.0",
+      "stage": 6,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "8e53f6d910c87a0a38ab0cb8dc3d699abb6aa63238c5b77fcd34f3c70522e7ac"
+    },
+    {
+      "name": "returnOldRestoreRejected",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798887084.json",
+      "sourceVersion": "0.54.0",
+      "stage": 6,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "8c0e1f22590b6d353659c4d0c9b7b6bc2f2a8b97bbb13a78c38f2b10612b0486"
+    },
+    {
+      "name": "returnOldTable",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798889276.json",
+      "sourceVersion": "0.54.0",
+      "stage": 7,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "c4d78d21fd8d81bfcbb71ffe4f018e0663fd87f6594c372e7a8849880fd83c16"
+    },
+    {
+      "name": "returnOldDone",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798891861.json",
+      "sourceVersion": "0.54.0",
+      "stage": 9,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "e84fd8b45aae9bbbad8fd21da695e49594638263ed7de721112bbaf57d9909cc"
+    },
+    {
+      "name": "returnOldRefreshed",
+      "originalFile": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791798893955.json",
+      "sourceVersion": "0.54.0",
+      "stage": 9,
+      "core": 0,
+      "liquid": 6,
+      "sha256": "9674fd6ea7998238b13b4d714355d0a80e780940b028b2cf2f0265d849a2f263"
+    }
+  ]
+}

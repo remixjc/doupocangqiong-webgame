@@ -1,3 +1,5 @@
+import { advanceEarlyMarketReturn, marketReturnPlaces } from '../../src/core/early-market-return'
+import { marketReturnScenes } from '../../src/content/early-market-return'
 import { advanceEarlyMarketTrade, marketTradeExit, marketTradeLedger } from '../../src/core/early-market-trade'
 import { marketTradeScenes } from '../../src/content/early-market-trade'
 import { advanceEarlyCeremonyVerdict, verdictPlaces } from '../../src/core/early-ceremony-verdict'
@@ -247,6 +249,11 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     const task = state.earlyTraining.marketTrade
     const result = advanceEarlyMarketTrade(state, task.stage < 13 ? marketDiscoveryPlace : marketTradeExit,
       { ...task, expectedLedger: marketTradeLedger(state), actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  if (includeQiAid) for (const scene of marketReturnScenes) {
+    const result = advanceEarlyMarketReturn(state, marketReturnPlaces[scene.place],
+      { ...state.earlyTraining.marketReturn, expectedLedger: marketTradeLedger(state), actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
   if (!state.earlyTraining.receipts.woodCore) act({ type: 'purchase', item: 'woodCore', price: 60, expectedSpent: 50 })
