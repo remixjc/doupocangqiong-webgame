@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
@@ -36,7 +37,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     <span className="eyebrow">重修往事 / 斗技堂到访</span>
     <h2>东侧藏卷，西侧习武。</h2>
     <p className="muted" id="early-hall-help">方向键或WASD行走，靠近路标按E查看；也可使用下方按钮。堂内位置在退出或刷新后回堂口，到访记录保留。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="斗技堂地图"
+    <EarlyMap ref={field} aria-label="斗技堂地图"
       aria-describedby="early-hall-help" viewBox="0 0 720 420" onKeyDown={key}>
       <title>斗技堂东西两区原创布局</title>
       <MapBackground fill="#202d2c" />
@@ -69,7 +70,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
         <circle cy="-8" r="7" fill="#edc79f" /><path d="M-7-11 Q0-20 7-10" fill="#26322f" />
       </g>
       <MapText x="360" y="406" fill="#dbc59e">堂口 · 原创比例与陈设</MapText>
-    </svg>
+    </EarlyMap>
     <StatusParagraph className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</StatusParagraph>
     <div className="early-walk-controls" aria-label="斗技堂行走操作">
       <WalkDirectionButtons prefix="堂内" onMove={move} />

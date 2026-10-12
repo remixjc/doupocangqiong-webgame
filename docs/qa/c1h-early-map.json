@@ -1,0 +1,221 @@
+{
+  "version": "0.74.1",
+  "date": "2026-10-13",
+  "reverse": [
+    {
+      "path": "src/ui/EarlyCeremonialTest.tsx",
+      "originalSha256": "6459d4226de25adc13b8f89264e28a5e8c026e7f17040c2fd80842203e401511",
+      "restoredSha256": "6459d4226de25adc13b8f89264e28a5e8c026e7f17040c2fd80842203e401511"
+    },
+    {
+      "path": "src/ui/EarlyCeremonyGuests.tsx",
+      "originalSha256": "32f079a461c65fc9914751d29518e67bdcf1cdacac674f9d8bed4ad602b0a186",
+      "restoredSha256": "32f079a461c65fc9914751d29518e67bdcf1cdacac674f9d8bed4ad602b0a186"
+    },
+    {
+      "path": "src/ui/EarlyCeremonyVerdict.tsx",
+      "originalSha256": "0b956d78193769e1a32374bcb25756746109cb297e6f41ce41548ded6ea79945",
+      "restoredSha256": "0b956d78193769e1a32374bcb25756746109cb297e6f41ce41548ded6ea79945"
+    },
+    {
+      "path": "src/ui/EarlyCityPharmacy.tsx",
+      "originalSha256": "9b5d248acaa945c492540c0e90ee583a67397d0c5efaccaca967efdc9de06c32",
+      "restoredSha256": "9b5d248acaa945c492540c0e90ee583a67397d0c5efaccaca967efdc9de06c32"
+    },
+    {
+      "path": "src/ui/EarlyEighthTraining.tsx",
+      "originalSha256": "51b8a3c9a583311692d9c9fdbb3c60cfc90c6776e5681beec29e9878dbdcba2b",
+      "restoredSha256": "51b8a3c9a583311692d9c9fdbb3c60cfc90c6776e5681beec29e9878dbdcba2b"
+    },
+    {
+      "path": "src/ui/EarlyForestStrike.tsx",
+      "originalSha256": "ee39138c08781b1602b4f91d39eecaa0c02a906fcf0d12814503cb73d2f95794",
+      "restoredSha256": "ee39138c08781b1602b4f91d39eecaa0c02a906fcf0d12814503cb73d2f95794"
+    },
+    {
+      "path": "src/ui/EarlyHall.tsx",
+      "originalSha256": "c1e3d6f1f193748553e7a74e63e54967f530da36d29c3092cebf9e81a595f14f",
+      "restoredSha256": "c1e3d6f1f193748553e7a74e63e54967f530da36d29c3092cebf9e81a595f14f"
+    },
+    {
+      "path": "src/ui/EarlyKeChallenge.tsx",
+      "originalSha256": "7e43e676b50ca8ea563fa26ea3946cffdaa9c2508cb1812e8f93da3784df2bec",
+      "restoredSha256": "7e43e676b50ca8ea563fa26ea3946cffdaa9c2508cb1812e8f93da3784df2bec"
+    },
+    {
+      "path": "src/ui/EarlyMarketBracelets.tsx",
+      "originalSha256": "d3651a6e2467aa6b348ed1747e39f0f3819ea20daf23fd3eeee84d584256b3ef",
+      "restoredSha256": "d3651a6e2467aa6b348ed1747e39f0f3819ea20daf23fd3eeee84d584256b3ef"
+    },
+    {
+      "path": "src/ui/EarlyMarketDiscovery.tsx",
+      "originalSha256": "12e4622190538dfa4c3e076fce807bf1f74dfcd7fee76263392d658f9287bdff",
+      "restoredSha256": "12e4622190538dfa4c3e076fce807bf1f74dfcd7fee76263392d658f9287bdff"
+    },
+    {
+      "path": "src/ui/EarlyMarketEscort.tsx",
+      "originalSha256": "50987125e10b1145241687f8d8ce15e7491f828bcab3606e86ab84f2b34a1d6e",
+      "restoredSha256": "50987125e10b1145241687f8d8ce15e7491f828bcab3606e86ab84f2b34a1d6e"
+    },
+    {
+      "path": "src/ui/EarlyMarketSearch.tsx",
+      "originalSha256": "7ecbd90cb6774d1ccc6af36105ac21f4e958d0169d6c77e845fe3c2e9c9ae4c8",
+      "restoredSha256": "7ecbd90cb6774d1ccc6af36105ac21f4e958d0169d6c77e845fe3c2e9c9ae4c8"
+    },
+    {
+      "path": "src/ui/EarlyMarketStandoff.tsx",
+      "originalSha256": "ad4efa13865102451ab3744b18f42831aafbde2fc9a6a77a4a073da06260aa12",
+      "restoredSha256": "ad4efa13865102451ab3744b18f42831aafbde2fc9a6a77a4a073da06260aa12"
+    },
+    {
+      "path": "src/ui/EarlyMorningCard.tsx",
+      "originalSha256": "9aaf68d9ce940d773a6684427432820051a1b73383adde79097bc6e11806075c",
+      "restoredSha256": "9aaf68d9ce940d773a6684427432820051a1b73383adde79097bc6e11806075c"
+    },
+    {
+      "path": "src/ui/EarlyNingFirst.tsx",
+      "originalSha256": "0fcd430d28242a87d19332c8ea324c8b92d15df2b82aa513dbdff363e24d7527",
+      "restoredSha256": "0fcd430d28242a87d19332c8ea324c8b92d15df2b82aa513dbdff363e24d7527"
+    },
+    {
+      "path": "src/ui/EarlyNingSecond.tsx",
+      "originalSha256": "306ee7dc65b7afacecf13dedeb9f330862f9cea5999088460f93e5efe6a8f4c7",
+      "restoredSha256": "306ee7dc65b7afacecf13dedeb9f330862f9cea5999088460f93e5efe6a8f4c7"
+    },
+    {
+      "path": "src/ui/EarlyPreliminary.tsx",
+      "originalSha256": "da6ab27f2d4fcdca448cfa479ee1d37ea46cedcfbaf9ee1296e0cad7d7b8799d",
+      "restoredSha256": "da6ab27f2d4fcdca448cfa479ee1d37ea46cedcfbaf9ee1296e0cad7d7b8799d"
+    },
+    {
+      "path": "src/ui/EarlyQiAid.tsx",
+      "originalSha256": "4aeb09b083663068ac33977783843485f78879c227997bde6574fdae2bfd9899",
+      "restoredSha256": "4aeb09b083663068ac33977783843485f78879c227997bde6574fdae2bfd9899"
+    },
+    {
+      "path": "src/ui/EarlyQiBarrier.tsx",
+      "originalSha256": "6079985e413395823376188a3230157cfb224a922336ad54e33fee06dbb8540e",
+      "restoredSha256": "6079985e413395823376188a3230157cfb224a922336ad54e33fee06dbb8540e"
+    },
+    {
+      "path": "src/ui/EarlyQiPavilion.tsx",
+      "originalSha256": "9c4763d666bf0067dcd567fa88d5e8442223e84f0c00ebc3c66b46962662bcc6",
+      "restoredSha256": "9c4763d666bf0067dcd567fa88d5e8442223e84f0c00ebc3c66b46962662bcc6"
+    },
+    {
+      "path": "src/ui/EarlyWalk.tsx",
+      "originalSha256": "f221873e3412eee78ac08eec6e961bf9881042a6c36499e517fa67b1f36704f0",
+      "restoredSha256": "f221873e3412eee78ac08eec6e961bf9881042a6c36499e517fa67b1f36704f0"
+    },
+    {
+      "path": "src/ui/FamilyHallMap.tsx",
+      "originalSha256": "4e20ed84da04b50839877671430176f434d23fe96c83c2352b9413a04c3be08c",
+      "restoredSha256": "4e20ed84da04b50839877671430176f434d23fe96c83c2352b9413a04c3be08c"
+    },
+    {
+      "path": "src/ui/FirstDeparture.tsx",
+      "originalSha256": "131b70e1711b4ac1c6a5c95a5b08771afa63046d8af2221783358eb0e0bc0a8d",
+      "restoredSha256": "131b70e1711b4ac1c6a5c95a5b08771afa63046d8af2221783358eb0e0bc0a8d"
+    },
+    {
+      "path": "src/ui/FirstHallApproach.tsx",
+      "originalSha256": "7b03357d1f3e03fd4d81a10549f044bb08028287e9b20e60828d8c3fb235e5eb",
+      "restoredSha256": "7b03357d1f3e03fd4d81a10549f044bb08028287e9b20e60828d8c3fb235e5eb"
+    },
+    {
+      "path": "src/ui/FirstHallEntry.tsx",
+      "originalSha256": "d45f8dd8e92c7b4654ee53ddfed64155f5c1847210e9b6f342b7f4f1efdba62f",
+      "restoredSha256": "d45f8dd8e92c7b4654ee53ddfed64155f5c1847210e9b6f342b7f4f1efdba62f"
+    },
+    {
+      "path": "src/ui/FirstHallMatch.tsx",
+      "originalSha256": "adb4d66a8a576eb309c12b101f7f21d6ef16b0f1c4703dae3ff00b5b991b74f0",
+      "restoredSha256": "adb4d66a8a576eb309c12b101f7f21d6ef16b0f1c4703dae3ff00b5b991b74f0"
+    },
+    {
+      "path": "src/ui/FirstHallReading.tsx",
+      "originalSha256": "3c76d75f29e1c3ccc6906e044f03bba71c8cbaadb3bbe8332f177957ebabf5b9",
+      "restoredSha256": "3c76d75f29e1c3ccc6906e044f03bba71c8cbaadb3bbe8332f177957ebabf5b9"
+    },
+    {
+      "path": "src/ui/FirstHallTalk.tsx",
+      "originalSha256": "b85801463a3787df2c9ae4bfe9c0b9c8a4c3f37f746ce809061660bcceb2bac7",
+      "restoredSha256": "b85801463a3787df2c9ae4bfe9c0b9c8a4c3f37f746ce809061660bcceb2bac7"
+    },
+    {
+      "path": "src/ui/FirstRoadMeeting.tsx",
+      "originalSha256": "e1a78869faa758faa9f94a37dc20241aee259628e0ae0f723f7486af2e5912cf",
+      "restoredSha256": "e1a78869faa758faa9f94a37dc20241aee259628e0ae0f723f7486af2e5912cf"
+    },
+    {
+      "path": "src/ui/MountainWalkMap.tsx",
+      "originalSha256": "6c3df626d585773b65966625508fe9fd0ccb6e3bd4267c46d8855aaa27ff3248",
+      "restoredSha256": "6c3df626d585773b65966625508fe9fd0ccb6e3bd4267c46d8855aaa27ff3248"
+    },
+    {
+      "path": "src/ui/TeacherRoom.tsx",
+      "originalSha256": "473191fa412f0897b23eac74b8503720a664566f751bbc0a678662c387cd3186",
+      "restoredSha256": "473191fa412f0897b23eac74b8503720a664566f751bbc0a678662c387cd3186"
+    }
+  ],
+  "nativeDecoded": 152,
+  "native": [
+    {
+      "name": "earlyMapMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791839776474.json",
+      "prior": "checkoutMainFinalRefresh",
+      "sha256": "1ba151915739c9a27f007ccd6bb9e29b5ad9b6222c05cbaadf397d4441872147",
+      "entireStateEqual": true
+    },
+    {
+      "name": "earlyMapMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791839792486.json",
+      "prior": "checkoutMaterialsFinal",
+      "sha256": "34a555c9ffc235050ce8aae8fa4496a93fce360ecf098182c3064284c9f8a46b",
+      "entireStateEqual": true
+    },
+    {
+      "name": "earlyMapIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791839794750.json",
+      "prior": "checkoutIntactAfterNavigation",
+      "sha256": "8c5ccbee1951d68712c14241a8f3351d1bb69c202731d1e92e83297f2dd96852",
+      "entireStateEqual": true
+    },
+    {
+      "name": "earlyMapMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791839785554.json",
+      "prior": "earlyMapMainMigrated",
+      "sha256": "019882555a41e843dbf0a1145b70716e537ca5619d58671ea40ec44a867c63eb",
+      "entireStateEqual": true
+    }
+  ],
+  "nativeAttributesRefAndKeyboardEqual": true,
+  "vitest": {
+    "files": 151,
+    "tests": 900
+  },
+  "nodeTests": 11,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "initialJs": 492262,
+  "totalJs": 1847289,
+  "savedTotalJsBytes": 1363,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "focus": "Actual native exit Enter restores exact same checkout entry; Enter reopens3/3. Original movement6/6 and threat9/9 bounded, existing readonly histories remain.",
+  "prerequisite": {
+    "sha": "bae91f9b7111e38bb6899ededd19fa731eda7501",
+    "checks": 38306871739,
+    "conclusion": "success",
+    "pages": 38306871948,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1982758
+  },
+  "limits": "Only native map defaults shared; narrative, stage/positions/custody/rewards/spoiler limits unchanged. Actual Xuner joining/chat/threshold crossing subsequent independent batch."
+}

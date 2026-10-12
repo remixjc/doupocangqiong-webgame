@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -44,13 +45,13 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>旁观房中的老师</SecondaryButton>
     </div>
-    <svg ref={field} role="group" aria-label={mapLabel} aria-describedby="teacher-room-help" tabIndex={0} viewBox="80 290 245 125" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label={mapLabel} aria-describedby="teacher-room-help" viewBox="80 290 245 125" onKeyDown={key}>
       <MapBackground /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
       <g aria-label="老师固定房中位置" transform="translate(220 370)"><MarketWalker /><text y="-52" textAnchor="middle" fill="#eed7ad">老师</text></g>
       <rect x="250" y="346" width="35" height="15" fill="#937954" /><text x="250" y="338" fill="#eed7ad">桌面</text>
       <g aria-label="萧炎本人行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad">本人</text></g>
       {draw(yan)}
-    </svg>
+    </EarlyMap>
     {scene && movable && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix={prefix} onMove={move} /></div>}
     <StatusParagraph>{prefix} {stage}/{total} · {summary}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

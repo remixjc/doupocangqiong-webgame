@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -44,8 +45,8 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
   return <>
     <span className="eyebrow">坊市 / 寻核与普通手链</span><h2>一个继续寻核，一个停在手链摊。</h2>
     <p id="market-search-help">先明确选择本步人物，再用方向或WASD行走、近当前地点按E。两人的位置各自记录在本次行走中；换人物和刷新需重新选择。街坊不可穿过，位置不保存。</p>
-    <svg ref={field} role="group" aria-label="两人分路寻核与手链地图" aria-describedby="market-search-help" tabIndex={0}
-      viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="两人分路寻核与手链地图" aria-describedby="market-search-help"
+      viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground /><path d="M180 310 H650 M220 230 H620 V130 H580" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       {Object.entries(marketSearchPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
@@ -58,7 +59,7 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
         {task.bracelet === 'xuner-viewing' && <circle aria-label="薰儿只拿看未购手链" cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
       {task.stranger === 'seen' && <g aria-label="姓名尚未揭出的华衣来人" transform="translate(145 310)"><path d="M-13 16 L-7-7 H7 L13 16Z" fill="#b6a58a" /><circle cy="-15" r="9" fill="#dcc6ae" /></g>}
-    </svg>
+    </EarlyMap>
     {scene && <div className="early-walk-controls"><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>
       {active && <WalkDirectionButtons prefix="寻核" onMove={move} />}</div>}

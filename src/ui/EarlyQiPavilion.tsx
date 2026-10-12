@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -29,7 +30,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
   return <>
     <span className="eyebrow">五天之后 / 功法阁入阁</span><h2>先认属性，再过阁门。</h2>
     <p id="qi-pavilion-help">方向键或WASD行走，靠近当前地点按E或按钮。门开、许可与跨门分别记录；关闭或刷新保留步骤，重入从阁前出发。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="功法阁属性测定地图" aria-describedby="qi-pavilion-help" viewBox="0 0 720 420" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="功法阁属性测定地图" aria-describedby="qi-pavilion-help" viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#34463b" /><rect width="720" height="170" fill="#273834" />
       <path d="M180 350 H360 V100 M360 310 L500 290" fill="none" stroke="#85856f" strokeWidth="24" strokeLinejoin="round" />
       {qiPavilionWalls.map((rect, i) => <rect key={i} {...rect} fill="#9c8861" />)}
@@ -46,7 +47,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
       <g transform={`translate(${task.entered ? 395 : 465} ${task.entered ? 105 : 325})`} aria-hidden="true"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       {Object.entries(qiPavilionPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 47} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-    </svg>
+    </EarlyMap>
     <div className="early-walk-controls" aria-label="功法阁行走操作">{<WalkDirectionButtons prefix="功法阁" onMove={move} />}</div>
     <StatusParagraph>入阁 {task.stage}/12 · 萧炎{task.yan === 'fire' ? '火属性' : '未测'} · 薰儿{task.xuner === 'fire' ? '火属性' : '未测'} · 水晶{task.crystal === 'broken' ? '已碎' : task.crystal === 'cracked' ? '有裂纹尚未碎' : '完整'} · {task.entered ? '已实际入阁' : task.permission ? '有许可尚未过门' : '尚未许可入阁'} · 尚无新卷轴</StatusParagraph>
     {scene ? nearQiPavilionPlace(position, scene.place, task.stage) ? <BondSummary aria-label="功法阁入阁步骤"><SceneHeading title={scene.title} text={scene.text} />

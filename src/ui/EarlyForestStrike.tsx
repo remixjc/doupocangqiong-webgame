@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapText } from './MapPrimitives'
@@ -45,7 +46,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
     <span className="eyebrow">后山森林 / 首次成功练技</span>
     <h2>走到树前，连成这一击。</h2>
     <p id="forest-strike-help">聚焦地图用方向键或WASD行走，走近青石、练技树和山径；静态步骤可按E。练技按下方按钮依次稳身、凝气、肘击，绿色时机区为35%–65%。地点与节奏是原创压缩操作。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="林中练技地图" aria-describedby="forest-strike-help" viewBox="0 0 720 380" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="林中练技地图" aria-describedby="forest-strike-help" viewBox="0 0 720 380" onKeyDown={key}>
       <rect width="720" height="380" fill="#203934" />
       <path d="M0 86 L120 20 L248 90 L390 15 L530 87 L642 32 L720 94 V0 H0Z" fill="#496359" />
       <path d="M160 300 V220 L440 160 L620 300" fill="none" stroke="#686d4b" strokeWidth="34" strokeLinejoin="round" />
@@ -59,7 +60,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       {Object.entries(forestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke="#c9ab70" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 64} fill="#ead9b6" fontSize="13">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
       <MapText x="360" y="369" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</MapText>
-    </svg>
+    </EarlyMap>
     <div className="early-walk-controls" aria-label="林中行走操作">
       <WalkDirectionButtons prefix="林中" onMove={move} />
     </div>

@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
@@ -25,8 +26,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
   const elderPoint = seated ? { x: 335, y: 75 } : { x: 585, y: 75 }
   const purplePoint = purplePlace ? { x: mountainRingPlaces[purplePlace].x + 40, y: mountainRingPlaces[purplePlace].y - 30 } : { x: 160, y: 300 }
   return <>
-    <svg ref={field} role="group" aria-label={label} aria-describedby={helpId} tabIndex={0}
-      className="early-walk-map" viewBox="0 0 720 420" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label={label} aria-describedby={helpId} viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#243b37" />
       <path d="M0 330 L180 80 L380 185 L600 35 L720 115 V0 H0Z" fill="#77998d" opacity=".25" />
       <path d="M80 330 H300 V110 H540" fill="none" stroke="#b6a178" strokeWidth="23" opacity=".35" />
@@ -54,7 +54,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
         {ring === 'worn' && <circle aria-label="右手佩戴的同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />}
       </g>}
       {bowed && <MapText x="300" y="180" fill="#edcea0">本人行礼已记录</MapText>}
-    </svg>
+    </EarlyMap>
     {!observerOnly && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></div>
     }
   </>

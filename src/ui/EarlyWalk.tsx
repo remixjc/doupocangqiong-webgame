@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -265,7 +266,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
     <h2>走过街巷，再把准备做齐。</h2>
     <p className="muted" id="early-walk-help">聚焦地图后用方向键或WASD行走，靠近地点按E交互；下方方向按钮也可操作。接取、借资、采购和交涉后，回到药老容器处继续调制、加水与初期练习。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="往事路线地图"
+    <EarlyMap ref={field} aria-label="往事路线地图"
       aria-describedby="early-walk-help" viewBox={`0 0 ${earlyWalkSize.width} ${earlyWalkSize.height}`} onKeyDown={key}>
       <title>萧家院落、药铺与坊市的原创压缩布局</title>
       <MapBackground fill="#182d29" />
@@ -292,7 +293,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
         <ellipse cy="14" rx="13" ry="5" fill="#0005" /><path d="M-10 12 L-6-2 H6 L11 12Z" fill="#d3a567" /><circle cy="-8" r="7" fill="#edc79f" /><path d="M-7-11 Q0-20 7-10" fill="#26322f" /><path d="M-12 3 L-8 11 M12 3 L8 11" stroke="#8e653c" strokeWidth="3" />
       </g>
       <MapText x="360" y="402" fill="#a7b9a9">院门 · 每次进入从这里出发</MapText>
-    </svg>
+    </EarlyMap>
     <StatusParagraph className="early-walk-status">{place ? `附近：${place.label} · 可查看地点` : '沿街巷行走，靠近金色路标查看。'}</StatusParagraph>
     <div className="early-walk-controls" aria-label="往事行走操作">
       <SecondaryButton onClick={() => move('up')} aria-label="往事向上走">↑</SecondaryButton>

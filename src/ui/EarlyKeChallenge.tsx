@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -44,7 +45,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
     <span className="eyebrow">预测之后 / 萧克六段挑战</span>
     <h2>避开来掌，再以低阶掌法回应。</h2>
     <p id="ke-challenge-help">地图用方向键或WASD行走，静态步骤走近按E；应战用下方动作按钮与35%–65%窗口。错动作、错时机或主动停下可免费重开，位置与时机都是原创压缩设计。重入从候测区出发。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="萧克挑战与离场地图" aria-describedby="ke-challenge-help" viewBox="0 0 720 420" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="萧克挑战与离场地图" aria-describedby="ke-challenge-help" viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#273c37" />
       <path d="M100 360 L240 300 H380 L580 180" fill="none" stroke="#69776b" strokeWidth="38" strokeLinejoin="round" />
       {preliminaryObstacles.map((rect, i) => <rect key={i} {...rect} rx="7" fill={i === 0 ? '#776650' : '#566751'} stroke="#9a9478" />)}
@@ -59,7 +60,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       <path d="M87 345 V295 M61 304 Q86 280 112 305 M54 316 Q86 283 120 316" fill="none" stroke="#86a383" strokeWidth="7" />
       {Object.entries(keChallengePlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-    </svg>
+    </EarlyMap>
     <div className="early-walk-controls" aria-label="萧克挑战行走操作">{<WalkDirectionButtons prefix="应战" onMove={move} />}</div>
     <StatusParagraph>萧克挑战 {task.stage}/12 · 动作 {task.beats}/2 · 重开 {task.attempts} 次 · {task.verdict === 'none' ? '尚未完成交锋' : task.verdict === 'pending' ? '萧克倒地，待父亲宣布' : '父亲已宣布萧克败'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="萧克挑战步骤"><SceneHeading title={scene.title} text={scene.text} />

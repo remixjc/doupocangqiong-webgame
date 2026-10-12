@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -34,7 +35,7 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
     <span className="eyebrow">正式成年礼 / 主持与石碑复测</span>
     <h2>先走完礼程，再由本人触碑。</h2>
     <p id="ceremonial-help">方向键或WASD行走，近地点按E接续当前动作或观察。叫名后从木台南侧阶梯登台，栏边不能穿过。半小时为故事回顾；重入从台下出发，仪式断点保留。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="正式仪式与八段验碑地图" aria-describedby="ceremonial-help" viewBox="0 0 720 420" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="正式仪式与八段验碑地图" aria-describedby="ceremonial-help" viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#34463b" />
       <path d="M240 280 H440 V230" fill="none" stroke="#79816b" strokeWidth="34" strokeLinejoin="round" />
       <rect {...ceremonyPlatform} rx="6" fill="#89704b" stroke="#b79b65" strokeWidth="3" />
@@ -56,7 +57,7 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
       <MapText x="565" y="302" fill="#ead9b6">宾客 · 萧战与雅妃</MapText>
       {Object.entries(ceremonialPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'rite' ? 44 : 57)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-    </svg>
+    </EarlyMap>
     <div className="early-walk-controls" aria-label="正式仪式行走操作">{<WalkDirectionButtons prefix="仪式" onMove={move} />}</div>
     <StatusParagraph>正式仪式 {task.stage}/13 · {task.rite === 'none' ? '本人礼程未开始' : task.rite === 'begun' ? '二长老主持中' : task.rite === 'reviewed' ? '半小时已回顾，待结束' : '仪式已结束'} · {task.inspected ? '二长老已验碑' : '尚未验碑'} · {task.result === 'unmeasured' ? '本人尚未正式测' : '正式八段已记'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="正式仪式步骤"><SceneHeading title={scene.title} text={scene.text} /><p className="muted">{scene.actor === 'xiaoyan' ? '当前为萧炎本人的动作。' : '当前为观察与聆听；主持者的动作由叙事呈现。'}</p><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>

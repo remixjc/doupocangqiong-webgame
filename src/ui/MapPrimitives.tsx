@@ -10,3 +10,6 @@ export function HallText(props: ComponentProps<'text'>) {
 export function MapBackground(props: ComponentProps<'rect'>) {
   return <rect width="720" height="420" fill="#293e36" {...props} />
 }
+export function EarlyMap(props: ComponentProps<'svg'>) {
+  return <svg role="group" className="early-walk-map" tabIndex={0} {...props} />
+}

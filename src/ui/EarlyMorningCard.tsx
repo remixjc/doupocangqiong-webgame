@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -33,8 +34,8 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
   return <>
     <span className="eyebrow">次晨 / 普通黑卡与同一采购账</span><h2>本人接下普通黑卡，账本只记一次。</h2>
     <p id="morning-card-help">方向或WASD行走，近当前地点按E。先房中收气与门外招呼，再抽屉取原积蓄，最后门前出门和接卡。夜间没有现实等待或后台奖励。</p>
-    <svg ref={field} role="group" aria-label="晨间房内与门前交卡地图" aria-describedby="morning-card-help" tabIndex={0}
-      viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="晨间房内与门前交卡地图" aria-describedby="morning-card-help"
+      viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#21362f" />
       <path d="M24 156 H420 V24 H24Z" fill="#354239" /><rect x="70" y="40" width="116" height="78" fill="#d1c08b" opacity=".35" />
       <path d="M100 62 H158 M128 40 V118" stroke="#b59b70" /><rect x="278" y="95" width="88" height="59" rx="3" fill="#7f6848" />
@@ -47,7 +48,7 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
       <g aria-label="萧炎晨间行走位置" transform={`translate(${position.x} ${position.y})`}><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
         <circle aria-label="右手佩戴同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />
         {task.card === 'yan' && <rect aria-label="本人已接同一普通黑卡" x="15" y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />}</g>
-    </svg>
+    </EarlyMap>
     <div className="early-walk-controls">{<WalkDirectionButtons prefix="晨卡" onMove={move} />}</div>
     <StatusParagraph>晨间交卡 {task.stage}/14 · {earlyMorningCardSaveSummary(state, state.settings)}</StatusParagraph>
     <p>普通黑卡：{task.card === 'yan' ? '本人已接' : task.card === 'offered' ? '薰儿递出，本人尚未接' : '仍由薰儿持有'} · 当晚紫金卡仍由薰儿保管 · 老师仍在戒中</p>

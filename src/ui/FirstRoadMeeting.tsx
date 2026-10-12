@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -41,7 +42,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与答话</SecondaryButton>
       {task.identified && <SecondaryButton aria-pressed={actor === 'mei'} onClick={() => setActor('mei')}>关注萧媚发言</SecondaryButton>}
     </div>
-    <svg ref={field} role="group" aria-label="石路会面地图" aria-describedby="road-meeting-help" tabIndex={0} viewBox="80 185 425 155" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="石路会面地图" aria-describedby="road-meeting-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />
       <path d="M140 310 H240 V250 H440 M300 250 V210" stroke="#bfa46a" strokeWidth="18" opacity=".4" fill="none" />
       <HallText x="140" y="295">石路起点</HallText>
@@ -53,7 +54,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
         <HallText y="-13">{task.identified ? '萧媚与同伴' : '几名少女'}</HallText>
       </g>}
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">本人</HallText></g>
-    </svg>
+    </EarlyMap>
     {scene && actor === 'yan' && !talking && <div className="early-walk-controls"><WalkDirectionButtons prefix="会面" onMove={move} /></div>}
     <StatusParagraph>路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

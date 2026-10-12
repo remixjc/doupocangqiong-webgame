@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -42,8 +43,8 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
     <span className="eyebrow">坊市 / 入坊与巡卫</span><h2>穿过南坊入口，听清护卫安排。</h2>
     <p id="market-escort-help">{observer ? '本人仍在人群中。选择护卫事件的旁观焦点，分别记录领命、跟随与巡逻。'
       : '方向或WASD行走，近当前地点按E。街坊不可穿过；返回本人视角后继续与薰儿同行。位置不保存。'}</p>
-    <svg ref={field} role="group" aria-label="南坊入市与巡卫地图" aria-describedby="market-escort-help" tabIndex={0}
-      viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="南坊入市与巡卫地图" aria-describedby="market-escort-help"
+      viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground /><path d="M70 310 H640 M260 230 H540 V130 H630" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       {Object.entries(marketEscortPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
@@ -57,7 +58,7 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
         <MarketWalker />
         <path d="M20 10 L25-12 H37 L42 10Z" fill="#9dbca4" /><circle cx="31" cy="-18" r="8" fill="#edcfbd" />
       </g>
-    </svg>
+    </EarlyMap>
     {canWalk && <div className="early-walk-controls">{<WalkDirectionButtons prefix="入坊" onMove={move} />}</div>}
     {observer && scene && <SecondaryButton onClick={() => setFocus(scene.place)}>选择旁观焦点 · {marketEscortPlaces[scene.place].label}</SecondaryButton>}
     {!observer && task.stage >= 18 && !returned && <SecondaryButton onClick={() => { setReturned(true); field.current?.focus() }}>回到本人视角 · 与薰儿继续同行</SecondaryButton>}

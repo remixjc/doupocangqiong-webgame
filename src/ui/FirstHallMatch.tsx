@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField } from './HallShelves'
 import { HallText } from './MapPrimitives'
@@ -39,7 +40,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人目光与读卷</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'spectator'} onClick={() => setActor('spectator')}>{continuation ? '旁观赛后人物' : '旁观西场人物'}</SecondaryButton>
     </div>
-    <svg ref={field} role="group" aria-label="东架旁观地图" aria-describedby="hall-match-help" tabIndex={0} viewBox="100 190 390 115" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="东架旁观地图" aria-describedby="hall-match-help" viewBox="100 190 390 115" onKeyDown={key}>
       <HallBackground />
       <HallWestField />
       <g aria-label="薰儿堂内位置" transform={`translate(${task.stage >= 17 ? 380 : task.stage >= 16 ? 320 : task.stage >= 8 ? 190 : 200} ${task.stage >= 17 ? 250 : 244})`}>
@@ -52,7 +53,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
       <HallEastShelf />
       <g aria-label="萧炎本人阅读位置" transform="translate(400 250)"><MarketWalker /><HallText y="26" fontSize="9">本人 · 靠架阅读</HallText></g>
       <rect x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
-    </svg>
+    </EarlyMap>
     <StatusParagraph>{prefix} {continuation ? task.stage : Math.min(task.stage, 12)}/{continuation ? 20 : 12} · {firstHallMatchSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{t.firstHallReading.record === 'recalled' ? '明确回顾当时第一卷，当前已归架或第二卷保管保持。' : '本人仍持同一第一卷。'}旧卷账 {t.hall.stage}/9；没有新技能或奖励。</p>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

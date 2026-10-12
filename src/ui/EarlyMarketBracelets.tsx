@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -45,8 +46,8 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
   return <>
     <span className="eyebrow">坊市 / 让路与两条手链</span><h2>先请让路，再分清两件赠礼。</h2>
     <p id="market-bracelets-help">明确选择本步人物，方向或WASD行走，近街角按E。两人独立行走，换人物和刷新需重选；位置不保存，街坊不可穿过。</p>
-    <svg ref={field} role="group" aria-label="让路与两条手链地图" aria-describedby="market-bracelets-help" tabIndex={0}
-      viewBox="0 0 720 420" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="让路与两条手链地图" aria-describedby="market-bracelets-help"
+      viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground /><path d="M160 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       <circle cx="220" cy="310" r="38" fill="none" stroke="#f7d699" strokeDasharray="4 5" />
@@ -64,7 +65,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
         <MarketWalker xuner />
         {(task.green === 'received' || task.green === 'worn') && <circle aria-label={task.green === 'worn' ? '薰儿已戴普通绿链' : '薰儿收到但尚未戴上普通绿链'} cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
-    </svg>
+    </EarlyMap>
     {scene && <div className="early-walk-controls"><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>
       {active && <WalkDirectionButtons prefix="手链" onMove={move} />}</div>}

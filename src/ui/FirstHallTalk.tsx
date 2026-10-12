@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
 import { HallText } from './MapPrimitives'
@@ -40,7 +41,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
       <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>旁观薰儿动作与发言</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
     </div>
-    <svg ref={field} role="group" aria-label="东架会面地图" aria-describedby="hall-talk-help" tabIndex={0} viewBox="100 190 390 115" className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="东架会面地图" aria-describedby="hall-talk-help" viewBox="100 190 390 115" onKeyDown={key}>
       <HallBackground />
       <HallWestField />
       <g aria-label="萧宁仍在西场" transform="translate(235 244)">
@@ -58,7 +59,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
         <HallText y="26" fontSize="9">本人 · {task.stage >= 16 || task.stage >= 2 && task.stage < 12 ? '抬眼答话' : '读第一卷'}</HallText>
       </g>
       <rect aria-label="本人同一第一卷的位置或明确回顾" x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
-    </svg>
+    </EarlyMap>
     <StatusParagraph>东架会面 {task.stage}/20 · {firstHallTalkSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{t.firstHallReading.record === 'recalled' || t.hall.stage >= 6 ? '明确回顾当时第一卷，现有更高卷账不回退。' : '本人仍持同一第一卷。'}薰儿的卷{task.ownScroll === 'xuner' ? '由她临时拿看' : '尚在架上'}；旧卷账 {t.hall.stage}/9。借资{t.purse.borrowed}、已付{t.purse.spent}保持。</p>
     {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />

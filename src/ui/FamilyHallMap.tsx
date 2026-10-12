@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
@@ -23,8 +24,7 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
     else if (value === 'e' && near) { event.preventDefault(); onInteract() }
   }
   return <>
-    <svg ref={field} role="group" aria-label={label} aria-describedby={helpId} tabIndex={0}
-      className="early-walk-map" viewBox="0 0 720 420" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label={label} aria-describedby={helpId} viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#22352f" />
       <rect x="35" y="255" width="180" height="140" rx="8" fill="#3d4839" />
       <rect x="255" y="30" width="425" height="315" rx="8" fill="#4b4335" />
@@ -48,7 +48,7 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
         <ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
       </g>}
       {observer && <MapText x="465" y="390" fill="#a6e1d3" fontSize="13">{departed ? '旁观厅外 · 双方已离厅，纳兰携原文书' : '旁观厅内 · 萧炎已离厅'}</MapText>}
-    </svg>
+    </EarlyMap>
     {!observer && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></div>}
   </>
 }

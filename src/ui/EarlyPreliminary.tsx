@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -36,7 +37,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
     <span className="eyebrow">成年礼前一个月 / 族中预测</span>
     <h2>按名簿候测，走到黑碑前。</h2>
     <p id="preliminary-help">聚焦地图用方向键或WASD行走，走近地点按E或操作按钮。高台、树丛与候测设施不可穿越；每次进入从房门起点走回当前步骤，行走位置不写入存档。布局与距离为原创压缩设计。</p>
-    <svg ref={field} className="early-walk-map" tabIndex={0} role="group" aria-label="一月前预测地图" aria-describedby="preliminary-help" viewBox="0 0 720 420" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="一月前预测地图" aria-describedby="preliminary-help" viewBox="0 0 720 420" onKeyDown={key}>
       <MapBackground fill="#273c37" />
       <path d="M100 360 L240 300 H380 L580 180" fill="none" stroke="#69776b" strokeWidth="38" strokeLinejoin="round" />
       {preliminaryObstacles.map((rect, i) => <rect key={i} {...rect} rx="7" fill={i === 0 ? '#776650' : i === 1 ? '#566751' : '#425e46'} stroke="#9a9478" />)}
@@ -50,7 +51,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       {task.stage >= 5 && <g transform={`translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#c07b79" /><MapText y="34" fill="#ead9b6" fontSize="11">萧媚</MapText></g>}
       {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
-    </svg>
+    </EarlyMap>
     <div className="early-walk-controls" aria-label="预测行走操作">
       {<WalkDirectionButtons prefix="预测" onMove={move} />}
     </div>

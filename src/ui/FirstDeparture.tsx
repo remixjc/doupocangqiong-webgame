@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -54,7 +55,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'ring'} onClick={() => setActor('ring')}>只看静止古戒</SecondaryButton>
     </div>
-    <svg ref={field} role="group" aria-label="出门与石路地图" aria-describedby="departure-help" tabIndex={0} viewBox={space === 'room' ? '80 290 245 125' : '80 215 280 125'} className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label="出门与石路地图" aria-describedby="departure-help" viewBox={space === 'room' ? '80 290 245 125' : '80 215 280 125'} onKeyDown={key}>
       <MapBackground />
       {space === 'room' ? <>
         <rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
@@ -72,7 +73,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
         {[140, 195, 245].map(x => <g key={x} aria-label="石路旁绿柳"><path d={`M${x} 280 V247`} stroke="#a39c6b" strokeWidth="3" /><path d={`M${x - 13} 276 Q${x} 235 ${x + 13} 276`} stroke="#75bd7e" strokeWidth="6" fill="none" /></g>)}
       </>}
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</HallText></g>
-    </svg>
+    </EarlyMap>
     {scene && task.risen && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="出门" onMove={move} /></div>}
     {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}
     <StatusParagraph>出门石路 {task.stage}/9 · 当前{space === 'room' ? '房内' : '室外'} · {firstDepartureSaveSummary(state, state.settings)}</StatusParagraph>

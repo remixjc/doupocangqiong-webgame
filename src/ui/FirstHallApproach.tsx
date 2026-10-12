@@ -1,3 +1,4 @@
+import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -49,8 +50,8 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
       {conflict && <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>旁观薰儿放卷与回应</SecondaryButton>}
     </div>
-    <svg ref={field} role="group" aria-label={`${prefix}地图`} aria-describedby="hall-approach-help" tabIndex={0}
-      viewBox={moving ? '100 190 390 175' : '100 190 390 120'} className="early-walk-map" onKeyDown={key}>
+    <EarlyMap ref={field} aria-label={`${prefix}地图`} aria-describedby="hall-approach-help"
+      viewBox={moving ? '100 190 390 175' : '100 190 390 120'} onKeyDown={key}>
       <HallBackground height={moving ? 175 : 120} />
       <HallWestField />
       <HallEastShelf />
@@ -67,7 +68,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
       {current && task.stage >= 28 && <rect aria-label="本人另取的同一第二卷" x={position.x + 20} y={position.y - 5} width="9" height="15" fill="#415849" stroke="#bfa46a" />}
       <rect aria-label={first === 'returned' ? '同一第一卷实际放回书架' : first === 'rolled' ? '同一第一卷已卷起尚未归架' : '同一第一卷仍展开'}
         x="420" y={first === 'returned' ? 215 : 245} width={first === 'open' ? 28 : 8} height="15" fill="#161e20" stroke="#bfa46a" />
-    </svg>
+    </EarlyMap>
     <StatusParagraph>{prefix} {checkout ? task.stage - 46 : exitResponse ? Math.min(task.stage, 46) - 40 : threat ? Math.min(task.stage, 40) - 31 : conflict ? Math.min(task.stage, 31) - 19 : continuation ? Math.min(task.stage, 19) - 14 : Math.min(task.stage, 14)}/{checkout ? 3 : exitResponse ? 6 : threat ? 9 : conflict ? 12 : continuation ? 5 : 14} · {firstHallApproachSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{checkout && task.checkoutRecord !== 'none' ? task.checkoutRecord === 'recalled' ? '明确回顾当时管理者登记，当前更高保管保持。' : '同一第二卷实际登记借出，本人仍持卷尚未离堂。' : current ? (task.secondRecord === 'recalled' ? '明确回顾当时另取第二卷，现有更高保管保持。' : task.stage >= 28 ? '本人另取第二卷，未登记或离堂。' : '第一卷已归架，第二卷尚未取。') : task.stage >= 20 || t.firstHallReading.record === 'recalled' || task.returnRecord === 'recalled' || t.hall.stage >= 6 && first !== 'returned'
       ? '明确回顾当时第一卷，当前更高保管保持。' : first === 'returned' ? '同一第一卷已归架，第二卷尚未取。' : '本人仍持同一第一卷，尚未归架。'}{!current && (task.ownPlaced ? '回顾当时她仍持自己的临时卷，后段放卷记录保持。' : '薰儿仍持她自己的临时卷。')}旧卷账 {t.hall.stage}/9。</p>
