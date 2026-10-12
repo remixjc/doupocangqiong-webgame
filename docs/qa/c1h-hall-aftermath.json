@@ -1,0 +1,384 @@
+{
+  "version": "0.76.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 153,
+    "tests": 908
+  },
+  "focused": {
+    "files": 3,
+    "tests": 12
+  },
+  "nodeTests": 11,
+  "decodedPrior": 178,
+  "native": [
+    {
+      "name": "aftermathMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791843850034.json",
+      "sha256": "72469f41d2e5916c683994256ea3214f7b0d12aa0491fd163ea1cd1a17b233e5",
+      "stage": 53,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791843852809.json",
+      "sha256": "5897fb42bbe7259f63aa89e6a75597d00aece54dd9981fef78eb7f521c6428b7",
+      "stage": 53,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791843855798.json",
+      "sha256": "8375a5f1803b37af2c47d510058857ecb9fa2db0e41946c24e33aef44f44df43",
+      "stage": 0,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791843958917.json",
+      "sha256": "ea6498708c1c9fed24495638bbc016a737749f248e94ed5d17990c8ea9babb41",
+      "stage": 53,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791843983205.json",
+      "sha256": "a79fa171191282acbae42ee8bf34830da06257706b5ecdfaefbe819f00b57f66",
+      "stage": 54,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791843999595.json",
+      "sha256": "09700e8c6b0fc3b5756b1b7f6f21d2d3fcfbab3f8e42369ae8d92965f5731cae",
+      "stage": 55,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844080818.json",
+      "sha256": "fbf667e3554f8bc1b40ee49f6c879277c37a30f84b428d7858ec45d8838d4121",
+      "stage": 56,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844097320.json",
+      "sha256": "239a8fc024876b9d344a354c2f03ad31933b9c98b50b1e3572bc9bf8a464e6e4",
+      "stage": 57,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844105598.json",
+      "sha256": "f4b0e9656fa6fcc98caeab5d2bf95bb82b9672182487c9ea8953c666d56459e1",
+      "stage": 57,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMaterialsStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844126057.json",
+      "sha256": "0904dae30dc4ee18b2e3ca5b19d5aea7455fdf5b04fe4a01766822e73943f9c2",
+      "stage": 54,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMaterialsStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844141811.json",
+      "sha256": "358fc3592037a7b7c6d5be38ecc7f7ba9e0d016f679c1427b5fdf3b6a4266100",
+      "stage": 55,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMaterialsStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844150315.json",
+      "sha256": "424b9afbb899a4385923cd43e72a15f775fb064196b1c72865e9cfbfb6b61334",
+      "stage": 56,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMaterialsStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844173397.json",
+      "sha256": "fdc8b25b89b4bdf4e8a8809abb97969dcdae406af261bbbe69c9fc9bf18777c7",
+      "stage": 57,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMaterialsFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844180894.json",
+      "sha256": "91523424b54920ed54d97f7e851d8e7e7577a8d21ad4305f1ec089bf0d180678",
+      "stage": 57,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainOldEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844188712.json",
+      "sha256": "7f07ccf0ac767d6bb9933ba373168d327ab9a972eac63fc4b36ca62e1afcbb47",
+      "stage": 57,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844207800.json",
+      "sha256": "8ca120b89f51a757dc31bcb679611daae49ec40205bae79010e04042c4159223",
+      "stage": 0,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844245882.json",
+      "sha256": "e4a6b77a12048b8b229eec27bf064133443d9c5e492fa655104857e1763d9ed8",
+      "stage": 57,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "aftermathIntactStableNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791844267682.json",
+      "sha256": "aa9af75d435431fd78d46b0547ed3ada6bdb92ef27f33dc1f846cf5de124ca39",
+      "stage": 0,
+      "entireOtherStateEqual": true
+    }
+  ],
+  "pairs": [
+    [
+      "aftermathMainMigrated",
+      "aftermathMainRejected0"
+    ],
+    [
+      "aftermathMainFinal",
+      "aftermathMainOldEntry"
+    ],
+    [
+      "aftermathMainFinal",
+      "aftermathMainFinalRefresh"
+    ],
+    [
+      "aftermathIntactMigrated",
+      "aftermathIntactStableNavigation"
+    ],
+    [
+      "aftermathMaterialsStage4",
+      "aftermathMaterialsFinalRefresh"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "MainRefresh2Recovered",
+      "handprint": false,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 2/4 · 堂内反应 · 萧宁怒意进行中",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 2/4 · 堂内反应 · 萧宁怒意进行中\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n书架轻掌印\n\n萧宁拍身旁书架，留下轻掌印。没有本人攻击或奖励。\n\n请切换到本步人物。\n\n旁观萧宁拍架留下轻掌印把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainStage3",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n堂内反应归档\n\n怒意与轻掌印分存，同一借卷仍由堂外本人持有。\n\n请切换到本步人物。\n\n归档萧宁独立反应把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainRefresh3",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n堂内反应归档\n\n怒意与轻掌印分存，同一借卷仍由堂外本人持有。\n\n请切换到本步人物。\n\n归档萧宁独立反应把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainStage4",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainRefresh4",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsInitial",
+      "handprint": false,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 0/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 0/4 · 同行离堂 · 实际跨门归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n堂内怒意\n\n萧宁看着两人离去，心中愤怒。本人和薰儿仍在堂外。\n\n请切换到本步人物。\n\n旁观萧宁离堂后怒意把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsStage1",
+      "handprint": false,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 1/4 · 堂内反应 · 萧宁怒意进行中",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 1/4 · 堂内反应 · 萧宁怒意进行中\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n对方的报复想法\n\n他想着日后失去族长庇护再报复；只是萧宁的想法。\n\n当前人物正确。\n\n记录萧宁的报复想法把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsRefresh1",
+      "handprint": false,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 1/4 · 堂内反应 · 萧宁怒意进行中",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 1/4 · 堂内反应 · 萧宁怒意进行中\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n对方的报复想法\n\n他想着日后失去族长庇护再报复；只是萧宁的想法。\n\n请切换到本步人物。\n\n记录萧宁的报复想法把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsStage2",
+      "handprint": false,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 2/4 · 堂内反应 · 萧宁怒意进行中",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 2/4 · 堂内反应 · 萧宁怒意进行中\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n书架轻掌印\n\n萧宁拍身旁书架，留下轻掌印。没有本人攻击或奖励。\n\n当前人物正确。\n\n旁观萧宁拍架留下轻掌印把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsRefresh2",
+      "handprint": false,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 2/4 · 堂内反应 · 萧宁怒意进行中",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 2/4 · 堂内反应 · 萧宁怒意进行中\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n书架轻掌印\n\n萧宁拍身旁书架，留下轻掌印。没有本人攻击或奖励。\n\n请切换到本步人物。\n\n旁观萧宁拍架留下轻掌印把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsStage3",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n堂内反应归档\n\n怒意与轻掌印分存，同一借卷仍由堂外本人持有。\n\n请切换到本步人物。\n\n归档萧宁独立反应把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsRefresh3",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 3/4 · 堂内反应 · 萧宁轻掌印已留\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n堂内反应归档\n\n怒意与轻掌印分存，同一借卷仍由堂外本人持有。\n\n请切换到本步人物。\n\n归档萧宁独立反应把收卷当成第一卷已归架把她放下的卷交给本人\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsStage4",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsRefresh4",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsCompletedE",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainCompletedE",
+      "handprint": true,
+      "ning": "translate(450 280)",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "tabindex": "0",
+      "text": "×\n斗技堂 / 离堂后萧宁反应\n堂内留下轻掌印，两人仍在堂外。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁离堂后反应\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n堂内旁观\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n离堂后萧宁反应已归档。\n\n萧宁反应已归档，整个午后另续。\n\n暂离离堂后萧宁反应 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": [
+      {
+        "level": "error",
+        "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4191/assets/EarlyTrainingPanel-XwObNZ7J.js",
+        "timestamp": "2026-10-12T22:30:05.060Z",
+        "url": "http://127.0.0.1:4191/assets/index-DX3Jvm86.js"
+      }
+    ]
+  },
+  "initialJs": 487860,
+  "initialGzip": 162992,
+  "totalJs": 1849690,
+  "budgets": [
+    500000,
+    165000,
+    1850000
+  ],
+  "migration": "All178 original immutable prior saves exactly equal old official parse plus version andtwofalse fields.0.75series stage53 onlyfalse;old54+andcurrentmissing/malformedderived rejected.13snapshots/actors/playerspace/coordinates/mixedflags/stale/concurrent strict.",
+  "browserRefresh": "Bothbranches4actions savedbefore8reloads.30second combined call reset kernel after MainStage1/Stage2native downloads;MainRefresh1 DOM record lost, not reconstructed. MainRefresh2 recoveredfromactualcurrent55. Persisted7refreshobservations plus4materialallstages and2mainlaterstages. Nooldstepreplay.",
+  "keyboard": "Main wrongactor/buttonfocus/Arrow/Ctrl/her-own-transfer denied0(nativeentirestateequal).CorrectmapE only Ningpalmaction3 onbothbranches. CompletedE rejected,Enterreturns exactnewentry. Oldleaving4/4not8/4. Stableunenteredpanelheadingandnoalert verifiedtwoentries0;newnativeentirestateequal.",
+  "failures": "Privateintegrator invalidJS triplequote fixedbeforeexecution. Duringfullcheckbuild,2previousloadedpages referencedremovedhashes anderrored(mainFirstHallApproach/intactEarlyTrainingPanel). Reloadstablecompletedbuildresolves;initialintact0countfromerrorpageinvalidated, stableheading+alert0+count0rechecked. Mainhistoricalcaptured22:24:37 separatelynot erased;intact22:30:05rawkept.No new errors afterstable recovery. No storage/time/coordinates injection.",
+  "source": "Previously normally read fullpublicEnglishChapter18. NPCanger/revengethought andlightbookshelfhandprint only. UI location/actorobserver/archival steps original. Chinese/currentanimepending.",
+  "limits": "Only54..57independentNingreaction. Player60310andXuner85280stilloutside;Ning450280inside. Handprint438224onactualshelf345210..455230onlyat56. SameSECONDstillYan, firstshelf/herownplaced/historicalownScroll preserved. No playerattack,win,loot,destruction,rewards,wholeafternoon,roomorteaching signed."
+}

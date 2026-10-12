@@ -68,6 +68,12 @@ export const firstHallLeavingScenes = defineSceneRows(actorSceneKeys, [
   ['yan', 'cross', '两人实际跨门', '本人持同一借卷，与薰儿实际跨门。', '持同卷与薰儿实际跨门'],
   ['yan', 'archive-leaving', '同行离堂归档', '两人已在堂外，午后与回房另续。', '归档同行与实际离堂'],
 ] as const)
-export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false, exitResponse = false, checkout = false, leaving = false) {
-  return leaving ? firstHallLeavingScenes[stage - 49] : checkout ? firstHallCheckoutScenes[stage - 46] : exitResponse ? firstHallExitResponseScenes[stage - 40] : threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
+export const firstHallAftermathScenes = defineSceneRows(actorSceneKeys, [
+  ['ning', 'departure-anger', '堂内怒意', '萧宁看着两人离去，心中愤怒。本人和薰儿仍在堂外。', '旁观萧宁离堂后怒意'],
+  ['ning', 'revenge-thought', '对方的报复想法', '他想着日后失去族长庇护再报复；只是萧宁的想法。', '记录萧宁的报复想法'],
+  ['ning', 'shelf-palm', '书架轻掌印', '萧宁拍身旁书架，留下轻掌印。没有本人攻击或奖励。', '旁观萧宁拍架留下轻掌印'],
+  ['bystander', 'archive-aftermath', '堂内反应归档', '怒意与轻掌印分存，同一借卷仍由堂外本人持有。', '归档萧宁独立反应'],
+] as const)
+export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false, exitResponse = false, checkout = false, leaving = false, aftermath = false) {
+  return aftermath ? firstHallAftermathScenes[stage - 53] : leaving ? firstHallLeavingScenes[stage - 49] : checkout ? firstHallCheckoutScenes[stage - 46] : exitResponse ? firstHallExitResponseScenes[stage - 40] : threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
 }

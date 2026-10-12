@@ -7,6 +7,7 @@ export const FIRST_HALL_THREAT_VERSION = '0.72.0'
 export const FIRST_HALL_EXIT_RESPONSE_VERSION = '0.73.0'
 export const FIRST_HALL_CHECKOUT_VERSION = '0.74.0'
 export const FIRST_HALL_LEAVING_VERSION = '0.75.0'
+export const FIRST_HALL_AFTERMATH_VERSION = '0.76.0'
 export interface FirstHallApproachState {
   stage: number
   clothes: boolean
@@ -21,6 +22,8 @@ export interface FirstHallApproachState {
   checkoutRecord: 'none' | 'current' | 'recalled'
   xunerPos: 'east' | 'entrance' | 'outside'
   exitRecord: 'none' | 'current' | 'recalled'
+  ningAngry: boolean
+  handprint: boolean
 }
 export function firstHallApproachAt(stage: number, returnRecord: FirstHallApproachState['returnRecord'] = 'none',
   secondRecord: FirstHallApproachState['secondRecord'] = 'none', checkoutRecord: FirstHallApproachState['checkoutRecord'] = 'none',
@@ -29,12 +32,13 @@ export function firstHallApproachAt(stage: number, returnRecord: FirstHallApproa
     memorized: stage >= 11, first: stage >= 18 ? 'returned' : stage >= 13 ? 'rolled' : 'open', returnRecord,
     ownPlaced: stage >= 25, secondRecord, threatHeard: stage >= 37,
     yan: stage >= 52 ? 'outside' : stage >= 43 ? 'entrance' : stage >= 41 ? 'aisle' : 'east', checkoutRecord,
-    xunerPos: stage >= 52 ? 'outside' : stage >= 50 ? 'entrance' : 'east', exitRecord }
+    xunerPos: stage >= 52 ? 'outside' : stage >= 50 ? 'entrance' : 'east', exitRecord,
+    ningAngry: stage >= 54, handprint: stage >= 56 }
 }
 export function validFirstHallApproach(t: Record<string, unknown> | FirstHallApproachState): t is FirstHallApproachState {
   return ((t.stage as number) >= 18 ? t.returnRecord === 'current' || t.returnRecord === 'recalled' : t.returnRecord === 'none')
     && ((t.stage as number) >= 28 ? t.secondRecord === 'current' || t.secondRecord === 'recalled' : t.secondRecord === 'none')
     && ((t.stage as number) >= 48 ? t.checkoutRecord === 'current' || t.checkoutRecord === 'recalled' : t.checkoutRecord === 'none')
     && ((t.stage as number) >= 52 ? t.exitRecord === 'current' || t.exitRecord === 'recalled' : t.exitRecord === 'none')
-    && stagedFieldsMatch(t, 53, stage => firstHallApproachAt(stage, t.returnRecord as FirstHallApproachState['returnRecord'], t.secondRecord as FirstHallApproachState['secondRecord'], t.checkoutRecord as FirstHallApproachState['checkoutRecord'], t.exitRecord as FirstHallApproachState['exitRecord']))
+    && stagedFieldsMatch(t, 57, stage => firstHallApproachAt(stage, t.returnRecord as FirstHallApproachState['returnRecord'], t.secondRecord as FirstHallApproachState['secondRecord'], t.checkoutRecord as FirstHallApproachState['checkoutRecord'], t.exitRecord as FirstHallApproachState['exitRecord']))
 }

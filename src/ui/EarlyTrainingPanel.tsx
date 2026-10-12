@@ -71,6 +71,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [firstHallThreat, setFirstHallThreat, hallThreatEntry, hallThreatBack] = useReturningScene()
   const [firstHallExitResponse, setFirstHallExitResponse, hallExitResponseEntry, hallExitResponseBack] = useReturningScene()
   const [firstHallCheckout, setFirstHallCheckout, hallCheckoutEntry, hallCheckoutBack] = useReturningScene()
+  const [firstHallAftermath, setFirstHallAftermath, hallAftermathEntry, hallAftermathBack] = useReturningScene()
   const [firstHallLeaving, setFirstHallLeaving, hallLeavingEntry, hallLeavingBack] = useReturningScene()
   const [firstHallConflict, setFirstHallConflict, hallConflictEntry, hallConflictBack] = useReturningScene()
   const [firstHallApproach, setFirstHallApproach, hallApproachEntry, hallApproachBack] = useReturningScene()
@@ -101,6 +102,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   if (firstHallThreat) return <DeferredScene message="正在接续成人礼威胁……"><FirstHallApproach threat state={state} onBack={hallThreatBack} /></DeferredScene>
   if (firstHallExitResponse) return <DeferredScene message="正在接续堂内移步……"><FirstHallApproach exitResponse state={state} onBack={hallExitResponseBack} /></DeferredScene>
   if (firstHallCheckout) return <DeferredScene message="正在接续同卷登记……"><FirstHallApproach checkout state={state} onBack={hallCheckoutBack} /></DeferredScene>
+  if (firstHallAftermath) return <DeferredScene message="正在接续堂内反应……"><FirstHallApproach aftermath state={state} onBack={hallAftermathBack} /></DeferredScene>
   if (firstHallLeaving) return <DeferredScene message="正在接续同行离堂……"><FirstHallApproach leaving state={state} onBack={hallLeavingBack} /></DeferredScene>
   if (firstHallConflict) return <DeferredScene message="正在接续东架交锋……"><FirstHallApproach conflict state={state} onBack={hallConflictBack} /></DeferredScene>
   if (firstHallApproach) return <DeferredScene message="正在接续整衣与靠近……"><FirstHallApproach state={state} onBack={hallApproachBack} /></DeferredScene>
@@ -261,6 +263,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 31 && <SecondaryButton ref={hallThreatEntry} onClick={() => setFirstHallThreat(true)}>接续成人礼威胁与本人观察</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 40 && <SecondaryButton ref={hallExitResponseEntry} onClick={() => setFirstHallExitResponse(true)}>接续堂内移步与来年回应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 46 && <SecondaryButton ref={hallCheckoutEntry} onClick={() => setFirstHallCheckout(true)}>接续同卷管理者登记</SecondaryButton>}
+      {isVisible(state, 2) && task.firstHallApproach.stage >= 53 && <SecondaryButton ref={hallAftermathEntry} onClick={() => setFirstHallAftermath(true)}>接续离堂后萧宁独立反应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 49 && <SecondaryButton ref={hallLeavingEntry} onClick={() => setFirstHallLeaving(true)}>接续同行与实际离堂</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallTalk.stage === 20 && <SecondaryButton ref={hallApproachEntry} onClick={() => setFirstHallApproach(true)}>接续整衣靠近与同卷收起</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallMatch.stage === 20 && <SecondaryButton ref={hallTalkEntry} onClick={() => setFirstHallTalk(true)}>接续东架会面与半月问答</SecondaryButton>}

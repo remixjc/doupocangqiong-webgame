@@ -236,7 +236,8 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 export function firstHallApproachSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return sealedEarly
   const t = saved.earlyTraining.firstHallApproach
-  if (t.stage >= 50) return '同行离堂 · ' + (t.stage === 53 ? '实际跨门归档，午后待续' : t.exitRecord !== 'none' ? '两人已实际跨门，同卷保持' : '薰儿已到堂口，实际跨门待续')
+  if (t.stage >= 54) return '堂内反应 · ' + (t.stage >= 57 ? '轻掌印归档，午后待续' : t.handprint ? '萧宁轻掌印已留' : '萧宁怒意进行中')
+  if (t.stage >= 50) return '同行离堂 · ' + (t.stage >= 53 ? '实际跨门归档，午后待续' : t.exitRecord !== 'none' ? '两人已实际跨门，同卷保持' : '薰儿已到堂口，实际跨门待续')
   if (t.stage >= 47) return '同卷登记 · ' + (t.stage === 49 ? '借阅归档，同行跨门待续' : t.checkoutRecord !== 'none' ? '同一第二卷已登记，尚未离堂' : '所持同卷已核，实际登记待续')
   if (t.stage >= 41) return '堂内移步 · ' + (t.stage === 46 ? '入口回应归档，同卷登记待续' : t.stage >= 44 ? '来年回应已记，尚未登记离堂' : t.yan === 'entrance' ? '本人已到堂内入口，尚未登记' : '本人持同卷已到堂中')
   return '整衣靠近 · ' + (t.stage === 40 ? '威胁与观察归档，登记离堂待续' : t.threatHeard ? '未来成人礼威胁已听见，未开战' : t.stage >= 32 ? '怒意与未动手已观察' : t.stage === 31 ? '交锋与第二卷归档，离堂待续' : t.stage >= 28 ? '本人另取第二卷，未离堂' : t.ownPlaced ? '她的临时卷已放下，本人未取第二卷' : t.stage >= 20 ? '言语交锋进行中，未开战' : t.stage === 19 ? '同卷归架归档，第二卷待续' : t.first === 'returned' ? '第一卷已归架，未取第二卷' : t.stage >= 15 ? '帮选交涉进行中，未归架' : t.stage === 14 ? '收卷归档，实际归架待续' : t.first === 'rolled' ? '同一第一卷仅卷起' : t.memorized ? '读法已记，无授技' : t.ning === 'east' ? '萧宁已到东架前' : t.ning === 'aisle' ? '萧宁已到堂中' : t.clothes ? '整衣已记，尚未走近' : t.stage ? '西侧情绪进行中' : notStarted)
