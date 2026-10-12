@@ -1,0 +1,1049 @@
+{
+  "batch": "C11c-3i/C8a-b",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "d995bdb01e9d44eda07ba8738d208042369d1dbd",
+  "previousCI": {
+    "id": 38194751380,
+    "conclusion": "success",
+    "pagesId": 38194751339,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "native UI journey and unmodified real downloads, official parseSave outside browser",
+  "records": [
+    {
+      "key": "23-middle",
+      "file": ".git/task-normal-ch23-middle-export.json",
+      "bytes": 19266,
+      "fileSha256": "c2a4a892211ecf699354b0388ca07ad183611212a63e4d3d1ea5c5cef6c023a0",
+      "stateSha256": "64f89bbfdab992ad5ee8328c055674ea0d9c85a22e76faf9e7a2fe02e8d76a9e",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12408,
+      "xp": 9525,
+      "inventory": {
+        "herb": 9,
+        "crystal": 61,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 60,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 2,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23-expired",
+      "file": ".git/task-normal-ch23-expired-export.json",
+      "bytes": 19266,
+      "fileSha256": "fd91ed7a5f4bd35c198368430045596efb61b97e9f4082533fc1c9d082a82e59",
+      "stateSha256": "c46ee3e80a124126f363c7cd7958a81b0d324409beffe60c08ddbe1c6d2b86aa",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12462,
+      "xp": 9535,
+      "inventory": {
+        "herb": 9,
+        "crystal": 62,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 61,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 2,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23-retry",
+      "file": ".git/task-normal-ch23-retry-export.json",
+      "bytes": 19266,
+      "fileSha256": "e424a1d2e76b33d62f746defa6d1ea7cde211078c903c8516209ba73216bf902",
+      "stateSha256": "74b5c8ba0871edaf7764afd573cffd9d2411bfcfc7bb286661995155ddab9372",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12462,
+      "xp": 9535,
+      "inventory": {
+        "herb": 9,
+        "crystal": 62,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 61,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 3,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23-deep",
+      "file": ".git/task-normal-ch23-deep-export.json",
+      "bytes": 19266,
+      "fileSha256": "d14921ca43bc702ad549e364593215429fe614901bfd4333a463c33ea6b481fb",
+      "stateSha256": "7ee006a5a13aaaa139206840684a1ae82e8d361aadc6658ed235890345a5b43e",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12570,
+      "xp": 9555,
+      "inventory": {
+        "herb": 9,
+        "crystal": 64,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 63,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 4,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23-pending",
+      "file": ".git/task-normal-ch23-pending-export.json",
+      "bytes": 19266,
+      "fileSha256": "2706d24224ca427ff87bbd0283de8ece36351bc642225d4ef8c74680b894225c",
+      "stateSha256": "7c421e0a6118c34e4eb95ffc3ec400cc3c807744e047c1cba92cc8d75849cbae",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12624,
+      "xp": 9565,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 7,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 4,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23-mind",
+      "file": ".git/task-normal-ch23-mind-export.json",
+      "bytes": 19267,
+      "fileSha256": "996ddd392e6f4ffed31a908285d1f5f83b43bf52a91df6544affd5b5cb898e26",
+      "stateSha256": "0f142cc1041a57ac279115add5591f05a76ebf1917389eecbdc784aa70b8d133",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12624,
+      "xp": 9565,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 7,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 4,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23",
+      "file": ".git/task-normal-ch23-export.json",
+      "bytes": 19277,
+      "fileSha256": "b7e8bf164a64740dae9735649091514984d6c47ae5f54d02eb9e9a88c989ba3c",
+      "stateSha256": "35e0be9b6dc0cf32ef386d4b008c73fd138cfa8dc2119ef761567ed40fa8eddd",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "gold": 13454,
+      "xp": 10360,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 7,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 4,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "23-refreshed",
+      "file": ".git/task-normal-ch23-refreshed-export.json",
+      "bytes": 19277,
+      "fileSha256": "c582b8f6c88b006054247d41680fa1e9f9f12c7b31e1383e184e5c426596302e",
+      "stateSha256": "35e0be9b6dc0cf32ef386d4b008c73fd138cfa8dc2119ef761567ed40fa8eddd",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "gold": 13454,
+      "xp": 10360,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 7,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "heaven-tomb-timed-layers": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 4,
+            "choice": "none"
+          },
+          "heaven-tomb-clan-inheritance": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "xuner-ancient-road": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "24-first",
+      "file": ".git/task-normal-ch24-first-export.json",
+      "bytes": 19644,
+      "fileSha256": "fab292f1922edce1c05b1293d0b1bc710f2c6780ae64b5da2f6edf5c93dbc4c3",
+      "stateSha256": "8528b1bcb73b2a6303e7328ab18451b3489d74ae9ffad2017791a260f48dbf47",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "gold": 13454,
+      "xp": 10360,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "bodhi-three-reflections": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 1,
+            "attempts": 3,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "24-second",
+      "file": ".git/task-normal-ch24-second-export.json",
+      "bytes": 19644,
+      "fileSha256": "3d17dd6dbda0f8dc38bd076b265ceae903dd5530e7b72a3b86986468651d48dc",
+      "stateSha256": "2e4c9592c8aa359706e0a41c556f1be0ec8f598a563074062995267aefe15b27",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "gold": 13454,
+      "xp": 10360,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "bodhi-three-reflections": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 2,
+            "attempts": 6,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "24-pending",
+      "file": ".git/task-normal-ch24-pending-export.json",
+      "bytes": 19644,
+      "fileSha256": "a17e28f3c7a8763eeddf98eeafb99ec92f1e1947b3c1df29e6a920847bba796a",
+      "stateSha256": "99f849f88c5b535b60fe1d914e9cd0ad76d3069ab85a647ffe290c1b7f1dac93",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "gold": 13454,
+      "xp": 10360,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "bodhi-three-reflections": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 3,
+            "attempts": 9,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "24-reported",
+      "file": ".git/task-normal-ch24-reported-export.json",
+      "bytes": 19644,
+      "fileSha256": "30985908b0e47bca4ebe8a9bf490c4973f047f45271954814f79f3e448ea9662",
+      "stateSha256": "19220ac5fbfce2f73aaf70ae3c4adfc3ffc628fbbb090e585e45138993dd6011",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "gold": 13454,
+      "xp": 10460,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "bodhi-three-reflections": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 9,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "24",
+      "file": ".git/task-normal-ch24-export.json",
+      "bytes": 19653,
+      "fileSha256": "ac5bd5e3fbb9d94378a78e5545b9ce2edc07b58eb3f61703a2f156409a011366",
+      "stateSha256": "ea1b979b240b67d5a113ba7dbff9f66dbb4eec5aff07defbe16bad1b39f9e6b6",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "bodhi-three-reflections": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 9,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "24-refreshed",
+      "file": ".git/task-normal-ch24-refreshed-export.json",
+      "bytes": 19653,
+      "fileSha256": "f9448121509c9531c248a6d13edf028bc233c1b3ce74c702629442833455403a",
+      "stateSha256": "ea1b979b240b67d5a113ba7dbff9f66dbb4eec5aff07defbe16bad1b39f9e6b6",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "gold": 14314,
+      "xp": 11160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 65,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 64,
+      "fireEnergy": 5,
+      "flame": "star",
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "bodhi-three-reflections": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 3,
+            "attempts": 9,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapters23And24EntireStateRefreshEqual": true,
+  "first22ProgressUnchanged": true,
+  "chapter23ProgressPreservedAfter24": true,
+  "observations": {
+    "tomb": {
+      "durations": [
+        45,
+        40,
+        35
+      ],
+      "middleWaitingDeathRetained": true,
+      "deathHp": 0,
+      "deathRemaining": 26,
+      "safeCampExpiryHp": 616,
+      "expiredRoadmarkPosition": [
+        830,
+        400
+      ],
+      "expiredRoadmarkStatus": "当前层已超时或尚未启动，免费休整或回薰儿处重试。",
+      "liveEnemiesStillVisibleAtExpiredRoadmark": true,
+      "freeRetryOnlyAttemptsChanged": true,
+      "inheritanceSliders": [
+        0.25,
+        0.55,
+        0.75
+      ],
+      "inheritanceScore": 300,
+      "inheritanceAttempts": 1,
+      "reportXp": 120,
+      "ordinaryKillsAdded": 7,
+      "healUsed": 0,
+      "firstClearGold": 830
+    },
+    "bodhi": {
+      "wrongChoices": 6,
+      "correctChoices": 3,
+      "choiceAttempts": 9,
+      "firstDesireGraspReason": "许诺没有根基，欲念让幻象再次合拢。观察卷轴的痕迹，可免费重选。",
+      "allSixWrongReasonsReadFromLiveStatus": true,
+      "illusionResourcesAdded": 0,
+      "reportXp": 100,
+      "firstClearGold": 860,
+      "ordinaryKillsAdded": 0
+    },
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop evidence, not physical devices or player Beta",
+    "Expired roadmark still had live enemies; not a cleared-guards timeout case",
+    "Death and repeated ordinary combat rewards retained, not claimed flawless play",
+    "Full sources/characters and public deployment gates remain open",
+    "No manufactured save, browser store or coordinate/runtime injection"
+  ]
+}
