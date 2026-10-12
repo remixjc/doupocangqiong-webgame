@@ -1,0 +1,241 @@
+{
+  "batch": "C1g-4c1",
+  "version": "0.48.0",
+  "date": "2026-10-12",
+  "browser": "Production4185 existing legitimate 28-chapter journey",
+  "evidence": "22 actual UI downloads including original0.47 baseline, official parseSave outside browser. Original JSON unchanged; no browser store, position or clock injection.",
+  "refreshes": [
+    0,
+    1,
+    4,
+    5,
+    8,
+    13,
+    15,
+    16,
+    18,
+    21,
+    23,
+    24
+  ],
+  "allOtherStateUnchanged": true,
+  "wholeStateRefusals": [
+    "directAbsorption",
+    "taxFunding",
+    "unselectedObserver",
+    "recruitPatrol",
+    "unselectedReturn",
+    "grantRank",
+    "guardGrantCore"
+  ],
+  "finalAndNavigationWholeStateEqual": true,
+  "houseCollisionObserved": "From580,130 eight native left clicks stopped at480,130; returned by five right clicks.",
+  "farEntryObserved": "Atgate stage4, button disabled and map E kept4; nativewalktoinside required.",
+  "observerRefresh": "13/15/16 focus unselected, movement controls absent;18/21 return-self choice required afterreload.",
+  "entryRefocus": true,
+  "coins": 18718,
+  "experience": 14470,
+  "completedChapters": 28,
+  "manualSlots": "3 empty; previous auto23",
+  "ledger": {
+    "own": 0,
+    "borrowed": 160,
+    "spent": 50
+  },
+  "supplies": {
+    "bluegrass": 3,
+    "boneflower": 2,
+    "woodCore": 0
+  },
+  "task": {
+    "stage": 24,
+    "entered": true,
+    "captain": "introduced",
+    "following": 3,
+    "patrol": true
+  },
+  "checks": "121files746Vitest+11Node/types/3difficulty full early+28replay/production budgets/integrity pass",
+  "sourceBoundary": "Browser fully read English11-14 via normal NEXT, exact Chinese/anime mapping pending; this stage only11 marketentry andguards.",
+  "screenshots": [
+    "c1g-market-escort-observer.png",
+    "c1g-market-escort-complete.png"
+  ],
+  "inputs": [
+    {
+      "name": "baseline",
+      "originalFile": ".git/task-city-route-export.json",
+      "stage": 0,
+      "sourceVersion": "0.47.0",
+      "sha256": "0db70d6b1e5f8e17fb97cd8d3300b8aeb9dacf82550fde69f2371ac8da190d5f",
+      "bytes": 26410
+    },
+    {
+      "name": "migrated",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790535911.json",
+      "stage": 0,
+      "sourceVersion": "0.48.0",
+      "sha256": "2b54253ddf7c1d2c4ed2f175d536c72b8c609c7119ea7d7782d0024606b0654d",
+      "bytes": 26567
+    },
+    {
+      "name": "absorbRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790555613.json",
+      "stage": 0,
+      "sourceVersion": "0.48.0",
+      "sha256": "68b70118e2732c3a9ef4f60b0fcbdee1aeb4c89f1017cfbf41e61ca0dd9a9c97",
+      "bytes": 26567
+    },
+    {
+      "name": "alley",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790560564.json",
+      "stage": 1,
+      "sourceVersion": "0.48.0",
+      "sha256": "ee9ead772a2680ea30ead2659141f205e3fc608dcd229ab439b7fc418fcdbbed",
+      "bytes": 26567
+    },
+    {
+      "name": "taxRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790587067.json",
+      "stage": 1,
+      "sourceVersion": "0.48.0",
+      "sha256": "a10fb8956bb8354e842aa3f30de03be0681291c4de11fc51d3f965ffb60a1eff",
+      "bytes": 26567
+    },
+    {
+      "name": "gateBeforeEntry",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790608644.json",
+      "stage": 4,
+      "sourceVersion": "0.48.0",
+      "sha256": "0c6b6948b0ed43a74144160e340099327329fdac8972e4de12126ff495ab60aa",
+      "bytes": 26567
+    },
+    {
+      "name": "entered",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790615567.json",
+      "stage": 5,
+      "sourceVersion": "0.48.0",
+      "sha256": "e47fb308a42f696b3a34f80378f5b964bd177cdfc60fc5088fa946f7844d26d9",
+      "bytes": 26566
+    },
+    {
+      "name": "captainUnknown",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790624754.json",
+      "stage": 8,
+      "sourceVersion": "0.48.0",
+      "sha256": "81e91081ff96de8d273f941c3df284cfff1a19d7fbc43e25ccf510bea7da570d",
+      "bytes": 26566
+    },
+    {
+      "name": "crowdObserver",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790652074.json",
+      "stage": 13,
+      "sourceVersion": "0.48.0",
+      "sha256": "cfd3eded130ed9d48df4a211bb3cb5b99c3971960c912e1b8f33fbcb8cb37c9d",
+      "bytes": 26570
+    },
+    {
+      "name": "observerUnselected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790670537.json",
+      "stage": 13,
+      "sourceVersion": "0.48.0",
+      "sha256": "01bacdb45e6d470e1531a981725d76ecdaa7d59439330045934fda8ad6e7f7ab",
+      "bytes": 26570
+    },
+    {
+      "name": "orderedNotFollowing",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790673728.json",
+      "stage": 15,
+      "sourceVersion": "0.48.0",
+      "sha256": "8d954f63108dd8264377e567b0fe49c05798dde630907e2bf4a2df73b876a9ce",
+      "bytes": 26570
+    },
+    {
+      "name": "threeFollowing",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790697574.json",
+      "stage": 16,
+      "sourceVersion": "0.48.0",
+      "sha256": "55565c84a4719b2e6b8cbfcc969c3ce3e9accf7a42d59543bdaf980e09fa893d",
+      "bytes": 26570
+    },
+    {
+      "name": "recruitRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790700352.json",
+      "stage": 16,
+      "sourceVersion": "0.48.0",
+      "sha256": "bea86c45572706cd0436c02d2db5ff183fba539e6ec8e1ab0e1a4a218bb8531d",
+      "bytes": 26570
+    },
+    {
+      "name": "patrolReturnPending",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790726877.json",
+      "stage": 18,
+      "sourceVersion": "0.48.0",
+      "sha256": "6be0043b219810e6b0fc8a71dc42e04597bc7e37b6a787b538504c406b2505eb",
+      "bytes": 26569
+    },
+    {
+      "name": "returnUnselected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790729087.json",
+      "stage": 18,
+      "sourceVersion": "0.48.0",
+      "sha256": "525e53a4735d86b3501c288fa674158829c92e64cbf011872c0efa078bf10a7a",
+      "bytes": 26569
+    },
+    {
+      "name": "slow",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790734149.json",
+      "stage": 21,
+      "sourceVersion": "0.48.0",
+      "sha256": "2d46efdd68f02b20f0668fa693f40465aac2ba018b99c85d994fc23669b6e88e",
+      "bytes": 26569
+    },
+    {
+      "name": "rankRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790758767.json",
+      "stage": 21,
+      "sourceVersion": "0.48.0",
+      "sha256": "8613bcc459f2ac5f60be41a448fc402e44a4fad3b4761a978f52fb114ac69282",
+      "bytes": 26569
+    },
+    {
+      "name": "archivePending",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790761680.json",
+      "stage": 23,
+      "sourceVersion": "0.48.0",
+      "sha256": "8baea148c08a4b7b28badd36cdfcd5705fc725f6524e5ec82b9194352aa8bff4",
+      "bytes": 26569
+    },
+    {
+      "name": "coreRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790764479.json",
+      "stage": 23,
+      "sourceVersion": "0.48.0",
+      "sha256": "ffc4f7003a01e195f44a825568160117deaa2463e5963ec7720cdf7997db2e02",
+      "bytes": 26569
+    },
+    {
+      "name": "done",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790813256.json",
+      "stage": 24,
+      "sourceVersion": "0.48.0",
+      "sha256": "bdac01358a52da85f4528596a7e6b2c58c77da1684a0e6f870f2597b584bd0c8",
+      "bytes": 26569
+    },
+    {
+      "name": "refreshed",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790815399.json",
+      "stage": 24,
+      "sourceVersion": "0.48.0",
+      "sha256": "16ee8cb72b7812bd0f5a009ab6337a92edc3613c556fc3d87e8a33b211f922de",
+      "bytes": 26569
+    },
+    {
+      "name": "navigation",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791790848539.json",
+      "stage": 24,
+      "sourceVersion": "0.48.0",
+      "sha256": "df274614c044f6253e4d6f69f5f8114328a8a9dd37e6a7b1ee77821a0f811cf3",
+      "bytes": 26569
+    }
+  ]
+}

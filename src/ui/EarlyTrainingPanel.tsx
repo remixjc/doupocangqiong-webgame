@@ -25,6 +25,7 @@ const EarlyPreparationBrief = lazy(() => loadSceneModule(() => import('./EarlyPr
 const EarlyMountainVisitor = lazy(() => loadSceneModule(() => import('./EarlyMountainVisitor')))
 const EarlyMorningCard = lazy(() => loadSceneModule(() => import('./EarlyMorningCard')))
 const EarlyCityPharmacy = lazy(() => loadSceneModule(() => import('./EarlyCityPharmacy')))
+const EarlyMarketEscort = lazy(() => loadSceneModule(() => import('./EarlyMarketEscort')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -44,6 +45,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [mountainVisitor, setMountainVisitor] = useState(false)
   const [morningCard, setMorningCard] = useState(false)
   const [cityPharmacy, setCityPharmacy] = useState(false)
+  const [marketEscort, setMarketEscort] = useState(false)
+  const escortEntry = useRef<HTMLButtonElement>(null), returningEscort = useRef(false)
   const cityEntry = useRef<HTMLButtonElement>(null), returningCity = useRef(false)
   const morningEntry = useRef<HTMLButtonElement>(null), returningMorning = useRef(false)
   const visitorEntry = useRef<HTMLButtonElement>(null), returningVisitor = useRef(false)
@@ -84,10 +87,13 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!mountainVisitor && returningVisitor.current) { returningVisitor.current = false; visitorEntry.current?.focus() } }, [mountainVisitor])
   useEffect(() => { if (!morningCard && returningMorning.current) { returningMorning.current = false; morningEntry.current?.focus() } }, [morningCard])
   useEffect(() => { if (!cityPharmacy && returningCity.current) { returningCity.current = false; cityEntry.current?.focus() } }, [cityPharmacy])
+  useEffect(() => { if (!marketEscort && returningEscort.current) { returningEscort.current = false; escortEntry.current?.focus() } }, [marketEscort])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (marketEscort) return <Suspense fallback={<p role="status">正在接续南坊与巡卫……</p>}><EarlyMarketEscort state={state}
+    onBack={() => { returningEscort.current = true; setMarketEscort(false) }} /></Suspense>
   if (cityPharmacy) return <Suspense fallback={<p role="status">正在接续实际同行与药铺采购……</p>}><EarlyCityPharmacy state={state}
     onBack={() => { returningCity.current = true; setCityPharmacy(false) }} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></Suspense>
   if (morningCard) return <Suspense fallback={<p role="status">正在接续晨间普通黑卡交接……</p>}><EarlyMorningCard state={state}
@@ -135,7 +141,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
                   {task.mountainVisitor.stage === 26 && <><p>{earlyMorningCardSaveSummary(state, state.settings)}</p>
                     <button ref={morningEntry} className="secondary" onClick={() => setMorningCard(true)}>接续晨间交卡 · 普通黑卡与采购账</button>
                     {task.morningCard.stage === 14 && <><p>{earlyCityPharmacySaveSummary(state, state.settings)}</p>
-                      <button ref={cityEntry} className="secondary" onClick={() => setCityPharmacy(true)}>接续同行药铺 · 入城与两药原收据</button></>}</>}
+                      <button ref={cityEntry} className="secondary" onClick={() => setCityPharmacy(true)}>接续同行药铺 · 入城与两药原收据</button>
+                      {task.cityPharmacy.stage === 15 && <button ref={escortEntry} className="secondary" onClick={() => setMarketEscort(true)}>接续入坊巡卫 · 同行与三护卫</button>}</>}</>}
                 </>}
               </>}
             </>}
