@@ -1,0 +1,271 @@
+{
+  "version": "0.57.2",
+  "date": "2026-10-12",
+  "vitestFiles": 131,
+  "vitestTests": 803,
+  "nodeTests": 11,
+  "sourceEquality": {
+    "routes": 23,
+    "allOtherEffectsCallbacksAndMovementEqual": true,
+    "mappings": [
+      {
+        "state": "indoors",
+        "returning": "returning",
+        "entry": "roomEntry",
+        "effect": "  useEffect(() => {\n    if (!indoors && returning.current) { returning.current = false; roomEntry.current?.focus() }\n  }, [indoors])\n",
+        "back": "indoorsBack",
+        "set": "setIndoors",
+        "declaration": "  const [indoors, setIndoors] = useState(false)\n"
+      },
+      {
+        "state": "hall",
+        "returning": "returningHall",
+        "entry": "hallEntry",
+        "effect": "  useEffect(() => {\n    if (!hall && returningHall.current) { returningHall.current = false; hallEntry.current?.focus() }\n  }, [hall])\n",
+        "back": "hallBack",
+        "set": "setHall",
+        "declaration": "  const [hall, setHall] = useState(false)\n"
+      },
+      {
+        "state": "teaching",
+        "returning": "returningTeaching",
+        "entry": "teachingEntry",
+        "effect": "  useEffect(() => {\n    if (!teaching && returningTeaching.current) { returningTeaching.current = false; teachingEntry.current?.focus() }\n  }, [teaching])\n",
+        "back": "teachingBack",
+        "set": "setTeaching",
+        "declaration": "  const [teaching, setTeaching] = useState(false)\n"
+      },
+      {
+        "state": "supervising",
+        "returning": "returningSupervision",
+        "entry": "supervisionEntry",
+        "effect": "  useEffect(() => {\n    if (!supervising && returningSupervision.current) { returningSupervision.current = false; supervisionEntry.current?.focus() }\n  }, [supervising])\n",
+        "back": "supervisingBack",
+        "set": "setSupervising",
+        "declaration": "  const [supervising, setSupervising] = useState(false)\n"
+      },
+      {
+        "state": "recovering",
+        "returning": "returningRecovery",
+        "entry": "recoveryEntry",
+        "effect": "  useEffect(() => {\n    if (!recovering && returningRecovery.current) { returningRecovery.current = false; recoveryEntry.current?.focus() }\n  }, [recovering])\n",
+        "back": "recoveringBack",
+        "set": "setRecovering",
+        "declaration": "  const [recovering, setRecovering] = useState(false)\n"
+      },
+      {
+        "state": "consigning",
+        "returning": "returningConsignment",
+        "entry": "consignmentEntry",
+        "effect": "  useEffect(() => {\n    if (!consigning && returningConsignment.current) { returningConsignment.current = false; consignmentEntry.current?.focus() }\n  }, [consigning])\n",
+        "back": "consigningBack",
+        "set": "setConsigning",
+        "declaration": "  const [consigning, setConsigning] = useState(false)\n"
+      },
+      {
+        "state": "appraising",
+        "returning": "returningAppraisal",
+        "entry": "appraisalEntry",
+        "effect": "  useEffect(() => {\n    if (!appraising && returningAppraisal.current) { returningAppraisal.current = false; appraisalEntry.current?.focus() }\n  }, [appraising])\n",
+        "back": "appraisingBack",
+        "set": "setAppraising",
+        "declaration": "  const [appraising, setAppraising] = useState(false)\n"
+      },
+      {
+        "state": "auctioning",
+        "returning": "returningAuction",
+        "entry": "auctionEntry",
+        "effect": "  useEffect(() => {\n    if (!auctioning && returningAuction.current) { returningAuction.current = false; auctionEntry.current?.focus() }\n  }, [auctioning])\n",
+        "back": "auctioningBack",
+        "set": "setAuctioning",
+        "declaration": "  const [auctioning, setAuctioning] = useState(false)\n"
+      },
+      {
+        "state": "settling",
+        "returning": "returningSettlement",
+        "entry": "settlementEntry",
+        "effect": "  useEffect(() => {\n    if (!settling && returningSettlement.current) { returningSettlement.current = false; settlementEntry.current?.focus() }\n  }, [settling])\n",
+        "back": "settlingBack",
+        "set": "setSettling",
+        "declaration": "  const [settling, setSettling] = useState(false)\n"
+      },
+      {
+        "state": "fatherVisiting",
+        "returning": "returningFatherGift",
+        "entry": "fatherGiftEntry",
+        "effect": "  useEffect(() => {\n    if (!fatherVisiting && returningFatherGift.current) { returningFatherGift.current = false; fatherGiftEntry.current?.focus() }\n  }, [fatherVisiting])\n",
+        "back": "fatherVisitingBack",
+        "set": "setFatherVisiting",
+        "declaration": "  const [fatherVisiting, setFatherVisiting] = useState(false)\n"
+      },
+      {
+        "state": "xunerVisiting",
+        "returning": "returningXunerVisit",
+        "entry": "xunerVisitEntry",
+        "effect": "  useEffect(() => {\n    if (!xunerVisiting && returningXunerVisit.current) { returningXunerVisit.current = false; xunerVisitEntry.current?.focus() }\n  }, [xunerVisiting])\n",
+        "back": "xunerVisitingBack",
+        "set": "setXunerVisiting",
+        "declaration": "  const [xunerVisiting, setXunerVisiting] = useState(false)\n"
+      },
+      {
+        "state": "storingSupplies",
+        "returning": "returningLongSupplies",
+        "entry": "longSuppliesEntry",
+        "effect": "  useEffect(() => {\n    if (!storingSupplies && returningLongSupplies.current) { returningLongSupplies.current = false; longSuppliesEntry.current?.focus() }\n  }, [storingSupplies])\n",
+        "back": "storingSuppliesBack",
+        "set": "setStoringSupplies",
+        "declaration": "  const [storingSupplies, setStoringSupplies] = useState(false)\n"
+      },
+      {
+        "state": "forestTraining",
+        "returning": "returningForest",
+        "entry": "forestEntry",
+        "effect": "  useEffect(() => {\n    if (!forestTraining && returningForest.current) { returningForest.current = false; forestEntry.current?.focus() }\n  }, [forestTraining])\n",
+        "back": "forestTrainingBack",
+        "set": "setForestTraining",
+        "declaration": "  const [forestTraining, setForestTraining] = useState(false)\n"
+      },
+      {
+        "state": "seventhTraining",
+        "returning": "returningSeventh",
+        "entry": "seventhEntry",
+        "effect": "  useEffect(() => {\n    if (!seventhTraining && returningSeventh.current) { returningSeventh.current = false; seventhEntry.current?.focus() }\n  }, [seventhTraining])\n",
+        "back": "seventhTrainingBack",
+        "set": "setSeventhTraining",
+        "declaration": "  const [seventhTraining, setSeventhTraining] = useState(false)\n"
+      },
+      {
+        "state": "palmTraining",
+        "returning": "returningPalm",
+        "entry": "palmEntry",
+        "effect": "  useEffect(() => {\n    if (!palmTraining && returningPalm.current) { returningPalm.current = false; palmEntry.current?.focus() }\n  }, [palmTraining])\n",
+        "back": "palmTrainingBack",
+        "set": "setPalmTraining",
+        "declaration": "  const [palmTraining, setPalmTraining] = useState(false)\n"
+      },
+      {
+        "state": "preliminary",
+        "returning": "returningPreliminary",
+        "entry": "preliminaryEntry",
+        "effect": "  useEffect(() => {\n    if (!preliminary && returningPreliminary.current) { returningPreliminary.current = false; preliminaryEntry.current?.focus() }\n  }, [preliminary])\n",
+        "back": "preliminaryBack",
+        "set": "setPreliminary",
+        "declaration": "  const [preliminary, setPreliminary] = useState(false)\n"
+      },
+      {
+        "state": "keChallenge",
+        "returning": "returningKeChallenge",
+        "entry": "keChallengeEntry",
+        "effect": "  useEffect(() => {\n    if (!keChallenge && returningKeChallenge.current) { returningKeChallenge.current = false; keChallengeEntry.current?.focus() }\n  }, [keChallenge])\n",
+        "back": "keChallengeBack",
+        "set": "setKeChallenge",
+        "declaration": "  const [keChallenge, setKeChallenge] = useState(false)\n"
+      },
+      {
+        "state": "eighthTraining",
+        "returning": "returningEighth",
+        "entry": "eighthEntry",
+        "effect": "  useEffect(() => {\n    if (!eighthTraining && returningEighth.current) { returningEighth.current = false; eighthEntry.current?.focus() }\n  }, [eighthTraining])\n",
+        "back": "eighthTrainingBack",
+        "set": "setEighthTraining",
+        "declaration": "  const [eighthTraining, setEighthTraining] = useState(false)\n"
+      },
+      {
+        "state": "ceremonyGuests",
+        "returning": "returningGuests",
+        "entry": "guestsEntry",
+        "effect": "  useEffect(() => {\n    if (!ceremonyGuests && returningGuests.current) { returningGuests.current = false; guestsEntry.current?.focus() }\n  }, [ceremonyGuests])\n",
+        "back": "ceremonyGuestsBack",
+        "set": "setCeremonyGuests",
+        "declaration": "  const [ceremonyGuests, setCeremonyGuests] = useState(false)\n"
+      },
+      {
+        "state": "ceremonialTest",
+        "returning": "returningCeremonial",
+        "entry": "ceremonialEntry",
+        "effect": "  useEffect(() => {\n    if (!ceremonialTest && returningCeremonial.current) { returningCeremonial.current = false; ceremonialEntry.current?.focus() }\n  }, [ceremonialTest])\n",
+        "back": "ceremonialTestBack",
+        "set": "setCeremonialTest",
+        "declaration": "  const [ceremonialTest, setCeremonialTest] = useState(false)\n"
+      },
+      {
+        "state": "ningFirst",
+        "returning": "returningNingFirst",
+        "entry": "ningFirstEntry",
+        "effect": "  useEffect(() => {\n    if (!ningFirst && returningNingFirst.current) { returningNingFirst.current = false; ningFirstEntry.current?.focus() }\n  }, [ningFirst])\n",
+        "back": "ningFirstBack",
+        "set": "setNingFirst",
+        "declaration": "  const [ningFirst, setNingFirst] = useState(false)\n"
+      },
+      {
+        "state": "ningSecond",
+        "returning": "returningNingSecond",
+        "entry": "ningSecondEntry",
+        "effect": "  useEffect(() => {\n    if (!ningSecond && returningNingSecond.current) { returningNingSecond.current = false; ningSecondEntry.current?.focus() }\n  }, [ningSecond])\n",
+        "back": "ningSecondBack",
+        "set": "setNingSecond",
+        "declaration": "  const [ningSecond, setNingSecond] = useState(false)\n"
+      },
+      {
+        "state": "ceremonyVerdict",
+        "returning": "returningVerdict",
+        "entry": "verdictEntry",
+        "effect": "  useEffect(() => {\n    if (!ceremonyVerdict && returningVerdict.current) { returningVerdict.current = false; verdictEntry.current?.focus() }\n  }, [ceremonyVerdict])\n",
+        "back": "ceremonyVerdictBack",
+        "set": "setCeremonyVerdict",
+        "declaration": "  const [ceremonyVerdict, setCeremonyVerdict] = useState(false)\n"
+      }
+    ]
+  },
+  "initialJs": 495745,
+  "totalJs": 1841143,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "browser": {
+    "focus": "进入药老调制室",
+    "before": [
+      "translate(560 310)"
+    ],
+    "afterCtrl": [
+      "translate(560 310)"
+    ],
+    "afterEight": [
+      "translate(560 310)"
+    ],
+    "errors": []
+  },
+  "inputs": [
+    {
+      "name": "walkRouteNew",
+      "file": "D:/Users/jacob/Downloads/异火之路-第28章-1791805832305.json",
+      "sha256": "c8177987da0a34a3982fcb3db75399d088a41f65a5974d726deffce9a0e52fd3",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "walkRouteConsumed",
+      "file": "D:/Users/jacob/Downloads/异火之路-第28章-1791805837287.json",
+      "sha256": "02ac76e42b997ed199ff82a4d20fa4a937e87652ec64df3f95c656fd7089ec2b",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "walkRouteIntact",
+      "file": "D:/Users/jacob/Downloads/异火之路-第28章-1791805842426.json",
+      "sha256": "488aebf393ba0a1e78d6450328e4c5d19b5092333da8d297e2cce3843c04e0a9",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "walkRouteAfterRoom",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791805998085.json",
+      "sha256": "fe84a3ae614e24286183cb6287f762393d9f7dbf43e46189f4f5c63ae811435b",
+      "onlyVersionChanged": true
+    }
+  ],
+  "oldBranchActual": {
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  },
+  "downloadWaitFailureRecovered": true
+}

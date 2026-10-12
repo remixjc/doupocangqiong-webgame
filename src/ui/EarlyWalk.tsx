@@ -1,3 +1,4 @@
+import { useReturningScene } from './use-returning-scene'
 import DeferredScene from './DeferredScene'
 import { lazy, useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -58,142 +59,33 @@ const EarlyCeremonyVerdict = lazy(() => loadSceneModule(() => import('./EarlyCer
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
   const [reading, setReading] = useState<string>()
-  const [indoors, setIndoors] = useState(false)
-  const [hall, setHall] = useState(false)
-  const [teaching, setTeaching] = useState(false)
-  const [supervising, setSupervising] = useState(false)
-  const [recovering, setRecovering] = useState(false)
-  const [consigning, setConsigning] = useState(false)
-  const [appraising, setAppraising] = useState(false)
-  const [auctioning, setAuctioning] = useState(false)
-  const [settling, setSettling] = useState(false)
-  const [fatherVisiting, setFatherVisiting] = useState(false)
-  const [xunerVisiting, setXunerVisiting] = useState(false)
-  const [storingSupplies, setStoringSupplies] = useState(false)
-  const [forestTraining, setForestTraining] = useState(false)
-  const [seventhTraining, setSeventhTraining] = useState(false)
-  const [palmTraining, setPalmTraining] = useState(false)
-  const [preliminary, setPreliminary] = useState(false)
-  const [keChallenge, setKeChallenge] = useState(false)
-  const [eighthTraining, setEighthTraining] = useState(false)
-  const [ceremonyGuests, setCeremonyGuests] = useState(false)
-  const [ceremonialTest, setCeremonialTest] = useState(false)
-  const [ningFirst, setNingFirst] = useState(false)
-  const [ningSecond, setNingSecond] = useState(false)
-  const [ceremonyVerdict, setCeremonyVerdict] = useState(false)
+  const [indoors, setIndoors, roomEntry, indoorsBack] = useReturningScene()
+  const [hall, setHall, hallEntry, hallBack] = useReturningScene()
+  const [teaching, setTeaching, teachingEntry, teachingBack] = useReturningScene()
+  const [supervising, setSupervising, supervisionEntry, supervisingBack] = useReturningScene()
+  const [recovering, setRecovering, recoveryEntry, recoveringBack] = useReturningScene()
+  const [consigning, setConsigning, consignmentEntry, consigningBack] = useReturningScene()
+  const [appraising, setAppraising, appraisalEntry, appraisingBack] = useReturningScene()
+  const [auctioning, setAuctioning, auctionEntry, auctioningBack] = useReturningScene()
+  const [settling, setSettling, settlementEntry, settlingBack] = useReturningScene()
+  const [fatherVisiting, setFatherVisiting, fatherGiftEntry, fatherVisitingBack] = useReturningScene()
+  const [xunerVisiting, setXunerVisiting, xunerVisitEntry, xunerVisitingBack] = useReturningScene()
+  const [storingSupplies, setStoringSupplies, longSuppliesEntry, storingSuppliesBack] = useReturningScene()
+  const [forestTraining, setForestTraining, forestEntry, forestTrainingBack] = useReturningScene()
+  const [seventhTraining, setSeventhTraining, seventhEntry, seventhTrainingBack] = useReturningScene()
+  const [palmTraining, setPalmTraining, palmEntry, palmTrainingBack] = useReturningScene()
+  const [preliminary, setPreliminary, preliminaryEntry, preliminaryBack] = useReturningScene()
+  const [keChallenge, setKeChallenge, keChallengeEntry, keChallengeBack] = useReturningScene()
+  const [eighthTraining, setEighthTraining, eighthEntry, eighthTrainingBack] = useReturningScene()
+  const [ceremonyGuests, setCeremonyGuests, guestsEntry, ceremonyGuestsBack] = useReturningScene()
+  const [ceremonialTest, setCeremonialTest, ceremonialEntry, ceremonialTestBack] = useReturningScene()
+  const [ningFirst, setNingFirst, ningFirstEntry, ningFirstBack] = useReturningScene()
+  const [ningSecond, setNingSecond, ningSecondEntry, ningSecondBack] = useReturningScene()
+  const [ceremonyVerdict, setCeremonyVerdict, verdictEntry, ceremonyVerdictBack] = useReturningScene()
   const field = useRef<SVGSVGElement>(null)
-  const roomEntry = useRef<HTMLButtonElement>(null)
-  const hallEntry = useRef<HTMLButtonElement>(null)
-  const returningHall = useRef(false)
-  const teachingEntry = useRef<HTMLButtonElement>(null)
-  const returningTeaching = useRef(false)
-  const supervisionEntry = useRef<HTMLButtonElement>(null)
-  const returningSupervision = useRef(false)
-  const recoveryEntry = useRef<HTMLButtonElement>(null)
-  const returningRecovery = useRef(false)
-  const consignmentEntry = useRef<HTMLButtonElement>(null)
-  const returningConsignment = useRef(false)
-  const appraisalEntry = useRef<HTMLButtonElement>(null)
-  const returningAppraisal = useRef(false)
-  const auctionEntry = useRef<HTMLButtonElement>(null)
-  const returningAuction = useRef(false)
-  const settlementEntry = useRef<HTMLButtonElement>(null)
-  const returningSettlement = useRef(false)
-  const fatherGiftEntry = useRef<HTMLButtonElement>(null)
-  const returningFatherGift = useRef(false)
-  const xunerVisitEntry = useRef<HTMLButtonElement>(null)
-  const returningXunerVisit = useRef(false)
-  const longSuppliesEntry = useRef<HTMLButtonElement>(null)
-  const returningLongSupplies = useRef(false)
-  const forestEntry = useRef<HTMLButtonElement>(null)
-  const returningForest = useRef(false)
-  const seventhEntry = useRef<HTMLButtonElement>(null)
-  const returningSeventh = useRef(false)
-  const palmEntry = useRef<HTMLButtonElement>(null)
-  const returningPalm = useRef(false)
-  const preliminaryEntry = useRef<HTMLButtonElement>(null)
-  const returningPreliminary = useRef(false)
-  const keChallengeEntry = useRef<HTMLButtonElement>(null)
-  const returningKeChallenge = useRef(false)
-  const eighthEntry = useRef<HTMLButtonElement>(null)
-  const returningEighth = useRef(false)
-  const guestsEntry = useRef<HTMLButtonElement>(null)
-  const returningGuests = useRef(false)
-  const ceremonialEntry = useRef<HTMLButtonElement>(null)
-  const returningCeremonial = useRef(false)
-  const ningFirstEntry = useRef<HTMLButtonElement>(null)
-  const returningNingFirst = useRef(false)
-  const ningSecondEntry = useRef<HTMLButtonElement>(null)
-  const returningNingSecond = useRef(false)
-  const verdictEntry = useRef<HTMLButtonElement>(null)
-  const returningVerdict = useRef(false)
-  const returning = useRef(false)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
   useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
-  useEffect(() => {
-    if (!indoors && returning.current) { returning.current = false; roomEntry.current?.focus() }
-  }, [indoors])
-  useEffect(() => {
-    if (!hall && returningHall.current) { returningHall.current = false; hallEntry.current?.focus() }
-  }, [hall])
-  useEffect(() => {
-    if (!teaching && returningTeaching.current) { returningTeaching.current = false; teachingEntry.current?.focus() }
-  }, [teaching])
-  useEffect(() => {
-    if (!supervising && returningSupervision.current) { returningSupervision.current = false; supervisionEntry.current?.focus() }
-  }, [supervising])
-  useEffect(() => {
-    if (!recovering && returningRecovery.current) { returningRecovery.current = false; recoveryEntry.current?.focus() }
-  }, [recovering])
-  useEffect(() => {
-    if (!consigning && returningConsignment.current) { returningConsignment.current = false; consignmentEntry.current?.focus() }
-  }, [consigning])
-  useEffect(() => {
-    if (!appraising && returningAppraisal.current) { returningAppraisal.current = false; appraisalEntry.current?.focus() }
-  }, [appraising])
-  useEffect(() => {
-    if (!auctioning && returningAuction.current) { returningAuction.current = false; auctionEntry.current?.focus() }
-  }, [auctioning])
-  useEffect(() => {
-    if (!settling && returningSettlement.current) { returningSettlement.current = false; settlementEntry.current?.focus() }
-  }, [settling])
-  useEffect(() => {
-    if (!fatherVisiting && returningFatherGift.current) { returningFatherGift.current = false; fatherGiftEntry.current?.focus() }
-  }, [fatherVisiting])
-  useEffect(() => {
-    if (!xunerVisiting && returningXunerVisit.current) { returningXunerVisit.current = false; xunerVisitEntry.current?.focus() }
-  }, [xunerVisiting])
-  useEffect(() => {
-    if (!storingSupplies && returningLongSupplies.current) { returningLongSupplies.current = false; longSuppliesEntry.current?.focus() }
-  }, [storingSupplies])
-  useEffect(() => {
-    if (!forestTraining && returningForest.current) { returningForest.current = false; forestEntry.current?.focus() }
-  }, [forestTraining])
-  useEffect(() => {
-    if (!seventhTraining && returningSeventh.current) { returningSeventh.current = false; seventhEntry.current?.focus() }
-  }, [seventhTraining])
-  useEffect(() => {
-    if (!palmTraining && returningPalm.current) { returningPalm.current = false; palmEntry.current?.focus() }
-  }, [palmTraining])
-  useEffect(() => {
-    if (!preliminary && returningPreliminary.current) { returningPreliminary.current = false; preliminaryEntry.current?.focus() }
-  }, [preliminary])
-  useEffect(() => {
-    if (!keChallenge && returningKeChallenge.current) { returningKeChallenge.current = false; keChallengeEntry.current?.focus() }
-  }, [keChallenge])
-  useEffect(() => {
-    if (!eighthTraining && returningEighth.current) { returningEighth.current = false; eighthEntry.current?.focus() }
-  }, [eighthTraining])
-  useEffect(() => {
-    if (!ceremonyGuests && returningGuests.current) { returningGuests.current = false; guestsEntry.current?.focus() }
-  }, [ceremonyGuests])
-  useEffect(() => {
-    if (!ceremonialTest && returningCeremonial.current) { returningCeremonial.current = false; ceremonialEntry.current?.focus() }
-  }, [ceremonialTest])
-  useEffect(() => {
-    if (!ningFirst && returningNingFirst.current) { returningNingFirst.current = false; ningFirstEntry.current?.focus() }
-  }, [ningFirst])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -264,12 +156,6 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (blocked) { gameStore.notify(blocked); return }
     setPalmTraining(false); setPreliminary(true)
   }
-  useEffect(() => {
-    if (!ningSecond && returningNingSecond.current) { returningNingSecond.current = false; ningSecondEntry.current?.focus() }
-  }, [ningSecond])
-  useEffect(() => {
-    if (!ceremonyVerdict && returningVerdict.current) { returningVerdict.current = false; verdictEntry.current?.focus() }
-  }, [ceremonyVerdict])
   function openCeremonyVerdict() {
     const blocked = earlyCeremonyVerdictBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
@@ -315,63 +201,63 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   }
   if (blocked) return <p>{blocked}</p>
   if (ceremonyVerdict) return <DeferredScene message="正在接续正式裁定与礼终……"><EarlyCeremonyVerdict state={state} position={position}
-    onBack={() => { returningVerdict.current = true; setCeremonyVerdict(false) }} /></DeferredScene>
+    onBack={ceremonyVerdictBack} /></DeferredScene>
   if (ningSecond) return <DeferredScene message="正在接续违规再攻与迎击……"><EarlyNingSecond state={state} position={position} onVerdict={openCeremonyVerdict}
-    onBack={() => { returningNingSecond.current = true; setNingSecond(false) }} /></DeferredScene>
+    onBack={ningSecondBack} /></DeferredScene>
   if (ningFirst) return <DeferredScene message="正在接续萧宁首轮推拉交锋……"><EarlyNingFirst state={state} position={position} onSecond={openNingSecond}
-    onBack={() => { returningNingFirst.current = true; setNingFirst(false) }} /></DeferredScene>
+    onBack={ningFirstBack} /></DeferredScene>
   if (ceremonialTest) return <DeferredScene message="正在接续正式仪式与验碑……"><EarlyCeremonialTest state={state} position={position} onChallenge={openNingFirst}
-    onBack={() => { returningCeremonial.current = true; setCeremonialTest(false) }} /></DeferredScene>
+    onBack={ceremonialTestBack} /></DeferredScene>
   if (ceremonyGuests) return <DeferredScene message="正在进入正式礼宾客场地……"><EarlyCeremonyGuests state={state} position={position} onCeremony={openCeremonialTest}
-    onBack={() => { returningGuests.current = true; setCeremonyGuests(false) }} /></DeferredScene>
+    onBack={ceremonyGuestsBack} /></DeferredScene>
   if (eighthTraining) return <DeferredScene message="正在接续同行与礼前训练……"><EarlyEighthTraining state={state} position={position} onGuests={openCeremonyGuests}
-    onBack={() => { returningEighth.current = true; setEighthTraining(false) }} /></DeferredScene>
+    onBack={eighthTrainingBack} /></DeferredScene>
   if (keChallenge) return <DeferredScene message="正在接续萧克六段挑战……"><EarlyKeChallenge state={state} position={position} onTraining={openEighthTraining}
-    onBack={() => { returningKeChallenge.current = true; setKeChallenge(false) }} /></DeferredScene>
+    onBack={keChallengeBack} /></DeferredScene>
   if (preliminary) return <DeferredScene message="正在进入一月前预测……"><EarlyPreliminary state={state} position={position} onChallenge={openKeChallenge}
-    onBack={() => { returningPreliminary.current = true; setPreliminary(false) }} /></DeferredScene>
+    onBack={preliminaryBack} /></DeferredScene>
   if (palmTraining) return <DeferredScene message="正在展开吸推两瓶练习……"><EarlyPalmPair state={state} position={position} onPreliminary={openPreliminary}
-    onBack={() => { returningPalm.current = true; setPalmTraining(false) }} /></DeferredScene>
+    onBack={palmTrainingBack} /></DeferredScene>
   if (seventhTraining) return <DeferredScene message="正在回房接续七段调息……"><EarlySeventhRoom state={state} position={position}
     onPalm={openPalm}
-    onBack={() => { returningSeventh.current = true; setSeventhTraining(false) }} /></DeferredScene>
+    onBack={seventhTrainingBack} /></DeferredScene>
   if (forestTraining) return <DeferredScene message="正在走入练技森林……"><EarlyForestStrike state={state} position={position}
     onSeventh={openSeventh}
-    onBack={() => { returningForest.current = true; setForestTraining(false) }} /></DeferredScene>
+    onBack={forestTrainingBack} /></DeferredScene>
   if (storingSupplies) return <DeferredScene message="正在回看房中物资……"><EarlyLongSupplies state={state} position={position}
     onForest={openForest}
-    onBack={() => { returningLongSupplies.current = true; setStoringSupplies(false) }} /></DeferredScene>
+    onBack={storingSuppliesBack} /></DeferredScene>
   if (xunerVisiting) return <DeferredScene message="正在接续薰儿来访……"><EarlyXunerVisit state={state} position={position}
     onSupplies={openLongSupplies}
-    onBack={() => { returningXunerVisit.current = true; setXunerVisiting(false) }} /></DeferredScene>
+    onBack={xunerVisitingBack} /></DeferredScene>
   if (fatherVisiting) return <DeferredScene message="正在回房接续父亲来访……"><EarlyFatherGift state={state} position={position}
     onXunerVisit={openXunerVisit}
-    onBack={() => { returningFatherGift.current = true; setFatherVisiting(false) }} /></DeferredScene>
+    onBack={fatherVisitingBack} /></DeferredScene>
   if (settling) return <DeferredScene message="正在展开寄售手续……"><EarlySettlement state={state} position={position}
     onFatherGift={openFatherGift}
-    onBack={() => { returningSettlement.current = true; setSettling(false) }} /></DeferredScene>
+    onBack={settlingBack} /></DeferredScene>
   if (auctioning) return <DeferredScene message="正在进入第一拍卖室……"><EarlyAuction state={state} position={position}
     onSettle={openSettlement}
-    onBack={() => { returningAuction.current = true; setAuctioning(false) }} /></DeferredScene>
+    onBack={auctioningBack} /></DeferredScene>
   if (appraising) return <DeferredScene message="正在展开寄售鉴定路线……"><EarlyAppraisal state={state} position={position}
     onAuction={openAuction}
-    onBack={() => { returningAppraisal.current = true; setAppraising(false) }} /></DeferredScene>
+    onBack={appraisingBack} /></DeferredScene>
   if (consigning) return <DeferredScene message="正在展开首次寄售准备……"><EarlyConsignment state={state} position={position}
     onAppraise={openAppraisal}
-    onBack={() => { returningConsignment.current = true; setConsigning(false) }} /></DeferredScene>
+    onBack={consigningBack} /></DeferredScene>
   if (recovering) return <DeferredScene message="正在打开训练后的恢复房间……"><EarlyRecovery state={state} position={position}
     onConsign={openConsignment}
-    onBack={() => { returningRecovery.current = true; setRecovering(false) }} /></DeferredScene>
+    onBack={recoveringBack} /></DeferredScene>
   if (supervising) return <DeferredScene message="正在展开后山督练……"><EarlySupervision state={state} position={position}
     onRecover={openRecovery}
-    onBack={() => { returningSupervision.current = true; setSupervising(false) }} /></DeferredScene>
+    onBack={supervisingBack} /></DeferredScene>
   if (teaching) return <DeferredScene message="正在打开老师传技房间……"><EarlyTeaching state={state} position={position}
     onSupervise={openSupervision}
-    onBack={() => { returningTeaching.current = true; setTeaching(false) }} /></DeferredScene>
+    onBack={teachingBack} /></DeferredScene>
   if (hall) return <DeferredScene message="正在展开斗技堂……"><EarlyHall state={state}
     onTeach={openTeaching}
-    onBack={() => { returningHall.current = true; setHall(false) }} /></DeferredScene>
-  if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={() => { returning.current = true; setIndoors(false) }} />
+    onBack={hallBack} /></DeferredScene>
+  if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={indoorsBack} />
   return <>
     <span className="eyebrow">乌坦城 / 往事准备路线</span>
     <h2>走过街巷，再把准备做齐。</h2>
