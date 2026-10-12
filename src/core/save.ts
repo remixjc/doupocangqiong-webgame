@@ -1,4 +1,4 @@
-import { FIRST_HALL_APPROACH_VERSION, FIRST_HALL_FIRST_RETURN_VERSION, FIRST_HALL_CONFLICT_VERSION, FIRST_HALL_THREAT_VERSION, FIRST_HALL_EXIT_RESPONSE_VERSION } from './first-hall-approach-state'
+import { FIRST_HALL_APPROACH_VERSION, FIRST_HALL_FIRST_RETURN_VERSION, FIRST_HALL_CONFLICT_VERSION, FIRST_HALL_THREAT_VERSION, FIRST_HALL_EXIT_RESPONSE_VERSION, FIRST_HALL_CHECKOUT_VERSION } from './first-hall-approach-state'
 import { FIRST_HALL_TALK_VERSION } from './first-hall-talk-state'
 import { FIRST_HALL_MATCH_VERSION, FIRST_HALL_RETURN_VERSION } from './first-hall-match-state'
 import { FIRST_HALL_READING_VERSION } from './first-hall-reading-state'
@@ -317,7 +317,8 @@ before(FIRST_HALL_MATCH_VERSION),
     before(FIRST_HALL_FIRST_RETURN_VERSION),
     before(FIRST_HALL_CONFLICT_VERSION),
     before(FIRST_HALL_THREAT_VERSION),
-    before(FIRST_HALL_EXIT_RESPONSE_VERSION))
+    before(FIRST_HALL_EXIT_RESPONSE_VERSION),
+    before(FIRST_HALL_CHECKOUT_VERSION))
   const early = s.earlyTraining
   function requireHistoryVersion(task: { stage: number }, threshold: number, version: string, message: string) {
     if (task.stage > threshold && before(version)) throw new Error(message)
@@ -339,6 +340,7 @@ before(FIRST_HALL_MATCH_VERSION),
   requireHistoryVersion(early.firstHallApproach, 19, FIRST_HALL_CONFLICT_VERSION, '东架交锋与第二卷记录不属于此版本。')
   requireHistoryVersion(early.firstHallApproach, 31, FIRST_HALL_THREAT_VERSION, '成人礼威胁记录不属于此版本。')
   requireHistoryVersion(early.firstHallApproach, 40, FIRST_HALL_EXIT_RESPONSE_VERSION, '堂内移步与来年回应记录不属于此版本。')
+  requireHistoryVersion(early.firstHallApproach, 46, FIRST_HALL_CHECKOUT_VERSION, '同卷管理者登记记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
