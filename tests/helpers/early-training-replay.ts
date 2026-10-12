@@ -61,6 +61,8 @@ import { advanceEarlyPreliminary, preliminaryPlaces } from '../../src/core/early
 import { preliminaryScenes } from '../../src/content/early-preliminary'
 import { advanceEarlyKeChallenge, keChallengePlaces, type KeChallengeAction } from '../../src/core/early-ke-challenge'
 import { keChallengeScenes } from '../../src/content/early-ke-challenge'
+import { advanceEarlyFamilyVisit, familyVisitPlaces } from '../../src/core/early-family-visit'
+import { familyVisitScenes } from '../../src/content/early-family-visit'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
@@ -88,6 +90,15 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeAuction) includeAppraisal = true
   if (includeAppraisal) includeConsignment = true
   let state = input
+  // Full early-story replay includes the independent pre-teaching visit; partial legacy
+  // replays retain their original scope. This is rule coverage, not browser play.
+  if (includeQiAid) while (state.earlyTraining.familyVisit.stage < familyVisitScenes.length) {
+    const task = state.earlyTraining.familyVisit, scene = familyVisitScenes[task.stage]
+    const result = advanceEarlyFamilyVisit(state, familyVisitPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
   const act = (action: EarlyTrainingAction) => {
     const input = action.type === 'practice' ? { ...action, attempts: state.earlyTraining.practice.attempts } : action
     const result = advanceEarlyTraining(state, input)

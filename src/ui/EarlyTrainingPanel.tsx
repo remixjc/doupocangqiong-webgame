@@ -14,6 +14,7 @@ const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
 const EarlyQiAid = lazy(() => loadSceneModule(() => import('./EarlyQiAid')))
 const EarlyQiExchange = lazy(() => loadSceneModule(() => import('./EarlyQiExchange')))
+const EarlyFamilyVisit = lazy(() => loadSceneModule(() => import('./EarlyFamilyVisit')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -23,6 +24,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [scroll, setScroll] = useState(false)
   const [aid, setAid] = useState(false)
   const [exchange, setExchange] = useState(false)
+  const [familyVisit, setFamilyVisit] = useState(false)
+  const familyVisitEntry = useRef<HTMLButtonElement>(null), returningFamilyVisit = useRef(false)
   const scrollEntry = useRef<HTMLButtonElement>(null), aidEntry = useRef<HTMLButtonElement>(null), exchangeEntry = useRef<HTMLButtonElement>(null)
   const returningScroll = useRef(false), returningAid = useRef(false), returningExchange = useRef(false)
   const pavilionEntry = useRef<HTMLButtonElement>(null)
@@ -43,10 +46,12 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!scroll && returningScroll.current) { returningScroll.current = false; scrollEntry.current?.focus() } }, [scroll])
   useEffect(() => { if (!exchange && returningExchange.current) { returningExchange.current = false; exchangeEntry.current?.focus() } }, [exchange])
   useEffect(() => { if (!aid && returningAid.current) { returningAid.current = false; aidEntry.current?.focus() } }, [aid])
+  useEffect(() => { if (!familyVisit && returningFamilyVisit.current) { returningFamilyVisit.current = false; familyVisitEntry.current?.focus() } }, [familyVisit])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (familyVisit) return <Suspense fallback={<p role="status">正在回到拜师前的接待厅……</p>}><EarlyFamilyVisit state={state} onBack={() => { returningFamilyVisit.current = true; setFamilyVisit(false) }} /></Suspense>
   if (barrier) return <Suspense fallback={<p role="status">正在进入火通道与四十三号门障……</p>}><EarlyQiBarrier state={state} onBack={() => { returningBarrier.current = true; setBarrier(false) }} /></Suspense>
   if (scroll) return <Suspense fallback={<p role="status">正在打开卷轴保管记录……</p>}><EarlyQiScroll state={state} onBack={() => { returningScroll.current = true; setScroll(false) }} /></Suspense>
   if (exchange) return <Suspense fallback={<p role="status">正在回看双卷交接……</p>}><EarlyQiExchange state={state} onBack={() => { returningExchange.current = true; setExchange(false) }} /></Suspense>
@@ -54,6 +59,11 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   if (pavilion) return <Suspense fallback={<p role="status">正在前往五天后的功法阁……</p>}><EarlyQiPavilion state={state} onBack={() => { returningPavilion.current = true; setPavilion(false) }} /></Suspense>
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={() => { returning.current = true; setWalking(false) }} />
   return <>
+    {!blocked && <section className="bond-summary" aria-label="拜师之前的来访">
+      <b>拜师之前 · {task.familyVisit.stage === 17 ? '来访前半程已归档' : `来访 ${task.familyVisit.stage}/17`}</b>
+      <p>回到家族接待厅，分别记录入席、来客身份、公开请求与玉匣展示，再接拜师后的准备。</p>
+      <button ref={familyVisitEntry} className="secondary" onClick={() => setFamilyVisit(true)}>回到家族来访 · 入席与公开请求</button>
+    </section>}
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
     {blocked ? <p className="muted">{blocked}</p> : <>

@@ -1,0 +1,80 @@
+{
+  "batch": "C1g-1",
+  "version": "0.38.0",
+  "date": "2026-10-12",
+  "browser": "production 127.0.0.1:4185",
+  "evidence": "Real UI downloads; official parseSave outside browser; no save or position injection",
+  "migration": "0.37.6 adds only empty familyVisit and updates contentVersion",
+  "stageRefreshes": [
+    5,
+    14,
+    16,
+    17
+  ],
+  "allOtherStateUnchanged": true,
+  "finalRefreshWholeStateEqual": true,
+  "manualSlots": "all three empty; none overwritten",
+  "coins": 18718,
+  "experience": 14470,
+  "completedChapters": 28,
+  "familyVisit": {
+    "stage": 17,
+    "seat": "shared",
+    "emblem": "cloud-sword",
+    "identity": "nalan",
+    "request": "spoken",
+    "pressure": "withdrawn",
+    "box": "presented"
+  },
+  "checks": "111 Vitest files / 691 tests; 11 Node contracts; types / production / integrity pass",
+  "inputs": [
+    {
+      "name": "before",
+      "originalFile": "异火之路-第28章-1791778415651.json",
+      "sha256": "851cd2cf0d02a92eb20a54a10df3a108d37e65a4d9cb07e22efe4a88fd528800",
+      "bytes": 23080,
+      "sourceVersion": "0.37.6",
+      "stage": 0
+    },
+    {
+      "name": "missing-seat",
+      "originalFile": "异火之路-第28章-1791778520370.json",
+      "sha256": "a20e69cce6520e7f03b63ef976803d2eb9a72ca8f88f26dbb74dd209e6f1cc7d",
+      "bytes": 23302,
+      "sourceVersion": "0.38.0",
+      "stage": 5
+    },
+    {
+      "name": "pressure",
+      "originalFile": "异火之路-第28章-1791778593079.json",
+      "sha256": "624e384e360707baed6fe9e0089e0dccf4291169b74a65646d8806a808266f80",
+      "bytes": 23304,
+      "sourceVersion": "0.38.0",
+      "stage": 14
+    },
+    {
+      "name": "box",
+      "originalFile": "异火之路-第28章-1791778624819.json",
+      "sha256": "8163802d66451151b746a8647fe55c032760a294ab22103f54c95f627d395fc5",
+      "bytes": 23310,
+      "sourceVersion": "0.38.0",
+      "stage": 16
+    },
+    {
+      "name": "done",
+      "originalFile": "异火之路-第28章-1791778656433.json",
+      "sha256": "e7b7fa6ac4914190e105ff11149cf7486c4f5de39e07ae53b454695bbd2394bc",
+      "bytes": 23310,
+      "sourceVersion": "0.38.0",
+      "stage": 17
+    },
+    {
+      "name": "refreshed",
+      "originalFile": "异火之路-第28章-1791778657251.json",
+      "sha256": "0870d9bc83fc72635ac15fd6d1c737c0c1ed7c7f7f834023654a79be054c3365",
+      "bytes": 23310,
+      "sourceVersion": "0.38.0",
+      "stage": 17
+    }
+  ]
+}

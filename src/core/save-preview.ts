@@ -21,6 +21,16 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
   return prefix + (task.purse.borrowed ? '借资已记账，待采购' : '准备单已记下，待借资')
 }
 
+export function earlyFamilyVisitSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.familyVisit
+  return '家族来访 · ' + (task.stage === 17 ? '前半程归档，补偿与文书待续'
+    : task.box === 'presented' ? '玉匣已展示，仍属来客' : task.pressure === 'withdrawn' ? '父亲已收势，补偿待展示'
+    : task.pressure === 'raised' ? '双方戒备，尚未交手' : task.request === 'spoken' ? '请求已公开，双方反应待续'
+    : task.identity === 'nalan' ? '身份已听清，尚未公开请求' : task.seat === 'shared' ? '已在薰儿身旁落座'
+    : task.seat === 'missing' ? '座位遗漏，尚未落座' : task.stage ? '清晨与入厅记录进行中' : '未参与')
+}
+
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
@@ -28,7 +38,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,
