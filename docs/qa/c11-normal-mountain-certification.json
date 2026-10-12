@@ -1,0 +1,338 @@
+{
+  "batch": "C11c-3b",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "ff27cf8639a5de0bbeac1da596a6aeab91be54e2",
+  "site": "http://127.0.0.1:4184/",
+  "method": "continued same native UI normal journey; genuine downloaded copies parsed by official save code outside browser",
+  "records": [
+    {
+      "key": "04",
+      "file": ".git/task-normal-ch04-export.json",
+      "bytes": 8177,
+      "fileSha256": "0a49dd454405641ffc0f9ac616a69a4538fffc94e8a39d02b318fe372cf41216",
+      "stateSha256": "8b5ecc17506da0fc49356fc5cb5b14b07dbf1965a60e9d47fc4b2ec12a3e07da",
+      "chapter": 4,
+      "completed": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "gold": 1154,
+      "xp": 790,
+      "inventory": {
+        "herb": 4,
+        "crystal": 15,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 14,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "hidden-cave-treasure": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-cave-trust": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "05-window",
+      "file": ".git/task-normal-ch05-window-export.json",
+      "bytes": 8946,
+      "fileSha256": "a6b31cbf5304922015f8a9a95dbd509dfa3b938b17b56e8df1bf90073f3e721a",
+      "stateSha256": "2e00cbb68f435be20d45889a8dc597ab4691700284b2d8d9523296c6eaeb6876",
+      "chapter": 5,
+      "completed": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "gold": 1082,
+      "xp": 850,
+      "inventory": {
+        "herb": 6,
+        "crystal": 21,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 20,
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "mountain-herb-escort": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "lion-escape": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-mountain-memory": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "05",
+      "file": ".git/task-normal-ch05-export.json",
+      "bytes": 8955,
+      "fileSha256": "20b0e0334cf12db365207b3923de3d5f632e6c098218eed93579622602a09f0f",
+      "stateSha256": "0d0e9911c0685b0fee0c7e81cab0a22fd98af261031e4613751eaaa0abef2625",
+      "chapter": 5,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "gold": 1372,
+      "xp": 1075,
+      "inventory": {
+        "herb": 6,
+        "crystal": 21,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 20,
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "mountain-herb-escort": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "lion-escape": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "yunyun-mountain-memory": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "06-pending",
+      "file": ".git/task-normal-ch06-pending-export.json",
+      "bytes": 9324,
+      "fileSha256": "29c9dd65766c61a62521f0ca06b2f595eb0c41b1bb6bad6d01d68b9236b3b7ec",
+      "stateSha256": "77b220ad58ac0ef11e0b9eaeb75753a09accab419f2ccc7dc81ae3548070562e",
+      "chapter": 6,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "gold": 1372,
+      "xp": 1075,
+      "inventory": {
+        "herb": 6,
+        "crystal": 21,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 20,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "black-rock-certification": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "06",
+      "file": ".git/task-normal-ch06-export.json",
+      "bytes": 9332,
+      "fileSha256": "a406c4bb0071c86a8cd37bdb41d1f8dfe42c07b86d1e555de919c1a1bbf594c7",
+      "stateSha256": "806b1f3827632c0f28a431fb7abf10366d92e57d67a29039b7e4205a0d8e6509",
+      "chapter": 6,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "gold": 1732,
+      "xp": 1375,
+      "inventory": {
+        "herb": 6,
+        "crystal": 21,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 20,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "black-rock-certification": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "06-refreshed",
+      "file": ".git/task-normal-ch06-refreshed-export.json",
+      "bytes": 9332,
+      "fileSha256": "06bd451b8212fdadf228b48dad0a8818b94cea30ed4a2412b8bfef69f44658e1",
+      "stateSha256": "806b1f3827632c0f28a431fb7abf10366d92e57d67a29039b7e4205a0d8e6509",
+      "chapter": 6,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "gold": 1732,
+      "xp": 1375,
+      "inventory": {
+        "herb": 6,
+        "crystal": 21,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 20,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "black-rock-certification": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 300,
+            "attempts": 1,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapter6RefreshEntireStateEqual": true,
+  "previousThreeChaptersUnchanged": true,
+  "certificationAndFirstClear": {
+    "goldDelta": 360,
+    "xpDelta": 300,
+    "inventoryUnchanged": true
+  },
+  "failures": [
+    {
+      "chapter": 5,
+      "kind": "companion fell before first herb node",
+      "retry": "free camp rest restored 120/120; no reward at stage0",
+      "proof": "visible DOM; screenshot shows resting menu, not companion HP"
+    },
+    {
+      "chapter": 5,
+      "kind": "player defeated at 2 seconds remaining in first survival attempt",
+      "retry": "native defeat recovery retained escort3/3 and survival1/3, timer restarted24",
+      "proof": "failure modal screenshot and subsequent DOM"
+    }
+  ],
+  "preparation": {
+    "purchasedHeal": 4,
+    "priceEach": 45,
+    "totalGoldSpent": 180,
+    "completedAttemptHealUsed": 2,
+    "upgrades": 0
+  },
+  "manualSlots": "all three empty",
+  "consoleErrors": [],
+  "limits": [
+    "AI UI play is not player Beta or real device verification",
+    "survival includes menus pausing world and timer between tool calls",
+    "C5b leaving sigil and C6b patrol not yet reached; optional companion and early story remain separate"
+  ]
+}
