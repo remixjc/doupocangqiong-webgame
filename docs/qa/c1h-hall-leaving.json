@@ -1,0 +1,428 @@
+{
+  "version": "0.75.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 152,
+    "tests": 904
+  },
+  "focused": {
+    "files": 3,
+    "tests": 12
+  },
+  "nodeTests": 11,
+  "native": [
+    {
+      "name": "leavingMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840631435.json",
+      "sha256": "13456909bc72c7f9166a574d2169462fc873d933a6342bea360c2254c3fc506b",
+      "stage": 49,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840632891.json",
+      "sha256": "9258684e2cd7bcbedf9e329b960a73736ecb11fbf16cc30b3a213ed97ba8d5c0",
+      "stage": 49,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840635294.json",
+      "sha256": "aabddfa23dd066ca03744e34a6f6bf100572f6a86973d535e9dab6b4b92b45d1",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840683418.json",
+      "sha256": "88ebc6fe64411b5a9aadf797fef0ee26f9315f0409f07c87381171c2b3be1262",
+      "stage": 49,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840708960.json",
+      "sha256": "56367d28fc858046d70c080c7983107bfb68aaed94eb644cff27b66631a8d836",
+      "stage": 50,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840722708.json",
+      "sha256": "0fa37057a253d35384b28720987055e58264d6a49adb48a9d1ef0e308f7bd355",
+      "stage": 51,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840742709.json",
+      "sha256": "f88e2618334c40664bf31823888fe38d0d945e85a25eb21f46563c9ecdfc53c9",
+      "stage": 52,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840757247.json",
+      "sha256": "3ad07f5fc0da0ed4428134a87d3d999c9a07f94c8231b147004bfab9aa63062f",
+      "stage": 53,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840766321.json",
+      "sha256": "301f185dc2662580a619863130d875ad3a8d774adb2dd191f496e9a9dc57bb47",
+      "stage": 53,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainOldEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840802444.json",
+      "sha256": "e9858e8a969dd3256db74e8c6d2968ef30c73be2bc1059abcf03649086261717",
+      "stage": 53,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840804219.json",
+      "sha256": "fcd019fb70f2c574838864526979c221be32ab77787a3a32f13b25c00ea3a306",
+      "stage": 53,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMaterialsStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840824738.json",
+      "sha256": "f5c8cbefd30957325c756676d58e4cd62f1be05e874e7236673567d2499410f2",
+      "stage": 50,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMaterialsStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840838480.json",
+      "sha256": "f51c6b20a669544d90e2fa7e0b063398962980b2203e702feb83df488e12a06d",
+      "stage": 51,
+      "hall": {
+        "stage": 8,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMaterialsStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840862029.json",
+      "sha256": "3eed077a81a4511bac86717989189c150d26ecb695daec06c1fc070db3bbaede",
+      "stage": 52,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMaterialsStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840875747.json",
+      "sha256": "d2efebb8cd0b00dd167164af7a094ebf6ca4d983dfe6d5d012996aaccf940cd9",
+      "stage": 53,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840884822.json",
+      "sha256": "362898263362d1c55bd07ae385dd04778c852c385c6019fb2b8d67525129c290",
+      "stage": 53,
+      "hall": {
+        "stage": 9,
+        "scroll": "borrowed-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "leavingIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791840891065.json",
+      "sha256": "646175ebac4ffbe2db76d1398da76aaa5e7f7cf3e1bd657ab25afe712a7e65f6",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    }
+  ],
+  "pairs": [
+    [
+      "leavingMainMigrated",
+      "leavingMainRejected0"
+    ],
+    [
+      "leavingMainFinal",
+      "leavingMainOldEntry"
+    ],
+    [
+      "leavingMainFinal",
+      "leavingMainFinalRefresh"
+    ],
+    [
+      "leavingIntactMigrated",
+      "leavingIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "MainRejected0",
+      "status": "同行与实际离堂 0/4 · 同卷登记 · 借阅归档，同行跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 0/4 · 同卷登记 · 借阅归档，同行跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n薰儿走到堂口\n\n薰儿从东架走到本人旁边；临时卷留原处。\n\n当前人物正确。\n\n薰儿实际走到堂口把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved1",
+      "status": "同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行短谈\n\n两人交谈准备离堂。短谈为原创衔接。\n\n请切换到本步人物。\n\n记录同行短谈把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MainRefresh1",
+      "status": "同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行短谈\n\n两人交谈准备离堂。短谈为原创衔接。\n\n当前人物正确。\n\n记录同行短谈把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MainSaved2",
+      "status": "同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n两人实际跨门\n\n本人持同一借卷，与薰儿实际跨门。\n\n当前人物正确。\n\n持同卷与薰儿实际跨门把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MainRefresh2",
+      "status": "同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n两人实际跨门\n\n本人持同一借卷，与薰儿实际跨门。\n\n当前人物正确。\n\n持同卷与薰儿实际跨门把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MainSaved3",
+      "status": "同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行离堂归档\n\n两人已在堂外，午后与回房另续。\n\n当前人物正确。\n\n归档同行与实际离堂把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MainRefresh3",
+      "status": "同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行离堂归档\n\n两人已在堂外，午后与回房另续。\n\n当前人物正确。\n\n归档同行与实际离堂把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MainSaved4",
+      "status": "同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行与实际离堂已归档。\n\n已离堂，午后与回房另续。\n\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MainRefresh4",
+      "status": "同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行与实际离堂已归档。\n\n已离堂，午后与回房另续。\n\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MaterialsInitial0",
+      "status": "同行与实际离堂 0/4 · 同卷登记 · 借阅归档，同行跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 0/4 · 同卷登记 · 借阅归档，同行跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n薰儿走到堂口\n\n薰儿从东架走到本人旁边；临时卷留原处。\n\n请切换到本步人物。\n\n薰儿实际走到堂口把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved1",
+      "status": "同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行短谈\n\n两人交谈准备离堂。短谈为原创衔接。\n\n请切换到本步人物。\n\n记录同行短谈把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MaterialsRefresh1",
+      "status": "同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 1/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行短谈\n\n两人交谈准备离堂。短谈为原创衔接。\n\n当前人物正确。\n\n记录同行短谈把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MaterialsSaved2",
+      "status": "同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n两人实际跨门\n\n本人持同一借卷，与薰儿实际跨门。\n\n当前人物正确。\n\n持同卷与薰儿实际跨门把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MaterialsRefresh2",
+      "status": "同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口 · 尚未跨门\n本人 · 持第二卷\n\n同行与实际离堂 2/4 · 同行离堂 · 薰儿已到堂口，实际跨门待续\n\n借卷已登记，尚未跨门。旧卷账 8/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n两人实际跨门\n\n本人持同一借卷，与薰儿实际跨门。\n\n当前人物正确。\n\n持同卷与薰儿实际跨门把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(175 280)"
+    },
+    {
+      "label": "MaterialsSaved3",
+      "status": "同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行离堂归档\n\n两人已在堂外，午后与回房另续。\n\n当前人物正确。\n\n归档同行与实际离堂把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MaterialsRefresh3",
+      "status": "同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 3/4 · 同行离堂 · 两人已实际跨门，同卷保持\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行离堂归档\n\n两人已在堂外，午后与回房另续。\n\n当前人物正确。\n\n归档同行与实际离堂把收卷当成第一卷已归架把她放下的卷交给本人\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MaterialsSaved4",
+      "status": "同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行与实际离堂已归档。\n\n已离堂，午后与回房另续。\n\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "MaterialsRefresh4",
+      "status": "同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行与实际离堂已归档。\n\n已离堂，午后与回房另续。\n\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "savedRefreshes": 8,
+  "initialJs": 492649,
+  "totalJs": 1849992,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "introduction": "Old0.74/0.74.1 stage49 adds xunerPos=east/exitRecord=none only;50+ requires0.75. Current missing/derived mismatches rejected;13 snapshots strict. Exact52 atomicallyhall9 and bothoutside independently admitspractice0/hall9.",
+  "keyboard": "CorrectE actualXunerjoin1 and bothcross3 on bothbranches. Main wrong-focusE/Arrow/Ctrl/ownscrolltransfer denied0. ExitEnter exactentry, oldcheckout3/3 movement6/6 andthreat9/9bounded/explicitpreleavingretrospective; entirestatepreserved. Stableintactentry0.",
+  "prerequisite": {
+    "sha": "0c2b97ed3cab6df98c59c94f29eab1f82962a9b6",
+    "checks": 38309743715,
+    "conclusion": "success",
+    "pages": 38309743714,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1981394
+  },
+  "source": "Previously normally read fullpublicEnglish18 opening sameborrowedsecond managercheckout then Xunerchatting actualexit. UIcoordinates andgenericshortchat original.51 another laterQiPaviliontransaction. Chinese/currentanime pending.",
+  "failures": "Two budget candidates1850217/1850109 exceededfixed1850000. New redundant narrative shortened, budgets unchanged. Browser screenshots inspected and any compositor stale/empty frames explicitly recorded in acceptance.",
+  "limits": "Only50..53join/chat/bothactualcross/archive. Only52 atomicexitRecord/hall9. Same borrowedsecond followsYan; firstshelf/herownplaced/Ningindependent andhistoricalownScroll=xuner unchanged. No NPCanger/handprint,afternoon,room,teaching,repayment,currentbattleorrewardcompletion."
+}

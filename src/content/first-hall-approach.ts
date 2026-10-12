@@ -62,6 +62,12 @@ export const firstHallCheckoutScenes = defineSceneRows(['actor', 'operation', 't
   ['yan', 'checkout-second', '实际办理同卷借阅', '本人持该同一第二卷向斗技堂管理者实际办理借阅。记录只提高本次登记，尚未与薰儿跨门离堂。', '向管理者实际登记同一第二卷'],
   ['yan', 'archive-checkout', '同卷借阅归档', '同一第二卷已经登记借出，仍由本人持有。薰儿同行与交谈、实际跨门离堂分别待续。', '归档同一第二卷借阅'],
 ] as const)
-export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false, exitResponse = false, checkout = false) {
-  return checkout ? firstHallCheckoutScenes[stage - 46] : exitResponse ? firstHallExitResponseScenes[stage - 40] : threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
+export const firstHallLeavingScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+  ['xuner', 'join', '薰儿走到堂口', '薰儿从东架走到本人旁边；临时卷留原处。', '薰儿实际走到堂口'],
+  ['yan', 'chat', '同行短谈', '两人交谈准备离堂。短谈为原创衔接。', '记录同行短谈'],
+  ['yan', 'cross', '两人实际跨门', '本人持同一借卷，与薰儿实际跨门。', '持同卷与薰儿实际跨门'],
+  ['yan', 'archive-leaving', '同行离堂归档', '两人已在堂外，午后与回房另续。', '归档同行与实际离堂'],
+] as const)
+export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false, exitResponse = false, checkout = false, leaving = false) {
+  return leaving ? firstHallLeavingScenes[stage - 49] : checkout ? firstHallCheckoutScenes[stage - 46] : exitResponse ? firstHallExitResponseScenes[stage - 40] : threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
 }
