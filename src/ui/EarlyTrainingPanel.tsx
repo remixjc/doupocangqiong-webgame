@@ -9,7 +9,7 @@ import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
 import { loadSceneModule } from './scene-load'
-import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary, earlyPreparationBriefSaveSummary, earlyMountainVisitorSaveSummary, earlyMorningCardSaveSummary } from '../core/save-preview'
+import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary, earlyPreparationBriefSaveSummary, earlyMountainVisitorSaveSummary, earlyMorningCardSaveSummary, earlyCityPharmacySaveSummary } from '../core/save-preview'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
@@ -24,6 +24,7 @@ const EarlyMethodDiscussion = lazy(() => loadSceneModule(() => import('./EarlyMe
 const EarlyPreparationBrief = lazy(() => loadSceneModule(() => import('./EarlyPreparationBrief')))
 const EarlyMountainVisitor = lazy(() => loadSceneModule(() => import('./EarlyMountainVisitor')))
 const EarlyMorningCard = lazy(() => loadSceneModule(() => import('./EarlyMorningCard')))
+const EarlyCityPharmacy = lazy(() => loadSceneModule(() => import('./EarlyCityPharmacy')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -42,6 +43,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [preparationBrief, setPreparationBrief] = useState(false)
   const [mountainVisitor, setMountainVisitor] = useState(false)
   const [morningCard, setMorningCard] = useState(false)
+  const [cityPharmacy, setCityPharmacy] = useState(false)
+  const cityEntry = useRef<HTMLButtonElement>(null), returningCity = useRef(false)
   const morningEntry = useRef<HTMLButtonElement>(null), returningMorning = useRef(false)
   const visitorEntry = useRef<HTMLButtonElement>(null), returningVisitor = useRef(false)
   const briefEntry = useRef<HTMLButtonElement>(null), returningBrief = useRef(false)
@@ -80,10 +83,13 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!preparationBrief && returningBrief.current) { returningBrief.current = false; briefEntry.current?.focus() } }, [preparationBrief])
   useEffect(() => { if (!mountainVisitor && returningVisitor.current) { returningVisitor.current = false; visitorEntry.current?.focus() } }, [mountainVisitor])
   useEffect(() => { if (!morningCard && returningMorning.current) { returningMorning.current = false; morningEntry.current?.focus() } }, [morningCard])
+  useEffect(() => { if (!cityPharmacy && returningCity.current) { returningCity.current = false; cityEntry.current?.focus() } }, [cityPharmacy])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (cityPharmacy) return <Suspense fallback={<p role="status">正在接续实际同行与药铺采购……</p>}><EarlyCityPharmacy state={state}
+    onBack={() => { returningCity.current = true; setCityPharmacy(false) }} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></Suspense>
   if (morningCard) return <Suspense fallback={<p role="status">正在接续晨间普通黑卡交接……</p>}><EarlyMorningCard state={state}
     onBack={() => { returningMorning.current = true; setMorningCard(false) }} onRoute={() => { setMorningCard(false); setWalking(true) }} /></Suspense>
   if (mountainVisitor) return <Suspense fallback={<p role="status">正在接续当晚来访与借资问答……</p>}><EarlyMountainVisitor state={state} onBack={() => { returningVisitor.current = true; setMountainVisitor(false) }} /></Suspense>
@@ -127,7 +133,9 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
                   <p>{earlyMountainVisitorSaveSummary(state, state.settings)}</p>
                   <button ref={visitorEntry} className="secondary" onClick={() => setMountainVisitor(true)}>接续薰儿来访 · 当晚问答与紫金卡</button>
                   {task.mountainVisitor.stage === 26 && <><p>{earlyMorningCardSaveSummary(state, state.settings)}</p>
-                    <button ref={morningEntry} className="secondary" onClick={() => setMorningCard(true)}>接续晨间交卡 · 普通黑卡与采购账</button></>}
+                    <button ref={morningEntry} className="secondary" onClick={() => setMorningCard(true)}>接续晨间交卡 · 普通黑卡与采购账</button>
+                    {task.morningCard.stage === 14 && <><p>{earlyCityPharmacySaveSummary(state, state.settings)}</p>
+                      <button ref={cityEntry} className="secondary" onClick={() => setCityPharmacy(true)}>接续同行药铺 · 入城与两药原收据</button></>}</>}
                 </>}
               </>}
             </>}

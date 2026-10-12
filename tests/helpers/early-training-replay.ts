@@ -23,6 +23,8 @@ import { eighthTrainingScenes } from '../../src/content/early-eighth-training'
 import { expect } from 'vitest'
 import { advanceEarlyMorningCard, morningCardPlaces } from '../../src/core/early-morning-card'
 import { morningCardScenes } from '../../src/content/early-morning-card'
+import { advanceEarlyCityPharmacy, cityPharmacyPlaces } from '../../src/core/early-city-pharmacy'
+import { cityPharmacyScenes } from '../../src/content/early-city-pharmacy'
 import type { GameState } from '../../src/core/model'
 import { advanceEarlyTraining, beginEarlyTraining, type EarlyTrainingAction } from '../../src/core/early-training'
 import { earlySupplies } from '../../src/core/early-training-state'
@@ -183,7 +185,14 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
   }
   if (!state.earlyTraining.purse.borrowed) act({ type: 'borrow', expectedSpent: 0 })
-  for (const item of ['boneflower', 'bluegrass'] as const)
+  if (includeQiAid) for (const scene of cityPharmacyScenes) {
+    const ledger = state.earlyTraining, task = ledger.cityPharmacy
+    const result = advanceEarlyCityPharmacy(state, cityPharmacyPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation,
+      expectedStarted: ledger.started, expectedBorrowed: ledger.purse.borrowed, expectedSpent: ledger.purse.spent,
+      expectedLiquid: ledger.liquid.stage, expectedPrimary: ledger.receipts.bluegrass, expectedAuxiliary: ledger.receipts.boneflower, expectedCore: ledger.receipts.woodCore })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
+  for (const item of ['boneflower', 'bluegrass'] as const) if (!state.earlyTraining.receipts[item])
     act({ type: 'purchase', item, price: earlySupplies[item].price, expectedSpent: state.earlyTraining.purse.spent })
   if (includeBracelet) {
     const market = earlyWalkPlaces.find(place => place.id === 'market')!

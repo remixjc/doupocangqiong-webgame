@@ -1,0 +1,224 @@
+{
+  "batch": "C1g-4b2",
+  "version": "0.47.0",
+  "date": "2026-10-12",
+  "browser": "Production4185 never-purchased herbs and4187 old-primary-paid branch",
+  "evidence": "21 actual UI downloads incltwo0.46 baselines; official parseSave outside browser; original JSON unchanged; no store/position/clock injection",
+  "refreshes": [
+    4,
+    6,
+    9,
+    11,
+    12,
+    14,
+    15
+  ],
+  "allOtherStateUnchanged": true,
+  "allowedNewOrders": "Main unique original30/20 -> herbs3/2, primaryOrder/auxiliaryOrder new. Old branch primary existing unchanged, auxiliary original20 only. No woodCore/blackIron/liquid ormain rewards.",
+  "wholeStateRefusals": [
+    "stallsClaimItems",
+    "extra900",
+    "pharmacyWoodCore",
+    "restoreLiquid"
+  ],
+  "oldPrimaryOrderWholeOtherStateEqual": true,
+  "finalAndNavigationWholeStateEqual": true,
+  "houseCollisionObserved": "DOM self position stopped280,170 after8right attempts from200,170; then normal route returned to pharmacy",
+  "entryRefocus": true,
+  "coins": 18718,
+  "experience": 14470,
+  "completedChapters": 28,
+  "manualSlots": "all3empty; main prior auto14 remains",
+  "ledger": {
+    "own": 0,
+    "borrowed": 160,
+    "spent": 50
+  },
+  "supplies": {
+    "bluegrass": 3,
+    "boneflower": 2,
+    "woodCore": 0
+  },
+  "task": {
+    "stage": 15,
+    "location": "pharmacy",
+    "outing": "stalls",
+    "primarySpec": "20-year",
+    "auxiliarySpec": "5-year",
+    "primaryOrder": "new",
+    "auxiliaryOrder": "new",
+    "review": "herbs-only"
+  },
+  "checks": "120files740Vitest+11Node/types/full3difficultyearly and28 replay/production/integrity; final6targeted aftercopy edits pass",
+  "sourceBoundary": "Already fully read English10; exact Chinese/anime mapping pending; game generic names not asserted as verified translation",
+  "inputs": [
+    {
+      "name": "baseline",
+      "originalFile": ".git/task-morning-route-export.json",
+      "stage": 0,
+      "sourceVersion": "0.46.0",
+      "sha256": "249cf91e51131c64eb6de0ef0d06d30d131b5f4708065679316a71cfbaddacde",
+      "bytes": 26133
+    },
+    {
+      "name": "oldBaseline",
+      "originalFile": ".git/task-morning-oldRefreshed-export.json",
+      "stage": 0,
+      "sourceVersion": "0.46.0",
+      "sha256": "431b9ab55cee66e839ba6a79b9c7d2d187acffba9f8895341945ad29ddb3a759",
+      "bytes": 26133
+    },
+    {
+      "name": "left",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788712374.json",
+      "stage": 4,
+      "sourceVersion": "0.47.0",
+      "sha256": "8cf90b9f20eb10b1f390f406f2886cd99fdb91209aaa3be8a85fdd9de53da359",
+      "bytes": 26407
+    },
+    {
+      "name": "stalls",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788743715.json",
+      "stage": 6,
+      "sourceVersion": "0.47.0",
+      "sha256": "9ebdeef4ac6afae8c2b342b3e5221c803102ba4a484eece945e9e4b4240cd5e7",
+      "bytes": 26409
+    },
+    {
+      "name": "itemsRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788754213.json",
+      "stage": 6,
+      "sourceVersion": "0.47.0",
+      "sha256": "a94d37a40be065c1ae267bb4d183e34c614b4f0f8172066de0786610c193d4aa",
+      "bytes": 26409
+    },
+    {
+      "name": "primarySpec",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788862334.json",
+      "stage": 9,
+      "sourceVersion": "0.47.0",
+      "sha256": "f5e0bd367665c65e5055880c78f010d7371009f3d3484e22c8097c8d6c445fdf",
+      "bytes": 26413
+    },
+    {
+      "name": "primaryBought",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788881072.json",
+      "stage": 11,
+      "sourceVersion": "0.47.0",
+      "sha256": "0bed2a13150480f2ff090fe0e64cffe5e67baa950314439301b473468ae47ef2",
+      "bytes": 26409
+    },
+    {
+      "name": "auxiliaryBought",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788887013.json",
+      "stage": 12,
+      "sourceVersion": "0.47.0",
+      "sha256": "b768a28506520b2c6747257c93b6dde4370c6ec215267aa4a96072117665fb43",
+      "bytes": 26404
+    },
+    {
+      "name": "expense",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788907044.json",
+      "stage": 13,
+      "sourceVersion": "0.47.0",
+      "sha256": "37144212ec89d9e6ff7a9872cfcdeda44be3da5aa0defd322447798698281b2d",
+      "bytes": 26410
+    },
+    {
+      "name": "expenseRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788912858.json",
+      "stage": 13,
+      "sourceVersion": "0.47.0",
+      "sha256": "68e1d72b95add977f48874c499afac1f4f93ce165ffb9ae7b96c638295ac99e6",
+      "bytes": 26410
+    },
+    {
+      "name": "woodPending",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788918581.json",
+      "stage": 14,
+      "sourceVersion": "0.47.0",
+      "sha256": "d60849ba892e66d697c1cf4722233ed34f874528910915a7e11e7a47b927f5a2",
+      "bytes": 26410
+    },
+    {
+      "name": "woodRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788940179.json",
+      "stage": 14,
+      "sourceVersion": "0.47.0",
+      "sha256": "2879fd8c48a905a10779cd49240d940410f25033e7cfc8bb10a09af726fdb21a",
+      "bytes": 26410
+    },
+    {
+      "name": "restoreRejected",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788945944.json",
+      "stage": 14,
+      "sourceVersion": "0.47.0",
+      "sha256": "a6997094de108627595cde68894a88a5c586cec6c010be6dfe21f50251dd76a4",
+      "bytes": 26410
+    },
+    {
+      "name": "done",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788951730.json",
+      "stage": 15,
+      "sourceVersion": "0.47.0",
+      "sha256": "de360277ae7ca09ab0262cb94ade512a9fdfdf397e8751dc363ab6742e473550",
+      "bytes": 26410
+    },
+    {
+      "name": "refreshed",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791788975898.json",
+      "stage": 15,
+      "sourceVersion": "0.47.0",
+      "sha256": "57880be49f13d7b375e33d8166eca81c0b0f137834938e57f0fc229be1f86bd2",
+      "bytes": 26410
+    },
+    {
+      "name": "route",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791789007978.json",
+      "stage": 15,
+      "sourceVersion": "0.47.0",
+      "sha256": "0db70d6b1e5f8e17fb97cd8d3300b8aeb9dacf82550fde69f2371ac8da190d5f",
+      "bytes": 26410
+    },
+    {
+      "name": "oldBeforePrimary",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791789072973.json",
+      "stage": 10,
+      "sourceVersion": "0.47.0",
+      "sha256": "6261c8077d6dc7510c15c35b5abafe8a7ff4719b57ae02889682a5fffb998dd8",
+      "bytes": 26413
+    },
+    {
+      "name": "oldPrimaryVerified",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791789078656.json",
+      "stage": 11,
+      "sourceVersion": "0.47.0",
+      "sha256": "e2a95ad30248fdcd962937c4037e88101548c017324edc61205e313e2eabd6c5",
+      "bytes": 26414
+    },
+    {
+      "name": "oldAuxiliaryBought",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791789099011.json",
+      "stage": 12,
+      "sourceVersion": "0.47.0",
+      "sha256": "4e2a56e8f488495608fbb7d6ea402760f6ac046ff134895b4f0381e3c61bf67b",
+      "bytes": 26409
+    },
+    {
+      "name": "oldDone",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791789105388.json",
+      "stage": 15,
+      "sourceVersion": "0.47.0",
+      "sha256": "4e3c8605bfee2cbd21412877a6b8185ebc170575ca4793c0b497897a3645bae0",
+      "bytes": 26415
+    },
+    {
+      "name": "oldRefreshed",
+      "originalFile": "D:/Users/jacob/Downloads/异火之路-第28章-1791789110917.json",
+      "stage": 15,
+      "sourceVersion": "0.47.0",
+      "sha256": "6664ae0f0ebfbc2c0d009732e2813206de6a17372b0a7d7a217b9f8ccd9c5471",
+      "bytes": 26415
+    }
+  ]
+}

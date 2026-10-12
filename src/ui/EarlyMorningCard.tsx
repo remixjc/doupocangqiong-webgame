@@ -55,7 +55,7 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
       {task.stage === 8 && <button className="secondary" disabled={!near} onClick={() => act('claim-purple')}>尝试将普通黑卡登记为紫金卡</button>}
       {task.stage === 10 && <button className="secondary" disabled={!near} onClick={() => act('claim-capacity')}>尝试按普通卡容量领取5000</button>}
       {task.stage === 12 && <button className="secondary" disabled={!near} onClick={() => act('restore-supplies')}>尝试接卡复原已用材料与药液</button>}
-    </section> : <section className="bond-summary"><h3>晨间普通黑卡交接已归档。</h3><p>实际入城与药铺采购待接续。已有准备、收据、药液与主线均保留。</p><button className="secondary" onClick={onRoute}>查看既有准备路线 · 保留已付收据</button></section>}
+    </section> : <section className="bond-summary"><h3>晨间普通黑卡交接已归档。</h3><p>{ledger.cityPharmacy.stage ? earlyMorningCardSaveSummary(state, state.settings) : '实际入城与药铺采购待接续。'}已有准备、收据、药液与主线均保留。</p><button className="secondary" onClick={onRoute}>查看既有准备路线 · 保留已付收据</button></section>}
     <p className="muted">房门、位置和操作为原创比例，位置不保存。160是游戏折算，容量不是余额；不新增积蓄，不改变主线金币，也不让旧借资再领一次。</p>
     <button className="secondary" onClick={onBack}>暂离晨间交卡 · 保留断点</button>
   </>
