@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_MARKET_SEARCH_VERSION = '0.49.0'
 export interface MarketSearchState {
   stage: number
@@ -11,7 +11,5 @@ export function marketSearchAt(stage: number): MarketSearchState {
     stranger: stage >= 19 ? 'seen' : stage >= 16 ? 'heard' : 'unseen' }
 }
 export function validMarketSearch(value: Record<string, unknown> | MarketSearchState): value is MarketSearchState {
-  if (!boundedInteger(value.stage, 20)) return false
-  const expected = marketSearchAt(value.stage)
-  return fieldsMatch(value, expected)
+  return stagedFieldsMatch(value, 20, marketSearchAt)
 }

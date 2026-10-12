@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_FAMILY_CONTRACT_VERSION = '0.40.0'
 export const EARLY_FAMILY_CONTRACT_ID = 'early-family-contract'
 export interface FamilyContractState {
@@ -29,7 +29,5 @@ export function familyContractAt(stage: number): FamilyContractState {
     guests: stage >= 32 ? 'left' : stage >= 27 ? 'departing' : 'visiting' }
 }
 export function validFamilyContract(value: Record<string, unknown> | FamilyContractState): value is FamilyContractState {
-  if (!boundedInteger(value.stage, 33)) return false
-  const expected = familyContractAt(value.stage)
-  return fieldsMatch(value, expected)
+  return stagedFieldsMatch(value, 33, familyContractAt)
 }

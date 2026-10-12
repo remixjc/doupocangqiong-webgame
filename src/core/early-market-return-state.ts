@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_MARKET_RETURN_VERSION = '0.54.0'
 export interface MarketReturnState {
   stage: number
@@ -16,5 +16,5 @@ export function marketReturnAt(stage: number): MarketReturnState {
     locked: stage >= 5, teacher: stage >= 6, materials: stage >= 7, asked: stage >= 8 }
 }
 export function validMarketReturn(value: Record<string, unknown> | MarketReturnState): value is MarketReturnState {
-  return boundedInteger(value.stage, 9) && fieldsMatch(value, marketReturnAt(value.stage))
+  return stagedFieldsMatch(value, 9, marketReturnAt)
 }

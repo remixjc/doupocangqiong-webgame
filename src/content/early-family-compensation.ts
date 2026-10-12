@@ -1,17 +1,18 @@
-export const familyCompensationScenes = [
-  { place: 'guests', actor: 'observer', operation: 'describe-pill', title: '玉匣里的丹药', text: '匣中是一枚绿色丹药。这里回顾它帮助斗之气九段凝聚气旋的故事用途；萧炎此时没有服用，也没有因此升为斗者。', action: '观察丹药 · 不取物' },
-  { place: 'guests', actor: 'observer', operation: 'review-lore', title: '资质与炼制条件', text: '这段说明介绍特殊的火木资质与灵魂感知，以及炼制所需的材料、火焰与感知控制。读懂知识不等于已经取得职业或完成一次炼制。', action: '记下知识 · 资格与实际炼制分开' },
-  { place: 'guests', actor: 'geye', operation: 'name-maker', title: '葛叶说出炼制者', text: '葛叶说明这枚丹药由古河炼制。其名望使长老更重视玉匣，但丹药依旧没有交给萧家。', action: '记录古河与来客说明' },
-  { place: 'father', actor: 'elders', operation: 'observe-interest', title: '长老盘算用途', text: '长老想到族中后辈的修炼，目光留在丹药上。这是他们的期待，不是物品已入族库的凭据。', action: '观察长老反应 · 不入库' },
-  { place: 'xuner', actor: 'yan', operation: 'object', title: '角落里传来的反对', text: '萧炎请葛叶收回丹药，表示萧家未必接受这个请求。补偿的价值不能替代本人对婚约的答复。', action: '本人提出异议' },
-  { place: 'father', actor: 'elders', operation: 'block-speech', title: '长老阻止发言', text: '长老让萧炎退下，试图由长辈决定。他们的阻拦尚未使萧炎停止回应。', action: '听清长老阻拦' },
-  { place: 'xuner', actor: 'yan', operation: 'stand-retort', title: '站起身来追问', text: '萧炎站起，反问长老若同样的事落在自己后辈身上，会如何决定。厅中争辩仍没有演变成交战。', action: '站起并回应长老' },
-  { place: 'xuner', actor: 'xuner', operation: 'support-voice', title: '薰儿支持本人发言', text: '薰儿表示这件事与萧炎直接相关，不能越过他作决定。长老交换目光后收敛，坐回原位。', action: '记录薰儿支持与长老落座' },
-  { place: 'father', actor: 'yan', operation: 'bow-father', title: '先向父亲行礼', text: '萧炎从角落走出，向父亲行礼，随后准备面对纳兰嫣然询问。这里尚没有文书交接。', action: '走近父亲 · 行礼' },
-  { place: 'guests', actor: 'yan', operation: 'ask-consent', title: '祖辈是否同意', text: '萧炎询问纳兰嫣然：祖父是否已经同意今天的请求。先问清这个事实，再记录她的回答。', action: '本人询问祖父是否同意' },
-  { place: 'guests', actor: 'nalan', operation: 'answer-consent', title: '尚未得到祖父同意', text: '纳兰嫣然说明祖父没有同意，并认为这是她自己的事情。回答记录为未获同意，不能写成祖辈已经批准。', action: '听清未获同意的回答' },
-  { place: 'guests', actor: 'yan', operation: 'reply-ancestors', title: '婚约由祖辈订下', text: '萧炎据此解释父亲没有义务应允，并把问题转向祖辈约定。长老没有继续抢先作答。', action: '说明祖辈约定与父亲立场' },
-  { place: 'guests', actor: 'nalan', operation: 'offer-extra', title: '追加条件仍是提议', text: '纳兰嫣然提出可再请老师提供三枚丹药，并可让萧炎进入云岚宗学习功法。这是尚未实现的提议；没有新增丹药，也没有宗门入门或功法授予。', action: '听清追加条件' },
-  { place: 'guests', actor: 'yan', operation: 'verify-offer', title: '把提议与领取分开', text: '核对刚才的条件：说可以提供，不等于已经交付。本人尚未接受追加条件，接下来还需回应这场当众请求。', action: '只记提议 · 未领丹、未入宗' },
-  { place: 'entrance', actor: 'observer', operation: 'archive', title: '补偿答复前段归档', text: '丹药说明、本人异议、薰儿支持、祖辈同意的询问和追加提议各自留存。文书与三年约定尚未发生在这份记录中；萧炎仍在厅内。', action: '归档补偿交涉 · 保留待回应' },
-] as const
+import { defineSceneRows } from './scene-rows'
+export const familyCompensationScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+  ["guests","observer","describe-pill","玉匣里的丹药","匣中是一枚绿色丹药。这里回顾它帮助斗之气九段凝聚气旋的故事用途；萧炎此时没有服用，也没有因此升为斗者。","观察丹药 · 不取物"],
+  ["guests","observer","review-lore","资质与炼制条件","这段说明介绍特殊的火木资质与灵魂感知，以及炼制所需的材料、火焰与感知控制。读懂知识不等于已经取得职业或完成一次炼制。","记下知识 · 资格与实际炼制分开"],
+  ["guests","geye","name-maker","葛叶说出炼制者","葛叶说明这枚丹药由古河炼制。其名望使长老更重视玉匣，但丹药依旧没有交给萧家。","记录古河与来客说明"],
+  ["father","elders","observe-interest","长老盘算用途","长老想到族中后辈的修炼，目光留在丹药上。这是他们的期待，不是物品已入族库的凭据。","观察长老反应 · 不入库"],
+  ["xuner","yan","object","角落里传来的反对","萧炎请葛叶收回丹药，表示萧家未必接受这个请求。补偿的价值不能替代本人对婚约的答复。","本人提出异议"],
+  ["father","elders","block-speech","长老阻止发言","长老让萧炎退下，试图由长辈决定。他们的阻拦尚未使萧炎停止回应。","听清长老阻拦"],
+  ["xuner","yan","stand-retort","站起身来追问","萧炎站起，反问长老若同样的事落在自己后辈身上，会如何决定。厅中争辩仍没有演变成交战。","站起并回应长老"],
+  ["xuner","xuner","support-voice","薰儿支持本人发言","薰儿表示这件事与萧炎直接相关，不能越过他作决定。长老交换目光后收敛，坐回原位。","记录薰儿支持与长老落座"],
+  ["father","yan","bow-father","先向父亲行礼","萧炎从角落走出，向父亲行礼，随后准备面对纳兰嫣然询问。这里尚没有文书交接。","走近父亲 · 行礼"],
+  ["guests","yan","ask-consent","祖辈是否同意","萧炎询问纳兰嫣然：祖父是否已经同意今天的请求。先问清这个事实，再记录她的回答。","本人询问祖父是否同意"],
+  ["guests","nalan","answer-consent","尚未得到祖父同意","纳兰嫣然说明祖父没有同意，并认为这是她自己的事情。回答记录为未获同意，不能写成祖辈已经批准。","听清未获同意的回答"],
+  ["guests","yan","reply-ancestors","婚约由祖辈订下","萧炎据此解释父亲没有义务应允，并把问题转向祖辈约定。长老没有继续抢先作答。","说明祖辈约定与父亲立场"],
+  ["guests","nalan","offer-extra","追加条件仍是提议","纳兰嫣然提出可再请老师提供三枚丹药，并可让萧炎进入云岚宗学习功法。这是尚未实现的提议；没有新增丹药，也没有宗门入门或功法授予。","听清追加条件"],
+  ["guests","yan","verify-offer","把提议与领取分开","核对刚才的条件：说可以提供，不等于已经交付。本人尚未接受追加条件，接下来还需回应这场当众请求。","只记提议 · 未领丹、未入宗"],
+  ["entrance","observer","archive","补偿答复前段归档","丹药说明、本人异议、薰儿支持、祖辈同意的询问和追加提议各自留存。文书与三年约定尚未发生在这份记录中；萧炎仍在厅内。","归档补偿交涉 · 保留待回应"]
+] as const)

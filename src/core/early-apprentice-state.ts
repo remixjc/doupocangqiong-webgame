@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_APPRENTICE_VERSION = '0.42.0'
 export const EARLY_APPRENTICE_ID = 'early-apprentice'
 export interface ApprenticeState {
@@ -29,7 +29,5 @@ export function apprenticeAt(stage: number): ApprenticeState {
     name: stage >= 24 ? 'yaolao' : 'unknown' }
 }
 export function validApprentice(value: Record<string, unknown> | ApprenticeState): value is ApprenticeState {
-  if (!boundedInteger(value.stage, 25)) return false
-  const expected = apprenticeAt(value.stage)
-  return fieldsMatch(value, expected)
+  return stagedFieldsMatch(value, 25, apprenticeAt)
 }

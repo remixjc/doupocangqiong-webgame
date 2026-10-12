@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_MARKET_BRACELETS_VERSION = '0.50.0'
 export interface MarketBraceletsState {
   stage: number
@@ -21,5 +21,5 @@ export function braceletMinimum(stage: number): number {
   return stage >= 28 ? 6 : stage >= 20 ? 5 : stage >= 17 ? 4 : stage >= 13 ? 3 : stage >= 7 ? 2 : stage >= 1 ? 1 : 0
 }
 export function validMarketBracelets(value: Record<string, unknown> | MarketBraceletsState): value is MarketBraceletsState {
-  return boundedInteger(value.stage, 28) && fieldsMatch(value, marketBraceletsAt(value.stage))
+  return stagedFieldsMatch(value, 28, marketBraceletsAt)
 }

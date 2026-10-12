@@ -1,26 +1,11 @@
-export const ningSecondScenes = [
-  { place: 'stairs', actor: 'observe', operation: 'surge', title: '宣布之前，萧宁突然增力再攻',
-    text: '二长老正要宣布时，萧宁突然起身冲向萧炎。场边叙事确认他已使用先前持有的增气药；药力只是暂时增强，不给萧宁或玩家记永久斗者境界。',
-    action: '观察突然再攻 · 记录药物已用' },
-  { place: 'stairs', actor: 'observe', operation: 'halt', title: '二长老喝止，萧宁没有停下',
-    text: '裁判发现异常并喝止，萧宁仍继续进攻。记录叫停无效，不能把这一轮当作规则允许的新挑战。',
-    action: '听到喝止 · 确认再攻未停' },
-  { place: 'stairs', actor: 'observe', operation: 'reaction', title: '场边察觉违规增力',
-    text: '父亲与宾客注意到药物造成的突变。旁人对增力的判断不改变萧炎正式八段结果，也没有替裁判宣布终局。',
-    action: '观察违规反应 · 返回台中迎击' },
-  { place: 'arena', actor: 'xiaoyan', operation: 'begin', title: '准备迎击：八极崩后仍有追加拳击',
-    text: '先以八极崩迎向来拳，随后再出拳击中胸前，才将萧宁击出场。两步35%–65%是原创时机，不把第一下迎击代替完整出场动作。',
-    action: '准备迎击两步 · 八极崩再追加拳击' },
-  { place: 'arena', actor: 'xiaoyan', operation: 'octane', title: '迎击与追加拳击分开完成',
-    text: '八极崩迎击只记录对拳；接着追加拳击才记出场。错招、错时机或停下免费重新准备，已经发生的违规用药与叫停记录保留。',
-    action: '八极崩 · 迎向来拳' },
-  { place: 'arena', actor: 'observe', operation: 'elder', title: '萧宁已出场，二长老查看',
-    text: '追加拳击后萧宁落到场外，二长老走近查看。出场与违规事实已记，处分和正式胜负仍等待后续宣布。',
-    action: '观察二长老查看 · 等待正式裁定' },
-  { place: 'arena', actor: 'xiaoyan', operation: 'wait', title: '收势等待，不领取胜利奖励',
-    text: '萧炎收势。裁判还须处理违规和接下来的请求，不能在出场时领取胜利或跳过后续回应。',
-    action: '收势 · 仍待裁判宣布' },
-  { place: 'stairs', actor: 'xiaoyan', operation: 'withdraw', title: '沿阶梯退到台边',
-    text: '从南侧阶梯退到台边，保留违规再攻与两步迎击的记录。萧玉与薰儿的请求、制止和正式处分接续进行，没有第三场战斗。',
-    action: '退到台边 · 保留待最终裁定' },
-] as const
+import { defineSceneRows } from './scene-rows'
+export const ningSecondScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+  ["stairs","observe","surge","宣布之前，萧宁突然增力再攻","二长老正要宣布时，萧宁突然起身冲向萧炎。场边叙事确认他已使用先前持有的增气药；药力只是暂时增强，不给萧宁或玩家记永久斗者境界。","观察突然再攻 · 记录药物已用"],
+  ["stairs","observe","halt","二长老喝止，萧宁没有停下","裁判发现异常并喝止，萧宁仍继续进攻。记录叫停无效，不能把这一轮当作规则允许的新挑战。","听到喝止 · 确认再攻未停"],
+  ["stairs","observe","reaction","场边察觉违规增力","父亲与宾客注意到药物造成的突变。旁人对增力的判断不改变萧炎正式八段结果，也没有替裁判宣布终局。","观察违规反应 · 返回台中迎击"],
+  ["arena","xiaoyan","begin","准备迎击：八极崩后仍有追加拳击","先以八极崩迎向来拳，随后再出拳击中胸前，才将萧宁击出场。两步35%–65%是原创时机，不把第一下迎击代替完整出场动作。","准备迎击两步 · 八极崩再追加拳击"],
+  ["arena","xiaoyan","octane","迎击与追加拳击分开完成","八极崩迎击只记录对拳；接着追加拳击才记出场。错招、错时机或停下免费重新准备，已经发生的违规用药与叫停记录保留。","八极崩 · 迎向来拳"],
+  ["arena","observe","elder","萧宁已出场，二长老查看","追加拳击后萧宁落到场外，二长老走近查看。出场与违规事实已记，处分和正式胜负仍等待后续宣布。","观察二长老查看 · 等待正式裁定"],
+  ["arena","xiaoyan","wait","收势等待，不领取胜利奖励","萧炎收势。裁判还须处理违规和接下来的请求，不能在出场时领取胜利或跳过后续回应。","收势 · 仍待裁判宣布"],
+  ["stairs","xiaoyan","withdraw","沿阶梯退到台边","从南侧阶梯退到台边，保留违规再攻与两步迎击的记录。萧玉与薰儿的请求、制止和正式处分接续进行，没有第三场战斗。","退到台边 · 保留待最终裁定"]
+] as const)

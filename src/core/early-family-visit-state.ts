@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_FAMILY_VISIT_VERSION = '0.38.0'
 export const EARLY_FAMILY_VISIT_ID = 'early-family-visit'
 
@@ -23,7 +23,5 @@ export function familyVisitAt(stage: number): FamilyVisitState {
   }
 }
 export function validFamilyVisit(value: Record<string, unknown> | FamilyVisitState): value is FamilyVisitState {
-  if (!boundedInteger(value.stage, 17)) return false
-  const expected = familyVisitAt(value.stage)
-  return fieldsMatch(value, expected)
+  return stagedFieldsMatch(value, 17, familyVisitAt)
 }

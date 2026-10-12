@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_PREPARATION_BRIEF_VERSION = '0.44.0'
 export interface PreparationBriefState {
   stage: number
@@ -25,7 +25,5 @@ export function preparationBriefAt(stage: number): PreparationBriefState {
     visitor: stage >= 19 ? 'purple-figure' : 'unseen' }
 }
 export function validPreparationBrief(value: Record<string, unknown> | PreparationBriefState): value is PreparationBriefState {
-  if (!boundedInteger(value.stage, 20)) return false
-  const expected = preparationBriefAt(value.stage)
-  return fieldsMatch(value, expected)
+  return stagedFieldsMatch(value, 20, preparationBriefAt)
 }

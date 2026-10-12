@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { stagedFieldsMatch } from './state-guards'
 export const EARLY_MARKET_STANDOFF_VERSION = '0.51.0'
 export interface MarketStandoffState {
   stage: number
@@ -18,5 +18,5 @@ export function marketStandoffAt(stage: number): MarketStandoffState {
     chase: stage >= 23 ? 'stopped' : stage >= 22 ? 'intended' : 'none', walkedDeep: stage >= 33 }
 }
 export function validMarketStandoff(value: Record<string, unknown> | MarketStandoffState): value is MarketStandoffState {
-  return boundedInteger(value.stage, 34) && fieldsMatch(value, marketStandoffAt(value.stage))
+  return stagedFieldsMatch(value, 34, marketStandoffAt)
 }
