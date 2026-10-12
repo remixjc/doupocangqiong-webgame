@@ -1,0 +1,349 @@
+{
+  "batch": "C11c-3g/C7a",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "7c60848fe61b96df9b05ebae3e3b1b36a1d07407",
+  "previousCI": {
+    "id": 38192766009,
+    "conclusion": "success",
+    "pagesId": 38192766022,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "same normal journey via native UI and real downloads; official parseSave outside browser",
+  "records": [
+    {
+      "key": "20-herbs",
+      "file": ".git/task-normal-ch20-herbs-export.json",
+      "bytes": 17285,
+      "fileSha256": "45124f5976122ab59f2aaeee4105d40f56bf1b865155d6f5c11915311f58318b",
+      "stateSha256": "89bd2343d6913d6dc088936e5202ebce9b2cb2c6f3a929009340b2426fc6cf5b",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "gold": 9624,
+      "xp": 7480,
+      "inventory": {
+        "herb": 8,
+        "crystal": 52,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "dan-realm-timed-herbs": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 7,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "danta-alchemy-lightning-final": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "20-thunder",
+      "file": ".git/task-normal-ch20-thunder-export.json",
+      "bytes": 17286,
+      "fileSha256": "5ee6e89b04948d64ae02f7b094c6b84f194ba4f1be999a287a90eed7ee0dff58",
+      "stateSha256": "9d12e1f42f4b8fdbafd5277164a4527288259ccdd6e0f1922d1cabef8cfb7155",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "gold": 9624,
+      "xp": 7480,
+      "inventory": {
+        "herb": 8,
+        "crystal": 52,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "dan-realm-timed-herbs": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 7,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "danta-alchemy-lightning-final": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 300,
+            "attempts": 2,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "20",
+      "file": ".git/task-normal-ch20-export.json",
+      "bytes": 17296,
+      "fileSha256": "4e5b167764a6c9b9402698e0207e39cfe2b4760b9e7570557b11e57a401d6329",
+      "stateSha256": "727546e53d48352cea0642c26beb87d124c3af15674dacdfb410b9256c0eb25f",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "gold": 10364,
+      "xp": 8160,
+      "inventory": {
+        "herb": 8,
+        "crystal": 52,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "dan-realm-timed-herbs": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 7,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "danta-alchemy-lightning-final": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 300,
+            "attempts": 2,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "20-refreshed",
+      "file": ".git/task-normal-ch20-refreshed-export.json",
+      "bytes": 17296,
+      "fileSha256": "54ad3be9f70e957eceffae13f443fb3ddc9d85e6df127026d682070884312aa2",
+      "stateSha256": "727546e53d48352cea0642c26beb87d124c3af15674dacdfb410b9256c0eb25f",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "gold": 10364,
+      "xp": 8160,
+      "inventory": {
+        "herb": 8,
+        "crystal": 52,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "dan-realm-timed-herbs": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 7,
+            "attempts": 1,
+            "choice": "none"
+          },
+          "danta-alchemy-lightning-final": {
+            "started": true,
+            "stage": 7,
+            "quote": 0,
+            "score": 300,
+            "attempts": 2,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapter20EntireStateRefreshEqual": true,
+  "first19ProgressUnchanged": true,
+  "observations": {
+    "herbs": {
+      "order": [
+        "west",
+        "north",
+        "east"
+      ],
+      "attempts": 1,
+      "remainingSecondsObserved": [
+        45,
+        42,
+        40,
+        37,
+        35,
+        32
+      ],
+      "allCollectedWithoutRestart": true,
+      "menuPausedBetweenSegments": true,
+      "westCombat": [
+        "skill3",
+        "skill1",
+        "attack"
+      ],
+      "northCombat": [
+        "skill2",
+        "skill1",
+        "attack"
+      ],
+      "eastCombat": [
+        "attack",
+        "attack"
+      ],
+      "ordinaryHerbsAdded": 0,
+      "guardsKilled": 4
+    },
+    "alchemy": {
+      "firstAttemptScore": 140,
+      "firstAttemptCause": "AI assumed slider value carried to next step; native slider resets each step",
+      "secondAttemptValues": [
+        30,
+        70,
+        50
+      ],
+      "secondAttemptScore": 300,
+      "attempts": 2
+    },
+    "lightning": {
+      "duration": 18,
+      "remainingObserved": [
+        15,
+        12,
+        7
+      ],
+      "hpObserved": [
+        374,
+        274,
+        444,
+        244
+      ],
+      "healUsed": 1,
+      "reportXp": 80,
+      "firstClearGold": 740,
+      "teacherStillUnavailable": true
+    },
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop single game-timer window, not uninterrupted real-player speedrun or physical devices/Beta",
+    "No full source/character/public deployment acceptance",
+    "Historical rollback cause remains open"
+  ]
+}
