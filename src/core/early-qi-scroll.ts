@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -31,7 +32,5 @@ export function advanceEarlyQiScroll(state: GameState, action: QiScrollAction): 
 
 export function submitEarlyQiScroll(store: GameStore, action: QiScrollAction): boolean {
   const result = advanceEarlyQiScroll(store.getSnapshot().state, action)
-  if (result.ok) store.update(state => { state.earlyTraining.qiPavilionScroll = result.state.earlyTraining.qiPavilionScroll })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result, 'qiPavilionScroll')
 }

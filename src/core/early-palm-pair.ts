@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -43,7 +44,5 @@ export function advanceEarlyPalmPair(state: GameState, position: EarlyWalkPositi
 }
 export function submitEarlyPalmPair(store: GameStore, position: EarlyWalkPosition, station: PalmPairStation, action: PalmPairAction): boolean {
   const result = advanceEarlyPalmPair(store.getSnapshot().state, position, station, action)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }

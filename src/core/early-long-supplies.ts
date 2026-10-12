@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -32,7 +33,5 @@ export function advanceEarlyLongSupplies(state: GameState, position: EarlyWalkPo
 }
 export function submitEarlyLongSupplies(store: GameStore, position: EarlyWalkPosition, station: LongSupplyStation, action: LongSupplyAction): boolean {
   const result = advanceEarlyLongSupplies(store.getSnapshot().state, position, station, action)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }

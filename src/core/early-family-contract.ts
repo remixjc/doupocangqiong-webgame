@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -55,7 +56,5 @@ export function advanceEarlyFamilyContract(state: GameState, view: FamilyContrac
 }
 export function submitEarlyFamilyContract(store: GameStore, view: FamilyContractView, action: FamilyContractAction): boolean {
   const result = advanceEarlyFamilyContract(store.getSnapshot().state, view, action)
-  if (result.ok) store.update(state => { state.earlyTraining.familyContract = result.state.earlyTraining.familyContract })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result, 'familyContract')
 }

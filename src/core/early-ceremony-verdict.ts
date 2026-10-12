@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -37,7 +38,5 @@ export function advanceEarlyCeremonyVerdict(state: GameState, entryPosition: Ear
 }
 export function submitEarlyCeremonyVerdict(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyVerdictAction): boolean {
   const result = advanceEarlyCeremonyVerdict(store.getSnapshot().state, entryPosition, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }

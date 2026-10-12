@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -89,7 +90,5 @@ export function advanceEarlyQiBarrier(state: GameState, position: EarlyWalkPosit
 }
 export function submitEarlyQiBarrier(store: GameStore, position: EarlyWalkPosition, action: QiBarrierAction): boolean {
   const result = advanceEarlyQiBarrier(store.getSnapshot().state, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining.qiPavilionBarrier = result.state.earlyTraining.qiPavilionBarrier })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result, 'qiPavilionBarrier')
 }

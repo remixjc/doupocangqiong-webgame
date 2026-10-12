@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -63,6 +64,5 @@ export function advanceEarlyMountainRing(state: GameState, position: EarlyWalkPo
 }
 export function submitEarlyMountainRing(store: GameStore, position: EarlyWalkPosition, action: MountainRingAction): boolean {
   const result = advanceEarlyMountainRing(store.getSnapshot().state, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining.mountainRing = result.state.earlyTraining.mountainRing })
-  store.notify(result.message); return result.ok
+  return commitEarlyResult(store, result, 'mountainRing')
 }

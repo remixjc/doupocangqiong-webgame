@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -35,6 +36,5 @@ export function advanceEarlyPreparationBrief(state: GameState, position: EarlyWa
 }
 export function submitEarlyPreparationBrief(store: GameStore, position: EarlyWalkPosition, action: PreparationBriefAction): boolean {
   const result = advanceEarlyPreparationBrief(store.getSnapshot().state, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining.preparationBrief = result.state.earlyTraining.preparationBrief })
-  store.notify(result.message); return result.ok
+  return commitEarlyResult(store, result, 'preparationBrief')
 }

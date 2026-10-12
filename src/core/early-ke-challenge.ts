@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -54,7 +55,5 @@ export function advanceEarlyKeChallenge(state: GameState, entryPosition: EarlyWa
 }
 export function submitEarlyKeChallenge(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: KeChallengeAction): boolean {
   const result = advanceEarlyKeChallenge(store.getSnapshot().state, entryPosition, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }

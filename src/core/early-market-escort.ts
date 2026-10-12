@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -48,6 +49,5 @@ export function advanceEarlyMarketEscort(state: GameState, view: MarketEscortVie
 }
 export function submitEarlyMarketEscort(store: GameStore, view: MarketEscortView, action: MarketEscortAction): boolean {
   const result = advanceEarlyMarketEscort(store.getSnapshot().state, view, action)
-  if (result.ok) store.update(state => { state.earlyTraining.marketEscort = result.state.earlyTraining.marketEscort })
-  store.notify(result.message); return result.ok
+  return commitEarlyResult(store, result, 'marketEscort')
 }

@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -69,7 +70,5 @@ export function advanceEarlyForestStrike(state: GameState, entryPosition: EarlyW
 }
 export function submitEarlyForestStrike(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: ForestStrikeAction): boolean {
   const result = advanceEarlyForestStrike(store.getSnapshot().state, entryPosition, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }

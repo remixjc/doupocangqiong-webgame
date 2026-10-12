@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -24,7 +25,5 @@ export function advanceEarlyQiExchange(state: GameState, action: QiExchangeActio
 }
 export function submitEarlyQiExchange(store: GameStore, action: QiExchangeAction): boolean {
   const result = advanceEarlyQiExchange(store.getSnapshot().state, action)
-  if (result.ok) store.update(state => { state.earlyTraining.qiPavilionExchange = result.state.earlyTraining.qiPavilionExchange })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result, 'qiPavilionExchange')
 }

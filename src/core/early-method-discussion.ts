@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -36,6 +37,5 @@ export function advanceEarlyMethodDiscussion(state: GameState, position: EarlyWa
 }
 export function submitEarlyMethodDiscussion(store: GameStore, position: EarlyWalkPosition, action: MethodDiscussionAction): boolean {
   const result = advanceEarlyMethodDiscussion(store.getSnapshot().state, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining.methodDiscussion = result.state.earlyTraining.methodDiscussion })
-  store.notify(result.message); return result.ok
+  return commitEarlyResult(store, result, 'methodDiscussion')
 }

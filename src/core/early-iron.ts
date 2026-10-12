@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
@@ -50,6 +51,5 @@ export function advanceEarlyIron(state: GameState, yan: EarlyWalkPosition, actio
 }
 export function submitEarlyIron(store: GameStore, yan: EarlyWalkPosition, action: IronAction): boolean {
   const result = advanceEarlyIron(store.getSnapshot().state, yan, action)
-  if (result.ok) store.update(state => { state.earlyTraining.iron = result.state.earlyTraining.iron })
-  store.notify(result.message); return result.ok
+  return commitEarlyResult(store, result, 'iron')
 }

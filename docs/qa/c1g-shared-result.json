@@ -1,0 +1,287 @@
+{
+  "version": "0.56.2",
+  "date": "2026-10-12",
+  "vitestFiles": 130,
+  "vitestTests": 797,
+  "nodeTests": 11,
+  "sourceEquality": [
+    {
+      "file": "src/core/early-appraisal.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-apprentice.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-auction.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-bracelet.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-ceremonial-test.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-ceremony-guests.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-ceremony-verdict.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-city-pharmacy.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-consignment.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-eighth-training.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-family-compensation.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-family-contract.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-family-visit.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-father-gift.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-forest-strike.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-growth.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-hall.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-iron.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-ke-challenge.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-long-supplies.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-market-discovery.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-market-escort.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-market-return.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-market-search.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-market-standoff.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-market-trade.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-method-discussion.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-mountain-ring.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-mountain-visitor.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-ning-first.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-ning-second.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-palm-pair.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-preliminary.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-preparation-brief.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-qi-aid.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-qi-barrier.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-qi-exchange.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-qi-pavilion.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-qi-scroll.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-recovery.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-refining.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-room.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-settlement.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-seventh-room.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-supervision.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-teaching.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-walk-actions.ts",
+      "count": 1,
+      "sourceEqual": true
+    },
+    {
+      "file": "src/core/early-xuner-visit.ts",
+      "count": 1,
+      "sourceEqual": true
+    }
+  ],
+  "initialJs": 495527,
+  "totalJs": 1844221,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "inputs": [
+    {
+      "name": "resultNew",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791804131177.json",
+      "sha256": "94af8c12420656513aa70b8da021cb6e8e178a979c00d0028921570c5a8a815b",
+      "onlyIntendedVersionOrIronChanged": true
+    },
+    {
+      "name": "resultConsumed",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791804133351.json",
+      "sha256": "79bfad9c37c40b09518f44da3006bcd4a488641e6492fd0e2b09f37dbf681a3d",
+      "onlyIntendedVersionOrIronChanged": true
+    },
+    {
+      "name": "resultWrongActor",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791804135471.json",
+      "sha256": "ab3b5f96c825186cbcb826525f3228d5766c49f8e2465a0789f5cc557614e7c0",
+      "onlyIntendedVersionOrIronChanged": true
+    },
+    {
+      "name": "resultIron1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791804137943.json",
+      "sha256": "7ad7e422f696e4c9112d4bd7d1947645f6471b1769b196f03df9d7f52f273350",
+      "onlyIntendedVersionOrIronChanged": true
+    },
+    {
+      "name": "resultReload",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791804140059.json",
+      "sha256": "9d16ea6237455473a9dfbc50b245d4140be4fd08e57b15efa3abd186b0d22646",
+      "onlyIntendedVersionOrIronChanged": true
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -52,7 +53,5 @@ export function advanceEarlyNingSecond(state: GameState, entryPosition: EarlyWal
 }
 export function submitEarlyNingSecond(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: NingSecondAction): boolean {
   const result = advanceEarlyNingSecond(store.getSnapshot().state, entryPosition, position, action)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }

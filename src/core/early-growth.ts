@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -19,7 +20,5 @@ export function advanceEarlyGrowth(state: GameState, step: number): Transaction 
 }
 export function submitEarlyGrowth(store: GameStore, step: number): boolean {
   const result = advanceEarlyGrowth(store.getSnapshot().state, step)
-  if (result.ok) store.update(state => { state.earlyTraining = result.state.earlyTraining })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result)
 }
