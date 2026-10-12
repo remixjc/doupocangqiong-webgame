@@ -59,12 +59,31 @@ export function earlyFamilyContractSaveSummary(saved: GameState, viewing: Settin
 export function earlyMountainRingSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.mountainRing
-  return '后山与古戒 · ' + (task.stage === 21 ? '前段归档，取气答复与本人拜师待续'
+  return '后山与古戒 · ' + (task.stage === 21 ? saved.earlyTraining.apprentice.stage > 0
+    ? '前段归档，' + earlyApprenticeSaveSummary(saved, viewing) : '前段归档，取气答复与本人拜师待续'
     : task.future === 'asked' ? '已问今后取气，尚待答复' : task.ring === 'floating' ? '古戒浮空返回，尚未再佩戴'
     : task.ring === 'thrown' ? '古戒已抛出，尚未返回' : task.qi === 'admitted' ? '流失原因已承认，未补资源'
     : task.qi === 'asked' ? '已问流失原因，尚待承认' : task.qi === 'hinted' ? '已听供养线索，仍待问答'
     : task.voice === 'located' ? '声音已定位古戒，身份未公开' : task.voice === 'hinted' ? '已听手指提示，未定位'
     : task.voice !== 'silent' ? '已听声音，尚未定位' : task.stage ? '独自上山与心愿回顾' : '未参与')
+}
+
+export function earlyApprenticeSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.apprentice
+  return '援助与拜师 · ' + (task.stage === 25 ? '本人行礼与老师名字已归档，功法说明与正式返戒待续'
+    : task.name === 'yaolao' ? '本人已行礼，已听老师名字，待归档'
+    : task.rite === 'bowed' ? '本人已行礼，尚待听名字'
+    : task.rite !== 'none' ? '青石前行礼要求已说明，尚未礼成'
+    : task.choice === 'willing' ? '本人愿学，尚未行礼'
+    : task.teacher === 'confirmed' ? '老师炼药资格已答复，尚未拜师'
+    : task.alchemy === 'qualified' ? '本人资质已说明，尚未取得职业或拜师'
+    : task.alchemy === 'eligibility-asked' ? '已问本人资质，尚待答复'
+    : task.alchemy === 'offered' ? '炼药方向仅提议，资格与拜师待续'
+    : task.aid === 'agreed' ? '援助交涉已答复，尚未拜师'
+    : task.aid !== 'none' ? '本人援助条件交涉进行中'
+    : task.target ? '一年七段仅目标，尚未达成'
+    : task.promise === 'permission-required' ? '已听许可边界承诺，本人未授许可' : '未参与')
 }
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
@@ -74,7 +93,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

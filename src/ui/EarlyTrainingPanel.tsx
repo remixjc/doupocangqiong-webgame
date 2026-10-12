@@ -9,7 +9,7 @@ import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
 import { loadSceneModule } from './scene-load'
-import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary } from '../core/save-preview'
+import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary } from '../core/save-preview'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
@@ -19,6 +19,7 @@ const EarlyFamilyVisit = lazy(() => loadSceneModule(() => import('./EarlyFamilyV
 const EarlyFamilyCompensation = lazy(() => loadSceneModule(() => import('./EarlyFamilyCompensation')))
 const EarlyFamilyContract = lazy(() => loadSceneModule(() => import('./EarlyFamilyContract')))
 const EarlyMountainRing = lazy(() => loadSceneModule(() => import('./EarlyMountainRing')))
+const EarlyApprentice = lazy(() => loadSceneModule(() => import('./EarlyApprentice')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -32,6 +33,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [familyCompensation, setFamilyCompensation] = useState(false)
   const [familyContract, setFamilyContract] = useState(false)
   const [mountainRing, setMountainRing] = useState(false)
+  const [apprentice, setApprentice] = useState(false)
+  const apprenticeEntry = useRef<HTMLButtonElement>(null), returningApprentice = useRef(false)
   const mountainRingEntry = useRef<HTMLButtonElement>(null), returningMountainRing = useRef(false)
   const contractEntry = useRef<HTMLButtonElement>(null), returningContract = useRef(false)
   const compensationEntry = useRef<HTMLButtonElement>(null), returningCompensation = useRef(false)
@@ -60,10 +63,12 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!familyCompensation && returningCompensation.current) { returningCompensation.current = false; compensationEntry.current?.focus() } }, [familyCompensation])
   useEffect(() => { if (!familyContract && returningContract.current) { returningContract.current = false; contractEntry.current?.focus() } }, [familyContract])
   useEffect(() => { if (!mountainRing && returningMountainRing.current) { returningMountainRing.current = false; mountainRingEntry.current?.focus() } }, [mountainRing])
+  useEffect(() => { if (!apprentice && returningApprentice.current) { returningApprentice.current = false; apprenticeEntry.current?.focus() } }, [apprentice])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (apprentice) return <Suspense fallback={<p role="status">正在接续援助交涉与本人拜师……</p>}><EarlyApprentice state={state} onBack={() => { returningApprentice.current = true; setApprentice(false) }} /></Suspense>
   if (mountainRing) return <Suspense fallback={<p role="status">正在走上后山，察看古戒……</p>}><EarlyMountainRing state={state} onBack={() => { returningMountainRing.current = true; setMountainRing(false) }} /></Suspense>
   if (familyContract) return <Suspense fallback={<p role="status">正在接续文书与双方离厅……</p>}><EarlyFamilyContract state={state} onBack={() => { returningContract.current = true; setFamilyContract(false) }} /></Suspense>
   if (familyCompensation) return <Suspense fallback={<p role="status">正在接续补偿与本人发言……</p>}><EarlyFamilyCompensation state={state} onBack={() => { returningCompensation.current = true; setFamilyCompensation(false) }} /></Suspense>
@@ -86,6 +91,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         {task.familyContract.stage === 33 && <>
           <p>{earlyMountainRingSaveSummary(state, state.settings)}</p>
           <button ref={mountainRingEntry} className="secondary" onClick={() => setMountainRing(true)}>独自走上后山 · 声音与古戒归属</button>
+          {task.mountainRing.stage === 21 && <>
+            <p>{earlyApprenticeSaveSummary(state, state.settings)}</p>
+            <button ref={apprenticeEntry} className="secondary" onClick={() => setApprentice(true)}>接续援助与拜师 · 许可边界和本人行礼</button>
+          </>}
         </>}
       </>}
     </section>}
