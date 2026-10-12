@@ -5,7 +5,7 @@ import { gameStore } from '../core/store'
 import { mountainRingNear, mountainRingPlaces, mountainRingStart, moveMountainRingWalker } from '../core/early-mountain-ring'
 import { earlyPreparationBriefBlock, submitEarlyPreparationBrief, type PreparationBriefAction } from '../core/early-preparation-brief'
 import { preparationBriefScenes } from '../content/early-preparation-brief'
-import { earlyPreparationBriefSaveSummary } from '../core/save-preview'
+import { earlyPreparationBriefSaveSummary, earlyMountainVisitorSaveSummary } from '../core/save-preview'
 import MountainWalkMap from './MountainWalkMap'
 export default function EarlyPreparationBrief({ state, onBack, onRoute }: { state: GameState; onBack: () => void; onRoute: () => void }) {
   const task = state.earlyTraining.preparationBrief, scene = preparationBriefScenes[task.stage]
@@ -32,7 +32,7 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
       {task.stage === 14 && <button className="secondary" disabled={!near} onClick={() => act('wear-early')}>尝试把老师入戒当作古戒已返手</button>}
       {task.stage === 18 && <button className="secondary" disabled={!near} onClick={() => act('claim-money')}>尝试按借资打算领取资金</button>}
       {task.stage === 19 && <button className="secondary" disabled={!near} onClick={() => act('claim-liquid')}>尝试把温和方案登记为药液已调制</button>}
-    </section> : <section className="bond-summary"><h3>准备说明与正式返戒已归档。</h3><p>老师入戒、同戒返手、资金顾虑与紫衣来人分别留存。已有借资/采购/药液进度和任务袋保持。</p>
+    </section> : <section className="bond-summary"><h3>准备说明与正式返戒已归档。</h3><p>老师入戒、同戒返手、资金顾虑与紫衣来人分别留存。已有借资/采购/药液进度和任务袋保持。{state.earlyTraining.mountainVisitor.stage ? earlyMountainVisitorSaveSummary(state, state.settings) + '。' : ''}</p>
       <button className="primary" onClick={onRoute}>接续既有准备路线 · 接取与借资</button>
     </section>}
     <p className="muted">历史准备要求不代表新增库存；借资打算不代表到账。本段不自动接取或重置已有准备，不增发资金，不改主线装备与已结算奖励。位置不保存。</p>

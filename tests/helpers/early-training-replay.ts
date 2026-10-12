@@ -75,6 +75,8 @@ import { advanceEarlyMethodDiscussion } from '../../src/core/early-method-discus
 import { methodDiscussionScenes } from '../../src/content/early-method-discussion'
 import { advanceEarlyPreparationBrief } from '../../src/core/early-preparation-brief'
 import { preparationBriefScenes } from '../../src/content/early-preparation-brief'
+import { advanceEarlyMountainVisitor, type MountainVisitorView } from '../../src/core/early-mountain-visitor'
+import { mountainVisitorScenes } from '../../src/content/early-mountain-visitor'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
@@ -150,6 +152,14 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) while (state.earlyTraining.preparationBrief.stage < preparationBriefScenes.length) {
     const task = state.earlyTraining.preparationBrief, scene = preparationBriefScenes[task.stage]
     const result = advanceEarlyPreparationBrief(state, mountainRingPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.mountainVisitor.stage < mountainVisitorScenes.length) {
+    const task = state.earlyTraining.mountainVisitor, scene = mountainVisitorScenes[task.stage]
+    const view: MountainVisitorView = task.yan === 'left' ? { kind: 'observer', place: scene.place } : { kind: 'yan', position: mountainRingPlaces[scene.place] }
+    const result = advanceEarlyMountainVisitor(state, view, { ...task, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)

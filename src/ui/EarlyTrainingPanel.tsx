@@ -9,7 +9,7 @@ import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
 import { loadSceneModule } from './scene-load'
-import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary, earlyPreparationBriefSaveSummary } from '../core/save-preview'
+import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary, earlyPreparationBriefSaveSummary, earlyMountainVisitorSaveSummary } from '../core/save-preview'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
@@ -22,6 +22,7 @@ const EarlyMountainRing = lazy(() => loadSceneModule(() => import('./EarlyMounta
 const EarlyApprentice = lazy(() => loadSceneModule(() => import('./EarlyApprentice')))
 const EarlyMethodDiscussion = lazy(() => loadSceneModule(() => import('./EarlyMethodDiscussion')))
 const EarlyPreparationBrief = lazy(() => loadSceneModule(() => import('./EarlyPreparationBrief')))
+const EarlyMountainVisitor = lazy(() => loadSceneModule(() => import('./EarlyMountainVisitor')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -38,6 +39,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [apprentice, setApprentice] = useState(false)
   const [methodDiscussion, setMethodDiscussion] = useState(false)
   const [preparationBrief, setPreparationBrief] = useState(false)
+  const [mountainVisitor, setMountainVisitor] = useState(false)
+  const visitorEntry = useRef<HTMLButtonElement>(null), returningVisitor = useRef(false)
   const briefEntry = useRef<HTMLButtonElement>(null), returningBrief = useRef(false)
   const methodEntry = useRef<HTMLButtonElement>(null), returningMethod = useRef(false)
   const apprenticeEntry = useRef<HTMLButtonElement>(null), returningApprentice = useRef(false)
@@ -72,10 +75,12 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!apprentice && returningApprentice.current) { returningApprentice.current = false; apprenticeEntry.current?.focus() } }, [apprentice])
   useEffect(() => { if (!methodDiscussion && returningMethod.current) { returningMethod.current = false; methodEntry.current?.focus() } }, [methodDiscussion])
   useEffect(() => { if (!preparationBrief && returningBrief.current) { returningBrief.current = false; briefEntry.current?.focus() } }, [preparationBrief])
+  useEffect(() => { if (!mountainVisitor && returningVisitor.current) { returningVisitor.current = false; visitorEntry.current?.focus() } }, [mountainVisitor])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (mountainVisitor) return <Suspense fallback={<p role="status">正在接续当晚来访与借资问答……</p>}><EarlyMountainVisitor state={state} onBack={() => { returningVisitor.current = true; setMountainVisitor(false) }} /></Suspense>
   if (preparationBrief) return <Suspense fallback={<p role="status">正在接续准备说明与老师返戒……</p>}><EarlyPreparationBrief state={state}
     onBack={() => { returningBrief.current = true; setPreparationBrief(false) }}
     onRoute={() => { setPreparationBrief(false); setWalking(true) }} /></Suspense>
@@ -112,6 +117,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
               {task.methodDiscussion.stage === 28 && <>
                 <p>{earlyPreparationBriefSaveSummary(state, state.settings)}</p>
                 <button ref={briefEntry} className="secondary" onClick={() => setPreparationBrief(true)}>接续准备与返戒 · 材料单和借资衔接</button>
+                {task.preparationBrief.stage === 20 && <>
+                  <p>{earlyMountainVisitorSaveSummary(state, state.settings)}</p>
+                  <button ref={visitorEntry} className="secondary" onClick={() => setMountainVisitor(true)}>接续薰儿来访 · 当晚问答与紫金卡</button>
+                </>}
               </>}
             </>}
           </>}

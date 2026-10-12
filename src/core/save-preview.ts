@@ -109,7 +109,8 @@ export function earlyMethodDiscussionSaveSummary(saved: GameState, viewing: Sett
 export function earlyPreparationBriefSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.preparationBrief
-  return '准备与返戒 · ' + (task.stage === 20 ? '历史说明归档，同戒返手；既有借资采购进度保留'
+  return '准备与返戒 · ' + (task.stage === 20 ? saved.earlyTraining.mountainVisitor.stage
+    ? '历史说明归档，同戒返手；' + earlyMountainVisitorSaveSummary(saved, viewing) : '历史说明归档，同戒返手；既有借资采购进度保留'
     : task.visitor === 'purple-figure' ? '紫衣来人已看见，借资仍只打算'
     : task.funding === 'borrowing-planned' ? '本人决定借资，未到账'
     : task.funding !== 'unmentioned' ? '同戒返手，材料资金仍需筹措'
@@ -122,6 +123,25 @@ export function earlyPreparationBriefSaveSummary(saved: GameState, viewing: Sett
     : task.training !== 'none' ? '一年目标与基础方案交涉中' : '未参与')
 }
 
+export function earlyMountainVisitorSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.mountainVisitor
+  return '当晚来访 · ' + (task.stage === 26 ? '本人离山与当晚问答归档，次晨交卡待续'
+    : task.yan === 'left' ? '本人已离山，薰儿旁观反应待续'
+    : task.yan === 'descending' ? '本人已走山径，离山确认待续'
+    : task.invitation === 'tomorrow' ? '次日同行已邀请，尚未离山'
+    : task.purpleCard === 'stowed' ? '紫金卡由薰儿收起，普通黑卡待次晨'
+    : task.repayment === 'waived' ? '不必还回应已听，旧采购账未清'
+    : task.repayment === 'promised' ? '本人承诺以后还，未实际还款'
+    : task.purpleCard === 'displayed' ? '紫金卡仍由薰儿展示，未交本人'
+    : task.funds === 'offered' ? '借资仅提议，尚未到账'
+    : task.funds !== 'unasked' ? '资金需求问答进行中'
+    : task.apology === 'answered' ? '本人歉意与薰儿回应已记'
+    : task.apology === 'spoken' ? '本人已致歉，薰儿回应待续'
+    : task.meeting === 'near' ? '已实际走近相见'
+    : task.identity === 'xuner' ? '来人已确认，问候与相见进行中' : '未参与')
+}
+
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
@@ -129,7 +149,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,
