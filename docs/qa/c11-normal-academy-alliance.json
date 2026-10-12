@@ -1,0 +1,943 @@
+{
+  "batch": "C11c-3e/C6b-free-patrol",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "4c970352f37cbbd0b281b2f266d486d81e379235",
+  "previousCI": {
+    "gameChecks": 38190600269,
+    "conclusion": "success",
+    "pages": 38190600266,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "same normal journey, actual UI/downloads; official parser outside browser; no injected state",
+  "records": [
+    {
+      "key": "14-pending",
+      "file": ".git/task-normal-ch14-pending-export.json",
+      "bytes": 13521,
+      "fileSha256": "65e6daf69b3e4a98b066bc2e6a9a8642e23bb0b44afcc6c41b0ab1903c66a556",
+      "stateSha256": "d8ed2707aa6ed1ba9ea2ba67299e9f59cb14c0c8085bb8fefd4b44b0fc716a68",
+      "chapter": 14,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "gold": 5236,
+      "xp": 4085,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 6,
+        "crystal": 32,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 4,
+      "totalKills": 31,
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "inner-academy-fire-hunt": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 4,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "xuner-academy-memory": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "14",
+      "file": ".git/task-normal-ch14-export.json",
+      "bytes": 13570,
+      "fileSha256": "a70c2a17c1fe9475f7d46827d9019ebbb78f964cc4484bd207f4686ed7d39c70",
+      "stateSha256": "5602b5d81c09dcf153ab34216c4fa3c17fb1e4973adcf8bca349e82d6a7a9d62",
+      "chapter": 14,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "gold": 5796,
+      "xp": 4565,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 7,
+        "crystal": 32,
+        "heal": 1,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 31,
+      "progress": {
+        "herbs": 1,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "inner-academy-fire-hunt": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 4,
+            "attempts": 0,
+            "choice": "none",
+            "huntOutcome": "completed"
+          },
+          "xuner-academy-memory": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "15-pending",
+      "file": ".git/task-normal-ch15-pending-export.json",
+      "bytes": 13935,
+      "fileSha256": "7f0c0c828aac92852c60451b40c18f9f724ca3345d1158912708c9cabd6f8e61",
+      "stateSha256": "2fd035a19491e60f2fa7a3644f12e5f20930026cfefa80195a4744bded0e5b27",
+      "chapter": 15,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "gold": 5526,
+      "xp": 4565,
+      "flame": "lotus",
+      "inventory": {
+        "herb": 7,
+        "crystal": 32,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 31,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "blazing-tower-descent": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "15",
+      "file": ".git/task-normal-ch15-export.json",
+      "bytes": 13945,
+      "fileSha256": "88920df69a6745fc4d41b03bbbb3a856366edd9d78641974b492881c91a413fa",
+      "stateSha256": "ed318c024b4930cf2973c729895660c283fc7d7c685e37b2bc25d9ab87b945ae",
+      "chapter": 15,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "gold": 6306,
+      "xp": 5090,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 37,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 36,
+      "progress": {
+        "herbs": 0,
+        "kills": 5,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "blazing-tower-descent": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "16-pending",
+      "file": ".git/task-normal-ch16-pending-export.json",
+      "bytes": 14729,
+      "fileSha256": "21ec56eed05a9bd9d86c50ebf76f94855f0d9ab82937e94c0462b9bfa83f22a1",
+      "stateSha256": "03e22e7169cd8d6d3fda9f0893effd6053c507d5249513d0b4f2f7149ee44635",
+      "chapter": 16,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "gold": 6466,
+      "xp": 5130,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 41,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 40,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "yunlan-three-sigil-siege": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-yunlan-help": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-absence-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "16",
+      "file": ".git/task-normal-ch16-export.json",
+      "bytes": 14738,
+      "fileSha256": "a32901e4d0131e4b1a8e1bead7e5c230062134c8e2d6010e5d3454721b9f143b",
+      "stateSha256": "8777a8bd709225c6f26d61939589e24a10acd27e2b60edfecd61eee3754057d6",
+      "chapter": 16,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "gold": 7086,
+      "xp": 5630,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 41,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 40,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "yunlan-three-sigil-siege": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-yunlan-help": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-absence-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "17-choice",
+      "file": ".git/task-normal-ch17-choice-export.json",
+      "bytes": 15733,
+      "fileSha256": "69fbfd539fbaa44348cc2a53cb2716be70a04d81104ab116c8a6a2ca3f71e746",
+      "stateSha256": "5f84f684ebb5120864fe33aec99ff6a0ecd91753ba0743c3face31724175b2e1",
+      "chapter": 17,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "gold": 7086,
+      "xp": 5630,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 41,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 40,
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "17-west",
+      "file": ".git/task-normal-ch17-west-export.json",
+      "bytes": 15733,
+      "fileSha256": "d6cfb91e8313a18247f6f74ae4fc9a06a9094ed139b3ff0fd025487356747cda",
+      "stateSha256": "009b92c1dd03ba4388912f548ccf27847aadc39139d5ee8ff33b1b5a2f3b6626",
+      "chapter": 17,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "gold": 7170,
+      "xp": 5650,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 43,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 42,
+      "progress": {
+        "herbs": 0,
+        "kills": 2,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "17-pending",
+      "file": ".git/task-normal-ch17-pending-export.json",
+      "bytes": 15733,
+      "fileSha256": "80893aa6b8b96b18afeb9b4e08cafd3a676b95d0d33d1b05c30981502ba1c05e",
+      "stateSha256": "39325caf799ab0218fa39f50da3350738883a953db33ff4c55258cf4e8ed8c3b",
+      "chapter": 17,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "gold": 7254,
+      "xp": 5670,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 44,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "17-report",
+      "file": ".git/task-normal-ch17-report-export.json",
+      "bytes": 15733,
+      "fileSha256": "d5c13c1381c178158713bb12f29c7154291ac574ba47727a6f30ebfa57acf5f1",
+      "stateSha256": "fee86da0d5497320291479535d409f9c4dd7b05b47b94a49b0ab7dde7659e88a",
+      "chapter": 17,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "gold": 7254,
+      "xp": 5710,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 8,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 44,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "17",
+      "file": ".git/task-normal-ch17-export.json",
+      "bytes": 15742,
+      "fileSha256": "2d10f44cd6d999b91a95af71c633ac5f3d022daf03e9e06c963b01b527f3cf7f",
+      "stateSha256": "60be4ddc79af9d06a88819544a1272e6532ad89ddff53fc49dd5cd1904ba284e",
+      "chapter": 17,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "gold": 7904,
+      "xp": 6235,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 8,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 44,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "17-refreshed",
+      "file": ".git/task-normal-ch17-refreshed-export.json",
+      "bytes": 15742,
+      "fileSha256": "0b68dfc4d5d4a25b97313dc17f5724d6b22641e5ab5b3a334f66fe7196f01dcb",
+      "stateSha256": "60be4ddc79af9d06a88819544a1272e6532ad89ddff53fc49dd5cd1904ba284e",
+      "chapter": 17,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "gold": 7904,
+      "xp": 6235,
+      "flame": "fallen",
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 8,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "totalKills": 44,
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapter17EntireStateRefreshEqual": true,
+  "firstThirteenChapterProgressUnchanged": true,
+  "observations": {
+    "hunt": {
+      "allyHpBeforeRest": 72,
+      "freeRestRecovery": 180,
+      "return": "ally fell behind, rejoined via meeting point before actual registration",
+      "fireEnergySequence": [
+        0,
+        2,
+        4,
+        2,
+        5
+      ],
+      "rankingBossHp": [
+        329,
+        183,
+        52
+      ]
+    },
+    "tower": {
+      "firstFloorHp": 384,
+      "secondFloorHeat": [
+        61,
+        0
+      ],
+      "secondFloorCompletedHp": 164,
+      "restPreservedCompletedFloors": 2,
+      "healBought": 6,
+      "cost": 270,
+      "healUsed": 0,
+      "thirdHeatSequence": [
+        58,
+        0,
+        62,
+        0,
+        60
+      ],
+      "thirdRemainingSequence": [
+        9,
+        9,
+        5,
+        5,
+        2
+      ],
+      "teacherSupportFinal": true
+    },
+    "siege": {
+      "durations": [
+        3,
+        4,
+        5
+      ],
+      "thirdRemainingObserved": 1,
+      "bossHp": [
+        432,
+        21
+      ],
+      "supportAfterChapter16": "R disabled"
+    },
+    "freePatrol": {
+      "selectionGoldUnchanged": true,
+      "westStage3ActualRefresh": true,
+      "eastGuardBlocked": 2,
+      "actualKillsRecorded": 4,
+      "reportGoldDelta": 0,
+      "reportXpDelta": 40,
+      "reportHealDelta": 1,
+      "reportManaDelta": 0,
+      "noSecondReportButton": true
+    },
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "AI menu-paused desktop play, not real devices or player Beta",
+    "Free patrol at positive gold, zero-gold and insufficient-payment branches remain rules-only",
+    "Unregistered east guards rebuilt after stage3 refresh; do not call four kills three unique guards",
+    "Complete sources/character story/public deployment not accepted"
+  ]
+}
