@@ -73,6 +73,8 @@ import { advanceEarlyApprentice } from '../../src/core/early-apprentice'
 import { apprenticeScenes } from '../../src/content/early-apprentice'
 import { advanceEarlyMethodDiscussion } from '../../src/core/early-method-discussion'
 import { methodDiscussionScenes } from '../../src/content/early-method-discussion'
+import { advanceEarlyPreparationBrief } from '../../src/core/early-preparation-brief'
+import { preparationBriefScenes } from '../../src/content/early-preparation-brief'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
@@ -141,6 +143,13 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) while (state.earlyTraining.methodDiscussion.stage < methodDiscussionScenes.length) {
     const task = state.earlyTraining.methodDiscussion, scene = methodDiscussionScenes[task.stage]
     const result = advanceEarlyMethodDiscussion(state, mountainRingPlaces.stone, { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.preparationBrief.stage < preparationBriefScenes.length) {
+    const task = state.earlyTraining.preparationBrief, scene = preparationBriefScenes[task.stage]
+    const result = advanceEarlyPreparationBrief(state, mountainRingPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)

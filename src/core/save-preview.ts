@@ -90,7 +90,8 @@ export function earlyApprenticeSaveSummary(saved: GameState, viewing: Settings):
 export function earlyMethodDiscussionSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.methodDiscussion
-  return '功法说明 · ' + (task.stage === 28 ? '仅说明已归档，未授卷，准备与返戒待续'
+  return '功法说明 · ' + (task.stage === 28 ? saved.earlyTraining.preparationBrief.stage
+    ? '仅说明已归档，未授卷；' + earlyPreparationBriefSaveSummary(saved, viewing) : '仅说明已归档，未授卷，准备与返戒待续'
     : task.viewing === 'deferred' ? '斗者后才传授，本段未授卷'
     : task.viewing === 'requested' ? '本人已请求查看，尚未给卷'
     : task.basis === 'method-text' ? '依据为功法文字，未视为实证'
@@ -105,6 +106,22 @@ export function earlyMethodDiscussionSaveSummary(saved: GameState, viewing: Sett
     : task.stage ? '本人已问一年目标办法，待答' : '未参与')
 }
 
+export function earlyPreparationBriefSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.preparationBrief
+  return '准备与返戒 · ' + (task.stage === 20 ? '历史说明归档，同戒返手；既有借资采购进度保留'
+    : task.visitor === 'purple-figure' ? '紫衣来人已看见，借资仍只打算'
+    : task.funding === 'borrowing-planned' ? '本人决定借资，未到账'
+    : task.funding !== 'unmentioned' ? '同戒返手，材料资金仍需筹措'
+    : task.ring === 'worn' ? '同一古戒已返手，未新增装备'
+    : task.elder === 'in-ring' ? '老师已入戒，古戒仍浮空'
+    : task.woodCore ? '三类要求齐备，材料未取得'
+    : task.main ? '材料要求逐项记录，尚未采购'
+    : task.mild === 'proposed' ? '温和方案已提议，未调制'
+    : task.oral === 'unsuitable' ? '当时不适合口服，方案待问'
+    : task.training !== 'none' ? '一年目标与基础方案交涉中' : '未参与')
+}
+
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
@@ -112,7 +129,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

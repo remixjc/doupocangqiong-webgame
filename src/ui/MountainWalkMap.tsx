@@ -4,9 +4,9 @@ import { mountainRingObstacles, mountainRingPlaces } from '../core/early-mountai
 import './early-walk.css'
 
 export default function MountainWalkMap({ label, helpId, prefix = '后山', position, place, ring, elderVisible,
-  elderNamed = false, seated = false, bowed = false, near, onMove, onInteract }: {
+  elderNamed = false, seated = false, bowed = false, purpleVisible = false, near, onMove, onInteract }: {
   label: string; helpId: string; prefix?: string; position: EarlyWalkPosition; place?: keyof typeof mountainRingPlaces
-  ring: 'worn' | 'thrown' | 'floating'; elderVisible: boolean; elderNamed?: boolean; seated?: boolean; bowed?: boolean; near: boolean
+  ring: 'worn' | 'thrown' | 'floating'; elderVisible: boolean; elderNamed?: boolean; seated?: boolean; bowed?: boolean; purpleVisible?: boolean; near: boolean
   onMove: (direction: EarlyWalkDirection) => void; onInteract: () => void
 }) {
   const field = useRef<SVGSVGElement>(null)
@@ -37,6 +37,9 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
         <path d="M-7-8 L0 9 L7-8" fill="#e0e9df" />
       </g>}
       {ring === 'floating' && <g aria-label="老人处浮空的同一古戒"><ellipse cx={elderPoint.x} cy={elderPoint.y + 40} rx="9" ry="5" fill="none" stroke="#a7bdb2" strokeWidth="3" /></g>}
+      {purpleVisible && <g aria-label="山径上的紫衣身影" transform="translate(160 300)">
+        <path d="M-12 15 L-6-7 H6 L12 15Z" fill="#b295cd" /><circle cy="-14" r="8" fill="#edcfbd" />
+      </g>}
       <g aria-label="萧炎后山行走位置" transform={`translate(${position.x} ${position.y})`}>
         <ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
         {ring === 'worn' && <circle aria-label="右手佩戴的同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />}
