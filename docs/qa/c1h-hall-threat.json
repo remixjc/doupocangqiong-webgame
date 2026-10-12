@@ -1,0 +1,940 @@
+{
+  "version": "0.72.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 149,
+    "tests": 892
+  },
+  "focused": {
+    "files": 4,
+    "tests": 17
+  },
+  "nodeTests": 11,
+  "initialJs": 491646,
+  "totalJs": 1847933,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "native": [
+    {
+      "name": "threatMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835159811.json",
+      "sha256": "483b1e1f0aee347fcb3d1316c6fcb4c42a2a226ac66b7e92a2d235660198b5bc",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835195394.json",
+      "sha256": "6091f7b3d94e02886fc1a57b698442770ac3add698a6ba929d780d68ae913edb",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMainStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835274694.json",
+      "sha256": "90ad15be22518dc7981824a4a71e9816e972d636c51db84263d515b8d686200f",
+      "stage": 36,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMainStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835296415.json",
+      "sha256": "17ceba4dae627c4689a0b230a1cc56a56ce0554896e5637baa4ca872f6522284",
+      "stage": 37,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835346996.json",
+      "sha256": "a8dc7fa99180ddf4dc1a822e2a3569f8f54174ebc106e1481cfedcbb01e54ea1",
+      "stage": 40,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835383339.json",
+      "sha256": "258fd3f20d6dde80036fe49fcc264c3f4775fba2b955c2414fd2ff5f14ab8249",
+      "stage": 31,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMaterialsStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835475694.json",
+      "sha256": "dcd101b6dd11ab4250b963ffde2cd9a732f9a5b814b717915abde421fe339b73",
+      "stage": 37,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835534404.json",
+      "sha256": "dd48127445123061c72181185c4182148b5e257541414a6190d8ca9121dd6176",
+      "stage": 40,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMainOldEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835569610.json",
+      "sha256": "806be3f669f84bd9bf79b039abd878851b6364327290cc2464d07b3076af318e",
+      "stage": 40,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835606770.json",
+      "sha256": "a3f45618c07d2825abf1aa462d0cb970cdbaaed489c16466e8d8c74be071ef53",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835624634.json",
+      "sha256": "8ca35d59eb38813c054f744481228dac7fc106833e62fc54c11649d8966396b7",
+      "stage": 0,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      },
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "threatMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791835637101.json",
+      "sha256": "3e472b184728d0c5e6027478931873537c60fc6061de79cb7123766f07d2f798",
+      "stage": 40,
+      "hall": {
+        "stage": 7,
+        "scroll": "selected-second"
+      },
+      "entireOtherStateEqual": true
+    }
+  ],
+  "pairs": [
+    [
+      "threatMainMigrated",
+      "threatMainRejected0"
+    ],
+    [
+      "threatMainFinal",
+      "threatMainOldEntry"
+    ],
+    [
+      "threatMainFinal",
+      "threatMainFinalRefresh"
+    ],
+    [
+      "threatIntactMigrated",
+      "threatIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "MainMigrated",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 0/9 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRejected0",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "选择本步人物与动作，卷轴和旧账保持。",
+        "成人礼威胁 0/9 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage1",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 1/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 1/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage2",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 2/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 2/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage3",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 3/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 3/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage4",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 4/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 4/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage5",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 5/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 5/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage6",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 6/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh6",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 6/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 7/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 7/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 8/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 8/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainStage9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainRefresh9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsMigrated",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 0/9 · 整衣靠近 · 交锋与第二卷归档，离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage1",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 1/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 1/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage2",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 2/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 2/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage3",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 3/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 3/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage4",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 4/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 4/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage5",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 5/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 5/9 · 整衣靠近 · 怒意与未动手已观察"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage6",
+      "actor": [
+        "旁观萧宁威胁与未动手"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 6/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh6",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 6/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 7/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 7/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 8/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 8/9 · 整衣靠近 · 未来成人礼威胁已听见，未开战"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsStage9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 已保存",
+        "威胁与观察已存，未登记或离堂。",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsRefresh9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainFinalVisible",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MaterialsFinalVisible",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "MainFinalRefresh",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "firstY": "215",
+      "held": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "second": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "成人礼威胁 9/9 · 整衣靠近 · 威胁与观察归档，登记离堂待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [
+      {
+        "level": "error",
+        "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4190/assets/EarlyTrainingPanel-CbrSNgMx.js",
+        "timestamp": "2026-10-12T19:01:06.127Z",
+        "url": "http://127.0.0.1:4190/assets/index-t2nRT4mk.js"
+      }
+    ],
+    "intact": []
+  },
+  "savedRefreshes": 18,
+  "returnFocus": "接续成人礼威胁与本人观察",
+  "intactEntries": 0,
+  "originalEntry": "12/12, no continuation after conflict route; entire state equal after exit",
+  "atomicHistory": {
+    "threatHeardStage": 37,
+    "hall": 7,
+    "scroll": "selected-second"
+  },
+  "keyboard": "Wrong-focus E/ArrowRight/Ctrl+E and own scroll transfer denied at0; correct E performed actual future-threat6 on both branches",
+  "prerequisite": {
+    "sha": "1463e883091d07f863bdd168e37b81f311977269",
+    "ci": 38300410423,
+    "conclusion": "success",
+    "pages": 38300410410,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1979824
+  },
+  "source": "Retained normal full English17 and18; Chinese/current anime pending. Manager checkout in18 is subsequent action;51 separate later Qi pavilion.",
+  "failures": "Initial focused and complete test caught missing second-scroll graphic in threat view; custody state unchanged. Rendering condition repaired, four-file17 focused and complete149/892+11/types/build passed. Initial material screenshot empty compositor frame; actual DOM observed, recaptured and inspected. One previous CI REST request transport EOF, later normal request confirmed success. Prior0.70 material old lazy block error retained unchanged; no new page errors.",
+  "limits": "Only future ritual threat and observation; no acceptance/current battle/reward/repayment, movement to exit, second registration or leaving. All other state including ritual receipts and completed rewards kept."
+}

@@ -14,19 +14,20 @@ import SceneHeading from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import './early-walk.css'
 
-export default function FirstHallApproach({ state, onBack, continuation = false, conflict = false }: { state: GameState; onBack: () => void; continuation?: boolean; conflict?: boolean }) {
-  const t = state.earlyTraining, task = t.firstHallApproach, scene = firstHallApproachScene(task.stage, continuation, conflict)
-  const prefix = conflict ? '交锋与第二卷' : continuation ? '同卷归架' : '整衣靠近'
-  const first = continuation || conflict ? task.first : task.stage >= 13 ? 'rolled' : 'open'
+export default function FirstHallApproach({ state, onBack, continuation = false, conflict = false, threat = false }: { state: GameState; onBack: () => void; continuation?: boolean; conflict?: boolean; threat?: boolean }) {
+  const t = state.earlyTraining, task = t.firstHallApproach, scene = firstHallApproachScene(task.stage, continuation, conflict, threat)
+  const current = conflict || threat
+  const prefix = threat ? '成人礼威胁' : conflict ? '交锋与第二卷' : continuation ? '同卷归架' : '整衣靠近'
+  const first = continuation || current ? task.first : task.stage >= 13 ? 'rolled' : 'open'
   const [actor, setActor] = useState<FirstHallApproachAction['actor']>('yan')
   const field = useRef<SVGSVGElement>(null)
   useEffect(() => { field.current?.focus() }, [])
-  const blocked = firstHallApproachBlock(state, continuation, conflict)
+  const blocked = firstHallApproachBlock(state, continuation, conflict, threat)
   const act = (operation: string) => {
     if (!scene || document.hidden) return
     submitFirstHallApproach(gameStore, hallReadingPlaces.shelf, 'hall', { ...task,
       expectedTalk: { ...t.firstHallTalk }, expectedReading: { ...t.firstHallReading }, expectedMatch: { ...t.firstHallMatch },
-      ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation, continuation, conflict })
+      ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation, continuation, conflict, threat })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (event.key.toLowerCase() !== 'e' || event.ctrlKey || event.altKey || event.metaKey || event.repeat) return
@@ -35,11 +36,11 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
-    <span className="eyebrow">斗技堂 / {prefix}</span><h2>{conflict ? '分清她的临时卷与本人第二卷。' : continuation ? '回应提议，把同一第一卷放回书架。' : '他走近东架，本人收起同一卷。'}</h2>
-    <p id="hall-approach-help">选人物后按E记录本步。刷新关注本人，三人位置独立；{conflict ? '她放卷与本人另取分存。' : '收卷与归架分存。'}</p>
+    <span className="eyebrow">斗技堂 / {prefix}</span><h2>{threat ? '来年的威胁，当前仍持同一第二卷。' : conflict ? '分清她的临时卷与本人第二卷。' : continuation ? '回应提议，把同一第一卷放回书架。' : '他走近东架，本人收起同一卷。'}</h2>
+    <p id="hall-approach-help">选人物后按E记录本步。刷新关注本人，三人位置独立；{current ? '她放卷与本人另取分存。' : '收卷与归架分存。'}</p>
     <div className="early-walk-controls">
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人读卷与察觉</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'ning'} onClick={() => setActor('ning')}>{conflict ? '旁观萧宁讥讽与提议' : continuation ? '旁观萧宁提议与说法' : '旁观萧宁整衣与行走'}</SecondaryButton>
+      <SecondaryButton aria-pressed={actor === 'ning'} onClick={() => setActor('ning')}>{threat ? '旁观萧宁威胁与未动手' : conflict ? '旁观萧宁讥讽与提议' : continuation ? '旁观萧宁提议与说法' : '旁观萧宁整衣与行走'}</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
       {conflict && <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>旁观薰儿放卷与回应</SecondaryButton>}
     </div>
@@ -54,22 +55,22 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
         <HallText y="21" fontSize="9">萧宁{task.clothes ? ' · 已整衣' : ''}</HallText>
       </g>
       <g aria-label="薰儿仍坐东架" transform="translate(380 250)"><circle cy="5" r="7" fill="#ae8dbd" /><HallText y="-13" fontSize="9">薰儿</HallText></g>
-      {conflict && task.ownPlaced ? <rect aria-label="薰儿自己的临时卷已放下" x="353" y="280" width="13" height="9" fill="#604572" stroke="#c2a679" /> : <XunerReadingScroll />}
-      <g aria-label="萧炎本人仍在东架" transform="translate(400 250)"><MarketWalker /><HallText y="26" fontSize="9">本人 · {conflict && task.stage >= 28 ? '持第二卷' : first === 'returned' ? '已归架' : first === 'rolled' ? '已收卷' : '读第一卷'}</HallText></g>
-      {conflict && task.stage >= 28 && <rect aria-label="本人另取的同一第二卷" x="420" y="245" width="9" height="15" fill="#415849" stroke="#bfa46a" />}
+      {current && task.ownPlaced ? <rect aria-label="薰儿自己的临时卷已放下" x="353" y="280" width="13" height="9" fill="#604572" stroke="#c2a679" /> : <XunerReadingScroll />}
+      <g aria-label="萧炎本人仍在东架" transform="translate(400 250)"><MarketWalker /><HallText y="26" fontSize="9">本人 · {current && task.stage >= 28 ? '持第二卷' : first === 'returned' ? '已归架' : first === 'rolled' ? '已收卷' : '读第一卷'}</HallText></g>
+      {current && task.stage >= 28 && <rect aria-label="本人另取的同一第二卷" x="420" y="245" width="9" height="15" fill="#415849" stroke="#bfa46a" />}
       <rect aria-label={first === 'returned' ? '同一第一卷实际放回书架' : first === 'rolled' ? '同一第一卷已卷起尚未归架' : '同一第一卷仍展开'}
         x="420" y={first === 'returned' ? 215 : 245} width={first === 'open' ? 28 : 8} height="15" fill="#161e20" stroke="#bfa46a" />
     </svg>
-    <p role="status">{prefix} {conflict ? task.stage - 19 : continuation ? Math.min(task.stage, 19) - 14 : Math.min(task.stage, 14)}/{conflict ? 12 : continuation ? 5 : 14} · {firstHallApproachSaveSummary(state, state.settings)}</p>
-    <p>{conflict ? (task.secondRecord === 'recalled' ? '明确回顾当时另取第二卷，现有更高保管保持。' : task.stage >= 28 ? '本人另取第二卷，未登记或离堂。' : '第一卷已归架，第二卷尚未取。') : task.stage >= 20 || t.firstHallReading.record === 'recalled' || task.returnRecord === 'recalled' || t.hall.stage >= 6 && first !== 'returned'
-      ? '明确回顾当时第一卷，当前更高保管保持。' : first === 'returned' ? '同一第一卷已归架，第二卷尚未取。' : '本人仍持同一第一卷，尚未归架。'}{!conflict && (task.ownPlaced ? '回顾当时她仍持自己的临时卷，后段放卷记录保持。' : '薰儿仍持她自己的临时卷。')}旧卷账 {t.hall.stage}/9。</p>
-    {conflict && <p>{task.ownPlaced ? '当前她自己的临时卷已经放下，旧会面拿卷历史保持。' : '她自己的临时卷仍在手中。'}切磋仅是提议，没有当前开战。</p>}
+    <p role="status">{prefix} {threat ? task.stage - 31 : conflict ? Math.min(task.stage, 31) - 19 : continuation ? Math.min(task.stage, 19) - 14 : Math.min(task.stage, 14)}/{threat ? 9 : conflict ? 12 : continuation ? 5 : 14} · {firstHallApproachSaveSummary(state, state.settings)}</p>
+    <p>{current ? (task.secondRecord === 'recalled' ? '明确回顾当时另取第二卷，现有更高保管保持。' : task.stage >= 28 ? '本人另取第二卷，未登记或离堂。' : '第一卷已归架，第二卷尚未取。') : task.stage >= 20 || t.firstHallReading.record === 'recalled' || task.returnRecord === 'recalled' || t.hall.stage >= 6 && first !== 'returned'
+      ? '明确回顾当时第一卷，当前更高保管保持。' : first === 'returned' ? '同一第一卷已归架，第二卷尚未取。' : '本人仍持同一第一卷，尚未归架。'}{!current && (task.ownPlaced ? '回顾当时她仍持自己的临时卷，后段放卷记录保持。' : '薰儿仍持她自己的临时卷。')}旧卷账 {t.hall.stage}/9。</p>
+    {current && <p>{task.ownPlaced ? '当前她自己的临时卷已经放下，旧会面拿卷历史保持。' : '她自己的临时卷仍在手中。'}切磋与未来威胁没有当前开战。</p>}
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor === scene.actor ? '当前人物正确。' : '请切换到本步人物。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('return')}>把收卷当成第一卷已归架</SecondaryButton>
-      <SecondaryButton onClick={() => act('second')}>{conflict ? '把她放下的卷交给本人' : '提前取本人第二卷'}</SecondaryButton>
-    </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{conflict ? '本人第二卷与她的临时卷独立。未来威胁、实际离堂待续。' : continuation ? '第一卷已归架，后续交锋与第二卷待续。' : '萧宁已到东架前，第一卷仅卷起。提议与实际归架待续。'}</p></section>}
+      <SecondaryButton onClick={() => act('second')}>{current ? '把她放下的卷交给本人' : '提前取本人第二卷'}</SecondaryButton>
+    </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{threat ? '未来威胁已归档，当前未登记或离堂。' : conflict ? '本人第二卷与她的临时卷独立。未来威胁、实际离堂待续。' : continuation ? '第一卷已归架，后续交锋与第二卷待续。' : '萧宁已到东架前，第一卷仅卷起。提议与实际归架待续。'}</p></section>}
     <SecondaryButton onClick={onBack}>暂离{prefix} · 保留断点</SecondaryButton>
   </>
 }

@@ -38,6 +38,17 @@ export const firstHallConflictScenes = defineSceneRows(['actor', 'operation', 't
   ['yan', 'past', '回应三年前', '本人平静反问对方为何三年前不敢这样说。后续威胁与离堂另存。', '本人回应三年前'],
   ['yan', 'archive-conflict', '交锋与第二卷归档', '她自己的卷放下与本人另取第二卷分存。未开战、未登记、未离堂。', '归档交锋与第二卷'],
 ] as const)
-export function firstHallApproachScene(stage: number, continuation = false, conflict = false) {
-  return conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
+export const firstHallThreatScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+  ['ning', 'grind', '对方咬牙', '萧宁咬牙，怒意未变成当前战斗。', '观察咬牙'],
+  ['ning', 'restrain', '顾忌族长之子', '他顾忌本人的身份，仍没有动手。', '观察未动手'],
+  ['ning', 'inhale', '深吸一口气', '对方深吸一口气，看向本人。', '记录深吸气'],
+  ['ning', 'old-genius', '旧天才的讥讽', '他以三年前的变化继续讥讽。这不改变本人境界与奖励。', '听见旧天才讥讽'],
+  ['ning', 'leave-taunt', '要求离开的说法', '对方声称本人不配同行，要求离开。本人还在东架持同一第二卷。', '听见离开要求'],
+  ['ning', 'ritual-threat', '来年成人礼威胁', '萧宁以明年的成人礼族人挑战威胁本人。只是未来威胁，不接受或结算当前挑战。', '听见来年成人礼威胁'],
+  ['yan', 'inspect', '本人观察对方', '本人嘴角微动，偏头观察萧宁，尚未走向堂口。', '本人观察对方'],
+  ['yan', 'eye-roll', '本人收回目光', '本人收回目光，第二卷仍由本人保管。', '本人收回目光'],
+  ['yan', 'archive-threat', '威胁与观察归档', '未来挑战与本人观察已记下。实际向堂口走、登记同卷与离堂待续。', '归档威胁与观察'],
+] as const)
+export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false) {
+  return threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
 }
