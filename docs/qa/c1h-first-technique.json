@@ -266,5 +266,16 @@
     "liquid": 6,
     "practice": 0,
     "recovery": "unobserved"
+  },
+  "verifiedSourceCommit": "561d1752d9fa79d19e14c5f91f3b90d3739019bf",
+  "ci": {
+    "gameChecks": {
+      "id": 38255872161,
+      "conclusion": "success"
+    },
+    "pages": {
+      "id": 38255872169,
+      "conclusion": "skipped"
+    }
   }
 }

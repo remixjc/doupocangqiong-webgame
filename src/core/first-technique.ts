@@ -8,6 +8,7 @@ import { ironNear, ironPlaces } from './early-iron'
 import { marketTradeLedger } from './early-market-trade'
 import { firstTechniqueAt, validFirstTechnique, type FirstTechniqueState } from './first-technique-state'
 import { firstTechniqueScenes } from '../content/first-technique'
+import { firstBottleScenes } from '../content/first-bottle'
 import { commitEarlyResult } from './early-result'
 
 export const firstTechniqueBed = { x: 140, y: 370 }
@@ -27,12 +28,14 @@ export type FirstTechniqueAction = FirstTechniqueState & {
   teacherPosition: EarlyWalkPosition
   actor: 'yan' | 'teacher'
   operation: string
+  marker?: number
 }
 export function advanceFirstTechnique(state: GameState, yan: EarlyWalkPosition, action: FirstTechniqueAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
   const blocked = firstTechniqueBlock(state)
   if (blocked) return fail(blocked)
-  const t = state.earlyTraining, task = t.firstTechnique, scene = firstTechniqueScenes[task.stage]
+  const t = state.earlyTraining, task = t.firstTechnique
+  const scene = task.stage < 9 ? firstTechniqueScenes[task.stage] : firstBottleScenes[task.stage - 9]
   if (!validFirstTechnique(task) || !fieldsMatch(action, task)
     || !action.expectedLedger || !fieldsMatch(action.expectedLedger, marketTradeLedger(state))
     || !action.expectedTraining || !fieldsMatch(action.expectedTraining, t.firstTraining)
@@ -40,15 +43,24 @@ export function advanceFirstTechnique(state: GameState, yan: EarlyWalkPosition, 
     || !action.expectedPractice || !fieldsMatch(action.expectedPractice, t.practice)
     || !action.expectedRecovery || !fieldsMatch(action.expectedRecovery, t.recovery))
     return fail('铁片研究或旧修炼账已变化，请按当前断点继续。')
-  if (!scene) return fail('铁片研究与感知已归档，有限瓷瓶试招待接续。')
+  if (!scene) return fail('有限瓷瓶试招已归档，实际出门待接续。')
   if (!action.teacherPosition || !fieldsMatch(action.teacherPosition, ironPlaces.teacher))
     return fail('老师保留自己的房中位置，不能替本人感知。')
-  if (!firstTechniqueNear(yan)) return fail('先由本人实际走到床边取片，再按当前地点继续。')
+  if (!firstTechniqueNear(yan)) return fail(task.stage >= 9 ? '本人保持床边位置，面对桌上瓷瓶；起身和出门由后段完成。' : '先由本人实际走到床边取片，再按当前地点继续。')
   if (action.actor !== scene.actor || action.operation !== scene.operation)
     return fail('按本人动作依次继续；没有发第二铁片、授新技、吸人或战斗奖励。')
+  let stage = task.stage + 1, beats = task.beats, attempts = task.attempts
+  if (task.stage === 11) {
+    const marker = action.marker
+    if (typeof marker !== 'number' || !Number.isFinite(marker) || marker < 0 || marker > 1) return fail('请选择有效的有限吸力标记。')
+    if (marker < .35 || marker > .65) {
+      if (attempts >= 1_000_000) return fail('重试次数已达记录上限。')
+      beats = 0; attempts++; stage = 11
+    } else if (++beats < 2) stage = 11
+  } else if (action.marker !== undefined) return fail('只有有限吸力步骤接受标记。')
   const next = structuredClone(state)
-  next.earlyTraining.firstTechnique = firstTechniqueAt(task.stage + 1)
-  return { state: next, ok: true, message: '本人铁片研究断点已保存，原材料与后期修炼保持。' }
+  next.earlyTraining.firstTechnique = firstTechniqueAt(stage, beats, attempts)
+  return { state: next, ok: true, message: stage === 11 && beats === 0 ? '偏离节奏，有限吸力标记免费复位，瓷瓶仍完整。' : '本人铁片研究断点已保存，原材料与后期修炼保持。' }
 }
 export function submitFirstTechnique(store: GameStore, yan: EarlyWalkPosition, action: FirstTechniqueAction): boolean {
   return commitEarlyResult(store, advanceFirstTechnique(store.getSnapshot().state, yan, action), 'firstTechnique')

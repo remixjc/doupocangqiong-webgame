@@ -231,7 +231,11 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
 export function firstTechniqueSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.firstTechnique
-  return '首次铁片研究 · ' + (t.stage === 9 ? '感知成爪已归档，有限试瓶待续' : t.claw ? '右手成爪，尚未试瓶'
+  return '首次铁片研究 · ' + (t.stage === 19 ? '有限试瓶已归档，真实出门待续' : t.seekLow ? '另找低阶已决定，尚未出门'
+    : t.needed === 7 ? '七段仅条件，吸人未发生' : t.insufficient ? '当时功力不足已记'
+    : t.bottle === 'fragments' ? '落地碎裂，无战利品' : t.bottle === 'fallen' ? '已从桌上落下，碎裂待记'
+    : t.bottle === 'turning' ? '有限吸力已转瓶' : t.stage === 11 ? `有限吸力${t.beats}/2，重试${t.attempts}`
+    : t.bottle === 'intact' ? '桌上完整瓷瓶待试' : t.stage === 9 ? '感知成爪已归档，有限试瓶待续' : t.claw ? '右手成爪，尚未试瓶'
     : t.sensed ? '本人已感知，收束待续' : t.eyes === 'closed' ? '夹片闭眼中' : t.guidance ? '研究与指点已回顾'
     : t.period === 'rest-study' ? '半月研究已回顾' : t.clean ? '清锈表面已观察' : t.iron === 'hands' ? '本人已取同片' : '未参与')
 }

@@ -1,0 +1,339 @@
+{
+  "version": "0.61.0",
+  "date": "2026-10-12",
+  "vitestFiles": 137,
+  "vitestTests": 829,
+  "nodeTests": 11,
+  "initialJs": 498057,
+  "totalJs": 1811823,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "sourceChapter": 15,
+  "chineseAndAnime": "pending",
+  "browser": [
+    {
+      "name": "bottleStart",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪 · 尚未试瓶\n    - generic \"当时瓷瓶：unobserved\"\n  - status: 有限试瓶 0/10 · 首次铁片研究 · 感知成爪已归档，有限试瓶待续\n  - heading \"面对桌上真实瓷瓶\" [level=3]\n  - paragraph: 本人仍在床边，明确朝向桌上瓷瓶。房中瓷瓶仍完整，是这次有限试招的对象，不是后期吸推两瓶。\n  - paragraph: 当前人物：萧炎本人\n  - button \"面对桌上完整瓷瓶\"\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleBedNoMove",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪 · 尚未试瓶\n    - generic \"当时瓷瓶：unobserved\"\n  - status: 有限试瓶 0/10 · 首次铁片研究 · 感知成爪已归档，有限试瓶待续\n  - heading \"面对桌上真实瓷瓶\" [level=3]\n  - paragraph: 本人仍在床边，明确朝向桌上瓷瓶。房中瓷瓶仍完整，是这次有限试招的对象，不是后期吸推两瓶。\n  - paragraph: 当前人物：萧炎本人\n  - button \"面对桌上完整瓷瓶\"\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage10",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：intact\"\n  - status: 有限试瓶 1/10 · 首次铁片研究 · 桌前完整瓷瓶待试\n  - heading \"运起当时有限斗气\" [level=3]\n  - paragraph: 右手仍成爪，仅运起当时四段所能调用的力量。如今主线境界不会替这段历史增强功力。\n  - paragraph: 当前人物：萧炎本人\n  - button \"运起当时有限斗气\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage11",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 偏离节奏，有限吸力标记免费复位，瓷瓶仍完整。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：intact\"\n  - status: 有限试瓶 2/10 · 首次铁片研究 · 有限吸力0/2，重试0\n  - heading \"有限吸力\" [level=3]\n  - paragraph: 手动选两次35%至65%的标记，尝试对桌上瓷瓶施加有限吸力。失误只免费复位标记，不重发物品。\n  - paragraph: 当前人物：萧炎本人\n  - text: 有限吸力标记 50% · 0/2 · 重试0\n  - slider \"有限吸力标记\": \"0.5\"\n  - button \"完成一次有限吸力标记\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleMiss",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 偏离节奏，有限吸力标记免费复位，瓷瓶仍完整。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：intact\"\n  - status: 有限试瓶 2/10 · 首次铁片研究 · 有限吸力0/2，重试1\n  - heading \"有限吸力\" [level=3]\n  - paragraph: 手动选两次35%至65%的标记，尝试对桌上瓷瓶施加有限吸力。失误只免费复位标记，不重发物品。\n  - paragraph: 当前人物：萧炎本人\n  - text: 有限吸力标记 0% · 0/2 · 重试1\n  - slider \"有限吸力标记\": \"0\"\n  - button \"完成一次有限吸力标记\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleWrongTeacher",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\"\n  - button \"旁观房中的老师\" [pressed]\n  - group \"有限试瓶房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：intact\"\n  - status: 有限试瓶 2/10 · 首次铁片研究 · 有限吸力0/2，重试1\n  - heading \"有限吸力\" [level=3]\n  - paragraph: 手动选两次35%至65%的标记，尝试对桌上瓷瓶施加有限吸力。失误只免费复位标记，不重发物品。\n  - paragraph: 先明确选择本步人物。\n  - text: 有限吸力标记 50% · 0/2 · 重试1\n  - slider \"有限吸力标记\": \"0.5\"\n  - button \"完成一次有限吸力标记\" [disabled]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottlePulse1",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：intact\"\n  - status: 有限试瓶 2/10 · 首次铁片研究 · 有限吸力1/2，重试1\n  - heading \"有限吸力\" [level=3]\n  - paragraph: 手动选两次35%至65%的标记，尝试对桌上瓷瓶施加有限吸力。失误只免费复位标记，不重发物品。\n  - paragraph: 当前人物：萧炎本人\n  - text: 有限吸力标记 50% · 1/2 · 重试1\n  - slider \"有限吸力标记\": \"0.5\"\n  - button \"完成一次有限吸力标记\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottlePulse1Refresh",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：intact\"\n  - status: 有限试瓶 2/10 · 首次铁片研究 · 有限吸力1/2，重试1\n  - heading \"有限吸力\" [level=3]\n  - paragraph: 手动选两次35%至65%的标记，尝试对桌上瓷瓶施加有限吸力。失误只免费复位标记，不重发物品。\n  - paragraph: 当前人物：萧炎本人\n  - text: 有限吸力标记 50% · 1/2 · 重试1\n  - slider \"有限吸力标记\": \"0.5\"\n  - button \"完成一次有限吸力标记\"\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage12",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：turning\"\n  - status: 有限试瓶 3/10 · 首次铁片研究 · 有限吸力已转瓶\n  - heading \"转动后落离桌面\" [level=3]\n  - paragraph: 瓷瓶因有限吸力旋转，随后从桌上落下。单独记录落离桌面，碎裂由下一步保存。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录旋转瓷瓶从桌上落下\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage13",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：fallen\"\n  - status: 有限试瓶 4/10 · 首次铁片研究 · 已落桌，碎裂待记\n  - heading \"瓷瓶碎裂\" [level=3]\n  - paragraph: 瓷瓶从桌上落下后碎裂。碎片属于当时试招结果，不发战利品，也不恢复后期已用瓷瓶。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录落桌后的瓷瓶碎裂\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage14",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：fragments\"\n  - status: 有限试瓶 5/10 · 首次铁片研究 · 落桌碎裂，无战利品\n  - heading \"承认功力不足\" [level=3]\n  - paragraph: 这次小物试招已显吃力，本人承认当时功力不足。碎裂不是吸人成功或战斗胜利。\n  - paragraph: 当前人物：萧炎本人\n  - button \"承认当时功力不足\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage15",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：地面碎片\"\n  - status: 有限试瓶 6/10 · 首次铁片研究 · 当时功力不足已记\n  - heading \"七段只是所需条件\" [level=3]\n  - paragraph: 本人估计，若谈吸动人，当时至少要到七段。只记录条件，四段不自动升级，也没有吸人结果。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录至少七段的条件\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage16",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：地面碎片\"\n  - status: 有限试瓶 7/10 · 首次铁片研究 · 七段仅条件，吸人未发生\n  - heading \"决定另找低阶斗技\" [level=3]\n  - paragraph: 高阶方法对目前功力要求过高，于是决定去斗技堂另找低阶斗技。这只是打算，尚未出门或取卷。\n  - paragraph: 当前人物：萧炎本人\n  - button \"决定另找低阶斗技\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage17",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic: 右手成爪\n    - generic \"当时瓷瓶：地面碎片\"\n  - status: 有限试瓶 8/10 · 首次铁片研究 · 另找低阶已决定，尚未出门\n  - heading \"收束有限试招\" [level=3]\n  - paragraph: 放下成爪的右手，结束这次有限试招。地面保留碎片的当时记录，起身和真实出门另段完成。\n  - paragraph: 当前人物：萧炎本人\n  - button \"放下右手并收束试招\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage18",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic \"当时瓷瓶：地面碎片\"\n  - status: 有限试瓶 9/10 · 首次铁片研究 · 另找低阶已决定，尚未出门\n  - heading \"瓷瓶试招归档\" [level=3]\n  - paragraph: 桌前对象、有限吸力、转动、落桌、碎裂与能力条件各自保存。没有发奖励、授技或直接签出门。\n  - paragraph: 当前人物：萧炎本人\n  - button \"归档有限瓷瓶试招\" [active]\n  - button \"研究就再发一片铁片\"\n  - button \"感知就授新技能\"\n  - button \"成爪就签吸人成功\"\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleStage19",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic \"当时瓷瓶：地面碎片\"\n  - status: 有限试瓶 10/10 · 首次铁片研究 · 有限试瓶已归档，真实出门待续\n  - heading \"有限试瓶已归档。\" [level=3]\n  - paragraph: 有限瓷瓶试招已归档，碎片没有发战利品，七段仅为条件。实际起身与出门待接续，旧技能和后期两瓶保持。\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    },
+    {
+      "name": "bottleMaterialsFinal",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 正在保存…\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- status: 本人铁片研究断点已保存，原材料与后期修炼保持。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 有限瓷瓶试招\n  - heading \"以当时有限功力，面对桌上的瓷瓶。\" [level=2]\n  - paragraph: 本人留在床边，面对桌上真实瓷瓶，以当时有限功力试招。两次手动标记为游戏机制，失误免费复位。起身与出门由后段完成。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"有限试瓶房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"床边枕后铁片取出位置\":\n      - generic: 床边 · 枕后\n    - generic \"同一铁片：本人持有\"\n    - generic \"当时瓷瓶：地面碎片\"\n  - status: 有限试瓶 10/10 · 首次铁片研究 · 有限试瓶已归档，真实出门待续\n  - heading \"有限试瓶已归档。\" [level=3]\n  - paragraph: 有限瓷瓶试招已归档，碎片没有发战利品，七段仅为条件。实际起身与出门待接续，旧技能和后期两瓶保持。\n  - button \"暂离有限试瓶 · 保留断点\"",
+      "position": "translate(140 370)"
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "bottleMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812276357.json",
+      "sha256": "5479273e580e98476912cd517c7c5663e8244a018972fd77ad8ef59a61b4cf57",
+      "stage": 9,
+      "bottle": "unobserved",
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottlePersonRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812284382.json",
+      "sha256": "2e195e4752692842087430ff3a32775d1cfafbbeab6dc5f5121bb8dbf6b00416",
+      "stage": 9,
+      "bottle": "unobserved",
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812292395.json",
+      "sha256": "fc70c6ba0a030debd4460580ffee058c0637707f672613d82ece5894891843f1",
+      "stage": 10,
+      "bottle": "intact",
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812299786.json",
+      "sha256": "138b6679feb76fb79c8eab61b5d1fa19d972c4a9f2936616621387a42187e7d6",
+      "stage": 11,
+      "bottle": "intact",
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleMiss",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812307164.json",
+      "sha256": "54572512f4b4fab4b89cb18c33f0da00b6033b2ae518097488fd7c61e3992c2f",
+      "stage": 11,
+      "bottle": "intact",
+      "beats": 0,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleWrongTeacher",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812334197.json",
+      "sha256": "793c0e1508894bf3f25c8698ff25e2c71a0f3c28ae3766439ffb8d3fb848dd82",
+      "stage": 11,
+      "bottle": "intact",
+      "beats": 0,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottlePulse1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812342225.json",
+      "sha256": "dbfb642a759224a062b090b5e1f3b329ccf29bb41fa2ea837a0ffbc2c2db7be2",
+      "stage": 11,
+      "bottle": "intact",
+      "beats": 1,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812349594.json",
+      "sha256": "fbf042faad70eebe7fa3328f840779703435cfce2092eb9c6f6cd1d5be7ac3af",
+      "stage": 12,
+      "bottle": "turning",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812356048.json",
+      "sha256": "04495db1800926ea2c4acf63b4d815a770c8b9085ac1ba82ea0d43fecd6ed7e1",
+      "stage": 13,
+      "bottle": "fallen",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage14",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812362523.json",
+      "sha256": "6fe78ed9fb413b0e422dd265c31fde4fa349a477c01ef59c86f6c36fced07178",
+      "stage": 14,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleFragmentsLearnRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812440906.json",
+      "sha256": "2c1aeb33c534ec3ff490d53ddb11319f284fcf1f4e3c18f8f9624a56ad7ca066",
+      "stage": 14,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage15",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812448939.json",
+      "sha256": "6471245b97cc1f39ac8ebc2aff6f272d16e3092663fb9675062dfee9865bdbd3",
+      "stage": 15,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage16",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812456359.json",
+      "sha256": "f1d8b680bcc1a92daa0a89d9c87c688e4796a01fd362e14cad91f7174ae61717",
+      "stage": 16,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleSeventhPersonRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812463761.json",
+      "sha256": "db9fe949083a263821f35b1ab7c7f7136b6cecf6899a8eab502332ecc816cbd1",
+      "stage": 16,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812471785.json",
+      "sha256": "670253d234c1cef6b858b0ce35e83e8962a84ffd5fb3307686cd0647118a56cc",
+      "stage": 17,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage18",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812479156.json",
+      "sha256": "b4e88cbff27615886dbf4c80c89723ae47162b5bce203d107493ab83f291e5c2",
+      "stage": 18,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleStage19",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812501429.json",
+      "sha256": "796625babffc68293d9e1b5fb7ce17fa3c464bb0cf09e1f54b49d897c4dcff65",
+      "stage": 19,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleMainRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812503876.json",
+      "sha256": "f821065c366db990ec52062a484eef485ced8c6e861226e25f93ecd8bef46da3",
+      "stage": 19,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812511181.json",
+      "sha256": "4656880e37a180bf10a0e8e9666c4791fa3cd5d7f8b426fa900ca5d3e96be4f4",
+      "stage": 9,
+      "bottle": "unobserved",
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812529248.json",
+      "sha256": "e042f83d63c8b91062c48d9aedbc002f2092a8b57730b6a53ae54a2c8c990f4a",
+      "stage": 19,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleMaterialsRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812531593.json",
+      "sha256": "f3c0283922f0bb4974aab74f20fbd60835abbb492a4a63e9e83fbda9403f8b66",
+      "stage": 19,
+      "bottle": "fragments",
+      "beats": 2,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "bottleIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791812546464.json",
+      "sha256": "c094463a5998a2c1c60bb10e4c6400e91740b5ea78916ae910a495f5cd5df9f1",
+      "stage": 0,
+      "bottle": "unobserved",
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": 6,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "intactEntryCount": 0,
+  "returnFocus": "接续有限瓷瓶试招",
+  "sourceCorrection": "Player remains on bed through bottle trial; vase falls from table and breaks on floor. Standing and leaving remain separate.",
+  "oldSpent": "rule-tests-only",
+  "actualBrowserOldBranch": {
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  }
+}
