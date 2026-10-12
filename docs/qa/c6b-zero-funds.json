@@ -1,0 +1,921 @@
+{
+  "batch": "C6b-v3/C11c-4a",
+  "date": "2026-10-12",
+  "version": "0.37.6",
+  "site": "http://127.0.0.1:4186/",
+  "buildSha": "0507fcc9eb02d3bf471b38a860ccc98c2301541f",
+  "previousCI": {
+    "id": 38200205967,
+    "conclusion": "success",
+    "pagesId": 38200205982,
+    "pagesConclusion": "skipped"
+  },
+  "method": "Separate untouched real chapter16 backup imported through UI; native purchases to 36 then 0; actual free patrol, real idle death and retry, combat, report and first clear; actual downloads parsed outside browser",
+  "sourceFile": ".git/task-normal-ch16-export.json",
+  "records": [
+    {
+      "key": "purchase",
+      "file": ".git/task-zero-funds-purchase-export.json",
+      "bytes": 14737,
+      "fileSha256": "05a80e0609bdf64204b3126b2c13006302ad981c5ea2f3eb5997843e3142b1a3",
+      "stateSha256": "8f77ac807e059ba6fabbd15a607fd1cc0c6323dfc1fed3b55086e3a350df240f",
+      "gold": 36,
+      "xp": 5630,
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 40,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 4,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "yunlan-three-sigil-siege": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "haibodong-yunlan-help": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-absence-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "lack",
+      "file": ".git/task-zero-funds-lack-export.json",
+      "bytes": 15730,
+      "fileSha256": "f223676e51649a4573cb70d7edf2614ddba6e40715896374914d5256d942d54e",
+      "stateSha256": "9541db3fc7dc6906e5b60cbd47024c758210cf8f5f52c41c2e7aeb63fc2b3947",
+      "gold": 36,
+      "xp": 5630,
+      "inventory": {
+        "herb": 7,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 40,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 1,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "zero",
+      "file": ".git/task-zero-funds-zero-export.json",
+      "bytes": 15730,
+      "fileSha256": "8888f810017b754eb493a1a63decf9b45d709798148b52b73e241890eea66486",
+      "stateSha256": "1f88f207bee0dc3d702a42ef36184829b0e81a5db62e34b3a2f4815abcb0dde4",
+      "gold": 0,
+      "xp": 5630,
+      "inventory": {
+        "herb": 10,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 40,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 1,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "choice",
+      "file": ".git/task-zero-funds-choice-export.json",
+      "bytes": 15732,
+      "fileSha256": "991f890521ab1afb2d5f2f4abc728fe85f30b82ba5386c81394fc996de8a4969",
+      "stateSha256": "c5136154c20e8482948a9b0ad39653b2fd61ac7424eef3db682c7ff520052dc5",
+      "gold": 0,
+      "xp": 5630,
+      "inventory": {
+        "herb": 10,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 40,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "retry",
+      "file": ".git/task-zero-funds-retry-export.json",
+      "bytes": 15732,
+      "fileSha256": "7ff6b13138321720c1bd0fa83c5144f04c1e7abd2e3cc08174d0be43a4a44a08",
+      "stateSha256": "c5136154c20e8482948a9b0ad39653b2fd61ac7424eef3db682c7ff520052dc5",
+      "gold": 0,
+      "xp": 5630,
+      "inventory": {
+        "herb": 10,
+        "crystal": 45,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 40,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "pending",
+      "file": ".git/task-zero-funds-pending-export.json",
+      "bytes": 15734,
+      "fileSha256": "d42098e715bd13ceab68d93f9dd477eed8ebd2cacb7ea977d68f159ddfc6ea03",
+      "stateSha256": "77577ab4487ac764b00cd96c69efc6ff4671acb9570a1e1f50bd496217a8c192",
+      "gold": 126,
+      "xp": 5660,
+      "inventory": {
+        "herb": 10,
+        "crystal": 48,
+        "heal": 6,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 43,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "reported",
+      "file": ".git/task-zero-funds-reported-export.json",
+      "bytes": 15734,
+      "fileSha256": "b39d9f44e283d82779ae7c23956a0f76824cc4a40fefebc3aa2a6413ab7e3277",
+      "stateSha256": "17e1fcb5c9a54418a417880880490e90442c2f738055e5127ae6681759fd4eaf",
+      "gold": 126,
+      "xp": 5700,
+      "inventory": {
+        "herb": 10,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 43,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "victory",
+      "file": ".git/task-zero-funds-victory-export.json",
+      "bytes": 15733,
+      "fileSha256": "ab7eece0c4f8ca71baab89ef4d11ee9121585835b3b49fb44c5e780923872a72",
+      "stateSha256": "bcb7c9f1c11d099d33dbb10c51570af3076dbf737fe3b7f3286b668669a43ec6",
+      "gold": 126,
+      "xp": 5700,
+      "inventory": {
+        "herb": 10,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 43,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "final",
+      "file": ".git/task-zero-funds-final-export.json",
+      "bytes": 15743,
+      "fileSha256": "f8987afce411a8b6eb9989309e0e9f7f111feb695b96224c04d8724a2a18e7eb",
+      "stateSha256": "d4de9662679c869e86197570cda039c2acf7eb6aff9f874053faa8f700addc19",
+      "gold": 776,
+      "xp": 6225,
+      "inventory": {
+        "herb": 10,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 43,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "refreshed",
+      "file": ".git/task-zero-funds-refreshed-export.json",
+      "bytes": 15743,
+      "fileSha256": "f6ffe85d8a088a74479846fbffec40657bc4354aa46000e032d9c46a414077c9",
+      "stateSha256": "d4de9662679c869e86197570cda039c2acf7eb6aff9f874053faa8f700addc19",
+      "gold": 776,
+      "xp": 6225,
+      "inventory": {
+        "herb": 10,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 43,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "reentry",
+      "file": ".git/task-zero-funds-reentry-export.json",
+      "bytes": 15743,
+      "fileSha256": "0e8092784dbf75197690feaa314cf8d8445157a059d0afa96f0cdc18c9cf4949",
+      "stateSha256": "d4de9662679c869e86197570cda039c2acf7eb6aff9f874053faa8f700addc19",
+      "gold": 776,
+      "xp": 6225,
+      "inventory": {
+        "herb": 10,
+        "crystal": 48,
+        "heal": 7,
+        "mana": 4,
+        "elixir": 69
+      },
+      "totalKills": 43,
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "flame-alliance-foundation": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "steady"
+          },
+          "doctor-poison-notes": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "medusa-coalition-duty": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-risk-preparation": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "first16ChapterProgressUnchanged": true,
+  "zeroSelectionOnlyStageAndChoiceChanged": true,
+  "deathRetryWholePersistentStateEqual": true,
+  "finalRefreshAndReentryWholeStateEqual": true,
+  "observations": {
+    "nativePurchases": {
+      "elixir": 69,
+      "mana": 2,
+      "crystal": 4,
+      "firstCost": 7050,
+      "firstRemainingGold": 36,
+      "herb": 3,
+      "secondCost": 36,
+      "remainingGold": 0
+    },
+    "insufficient36SupplyEnabled": false,
+    "insufficient36PatrolEnabled": true,
+    "zeroSupplyEnabled": false,
+    "zeroPatrolEnabled": true,
+    "zeroActualPatrolSelected": true,
+    "selectionGoldDelta": 0,
+    "selectionInventoryDelta": "none",
+    "idleDeath": true,
+    "deathDidNotRemoveFreeRoute": true,
+    "preciseDeathFinalFrame": "not measured",
+    "nativeRetryFee": 0,
+    "healUsed": 1,
+    "extraRestOrRefreshDuringSuccessfulPatrol": false,
+    "ordinaryKills": 3,
+    "ordinaryGold": 126,
+    "ordinaryXp": 30,
+    "ordinaryCrystals": 3,
+    "reportGold": 0,
+    "reportXp": 40,
+    "reportHeal": 1,
+    "reportMana": 0,
+    "repeatReportButtons": 0,
+    "bossHpObserved": [
+      1062,
+      404,
+      20
+    ],
+    "hpAtVictory": 310,
+    "nativeReturnToCamp": true,
+    "firstClearGold": 650,
+    "firstClearXp": 525,
+    "finalGold": 776,
+    "finalXp": 6225,
+    "reentryFirstClearButtons": 0,
+    "teacherSupportEnabled": false,
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "verification": {
+    "focusedFiles": 3,
+    "focusedTests": 20,
+    "typeAndProduction": "passed",
+    "files": 71,
+    "bytes": 1736021,
+    "entryBytes": 489229,
+    "entryGzip": 158978,
+    "totalJsBytes": 1626138,
+    "engineGzip": 173297,
+    "engineLazy": true
+  },
+  "limits": [
+    "Disabled supply UI observed; no forced disabled click or claim of live rule transaction rejection",
+    "Starting zero gold does not mean no inventory: real 7086 coins were spent on explicit normal items",
+    "Ordinary battle income later raises gold; no all-chapter-zero claim",
+    "Idle death/tool-selector and modal expectation timeouts retained, not a game or Beta difficulty conclusion",
+    "No store/runtime/coordinate or real-save fabrication; original ordinary28 and older full archives unchanged",
+    "No source, full-character, physical device, player Beta, public rights or deployment acceptance"
+  ]
+}
