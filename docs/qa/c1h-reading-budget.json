@@ -1,0 +1,139 @@
+{
+  "version": "0.64.1",
+  "date": "2026-10-12",
+  "vitestFiles": 141,
+  "vitestTests": 849,
+  "nodeTests": 11,
+  "initialCheck": "three timeouts, no rule assertion failures; focused then full maxWorkers=1 passed; original test limits unchanged",
+  "interruptedFullTest": "previous process disappeared after session restart; rerun completed 141/849",
+  "initialJs": 497782,
+  "totalJs": 1828844,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "savedJsBytes": 15610,
+  "sourceProof": {
+    "date": "2026-10-12",
+    "files": [
+      {
+        "file": "src/core/save.ts",
+        "calls": 97,
+        "completeReverseSourceEqual": true
+      }
+    ]
+  },
+  "mapEquivalence": {
+    "maps": 28,
+    "finalPhases": 3,
+    "samplesPerPath": 257,
+    "orderedStrokes": "equal",
+    "maxCoordinateErrorLessThan": 1e-8
+  },
+  "engineModules": {
+    "moduleCount": 766,
+    "required": [
+      "core/Game.js",
+      "scene/Scene.js",
+      "gameobjects/graphics/Graphics.js",
+      "gameobjects/text/Text.js",
+      "gameobjects/container/Container.js",
+      "renderer/canvas/CanvasRenderer.js",
+      "renderer/webgl/WebGLRenderer.js",
+      "events/EventEmitter.js",
+      "cameras/2d/CameraManager.js",
+      "gameobjects/GameObjectCreator.js",
+      "gameobjects/GameObjectFactory.js",
+      "gameobjects/DisplayList.js",
+      "gameobjects/UpdateList.js",
+      "scene/ScenePlugin.js",
+      "time/Clock.js",
+      "data/DataManagerPlugin.js",
+      "input/InputPlugin.js",
+      "input/keyboard/KeyboardPlugin.js",
+      "input/gamepad/GamepadPlugin.js",
+      "loader/LoaderPlugin.js",
+      "tweens/TweenManager.js",
+      "gameobjects/lights/LightsPlugin.js",
+      "gameobjects/graphics/GraphicsFactory.js",
+      "gameobjects/text/TextFactory.js",
+      "gameobjects/container/ContainerFactory.js"
+    ],
+    "excluded": []
+  },
+  "browser": [
+    {
+      "chapter": "01",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 18718 金币 · 斗之气 · 三段\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - complementary \"本章历练目标\":\n    - generic: 第 01 章\n    - heading \"少年与戒指\" [level=2]\n    - paragraph: 教学序章：先体验拜师后的后山练习。下一章将回到药老现身之前，讲述三年约定的起因。\n    - generic: 本章历练\n    - generic: ✓\n    - text: 药老指导\n    - generic: 斗技与闪避演练完成\n    - generic: 2 / 2\n    - generic: ◇\n    - text: 薰儿 · 少年书简 · 支线\n    - generic: 靠近薰儿 · 同行书简，按 E 接下「薰儿 · 少年书简」\n    - generic: 0 / 3\n    - generic: ✓\n    - generic: 采集灵草\n    - generic: 3 / 3\n    - generic: ✓\n    - generic: 击败普通敌人\n    - generic: 3 / 3\n    - generic: ✓\n    - text: 通过章节试炼\n    - generic: 后山试炼守卫\n    - paragraph: 本章已结算，可自由修炼或返回大陆舆图继续旅途。\n    - button \"开炉炼药\"\n    - button \"营地与休整\"\n    - button \"篇章回顾 ↗\"\n    - button \"人物 · 行囊 ↗\"\n  - generic: ◈ 乌坦城 · 萧家后山 · 普通\n  - generic: ● 净莲妖火\n  - application \"探索场景：WASD移动，J普攻，空格闪避，E交互\"\n  - generic: 炎\n  - generic: 萧炎 斗之气 · 三段\n  - meter \"生命\":\n    - generic: 生命 724 / 724\n  - meter \"斗气\":\n    - generic: 斗气 184 / 184\n  - meter \"体力\"\n  - button \"E · 与药老交谈\"\n  - generic: ☷ 本章提前展示拜师后的原创教学；第2章回溯立约及拜师起因。药草、投影和试炼守卫为教学设计，不代表原作拜师考核或药方。\n  - paragraph: 聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。\n  - generic: WASD 移动\n  - button \"J 普攻\" [active]\n  - button \"空格 闪避\"\n  - button \"F 回气\"\n  - button \"R 支援\"\n  - button \"1 八极崩 18 斗气\":\n    - generic: \"1\"\n    - generic: 八极崩\n    - generic: 18 斗气\n  - button \"2 焰分噬浪尺 28 斗气\":\n    - generic: \"2\"\n    - generic: 焰分噬浪尺\n    - generic: 28 斗气\n  - button \"3 佛怒火莲 48 斗气\":\n    - generic: \"3\"\n    - generic: 佛怒火莲\n    - generic: 48 斗气\n  - button \"Q 恢复丹 持有 4\":\n    - generic: Q\n    - generic: 恢复丹\n    - generic: 持有 4\n  - region \"沿路行走\":\n    - generic: 前往地点\n    - combobox \"前往地点\":\n      - option \"营地\" [selected]\n      - option \"试炼碑 / 出口\"\n      - option \"药老\"\n      - option \"演练木桩\"\n      - option \"薰儿 · 同行书简\"\n      - option \"少年记\"\n      - option \"相知石\"\n      - option \"灵草 1\"\n      - option \"灵草 2\"\n      - option \"灵草 3\"\n      - option \"灵草 4\"\n      - option \"灵草 5\"\n      - option \"灵草 6\"\n      - option \"药老指导 · 木桩演练\"\n      - option \"后山山径\"\n    - button \"沿路行走\"\n    - button \"停止行走\" [disabled]\n    - status: 选择地图地点，再沿路行走。\n    - text: 沿路行走时战斗继续；受击、方向输入、战斗动作或打开菜单会停止。到达后手动交互。",
+      "canvasCount": 1
+    },
+    {
+      "chapter": "02",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 18718 金币 · 斗之气 · 重修\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - complementary \"本章历练目标\":\n    - generic: 第 02 章\n    - heading \"三年之约\" [level=2]\n    - paragraph: 时间回溯 · 拜师之前。纳兰嫣然来访萧家，三年约定由此开始；离开议事院后，药老才在后山现身。\n    - generic: 本章历练\n    - generic: ✓\n    - text: 立约与启程\n    - generic: 三处立约足迹已完成\n    - generic: 3 / 3\n    - generic: ◇\n    - text: 药老 · 戒中初课 · 支线\n    - generic: 靠近药老 · 师徒回访，按 E 接下「药老 · 戒中初课」\n    - generic: 0 / 3\n    - generic: ✓\n    - text: 通过章节试炼\n    - generic: 萧家演武教习\n    - paragraph: 本章已结算，可自由修炼或返回大陆舆图继续旅途。\n    - button \"开炉炼药\"\n    - button \"营地与休整\"\n    - button \"篇章回顾 ↗\"\n    - button \"人物 · 行囊 ↗\"\n  - generic: ◈ 乌坦城 · 萧家议事院 · 普通\n  - generic: ● 净莲妖火\n  - application \"探索场景：WASD移动，J普攻，空格闪避，E交互\"\n  - generic: 炎\n  - generic: 萧炎 斗之气 · 重修\n  - meter \"生命\":\n    - generic: 生命 724 / 724\n  - meter \"斗气\":\n    - generic: 斗气 184 / 184\n  - meter \"体力\"\n  - button \"E · 与萧战交谈\"\n  - generic: ☷ 回溯三年立约，再以短场景概括药老现身与拜师，之后恢复顺叙。院中教习和演武为原创练习；来访者不是本章可击杀首领，赴约决战在第10章。\n  - paragraph: 聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。\n  - generic: WASD 移动\n  - button \"J 普攻\" [active]\n  - button \"空格 闪避\"\n  - button \"F 回气\"\n  - button \"R 支援\"\n  - button \"1 八极崩 18 斗气\":\n    - generic: \"1\"\n    - generic: 八极崩\n    - generic: 18 斗气\n  - button \"2 焰分噬浪尺 28 斗气\":\n    - generic: \"2\"\n    - generic: 焰分噬浪尺\n    - generic: 28 斗气\n  - button \"3 佛怒火莲 48 斗气\":\n    - generic: \"3\"\n    - generic: 佛怒火莲\n    - generic: 48 斗气\n  - button \"Q 恢复丹 持有 4\":\n    - generic: Q\n    - generic: 恢复丹\n    - generic: 持有 4\n  - region \"沿路行走\":\n    - generic: 前往地点\n    - combobox \"前往地点\" [disabled]\n    - button \"沿路行走\" [disabled]\n    - button \"停止行走\" [disabled]\n    - status: 正在读取当前地图地点…\n    - text: 沿路行走时战斗继续；受击、方向输入、战斗动作或打开菜单会停止。到达后手动交互。",
+      "canvasCount": 1
+    },
+    {
+      "chapter": "07",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 18718 金币 · 斗师 · 沙漠历练\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - complementary \"本章历练目标\":\n    - generic: 第 07 章\n    - heading \"沙漠兄弟\" [level=2]\n    - paragraph: 沙漠把人磨得粗糙，却不会把兄弟间的事磨掉。你来得正好，佣兵团也有难关要过。\n    - generic: 本章历练\n    - generic: ✓\n    - text: 石漠城 · 失散团员\n    - generic: 失散团员救援完成\n    - generic: 4 / 4\n    - generic: ◇\n    - text: 青鳞 · 沙城听风 · 支线\n    - generic: 靠近青鳞 · 往事书简，按 E 接下「青鳞 · 沙城听风」\n    - generic: 0 / 3\n    - generic: ✓\n    - text: 通过章节试炼\n    - generic: 沙城出发 · 护卫投影\n    - paragraph: 本章已结算，可自由修炼或返回大陆舆图继续旅途。\n    - button \"开炉炼药\"\n    - button \"营地与休整\"\n    - button \"篇章回顾 ↗\"\n    - button \"人物 · 行囊 ↗\"\n  - generic: ◈ 塔戈尔沙漠 · 石漠城 · 普通\n  - generic: ● 净莲妖火\n  - application \"探索场景：WASD移动，J普攻，空格闪避，E交互\"\n  - generic: 炎\n  - generic: 萧炎 斗师 · 沙漠历练\n  - meter \"生命\":\n    - generic: 生命 724 / 724\n  - meter \"斗气\":\n    - generic: 斗气 184 / 184\n  - meter \"体力\"\n  - button \"E · 与萧鼎交谈\"\n  - generic: ☷ 失散团员与守卫为原创救援，解救和回报后再完成出发试炼；青鳞完整支线后续扩充。\n  - paragraph: 聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。\n  - generic: WASD 移动\n  - button \"J 普攻\" [active]\n  - button \"空格 闪避\"\n  - button \"F 回气\"\n  - button \"R 支援\"\n  - button \"1 八极崩 18 斗气\":\n    - generic: \"1\"\n    - generic: 八极崩\n    - generic: 18 斗气\n  - button \"2 焰分噬浪尺 28 斗气\":\n    - generic: \"2\"\n    - generic: 焰分噬浪尺\n    - generic: 28 斗气\n  - button \"3 佛怒火莲 48 斗气\":\n    - generic: \"3\"\n    - generic: 佛怒火莲\n    - generic: 48 斗气\n  - button \"Q 恢复丹 持有 4\":\n    - generic: Q\n    - generic: 恢复丹\n    - generic: 持有 4\n  - region \"沿路行走\":\n    - generic: 前往地点\n    - combobox \"前往地点\" [disabled]\n    - button \"沿路行走\" [disabled]\n    - button \"停止行走\" [disabled]\n    - status: 正在读取当前地图地点…\n    - text: 沿路行走时战斗继续；受击、方向输入、战斗动作或打开菜单会停止。到达后手动交互。",
+      "canvasCount": 1
+    },
+    {
+      "chapter": "14",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 18718 金币 · 斗灵 · 内院成长\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - complementary \"本章历练目标\":\n    - generic: 第 14 章\n    - heading \"内院磐门\" [level=2]\n    - paragraph: 新生总要面对压力。既然要立足，就不能让每个人只顾自己的修炼。\n    - generic: 本章历练\n    - generic: ✓\n    - text: 磐门 · 火能猎捕\n    - generic: 磐门资格已登记，前往强榜演武台\n    - generic: 4 / 4\n    - generic: ◇\n    - text: 薰儿 · 内院同路 · 支线\n    - generic: 先回访第1章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: 火能 5\n    - generic: 每次复练胜利+1 · 人物面板2火能换30积累\n    - generic: ✓\n    - text: 通过章节试炼\n    - generic: 强榜守关者 · 演武投影\n    - paragraph: 本章已结算，可自由修炼或返回大陆舆图继续旅途。\n    - button \"开炉炼药\"\n    - button \"营地与休整\"\n    - button \"篇章回顾 ↗\"\n    - button \"人物 · 行囊 ↗\"\n  - generic: ◈ 迦南学院 · 内院 · 普通\n  - generic: ● 净莲妖火\n  - application \"探索场景：WASD移动，J普攻，空格闪避，E交互\"\n  - generic: 炎\n  - generic: 萧炎 斗灵 · 内院成长\n  - meter \"生命\":\n    - generic: 生命 724 / 724\n  - meter \"斗气\":\n    - generic: 斗气 184 / 184\n  - meter \"体力\"\n  - button \"E · 与胡嘉交谈\"\n  - generic: ☷ 双路火能猎捕、临时队友和强榜招式为原创改编，火能数量不对应原著数值。\n  - paragraph: 聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。\n  - generic: WASD 移动\n  - button \"J 普攻\" [active]\n  - button \"空格 闪避\"\n  - button \"F 回气\"\n  - button \"R 支援\"\n  - button \"1 八极崩 18 斗气\":\n    - generic: \"1\"\n    - generic: 八极崩\n    - generic: 18 斗气\n  - button \"2 焰分噬浪尺 28 斗气\":\n    - generic: \"2\"\n    - generic: 焰分噬浪尺\n    - generic: 28 斗气\n  - button \"3 佛怒火莲 48 斗气\":\n    - generic: \"3\"\n    - generic: 佛怒火莲\n    - generic: 48 斗气\n  - button \"Q 恢复丹 持有 4\":\n    - generic: Q\n    - generic: 恢复丹\n    - generic: 持有 4\n  - region \"沿路行走\":\n    - generic: 前往地点\n    - combobox \"前往地点\" [disabled]\n    - button \"沿路行走\" [disabled]\n    - button \"停止行走\" [disabled]\n    - status: 正在读取当前地图地点…\n    - text: 沿路行走时战斗继续；受击、方向输入、战斗动作或打开菜单会停止。到达后手动交互。",
+      "canvasCount": 1
+    },
+    {
+      "chapter": "28",
+      "dom": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 18718 金币 · 斗帝 · 炎帝\n  - status: 自动存档 · 已保存\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - complementary \"本章历练目标\":\n    - generic: 第 28 章\n    - heading \"双帝之战\" [level=2]\n    - paragraph: 从乌坦城的后山，到今天这片天空。那些一起走过的人，都在我身后。\n    - generic: 本章历练\n    - generic: ✓\n    - text: 终战 · 故人之约\n    - generic: 三处战前约定已记录，前往终战启程碑\n    - generic: 3 / 3\n    - generic: ◇\n    - text: 小医仙 · 归途来信 · 支线\n    - generic: 先回访第22章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ◇\n    - text: 青鳞 · 远行来信 · 支线\n    - generic: 先回访第19章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ◇\n    - text: 海波东 · 故人问候 · 支线\n    - generic: 先回访第16章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ◇\n    - text: 云韵 · 山风回信 · 支线\n    - generic: 先回访第10章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ◇\n    - text: 美杜莎 · 归途守望 · 支线\n    - generic: 先回访第17章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ◇\n    - text: 药老 · 传授未止 · 支线\n    - generic: 先回访第22章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ◇\n    - text: 薰儿 · 灯下归途 · 支线\n    - generic: 先回访第23章，完成前一页伙伴记录。\n    - generic: 0 / 3\n    - generic: ✓\n    - text: 通过章节试炼\n    - generic: 魂天帝\n    - paragraph: 本章已结算，可自由修炼或返回大陆舆图继续旅途。\n    - button \"开炉炼药\"\n    - button \"营地与休整\"\n    - button \"篇章回顾 ↗\"\n    - button \"人物 · 行囊 ↗\"\n  - generic: ◈ 斗气大陆 · 最终战场 · 普通\n  - generic: ● 净莲妖火\n  - application \"探索场景：WASD移动，J普攻，空格闪避，E交互\"\n  - generic: 炎\n  - generic: 萧炎 斗帝 · 炎帝\n  - meter \"生命\":\n    - generic: 生命 724 / 724\n  - meter \"斗气\":\n    - generic: 斗气 184 / 184\n  - meter \"体力\"\n  - button \"E · 与药老交谈\"\n  - generic: ☷ 三约碑与大陆/血环/帝炎三场景为原创终战表达；换段生命斗气冷却延续、落点护体1.5秒。失败或刷新从满血第一段重试，约碑保留。胜利后返营首通一次，尾声后可重返历练。\n  - paragraph: 聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。\n  - generic: WASD 移动\n  - button \"J 普攻\" [active]\n  - button \"空格 闪避\"\n  - button \"F 回气\"\n  - button \"R 支援\"\n  - button \"1 八极崩 18 斗气\":\n    - generic: \"1\"\n    - generic: 八极崩\n    - generic: 18 斗气\n  - button \"2 焰分噬浪尺 28 斗气\":\n    - generic: \"2\"\n    - generic: 焰分噬浪尺\n    - generic: 28 斗气\n  - button \"3 佛怒火莲 48 斗气\":\n    - generic: \"3\"\n    - generic: 佛怒火莲\n    - generic: 48 斗气\n  - button \"Q 恢复丹 持有 4\":\n    - generic: Q\n    - generic: 恢复丹\n    - generic: 持有 4\n  - region \"沿路行走\":\n    - generic: 前往地点\n    - combobox \"前往地点\":\n      - option \"营地\" [selected]\n      - option \"终战启程碑\"\n      - option \"药老\"\n      - option \"家族之约\"\n      - option \"盟友退路\"\n      - option \"师徒之约\"\n      - option \"小医仙 · 归途来信\"\n      - option \"旧途石\"\n      - option \"灯火记\"\n      - option \"青鳞 · 归途来信\"\n      - option \"旧城记\"\n      - option \"风灯记\"\n      - option \"海波东 · 归途问候\"\n      - option \"沙风记\"\n      - option \"旧约记\"\n      - option \"云韵 · 归途回信\"\n      - option \"山谷记\"\n      - option \"远山记\"\n      - option \"美杜莎 · 归途书简\"\n      - option \"火路余记\"\n      - option \"守望记\"\n      - option \"药老 · 归途札记\"\n      - option \"旧课记\"\n      - option \"传灯记\"\n      - option \"薰儿 · 灯下书简\"\n      - option \"旧灯记\"\n      - option \"新程石\"\n      - option \"灵草 1\"\n      - option \"灵草 2\"\n      - option \"灵草 3\"\n      - option \"灵草 4\"\n      - option \"灵草 5\"\n      - option \"灵草 6\"\n      - option \"斗气大陆 · 最终战场\"\n      - option \"故人之约 / 最后的防线 / 终战与归途\"\n    - button \"沿路行走\"\n    - button \"停止行走\" [disabled]\n    - status: 选择地图地点，再沿路行走。\n    - text: 沿路行走时战斗继续；受击、方向输入、战斗动作或打开菜单会停止。到达后手动交互。",
+      "canvasCount": 1,
+      "resumedAfterBrowserRestart": true
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "budgetMain",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791816618575.json",
+      "sha256": "0e9181883275b1136d4b6c18810f0afe592a4c0d3cf86c8df6d4762ff4fd7b3c",
+      "allStateKept": true
+    },
+    {
+      "name": "budgetMaterials",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791816620980.json",
+      "sha256": "2aabecf923c052e16e6cf518d9d26696ddca9019705e5ea3df8942ba8bcbc4a8",
+      "allStateKept": true
+    },
+    {
+      "name": "budgetIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791816623742.json",
+      "sha256": "2ac3963656cf04a5d95c0c177682fc29a415406e161391eeba2e4a714c52b182",
+      "allStateKept": true
+    },
+    {
+      "name": "budgetMainRecovered",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791817499381.json",
+      "sha256": "12be94534a01e08694ac29de983088d4f700e76173954ab6f19cbc6830ad0db5",
+      "allStateKept": true
+    },
+    {
+      "name": "budgetMaterialsRecovered",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791817632372.json",
+      "sha256": "9d1cd42ab1c2b2334d9c6b2343b0f1f65e915729ae2b9aa37d1e0aa15c257cf2",
+      "allStateKept": true
+    },
+    {
+      "name": "budgetIntactRecovered",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791817648557.json",
+      "sha256": "abc52fb6c0af0c996f23214c88bc5b0cb60893a0e53793e973d512199910b0e3",
+      "allStateKept": true
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "browserRecovery": "browser tabs and preview servers restarted; autosaves loaded through normal UI; one download wait timed out then retried on stable dialog",
+  "newStory": false,
+  "canvasAndRealDevices": "not tested",
+  "chineseAndAnime": "pending"
+}

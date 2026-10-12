@@ -161,6 +161,7 @@ export function validateState(value: unknown): GameState {
     throw new NewerSaveVersionError()
   if (![1, 2, 3].includes(Number(data.schemaVersion)) || typeof data.schemaVersion !== 'number') throw new Error('不支持此存档版本，现有存档没有被修改。')
   checkVersion(data.contentVersion)
+  const before = (target: string) => versionBefore(data.contentVersion as string, target)
   const s = initialState()
   s.contentVersion = CONTENT_VERSION
   s.chapter = number(data.chapter, chapters.length)
@@ -181,14 +182,14 @@ export function validateState(value: unknown): GameState {
     const events = migrateLegacyEvents(n, data.schemaVersion < 3 && boss)
     if (data.schemaVersion === 2) {
       const definition = eventForChapter(n)
-      const existed = definition && (!definition.introducedVersion || !versionBefore(data.contentVersion as string, definition.introducedVersion))
+      const existed = definition && (!definition.introducedVersion || !before(definition.introducedVersion))
       const primary = parseEvent(p.event, existed ? definition : undefined, true)
       if (definition && existed) events[definition.id] = primary
     } else if (data.schemaVersion === 3) {
       const entries = record(p.events)
       if (Object.keys(entries).some(id => !definitions.some(e => e.id === id))) throw new Error('未知剧情事件。')
       for (const definition of definitions) {
-        const addedLater = definition.introducedVersion && versionBefore(data.contentVersion as string, definition.introducedVersion)
+        const addedLater = definition.introducedVersion && before(definition.introducedVersion)
         events[definition.id] = !Object.hasOwn(entries, definition.id) && addedLater
           ? migrateLegacyEvent(n, boss, definition.id) : parseEvent(entries[definition.id], definition)
       }
@@ -196,27 +197,27 @@ export function validateState(value: unknown): GameState {
     s.progress[n] = { herbs: number(p.herbs), kills: number(p.kills), brews: number(p.brews), boss, intro: bool(p.intro), events }
     for (const definition of definitions) if (events[definition.id].started && definition.requires?.some(id => !eventDone(s, n, id)))
       throw new Error('事件前置条件不完整。')
-    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && versionBefore(data.contentVersion as string, '0.3.2')) || (n === 5 && versionBefore(data.contentVersion as string, '0.4.0')) || (n === 7 && versionBefore(data.contentVersion as string, '0.5.0')) || (n === 8 && versionBefore(data.contentVersion as string, '0.5.2')) || (n === 10 && versionBefore(data.contentVersion as string, '0.6.1')) || (n === 11 && versionBefore(data.contentVersion as string, '0.6.2'))
-    const oldCertification = n === 6 && versionBefore(data.contentVersion as string, '0.4.1')
-    const oldTournament = n === 9 && versionBefore(data.contentVersion as string, '0.6.0')
-    const oldAuction = n === 12 && versionBefore(data.contentVersion as string, '0.7.0')
-    const oldSquad = n === 13 && versionBefore(data.contentVersion as string, '0.7.1')
-    const oldHunt = n === 14 && versionBefore(data.contentVersion as string, '0.7.2')
-    const oldTower = n === 15 && versionBefore(data.contentVersion as string, '0.7.3')
-    const oldSiege = n === 16 && versionBefore(data.contentVersion as string, '0.8.1')
-    const oldAlliance = n === 17 && versionBefore(data.contentVersion as string, '0.8.2')
-    const oldThunder = n === 18 && versionBefore(data.contentVersion as string, '0.8.3')
-    const oldLineage = n === 19 && versionBefore(data.contentVersion as string, '0.8.4')
-    const oldExpedition = n === 20 && versionBefore(data.contentVersion as string, '0.9.1')
-    const oldDanFinal = n === 20 && versionBefore(data.contentVersion as string, '0.9.2')
-    const oldStar = n === 21 && versionBefore(data.contentVersion as string, '0.9.3')
-    const oldPrison = n === 22 && versionBefore(data.contentVersion as string, '0.9.4')
-    const oldTomb = n === 23 && versionBefore(data.contentVersion as string, '0.10.1')
-    const oldBodhi = n === 24 && versionBefore(data.contentVersion as string, '0.10.3')
-    const oldMirrors = n === 25 && versionBefore(data.contentVersion as string, '0.10.4')
-    const oldDefense = n === 26 && versionBefore(data.contentVersion as string, '0.11.1')
-    const oldVault = n === 27 && versionBefore(data.contentVersion as string, '0.11.2')
-    const oldFinal = n === 28 && versionBefore(data.contentVersion as string, '0.11.4')
+    const oldChecklist = (data.schemaVersion === 1 && [2, 3].includes(n)) || (n === 4 && before('0.3.2')) || (n === 5 && before('0.4.0')) || (n === 7 && before('0.5.0')) || (n === 8 && before('0.5.2')) || (n === 10 && before('0.6.1')) || (n === 11 && before('0.6.2'))
+    const oldCertification = n === 6 && before('0.4.1')
+    const oldTournament = n === 9 && before('0.6.0')
+    const oldAuction = n === 12 && before('0.7.0')
+    const oldSquad = n === 13 && before('0.7.1')
+    const oldHunt = n === 14 && before('0.7.2')
+    const oldTower = n === 15 && before('0.7.3')
+    const oldSiege = n === 16 && before('0.8.1')
+    const oldAlliance = n === 17 && before('0.8.2')
+    const oldThunder = n === 18 && before('0.8.3')
+    const oldLineage = n === 19 && before('0.8.4')
+    const oldExpedition = n === 20 && before('0.9.1')
+    const oldDanFinal = n === 20 && before('0.9.2')
+    const oldStar = n === 21 && before('0.9.3')
+    const oldPrison = n === 22 && before('0.9.4')
+    const oldTomb = n === 23 && before('0.10.1')
+    const oldBodhi = n === 24 && before('0.10.3')
+    const oldMirrors = n === 25 && before('0.10.4')
+    const oldDefense = n === 26 && before('0.11.1')
+    const oldVault = n === 27 && before('0.11.2')
+    const oldFinal = n === 28 && before('0.11.4')
     const o = oldChecklist ? { herbs: 3, kills: 3, brews: 0 } : oldExpedition ? { herbs: 4, kills: 4, brews: 2 } : oldDanFinal ? { herbs: 0, kills: 0, brews: 2 } : oldTomb || oldBodhi || oldMirrors || oldDefense || oldVault || oldFinal ? { herbs: 4, kills: 5, brews: 0 } : oldThunder || oldLineage || oldStar || oldPrison ? { herbs: 4, kills: 4, brews: 0 } : oldAuction || oldSquad || oldHunt || oldTower || oldSiege || oldAlliance ? { herbs: 3, kills: 4, brews: 0 } : oldCertification ? { herbs: 3, kills: 3, brews: 1 } : oldTournament ? { herbs: 3, kills: 3, brews: 2 } : chapterById(n).objectives
     if ((s.completed.includes(n) || p.boss) && (s.progress[n].herbs < o.herbs || s.progress[n].kills < o.kills || s.progress[n].brews < o.brews))
       throw new Error('已完成任务的条件不完整。')
@@ -230,7 +231,7 @@ export function validateState(value: unknown): GameState {
       definition.requiresCompleted?.some(id => !s.completed.includes(id))) throw new Error('伙伴记录的跨章前置条件不完整。')
   }
   s.gold = number(data.gold); s.xp = number(data.xp, 100_000_000)
-  s.fireEnergy = data.fireEnergy === undefined && versionBefore(data.contentVersion as string, '0.7.2') ? 0 : number(data.fireEnergy, 1_000_000)
+  s.fireEnergy = data.fireEnergy === undefined && before('0.7.2') ? 0 : number(data.fireEnergy, 1_000_000)
   s.totalKills = number(data.totalKills); s.totalBrews = number(data.totalBrews)
   s.attackUpgrade = number(data.attackUpgrade, 20); s.armorUpgrade = number(data.armorUpgrade, 20)
   const inventory = record(data.inventory)
@@ -246,80 +247,80 @@ export function validateState(value: unknown): GameState {
   s.settings = { difficulty: settings.difficulty as GameState['settings']['difficulty'], volume: settings.volume,
     reducedMotion: bool(settings.reducedMotion), spoiler: settings.spoiler as GameState['settings']['spoiler'], animeLimit }
   s.startedAt = number(data.startedAt, 9_000_000_000_000_000)
-  if (data.earlyTraining === undefined && versionBefore(data.contentVersion as string, EARLY_TRAINING_VERSION)) {
+  if (data.earlyTraining === undefined && before(EARLY_TRAINING_VERSION)) {
     // Keep the initial empty task record; old main clears cannot grant supplies.
   } else s.earlyTraining = parseEarlyTraining(data.earlyTraining, s.completed,
-    versionBefore(data.contentVersion as string, '0.15.1'), versionBefore(data.contentVersion as string, '0.15.3'),
-    versionBefore(data.contentVersion as string, '0.15.4'), versionBefore(data.contentVersion as string, '0.15.5'),
-    versionBefore(data.contentVersion as string, '0.16.3'), versionBefore(data.contentVersion as string, EARLY_GROWTH_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_HALL_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_HALL_SCROLL_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_TEACHING_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_SUPERVISION_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_RECOVERY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_CONSIGNMENT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_APPRAISAL_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_AUCTION_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_SETTLEMENT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_FATHER_GIFT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_XUNER_VISIT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_LONG_SUPPLIES_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_FOREST_STRIKE_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_SEVENTH_ROOM_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_PALM_PAIR_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_PRELIMINARY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_KE_CHALLENGE_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_EIGHTH_TRAINING_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_CEREMONY_GUESTS_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_CEREMONIAL_TEST_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_NING_FIRST_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_NING_SECOND_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_CEREMONY_VERDICT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_QI_PAVILION_ENTRY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_QI_BARRIER_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_QI_SCROLL_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_QI_AID_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_FAMILY_VISIT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_FAMILY_COMPENSATION_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_FAMILY_CONTRACT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_RING_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_APPRENTICE_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_METHOD_DISCUSSION_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_PREPARATION_BRIEF_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_VISITOR_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MORNING_CARD_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_CITY_PHARMACY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_ESCORT_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_SEARCH_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_BRACELETS_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_STANDOFF_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_DISCOVERY_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_TRADE_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_MARKET_RETURN_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_IRON_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_REFINING_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_TRAINING_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_REVIEW_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_TECHNIQUE_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_BOTTLE_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_DEPARTURE_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_ROAD_MEETING_VERSION),
-    versionBefore(data.contentVersion as string, FIRST_HALL_ENTRY_VERSION))
-  if (s.earlyTraining.refining.stage > 11 && versionBefore(data.contentVersion as string, EARLY_INFUSION_VERSION))
+    before('0.15.1'), before('0.15.3'),
+    before('0.15.4'), before('0.15.5'),
+    before('0.16.3'), before(EARLY_GROWTH_VERSION),
+    before(EARLY_HALL_VERSION),
+    before(EARLY_HALL_SCROLL_VERSION),
+    before(EARLY_TEACHING_VERSION),
+    before(EARLY_SUPERVISION_VERSION),
+    before(EARLY_RECOVERY_VERSION),
+    before(EARLY_CONSIGNMENT_VERSION),
+    before(EARLY_APPRAISAL_VERSION),
+    before(EARLY_AUCTION_VERSION),
+    before(EARLY_SETTLEMENT_VERSION),
+    before(EARLY_FATHER_GIFT_VERSION),
+    before(EARLY_XUNER_VISIT_VERSION),
+    before(EARLY_LONG_SUPPLIES_VERSION),
+    before(EARLY_FOREST_STRIKE_VERSION),
+    before(EARLY_SEVENTH_ROOM_VERSION),
+    before(EARLY_PALM_PAIR_VERSION),
+    before(EARLY_PRELIMINARY_VERSION),
+    before(EARLY_KE_CHALLENGE_VERSION),
+    before(EARLY_EIGHTH_TRAINING_VERSION),
+    before(EARLY_CEREMONY_GUESTS_VERSION),
+    before(EARLY_CEREMONIAL_TEST_VERSION),
+    before(EARLY_NING_FIRST_VERSION),
+    before(EARLY_NING_SECOND_VERSION),
+    before(EARLY_CEREMONY_VERDICT_VERSION),
+    before(EARLY_QI_PAVILION_ENTRY_VERSION),
+    before(EARLY_QI_BARRIER_VERSION),
+    before(EARLY_QI_SCROLL_VERSION),
+    before(EARLY_QI_AID_VERSION),
+    before(EARLY_FAMILY_VISIT_VERSION),
+    before(EARLY_FAMILY_COMPENSATION_VERSION),
+    before(EARLY_FAMILY_CONTRACT_VERSION),
+    before(EARLY_MOUNTAIN_RING_VERSION),
+    before(EARLY_APPRENTICE_VERSION),
+    before(EARLY_METHOD_DISCUSSION_VERSION),
+    before(EARLY_PREPARATION_BRIEF_VERSION),
+    before(EARLY_MOUNTAIN_VISITOR_VERSION),
+    before(EARLY_MORNING_CARD_VERSION),
+    before(EARLY_CITY_PHARMACY_VERSION),
+    before(EARLY_MARKET_ESCORT_VERSION),
+    before(EARLY_MARKET_SEARCH_VERSION),
+    before(EARLY_MARKET_BRACELETS_VERSION),
+    before(EARLY_MARKET_STANDOFF_VERSION),
+    before(EARLY_MARKET_DISCOVERY_VERSION),
+    before(EARLY_MARKET_TRADE_VERSION),
+    before(EARLY_MARKET_RETURN_VERSION),
+    before(EARLY_IRON_VERSION),
+    before(EARLY_REFINING_VERSION),
+    before(FIRST_TRAINING_VERSION),
+    before(FIRST_REVIEW_VERSION),
+    before(FIRST_TECHNIQUE_VERSION),
+    before(FIRST_BOTTLE_VERSION),
+    before(FIRST_DEPARTURE_VERSION),
+    before(FIRST_ROAD_MEETING_VERSION),
+    before(FIRST_HALL_ENTRY_VERSION))
+  if (s.earlyTraining.refining.stage > 11 && before(EARLY_INFUSION_VERSION))
     throw new Error('魔核入水记录不属于此版本。')
-  if (s.earlyTraining.firstTraining.stage > 0 && versionBefore(data.contentVersion as string, FIRST_TRAINING_VERSION))
+  if (s.earlyTraining.firstTraining.stage > 0 && before(FIRST_TRAINING_VERSION))
     throw new Error('首次持续调息记录不属于此版本。')
-  if (s.earlyTraining.firstTraining.stage > 10 && versionBefore(data.contentVersion as string, FIRST_REVIEW_VERSION))
+  if (s.earlyTraining.firstTraining.stage > 10 && before(FIRST_REVIEW_VERSION))
     throw new Error('半月回顾记录不属于此版本。')
-  if (s.earlyTraining.firstTechnique.stage > 0 && versionBefore(data.contentVersion as string, FIRST_TECHNIQUE_VERSION))
+  if (s.earlyTraining.firstTechnique.stage > 0 && before(FIRST_TECHNIQUE_VERSION))
     throw new Error('首次铁片研究记录不属于此版本。')
-  if (s.earlyTraining.firstTechnique.stage > 9 && versionBefore(data.contentVersion as string, FIRST_BOTTLE_VERSION))
+  if (s.earlyTraining.firstTechnique.stage > 9 && before(FIRST_BOTTLE_VERSION))
     throw new Error('首次瓷瓶试招记录不属于此版本。')
-  if (s.earlyTraining.firstDeparture.stage > 0 && versionBefore(data.contentVersion as string, FIRST_DEPARTURE_VERSION))
+  if (s.earlyTraining.firstDeparture.stage > 0 && before(FIRST_DEPARTURE_VERSION))
     throw new Error('首次出门石路记录不属于此版本。')
-  if (s.earlyTraining.firstRoadMeeting.stage > 0 && versionBefore(data.contentVersion as string, FIRST_ROAD_MEETING_VERSION))
+  if (s.earlyTraining.firstRoadMeeting.stage > 0 && before(FIRST_ROAD_MEETING_VERSION))
     throw new Error('首次路口会面记录不属于此版本。')
-  if (s.earlyTraining.firstHallEntry.stage > 0 && versionBefore(data.contentVersion as string, FIRST_HALL_ENTRY_VERSION))
+  if (s.earlyTraining.firstHallEntry.stage > 0 && before(FIRST_HALL_ENTRY_VERSION))
     throw new Error('首次实际入堂记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s

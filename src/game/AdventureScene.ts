@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { linePath } from './line-path'
 import { gameStore } from '../core/store'
 import { chapterById } from '../content/chapters'
 import { CombatWorld, HEIGHT, WIDTH, type Input } from './combat'
@@ -269,8 +270,7 @@ export default class AdventureScene extends Phaser.Scene {
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
     }
     for (const points of this.world.map.paths) {
-    const path = new Phaser.Curves.Path(points[0].x, points[0].y)
-    for (const point of points.slice(1)) path.lineTo(point.x, point.y)
+    const path = linePath(points)
     bg.lineStyle(85, c[1], .16); path.draw(bg)
     bg.lineStyle(55, c[2], .1); path.draw(bg)
     for (let i = 0; i < 95; i++) {

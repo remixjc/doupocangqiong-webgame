@@ -28,7 +28,6 @@ module.exports = {
   Game: require('phaser/src/core/Game'),
   Scene: require('phaser/src/scene/Scene'),
   Scale: require('phaser/src/scale'),
-  Curves: { Path: require('phaser/src/curves/path/Path') },
   GameObjects: {
     Graphics: require('phaser/src/gameobjects/graphics/Graphics'),
     Text: require('phaser/src/gameobjects/text/Text'),
