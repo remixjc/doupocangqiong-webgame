@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
 // Original concise scenes following English14. Species Chinese name remains unverified.
-export const marketTradeScenes = defineSceneRows(["actor","operation","title","text","action"], [
+export const marketTradeScenes = defineSceneRows(actorSceneKeys, [
   ["yan","pick","先拿起魔核查看","萧炎暂不显露对铁片的兴趣，拿起绿核查看；物品仍属摊主。","本人拿起绿核查看"],
   ["yan","ask","询问来源","先问清这枚魔核来自哪种魔兽。","本人询问魔核来源"],
   ["vendor","source","摊主介绍","摊主称来自一阶Swallow Wood Fox。中文物种名待核，此处只记录卖方说法。","听摊主说明魔兽来源"],

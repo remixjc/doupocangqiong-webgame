@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
 // Chapter 15: the same cleaned fragment, before the limited bottle attempt.
-export const firstTechniqueScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstTechniqueScenes = defineSceneRows(actorSceneKeys, [
   ['yan', 'take', '床边取出同一铁片', '衣着已整理。本人实际走到床边，从枕后取出此前收好的同一块铁片。', '从枕后取出同一铁片'],
   ['yan', 'inspect', '观察已经去锈的表面', '铁片表面已清去锈迹，显出原来的光泽。查看它，不新增一片或再次成交。', '观察铁片清锈后的表面'],
   ['yan', 'review-study', '回顾半月休息时的研究', '此前半月修炼间隙，休息时也曾研究这块铁片。现在明确回顾那段研究，不用现实等待代签。', '回顾半月休息时研究铁片'],

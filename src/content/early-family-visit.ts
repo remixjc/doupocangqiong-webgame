@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const familyVisitScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const familyVisitScenes = defineSceneRows(placeActorSceneKeys, [
   ["room","yan","finish-morning","又一次流失的斗气","回到拜师之前的清晨。刚吸收的斗气又散去，古戒只短暂闪过微光；此时萧炎还不知道原因。","收功起身 · 记录这次未能留住斗气"],
   ["attendant","attendant","hear-summons","门外传来召唤","来传话的族人请萧炎前往接待厅。父亲与来访者正在那里等候。","听清父亲召见 · 准备赴厅"],
   ["entrance","yan","enter-hall","穿过后院","萧炎随族人穿过后院，敲门进入接待厅。厅内的族人与三位来客分坐两侧。","敲门入厅"],

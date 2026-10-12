@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const earlyRecoveryScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const earlyRecoveryScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"door","return","停练后回房","药老","本轮已停下。萧炎依老师提醒回到房中，准备在已有的盛水容器中恢复。","从门边回房 · 查看容器"],
   [1,"container","enter","使用既有药液","萧炎","这是此前老师调制并加入清水的同一份修炼药液。萧炎进入容器，逐渐放松疲惫的姿态。","进入容器 · 开始恢复"],
   [2,"container","breathe","呼吸渐稳，药色渐淡","往事手札","萧炎的呼吸慢慢平稳，药液的绿色逐渐变淡。把调息时机移到35%–65%，确认这一段恢复。","调息 · 观察药色渐淡"],

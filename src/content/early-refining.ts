@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const refiningScenes = defineSceneRows(['actor','operation','title','text','action'], [
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
+export const refiningScenes = defineSceneRows(actorSceneKeys, [
   ['teacher','core','老师取桌上魔核','老师拿起桌上那枚木属性魔核，先握在手中。取到魔核与把它投入火中分别记录。','旁观老师取起桌上魔核'],
   ['teacher','order','吩咐准备清水','老师让萧炎找一个大容器装上清水。原铁片已经收好，接下来准备盛水容器。','旁观老师吩咐准备清水'],
   ['yan','water','实际备好清水','由本人走到盛水处，将大容器与清水备好。只准备水，没有把药液加入水中。','本人走到盛水处备好清水'],

@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const qiExchangeScenes = defineSceneRows(["actor","operation","title","text","action"], [
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
+export const qiExchangeScenes = defineSceneRows(actorSceneKeys, [
   ["xiaoyan","recall","回看四十三号房 · 保管细节","此前简略保管记录保留。这里回看取卷后的一段对话，实际分别记录双卷和短暂拿看，不再取得家族卷。","回看取卷后的对话"],
   ["xiaoyan","read-tier","黄阶高级 · 家族火属性卷","萧炎读出这一卷的品阶与属性。中文卷名仍待准确核验，先以黄阶高级火属性功法呈现。","核对品阶与属性"],
   ["xuner","inspect-family","薰儿拿看同一卷","薰儿从萧炎手中拿看这一卷家族功法。萧炎此刻不持卷；这不是新取出的一份副本。","薰儿拿看家族卷"],

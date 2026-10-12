@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const qiScrollScenes = defineSceneRows(["operation","title","text","action"], [
+import { defineSceneRows, actionSceneKeys } from './scene-rows'
+export const qiScrollScenes = defineSceneRows(actionSceneKeys, [
   ["inspect","四十三号房的家族卷轴","红幕已破，石桌上放着一卷与火属性相合的家族功法。先确认归属，再决定是否取走。","查看家族卷轴 · 先不修炼"],
   ["take-family","取下唯一家族卷","萧炎取下这一卷家族功法。卷轴是独立任务物，不会改写焚诀或主线斗技。","取下家族卷 · 交由本人保管"],
   ["secure","收好卷轴","卷轴暂由萧炎保管，等待登记；没有立即修炼，也没有发放额外属性。","收好卷轴 · 保持待登记"],

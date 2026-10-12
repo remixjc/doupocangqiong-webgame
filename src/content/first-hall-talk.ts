@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
 
-export const firstHallTalkScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallTalkScenes = defineSceneRows(actorSceneKeys, [
   ['xuner', 'greet', '东架前的招呼', '薰儿已经走到本人前面，带着笑意招呼。本人仍持第一卷，萧宁还在西场。', '听见薰儿当面招呼'],
   ['yan', 'lift', '从第一卷抬眼', '把目光从卷中移到面前的薰儿，没有走入训练场。', '本人从同一卷抬眼'],
   ['yan', 'crowd', '看向堂中', '再扫视堂内，看见人群望向这边，打趣她把众人的关注也带到了东架。', '本人看见堂中目光并打趣'],

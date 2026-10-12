@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const firstHallReadingScenes = defineSceneRows(['operation', 'title', 'text', 'action'], [
+import { defineSceneRows, actionSceneKeys } from './scene-rows'
+export const firstHallReadingScenes = defineSceneRows(actionSceneKeys, [
   ['shelf', '走到东侧书架', '入堂后，本人实际走到东侧存放斗技的书架前。西侧切磋继续，自己没有入场。', '本人到达东侧书架'],
   ['pick', '拿起第一黑卷', '从架上拿取同一第一卷。旧记录若已归回第一卷或另选第二卷，本段只回顾当时动作，保持当前保管账。', '记录拿起同一第一黑卷'],
   ['open', '展开黑色卷轴', '本人把当时的第一黑卷展开。展开不等于习得斗技，也不派发另一份卷轴。', '本人展开第一黑卷'],

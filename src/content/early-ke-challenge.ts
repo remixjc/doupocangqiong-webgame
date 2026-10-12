@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const keChallengeScenes = defineSceneRows(["place","operation","title","text","action"], [
+import { defineSceneRows, placeSceneKeys } from './scene-rows'
+export const keChallengeScenes = defineSceneRows(placeSceneKeys, [
   ["waiting","receive","萧克向萧炎提出挑战","预测结束后，未达标者的一次挑战机会开放。六段的萧克来到萧炎面前，提出应战；这次对手是萧克。","认清来人 · 萧克六段"],
   ["waiting","accept","接受这次挑战","萧炎看向薰儿，回应萧克的挑战，随后走向训练场中央。这次应战只记录往事，不消耗行囊丹药或其他修炼材料。","接受萧克挑战 · 走向场中"],
   ["arena","begin","场中行礼，观察来掌","两人行礼后，萧克凝聚斗气，向萧炎胸前攻来。下面的两步时机操作压缩这一击：先向左侧避，再用族内低阶掌法击肩。","准备侧避与反击 · 开始这一轮"],

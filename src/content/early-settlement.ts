@@ -1,8 +1,8 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
 export const FIRST_SALE_GROSS = 40000
 export const FIRST_SALE_FEE = FIRST_SALE_GROSS * 2 / 100
 export const FIRST_SALE_NET = FIRST_SALE_GROSS - FIRST_SALE_FEE
-export const settlementScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+export const settlementScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"entrance","finish-lot","功法卷归加列毕，旁观结束","往事手札","功法卷的竞争继续，最终加列毕出550000，萧战退出竞价。雅妃落槌，这件功法归加列毕；萧炎起身准备离席。","观察功法卷成交 · 结束旁观"],
   [1,"entrance","return","回到原鉴定室等候","往事手札","萧炎离开第一拍卖室，回到原鉴定室等候。雅妃与谷尼来到，手续仍在办理；黑袍身份保持隐蔽。","回鉴定室 · 等雅妃与谷尼"],
   [2,"meeting","privacy","药老代言，守住身份","药老","雅妃询问来者身份。药老以苍老声音回应，表示不愿透露姓名；雅妃不再追问，萧炎继续藏在黑袍下。","请药老回应 · 保持身份隐蔽"],

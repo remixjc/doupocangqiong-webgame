@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const longSupplyScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const longSupplyScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"receipt","review","回看父亲来访前的物资","往事手札","这一页回溯首次寄售后、父亲来访前。萧炎已另外买来后续修炼的药材与魔核，带回房中；不是父亲赠回的白玉瓶，也不是此前耗尽的自用药液。","核对另购批次 · 展开物资包"],
   [1,"herbs","sort-herbs","把药材包放到药材格","往事手札","先认出药材包，再把它放入药材格。两类物资的分拣是原创归档操作，包上没有补造原作未列的株数或价款。","放入药材格 · 记录原包位置"],
   [2,"cores","sort-cores","把魔核包放到魔核格","往事手札","再认出魔核包，把它放入另一格。这批物资独立用于后续修炼，不能挪用初期采购的收据或重领寄售材料。","放入魔核格 · 记录原包位置"],

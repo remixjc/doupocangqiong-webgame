@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const mountainRingScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const mountainRingScenes = defineSceneRows(placeActorSceneKeys, [
   ["path","yan","ascend","离厅之后，独自上山","离开接待厅的萧炎沿熟悉的山径走向山顶，来客已离去，文书与玉匣各有归属。","沿山径上山"],
   ["stone","yan","look-distance","山顶的远望","走到山顶，萧炎望向远处云雾中的山脉。会谈压住的情绪浮现，这里没有新的战斗或采集奖励。","在山顶望向远处"],
   ["stone","yan","resolve","不愿再次受辱","萧炎重新坚定成长的念头。只作情绪回顾，不提供伤害自身的动作或属性补偿。","记下本人心愿"],

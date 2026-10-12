@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const ningSecondScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const ningSecondScenes = defineSceneRows(placeActorSceneKeys, [
   ["stairs","observe","surge","宣布之前，萧宁突然增力再攻","二长老正要宣布时，萧宁突然起身冲向萧炎。场边叙事确认他已使用先前持有的增气药；药力只是暂时增强，不给萧宁或玩家记永久斗者境界。","观察突然再攻 · 记录药物已用"],
   ["stairs","observe","halt","二长老喝止，萧宁没有停下","裁判发现异常并喝止，萧宁仍继续进攻。记录叫停无效，不能把这一轮当作规则允许的新挑战。","听到喝止 · 确认再攻未停"],
   ["stairs","observe","reaction","场边察觉违规增力","父亲与宾客注意到药物造成的突变。旁人对增力的判断不改变萧炎正式八段结果，也没有替裁判宣布终局。","观察违规反应 · 返回台中迎击"],

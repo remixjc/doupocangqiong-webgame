@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const cityPharmacyScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const cityPharmacyScenes = defineSceneRows(placeActorSceneKeys, [
   ["clan","yan","walk-together","实际开始族内同行","晨间交卡后，本人与薰儿一起沿族内路段前行。原有邀约不代签已经离族。","本人开始族内同行"],
   ["clan","observer","notice-clansmen","沿途族人的招呼与目光","两人交谈时遇见族人。旁人反应仅记此时观察，不发关系积分。","记录沿途族人反应"],
   ["gate","yan","continue-outing","本人继续原定同行","本人没有因旁人目光中止这次同行，继续走向族门。","本人继续走向族门"],

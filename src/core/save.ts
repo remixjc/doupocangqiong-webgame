@@ -320,29 +320,29 @@ before(FIRST_HALL_MATCH_VERSION),
     before(FIRST_HALL_EXIT_RESPONSE_VERSION),
     before(FIRST_HALL_CHECKOUT_VERSION),
     before(FIRST_HALL_LEAVING_VERSION))
-  const early = s.earlyTraining
-  function requireHistoryVersion(task: { stage: number }, threshold: number, version: string, message: string) {
-    if (task.stage > threshold && before(version)) throw new Error(message)
+  const early = s.earlyTraining, approach = early.firstHallApproach
+  function requireHistoryVersion(task: { stage: number }, threshold: number, version: string, label: string) {
+    if (task.stage > threshold && before(version)) throw new Error(label + '记录不属于此版本。')
   }
-  requireHistoryVersion(early.refining, 11, EARLY_INFUSION_VERSION, '魔核入水记录不属于此版本。')
-  requireHistoryVersion(early.firstTraining, 0, FIRST_TRAINING_VERSION, '首次持续调息记录不属于此版本。')
-  requireHistoryVersion(early.firstTraining, 10, FIRST_REVIEW_VERSION, '半月回顾记录不属于此版本。')
-  requireHistoryVersion(early.firstTechnique, 0, FIRST_TECHNIQUE_VERSION, '首次铁片研究记录不属于此版本。')
-  requireHistoryVersion(early.firstTechnique, 9, FIRST_BOTTLE_VERSION, '首次瓷瓶试招记录不属于此版本。')
-  requireHistoryVersion(early.firstDeparture, 0, FIRST_DEPARTURE_VERSION, '首次出门石路记录不属于此版本。')
-  requireHistoryVersion(early.firstRoadMeeting, 0, FIRST_ROAD_MEETING_VERSION, '首次路口会面记录不属于此版本。')
-  requireHistoryVersion(early.firstHallEntry, 0, FIRST_HALL_ENTRY_VERSION, '首次实际入堂记录不属于此版本。')
-  requireHistoryVersion(early.firstHallReading, 0, FIRST_HALL_READING_VERSION, '首次东侧阅读记录不属于此版本。')
-  requireHistoryVersion(early.firstHallMatch, 0, FIRST_HALL_MATCH_VERSION, '首次东架旁观记录不属于此版本。')
-  requireHistoryVersion(early.firstHallMatch, 12, FIRST_HALL_RETURN_VERSION, '赛后走向东架记录不属于此版本。')
-  requireHistoryVersion(early.firstHallTalk, 0, FIRST_HALL_TALK_VERSION, '首次东架会面记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 0, FIRST_HALL_APPROACH_VERSION, '首次整衣靠近记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 14, FIRST_HALL_FIRST_RETURN_VERSION, '同一第一卷归架记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 19, FIRST_HALL_CONFLICT_VERSION, '东架交锋与第二卷记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 31, FIRST_HALL_THREAT_VERSION, '成人礼威胁记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 40, FIRST_HALL_EXIT_RESPONSE_VERSION, '堂内移步与来年回应记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 46, FIRST_HALL_CHECKOUT_VERSION, '同卷管理者登记记录不属于此版本。')
-  requireHistoryVersion(early.firstHallApproach, 49, FIRST_HALL_LEAVING_VERSION, '同行跨门记录不属于此版本。')
+  requireHistoryVersion(early.refining, 11, EARLY_INFUSION_VERSION, '魔核入水')
+  requireHistoryVersion(early.firstTraining, 0, FIRST_TRAINING_VERSION, '首次持续调息')
+  requireHistoryVersion(early.firstTraining, 10, FIRST_REVIEW_VERSION, '半月回顾')
+  requireHistoryVersion(early.firstTechnique, 0, FIRST_TECHNIQUE_VERSION, '首次铁片研究')
+  requireHistoryVersion(early.firstTechnique, 9, FIRST_BOTTLE_VERSION, '首次瓷瓶试招')
+  requireHistoryVersion(early.firstDeparture, 0, FIRST_DEPARTURE_VERSION, '首次出门石路')
+  requireHistoryVersion(early.firstRoadMeeting, 0, FIRST_ROAD_MEETING_VERSION, '首次路口会面')
+  requireHistoryVersion(early.firstHallEntry, 0, FIRST_HALL_ENTRY_VERSION, '首次实际入堂')
+  requireHistoryVersion(early.firstHallReading, 0, FIRST_HALL_READING_VERSION, '首次东侧阅读')
+  requireHistoryVersion(early.firstHallMatch, 0, FIRST_HALL_MATCH_VERSION, '首次东架旁观')
+  requireHistoryVersion(early.firstHallMatch, 12, FIRST_HALL_RETURN_VERSION, '赛后走向东架')
+  requireHistoryVersion(early.firstHallTalk, 0, FIRST_HALL_TALK_VERSION, '首次东架会面')
+  requireHistoryVersion(approach, 0, FIRST_HALL_APPROACH_VERSION, '首次整衣靠近')
+  requireHistoryVersion(approach, 14, FIRST_HALL_FIRST_RETURN_VERSION, '同一第一卷归架')
+  requireHistoryVersion(approach, 19, FIRST_HALL_CONFLICT_VERSION, '东架交锋与第二卷')
+  requireHistoryVersion(approach, 31, FIRST_HALL_THREAT_VERSION, '成人礼威胁')
+  requireHistoryVersion(approach, 40, FIRST_HALL_EXIT_RESPONSE_VERSION, '堂内移步与来年回应')
+  requireHistoryVersion(approach, 46, FIRST_HALL_CHECKOUT_VERSION, '同卷管理者登记')
+  requireHistoryVersion(approach, 49, FIRST_HALL_LEAVING_VERSION, '同行跨门')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

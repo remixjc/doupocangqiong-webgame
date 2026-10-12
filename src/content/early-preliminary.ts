@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
 // Original short dialogue and compressed walking layout; facts: authorized English chapters 29–32.
-export const preliminaryScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+export const preliminaryScenes = defineSceneRows(placeActorSceneKeys, [
   ["door","xuner","meet","门外的同行邀请","正式成年礼还在一个月之后。七段后的修炼并未立刻突破八段；今天先参加族中预测。薰儿在房门外等候，萧炎应邀同行。","回应薰儿 · 同去训练场"],
   ["gate","xuner","enter","沿路进入训练场","两人从房门走到训练场入口。场中央立着黑碑，测试员候在碑旁；左侧高台上，萧战与三位长老已经就座。","与薰儿入场 · 走向队伍后方"],
   ["waiting","xiaoyan","wait","在队伍后方候测","萧炎与薰儿来到队伍后方，等待点名。这里的步行距离是原创压缩布局；其他考生的测试稍后以回顾衔接。","在候测区站定 · 等待开测"],

@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const mountainVisitorScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const mountainVisitorScenes = defineSceneRows(placeActorSceneKeys, [
   ["ridge","yan","recognize-xuner","紫衣来人是薰儿","本人从山上确认来人。她沿山径上来，古戒老师仍在戒中。","本人确认薰儿来访"],
   ["ridge","observer","notice-confidence","她注意到重新显露的信心","薰儿看到本人神态的变化。这是她当时的观察，不是新增战斗属性。","记录薰儿注意到信心"],
   ["ridge","xuner","greet","薰儿先问候","薰儿见到他平静下来，问起是否还需要安慰。","听薰儿上山问候"],

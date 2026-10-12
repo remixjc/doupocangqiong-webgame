@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const familyContractScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const familyContractScenes = defineSceneRows(placeActorSceneKeys, [
   ["guests","yan","feel-anger","压抑终于到了边缘","追加条件之后，萧炎的愤怒显露。这里记录情绪变化，不把愤怒变成攻击按钮或战斗胜利。","记下愤怒 · 尚未交手"],
   ["guests","guest","draw-sword","来客青年拔剑戒备","纳兰嫣然后退，同行青年拔出剑，盯着萧炎。双方依然没有交手；没有可夺取的佩剑。","观察拔剑戒备"],
   ["father","father","stop-anger","父亲出声喝止","萧战喝止儿子，顾虑萧家面对云岚宗的处境。喝止只使冲突停在戒备阶段，还需要本人恢复冷静。","听父亲喝止 · 收住冲动"],

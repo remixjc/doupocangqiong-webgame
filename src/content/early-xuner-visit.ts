@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const xunerVisitScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const xunerVisitScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"room","appear","薰儿从角落走出","萧炎","父亲离开后，萧炎看向房中角落，招呼听见父子谈话的薰儿。她从角落走出来，笑着来到他身旁。","看见薰儿 · 接续房中谈话"],
   [1,"room","talk","谈起父亲，也问下午去向","薰儿","薰儿谈起萧战对儿子的支持，又问萧炎下午去了哪里。萧炎只说出去走了走，未向她说明寄售经过。","接续交谈 · 保留各自所知"],
   [2,"room","promise","三年之约，她愿同行","薰儿","薰儿告诉萧炎，等他去云岚宗面对三年之约时，她愿意同行。这是一份承诺，此时还没有启程。","记下同行承诺"],

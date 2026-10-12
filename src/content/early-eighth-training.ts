@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const eighthTrainingScenes = defineSceneRows(["place","operation","title","text","action"], [
+import { defineSceneRows, placeSceneKeys } from './scene-rows'
+export const eighthTrainingScenes = defineSceneRows(placeSceneKeys, [
   ["fork","promise","分路回应，约好次日同行","接续预测后的邀请，萧炎回应薰儿。此时仍是预测当天；约好不等于已经完成次日出游。","回应邀请 · 约好明日同行"],
   ["door","return","预测当天，独自回房","萧炎先回到房中。这次回应与回房独立记录，不增加伙伴关系值。","回到房内 · 先缓一口气"],
   ["basin","recover","房中既有木盆，缓解疲倦","房中的既有药液缓解疲倦。本段呈现此时的木盆场景，不复活早先耗尽的自用容器，也不把父亲赠回的封瓶倒入盆中。","静坐调息 · 缓解当天疲倦"],

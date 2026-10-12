@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const ningFirstScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const ningFirstScenes = defineSceneRows(placeActorSceneKeys, [
   ["waiting","observe","rules","复测结束，二长老说明一次挑战","二长老确认正式测试结束，说明斗者以下族人可以向萧炎发起一次挑战。规则是本次礼的考核，不是给玩家无限刷奖励。","听取一次挑战规则 · 等待来人"],
   ["waiting","observe","pill","场边视角：萧玉交药给萧宁","镜头转向场边，萧玉把二品增气药物交给萧宁，并嘱咐非必要不要用。药物由萧宁保管，尚未服用；萧炎并没有因此得到它，也不假定此时知道这次私下交付。","观察场边交付 · 药物归萧宁"],
   ["waiting","observe","challenge","萧宁上台提出挑战","萧宁登台提出应战，二长老询问萧炎是否接受。今天的对手是萧宁，不是预测时的萧克。","听萧宁提出挑战 · 走上木台"],

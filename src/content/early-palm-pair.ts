@@ -1,7 +1,7 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, stationSceneKeys } from './scene-rows'
 // Chapter 28: the first gust fails to externalize Qi, but the later
 // pull + direct wind DOES break vase one before the teacher's lesson.
-export const palmPairScenes = defineSceneRows(["station","operation","title","text","action"], [
+export const palmPairScenes = defineSceneRows(stationSceneKeys, [
   ["door","ready","七段之后，试试新想法","本轮七段已经感知稳定。萧炎收拾妥当，在房中以两只花瓶观察吸力与推力。","就位 · 分清两只练习瓶"],
   ["table","gust","直接推风的局限","直接催动斗气，只吹出一阵风，花瓶晃动。这次没有做到真正的斗气外放，不能记成大斗师能力。","试出一阵风 · 观察局限"],
   ["table","pull-first","第一只，先吸近","退开几步，以吸掌把第一只花瓶拉近。第二只仍放在桌边，售品原瓶收好。","吸掌 · 拉近第一只"],

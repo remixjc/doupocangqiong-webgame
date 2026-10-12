@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const earlyTeachingScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const earlyTeachingScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"table","review","借卷与眼前的准备","药老","卷册已经放在桌上。药老翻看过后，询问萧炎为什么借来这卷；萧炎说起成年仪式前的准备。","请老师查看借卷 · 保管记录不变"],
   [1,"teacher","ask","向老师请教","萧炎","只靠已有的修炼，还不足以应对将来的交手。萧炎请老师传授斗技，药老答应教一门近身技法。","请教近身斗技 · 八极崩"],
   [2,"teacher","focus","凝神接受传授","药老","萧炎闭目凝神，药老点向他的额头，将八极崩的技法知识传入。收到知识，仍不等于已能在实战中运用。","凝神记下技法 · 不重复解锁战斗技能"],

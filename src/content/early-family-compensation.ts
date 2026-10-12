@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const familyCompensationScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const familyCompensationScenes = defineSceneRows(placeActorSceneKeys, [
   ["guests","observer","describe-pill","玉匣里的丹药","匣中是一枚绿色丹药。这里回顾它帮助斗之气九段凝聚气旋的故事用途；萧炎此时没有服用，也没有因此升为斗者。","观察丹药 · 不取物"],
   ["guests","observer","review-lore","资质与炼制条件","这段说明介绍特殊的火木资质与灵魂感知，以及炼制所需的材料、火焰与感知控制。读懂知识不等于已经取得职业或完成一次炼制。","记下知识 · 资格与实际炼制分开"],
   ["guests","geye","name-maker","葛叶说出炼制者","葛叶说明这枚丹药由古河炼制。其名望使长老更重视玉匣，但丹药依旧没有交给萧家。","记录古河与来客说明"],

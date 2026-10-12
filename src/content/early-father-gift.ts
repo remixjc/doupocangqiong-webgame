@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const fatherGiftScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const fatherGiftScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"door","return","回到房中，等一声敲门","往事手札","寄售手续办妥后，萧炎回到房中。这一页接续父子来访；后续修炼物资另行筹备。","回到房中 · 接续父子来访"],
   [1,"door","arrive","父亲携已购玉瓶来访","萧战","门外传来父亲的声音。萧炎开门，萧战带着今日拍卖买得的白玉瓶来访；同瓶此时已由父亲保管。","开门迎父亲 · 核对同瓶由萧战携来"],
   [2,"meeting","support","三年之约，父亲愿意支持","萧战","父亲关心萧炎这段时日的心事。萧炎仍打算亲赴云岚宗面对三年之约，萧战听完后表示支持。","听父亲支持 · 记下三年之约"],

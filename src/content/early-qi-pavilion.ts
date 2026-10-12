@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const qiPavilionEntryScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const qiPavilionEntryScenes = defineSceneRows(placeActorSceneKeys, [
   ["forecourt","xiaoyan","gather","五天后的功法阁","礼后五天的安排以故事过渡呈现。萧炎与族人来到功法阁，薰儿同行；这里收藏家族功法，与此前借斗技卷轴的斗技堂分别记录。","记下集合 · 不现实等待五天"],
   ["father","observe","rules","入阁前听父亲宣布规则","两小时内返回，每人只取一卷与自身属性相合的功法。多取会失去取得资格。时限先记为故事规则，尚未取得任何卷轴。","记下两小时与一卷规则"],
   ["door","observe","open","守卫打开黑色大门","两名守卫推开大门。门开后仍须测定属性，并沿对应通道前行；尚未轮到萧炎入阁。","观察开门 · 仍待本人测定"],

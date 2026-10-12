@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const ceremonyGuestScenes = defineSceneRows(["place","operation","title","text","action"], [
+import { defineSceneRows, placeSceneKeys } from './scene-rows'
+export const ceremonyGuestScenes = defineSceneRows(placeSceneKeys, [
   ["gate","enter","正式成年礼当天，宾客已到","训练场中专为成年礼搭起木台，城中宾客前来观礼。预测时的地面黑碑并非这座正式木台；仪式还没有开始。","走进观礼场地 · 找到树荫"],
   ["shade","sense","树荫下，薰儿察觉八段","与薰儿坐在树荫下，她察觉萧炎已经八段，萧炎点头回应。这里确认她的察觉，不替代后面的正式石碑复测。","回应薰儿 · 已有八段故事结果"],
   ["shade","guests","望向木台附近的宾客","雅妃在人群中与宾客交谈。薰儿提到萧家与拍卖场的往来；这次观礼不重新进行拍卖或结算。","认出雅妃到场 · 继续候礼"],

@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const ceremonyVerdictScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const ceremonyVerdictScenes = defineSceneRows(placeActorSceneKeys, [
   ["outside","observe","receive","萧玉接起场外萧宁","萧玉接起昏迷的萧宁，随后把他交给族人照看。雅妃与父亲对斗技来源仍只在猜测，没有知道药老身份。","观察场外交接 · 不增加玩家物品"],
   ["stairs","observe","yu-request","萧玉上台要求挑战","萧玉提出挑战；这是新的请求，尚未获准，也没有发生第三场。","听萧玉请求 · 等待裁判"],
   ["stairs","observe","yu-block","二长老先否定萧玉资格","本次挑战只允许斗者以下族人。萧玉已经是三星斗者，二长老明确要求撤回；不能让萧炎打败她作为此礼结局。","确认萧玉无资格 · 不开第三场"],

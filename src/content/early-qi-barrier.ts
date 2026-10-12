@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const qiBarrierScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const qiBarrierScenes = defineSceneRows(placeActorSceneKeys, [
   ["fire","xiaoyan","fire","沿元素标记进入火通道","阁内各通道标注功法属性。按本人火属性进入火通道，再核父亲提示的第三条支路。布局为原创压缩。","选火通道 · 属性已经测定"],
   ["path","xiaoyan","path","五条支路中寻找第三路","火通道分为五路。走到支路入口再选择；本次线索指向第三路。选错只记免费辨路重试，不编其他房间的卷轴。","确认当前支路"],
   ["room37","xiaoyan","read37","转角核对三十七号房","沿第三路前行，转角门牌是三十七号。目标仍在前方，不能把沿途门牌当作已取得功法。","读三十七号 · 继续找四十三"],

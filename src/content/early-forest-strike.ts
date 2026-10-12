@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const forestStrikeScenes = defineSceneRows(["place","operation","title","text","action"], [
+import { defineSceneRows, placeSceneKeys } from './scene-rows'
+export const forestStrikeScenes = defineSceneRows(placeSceneKeys, [
   ["stone","review","从五段到六段的时日","首次拍卖后，萧炎密集训练三个月，前几日才从五段进至六段。这一页回顾故事跨度；接下来亲自做一次压缩练技，不把点击次数当作真实三个月。","记下六段故事结果 · 走向练技树"],
   ["tree","begin","站到树前，准备一次肘击","此前药老已经正式传授八极崩。萧炎在林中练习，准备稳住身形、凝聚斗气，再用肘部击树；这一轮采用三步原创时机操作。","开始林中练技 · 稳身凝气再肘击"],
   ["tree","steady","稳身、凝气、肘击","在绿色35%–65%区间依次完成三步。失误重新稳身，可以免费停练。成功才让同一棵树倒下，随后必须退到青石休息。","稳身"],

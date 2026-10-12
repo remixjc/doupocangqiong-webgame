@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
 // Chapter 15: limited object trial. The two manual markers are game mechanics.
-export const firstBottleScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstBottleScenes = defineSceneRows(actorSceneKeys, [
   ['yan', 'face-bottle', '面对桌上真实瓷瓶', '本人仍在床边，明确朝向桌上瓷瓶。房中瓷瓶仍完整，是这次有限试招的对象，不是后期吸推两瓶。', '面对桌上完整瓷瓶'],
   ['yan', 'charge', '运起当时有限斗气', '右手仍成爪，仅运起当时四段所能调用的力量。如今主线境界不会替这段历史增强功力。', '运起当时有限斗气'],
   ['yan', 'pull', '有限吸力', '手动选两次35%至65%的标记，尝试对桌上瓷瓶施加有限吸力。失误只免费复位标记，不重发物品。', '完成一次有限吸力标记'],

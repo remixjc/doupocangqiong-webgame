@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const methodDiscussionScenes = defineSceneRows(["actor","operation","title","text","action"], [
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
+export const methodDiscussionScenes = defineSceneRows(actorSceneKeys, [
   ["yan","ask-year-plan","一年目标如何实现","本人在拜师后问起一年七段的办法。目标仍是当时的计划。","本人询问一年目标办法"],
   ["elder","explain-foundation","先谈修炼基础","老师说明持续修炼留下的基础价值。解释不恢复主线资源。","听老师说明基础"],
   ["yan","ask-alchemy-time","什么时候开始炼药","本人追问炼药教学的时机，尚未开始实际炼药。","本人询问炼药时机"],

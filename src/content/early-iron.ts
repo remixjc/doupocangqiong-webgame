@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const ironScenes = defineSceneRows(['actor','operation','title','text','action'], [
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
+export const ironScenes = defineSceneRows(actorSceneKeys, [
   ['teacher','ask','老师先问铁片','老师没有立即开始炼化，先问萧炎买到的黑铁片是否已经查看。','旁观老师询问黑铁片'],
   ['yan','extract','取出那片黑铁','萧炎从随身物中拿出成交附带的黑铁片。这是同一片，并非再次领取。','本人取出同一黑铁片'],
   ['yan','inspect','上下查看','萧炎翻看古旧铁片，上下查看后仍未明白其中内容。','本人上下查看铁片'],

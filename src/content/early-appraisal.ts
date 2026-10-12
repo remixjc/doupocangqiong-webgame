@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const appraisalScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const appraisalScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"alley","cloak","侧巷里换上黑袍","萧炎","萧炎在拍卖场旁的侧巷换上黑袍，遮住面容和身形。待售玉瓶仍在身上。","换上黑袍 · 藏好身份"],
   [1,"entrance","arrive","进入拍卖场，寻找鉴定室","往事手札","萧炎走进拍卖场，在大厅找到鉴定室；进入后，鉴定接待人询问来意。","进入鉴定室 · 找到接待桌"],
   [2,"desk","present","同一只玉瓶放上桌","萧炎","萧炎将此前装好的白玉瓶放在接待桌上，请拍卖场鉴定这份制品。瓶在桌上保管，身上不再留另一份。","把待售玉瓶放桌 · 交鉴定接待"],

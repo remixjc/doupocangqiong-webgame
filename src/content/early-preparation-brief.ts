@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const preparationBriefScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const preparationBriefScenes = defineSceneRows(placeActorSceneKeys, [
   ["stone","elder","refocus-target","回到一年目标","老师将话题从未来功法转回当时的一年七段计划。","听老师转回一年目标"],
   ["stone","yan","ask-training","本人再问修炼办法","本人问如何推进眼前修炼。尚未开始调制或训练。","本人再问训练方案"],
   ["stone","elder","explain-gradual","循序建立基础","老师说明初期修炼应循序建立身体和经脉基础。","听循序基础说明"],

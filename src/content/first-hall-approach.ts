@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
 
-export const firstHallApproachScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallApproachScenes = defineSceneRows(actorSceneKeys, [
   ['ning', 'sour', '西侧的神情', '萧宁看见东架两人的交谈，脸色难看，仍在西场。', '观察神情'],
   ['ning', 'clench', '握紧双手', '他握起拳头，尚未走动。', '记录握拳'],
   ['ning', 'relax', '松开拳头', '双手松开，仍未靠近。', '记录松拳'],
@@ -17,14 +17,14 @@ export const firstHallApproachScenes = defineSceneRows(['actor', 'operation', 't
   ['yan', 'archive', '靠近前段归档', '整衣、靠近与收卷分存，帮选提议与归架待续。', '归档靠近与收卷'],
 ] as const)
 
-export const firstHallFirstReturnScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallFirstReturnScenes = defineSceneRows(actorSceneKeys, [
   ['ning', 'offer', '帮选的提议', '萧宁笑着提出替本人挑选几门高阶斗技，卷轴尚未交付。', '听见帮选提议'],
   ['ning', 'access', '访问资格的说法', '他称本人无权查看某些斗技，这一说法不改变技能。', '听见访问资格说法'],
   ['yan', 'decline', '本人婉拒', '本人摇头婉拒，第一卷仍在手中。', '本人婉拒帮选'],
   ['yan', 'return-first', '同一第一卷归架', '把已经卷起的同一第一卷实际放回原书架。薰儿仍持她自己的临时卷，第二卷尚未取。', '实际放回同一第一卷'],
   ['yan', 'archive-return', '同卷归架归档', '帮选与归架已分存，交锋与第二卷待续。', '归档同卷归架'],
 ] as const)
-export const firstHallConflictScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallConflictScenes = defineSceneRows(actorSceneKeys, [
   ['ning', 'taunt', '过时的三段说法', '萧宁以旧三段讥讽。只是他的过时说法，不回退本人当时四段或当前境界。', '听见过时讥讽'],
   ['yan', 'recognize', '察觉刻意讥讽', '本人叹气，明白对方刻意讥讽，尚未接受挑战。', '察觉刻意讥讽'],
   ['yan', 'childish', '回应幼稚', '本人点明对方想吸引薰儿注意，认为这种表现幼稚。', '本人回应幼稚'],
@@ -38,7 +38,7 @@ export const firstHallConflictScenes = defineSceneRows(['actor', 'operation', 't
   ['yan', 'past', '回应三年前', '本人平静反问对方为何三年前不敢这样说。后续威胁与离堂另存。', '本人回应三年前'],
   ['yan', 'archive-conflict', '交锋与第二卷归档', '她自己的卷放下与本人另取第二卷分存。未开战、未登记、未离堂。', '归档交锋与第二卷'],
 ] as const)
-export const firstHallThreatScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallThreatScenes = defineSceneRows(actorSceneKeys, [
   ['ning', 'grind', '对方咬牙', '萧宁咬牙，怒意未变成当前战斗。', '观察咬牙'],
   ['ning', 'restrain', '顾忌族长之子', '他顾忌本人的身份，仍没有动手。', '观察未动手'],
   ['ning', 'inhale', '深吸一口气', '对方深吸一口气，看向本人。', '记录深吸气'],
@@ -49,7 +49,7 @@ export const firstHallThreatScenes = defineSceneRows(['actor', 'operation', 'tit
   ['yan', 'eye-roll', '本人收回目光', '本人收回目光，第二卷仍由本人保管。', '本人收回目光'],
   ['yan', 'archive-threat', '威胁与观察归档', '未来挑战与本人观察已记下。实际向堂口走、登记同卷与离堂待续。', '归档威胁与观察'],
 ] as const)
-export const firstHallExitResponseScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallExitResponseScenes = defineSceneRows(actorSceneKeys, [
   ['yan', 'walk-aisle', '持同卷走向堂口', '本人持同一第二卷离开东架，实际走到堂中。第一卷与她放下的临时卷仍各在原处。', '持同一第二卷走到堂中'],
   ['ning', 'misread', '对方误解退让', '萧宁把本人的移动误解为退让。这只是他的想法，没有本人认输或当前胜利结算。', '观察对方误解'],
   ['yan', 'walk-entrance', '走到堂内入口', '本人继续持同一第二卷走到堂内入口，尚未向管理者登记，也没有跨门离堂。', '持同一第二卷走到堂内入口'],
@@ -57,12 +57,12 @@ export const firstHallExitResponseScenes = defineSceneRows(['actor', 'operation'
   ['ning', 'green', '对方脸色发青', '萧宁听见回应，脸色发青。本人仍在堂内入口持同一第二卷。', '观察对方脸色发青'],
   ['yan', 'archive-exit-response', '堂内移步与回应归档', '实际位置与来年回应已分存。管理者登记、薰儿同行与跨门离堂另续。', '归档堂内移步与来年回应'],
 ] as const)
-export const firstHallCheckoutScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallCheckoutScenes = defineSceneRows(actorSceneKeys, [
   ['yan', 'check-held', '核对本人所持同卷', '本人在堂口持同一第二卷；第一卷已归架，她的临时卷仍独立放下。现在向斗技堂管理者办理借阅。', '核对所持同一第二卷'],
   ['yan', 'checkout-second', '实际办理同卷借阅', '本人持该同一第二卷向斗技堂管理者实际办理借阅。记录只提高本次登记，尚未与薰儿跨门离堂。', '向管理者实际登记同一第二卷'],
   ['yan', 'archive-checkout', '同卷借阅归档', '同一第二卷已经登记借出，仍由本人持有。薰儿同行与交谈、实际跨门离堂分别待续。', '归档同一第二卷借阅'],
 ] as const)
-export const firstHallLeavingScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+export const firstHallLeavingScenes = defineSceneRows(actorSceneKeys, [
   ['xuner', 'join', '薰儿走到堂口', '薰儿从东架走到本人旁边；临时卷留原处。', '薰儿实际走到堂口'],
   ['yan', 'chat', '同行短谈', '两人交谈准备离堂。短谈为原创衔接。', '记录同行短谈'],
   ['yan', 'cross', '两人实际跨门', '本人持同一借卷，与薰儿实际跨门。', '持同卷与薰儿实际跨门'],

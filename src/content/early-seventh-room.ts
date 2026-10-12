@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, stationSceneKeys } from './scene-rows'
 // Chapter 27 fact sequence; all dialogue, stations and timing are original.
-export const seventhRoomScenes = defineSceneRows(["station","operation","title","text","action"], [
+export const seventhRoomScenes = defineSceneRows(stationSceneKeys, [
   ["window","enter","秋光入室","林中练技之后，时序来到秋日。过去一个月的几次尝试尚未成功，今日重新入定。","回顾时序 · 就位调息"],
   ["basin","breathe","先收心，再调息","保持专注，用两次连贯呼吸承接这一轮。木盆中的绿色药液随着吸收逐渐变淡。","凝定调息"],
   ["basin","observe","药色渐淡","眼前药色淡去，绿色气流减弱。先看清容器状态，再等待老师。","观察药液 · 水已变清"],

@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const morningCardScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const morningCardScenes = defineSceneRows(placeActorSceneKeys, [
   ["room","observer","review-night","清晨光线与一夜调息回顾","清晨窗光照进房中。夜间调息只是故事回顾，不计真实后台时间或奖励。","回顾清晨与夜间调息"],
   ["room","yan","end-meditation","本人收气结束调息","本人结束这次调息。此时主线生命、斗气和经验不变。","本人收气结束调息"],
   ["room","yan","feel-qi","本人感受斗气返回","本人感受到熟悉的斗气。这是当时感受，不是发放新境界或恢复当前战斗值。","本人记录斗气感受"],

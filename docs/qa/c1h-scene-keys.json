@@ -1,0 +1,93 @@
+{
+  "version": "0.75.1",
+  "date": "2026-10-13",
+  "files": 48,
+  "calls": 54,
+  "reverseSourceEqual": true,
+  "entireRuntimeExportsEqual": true,
+  "versionErrorLabels": 19,
+  "entireSaveInverseEqual": true,
+  "rejectedComparisons": 9,
+  "decodedNativeOriginals": 174,
+  "originalParserOutcomesEqual": true,
+  "native": [
+    {
+      "name": "sceneKeysMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791841883809.json",
+      "sha256": "d38402d41a7655c14a310582eb1485cb3189527fdbf2c6975ac57bf3de29530f",
+      "entireStateEqual": true
+    },
+    {
+      "name": "sceneKeysMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791841886185.json",
+      "sha256": "5def39de6dbfbfe718ec76f2a876b77c5aa11165fac8bc8290ce618683ea83e6",
+      "entireStateEqual": true
+    },
+    {
+      "name": "sceneKeysIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791841888542.json",
+      "sha256": "97e39663105b52d8a32d06beddd0ca2bce940b83c95d87133b0d728089f941f1",
+      "entireStateEqual": true
+    },
+    {
+      "name": "sceneKeysMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791841897867.json",
+      "sha256": "1581f5989f62600efe3e1587839350288fc601118aa70b685fc7d75693dd456f",
+      "entireStateEqual": true
+    },
+    {
+      "name": "sceneKeysIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791841995049.json",
+      "sha256": "91c9db22daa9d5771c8e67418d9c2df37602061ad9edff1e300885e8222945ed",
+      "entireStateEqual": true
+    }
+  ],
+  "vitest": {
+    "files": 152,
+    "tests": 904
+  },
+  "nodeTests": 11,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "browser": [
+    {
+      "label": "SceneKeysMain",
+      "status": "同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "text": "×\n斗技堂 / 同行与实际离堂\n持借卷同行跨门。\n\n选人物后按E记录本步。刷新关注本人，三人位置独立；她放卷与本人另取分存。\n\n本人读卷与察觉\n旁观萧宁整衣与行走\n旁观堂中人群\n薰儿同行\n堂外\n西侧训练场\n东侧书架\n萧宁 · 已整衣\n薰儿\n堂内入口\n本人 · 持第二卷\n\n同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续\n\n两人已跨门，仍持同一借卷。旧卷账 9/9。\n\n当前她自己的临时卷已经放下，旧会面拿卷历史保持。切磋与未来威胁没有当前开战。\n\n同行与实际离堂已归档。\n\n已离堂，午后与回房另续。\n\n暂离同行与实际离堂 · 保留断点",
+      "yan": "translate(60 310)",
+      "secondX": "80",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(85 280)"
+    },
+    {
+      "label": "SceneKeysMaterials",
+      "status": "同行与实际离堂 4/4 · 同行离堂 · 实际跨门归档，午后待续",
+      "yan": "translate(60 310)",
+      "xuner": "translate(85 280)"
+    }
+  ],
+  "initialJs": 492401,
+  "initialGzip": 164996,
+  "totalJs": 1847469,
+  "savedTotalJs": 2523,
+  "budgets": [
+    500000,
+    165000,
+    1850000
+  ],
+  "prerequisite": {
+    "sha": "deeaa6265cd8ab8ea17ae2bf190506127afe949b",
+    "checks": 38311740119,
+    "conclusion": "success",
+    "pages": 38311740092,
+    "pagesConclusion": "skipped",
+    "files": 118,
+    "bytes": 1984097
+  },
+  "limits": "Only shared readonly field tuples, identical19version-error suffix, single validatedapproachreference. Content/shape/literaltypes/history/positions/custody/rewards/spoiler unchanged. Initialgzip remains nearfixedlimit; further measuredinitialgzip release needed before additionalnarrative.",
+  "candidates": "Initial tuplecandidate165037 gzipfailed. A functionwrappercandidate165021 andcachedreference165009 failedandwerefullyreversed; acceptedtuple/sourceinverseproofs retained. Splittingkeys/PUREannotations producednogainandwerefullyreversed. Firstbrowsercapturewaspreviousnavigationcompositorframe; stableDOMandordinaryactorUIredraw followedbylaterrecapture actuallyinspected. Budget limits unchanged."
+}

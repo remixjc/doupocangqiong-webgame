@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const qiAidScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const qiAidScenes = defineSceneRows(placeActorSceneKeys, [
   ["fire","xiaoyan","walk-together","出四十三号房，与薰儿同行","萧炎持家族卷走出房间，等薰儿一同沿火通道前行；仍未离阁。","与薰儿开始同行"],
   ["room","xuner","select-second","薰儿在火通道另选一卷","薰儿进入一间小房取出玄阶低级卷，由她保管。这不是先前展示的支持卷，也不交给萧炎。","薰儿取卷 · 独立保管"],
   ["clock","xiaoyan","check-time","看过其他通道，时限将近","两人行看阁内。萧炎查看时间，准备向出口走。两小时以故事回顾呈现，不进行现实两小时计时或编造超时结果。","核时限将近 · 向出口走"],

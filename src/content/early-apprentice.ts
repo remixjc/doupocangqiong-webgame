@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const apprenticeScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const apprenticeScenes = defineSceneRows(placeActorSceneKeys, [
   ["ridge","elder","promise-boundary","先说清取气边界","老人承诺未经本人许可不再取气。没有取得许可，也不让玩家永久免耗斗气。","听老人承诺 · 许可仍未给予"],
   ["ridge","elder","invite-strength","还想变得更强吗","老人提起力量与尊重，萧炎听见这个问题。未来努力仍由本人选择。","听清援助方向"],
   ["ridge","yan","reply-independence","为什么需要你的帮助","萧炎以自己恢复的天赋回应，也顾虑欠下陌生人的人情。","本人表达独立回应"],

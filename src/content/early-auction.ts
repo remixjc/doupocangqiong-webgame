@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const auctionScenes = defineSceneRows(["step","station","operation","title","speaker","text","action"], [
+import { defineSceneRows, stepStationSceneKeys } from './scene-rows'
+export const auctionScenes = defineSceneRows(stepStationSceneKeys, [
   [0,"entrance","seat","女侍引入，找一处偏僻座位","往事手札","女侍引萧炎进入已经开始的拍卖。他保持黑袍遮面，在偏僻处坐下，看见父亲与另外两家的头领在前排。","随女侍入席 · 保持身份遮掩"],
   [1,"stage","introduce","雅妃介绍同一瓶制品","雅妃","女侍把装有白玉瓶的玉盘送到台上。雅妃介绍这份二品制品，并说明谷尼已经亲自鉴定；萧炎只是旁观自己的寄售。","聆听雅妃介绍 · 核对同瓶来源"],
   [2,"seat","early-bids","竞价从人群转到前排","往事手札","人群从8500、9000抬到13000。加列毕出20000，奥巴帕跟到23000。萧炎安静坐着，自己没有出价。","旁观竞价 · 记录23000"],

@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const marketEscortScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const marketEscortScenes = defineSceneRows(placeActorSceneKeys, [
   ["alley","yan","review-core","魔核还要去坊市寻找","两药已经买齐。魔核里的力量暴烈，必须经炼制处理，不能拿来直接吸收。","记下魔核用途，再沿巷道出发"],
   ["gate","yan","approach-market","巷道通向城南坊市","两人走过曲折街巷，来到萧族维持秩序的南部坊市。摊主的税费不是这次采购开销。","走到坊市门前"],
   ["gate","gateGuards","recognize","门口两名家族护卫","两位守门护卫认出了萧炎和薰儿，停下原来的动作。","记录两位门卫认出同行者"],

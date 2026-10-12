@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const ceremonialTestScenes = defineSceneRows(["place","actor","operation","title","text","action"], [
+import { defineSceneRows, placeActorSceneKeys } from './scene-rows'
+export const ceremonialTestScenes = defineSceneRows(placeActorSceneKeys, [
   ["waiting","observe","wait","台下候礼，其他族人依序上台","正式礼已经开始。萧炎与薰儿在台下等待，先看其他族人完成各自仪式；这段并非萧炎自己的仪式。","观察候礼次序 · 等待叫名"],
   ["waiting","observe","call","礼程过半，叫到萧炎","主持方叫到萧炎。听到自己的名字后，才从南侧阶梯登台。二长老主持正式仪式，不能凭先前预测成绩跳过。","听到萧炎被叫名 · 阶梯开放"],
   ["rite","xiaoyan","stand","走上木台，在主持者面前站定","沿阶梯上台，在二长老面前站定。木台栏边不可直接穿过；登台位置和礼程严格分开。","站定候礼 · 由二长老主持"],

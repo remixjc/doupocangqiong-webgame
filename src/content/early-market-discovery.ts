@@ -1,6 +1,6 @@
-import { defineSceneRows } from './scene-rows'
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
 // Original short adaptation of the end of licensed English13; purchase is in14.
-export const marketDiscoveryScenes = defineSceneRows(["actor","operation","title","text","action"], [
+export const marketDiscoveryScenes = defineSceneRows(actorSceneKeys, [
   ["yan","approach","走过几处摊位","二人继续走过摊位，萧炎在前方一个摊子停下。必须走近，尚未发现材料。","本人带薰儿实际走近前方摊位"],
   ["yan","find-core","终于看见绿核","萧炎俯身看向摊上的绿核，认出所找的魔核。它仍属于摊主，尚未询价或成交。","本人发现摊上绿核"],
   ["yan","reach","手伸向摊面","萧炎的手掠过摊面，准备查看魔核。这不是购买或交付。","本人伸手准备查看魔核"],

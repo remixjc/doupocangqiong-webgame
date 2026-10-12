@@ -1,5 +1,5 @@
-import { defineSceneRows } from './scene-rows'
-export const firstHallMatchScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+import { defineSceneRows, actorSceneKeys } from './scene-rows'
+export const firstHallMatchScenes = defineSceneRows(actorSceneKeys, [
   ['yan', 'identify', '东架望西场', '本人仍靠东架读同一卷，辨认薰儿的对手是萧宁。', '本人辨认场中萧宁'],
   ['yan', 'impression', '平日的印象', '平时偶遇只有寻常招呼。两家长辈不睦，他带着敌意，却未特意嘲弄当时失意的本人。', '记录当时对萧宁的印象'],
   ['yan', 'read', '目光回到卷中', '放下思绪，继续研读第一卷。西场两人切磋，本人没有参赛。', '本人继续读同一卷'],
