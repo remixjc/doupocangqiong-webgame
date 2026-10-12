@@ -1,0 +1,739 @@
+{
+  "version": "0.59.1",
+  "date": "2026-10-12",
+  "vitestFiles": 135,
+  "vitestTests": 818,
+  "nodeTests": 11,
+  "initialJs": 496813,
+  "totalJs": 1798834,
+  "engineGzip": 159517,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "reducedJs": 50932,
+  "sourceTransforms": {
+    "guards": [
+      {
+        "path": "src/core/early-apprentice.ts",
+        "original": "(Object.keys(task) as (keyof ApprenticeState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-ceremonial-test.ts",
+        "original": "(Object.keys(task) as (keyof CeremonialTestState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-ceremony-guests.ts",
+        "original": "(Object.keys(task) as (keyof CeremonyGuestsState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-ceremony-verdict.ts",
+        "original": "(Object.keys(task) as (keyof CeremonyVerdictState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-city-pharmacy.ts",
+        "original": "(Object.keys(task) as (keyof CityPharmacyState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-eighth-training.ts",
+        "original": "(Object.keys(task) as (keyof EighthTrainingState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-family-compensation.ts",
+        "original": "(Object.keys(task) as (keyof FamilyCompensationState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-family-contract.ts",
+        "original": "(Object.keys(task) as (keyof FamilyContractState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-family-visit.ts",
+        "original": "(Object.keys(task) as (keyof FamilyVisitState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-ke-challenge.ts",
+        "original": "(Object.keys(task) as (keyof KeChallengeState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-market-bracelets.ts",
+        "original": "(Object.keys(task) as (keyof MarketBraceletsState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-market-discovery.ts",
+        "original": "(Object.keys(task) as (keyof MarketDiscoveryState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-market-escort.ts",
+        "original": "(Object.keys(task) as (keyof MarketEscortState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-market-search.ts",
+        "original": "(Object.keys(task) as (keyof MarketSearchState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-market-standoff.ts",
+        "original": "(Object.keys(task) as (keyof MarketStandoffState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-method-discussion.ts",
+        "original": "(Object.keys(task) as (keyof MethodDiscussionState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-morning-card.ts",
+        "original": "(Object.keys(task) as (keyof MorningCardState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-mountain-ring.ts",
+        "original": "(Object.keys(task) as (keyof MountainRingState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-mountain-visitor.ts",
+        "original": "(Object.keys(task) as (keyof MountainVisitorState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-ning-first.ts",
+        "original": "(Object.keys(task) as (keyof NingFirstState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-ning-second.ts",
+        "original": "(Object.keys(task) as (keyof NingSecondState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-palm-pair.ts",
+        "original": "(Object.keys(task) as (keyof PalmPairState)[]).some(key => action[key] !== task[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-preliminary.ts",
+        "original": "(Object.keys(task) as (keyof PreliminaryState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-preparation-brief.ts",
+        "original": "(Object.keys(task) as (keyof PreparationBriefState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-qi-aid.ts",
+        "original": "(Object.keys(task) as (keyof QiPavilionAidState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-qi-barrier.ts",
+        "original": "(Object.keys(task) as (keyof QiBarrierState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-qi-exchange.ts",
+        "original": "(Object.keys(task) as (keyof QiPavilionExchangeState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-qi-pavilion.ts",
+        "original": "(Object.keys(task) as (keyof QiPavilionEntryState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-qi-scroll.ts",
+        "original": "(Object.keys(task) as (keyof QiPavilionScrollState)[]).some(key => task[key] !== action[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/core/early-seventh-room.ts",
+        "original": "(Object.keys(task) as (keyof SeventhRoomState)[]).some(key => action[key] !== task[key])",
+        "importAdded": true,
+        "fullSourceRestored": true
+      }
+    ],
+    "blocked": [
+      {
+        "path": "src/ui/EarlyApprentice.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyCityPharmacy.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFamilyCompensation.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFamilyContract.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFamilyVisit.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketBracelets.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketDiscovery.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketEscort.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketSearch.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketStandoff.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMethodDiscussion.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMorningCard.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMountainRing.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMountainVisitor.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyPreparationBrief.tsx",
+        "kind": "blocked",
+        "original": "<><p className=\"muted\">{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} muted />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/TeacherRoom.tsx",
+        "kind": "blocked",
+        "original": "<><p>{blocked}</p><button className=\"secondary\" onClick={onBack}>返回往事手札</button></>",
+        "replacement": "<HistoryBlocked message={blocked} onBack={onBack} />",
+        "prefix": "import HistoryBlocked from './HistoryBlocked'\n",
+        "fullSourceRestored": true
+      }
+    ],
+    "heading": [
+      {
+        "path": "src/ui/EarlyAppraisal.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyApprentice.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyAuction.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyBracelet.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyCeremonialTest.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyCeremonyGuests.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyCeremonyVerdict.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyCityPharmacy.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `本人先走近${cityPharmacyPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `本人先走近${cityPharmacyPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyEighthTraining.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFamilyCompensation.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFamilyContract.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : observer\n        ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : observer\n        ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFamilyVisit.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyFatherGift.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyForestStrike.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyGrowth.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyHall.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyKeChallenge.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyLongSupplies.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketBracelets.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。` : '先走近拦路街角。'}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。` : '先走近拦路街角。'} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketDiscovery.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。'}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。'} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketEscort.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : observer ? '先选择本步的旁观焦点。'\n      : !canWalk ? '先明确回到本人视角，再接续两人的同行。' : `本人先走近${marketEscortPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : observer ? '先选择本步的旁观焦点。'\n      : !canWalk ? '先明确回到本人视角，再接续两人的同行。' : `本人先走近${marketEscortPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketSearch.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`\n      : `先由${selected === 'yan' ? '萧炎' : '薰儿'}走近${marketSearchPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`\n      : `先由${selected === 'yan' ? '萧炎' : '薰儿'}走近${marketSearchPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMarketStandoff.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMethodDiscussion.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : '请先实际走近山顶青石。'}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : '请先实际走近山顶青石。'} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMorningCard.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `本人先走近${morningCardPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `本人先走近${morningCardPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMountainRing.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyMountainVisitor.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : observer ? '先选择青石旁薰儿的旁观焦点。' : `请本人先走近${mountainRingPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : observer ? '先选择青石旁薰儿的旁观焦点。' : `请本人先走近${mountainRingPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyNingFirst.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyNingSecond.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyPalmPair.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyPreliminary.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyPreparationBrief.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyQiAid.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyQiBarrier.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyQiExchange.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyQiPavilion.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyRecovery.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyRoom.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlySettlement.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlySeventhRoom.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyTeaching.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/EarlyXunerVisit.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      },
+      {
+        "path": "src/ui/TeacherRoom.tsx",
+        "kind": "heading",
+        "original": "<h3>{scene.title}</h3><p>{scene.text}</p>",
+        "replacement": "<SceneHeading title={scene.title} text={scene.text} />",
+        "prefix": "import SceneHeading from './SceneHeading'\n",
+        "fullSourceRestored": true
+      }
+    ]
+  },
+  "nativeDownloads": [
+    {
+      "name": "roomMain",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791810492243.json",
+      "sha256": "aff343afd94c4a97c0d37b903f48cb1474e226900728e0e4b16d75342f91d05d",
+      "baseline": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809518640.json",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "roomMaterials",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791810494871.json",
+      "sha256": "1b9dffadc9d16bd8e15d33f16a69316013dafa45ed1def3780b2291599f8fc34",
+      "baseline": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809179572.json",
+      "onlyVersionChanged": true
+    },
+    {
+      "name": "roomIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791810496656.json",
+      "sha256": "1fbe8553877300fef72627954dedece9fa30cf55a47f0a56497fb91e67ac6255",
+      "baseline": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791809181921.json",
+      "onlyVersionChanged": true
+    }
+  ],
+  "engineBrowser": [
+    {
+      "chapter": 1,
+      "canvas": 1,
+      "ready": true,
+      "inputs": [
+        "ArrowRight",
+        "J 普攻"
+      ]
+    },
+    {
+      "chapter": 2,
+      "canvas": 1,
+      "ready": true
+    },
+    {
+      "chapter": 3,
+      "canvas": 1,
+      "ready": true
+    },
+    {
+      "chapter": 7,
+      "canvas": 1,
+      "ready": true
+    },
+    {
+      "chapter": 14,
+      "canvas": 1,
+      "ready": true
+    },
+    {
+      "chapter": 28,
+      "canvas": 1,
+      "ready": true
+    }
+  ],
+  "limitations": [
+    "WebGL desktop browser only; Canvas renderer is retained in module graph but not forced on a real device",
+    "No original story progress is signed by this optimization"
+  ],
+  "initialFailure": "First narrowed entry omitted EventEmitter registration; actual map stayed blank. Registrations restored and build graph requires all default/core plugins; failed artifact not committed."
+}

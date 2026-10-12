@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -23,7 +24,7 @@ export function advanceEarlyMarketBracelets(state: GameState, view: MarketBracel
   const blocked = earlyMarketBraceletsBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketBracelets, gift = state.earlyTraining.bracelet, scene = marketBraceletsScenes[task.stage]
-  if (!validMarketBracelets(task) || (Object.keys(task) as (keyof MarketBraceletsState)[]).some(key => task[key] !== action[key])
+  if (!validMarketBracelets(task) || !fieldsMatch(action, task)
     || action.expectedBracelet !== gift.stage || action.expectedGift !== gift.gift)
     return fail('两条手链或已有赠礼记录已经变化，请按当前断点继续。')
   if (!scene) return fail('让路与两条手链已经归档。')

@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -37,7 +38,7 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
     </div>
     <p role="status">父亲赠回 {task.stage}/6 · 同瓶{appraisalOwnerLabels[bottle.owner]}保管 · 净款{state.earlyTraining.settlement.net}保留 · 自用药力耗尽</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="父子来访步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <button className="primary" onClick={() => submitEarlyFatherGift(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>

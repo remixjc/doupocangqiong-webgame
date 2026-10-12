@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -20,7 +22,7 @@ export default function EarlyMountainVisitor({ state, onBack }: { state: GameSta
     const view: MountainVisitorView = observer ? { kind: 'observer', place: focus! } : { kind: 'yan', position }
     submitEarlyMountainVisitor(gameStore, view, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">当晚 / 薰儿来访与借资问答</span><h2>先听清借资提议，次晨交卡另记。</h2>
     <p id="mountain-visitor-help">{observer ? '本人已经离山。选择青石旁薰儿的旁观焦点，记录她留山的反应。' : '方向或WASD行走，近当前地点按E。问候、本人道歉、借资提议与紫金卡收回分别保存。'}</p>
@@ -32,7 +34,7 @@ export default function EarlyMountainVisitor({ state, onBack }: { state: GameSta
     <p role="status">当晚来访 {task.stage}/26 · {earlyMountainVisitorSaveSummary(state, state.settings)}</p>
     <p>古戒老师仍在戒中 · 紫金卡归薰儿：{task.purpleCard === 'displayed' ? '展示中，未交付' : task.purpleCard === 'stowed' ? '已收回，未交付' : '尚未展示'} · 普通黑卡待次晨</p>
     <p>本人：{task.yan === 'left' ? '已离山，当前为旁观' : task.yan === 'descending' ? '已走下山山径，尚待离山确认' : '仍在山上'} · 本段借资尚未到账，旧采购账本保留</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : observer ? '先选择青石旁薰儿的旁观焦点。' : `请本人先走近${mountainRingPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : observer ? '先选择青石旁薰儿的旁观焦点。' : `请本人先走近${mountainRingPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 5 && <button className="secondary" disabled={!near} onClick={() => act('claim-victory')}>尝试把薰儿评价登记为三年战已胜</button>}
       {task.stage === 13 && <button className="secondary" disabled={!near} onClick={() => act('claim-money')}>尝试按当晚提议领取采购资金</button>}

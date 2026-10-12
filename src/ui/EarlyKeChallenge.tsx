@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -58,7 +59,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
     </svg>
     <div className="early-walk-controls" aria-label="萧克挑战行走操作">{<WalkDirectionButtons prefix="应战" onMove={move} />}</div>
     <p role="status">萧克挑战 {task.stage}/12 · 动作 {task.beats}/2 · 重开 {task.attempts} 次 · {task.verdict === 'none' ? '尚未完成交锋' : task.verdict === 'pending' ? '萧克倒地，待父亲宣布' : '父亲已宣布萧克败'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="萧克挑战步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? near ? <section className="bond-summary" aria-label="萧克挑战步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>萧克应战时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧克应战时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="萧克应战时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>

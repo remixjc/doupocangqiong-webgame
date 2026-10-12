@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -48,7 +49,7 @@ export function advanceEarlyMountainRing(state: GameState, position: EarlyWalkPo
   const blocked = earlyMountainRingBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.mountainRing
-  if (!validMountainRing(task) || (Object.keys(task) as (keyof MountainRingState)[]).some(key => task[key] !== action[key]))
+  if (!validMountainRing(task) || !fieldsMatch(action, task))
     return fail('后山与古戒记录已变化，请按当前步骤继续。')
   const scene = mountainRingScenes[task.stage]
   if (!scene) return fail('后山前段已归档，不重复记录或领取奖励。')

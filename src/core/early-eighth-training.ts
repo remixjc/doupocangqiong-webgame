@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -35,7 +36,7 @@ export function advanceEarlyEighthTraining(state: GameState, entryPosition: Earl
   const blocked = earlyEighthTrainingBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.eighthTraining, scene = eighthTrainingScenes[task.stage]
-  if (!scene || !validEighthTraining(task) || (Object.keys(task) as (keyof EighthTrainingState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validEighthTraining(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '礼前训练记录已变化，请依当前阶段继续。' }
   if (!validForestPosition(position)) return { state, ok: false, message: '同行或训练位置无效。' }
   const target = eighthTrainingBeats(task.stage), expected = eighthTrainingOperation(task)

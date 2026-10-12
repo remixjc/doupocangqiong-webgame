@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import type { GameState } from '../core/model'
 import { earlyGrowthScenes } from '../content/early-growth'
 import { earlyGrowthBlock, submitEarlyGrowth } from '../core/early-growth'
@@ -27,7 +28,7 @@ export default function EarlyGrowth({ state, onContinue }: { state: GameState; o
     <p className="muted">以日夜画面压缩持续练习，翻页记录只代表已读过渡，不对应固定天数、境界提升或考核成绩。</p>
     {stage < 3 ? <>
       <p role="status">过渡翻阅 {stage}/3 · 可中途关闭</p>
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <button className="secondary" onClick={() => submitEarlyGrowth(gameStore, stage)}>{scene.action}</button>
     </> : <>
       <h3>这一页已记下，继续走自己的路。</h3>

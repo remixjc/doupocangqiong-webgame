@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -30,7 +31,7 @@ export function advanceEarlyNingFirst(state: GameState, entryPosition: EarlyWalk
   const blocked = earlyNingFirstBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.ningFirst, scene = ningFirstScenes[task.stage]
-  if (!scene || !validNingFirst(task) || (Object.keys(task) as (keyof NingFirstState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validNingFirst(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '萧宁首轮记录已变化，请依当前阶段继续。' }
   if (!validCeremonialPosition(position, 2) || action.actor !== scene.actor)
     return { state, ok: false, message: '本人的交锋或场边观察身份/位置无效。' }

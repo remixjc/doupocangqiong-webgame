@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -25,7 +26,7 @@ export function advanceEarlyMarketDiscovery(state: GameState, position: EarlyWal
   const blocked = earlyMarketDiscoveryBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketDiscovery, scene = marketDiscoveryScenes[task.stage]
-  if (!validMarketDiscovery(task) || (Object.keys(task) as (keyof MarketDiscoveryState)[]).some(key => task[key] !== action[key]))
+  if (!validMarketDiscovery(task) || !fieldsMatch(action, task))
     return fail('发现与心中建议记录已经变化，请按当前断点继续。')
   if (!scene) return fail('发现与心中购买建议已经归档。')
   if (!discoveryNear(position)) return fail('先由本人走近前方摊位。')

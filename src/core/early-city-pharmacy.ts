@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -44,7 +45,7 @@ export function advanceEarlyCityPharmacy(state: GameState, p: EarlyWalkPosition,
   const blocked = earlyCityPharmacyBlock(state)
   if (blocked) return fail(blocked)
   const ledger = state.earlyTraining, task = ledger.cityPharmacy
-  if (!validCityPharmacy(task) || (Object.keys(task) as (keyof CityPharmacyState)[]).some(key => task[key] !== action[key])
+  if (!validCityPharmacy(task) || !fieldsMatch(action, task)
     || ledger.started !== action.expectedStarted || ledger.purse.borrowed !== action.expectedBorrowed || ledger.purse.spent !== action.expectedSpent
     || ledger.liquid.stage !== action.expectedLiquid || ledger.receipts.bluegrass !== action.expectedPrimary
     || ledger.receipts.boneflower !== action.expectedAuxiliary || ledger.receipts.woodCore !== action.expectedCore)

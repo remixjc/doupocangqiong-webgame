@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -26,7 +27,7 @@ export function advanceEarlyCeremonyVerdict(state: GameState, entryPosition: Ear
   const blocked = earlyCeremonyVerdictBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.ceremonyVerdict, scene = ceremonyVerdictScenes[task.stage]
-  if (!scene || !validCeremonyVerdict(task) || (Object.keys(task) as (keyof CeremonyVerdictState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validCeremonyVerdict(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '正式裁定记录已变化，请按当前步骤继续。' }
   if (action.actor !== scene.actor || action.operation !== scene.operation)
     return { state, ok: false, message: '当前人物或步骤不符；不得再开第三场、接受未传授物品或提前裁定。' }

@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -36,7 +38,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
     if (document.hidden) return
     walkKey(event, move, () => { if (scene) act(scene.operation) })
   }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">坊市 / 让路与两条手链</span><h2>先请让路，再分清两件赠礼。</h2>
     <p id="market-bracelets-help">明确选择本步人物，方向或WASD行走，近街角按E。两人独立行走，换人物和刷新需重选；位置不保存，街坊不可穿过。</p>
@@ -66,7 +68,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
     <p role="status">让路手链 {task.stage}/28 · {earlyMarketBraceletsSaveSummary(state, state.settings)}</p>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 蓝金手链：{task.expensive === 'unoffered' ? '尚未提出' : '来人持有，未交付'}
       {' · '}普通绿链：{task.green === 'unshown' ? '尚未拿出' : task.green === 'shown' ? '萧炎持有，未交付' : task.green === 'received' ? '薰儿已收到，尚未戴上' : '薰儿已戴上'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。` : '先走近拦路街角。'}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。` : '先走近拦路街角。'} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 6 && <button className="secondary" disabled={!near} onClick={() => act('take-blue')}>提议赠送就算蓝金手链已交付吗？</button>}
       {task.stage === 10 && <button className="secondary" disabled={!near} onClick={() => act('claim-core')}>想到拆核就把木核放入任务袋</button>}

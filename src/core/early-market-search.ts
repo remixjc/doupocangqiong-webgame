@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -31,7 +32,7 @@ export function advanceEarlyMarketSearch(state: GameState, view: MarketSearchVie
   const blocked = earlyMarketSearchBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketSearch, scene = marketSearchScenes[task.stage]
-  if (!validMarketSearch(task) || (Object.keys(task) as (keyof MarketSearchState)[]).some(key => task[key] !== action[key]))
+  if (!validMarketSearch(task) || !fieldsMatch(action, task))
     return fail('寻核与手链记录已经变化，请按当前断点继续。')
   if (!scene) return fail('寻核与放回手链已经归档。')
   if (view.kind !== scene.view || !marketSearchNear(view.position, scene.place)) return fail(`先由${scene.view === 'yan' ? '萧炎' : '薰儿'}走近${marketSearchPlaces[scene.place].label}。`)

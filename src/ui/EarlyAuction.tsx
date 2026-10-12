@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -38,7 +39,7 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
     </div>
     <p role="status">首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管 · {state.earlyTraining.settlement.net ? '净款已收' : '尚未结算'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="首次拍卖步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <button className="primary" onClick={() => submitEarlyAuction(gameStore, position, station,
         { step: task.stage, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>

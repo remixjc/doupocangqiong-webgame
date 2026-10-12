@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -48,7 +49,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
     </svg>
     <div className="early-walk-controls" aria-label="同行援助行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <button key={direction} className="secondary" aria-label={['援助向上走', '援助向左走', '援助向下走', '援助向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</button>)}</div>
     <p role="status">援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</p>
-    {scene ? near ? <section className="bond-summary"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? near ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>援助出手时机<small>减弱动态：键盘调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="援助出手时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="援助时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>

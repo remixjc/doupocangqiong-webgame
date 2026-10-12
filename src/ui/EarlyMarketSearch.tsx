@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -35,7 +37,7 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
     if (document.hidden) return
     walkKey(event, move, () => { if (scene) act(scene.operation) })
   }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">坊市 / 寻核与普通手链</span><h2>一个继续寻核，一个停在手链摊。</h2>
     <p id="market-search-help">先明确选择本步人物，再用方向或WASD行走、近当前地点按E。两人的位置各自记录在本次行走中；换人物和刷新需重新选择。街坊不可穿过，位置不保存。</p>
@@ -59,8 +61,8 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
       {active && <WalkDirectionButtons prefix="寻核" onMove={move} />}</div>}
     <p role="status">坊市寻核 {task.stage}/20 · {earlyMarketSearchSaveSummary(state, state.settings)}</p>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 普通手链：{task.bracelet === 'xuner-viewing' ? '薰儿拿看，仍属摊主' : task.bracelet === 'returned' ? '已放回，仍属摊主' : '仍在摊上'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`
-      : `先由${selected === 'yan' ? '萧炎' : '薰儿'}走近${marketSearchPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`
+      : `先由${selected === 'yan' ? '萧炎' : '薰儿'}走近${marketSearchPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 10 && <button className="secondary" disabled={!near} onClick={() => act('claim-gift')}>拿看就能算作已经得到礼物吗？</button>}
       {task.stage === 11 && <button className="secondary" disabled={!near} onClick={() => act('claim-core')}>能从这条普通手链取出木核吗？</button>}

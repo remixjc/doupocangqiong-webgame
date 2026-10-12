@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -21,7 +22,7 @@ export function advanceEarlyPreparationBrief(state: GameState, position: EarlyWa
   const blocked = earlyPreparationBriefBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.preparationBrief
-  if (!validPreparationBrief(task) || (Object.keys(task) as (keyof PreparationBriefState)[]).some(key => task[key] !== action[key]))
+  if (!validPreparationBrief(task) || !fieldsMatch(action, task))
     return fail('准备说明记录已变化，请按当前步骤继续。')
   const scene = preparationBriefScenes[task.stage]
   if (!scene) return fail('准备说明与返戒已归档，不重发材料、资金或奖励。')

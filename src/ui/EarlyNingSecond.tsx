@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -63,7 +64,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
     </svg>
     <div className="early-walk-controls" aria-label="违规再攻行走操作">{<WalkDirectionButtons prefix="再攻" onMove={move} />}</div>
     <p role="status">违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="违规再攻步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? near ? <section className="bond-summary" aria-label="违规再攻步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>违规迎击时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="违规迎击时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="违规迎击时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>

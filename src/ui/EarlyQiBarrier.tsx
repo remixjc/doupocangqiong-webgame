@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -63,7 +64,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
     </svg>
     <div className="early-walk-controls" aria-label="火通道行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <button key={direction} className="secondary" aria-label={['火通道向上走', '火通道向左走', '火通道向下走', '火通道向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</button>)}</div>
     <p role="status">门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="火通道门障步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? near ? <section className="bond-summary" aria-label="火通道门障步骤"><SceneHeading title={scene.title} text={scene.text} />
       {task.stage === 1 ? <div className="early-walk-controls">{[1, 2, 3, 4, 5].map(path => <button key={path} className="secondary" onClick={() => act('path', path)}>选择第{path}路</button>)}</div>
         : task.stage === 6 ? <>
           {steady && <label className="setting-row"><span>破幕时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="破幕时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}

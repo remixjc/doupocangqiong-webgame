@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -42,7 +43,7 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
     </div>
     <p role="status">寄售鉴定 {task.stage}/8 · {task.cloaked ? '黑袍已穿' : '身份尚未遮掩'} · {task.tier === 2 ? '制品二品' : '品阶待核'} · {task.card === 'black-entry' ? '持黑色入场卡' : '尚无入场卡'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="寄售鉴定步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <button className="primary" onClick={() => submitEarlyAppraisal(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>

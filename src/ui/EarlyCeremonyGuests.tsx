@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -49,7 +50,7 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
     </svg>
     <div className="early-walk-controls" aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</div>
     <p role="status">宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="宾客与收剑步骤"><h3>{scene.title}</h3><p>{scene.text}</p><button className="primary" onClick={act}>{scene.action}</button></section>
+    {scene ? near ? <section className="bond-summary" aria-label="宾客与收剑步骤"><SceneHeading title={scene.title} text={scene.text} /><button className="primary" onClick={act}>{scene.action}</button></section>
       : <p className="muted">下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</p>
       : <section className="bond-summary"><h3>宾客与收剑已归档。</h3><p>萧玉收剑离去，父亲介绍与雅妃询问已记。正式仪式和八段石碑复测接下来继续。</p>{onCeremony && <button className="primary" onClick={onCeremony}>接续正式仪式 · 二长老验碑与八段</button>}</section>}
     <p className="muted">本段以观察和交谈平息争执，没有战斗结算；剑由萧玉保管，钱账、原封瓶、人物与伙伴记录保留。</p>

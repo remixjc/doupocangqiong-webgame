@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -34,7 +36,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
     if (document.hidden) return
     walkKey(event, move, () => { if (scene) act(scene.operation) })
   }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">{returning ? '回族与房中准备' : `坊市 / ${trade ? '询价与唯一成交' : '发现与心中购买建议'}`}</span><h2>{returning ? '走回族内，锁门后再摆材料。' : trade ? '同意之后，才付清同一笔订单。' : '一枚绿核，一片尚未辨明的黑铁。'}</h2>
     <p id="market-discovery-help">{returning ? '先同行出坊回族、分路后本人独自回房。方向/WASD行走，近当前地点按E；街坊不可穿过。位置不保存，刷新回到已完成地点；摆材料不恢复后来已耗物资。' : '由本人带薰儿走近前方摊位。方向/WASD行走，近摊按E；街坊不可穿过。历史逐步保存，行走位置不保存。老师的声音只在本人心中。'}{trade && '成交后需实际走到离摊标记。'}</p>
@@ -60,7 +62,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
     </svg>
     {scene && <div className="early-walk-controls">{<WalkDirectionButtons prefix="发现" onMove={move} />}</div>}
     <p role="status">{returning ? '回族房中' : trade ? '唯一成交' : '摊位发现'} {task.stage}/{returning ? 9 : trade ? 17 : 10} · {(returning ? earlyMarketReturnSaveSummary : trade ? earlyMarketTradeSaveSummary : earlyMarketDiscoverySaveSummary)(state, state.settings)}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。'}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。'} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {!trade && !returning && <>
         {task.stage === 2 && <button className="secondary" disabled={!near} onClick={() => act('claim-core')}>看见绿核就算已经买到</button>}

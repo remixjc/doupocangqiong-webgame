@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -61,7 +62,7 @@ export function advanceEarlyQiBarrier(state: GameState, position: EarlyWalkPosit
   const blocked = earlyQiBarrierBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionBarrier, scene = qiBarrierScenes[task.stage]
-  if (!scene || !validQiBarrier(task) || (Object.keys(task) as (keyof QiBarrierState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validQiBarrier(task) || !fieldsMatch(action, task))
     return fail('门障记录已变化，请按当前步骤继续。')
   if (action.actor !== scene.actor || !validQiBarrierPosition(position, task.stage)) return fail('当前人物或位置无效。')
   const next = structuredClone(state), updated = next.earlyTraining.qiPavilionBarrier

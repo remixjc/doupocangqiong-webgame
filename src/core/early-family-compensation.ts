@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -22,7 +23,7 @@ export function advanceEarlyFamilyCompensation(state: GameState, position: Early
   const blocked = earlyFamilyCompensationBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.familyCompensation
-  if (!validFamilyCompensation(task) || (Object.keys(task) as (keyof FamilyCompensationState)[]).some(key => task[key] !== action[key]))
+  if (!validFamilyCompensation(task) || !fieldsMatch(action, task))
     return fail('交涉记录已变化，请按当前场景继续。')
   const scene = familyCompensationScenes[task.stage]
   if (!scene) return fail('补偿交涉前段已归档，不重复登记。')

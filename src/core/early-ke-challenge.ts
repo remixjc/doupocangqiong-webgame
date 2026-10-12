@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -23,7 +24,7 @@ export function advanceEarlyKeChallenge(state: GameState, entryPosition: EarlyWa
   const blocked = earlyKeChallengeBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.keChallenge, scene = keChallengeScenes[task.stage]
-  if (!scene || !validKeChallenge(task) || (Object.keys(task) as (keyof KeChallengeState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validKeChallenge(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '萧克挑战记录已变化，请依当前阶段继续。' }
   if (!validPreliminaryPosition(position)) return { state, ok: false, message: '应战位置无效。' }
   const next = structuredClone(state), updated = next.earlyTraining.keChallenge

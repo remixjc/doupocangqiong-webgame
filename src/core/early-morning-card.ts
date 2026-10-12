@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -41,7 +42,7 @@ export function advanceEarlyMorningCard(state: GameState, p: EarlyWalkPosition, 
   const blocked = earlyMorningCardBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.morningCard, ledger = state.earlyTraining
-  if (!validMorningCard(task) || (Object.keys(task) as (keyof MorningCardState)[]).some(key => task[key] !== action[key])
+  if (!validMorningCard(task) || !fieldsMatch(action, task)
     || ledger.started !== action.expectedStarted || ledger.purse.borrowed !== action.expectedBorrowed || ledger.purse.spent !== action.expectedSpent)
     return fail('晨间交卡或采购账已变化，请按当前记录继续。')
   const scene = morningCardScenes[task.stage]

@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -17,7 +19,7 @@ export default function EarlyApprentice({ state, onBack }: { state: GameState; o
     if (!scene || document.hidden) return
     submitEarlyApprentice(gameStore, position, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">后山 / 援助与本人拜师</span><h2>先谈清条件，再亲自完成师徒礼。</h2>
     <p id="apprentice-help">方向键或WASD行走，近当前地点后按E。本人愿学、实际青石前行礼、听老师名字各自保存。</p>
@@ -27,7 +29,7 @@ export default function EarlyApprentice({ state, onBack }: { state: GameState; o
     <p role="status">援助与拜师 {task.stage}/25 · {earlyApprenticeSaveSummary(state, state.settings)}</p>
     <p>{task.stage === 25 ? '本段当时记录 · ' : ''}当前称呼：{task.name === 'yaolao' ? '药老 · 本人行礼后已听名字' : '古戒老人 · 姓名未报'} · 取气边界：{task.promise === 'permission-required' ? '未经许可不取气，本人未授许可' : '尚待老人承诺'} · 古戒：仍在老人处浮空</p>
     <p>一年七段：{task.target ? '故事目标，尚未由本段达成' : '尚未提出'} · 本人：{task.rite === 'bowed' ? '已正式行礼' : task.choice === 'willing' ? '愿学，尚未行礼' : '尚未表达愿学'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 1 && <button className="secondary" disabled={!near} onClick={() => act('grant-permission')}>尝试把承诺算作已授取气许可</button>}
       {task.stage === 4 && <button className="secondary" disabled={!near} onClick={() => act('claim-seven')}>尝试把一年目标登记为已到七段</button>}

@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -24,7 +26,7 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
     if (document.hidden) return
     walkKey(event, move, near ? () => act(scene.operation) : undefined)
   }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">次晨之后 / 实际同行与药铺</span><h2>走到药铺，两笔旧账各核一次。</h2>
     <p id="city-pharmacy-help">方向或WASD行走，近当前地点按E。先族内同行和离族，再入城逛摊、走到药铺；房屋不可穿过。位置不保存。</p>
@@ -43,7 +45,7 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
     <p role="status">同行药铺 {task.stage}/15 · {earlyCityPharmacySaveSummary(state, state.settings)}</p>
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent}</p>
     <p>实际任务袋主药{ledger.supplies.bluegrass}株 / 辅药{ledger.supplies.boneflower}株 / 木核{ledger.supplies.woodCore}枚 · 主药收据{ledger.receipts.bluegrass ? '已付' : '未购'} / 辅药收据{ledger.receipts.boneflower ? '已付' : '未购'} / 木核收据{ledger.receipts.woodCore ? '旧进度已付保留' : '尚未购'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : `本人先走近${cityPharmacyPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : `本人先走近${cityPharmacyPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 6 && <button className="secondary" disabled={!near} onClick={() => act('claim-items')}>尝试逛摊直接领取两药</button>}
       {task.stage === 13 && <button className="secondary" disabled={!near} onClick={() => act('charge-900')}>尝试在原收据外另扣900</button>}

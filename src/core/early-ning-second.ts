@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -23,7 +24,7 @@ export function advanceEarlyNingSecond(state: GameState, entryPosition: EarlyWal
   const blocked = earlyNingSecondBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.ningSecond, scene = ningSecondScenes[task.stage]
-  if (!scene || !validNingSecond(task) || (Object.keys(task) as (keyof NingSecondState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validNingSecond(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '再攻记录已变化，请依当前阶段继续。' }
   if (!validCeremonialPosition(position, 2) || action.actor !== scene.actor)
     return { state, ok: false, message: '迎击或场边观察身份/位置无效。' }

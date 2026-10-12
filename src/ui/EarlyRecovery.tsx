@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -48,7 +49,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
     </div>
     <p role="status">回房恢复 {task.stage}/7 · {recoveryEnergyLabels[task.energy]} · {task.period === 'reviewed' ? '持续时段已回顾' : '持续时段待回顾'} · {task.result === 'fifth-duan' ? '五段故事结果已记下' : '故事结果尚未记录'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="回房恢复步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       {breathing && <>
         <label className="setting-row"><span>恢复调息时机<small>用方向键调至35%–65%；当前 {Math.round(marker * 100)}%。失误可免费再试，药力保留。</small></span>
           <input type="range" aria-label="恢复调息时机" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />

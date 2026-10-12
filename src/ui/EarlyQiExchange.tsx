@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -19,7 +20,7 @@ export default function EarlyQiExchange({ state, onBack }: { state: GameState; o
       {task.support === 'shown' && <g transform="translate(440 120)"><rect width="80" height="20" rx="5" fill="#d39662" /><text x="-180" y="15" fill="#edcea0" fontSize="13">薰儿玄阶高级支持卷 ×1</text></g>}
     </svg>
     <p role="status">交接 {task.stage}/8 · 家族卷{task.familyOwner === 'xiaoyan' ? '萧炎拿看' : '薰儿拿看'} · 支持卷仍属薰儿 · {task.reply === 'declined' ? '已婉拒' : '尚待回应'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <button className="primary" onClick={() => submitEarlyQiExchange(gameStore, { ...task, actor: scene.actor, operation: scene.operation })}>{scene.action}</button>
       {task.stage >= 3 && <button className="secondary" onClick={() => submitEarlyQiExchange(gameStore, { ...task, actor: scene.actor, operation: 'take-support' })}>尝试收取支持卷</button>}
     </section> : <section className="bond-summary"><h3>双卷交接已归档。</h3><p>家族卷由萧炎保管，支持卷归薰儿。接续同行与萧媚房门援助。</p></section>}

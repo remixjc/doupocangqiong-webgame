@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { earlySupplies, type EarlySupplyId } from '../core/early-training-state'
@@ -84,7 +85,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
         {(Object.keys(earlySupplies) as EarlySupplyId[]).map(id => <p key={id}>{earlySupplies[id].label}：任务袋{task.supplies[id]} · {task.supplies[id] ? '待交老师处理' : '已由老师使用，收据保留'}</p>)}
         <p>黑铁片 ×{task.market.blackIron}，和三种药材分别保管。</p>
       </> : scene && station === view.station ? <>
-        <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+        <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
         <button className="primary" onClick={() => submitEarlyRoom(gameStore, position, station,
           { type: 'liquid', step: task.liquid.stage, operation: scene.operation, expectedSpent: task.purse.spent })}>{scene.action}</button>
       </> : <p>{task.recovery.energy === 'spent' ? '这份自用药液在训练后恢复中已耗尽，容器和调制历史保留，后续需另筹材料。' : task.liquid.ready ? '药液已供修炼使用。容器和采购记录保留，不会再次消耗材料。'

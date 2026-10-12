@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -17,7 +19,7 @@ export default function EarlyFamilyCompensation({ state, onBack }: { state: Game
     if (!scene || document.hidden) return
     submitEarlyFamilyCompensation(gameStore, position, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">拜师之前 / 补偿与本人发言</span><h2>提议的价值，不能替本人答复。</h2>
     <p id="family-compensation-help">方向键或WASD行走，走近当前地点后按E或选择回应。交谈独立保存，可暂离再继续。</p>
@@ -26,7 +28,7 @@ export default function EarlyFamilyCompensation({ state, onBack }: { state: Game
       boxLabel={task.stage === 15 ? '历史补偿交涉时展示的玉匣' : '仍在来客席的玉匣'} near={near} onMove={move} onInteract={() => { if (scene) act(scene.operation) }} />
     <p role="status">交涉 {task.stage}/15 · {task.objection === 'spoken' ? '本人已提出异议' : '尚待本人发言'} · {task.consent === 'not-given' ? '祖父未同意' : task.consent === 'asked' ? '已询问，尚待答复' : '祖辈同意尚未询问'} · {task.extra === 'offered' ? '追加条件仅提议、未领物' : '追加条件尚未提出'}</p>
     {scene ? <section className="bond-summary">
-      <h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`}</p>
+      <SceneHeading title={scene.title} text={near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {near && task.stage === 1 && <button className="secondary" onClick={() => act('claim-alchemist')}>把读懂条件算作已成为炼药师</button>}
       {near && task.stage === 13 && <>

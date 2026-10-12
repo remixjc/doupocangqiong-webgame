@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -17,7 +18,7 @@ export function advanceEarlySeventhRoom(state: GameState, position: EarlyWalkPos
   const blocked = earlySeventhRoomBlock(state, position)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.seventhRoom, scene = seventhRoomScenes[task.stage]
-  if (!scene || !validSeventhRoom(task) || (Object.keys(task) as (keyof SeventhRoomState)[]).some(key => action[key] !== task[key]))
+  if (!scene || !validSeventhRoom(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '本次房中记录已变化，请按当前步骤继续。' }
   if (station !== scene.station || action.operation !== scene.operation)
     return { state, ok: false, message: '请到当前步骤的位置，依房中次序继续。' }

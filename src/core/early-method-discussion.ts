@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -22,7 +23,7 @@ export function advanceEarlyMethodDiscussion(state: GameState, position: EarlyWa
   const blocked = earlyMethodDiscussionBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.methodDiscussion
-  if (!validMethodDiscussion(task) || (Object.keys(task) as (keyof MethodDiscussionState)[]).some(key => task[key] !== action[key]))
+  if (!validMethodDiscussion(task) || !fieldsMatch(action, task))
     return fail('功法说明记录已变化，请按当前步骤继续。')
   const scene = methodDiscussionScenes[task.stage]
   if (!scene) return fail('功法说明已归档，不重复记录或领取奖励。')

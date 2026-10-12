@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -59,7 +60,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       {(['up', 'left', 'down', 'right'] as const).map((direction, index) => <button key={direction} className="secondary" aria-label={['林中向上走', '林中向左走', '林中向下走', '林中向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</button>)}
     </div>
     <p role="status">林中练技 {task.stage}/7 · {task.result === 'none' ? '六段回顾未记录' : '故事六段'} · 连贯动作 {task.beats}/3 · 重试 {task.attempts} 次 · {task.tree === 'intact' ? '树木完好' : '同一棵树已倒下'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="林中练技步骤"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? near ? <section className="bond-summary" aria-label="林中练技步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>林中练技时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="林中练技时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="林中练技时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>

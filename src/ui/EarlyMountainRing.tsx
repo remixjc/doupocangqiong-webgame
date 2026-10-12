@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -17,7 +19,7 @@ export default function EarlyMountainRing({ state, onBack }: { state: GameState;
     if (!scene || document.hidden) return
     submitEarlyMountainRing(gameStore, position, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">拜师之前 / 后山与古戒</span><h2>声音从哪里来，古戒又去了哪里。</h2>
     <p id="mountain-ring-help">方向键或WASD沿安全山径行走，近当前地点后按E或回应。崖外和山石会阻挡，不提供跳崖操作。</p>
@@ -25,7 +27,7 @@ export default function EarlyMountainRing({ state, onBack }: { state: GameState;
       ring={task.ring} elderVisible={task.elder === 'visible'} near={near} onMove={move} onInteract={() => { if (scene) act(scene.operation) }} />
     <p role="status">后山与古戒 {task.stage}/21 · {earlyMountainRingSaveSummary(state, state.settings)}</p>
     <p>{task.stage === 21 ? '本段当时记录 · ' : ''}古戒：{task.ring === 'floating' ? '老人处浮空，尚未再佩戴' : task.ring === 'thrown' ? '已抛出，尚未返回' : '仍佩戴在右手'} · 身份：未公开 · 今后取气：{task.future === 'asked' ? '本人已询问，尚待答复' : '尚未询问'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 4 && <button className="secondary" disabled={!near} onClick={() => act('claim-cause')}>尝试直接登记流失原因</button>}
       {task.stage === 14 && <button className="secondary" disabled={!near} onClick={() => act('wear-now')}>尝试在返回之前再佩戴古戒</button>}

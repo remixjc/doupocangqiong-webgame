@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -22,7 +23,7 @@ export function advanceEarlyApprentice(state: GameState, position: EarlyWalkPosi
   const blocked = earlyApprenticeBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.apprentice
-  if (!validApprentice(task) || (Object.keys(task) as (keyof ApprenticeState)[]).some(key => task[key] !== action[key]))
+  if (!validApprentice(task) || !fieldsMatch(action, task))
     return fail('援助与拜师记录已变化，请按当前步骤继续。')
   const scene = apprenticeScenes[task.stage]
   if (!scene) return fail('援助与本人拜师已归档，不重复登记或领取奖励。')

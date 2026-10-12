@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -22,7 +23,7 @@ export function advanceEarlyMountainVisitor(state: GameState, view: MountainVisi
   const blocked = earlyMountainVisitorBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.mountainVisitor
-  if (!validMountainVisitor(task) || (Object.keys(task) as (keyof MountainVisitorState)[]).some(key => task[key] !== action[key]))
+  if (!validMountainVisitor(task) || !fieldsMatch(action, task))
     return fail('当晚来访记录已变化，请按当前步骤继续。')
   const scene = mountainVisitorScenes[task.stage]
   if (!scene) return fail('当晚问答已归档，不重复写档或领取资金。')

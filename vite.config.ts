@@ -21,7 +21,14 @@ export default defineConfig({
         .filter(id => id.includes('/phaser/src/'))
       const required = ['core/Game.js', 'scene/Scene.js', 'gameobjects/graphics/Graphics.js',
         'gameobjects/text/Text.js', 'gameobjects/container/Container.js', 'curves/path/Path.js',
-        'renderer/canvas/CanvasRenderer.js', 'renderer/webgl/WebGLRenderer.js']
+        'renderer/canvas/CanvasRenderer.js', 'renderer/webgl/WebGLRenderer.js',
+        'events/EventEmitter.js', 'cameras/2d/CameraManager.js', 'gameobjects/GameObjectCreator.js',
+        'gameobjects/GameObjectFactory.js', 'gameobjects/DisplayList.js', 'gameobjects/UpdateList.js',
+        'scene/ScenePlugin.js', 'time/Clock.js', 'data/DataManagerPlugin.js', 'input/InputPlugin.js',
+        'input/keyboard/KeyboardPlugin.js', 'input/gamepad/GamepadPlugin.js', 'loader/LoaderPlugin.js',
+        'tweens/TweenManager.js', 'gameobjects/lights/LightsPlugin.js',
+        'gameobjects/graphics/GraphicsFactory.js', 'gameobjects/text/TextFactory.js',
+        'gameobjects/container/ContainerFactory.js']
       const missing = required.filter(file => !modules.some(id => id.endsWith(`/phaser/src/${file}`)))
       const excluded = modules.filter(id => /\/phaser\/src\/(physics|sound|tilemaps)\//.test(id))
       if (missing.length || excluded.length) this.error(`Phaser source contract failed: ${JSON.stringify({ missing, excluded })}`)

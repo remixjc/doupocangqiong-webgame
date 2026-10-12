@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -46,7 +47,7 @@ export function advanceEarlyPreliminary(state: GameState, entryPosition: EarlyWa
   const blocked = earlyPreliminaryBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.preliminary, scene = preliminaryScenes[task.stage]
-  if (!scene || !validPreliminary(task) || (Object.keys(task) as (keyof PreliminaryState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validPreliminary(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '预测记录已变化，请依当前名簿和步骤继续。' }
   if (scene.actor !== action.actor || scene.operation !== action.operation)
     return { state, ok: false, message: '当前点名与被测人物不符，三份结果未改变。' }

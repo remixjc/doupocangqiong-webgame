@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -32,7 +33,7 @@ export function advanceEarlyMarketEscort(state: GameState, view: MarketEscortVie
   const blocked = earlyMarketEscortBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketEscort, scene = marketEscortScenes[task.stage]
-  if (!validMarketEscort(task) || (Object.keys(task) as (keyof MarketEscortState)[]).some(key => task[key] !== action[key]))
+  if (!validMarketEscort(task) || !fieldsMatch(action, task))
     return fail('护卫记录已经变化，请按当前断点继续。')
   if (!scene) return fail('入坊与护卫安排已归档。')
   if (marketEscortObserver(task.stage) ? view.kind !== 'observer' || view.place !== scene.place

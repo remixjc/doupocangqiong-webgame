@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -51,7 +52,7 @@ export function advanceEarlyFamilyVisit(state: GameState, position: EarlyWalkPos
   const blocked = earlyFamilyVisitBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.familyVisit
-  if (!validFamilyVisit(task) || (Object.keys(task) as (keyof FamilyVisitState)[]).some(key => task[key] !== action[key]))
+  if (!validFamilyVisit(task) || !fieldsMatch(action, task))
     return fail('来访记录已变化，请按当前场景继续。')
   const scene = familyVisitScenes[task.stage]
   if (!scene) return fail('来访前半程已归档，不重复记账。')

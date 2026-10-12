@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -41,7 +42,7 @@ export function advanceEarlyQiAid(state: GameState, position: EarlyWalkPosition,
   const blocked = earlyQiAidBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionAid
-  if (!validQiPavilionAid(task) || (Object.keys(task) as (keyof QiPavilionAidState)[]).some(key => task[key] !== action[key]))
+  if (!validQiPavilionAid(task) || !fieldsMatch(action, task))
     return fail('功法阁援助记录已变化，请按当前步骤继续。')
   const scene = qiAidScenes[task.stage]
   if (!scene || action.actor !== scene.actor || !validQiAidPosition(position)) return fail('当前人物或位置无效。')

@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -21,7 +23,7 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
     if (!scene || document.hidden) return
     submitEarlyFamilyContract(gameStore, view, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">拜师之前 / 文书与双方离厅</span><h2>亲手写下决定，再面对三年之后。</h2>
     <p id="family-contract-help">{observer
@@ -40,8 +42,8 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       none: '尚无', preparing: '备纸未写成', written: '写成未标记', marked: '有印记未置桌', table: '同一文书已置桌', nalan: '同一文书由纳兰持有',
     }[task.paper]} · 玉匣：{task.box === 'ring' ? '已回葛叶纳戒' : task.box === 'returned' ? '已退回，尚未收入纳戒' : '未接取，仍属来客'}</p>
     {scene ? <section className="bond-summary">
-      <h3>{scene.title}</h3><p>{near ? scene.text : observer
-        ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`}</p>
+      <SceneHeading title={scene.title} text={near ? scene.text : observer
+        ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 7 && <>
         <button className="secondary" disabled={!near} onClick={() => act('start-duel')}>尝试今日直接决斗</button>

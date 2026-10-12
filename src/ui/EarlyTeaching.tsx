@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useRef, useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -42,7 +43,7 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
     <p role="status">正式传技 {stage}/5 · {stage >= 3 ? '技法知识已记下' : '尚未接受技法知识'} · {stage >= 4 ? '身体要求已记下' : '身体要求待确认'}</p>
     {station === 'table' && <section className="bond-summary"><h3>房间的卷册桌</h3><p>这里是斗技堂登记借出的第二卷；第一卷此前已归回书架。借卷仍由萧炎保管，不进入可售行囊，也没有新增副本。</p></section>}
     {scene ? <>
-      {station === scene.station ? <section className="bond-summary" aria-label="老师正式传技步骤"><h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      {station === scene.station ? <section className="bond-summary" aria-label="老师正式传技步骤"><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
         <button className="primary" onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</button></section>
         : <p className="muted">下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</p>}
     </> : <section className="bond-summary"><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>

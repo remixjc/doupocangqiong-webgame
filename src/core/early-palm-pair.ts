@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -16,7 +17,7 @@ export function advanceEarlyPalmPair(state: GameState, position: EarlyWalkPositi
   const blocked = earlyPalmPairBlock(state, position)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.palmPair, scene = palmPairScenes[task.stage]
-  if (!scene || !validPalmPair(task) || (Object.keys(task) as (keyof PalmPairState)[]).some(key => action[key] !== task[key]))
+  if (!scene || !validPalmPair(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '吸推记录或练习瓶已变化，请按当前步骤继续。' }
   if (station !== scene.station || action.operation !== scene.operation)
     return { state, ok: false, message: '请到这一步的位置，先吸再推，求教与初练另做。' }

@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -17,7 +19,7 @@ export default function EarlyMethodDiscussion({ state, onBack }: { state: GameSt
     if (!scene || document.hidden) return
     submitEarlyMethodDiscussion(gameStore, position, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">青石前 / 功法说明</span><h2>问清前置和依据，保留尚未授卷。</h2>
     <p id="method-discussion-help">方向或WASD走近青石后按E。老师说明、本人追问与暂缓授卷分别保存。</p>
@@ -27,7 +29,7 @@ export default function EarlyMethodDiscussion({ state, onBack }: { state: GameSt
     <p role="status">功法说明 {task.stage}/28 · {earlyMethodDiscussionSaveSummary(state, state.settings)}</p>
     <p>{task.stage === 28 ? '本段当时记录 · ' : ''}药老 · 本人行礼与名字已记 · 同一古戒仍浮空 · 本片段未授功法卷轴</p>
     <p>老师亲试：{task.teacherTrial === 'untried' ? '没有亲试' : task.teacherTrial === 'asked' ? '已问，待答' : '尚未询问'} · 他人尝试：{task.otherTrial === 'untried' ? '没有他人尝试' : task.otherTrial === 'asked' ? '已问，待答' : '尚未询问'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : '请先实际走近山顶青石。'}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : '请先实际走近山顶青石。'} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 4 && <button className="secondary" disabled={!near} onClick={() => act('claim-profession')}>尝试把前置说明登记为炼药职业</button>}
       {task.stage === 13 && <button className="secondary" disabled={!near} onClick={() => act('grant-evolution')}>尝试把口头说明登记为功法已进化</button>}

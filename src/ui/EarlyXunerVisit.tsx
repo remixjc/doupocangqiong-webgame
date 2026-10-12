@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -38,7 +39,7 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
     </div>
     <p role="status">人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="薰儿事件步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <button className="primary" onClick={() => submitEarlyXunerVisit(gameStore, position, station,
         { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>

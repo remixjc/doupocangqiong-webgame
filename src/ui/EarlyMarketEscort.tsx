@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -32,7 +34,7 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
     if (document.hidden) return
     walkKey(event, move, () => { if (scene) act(scene.operation) })
   }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">坊市 / 入坊与巡卫</span><h2>穿过南坊入口，听清护卫安排。</h2>
     <p id="market-escort-help">{observer ? '本人仍在人群中。选择护卫事件的旁观焦点，分别记录领命、跟随与巡逻。'
@@ -58,8 +60,8 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
     {!observer && task.stage >= 18 && !returned && <button className="secondary" onClick={() => { setReturned(true); field.current?.focus() }}>回到本人视角 · 与薰儿继续同行</button>}
     <p role="status">入坊巡卫 {task.stage}/24 · {earlyMarketEscortSaveSummary(state, state.settings)}</p>
     <p>三位跟随护卫：{task.following === 3 ? '已经进入人群' : task.stage >= 14 ? '已受命，实际跟随待续' : '尚未派出'} · 队长与其余护卫：{task.patrol ? '已接续巡逻' : '仍在原街口'}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : observer ? '先选择本步的旁观焦点。'
-      : !canWalk ? '先明确回到本人视角，再接续两人的同行。' : `本人先走近${marketEscortPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : observer ? '先选择本步的旁观焦点。'
+      : !canWalk ? '先明确回到本人视角，再接续两人的同行。' : `本人先走近${marketEscortPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 0 && <button className="secondary" disabled={!near} onClick={() => act('absorb-core')}>直接吸收魔核可行吗？</button>}
       {task.stage === 1 && <button className="secondary" disabled={!near} onClick={() => act('collect-tax')}>能把摊主税费用于本次采购吗？</button>}

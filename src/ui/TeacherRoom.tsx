@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { ironNear } from '../core/early-iron'
@@ -31,7 +33,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (!document.hidden) walkKey(event, move, () => { if (scene && selected && close) act(scene.operation) })
   }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">{title}</span><h2>{heading}</h2>
     <p id="teacher-room-help">{help}</p>
@@ -48,7 +50,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     </svg>
     {scene && movable && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix={prefix} onMove={move} /></div>}
     <p role="status">{prefix} {stage}/{total} · {summary}</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{scene.text}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>
       {controls}
       <button className="primary" disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</button>

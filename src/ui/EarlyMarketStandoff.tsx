@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -40,7 +42,7 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
     walkKey(event, move, () => { if (scene) act(scene.operation) })
   }
   const select = (focus: StandoffFocus) => { setSelected(focus); field.current?.focus() }
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
   return <>
     <span className="eyebrow">坊市 / 围堵与非战斗离场</span><h2>呼叫护卫，拒绝单挑，继续寻核。</h2>
     <p id="market-standoff-help">每一步先选人物或明确旁观焦点。本人方向/WASD行走，近地点按E；旁观没有移动，不能代签本人。刷新后重新选焦点，位置不保存。</p>
@@ -65,7 +67,7 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
     </div>}
     <p role="status">围堵离场 {task.stage}/34 · {earlyMarketStandoffSaveSummary(state, state.settings)}</p>
     <p>当前焦点：{selected ? standoffNames[selected] : '尚未选择'} · {observer ? '旁观没有本人行走' : '本人或薰儿独立行走'} · 普通绿链仍由薰儿戴着</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 11 && <button className="secondary" disabled={!near} onClick={() => act('fight')}>把提出单挑当成已经开战</button>}
       {task.stage === 21 && <button className="secondary" disabled={!near} onClick={() => act('loot')}>来人离开后领取击杀战利品</button>}

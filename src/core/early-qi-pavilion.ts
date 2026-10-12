@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -51,7 +52,7 @@ export function advanceEarlyQiPavilionEntry(state: GameState, position: EarlyWal
   const blocked = earlyQiPavilionBlock(state)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.qiPavilionEntry, scene = qiPavilionEntryScenes[task.stage]
-  if (!scene || !validQiPavilionEntry(task) || (Object.keys(task) as (keyof QiPavilionEntryState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validQiPavilionEntry(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '入阁记录已变化，请按当前步骤继续。' }
   if (action.actor !== scene.actor || action.operation !== scene.operation)
     return { state, ok: false, message: '当前人物或步骤不符；入阁测定不发卷轴或水晶物品。' }

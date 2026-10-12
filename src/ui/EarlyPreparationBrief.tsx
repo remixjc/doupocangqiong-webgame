@@ -1,3 +1,5 @@
+import SceneHeading from './SceneHeading'
+import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -16,7 +18,7 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
     if (!scene || document.hidden) return
     submitEarlyPreparationBrief(gameStore, position, { ...task, actor: scene.actor, operation })
   }
-  if (blocked) return <><p className="muted">{blocked}</p><button className="secondary" onClick={onBack}>返回往事手札</button></>
+  if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} muted />
   return <>
     <span className="eyebrow">后山 / 温和方案与正式返戒</span><h2>记清准备要求，再看同一古戒返手。</h2>
     <p id="preparation-brief-help">方向或WASD行走，近当前地点按E。老师入戒、古戒返手与借资打算分开保存。</p>
@@ -26,7 +28,7 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
     <p role="status">准备与返戒 {task.stage}/20 · {earlyPreparationBriefSaveSummary(state, state.settings)}</p>
     <p>老师：{task.elder === 'in-ring' ? '已进入同一古戒' : '仍在青石旁'} · 古戒：{task.ring === 'worn' ? '同一古戒已返手佩戴' : '仍浮空，尚未返手'}</p>
     <p>历史准备单：主药{task.main}株 / 辅药{task.auxiliary}株 / 一阶木核{task.woodCore}枚 · 只记要求，任务袋和收据保持</p>
-    {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`}</p>
+    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />
       <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage === 12 && <button className="secondary" disabled={!near} onClick={() => act('claim-materials')}>尝试把准备单登记为材料已取得</button>}
       {task.stage === 14 && <button className="secondary" disabled={!near} onClick={() => act('wear-early')}>尝试把老师入戒当作古戒已返手</button>}

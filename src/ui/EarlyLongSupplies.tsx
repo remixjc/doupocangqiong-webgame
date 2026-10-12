@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -41,7 +42,7 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
     </div>
     <p role="status">物资归档 {task.stage}/6 · 药材包{places[task.herbs]} · 魔核包{places[task.cores]}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="物资归档步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       {sorting && <div className="early-walk-controls" aria-label="选择物资包">
         <button className="secondary" aria-pressed={item === 'herbs'} disabled={task.herbs !== 'parcel'} onClick={() => setItem('herbs')}>拿起药材包</button>
         <button className="secondary" aria-pressed={item === 'cores'} disabled={task.cores !== 'parcel'} onClick={() => setItem('cores')}>拿起魔核包</button>

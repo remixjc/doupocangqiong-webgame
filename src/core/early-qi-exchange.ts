@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -15,7 +16,7 @@ export function advanceEarlyQiExchange(state: GameState, action: QiExchangeActio
   const blocked = earlyQiExchangeBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionExchange, scene = qiExchangeScenes[task.stage]
-  if (!scene || !validQiPavilionExchange(task) || (Object.keys(task) as (keyof QiPavilionExchangeState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validQiPavilionExchange(task) || !fieldsMatch(action, task))
     return fail('双卷交接记录已变化，请按当前步骤继续。')
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('请由当前人物按顺序操作；不能领取支持卷或复制家族卷。')
   const next = structuredClone(state), updated = next.earlyTraining.qiPavilionExchange

@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -33,7 +34,7 @@ export function advanceEarlyFamilyContract(state: GameState, view: FamilyContrac
   const blocked = earlyFamilyContractBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.familyContract
-  if (!validFamilyContract(task) || (Object.keys(task) as (keyof FamilyContractState)[]).some(key => task[key] !== action[key]))
+  if (!validFamilyContract(task) || !fieldsMatch(action, task))
     return fail('文书与离厅记录已变化，请按当前场景继续。')
   const scene = familyContractScenes[task.stage]
   if (!scene) return fail('文书与双方离厅已归档，不重复记录或领奖。')

@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -41,7 +42,7 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
       <p>{task.net ? '绿色储款卡已接收，唯一收款记录保留。' : '账单已核对，储款卡还未接收。'}</p>
     </section>}
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="寄售手续步骤">
-      <h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <button className="primary" onClick={() => submitEarlySettlement(gameStore, position, station,
         { step: task.stage, net: task.net, vip: task.vip, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</button>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>

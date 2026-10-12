@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -19,7 +20,7 @@ export function advanceEarlyQiScroll(state: GameState, action: QiScrollAction): 
   const blocked = earlyQiScrollBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionScroll
-  if (!validQiPavilionScroll(task) || (Object.keys(task) as (keyof QiPavilionScrollState)[]).some(key => task[key] !== action[key]))
+  if (!validQiPavilionScroll(task) || !fieldsMatch(action, task))
     return fail('卷轴保管记录已变化，请按当前步骤继续。')
   const expected = qiScrollScenes[task.stage]
   if (!expected || action.operation !== expected.operation) return fail('请按卷轴保管步骤继续。')

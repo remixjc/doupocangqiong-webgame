@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -32,7 +33,7 @@ export function advanceEarlyMarketStandoff(state: GameState, view: MarketStandof
   const blocked = earlyMarketStandoffBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketStandoff, scene = marketStandoffScenes[task.stage]
-  if (!validMarketStandoff(task) || (Object.keys(task) as (keyof MarketStandoffState)[]).some(key => task[key] !== action[key]))
+  if (!validMarketStandoff(task) || !fieldsMatch(action, task))
     return fail('围堵与离场记录已经变化，请按当前断点继续。')
   if (!scene) return fail('围堵与非战斗离场已经归档。')
   const observer = scene.view !== 'yan' && scene.view !== 'xuner'

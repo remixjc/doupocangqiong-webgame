@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyHallBlock, earlyHallStart, earlyHallPlaces, earlyHallObstacles, moveEarlyHall, nearbyEarlyHallPlace, submitEarlyHall } from '../core/early-hall'
@@ -76,7 +77,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     {scene && <p className="muted">下一步：{earlyHallPlaces.find(place => place.id === scene.place)?.label} · {scene.title}</p>}
     {reading && place?.id === reading && <section className="bond-summary" aria-label="斗技堂地点说明">
       <h3>{place.label}</h3><p>{place.text}</p>
-      {scene?.place === place.id && <><h3>{scene.title}</h3><b>{scene.speaker}</b><p>{scene.text}</p>
+      {scene?.place === place.id && <><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
         <button className="primary" onClick={() => submitEarlyHall(gameStore, position, { step: scene.stage, operation: scene.operation })}>{scene.action}</button></>}
     </section>}
     {task.stage === 9 && <section className="bond-summary"><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>

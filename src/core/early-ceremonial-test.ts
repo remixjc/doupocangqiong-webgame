@@ -1,3 +1,4 @@
+import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -47,7 +48,7 @@ export function advanceEarlyCeremonialTest(state: GameState, entryPosition: Earl
   const blocked = earlyCeremonialTestBlock(state, entryPosition)
   if (blocked) return { state, ok: false, message: blocked }
   const task = state.earlyTraining.ceremonialTest, scene = ceremonialTestScenes[task.stage]
-  if (!scene || !validCeremonialTest(task) || (Object.keys(task) as (keyof CeremonialTestState)[]).some(key => task[key] !== action[key]))
+  if (!scene || !validCeremonialTest(task) || !fieldsMatch(action, task))
     return { state, ok: false, message: '正式仪式记录已变化，请依当前阶段继续。' }
   if (action.actor !== scene.actor || action.operation !== scene.operation || !nearCeremonialPlace(position, scene.place, task.stage))
     return { state, ok: false, message: `先走近${ceremonialPlaces[scene.place].label}，依当前本人动作或观察步骤继续。` }

@@ -1,3 +1,4 @@
+import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -48,7 +49,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
     <div className="early-walk-controls" aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</div>
     <p role="status">礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</p>
     {scene ? nearVerdictPlace(position, scene.place) ? <section className="bond-summary" aria-label="正式裁定步骤">
-      <h3>{scene.title}</h3><p>{scene.text}</p>
+      <SceneHeading title={scene.title} text={scene.text} />
       <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>
       {task.stage >= 2 && task.stage <= 4 && <button className="secondary" onClick={() => act('fight')}>尝试第三场 · 不符合裁判规则</button>}
       {task.technique === 'offered' && <button className="secondary" onClick={() => act('take-technique')}>尝试收斗技 · 尚未传授</button>}
