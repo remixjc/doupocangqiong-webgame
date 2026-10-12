@@ -1,0 +1,405 @@
+{
+  "version": "0.58.0",
+  "date": "2026-10-12",
+  "vitestFiles": 132,
+  "vitestTests": 809,
+  "nodeTests": 11,
+  "initialJs": 496485,
+  "totalJs": 1849029,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "source": {
+    "chapter": 15,
+    "webReceipt": "turn0view0",
+    "normalBrowserTargetReadAfterNextClickTimeout": true,
+    "fullTextToNext": true,
+    "chineseAndAnime": "pending"
+  },
+  "browser": [
+    {
+      "name": "seatedReloadNoMove",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 1/10 · 持续调息 · 坐定中\n  - heading \"手势与闭眼\" [level=3]\n  - paragraph: 保持坐姿，结起手势，闭眼收束注意。\n  - paragraph: 当前人物：萧炎本人\n  - button \"结手势并闭眼\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "breath2",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息0/3，重试0\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 0/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "freeRetry",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息0/3，重试1\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 0% · 已稳定 0/3\n  - slider \"持续调息呼吸标记\": \"0\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstBeat1Reload",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息1/3，重试1\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 1/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "beat1Refresh",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息1/3，重试1\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 1/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "wrongActorNoMove",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\"\n  - button \"旁观房中的老师\" [pressed]\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息1/3，重试1\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 先明确选择本步人物。\n  - text: 呼吸标记 50% · 已稳定 1/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [disabled]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "invalidActions",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息1/3，重试1\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 1/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\"\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\" [active]\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstBeat2",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息2/3，重试1\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 2/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage3",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 3/10 · 持续调息 · 坐定中\n  - heading \"继续吸收\" [level=3]\n  - paragraph: 初有收获时仍保持姿势，继续这一轮修炼。\n  - paragraph: 当前人物：萧炎本人\n  - button \"保持姿势继续吸收\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage4",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 4/10 · 持续调息 · 坐定中\n  - heading \"药性与气息\" [level=3]\n  - paragraph: 观察淡绿气息随调息进入，水中药性继续作用。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录这一轮吸收\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage5",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 5/10 · 持续调息 · 坐定中\n  - heading \"日光渐弱\" [level=3]\n  - paragraph: 房中光线逐渐变弱。这是叙事时段，不要求现实挂机。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录日光变化\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage6",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 6/10 · 持续调息 · 坐定中\n  - heading \"收束末缕\" [level=3]\n  - paragraph: 收束最后气息，缓缓呼气后睁眼，再起身。\n  - paragraph: 当前人物：萧炎本人\n  - button \"呼气睁眼并起身\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage7",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 7/10 · 持续调息 · 本轮收束，离容器待续\n  - heading \"实际离开容器\" [level=3]\n  - paragraph: 切回本人，沿房中地面走离容器，再收束这一轮。\n  - paragraph: 先切回本人，走近当前交接地点。\n  - button \"确认本人离开容器\" [disabled] [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "unleftE",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 7/10 · 持续调息 · 本轮收束，离容器待续\n  - heading \"实际离开容器\" [level=3]\n  - paragraph: 切回本人，沿房中地面走离容器，再收束这一轮。\n  - paragraph: 先切回本人，走近当前交接地点。\n  - button \"确认本人离开容器\" [disabled]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage8",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 8/10 · 持续调息 · 本轮收束，离容器待续\n  - heading \"舒展与预计\" [level=3]\n  - paragraph: 舒展后估计：照此速度，两个月或可达到五段。这是预计，尚未签实际结果。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记下两个月预计五段\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage9",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 9/10 · 持续调息 · 两个月五段仅为预计\n  - heading \"当前一轮归档\" [level=3]\n  - paragraph: 保存坐定、调息与收束。半月回顾和当时四段仍由后续独立接续。\n  - paragraph: 当前人物：萧炎本人\n  - button \"归档当前一轮\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstStage10",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 10/10 · 持续调息 · 当前轮归档，预计五段尚非实际结果\n  - heading \"持续调息已归档。\" [level=3]\n  - paragraph: 当前一轮已归档。两个月五段只记录预计；半月回顾与当时四段待接续。旧技能、药液及后期境界保持。\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "firstArchiveRefresh",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 10/10 · 持续调息 · 当前轮归档，预计五段尚非实际结果\n  - heading \"持续调息已归档。\" [level=3]\n  - paragraph: 当前一轮已归档。两个月五段只记录预计；半月回顾与当时四段待接续。旧技能、药液及后期境界保持。\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-在容器中坐定",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 1/10 · 持续调息 · 坐定中\n  - heading \"手势与闭眼\" [level=3]\n  - paragraph: 保持坐姿，结起手势，闭眼收束注意。\n  - paragraph: 当前人物：萧炎本人\n  - button \"结手势并闭眼\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-结手势并闭眼",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息0/3，重试0\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 0/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-完成一次调息",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息1/3，重试0\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 1/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-完成一次调息",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 2/10 · 持续调息 · 调息2/3，重试0\n  - heading \"稳定调息\" [level=3]\n  - paragraph: 手动把呼吸标记放在35%至65%之间，连续完成三次。偏离只重试本轮，不耗药。\n  - paragraph: 当前人物：萧炎本人\n  - text: 呼吸标记 50% · 已稳定 2/3\n  - slider \"持续调息呼吸标记\": \"0.5\"\n  - button \"完成一次调息\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-完成一次调息",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 3/10 · 持续调息 · 坐定中\n  - heading \"继续吸收\" [level=3]\n  - paragraph: 初有收获时仍保持姿势，继续这一轮修炼。\n  - paragraph: 当前人物：萧炎本人\n  - button \"保持姿势继续吸收\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-保持姿势继续吸收",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 4/10 · 持续调息 · 坐定中\n  - heading \"药性与气息\" [level=3]\n  - paragraph: 观察淡绿气息随调息进入，水中药性继续作用。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录这一轮吸收\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-记录这一轮吸收",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时暖日\"\n  - status: 持续调息 5/10 · 持续调息 · 坐定中\n  - heading \"日光渐弱\" [level=3]\n  - paragraph: 房中光线逐渐变弱。这是叙事时段，不要求现实挂机。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记录日光变化\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-记录日光变化",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 保持坐定\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 6/10 · 持续调息 · 坐定中\n  - heading \"收束末缕\" [level=3]\n  - paragraph: 收束最后气息，缓缓呼气后睁眼，再起身。\n  - paragraph: 当前人物：萧炎本人\n  - button \"呼气睁眼并起身\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-呼气睁眼并起身",
+      "position": "translate(120 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 7/10 · 持续调息 · 本轮收束，离容器待续\n  - heading \"实际离开容器\" [level=3]\n  - paragraph: 切回本人，沿房中地面走离容器，再收束这一轮。\n  - paragraph: 先切回本人，走近当前交接地点。\n  - button \"确认本人离开容器\" [disabled] [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-确认本人离开容器",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 8/10 · 持续调息 · 已离容器，预计待记\n  - heading \"舒展与预计\" [level=3]\n  - paragraph: 舒展后估计：照此速度，两个月或可达到五段。这是预计，尚未签实际结果。\n  - paragraph: 当前人物：萧炎本人\n  - button \"记下两个月预计五段\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-记下两个月预计五段",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - button \"持续调息向上走\": ↑\n  - button \"持续调息向左走\": ←\n  - button \"持续调息向下走\": ↓\n  - button \"持续调息向右走\": →\n  - status: 持续调息 9/10 · 持续调息 · 两个月五段仅为预计\n  - heading \"当前一轮归档\" [level=3]\n  - paragraph: 保存坐定、调息与收束。半月回顾和当时四段仍由后续独立接续。\n  - paragraph: 当前人物：萧炎本人\n  - button \"归档当前一轮\" [active]\n  - button \"现实等待自动完成\"\n  - button \"回补就重新领取药液\"\n  - button \"预计就签实际五段\"\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materials-归档当前一轮",
+      "position": "translate(160 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\":\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 10/10 · 持续调息 · 当前轮归档，预计五段尚非实际结果\n  - heading \"持续调息已归档。\" [level=3]\n  - paragraph: 当前一轮已归档。两个月五段只记录预计；半月回顾与当时四段待接续。旧技能、药液及后期境界保持。\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "materialsFinalReload",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 10/10 · 持续调息 · 当前轮归档，预计五段尚非实际结果\n  - heading \"持续调息已归档。\" [level=3]\n  - paragraph: 当前一轮已归档。两个月五段只记录预计；半月回顾与当时四段待接续。旧技能、药液及后期境界保持。\n  - button \"暂离持续调息 · 保留断点\""
+    },
+    {
+      "name": "finalBuildMain",
+      "position": "translate(260 370)",
+      "dom": "- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 当前一轮持续调息\n  - heading \"坐定、调息，再收束这一轮。\" [level=2]\n  - paragraph: 方向键或按钮实际走到容器正前。坐定期间保持姿势；调息使用手动标记，失误免费重试。刷新保留断点，老师旁观与本人操作分开。\n  - button \"本人行走与操作\" [pressed]\n  - button \"旁观房中的老师\"\n  - group \"持续调息房中地图\" [active]:\n    - generic \"老师固定房中位置\":\n      - generic: 老师\n    - generic: 桌面\n    - generic \"萧炎本人行走位置\":\n      - generic: 本人\n    - generic \"衣着剪影与容器遮挡\"\n    - generic: 修炼容器\n    - generic \"当时日光渐弱\"\n  - status: 持续调息 10/10 · 持续调息 · 当前轮归档，预计五段尚非实际结果\n  - heading \"持续调息已归档。\" [level=3]\n  - paragraph: 当前一轮已归档。两个月五段只记录预计；半月回顾与当时四段待接续。旧技能、药液及后期境界保持。\n  - button \"暂离持续调息 · 保留断点\""
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "name": "firstNewMigrated",
+      "file": "D:/Users/jacob/Downloads/异火之路-第28章-1791807027824.json",
+      "sha256": "f89219f800c04dbf28ebc9804310bc78d3342aebe53cb82a397d877b360e1cc2",
+      "stage": 0,
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstFarE",
+      "file": "D:/Users/jacob/Downloads/异火之路-第28章-1791807080851.json",
+      "sha256": "baca74a7b8841455242fcfbcb87e17197b25368ec63484424e064b2ea1695a39",
+      "stage": 0,
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstSeated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807167422.json",
+      "sha256": "26ea300b17e691acb867e0fe2bbbb3fad607b125397099e63593a7ffb60e0f29",
+      "stage": 1,
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstBreathStart",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807205025.json",
+      "sha256": "1fafb900acbd2c9fa6b0952f2f680ff722e508f2ac7f5d9c9d337581d69d82e6",
+      "stage": 2,
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstFailed",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807252606.json",
+      "sha256": "78cc0f34bc5a4693f2e1ff9783d64d18fc53ea7d2db0b5906d1cb16f7be90c5f",
+      "stage": 2,
+      "beats": 0,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstBeat1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807274154.json",
+      "sha256": "d451a5c6397489f98fa19149084ca9cf8b1cd054e38b0908643d5c525ef819af",
+      "stage": 2,
+      "beats": 1,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807285598.json",
+      "sha256": "af2bbb9db44c47d1cb178fed109577d13ae9eda05d72e57ea02e9eaecda5ea80",
+      "stage": 2,
+      "beats": 1,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstBeat2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807309149.json",
+      "sha256": "8532becb7e53a46383f381ab57914696553f565532540b1a3721588cfed2f420",
+      "stage": 2,
+      "beats": 2,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807316491.json",
+      "sha256": "cc5c0a52a04b81056110d824cb2e853cd23ee8cbe0fe9d00e254556b502b1718",
+      "stage": 3,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807323812.json",
+      "sha256": "747ea8ed44deedf963cd48ded183f53043ab614355625096dab283e56db28599",
+      "stage": 4,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807331191.json",
+      "sha256": "d510912b1a5b06106648fec7440a16c0c952ac0328e819545db549e628ee0c30",
+      "stage": 5,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807357084.json",
+      "sha256": "223fb065caa8ad7804c8a39c2413e3a019f90c17aa31313e4a8297af0f5ee539",
+      "stage": 6,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807363490.json",
+      "sha256": "7ba836951fc20846729bc7b88d08b3996f9a49f4bd3018b40905d5b8aa6c0749",
+      "stage": 7,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstUnleftE",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807369818.json",
+      "sha256": "ad3b73e538455bc75dff0f657dff315944056268f34e51c98678cb5fb0b9bd9a",
+      "stage": 7,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807379865.json",
+      "sha256": "d1cdff221f53fdeb3c35c34f04b27b2d6915878c3d8b7f0e3089222b2876edc9",
+      "stage": 8,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807406595.json",
+      "sha256": "f5eda16874e913f297d8ffdc6298504be0c3566c50c57200ec069f927db6c9f8",
+      "stage": 9,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstStage10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807413949.json",
+      "sha256": "c4bddb6c44fd247f416caa0c85f2eea9c87dfbd27daf47dfb95e80c46e2fb1aa",
+      "stage": 10,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807421274.json",
+      "sha256": "e8f9b7b073e87ed4c96f6e01029064765eedb0791e9282d61e4c5db0b7c45b74",
+      "stage": 10,
+      "beats": 3,
+      "attempts": 1,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807467026.json",
+      "sha256": "1af9908c0ec23fcd49ffd3a3df907307c2fcfc11bee437cdc51ba9c2a4992c50",
+      "stage": 0,
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstMaterialsStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807490106.json",
+      "sha256": "d772c0b19bc6c63f6bd453e36e78068e2bbcfdae0a79b29df99f62e13aec1ba9",
+      "stage": 7,
+      "beats": 3,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807614354.json",
+      "sha256": "9b71543124fd697ea16e262780beab04e99560cbc1fad1f1920227d706a77240",
+      "stage": 10,
+      "beats": 3,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstMaterialsRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807620745.json",
+      "sha256": "43e71609bb422c4bd428aad6c2d3eb2c4d7607c3f031f0372422d9ae4c175b8a",
+      "stage": 10,
+      "beats": 3,
+      "attempts": 0,
+      "allOtherStateKept": true
+    },
+    {
+      "name": "firstIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791807651520.json",
+      "sha256": "9549644a517047646684d64f949eb6887af760d862225f527d03313bc4555f08",
+      "stage": 0,
+      "beats": 0,
+      "attempts": 0,
+      "allOtherStateKept": true
+    }
+  ],
+  "equalPairs": 5,
+  "errors": [
+    [],
+    [],
+    []
+  ],
+  "actualOldBranch": {
+    "materialsConsumed": true,
+    "liquid": 6,
+    "practice": 0,
+    "recovery": "unobserved"
+  },
+  "spentOldSave": "rule-tests-only",
+  "downloadToolTimeoutRecoveredByWaitingForEnabledLoadedSlotButtons": true
+}

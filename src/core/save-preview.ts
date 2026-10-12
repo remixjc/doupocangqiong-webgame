@@ -221,6 +221,13 @@ export function earlyMarketTradeSaveSummary(saved: GameState, viewing: Settings)
       : t.quote ? `报价${t.quote}，尚未成交` : t.stage ? '来源询问，尚未报价' : '未参与')
 }
 
+export function firstTrainingSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const t = saved.earlyTraining.firstTraining
+  return '持续调息 · ' + (t.stage === 10 ? '当前轮归档，预计五段尚非实际结果' : t.forecast === 'two-months' ? '两个月五段仅为预计'
+    : t.stage === 8 ? '已离容器，预计待记' : t.stage === 7 ? '本轮收束，离容器待续' : t.stage === 2 ? `调息${t.beats}/3，重试${t.attempts}` : t.seated ? '坐定中' : t.stage ? '当前轮待续' : '未参与')
+}
+
 export function earlyRefiningSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const t = saved.earlyTraining.refining
@@ -250,7 +257,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyCityPharmacySaveSummary(saved, viewing), earlyMarketEscortSaveSummary(saved, viewing), earlyMarketSearchSaveSummary(saved, viewing), earlyMarketBraceletsSaveSummary(saved, viewing), earlyMarketStandoffSaveSummary(saved, viewing), earlyMarketDiscoverySaveSummary(saved, viewing), earlyMarketTradeSaveSummary(saved, viewing), earlyMarketReturnSaveSummary(saved, viewing), earlyIronSaveSummary(saved, viewing), earlyRefiningSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(firstTrainingSaveSummary(saved, viewing), earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyCityPharmacySaveSummary(saved, viewing), earlyMarketEscortSaveSummary(saved, viewing), earlyMarketSearchSaveSummary(saved, viewing), earlyMarketBraceletsSaveSummary(saved, viewing), earlyMarketStandoffSaveSummary(saved, viewing), earlyMarketDiscoverySaveSummary(saved, viewing), earlyMarketTradeSaveSummary(saved, viewing), earlyMarketReturnSaveSummary(saved, viewing), earlyIronSaveSummary(saved, viewing), earlyRefiningSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

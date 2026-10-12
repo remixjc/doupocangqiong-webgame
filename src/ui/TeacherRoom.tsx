@@ -7,19 +7,20 @@ import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import './early-walk.css'
 export interface RoomScene { actor: 'yan' | 'teacher'; operation: string; title: string; text: string; action: string }
-export default function TeacherRoom({ title, heading, help, mapLabel, prefix, stage, total, summary, scene, blocked, start, near, draw, errors = [], onAction, onBack, finished, back }: {
+export default function TeacherRoom({ title, heading, help, mapLabel, prefix, stage, total, summary, scene, blocked, start, near, draw, errors = [], onAction, onBack, finished, back, movable = true, controls }: {
   title: string; heading: string; help: string; mapLabel: string; prefix: string; stage: number; total: number; summary: string
   scene?: RoomScene; blocked: string; start: EarlyWalkPosition; near: (yan: EarlyWalkPosition) => boolean
   draw: (yan: EarlyWalkPosition) => ReactNode; errors?: { operation: string; label: string }[]
   onAction: (yan: EarlyWalkPosition, actor: RoomScene['actor'], operation: string) => void
   onBack: () => void; finished: string; back: string
+  movable?: boolean; controls?: ReactNode
 }) {
   const [yan, setYan] = useState({ ...start }), [actor, setActor] = useState<RoomScene['actor']>('yan')
   const field = useRef<SVGSVGElement>(null)
   useEffect(() => { field.current?.focus() }, [])
   const close = near(yan), selected = !!scene && actor === scene.actor
   const move = (direction: EarlyWalkDirection) => {
-    if (scene && actor === 'yan' && !document.hidden) {
+    if (scene && movable && actor === 'yan' && !document.hidden) {
       const next = moveCityWalker(yan, direction)
       if (ironNear(next, 0)) setYan(next)
     }
@@ -45,10 +46,11 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
       <g aria-label="萧炎本人行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad">本人</text></g>
       {draw(yan)}
     </svg>
-    {scene && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix={prefix} onMove={move} /></div>}
+    {scene && movable && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix={prefix} onMove={move} /></div>}
     <p role="status">{prefix} {stage}/{total} · {summary}</p>
     {scene ? <section className="bond-summary"><h3>{scene.title}</h3><p>{scene.text}</p>
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>
+      {controls}
       <button className="primary" disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</button>
       {errors.map(error => <button key={error.operation} className="secondary" onClick={() => act(error.operation)}>{error.label}</button>)}
     </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{finished}</p></section>}

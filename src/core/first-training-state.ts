@@ -1,0 +1,21 @@
+import { boundedInteger, fieldsMatch } from './state-guards'
+export const FIRST_TRAINING_VERSION = '0.58.0'
+export interface FirstTrainingState {
+  stage: number
+  beats: number
+  attempts: number
+  seated: boolean
+  light: 'warm' | 'fading'
+  forecast: 'none' | 'two-months'
+  result: 'none'
+}
+export function firstTrainingAt(stage: number, beats = stage >= 3 ? 3 : 0, attempts = 0): FirstTrainingState {
+  return { stage, beats, attempts, seated: stage >= 1 && stage <= 6,
+    light: stage >= 6 ? 'fading' : 'warm', forecast: stage >= 9 ? 'two-months' : 'none', result: 'none' }
+}
+export function validFirstTraining(task: Record<string, unknown> | FirstTrainingState): task is FirstTrainingState {
+  return boundedInteger(task.stage, 10) && boundedInteger(task.beats, 3)
+    && boundedInteger(task.attempts, task.stage < 2 ? 0 : 1_000_000)
+    && (task.stage < 2 ? task.beats === 0 : task.stage === 2 ? task.beats < 3 : task.beats === 3)
+    && fieldsMatch(task, firstTrainingAt(task.stage, task.beats, task.attempts))
+}
