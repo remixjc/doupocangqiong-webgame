@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -38,18 +39,18 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
     <div className="early-walk-controls" aria-label="寄售手续位置">
       {(Object.keys(stations) as SettlementStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
-    <p role="status">寄售手续 {task.stage}/7 · {task.vip ? '水晶贵宾卡已收' : '贵宾卡未领'} · {task.net ? `净款${task.net}已收` : '尚未收款'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管</p>
-    {task.stage >= 5 && <section className="bond-summary" aria-label="首次寄售账单">
+    <StatusParagraph>寄售手续 {task.stage}/7 · {task.vip ? '水晶贵宾卡已收' : '贵宾卡未领'} · {task.net ? `净款${task.net}已收` : '尚未收款'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管</StatusParagraph>
+    {task.stage >= 5 && <BondSummary aria-label="首次寄售账单">
       <p>药液成交 {FIRST_SALE_GROSS} · 贵宾费率2% · 手续费 {FIRST_SALE_FEE} · 净额 {FIRST_SALE_NET}</p>
       <p>{task.net ? '绿色储款卡已接收，唯一收款记录保留。' : '账单已核对，储款卡还未接收。'}</p>
-    </section>}
-    {scene ? station === scene.station ? <section className="bond-summary" aria-label="寄售手续步骤">
+    </BondSummary>}
+    {scene ? station === scene.station ? <BondSummary aria-label="寄售手续步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlySettlement(gameStore, position, station,
         { step: task.stage, net: task.net, vip: task.vip, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>寄售手续已办完</h3><p>净款和贵宾卡已记录，萧炎带两张卡离场。同瓶当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管，父亲来访与赠回独立记录。</p>
-        {onFatherGift && <PrimaryButton onClick={onFatherGift}>接续父亲来访 · 回萧家房中</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+      : <BondSummary><h3>寄售手续已办完</h3><p>净款和贵宾卡已记录，萧炎带两张卡离场。同瓶当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管，父亲来访与赠回独立记录。</p>
+        {onFatherGift && <PrimaryButton onClick={onFatherGift}>接续父亲来访 · 回萧家房中</PrimaryButton>}</BondSummary>}
     <p className="muted">绿色卡中的故事净款与行囊金币、备料余额分账，只收一次。入场黑卡、水晶贵宾卡、绿色储款卡分别记录；这里不会复制药液或功法。</p>
     <SecondaryButton onClick={onBack}>暂离寄售手续 · 保留收款断点</SecondaryButton>
   </>

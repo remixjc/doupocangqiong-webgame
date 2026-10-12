@@ -1,3 +1,4 @@
+import { BondSummary } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
 import { bondJournal, bondVisitQueue } from '../core/bonds'
 import type { GameState } from '../core/model'
@@ -18,13 +19,13 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
   return <>
     <span className="eyebrow">伙伴手札 / 可选回访</span><h2>记下同行，留有归途。</h2>
     <p className="muted">支线可在主线通关后回访补做。到人物处接取、读取路标、选择回应，返回确认才领取一次补给。卷页之间需要前页完成，旧通关不自动补齐。</p>
-    {!!lines.length && <section className="bond-summary" aria-label="回访安排">
+    {!!lines.length && <BondSummary aria-label="回访安排">
       <p>可见记录 {completed} / {total} · 当前可做 {queue.length} 页</p>
       {queue[0] ? <>
         <p>{queue[0].title} · {queue[0].statusLabel}<br /><span className="muted">下一处：{queue[0].destination}。{queue[0].hint}</span></p>
         <button className="primary small" onClick={() => visit(queue[0].chapter)}>继续第{queue[0].chapter}章 · {queue[0].name}</button>
       </> : <p className="muted">{completed === total ? '当前可见卷页均已完成，可在下方重读。' : '当前没有可直接推进的卷页。先完成主线或补齐前页，再回来安排回访。'}</p>}
-    </section>}
+    </BondSummary>}
     {!lines.length && <p className="quest-hint">当前剧透范围内尚无伙伴卷页。</p>}
     <div className="panel-tabs" aria-label="选择伙伴">{lines.map(line =>
       <SecondaryButton key={line.id} aria-pressed={active?.id === line.id} onClick={() => setSelected(line.id)}>{line.name} · {line.completed}/{line.entries.length}</SecondaryButton>)}</div>

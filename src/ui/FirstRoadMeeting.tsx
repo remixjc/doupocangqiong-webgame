@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -54,13 +55,13 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">本人</HallText></g>
     </svg>
     {scene && actor === 'yan' && !talking && <div className="early-walk-controls"><WalkDirectionButtons prefix="会面" onMove={move} /></div>}
-    <p role="status">路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</StatusParagraph>
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{!near ? '本人先实际走到本步位置。' : actor !== scene.actor ? '请选择当前发言人物。' : actor === 'mei' ? '当前关注：萧媚发言，本人位置保持。' : '当前人物：萧炎本人'}</p>
       <PrimaryButton disabled={!near || actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('fight')}>把招呼算作本人战斗胜利</SecondaryButton>
       <SecondaryButton onClick={() => act('hall')}>在路口直接签入堂借卷</SecondaryButton>
-    </section> : <section className="bond-summary"><h3>路口会面与分路已归档。</h3><p>双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。</p></section>}
+    </BondSummary> : <BondSummary><h3>路口会面与分路已归档。</h3><p>双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离路口会面 · 保留断点</SecondaryButton>
   </>
 }

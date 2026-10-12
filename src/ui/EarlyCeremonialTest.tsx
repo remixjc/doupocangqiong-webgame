@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -57,10 +58,10 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="正式仪式行走操作">{<WalkDirectionButtons prefix="仪式" onMove={move} />}</div>
-    <p role="status">正式仪式 {task.stage}/13 · {task.rite === 'none' ? '本人礼程未开始' : task.rite === 'begun' ? '二长老主持中' : task.rite === 'reviewed' ? '半小时已回顾，待结束' : '仪式已结束'} · {task.inspected ? '二长老已验碑' : '尚未验碑'} · {task.result === 'unmeasured' ? '本人尚未正式测' : '正式八段已记'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="正式仪式步骤"><SceneHeading title={scene.title} text={scene.text} /><p className="muted">{scene.actor === 'xiaoyan' ? '当前为萧炎本人的动作。' : '当前为观察与聆听；主持者的动作由叙事呈现。'}</p><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></section>
+    <StatusParagraph>正式仪式 {task.stage}/13 · {task.rite === 'none' ? '本人礼程未开始' : task.rite === 'begun' ? '二长老主持中' : task.rite === 'reviewed' ? '半小时已回顾，待结束' : '仪式已结束'} · {task.inspected ? '二长老已验碑' : '尚未验碑'} · {task.result === 'unmeasured' ? '本人尚未正式测' : '正式八段已记'}</StatusParagraph>
+    {scene ? near ? <BondSummary aria-label="正式仪式步骤"><SceneHeading title={scene.title} text={scene.text} /><p className="muted">{scene.actor === 'xiaoyan' ? '当前为萧炎本人的动作。' : '当前为观察与聆听；主持者的动作由叙事呈现。'}</p><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
       : <p className="muted">下一步请走近{ceremonialPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>仪式与正式八段已归档。</h3><p>上月预测七段、礼前夜八段感知、本次石碑八段分别保留。{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '萧宁挑战的正式胜负已经宣布，可继续回看各轮历史。' : '萧宁的挑战及最终裁定仍待继续。'}</p>{onChallenge && <PrimaryButton onClick={onChallenge}>接续萧宁首轮 · 推拉推与待裁判</PrimaryButton>}</section>}
+      : <BondSummary><h3>仪式与正式八段已归档。</h3><p>上月预测七段、礼前夜八段感知、本次石碑八段分别保留。{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '萧宁挑战的正式胜负已经宣布，可继续回看各轮历史。' : '萧宁的挑战及最终裁定仍待继续。'}</p>{onChallenge && <PrimaryButton onClick={onChallenge}>接续萧宁首轮 · 推拉推与待裁判</PrimaryButton>}</BondSummary>}
     <p className="muted">材料只作仪式观察，不构成配方或新行囊物品。八段仅本次正式往事结果，人物境界、金币、技能与已结算主线奖励保留。</p>
     <SecondaryButton onClick={onBack}>暂离正式仪式 · 保留验碑断点</SecondaryButton>
   </>

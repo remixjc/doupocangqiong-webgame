@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -43,14 +44,14 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
     <div className="early-walk-controls" aria-label="鉴定路线位置">
       {(Object.keys(stations) as AppraisalStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
-    <p role="status">寄售鉴定 {task.stage}/8 · {task.cloaked ? '黑袍已穿' : '身份尚未遮掩'} · {task.tier === 2 ? '制品二品' : '品阶待核'} · {task.card === 'black-entry' ? '持黑色入场卡' : '尚无入场卡'}</p>
-    {scene ? station === scene.station ? <section className="bond-summary" aria-label="寄售鉴定步骤">
+    <StatusParagraph>寄售鉴定 {task.stage}/8 · {task.cloaked ? '黑袍已穿' : '身份尚未遮掩'} · {task.tier === 2 ? '制品二品' : '品阶待核'} · {task.card === 'black-entry' ? '持黑色入场卡' : '尚无入场卡'}</StatusParagraph>
+    {scene ? station === scene.station ? <BondSummary aria-label="寄售鉴定步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlyAppraisal(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>第一拍卖室已入场</h3><p>同瓶当前由{appraisalOwnerLabels[bottle.owner]}保管，萧炎持黑色入场卡。{state.earlyTraining.auction.stage >= 6 ? '雅妃已敲槌，买方是萧战；收款和父亲赠回由各自记录接续。' : '入席后可旁观雅妃主持与其他人的竞价。'}</p>
-        {onAuction && <PrimaryButton onClick={onAuction}>接续拍卖室 · 入席旁观</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+      : <BondSummary><h3>第一拍卖室已入场</h3><p>同瓶当前由{appraisalOwnerLabels[bottle.owner]}保管，萧炎持黑色入场卡。{state.earlyTraining.auction.stage >= 6 ? '雅妃已敲槌，买方是萧战；收款和父亲赠回由各自记录接续。' : '入席后可旁观雅妃主持与其他人的竞价。'}</p>
+        {onAuction && <PrimaryButton onClick={onAuction}>接续拍卖室 · 入席旁观</PrimaryButton>}</BondSummary>}
     <p className="muted">二品是这份制品的鉴定结果，不增加人物炼药等级。入场黑卡与后来的贵宾卡不同；{state.earlyTraining.settlement.net ? '寄售净款已在独立收款记录中保存。' : '寄售款尚未收到。'}</p>
     <SecondaryButton onClick={onBack}>暂离鉴定路线 · 保留断点</SecondaryButton>
   </>

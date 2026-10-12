@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -50,18 +51,18 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
     <div className="early-walk-controls" aria-label="七段房中位置">
       {(Object.keys(stations) as SeventhStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
-    <p role="status">房中七段 {task.stage}/8 · 调息 {task.beats}/{task.stage <= 3 ? 2 : 3} · 补液 {task.drops}/1 滴 · 重试 {task.attempts} 次 · {task.result === 'none' ? '故事七段未成立' : '故事七段已成立'}</p>
-    {scene ? station === scene.station ? <section className="bond-summary" aria-label="七段房中步骤"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>房中七段 {task.stage}/8 · 调息 {task.beats}/{task.stage <= 3 ? 2 : 3} · 补液 {task.drops}/1 滴 · 重试 {task.attempts} 次 · {task.result === 'none' ? '故事七段未成立' : '故事七段已成立'}</StatusParagraph>
+    {scene ? station === scene.station ? <BondSummary aria-label="七段房中步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training && <>
         {steady && <label className="setting-row"><span>房中调息时机<small>减弱动态：方向键调到35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="房中调息时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="房中调息时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停房中时机</SecondaryButton>}
-        {paused && <><p role="status">房中时机已暂停，返回前台后需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续房中调息 · 恢复时机</SecondaryButton></>}
+        {paused && <><StatusParagraph>房中时机已暂停，返回前台后需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续房中调息 · 恢复时机</SecondaryButton></>}
       </>}
       <PrimaryButton disabled={training && paused} onClick={act}>{scene.action}</PrimaryButton>
-    </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>房中七段已归档。</h3><p>本轮木盆保留补液后渐淡状态，老师的一滴只补了一次。接续吸掌与推风组合练习。</p>
-        {onPalm && <PrimaryButton onClick={onPalm}>接续两瓶试验 · 吸掌与吹火掌</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+      : <BondSummary><h3>房中七段已归档。</h3><p>本轮木盆保留补液后渐淡状态，老师的一滴只补了一次。接续吸掌与推风组合练习。</p>
+        {onPalm && <PrimaryButton onClick={onPalm}>接续两瓶试验 · 吸掌与吹火掌</PrimaryButton>}</BondSummary>}
     <p className="muted">两次与三次调息及35%–65%窗口为原创操作，一小时只作故事时段回顾。七段结果独立记录；既有自用药液仍耗尽，父亲原瓶、房柜原包、主线境界和已结算奖励保留。</p>
     <SecondaryButton onClick={onBack}>暂离七段房中 · 保留补液断点</SecondaryButton>
   </>

@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useReturningScene } from './use-returning-scene'
@@ -292,7 +293,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       </g>
       <MapText x="360" y="402" fill="#a7b9a9">院门 · 每次进入从这里出发</MapText>
     </svg>
-    <p role="status" className="early-walk-status">{place ? `附近：${place.label} · 可查看地点` : '沿街巷行走，靠近金色路标查看。'}</p>
+    <StatusParagraph className="early-walk-status">{place ? `附近：${place.label} · 可查看地点` : '沿街巷行走，靠近金色路标查看。'}</StatusParagraph>
     <div className="early-walk-controls" aria-label="往事行走操作">
       <SecondaryButton onClick={() => move('up')} aria-label="往事向上走">↑</SecondaryButton>
       <SecondaryButton onClick={() => move('left')} aria-label="往事向左走">←</SecondaryButton>
@@ -301,7 +302,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       <PrimaryButton disabled={!place} onClick={() => place && setReading(place.id)}>查看附近地点</PrimaryButton>
     </div>
     {reading && place?.id === reading && <>
-      <section className="bond-summary" aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></section>
+      <BondSummary aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></BondSummary>
       {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <PrimaryButton ref={roomEntry} onClick={() => setIndoors(true)}>进入药老调制室</PrimaryButton>}
       {place.id === 'teacher' && !earlyHallBlock(state) && <SecondaryButton ref={hallEntry} onClick={() => {
         if (submitEarlyHallEntry(gameStore, position)) setHall(true)

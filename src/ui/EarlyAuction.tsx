@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -39,14 +40,14 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
     <div className="early-walk-controls" aria-label="拍卖观察位置">
       {(Object.keys(stations) as AuctionStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
-    <p role="status">首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管 · {state.earlyTraining.settlement.net ? '净款已收' : '尚未结算'}</p>
-    {scene ? station === scene.station ? <section className="bond-summary" aria-label="首次拍卖步骤">
+    <StatusParagraph>首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管 · {state.earlyTraining.settlement.net ? '净款已收' : '尚未结算'}</StatusParagraph>
+    {scene ? station === scene.station ? <BondSummary aria-label="首次拍卖步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlyAuction(gameStore, position, station,
         { step: task.stage, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>药液成交，接续寄售手续。</h3><p>萧战买得同瓶，药液当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管。{state.earlyTraining.settlement.net ? '寄售净款已收到，父亲来访独立记录。' : '先观察功法卷成交，再回鉴定室办理凭据与收款。'}</p>
-        {onSettle && <PrimaryButton onClick={onSettle}>接续寄售手续 · 回鉴定室</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+      : <BondSummary><h3>药液成交，接续寄售手续。</h3><p>萧战买得同瓶，药液当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管。{state.earlyTraining.settlement.net ? '寄售净款已收到，父亲来访独立记录。' : '先观察功法卷成交，再回鉴定室办理凭据与收款。'}</p>
+        {onSettle && <PrimaryButton onClick={onSettle}>接续寄售手续 · 回鉴定室</PrimaryButton>}</BondSummary>}
     <p className="muted">这里的报价是故事金币金额，只记录其他人的竞价。观察与落槌不增减行囊金币或备料余额，不获得功法卷或新技能。</p>
     <SecondaryButton onClick={onBack}>暂离拍卖室 · 保留旁观断点</SecondaryButton>
   </>

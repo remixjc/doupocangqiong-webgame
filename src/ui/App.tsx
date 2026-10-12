@@ -1,3 +1,4 @@
+import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 import { chapters, chapterById } from '../content/chapters'
@@ -211,7 +212,7 @@ export default function App() {
       {(panel === 'recap' || panel === 'early' || panel === 'bonds' || panel === 'event' || panel === 'alchemy' || panel === 'shop' || panel === 'settings') && <SceneBoundary key={panel === 'event' ? `${panel}:${eventId}:${eventCheckpoint}` : panel} context="panel"
         onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
         onSave={() => setPanel('save')} onBack={() => { setPanel(null); setScreen('world') }}>
-        <Suspense fallback={<p className="muted" role="status">{panel === 'alchemy' || panel === 'shop' || panel === 'settings' ? '正在打开操作面板…' : '正在翻开旅途记录…'}</p>}>
+        <Suspense fallback={<StatusParagraph className="muted">{panel === 'alchemy' || panel === 'shop' || panel === 'settings' ? '正在打开操作面板…' : '正在翻开旅途记录…'}</StatusParagraph>}>
           {panel === 'recap' ? <StoryRecap state={s} /> : panel === 'bonds' ? <BondJournal state={s} visit={enter} />
             : panel === 'event' ? <StoryEventPanel key={`${eventId}:${eventCheckpoint}`} state={s} eventId={eventId} checkpoint={eventCheckpoint} close={() => setPanel(null)} shop={() => setPanel('shop')} />
             : panel === 'alchemy' || panel === 'shop' || panel === 'settings' ? <ToolkitPanel panel={panel} state={s} activeDifficulty={screen === 'play' ? r.difficulty : undefined} />
@@ -229,7 +230,7 @@ export default function App() {
       {panel === 'save' && <SceneBoundary context="save"
         onFailure={() => { gameStore.paused = true; stopAudio() }} onReload={() => { void reloadScene() }}
         onBack={() => { setPanel(null); setScreen('world') }}>
-        <Suspense fallback={<><p className="muted" role="status">正在打开存档管理…</p><SaveStatus /></>}>
+        <Suspense fallback={<><StatusParagraph className="muted">正在打开存档管理…</StatusParagraph><SaveStatus /></>}>
           <SavesPanel state={s} onLoaded={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} onReset={() => { setPanel(null); setStory(null); setScreen('home'); setRun(n => n + 1) }} />
         </Suspense>
       </SceneBoundary>}

@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -61,16 +62,16 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
     {scene && <div className="early-walk-controls"><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>
       {active && <WalkDirectionButtons prefix="寻核" onMove={move} />}</div>}
-    <p role="status">坊市寻核 {task.stage}/20 · {earlyMarketSearchSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>坊市寻核 {task.stage}/20 · {earlyMarketSearchSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 普通手链：{task.bracelet === 'xuner-viewing' ? '薰儿拿看，仍属摊主' : task.bracelet === 'returned' ? '已放回，仍属摊主' : '仍在摊上'}</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。`
       : `先由${selected === 'yan' ? '萧炎' : '薰儿'}走近${marketSearchPlaces[scene.place].label}。`} />
       <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage === 10 && <SecondaryButton disabled={!near} onClick={() => act('claim-gift')}>拿看就能算作已经得到礼物吗？</SecondaryButton>}
       {task.stage === 11 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>能从这条普通手链取出木核吗？</SecondaryButton>}
       {task.stage === 12 && <SecondaryButton disabled={!near} onClick={() => act('refund-loan')}>不买手链就收回已借采购资金</SecondaryButton>}
       {task.stage === 19 && <SecondaryButton disabled={!near} onClick={() => act('reveal-name')}>尚未交谈就登记来人的姓名</SecondaryButton>}
-    </section> : <section className="bond-summary"><h3>寻核与放回手链已归档。</h3><p>萧炎仍在寻找木核，薰儿没有买下摊上的手链。华衣来人的交谈另段接续。</p></section>}
+    </BondSummary> : <BondSummary><h3>寻核与放回手链已归档。</h3><p>萧炎仍在寻找木核，薰儿没有买下摊上的手链。华衣来人的交谈另段接续。</p></BondSummary>}
     {state.earlyTraining.bracelet.gift === 'xuner' && <p className="muted">后来的已赠手链记录保留。这一段回看的是当时尚未购买的时刻。</p>}
     <SecondaryButton onClick={onBack}>暂离坊市寻核 · 保留断点</SecondaryButton>
   </>

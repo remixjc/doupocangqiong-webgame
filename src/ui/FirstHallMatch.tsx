@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField } from './HallShelves'
 import { HallText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -52,14 +53,14 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
       <g aria-label="萧炎本人阅读位置" transform="translate(400 250)"><MarketWalker /><HallText y="26" fontSize="9">本人 · 靠架阅读</HallText></g>
       <rect x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
     </svg>
-    <p role="status">{prefix} {continuation ? task.stage : Math.min(task.stage, 12)}/{continuation ? 20 : 12} · {firstHallMatchSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>{prefix} {continuation ? task.stage : Math.min(task.stage, 12)}/{continuation ? 20 : 12} · {firstHallMatchSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{t.firstHallReading.record === 'recalled' ? '明确回顾当时第一卷，当前已归架或第二卷保管保持。' : '本人仍持同一第一卷。'}旧卷账 {t.hall.stage}/9；没有新技能或奖励。</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor === scene.actor ? '当前焦点正确。' : '请明确切换到本步所需焦点。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('win')}>本人入西场参赛</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>提前取第二卷</SecondaryButton>
-    </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{task.stage >= 20 ? '薰儿已到东架，本人仍读卷。招呼与问答待续。' : '薰儿取胜；赛后走向东架由独立入口接续。'}</p></section>}
+    </BondSummary> : <BondSummary><h3>{prefix}已归档。</h3><p>{task.stage >= 20 ? '薰儿已到东架，本人仍读卷。招呼与问答待续。' : '薰儿取胜；赛后走向东架由独立入口接续。'}</p></BondSummary>}
     <SecondaryButton onClick={onBack}>{continuation ? '暂离赛后东架 · 保留断点' : '暂离西赛旁观 · 保留断点'}</SecondaryButton>
   </>
 }

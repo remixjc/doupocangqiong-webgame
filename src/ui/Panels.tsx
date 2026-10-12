@@ -1,3 +1,4 @@
+import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useRef, useState } from 'react'
 import { recipes, itemNames } from '../content/recipes'
@@ -58,7 +59,7 @@ export function SettingsPanel({ state, activeDifficulty }: { state: GameState; a
   }
   return <><span className="eyebrow">设置 / 随心历练</span><h2>用自己的节奏，走这条路。</h2>
     <label className="setting-row"><span>战斗难度<small>剧情：更低敌人生命与伤害；普通：标准；挑战：更强敌人。</small></span><select value={state.settings.difficulty} onChange={e => settings({ difficulty: e.target.value as GameState['settings']['difficulty'] })}><option value="story">剧情</option><option value="normal">普通</option><option value="hard">挑战</option></select></label>
-    <p className="muted" role="status">{activeDifficulty && `本次历练：${{ story: '剧情', normal: '普通', hard: '挑战' }[activeDifficulty]}。`}难度选择会保存，重新进入篇章或营地休整后生效。</p>
+    <StatusParagraph className="muted">{activeDifficulty && `本次历练：${{ story: '剧情', normal: '普通', hard: '挑战' }[activeDifficulty]}。`}难度选择会保存，重新进入篇章或营地休整后生效。</StatusParagraph>
     <label className="setting-row"><span>剧情范围<small>动画模式由你设置已看进度，不对应未经核实的最新集数。</small></span><select value={state.settings.spoiler} onChange={e => settings({ spoiler: e.target.value as 'novel' | 'anime' })}><option value="novel">小说完整主线</option><option value="anime">动画进度 / 防剧透</option></select></label>
     {state.settings.spoiler === 'anime' && <label className="setting-row"><span>允许揭晓至游戏第几章<small>锁定篇章隐藏标题和概要。修改不会抹除已完成记录。</small></span><select value={Math.min(state.settings.animeLimit, chapters.length)} onChange={e => settings({ animeLimit: Number(e.target.value) })}>{chapters.map(c => <option key={c.id} value={c.id}>第 {c.id} 章</option>)}</select></label>}
     <label className="setting-row"><span>音效音量<small>主动操作后启用；音量实时生效，0 为静音。暂停或切后台时停止音效。</small></span><input aria-label="音效音量" type="range" min="0" max="1" step=".05" value={state.settings.volume} onChange={e => settings({ volume: Number(e.target.value) })} /></label>

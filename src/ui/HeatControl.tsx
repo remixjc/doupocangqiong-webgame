@@ -1,3 +1,4 @@
+import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState } from 'react'
 import { startHeatMotion, type HeatMotionControl } from './heat-motion'
@@ -31,7 +32,7 @@ export default function HeatControl({
       <i style={{ left: `${marker * 100}%` }} />
     </div>
     {!reducedMotion && (paused
-      ? <><p role="status">时机已暂停。返回前台后，请明确继续；暂停期间不能锁定。</p>
+      ? <><StatusParagraph>时机已暂停。返回前台后，请明确继续；暂停期间不能锁定。</StatusParagraph>
         <SecondaryButton onClick={() => { if (motion.current?.resume()) setPaused(false) }}>继续时机</SecondaryButton></>
       : <SecondaryButton onClick={() => motion.current?.pause()}>暂停时机</SecondaryButton>)}
     <PrimaryButton disabled={!reducedMotion && paused} onClick={() => {

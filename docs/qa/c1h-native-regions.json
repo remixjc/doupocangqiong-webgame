@@ -1,0 +1,640 @@
+{
+  "version": "0.72.1",
+  "date": "2026-10-13",
+  "counts": {
+    "statusParagraphs": 70,
+    "summarySections": 136
+  },
+  "reverse": [
+    {
+      "path": "src/ui/App.tsx",
+      "counts": {
+        "StatusParagraph": 2
+      },
+      "originalSha256": "f413b55b8cca57d643b102726157c8264022e956a2886aa472935925224eacae",
+      "restoredSha256": "f413b55b8cca57d643b102726157c8264022e956a2886aa472935925224eacae"
+    },
+    {
+      "path": "src/ui/BondJournal.tsx",
+      "counts": {
+        "BondSummary": 1
+      },
+      "originalSha256": "3ffe4c68ef5116970c1417ef0aaf9a8d4c8fc2c0d8373111d46ddfad752572a7",
+      "restoredSha256": "3ffe4c68ef5116970c1417ef0aaf9a8d4c8fc2c0d8373111d46ddfad752572a7"
+    },
+    {
+      "path": "src/ui/DeferredScene.tsx",
+      "counts": {
+        "StatusParagraph": 1
+      },
+      "originalSha256": "92bc83ab99e7a45beb40de55296c6c8970a2f480d9ed62efc9dd75b17d9ddca4",
+      "restoredSha256": "92bc83ab99e7a45beb40de55296c6c8970a2f480d9ed62efc9dd75b17d9ddca4"
+    },
+    {
+      "path": "src/ui/EarlyAppraisal.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "f9fa6114645c56ca8b4910b41f831ad985afb46ee297d7269d12fcaa1a6cc3bf",
+      "restoredSha256": "f9fa6114645c56ca8b4910b41f831ad985afb46ee297d7269d12fcaa1a6cc3bf"
+    },
+    {
+      "path": "src/ui/EarlyApprentice.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "52846019d30c02c4f526dd9cda171add5313fab0bd8c98dffa87d44d977fb8a1",
+      "restoredSha256": "52846019d30c02c4f526dd9cda171add5313fab0bd8c98dffa87d44d977fb8a1"
+    },
+    {
+      "path": "src/ui/EarlyAuction.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "cb9775d711a69e58d87f320b0361aadb9fd4970c81aa56e39e69f0abc61cead4",
+      "restoredSha256": "cb9775d711a69e58d87f320b0361aadb9fd4970c81aa56e39e69f0abc61cead4"
+    },
+    {
+      "path": "src/ui/EarlyBracelet.tsx",
+      "counts": {
+        "BondSummary": 1
+      },
+      "originalSha256": "478afd34d355b90e2100aa462453e24a7030a645cdb9e278be79d5acdc48ef67",
+      "restoredSha256": "478afd34d355b90e2100aa462453e24a7030a645cdb9e278be79d5acdc48ef67"
+    },
+    {
+      "path": "src/ui/EarlyCeremonialTest.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "f8091f6bf833cd05d8184532de6ef413d4cf76cce8f0be3d491f4841292710aa",
+      "restoredSha256": "f8091f6bf833cd05d8184532de6ef413d4cf76cce8f0be3d491f4841292710aa"
+    },
+    {
+      "path": "src/ui/EarlyCeremonyGuests.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "39e49f2f1c0b36a4c2d4f0f0f0a110c48d67dff00dcaee91ce476c09b7a2b365",
+      "restoredSha256": "39e49f2f1c0b36a4c2d4f0f0f0a110c48d67dff00dcaee91ce476c09b7a2b365"
+    },
+    {
+      "path": "src/ui/EarlyCeremonyVerdict.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "db6ef826b896e5d87dfcb34f48f5f479642307570dffd93ea2c95bd85dd01826",
+      "restoredSha256": "db6ef826b896e5d87dfcb34f48f5f479642307570dffd93ea2c95bd85dd01826"
+    },
+    {
+      "path": "src/ui/EarlyCityPharmacy.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "74964997934b17f3a99ba7ad0a0e7374e806f5aea6e7cd9e10aa95a66325cc20",
+      "restoredSha256": "74964997934b17f3a99ba7ad0a0e7374e806f5aea6e7cd9e10aa95a66325cc20"
+    },
+    {
+      "path": "src/ui/EarlyConsignment.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 4
+      },
+      "originalSha256": "7b92194430593167f740ac26fef84157d8847448f9903274cdcf3570ccc5aaf1",
+      "restoredSha256": "7b92194430593167f740ac26fef84157d8847448f9903274cdcf3570ccc5aaf1"
+    },
+    {
+      "path": "src/ui/EarlyEighthTraining.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "835ecece4d4abb5c49a204a1a1ecfcdb686cccb386ee2194e83e3ef5b1987ba2",
+      "restoredSha256": "835ecece4d4abb5c49a204a1a1ecfcdb686cccb386ee2194e83e3ef5b1987ba2"
+    },
+    {
+      "path": "src/ui/EarlyFamilyCompensation.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "4eb3e7b78406b7f1188178051cb1031df2701f10146bbc82cefe5ae51e07836f",
+      "restoredSha256": "4eb3e7b78406b7f1188178051cb1031df2701f10146bbc82cefe5ae51e07836f"
+    },
+    {
+      "path": "src/ui/EarlyFamilyContract.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "39d3aad30faa82058fc2ca4e974ff5ed7109f460f137c93a38a0121e204b23a8",
+      "restoredSha256": "39d3aad30faa82058fc2ca4e974ff5ed7109f460f137c93a38a0121e204b23a8"
+    },
+    {
+      "path": "src/ui/EarlyFamilyVisit.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "fafc03a2678e53fb37b91194ae81c7098c9e2a1ec11d310a0148fbaf5c44b0db",
+      "restoredSha256": "fafc03a2678e53fb37b91194ae81c7098c9e2a1ec11d310a0148fbaf5c44b0db"
+    },
+    {
+      "path": "src/ui/EarlyFatherGift.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "11ad31c5c2be2d695cec15cac3fce0ac9ca49bfd28897415c29dfe1975d78ad9",
+      "restoredSha256": "11ad31c5c2be2d695cec15cac3fce0ac9ca49bfd28897415c29dfe1975d78ad9"
+    },
+    {
+      "path": "src/ui/EarlyForestStrike.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "359fd38ec52384f13ee5baf079740bead7c503814ba186d877f77c90d10b6f84",
+      "restoredSha256": "359fd38ec52384f13ee5baf079740bead7c503814ba186d877f77c90d10b6f84"
+    },
+    {
+      "path": "src/ui/EarlyGrowth.tsx",
+      "counts": {
+        "StatusParagraph": 2
+      },
+      "originalSha256": "0fffacfa9957194e5ab883dfc657a69402ebfdad64702a80fee2f2e32f911afd",
+      "restoredSha256": "0fffacfa9957194e5ab883dfc657a69402ebfdad64702a80fee2f2e32f911afd"
+    },
+    {
+      "path": "src/ui/EarlyHall.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "314e36a0c0de865297c380c08624261cef1e319691e5da6839395454ac947cac",
+      "restoredSha256": "314e36a0c0de865297c380c08624261cef1e319691e5da6839395454ac947cac"
+    },
+    {
+      "path": "src/ui/EarlyKeChallenge.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "c5684540b6d5ced5a71f4b0db329d2cd9573f214bcba352a736caf0004c21b05",
+      "restoredSha256": "c5684540b6d5ced5a71f4b0db329d2cd9573f214bcba352a736caf0004c21b05"
+    },
+    {
+      "path": "src/ui/EarlyLongSupplies.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "ee086cb91ee4f13939fee538e741a07dde4b05b2dddcce00a580e41ac00826de",
+      "restoredSha256": "ee086cb91ee4f13939fee538e741a07dde4b05b2dddcce00a580e41ac00826de"
+    },
+    {
+      "path": "src/ui/EarlyMarketBracelets.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "dd6ff183ab1d2514914e4ed4af4c0aa70f6055d4cc276f1e5ab7679d2bf53a00",
+      "restoredSha256": "dd6ff183ab1d2514914e4ed4af4c0aa70f6055d4cc276f1e5ab7679d2bf53a00"
+    },
+    {
+      "path": "src/ui/EarlyMarketDiscovery.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "8cc0d565e70e030749c6a1aa877164b4133e2528cf8231ed02285dc928313711",
+      "restoredSha256": "8cc0d565e70e030749c6a1aa877164b4133e2528cf8231ed02285dc928313711"
+    },
+    {
+      "path": "src/ui/EarlyMarketEscort.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "3c1dfaf553e17b38661c5b2265a3ef4944c4de2f648a2f86880f1a7fae3d7039",
+      "restoredSha256": "3c1dfaf553e17b38661c5b2265a3ef4944c4de2f648a2f86880f1a7fae3d7039"
+    },
+    {
+      "path": "src/ui/EarlyMarketSearch.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "58609f46d90d0526336b0c201c3abd657c6ee8f927b0ea1940c37bb875a4f4c5",
+      "restoredSha256": "58609f46d90d0526336b0c201c3abd657c6ee8f927b0ea1940c37bb875a4f4c5"
+    },
+    {
+      "path": "src/ui/EarlyMarketStandoff.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "b9cc2ad879fc727dec4beea20b248516372293024efb777c47e8428bd77e290d",
+      "restoredSha256": "b9cc2ad879fc727dec4beea20b248516372293024efb777c47e8428bd77e290d"
+    },
+    {
+      "path": "src/ui/EarlyMethodDiscussion.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "e60b65c2d2e9d881bb584fa34443a13e9d6be121286e80e9180d93d40a1b1b13",
+      "restoredSha256": "e60b65c2d2e9d881bb584fa34443a13e9d6be121286e80e9180d93d40a1b1b13"
+    },
+    {
+      "path": "src/ui/EarlyMorningCard.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "01e07c97247f55622675f494ce34a37103440c97feb5a86b0b2cc359f84a9cc7",
+      "restoredSha256": "01e07c97247f55622675f494ce34a37103440c97feb5a86b0b2cc359f84a9cc7"
+    },
+    {
+      "path": "src/ui/EarlyMountainRing.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "7d799bd3434f0b786109fcc2263d199ffcf1f29be37fcbc1f64b5162f931b70c",
+      "restoredSha256": "7d799bd3434f0b786109fcc2263d199ffcf1f29be37fcbc1f64b5162f931b70c"
+    },
+    {
+      "path": "src/ui/EarlyMountainVisitor.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "f11b041be9fa50ddd64ab2b22963e9b0dabf1ea0a3d2c35c6b2ccc2ea4ff4c4d",
+      "restoredSha256": "f11b041be9fa50ddd64ab2b22963e9b0dabf1ea0a3d2c35c6b2ccc2ea4ff4c4d"
+    },
+    {
+      "path": "src/ui/EarlyNingFirst.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "21a49d184382ee3cfd996411caa72878baab7c378fb1f2ca1823180bad0c377c",
+      "restoredSha256": "21a49d184382ee3cfd996411caa72878baab7c378fb1f2ca1823180bad0c377c"
+    },
+    {
+      "path": "src/ui/EarlyNingSecond.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "bdba5b8d5c67d9a6b9b74b03382ec6bfea9559c6c898a1be10307994726d52a6",
+      "restoredSha256": "bdba5b8d5c67d9a6b9b74b03382ec6bfea9559c6c898a1be10307994726d52a6"
+    },
+    {
+      "path": "src/ui/EarlyPalmPair.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "f14d22ad022d1e58996bc52d3724291d5d0439619433764a5877437354322f0a",
+      "restoredSha256": "f14d22ad022d1e58996bc52d3724291d5d0439619433764a5877437354322f0a"
+    },
+    {
+      "path": "src/ui/EarlyPractice.tsx",
+      "counts": {
+        "BondSummary": 1
+      },
+      "originalSha256": "0453ef13078838e74eebe8feb35d9938c2c09f7dc3d6c6fe3537627a1f12a710",
+      "restoredSha256": "0453ef13078838e74eebe8feb35d9938c2c09f7dc3d6c6fe3537627a1f12a710"
+    },
+    {
+      "path": "src/ui/EarlyPreliminary.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "015a977ac5ffa0843d6a5127f30b2752198fb29ea326e4bf026ff89de937243e",
+      "restoredSha256": "015a977ac5ffa0843d6a5127f30b2752198fb29ea326e4bf026ff89de937243e"
+    },
+    {
+      "path": "src/ui/EarlyPreparationBrief.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "6af2a275af07516877bc76681ce552d54f647f7a93ac16fe1be2b2859d2227d5",
+      "restoredSha256": "6af2a275af07516877bc76681ce552d54f647f7a93ac16fe1be2b2859d2227d5"
+    },
+    {
+      "path": "src/ui/EarlyQiAid.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "f0d7efe383646b8ef26e6b3b3a40bb3f38d669c9313ed9b89192f529d521ede5",
+      "restoredSha256": "f0d7efe383646b8ef26e6b3b3a40bb3f38d669c9313ed9b89192f529d521ede5"
+    },
+    {
+      "path": "src/ui/EarlyQiBarrier.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "90f4f1357a4edd30be23a8ae7cd50788601038a80a7f4207a655e50f2e904ff4",
+      "restoredSha256": "90f4f1357a4edd30be23a8ae7cd50788601038a80a7f4207a655e50f2e904ff4"
+    },
+    {
+      "path": "src/ui/EarlyQiExchange.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "299a1b16909b16c8d01df839189ea7aa3ab83de3656128fcd6656022ae350e6c",
+      "restoredSha256": "299a1b16909b16c8d01df839189ea7aa3ab83de3656128fcd6656022ae350e6c"
+    },
+    {
+      "path": "src/ui/EarlyQiPavilion.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "06e92d2e82564cbacd0ebd377f528fc42b8d3ee31f06ae85e7fe6d271ae8ff7d",
+      "restoredSha256": "06e92d2e82564cbacd0ebd377f528fc42b8d3ee31f06ae85e7fe6d271ae8ff7d"
+    },
+    {
+      "path": "src/ui/EarlyQiScroll.tsx",
+      "counts": {
+        "BondSummary": 2
+      },
+      "originalSha256": "12092522ec5af58846a7e51a6ed851e3328709b3814bf9ba45a43e3e78a3b177",
+      "restoredSha256": "12092522ec5af58846a7e51a6ed851e3328709b3814bf9ba45a43e3e78a3b177"
+    },
+    {
+      "path": "src/ui/EarlyRecovery.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "3d3a37bde2273d1d7054130a9593e499b5298cd8c5ed4f3ee2ab2b27bd0f5d91",
+      "restoredSha256": "3d3a37bde2273d1d7054130a9593e499b5298cd8c5ed4f3ee2ab2b27bd0f5d91"
+    },
+    {
+      "path": "src/ui/EarlyRoom.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 1
+      },
+      "originalSha256": "db655b08d123111f7f515c42a9afd9e3512fff3a4662f4a2efaccedea0e223ef",
+      "restoredSha256": "db655b08d123111f7f515c42a9afd9e3512fff3a4662f4a2efaccedea0e223ef"
+    },
+    {
+      "path": "src/ui/EarlySettlement.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 3
+      },
+      "originalSha256": "5b2543e9bd089cabcff1a6576fb0ad66a5aa737bf1fb30d409520c8f1dd3d085",
+      "restoredSha256": "5b2543e9bd089cabcff1a6576fb0ad66a5aa737bf1fb30d409520c8f1dd3d085"
+    },
+    {
+      "path": "src/ui/EarlySeventhRoom.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 2
+      },
+      "originalSha256": "ecefb3ddc839a40208c62e1bfadb1ae0561df971bc2449d460536e530f3f2fd9",
+      "restoredSha256": "ecefb3ddc839a40208c62e1bfadb1ae0561df971bc2449d460536e530f3f2fd9"
+    },
+    {
+      "path": "src/ui/EarlySupervision.tsx",
+      "counts": {
+        "StatusParagraph": 2,
+        "BondSummary": 1
+      },
+      "originalSha256": "d11b7b28d128d1a7f8db92f22da8c1274b3d5cb872cd604fbedf033d9e36431a",
+      "restoredSha256": "d11b7b28d128d1a7f8db92f22da8c1274b3d5cb872cd604fbedf033d9e36431a"
+    },
+    {
+      "path": "src/ui/EarlyTeaching.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 3
+      },
+      "originalSha256": "4b562cde0825d1a35fd3802e58e7c13ab5d87c99e834afb6e713d8df9323d37b",
+      "restoredSha256": "4b562cde0825d1a35fd3802e58e7c13ab5d87c99e834afb6e713d8df9323d37b"
+    },
+    {
+      "path": "src/ui/EarlyTrainingPanel.tsx",
+      "counts": {
+        "BondSummary": 26
+      },
+      "originalSha256": "c5bfef1493e29ff0346ea945bd77e9dcad7bd7f327bf2539bc1c3ba1e37d5fd7",
+      "restoredSha256": "c5bfef1493e29ff0346ea945bd77e9dcad7bd7f327bf2539bc1c3ba1e37d5fd7"
+    },
+    {
+      "path": "src/ui/EarlyWalk.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 1
+      },
+      "originalSha256": "00aa5e0e63b788442cb9eba7d213f99bd2ab10323c0fad4d64875c3e8c3780e7",
+      "restoredSha256": "00aa5e0e63b788442cb9eba7d213f99bd2ab10323c0fad4d64875c3e8c3780e7"
+    },
+    {
+      "path": "src/ui/EarlyWalkInteraction.tsx",
+      "counts": {
+        "BondSummary": 1
+      },
+      "originalSha256": "c274d33809cde2b74805aa21eb65ba2ce24c00b037eea718aa6faa2c9cea1da9",
+      "restoredSha256": "c274d33809cde2b74805aa21eb65ba2ce24c00b037eea718aa6faa2c9cea1da9"
+    },
+    {
+      "path": "src/ui/EarlyXunerVisit.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "0bcab6f6f66a4e82ef0a65c11b9e95d3fd5753271b02067d1c1a2fcd97847451",
+      "restoredSha256": "0bcab6f6f66a4e82ef0a65c11b9e95d3fd5753271b02067d1c1a2fcd97847451"
+    },
+    {
+      "path": "src/ui/FirstDeparture.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "67a6593684e3c147f6eae8c9495935ac317a30f385c1207ca7cb1c451926b988",
+      "restoredSha256": "67a6593684e3c147f6eae8c9495935ac317a30f385c1207ca7cb1c451926b988"
+    },
+    {
+      "path": "src/ui/FirstHallApproach.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "9b178e51e26acf8641823c1c27319828f0cab14079d94a6bdff207323c8e51e8",
+      "restoredSha256": "9b178e51e26acf8641823c1c27319828f0cab14079d94a6bdff207323c8e51e8"
+    },
+    {
+      "path": "src/ui/FirstHallEntry.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "6bb18fcbe2a6500a4b885f8d44bf66a7634b363ad4a86c49471f5fe27969abc6",
+      "restoredSha256": "6bb18fcbe2a6500a4b885f8d44bf66a7634b363ad4a86c49471f5fe27969abc6"
+    },
+    {
+      "path": "src/ui/FirstHallMatch.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "ad4e10e37931f8ecd20296c029bbc8e349c10be8bd5dbfba6d3774696b6b4c18",
+      "restoredSha256": "ad4e10e37931f8ecd20296c029bbc8e349c10be8bd5dbfba6d3774696b6b4c18"
+    },
+    {
+      "path": "src/ui/FirstHallReading.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "3edbc4e1d8079895f4619701106859f28b83ba27c7973b9d4659ef6569523218",
+      "restoredSha256": "3edbc4e1d8079895f4619701106859f28b83ba27c7973b9d4659ef6569523218"
+    },
+    {
+      "path": "src/ui/FirstHallTalk.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "25b255e806bf75775af3a46e27ad78b825f7995e5af4f1fab2832f3f88e5568b",
+      "restoredSha256": "25b255e806bf75775af3a46e27ad78b825f7995e5af4f1fab2832f3f88e5568b"
+    },
+    {
+      "path": "src/ui/FirstRoadMeeting.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "c7e265fa08b51428bd4a2265c346bbfb32612fbb09a176486e4bb65baf57111c",
+      "restoredSha256": "c7e265fa08b51428bd4a2265c346bbfb32612fbb09a176486e4bb65baf57111c"
+    },
+    {
+      "path": "src/ui/HeatControl.tsx",
+      "counts": {
+        "StatusParagraph": 1
+      },
+      "originalSha256": "9adf99a4b8a0d3e508c5ef31fb38ceb7b63e52116816bd376d5c5f2a86ba26ae",
+      "restoredSha256": "9adf99a4b8a0d3e508c5ef31fb38ceb7b63e52116816bd376d5c5f2a86ba26ae"
+    },
+    {
+      "path": "src/ui/Panels.tsx",
+      "counts": {
+        "StatusParagraph": 1
+      },
+      "originalSha256": "d59e2c229489fb659c83ba5b5b8fec7ec23cbab01a6aa33fdb61628dd9f77595",
+      "restoredSha256": "d59e2c229489fb659c83ba5b5b8fec7ec23cbab01a6aa33fdb61628dd9f77595"
+    },
+    {
+      "path": "src/ui/RouteControls.tsx",
+      "counts": {
+        "StatusParagraph": 1
+      },
+      "originalSha256": "fa43e84a8f840d12d032771f73ce76ed106a8859eb49aa3cd9912c56527b4064",
+      "restoredSha256": "fa43e84a8f840d12d032771f73ce76ed106a8859eb49aa3cd9912c56527b4064"
+    },
+    {
+      "path": "src/ui/SavesPanel.tsx",
+      "counts": {
+        "BondSummary": 1
+      },
+      "originalSha256": "666de71a6ebbe09519c2ba2685dfb080b7c5c57e0b77b3ea84240ad6fa952d14",
+      "restoredSha256": "666de71a6ebbe09519c2ba2685dfb080b7c5c57e0b77b3ea84240ad6fa952d14"
+    },
+    {
+      "path": "src/ui/TeacherRoom.tsx",
+      "counts": {
+        "StatusParagraph": 1,
+        "BondSummary": 2
+      },
+      "originalSha256": "f4c065b35ec78701a2be06fbbe440c7fde6b4c60c9acd9a864ff321ead84346d",
+      "restoredSha256": "f4c065b35ec78701a2be06fbbe440c7fde6b4c60c9acd9a864ff321ead84346d"
+    }
+  ],
+  "nativeDecoded": 124,
+  "native": [
+    {
+      "name": "regionsMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791836370646.json",
+      "prior": "threatMainFinalRefresh",
+      "sha256": "0e5ba010767e613a474dfd5265b56efaa6651bfdce734c8c934046eae96faee8",
+      "entireStateEqual": true
+    },
+    {
+      "name": "regionsMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791836421679.json",
+      "prior": "threatMaterialsFinal",
+      "sha256": "5274ff16764e7655e504995139f2e97657ccef9aa30cc1bcef4494b68ce088cf",
+      "entireStateEqual": true
+    },
+    {
+      "name": "regionsIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791836435749.json",
+      "prior": "threatIntactAfterNavigation",
+      "sha256": "027ea0f33ae96cb694365074cf8289958771070fa27964a05b7e4b3c7d056e31",
+      "entireStateEqual": true
+    },
+    {
+      "name": "regionsMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791836423281.json",
+      "prior": "regionsMainMigrated",
+      "sha256": "2df2a7c14484ef7008111df6bb9d649427b68f9105c8a08831e3fe4149840042",
+      "entireStateEqual": true
+    }
+  ],
+  "nativeAttributesAndRefEqual": true,
+  "vitest": {
+    "files": 149,
+    "tests": 892
+  },
+  "nodeTests": 11,
+  "initialJs": 491747,
+  "totalJs": 1843281,
+  "savedTotalJsBytes": 4652,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "historicalMaterialErrors": [
+    {
+      "level": "error",
+      "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4190/assets/EarlyTrainingPanel-CbrSNgMx.js",
+      "timestamp": "2026-10-12T19:01:06.127Z",
+      "url": "http://127.0.0.1:4190/assets/index-t2nRT4mk.js"
+    }
+  ],
+  "focus": "Enter on native exit button restored 接续成人礼威胁与本人观察; Enter reopened actual 9/9",
+  "failure": "First screenshot captured preceding navigation compositor frame. Fresh stable scene DOM inspected; recaptured actual 9/9 and visually inspected. gh unavailable on PATH; public normal REST confirmed previous successful CI. Initial evidence verifier expected historical material error still in current log; current logs are empty, historical evidence retained separately and verifier corrected. No new page errors.",
+  "prerequisite": {
+    "sha": "6d06db753bceb67bb8d9ef7caedf835968c8f337",
+    "checks": 38302384597,
+    "conclusion": "success",
+    "pages": 38302384558,
+    "pagesConclusion": "skipped"
+  },
+  "limits": "Capacity-only; stages, scroll custody, rewards, spoiler limits and all game behavior unchanged. Actual departure response, manager checkout and threshold crossing are subsequent independent batches."
+}

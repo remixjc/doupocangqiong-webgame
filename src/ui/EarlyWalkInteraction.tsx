@@ -1,3 +1,4 @@
+import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -27,7 +28,7 @@ export default function EarlyWalkInteraction({ state, position, onContinue }: { 
       </SecondaryButton>
     </article>
   }
-  return <section className="bond-summary" aria-label="往事地点事务">
+  return <BondSummary aria-label="往事地点事务">
     <p>采购余额 {balance} · 已付 {spent}。两处采购与准备单共用同一份收据，已买过的订单保留。</p>
     {place.id === 'teacher' && (!task.started
       ? <PrimaryButton onClick={() => act({ type: 'begin' })}>请老师列重修准备单</PrimaryButton>
@@ -62,5 +63,5 @@ export default function EarlyWalkInteraction({ state, position, onContinue }: { 
     </>}
     {!task.started && place.id !== 'teacher' && <p>先到药老的盛水容器处接取准备单。</p>}
     <p className="muted">资金和价格是游戏折算单位，和行囊金币分账；本次交易不发主线奖励。</p>
-  </section>
+  </BondSummary>
 }

@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -67,15 +68,15 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
       {observer && <SecondaryButton onClick={() => select(scene.view)}>旁观{standoffNames[scene.view]} · {standoffPlaces[scene.place].label}</SecondaryButton>}
       {active && !observer && <WalkDirectionButtons prefix="围堵" onMove={move} />}
     </div>}
-    <p role="status">围堵离场 {task.stage}/34 · {earlyMarketStandoffSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>围堵离场 {task.stage}/34 · {earlyMarketStandoffSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前焦点：{selected ? standoffNames[selected] : '尚未选择'} · {observer ? '旁观没有本人行走' : '本人或薰儿独立行走'} · 普通绿链仍由薰儿戴着</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`} />
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`} />
       <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage === 11 && <SecondaryButton disabled={!near} onClick={() => act('fight')}>把提出单挑当成已经开战</SecondaryButton>}
       {task.stage === 21 && <SecondaryButton disabled={!near} onClick={() => act('loot')}>来人离开后领取击杀战利品</SecondaryButton>}
       {task.stage === 27 && <SecondaryButton disabled={!near} onClick={() => act('recruit')}>把帮助的护卫加入伙伴队伍</SecondaryButton>}
       {task.stage === 33 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>走进深处就把木核放入任务袋</SecondaryButton>}
-    </section> : <section className="bond-summary"><h3>围堵与非战斗离场已归档。</h3><p>本人拒绝单挑，来人与护卫已分别离场。两人继续寻核，发现与实际成交待续。</p></section>}
+    </BondSummary> : <BondSummary><h3>围堵与非战斗离场已归档。</h3><p>本人拒绝单挑，来人与护卫已分别离场。两人继续寻核，发现与实际成交待续。</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离围堵离场 · 保留断点</SecondaryButton>
   </>
 }

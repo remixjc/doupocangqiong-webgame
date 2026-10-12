@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef } from 'react'
@@ -20,11 +21,11 @@ export default function EarlyQiExchange({ state, onBack }: { state: GameState; o
       <g transform={`translate(${task.familyOwner === 'xiaoyan' ? 100 : 440} 75)`}><rect width="80" height="20" rx="5" fill="#aa554b" /><text y="45" fill="#edcea0" fontSize="13">家族黄阶高级卷 ×1</text></g>
       {task.support === 'shown' && <g transform="translate(440 120)"><rect width="80" height="20" rx="5" fill="#d39662" /><text x="-180" y="15" fill="#edcea0" fontSize="13">薰儿玄阶高级支持卷 ×1</text></g>}
     </svg>
-    <p role="status">交接 {task.stage}/8 · 家族卷{task.familyOwner === 'xiaoyan' ? '萧炎拿看' : '薰儿拿看'} · 支持卷仍属薰儿 · {task.reply === 'declined' ? '已婉拒' : '尚待回应'}</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>交接 {task.stage}/8 · 家族卷{task.familyOwner === 'xiaoyan' ? '萧炎拿看' : '薰儿拿看'} · 支持卷仍属薰儿 · {task.reply === 'declined' ? '已婉拒' : '尚待回应'}</StatusParagraph>
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <PrimaryButton onClick={() => submitEarlyQiExchange(gameStore, { ...task, actor: scene.actor, operation: scene.operation })}>{scene.action}</PrimaryButton>
       {task.stage >= 3 && <SecondaryButton onClick={() => submitEarlyQiExchange(gameStore, { ...task, actor: scene.actor, operation: 'take-support' })}>尝试收取支持卷</SecondaryButton>}
-    </section> : <section className="bond-summary"><h3>双卷交接已归档。</h3><p>家族卷由萧炎保管，支持卷归薰儿。接续同行与萧媚房门援助。</p></section>}
+    </BondSummary> : <BondSummary><h3>双卷交接已归档。</h3><p>家族卷由萧炎保管，支持卷归薰儿。接续同行与萧媚房门援助。</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离双卷回看 · 保留断点</SecondaryButton>
   </>
 }

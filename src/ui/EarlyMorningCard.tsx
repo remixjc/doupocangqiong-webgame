@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -48,17 +49,17 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
         {task.card === 'yan' && <rect aria-label="本人已接同一普通黑卡" x="15" y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />}</g>
     </svg>
     <div className="early-walk-controls">{<WalkDirectionButtons prefix="晨卡" onMove={move} />}</div>
-    <p role="status">晨间交卡 {task.stage}/14 · {earlyMorningCardSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>晨间交卡 {task.stage}/14 · {earlyMorningCardSaveSummary(state, state.settings)}</StatusParagraph>
     <p>普通黑卡：{task.card === 'yan' ? '本人已接' : task.card === 'offered' ? '薰儿递出，本人尚未接' : '仍由薰儿持有'} · 当晚紫金卡仍由薰儿保管 · 老师仍在戒中</p>
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent} · {task.funds === 'existing' ? '旧账衔接，没有再发160' : task.funds === 'credited' ? '本人接卡时唯一折算160已入账' : '本段还未办理接卡到账，旧账保持'}</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : `本人先走近${morningCardPlaces[scene.place].label}。`} />
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : `本人先走近${morningCardPlaces[scene.place].label}。`} />
       {task.stage === 8 && !ledger.started && <><p>准备单尚未接取。接卡需先明确建立独立采购账，不会重发主线奖励。</p><SecondaryButton disabled={!near} onClick={() => gameStore.beginEarlyTraining()}>记下重修准备 · 再接普通黑卡</SecondaryButton></>}
       <PrimaryButton disabled={!near || task.stage === 8 && !ledger.started} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('claim-savings')}>尝试把旧积蓄新增为400金币</SecondaryButton>}
       {task.stage === 8 && <SecondaryButton disabled={!near} onClick={() => act('claim-purple')}>尝试将普通黑卡登记为紫金卡</SecondaryButton>}
       {task.stage === 10 && <SecondaryButton disabled={!near} onClick={() => act('claim-capacity')}>尝试按普通卡容量领取5000</SecondaryButton>}
       {task.stage === 12 && <SecondaryButton disabled={!near} onClick={() => act('restore-supplies')}>尝试接卡复原已用材料与药液</SecondaryButton>}
-    </section> : <section className="bond-summary"><h3>晨间普通黑卡交接已归档。</h3><p>{ledger.cityPharmacy.stage ? earlyMorningCardSaveSummary(state, state.settings) : '实际入城与药铺采购待接续。'}已有准备、收据、药液与主线均保留。</p><SecondaryButton onClick={onRoute}>查看既有准备路线 · 保留已付收据</SecondaryButton></section>}
+    </BondSummary> : <BondSummary><h3>晨间普通黑卡交接已归档。</h3><p>{ledger.cityPharmacy.stage ? earlyMorningCardSaveSummary(state, state.settings) : '实际入城与药铺采购待接续。'}已有准备、收据、药液与主线均保留。</p><SecondaryButton onClick={onRoute}>查看既有准备路线 · 保留已付收据</SecondaryButton></BondSummary>}
     <p className="muted">房门、位置和操作为原创比例，位置不保存。160是游戏折算，容量不是余额；不新增积蓄，不改变主线金币，也不让旧借资再领一次。</p>
     <SecondaryButton onClick={onBack}>暂离晨间交卡 · 保留断点</SecondaryButton>
   </>

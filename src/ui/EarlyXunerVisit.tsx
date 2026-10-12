@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -39,14 +40,14 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
     <div className="early-walk-controls" aria-label="薰儿事件位置">
       {(Object.keys(stations) as XunerVisitStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
-    <p role="status">人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</p>
-    {scene ? station === scene.station ? <section className="bond-summary" aria-label="薰儿事件步骤">
+    <StatusParagraph>人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</StatusParagraph>
+    {scene ? station === scene.station ? <BondSummary aria-label="薰儿事件步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       <PrimaryButton onClick={() => submitEarlyXunerVisit(gameStore, position, station,
         { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</PrimaryButton>
-    </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p>
-        {onSupplies && <PrimaryButton onClick={onSupplies}>回看长期物资 · 父亲来访之前</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+      : <BondSummary><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p>
+        {onSupplies && <PrimaryButton onClick={onSupplies}>回看长期物资 · 父亲来访之前</PrimaryButton>}</BondSummary>}
     <p className="muted">家族收到的是薰儿的紫金卡，与萧炎的寄售净款39200和采购账分开。这里记录人物事件，不增加玩家金币、物资、技能或关系值。</p>
     <SecondaryButton onClick={onBack}>暂离薰儿事件 · 保留人物断点</SecondaryButton>
   </>

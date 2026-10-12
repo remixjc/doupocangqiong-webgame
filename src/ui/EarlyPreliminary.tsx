@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -53,16 +54,16 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
     <div className="early-walk-controls" aria-label="预测行走操作">
       {<WalkDirectionButtons prefix="预测" onMove={move} />}
     </div>
-    <p role="status">预测 {task.stage}/16 · 当前点名：{activeName} · 最近碑面：{lastResult}</p>
+    <StatusParagraph>预测 {task.stage}/16 · 当前点名：{activeName} · 最近碑面：{lastResult}</StatusParagraph>
     <ul aria-label="三人预测名簿">
       <li>萧媚：{task.mei === 'unmeasured' ? '未测' : '八段'}</li>
       <li>薰儿：{task.xuner === 'unmeasured' ? '未测' : '一星斗者'}</li>
       <li>萧炎：{task.yan === 'unmeasured' ? '未测' : task.stage < 13 ? '七段 · 待宣读' : '七段 · 已宣读合格'}</li>
     </ul>
-    {scene ? near ? <section className="bond-summary" aria-label="预测当前步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></section>
+    {scene ? near ? <BondSummary aria-label="预测当前步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
       : <p className="muted">下一步请走近{preliminaryPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>{state.earlyTraining.keChallenge.stage === 12 ? '预测与后续萧克应战已归档。' : '预测已归档，接续后续挑战。'}</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼按顺序记录。</p>
-        {onChallenge && <PrimaryButton onClick={onChallenge}>接续萧克挑战 · 六段对手应战</PrimaryButton>}</section>}
+      : <BondSummary><h3>{state.earlyTraining.keChallenge.stage === 12 ? '预测与后续萧克应战已归档。' : '预测已归档，接续后续挑战。'}</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼按顺序记录。</p>
+        {onChallenge && <PrimaryButton onClick={onChallenge}>接续萧克挑战 · 六段对手应战</PrimaryButton>}</BondSummary>}
     <p className="muted">这段只记录往事预测，主线境界、技能、关系值、钱账与首通奖励保留。七段合格不提前结算挑战或正式礼胜利。</p>
     <SecondaryButton onClick={onBack}>暂离族中预测 · 保留点名断点</SecondaryButton>
   </>

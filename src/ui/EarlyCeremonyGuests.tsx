@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -51,10 +52,10 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</div>
-    <p role="status">宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="宾客与收剑步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></section>
+    <StatusParagraph>宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</StatusParagraph>
+    {scene ? near ? <BondSummary aria-label="宾客与收剑步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
       : <p className="muted">下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>宾客与收剑已归档。</h3><p>萧玉收剑离去，父亲介绍与雅妃询问已记。正式仪式和八段石碑复测接下来继续。</p>{onCeremony && <PrimaryButton onClick={onCeremony}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}</section>}
+      : <BondSummary><h3>宾客与收剑已归档。</h3><p>萧玉收剑离去，父亲介绍与雅妃询问已记。正式仪式和八段石碑复测接下来继续。</p>{onCeremony && <PrimaryButton onClick={onCeremony}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}</BondSummary>}
     <p className="muted">本段以观察和交谈平息争执，没有战斗结算；剑由萧玉保管，钱账、原封瓶、人物与伙伴记录保留。</p>
     <SecondaryButton onClick={onBack}>暂离宾客场地 · 保留收剑断点</SecondaryButton>
   </>

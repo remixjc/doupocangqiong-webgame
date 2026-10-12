@@ -1,3 +1,4 @@
+import { StatusParagraph } from './NativeRegions'
 import { useState } from 'react'
 import { gameStore } from '../core/store'
 import type { Runtime } from '../core/model'
@@ -16,7 +17,7 @@ export default function RouteControls({ navigation, disabled }: { navigation?: R
       <button disabled={disabled || !destination} onClick={() => gameStore.travel(destination)}>沿路行走</button>
       <button disabled={disabled || !navigation?.active} onClick={() => gameStore.stopTravel()}>停止行走</button>
     </div>
-    <p role="status">{navigation?.message ?? '正在读取当前地图地点…'}</p>
+    <StatusParagraph>{navigation?.message ?? '正在读取当前地图地点…'}</StatusParagraph>
     <small>沿路行走时战斗继续；受击、方向输入、战斗动作或打开菜单会停止。到达后手动交互。</small>
   </section>
 }

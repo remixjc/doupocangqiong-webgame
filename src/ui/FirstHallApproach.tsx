@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -61,16 +62,16 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
       <rect aria-label={first === 'returned' ? '同一第一卷实际放回书架' : first === 'rolled' ? '同一第一卷已卷起尚未归架' : '同一第一卷仍展开'}
         x="420" y={first === 'returned' ? 215 : 245} width={first === 'open' ? 28 : 8} height="15" fill="#161e20" stroke="#bfa46a" />
     </svg>
-    <p role="status">{prefix} {threat ? task.stage - 31 : conflict ? Math.min(task.stage, 31) - 19 : continuation ? Math.min(task.stage, 19) - 14 : Math.min(task.stage, 14)}/{threat ? 9 : conflict ? 12 : continuation ? 5 : 14} · {firstHallApproachSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>{prefix} {threat ? task.stage - 31 : conflict ? Math.min(task.stage, 31) - 19 : continuation ? Math.min(task.stage, 19) - 14 : Math.min(task.stage, 14)}/{threat ? 9 : conflict ? 12 : continuation ? 5 : 14} · {firstHallApproachSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{current ? (task.secondRecord === 'recalled' ? '明确回顾当时另取第二卷，现有更高保管保持。' : task.stage >= 28 ? '本人另取第二卷，未登记或离堂。' : '第一卷已归架，第二卷尚未取。') : task.stage >= 20 || t.firstHallReading.record === 'recalled' || task.returnRecord === 'recalled' || t.hall.stage >= 6 && first !== 'returned'
       ? '明确回顾当时第一卷，当前更高保管保持。' : first === 'returned' ? '同一第一卷已归架，第二卷尚未取。' : '本人仍持同一第一卷，尚未归架。'}{!current && (task.ownPlaced ? '回顾当时她仍持自己的临时卷，后段放卷记录保持。' : '薰儿仍持她自己的临时卷。')}旧卷账 {t.hall.stage}/9。</p>
     {current && <p>{task.ownPlaced ? '当前她自己的临时卷已经放下，旧会面拿卷历史保持。' : '她自己的临时卷仍在手中。'}切磋与未来威胁没有当前开战。</p>}
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor === scene.actor ? '当前人物正确。' : '请切换到本步人物。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('return')}>把收卷当成第一卷已归架</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>{current ? '把她放下的卷交给本人' : '提前取本人第二卷'}</SecondaryButton>
-    </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{threat ? '未来威胁已归档，当前未登记或离堂。' : conflict ? '本人第二卷与她的临时卷独立。未来威胁、实际离堂待续。' : continuation ? '第一卷已归架，后续交锋与第二卷待续。' : '萧宁已到东架前，第一卷仅卷起。提议与实际归架待续。'}</p></section>}
+    </BondSummary> : <BondSummary><h3>{prefix}已归档。</h3><p>{threat ? '未来威胁已归档，当前未登记或离堂。' : conflict ? '本人第二卷与她的临时卷独立。未来威胁、实际离堂待续。' : continuation ? '第一卷已归架，后续交锋与第二卷待续。' : '萧宁已到东架前，第一卷仅卷起。提议与实际归架待续。'}</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离{prefix} · 保留断点</SecondaryButton>
   </>
 }

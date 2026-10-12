@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
 import { HallText } from './MapPrimitives'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -58,14 +59,14 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
       </g>
       <rect aria-label="本人同一第一卷的位置或明确回顾" x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
     </svg>
-    <p role="status">东架会面 {task.stage}/20 · {firstHallTalkSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>东架会面 {task.stage}/20 · {firstHallTalkSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{t.firstHallReading.record === 'recalled' || t.hall.stage >= 6 ? '明确回顾当时第一卷，现有更高卷账不回退。' : '本人仍持同一第一卷。'}薰儿的卷{task.ownScroll === 'xuner' ? '由她临时拿看' : '尚在架上'}；旧卷账 {t.hall.stage}/9。借资{t.purse.borrowed}、已付{t.purse.spent}保持。</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor === scene.actor ? '当前人物正确。' : '请明确切换到本步人物。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('repay')}>把玩笑当作已还款</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>把她的卷记作本人第二卷</SecondaryButton>
-    </section> : <section className="bond-summary"><h3>东架会面已归档。</h3><p>临时阅读卷仍由薰儿拿看，萧宁仍在西场。靠近与两卷交涉待续。</p></section>}
+    </BondSummary> : <BondSummary><h3>东架会面已归档。</h3><p>临时阅读卷仍由薰儿拿看，萧宁仍在西场。靠近与两卷交涉待续。</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离东架会面 · 保留断点</SecondaryButton>
   </>
 }

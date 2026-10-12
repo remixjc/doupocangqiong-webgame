@@ -1,3 +1,4 @@
+import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import DeferredScene from './DeferredScene'
 import { lazy } from 'react'
@@ -146,7 +147,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   if (pavilion) return <DeferredScene message="正在前往五天后的功法阁……"><EarlyQiPavilion state={state} onBack={pavilionBack} /></DeferredScene>
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={walkingBack} />
   return <>
-    {!blocked && <section className="bond-summary" aria-label="拜师之前的来访">
+    {!blocked && <BondSummary aria-label="拜师之前的来访">
       <b>拜师之前 · {task.familyVisit.stage === 17 ? '来访前半程已归档' : `来访 ${task.familyVisit.stage}/17`}</b>
       <p>回到家族接待厅，分别记录入席、来客身份、公开请求与玉匣展示，再接拜师后的准备。</p>
       <SecondaryButton ref={familyVisitEntry} onClick={() => setFamilyVisit(true)}>回到家族来访 · 入席与公开请求</SecondaryButton>
@@ -181,73 +182,73 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
           </>}
         </>}
       </>}
-    </section>}
+    </BondSummary>}
     <span className="eyebrow">重修往事 / 拜师之后</span>
     <h2>从一份准备单，重新开始。</h2>
     {blocked ? <p className="muted">{blocked}</p> : <>
       <p>三年约定之后，药老在后山现身，萧炎拜师。重修的下一步，是筹措资金、找到指定药材，再由老师调制供修炼使用的药液。</p>
       <p className="muted">这段往事独立记录。任务资金和材料专用于重修，不与行囊金币、灵草或魔晶混用。</p>
-      {isVisible(state, 2) && task.marketSearch.stage === 20 && <section className="bond-summary" aria-label="让路与两条手链接续">
+      {isVisible(state, 2) && task.marketSearch.stage === 20 && <BondSummary aria-label="让路与两条手链接续">
         <b>寻核与放回归档 · 接续街角交谈</b><p>请求让路、分别核对两条手链的提议与交付，已有唯一赠礼记录保留。</p>
         <SecondaryButton ref={braceletsEntry} onClick={() => setMarketBracelets(true)}>接续让路与两条手链</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.marketBracelets.stage === 28 && <section className="bond-summary" aria-label="围堵与离场接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.marketBracelets.stage === 28 && <BondSummary aria-label="围堵与离场接续">
         <b>两手链归档 · 街角争执待续</b><p>本人呼叫、护卫到场、拒绝单挑与实际离场分别保存，再向深处寻找材料。</p>
         <SecondaryButton ref={standoffEntry} onClick={() => setMarketStandoff(true)}>接续围堵与非战斗离场</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.marketStandoff.stage === 34 && <section className="bond-summary" aria-label="摊位发现接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.marketStandoff.stage === 34 && <BondSummary aria-label="摊位发现接续">
         <b>非战斗离场归档 · 接续深处摊位</b><p>先实际走近，再分别发现绿核、感应黑铁片和听见心中建议，现有收据保留。</p>
         <SecondaryButton ref={discoveryEntry} onClick={() => setMarketDiscovery(true)}>接续摊位发现与心中建议</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.marketDiscovery.stage === 10 && <section className="bond-summary" aria-label="询价与唯一成交接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.marketDiscovery.stage === 10 && <BondSummary aria-label="询价与唯一成交接续">
         <b>发现与建议归档 · 接续摊主交涉</b><p>询问来源、议价、明确同意、实际付款与走离分存，沿同一折算60订单保留已购或耗尽材料。</p>
         <SecondaryButton ref={tradeEntry} onClick={() => setMarketTrade(true)}>接续询价与唯一成交</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.marketTrade.stage === 17 && <section className="bond-summary" aria-label="回族与房中准备接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.marketTrade.stage === 17 && <BondSummary aria-label="回族与房中准备接续">
         <b>成交离摊归档 · 接续回族准备</b><p>实际回族、分路、回房、锁门与摆材料分存，原已耗材料不补回。</p>
         <SecondaryButton ref={returnEntry} onClick={() => setMarketReturn(true)}>接续回族与房中准备</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.marketReturn.stage === 9 && <section className="bond-summary" aria-label="铁片辨认接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.marketReturn.stage === 9 && <BondSummary aria-label="铁片辨认接续">
         <b>房中准备归档 · 接续铁片辨认</b><p>老师和本人分别操作，取出、接过、放下、拾回与收好分存，不把名称当作掌握。</p>
         <SecondaryButton ref={ironEntry} onClick={() => setIron(true)}>接续铁片辨认与限制</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.iron.stage === 18 && <section className="bond-summary" aria-label="主辅药调制接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.iron.stage === 18 && <BondSummary aria-label="主辅药调制接续">
         <b>铁片已归档 · 接续清水与主辅药</b><p>备水、白焰、三株主药与两株辅药依次保存，沿原材料账单次消耗。</p>
         <SecondaryButton ref={refiningEntry} onClick={() => setRefining(true)}>接续清水与主辅药调制</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.refining.stage >= 11 && <section className="bond-summary" aria-label="魔核入水接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.refining.stage >= 11 && <BondSummary aria-label="魔核入水接续">
         <b>主辅药已归档 · 接续魔核入水</b><p>魔核柔化、熄焰、否决口服、实际入水与期限分存，不重复领取材料。</p>
         <SecondaryButton ref={infusionEntry} onClick={() => setInfusion(true)}>接续魔核炼化与入水</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.refining.stage === 22 && <section className="bond-summary" aria-label="持续调息接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.refining.stage === 22 && <BondSummary aria-label="持续调息接续">
         <b>魔核入水已归档 · 接续当前一轮</b><p>坐定、手动调息与收束分存，两个月五段仅为预计。</p>
         <SecondaryButton ref={trainingEntry} onClick={() => setFirstTraining(true)}>接续当前一轮持续调息</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.firstTraining.stage >= 10 && <section className="bond-summary" aria-label="半月修炼接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.firstTraining.stage >= 10 && <BondSummary aria-label="半月修炼接续">
         <b>当前一轮归档 · 半月回顾</b><p>当时四段、老师反应、药色与衣着分存。</p>
         <SecondaryButton ref={reviewEntry} onClick={() => setFirstReview(true)}>接续半月回顾与当时四段</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.firstTraining.stage === 17 && <section className="bond-summary" aria-label="首次铁片研究接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.firstTraining.stage === 17 && <BondSummary aria-label="首次铁片研究接续">
         <b>半月回顾归档 · 同一铁片研究</b><p>实际取片、研究回顾与本人感知分存。</p>
         <SecondaryButton ref={techniqueEntry} onClick={() => setFirstTechnique(true)}>接续同一铁片研究与感知</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.firstTechnique.stage >= 9 && <section className="bond-summary" aria-label="有限瓷瓶试招接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.firstTechnique.stage >= 9 && <BondSummary aria-label="有限瓷瓶试招接续">
         <b>铁片研究归档 · 有限试招</b><p>留在床边面对瓷瓶，按当时功力记录转动、落离桌面与碎裂。</p>
         <SecondaryButton ref={bottleEntry} onClick={() => setFirstBottle(true)}>接续有限瓷瓶试招</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.firstTechnique.stage === 19 && <section className="bond-summary" aria-label="首次出门石路接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.firstTechnique.stage === 19 && <BondSummary aria-label="首次出门石路接续">
         <b>有限试招归档 · 本人出门</b><p>起身看戒、实际跨门、室外关门和进入石路分存。</p>
         <SecondaryButton ref={departureEntry} onClick={() => setFirstDeparture(true)}>接续实际出门与石路</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.firstDeparture.stage === 9 && <section className="bond-summary" aria-label="石路会面接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.firstDeparture.stage === 9 && <BondSummary aria-label="石路会面接续">
         <b>出门石路归档 · 转路与会面</b><p>实际转路、辨认来人、分别答话与分路分存。</p>
         <SecondaryButton ref={roadMeetingEntry} onClick={() => setFirstRoadMeeting(true)}>接续石路会面与分路</SecondaryButton>
-      </section>}
-      {isVisible(state, 2) && task.firstRoadMeeting.stage === 12 && <section className="bond-summary" aria-label="实际入堂接续">
+      </BondSummary>}
+      {isVisible(state, 2) && task.firstRoadMeeting.stage === 12 && <BondSummary aria-label="实际入堂接续">
         <b>路口分路归档 · 实际入堂</b><p>转角、堂牌、门外声音、本人跨门与东西分区分存。</p>
         <SecondaryButton ref={hallEntryEntry} onClick={() => setFirstHallEntry(true)}>接续实际入堂与东西分区</SecondaryButton>
         {task.firstHallEntry.stage === 9 && <SecondaryButton ref={hallReadingEntry} onClick={() => setFirstHallReading(true)}>接续东侧同一第一卷阅读</SecondaryButton>}
-      </section>}
+      </BondSummary>}
       {isVisible(state, 2) && task.firstHallReading.stage === 8 && <SecondaryButton ref={hallMatchEntry} onClick={() => setFirstHallMatch(true)}>接续东架旁观西侧比赛</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 14 && <SecondaryButton ref={hallFirstReturnEntry} onClick={() => setFirstHallFirstReturn(true)}>接续帮选交涉与同卷归架</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 19 && <SecondaryButton ref={hallConflictEntry} onClick={() => setFirstHallConflict(true)}>接续东架交锋与本人第二卷</SecondaryButton>}
@@ -256,40 +257,40 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallMatch.stage === 20 && <SecondaryButton ref={hallTalkEntry} onClick={() => setFirstHallTalk(true)}>接续东架会面与半月问答</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallMatch.stage >= 12 && <SecondaryButton ref={hallReturnEntry} onClick={() => setFirstHallReturn(true)}>接续赛后返回与薰儿走向东架</SecondaryButton>}
       <SecondaryButton ref={entry} onClick={() => setWalking(true)}>漫步往事准备路线</SecondaryButton>
-      {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">
+      {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <BondSummary aria-label="礼后接续">
         <b>成人礼离场已归档 · 接续五天后的安排</b><p>前往功法阁测定属性，分别记录本人、薰儿与实际入阁。已有斗技堂借卷保留。</p>
         <SecondaryButton ref={pavilionEntry} onClick={() => setPavilion(true)}>前往功法阁 · 属性测定与入阁</SecondaryButton>
-      </section>}
-      {isVisible(state, 3) && task.qiPavilionEntry.stage === 12 && <section className="bond-summary" aria-label="功法阁门障接续">
+      </BondSummary>}
+      {isVisible(state, 3) && task.qiPavilionEntry.stage === 12 && <BondSummary aria-label="功法阁门障接续">
         <b>功法阁入阁已归档 · 火通道记录</b><p>沿第三支路核对三十七号与四十三号，再进行独立红幕测试。{task.qiPavilionScroll.family === 'held' ? '后续已取得家族卷，门障记录保留。' : '尚未取得卷轴。'}</p>
         <SecondaryButton ref={barrierEntry} onClick={() => setBarrier(true)}>进入火通道 · 四十三号门障</SecondaryButton>
-      </section>}
-      {isVisible(state, 3) && task.qiPavilionBarrier.stage === 10 && <section className="bond-summary" aria-label="功法阁卷轴保管接续">
+      </BondSummary>}
+      {isVisible(state, 3) && task.qiPavilionBarrier.stage === 10 && <BondSummary aria-label="功法阁卷轴保管接续">
         <b>四十三号房已入室 · {task.qiPavilionScroll.stage === 6 ? '简略保管已归档' : '卷轴保管待续'}</b><p>先保管唯一家族火属性卷，再分别记录薰儿的额外卷轴提议与婉拒。</p>
         <SecondaryButton ref={scrollEntry} onClick={() => setScroll(true)}>处理四十三号房卷轴</SecondaryButton>
-      </section>}
-      {isVisible(state, 3) && task.qiPavilionScroll.stage === 6 && <section className="bond-summary" aria-label="功法阁同行援助接续">
+      </BondSummary>}
+      {isVisible(state, 3) && task.qiPavilionScroll.stage === 6 && <BondSummary aria-label="功法阁同行援助接续">
         <b>简略保管已归档 · 双卷交接回看</b><p>回看薰儿拿看同一卷、展示自己的支持卷、萧炎取回与婉拒，原结局记录保留。</p>
         <SecondaryButton ref={exchangeEntry} onClick={() => setExchange(true)}>回看双卷交接细节</SecondaryButton>
-      </section>}
-      {isVisible(state, 3) && task.qiPavilionExchange.stage === 8 && <section className="bond-summary" aria-label="功法阁独自援助接续">
+      </BondSummary>}
+      {isVisible(state, 3) && task.qiPavilionExchange.stage === 8 && <BondSummary aria-label="功法阁独自援助接续">
         <b>双卷交接已核 · {task.qiPavilionAid.stage === 10 ? '同行援助已归档' : '接续同行与援助'}</b><p>薰儿另选卷、近时限与萧媚风属性房门，先经过再独自回返。</p>
         <SecondaryButton ref={aidEntry} onClick={() => setAid(true)}>进入同行与援助记录</SecondaryButton>
-      </section>}
+      </BondSummary>}
       {task.practice.phase === 4 && <p className="muted">初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</p>}
-      <section className="bond-summary" aria-label="重修准备记录">
+      <BondSummary aria-label="重修准备记录">
         <b>{state.earlyTraining.started ? '准备单已记下' : '尚未接下准备'}</b>
         <p>两种指定草药，分别三株与两株；另需一枚一阶木属性魔核。药老负责调制，萧炎准备容器与水。药液用于修炼。</p>
         {!state.earlyTraining.started && <PrimaryButton onClick={() => gameStore.beginEarlyTraining()}>记下重修准备</PrimaryButton>}
-      </section>
+      </BondSummary>
       {task.started && <>
-        <section className="bond-summary" aria-label="重修采购资金">
+        <BondSummary aria-label="重修采购资金">
           <b>采购余额 {task.purse.borrowed - task.purse.spent} · 已付 {task.purse.spent}</b>
           <p>薰儿：先把准备做齐。这笔采购资金，我借给你。</p>
           <p className="muted">借资{EARLY_LOAN}、药草30/20、魔核及附物60均为游戏折算单位，不是原著金钱数额；不计入行囊金币，也不发主线奖励。</p>
           {!task.purse.borrowed && <PrimaryButton onClick={() => gameStore.earlyTraining({ type: 'borrow', expectedSpent: task.purse.spent })}>向薰儿借采购资金</PrimaryButton>}
-        </section>
-        <section className="bond-summary" aria-label="药铺与坊市采购">
+        </BondSummary>
+        <BondSummary aria-label="药铺与坊市采购">
           <h3>{herbsReady ? '萧家坊市 · 寻找魔核' : '药铺 · 配齐药草'}</h3>
           <p>{herbsReady ? '药草已经齐备。萧炎与薰儿来到萧家坊市，在护卫照看的街道寻找一阶木属性魔核。' : '先按准备单买两种药草，两者可分别购买。买齐后，再去萧家坊市寻找指定魔核。'}</p>
           {(Object.keys(earlySupplies) as EarlySupplyId[]).filter(id => id !== 'woodCore' || herbsReady).map(id => {
@@ -303,8 +304,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
               </SecondaryButton>
             </article>
           })}
-        </section>
-        {herbsReady && <section className="bond-summary" aria-label="坊市往事与黑铁片">
+        </BondSummary>
+        {herbsReady && <BondSummary aria-label="坊市往事与黑铁片">
           <span className="eyebrow">坊市往事 · {Math.min(task.market.stage + 1, 4)} / 4</span>
           <p className="muted">回顾采购中的交涉。已付款的魔核记录保留，这里核对同一笔交易的黑铁片附物。</p>
           {marketScene ? <>
@@ -314,8 +315,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
             {task.market.stage === 3 && !task.receipts.woodCore && <p className="muted">先在上方付清魔核采购订单，再核对附物。</p>}
           </> : <><h3>黑铁片已收好</h3><p>护卫介入后，争执告一段落。魔核和黑铁片来自同一次采购，萧炎带着物品回家，准备请药老辨认。</p><p>任务袋：黑铁片 ×{task.market.blackIron}</p></>}
           <p className="muted">这是对白与交互的压缩改编；也可从上方进入准备路线，在地点进行同一笔交易。黑铁片尚未化为玩家的战斗技能。</p>
-        </section>}
-        {task.market.stage === 4 && <section className="bond-summary" aria-label="药老调制与稀释">
+        </BondSummary>}
+        {task.market.stage === 4 && <BondSummary aria-label="药老调制与稀释">
           <span className="eyebrow">重修药液 · {Math.min(task.liquid.stage + 1, 6)} / 6</span>
           {liquidScene ? <>
             <h3>{liquidScene.title}</h3><b>{liquidScene.speaker}</b><p>{liquidScene.text}</p>
@@ -324,7 +325,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
           </> : <><h3>{task.recovery.energy === 'spent' ? '自用药液已耗尽' : task.recovery.energy === 'fading' ? '恢复中药色渐淡' : '修炼药液已备好'}</h3>
             <p>{task.recovery.energy === 'spent' ? '此前药老调制并加水的药液已用于恢复，现只余清水，后续需另筹材料。' : '药老已完成调制，药液加入水中。'}主药、辅药和魔核已依次使用，收据保留；黑铁片仍在任务袋中。</p></>}
           <p className="muted">玩家负责准备与观察，药老负责调制。药液不会进入口服丹药行囊；备好后可在下方进行初期练习。</p>
-        </section>}
+        </BondSummary>}
         <EarlyPractice state={state} onContinue={onContinue} />
         {task.receipts.woodCore && task.market.stage < 4 && <p className="muted">三种材料由任务袋保管。先完成坊市往事，带回黑铁片，再请药老调制；现在没有药液、丹药或新的修炼结果。</p>}
       </>}

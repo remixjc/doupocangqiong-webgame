@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -51,19 +52,19 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="同行援助行走操作"><WalkDirectionButtons prefix="援助" onMove={move} /></div>
-    <p role="status">援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</p>
-    {scene ? near ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</StatusParagraph>
+    {scene ? near ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>援助出手时机<small>减弱动态：键盘调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="援助出手时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="援助时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停援助时机</SecondaryButton>}
-        {paused && <><p role="status">时机已暂停，请明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续援助练习</SecondaryButton></>}
+        {paused && <><StatusParagraph>时机已暂停，请明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续援助练习</SecondaryButton></>}
         <PrimaryButton disabled={paused} onClick={() => act(qiAidOperation(task))}>{task.beats ? '独自踢击 · 门障才破' : '独自站定 · 第一动作'}</PrimaryButton>
         <SecondaryButton onClick={() => act('group-attack')}>尝试多人同攻</SecondaryButton>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
       {task.stage >= 3 && <SecondaryButton onClick={() => act('take-scroll')}>尝试收取第二卷</SecondaryButton>}
-    </section> : <p className="muted">先走近{qiAidPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>同行与独自援助已归档。</h3><p>萧媚门障已破；家族卷归萧炎，薰儿自选卷归她。正式登记与实际离阁仍待续。</p></section>}
+    </BondSummary> : <p className="muted">先走近{qiAidPlaces[scene.place].label}：{scene.title}。</p>
+      : <BondSummary><h3>同行与独自援助已归档。</h3><p>萧媚门障已破；家族卷归萧炎，薰儿自选卷归她。正式登记与实际离阁仍待续。</p></BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮 · 免费重新站定</SecondaryButton>}
     <p className="muted">地图、陈设、20步长与出手时机为原创操作；时限采用回顾，未实现现实两小时或超时离阁。</p>
     <SecondaryButton onClick={onBack}>暂离同行与援助 · 保留断点</SecondaryButton>

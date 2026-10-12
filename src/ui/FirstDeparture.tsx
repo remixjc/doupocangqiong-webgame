@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -74,13 +75,13 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
     </svg>
     {scene && task.risen && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="出门" onMove={move} /></div>}
     {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}
-    <p role="status">出门石路 {task.stage}/9 · 当前{space === 'room' ? '房内' : '室外'} · {firstDepartureSaveSummary(state, state.settings)}</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>出门石路 {task.stage}/9 · 当前{space === 'room' ? '房内' : '室外'} · {firstDepartureSaveSummary(state, state.settings)}</StatusParagraph>
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor !== 'yan' ? '静止古戒不能替本人行动。' : !near ? '本人先走到当前房内或室外地点。' : '当前人物：萧炎本人'}</p>
       <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('finish')}>用一句回顾代签全部出门</SecondaryButton>
       <SecondaryButton onClick={() => act('meet')}>未转路就签人物会面</SecondaryButton>
-    </section> : <section className="bond-summary"><h3>出门与石路已归档。</h3><p>已真实跨门、室外关门并进入石路。转向另一条路与会面由下一段继续，旧材料与奖励保持。</p></section>}
+    </BondSummary> : <BondSummary><h3>出门与石路已归档。</h3><p>已真实跨门、室外关门并进入石路。转向另一条路与会面由下一段继续，旧材料与奖励保持。</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离出门石路 · 保留断点</SecondaryButton>
   </>
 }

@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -65,13 +66,13 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="违规再攻行走操作">{<WalkDirectionButtons prefix="再攻" onMove={move} />}</div>
-    <p role="status">违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="违规再攻步骤"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</StatusParagraph>
+    {scene ? near ? <BondSummary aria-label="违规再攻步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>违规迎击时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="违规迎击时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="违规迎击时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停违规迎击时机</SecondaryButton>}
-        {paused && <><p role="status">时机已暂停，需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续违规迎击 · 恢复时机</SecondaryButton></>}
+        {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续违规迎击 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '先用八极崩迎向来拳。' : '已经对拳，仍须追加拳击才出场。'}</p>
         <div className="early-walk-controls">
           <PrimaryButton disabled={paused} onClick={() => act(ningSecondOperation(task))}>{task.beats === 0 ? '八极崩 · 迎向来拳' : '追加拳击 · 将萧宁击出场'}</PrimaryButton>
@@ -79,8 +80,8 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
           <SecondaryButton disabled={paused} onClick={() => act('push')}>尝试吹火掌 · 再攻动作不符</SecondaryButton>
         </div>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
-    </section> : <p className="muted">下一步请走近{(scene.place === 'arena' ? '台中 · 两步迎击' : ningPlaces[scene.place].label)}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <PrimaryButton onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请走近{(scene.place === 'arena' ? '台中 · 两步迎击' : ningPlaces[scene.place].label)}：{scene.title}。</p>
+      : <BondSummary><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <PrimaryButton onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下迎击 · 免费重新准备</SecondaryButton>}
     <p className="muted">违规药物只由萧宁使用，临时增强不等于永久境界。地图与动作时机为原创；主线钱账、技能、药液、关系和首通奖励保留。</p>
     <SecondaryButton onClick={onBack}>暂离违规再攻 · 保留迎击断点</SecondaryButton>

@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -60,21 +61,21 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
     <div className="early-walk-controls" aria-label="萧克挑战行走操作">{<WalkDirectionButtons prefix="应战" onMove={move} />}</div>
-    <p role="status">萧克挑战 {task.stage}/12 · 动作 {task.beats}/2 · 重开 {task.attempts} 次 · {task.verdict === 'none' ? '尚未完成交锋' : task.verdict === 'pending' ? '萧克倒地，待父亲宣布' : '父亲已宣布萧克败'}</p>
-    {scene ? near ? <section className="bond-summary" aria-label="萧克挑战步骤"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>萧克挑战 {task.stage}/12 · 动作 {task.beats}/2 · 重开 {task.attempts} 次 · {task.verdict === 'none' ? '尚未完成交锋' : task.verdict === 'pending' ? '萧克倒地，待父亲宣布' : '父亲已宣布萧克败'}</StatusParagraph>
+    {scene ? near ? <BondSummary aria-label="萧克挑战步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>萧克应战时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧克应战时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="萧克应战时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停萧克应战时机</SecondaryButton>}
-        {paused && <><p role="status">时机已暂停，需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续萧克应战 · 恢复时机</SecondaryButton></>}
+        {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续萧克应战 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '当前应先向左侧避。' : '侧避已记，当前应用族内低阶掌法击肩。'}</p>
         <div className="early-walk-controls">
           {task.beats === 0 ? <><PrimaryButton disabled={paused} onClick={() => act('evade-left')}>向左侧避 · 避开来掌</PrimaryButton><SecondaryButton disabled={paused} onClick={() => act('evade-right')}>向右侧避 · 尝试另一方向</SecondaryButton></>
             : <><PrimaryButton disabled={paused} onClick={() => act('low-palm')}>族内低阶掌法 · 反击肩部</PrimaryButton><SecondaryButton disabled={paused} onClick={() => act('octane-blast')}>尝试八极崩 · 本段动作不符</SecondaryButton></>}
         </div>
       </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
-    </section> : <p className="muted">下一步请走近{keChallengePlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p>{onTraining && <PrimaryButton onClick={onTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}</section>}
+    </BondSummary> : <p className="muted">下一步请走近{keChallengePlaces[scene.place].label}：{scene.title}。</p>
+      : <BondSummary><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p>{onTraining && <PrimaryButton onClick={onTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮应战 · 免费重新准备</SecondaryButton>}
     <p className="muted">这次不是萧宁正式礼挑战；低阶掌法不新增主线技能，错误八极崩选项只会重开练习。钱账、材料、故事七段、预测名簿与伙伴关系值保留。</p>
     <SecondaryButton onClick={onBack}>暂离萧克挑战 · 保留应战断点</SecondaryButton>

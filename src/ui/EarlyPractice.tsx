@@ -1,3 +1,4 @@
+import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -28,7 +29,7 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
     return onAction ? onAction(action) : gameStore.earlyTraining(action)
   }
   if (!task.liquid.ready || earlyTrainingBlock(state)) return null
-  return <section className="bond-summary" aria-label="初期重修与斗技尝试">
+  return <BondSummary aria-label="初期重修与斗技尝试">
     <span className="eyebrow">后山与静室 / 初期练习</span>
     {practice.phase === 0 && <>
       <h3>先调息，再尝试</h3>
@@ -59,5 +60,5 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
     </>}
     <p className="muted">三次调息、评分与重试是原创练习，不代表原著修炼时长或境界提升；没有新增战斗技能或章节奖励。</p>
     {practice.phase === 4 && <EarlyGrowth state={state} onContinue={onContinue} />}
-  </section>
+  </BondSummary>
 }

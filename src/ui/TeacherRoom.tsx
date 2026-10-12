@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -51,13 +52,13 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
       {draw(yan)}
     </svg>
     {scene && movable && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix={prefix} onMove={move} /></div>}
-    <p role="status">{prefix} {stage}/{total} · {summary}</p>
-    {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
+    <StatusParagraph>{prefix} {stage}/{total} · {summary}</StatusParagraph>
+    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>
       {controls}
       <PrimaryButton disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {errors.map(error => <SecondaryButton key={error.operation} onClick={() => act(error.operation)}>{error.label}</SecondaryButton>)}
-    </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{finished}</p></section>}
+    </BondSummary> : <BondSummary><h3>{prefix}已归档。</h3><p>{finished}</p></BondSummary>}
     <SecondaryButton onClick={onBack}>{back} · 保留断点</SecondaryButton>
   </>
 }

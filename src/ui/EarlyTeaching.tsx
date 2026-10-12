@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -42,14 +43,14 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
       <SecondaryButton ref={first} aria-pressed={station === 'table'} onClick={() => setStation('table')}>查看卷册桌</SecondaryButton>
       <SecondaryButton aria-pressed={station === 'teacher'} onClick={() => setStation('teacher')}>走到老师处 · 请教</SecondaryButton>
     </div>
-    <p role="status">正式传技 {stage}/5 · {stage >= 3 ? '技法知识已记下' : '尚未接受技法知识'} · {stage >= 4 ? '身体要求已记下' : '身体要求待确认'}</p>
-    {station === 'table' && <section className="bond-summary"><h3>房间的卷册桌</h3><p>这里是斗技堂登记借出的第二卷；第一卷此前已归回书架。借卷仍由萧炎保管，不进入可售行囊，也没有新增副本。</p></section>}
+    <StatusParagraph>正式传技 {stage}/5 · {stage >= 3 ? '技法知识已记下' : '尚未接受技法知识'} · {stage >= 4 ? '身体要求已记下' : '身体要求待确认'}</StatusParagraph>
+    {station === 'table' && <BondSummary><h3>房间的卷册桌</h3><p>这里是斗技堂登记借出的第二卷；第一卷此前已归回书架。借卷仍由萧炎保管，不进入可售行囊，也没有新增副本。</p></BondSummary>}
     {scene ? <>
-      {station === scene.station ? <section className="bond-summary" aria-label="老师正式传技步骤"><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-        <PrimaryButton onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</PrimaryButton></section>
+      {station === scene.station ? <BondSummary aria-label="老师正式传技步骤"><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+        <PrimaryButton onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</PrimaryButton></BondSummary>
         : <p className="muted">下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</p>}
-    </> : <section className="bond-summary"><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>
-      {onSupervise && <PrimaryButton onClick={onSupervise}>接续后山 · 接受老师督练</PrimaryButton>}</section>}
+    </> : <BondSummary><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>
+      {onSupervise && <PrimaryButton onClick={onSupervise}>接续后山 · 接受老师督练</PrimaryButton>}</BondSummary>}
     <SecondaryButton onClick={onBack}>暂离传技房间 · 回准备路线</SecondaryButton>
   </>
 }

@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -69,21 +70,21 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
       </g>
       <MapText x="360" y="406" fill="#dbc59e">堂口 · 原创比例与陈设</MapText>
     </svg>
-    <p role="status" className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</p>
+    <StatusParagraph className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</StatusParagraph>
     <div className="early-walk-controls" aria-label="斗技堂行走操作">
       <WalkDirectionButtons prefix="堂内" onMove={move} />
       <PrimaryButton disabled={!place} onClick={() => place && setReading(place.id)}>查看堂内地点</PrimaryButton>
     </div>
-    <p role="status">堂内记录 {Math.max(0, task.stage - 1)}/8 · {task.scroll === 'borrowed-second' ? '第二卷已登记，由萧炎保管'
-      : task.scroll === 'selected-second' ? '第二卷已选好，尚由堂内保管' : task.scroll === 'reading-first' ? '第一卷在堂内阅读，尚未借出' : '尚无卷册借出'}</p>
+    <StatusParagraph>堂内记录 {Math.max(0, task.stage - 1)}/8 · {task.scroll === 'borrowed-second' ? '第二卷已登记，由萧炎保管'
+      : task.scroll === 'selected-second' ? '第二卷已选好，尚由堂内保管' : task.scroll === 'reading-first' ? '第一卷在堂内阅读，尚未借出' : '尚无卷册借出'}</StatusParagraph>
     {scene && <p className="muted">下一步：{earlyHallPlaces.find(place => place.id === scene.place)?.label} · {scene.title}</p>}
-    {reading && place?.id === reading && <section className="bond-summary" aria-label="斗技堂地点说明">
+    {reading && place?.id === reading && <BondSummary aria-label="斗技堂地点说明">
       <h3>{place.label}</h3><p>{place.text}</p>
       {scene?.place === place.id && <><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
         <PrimaryButton onClick={() => submitEarlyHall(gameStore, position, { step: scene.stage, operation: scene.operation })}>{scene.action}</PrimaryButton></>}
-    </section>}
-    {task.stage === 9 && <section className="bond-summary"><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>
-      {onTeach && <PrimaryButton onClick={onTeach}>接续回房 · 请药老正式传技</PrimaryButton>}</section>}
+    </BondSummary>}
+    {task.stage === 9 && <BondSummary><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>
+      {onTeach && <PrimaryButton onClick={onTeach}>接续回房 · 请药老正式传技</PrimaryButton>}</BondSummary>}
     <p className="muted">动作、分段图形和对白为原创压缩改编。查看不推进记录；确认当前步骤才保存，不改变主线战斗技能、金币或境界。</p>
     <SecondaryButton onClick={onBack}>{task.stage === 9 ? '离开斗技堂 · 回准备路线' : '暂回准备路线 · 保留堂内断点'}</SecondaryButton>
   </>

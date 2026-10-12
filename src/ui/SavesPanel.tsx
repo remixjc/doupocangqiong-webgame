@@ -1,3 +1,4 @@
+import { BondSummary } from './NativeRegions'
 import { SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { gameStore } from '../core/store'
@@ -48,10 +49,10 @@ export default function SavesPanel({ state, onLoaded, onReset }: { state: GameSt
     })}</div>
     <div className="save-tools"><SaveBackup state={state} /><SecondaryButton onClick={() => fileInput.current?.click()}>导入备份</SecondaryButton><input ref={fileInput} aria-label="导入存档文件" type="file" accept=".json,application/json" hidden onChange={e => importFile(e.target.files?.[0])} /></div>
     {imported && <div className="import-preview"><p className="muted">校验通过：{savePreviewSummary(imported, state.settings)}。载入前可先导出现有进度。</p><button className="small-btn" onClick={() => { gameStore.replace(imported); setImported(null); onLoaded() }}>确认载入导入存档</button></div>}
-    {records?.filter(r => r.slot === -1).map(entry => <section className="bond-summary" aria-label="上一份自动存档摘要" key={entry.slot}>
+    {records?.filter(r => r.slot === -1).map(entry => <BondSummary aria-label="上一份自动存档摘要" key={entry.slot}>
       <b>上一份自动存档</b><p>{saveRecordSummary(entry, state.settings)}</p>
       <button className="text-button" disabled={busy} onClick={() => load(-1)}>恢复上一份自动存档</button>
-    </section>)}
+    </BondSummary>)}
     {error && <p className="error" role="alert">{error}</p>}
     <div className="thin-divider" />{confirm ? <><p className="muted">新旅程会替换自动存档，三个手动存档保留。请先保存或导出当前进度。</p><SecondaryButton onClick={() => { gameStore.newGame(); onReset() }}>确认开启新旅程</SecondaryButton><button className="text-button" onClick={() => setConfirm(false)}>取消</button></> : <button className="text-button" onClick={() => setConfirm(true)}>开启新旅程</button>}
   </>

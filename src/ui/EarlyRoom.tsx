@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -79,8 +80,8 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
           aria-pressed={station === id} onClick={() => setStation(id)}>{stations[id]}</button>)}
       </div>
     </div>
-    <p className="early-room-state" role="status">调制 {task.liquid.stage}/6 · {view.water} · {view.mixture}</p>
-    <section className="bond-summary" aria-label="室内当前操作">
+    <StatusParagraph className="early-room-state">调制 {task.liquid.stage}/6 · {view.water} · {view.mixture}</StatusParagraph>
+    <BondSummary aria-label="室内当前操作">
       <span className="eyebrow">{stations[station]}</span>
       {station === 'materials' ? <>
         <h3>用掉的材料，不再留一份。</h3>
@@ -92,7 +93,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
           { type: 'liquid', step: task.liquid.stage, operation: scene.operation, expectedSpent: task.purse.spent })}>{scene.action}</PrimaryButton>
       </> : <p>{task.recovery.energy === 'spent' ? '这份自用药液在训练后恢复中已耗尽，容器和调制历史保留，后续需另筹材料。' : task.liquid.ready ? '药液已供修炼使用。容器和采购记录保留，不会再次消耗材料。'
         : `下一步请查看${stations[view.station]}：${scene?.title}。`}</p>}
-    </section>
+    </BondSummary>
     <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} onContinue={onContinue} />
     <p className="muted">场景位置与器物外观为原创表现。调制断点沿用准备单，离开室内不退材料、不重炼；这里没有口服丹药产出。</p>
     <SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton>

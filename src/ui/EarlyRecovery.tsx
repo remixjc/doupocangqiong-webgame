@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -49,8 +50,8 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => <SecondaryButton key={id}
         aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
-    <p role="status">回房恢复 {task.stage}/7 · {recoveryEnergyLabels[task.energy]} · {task.period === 'reviewed' ? '持续时段已回顾' : '持续时段待回顾'} · {task.result === 'fifth-duan' ? '五段故事结果已记下' : '故事结果尚未记录'}</p>
-    {scene ? station === scene.station ? <section className="bond-summary" aria-label="回房恢复步骤">
+    <StatusParagraph>回房恢复 {task.stage}/7 · {recoveryEnergyLabels[task.energy]} · {task.period === 'reviewed' ? '持续时段已回顾' : '持续时段待回顾'} · {task.result === 'fifth-duan' ? '五段故事结果已记下' : '故事结果尚未记录'}</StatusParagraph>
+    {scene ? station === scene.station ? <BondSummary aria-label="回房恢复步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       {breathing && <>
         <label className="setting-row"><span>恢复调息时机<small>用方向键调至35%–65%；当前 {Math.round(marker * 100)}%。失误可免费再试，药力保留。</small></span>
@@ -61,10 +62,10 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       {scene.operation === 'review' && <p className="muted">此处是压缩往事回顾：老师提及半月前的耐受变化，成长叙述另回顾四段后一个半月到五段。没有实际等待，也不把这一轮四次脉冲当成全部时日。调息次数与时机区间均为原创折算。</p>}
       <PrimaryButton onClick={() => submitEarlyRecovery(gameStore, position, station,
         { step: task.stage, energy: task.energy, operation: scene.operation, marker: breathing ? marker : undefined })}>{scene.action}</PrimaryButton>
-    </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。</p>
+    </BondSummary> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
+      : <BondSummary><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。</p>
         <p className="muted">这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</p>
-        {onConsign && <PrimaryButton onClick={onConsign}>接续筹款 · 准备首次寄售</PrimaryButton>}</section>}
+        {onConsign && <PrimaryButton onClick={onConsign}>接续筹款 · 准备首次寄售</PrimaryButton>}</BondSummary>}
     <SecondaryButton onClick={onBack}>暂离恢复房间 · 保留断点</SecondaryButton>
   </>
 }

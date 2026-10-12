@@ -1,3 +1,4 @@
+import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
@@ -38,11 +39,11 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       {(['guests', 'father', 'entrance', 'xuner', 'outside'] as const).map(id =>
         <SecondaryButton key={id} aria-pressed={focus === id} onClick={() => setFocus(id)}>旁观 · {familyContractPlaces[id].label}</SecondaryButton>)}
     </div>}
-    <p role="status">文书与离厅 {task.stage}/33 · {earlyFamilyContractSaveSummary(state, state.settings)}</p>
+    <StatusParagraph>文书与离厅 {task.stage}/33 · {earlyFamilyContractSaveSummary(state, state.settings)}</StatusParagraph>
     <p>三年条件：{task.challenge === 'pledged' ? '本人已向父亲承诺赴约' : task.challenge === 'renewed' ? '再次约定，尚待本人向父亲承诺' : task.challenge === 'proposed' ? '仅提出，尚未亲口承诺' : '尚未提出'} · 文书：{{
       none: '尚无', preparing: '备纸未写成', written: '写成未标记', marked: '有印记未置桌', table: '同一文书已置桌', nalan: '同一文书由纳兰持有',
     }[task.paper]} · 玉匣：{task.box === 'ring' ? '已回葛叶纳戒' : task.box === 'returned' ? '已退回，尚未收入纳戒' : '未接取，仍属来客'}</p>
-    {scene ? <section className="bond-summary">
+    {scene ? <BondSummary>
       <SceneHeading title={scene.title} text={near ? scene.text : observer
         ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`} />
       <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
@@ -52,9 +53,9 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       </>}
       {task.stage === 19 && <SecondaryButton disabled={!near} onClick={() => act('give-paper-father')}>尝试把文书交给父亲</SecondaryButton>}
       {task.stage === 27 && <SecondaryButton disabled={!near} onClick={() => act('take-box')}>尝试先把玉匣收入行囊</SecondaryButton>}
-    </section> : <section className="bond-summary"><h3>文书与双方离厅已归档。</h3>
+    </BondSummary> : <BondSummary><h3>文书与双方离厅已归档。</h3>
       <p>萧炎亲口承诺赴约后已离厅；纳兰持同一文书，葛叶收回玉匣并带来客离去。{state.earlyTraining.mountainRing.stage
-        ? earlyMountainRingSaveSummary(state, state.settings) + '。' : '后山交涉尚待接续。'}</p></section>}
+        ? earlyMountainRingSaveSummary(state, state.settings) + '。' : '后山交涉尚待接续。'}</p></BondSummary>}
     <p className="muted">厅院布局、行走与核对选项为游戏改编；印记只作抽象回顾。本段不改变主线能力、行囊、生命或已结算奖励。事件断点保存，位置与旁观焦点不保存。</p>
     <SecondaryButton onClick={onBack}>暂离文书与离厅 · 保留断点</SecondaryButton>
   </>
