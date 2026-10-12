@@ -1,0 +1,789 @@
+{
+  "batch": "C11c-3h/C7b-c",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "8fe67c28d275ff711afa92b76e8b32373997ba22",
+  "previousCI": {
+    "id": 38193590239,
+    "conclusion": "success",
+    "pagesId": 38193590262,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "same normal journey via native UI and real downloads; official parseSave and teacherSupport outside browser",
+  "records": [
+    {
+      "key": "21-stage3",
+      "file": ".git/task-normal-ch21-stage3-export.json",
+      "bytes": 17670,
+      "fileSha256": "4975e95fee1b024cb448885685634ead34da62432e120be3c35cb13597bfe030",
+      "stateSha256": "1e3ddaa602baf99bbb2283f895d204ec0620e83cc7c769570dc1f8e739c80683",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "gold": 10364,
+      "xp": 8160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 52,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 1,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "star-domain-undying-attunement": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "21-stage4",
+      "file": ".git/task-normal-ch21-stage4-export.json",
+      "bytes": 17670,
+      "fileSha256": "5f5ed06dc8d4b9218cb1f4bd67d6f54c006026f7e85597364b7670283bf9ca59",
+      "stateSha256": "30023a31a92760065ee0bddf076d0830c247850bbc27079f2a24dc1fd807f021",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "gold": 10364,
+      "xp": 8160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 52,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 1,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "star-domain-undying-attunement": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "21-pending",
+      "file": ".git/task-normal-ch21-pending-export.json",
+      "bytes": 17670,
+      "fileSha256": "4facedc79722e99287f2d18896c69d467ca4be59b5fad5ee1191f7fd66a24855",
+      "stateSha256": "b2f378c2013bfc78c657780f844fed0a6069f9599d6edd05a40b679cbf19b2d9",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "gold": 10364,
+      "xp": 8160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 52,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 1,
+        "kills": 0,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "star-domain-undying-attunement": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "21-gate",
+      "file": ".git/task-normal-ch21-gate-export.json",
+      "bytes": 17669,
+      "fileSha256": "5f95bb9515fd31e9cdaf725adc19af05cbfe614f05107c51da8690d67f9675cf",
+      "stateSha256": "8680d05a257d13617f7920866a31f250eeb3e67beadb00abfca45c31534a15ac",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "gold": 10364,
+      "xp": 8160,
+      "inventory": {
+        "herb": 9,
+        "crystal": 52,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "fallen",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 1,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "star-domain-undying-attunement": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "21",
+      "file": ".git/task-normal-ch21-export.json",
+      "bytes": 17677,
+      "fileSha256": "a8a5fcde7b066f8047bb2b0dc9ca41cd1d47d130b6df2aed88eb8dfc1dcd4930",
+      "stateSha256": "48bece6a56139e3673175cd73c235fc4c03f4b0d97587afc59655e9ba873aa10",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "gold": 11134,
+      "xp": 8785,
+      "inventory": {
+        "herb": 9,
+        "crystal": 52,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 1,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "star-domain-undying-attunement": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "21-refreshed",
+      "file": ".git/task-normal-ch21-refreshed-export.json",
+      "bytes": 17677,
+      "fileSha256": "efe8da88ff84080d91319fbdd3ddc4315c32cca7d80fd8c291331f33863f2ecd",
+      "stateSha256": "48bece6a56139e3673175cd73c235fc4c03f4b0d97587afc59655e9ba873aa10",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "gold": 11134,
+      "xp": 8785,
+      "inventory": {
+        "herb": 9,
+        "crystal": 52,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 1,
+        "kills": 0,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "star-domain-undying-attunement": {
+            "started": true,
+            "stage": 6,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "22-pending",
+      "file": ".git/task-normal-ch22-pending-export.json",
+      "bytes": 18469,
+      "fileSha256": "7c75f5152f2cc12065478cfb21d27d1f4ff32beb5de7e759f6833ae4e7d03bce",
+      "stateSha256": "368a3cc4561fae501ac67d98ac7a886d89ed1ee37931f0e8c55d4bed42aee339",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "gold": 11446,
+      "xp": 8845,
+      "inventory": {
+        "herb": 9,
+        "crystal": 58,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "soul-prison-teacher-extraction": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-rescue-reunion": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-reunion-lessons": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "22-reported",
+      "file": ".git/task-normal-ch22-reported-export.json",
+      "bytes": 18469,
+      "fileSha256": "7e17e62b5830871b8b3f3f8db43528398181c90c11f26c04d4fb76a5a2c1cadd",
+      "stateSha256": "651b1f58cf28f0cf97ffc3d83a3906950a46254d931455567c7cade3c92912ae",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "gold": 11446,
+      "xp": 8845,
+      "inventory": {
+        "herb": 9,
+        "crystal": 58,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "teacherSupport": {
+        "available": false,
+        "status": "away",
+        "label": "暂时离队",
+        "message": "药老暂时离队，无法支援。"
+      },
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "soul-prison-teacher-extraction": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-rescue-reunion": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-reunion-lessons": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "22",
+      "file": ".git/task-normal-ch22-export.json",
+      "bytes": 18478,
+      "fileSha256": "01389e66777b475999c51b4d773fbebfdd3ecdf7a4e0e369d615f3fb9bb3efd6",
+      "stateSha256": "3959f4d8137739fb38bd711293719d61908d072c585c4e19cd7c619afd309b66",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12246,
+      "xp": 9495,
+      "inventory": {
+        "herb": 9,
+        "crystal": 58,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "teacherSupport": {
+        "available": true,
+        "status": "returned",
+        "label": "归队同行",
+        "message": "药老支援 · 斗气恢复与短暂护体"
+      },
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "soul-prison-teacher-extraction": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-rescue-reunion": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-reunion-lessons": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "22-refreshed",
+      "file": ".git/task-normal-ch22-refreshed-export.json",
+      "bytes": 18478,
+      "fileSha256": "4e41703bddbdf067898cfa612b60658bcf98651a5dc1156f45eb0aa3bd7104c2",
+      "stateSha256": "3959f4d8137739fb38bd711293719d61908d072c585c4e19cd7c619afd309b66",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "gold": 12246,
+      "xp": 9495,
+      "inventory": {
+        "herb": 9,
+        "crystal": 58,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "fireEnergy": 5,
+      "flame": "star",
+      "teacherSupport": {
+        "available": true,
+        "status": "returned",
+        "label": "归队同行",
+        "message": "药老支援 · 斗气恢复与短暂护体"
+      },
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "soul-prison-teacher-extraction": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "doctor-rescue-reunion": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          },
+          "teacher-reunion-lessons": {
+            "started": false,
+            "stage": 0,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "chapters21And22EntireStateRefreshEqual": true,
+  "first20ProgressUnchanged": true,
+  "chapter21ProgressPreservedAfter22": true,
+  "observations": {
+    "star": {
+      "durations": [
+        10,
+        12,
+        14
+      ],
+      "firstPhaseFailures": 2,
+      "firstFailureRemaining": 7,
+      "secondFailureRemaining": 3,
+      "freeRestarts": 2,
+      "cooling": "west stone actual navigation; pause timer while heat falls",
+      "phaseTransitionHeat": 53,
+      "phase3RemainingObserved": [
+        14,
+        13,
+        12,
+        11,
+        9,
+        8,
+        6,
+        5,
+        3
+      ],
+      "phase3HeatPairs": [
+        [
+          58,
+          11
+        ],
+        [
+          30,
+          9
+        ],
+        [
+          29,
+          0
+        ]
+      ],
+      "healUsed": 1,
+      "finishHp": 186,
+      "incidentalOrdinaryHerb": 1,
+      "ordinaryKillsAdded": 0,
+      "firstClearGold": 770,
+      "flameOnlyAfterFirstClear": "star"
+    },
+    "rescue": {
+      "guardKills": 4,
+      "pursuitKills": 2,
+      "escortHpAtSpawn": 200,
+      "escortHpAtMeeting": 200,
+      "waitingOver180Observed": true,
+      "returnedViaNativeCompanionDestination": true,
+      "reportResourcesAdded": 0,
+      "healUsed": 0,
+      "firstClearGold": 800,
+      "supportDisabledAtExit": true,
+      "supportEnabledAtActualPostRefreshReentry": true
+    },
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop, not physical devices or player Beta",
+    "Source/full character/public deployment gates stay open",
+    "Pressure failures are retained, not claimed flawless play",
+    "No manufactured save/coordinate/runtime injection"
+  ]
+}
