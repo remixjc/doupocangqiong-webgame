@@ -49,6 +49,14 @@ export const firstHallThreatScenes = defineSceneRows(['actor', 'operation', 'tit
   ['yan', 'eye-roll', '本人收回目光', '本人收回目光，第二卷仍由本人保管。', '本人收回目光'],
   ['yan', 'archive-threat', '威胁与观察归档', '未来挑战与本人观察已记下。实际向堂口走、登记同卷与离堂待续。', '归档威胁与观察'],
 ] as const)
-export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false) {
-  return threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
+export const firstHallExitResponseScenes = defineSceneRows(['actor', 'operation', 'title', 'text', 'action'], [
+  ['yan', 'walk-aisle', '持同卷走向堂口', '本人持同一第二卷离开东架，实际走到堂中。第一卷与她放下的临时卷仍各在原处。', '持同一第二卷走到堂中'],
+  ['ning', 'misread', '对方误解退让', '萧宁把本人的移动误解为退让。这只是他的想法，没有本人认输或当前胜利结算。', '观察对方误解'],
+  ['yan', 'walk-entrance', '走到堂内入口', '本人继续持同一第二卷走到堂内入口，尚未向管理者登记，也没有跨门离堂。', '持同一第二卷走到堂内入口'],
+  ['yan', 'next-year', '本人回应来年', '本人回应来年再见分晓。仍是来年的话，没有当前切磋或成人礼挑战的奖励。', '本人回应来年'],
+  ['ning', 'green', '对方脸色发青', '萧宁听见回应，脸色发青。本人仍在堂内入口持同一第二卷。', '观察对方脸色发青'],
+  ['yan', 'archive-exit-response', '堂内移步与回应归档', '实际位置与来年回应已分存。管理者登记、薰儿同行与跨门离堂另续。', '归档堂内移步与来年回应'],
+] as const)
+export function firstHallApproachScene(stage: number, continuation = false, conflict = false, threat = false, exitResponse = false) {
+  return exitResponse ? firstHallExitResponseScenes[stage - 40] : threat ? firstHallThreatScenes[stage - 31] : conflict ? firstHallConflictScenes[stage - 19] : continuation ? firstHallFirstReturnScenes[stage - 14] : firstHallApproachScenes[Math.min(stage, 14)]
 }

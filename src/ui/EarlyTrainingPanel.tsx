@@ -69,6 +69,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
   const [firstHallFirstReturn, setFirstHallFirstReturn, hallFirstReturnEntry, hallFirstReturnBack] = useReturningScene()
   const [firstHallThreat, setFirstHallThreat, hallThreatEntry, hallThreatBack] = useReturningScene()
+  const [firstHallExitResponse, setFirstHallExitResponse, hallExitResponseEntry, hallExitResponseBack] = useReturningScene()
   const [firstHallConflict, setFirstHallConflict, hallConflictEntry, hallConflictBack] = useReturningScene()
   const [firstHallApproach, setFirstHallApproach, hallApproachEntry, hallApproachBack] = useReturningScene()
   const [firstHallTalk, setFirstHallTalk, hallTalkEntry, hallTalkBack] = useReturningScene()
@@ -96,6 +97,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
   if (firstHallFirstReturn) return <DeferredScene message="正在接续同卷归架……"><FirstHallApproach continuation state={state} onBack={hallFirstReturnBack} /></DeferredScene>
   if (firstHallThreat) return <DeferredScene message="正在接续成人礼威胁……"><FirstHallApproach threat state={state} onBack={hallThreatBack} /></DeferredScene>
+  if (firstHallExitResponse) return <DeferredScene message="正在接续堂内移步……"><FirstHallApproach exitResponse state={state} onBack={hallExitResponseBack} /></DeferredScene>
   if (firstHallConflict) return <DeferredScene message="正在接续东架交锋……"><FirstHallApproach conflict state={state} onBack={hallConflictBack} /></DeferredScene>
   if (firstHallApproach) return <DeferredScene message="正在接续整衣与靠近……"><FirstHallApproach state={state} onBack={hallApproachBack} /></DeferredScene>
   if (firstHallTalk) return <DeferredScene message="正在接续东架会面……"><FirstHallTalk state={state} onBack={hallTalkBack} /></DeferredScene>
@@ -253,6 +255,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 14 && <SecondaryButton ref={hallFirstReturnEntry} onClick={() => setFirstHallFirstReturn(true)}>接续帮选交涉与同卷归架</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 19 && <SecondaryButton ref={hallConflictEntry} onClick={() => setFirstHallConflict(true)}>接续东架交锋与本人第二卷</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 31 && <SecondaryButton ref={hallThreatEntry} onClick={() => setFirstHallThreat(true)}>接续成人礼威胁与本人观察</SecondaryButton>}
+      {isVisible(state, 2) && task.firstHallApproach.stage >= 40 && <SecondaryButton ref={hallExitResponseEntry} onClick={() => setFirstHallExitResponse(true)}>接续堂内移步与来年回应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallTalk.stage === 20 && <SecondaryButton ref={hallApproachEntry} onClick={() => setFirstHallApproach(true)}>接续整衣靠近与同卷收起</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallMatch.stage === 20 && <SecondaryButton ref={hallTalkEntry} onClick={() => setFirstHallTalk(true)}>接续东架会面与半月问答</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallMatch.stage >= 12 && <SecondaryButton ref={hallReturnEntry} onClick={() => setFirstHallReturn(true)}>接续赛后返回与薰儿走向东架</SecondaryButton>}

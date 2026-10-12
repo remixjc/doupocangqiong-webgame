@@ -1,0 +1,405 @@
+{
+  "version": "0.73.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 150,
+    "tests": 896
+  },
+  "focused": {
+    "files": 3,
+    "tests": 13
+  },
+  "nodeTests": 11,
+  "native": [
+    {
+      "name": "exitResponseMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837031432.json",
+      "sha256": "0ce9810db2c39589653fdcdaea4ad5049f5d8679a8ab51d7bbd5a10f5887518d",
+      "stage": 40,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837055846.json",
+      "sha256": "5491c65576826eadfc3c09afe3279f9392aa995a8653a1e48a9500412f6d3c65",
+      "stage": 40,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837070379.json",
+      "sha256": "0d7952d1486b720100ee30e6e8e98ed0337f231808b2ef3e8fe02c42b422e6ef",
+      "stage": 41,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837096265.json",
+      "sha256": "b10b72f99ddef2781de23bddeccb73629e4434f5784285e3bcd8d4259eed38cd",
+      "stage": 43,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837134094.json",
+      "sha256": "4a0f4a74c1f00e7affa2c000a9073ead517ccdf007017a2ea123b630a79fc236",
+      "stage": 46,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837142463.json",
+      "sha256": "f10a58662d81d00492b4bd0f128881302bdbf5624d5d5b1f9ef601fdd5311569",
+      "stage": 40,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMaterialsStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837175652.json",
+      "sha256": "33178ed79bfc9481a9ee01b5923023680f99b4f80d5f0d3d109ca9b77e8bcc13",
+      "stage": 43,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837203141.json",
+      "sha256": "d1fffa08e2e502debcd9c4a54e3245ce4265e3f2137d183ec0b885b02cebdd26",
+      "stage": 46,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainOldEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837230592.json",
+      "sha256": "71bfebf577274e2ad70d4f7ba573d4d9fef41d6f91ca5db072c5295dcce62d7d",
+      "stage": 46,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837232904.json",
+      "sha256": "6a60d070ac4ed0cd85d410c20d5d55096f39144b3a92d5ef272429076885d90a",
+      "stage": 0,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837238940.json",
+      "sha256": "df37bf9d81283f7287cd4cc534494a1c5c1b32eb91aa3d5e08683f7a9ae177d2",
+      "stage": 0,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837257763.json",
+      "sha256": "0b5ee209be195eb01e876da4dda0e4d117158c118f880ec9e6b629a330d7e738",
+      "stage": 46,
+      "entireOtherStateEqual": true
+    },
+    {
+      "name": "exitResponseMainLayoutRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791837421064.json",
+      "sha256": "942d7249a43ceef511143c08de26bed17f6328379b707020ba0488abd13647fc",
+      "stage": 46,
+      "entireOtherStateEqual": true
+    }
+  ],
+  "pairs": [
+    [
+      "exitResponseMainMigrated",
+      "exitResponseMainRejected0"
+    ],
+    [
+      "exitResponseMainFinal",
+      "exitResponseMainOldEntry"
+    ],
+    [
+      "exitResponseMainFinal",
+      "exitResponseMainFinalRefresh"
+    ],
+    [
+      "exitResponseIntactMigrated",
+      "exitResponseIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "MainMigrated0",
+      "status": "堂内移步与来年回应 0/6 · 整衣靠近 · 威胁与观察归档，登记离堂待续",
+      "yan": "translate(400 250)",
+      "secondX": "420",
+      "secondY": "245",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRejected0",
+      "status": "堂内移步与来年回应 0/6 · 整衣靠近 · 威胁与观察归档，登记离堂待续",
+      "yan": "translate(400 250)",
+      "secondX": "420",
+      "secondY": "245",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved1",
+      "status": "堂内移步与来年回应 1/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRefresh1",
+      "status": "堂内移步与来年回应 1/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved2",
+      "status": "堂内移步与来年回应 2/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRefresh2",
+      "status": "堂内移步与来年回应 2/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved3",
+      "status": "堂内移步与来年回应 3/6 · 堂内移步 · 本人已到堂内入口，尚未登记",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRefresh3",
+      "status": "堂内移步与来年回应 3/6 · 堂内移步 · 本人已到堂内入口，尚未登记",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved4",
+      "status": "堂内移步与来年回应 4/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRefresh4",
+      "status": "堂内移步与来年回应 4/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved5",
+      "status": "堂内移步与来年回应 5/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRefresh5",
+      "status": "堂内移步与来年回应 5/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainSaved6",
+      "status": "堂内移步与来年回应 6/6 · 堂内移步 · 入口回应归档，同卷登记待续",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainRefresh6",
+      "status": "堂内移步与来年回应 6/6 · 堂内移步 · 入口回应归档，同卷登记待续",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsMigrated0",
+      "status": "堂内移步与来年回应 0/6 · 整衣靠近 · 威胁与观察归档，登记离堂待续",
+      "yan": "translate(400 250)",
+      "secondX": "420",
+      "secondY": "245",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved1",
+      "status": "堂内移步与来年回应 1/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsRefresh1",
+      "status": "堂内移步与来年回应 1/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved2",
+      "status": "堂内移步与来年回应 2/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsRefresh2",
+      "status": "堂内移步与来年回应 2/6 · 堂内移步 · 本人持同卷已到堂中",
+      "yan": "translate(320 280)",
+      "secondX": "340",
+      "secondY": "275",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved3",
+      "status": "堂内移步与来年回应 3/6 · 堂内移步 · 本人已到堂内入口，尚未登记",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsRefresh3",
+      "status": "堂内移步与来年回应 3/6 · 堂内移步 · 本人已到堂内入口，尚未登记",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved4",
+      "status": "堂内移步与来年回应 4/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsRefresh4",
+      "status": "堂内移步与来年回应 4/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved5",
+      "status": "堂内移步与来年回应 5/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsRefresh5",
+      "status": "堂内移步与来年回应 5/6 · 堂内移步 · 来年回应已记，尚未登记离堂",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsSaved6",
+      "status": "堂内移步与来年回应 6/6 · 堂内移步 · 入口回应归档，同卷登记待续",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MaterialsRefresh6",
+      "status": "堂内移步与来年回应 6/6 · 堂内移步 · 入口回应归档，同卷登记待续",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    },
+    {
+      "label": "MainFinalReload",
+      "status": "堂内移步与来年回应 6/6 · 堂内移步 · 入口回应归档，同卷登记待续",
+      "yan": "translate(140 310)",
+      "secondX": "160",
+      "secondY": "305",
+      "ning": "translate(450 280)",
+      "xuner": "translate(380 250)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "savedRefreshes": 12,
+  "initialJs": 491928,
+  "totalJs": 1846100,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "introduction": "Old0.72.1 stage40 adds yan=east only; stage41+ requires0.73.0. Current missing/derived mismatches rejected; 13 complete snapshots strict.",
+  "keyboard": "Main incorrect focused E, ArrowRight, Ctrl+E and own-scroll transfer rejected at0. Correct focused E actual walk1/3 on both branches. Native exit Enter restores exact entry.",
+  "originalEntry": "Threat9/9 remains bounded, explicit retrospective east position; exact state preserved after navigation. Stable intact new entry0.",
+  "prerequisite": {
+    "sha": "b957a3305fa2a2b8d88a4860e0b897d9bb223b5c",
+    "checks": 38303834108,
+    "conclusion": "success",
+    "pages": 38303834102,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 118,
+    "cleanBytes": 1977387
+  },
+  "failures": "Initial screenshot showed preceding navigation compositor frame, fresh DOM and recapture. Real screenshot revealed entrance and player text overlap: actual SVG viewport and entrance label fixed; final complete checks and stable screenshots repeated. Historical previous material import error retained in prior evidence; current logs empty.",
+  "source": "Previously full normal public English17 final paragraphs; movement, misunderstanding, next-year reply and reaction. Chinese/current anime pending. Actual manager checkout belongs18 subsequent batch, distinct from later51.",
+  "limits": "Independent six checkpoints41..46; currenthall7/practice0. No checkout/threshold crossing/Xuner move/current fight/reward/repayment or afternoon/room completion. Same second follows actual persisted player position; first shelf and her own temporary scroll independent."
+}
