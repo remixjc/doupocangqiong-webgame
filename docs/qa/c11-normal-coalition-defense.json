@@ -1,0 +1,433 @@
+{
+  "batch": "C11c-3k/C9a",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "previousEvidenceCommit": "06524bf",
+  "previousCI": {
+    "id": 38197171779,
+    "conclusion": "success",
+    "pagesId": 38197171824,
+    "pagesConclusion": "skipped"
+  },
+  "site": "http://127.0.0.1:4184/",
+  "method": "native UI same normal journey and real unmodified downloads, official parseSave outside browser",
+  "records": [
+    {
+      "key": "26-west",
+      "file": ".git/task-normal-ch26-west-export.json",
+      "bytes": 20618,
+      "fileSha256": "ab85b94addd737ead3109459361620d399b1f7dd78862173c27aeef3e2f1e1cf",
+      "stateSha256": "8490aae5e6a2fc3649b78f9f0f186e746c3f36df75d8078a7b53450d3ddba739",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "gold": 15384,
+      "xp": 11915,
+      "inventory": {
+        "herb": 9,
+        "crystal": 68,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 67,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 3,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "coalition-three-post-defense": {
+            "started": true,
+            "stage": 2,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "26-east",
+      "file": ".git/task-normal-ch26-east-export.json",
+      "bytes": 20618,
+      "fileSha256": "6c5ad25b6814b336833404ae7792375b2f7e1f3c0c573dc288c7708a70963328",
+      "stateSha256": "6407967eaa57d23acf02280ce053d61bcb8384c6fb3f057fe97330b35713ef79",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "gold": 15564,
+      "xp": 11945,
+      "inventory": {
+        "herb": 9,
+        "crystal": 71,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 70,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 6,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "coalition-three-post-defense": {
+            "started": true,
+            "stage": 3,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "26-pending",
+      "file": ".git/task-normal-ch26-pending-export.json",
+      "bytes": 20618,
+      "fileSha256": "a764e37a30010c8a940f705709234ce78376d34dfae3dc9cf658a7c47b93b88d",
+      "stateSha256": "3f248c5c5b3580da952a20cbf24abc422ad44e1fa837c9dd00749fe9f24b6f5d",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "gold": 15744,
+      "xp": 11975,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 9,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "coalition-three-post-defense": {
+            "started": true,
+            "stage": 4,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "26-reported",
+      "file": ".git/task-normal-ch26-reported-export.json",
+      "bytes": 20618,
+      "fileSha256": "d4015e9f5da30ef8e5d2f5cc5a0589a9ebb4608d3abfa130b7ba1167de4ccede",
+      "stateSha256": "6a028f5ed5067c202dc7f87058cf0bf91610250f0d0844afd6960a0555031728",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "gold": 15744,
+      "xp": 11975,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 9,
+        "brews": 0,
+        "boss": false,
+        "intro": true,
+        "events": {
+          "coalition-three-post-defense": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "26",
+      "file": ".git/task-normal-ch26-export.json",
+      "bytes": 20627,
+      "fileSha256": "4e15de103403aa3be6ba47ebf7b8beb52551b4217091fcad65ddea9a1230b323",
+      "stateSha256": "eef730c4f2c00d8dffd84abe87d14db6dedb672f1e0c78d0acbba386b80b5ca8",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16664,
+      "xp": 12725,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 9,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "coalition-three-post-defense": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    },
+    {
+      "key": "26-refreshed",
+      "file": ".git/task-normal-ch26-refreshed-export.json",
+      "bytes": 20627,
+      "fileSha256": "4f88405ab81098264a86f5b0dcc08bec1a8349d51d35e8754921c663cca6591e",
+      "stateSha256": "eef730c4f2c00d8dffd84abe87d14db6dedb672f1e0c78d0acbba386b80b5ca8",
+      "completed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "gold": 16664,
+      "xp": 12725,
+      "inventory": {
+        "herb": 9,
+        "crystal": 74,
+        "heal": 4,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 73,
+      "fireEnergy": 5,
+      "flame": "pure",
+      "progress": {
+        "herbs": 0,
+        "kills": 9,
+        "brews": 0,
+        "boss": true,
+        "intro": true,
+        "events": {
+          "coalition-three-post-defense": {
+            "started": true,
+            "stage": 5,
+            "quote": 0,
+            "score": 0,
+            "attempts": 0,
+            "choice": "none"
+          }
+        }
+      }
+    }
+  ],
+  "entireStateRefreshEqual": true,
+  "first25ProgressUnchanged": true,
+  "observations": {
+    "posts": 3,
+    "wavesPerPost": 2,
+    "ordinaryKillsAdded": 9,
+    "ordinaryRewards": {
+      "gold": 540,
+      "xp": 90,
+      "crystals": 9
+    },
+    "healUsed": 1,
+    "westWave1Hp": 280,
+    "eastWave1HpAfterToolIdle": 145,
+    "eastWave2HpObserved": [
+      91,
+      64
+    ],
+    "eastToolCooldownNameTimeoutRetained": true,
+    "eastMageClearedViaNormalLeftTenAndUpOneThenSkills": true,
+    "backWave1Hp": 253,
+    "finalPlayerHpBeforeReport": 452,
+    "deathOrPostFailure": false,
+    "restOrRefreshDuringDefense": false,
+    "reportAdditionalRewards": 0,
+    "firstClearGold": 920,
+    "manualSlots": "three empty",
+    "consoleErrors": []
+  },
+  "limits": [
+    "Menu-paused AI desktop, not physical devices or player Beta",
+    "One tool lookup timeout left world running and caused real damage; retained without attributing to game defect",
+    "No post death or player death final-frame claim",
+    "Full sources/characters, historical rollback and public deployment remain open",
+    "No save/runtime/browser-store or coordinate fabrication"
+  ]
+}
