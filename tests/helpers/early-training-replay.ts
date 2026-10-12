@@ -63,6 +63,8 @@ import { advanceEarlyKeChallenge, keChallengePlaces, type KeChallengeAction } fr
 import { keChallengeScenes } from '../../src/content/early-ke-challenge'
 import { advanceEarlyFamilyVisit, familyVisitPlaces } from '../../src/core/early-family-visit'
 import { familyVisitScenes } from '../../src/content/early-family-visit'
+import { advanceEarlyFamilyCompensation } from '../../src/core/early-family-compensation'
+import { familyCompensationScenes } from '../../src/content/early-family-compensation'
 
 // Normal transactions only; bracelet uses the valid market position.
 // Spatial walking has separate coverage; no progress/material edits or save injection.
@@ -95,6 +97,13 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   if (includeQiAid) while (state.earlyTraining.familyVisit.stage < familyVisitScenes.length) {
     const task = state.earlyTraining.familyVisit, scene = familyVisitScenes[task.stage]
     const result = advanceEarlyFamilyVisit(state, familyVisitPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true)
+    state = parseSave(serializeSave(result.state))
+    onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.familyCompensation.stage < familyCompensationScenes.length) {
+    const task = state.earlyTraining.familyCompensation, scene = familyCompensationScenes[task.stage]
+    const result = advanceEarlyFamilyCompensation(state, familyVisitPlaces[scene.place], { ...task, actor: scene.actor, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)
     state = parseSave(serializeSave(result.state))
     onCheckpoint?.(state)

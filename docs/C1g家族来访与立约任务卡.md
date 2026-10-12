@@ -11,8 +11,8 @@
 | [3 Guests](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-3) | 清晨修炼流失/戒指微光、召见与入厅；父亲示意入座、座位遗漏、薰儿邀请后才落座。童年交谈仅概括受照顾回顾。 |
 | [4 Faction of the Misty Clouds](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-4) | 观察云剑标记、薰儿说明来客身份与祖辈婚约；随后葛叶起身。 |
 | [5 Qi Gathering Powder](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-5) | 介绍后公开提出请求；父亲气势与来客戒备、长老制止、父亲收势；葛叶拿出并打开玉匣，不等于萧家收取。 |
-| [6 Alchemists](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-6) | 本轮返回可读开头，包含丹药与炼药师说明；当前工具输出未包含完整结尾。本批不从它补造争辩或答复。 |
-| [7 Divorce!](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-7) | 仓库《早期剧情逐场对照》有历史完整来源；下一批实施之前重新核读文书/立约/离厅顺序。 |
+| [6 Alchemists](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-6) | 本轮网页浏览器tab20实际显示完整正文及 NEXT CHAPTER。确认古河说明、长老期待、萧炎异议与长老阻拦、薰儿支持、本人先向父亲行礼再问祖辈同意，纳兰未获同意后提出额外丹药/入宗条件。 |
+| [7 Divorce!](https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-7) | 从6页可见NEXT CHAPTER正常导航后，tab20实际加载完整正文及下一章。本人发怒/来客青年拔剑/父亲喝止；三年条件与回应、本人独立文书置桌、向父亲致意并承诺赴约、本人离厅；父亲退回玉匣、薰儿提醒与葛叶带人离去。尚待游戏实现。 |
 
 ## C1g-1 / 0.38.0
 
@@ -26,7 +26,9 @@
 
 ## 下一批及仍开放范围
 
-C1g-2：读取6–7完整可用正文，分开丹药说明、长老及萧炎发言、纳兰回应、三年条件、本人拒绝与独立文书、交父与离厅。文书不得自动改变现有技能或奖励；不能凭前半程自动结算婚约。
+C1g-2a / 0.39.0：先实现6章补偿交涉15步。丹药/炼药师知识与职业/属性/真实炼制分开，古河说明、长老反应、本人异议/长老阻拦/本人回应/薰儿支持依序保存。本人向父亲行礼与祖辈同意问答分开，问话时尚未答复；纳兰额外三枚和入宗仍为提议，拒绝提前领物、入宗或因读知识授职业。introducedVersion0.39.0，独立familyCompensation，新版缺字段/派生组合/来访17前置/过期完整快照强校；旧0.38只补未参与。
+
+C1g-2b：依据已核7章接发怒/拔剑戒备/父亲止冲突、本人恢复冷静、宗门压力/父亲尊严、三年提议/反对/未来回应/再次约定。独立文书写成后置桌并向纳兰说明；原作不是将文书交给父亲，先前任务提纲“交父”更正为本人向父亲致意。纳兰后续持文书；本人亲口向父亲承诺三年赴约后才实际离厅。父亲退玉匣→葛叶收回纳戒→薰儿提醒→来客离去另存，不把本人返回观察点演成回厅。原作血色印记只用抽象标记回顾，不做伤害输入或扣生命。文书与三年挑战分开，丹药/功法/境界/奖励不变。
 
 C1g-3：按8–9完整事实核读，独立后山行走、戒指交涉、修炼流失解释、炼药资格与本人拜师；现有第2章收尾仍为概括，不能倒推完整互动已经完成。
 

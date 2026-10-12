@@ -24,11 +24,22 @@ export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): s
 export function earlyFamilyVisitSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.familyVisit
-  return '家族来访 · ' + (task.stage === 17 ? '前半程归档，补偿与文书待续'
+  return '家族来访 · ' + (task.stage === 17 ? saved.earlyTraining.familyCompensation.stage === 15 ? '前半程与后续交涉已归档，文书待续'
+    : saved.earlyTraining.familyCompensation.stage > 0 ? '前半程已归档，后续交涉进行中' : '前半程归档，补偿与文书待续'
     : task.box === 'presented' ? '玉匣已展示，仍属来客' : task.pressure === 'withdrawn' ? '父亲已收势，补偿待展示'
     : task.pressure === 'raised' ? '双方戒备，尚未交手' : task.request === 'spoken' ? '请求已公开，双方反应待续'
     : task.identity === 'nalan' ? '身份已听清，尚未公开请求' : task.seat === 'shared' ? '已在薰儿身旁落座'
     : task.seat === 'missing' ? '座位遗漏，尚未落座' : task.stage ? '清晨与入厅记录进行中' : '未参与')
+}
+
+export function earlyFamilyCompensationSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.familyCompensation
+  return '补偿交涉 · ' + (task.stage === 15 ? '前段已归档，文书与立约待续'
+    : task.terms === 'offer-only' ? '已核追加条件未领取，待归档' : task.extra === 'offered' ? '追加条件已提出，仍未领物入宗'
+    : task.consent === 'not-given' ? '祖父未同意已听清' : task.consent === 'asked' ? '已问祖辈同意，尚待答复'
+    : task.elders === 'seated' ? '薰儿支持发言，长老已落座' : task.objection === 'spoken' ? '本人提出异议，交涉待续'
+    : task.stage ? '丹药与炼药师知识说明进行中' : '未参与')
 }
 
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
@@ -38,7 +49,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,
