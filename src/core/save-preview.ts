@@ -71,7 +71,8 @@ export function earlyMountainRingSaveSummary(saved: GameState, viewing: Settings
 export function earlyApprenticeSaveSummary(saved: GameState, viewing: Settings): string {
   if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
   const task = saved.earlyTraining.apprentice
-  return '援助与拜师 · ' + (task.stage === 25 ? '本人行礼与老师名字已归档，功法说明与正式返戒待续'
+  return '援助与拜师 · ' + (task.stage === 25 ? saved.earlyTraining.methodDiscussion.stage
+    ? '本人礼成归档，' + earlyMethodDiscussionSaveSummary(saved, viewing) : '本人行礼与老师名字已归档，功法说明与正式返戒待续'
     : task.name === 'yaolao' ? '本人已行礼，已听老师名字，待归档'
     : task.rite === 'bowed' ? '本人已行礼，尚待听名字'
     : task.rite !== 'none' ? '青石前行礼要求已说明，尚未礼成'
@@ -86,6 +87,24 @@ export function earlyApprenticeSaveSummary(saved: GameState, viewing: Settings):
     : task.promise === 'permission-required' ? '已听许可边界承诺，本人未授许可' : '未参与')
 }
 
+export function earlyMethodDiscussionSaveSummary(saved: GameState, viewing: Settings): string {
+  if (viewing.spoiler === 'anime' && viewing.animeLimit < 2) return '前期记录 · 当前范围封存'
+  const task = saved.earlyTraining.methodDiscussion
+  return '功法说明 · ' + (task.stage === 28 ? '仅说明已归档，未授卷，准备与返戒待续'
+    : task.viewing === 'deferred' ? '斗者后才传授，本段未授卷'
+    : task.viewing === 'requested' ? '本人已请求查看，尚未给卷'
+    : task.basis === 'method-text' ? '依据为功法文字，未视为实证'
+    : task.otherTrial === 'untried' ? '老师与他人都未试，待问依据'
+    : task.teacherTrial === 'untried' ? '老师未亲试，其他人待问答'
+    : task.evolution !== 'unasked' ? '进化说明与本人追问进行中，未进化'
+    : task.grade === 'low-huang' ? '未来功法黄阶低级答复，未取得'
+    : task.offer !== 'none' ? '未来功法仅提议，未授卷'
+    : task.sky === 'refused' ? '天阶请求被否定'
+    : task.alchemy === 'prerequisites' ? '火属性与斗者前置已说明，未授职业'
+    : task.foundation === 'explained' ? '基础已说明，炼药与功法问答待续'
+    : task.stage ? '本人已问一年目标办法，待答' : '未参与')
+}
+
 export function savePreviewSummary(saved: GameState, viewing: Settings): string {
   const limit = viewing.spoiler === 'novel' ? Infinity : viewing.animeLimit
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
@@ -93,7 +112,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const summaries = [
     chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing),
   ]
-  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
+  if (limit >= 2) summaries.push(earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
       earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,

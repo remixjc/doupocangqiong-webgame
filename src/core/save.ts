@@ -15,6 +15,7 @@ import { EARLY_FAMILY_COMPENSATION_VERSION } from './early-family-compensation-s
 import { EARLY_FAMILY_CONTRACT_VERSION } from './early-family-contract-state'
 import { EARLY_MOUNTAIN_RING_VERSION } from './early-mountain-ring-state'
 import { EARLY_APPRENTICE_VERSION } from './early-apprentice-state'
+import { EARLY_METHOD_DISCUSSION_VERSION } from './early-method-discussion-state'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
 export class NewerSaveVersionError extends Error {
@@ -264,7 +265,8 @@ export function validateState(value: unknown): GameState {
     versionBefore(data.contentVersion as string, EARLY_FAMILY_COMPENSATION_VERSION),
     versionBefore(data.contentVersion as string, EARLY_FAMILY_CONTRACT_VERSION),
     versionBefore(data.contentVersion as string, EARLY_MOUNTAIN_RING_VERSION),
-    versionBefore(data.contentVersion as string, EARLY_APPRENTICE_VERSION))
+    versionBefore(data.contentVersion as string, EARLY_APPRENTICE_VERSION),
+    versionBefore(data.contentVersion as string, EARLY_METHOD_DISCUSSION_VERSION))
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }

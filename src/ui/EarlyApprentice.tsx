@@ -5,7 +5,7 @@ import { gameStore } from '../core/store'
 import { mountainRingNear, mountainRingPlaces, mountainRingStart, moveMountainRingWalker } from '../core/early-mountain-ring'
 import { earlyApprenticeBlock, submitEarlyApprentice, type ApprenticeAction } from '../core/early-apprentice'
 import { apprenticeScenes } from '../content/early-apprentice'
-import { earlyApprenticeSaveSummary } from '../core/save-preview'
+import { earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary } from '../core/save-preview'
 import MountainWalkMap from './MountainWalkMap'
 
 export default function EarlyApprentice({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -34,7 +34,8 @@ export default function EarlyApprentice({ state, onBack }: { state: GameState; o
       {task.stage === 14 && <button className="secondary" disabled={!near} onClick={() => act('claim-profession')}>尝试把资质登记为已成为炼药师</button>}
       {task.stage === 22 && <button className="secondary" disabled={!near} onClick={() => act('skip-bow')}>尝试跳过本人行礼直接签礼成</button>}
       {task.stage === 24 && <button className="secondary" disabled={!near} onClick={() => act('wear-ring')}>尝试在返戒之前重新佩戴古戒</button>}
-    </section> : <section className="bond-summary"><h3>援助与本人拜师已归档。</h3><p>本人完成行礼后才听名字；未授取气许可，七段仍为目标，古戒仍浮空，功法与准备衔接待续。</p></section>}
+    </section> : <section className="bond-summary"><h3>援助与本人拜师已归档。</h3><p>本人完成行礼后才听名字；未授取气许可，七段仍为当时目标，古戒仍浮空。{state.earlyTraining.methodDiscussion.stage
+      ? earlyMethodDiscussionSaveSummary(state, state.settings) + '。' : '功法与准备衔接待续。'}</p></section>}
     <p className="muted">山路与核对选项为改编；故事期限没有现实计时。本段只写独立事件记录，不改变主线境界、职业、技能、生命、库存或已结算奖励。位置不保存。</p>
     <button className="secondary" onClick={onBack}>暂离援助与拜师 · 保留断点</button>
   </>

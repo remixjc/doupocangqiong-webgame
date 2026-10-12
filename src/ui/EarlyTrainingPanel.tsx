@@ -9,7 +9,7 @@ import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
 import { loadSceneModule } from './scene-load'
-import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary } from '../core/save-preview'
+import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary } from '../core/save-preview'
 const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
 const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
 const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
@@ -20,6 +20,7 @@ const EarlyFamilyCompensation = lazy(() => loadSceneModule(() => import('./Early
 const EarlyFamilyContract = lazy(() => loadSceneModule(() => import('./EarlyFamilyContract')))
 const EarlyMountainRing = lazy(() => loadSceneModule(() => import('./EarlyMountainRing')))
 const EarlyApprentice = lazy(() => loadSceneModule(() => import('./EarlyApprentice')))
+const EarlyMethodDiscussion = lazy(() => loadSceneModule(() => import('./EarlyMethodDiscussion')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -34,6 +35,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [familyContract, setFamilyContract] = useState(false)
   const [mountainRing, setMountainRing] = useState(false)
   const [apprentice, setApprentice] = useState(false)
+  const [methodDiscussion, setMethodDiscussion] = useState(false)
+  const methodEntry = useRef<HTMLButtonElement>(null), returningMethod = useRef(false)
   const apprenticeEntry = useRef<HTMLButtonElement>(null), returningApprentice = useRef(false)
   const mountainRingEntry = useRef<HTMLButtonElement>(null), returningMountainRing = useRef(false)
   const contractEntry = useRef<HTMLButtonElement>(null), returningContract = useRef(false)
@@ -64,10 +67,12 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!familyContract && returningContract.current) { returningContract.current = false; contractEntry.current?.focus() } }, [familyContract])
   useEffect(() => { if (!mountainRing && returningMountainRing.current) { returningMountainRing.current = false; mountainRingEntry.current?.focus() } }, [mountainRing])
   useEffect(() => { if (!apprentice && returningApprentice.current) { returningApprentice.current = false; apprenticeEntry.current?.focus() } }, [apprentice])
+  useEffect(() => { if (!methodDiscussion && returningMethod.current) { returningMethod.current = false; methodEntry.current?.focus() } }, [methodDiscussion])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (methodDiscussion) return <Suspense fallback={<p role="status">正在打开青石前的功法说明……</p>}><EarlyMethodDiscussion state={state} onBack={() => { returningMethod.current = true; setMethodDiscussion(false) }} /></Suspense>
   if (apprentice) return <Suspense fallback={<p role="status">正在接续援助交涉与本人拜师……</p>}><EarlyApprentice state={state} onBack={() => { returningApprentice.current = true; setApprentice(false) }} /></Suspense>
   if (mountainRing) return <Suspense fallback={<p role="status">正在走上后山，察看古戒……</p>}><EarlyMountainRing state={state} onBack={() => { returningMountainRing.current = true; setMountainRing(false) }} /></Suspense>
   if (familyContract) return <Suspense fallback={<p role="status">正在接续文书与双方离厅……</p>}><EarlyFamilyContract state={state} onBack={() => { returningContract.current = true; setFamilyContract(false) }} /></Suspense>
@@ -94,6 +99,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
           {task.mountainRing.stage === 21 && <>
             <p>{earlyApprenticeSaveSummary(state, state.settings)}</p>
             <button ref={apprenticeEntry} className="secondary" onClick={() => setApprentice(true)}>接续援助与拜师 · 许可边界和本人行礼</button>
+            {task.apprentice.stage === 25 && <>
+              <p>{earlyMethodDiscussionSaveSummary(state, state.settings)}</p>
+              <button ref={methodEntry} className="secondary" onClick={() => setMethodDiscussion(true)}>接续功法说明 · 前置与未授卷</button>
+            </>}
           </>}
         </>}
       </>}
