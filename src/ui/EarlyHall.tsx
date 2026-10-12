@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -70,8 +71,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     </svg>
     <p role="status" className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</p>
     <div className="early-walk-controls" aria-label="斗技堂行走操作">
-      {(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction}
-        aria-label={`堂内向${['上', '左', '下', '右'][index]}走`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}
+      <WalkDirectionButtons prefix="堂内" onMove={move} />
       <PrimaryButton disabled={!place} onClick={() => place && setReading(place.id)}>查看堂内地点</PrimaryButton>
     </div>
     <p role="status">堂内记录 {Math.max(0, task.stage - 1)}/8 · {task.scroll === 'borrowed-second' ? '第二卷已登记，由萧炎保管'

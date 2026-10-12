@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -49,7 +50,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
       {Object.entries(qiAidPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="28" stroke={scene?.place === id ? '#f8dba4' : '#9ca487'} fill="none" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 44} fill="#edcea0" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
     </svg>
-    <div className="early-walk-controls" aria-label="同行援助行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['援助向上走', '援助向左走', '援助向下走', '援助向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>
+    <div className="early-walk-controls" aria-label="同行援助行走操作"><WalkDirectionButtons prefix="援助" onMove={move} /></div>
     <p role="status">援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</p>
     {scene ? near ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>

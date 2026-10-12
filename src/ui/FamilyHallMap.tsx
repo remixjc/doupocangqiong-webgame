@@ -1,5 +1,5 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
-import { SecondaryButton } from './Buttons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -49,7 +49,6 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
       </g>}
       {observer && <MapText x="465" y="390" fill="#a6e1d3" fontSize="13">{departed ? '旁观厅外 · 双方已离厅，纳兰携原文书' : '旁观厅内 · 萧炎已离厅'}</MapText>}
     </svg>
-    {!observer && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}>{(['up', 'left', 'down', 'right'] as const).map((direction, index) =>
-      <SecondaryButton key={direction} aria-label={`${prefix}${['向上走', '向左走', '向下走', '向右走'][index]}`} onClick={() => onMove(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>}
+    {!observer && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}><WalkDirectionButtons prefix={prefix} onMove={onMove} /></div>}
   </>
 }

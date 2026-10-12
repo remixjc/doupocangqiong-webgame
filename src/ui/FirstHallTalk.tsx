@@ -1,3 +1,4 @@
+import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
 import { HallText } from './MapPrimitives'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -39,19 +40,17 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
       <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="东架会面地图" aria-describedby="hall-talk-help" tabIndex={0} viewBox="100 190 390 115" className="early-walk-map" onKeyDown={key}>
-      <rect x="100" y="190" width="390" height="115" fill="#293e36" />
-      <rect x="160" y="220" width="110" height="45" fill="none" stroke="#bfa46a" />
-      <HallText x="215" y="211">西侧训练场</HallText>
+      <HallBackground />
+      <HallWestField />
       <g aria-label="萧宁仍在西场" transform="translate(235 244)">
         <circle r="7" fill="#bd8d6b" /><HallText y="21" fontSize="9">萧宁</HallText>
       </g>
-      <rect x="345" y="210" width="110" height="20" fill="#937954" />
-      <HallText x="400" y="201">东侧书架</HallText>
+      <HallEastShelf />
       <g aria-label={task.seated ? '薰儿已坐旁边' : '薰儿仍站东架'} transform="translate(380 250)">
         <circle cy={task.seated ? 5 : 0} r="7" fill="#ae8dbd" />
         <HallText y="-13" fontSize="9">薰儿</HallText>
       </g>
-      {task.ownScroll === 'xuner' && <rect aria-label="薰儿自己的临时阅读卷" x="360" y="257" width="13" height="9" fill="#604572" stroke="#c2a679" />}
+      {task.ownScroll === 'xuner' && <XunerReadingScroll />}
       <g aria-label="萧炎本人东架位置" transform="translate(400 250)">
         <MarketWalker />
         {task.stage >= 17 && <path aria-label="轻拍头部的历史动作" d="M0 4 L-15 -5" fill="none" stroke="#eac49b" strokeWidth="3" />}

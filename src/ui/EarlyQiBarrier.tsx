@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -64,7 +65,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
       {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 43} fill="#ead9b6" fontSize="10">{place.label}</MapText></g>)}
     </svg>
-    <div className="early-walk-controls" aria-label="火通道行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['火通道向上走', '火通道向左走', '火通道向下走', '火通道向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>
+    <div className="early-walk-controls" aria-label="火通道行走操作"><WalkDirectionButtons prefix="火通道" onMove={move} /></div>
     <p role="status">门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</p>
     {scene ? near ? <section className="bond-summary" aria-label="火通道门障步骤"><SceneHeading title={scene.title} text={scene.text} />
       {task.stage === 1 ? <div className="early-walk-controls">{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</div>

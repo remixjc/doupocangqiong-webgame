@@ -1,3 +1,4 @@
+import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -38,10 +39,5 @@ export function advanceFirstHallTalk(state: GameState, p: EarlyWalkPosition, spa
 }
 export function submitFirstHallTalk(store: GameStore, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallTalkAction): boolean {
   const result = advanceFirstHallTalk(store.getSnapshot().state, p, space, action)
-  if (result.ok) store.update(state => {
-    state.earlyTraining.firstHallTalk = result.state.earlyTraining.firstHallTalk
-    state.earlyTraining.hall = result.state.earlyTraining.hall
-  })
-  store.notify(result.message)
-  return result.ok
+  return commitEarlyResult(store, result, ['firstHallTalk', 'hall'])
 }

@@ -34,6 +34,7 @@ const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMar
 const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
 const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
+const FirstHallApproach = lazy(() => loadSceneModule(() => import('./FirstHallApproach')))
 const FirstHallTalk = lazy(() => loadSceneModule(() => import('./FirstHallTalk')))
 const FirstHallMatch = lazy(() => loadSceneModule(() => import('./FirstHallMatch')))
 const FirstHallReading = lazy(() => loadSceneModule(() => import('./FirstHallReading')))
@@ -65,6 +66,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy, cityEntry, cityPharmacyBack] = useReturningScene()
   const [marketEscort, setMarketEscort, escortEntry, marketEscortBack] = useReturningScene()
   const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
+  const [firstHallApproach, setFirstHallApproach, hallApproachEntry, hallApproachBack] = useReturningScene()
   const [firstHallTalk, setFirstHallTalk, hallTalkEntry, hallTalkBack] = useReturningScene()
   const [firstHallMatch, setFirstHallMatch, hallMatchEntry, hallMatchBack] = useReturningScene()
   const [firstHallReturn, setFirstHallReturn, hallReturnEntry, hallReturnBack] = useReturningScene()
@@ -88,6 +90,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (firstHallApproach) return <DeferredScene message="正在接续整衣与靠近……"><FirstHallApproach state={state} onBack={hallApproachBack} /></DeferredScene>
   if (firstHallTalk) return <DeferredScene message="正在接续东架会面……"><FirstHallTalk state={state} onBack={hallTalkBack} /></DeferredScene>
   if (firstHallMatch) return <DeferredScene message="正在接续东架旁观……"><FirstHallMatch state={state} onBack={hallMatchBack} /></DeferredScene>
   if (firstHallReturn) return <DeferredScene message="正在接续赛后东架……"><FirstHallMatch continuation state={state} onBack={hallReturnBack} /></DeferredScene>
@@ -240,6 +243,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         {task.firstHallEntry.stage === 9 && <SecondaryButton ref={hallReadingEntry} onClick={() => setFirstHallReading(true)}>接续东侧同一第一卷阅读</SecondaryButton>}
       </section>}
       {isVisible(state, 2) && task.firstHallReading.stage === 8 && <SecondaryButton ref={hallMatchEntry} onClick={() => setFirstHallMatch(true)}>接续东架旁观西侧比赛</SecondaryButton>}
+      {isVisible(state, 2) && task.firstHallTalk.stage === 20 && <SecondaryButton ref={hallApproachEntry} onClick={() => setFirstHallApproach(true)}>接续整衣靠近与同卷收起</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallMatch.stage === 20 && <SecondaryButton ref={hallTalkEntry} onClick={() => setFirstHallTalk(true)}>接续东架会面与半月问答</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallMatch.stage >= 12 && <SecondaryButton ref={hallReturnEntry} onClick={() => setFirstHallReturn(true)}>接续赛后返回与薰儿走向东架</SecondaryButton>}
       <SecondaryButton ref={entry} onClick={() => setWalking(true)}>漫步往事准备路线</SecondaryButton>

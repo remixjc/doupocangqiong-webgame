@@ -1,3 +1,4 @@
+import { HallBackground, HallEastShelf, HallWestField } from './HallShelves'
 import { HallText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -38,9 +39,8 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
       <SecondaryButton aria-pressed={actor === 'spectator'} onClick={() => setActor('spectator')}>{continuation ? '旁观赛后人物' : '旁观西场人物'}</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="东架旁观地图" aria-describedby="hall-match-help" tabIndex={0} viewBox="100 190 390 115" className="early-walk-map" onKeyDown={key}>
-      <rect x="100" y="190" width="390" height="115" fill="#293e36" />
-      <rect x="160" y="220" width="110" height="45" fill="none" stroke="#bfa46a" />
-      <HallText x="215" y="211">西侧训练场</HallText>
+      <HallBackground />
+      <HallWestField />
       <g aria-label="薰儿堂内位置" transform={`translate(${task.stage >= 17 ? 380 : task.stage >= 16 ? 320 : task.stage >= 8 ? 190 : 200} ${task.stage >= 17 ? 250 : 244})`}>
         <circle r="7" fill="#ae8dbd" />{task.palm && task.stage < 13 && <path d="M7 0 H33" stroke="#e9c877" strokeWidth="4" />}
         <HallText y={task.stage >= 17 ? -12 : 21} fontSize="9">薰儿</HallText>
@@ -48,8 +48,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
       <g aria-label="萧宁场中位置" transform={`translate(${task.outside && task.stage < 13 ? 295 : 235} 244)`}>
         <circle r="7" fill="#bd8d6b" /><HallText y="21" fontSize="9">{task.identified ? '萧宁' : '场中对手'}</HallText>
       </g>
-      <rect x="345" y="210" width="110" height="20" fill="#937954" />
-      <HallText x="400" y="201">东侧书架</HallText>
+      <HallEastShelf />
       <g aria-label="萧炎本人阅读位置" transform="translate(400 250)"><MarketWalker /><HallText y="26" fontSize="9">本人 · 靠架阅读</HallText></g>
       <rect x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
     </svg>

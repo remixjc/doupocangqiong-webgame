@@ -1,0 +1,1248 @@
+{
+  "version": "0.69.0",
+  "date": "2026-10-13",
+  "vitest": {
+    "files": 146,
+    "tests": 878
+  },
+  "focused": {
+    "files": 4,
+    "tests": 24
+  },
+  "nodeTests": 11,
+  "initialJs": 499456,
+  "totalJs": 1849800,
+  "budgets": [
+    500000,
+    1850000
+  ],
+  "native": [
+    {
+      "name": "approachMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829789107.json",
+      "sha256": "99714893802ce2a68dd545e1daeb8c5c7f4490fdb9ed9b4ccf07e0629652d46c",
+      "stage": 0,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829791289.json",
+      "sha256": "c0f923e4c381c507f0c07919cb43bead2bc0b9f0f6a5ccd55e7e91344b74e602",
+      "stage": 0,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829793710.json",
+      "sha256": "9f6e8c2a55c1af00054ff28e3b00d0e4a08dbbd58c5d78979bb01c08bf2d93e6",
+      "stage": 0,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      }
+    },
+    {
+      "name": "approachMainRejected0",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829871675.json",
+      "sha256": "c502530b1cbc0aca00777239f2d30d85faa0740d140b5f0287f1e70ad9e28a52",
+      "stage": 0,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829919845.json",
+      "sha256": "7ae155782bc59371cb3e6e0bc2c99b172c64af74ffee7c4e357e6251f7e0f07b",
+      "stage": 7,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829937963.json",
+      "sha256": "633e4ba8705dece8e8ea8b6799a986ade7c13b937801f24e29e70edbd3020196",
+      "stage": 8,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829949354.json",
+      "sha256": "e06d6f76528490352eb17b678ecee308c92192ceeec173c3af38c55277b24249",
+      "stage": 9,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainStage13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829980824.json",
+      "sha256": "bf350ee9e4825dffc8107f9ec2db5cf7f12795391f95d0f156f50477885d1e56",
+      "stage": 13,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791829992213.json",
+      "sha256": "725080cd4e7fa7dcd012ccbe303cca2aa687a3ae5eb0ec77d8799bde8c4fc90f",
+      "stage": 14,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainOriginalEntry",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830036545.json",
+      "sha256": "75caec2fb608ae0ba4566502443a675ccc6146ebd28cbef7e574a0e4abba0399",
+      "stage": 14,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMaterialsStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830070371.json",
+      "sha256": "1ed909680040a73005d5fc4d6db3ad060da842cbc3eb5179fa93c27dd194b222",
+      "stage": 7,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMaterialsStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830081785.json",
+      "sha256": "7fdfb5074ec44d7e32ea7946454ec111a5da83f2d7e59e979a39bd122230e501",
+      "stage": 8,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMaterialsStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830092412.json",
+      "sha256": "68907677ecd1cdad35265272648164e0db83b2894af0ab1783192b914ebc7b26",
+      "stage": 9,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMaterialsStage13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830121306.json",
+      "sha256": "f4d7f9329240e0697186ea7e2bed195c1127aa3203a7ac1536ec5050adac181a",
+      "stage": 13,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830131982.json",
+      "sha256": "2599bba4a58cfeb9cb88916ae9950ed9f108bc2b668afe84895e80620abe8f50",
+      "stage": 14,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachMainFinalRefresh",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830158140.json",
+      "sha256": "ac9187b9ee08de09aa8b5f07e65cacf3ab7a8b2f075ddcbeef400d8e75fda3d0",
+      "stage": 14,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    },
+    {
+      "name": "approachIntactAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830194373.json",
+      "sha256": "e19a33e76e939d1b036aa3f80bbd4f71aa5564048372a0c2b4b6023667aa6229",
+      "stage": 0,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 0,
+        "scroll": "none"
+      }
+    },
+    {
+      "name": "approachMainAfterDirectionScenes",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791830328295.json",
+      "sha256": "fa6381f20bc4ae3579c7017fd20105a3dd2927466f69e7ac7d261a224955ea35",
+      "stage": 14,
+      "entireOtherStateKept": true,
+      "hall": {
+        "stage": 5,
+        "scroll": "reading-first"
+      }
+    }
+  ],
+  "pairs": [
+    [
+      "approachMainMigrated",
+      "approachMainRejected0"
+    ],
+    [
+      "approachMainFinal",
+      "approachMainOriginalEntry"
+    ],
+    [
+      "approachMainFinal",
+      "approachMainFinalRefresh"
+    ],
+    [
+      "approachMainFinal",
+      "approachMainAfterDirectionScenes"
+    ],
+    [
+      "approachIntactMigrated",
+      "approachIntactAfterNavigation"
+    ]
+  ],
+  "browser": [
+    {
+      "label": "approachMainRejected0",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "明确选择当前人物，依次记录整衣、靠近与收卷。",
+        "整衣靠近 0/14 · 整衣靠近 · 未参与"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage1",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 1/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh1",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 1/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage2",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": true,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 2/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh2",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": true,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 2/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage3",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 3/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh3",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 3/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage4",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": true,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 4/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh4",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": true,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 4/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage5",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 5/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh5",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 5/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage6",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 6/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh6",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 6/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage7",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 7/14 · 整衣靠近 · 整衣已记，尚未走近"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 7/14 · 整衣靠近 · 整衣已记，尚未走近"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage8",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(320 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 8/14 · 整衣靠近 · 萧宁已到堂中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(320 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 8/14 · 整衣靠近 · 萧宁已到堂中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage9",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 9/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 9/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage10",
+      "actor": [
+        "旁观堂中人群"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 10/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh10",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 10/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 11/14 · 整衣靠近 · 读法已记，无授技"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 11/14 · 整衣靠近 · 读法已记，无授技"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 12/14 · 整衣靠近 · 读法已记，无授技"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 12/14 · 整衣靠近 · 读法已记，无授技"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage13",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 13/14 · 整衣靠近 · 同一第一卷仅卷起"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh13",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 13/14 · 整衣靠近 · 同一第一卷仅卷起"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainStage14",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 14/14 · 整衣靠近 · 收卷归档，实际归架待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainRefresh14",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 14/14 · 整衣靠近 · 收卷归档，实际归架待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage1",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 1/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage2",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": true,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 2/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage3",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 3/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage4",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": true,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 4/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage5",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 5/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage6",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 6/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsObserved6",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 6/14 · 整衣靠近 · 西侧情绪进行中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage7",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 7/14 · 整衣靠近 · 整衣已记，尚未走近"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsRefresh7",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(235 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 7/14 · 整衣靠近 · 整衣已记，尚未走近"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage8",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(320 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 8/14 · 整衣靠近 · 萧宁已到堂中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsRefresh8",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(320 244)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 8/14 · 整衣靠近 · 萧宁已到堂中"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage9",
+      "actor": [
+        "旁观萧宁整衣与行走"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 9/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsRefresh9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 9/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsObserved9",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 9/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage10",
+      "actor": [
+        "旁观堂中人群"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 10/14 · 整衣靠近 · 萧宁已到东架前"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage11",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 11/14 · 整衣靠近 · 读法已记，无授技"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage12",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": false,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 12/14 · 整衣靠近 · 读法已记，无授技"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage13",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 13/14 · 整衣靠近 · 同一第一卷仅卷起"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsRefresh13",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 13/14 · 整衣靠近 · 同一第一卷仅卷起"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsStage14",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 已保存",
+        "靠近断点已存，第一卷尚未归架，技能与奖励保持。",
+        "整衣靠近 14/14 · 整衣靠近 · 收卷归档，实际归架待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMaterialsRefresh14",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 14/14 · 整衣靠近 · 收卷归档，实际归架待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    },
+    {
+      "label": "approachMainFinalRefresh",
+      "actor": [
+        "本人读卷与察觉"
+      ],
+      "clothes": "萧宁 · 已整衣",
+      "fists": false,
+      "ning": "translate(450 280)",
+      "own": true,
+      "rolled": true,
+      "status": [
+        "自动存档 · 当前旅途已读取",
+        "整衣靠近 14/14 · 整衣靠近 · 收卷归档，实际归架待续"
+      ],
+      "xuner": "translate(380 250)",
+      "yan": "translate(400 250)"
+    }
+  ],
+  "directions": [
+    {
+      "scene": "FamilyHallMap",
+      "before": "translate(100 330)",
+      "right": "translate(120 330)",
+      "back": "translate(100 330)"
+    },
+    {
+      "scene": "MountainWalkMap",
+      "before": "translate(80 330)",
+      "right": "translate(100 330)",
+      "back": "translate(80 330)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "capacityReverseSource": [
+    {
+      "path": "src/core/first-hall-reading.ts",
+      "sha256": "3641693d7b0a17e59fafb06587c332f78b2ba883233f0073df6ceb9878b15eff",
+      "restoredSha256": "3641693d7b0a17e59fafb06587c332f78b2ba883233f0073df6ceb9878b15eff"
+    },
+    {
+      "path": "src/core/first-hall-match.ts",
+      "sha256": "fd4d7c41828765414742f3d35dd3f21d6f0a843ff09d9c728dd9dc6a13da5c19",
+      "restoredSha256": "fd4d7c41828765414742f3d35dd3f21d6f0a843ff09d9c728dd9dc6a13da5c19"
+    },
+    {
+      "path": "src/core/first-hall-talk.ts",
+      "sha256": "b274723089c7e65db288c29f1e0471cbd5340ff7b39053d263adcc9e2483f9bf",
+      "restoredSha256": "b274723089c7e65db288c29f1e0471cbd5340ff7b39053d263adcc9e2483f9bf"
+    },
+    {
+      "path": "src/ui/FirstHallMatch.tsx",
+      "sha256": "a48268199367061c261ac0e9f8e88a654f3acc5b8758f1bce17646bededc0c85",
+      "restoredSha256": "a48268199367061c261ac0e9f8e88a654f3acc5b8758f1bce17646bededc0c85"
+    },
+    {
+      "path": "src/ui/FirstHallTalk.tsx",
+      "sha256": "2b30d02db307c52c4c3b5a4f75708e37e1cfe484486bf9a78df3b142f8e1a48a",
+      "restoredSha256": "2b30d02db307c52c4c3b5a4f75708e37e1cfe484486bf9a78df3b142f8e1a48a"
+    },
+    {
+      "path": "src/ui/FirstHallApproach.tsx",
+      "sha256": "1f10cfcfc7ddb9cb79c8a2af92f3630b99ab41ca67cb14b185e0c9ffeff29cd5",
+      "restoredSha256": "1f10cfcfc7ddb9cb79c8a2af92f3630b99ab41ca67cb14b185e0c9ffeff29cd5"
+    },
+    {
+      "path": "src/ui/EarlyHall.tsx",
+      "sha256": "90fb1306441eccf25c3145beaf8515a8f0b80a4db11e0ada92711ccef68f8d16",
+      "restoredSha256": "90fb1306441eccf25c3145beaf8515a8f0b80a4db11e0ada92711ccef68f8d16",
+      "prefix": "\"堂内\"",
+      "handler": "move"
+    },
+    {
+      "path": "src/ui/EarlyForestStrike.tsx",
+      "sha256": "77df6c7f3fa0b1dfa2382ca24094117acc70b64581e72bc34af23c1f7a120ff5",
+      "restoredSha256": "77df6c7f3fa0b1dfa2382ca24094117acc70b64581e72bc34af23c1f7a120ff5",
+      "prefix": "\"林中\"",
+      "handler": "move"
+    },
+    {
+      "path": "src/ui/EarlyQiAid.tsx",
+      "sha256": "810a6f96b9a32642ccd764011df5c321704ad72282ce00475c460dcee839ee0c",
+      "restoredSha256": "810a6f96b9a32642ccd764011df5c321704ad72282ce00475c460dcee839ee0c",
+      "prefix": "\"援助\"",
+      "handler": "move"
+    },
+    {
+      "path": "src/ui/EarlyQiBarrier.tsx",
+      "sha256": "90737c0e637343e60853268d3b62acce46f6c65a896ad763338ca2a43fc4bae8",
+      "restoredSha256": "90737c0e637343e60853268d3b62acce46f6c65a896ad763338ca2a43fc4bae8",
+      "prefix": "\"火通道\"",
+      "handler": "move"
+    },
+    {
+      "path": "src/ui/FamilyHallMap.tsx",
+      "sha256": "01f79648d2776530b7988930912d3010b4fb60901b1f682bd19c6501ee09c1a1",
+      "restoredSha256": "01f79648d2776530b7988930912d3010b4fb60901b1f682bd19c6501ee09c1a1",
+      "prefix": "{prefix}",
+      "handler": "onMove"
+    },
+    {
+      "path": "src/ui/MountainWalkMap.tsx",
+      "sha256": "89765a48db8e55d293ffff5e9eb0c57b54d98064a06a3f131ba5ab2e2b7c1a3b",
+      "restoredSha256": "89765a48db8e55d293ffff5e9eb0c57b54d98064a06a3f131ba5ab2e2b7c1a3b",
+      "prefix": "{prefix}",
+      "handler": "onMove"
+    }
+  ],
+  "returnFocus": "接续整衣靠近与同卷收起",
+  "intactEntries": 0,
+  "keyboard": "Wrong-focus E, ArrowRight and Ctrl+E rejected at0; correctly selected E completed12. Return/second buttons rejected. Enter returned exact original focus.",
+  "source": "Retained lawfully read complete English17; source order preserved. Chinese and current anime unverified.",
+  "deviceLimits": "Main/materials practice0 and unobserved recovery. Higher custody/spent/five-duan rules tested; not device branches.",
+  "failures": "Initial production exceeded total budget1212. Shared exact SVG fragments, atomic field commit and six existing direction renderings, shortened original scene wording; budgets never changed. Direction script end-offset assertion failed before any mutation, corrected literal length; six reverse-source proofs passed. One native export failed during modal redraw, recovered after stable observation. One too-early close in intact preparation timed out, re-observed actual page, closed then exported without advancing.",
+  "prerequisite": {
+    "sha": "51c9a9c4c0637469adfa16b91b1091db83648b8b",
+    "ci": 38290250027,
+    "conclusion": "success",
+    "pages": 38290249974,
+    "pagesConclusion": "skipped",
+    "cleanFiles": 116,
+    "cleanBytes": 1974586
+  }
+}

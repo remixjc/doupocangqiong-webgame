@@ -1,3 +1,4 @@
+import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
@@ -59,7 +60,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       <MapText x="360" y="369" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</MapText>
     </svg>
     <div className="early-walk-controls" aria-label="林中行走操作">
-      {(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['林中向上走', '林中向左走', '林中向下走', '林中向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}
+      <WalkDirectionButtons prefix="林中" onMove={move} />
     </div>
     <p role="status">林中练技 {task.stage}/7 · {task.result === 'none' ? '六段回顾未记录' : '故事六段'} · 连贯动作 {task.beats}/3 · 重试 {task.attempts} 次 · {task.tree === 'intact' ? '树木完好' : '同一棵树已倒下'}</p>
     {scene ? near ? <section className="bond-summary" aria-label="林中练技步骤"><SceneHeading title={scene.title} text={scene.text} />

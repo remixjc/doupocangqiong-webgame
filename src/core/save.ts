@@ -1,3 +1,4 @@
+import { FIRST_HALL_APPROACH_VERSION } from './first-hall-approach-state'
 import { FIRST_HALL_TALK_VERSION } from './first-hall-talk-state'
 import { FIRST_HALL_MATCH_VERSION, FIRST_HALL_RETURN_VERSION } from './first-hall-match-state'
 import { FIRST_HALL_READING_VERSION } from './first-hall-reading-state'
@@ -311,7 +312,8 @@ export function validateState(value: unknown): GameState {
     before(FIRST_HALL_ENTRY_VERSION),
     before(FIRST_HALL_READING_VERSION),
 before(FIRST_HALL_MATCH_VERSION),
-    before(FIRST_HALL_TALK_VERSION))
+    before(FIRST_HALL_TALK_VERSION),
+    before(FIRST_HALL_APPROACH_VERSION))
   const early = s.earlyTraining
   if (early.refining.stage > 11 && before(EARLY_INFUSION_VERSION))
     throw new Error('魔核入水记录不属于此版本。')
@@ -337,6 +339,8 @@ before(FIRST_HALL_MATCH_VERSION),
     throw new Error('赛后走向东架记录不属于此版本。')
   if (early.firstHallTalk.stage > 0 && before(FIRST_HALL_TALK_VERSION))
     throw new Error('首次东架会面记录不属于此版本。')
+  if (early.firstHallApproach.stage > 0 && before(FIRST_HALL_APPROACH_VERSION))
+    throw new Error('首次整衣靠近记录不属于此版本。')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
 }
