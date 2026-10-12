@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -63,26 +64,26 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
     {scene && <div className="early-walk-controls">{<WalkDirectionButtons prefix="发现" onMove={move} />}</div>}
     <p role="status">{returning ? '回族房中' : trade ? '唯一成交' : '摊位发现'} {task.stage}/{returning ? 9 : trade ? 17 : 10} · {(returning ? earlyMarketReturnSaveSummary : trade ? earlyMarketTradeSaveSummary : earlyMarketDiscoverySaveSummary)(state, state.settings)}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。'} />
-      <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
+      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {!trade && !returning && <>
-        {task.stage === 2 && <button className="secondary" disabled={!near} onClick={() => act('claim-core')}>看见绿核就算已经买到</button>}
-        {task.stage === 6 && <button className="secondary" disabled={!near} onClick={() => act('claim-iron')}>看见铁片就将附物再发一份</button>}
-        {task.stage === 8 && <button className="secondary" disabled={!near} onClick={() => act('learn')}>听见购买建议就学会铁片斗技</button>}
-        {task.stage === 9 && <button className="secondary" disabled={!near} onClick={() => act('pay')}>未经卖家同意先追加付款</button>}
+        {task.stage === 2 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>看见绿核就算已经买到</SecondaryButton>}
+        {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('claim-iron')}>看见铁片就将附物再发一份</SecondaryButton>}
+        {task.stage === 8 && <SecondaryButton disabled={!near} onClick={() => act('learn')}>听见购买建议就学会铁片斗技</SecondaryButton>}
+        {task.stage === 9 && <SecondaryButton disabled={!near} onClick={() => act('pay')}>未经卖家同意先追加付款</SecondaryButton>}
       </>}
       {trade && <>
-        {task.stage === 4 && <button className="secondary" onClick={() => act('extra-charge')}>将报价额外扣到账本</button>}
-        {task.stage === 9 && <button className="secondary" onClick={() => act('early-pay')}>未经卖家同意就付款</button>}
-        {task.stage === 12 && <button className="secondary" onClick={() => act('duplicate')}>再付一次并补回已耗材料</button>}
-        {task.stage === 14 && <button className="secondary" onClick={() => act('learn')}>成交后直接学会铁片斗技</button>}
+        {task.stage === 4 && <SecondaryButton onClick={() => act('extra-charge')}>将报价额外扣到账本</SecondaryButton>}
+        {task.stage === 9 && <SecondaryButton onClick={() => act('early-pay')}>未经卖家同意就付款</SecondaryButton>}
+        {task.stage === 12 && <SecondaryButton onClick={() => act('duplicate')}>再付一次并补回已耗材料</SecondaryButton>}
+        {task.stage === 14 && <SecondaryButton onClick={() => act('learn')}>成交后直接学会铁片斗技</SecondaryButton>}
       </>}
       {returning && <>
-        {task.stage === 4 && <button className="secondary" disabled={!near} onClick={() => act('learn')}>锁门就学会铁片斗技</button>}
-        {task.stage === 6 && <button className="secondary" disabled={!near} onClick={() => act('restore')}>摆上桌就补回后来已耗材料</button>}
-        {task.stage === 7 && <button className="secondary" disabled={!near} onClick={() => act('refine')}>材料齐备就算完成炼化</button>}
+        {task.stage === 4 && <SecondaryButton disabled={!near} onClick={() => act('learn')}>锁门就学会铁片斗技</SecondaryButton>}
+        {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('restore')}>摆上桌就补回后来已耗材料</SecondaryButton>}
+        {task.stage === 7 && <SecondaryButton disabled={!near} onClick={() => act('refine')}>材料齐备就算完成炼化</SecondaryButton>}
       </>}
     </section> : <section className="bond-summary"><h3>{returning ? '回族与房中准备已归档。' : trade ? '询价与唯一成交已归档。' : '发现与心中购买建议已归档。'}</h3><p>{returning ? '已回族分路、锁门并摆出当时材料；辨认黑铁片与详细炼化尚待接续，现有账与耗材保持。' : trade ? '已核同一采购并离摊；回族、分路和回房解释待续，尚未因成交授予斗技。' : '此刻魔核与黑铁片仍在摊上，未询价或成交。原有唯一采购、附物和已耗药液记录保留。'}</p></section>}
     {state.earlyTraining.receipts.woodCore && <p className="muted">后来的已购或已耗材料记录保留；回补历史不重新发放木核、黑铁片或药液。</p>}
-    <button className="secondary" onClick={onBack}>{returning ? '暂离回族准备' : trade ? '暂离询价成交' : '暂离摊位发现'} · 保留断点</button>
+    <SecondaryButton onClick={onBack}>{returning ? '暂离回族准备' : trade ? '暂离询价成交' : '暂离摊位发现'} · 保留断点</SecondaryButton>
   </>
 }

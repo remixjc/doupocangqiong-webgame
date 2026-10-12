@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -46,13 +47,13 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent}</p>
     <p>实际任务袋主药{ledger.supplies.bluegrass}株 / 辅药{ledger.supplies.boneflower}株 / 木核{ledger.supplies.woodCore}枚 · 主药收据{ledger.receipts.bluegrass ? '已付' : '未购'} / 辅药收据{ledger.receipts.boneflower ? '已付' : '未购'} / 木核收据{ledger.receipts.woodCore ? '旧进度已付保留' : '尚未购'}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : `本人先走近${cityPharmacyPlaces[scene.place].label}。`} />
-      <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
-      {task.stage === 6 && <button className="secondary" disabled={!near} onClick={() => act('claim-items')}>尝试逛摊直接领取两药</button>}
-      {task.stage === 13 && <button className="secondary" disabled={!near} onClick={() => act('charge-900')}>尝试在原收据外另扣900</button>}
-      {task.stage === 14 && <><button className="secondary" disabled={!near} onClick={() => act('claim-core')}>尝试药铺直接交木核与附物</button>
-        <button className="secondary" disabled={!near} onClick={() => act('restore-liquid')}>尝试补历史复原已用药液</button></>}
-    </section> : <section className="bond-summary"><h3>实际同行与两药历史已归档。</h3><p>历史药铺只备齐两药，木核和附物另段接续。旧已购木核、调制和药液耗尽进度保留。</p><button className="secondary" onClick={onRoute}>接续既有坊市路线 · 保留原收据</button></section>}
+      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('claim-items')}>尝试逛摊直接领取两药</SecondaryButton>}
+      {task.stage === 13 && <SecondaryButton disabled={!near} onClick={() => act('charge-900')}>尝试在原收据外另扣900</SecondaryButton>}
+      {task.stage === 14 && <><SecondaryButton disabled={!near} onClick={() => act('claim-core')}>尝试药铺直接交木核与附物</SecondaryButton>
+        <SecondaryButton disabled={!near} onClick={() => act('restore-liquid')}>尝试补历史复原已用药液</SecondaryButton></>}
+    </section> : <section className="bond-summary"><h3>实际同行与两药历史已归档。</h3><p>历史药铺只备齐两药，木核和附物另段接续。旧已购木核、调制和药液耗尽进度保留。</p><SecondaryButton onClick={onRoute}>接续既有坊市路线 · 保留原收据</SecondaryButton></section>}
     <p className="muted">三株二十年/两株五年是历史要求，材料称谓沿准备单。30/20是游戏折算，不追加900，不复原已用材料。主线金币与奖励保持。</p>
-    <button className="secondary" onClick={onBack}>暂离同行药铺 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离同行药铺 · 保留断点</SecondaryButton>
   </>
 }

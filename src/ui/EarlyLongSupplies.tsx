@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -38,21 +39,21 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
       <text x="360" y="262" textAnchor="middle" fill="#e8d1a6" fontSize="13">另购批次 · 八个月用量是故事概述 · 分拣位置为原创布局</text>
     </svg>
     <div className="early-walk-controls" aria-label="长期物资位置">
-      {(Object.keys(stations) as LongSupplyStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
+      {(Object.keys(stations) as LongSupplyStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
     <p role="status">物资归档 {task.stage}/6 · 药材包{places[task.herbs]} · 魔核包{places[task.cores]}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="物资归档步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       {sorting && <div className="early-walk-controls" aria-label="选择物资包">
-        <button className="secondary" aria-pressed={item === 'herbs'} disabled={task.herbs !== 'parcel'} onClick={() => setItem('herbs')}>拿起药材包</button>
-        <button className="secondary" aria-pressed={item === 'cores'} disabled={task.cores !== 'parcel'} onClick={() => setItem('cores')}>拿起魔核包</button>
+        <SecondaryButton aria-pressed={item === 'herbs'} disabled={task.herbs !== 'parcel'} onClick={() => setItem('herbs')}>拿起药材包</SecondaryButton>
+        <SecondaryButton aria-pressed={item === 'cores'} disabled={task.cores !== 'parcel'} onClick={() => setItem('cores')}>拿起魔核包</SecondaryButton>
       </div>}
-      <button className="primary" disabled={sorting && !item} onClick={() => submitEarlyLongSupplies(gameStore, position, station,
-        { step: task.stage, herbs: task.herbs, cores: task.cores, operation: scene.operation, item: sorting ? item : undefined })}>{scene.action}</button>
+      <PrimaryButton disabled={sorting && !item} onClick={() => submitEarlyLongSupplies(gameStore, position, station,
+        { step: task.stage, herbs: task.herbs, cores: task.cores, operation: scene.operation, item: sorting ? item : undefined })}>{scene.action}</PrimaryButton>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
       : <section className="bond-summary"><h3>房柜已合上，另批物资已记下。</h3><p>两包原物都在柜中，没有散落副本。后山首次成功练技、后续补液与七段突破分别继续；这次归档不代签后续修炼结果。</p>
-        {onForest && <button className="primary" onClick={onForest}>接续后山森林 · 首次成功练技</button>}</section>}
+        {onForest && <PrimaryButton onClick={onForest}>接续后山森林 · 首次成功练技</PrimaryButton>}</section>}
     <p className="muted">包代表物资类别，不代表已核实的数量或容量。这里只归档原作已购批次，没有新增付款、配方或精确价单；寄售净款39200、家族交卡、原瓶和耗尽记录保留。</p>
-    <button className="secondary" onClick={onBack}>暂离物资回溯 · 保留同批断点</button>
+    <SecondaryButton onClick={onBack}>暂离物资回溯 · 保留同批断点</SecondaryButton>
   </>
 }

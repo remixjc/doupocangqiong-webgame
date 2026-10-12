@@ -1,0 +1,514 @@
+{
+  "version": "0.67.1",
+  "date": "2026-10-13",
+  "sourceFiles": 67,
+  "nativeButtons": 485,
+  "transformStrategy": "AST matched literal primary/secondary native buttons with no spread attributes; all attributes, children, keys and refs retained; wrappers emit native buttons",
+  "transforms": [
+    {
+      "path": "src/ui/App.tsx",
+      "originalSha": "47864bbcda532b80f38646044ef7e9646b7e7a788c949fc16c97779f6efd8614",
+      "restoredSha": "47864bbcda532b80f38646044ef7e9646b7e7a788c949fc16c97779f6efd8614",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/BondJournal.tsx",
+      "originalSha": "98b729093d7b620d583e3a9657f6e85c53eba97b17b4bd77fb194db654488314",
+      "restoredSha": "98b729093d7b620d583e3a9657f6e85c53eba97b17b4bd77fb194db654488314",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyAppraisal.tsx",
+      "originalSha": "581ec18c737e602e07ef21bf093bc31a3b3152fcf2ed55df7fc9e4022cf62786",
+      "restoredSha": "581ec18c737e602e07ef21bf093bc31a3b3152fcf2ed55df7fc9e4022cf62786",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyApprentice.tsx",
+      "originalSha": "da63bd07c2c9260db9c521e1eaf0f0f2418f090d4924c5425d3a7cadaef535d4",
+      "restoredSha": "da63bd07c2c9260db9c521e1eaf0f0f2418f090d4924c5425d3a7cadaef535d4",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyAuction.tsx",
+      "originalSha": "276743610ec970bfff78640f3a4c581e5ad564540845992001dd6272d1570ac5",
+      "restoredSha": "276743610ec970bfff78640f3a4c581e5ad564540845992001dd6272d1570ac5",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyBracelet.tsx",
+      "originalSha": "99e5b47601370d302cd26184d2d21deea388ec0358256dcd668650b2a2bf419b",
+      "restoredSha": "99e5b47601370d302cd26184d2d21deea388ec0358256dcd668650b2a2bf419b",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyCeremonialTest.tsx",
+      "originalSha": "da8315d06cd20effeb2c8ad74f880ef819ae973119aedbf74fe545ce185e2b2f",
+      "restoredSha": "da8315d06cd20effeb2c8ad74f880ef819ae973119aedbf74fe545ce185e2b2f",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyCeremonyGuests.tsx",
+      "originalSha": "28d64ef911e32ae620cd1a2d8de580e341a7274152dd69457b14cf0fe6d9a061",
+      "restoredSha": "28d64ef911e32ae620cd1a2d8de580e341a7274152dd69457b14cf0fe6d9a061",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyCeremonyVerdict.tsx",
+      "originalSha": "35f5155d366eaf722810d47f2e9bdf69827afec0161e80a093a41e34f2cb8239",
+      "restoredSha": "35f5155d366eaf722810d47f2e9bdf69827afec0161e80a093a41e34f2cb8239",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyCityPharmacy.tsx",
+      "originalSha": "a179b98c6146b866dc1b3dc0bb746148f07b8799016788f1eb2bb2db3e087505",
+      "restoredSha": "a179b98c6146b866dc1b3dc0bb746148f07b8799016788f1eb2bb2db3e087505",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyConsignment.tsx",
+      "originalSha": "5c891927d7ec450b3335758b6b0384d4b35119d23b19d30f672bfbc2503f3e50",
+      "restoredSha": "5c891927d7ec450b3335758b6b0384d4b35119d23b19d30f672bfbc2503f3e50",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyEighthTraining.tsx",
+      "originalSha": "5e79c8d2d59a70d4ea00959658b55a255413f0a65a77cf47e0c623bf5d51a18f",
+      "restoredSha": "5e79c8d2d59a70d4ea00959658b55a255413f0a65a77cf47e0c623bf5d51a18f",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyFamilyCompensation.tsx",
+      "originalSha": "7e14649934675472bbd1aa5324cd8c3be6ddafc62a64c1d242ac4b367da4f2eb",
+      "restoredSha": "7e14649934675472bbd1aa5324cd8c3be6ddafc62a64c1d242ac4b367da4f2eb",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyFamilyContract.tsx",
+      "originalSha": "07d26f90c40fbb19f6c6024b71ecaf4b361bcf0a9aeaa269cfcf8695afc960d2",
+      "restoredSha": "07d26f90c40fbb19f6c6024b71ecaf4b361bcf0a9aeaa269cfcf8695afc960d2",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyFamilyVisit.tsx",
+      "originalSha": "a405327fd81c622032b624e658e24ee9132bcb56d54fc34f90b74d3684249ccb",
+      "restoredSha": "a405327fd81c622032b624e658e24ee9132bcb56d54fc34f90b74d3684249ccb",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyFatherGift.tsx",
+      "originalSha": "0741511eeba3d6a98bdf66eb3a786481a4e0f55b1fb45644782678fc0acf1a90",
+      "restoredSha": "0741511eeba3d6a98bdf66eb3a786481a4e0f55b1fb45644782678fc0acf1a90",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyForestStrike.tsx",
+      "originalSha": "ea72519d0a881d73f3a87702b75d0c5f51d768704b0d4905fd56ffb91314576e",
+      "restoredSha": "ea72519d0a881d73f3a87702b75d0c5f51d768704b0d4905fd56ffb91314576e",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyGrowth.tsx",
+      "originalSha": "e946d6d01e48594cc24fcb3e02d96cb3c7ba183b18e9dae89f5c2574cb6a46ea",
+      "restoredSha": "e946d6d01e48594cc24fcb3e02d96cb3c7ba183b18e9dae89f5c2574cb6a46ea",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyHall.tsx",
+      "originalSha": "77e1b534335ada2937ba14e8bdc95c578a1b3f093011aa2e8dab5adcb80cf16e",
+      "restoredSha": "77e1b534335ada2937ba14e8bdc95c578a1b3f093011aa2e8dab5adcb80cf16e",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyKeChallenge.tsx",
+      "originalSha": "64835ea28aa0c4c0c5eca8f8f331ec5d373ca8610943faa4eb2c1073506d50fe",
+      "restoredSha": "64835ea28aa0c4c0c5eca8f8f331ec5d373ca8610943faa4eb2c1073506d50fe",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyLongSupplies.tsx",
+      "originalSha": "aea4902107677c27b69d634c449aabe22b7ee12cdcf6ccef7b8aed3441a79645",
+      "restoredSha": "aea4902107677c27b69d634c449aabe22b7ee12cdcf6ccef7b8aed3441a79645",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMarketBracelets.tsx",
+      "originalSha": "e31fec7f77bda6255fff12f139a0eac68c8a0b01bff0f871f714c3a78b0db7bc",
+      "restoredSha": "e31fec7f77bda6255fff12f139a0eac68c8a0b01bff0f871f714c3a78b0db7bc",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMarketDiscovery.tsx",
+      "originalSha": "693a4a15cacf65087c59842ff6fcfee3aac6c3e3ab66e9dcf880f01e2c707251",
+      "restoredSha": "693a4a15cacf65087c59842ff6fcfee3aac6c3e3ab66e9dcf880f01e2c707251",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMarketEscort.tsx",
+      "originalSha": "07e5cc5911c8cdf9ddce49e0b9a6ed99d2a97d76fb6583412da40e519767a141",
+      "restoredSha": "07e5cc5911c8cdf9ddce49e0b9a6ed99d2a97d76fb6583412da40e519767a141",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMarketSearch.tsx",
+      "originalSha": "a32917d9359714b74b0a35c241901b31e820a3278938d4e5b39f56c904ef1cf6",
+      "restoredSha": "a32917d9359714b74b0a35c241901b31e820a3278938d4e5b39f56c904ef1cf6",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMarketStandoff.tsx",
+      "originalSha": "6aa4108f8bf04583daa4b47847e05a9c564ec46192d517ab0127751a410e594e",
+      "restoredSha": "6aa4108f8bf04583daa4b47847e05a9c564ec46192d517ab0127751a410e594e",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMethodDiscussion.tsx",
+      "originalSha": "9d4861183e7faf5cd38919f26d514264e8af74405134b6b70183935e9adab9f3",
+      "restoredSha": "9d4861183e7faf5cd38919f26d514264e8af74405134b6b70183935e9adab9f3",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMorningCard.tsx",
+      "originalSha": "cf5b47c6e9bbfdef93f852d22d3317b9b82fc541014443c0f571e67c5ae3ae96",
+      "restoredSha": "cf5b47c6e9bbfdef93f852d22d3317b9b82fc541014443c0f571e67c5ae3ae96",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMountainRing.tsx",
+      "originalSha": "b5dcb3a50651e7400c5e15356d1a06dd7de79cc98f8ba0cdd886debf0ac018d7",
+      "restoredSha": "b5dcb3a50651e7400c5e15356d1a06dd7de79cc98f8ba0cdd886debf0ac018d7",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyMountainVisitor.tsx",
+      "originalSha": "a632846d8d116ce57c1e668bdbc5fd3f745d737bd58bdf8dff008cfddb40f6cd",
+      "restoredSha": "a632846d8d116ce57c1e668bdbc5fd3f745d737bd58bdf8dff008cfddb40f6cd",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyNingFirst.tsx",
+      "originalSha": "aeaa57b5936d6e919bbcaaced3829db2bbe7955e7ad08f7e211765ede1158264",
+      "restoredSha": "aeaa57b5936d6e919bbcaaced3829db2bbe7955e7ad08f7e211765ede1158264",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyNingSecond.tsx",
+      "originalSha": "856c7bc1e21d61cc3eda49a11275aca87a080dffb86f389221cdb69e7c4a37ed",
+      "restoredSha": "856c7bc1e21d61cc3eda49a11275aca87a080dffb86f389221cdb69e7c4a37ed",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyPalmPair.tsx",
+      "originalSha": "f4ab3fdc89796e1f5f7ee0df7e801f996cfc9ebeda3f02464fe2753137f721bf",
+      "restoredSha": "f4ab3fdc89796e1f5f7ee0df7e801f996cfc9ebeda3f02464fe2753137f721bf",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyPractice.tsx",
+      "originalSha": "ed167c09cc2f997e205ac31971ec09b3d7d62771526086897a5a2be86c1e874c",
+      "restoredSha": "ed167c09cc2f997e205ac31971ec09b3d7d62771526086897a5a2be86c1e874c",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyPreliminary.tsx",
+      "originalSha": "71d7f25a115209f6d96d2a2f2a24a0c75283b72d462001dbc7109202f52b2cac",
+      "restoredSha": "71d7f25a115209f6d96d2a2f2a24a0c75283b72d462001dbc7109202f52b2cac",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyPreparationBrief.tsx",
+      "originalSha": "b0a406c7a520f382d26b6db6f700a459d6d94cd8dfc4f2de446718862b2222e3",
+      "restoredSha": "b0a406c7a520f382d26b6db6f700a459d6d94cd8dfc4f2de446718862b2222e3",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyQiAid.tsx",
+      "originalSha": "3cd564ad349082d12ac4f1a2c70f305d11a21ef810fcbf4d79fd50f490afc34c",
+      "restoredSha": "3cd564ad349082d12ac4f1a2c70f305d11a21ef810fcbf4d79fd50f490afc34c",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyQiBarrier.tsx",
+      "originalSha": "6ff905f5354857500723e6d63498babd470c1d6ea53e9260dd0ee645cbcf2005",
+      "restoredSha": "6ff905f5354857500723e6d63498babd470c1d6ea53e9260dd0ee645cbcf2005",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyQiExchange.tsx",
+      "originalSha": "3c541e72272b1df35610329e15f56f04882c2bb1bf26de4b66dc4ff56d2c2f3b",
+      "restoredSha": "3c541e72272b1df35610329e15f56f04882c2bb1bf26de4b66dc4ff56d2c2f3b",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyQiPavilion.tsx",
+      "originalSha": "82966e3fea5e340f08c93bc3f4928e60f0f08e753b1286879e822e761b00a784",
+      "restoredSha": "82966e3fea5e340f08c93bc3f4928e60f0f08e753b1286879e822e761b00a784",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyQiScroll.tsx",
+      "originalSha": "3e2ba7d1f169f38f803602d8c59641c246e57284853418e021526c05a9e75b52",
+      "restoredSha": "3e2ba7d1f169f38f803602d8c59641c246e57284853418e021526c05a9e75b52",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyRecovery.tsx",
+      "originalSha": "d194fd9d5b9501550fb0c8f9841087a123a2578d655f81282d94134c17bd45c1",
+      "restoredSha": "d194fd9d5b9501550fb0c8f9841087a123a2578d655f81282d94134c17bd45c1",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyRoom.tsx",
+      "originalSha": "10140958107a088c8dbb8c191888661a1dd1a45c83d9bc531508bf5e1e2a1777",
+      "restoredSha": "10140958107a088c8dbb8c191888661a1dd1a45c83d9bc531508bf5e1e2a1777",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlySettlement.tsx",
+      "originalSha": "342633b6f0dba98c91f9c0c7775b3471c9d8840a9a2a9da6db96a7c98b722e58",
+      "restoredSha": "342633b6f0dba98c91f9c0c7775b3471c9d8840a9a2a9da6db96a7c98b722e58",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlySeventhRoom.tsx",
+      "originalSha": "4572dffc6060496a2fc39e6768b339a16d12e10652653970e550203af6ff6686",
+      "restoredSha": "4572dffc6060496a2fc39e6768b339a16d12e10652653970e550203af6ff6686",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlySupervision.tsx",
+      "originalSha": "77d972184815d8cf85e4294d23ef0bff29f52cd8e44336aca1df6fb942140339",
+      "restoredSha": "77d972184815d8cf85e4294d23ef0bff29f52cd8e44336aca1df6fb942140339",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyTeaching.tsx",
+      "originalSha": "2e086104c20c8ebd1319262df95fccf1db4359e2a039eb4b67a7b2660dd5af1c",
+      "restoredSha": "2e086104c20c8ebd1319262df95fccf1db4359e2a039eb4b67a7b2660dd5af1c",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyTrainingPanel.tsx",
+      "originalSha": "4d181c3e07949365e9c7fd9fa657026859549874282c570e73b67338bbdc90d0",
+      "restoredSha": "4d181c3e07949365e9c7fd9fa657026859549874282c570e73b67338bbdc90d0",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyWalk.tsx",
+      "originalSha": "b850b0ba666fe9ad637e5faa6441e95b185cc103d9ba5aebd0af0b8fb2f2c678",
+      "restoredSha": "b850b0ba666fe9ad637e5faa6441e95b185cc103d9ba5aebd0af0b8fb2f2c678",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyWalkInteraction.tsx",
+      "originalSha": "e79a9e531874efd7a139afc247d3f5d6e859dae8b7626a9367e8b4849e74c23e",
+      "restoredSha": "e79a9e531874efd7a139afc247d3f5d6e859dae8b7626a9367e8b4849e74c23e",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/EarlyXunerVisit.tsx",
+      "originalSha": "58cda1d8cbc275ad074f7dca523abbf18af57b42d0d52911d5b2bddbba2ef25e",
+      "restoredSha": "58cda1d8cbc275ad074f7dca523abbf18af57b42d0d52911d5b2bddbba2ef25e",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/FamilyHallMap.tsx",
+      "originalSha": "a2e773ed64205dc69a646191c9b66854157f3809ef4be82a49fb39706f5effe9",
+      "restoredSha": "a2e773ed64205dc69a646191c9b66854157f3809ef4be82a49fb39706f5effe9",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/FirstDeparture.tsx",
+      "originalSha": "335de25b94921cd1efbd294d28d2b8dd84f974b749416dd7742c94d99a98e7ed",
+      "restoredSha": "335de25b94921cd1efbd294d28d2b8dd84f974b749416dd7742c94d99a98e7ed",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/FirstHallEntry.tsx",
+      "originalSha": "ee54c2f5d351863fbb0d1f0bae9851ff620d336847105054c588b304585726da",
+      "restoredSha": "ee54c2f5d351863fbb0d1f0bae9851ff620d336847105054c588b304585726da",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/FirstHallMatch.tsx",
+      "originalSha": "64d314216e690fb075b426aec2c11edda02b439334c64c35ef9e8ce3f4e31984",
+      "restoredSha": "64d314216e690fb075b426aec2c11edda02b439334c64c35ef9e8ce3f4e31984",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/FirstHallReading.tsx",
+      "originalSha": "4679fb2ff4ab303a4973fe2743d6569f7e2c06381b831393725ff00860ce10d4",
+      "restoredSha": "4679fb2ff4ab303a4973fe2743d6569f7e2c06381b831393725ff00860ce10d4",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/FirstRoadMeeting.tsx",
+      "originalSha": "6acc5949bd2c048cab38faec451b809e0aa7dbe46608500386686790f4eb17a9",
+      "restoredSha": "6acc5949bd2c048cab38faec451b809e0aa7dbe46608500386686790f4eb17a9",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/HeatControl.tsx",
+      "originalSha": "a47cce98555ecb0c0af6e1e2004e47392fe051e3079e14336607d5c94ebd88ef",
+      "restoredSha": "a47cce98555ecb0c0af6e1e2004e47392fe051e3079e14336607d5c94ebd88ef",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/HistoryBlocked.tsx",
+      "originalSha": "3de1c59881fd0186e84f6c4cb4465d3f52a32098068715c2c62f05f2c1029f22",
+      "restoredSha": "3de1c59881fd0186e84f6c4cb4465d3f52a32098068715c2c62f05f2c1029f22",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/MountainWalkMap.tsx",
+      "originalSha": "ee1d09564e80d2eb04d9be620f386e6f97028f1660b1850d995741929f8cef26",
+      "restoredSha": "ee1d09564e80d2eb04d9be620f386e6f97028f1660b1850d995741929f8cef26",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/Panels.tsx",
+      "originalSha": "2348172cb727d963534eff4aa30a88d4dabb2282e4e696c86c570feaed0ccf67",
+      "restoredSha": "2348172cb727d963534eff4aa30a88d4dabb2282e4e696c86c570feaed0ccf67",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/SaveBackup.tsx",
+      "originalSha": "4c3e8180f0aa77af9f402104b15022a548a03de5714ba33a638cafa36d6d2a08",
+      "restoredSha": "4c3e8180f0aa77af9f402104b15022a548a03de5714ba33a638cafa36d6d2a08",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/SavesPanel.tsx",
+      "originalSha": "35d9adafd541dba04757c082dd417b9aa16f46830ab583121ed6a46e8f5575a1",
+      "restoredSha": "35d9adafd541dba04757c082dd417b9aa16f46830ab583121ed6a46e8f5575a1",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/SceneBoundary.tsx",
+      "originalSha": "c4192ac5b72417547beb866773b422035381f89d5759d6025a4afe710a583936",
+      "restoredSha": "c4192ac5b72417547beb866773b422035381f89d5759d6025a4afe710a583936",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/StoryEventPanel.tsx",
+      "originalSha": "048f6eb375a7bf6685255dbec54b335d2cead9c2f6f10b3b1a6aeefab70c7c95",
+      "restoredSha": "048f6eb375a7bf6685255dbec54b335d2cead9c2f6f10b3b1a6aeefab70c7c95",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/TeacherRoom.tsx",
+      "originalSha": "ea5904e8342c97c71c74c3294c2a3cc4e0b3b5e252b6e6ad4f25ec7c4da64bbd",
+      "restoredSha": "ea5904e8342c97c71c74c3294c2a3cc4e0b3b5e252b6e6ad4f25ec7c4da64bbd",
+      "fullSourceEqual": true
+    },
+    {
+      "path": "src/ui/WalkDirectionButtons.tsx",
+      "originalSha": "b67586ea127d21f92946dfe398e066cbc16ac099d65fed131a563ba16ab40326",
+      "restoredSha": "b67586ea127d21f92946dfe398e066cbc16ac099d65fed131a563ba16ab40326",
+      "fullSourceEqual": true
+    }
+  ],
+  "native": [
+    {
+      "name": "buttonsMainMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825217680.json",
+      "sha256": "d4c49d4c0a59c6658be86b434cd5e198d49ed3cea1f0b138f57b06ea453551f4",
+      "entireStateKept": true
+    },
+    {
+      "name": "buttonsMaterialsMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825218924.json",
+      "sha256": "11080f85e9343ba7a11baea4a0abfc38eb16fb0afe864983d6f9aa31d1943c31",
+      "entireStateKept": true
+    },
+    {
+      "name": "buttonsIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825219155.json",
+      "sha256": "678e5edf91585cc7d870434ff7a2c213a8e149a14410fa620f5d961316958eb4",
+      "entireStateKept": true
+    },
+    {
+      "name": "buttonsMainAfterRoutes",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791825310084.json",
+      "sha256": "acf34b4afbce7f8304d936d44915eaa5451b8e9749de3eb24821c81e6fdd44da",
+      "entireStateKept": true
+    }
+  ],
+  "browser": [
+    {
+      "name": "接续同一铁片研究与感知",
+      "className": "secondary",
+      "focus": "接续同一铁片研究与感知",
+      "tag": "BUTTON",
+      "heading": "取回铁片，亲自感知其中方法。"
+    },
+    {
+      "name": "接续实际出门与石路",
+      "className": "secondary",
+      "focus": "接续实际出门与石路",
+      "tag": "BUTTON",
+      "heading": "起身、跨门，再走上石路。"
+    },
+    {
+      "name": "接续石路会面与分路",
+      "className": "secondary",
+      "focus": "接续石路会面与分路",
+      "tag": "BUTTON",
+      "heading": "转路、招呼，再各自前行。"
+    },
+    {
+      "name": "接续实际入堂与东西分区",
+      "className": "secondary",
+      "focus": "接续实际入堂与东西分区",
+      "tag": "BUTTON",
+      "heading": "走到堂门，再看见东西两区。"
+    },
+    {
+      "name": "接续东侧同一第一卷阅读",
+      "className": "secondary",
+      "focus": "接续东侧同一第一卷阅读",
+      "tag": "BUTTON",
+      "heading": "走到书架，展开当时的黑卷。"
+    },
+    {
+      "name": "接续东架旁观西侧比赛",
+      "className": "secondary",
+      "focus": "接续东架旁观西侧比赛",
+      "tag": "BUTTON",
+      "heading": "读卷的位置，始终在东侧。"
+    },
+    {
+      "name": "接续赛后返回与薰儿走向东架",
+      "className": "secondary",
+      "focus": "接续赛后返回与薰儿走向东架",
+      "tag": "BUTTON",
+      "heading": "读卷的位置，始终在东侧。"
+    },
+    {
+      "name": "接续铁片辨认与限制",
+      "className": "secondary",
+      "focus": "接续铁片辨认与限制",
+      "tag": "BUTTON",
+      "heading": "先辨明来历，再认识自己的限度。"
+    }
+  ],
+  "disabledPurchaseButtons": 3,
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "vitest": {
+    "files": 144,
+    "tests": 866
+  },
+  "nodeTests": 11,
+  "initialJs": 498662,
+  "totalJs": 1835982,
+  "freed": 13119,
+  "originalBudgets": [
+    500000,
+    1850000
+  ],
+  "failures": "Initial transform tried removed TypeScript7 legacy createSourceFile API; no UI source edits occurred; used installed native AST API. Extra CLI arguments were mistakenly forwarded to release verification as a directory; tests/types/build/budgets passed, then unmodified release:verify passed. One first async scene observation had no back button yet; observed stable scene and rechecked all eight with visibility gates."
+}

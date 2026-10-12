@@ -1,3 +1,4 @@
+import { SecondaryButton } from './Buttons'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
 import { useEffect, useRef, type KeyboardEvent } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -54,7 +55,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
       {bowed && <text x="300" y="180" textAnchor="middle" fill="#edcea0" fontSize="12">本人行礼已记录</text>}
     </svg>
     {!observerOnly && <div className="early-walk-controls" aria-label={`${prefix}行走操作`}>{(['up', 'left', 'down', 'right'] as const).map((direction, i) =>
-      <button key={direction} className="secondary" aria-label={`${prefix}${['向上走', '向左走', '向下走', '向右走'][i]}`} onClick={() => onMove(direction)}>{['↑', '←', '↓', '→'][i]}</button>)}</div>
+      <SecondaryButton key={direction} aria-label={`${prefix}${['向上走', '向左走', '向下走', '向右走'][i]}`} onClick={() => onMove(direction)}>{['↑', '←', '↓', '→'][i]}</SecondaryButton>)}</div>
     }
   </>
 }

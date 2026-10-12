@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState } from 'react'
 import { startHeatMotion, type HeatMotionControl } from './heat-motion'
 
@@ -31,11 +32,11 @@ export default function HeatControl({
     </div>
     {!reducedMotion && (paused
       ? <><p role="status">时机已暂停。返回前台后，请明确继续；暂停期间不能锁定。</p>
-        <button className="secondary" onClick={() => { if (motion.current?.resume()) setPaused(false) }}>继续时机</button></>
-      : <button className="secondary" onClick={() => motion.current?.pause()}>暂停时机</button>)}
-    <button className="primary" disabled={!reducedMotion && paused} onClick={() => {
+        <SecondaryButton onClick={() => { if (motion.current?.resume()) setPaused(false) }}>继续时机</SecondaryButton></>
+      : <SecondaryButton onClick={() => motion.current?.pause()}>暂停时机</SecondaryButton>)}
+    <PrimaryButton disabled={!reducedMotion && paused} onClick={() => {
       if (!reducedMotion && (paused || motion.current?.isPaused())) return
       onLock(marker)
-    }}>{lockLabel}</button>
+    }}>{lockLabel}</PrimaryButton>
   </>
 }

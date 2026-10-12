@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import type { GameState } from '../core/model'
 import { earlyGrowthScenes } from '../content/early-growth'
@@ -29,13 +30,13 @@ export default function EarlyGrowth({ state, onContinue }: { state: GameState; o
     {stage < 3 ? <>
       <p role="status">过渡翻阅 {stage}/3 · 可中途关闭</p>
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-      <button className="secondary" onClick={() => submitEarlyGrowth(gameStore, stage)}>{scene.action}</button>
+      <SecondaryButton onClick={() => submitEarlyGrowth(gameStore, stage)}>{scene.action}</SecondaryButton>
     </> : <>
       <h3>这一页已记下，继续走自己的路。</h3>
       <p role="status">成长过渡 · 已翻阅</p>
       <p>{state.completed.includes(3) ? '第3章考核已有首通记录。回到舆图后，继续原来的篇章与尚待完成的历练。'
         : '接下来可在大陆舆图进入第3章，按游戏目标完成坊市供货、控气测试与武技考核。此次过渡不会代替考核结算。'}</p>
-      {onContinue && <button className="primary" onClick={onContinue}>{state.completed.includes(3) ? '返回大陆舆图 · 继续原旅程' : '在舆图查看第3章考核'}</button>}
+      {onContinue && <PrimaryButton onClick={onContinue}>{state.completed.includes(3) ? '返回大陆舆图 · 继续原旅程' : '在舆图查看第3章考核'}</PrimaryButton>}
     </>}
   </section>
 }

@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -65,15 +66,15 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       {target ? <>
         {steady && <label className="setting-row"><span>礼前训练时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="礼前训练时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="礼前训练时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停礼前训练时机</button>}
-        {paused && <><p role="status">时机已暂停，需明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续礼前训练 · 恢复时机</button></>}
-        <div className="early-walk-controls"><button className="primary" disabled={paused} onClick={() => act(eighthTrainingOperation(task))}>{task.stage === 7 ? task.beats === 0 ? '吸掌 · 收定风痕' : '吹火掌 · 将风痕推出' : scene.action}</button>
-          {task.stage === 7 && <button className="secondary" disabled={paused} onClick={() => act(task.beats === 0 ? 'push' : 'pull')}>{task.beats === 0 ? '尝试先推 · 重新调整次序' : '继续吸掌 · 重新调整次序'}</button>}</div>
-      </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
+        {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停礼前训练时机</SecondaryButton>}
+        {paused && <><p role="status">时机已暂停，需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续礼前训练 · 恢复时机</SecondaryButton></>}
+        <div className="early-walk-controls"><PrimaryButton disabled={paused} onClick={() => act(eighthTrainingOperation(task))}>{task.stage === 7 ? task.beats === 0 ? '吸掌 · 收定风痕' : '吹火掌 · 将风痕推出' : scene.action}</PrimaryButton>
+          {task.stage === 7 && <SecondaryButton disabled={paused} onClick={() => act(task.beats === 0 ? 'push' : 'pull')}>{task.beats === 0 ? '尝试先推 · 重新调整次序' : '继续吸掌 · 重新调整次序'}</SecondaryButton>}</div>
+      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
     </section> : <p className="muted">下一步请走近{eighthPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p>{onGuests && <button className="primary" onClick={onGuests}>前往正式礼宾客 · 观察收剑中止</button>}</section>}
-    {target > 0 && <button className="secondary" onClick={() => act('stop')}>停下本轮礼前训练 · 免费重新开始</button>}
+      : <section className="bond-summary"><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p>{onGuests && <PrimaryButton onClick={onGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}</section>}
+    {target > 0 && <SecondaryButton onClick={() => act('stop')}>停下本轮礼前训练 · 免费重新开始</SecondaryButton>}
     <p className="muted">时段是压缩回顾，练技与调息为代表性操作。药液只呈现本章既有木盆的定性药力；早先耗尽自用液、老师一滴记录与父亲原封瓶独立保留，不重复领材料或成长奖励。</p>
-    <button className="secondary" onClick={onBack}>暂离礼前训练 · 保留同行与练习断点</button>
+    <SecondaryButton onClick={onBack}>暂离礼前训练 · 保留同行与练习断点</SecondaryButton>
   </>
 }

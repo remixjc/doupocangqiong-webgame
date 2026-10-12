@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -32,8 +33,8 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
     <span className="eyebrow">斗技堂 / {prefix}</span><h2>读卷的位置，始终在东侧。</h2>
     <p id="hall-match-help">选择本人目光或西场旁观焦点，按E记录现场。重新进入后须重新选择旁观；本人没有进入训练场。</p>
     <div className="early-walk-controls">
-      <button className="secondary" aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人目光与读卷</button>
-      <button className="secondary" aria-pressed={actor === 'spectator'} onClick={() => setActor('spectator')}>{continuation ? '旁观赛后人物' : '旁观西场人物'}</button>
+      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人目光与读卷</SecondaryButton>
+      <SecondaryButton aria-pressed={actor === 'spectator'} onClick={() => setActor('spectator')}>{continuation ? '旁观赛后人物' : '旁观西场人物'}</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="东架旁观地图" aria-describedby="hall-match-help" tabIndex={0} viewBox="100 190 390 115" className="early-walk-map" onKeyDown={key}>
       <rect x="100" y="190" width="390" height="115" fill="#293e36" />
@@ -55,10 +56,10 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
     <p>{t.firstHallReading.record === 'recalled' ? '明确回顾当时第一卷，当前已归架或第二卷保管保持。' : '本人仍持同一第一卷。'}旧卷账 {t.hall.stage}/9；没有新技能或奖励。</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor === scene.actor ? '当前焦点正确。' : '请明确切换到本步所需焦点。'}</p>
-      <button className="primary" disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</button>
-      <button className="secondary" onClick={() => act('win')}>本人入西场参赛</button>
-      <button className="secondary" onClick={() => act('second')}>提前取第二卷</button>
+      <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      <SecondaryButton onClick={() => act('win')}>本人入西场参赛</SecondaryButton>
+      <SecondaryButton onClick={() => act('second')}>提前取第二卷</SecondaryButton>
     </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{task.stage >= 20 ? '薰儿已到东架，本人仍读卷。招呼与问答待续。' : '薰儿取胜；赛后走向东架由独立入口接续。'}</p></section>}
-    <button className="secondary" onClick={onBack}>{continuation ? '暂离赛后东架 · 保留断点' : '暂离西赛旁观 · 保留断点'}</button>
+    <SecondaryButton onClick={onBack}>{continuation ? '暂离赛后东架 · 保留断点' : '暂离西赛旁观 · 保留断点'}</SecondaryButton>
   </>
 }

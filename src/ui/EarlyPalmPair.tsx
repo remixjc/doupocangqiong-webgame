@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -47,20 +48,20 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
       {task.stage >= 5 && <g transform="translate(104 145)" opacity=".8"><circle cy="-21" r="11" fill="#d7e4db" /><path d="M-20 62 L-9-3 H9 L20 62Z" fill="#b3cabe" /><text y="84" textAnchor="middle" fill="#e4d4b6" fontSize="13">药老</text></g>}
       <text x="360" y="269" textAnchor="middle" fill="#e4d4b6" fontSize="13">{task.teaching === 'basic' ? '吹火掌初步掌握 · 仍需练习' : task.teaching === 'explained' ? '吹火掌已讲解 · 尚待初练' : '尚未学习吹火掌 · 直接推风仅是初次试验'}</text>
     </svg>
-    <div className="early-walk-controls" aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}</div>
     <p role="status">吸推练习 {task.stage}/10 · 基础 {task.beats}/2 · 重试 {task.attempts} 次 · 第一只{task.first === 'fragments' ? '已碎' : task.first === 'pulled' ? '已拉近' : '完好'} · 第二只{task.second === 'dust' ? '已成细末' : task.second === 'pulled' ? '已拉近' : '完好'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="吸推组合步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training && <>
         {steady && <label className="setting-row"><span>吸推切换时机<small>减弱动态：方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="吸推切换时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="吸推时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停吸推时机</button>}
-        {paused && <><p role="status">吸推时机已暂停，需要明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续吸推练习 · 恢复时机</button></>}
+        {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停吸推时机</SecondaryButton>}
+        {paused && <><p role="status">吸推时机已暂停，需要明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续吸推练习 · 恢复时机</SecondaryButton></>}
       </>}
-      <button className="primary" disabled={training && paused} onClick={act}>{scene.action}</button>
+      <PrimaryButton disabled={training && paused} onClick={act}>{scene.action}</PrimaryButton>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
       : <section className="bond-summary"><h3>两瓶试验与老师初练已归档。</h3><p>第一只碎片和第二只细末分开保留。接下来仍需长期练习，族中预测另行接续。</p>
-        {onPreliminary && <button className="primary" onClick={onPreliminary}>接续一月前预测 · 同行入场</button>}</section>}
+        {onPreliminary && <PrimaryButton onClick={onPreliminary}>接续一月前预测 · 同行入场</PrimaryButton>}</section>}
     <p className="muted">站位、两步初练与切换窗口为原创压缩操作，约两小时仅作故事回顾。不会给予大斗师外放能力或重复解锁主线斗技；七段、自用耗尽、老师一滴、父亲原瓶与钱账保留。</p>
-    <button className="secondary" onClick={onBack}>暂离吸推练习 · 保留两瓶断点</button>
+    <SecondaryButton onClick={onBack}>暂离吸推练习 · 保留两瓶断点</SecondaryButton>
   </>
 }

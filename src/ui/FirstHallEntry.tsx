@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
@@ -44,8 +45,8 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
     <span className="eyebrow">族内后部 / 实际入堂</span><h2>走到堂门，再看见东西两区。</h2>
     <p id="hall-entry-help">方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。</p>
     <div className="early-walk-controls">
-      <button className="secondary" aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与观察</button>
-      <button className="secondary" aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注旁观声音</button>
+      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与观察</SecondaryButton>
+      <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注旁观声音</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="实际入堂地图" aria-describedby="hall-entry-help" tabIndex={0} viewBox="80 185 425 155" className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" />
@@ -66,14 +67,14 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad" fontSize="10">{space === 'hall' ? '本人 · 堂内' : '本人 · 门外'}</text></g>
     </svg>
     {scene && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="入堂" onMove={move} /></div>}
-    {scene && task.entered && <button className="secondary" disabled={actor !== 'yan' || !fieldsMatch(p, space === 'hall' ? hallEntryPlaces.entry : hallEntryPlaces.door)} onClick={crossBack}>{space === 'hall' ? '从堂内返回门外' : '再从堂门进入堂内'} · 不追加历史</button>}
+    {scene && task.entered && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'hall' ? hallEntryPlaces.entry : hallEntryPlaces.door)} onClick={crossBack}>{space === 'hall' ? '从堂内返回门外' : '再从堂门进入堂内'} · 不追加历史</SecondaryButton>}
     <p role="status">实际入堂 {task.stage}/9 · 当前{space === 'hall' ? '堂内' : '门外'} · {firstHallEntrySaveSummary(state, state.settings)}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor !== 'yan' ? '旁观声音不能替本人入堂。' : !near ? '本人先实际走到本步门外或堂内地点。' : '当前人物：萧炎本人'}</p>
-      <button className="primary" disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</button>
-      <button className="secondary" onClick={() => act('scroll')}>站在堂门代签取得卷轴</button>
-      <button className="secondary" onClick={() => act('win')}>把欢呼算作本人胜利</button>
+      <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      <SecondaryButton onClick={() => act('scroll')}>站在堂门代签取得卷轴</SecondaryButton>
+      <SecondaryButton onClick={() => act('win')}>把欢呼算作本人胜利</SecondaryButton>
     </section> : <section className="bond-summary"><h3>实际入堂与东西分区已归档。</h3><p>本人已入堂并先看向训练场。东侧拿卷、阅读和西侧比赛由下一段继续，旧借卷保管保持。</p></section>}
-    <button className="secondary" onClick={onBack}>暂离实际入堂 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离实际入堂 · 保留断点</SecondaryButton>
   </>
 }

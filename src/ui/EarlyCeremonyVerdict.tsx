@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -50,13 +51,13 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
     <p role="status">礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</p>
     {scene ? nearVerdictPlace(position, scene.place) ? <section className="bond-summary" aria-label="正式裁定步骤">
       <SceneHeading title={scene.title} text={scene.text} />
-      <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>
-      {task.stage >= 2 && task.stage <= 4 && <button className="secondary" onClick={() => act('fight')}>尝试第三场 · 不符合裁判规则</button>}
-      {task.technique === 'offered' && <button className="secondary" onClick={() => act('take-technique')}>尝试收斗技 · 尚未传授</button>}
-      {task.method === 'offered' && <button className="secondary" onClick={() => act('take-method')}>尝试领功法 · 只有提议</button>}
+      <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {task.stage >= 2 && task.stage <= 4 && <SecondaryButton onClick={() => act('fight')}>尝试第三场 · 不符合裁判规则</SecondaryButton>}
+      {task.technique === 'offered' && <SecondaryButton onClick={() => act('take-technique')}>尝试收斗技 · 尚未传授</SecondaryButton>}
+      {task.method === 'offered' && <SecondaryButton onClick={() => act('take-method')}>尝试领功法 · 只有提议</SecondaryButton>}
     </section> : <p className="muted">下一步请走近{verdictPlaces[scene.place].label}：{scene.title}。</p>
       : <section className="bond-summary"><h3>正式胜负、礼终与离场已归档。</h3><p>萧玉和薰儿两次请求被阻止，萧宁禁足三个月，二长老正式宣布萧炎获胜。其他仪式与午后礼终已记，两项支持均婉拒；五天后功法阁是后续安排，没有新增功法或重复奖励。</p></section>}
     <p className="muted">地图布局与步长为原创，主线、钱账、药液、房柜、人物关系和已结算奖励保留。</p>
-    <button className="secondary" onClick={onBack}>暂离正式裁定 · 保留礼终断点</button>
+    <SecondaryButton onClick={onBack}>暂离正式裁定 · 保留礼终断点</SecondaryButton>
   </>
 }

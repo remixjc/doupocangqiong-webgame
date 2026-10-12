@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -57,11 +58,11 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       <li>薰儿：{task.xuner === 'unmeasured' ? '未测' : '一星斗者'}</li>
       <li>萧炎：{task.yan === 'unmeasured' ? '未测' : task.stage < 13 ? '七段 · 待宣读' : '七段 · 已宣读合格'}</li>
     </ul>
-    {scene ? near ? <section className="bond-summary" aria-label="预测当前步骤"><SceneHeading title={scene.title} text={scene.text} /><button className="primary" onClick={act}>{scene.action}</button></section>
+    {scene ? near ? <section className="bond-summary" aria-label="预测当前步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></section>
       : <p className="muted">下一步请走近{preliminaryPlaces[scene.place].label}：{scene.title}。</p>
       : <section className="bond-summary"><h3>{state.earlyTraining.keChallenge.stage === 12 ? '预测与后续萧克应战已归档。' : '预测已归档，接续后续挑战。'}</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼按顺序记录。</p>
-        {onChallenge && <button className="primary" onClick={onChallenge}>接续萧克挑战 · 六段对手应战</button>}</section>}
+        {onChallenge && <PrimaryButton onClick={onChallenge}>接续萧克挑战 · 六段对手应战</PrimaryButton>}</section>}
     <p className="muted">这段只记录往事预测，主线境界、技能、关系值、钱账与首通奖励保留。七段合格不提前结算挑战或正式礼胜利。</p>
-    <button className="secondary" onClick={onBack}>暂离族中预测 · 保留点名断点</button>
+    <SecondaryButton onClick={onBack}>暂离族中预测 · 保留点名断点</SecondaryButton>
   </>
 }

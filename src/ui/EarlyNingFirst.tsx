@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -68,19 +69,19 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       {training ? <>
         {steady && <label className="setting-row"><span>萧宁首轮时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧宁首轮时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="萧宁首轮时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停萧宁首轮时机</button>}
-        {paused && <><p role="status">时机已暂停，需明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续萧宁首轮 · 恢复时机</button></>}
+        {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停萧宁首轮时机</SecondaryButton>}
+        {paused && <><p role="status">时机已暂停，需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续萧宁首轮 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '先吹火掌推退来袭。' : task.beats === 1 ? '再吸掌拉近对手。' : '最后吹火掌推出，仍须等待裁判。'}</p>
         <div className="early-walk-controls">
-          <button className="primary" disabled={paused} onClick={() => act(ningFirstOperation(task))}>{task.beats === 0 ? '吹火掌 · 首次推退' : task.beats === 1 ? '吸掌 · 拉近萧宁' : '吹火掌 · 最后推出'}</button>
-          <button className="secondary" disabled={paused} onClick={() => act(task.beats === 1 ? 'push' : 'pull')}>{task.beats === 1 ? '尝试直接推 · 尚未拉近' : '尝试吸掌 · 当前次序不符'}</button>
-          <button className="secondary" disabled={paused} onClick={() => act('octane')}>尝试八极崩 · 首轮次序不符</button>
+          <PrimaryButton disabled={paused} onClick={() => act(ningFirstOperation(task))}>{task.beats === 0 ? '吹火掌 · 首次推退' : task.beats === 1 ? '吸掌 · 拉近萧宁' : '吹火掌 · 最后推出'}</PrimaryButton>
+          <SecondaryButton disabled={paused} onClick={() => act(task.beats === 1 ? 'push' : 'pull')}>{task.beats === 1 ? '尝试直接推 · 尚未拉近' : '尝试吸掌 · 当前次序不符'}</SecondaryButton>
+          <SecondaryButton disabled={paused} onClick={() => act('octane')}>尝试八极崩 · 首轮次序不符</SecondaryButton>
         </div>
-      </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
+      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
     </section> : <p className="muted">下一步请走近{ningPlaces[scene.place].label}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>首轮倒地历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '正式胜负已宣布，可回看违规再攻。首轮历史仍保留当时待裁判及药物未服的记录。' : '这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。'}</p>{onSecond && <button className="primary" onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</button>}</section>}
-    {training && <button className="secondary" onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</button>}
+      : <section className="bond-summary"><h3>首轮倒地历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '正式胜负已宣布，可回看违规再攻。首轮历史仍保留当时待裁判及药物未服的记录。' : '这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。'}</p>{onSecond && <PrimaryButton onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}</section>}
+    {training && <SecondaryButton onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</SecondaryButton>}
     <p className="muted">药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</p>
-    <button className="secondary" onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</button>
+    <SecondaryButton onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</SecondaryButton>
   </>
 }

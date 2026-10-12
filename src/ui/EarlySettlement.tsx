@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -34,7 +35,7 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
       <text x="360" y="294" textAnchor="middle" fill="#e8d1a6" fontSize="13">{task.stage < 5 ? '贵宾凭据与收款分别办理' : `成交${FIRST_SALE_GROSS} − 手续费${FIRST_SALE_FEE} = 净款${FIRST_SALE_NET}`}</text>
     </svg>
     <div className="early-walk-controls" aria-label="寄售手续位置">
-      {(Object.keys(stations) as SettlementStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
+      {(Object.keys(stations) as SettlementStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
     <p role="status">寄售手续 {task.stage}/7 · {task.vip ? '水晶贵宾卡已收' : '贵宾卡未领'} · {task.net ? `净款${task.net}已收` : '尚未收款'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管</p>
     {task.stage >= 5 && <section className="bond-summary" aria-label="首次寄售账单">
@@ -43,12 +44,12 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
     </section>}
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="寄售手续步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-      <button className="primary" onClick={() => submitEarlySettlement(gameStore, position, station,
-        { step: task.stage, net: task.net, vip: task.vip, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</button>
+      <PrimaryButton onClick={() => submitEarlySettlement(gameStore, position, station,
+        { step: task.stage, net: task.net, vip: task.vip, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
       : <section className="bond-summary"><h3>寄售手续已办完</h3><p>净款和贵宾卡已记录，萧炎带两张卡离场。同瓶当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管，父亲来访与赠回独立记录。</p>
-        {onFatherGift && <button className="primary" onClick={onFatherGift}>接续父亲来访 · 回萧家房中</button>}</section>}
+        {onFatherGift && <PrimaryButton onClick={onFatherGift}>接续父亲来访 · 回萧家房中</PrimaryButton>}</section>}
     <p className="muted">绿色卡中的故事净款与行囊金币、备料余额分账，只收一次。入场黑卡、水晶贵宾卡、绿色储款卡分别记录；这里不会复制药液或功法。</p>
-    <button className="secondary" onClick={onBack}>暂离寄售手续 · 保留收款断点</button>
+    <SecondaryButton onClick={onBack}>暂离寄售手续 · 保留收款断点</SecondaryButton>
   </>
 }

@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -35,17 +36,17 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
       <text x="360" y="266" textAnchor="middle" fill="#e8d1a6" fontSize="13">{task.card === 'xuner' ? '紫金卡由薰儿保管，尚未交给家族' : '紫金卡已交长老 · 家族取得100000 · 萧炎未领取'}</text>
     </svg>
     <div className="early-walk-controls" aria-label="薰儿事件位置">
-      {(Object.keys(stations) as XunerVisitStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
+      {(Object.keys(stations) as XunerVisitStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
     <p role="status">人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="薰儿事件步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-      <button className="primary" onClick={() => submitEarlyXunerVisit(gameStore, position, station,
-        { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</button>
+      <PrimaryButton onClick={() => submitEarlyXunerVisit(gameStore, position, station,
+        { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
       : <section className="bond-summary"><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p>
-        {onSupplies && <button className="primary" onClick={onSupplies}>回看长期物资 · 父亲来访之前</button>}</section>}
+        {onSupplies && <PrimaryButton onClick={onSupplies}>回看长期物资 · 父亲来访之前</PrimaryButton>}</section>}
     <p className="muted">家族收到的是薰儿的紫金卡，与萧炎的寄售净款39200和采购账分开。这里记录人物事件，不增加玩家金币、物资、技能或关系值。</p>
-    <button className="secondary" onClick={onBack}>暂离薰儿事件 · 保留人物断点</button>
+    <SecondaryButton onClick={onBack}>暂离薰儿事件 · 保留人物断点</SecondaryButton>
   </>
 }

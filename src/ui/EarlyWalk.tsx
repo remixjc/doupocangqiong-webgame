@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useReturningScene } from './use-returning-scene'
 import DeferredScene from './DeferredScene'
 import { lazy, useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -292,42 +293,42 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     </svg>
     <p role="status" className="early-walk-status">{place ? `附近：${place.label} · 可查看地点` : '沿街巷行走，靠近金色路标查看。'}</p>
     <div className="early-walk-controls" aria-label="往事行走操作">
-      <button className="secondary" onClick={() => move('up')} aria-label="往事向上走">↑</button>
-      <button className="secondary" onClick={() => move('left')} aria-label="往事向左走">←</button>
-      <button className="secondary" onClick={() => move('down')} aria-label="往事向下走">↓</button>
-      <button className="secondary" onClick={() => move('right')} aria-label="往事向右走">→</button>
-      <button className="primary" disabled={!place} onClick={() => place && setReading(place.id)}>查看附近地点</button>
+      <SecondaryButton onClick={() => move('up')} aria-label="往事向上走">↑</SecondaryButton>
+      <SecondaryButton onClick={() => move('left')} aria-label="往事向左走">←</SecondaryButton>
+      <SecondaryButton onClick={() => move('down')} aria-label="往事向下走">↓</SecondaryButton>
+      <SecondaryButton onClick={() => move('right')} aria-label="往事向右走">→</SecondaryButton>
+      <PrimaryButton disabled={!place} onClick={() => place && setReading(place.id)}>查看附近地点</PrimaryButton>
     </div>
     {reading && place?.id === reading && <>
       <section className="bond-summary" aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></section>
-      {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <button ref={roomEntry} className="primary" onClick={() => setIndoors(true)}>进入药老调制室</button>}
-      {place.id === 'teacher' && !earlyHallBlock(state) && <button ref={hallEntry} className="secondary" onClick={() => {
+      {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <PrimaryButton ref={roomEntry} onClick={() => setIndoors(true)}>进入药老调制室</PrimaryButton>}
+      {place.id === 'teacher' && !earlyHallBlock(state) && <SecondaryButton ref={hallEntry} onClick={() => {
         if (submitEarlyHallEntry(gameStore, position)) setHall(true)
-      }}>接续往事 · 前往斗技堂</button>}
-      {place.id === 'teacher' && !earlyTeachingRoomBlock(state, position) && <button ref={teachingEntry} className="primary" onClick={openTeaching}>回房请药老正式传技</button>}
-      {place.id === 'teacher' && !earlySupervisionBlock(state, position) && <button ref={supervisionEntry} className="secondary" onClick={openSupervision}>前往后山 · 接受药老督练</button>}
-      {place.id === 'teacher' && !earlyRecoveryBlock(state, position) && <button ref={recoveryEntry} className="primary" onClick={openRecovery}>回房恢复 · 查看自用药液</button>}
-      {place.id === 'teacher' && !earlyConsignmentBlock(state, position) && <button ref={consignmentEntry} className="secondary" onClick={openConsignment}>筹备首次寄售 · 另备待售药液</button>}
-      {place.id === 'teacher' && !earlyAppraisalBlock(state, position) && <button ref={appraisalEntry} className="primary" onClick={openAppraisal}>前往拍卖场 · 黑袍与谷尼鉴定</button>}
-      {place.id === 'teacher' && !earlyAuctionBlock(state, position) && <button ref={auctionEntry} className="secondary" onClick={openAuction}>入席旁观 · 雅妃主持首次拍卖</button>}
-      {place.id === 'teacher' && !earlySettlementBlock(state, position) && <button ref={settlementEntry} className="primary" onClick={openSettlement}>回鉴定室 · 贵宾卡与寄售收款</button>}
-      {place.id === 'teacher' && !earlyFatherGiftBlock(state, position) && <button ref={fatherGiftEntry} className="secondary" onClick={openFatherGift}>回萧家房中 · 父亲赠回同瓶</button>}
-      {place.id === 'teacher' && !earlyXunerVisitBlock(state, position) && <button ref={xunerVisitEntry} className="primary" onClick={openXunerVisit}>接续薰儿来访 · 独自处理长老争执</button>}
-      {place.id === 'teacher' && !earlyLongSuppliesBlock(state, position) && <button ref={longSuppliesEntry} className="secondary" onClick={openLongSupplies}>回看已购长期物资 · 分拣与藏柜</button>}
-      {place.id === 'teacher' && !earlyForestStrikeBlock(state, position) && <button ref={forestEntry} className="primary" onClick={openForest}>走入后山森林 · 首次成功八极崩</button>}
-      {place.id === 'teacher' && !earlySeventhRoomBlock(state, position) && <button ref={seventhEntry} className="secondary" onClick={openSeventh}>回房冲向七段 · 老师从古戒补一滴</button>}
-      {place.id === 'teacher' && !earlyPalmPairBlock(state, position) && <button ref={palmEntry} className="primary" onClick={openPalm}>接续吸推两瓶 · 请药老传吹火掌</button>}
-      {place.id === 'teacher' && !earlyPreliminaryBlock(state, position) && <button ref={preliminaryEntry} className="secondary" onClick={openPreliminary}>前往一月前预测 · 名簿与黑碑</button>}
-      {place.id === 'teacher' && !earlyKeChallengeBlock(state, position) && <button ref={keChallengeEntry} className="primary" onClick={openKeChallenge}>接续萧克六段挑战 · 侧避与低阶掌法</button>}
-      {place.id === 'teacher' && !earlyEighthTrainingBlock(state, position) && <button ref={eighthEntry} className="primary" onClick={openEighthTraining}>接续同行与礼前八段 · 实际训练</button>}
-      {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <button ref={guestsEntry} className="primary" onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</button>}
-      {place.id === 'teacher' && !earlyCeremonialTestBlock(state, position) && <button ref={ceremonialEntry} className="primary" onClick={openCeremonialTest}>接续正式仪式 · 二长老验碑与八段</button>}
-      {place.id === 'teacher' && !earlyNingFirstBlock(state, position) && <button ref={ningFirstEntry} className="primary" onClick={openNingFirst}>接续萧宁首轮 · 推拉推与待裁判</button>}
-      {place.id === 'teacher' && !earlyNingSecondBlock(state, position) && <button ref={ningSecondEntry} className="primary" onClick={openNingSecond}>接续违规再攻 · 八极崩与追加拳击</button>}
-      {place.id === 'teacher' && !earlyCeremonyVerdictBlock(state, position) && <button ref={verdictEntry} className="primary" onClick={openCeremonyVerdict}>接续正式裁定 · 双请求与礼终离场</button>}
+      }}>接续往事 · 前往斗技堂</SecondaryButton>}
+      {place.id === 'teacher' && !earlyTeachingRoomBlock(state, position) && <PrimaryButton ref={teachingEntry} onClick={openTeaching}>回房请药老正式传技</PrimaryButton>}
+      {place.id === 'teacher' && !earlySupervisionBlock(state, position) && <SecondaryButton ref={supervisionEntry} onClick={openSupervision}>前往后山 · 接受药老督练</SecondaryButton>}
+      {place.id === 'teacher' && !earlyRecoveryBlock(state, position) && <PrimaryButton ref={recoveryEntry} onClick={openRecovery}>回房恢复 · 查看自用药液</PrimaryButton>}
+      {place.id === 'teacher' && !earlyConsignmentBlock(state, position) && <SecondaryButton ref={consignmentEntry} onClick={openConsignment}>筹备首次寄售 · 另备待售药液</SecondaryButton>}
+      {place.id === 'teacher' && !earlyAppraisalBlock(state, position) && <PrimaryButton ref={appraisalEntry} onClick={openAppraisal}>前往拍卖场 · 黑袍与谷尼鉴定</PrimaryButton>}
+      {place.id === 'teacher' && !earlyAuctionBlock(state, position) && <SecondaryButton ref={auctionEntry} onClick={openAuction}>入席旁观 · 雅妃主持首次拍卖</SecondaryButton>}
+      {place.id === 'teacher' && !earlySettlementBlock(state, position) && <PrimaryButton ref={settlementEntry} onClick={openSettlement}>回鉴定室 · 贵宾卡与寄售收款</PrimaryButton>}
+      {place.id === 'teacher' && !earlyFatherGiftBlock(state, position) && <SecondaryButton ref={fatherGiftEntry} onClick={openFatherGift}>回萧家房中 · 父亲赠回同瓶</SecondaryButton>}
+      {place.id === 'teacher' && !earlyXunerVisitBlock(state, position) && <PrimaryButton ref={xunerVisitEntry} onClick={openXunerVisit}>接续薰儿来访 · 独自处理长老争执</PrimaryButton>}
+      {place.id === 'teacher' && !earlyLongSuppliesBlock(state, position) && <SecondaryButton ref={longSuppliesEntry} onClick={openLongSupplies}>回看已购长期物资 · 分拣与藏柜</SecondaryButton>}
+      {place.id === 'teacher' && !earlyForestStrikeBlock(state, position) && <PrimaryButton ref={forestEntry} onClick={openForest}>走入后山森林 · 首次成功八极崩</PrimaryButton>}
+      {place.id === 'teacher' && !earlySeventhRoomBlock(state, position) && <SecondaryButton ref={seventhEntry} onClick={openSeventh}>回房冲向七段 · 老师从古戒补一滴</SecondaryButton>}
+      {place.id === 'teacher' && !earlyPalmPairBlock(state, position) && <PrimaryButton ref={palmEntry} onClick={openPalm}>接续吸推两瓶 · 请药老传吹火掌</PrimaryButton>}
+      {place.id === 'teacher' && !earlyPreliminaryBlock(state, position) && <SecondaryButton ref={preliminaryEntry} onClick={openPreliminary}>前往一月前预测 · 名簿与黑碑</SecondaryButton>}
+      {place.id === 'teacher' && !earlyKeChallengeBlock(state, position) && <PrimaryButton ref={keChallengeEntry} onClick={openKeChallenge}>接续萧克六段挑战 · 侧避与低阶掌法</PrimaryButton>}
+      {place.id === 'teacher' && !earlyEighthTrainingBlock(state, position) && <PrimaryButton ref={eighthEntry} onClick={openEighthTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}
+      {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <PrimaryButton ref={guestsEntry} onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}
+      {place.id === 'teacher' && !earlyCeremonialTestBlock(state, position) && <PrimaryButton ref={ceremonialEntry} onClick={openCeremonialTest}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}
+      {place.id === 'teacher' && !earlyNingFirstBlock(state, position) && <PrimaryButton ref={ningFirstEntry} onClick={openNingFirst}>接续萧宁首轮 · 推拉推与待裁判</PrimaryButton>}
+      {place.id === 'teacher' && !earlyNingSecondBlock(state, position) && <PrimaryButton ref={ningSecondEntry} onClick={openNingSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}
+      {place.id === 'teacher' && !earlyCeremonyVerdictBlock(state, position) && <PrimaryButton ref={verdictEntry} onClick={openCeremonyVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <p className="muted">{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</p>
-    <button className="secondary" onClick={onBack}>回到重修准备单</button>
+    <SecondaryButton onClick={onBack}>回到重修准备单</SecondaryButton>
   </>
 }

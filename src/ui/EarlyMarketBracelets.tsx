@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -62,20 +63,20 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
         {(task.green === 'received' || task.green === 'worn') && <circle aria-label={task.green === 'worn' ? '薰儿已戴普通绿链' : '薰儿收到但尚未戴上普通绿链'} cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
     </svg>
-    {scene && <div className="early-walk-controls"><button className="secondary" onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</button>
-      <button className="secondary" onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</button>
+    {scene && <div className="early-walk-controls"><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
+      <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>
       {active && <WalkDirectionButtons prefix="手链" onMove={move} />}</div>}
     <p role="status">让路手链 {task.stage}/28 · {earlyMarketBraceletsSaveSummary(state, state.settings)}</p>
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 蓝金手链：{task.expensive === 'unoffered' ? '尚未提出' : '来人持有，未交付'}
       {' · '}普通绿链：{task.green === 'unshown' ? '尚未拿出' : task.green === 'shown' ? '萧炎持有，未交付' : task.green === 'received' ? '薰儿已收到，尚未戴上' : '薰儿已戴上'}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。` : '先走近拦路街角。'} />
-      <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
-      {task.stage === 6 && <button className="secondary" disabled={!near} onClick={() => act('take-blue')}>提议赠送就算蓝金手链已交付吗？</button>}
-      {task.stage === 10 && <button className="secondary" disabled={!near} onClick={() => act('claim-core')}>想到拆核就把木核放入任务袋</button>}
-      {task.stage === 18 && <button className="secondary" disabled={!near} onClick={() => act('pay-extra')}>比较价格后追加支付赠礼费用</button>}
-      {task.stage === 24 && <button className="secondary" disabled={!near} onClick={() => act('claim-rank')}>看见徽记就为本人授予一星境界</button>}
+      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('take-blue')}>提议赠送就算蓝金手链已交付吗？</SecondaryButton>}
+      {task.stage === 10 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>想到拆核就把木核放入任务袋</SecondaryButton>}
+      {task.stage === 18 && <SecondaryButton disabled={!near} onClick={() => act('pay-extra')}>比较价格后追加支付赠礼费用</SecondaryButton>}
+      {task.stage === 24 && <SecondaryButton disabled={!near} onClick={() => act('claim-rank')}>看见徽记就为本人授予一星境界</SecondaryButton>}
     </section> : <section className="bond-summary"><h3>让路与两条手链已归档。</h3><p>普通绿链已经收到、戴上并道谢。蓝金手链与木核未交付，来人尚未离开，围堵另段继续。</p></section>}
     <p className="muted">与简略手链往事共用唯一赠礼记录。已有进度只补历史，不倒退或重复交付；本段不改变金币、木核、队伍或主线奖励。</p>
-    <button className="secondary" onClick={onBack}>暂离让路手链 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离让路手链 · 保留断点</SecondaryButton>
   </>
 }

@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
@@ -48,8 +49,8 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
     <span className="eyebrow">房门 / 出门与石路</span><h2>起身、跨门，再走上石路。</h2>
     <p id="departure-help">方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。</p>
     <div className="early-walk-controls">
-      <button className="secondary" aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</button>
-      <button className="secondary" aria-pressed={actor === 'ring'} onClick={() => setActor('ring')}>只看静止古戒</button>
+      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
+      <SecondaryButton aria-pressed={actor === 'ring'} onClick={() => setActor('ring')}>只看静止古戒</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label="出门与石路地图" aria-describedby="departure-help" tabIndex={0} viewBox={space === 'room' ? '80 290 245 125' : '80 215 280 125'} className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" />
@@ -71,14 +72,14 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
       <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad" fontSize="10">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</text></g>
     </svg>
     {scene && task.risen && actor === 'yan' && <div className="early-walk-controls"><WalkDirectionButtons prefix="出门" onMove={move} /></div>}
-    {scene && task.outside && !task.closed && <button className="secondary" disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</button>}
+    {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}
     <p role="status">出门石路 {task.stage}/9 · 当前{space === 'room' ? '房内' : '室外'} · {firstDepartureSaveSummary(state, state.settings)}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{actor !== 'yan' ? '静止古戒不能替本人行动。' : !near ? '本人先走到当前房内或室外地点。' : '当前人物：萧炎本人'}</p>
-      <button className="primary" disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</button>
-      <button className="secondary" onClick={() => act('finish')}>用一句回顾代签全部出门</button>
-      <button className="secondary" onClick={() => act('meet')}>未转路就签人物会面</button>
+      <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      <SecondaryButton onClick={() => act('finish')}>用一句回顾代签全部出门</SecondaryButton>
+      <SecondaryButton onClick={() => act('meet')}>未转路就签人物会面</SecondaryButton>
     </section> : <section className="bond-summary"><h3>出门与石路已归档。</h3><p>已真实跨门、室外关门并进入石路。转向另一条路与会面由下一段继续，旧材料与奖励保持。</p></section>}
-    <button className="secondary" onClick={onBack}>暂离出门石路 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离出门石路 · 保留断点</SecondaryButton>
   </>
 }

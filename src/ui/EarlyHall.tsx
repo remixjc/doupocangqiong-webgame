@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -68,9 +69,9 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     </svg>
     <p role="status" className="early-walk-status">{place ? `附近：${place.label}` : '沿两区行走，靠近金色路标查看。'}</p>
     <div className="early-walk-controls" aria-label="斗技堂行走操作">
-      {(['up', 'left', 'down', 'right'] as const).map((direction, index) => <button key={direction} className="secondary"
-        aria-label={`堂内向${['上', '左', '下', '右'][index]}走`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</button>)}
-      <button className="primary" disabled={!place} onClick={() => place && setReading(place.id)}>查看堂内地点</button>
+      {(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction}
+        aria-label={`堂内向${['上', '左', '下', '右'][index]}走`} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}
+      <PrimaryButton disabled={!place} onClick={() => place && setReading(place.id)}>查看堂内地点</PrimaryButton>
     </div>
     <p role="status">堂内记录 {Math.max(0, task.stage - 1)}/8 · {task.scroll === 'borrowed-second' ? '第二卷已登记，由萧炎保管'
       : task.scroll === 'selected-second' ? '第二卷已选好，尚由堂内保管' : task.scroll === 'reading-first' ? '第一卷在堂内阅读，尚未借出' : '尚无卷册借出'}</p>
@@ -78,11 +79,11 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     {reading && place?.id === reading && <section className="bond-summary" aria-label="斗技堂地点说明">
       <h3>{place.label}</h3><p>{place.text}</p>
       {scene?.place === place.id && <><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-        <button className="primary" onClick={() => submitEarlyHall(gameStore, position, { step: scene.stage, operation: scene.operation })}>{scene.action}</button></>}
+        <PrimaryButton onClick={() => submitEarlyHall(gameStore, position, { step: scene.stage, operation: scene.operation })}>{scene.action}</PrimaryButton></>}
     </section>}
     {task.stage === 9 && <section className="bond-summary"><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>
-      {onTeach && <button className="primary" onClick={onTeach}>接续回房 · 请药老正式传技</button>}</section>}
+      {onTeach && <PrimaryButton onClick={onTeach}>接续回房 · 请药老正式传技</PrimaryButton>}</section>}
     <p className="muted">动作、分段图形和对白为原创压缩改编。查看不推进记录；确认当前步骤才保存，不改变主线战斗技能、金币或境界。</p>
-    <button className="secondary" onClick={onBack}>{task.stage === 9 ? '离开斗技堂 · 回准备路线' : '暂回准备路线 · 保留堂内断点'}</button>
+    <SecondaryButton onClick={onBack}>{task.stage === 9 ? '离开斗技堂 · 回准备路线' : '暂回准备路线 · 保留堂内断点'}</SecondaryButton>
   </>
 }

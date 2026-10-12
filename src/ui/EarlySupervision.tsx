@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -47,19 +48,19 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
     </svg>
     <p role="status">督练承接 {task.pulses}/4 · 本轮负荷 {task.pulses * 25}% · 重新开练 {task.attempts} 次</p>
     {task.stage === 0 && <><p className="muted">开始后可以随时免费停练。失误结束当前轮，不扣金币、材料或药液；再次开始后从第一道脉冲练起。</p>
-      <button ref={entry} className="primary" onClick={() => act('begin')}>开始本轮后山督练</button></>}
+      <PrimaryButton ref={entry} onClick={() => act('begin')}>开始本轮后山督练</PrimaryButton></>}
     {task.stage === 1 && <>
       <p>{task.pulses >= 3 ? '药老：负荷已接近本轮边界。最后一次承接后便停下，也可现在停练。' : '药老：先稳住姿态，看准脉冲再承接；不要为了次数忽略负荷。'}</p>
       {steady && <label className="setting-row"><span>督练承接时机<small>减弱动态：用方向键调至35%–65%后承接。当前 {Math.round(marker * 100)}%。</small></span>
         <input type="range" aria-label="督练承接时机" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />
       </label>}
       <div className="heat-meter" aria-label="督练时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-      {!steady && paused && <><p role="status">督练时机已暂停，请确认后继续；后台时不推进。</p><button className="secondary" onClick={() => setPaused(false)}>继续本轮督练 · 恢复时机</button></>}
-      <button ref={entry} className="primary" disabled={paused} onClick={() => act('brace')}>承接第{task.pulses + 1}次斗气脉冲</button>
-      <button className="secondary" onClick={() => act('stop')}>停练 · 免费重新准备</button>
+      {!steady && paused && <><p role="status">督练时机已暂停，请确认后继续；后台时不推进。</p><SecondaryButton onClick={() => setPaused(false)}>继续本轮督练 · 恢复时机</SecondaryButton></>}
+      <PrimaryButton ref={entry} disabled={paused} onClick={() => act('brace')}>承接第{task.pulses + 1}次斗气脉冲</PrimaryButton>
+      <SecondaryButton onClick={() => act('stop')}>停练 · 免费重新准备</SecondaryButton>
     </>}
     {task.stage === 2 && <section className="bond-summary"><h3>这一轮督练已记下</h3><p>萧炎停下，药老提醒他回房使用修炼药液恢复。回房恢复、持续时段回顾与阶段结果分别记录。</p>
-      {onRecover && <button className="primary" onClick={onRecover}>接续回房 · 使用自用药液恢复</button>}</section>}
-    <button className="secondary" onClick={onBack}>暂离后山督练 · 保留断点</button>
+      {onRecover && <PrimaryButton onClick={onRecover}>接续回房 · 使用自用药液恢复</PrimaryButton>}</section>}
+    <SecondaryButton onClick={onBack}>暂离后山督练 · 保留断点</SecondaryButton>
   </>
 }

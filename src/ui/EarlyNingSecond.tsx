@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -68,19 +69,19 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       {training ? <>
         {steady && <label className="setting-row"><span>违规迎击时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="违规迎击时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
         <div className="heat-meter" aria-label="违规迎击时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-        {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停违规迎击时机</button>}
-        {paused && <><p role="status">时机已暂停，需明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续违规迎击 · 恢复时机</button></>}
+        {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停违规迎击时机</SecondaryButton>}
+        {paused && <><p role="status">时机已暂停，需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续违规迎击 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '先用八极崩迎向来拳。' : '已经对拳，仍须追加拳击才出场。'}</p>
         <div className="early-walk-controls">
-          <button className="primary" disabled={paused} onClick={() => act(ningSecondOperation(task))}>{task.beats === 0 ? '八极崩 · 迎向来拳' : '追加拳击 · 将萧宁击出场'}</button>
-          <button className="secondary" disabled={paused} onClick={() => act(task.beats === 0 ? 'strike' : 'octane')}>{task.beats === 0 ? '尝试先追加拳击 · 尚未迎击' : '再次八极崩 · 当前须追加拳击'}</button>
-          <button className="secondary" disabled={paused} onClick={() => act('push')}>尝试吹火掌 · 再攻动作不符</button>
+          <PrimaryButton disabled={paused} onClick={() => act(ningSecondOperation(task))}>{task.beats === 0 ? '八极崩 · 迎向来拳' : '追加拳击 · 将萧宁击出场'}</PrimaryButton>
+          <SecondaryButton disabled={paused} onClick={() => act(task.beats === 0 ? 'strike' : 'octane')}>{task.beats === 0 ? '尝试先追加拳击 · 尚未迎击' : '再次八极崩 · 当前须追加拳击'}</SecondaryButton>
+          <SecondaryButton disabled={paused} onClick={() => act('push')}>尝试吹火掌 · 再攻动作不符</SecondaryButton>
         </div>
-      </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
+      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
     </section> : <p className="muted">下一步请走近{(scene.place === 'arena' ? '台中 · 两步迎击' : ningPlaces[scene.place].label)}：{scene.title}。</p>
-      : <section className="bond-summary"><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <button className="primary" onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</button>}</section>}
-    {training && <button className="secondary" onClick={() => act('stop')}>停下迎击 · 免费重新准备</button>}
+      : <section className="bond-summary"><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <PrimaryButton onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}</section>}
+    {training && <SecondaryButton onClick={() => act('stop')}>停下迎击 · 免费重新准备</SecondaryButton>}
     <p className="muted">违规药物只由萧宁使用，临时增强不等于永久境界。地图与动作时机为原创；主线钱账、技能、药液、关系和首通奖励保留。</p>
-    <button className="secondary" onClick={onBack}>暂离违规再攻 · 保留迎击断点</button>
+    <SecondaryButton onClick={onBack}>暂离违规再攻 · 保留迎击断点</SecondaryButton>
   </>
 }

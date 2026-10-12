@@ -1,3 +1,4 @@
+import { SecondaryButton } from './Buttons'
 import { Component, createRef, type ReactNode } from 'react'
 import './scene-failure.css'
 import { SceneLoadTimeout } from './scene-load'
@@ -23,8 +24,8 @@ export default class SceneBoundary extends Component<Props, { failed: boolean; t
       <RecoveryBackup />
       <div className="bond-actions">
         <button className="primary small" onClick={this.props.onReload}>保存后刷新页面</button>
-        {this.props.context !== 'save' && this.props.onSave && <button className="secondary" onClick={this.props.onSave}>打开存档管理</button>}
-        <button className="secondary" onClick={this.props.onBack}>返回大陆舆图</button>
+        {this.props.context !== 'save' && this.props.onSave && <SecondaryButton onClick={this.props.onSave}>打开存档管理</SecondaryButton>}
+        <SecondaryButton onClick={this.props.onBack}>返回大陆舆图</SecondaryButton>
       </div>
     </section>
   }

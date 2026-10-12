@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -47,12 +48,12 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
     <div className="early-walk-controls" aria-label="功法阁行走操作">{<WalkDirectionButtons prefix="功法阁" onMove={move} />}</div>
     <p role="status">入阁 {task.stage}/12 · 萧炎{task.yan === 'fire' ? '火属性' : '未测'} · 薰儿{task.xuner === 'fire' ? '火属性' : '未测'} · 水晶{task.crystal === 'broken' ? '已碎' : task.crystal === 'cracked' ? '有裂纹尚未碎' : '完整'} · {task.entered ? '已实际入阁' : task.permission ? '有许可尚未过门' : '尚未许可入阁'} · 尚无新卷轴</p>
     {scene ? nearQiPavilionPlace(position, scene.place, task.stage) ? <section className="bond-summary" aria-label="功法阁入阁步骤"><SceneHeading title={scene.title} text={scene.text} />
-      <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>
-      {task.stage >= 5 && <button className="secondary" onClick={() => act('take-scroll')}>尝试取卷 · 尚未择卷</button>}
-      {task.crystal !== 'intact' && <button className="secondary" onClick={() => act('take-crystal')}>尝试拾水晶 · 无玩家物品</button>}
+      <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {task.stage >= 5 && <SecondaryButton onClick={() => act('take-scroll')}>尝试取卷 · 尚未择卷</SecondaryButton>}
+      {task.crystal !== 'intact' && <SecondaryButton onClick={() => act('take-crystal')}>尝试拾水晶 · 无玩家物品</SecondaryButton>}
     </section> : <p className="muted">下一步请走近{qiPavilionPlaces[scene.place].label}：{scene.title}。</p>
       : <section className="bond-summary"><h3>测定与入阁已归档。</h3><p>火通道第三路四十三号房线索保留。门障、取得功法、回应薰儿与出阁登记还待接续；此前斗技堂借卷与主线技能分别保持。</p></section>}
     <p className="muted">布局与步长为原创，五天与两小时为故事时段；本段不发金币、功法、技能或境界。</p>
-    <button className="secondary" onClick={onBack}>暂离功法阁 · 保留入阁断点</button>
+    <SecondaryButton onClick={onBack}>暂离功法阁 · 保留入阁断点</SecondaryButton>
   </>
 }

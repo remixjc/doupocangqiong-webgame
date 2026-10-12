@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
@@ -35,8 +36,8 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
     <span className="eyebrow">石路 / 路口会面</span><h2>转路、招呼，再各自前行。</h2>
     <p id="road-meeting-help">方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。</p>
     <div className="early-walk-controls">
-      <button className="secondary" aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与答话</button>
-      {task.identified && <button className="secondary" aria-pressed={actor === 'mei'} onClick={() => setActor('mei')}>关注萧媚发言</button>}
+      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与答话</SecondaryButton>
+      {task.identified && <SecondaryButton aria-pressed={actor === 'mei'} onClick={() => setActor('mei')}>关注萧媚发言</SecondaryButton>}
     </div>
     <svg ref={field} role="group" aria-label="石路会面地图" aria-describedby="road-meeting-help" tabIndex={0} viewBox="80 185 425 155" className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" />
@@ -55,10 +56,10 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
     <p role="status">路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{!near ? '本人先实际走到本步位置。' : actor !== scene.actor ? '请选择当前发言人物。' : actor === 'mei' ? '当前关注：萧媚发言，本人位置保持。' : '当前人物：萧炎本人'}</p>
-      <button className="primary" disabled={!near || actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</button>
-      <button className="secondary" onClick={() => act('fight')}>把招呼算作本人战斗胜利</button>
-      <button className="secondary" onClick={() => act('hall')}>在路口直接签入堂借卷</button>
+      <PrimaryButton disabled={!near || actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      <SecondaryButton onClick={() => act('fight')}>把招呼算作本人战斗胜利</SecondaryButton>
+      <SecondaryButton onClick={() => act('hall')}>在路口直接签入堂借卷</SecondaryButton>
     </section> : <section className="bond-summary"><h3>路口会面与分路已归档。</h3><p>双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。</p></section>}
-    <button className="secondary" onClick={onBack}>暂离路口会面 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离路口会面 · 保留断点</SecondaryButton>
   </>
 }

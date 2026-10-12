@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -29,15 +30,15 @@ export default function EarlyFamilyVisit({ state, onBack }: { state: GameState; 
     <p role="status">来访 {task.stage}/17 · {task.seat === 'shared' ? '已在薰儿身旁落座' : task.seat === 'missing' ? '自己的座位遗漏' : '尚未察看座位'} · {task.request === 'spoken' ? '退婚请求已公开' : '来意尚未说出'} · {task.pressure === 'raised' ? '双方戒备、尚未交手' : task.pressure === 'withdrawn' ? '父亲已收势' : '尚未起冲突'}</p>
     {scene ? <section className="bond-summary">
       <SceneHeading title={scene.title} text={near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`} />
-      <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
-      {near && task.stage === 12 && <button className="secondary" onClick={() => act('accept-for-father')}>尝试替父亲直接应允</button>}
-      {near && task.stage === 15 && <button className="secondary" onClick={() => act('take-box')}>尝试直接收取玉匣</button>}
+      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {near && task.stage === 12 && <SecondaryButton onClick={() => act('accept-for-father')}>尝试替父亲直接应允</SecondaryButton>}
+      {near && task.stage === 15 && <SecondaryButton onClick={() => act('take-box')}>尝试直接收取玉匣</SecondaryButton>}
     </section> : <section className="bond-summary"><h3>来访前半程已归档。</h3><p>{state.earlyTraining.familyContract.stage > 0
       ? `当时玉匣仅展示；${earlyFamilyContractSaveSummary(state, state.settings)}。`
       : state.earlyTraining.familyCompensation.stage > 0
       ? `当时玉匣仅展示；后续补偿交涉${state.earlyTraining.familyCompensation.stage === 15 ? '已归档' : '进行中'}，文书、三年约定与实际离厅待续。`
       : '玉匣仍属来客，补偿尚未答复；文书、三年约定与实际离厅需要接续。'}现有第二章奖励和拜师记录保留。</p></section>}
     <p className="muted">厅院布局与20步长为游戏改编。这里回到拜师前的故事，不重发丹药、功法、金币、境界或主线奖励；暂离会保留事件，行走位置不保存。</p>
-    <button className="secondary" onClick={onBack}>暂离家族来访 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离家族来访 · 保留断点</SecondaryButton>
   </>
 }

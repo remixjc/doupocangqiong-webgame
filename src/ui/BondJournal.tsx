@@ -1,3 +1,4 @@
+import { SecondaryButton } from './Buttons'
 import { bondJournal, bondVisitQueue } from '../core/bonds'
 import type { GameState } from '../core/model'
 import { useState } from 'react'
@@ -26,12 +27,12 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
     </section>}
     {!lines.length && <p className="quest-hint">当前剧透范围内尚无伙伴卷页。</p>}
     <div className="panel-tabs" aria-label="选择伙伴">{lines.map(line =>
-      <button className="secondary" key={line.id} aria-pressed={active?.id === line.id} onClick={() => setSelected(line.id)}>{line.name} · {line.completed}/{line.entries.length}</button>)}</div>
+      <SecondaryButton key={line.id} aria-pressed={active?.id === line.id} onClick={() => setSelected(line.id)}>{line.name} · {line.completed}/{line.entries.length}</SecondaryButton>)}</div>
     {(active ? [active] : []).map(line => <section className="bond-line" key={line.id}>
       <h3>{line.name} · {line.title}<small>{line.completed} / {line.entries.length} 可见卷页</small></h3>
       <div className="panel-tabs bond-filters" aria-label="筛选卷页">
         {([['all', '全部'], ['todo', '未完成'], ['done', '已完成']] as const).map(([value, label]) =>
-          <button className="secondary" key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</button>)}
+          <SecondaryButton key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</SecondaryButton>)}
       </div>
       {!entries.length && <p className="muted">此伙伴没有符合筛选的可见卷页。</p>}
       {entries.map(entry => <article className="bond-entry" key={entry.eventId}>
@@ -40,9 +41,9 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
         {['available', 'reading', 'report'].includes(entry.status) && <p className="muted">下一处：{entry.destination}</p>}
         {entry.choice && <p className="muted">已记回应：{entry.choice}。{entry.response}</p>}
         <div className="bond-actions">
-          <button className="secondary" disabled={!entry.canVisit} onClick={() => visit(entry.chapter)}>回访第{entry.chapter}章</button>
-          {!entry.done && entry.prerequisite && <button className="secondary" disabled={!entry.prerequisite.canVisit}
-            onClick={() => visit(entry.prerequisite!.chapter)}>先补第{entry.prerequisite.chapter}章 · {entry.prerequisite.title}</button>}
+          <SecondaryButton disabled={!entry.canVisit} onClick={() => visit(entry.chapter)}>回访第{entry.chapter}章</SecondaryButton>
+          {!entry.done && entry.prerequisite && <SecondaryButton disabled={!entry.prerequisite.canVisit}
+            onClick={() => visit(entry.prerequisite!.chapter)}>先补第{entry.prerequisite.chapter}章 · {entry.prerequisite.title}</SecondaryButton>}
         </div>
       </article>)}
     </section>)}
@@ -57,7 +58,7 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
             ? `回访第${chapter}章继续：${event.stages[p.stage]}。已完成节点保留。`
             : '回到本章札记处接取，已完成节点可保存恢复。')}</p>
         <p className="muted">寻找练习凭证、选择方案、控制演练风险。此项不计入24页书简，不表示完整毒体控制已实现。</p>
-        <button className="secondary" disabled={!canEnter(state, chapter)} onClick={() => visit(chapter)}>前往第{chapter}章准备演练</button>
+        <SecondaryButton disabled={!canEnter(state, chapter)} onClick={() => visit(chapter)}>前往第{chapter}章准备演练</SecondaryButton>
       </section>
     })}
     <p className="muted">对白与书简是原创改编；卷页标题与记录按当前剧透范围显示。</p>

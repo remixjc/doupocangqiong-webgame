@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -32,7 +33,7 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
     {practice.phase === 0 && <>
       <h3>先调息，再尝试</h3>
       <p>药液准备好后，萧炎继续修炼。把呼吸和斗气稳住，再试试黑铁片中的斗技。</p>
-      <button className="secondary" onClick={() => act('begin')}>开始初期调息练习</button>
+      <SecondaryButton onClick={() => act('begin')}>开始初期调息练习</SecondaryButton>
     </>}
     {practice.phase === 1 && <>
       <h3>三次调息</h3><p>第{practice.pulse + 1}次 · 本轮{practice.score}/300 · 重试{practice.attempts}次</p>
@@ -40,17 +41,17 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
       {steady ? <label className="setting-row"><span>调息位置<small>减弱动态开启：用方向键调整位置，再锁定。</small></span>
         <input aria-label="调息位置" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />
       </label> : <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="调息指针"><div className="heat-target" /><i style={{ left: `${marker * 100}%` }} /></div>}
-      <button className="primary" onClick={() => act('pulse')}>锁定第{practice.pulse + 1}次调息</button>
+      <PrimaryButton onClick={() => act('pulse')}>锁定第{practice.pulse + 1}次调息</PrimaryButton>
     </>}
     {practice.phase === 2 && <>
       <h3>尝试黑铁片中的斗技</h3>
       <p>调息稳住了，萧炎抬手试着牵动前方物体。初期斗气有限，这一试不能让他立刻掌握强力招式。</p>
-      <button className="secondary" onClick={() => act('attempt')}>尝试牵动物体</button>
+      <SecondaryButton onClick={() => act('attempt')}>尝试牵动物体</SecondaryButton>
     </>}
     {practice.phase === 3 && <>
       <h3>眼前的力量还有限</h3>
       <p>物体没有按萧炎所想飞来。药老提醒他先打好基础。往后的成长，需要持续修炼，而不是拿到铁片就立即变强。</p>
-      <button className="secondary" onClick={() => act('finish')}>记下结果，继续修炼</button>
+      <SecondaryButton onClick={() => act('finish')}>记下结果，继续修炼</SecondaryButton>
     </>}
     {practice.phase === 4 && <>
       <h3>重修往事 · 本次已归档</h3>

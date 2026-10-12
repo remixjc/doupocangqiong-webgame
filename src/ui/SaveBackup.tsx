@@ -1,3 +1,4 @@
+import { SecondaryButton } from './Buttons'
 import { useState, useSyncExternalStore } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -15,7 +16,7 @@ export default function SaveBackup({ state, recovery = false }: { state: GameSta
   }
   return <div className="backup-download">
     {recovery && <p>也可直接备份当前任务、行囊与设置。战斗位置和敌人会从营地重建。</p>}
-    <button className="secondary" onClick={exportJson}>{recovery ? '直接导出当前进度 JSON' : '导出 JSON 备份'}</button>
+    <SecondaryButton onClick={exportJson}>{recovery ? '直接导出当前进度 JSON' : '导出 JSON 备份'}</SecondaryButton>
     {message && <p className={failed ? 'error' : 'muted'} role={failed ? 'alert' : 'status'}>{message}</p>}
   </div>
 }

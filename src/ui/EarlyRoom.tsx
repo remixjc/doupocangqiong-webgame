@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -18,7 +19,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
   const blocked = earlyRoomBlock(state, position)
   const scene = earlyLiquidScenes[task.liquid.stage]
   useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
-  if (blocked) return <><p>{blocked}</p><button className="secondary" onClick={onBack}>回到往事街巷</button></>
+  if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton></>
   return <>
     <span className="eyebrow">拜师之后 / 室内调制</span>
     <h2 ref={heading} tabIndex={-1}>把材料交给老师，留心每一步。</h2>
@@ -86,13 +87,13 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
         <p>黑铁片 ×{task.market.blackIron}，和三种药材分别保管。</p>
       </> : scene && station === view.station ? <>
         <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-        <button className="primary" onClick={() => submitEarlyRoom(gameStore, position, station,
-          { type: 'liquid', step: task.liquid.stage, operation: scene.operation, expectedSpent: task.purse.spent })}>{scene.action}</button>
+        <PrimaryButton onClick={() => submitEarlyRoom(gameStore, position, station,
+          { type: 'liquid', step: task.liquid.stage, operation: scene.operation, expectedSpent: task.purse.spent })}>{scene.action}</PrimaryButton>
       </> : <p>{task.recovery.energy === 'spent' ? '这份自用药液在训练后恢复中已耗尽，容器和调制历史保留，后续需另筹材料。' : task.liquid.ready ? '药液已供修炼使用。容器和采购记录保留，不会再次消耗材料。'
         : `下一步请查看${stations[view.station]}：${scene?.title}。`}</p>}
     </section>
     <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} onContinue={onContinue} />
     <p className="muted">场景位置与器物外观为原创表现。调制断点沿用准备单，离开室内不退材料、不重炼；这里没有口服丹药产出。</p>
-    <button className="secondary" onClick={onBack}>回到往事街巷</button>
+    <SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton>
   </>
 }

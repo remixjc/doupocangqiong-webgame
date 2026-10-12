@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -34,17 +35,17 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
       <text x="360" y="294" textAnchor="middle" fill="#e8d1a6" fontSize="13">同瓶保管：{appraisalOwnerLabels[bottle.owner]} · 非新增制品</text>
     </svg>
     <div className="early-walk-controls" aria-label="父子来访位置">
-      {(Object.keys(stations) as FatherGiftStation[]).map(id => <button key={id} className="secondary" aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
+      {(Object.keys(stations) as FatherGiftStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
     <p role="status">父亲赠回 {task.stage}/6 · 同瓶{appraisalOwnerLabels[bottle.owner]}保管 · 净款{state.earlyTraining.settlement.net}保留 · 自用药力耗尽</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="父子来访步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-      <button className="primary" onClick={() => submitEarlyFatherGift(gameStore, position, station,
-        { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</button>
+      <PrimaryButton onClick={() => submitEarlyFatherGift(gameStore, position, station,
+        { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
       : <section className="bond-summary"><h3>同瓶已收好，父亲支持已记下。</h3><p>原来的寄售瓶经萧战购得再赠回，由萧炎保管。接下来展开薰儿来访，长期物资筹备另行接续。</p>
-        {onXunerVisit && <button className="primary" onClick={onXunerVisit}>接续薰儿来访 · 房中与转角</button>}</section>}
+        {onXunerVisit && <PrimaryButton onClick={onXunerVisit}>接续薰儿来访 · 房中与转角</PrimaryButton>}</section>}
     <p className="muted">父亲的40000是已记录的故事购买金额，不再扣玩家的钱。赠回只改变原瓶保管，不增加材料、技能或第二份药液，也不回补已耗尽的自用容器。</p>
-    <button className="secondary" onClick={onBack}>暂离父子来访 · 保留同瓶断点</button>
+    <SecondaryButton onClick={onBack}>暂离父子来访 · 保留同瓶断点</SecondaryButton>
   </>
 }

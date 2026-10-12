@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useRef, useEffect, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -37,17 +38,17 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
       <text x="360" y="310" textAnchor="middle" fill="#bfb79b" fontSize="12">原创房间与静态演出 · 无额外奖励</text>
     </svg>
     <div className="early-walk-controls" aria-label="传技房间位置">
-      <button ref={first} className="secondary" aria-pressed={station === 'table'} onClick={() => setStation('table')}>查看卷册桌</button>
-      <button className="secondary" aria-pressed={station === 'teacher'} onClick={() => setStation('teacher')}>走到老师处 · 请教</button>
+      <SecondaryButton ref={first} aria-pressed={station === 'table'} onClick={() => setStation('table')}>查看卷册桌</SecondaryButton>
+      <SecondaryButton aria-pressed={station === 'teacher'} onClick={() => setStation('teacher')}>走到老师处 · 请教</SecondaryButton>
     </div>
     <p role="status">正式传技 {stage}/5 · {stage >= 3 ? '技法知识已记下' : '尚未接受技法知识'} · {stage >= 4 ? '身体要求已记下' : '身体要求待确认'}</p>
     {station === 'table' && <section className="bond-summary"><h3>房间的卷册桌</h3><p>这里是斗技堂登记借出的第二卷；第一卷此前已归回书架。借卷仍由萧炎保管，不进入可售行囊，也没有新增副本。</p></section>}
     {scene ? <>
       {station === scene.station ? <section className="bond-summary" aria-label="老师正式传技步骤"><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
-        <button className="primary" onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</button></section>
+        <PrimaryButton onClick={() => submitEarlyTeaching(gameStore, position, station, { step: scene.step, operation: scene.operation })}>{scene.action}</PrimaryButton></section>
         : <p className="muted">下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</p>}
     </> : <section className="bond-summary"><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>
-      {onSupervise && <button className="primary" onClick={onSupervise}>接续后山 · 接受老师督练</button>}</section>}
-    <button className="secondary" onClick={onBack}>暂离传技房间 · 回准备路线</button>
+      {onSupervise && <PrimaryButton onClick={onSupervise}>接续后山 · 接受老师督练</PrimaryButton>}</section>}
+    <SecondaryButton onClick={onBack}>暂离传技房间 · 回准备路线</SecondaryButton>
   </>
 }

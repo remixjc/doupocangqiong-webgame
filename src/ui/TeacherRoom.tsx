@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
@@ -38,8 +39,8 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     <span className="eyebrow">{title}</span><h2>{heading}</h2>
     <p id="teacher-room-help">{help}</p>
     <div className="early-walk-controls">
-      <button className="secondary" aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</button>
-      <button className="secondary" aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>旁观房中的老师</button>
+      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
+      <SecondaryButton aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>旁观房中的老师</SecondaryButton>
     </div>
     <svg ref={field} role="group" aria-label={mapLabel} aria-describedby="teacher-room-help" tabIndex={0} viewBox="80 290 245 125" className="early-walk-map" onKeyDown={key}>
       <rect width="720" height="420" fill="#293e36" /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
@@ -53,9 +54,9 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={scene.text} />
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>
       {controls}
-      <button className="primary" disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</button>
-      {errors.map(error => <button key={error.operation} className="secondary" onClick={() => act(error.operation)}>{error.label}</button>)}
+      <PrimaryButton disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {errors.map(error => <SecondaryButton key={error.operation} onClick={() => act(error.operation)}>{error.label}</SecondaryButton>)}
     </section> : <section className="bond-summary"><h3>{prefix}已归档。</h3><p>{finished}</p></section>}
-    <button className="secondary" onClick={onBack}>{back} · 保留断点</button>
+    <SecondaryButton onClick={onBack}>{back} · 保留断点</SecondaryButton>
   </>
 }

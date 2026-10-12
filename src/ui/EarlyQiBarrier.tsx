@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -62,22 +63,22 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
       {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><text x={place.x} y={place.y + 43} textAnchor="middle" fill="#ead9b6" fontSize="10">{place.label}</text></g>)}
     </svg>
-    <div className="early-walk-controls" aria-label="火通道行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <button key={direction} className="secondary" aria-label={['火通道向上走', '火通道向左走', '火通道向下走', '火通道向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</button>)}</div>
+    <div className="early-walk-controls" aria-label="火通道行走操作">{(['up', 'left', 'down', 'right'] as const).map((direction, index) => <SecondaryButton key={direction} aria-label={['火通道向上走', '火通道向左走', '火通道向下走', '火通道向右走'][index]} onClick={() => move(direction)}>{['↑', '←', '↓', '→'][index]}</SecondaryButton>)}</div>
     <p role="status">门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</p>
     {scene ? near ? <section className="bond-summary" aria-label="火通道门障步骤"><SceneHeading title={scene.title} text={scene.text} />
-      {task.stage === 1 ? <div className="early-walk-controls">{[1, 2, 3, 4, 5].map(path => <button key={path} className="secondary" onClick={() => act('path', path)}>选择第{path}路</button>)}</div>
+      {task.stage === 1 ? <div className="early-walk-controls">{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</div>
         : task.stage === 6 ? <>
           {steady && <label className="setting-row"><span>破幕时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="破幕时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
           <div className="heat-meter" aria-label="破幕时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
-          {!steady && !paused && <button className="secondary" onClick={() => setPaused(true)}>暂停破幕时机</button>}
-          {paused && <><p role="status">破幕时机已暂停，需明确继续。</p><button className="secondary" onClick={() => { setMarker(.5); setPaused(false) }}>继续破幕练习</button></>}
-          <button className="primary" disabled={paused} onClick={() => act(operation)}>{actionLabel}</button>
-        </> : <button className="primary" onClick={() => act(scene.operation)}>{scene.action}</button>}
-      {task.stage >= 4 && <button className="secondary" onClick={() => act('take-scroll')}>尝试提前取卷 · 尚未择卷</button>}
+          {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停破幕时机</SecondaryButton>}
+          {paused && <><p role="status">破幕时机已暂停，需明确继续。</p><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续破幕练习</SecondaryButton></>}
+          <PrimaryButton disabled={paused} onClick={() => act(operation)}>{actionLabel}</PrimaryButton>
+        </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+      {task.stage >= 4 && <SecondaryButton onClick={() => act('take-scroll')}>尝试提前取卷 · 尚未择卷</SecondaryButton>}
     </section> : <p className="muted">下一步请走近{scene.place === 'path' ? '第三支路入口' : qiBarrierPlaces[scene.place].label}：{scene.title}。</p>
       : <section className="bond-summary"><h3>火路、门障与入室已归档。</h3><p>{state.earlyTraining.qiPavilionScroll.family === 'held' ? '后续已取得家族卷，这里保留此前破幕与入室的记录。' : '四十三号室内卷轴仍待独立取得。'}破幕不增加功法、技能、境界或奖励。</p></section>}
-    {task.stage === 6 && <button className="secondary" onClick={() => act('stop')}>停下这一轮 · 免费重新蓄势</button>}
+    {task.stage === 6 && <SecondaryButton onClick={() => act('stop')}>停下这一轮 · 免费重新蓄势</SecondaryButton>}
     <p className="muted">五条支路、门牌与门障地图是原创压缩操作；八极崩沿已有主线技能使用，不重复解锁。</p>
-    <button className="secondary" onClick={onBack}>暂离火通道 · 保留门障断点</button>
+    <SecondaryButton onClick={onBack}>暂离火通道 · 保留门障断点</SecondaryButton>
   </>
 }

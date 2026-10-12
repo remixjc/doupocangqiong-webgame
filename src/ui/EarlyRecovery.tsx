@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -44,8 +45,8 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       <text x="355" y="300" textAnchor="middle" fill="#ebd6b1" fontSize="13">原有自用容器 · {recoveryEnergyLabels[task.energy]}</text>
     </svg>
     <div className="early-walk-controls" aria-label="恢复房间位置">
-      {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => <button key={id} className="secondary"
-        aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</button>)}
+      {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => <SecondaryButton key={id}
+        aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </div>
     <p role="status">回房恢复 {task.stage}/7 · {recoveryEnergyLabels[task.energy]} · {task.period === 'reviewed' ? '持续时段已回顾' : '持续时段待回顾'} · {task.result === 'fifth-duan' ? '五段故事结果已记下' : '故事结果尚未记录'}</p>
     {scene ? station === scene.station ? <section className="bond-summary" aria-label="回房恢复步骤">
@@ -57,12 +58,12 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
         <div className="heat-meter" aria-label="恢复时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
       </>}
       {scene.operation === 'review' && <p className="muted">此处是压缩往事回顾：老师提及半月前的耐受变化，成长叙述另回顾四段后一个半月到五段。没有实际等待，也不把这一轮四次脉冲当成全部时日。调息次数与时机区间均为原创折算。</p>}
-      <button className="primary" onClick={() => submitEarlyRecovery(gameStore, position, station,
-        { step: task.stage, energy: task.energy, operation: scene.operation, marker: breathing ? marker : undefined })}>{scene.action}</button>
+      <PrimaryButton onClick={() => submitEarlyRecovery(gameStore, position, station,
+        { step: task.stage, energy: task.energy, operation: scene.operation, marker: breathing ? marker : undefined })}>{scene.action}</PrimaryButton>
     </section> : <p className="muted">下一步请到{stations[scene.station]}：{scene.title}。</p>
       : <section className="bond-summary"><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。</p>
         <p className="muted">这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</p>
-        {onConsign && <button className="primary" onClick={onConsign}>接续筹款 · 准备首次寄售</button>}</section>}
-    <button className="secondary" onClick={onBack}>暂离恢复房间 · 保留断点</button>
+        {onConsign && <PrimaryButton onClick={onConsign}>接续筹款 · 准备首次寄售</PrimaryButton>}</section>}
+    <SecondaryButton onClick={onBack}>暂离恢复房间 · 保留断点</SecondaryButton>
   </>
 }

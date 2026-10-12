@@ -1,3 +1,4 @@
+import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -56,19 +57,19 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
       </g>
     </svg>
     {canWalk && <div className="early-walk-controls">{<WalkDirectionButtons prefix="入坊" onMove={move} />}</div>}
-    {observer && scene && <button className="secondary" onClick={() => setFocus(scene.place)}>选择旁观焦点 · {marketEscortPlaces[scene.place].label}</button>}
-    {!observer && task.stage >= 18 && !returned && <button className="secondary" onClick={() => { setReturned(true); field.current?.focus() }}>回到本人视角 · 与薰儿继续同行</button>}
+    {observer && scene && <SecondaryButton onClick={() => setFocus(scene.place)}>选择旁观焦点 · {marketEscortPlaces[scene.place].label}</SecondaryButton>}
+    {!observer && task.stage >= 18 && !returned && <SecondaryButton onClick={() => { setReturned(true); field.current?.focus() }}>回到本人视角 · 与薰儿继续同行</SecondaryButton>}
     <p role="status">入坊巡卫 {task.stage}/24 · {earlyMarketEscortSaveSummary(state, state.settings)}</p>
     <p>三位跟随护卫：{task.following === 3 ? '已经进入人群' : task.stage >= 14 ? '已受命，实际跟随待续' : '尚未派出'} · 队长与其余护卫：{task.patrol ? '已接续巡逻' : '仍在原街口'}</p>
     {scene ? <section className="bond-summary"><SceneHeading title={scene.title} text={near ? scene.text : observer ? '先选择本步的旁观焦点。'
       : !canWalk ? '先明确回到本人视角，再接续两人的同行。' : `本人先走近${marketEscortPlaces[scene.place].label}。`} />
-      <button className="primary" disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</button>
-      {task.stage === 0 && <button className="secondary" disabled={!near} onClick={() => act('absorb-core')}>直接吸收魔核可行吗？</button>}
-      {task.stage === 1 && <button className="secondary" disabled={!near} onClick={() => act('collect-tax')}>能把摊主税费用于本次采购吗？</button>}
-      {task.stage === 16 && <button className="secondary" disabled={!near} onClick={() => act('recruit')}>请跟随护卫加入可用队伍</button>}
-      {task.stage === 21 && <button className="secondary" disabled={!near} onClick={() => act('claim-rank')}>凭同行评价登记新的九段成就</button>}
-      {task.stage === 23 && <button className="secondary" disabled={!near} onClick={() => act('claim-core')}>请护卫直接交付木核</button>}
+      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {task.stage === 0 && <SecondaryButton disabled={!near} onClick={() => act('absorb-core')}>直接吸收魔核可行吗？</SecondaryButton>}
+      {task.stage === 1 && <SecondaryButton disabled={!near} onClick={() => act('collect-tax')}>能把摊主税费用于本次采购吗？</SecondaryButton>}
+      {task.stage === 16 && <SecondaryButton disabled={!near} onClick={() => act('recruit')}>请跟随护卫加入可用队伍</SecondaryButton>}
+      {task.stage === 21 && <SecondaryButton disabled={!near} onClick={() => act('claim-rank')}>凭同行评价登记新的九段成就</SecondaryButton>}
+      {task.stage === 23 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>请护卫直接交付木核</SecondaryButton>}
     </section> : <section className="bond-summary"><h3>入坊与护卫安排已归档。</h3><p>两人继续寻找木核。三位护卫跟随，队长与其余人巡街；手链与实际交易另段继续。</p></section>}
-    <button className="secondary" onClick={onBack}>暂离入坊巡卫 · 保留断点</button>
+    <SecondaryButton onClick={onBack}>暂离入坊巡卫 · 保留断点</SecondaryButton>
   </>
 }
