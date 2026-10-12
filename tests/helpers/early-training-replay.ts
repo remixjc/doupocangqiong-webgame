@@ -30,6 +30,8 @@ import { marketEscortObserver } from '../../src/core/early-market-escort-state'
 import { marketEscortScenes } from '../../src/content/early-market-escort'
 import { advanceEarlyMarketSearch, marketSearchPlaces } from '../../src/core/early-market-search'
 import { marketSearchScenes } from '../../src/content/early-market-search'
+import { advanceEarlyMarketBracelets } from '../../src/core/early-market-bracelets'
+import { marketBraceletsScenes } from '../../src/content/early-market-bracelets'
 import type { GameState } from '../../src/core/model'
 import { advanceEarlyTraining, beginEarlyTraining, type EarlyTrainingAction } from '../../src/core/early-training'
 import { earlySupplies } from '../../src/core/early-training-state'
@@ -210,9 +212,15 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   }
   for (const item of ['boneflower', 'bluegrass'] as const) if (!state.earlyTraining.receipts[item])
     act({ type: 'purchase', item, price: earlySupplies[item].price, expectedSpent: state.earlyTraining.purse.spent })
+  if (includeQiAid) for (const scene of marketBraceletsScenes) {
+    const task = state.earlyTraining.marketBracelets, gift = state.earlyTraining.bracelet
+    const result = advanceEarlyMarketBracelets(state, { kind: scene.view, position: marketSearchPlaces.voice },
+      { ...task, expectedBracelet: gift.stage, expectedGift: gift.gift, actor: scene.actor, operation: scene.operation })
+    expect(result.ok, result.message).toBe(true); state = parseSave(serializeSave(result.state)); onCheckpoint?.(state)
+  }
   if (includeBracelet) {
     const market = earlyWalkPlaces.find(place => place.id === 'market')!
-    for (let stage = 0; stage < earlyBraceletScenes.length; stage++) {
+    for (let stage = state.earlyTraining.bracelet.stage; stage < earlyBraceletScenes.length; stage++) {
       const result = advanceEarlyBracelet(state, market, { stage, operation: earlyBraceletScenes[stage].operation })
       expect(result.ok, result.message).toBe(true)
       state = parseSave(serializeSave(result.state))

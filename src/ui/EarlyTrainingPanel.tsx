@@ -27,6 +27,7 @@ const EarlyMorningCard = lazy(() => loadSceneModule(() => import('./EarlyMorning
 const EarlyCityPharmacy = lazy(() => loadSceneModule(() => import('./EarlyCityPharmacy')))
 const EarlyMarketEscort = lazy(() => loadSceneModule(() => import('./EarlyMarketEscort')))
 const EarlyMarketSearch = lazy(() => loadSceneModule(() => import('./EarlyMarketSearch')))
+const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
@@ -48,6 +49,8 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy] = useState(false)
   const [marketEscort, setMarketEscort] = useState(false)
   const [marketSearch, setMarketSearch] = useState(false)
+  const [marketBracelets, setMarketBracelets] = useState(false)
+  const braceletsEntry = useRef<HTMLButtonElement>(null), returningBracelets = useRef(false)
   const searchEntry = useRef<HTMLButtonElement>(null), returningSearch = useRef(false)
   const escortEntry = useRef<HTMLButtonElement>(null), returningEscort = useRef(false)
   const cityEntry = useRef<HTMLButtonElement>(null), returningCity = useRef(false)
@@ -92,10 +95,13 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   useEffect(() => { if (!cityPharmacy && returningCity.current) { returningCity.current = false; cityEntry.current?.focus() } }, [cityPharmacy])
   useEffect(() => { if (!marketEscort && returningEscort.current) { returningEscort.current = false; escortEntry.current?.focus() } }, [marketEscort])
   useEffect(() => { if (!marketSearch && returningSearch.current) { returningSearch.current = false; searchEntry.current?.focus() } }, [marketSearch])
+  useEffect(() => { if (!marketBracelets && returningBracelets.current) { returningBracelets.current = false; braceletsEntry.current?.focus() } }, [marketBracelets])
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (marketBracelets) return <Suspense fallback={<p role="status">正在接续让路与两条手链……</p>}><EarlyMarketBracelets state={state}
+    onBack={() => { returningBracelets.current = true; setMarketBracelets(false) }} /></Suspense>
   if (marketSearch) return <Suspense fallback={<p role="status">正在接续寻核与手链摊……</p>}><EarlyMarketSearch state={state}
     onBack={() => { returningSearch.current = true; setMarketSearch(false) }} /></Suspense>
   if (marketEscort) return <Suspense fallback={<p role="status">正在接续南坊与巡卫……</p>}><EarlyMarketEscort state={state}
@@ -162,6 +168,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
     {blocked ? <p className="muted">{blocked}</p> : <>
       <p>三年约定之后，药老在后山现身，萧炎拜师。重修的下一步，是筹措资金、找到指定药材，再由老师调制供修炼使用的药液。</p>
       <p className="muted">这段往事独立记录。任务资金和材料专用于重修，不与行囊金币、灵草或魔晶混用。</p>
+      {isVisible(state, 2) && task.marketSearch.stage === 20 && <section className="bond-summary" aria-label="让路与两条手链接续">
+        <b>寻核与放回归档 · 接续街角交谈</b><p>请求让路、分别核对两条手链的提议与交付，已有唯一赠礼记录保留。</p>
+        <button ref={braceletsEntry} className="secondary" onClick={() => setMarketBracelets(true)}>接续让路与两条手链</button>
+      </section>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">
         <b>成人礼离场已归档 · 接续五天后的安排</b><p>前往功法阁测定属性，分别记录本人、薰儿与实际入阁。已有斗技堂借卷保留。</p>
