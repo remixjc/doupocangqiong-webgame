@@ -1,0 +1,239 @@
+{
+  "batch": "C11c-3a",
+  "date": "2026-10-12",
+  "version": "0.37.5",
+  "buildSha": "28b1d98029836105bb57b17762983b75ba7690b5",
+  "site": "http://127.0.0.1:4184/",
+  "difficulty": "normal",
+  "method": "independent empty browser origin; native game UI only; actual file downloads; official parseSave validates copies outside browser",
+  "checkpoints": [
+    {
+      "chapter": 1,
+      "bytes": 6246,
+      "fileSha256": "0714e88b5df0a426e81d2cde9046933aad8996db9751bf69c2dd8381672c84c4",
+      "stateSha256": "6c50295d0745b85ae8ebc1f7de91e29683c12b18fa65ee4fa830314a1384a196",
+      "gold": 250,
+      "xp": 155,
+      "inventory": {
+        "herb": 3,
+        "crystal": 3,
+        "heal": 2,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 3,
+      "totalBrews": 0,
+      "progress": {
+        "1": {
+          "herbs": 3,
+          "kills": 3,
+          "brews": 0,
+          "boss": true,
+          "intro": true,
+          "events": {
+            "yao-training": {
+              "started": true,
+              "stage": 2,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            },
+            "xuner-youth-letter": {
+              "started": false,
+              "stage": 0,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "chapter": 2,
+      "bytes": 6819,
+      "fileSha256": "e96cc39b8060bc3a152c95e09f9ba41c5f7efdf07b681b6a6a1356e2266b8d08",
+      "stateSha256": "cef3afdf8726cda1d506f26a4750e1f5006d83880da46675c303145fb2a1e449",
+      "gold": 498,
+      "xp": 345,
+      "inventory": {
+        "herb": 3,
+        "crystal": 7,
+        "heal": 0,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 7,
+      "totalBrews": 0,
+      "progress": {
+        "1": {
+          "herbs": 3,
+          "kills": 3,
+          "brews": 0,
+          "boss": true,
+          "intro": true,
+          "events": {
+            "yao-training": {
+              "started": true,
+              "stage": 2,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            },
+            "xuner-youth-letter": {
+              "started": false,
+              "stage": 0,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            }
+          }
+        },
+        "2": {
+          "herbs": 0,
+          "kills": 4,
+          "brews": 0,
+          "boss": true,
+          "intro": true,
+          "events": {
+            "three-year-vow": {
+              "started": true,
+              "stage": 3,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            },
+            "teacher-first-lessons": {
+              "started": false,
+              "stage": 0,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            }
+          }
+        }
+      }
+    },
+    {
+      "chapter": 3,
+      "bytes": 7600,
+      "fileSha256": "9d137c5949b5c819823bac90925aa8794d27623a620750d2ea9acabdc3099732",
+      "stateSha256": "bbff2727b86f5bce442c6ea88ff0d018bc926d9654479fb4f4cae66d6e662772",
+      "gold": 830,
+      "xp": 550,
+      "inventory": {
+        "herb": 1,
+        "crystal": 9,
+        "heal": 0,
+        "mana": 2,
+        "elixir": 0
+      },
+      "totalKills": 10,
+      "totalBrews": 0,
+      "progress": {
+        "1": {
+          "herbs": 3,
+          "kills": 3,
+          "brews": 0,
+          "boss": true,
+          "intro": true,
+          "events": {
+            "yao-training": {
+              "started": true,
+              "stage": 2,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            },
+            "xuner-youth-letter": {
+              "started": false,
+              "stage": 0,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            }
+          }
+        },
+        "2": {
+          "herbs": 0,
+          "kills": 4,
+          "brews": 0,
+          "boss": true,
+          "intro": true,
+          "events": {
+            "three-year-vow": {
+              "started": true,
+              "stage": 3,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            },
+            "teacher-first-lessons": {
+              "started": false,
+              "stage": 0,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            }
+          }
+        },
+        "3": {
+          "herbs": 0,
+          "kills": 3,
+          "brews": 0,
+          "boss": true,
+          "intro": true,
+          "events": {
+            "family-market-order": {
+              "started": true,
+              "stage": 2,
+              "quote": 60,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            },
+            "adult-test-stone": {
+              "started": true,
+              "stage": 4,
+              "quote": 0,
+              "score": 300,
+              "attempts": 1,
+              "choice": "none"
+            },
+            "market-competition": {
+              "started": false,
+              "stage": 0,
+              "quote": 0,
+              "score": 0,
+              "attempts": 0,
+              "choice": "none"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "chapter3RefreshEntireStateEqual": true,
+  "manualSlots": "all three empty as observed",
+  "consoleErrors": [],
+  "idleFailure": {
+    "chapter": 1,
+    "reason": "agent left character outside safe camp while reading source; not attributed to a game defect",
+    "trainingAfterRetry": "2/2 preserved"
+  },
+  "limits": [
+    "AI desktop UI play is not player Beta or physical device testing",
+    "early extended story, optional competition and companion pages not attempted",
+    "C5b leaving sigil and C6b free patrol not yet reached"
+  ]
+}
