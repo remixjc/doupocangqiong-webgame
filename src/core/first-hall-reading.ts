@@ -19,22 +19,26 @@ export type FirstHallReadingAction = FirstHallReadingState & Omit<FirstHallEntry
 export function hallReadingNear(p: EarlyWalkPosition, space: 'hall' | 'outside'): boolean {
   return space === 'hall' && hallEntryPositionValid(p) && fieldsMatch(p, hallReadingPlaces.shelf)
 }
+export function hallReadingSnapshotMatches(state: GameState, action: Omit<FirstHallReadingAction, 'actor'>): boolean {
+  const t = state.earlyTraining
+  return !!action.expectedEntry && fieldsMatch(action.expectedEntry, t.firstHallEntry)
+    && !!action.expectedMeeting && fieldsMatch(action.expectedMeeting, t.firstRoadMeeting)
+    && !!action.expectedDeparture && fieldsMatch(action.expectedDeparture, t.firstDeparture)
+    && !!action.expectedTechnique && fieldsMatch(action.expectedTechnique, t.firstTechnique)
+    && !!action.expectedTraining && fieldsMatch(action.expectedTraining, t.firstTraining)
+    && !!action.expectedIron && fieldsMatch(action.expectedIron, t.iron)
+    && !!action.expectedLedger && fieldsMatch(action.expectedLedger, marketTradeLedger(state))
+    && !!action.expectedPractice && fieldsMatch(action.expectedPractice, t.practice)
+    && !!action.expectedRecovery && fieldsMatch(action.expectedRecovery, t.recovery)
+    && !!action.expectedHall && fieldsMatch(action.expectedHall, t.hall)
+}
 export function advanceFirstHallReading(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallReadingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
   const blocked = firstHallReadingBlock(state)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstHallReading, scene = firstHallReadingScenes[task.stage]
   if (!validFirstHallReading(task) || !fieldsMatch(action, task)
-    || !action.expectedEntry || !fieldsMatch(action.expectedEntry, t.firstHallEntry)
-    || !action.expectedMeeting || !fieldsMatch(action.expectedMeeting, t.firstRoadMeeting)
-    || !action.expectedDeparture || !fieldsMatch(action.expectedDeparture, t.firstDeparture)
-    || !action.expectedTechnique || !fieldsMatch(action.expectedTechnique, t.firstTechnique)
-    || !action.expectedTraining || !fieldsMatch(action.expectedTraining, t.firstTraining)
-    || !action.expectedIron || !fieldsMatch(action.expectedIron, t.iron)
-    || !action.expectedLedger || !fieldsMatch(action.expectedLedger, marketTradeLedger(state))
-    || !action.expectedPractice || !fieldsMatch(action.expectedPractice, t.practice)
-    || !action.expectedRecovery || !fieldsMatch(action.expectedRecovery, t.recovery)
-    || !action.expectedHall || !fieldsMatch(action.expectedHall, t.hall))
+    || !hallReadingSnapshotMatches(state, action))
     return fail('阅读断点或旧材料、修炼与卷轴账已变化，请按当前记录继续。')
   if (!scene) return fail('东侧第一卷阅读已归档，西侧比赛与交涉待接续。')
   if (!hallReadingNear(p, space)) return fail('本人先实际走到堂内东侧书架前。')

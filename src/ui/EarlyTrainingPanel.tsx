@@ -33,6 +33,7 @@ const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMar
 const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
 const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
+const FirstHallMatch = lazy(() => loadSceneModule(() => import('./FirstHallMatch')))
 const FirstHallReading = lazy(() => loadSceneModule(() => import('./FirstHallReading')))
 const FirstHallEntry = lazy(() => loadSceneModule(() => import('./FirstHallEntry')))
 const FirstRoadMeeting = lazy(() => loadSceneModule(() => import('./FirstRoadMeeting')))
@@ -62,6 +63,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [cityPharmacy, setCityPharmacy, cityEntry, cityPharmacyBack] = useReturningScene()
   const [marketEscort, setMarketEscort, escortEntry, marketEscortBack] = useReturningScene()
   const [marketSearch, setMarketSearch, searchEntry, marketSearchBack] = useReturningScene()
+  const [firstHallMatch, setFirstHallMatch, hallMatchEntry, hallMatchBack] = useReturningScene()
   const [firstHallReading, setFirstHallReading, hallReadingEntry, hallReadingBack] = useReturningScene()
   const [firstHallEntry, setFirstHallEntry, hallEntryEntry, hallEntryBack] = useReturningScene()
   const [firstRoadMeeting, setFirstRoadMeeting, roadMeetingEntry, roadMeetingBack] = useReturningScene()
@@ -82,6 +84,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
+  if (firstHallMatch) return <DeferredScene message="正在接续东架旁观……"><FirstHallMatch state={state} onBack={hallMatchBack} /></DeferredScene>
   if (firstHallReading) return <DeferredScene message="正在接续东侧同一卷阅读……"><FirstHallReading state={state} onBack={hallReadingBack} /></DeferredScene>
   if (firstHallEntry) return <DeferredScene message="正在接续实际入堂……"><FirstHallEntry state={state} onBack={hallEntryBack} /></DeferredScene>
   if (firstRoadMeeting) return <DeferredScene message="正在接续石路会面……"><FirstRoadMeeting state={state} onBack={roadMeetingBack} /></DeferredScene>
@@ -230,6 +233,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
         <button ref={hallEntryEntry} className="secondary" onClick={() => setFirstHallEntry(true)}>接续实际入堂与东西分区</button>
         {task.firstHallEntry.stage === 9 && <button ref={hallReadingEntry} className="secondary" onClick={() => setFirstHallReading(true)}>接续东侧同一第一卷阅读</button>}
       </section>}
+      {isVisible(state, 2) && task.firstHallReading.stage === 8 && <button ref={hallMatchEntry} className="secondary" onClick={() => setFirstHallMatch(true)}>接续东架旁观西侧比赛</button>}
       <button ref={entry} className="secondary" onClick={() => setWalking(true)}>漫步往事准备路线</button>
       {isVisible(state, 3) && task.ceremonyVerdict.stage === 16 && <section className="bond-summary" aria-label="礼后接续">
         <b>成人礼离场已归档 · 接续五天后的安排</b><p>前往功法阁测定属性，分别记录本人、薰儿与实际入阁。已有斗技堂借卷保留。</p>

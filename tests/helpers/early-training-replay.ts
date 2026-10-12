@@ -1,3 +1,4 @@
+import { firstHallMatchStep } from './first-hall-match-replay'
 import { firstHallReadingStep } from './first-hall-reading-replay'
 import { firstHallEntryInput } from './first-hall-entry-replay'
 import { advanceFirstHallEntry, hallEntryPlaces } from '../../src/core/first-hall-entry'
@@ -329,6 +330,9 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
   }
   if (includeQiAid) while (state.earlyTraining.firstHallReading.stage < 8) {
     state = firstHallReadingStep(state); onCheckpoint?.(state)
+  }
+  if (includeQiAid) while (state.earlyTraining.firstHallMatch.stage < 12) {
+    state = firstHallMatchStep(state); onCheckpoint?.(state)
   }
   for (let step = state.earlyTraining.liquid.stage; step < 6; step++) act({ type: 'liquid', step, operation: earlyLiquidScenes[step].operation, expectedSpent: 110 })
   act({ type: 'practice', operation: 'begin', phase: 0, pulse: 0, expectedSpent: 110 })
