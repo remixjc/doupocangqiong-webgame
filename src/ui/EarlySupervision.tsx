@@ -1,3 +1,4 @@
+import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -58,7 +59,7 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
       {steady && <label className="setting-row"><span>督练承接时机<small>减弱动态：用方向键调至35%–65%后承接。当前 {Math.round(marker * 100)}%。</small></span>
         <input type="range" aria-label="督练承接时机" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />
       </label>}
-      <div className="heat-meter" aria-label="督练时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+      <TimingMeter label="督练时机指针" marker={marker} />
       {!steady && paused && <><StatusParagraph>督练时机已暂停，请确认后继续；后台时不推进。</StatusParagraph><SecondaryButton onClick={() => setPaused(false)}>继续本轮督练 · 恢复时机</SecondaryButton></>}
       <PrimaryButton ref={entry} disabled={paused} onClick={() => act('brace')}>承接第{task.pulses + 1}次斗气脉冲</PrimaryButton>
       <SecondaryButton onClick={() => act('stop')}>停练 · 免费重新准备</SecondaryButton>

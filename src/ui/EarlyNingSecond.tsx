@@ -1,3 +1,4 @@
+import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -74,7 +75,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
     {scene ? near ? <BondSummary aria-label="违规再攻步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>违规迎击时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="违规迎击时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
-        <div className="heat-meter" aria-label="违规迎击时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+        <TimingMeter label="违规迎击时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停违规迎击时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续违规迎击 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '先用八极崩迎向来拳。' : '已经对拳，仍须追加拳击才出场。'}</p>

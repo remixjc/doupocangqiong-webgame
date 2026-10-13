@@ -11,7 +11,7 @@ import { gameStore } from '../core/store'
 import { moveHallEntryWalker } from '../core/first-hall-entry'
 import { firstHallReadingBlock, hallReadingNear, hallReadingPlaces, submitFirstHallReading } from '../core/first-hall-reading'
 import { firstHallReadingScenes } from '../content/first-hall-reading'
-import { earlySnapshots } from '../core/early-snapshots'
+import { hallSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallReadingSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import SceneHeading from './SceneHeading'
@@ -32,7 +32,7 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
   }
   const act = (operation: string) => {
     if (!scene || document.hidden) return
-    submitFirstHallReading(gameStore, p, 'hall', { ...task, ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation })
+    submitFirstHallReading(gameStore, p, 'hall', { ...task, ...earlySnapshots(state, hallSnapshotKeys), actor, operation })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (!document.hidden) walkKey(event, move, () => { if (scene && near && actor === 'yan') act(scene.operation) })

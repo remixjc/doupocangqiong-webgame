@@ -10,7 +10,7 @@ import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
 import { firstHallTalkBlock, submitFirstHallTalk, type FirstHallTalkAction } from '../core/first-hall-talk'
 import { firstHallTalkScenes } from '../content/first-hall-talk'
-import { earlySnapshots } from '../core/early-snapshots'
+import { hallTalkSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallTalkSaveSummary } from '../core/save-preview'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import HistoryBlocked from './HistoryBlocked'
@@ -26,8 +26,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
   const blocked = firstHallTalkBlock(state)
   const act = (operation: string) => {
     if (!scene || document.hidden) return
-    submitFirstHallTalk(gameStore, hallReadingPlaces.shelf, 'hall', { ...task, expectedReading: { ...t.firstHallReading },
-      expectedMatch: { ...t.firstHallMatch }, ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation })
+    submitFirstHallTalk(gameStore, hallReadingPlaces.shelf, 'hall', { ...task, ...earlySnapshots(state, hallTalkSnapshotKeys), actor, operation })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (event.key.toLowerCase() !== 'e' || event.ctrlKey || event.altKey || event.metaKey || event.repeat) return

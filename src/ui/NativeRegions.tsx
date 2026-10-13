@@ -19,3 +19,11 @@ export function Eyebrow(props: ComponentProps<'span'>) {
 export function MutedParagraph(props: ComponentProps<'p'>) {
   return <p className="muted" {...props} />
 }
+
+export function TimingMeter({ label, marker }: { label: string; marker: number }) {
+  return <div className="heat-meter" aria-label={label}><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+}
+
+export function MountainStatus(props: ComponentProps<'div'>) { return <div className="mountain-status" {...props} /> }
+
+export function CampOptions(props: ComponentProps<'div'>) { return <div className="camp-options" {...props} /> }

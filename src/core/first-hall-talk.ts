@@ -1,10 +1,11 @@
+import { earlySnapshotsMatch, hallTalkSnapshotKeys } from './early-snapshots'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { firstHallMatchBlock, type FirstHallMatchAction } from './first-hall-match'
-import { hallReadingNear, hallReadingSnapshotMatches } from './first-hall-reading'
+import { hallReadingNear } from './first-hall-reading'
 import type { FirstHallReadingState } from './first-hall-reading-state'
 import { fieldsMatch } from './state-guards'
 import { firstHallTalkAt, hallTalkMinimum, validFirstHallTalk, type FirstHallTalkState } from './first-hall-talk-state'
@@ -23,9 +24,7 @@ export function advanceFirstHallTalk(state: GameState, p: EarlyWalkPosition, spa
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstHallTalk, scene = firstHallTalkScenes[task.stage]
   if (!validFirstHallTalk(task) || !fieldsMatch(action, task)
-    || !action.expectedReading || !fieldsMatch(action.expectedReading, t.firstHallReading)
-    || !action.expectedMatch || !fieldsMatch(action.expectedMatch, t.firstHallMatch)
-    || !hallReadingSnapshotMatches(state, action))
+    || !earlySnapshotsMatch(state, action, hallTalkSnapshotKeys))
     return fail('会面、阅读或旧材料与卷账已变化，请按当前断点继续。')
   if (!scene) return fail('东架会面已归档，对方靠近与两卷交涉待续。')
   if (!hallReadingNear(p, space)) return fail('本人保持堂内东架位置，不能由西场代签会面。')

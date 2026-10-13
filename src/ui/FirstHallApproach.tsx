@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
-import { earlySnapshots } from '../core/early-snapshots'
+import { hallApproachSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallApproachBlock, firstHallExitResponsePosition, submitFirstHallApproach, type FirstHallApproachAction } from '../core/first-hall-approach'
 import { firstHallApproachScene } from '../content/first-hall-approach'
 import { firstHallApproachSaveSummary } from '../core/save-preview'
@@ -35,8 +35,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
   const act = (operation: string) => {
     if (!scene || document.hidden) return
     submitFirstHallApproach(gameStore, position, outside ? 'outside' : 'hall', { ...task,
-      expectedTalk: { ...t.firstHallTalk }, expectedReading: { ...t.firstHallReading }, expectedMatch: { ...t.firstHallMatch },
-      ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation, continuation, conflict, threat, exitResponse, checkout, leaving, aftermath })
+      ...earlySnapshots(state, hallApproachSnapshotKeys), actor, operation, continuation, conflict, threat, exitResponse, checkout, leaving, aftermath })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (event.key.toLowerCase() !== 'e' || event.ctrlKey || event.altKey || event.metaKey || event.repeat) return
@@ -50,6 +49,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
     {!moving && task.stage >= 41 && <p>明确回顾当时的东架位置，后段已存堂内移步记录保持。</p>}
     {!checkout && !departing && task.stage >= 47 && <p>明确回顾登记前的断点，后段同卷借阅记录保持。</p>}
     {!departing && task.stage >= 50 && <p>明确回顾同行跨门前的位置。</p>}
+    {(t.firstHallAfternoon.stage > 0 || t.firstHallAfternoon.walk > 0) && <p>明确回顾当时堂内外位置；当前午后位置另存。</p>}
     <WalkControls>
       <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人读卷与察觉</SecondaryButton>
       <SecondaryButton aria-pressed={actor === 'ning'} onClick={() => setActor('ning')}>{aftermath ? '旁观萧宁离堂后反应' : exitResponse ? '旁观萧宁误解与脸色' : threat ? '旁观萧宁威胁与未动手' : conflict ? '旁观萧宁讥讽与提议' : continuation ? '旁观萧宁提议与说法' : '旁观萧宁整衣与行走'}</SecondaryButton>

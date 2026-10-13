@@ -1,3 +1,4 @@
+import { FIRST_HALL_AFTERNOON_VERSION } from './first-hall-afternoon-state'
 import { FIRST_HALL_APPROACH_VERSION, FIRST_HALL_FIRST_RETURN_VERSION, FIRST_HALL_CONFLICT_VERSION, FIRST_HALL_THREAT_VERSION, FIRST_HALL_EXIT_RESPONSE_VERSION, FIRST_HALL_CHECKOUT_VERSION, FIRST_HALL_LEAVING_VERSION, FIRST_HALL_AFTERMATH_VERSION } from './first-hall-approach-state'
 import { FIRST_HALL_TALK_VERSION } from './first-hall-talk-state'
 import { FIRST_HALL_MATCH_VERSION, FIRST_HALL_RETURN_VERSION } from './first-hall-match-state'
@@ -320,8 +321,10 @@ before(FIRST_HALL_MATCH_VERSION),
     before(FIRST_HALL_EXIT_RESPONSE_VERSION),
     before(FIRST_HALL_CHECKOUT_VERSION),
     before(FIRST_HALL_LEAVING_VERSION),
-    before(FIRST_HALL_AFTERMATH_VERSION))
+    before(FIRST_HALL_AFTERMATH_VERSION),
+    before(FIRST_HALL_AFTERNOON_VERSION))
   const early = s.earlyTraining, approach = early.firstHallApproach
+  if ((early.firstHallAfternoon.stage > 0 || early.firstHallAfternoon.walk > 0) && before(FIRST_HALL_AFTERNOON_VERSION)) throw new Error('整个午后记录不属于此版本。')
   function requireHistoryVersion(task: { stage: number }, threshold: number, version: string, label: string) {
     if (task.stage > threshold && before(version)) throw new Error(label + '记录不属于此版本。')
   }

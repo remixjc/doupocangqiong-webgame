@@ -11,7 +11,7 @@ import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
 import { firstHallMatchBlock, submitFirstHallMatch } from '../core/first-hall-match'
 import { firstHallMatchScene } from '../content/first-hall-match'
-import { earlySnapshots } from '../core/early-snapshots'
+import { hallSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallMatchSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import SceneHeading from './SceneHeading'
@@ -27,7 +27,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
   const act = (operation: string) => {
     if (!scene || document.hidden) return
     submitFirstHallMatch(gameStore, p, 'hall', { ...t.firstHallReading, expectedMatch: { ...task },
-      ...earlySnapshots(state, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall']), actor, operation, continuation })
+      ...earlySnapshots(state, hallSnapshotKeys), actor, operation, continuation })
   }
   const key = (event: KeyboardEvent<SVGSVGElement>) => {
     if (event.key.toLowerCase() !== 'e' || event.ctrlKey || event.altKey || event.metaKey || event.repeat) return

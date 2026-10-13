@@ -1,3 +1,4 @@
+import { CampOptions } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
@@ -70,14 +71,14 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     {event.kind === 'preparation' && progress.started && <>
       <p>练习凭证：{['器皿', '隔离区域', '观察记录'].map((label, index) => `${progress.score & (1 << index) ? '✓' : '◇'}${label}`).join(' · ')}</p>
       {progress.stage >= 2 && <p>演练风险 {progress.attempts % 3 * 35}/100 · 操作失误 {progress.attempts} 次 · 三次错误放弃当前方案，凭证保留。</p>}
-      {checkpoint === 4 && progress.stage === 2 && <div className="camp-options">
+      {checkpoint === 4 && progress.stage === 2 && <CampOptions>
         <SecondaryButton onClick={() => act({ type: 'strategy', choice: 'steady' })}>隔离方案 · 隔离 → 冷却 → 观察</SecondaryButton>
         <SecondaryButton onClick={() => act({ type: 'strategy', choice: 'premium' })}>缓释方案 · 冷却 → 观察 → 隔离</SecondaryButton>
-      </div>}
+      </CampOptions>}
       {checkpoint === 4 && progress.stage >= 3 && progress.stage <= 5 && progress.choice !== 'none' && <>
         <p>当前方案：{preparationProtocols[progress.choice].map(operation => preparationLabels[operation]).join(' → ')}。正在处理第{progress.stage - 2}步。</p>
-        <div className="camp-options">{(Object.keys(preparationLabels) as PreparationOperation[]).map(operation =>
-          <SecondaryButton key={operation} onClick={() => act({ type: 'contain', operation, stage: progress.stage, attempts: progress.attempts })}>{preparationLabels[operation]}</SecondaryButton>)}</div>
+        <CampOptions>{(Object.keys(preparationLabels) as PreparationOperation[]).map(operation =>
+          <SecondaryButton key={operation} onClick={() => act({ type: 'contain', operation, stage: progress.stage, attempts: progress.attempts })}>{preparationLabels[operation]}</SecondaryButton>)}</CampOptions>
       </>}
       {checkpoint === undefined && progress.stage === 6 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>报告准备演练 · 领取一次补给</PrimaryButton>}
       <MutedParagraph>准备演练不生产毒丹，不表示毒体已被压制或控制。</MutedParagraph>
@@ -85,19 +86,19 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     </>}
     {event.kind === 'bond' && progress.started && <>
       {checkpoint === 1 && progress.stage === 1 && <>
-        <p>{event.bond!.question}</p><div className="camp-options">{event.bond!.options.map(option =>
-          <SecondaryButton key={option.choice} onClick={() => act({ type: 'strategy', choice: option.choice })}>{option.label} · {option.reward.xp}积累 / {option.reward.heal ? `恢复丹${option.reward.heal}` : `回气丹${option.reward.mana}`}</SecondaryButton>)}</div>
+        <p>{event.bond!.question}</p><CampOptions>{event.bond!.options.map(option =>
+          <SecondaryButton key={option.choice} onClick={() => act({ type: 'strategy', choice: option.choice })}>{option.label} · {option.reward.xp}积累 / {option.reward.heal ? `恢复丹${option.reward.heal}` : `回气丹${option.reward.mana}`}</SecondaryButton>)}</CampOptions>
       </>}
       {progress.choice !== 'none' && <MutedParagraph>{event.bond!.options.find(option => option.choice === progress.choice)?.response}</MutedParagraph>}
       {checkpoint === undefined && progress.stage === 2 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>确认伙伴记录 · 领取一次补给</PrimaryButton>}
       {!done && <SecondaryButton onClick={close}>返回地图 · 继续回访</SecondaryButton>}
     </>}
-    {progress.started && event.kind === 'trade' && progress.stage === 0 && <div className="camp-options">
+    {progress.started && event.kind === 'trade' && progress.stage === 0 && <CampOptions>
       {[42, 60, 90].map(amount => <SecondaryButton key={amount} onClick={() => act({ type: 'quote', amount })}>报价 {amount} 金币</SecondaryButton>)}
-    </div>}
+    </CampOptions>}
     {progress.started && event.kind === 'trade' && progress.stage === 1 && <>
       <p>已议定 {progress.quote} 金币。灵草 {state.inventory.herb}/2 · 魔晶 {state.inventory.crystal}/1</p>
-      <div className="camp-options"><PrimaryButton onClick={() => act({ type: 'deliver' })}>交付材料 · 领取货款</PrimaryButton><SecondaryButton onClick={shop}>到坊市补货</SecondaryButton></div>
+      <CampOptions><PrimaryButton onClick={() => act({ type: 'deliver' })}>交付材料 · 领取货款</PrimaryButton><SecondaryButton onClick={shop}>到坊市补货</SecondaryButton></CampOptions>
     </>}
     {event.kind === 'stone' && progress.started && !done && <>
       <p>累计 {progress.score} / 300 分 · 完成尝试 {progress.attempts} 次</p>
@@ -109,19 +110,19 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     </>}
     {event.kind === 'stone' && done && <p>控气评分 {progress.score} / 300 · 本次练习已记录。</p>}
     {event.kind === 'competition' && progress.started && !done && <>
-      {progress.stage === 0 && <div className="camp-options">
+      {progress.stage === 0 && <CampOptions>
         <SecondaryButton onClick={() => act({ type: 'strategy', choice: 'steady' })}>稳妥供货 · 2 草 1 晶 / 70 金币</SecondaryButton>
         <SecondaryButton onClick={() => act({ type: 'strategy', choice: 'premium' })}>精品考察 · 4 草 2 晶 / 135 金币 + 修炼丹</SecondaryButton>
-      </div>}
-      {progress.stage === 4 && <><p>{progress.choice === 'premium' ? '精品' : '稳妥'}路线 · 持有灵草 {state.inventory.herb}、魔晶 {state.inventory.crystal}</p><div className="camp-options">
+      </CampOptions>}
+      {progress.stage === 4 && <><p>{progress.choice === 'premium' ? '精品' : '稳妥'}路线 · 持有灵草 {state.inventory.herb}、魔晶 {state.inventory.crystal}</p><CampOptions>
         <PrimaryButton onClick={() => act({ type: 'deliver' })}>交付竞争委托</PrimaryButton><SecondaryButton onClick={shop}>到坊市补货</SecondaryButton>
-      </div></>}
+      </CampOptions></>}
     </>}
     {event.kind === 'cave' && progress.started && !done && <>
       {checkpoint === 1 && progress.stage === 1 && <>
         <p>三符封印 {progress.score} / 3 · 复位 {progress.attempts} 次。按石刻提示选择符文。</p>
-        <div className="camp-options">{([['leaf', '叶'], ['moon', '月'], ['fire', '火']] as const).map(([symbol, label]) =>
-          <SecondaryButton key={symbol} onClick={() => act({ type: 'rune', symbol, step: progress.score })}>触碰「{label}」符</SecondaryButton>)}</div>
+        <CampOptions>{([['leaf', '叶'], ['moon', '月'], ['fire', '火']] as const).map(([symbol, label]) =>
+          <SecondaryButton key={symbol} onClick={() => act({ type: 'rune', symbol, step: progress.score })}>触碰「{label}」符</SecondaryButton>)}</CampOptions>
       </>}
       {checkpoint === undefined && progress.stage === 3 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>与小医仙会合 · 确认返程</PrimaryButton>}
     </>}
@@ -142,8 +143,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     {event.kind === 'vault' && progress.started && !done && <>
       {checkpoint === 4 && progress.stage === 4 && <>
         <p>已连通火纹 {progress.score}/3 · 尝试记录 {progress.attempts}。北铭青莲 → 南铭心炎 → 西铭星火。</p>
-        <div className="camp-options">{([['lotus', '青莲'], ['fallen', '心炎'], ['star', '星火']] as const).map(([symbol, label]) =>
-          <SecondaryButton key={symbol} onClick={() => act({ type: 'inscribe', symbol, step: progress.score })}>触碰{label}火纹</SecondaryButton>)}</div>
+        <CampOptions>{([['lotus', '青莲'], ['fallen', '心炎'], ['star', '星火']] as const).map(([symbol, label]) =>
+          <SecondaryButton key={symbol} onClick={() => act({ type: 'inscribe', symbol, step: progress.score })}>触碰{label}火纹</SecondaryButton>)}</CampOptions>
       </>}
       {checkpoint === undefined && progress.stage === 6 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>报告洞府路线 · 未发资源</PrimaryButton>}
     </>}
@@ -185,10 +186,10 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
     </>}
     {event.kind === 'auction' && progress.started && <>
       <p>可用金币 {state.gold} · {progress.stage === 2 ? `已托管 ${progress.quote}` : progress.auctionOutcome === 'won' ? '竞得旅行补给 · 已支付80金币' : progress.auctionOutcome === 'observed' ? '旁观情报 · 未支付' : '没有托管出价'}</p>
-      {checkpoint === 1 && [1, 3].includes(progress.stage) && <div className="camp-options">
+      {checkpoint === 1 && [1, 3].includes(progress.stage) && <CampOptions>
         {(progress.stage === 1 ? [40, 60, 80] : [80]).map(amount => <SecondaryButton key={amount} onClick={() => act({ type: 'bid', amount })}>出价{amount}金币 · 托管</SecondaryButton>)}
         <SecondaryButton onClick={() => act({ type: 'observe' })}>旁观退场 · 免费取得情报</SecondaryButton>
-      </div>}
+      </CampOptions>}
       {checkpoint === 1 && progress.stage === 2 && <PrimaryButton onClick={() => act({ type: 'resolve-bid' })}>查看对手回应 · 结算本次出价</PrimaryButton>}
       {checkpoint === undefined && progress.stage === 4 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>登记交易情报 · 30积累</PrimaryButton>}
     </>}
@@ -197,10 +198,10 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       {checkpoint === undefined && progress.stage === 4 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>确认决战准备</PrimaryButton>}
     </>}
     {event.kind === 'alliance' && progress.started && !done && <>
-      {checkpoint === undefined && progress.stage === 1 && <div className="camp-options">
+      {checkpoint === undefined && progress.stage === 1 && <CampOptions>
         <PrimaryButton onClick={() => { if (act({ type: 'strategy', choice: 'steady' })) close() }}>免费巡防 · 清理两处守卫</PrimaryButton>
         <SecondaryButton disabled={state.gold < 60} onClick={() => { if (act({ type: 'strategy', choice: 'premium' })) close() }}>出资补给 · 支付60金币</SecondaryButton>
-      </div>}
+      </CampOptions>}
       {progress.stage >= 2 && <p>{progress.choice === 'premium' ? '补给方案已支付60金币 · 两处物资不另扣材料' : '免费巡防 · 清理对应驻点守卫后登记'}</p>}
       {checkpoint === undefined && progress.stage === 4 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>报告筹备 · 领取{progress.choice === 'premium' ? '恢复丹2 / 回气丹1' : '恢复丹1'}与40积累</PrimaryButton>}
     </>}
@@ -208,11 +209,11 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       <p>西林札记：{progress.score & 1 ? '已取得' : '待寻找'} · 东侧联络簿：{progress.score & 2 ? '已取得' : '待寻找'} · 校对{progress.attempts}次</p>
       {progress.score & 1 ? <MutedParagraph>西林札记：先提升炼药与灵魂实力，前往圣丹城丹塔。</MutedParagraph> : null}
       {progress.score & 2 ? <MutedParagraph>东侧联络簿：营救退路仍在整理，不能仓促直闯魂殿；下一程先去丹塔。</MutedParagraph> : null}
-      {checkpoint === 3 && progress.stage === 2 && <div className="camp-options">
+      {checkpoint === 3 && progress.stage === 2 && <CampOptions>
         <PrimaryButton onClick={() => act({ type: 'lead', destination: 'danta' })}>前往丹塔 · 提升炼药与灵魂</PrimaryButton>
         <SecondaryButton onClick={() => act({ type: 'lead', destination: 'rescue' })}>立即营救 · 直接闯入魂殿</SecondaryButton>
         <SecondaryButton onClick={() => act({ type: 'lead', destination: 'thunder' })}>重返雷区 · 继续争夺</SecondaryButton>
-      </div>}
+      </CampOptions>}
       {checkpoint === undefined && progress.stage === 3 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>登记丹塔之行 · 50积累</PrimaryButton>}
     </>}
     {event.kind === 'expedition' && progress.started && !done && <>
@@ -246,8 +247,8 @@ export default function StoryEventPanel({ state, eventId, checkpoint, close, sho
       <p>已识破{progress.score}/3处 · 累计选择{progress.attempts}次 · 幻境资源不入行囊</p>
       {checkpoint === progress.stage && progress.stage >= 1 && progress.stage <= 3 && <>
         <p className="quest-hint">{event.reflections![progress.stage - 1].clue}</p>
-        <div className="camp-options">{event.reflections![progress.stage - 1].options.map(option =>
-          <SecondaryButton key={option.choice} onClick={() => act({ type: 'reflect', choice: option.choice, stage: progress.stage })}>{option.label}</SecondaryButton>)}</div>
+        <CampOptions>{event.reflections![progress.stage - 1].options.map(option =>
+          <SecondaryButton key={option.choice} onClick={() => act({ type: 'reflect', choice: option.choice, stage: progress.stage })}>{option.label}</SecondaryButton>)}</CampOptions>
       </>}
       {checkpoint === undefined && progress.stage === 4 && <PrimaryButton onClick={() => act({ type: 'deliver' })}>确认{event.title} · {event.reflectionReward === 0 ? '不发资源' : `${event.reflectionReward ?? 100}积累`}</PrimaryButton>}
     </>}

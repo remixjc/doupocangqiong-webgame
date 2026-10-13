@@ -1,3 +1,4 @@
+import { CampOptions } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { StatusParagraph } from './NativeRegions'
@@ -40,7 +41,7 @@ export function AlchemyPanel({ state }: { state: GameState }) {
     <MutedParagraph>三个阶段分别锁定火力。指针越靠近中间的金色区域，品质越高；上品额外产出一枚。丹药名称与数值为游戏设计。</MutedParagraph>
     <div className="recipe-tabs">{recipes.filter(r => unlockedChapter(state) >= r.unlock && isVisible(state, r.unlock)).map(r => <button key={r.id} className={r.id === recipeId ? 'selected' : ''} disabled={phase >= 0 && phase <= 2} onClick={() => { setRecipeId(r.id); setPhase(-1) }}>{r.name}</button>)}</div>
     <MutedParagraph>{recipe.description}</MutedParagraph><div className="ingredient-row">{(Object.entries(recipe.cost) as [ItemId, number][]).map(([id, n]) => <span key={id} className={state.inventory[id] < n ? 'insufficient' : ''}>{itemNames[id]} {state.inventory[id]} / {n}</span>)}</div>
-    {phase < 0 && <div className="alchemy-idle"><div className="cauldron">鼎</div><div className="camp-options"><PrimaryButton disabled={!preview.ok} onClick={() => { resolved.current = false; setScores([]); setPhase(0) }}>开炉 · 手动控火</PrimaryButton><SecondaryButton disabled={!preview.ok} onClick={() => gameStore.craft(recipeId, .5)}>稳火炼制 · 固定良品</SecondaryButton></div>{!preview.ok && <MutedParagraph>{preview.message}</MutedParagraph>}</div>}
+    {phase < 0 && <div className="alchemy-idle"><div className="cauldron">鼎</div><CampOptions><PrimaryButton disabled={!preview.ok} onClick={() => { resolved.current = false; setScores([]); setPhase(0) }}>开炉 · 手动控火</PrimaryButton><SecondaryButton disabled={!preview.ok} onClick={() => gameStore.craft(recipeId, .5)}>稳火炼制 · 固定良品</SecondaryButton></CampOptions>{!preview.ok && <MutedParagraph>{preview.message}</MutedParagraph>}</div>}
     {phase >= 0 && phase <= 2 && <div className="alchemy-active"><div className="cauldron burning">鼎</div><Eyebrow>第 {phase + 1} 步 / {['提炼 · 除去杂质', '融合 · 协调药性', '凝丹 · 收束火焰'][phase]}</Eyebrow>
       <HeatControl key={`${recipeId}:${phase}`} reducedMotion={state.settings.reducedMotion} alchemyPeriod={phase === 2 ? 290 : 420}
         markerLabel="炼药控火指针" inputLabel="炼药火力位置" lockLabel="锁定火力" onLock={lock} />

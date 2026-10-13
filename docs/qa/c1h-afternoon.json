@@ -1,0 +1,1197 @@
+{
+  "version": "0.77.0",
+  "date": "2026-10-13",
+  "native": [
+    {
+      "name": "afternoonMainBaseline",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848627712.json",
+      "stage": 0,
+      "walk": 0,
+      "sha256": "6c589630f847e6e47ad4c0a041f5ab04dabd9cd457ab6e8d8a6f2f273a511f76",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848674017.json",
+      "stage": 0,
+      "walk": 0,
+      "sha256": "be91891a5b22e74864e90e81527fa4fe309f73659eeb3a4e81e837c6ff3a2acc",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainLeg1Mid",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848681043.json",
+      "stage": 0,
+      "walk": 3,
+      "sha256": "04d44e6379b93e3d17dadce28baf43060e80b2fe6cc0208ff06941ba3ab51531",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainLeg1End",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848710328.json",
+      "stage": 0,
+      "walk": 6,
+      "sha256": "39aa19fc31fc0a9cd31d9e775a874acdb08453975a412c573dadf2d81981d3dc",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848720559.json",
+      "stage": 1,
+      "walk": 0,
+      "sha256": "9a4002a2dd67d650696f32770f7065df2e9a61468b977b93f994a423a5fb268d",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848731729.json",
+      "stage": 2,
+      "walk": 0,
+      "sha256": "fccb45d5da018b734f522db6ce8fb6750a47831249e72bb38b84026f51bedfcd",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainLeg2Mid",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848757057.json",
+      "stage": 2,
+      "walk": 3,
+      "sha256": "6cfa91244b99d1949a33e3531f5dffcaf67eaff5bd9a31aa0e4c6b96c8f336e4",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainLeg2End",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848767502.json",
+      "stage": 2,
+      "walk": 6,
+      "sha256": "67bab9424c6fbcc14eefbf5c6bc75e21997be8482885e732c5f76e8e14894f68",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848837473.json",
+      "stage": 3,
+      "walk": 0,
+      "sha256": "54e7bbd2e7fb73090b26dc35a62fa2df868530b22e2933cc1088aca4d7e59932",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848846715.json",
+      "stage": 4,
+      "walk": 0,
+      "sha256": "284f7a11acf36b06283d3f66ac60ffe9c5c8ead8d4d229523d802fdf949ba207",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainLeg3Mid",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848855268.json",
+      "stage": 4,
+      "walk": 3,
+      "sha256": "5fd998b97fefaa1e16abe55d1b84c360de36d2fef3b40a9474d6b3bcea63e23c",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainLeg3End",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848888348.json",
+      "stage": 4,
+      "walk": 6,
+      "sha256": "91a761acbffc6298b3170e1ff14ccc9e046a9384cdb5fd36b9cd21100eacf798",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848897648.json",
+      "stage": 5,
+      "walk": 0,
+      "sha256": "3d2a1533b8bfec1a24b2ea4fcbc1d898714bc97c9e61533336dae2ee186b1bae",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848906165.json",
+      "stage": 6,
+      "walk": 0,
+      "sha256": "fe9ae1459b335e03565fddcde0c1cd85603c723749ab9fd4ab877cd196d360a4",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848925816.json",
+      "stage": 7,
+      "walk": 0,
+      "sha256": "472869cbe2303c9556cd1bfd53d91c927254e7ab8869437a315953e152156c67",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848935064.json",
+      "stage": 8,
+      "walk": 0,
+      "sha256": "b5ba70231ad0c75a7eca78c7febe226793803bb01ca0ec30590f132ab24c0538",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848943615.json",
+      "stage": 9,
+      "walk": 0,
+      "sha256": "4d38d74ce9b830709a872abdc75004817132052faae2e452bf5ce8bdfba517aa",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainStage10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791848991182.json",
+      "stage": 10,
+      "walk": 0,
+      "sha256": "11a4e9ad49a57b0104ac91f3b4db90544808bfafa52c989281bdd6b51c673780",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849000747.json",
+      "stage": 10,
+      "walk": 0,
+      "sha256": "991f89141476e926bcdee5e1bfbfaadb6ad36abc9ceba367552c8ee4769964f0",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMainAfterOldViews",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849442316.json",
+      "stage": 10,
+      "walk": 0,
+      "sha256": "2f4abb4fa5d6d63c102f1ba9c52d9392db83a5da32573890c81af9b410e693be",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsBaseline",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849006965.json",
+      "stage": 0,
+      "walk": 0,
+      "sha256": "c9f616a6c9b72534b6c8e5b3bd04678987f9d4e41311546681e145509522a291",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsLeg1Mid",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849026848.json",
+      "stage": 0,
+      "walk": 3,
+      "sha256": "08d810a42b8d08baabded554abcdce652ec0d28cfd26f93f7555a78283cec276",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsLeg1End",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849039149.json",
+      "stage": 0,
+      "walk": 6,
+      "sha256": "a82071308a89569e202e4987b43e813f07eb10ae7897c7cf262811e725e3d425",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage1",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849048398.json",
+      "stage": 1,
+      "walk": 0,
+      "sha256": "fc65077a4a352beb6af4950ad4a3923c0532bde8e142e146d9fce1254cc19c4e",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage2",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849072617.json",
+      "stage": 2,
+      "walk": 0,
+      "sha256": "906fec760a8db454522be7d1bf2e16971fc9abe4dfe2dab42d0d751ceb6cd76a",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsLeg2Mid",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849084914.json",
+      "stage": 2,
+      "walk": 3,
+      "sha256": "bcde466918bbe5d02e35f7e2d2b658c0b51efa145985a03f2e2045417eab6360",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsLeg2End",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849096462.json",
+      "stage": 2,
+      "walk": 6,
+      "sha256": "9dfe89c965b86b3e1e0a8b4d8476a4e5ef4251f70eca01fdc996a9dc168a9d22",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage3",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849138148.json",
+      "stage": 3,
+      "walk": 0,
+      "sha256": "90b10d0f904f1010f5816cd2881934b8a48b591c875a8cd70841a6c2f81ef916",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage4",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849147400.json",
+      "stage": 4,
+      "walk": 0,
+      "sha256": "96ae8dc3811f1471defb7aa72d3f70cfb19ad8512910c456b83131b63bcc4fdf",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsLeg3Mid",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849159680.json",
+      "stage": 4,
+      "walk": 3,
+      "sha256": "973b56f518fa412e20321182f9f7a586ed37f7d85bec0df4d0d7c5c2e5928353",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsLeg3End",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849182664.json",
+      "stage": 4,
+      "walk": 6,
+      "sha256": "0cdee63b79eb85213fcf443d7b9718d12faae282790c59c874b7c2dd36d17b4e",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage5",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849191197.json",
+      "stage": 5,
+      "walk": 0,
+      "sha256": "79c8d508f727e273f113ad685909969e7fe775154da40f5dfea1b8277d17596f",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage6",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849199717.json",
+      "stage": 6,
+      "walk": 0,
+      "sha256": "786510c7c995bd9ecc3749cb38a88b758287a40bc4c2aa589f4e7b4fc5f213d4",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage7",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849234196.json",
+      "stage": 7,
+      "walk": 0,
+      "sha256": "27cb256338d8afa06078845002d32b7e4656e7f95ead51156df16db6ef676aa6",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage8",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849242713.json",
+      "stage": 8,
+      "walk": 0,
+      "sha256": "fadca3e249653c9f1d7556abb5e454ddcef4329f997d904fee6ca984f0dbf938",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage9",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849251230.json",
+      "stage": 9,
+      "walk": 0,
+      "sha256": "7f42a318f946f6b20e8228f230c9e61b5db101d28c9d08bf1dc46054df831204",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsStage10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849281348.json",
+      "stage": 10,
+      "walk": 0,
+      "sha256": "ca6b25e879e8665ee63af9f1f23bfe25fc71473907b891790626c7a0de598710",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonMaterialsAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849289847.json",
+      "stage": 10,
+      "walk": 0,
+      "sha256": "d753b54c98014a40b7ce91739c8a6d764d076ec0b076fb3ca869e693d5efdd24",
+      "rawEqualsOfficial": true,
+      "onlyAfternoonChanged": true
+    },
+    {
+      "name": "afternoonIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791849452049.json",
+      "sha256": "244feb1bd3277cd973fd35943436b471ef745299b323b36c624d5f6980485134",
+      "rawEqualsOfficial": true,
+      "entireStateEqual": true
+    }
+  ],
+  "browser": [
+    {
+      "label": "MainStart",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "午后 0/10 · 本段行走 0/6 · 整个午后 · 未参与",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 0/6 · 整个午后 · 未参与\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainRejected",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "午后 0/10 · 本段行走 0/6 · 整个午后 · 未参与",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 0/6 · 整个午后 · 未参与\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MainLeg1MidBefore",
+      "secondX": "160",
+      "secondY": "265",
+      "status": "午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 240)",
+      "yan": "translate(140 270)"
+    },
+    {
+      "label": "MainLeg1MidRefreshed",
+      "secondX": "160",
+      "secondY": "265",
+      "status": "午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 240)",
+      "yan": "translate(140 270)"
+    },
+    {
+      "label": "MainLeg1EndBefore",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6\n\n前段到达\n\n同伴与同卷随行。\n\n记下前段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainLeg1EndRefreshed",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6\n\n前段到达\n\n同伴与同卷随行。\n\n记下前段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainStage1Before",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0\n\n午后前段\n\n停留短谈，继续同行。\n\n记下午后前段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainStage1Refreshed",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0\n\n午后前段\n\n停留短谈，继续同行。\n\n记下午后前段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainStage2Before",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainStage2Refreshed",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainLeg2MidBefore",
+      "secondX": "200",
+      "secondY": "145",
+      "status": "午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3\n\n沿山路同行\n\n下一步向左走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(205 120)",
+      "yan": "translate(180 150)"
+    },
+    {
+      "label": "MainLeg2MidRefreshed",
+      "secondX": "200",
+      "secondY": "145",
+      "status": "午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3\n\n沿山路同行\n\n下一步向左走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(205 120)",
+      "yan": "translate(180 150)"
+    },
+    {
+      "label": "MainLeg2EndBefore",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6\n\n中段到达\n\n曲折山路走完。\n\n记下中段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MainLeg2EndRefreshed",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6\n\n中段到达\n\n曲折山路走完。\n\n记下中段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MainStage3Before",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0\n\n午后中段\n\n树影移动，交谈继续。\n\n记下午后中段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MainStage3Refreshed",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0\n\n午后中段\n\n树影移动，交谈继续。\n\n记下午后中段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MainStage4Before",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MainStage4Refreshed",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MainLeg3MidBefore",
+      "secondX": "240",
+      "secondY": "105",
+      "status": "午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3\n\n沿山路同行\n\n下一步向下走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 80)",
+      "yan": "translate(220 110)"
+    },
+    {
+      "label": "MainLeg3MidRefreshed",
+      "secondX": "240",
+      "secondY": "105",
+      "status": "午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3\n\n沿山路同行\n\n下一步向下走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 80)",
+      "yan": "translate(220 110)"
+    },
+    {
+      "label": "MainLeg3EndBefore",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6\n\n后段到达\n\n同伴仍在身侧。\n\n记下后段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainLeg3EndRefreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6\n\n后段到达\n\n同伴仍在身侧。\n\n记下后段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage5Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0\n\n午后后段\n\n三段时光，夜色待续。\n\n记下午后后段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage5Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0\n\n午后后段\n\n三段时光，夜色待续。\n\n记下午后后段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage6Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n暮色初现\n\n山间渐暗。\n\n记下暮色初现\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage6Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n暮色初现\n\n山间渐暗。\n\n记下暮色初现\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage7Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n山间天黑\n\n仍在山上，回房另续。\n\n记下山间天黑\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage7Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n山间天黑\n\n仍在山上，回房另续。\n\n记下山间天黑\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage8Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n整个午后回顾\n\n三路段、三时段与夜色齐备。\n\n记下整个午后回顾\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage8Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n整个午后回顾\n\n三路段、三时段与夜色齐备。\n\n记下整个午后回顾\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage9Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n午后与天黑归档\n\n山上位置保留。\n\n记下午后与天黑归档\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage9Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n午后与天黑归档\n\n山上位置保留。\n\n记下午后与天黑归档\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage10Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStage10Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainCompletedReopened",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStart",
+      "secondX": "80",
+      "secondY": "305",
+      "status": "午后 0/10 · 本段行走 0/6 · 整个午后 · 未参与",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 0/6 · 整个午后 · 未参与\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    {
+      "label": "MaterialsLeg1MidBefore",
+      "secondX": "160",
+      "secondY": "265",
+      "status": "午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 240)",
+      "yan": "translate(140 270)"
+    },
+    {
+      "label": "MaterialsLeg1MidRefreshed",
+      "secondX": "160",
+      "secondY": "265",
+      "status": "午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 3/6 · 整个午后 · 午后前段 / 路段0/3 · 在途3\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 240)",
+      "yan": "translate(140 270)"
+    },
+    {
+      "label": "MaterialsLeg1EndBefore",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6\n\n前段到达\n\n同伴与同卷随行。\n\n记下前段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsLeg1EndRefreshed",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 0/10 · 本段行走 6/6 · 整个午后 · 午后前段 / 路段0/3 · 在途6\n\n前段到达\n\n同伴与同卷随行。\n\n记下前段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsStage1Before",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0\n\n午后前段\n\n停留短谈，继续同行。\n\n记下午后前段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsStage1Refreshed",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 1/10 · 本段行走 0/0 · 整个午后 · 午后前段 / 路段1/3 · 在途0\n\n午后前段\n\n停留短谈，继续同行。\n\n记下午后前段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsStage2Before",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsStage2Refreshed",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 0/6 · 整个午后 · 午后中段 / 路段1/3 · 在途0\n\n沿山路同行\n\n下一步向上走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsLeg2MidBefore",
+      "secondX": "200",
+      "secondY": "145",
+      "status": "午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3\n\n沿山路同行\n\n下一步向左走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(205 120)",
+      "yan": "translate(180 150)"
+    },
+    {
+      "label": "MaterialsLeg2MidRefreshed",
+      "secondX": "200",
+      "secondY": "145",
+      "status": "午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 3/6 · 整个午后 · 午后中段 / 路段1/3 · 在途3\n\n沿山路同行\n\n下一步向左走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(205 120)",
+      "yan": "translate(180 150)"
+    },
+    {
+      "label": "MaterialsLeg2EndBefore",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6\n\n中段到达\n\n曲折山路走完。\n\n记下中段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MaterialsLeg2EndRefreshed",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 2/10 · 本段行走 6/6 · 整个午后 · 午后中段 / 路段1/3 · 在途6\n\n中段到达\n\n曲折山路走完。\n\n记下中段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MaterialsStage3Before",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0\n\n午后中段\n\n树影移动，交谈继续。\n\n记下午后中段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MaterialsStage3Refreshed",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 3/10 · 本段行走 0/0 · 整个午后 · 午后中段 / 路段2/3 · 在途0\n\n午后中段\n\n树影移动，交谈继续。\n\n记下午后中段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MaterialsStage4Before",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MaterialsStage4Refreshed",
+      "secondX": "160",
+      "secondY": "65",
+      "status": "午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 0/6 · 整个午后 · 午后后段 / 路段2/3 · 在途0\n\n沿山路同行\n\n下一步向右走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(165 40)",
+      "yan": "translate(140 70)"
+    },
+    {
+      "label": "MaterialsLeg3MidBefore",
+      "secondX": "240",
+      "secondY": "105",
+      "status": "午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3\n\n沿山路同行\n\n下一步向下走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 80)",
+      "yan": "translate(220 110)"
+    },
+    {
+      "label": "MaterialsLeg3MidRefreshed",
+      "secondX": "240",
+      "secondY": "105",
+      "status": "午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 3/6 · 整个午后 · 午后后段 / 路段2/3 · 在途3\n\n沿山路同行\n\n下一步向下走。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(245 80)",
+      "yan": "translate(220 110)"
+    },
+    {
+      "label": "MaterialsLeg3EndBefore",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6\n\n后段到达\n\n同伴仍在身侧。\n\n记下后段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsLeg3EndRefreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 4/10 · 本段行走 6/6 · 整个午后 · 午后后段 / 路段2/3 · 在途6\n\n后段到达\n\n同伴仍在身侧。\n\n记下后段到达\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage5Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0\n\n午后后段\n\n三段时光，夜色待续。\n\n记下午后后段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage5Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 5/10 · 本段行走 0/0 · 整个午后 · 午后后段 / 路段3/3 · 在途0\n\n午后后段\n\n三段时光，夜色待续。\n\n记下午后后段\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage6Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n暮色初现\n\n山间渐暗。\n\n记下暮色初现\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage6Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 6/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n暮色初现\n\n山间渐暗。\n\n记下暮色初现\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage7Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n山间天黑\n\n仍在山上，回房另续。\n\n记下山间天黑\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage7Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 7/10 · 本段行走 0/0 · 整个午后 · 暮色断点 / 路段3/3 · 在途0\n\n山间天黑\n\n仍在山上，回房另续。\n\n记下山间天黑\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage8Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n整个午后回顾\n\n三路段、三时段与夜色齐备。\n\n记下整个午后回顾\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage8Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 8/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n整个午后回顾\n\n三路段、三时段与夜色齐备。\n\n记下整个午后回顾\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage9Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n午后与天黑归档\n\n山上位置保留。\n\n记下午后与天黑归档\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage9Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 9/10 · 本段行走 0/0 · 整个午后 · 天黑，完整回顾待续 / 路段3/3 · 在途0\n\n午后与天黑归档\n\n山上位置保留。\n\n记下午后与天黑归档\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage10Before",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsStage10Refreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsCompletedReopened",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainFinalStable",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsFinalStable",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "text": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    }
+  ],
+  "refreshes": 32,
+  "walksPerBranch": 18,
+  "narrativeStagesPerBranch": 10,
+  "capacity": {
+    "inverse": [
+      {
+        "file": "src/ui/App.tsx",
+        "nodes": 19,
+        "sha256": "91f031dffa9096e410cfc2a63e137b46c119b4168fd152db04011988381d8501"
+      },
+      {
+        "file": "src/ui/Panels.tsx",
+        "nodes": 1,
+        "sha256": "b49b602b996a1beec3d9bf8e557f56a8c59d322215ba6f62e5760dbbca60871b"
+      },
+      {
+        "file": "src/ui/StoryEventPanel.tsx",
+        "nodes": 13,
+        "sha256": "04c80cef0a264f112e7de97f9bdc37180d27fb1ba89fcc1efd4fc9a369f87333"
+      },
+      {
+        "file": "src/ui/EarlyEighthTraining.tsx",
+        "nodes": 1,
+        "sha256": "a6ef1bb15c46b92be7166b1a5e327cf0a40418d674c0ddac10c5c3f904f0edb9"
+      },
+      {
+        "file": "src/ui/EarlyForestStrike.tsx",
+        "nodes": 1,
+        "sha256": "fbc0c5cd29d4c88ff32221dce77db5d11e047f23dd28ab1a5ed10d5b8e7500d1"
+      },
+      {
+        "file": "src/ui/EarlyKeChallenge.tsx",
+        "nodes": 1,
+        "sha256": "95e8a5fe9f7b3970d2a59735b29f0ada9eff5021fd4e3b7865bf0ad7a27469a3"
+      },
+      {
+        "file": "src/ui/EarlyNingFirst.tsx",
+        "nodes": 1,
+        "sha256": "2194f8385bb583e3b6e4b925f30e1448f27e6984465938c7cc511f02277a0aef"
+      },
+      {
+        "file": "src/ui/EarlyNingSecond.tsx",
+        "nodes": 1,
+        "sha256": "5e572f9b362497b5f9dcfdc3f08c6f46cbc58bbf8612ad1a2ce44d73b516963d"
+      },
+      {
+        "file": "src/ui/EarlyPalmPair.tsx",
+        "nodes": 1,
+        "sha256": "14e5333bf230cc710c0c292e23f27a22293aa44957020d22190b78896ab4ce7a"
+      },
+      {
+        "file": "src/ui/EarlyQiAid.tsx",
+        "nodes": 1,
+        "sha256": "52669494427d80b44abb2c9b678257daf11d1e6124b6d7bedc3d565f0cd1a76f"
+      },
+      {
+        "file": "src/ui/EarlyQiBarrier.tsx",
+        "nodes": 1,
+        "sha256": "3e1d49d4e6608d95ad34ebc34d6f7f0339055e8d1ee5e6890854ec9134620c21"
+      },
+      {
+        "file": "src/ui/EarlyRecovery.tsx",
+        "nodes": 1,
+        "sha256": "607e69b9aade52f957b92ee252df2fb38e5e22c4dbd33ee24d68e23319000d35"
+      },
+      {
+        "file": "src/ui/EarlySeventhRoom.tsx",
+        "nodes": 1,
+        "sha256": "162548c38854b850a0cc48e93649478dd74b134007d6627900e53f09d89869b2"
+      },
+      {
+        "file": "src/ui/EarlySupervision.tsx",
+        "nodes": 1,
+        "sha256": "6a4806c6caaa093b1bf8e7eb93ab99a395d9b04f98ae015e36a2a49399eef859"
+      }
+    ],
+    "meterFiles": 11,
+    "regionFiles": 3,
+    "decoded": 204,
+    "snapshotOld10Equal": true,
+    "snapshot14MissingRejected": true,
+    "regionsPropsRefCallbacksEqual": true,
+    "timingNativeTreeEqual": true,
+    "snapshotsEdits": 22
+  },
+  "isolation": {
+    "oldLeaving": "同行与实际离堂 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+    "oldAfter": {
+      "historical": true,
+      "ning": "translate(450 280)",
+      "status": "离堂后萧宁反应 4/4 · 堂内反应 · 轻掌印归档，午后待续",
+      "xuner": "translate(85 280)",
+      "yan": "translate(60 310)"
+    },
+    "isolated": {
+      "normal": true,
+      "alerts": 0,
+      "entry": 0
+    }
+  },
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "vitest": {
+    "files": 154,
+    "tests": 913
+  },
+  "nodeTests": 11,
+  "budget": {
+    "initial": 488702,
+    "gzip": 163611,
+    "total": 1849692,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "prerequisite": {
+    "sha": "6f1a7537a350944f9e3e4789c4eca4cc97aee70f",
+    "ci": 38322501984,
+    "conclusion": "success",
+    "pages": 38322501755,
+    "pagesConclusion": "skipped",
+    "files": 119,
+    "bytes": 1979001
+  },
+  "limitations": "Original mountain routes and narrative game periods, not elapsed computer-wall-clock afternoon. No room-return/tea/fatigue/teaching or reward advance. Chinese/current anime and real devices remain unverified. Four failed budget candidates retained in private logs; never raised budgets. Stage9 initial browser summary said review pending despite reviewed=true; corrected summary verified by actual official state and stable terminal reload, not fabricated historical screenshot."
+}

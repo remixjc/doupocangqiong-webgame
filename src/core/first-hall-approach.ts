@@ -1,10 +1,11 @@
+import { earlySnapshotsMatch, hallApproachSnapshotKeys } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
 import type { EarlyWalkPosition } from './early-walk'
 import { firstHallTalkBlock, type FirstHallTalkAction } from './first-hall-talk'
 import type { FirstHallTalkState } from './first-hall-talk-state'
-import { hallReadingNear, hallReadingSnapshotMatches } from './first-hall-reading'
+import { hallReadingNear } from './first-hall-reading'
 import { fieldsMatch } from './state-guards'
 import { firstHallApproachAt, validFirstHallApproach, type FirstHallApproachState } from './first-hall-approach-state'
 import { firstHallApproachScene } from '../content/first-hall-approach'
@@ -45,10 +46,7 @@ export function advanceFirstHallApproach(state: GameState, p: EarlyWalkPosition,
   if (action.exitResponse && (action.continuation || action.conflict || action.threat)) return fail('按独立堂内移步断点继续。')
   if (action.checkout && (action.continuation || action.conflict || action.threat || action.exitResponse)) return fail('按独立同卷登记断点继续。')
   if (!validFirstHallApproach(task) || !fieldsMatch(action, task)
-    || !action.expectedTalk || !fieldsMatch(action.expectedTalk, t.firstHallTalk)
-    || !action.expectedReading || !fieldsMatch(action.expectedReading, t.firstHallReading)
-    || !action.expectedMatch || !fieldsMatch(action.expectedMatch, t.firstHallMatch)
-    || !hallReadingSnapshotMatches(state, action)) return fail('靠近、问答或旧卷账已变化，请按当前断点继续。')
+    || !earlySnapshotsMatch(state, action, hallApproachSnapshotKeys)) return fail('靠近、问答或旧卷账已变化，请按当前断点继续。')
   if (!scene) return fail('本段已归档，后续动作另存。')
   if (action.exitResponse || action.checkout || action.leaving || action.aftermath ? space !== ((action.leaving || action.aftermath) && task.yan === 'outside' ? 'outside' : 'hall') || !fieldsMatch(p, firstHallExitResponsePosition(task)) : !hallReadingNear(p, space))
     return fail('按本人已存位置与空间继续。')

@@ -1,3 +1,4 @@
+import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -76,7 +77,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       {task.stage === 1 ? <WalkControls>{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</WalkControls>
         : task.stage === 6 ? <>
           {steady && <label className="setting-row"><span>破幕时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="破幕时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
-          <div className="heat-meter" aria-label="破幕时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+          <TimingMeter label="破幕时机指针" marker={marker} />
           {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停破幕时机</SecondaryButton>}
           {paused && <><StatusParagraph>破幕时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续破幕练习</SecondaryButton></>}
           <PrimaryButton disabled={paused} onClick={() => act(operation)}>{actionLabel}</PrimaryButton>

@@ -1,3 +1,4 @@
+import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -74,7 +75,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
     {scene ? near ? <BondSummary aria-label="萧宁首轮步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
         {steady && <label className="setting-row"><span>萧宁首轮时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧宁首轮时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
-        <div className="heat-meter" aria-label="萧宁首轮时机指针"><div className="heat-target" style={{ left: '35%', width: '30%' }} /><i style={{ left: `${marker * 100}%` }} /></div>
+        <TimingMeter label="萧宁首轮时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停萧宁首轮时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续萧宁首轮 · 恢复时机</SecondaryButton></>}
         <p>{task.beats === 0 ? '先吹火掌推退来袭。' : task.beats === 1 ? '再吸掌拉近对手。' : '最后吹火掌推出，仍须等待裁判。'}</p>

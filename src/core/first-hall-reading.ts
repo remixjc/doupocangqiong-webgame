@@ -7,7 +7,7 @@ import type { FirstHallEntryAction } from './first-hall-entry'
 import { firstHallEntryBlock, hallEntryPlaces, hallEntryPositionValid } from './first-hall-entry'
 import type { FirstHallEntryState } from './first-hall-entry-state'
 import { fieldsMatch } from './state-guards'
-import { earlySnapshotsMatch } from './early-snapshots'
+import { hallSnapshotKeys, earlySnapshotsMatch } from './early-snapshots'
 import { firstHallReadingAt, validFirstHallReading, type FirstHallReadingState } from './first-hall-reading-state'
 import { firstHallReadingScenes } from '../content/first-hall-reading'
 export const hallReadingPlaces = { start: hallEntryPlaces.entry, shelf: { x: 400, y: 250 } }
@@ -21,7 +21,7 @@ export function hallReadingNear(p: EarlyWalkPosition, space: 'hall' | 'outside')
   return space === 'hall' && hallEntryPositionValid(p) && fieldsMatch(p, hallReadingPlaces.shelf)
 }
 export function hallReadingSnapshotMatches(state: GameState, action: Omit<FirstHallReadingAction, keyof FirstHallReadingState | 'actor'>): boolean {
-  return earlySnapshotsMatch(state, action, ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall'])
+  return earlySnapshotsMatch(state, action, hallSnapshotKeys)
 }
 export function advanceFirstHallReading(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallReadingAction): Transaction {
   const fail = (message: string): Transaction => ({ state, ok: false, message })
