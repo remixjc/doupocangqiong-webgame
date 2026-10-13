@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -47,7 +48,7 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
       <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">待售实例保管：{appraisalOwnerLabels[bottle.owner]}</MapText>
     </svg>
     <WalkControls aria-label="鉴定路线位置">
-      {(Object.keys(stations) as AppraisalStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as AppraisalStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>寄售鉴定 {task.stage}/8 · {task.cloaked ? '黑袍已穿' : '身份尚未遮掩'} · {task.tier === 2 ? '制品二品' : '品阶待核'} · {task.card === 'black-entry' ? '持黑色入场卡' : '尚无入场卡'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="寄售鉴定步骤">

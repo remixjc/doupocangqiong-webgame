@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -71,7 +72,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
     {scene && <WalkControls>{<WalkDirectionButtons prefix="发现" onMove={move} />}</WalkControls>}
     <StatusParagraph>{returning ? '回族房中' : trade ? '唯一成交' : '摊位发现'} {task.stage}/{returning ? 9 : trade ? 17 : 10} · {(returning ? earlyMarketReturnSaveSummary : trade ? earlyMarketTradeSaveSummary : earlyMarketDiscoverySaveSummary)(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : returning ? '先由本步人物实际走到当前地点。' : trade && task.stage >= 13 ? '先由本人带薰儿实际走到离摊标记。' : '先由本人带薰儿走近前方摊位。')}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {!trade && !returning && <>
         {task.stage === 2 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>看见绿核就算已经买到</SecondaryButton>}
         {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('claim-iron')}>看见铁片就将附物再发一份</SecondaryButton>}

@@ -1,8 +1,10 @@
+import { actorButton } from './Buttons'
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -40,7 +42,7 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       near={near} onMove={move} onInteract={() => { if (scene) act(scene.operation) }} />
     {observer && scene && <WalkControls aria-label="旁观焦点选择">
       {(['guests', 'father', 'entrance', 'xuner', 'outside'] as const).map(id =>
-        <SecondaryButton key={id} aria-pressed={focus === id} onClick={() => setFocus(id)}>旁观 · {familyContractPlaces[id].label}</SecondaryButton>)}
+        actorButton(focus, setFocus, id, ['旁观 · ', familyContractPlaces[id].label], id))}
     </WalkControls>}
     <StatusParagraph>文书与离厅 {task.stage}/33 · {earlyFamilyContractSaveSummary(state, state.settings)}</StatusParagraph>
     <p>三年条件：{task.challenge === 'pledged' ? '本人已向父亲承诺赴约' : task.challenge === 'renewed' ? '再次约定，尚待本人向父亲承诺' : task.challenge === 'proposed' ? '仅提出，尚未亲口承诺' : '尚未提出'} · 文书：{{
@@ -49,7 +51,7 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
     {scene ? <BondSummary>
       {sceneHeading(scene, near ? scene.text : observer
         ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 7 && <>
         <SecondaryButton disabled={!near} onClick={() => act('start-duel')}>尝试今日直接决斗</SecondaryButton>
         <SecondaryButton disabled={!near} onClick={() => act('claim-victory')}>尝试提前登记胜利领奖</SecondaryButton>

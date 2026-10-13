@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
@@ -55,7 +56,7 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
       <MapText x="360" y="291" fill="#e5d5b7" fontSize="13">{seventhEnergyLabels[task.energy]} · {task.result === 'none' ? '尚待合法感知结果' : '本轮故事七段'}</MapText>
     </svg>
     <WalkControls aria-label="七段房中位置">
-      {(Object.keys(stations) as SeventhStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as SeventhStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>房中七段 {task.stage}/8 · 调息 {task.beats}/{task.stage <= 3 ? 2 : 3} · 补液 {task.drops}/1 滴 · 重试 {task.attempts} 次 · {task.result === 'none' ? '故事七段未成立' : '故事七段已成立'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="七段房中步骤">{sceneHeading(scene)}

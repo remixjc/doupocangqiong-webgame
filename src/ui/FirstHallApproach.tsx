@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -13,7 +14,7 @@ import { hallApproachSnapshotKeys, earlySnapshots } from '../core/early-snapshot
 import { firstHallApproachBlock, firstHallExitResponsePosition, submitFirstHallApproach, type FirstHallApproachAction } from '../core/first-hall-approach'
 import { firstHallApproachScene } from '../content/first-hall-approach'
 import { firstHallApproachSaveSummary } from '../core/save-preview'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { HallText } from './MapPrimitives'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
@@ -86,7 +87,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
     {current && <p>{task.ownPlaced ? '当前她自己的临时卷已经放下，旧会面拿卷历史保持。' : '她自己的临时卷仍在手中。'}切磋与未来威胁没有当前开战。</p>}
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前人物正确。' : '请切换到本步人物。'}</p>
-      <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, actor !== scene.actor, act)}
       <SecondaryButton onClick={() => act('return')}>把收卷当成第一卷已归架</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>{current ? '把她放下的卷交给本人' : '提前取本人第二卷'}</SecondaryButton>
     </BondSummary> : <BondSummary><h3>{prefix}已归档。</h3><p>{aftermath ? '萧宁反应已归档，整个午后另续。' : leaving ? '已离堂，午后与回房另续。' : checkout ? '同一第二卷借阅已归档。同行交谈与实际跨门另续。' : exitResponse ? '本人已到堂内入口，同一第二卷尚未登记；同行与实际离堂待续。' : threat ? '未来威胁已归档，当前未登记或离堂。' : conflict ? '本人第二卷与她的临时卷独立。未来威胁、实际离堂待续。' : continuation ? '第一卷已归架，后续交锋与第二卷待续。' : '萧宁已到东架前，第一卷仅卷起。提议与实际归架待续。'}</p></BondSummary>}

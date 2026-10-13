@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
@@ -61,7 +62,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>
       {controls}
-      <PrimaryButton disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !close || !selected, act)}
       {errors.map(error => <SecondaryButton key={error.operation} onClick={() => act(error.operation)}>{error.label}</SecondaryButton>)}
     </BondSummary> : <BondSummary><h3>{prefix}已归档。</h3><p>{finished}</p></BondSummary>}
     <SecondaryButton onClick={onBack}>{back} · 保留断点</SecondaryButton>

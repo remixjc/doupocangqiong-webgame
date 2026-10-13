@@ -1,7 +1,8 @@
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -33,7 +34,7 @@ export default function EarlyFamilyCompensation({ state, onBack }: { state: Game
     <StatusParagraph>交涉 {task.stage}/15 · {task.objection === 'spoken' ? '本人已提出异议' : '尚待本人发言'} · {task.consent === 'not-given' ? '祖父未同意' : task.consent === 'asked' ? '已询问，尚待答复' : '祖辈同意尚未询问'} · {task.extra === 'offered' ? '追加条件仅提议、未领物' : '追加条件尚未提出'}</StatusParagraph>
     {scene ? <BondSummary>
       {sceneHeading(scene, near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {near && task.stage === 1 && <SecondaryButton onClick={() => act('claim-alchemist')}>把读懂条件算作已成为炼药师</SecondaryButton>}
       {near && task.stage === 13 && <>
         <SecondaryButton onClick={() => act('take-extra')}>把追加三枚登记为已领取</SecondaryButton>

@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -14,7 +15,7 @@ import { firstHallTalkBlock, submitFirstHallTalk, type FirstHallTalkAction } fro
 import { firstHallTalkScenes } from '../content/first-hall-talk'
 import { hallTalkSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallTalkSaveSummary } from '../core/save-preview'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
@@ -67,7 +68,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
     <p>{t.firstHallReading.record === 'recalled' || t.hall.stage >= 6 ? '明确回顾当时第一卷，现有更高卷账不回退。' : '本人仍持同一第一卷。'}薰儿的卷{task.ownScroll === 'xuner' ? '由她临时拿看' : '尚在架上'}；旧卷账 {t.hall.stage}/9。借资{t.purse.borrowed}、已付{t.purse.spent}保持。</p>
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前人物正确。' : '请明确切换到本步人物。'}</p>
-      <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, actor !== scene.actor, act)}
       <SecondaryButton onClick={() => act('repay')}>把玩笑当作已还款</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>把她的卷记作本人第二卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>东架会面已归档。</h3><p>临时阅读卷仍由薰儿拿看，萧宁仍在西场。靠近与两卷交涉待续。</p></BondSummary>}

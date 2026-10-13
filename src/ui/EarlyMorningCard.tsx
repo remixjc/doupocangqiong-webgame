@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -6,7 +7,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -60,7 +61,7 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent} · {task.funds === 'existing' ? '旧账衔接，没有再发160' : task.funds === 'credited' ? '本人接卡时唯一折算160已入账' : '本段还未办理接卡到账，旧账保持'}</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : `本人先走近${morningCardPlaces[scene.place].label}。`)}
       {task.stage === 8 && !ledger.started && <><p>准备单尚未接取。接卡需先明确建立独立采购账，不会重发主线奖励。</p><SecondaryButton disabled={!near} onClick={() => gameStore.beginEarlyTraining()}>记下重修准备 · 再接普通黑卡</SecondaryButton></>}
-      <PrimaryButton disabled={!near || task.stage === 8 && !ledger.started} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near || task.stage === 8 && !ledger.started, act)}
       {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('claim-savings')}>尝试把旧积蓄新增为400金币</SecondaryButton>}
       {task.stage === 8 && <SecondaryButton disabled={!near} onClick={() => act('claim-purple')}>尝试将普通黑卡登记为紫金卡</SecondaryButton>}
       {task.stage === 10 && <SecondaryButton disabled={!near} onClick={() => act('claim-capacity')}>尝试按普通卡容量领取5000</SecondaryButton>}

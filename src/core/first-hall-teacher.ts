@@ -1,3 +1,4 @@
+import { hasHallMode } from './early-snapshots'
 import { successfulTransaction } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -24,7 +25,7 @@ export function advanceFirstHallTeacher(state: GameState, p: EarlyWalkPosition, 
     || !fieldsMatch(action, task) || !earlySnapshotsMatch(state, action, hallTeacherSnapshotKeys)
     || !fieldsMatch(p, { x: task.x, y: task.y }) || space !== task.location
     || action.actor !== scene.actor || action.operation !== scene.operation
-    || ['continuation', 'conflict', 'threat', 'exitResponse', 'checkout', 'leaving', 'aftermath'].some(key => (action as unknown as Record<string, unknown>)[key]))
+    || hasHallMode(action))
     return fail('按房中本人位置、当前人物与有限问答断点继续。')
   const next = structuredClone(state)
   next.earlyTraining.firstHallTeacher = firstHallTeacherAt(task.stage + 1, source === 'recalled' ? 'recalled' : 'current')

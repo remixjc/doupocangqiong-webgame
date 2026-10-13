@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -45,7 +46,7 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
       <MapText x="360" y="262" fill="#e8d1a6" fontSize="13">另购批次 · 八个月用量是故事概述 · 分拣位置为原创布局</MapText>
     </svg>
     <WalkControls aria-label="长期物资位置">
-      {(Object.keys(stations) as LongSupplyStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as LongSupplyStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>物资归档 {task.stage}/6 · 药材包{places[task.herbs]} · 魔核包{places[task.cores]}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="物资归档步骤">

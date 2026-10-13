@@ -1,7 +1,8 @@
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -34,7 +35,7 @@ export default function EarlyApprentice({ state, onBack }: { state: GameState; o
     <p>{task.stage === 25 ? '本段当时记录 · ' : ''}当前称呼：{task.name === 'yaolao' ? '药老 · 本人行礼后已听名字' : '古戒老人 · 姓名未报'} · 取气边界：{task.promise === 'permission-required' ? '未经许可不取气，本人未授许可' : '尚待老人承诺'} · 古戒：仍在老人处浮空</p>
     <p>一年七段：{task.target ? '故事目标，尚未由本段达成' : '尚未提出'} · 本人：{task.rite === 'bowed' ? '已正式行礼' : task.choice === 'willing' ? '愿学，尚未行礼' : '尚未表达愿学'}</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 1 && <SecondaryButton disabled={!near} onClick={() => act('grant-permission')}>尝试把承诺算作已授取气许可</SecondaryButton>}
       {task.stage === 4 && <SecondaryButton disabled={!near} onClick={() => act('claim-seven')}>尝试把一年目标登记为已到七段</SecondaryButton>}
       {task.stage === 14 && <SecondaryButton disabled={!near} onClick={() => act('claim-profession')}>尝试把资质登记为已成为炼药师</SecondaryButton>}

@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -82,7 +83,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
           {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停破幕时机</SecondaryButton>}
           {paused && <><StatusParagraph>破幕时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续破幕练习</SecondaryButton></>}
           <PrimaryButton disabled={paused} onClick={() => act(operation)}>{actionLabel}</PrimaryButton>
-        </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+        </> : sceneButton(scene, undefined, act)}
       {task.stage >= 4 && <SecondaryButton onClick={() => act('take-scroll')}>尝试提前取卷 · 尚未择卷</SecondaryButton>}
     </BondSummary> : <MutedParagraph>下一步请走近{scene.place === 'path' ? '第三支路入口' : qiBarrierPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>火路、门障与入室已归档。</h3><p>{state.earlyTraining.qiPavilionScroll.family === 'held' ? '后续已取得家族卷，这里保留此前破幕与入室的记录。' : '四十三号室内卷轴仍待独立取得。'}破幕不增加功法、技能、境界或奖励。</p></BondSummary>}

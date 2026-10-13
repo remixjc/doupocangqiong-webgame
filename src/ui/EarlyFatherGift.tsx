@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -42,7 +43,7 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
       <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">同瓶保管：{appraisalOwnerLabels[bottle.owner]} · 非新增制品</MapText>
     </svg>
     <WalkControls aria-label="父子来访位置">
-      {(Object.keys(stations) as FatherGiftStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as FatherGiftStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>父亲赠回 {task.stage}/6 · 同瓶{appraisalOwnerLabels[bottle.owner]}保管 · 净款{state.earlyTraining.settlement.net}保留 · 自用药力耗尽</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="父子来访步骤">

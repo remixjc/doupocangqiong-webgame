@@ -1,7 +1,8 @@
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -34,7 +35,7 @@ export default function EarlyMethodDiscussion({ state, onBack }: { state: GameSt
     <p>{task.stage === 28 ? '本段当时记录 · ' : ''}药老 · 本人行礼与名字已记 · 同一古戒仍浮空 · 本片段未授功法卷轴</p>
     <p>老师亲试：{task.teacherTrial === 'untried' ? '没有亲试' : task.teacherTrial === 'asked' ? '已问，待答' : '尚未询问'} · 他人尝试：{task.otherTrial === 'untried' ? '没有他人尝试' : task.otherTrial === 'asked' ? '已问，待答' : '尚未询问'}</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : '请先实际走近山顶青石。')}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 4 && <SecondaryButton disabled={!near} onClick={() => act('claim-profession')}>尝试把前置说明登记为炼药职业</SecondaryButton>}
       {task.stage === 13 && <SecondaryButton disabled={!near} onClick={() => act('grant-evolution')}>尝试把口头说明登记为功法已进化</SecondaryButton>}
       {task.stage === 25 && <SecondaryButton disabled={!near} onClick={() => act('claim-trial')}>尝试把文字依据登记为试验成功</SecondaryButton>}

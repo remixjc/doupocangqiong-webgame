@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
@@ -66,7 +67,7 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
     <p>当前卷轴保管：{{ none: '当前未持卷', 'reading-first': '正在阅读第一卷', 'selected-second': '已另选第二卷', 'borrowed-second': '借出的第二卷由本人保管' }[t.hall.scroll]}。{task.record === 'recalled' || !task.picked && t.hall.stage >= 6 ? '本段明确回顾当时第一卷阅读，当前已归架或第二卷保管保持。' : '同一第一卷沿原保管账衔接，不新增库存。'}</p>
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor !== 'yan' ? '西侧声音不能替本人读卷。' : !near ? '本人先实际走到东侧书架前。' : '当前人物：萧炎本人'}</p>
-      <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near || actor !== 'yan', act)}
       <SecondaryButton onClick={() => act('learn')}>把阅读算作当场授技</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>提前取得第二卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>东侧第一卷阅读已归档。</h3><p>本人仍在东侧读卷。西侧切磋与后续交涉待接续，旧技能与奖励保持。</p></BondSummary>}

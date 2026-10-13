@@ -1,7 +1,8 @@
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -33,7 +34,7 @@ export default function EarlyFamilyVisit({ state, onBack }: { state: GameState; 
     <StatusParagraph>来访 {task.stage}/17 · {task.seat === 'shared' ? '已在薰儿身旁落座' : task.seat === 'missing' ? '自己的座位遗漏' : '尚未察看座位'} · {task.request === 'spoken' ? '退婚请求已公开' : '来意尚未说出'} · {task.pressure === 'raised' ? '双方戒备、尚未交手' : task.pressure === 'withdrawn' ? '父亲已收势' : '尚未起冲突'}</StatusParagraph>
     {scene ? <BondSummary>
       {sceneHeading(scene, near ? scene.text : `请先走近${familyVisitPlaces[scene.place].label}，继续这一段。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {near && task.stage === 12 && <SecondaryButton onClick={() => act('accept-for-father')}>尝试替父亲直接应允</SecondaryButton>}
       {near && task.stage === 15 && <SecondaryButton onClick={() => act('take-box')}>尝试直接收取玉匣</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>来访前半程已归档。</h3><p>{state.earlyTraining.familyContract.stage > 0

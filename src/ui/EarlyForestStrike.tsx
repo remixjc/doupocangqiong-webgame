@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
@@ -78,7 +79,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停林中时机</SecondaryButton>}
         {paused && <><StatusParagraph>练技时机已暂停，返回前台后需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续林中练技 · 恢复时机</SecondaryButton></>}
         <PrimaryButton disabled={paused} onClick={() => act(operation)}>{actionLabel}</PrimaryButton>
-      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+      </> : sceneButton(scene, undefined, act)}
     </BondSummary> : <MutedParagraph>下一步请走近{forestPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>首次成功与下山已归档。</h3><p>这次树倒与耗尽各自有记录，七段结果须由后续房中调息建立。</p>
         {onSeventh && <PrimaryButton onClick={onSeventh}>接续房中七段 · 观察老师补液</PrimaryButton>}</BondSummary>}

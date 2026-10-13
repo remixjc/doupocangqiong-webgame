@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
@@ -35,7 +36,7 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
       <h3>{line.name} · {line.title}<small>{line.completed} / {line.entries.length} 可见卷页</small></h3>
       <div className="panel-tabs bond-filters" aria-label="筛选卷页">
         {([['all', '全部'], ['todo', '未完成'], ['done', '已完成']] as const).map(([value, label]) =>
-          <SecondaryButton key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</SecondaryButton>)}
+          actorButton(filter, setFilter, value, label, value))}
       </div>
       {!entries.length && <MutedParagraph>此伙伴没有符合筛选的可见卷页。</MutedParagraph>}
       {entries.map(entry => <article className="bond-entry" key={entry.eventId}>

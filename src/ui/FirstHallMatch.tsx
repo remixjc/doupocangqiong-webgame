@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -6,7 +7,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField } from './HallShelves'
 import { HallText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -62,7 +63,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
     <p>{t.firstHallReading.record === 'recalled' ? '明确回顾当时第一卷，当前已归架或第二卷保管保持。' : '本人仍持同一第一卷。'}旧卷账 {t.hall.stage}/9；没有新技能或奖励。</p>
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前焦点正确。' : '请明确切换到本步所需焦点。'}</p>
-      <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, actor !== scene.actor, act)}
       <SecondaryButton onClick={() => act('win')}>本人入西场参赛</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>提前取第二卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>{prefix}已归档。</h3><p>{task.stage >= 20 ? '薰儿已到东架，本人仍读卷。招呼与问答待续。' : '薰儿取胜；赛后走向东架由独立入口接续。'}</p></BondSummary>}

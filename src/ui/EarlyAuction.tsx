@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -43,7 +44,7 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
       <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">{sold ? `成交：萧战 / 40000 · 同瓶${appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管` : bid ? `当前报价：${bid} · 尚未落槌` : '同瓶等待介绍 · 萧炎不出价'}</MapText>
     </svg>
     <WalkControls aria-label="拍卖观察位置">
-      {(Object.keys(stations) as AuctionStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as AuctionStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管 · {state.earlyTraining.settlement.net ? '净款已收' : '尚未结算'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="首次拍卖步骤">

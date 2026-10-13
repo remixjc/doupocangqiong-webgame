@@ -1,3 +1,4 @@
+import { FIRST_HALL_SCROLL_REVIEW_VERSION } from './first-hall-scroll-review-state'
 import { FIRST_HALL_TEACHER_VERSION } from './first-hall-teacher-state'
 import { FIRST_HALL_EVENING_VERSION } from './first-hall-evening-state'
 import { FIRST_HALL_AFTERNOON_VERSION } from './first-hall-afternoon-state'
@@ -326,13 +327,14 @@ before(FIRST_HALL_MATCH_VERSION),
     before(FIRST_HALL_AFTERMATH_VERSION),
     before(FIRST_HALL_AFTERNOON_VERSION),
     before(FIRST_HALL_EVENING_VERSION),
-    before(FIRST_HALL_TEACHER_VERSION))
+    before(FIRST_HALL_TEACHER_VERSION), before(FIRST_HALL_SCROLL_REVIEW_VERSION))
   const early = s.earlyTraining, approach = early.firstHallApproach
   if ((early.firstHallAfternoon.stage > 0 || early.firstHallAfternoon.walk > 0) && before(FIRST_HALL_AFTERNOON_VERSION)) throw new Error('整个午后记录不属于此版本。')
   if ((early.firstHallEvening.stage > 0 || early.firstHallEvening.walk > 0) && before(FIRST_HALL_EVENING_VERSION)) throw new Error('夜间回房记录不属于此版本。')
   function requireHistoryVersion(task: { stage: number }, threshold: number, version: string, label: string) {
     if (task.stage > threshold && before(version)) throw new Error(label + '记录不属于此版本。')
   }
+  if ((early.firstHallScrollReview.stage > 0 || early.firstHallScrollReview.walk > 0) && before(FIRST_HALL_SCROLL_REVIEW_VERSION)) throw new Error('同卷翻看求技记录不属于此版本。')
   requireHistoryVersion(early.firstHallTeacher, 0, FIRST_HALL_TEACHER_VERSION, '房中老师问答')
   requireHistoryVersion(early.refining, 11, EARLY_INFUSION_VERSION, '魔核入水')
   requireHistoryVersion(early.firstTraining, 0, FIRST_TRAINING_VERSION, '首次持续调息')

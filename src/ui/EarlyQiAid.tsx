@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -67,7 +68,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
         {paused && <><StatusParagraph>时机已暂停，请明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续援助练习</SecondaryButton></>}
         <PrimaryButton disabled={paused} onClick={() => act(qiAidOperation(task))}>{task.beats ? '独自踢击 · 门障才破' : '独自站定 · 第一动作'}</PrimaryButton>
         <SecondaryButton onClick={() => act('group-attack')}>尝试多人同攻</SecondaryButton>
-      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+      </> : sceneButton(scene, undefined, act)}
       {task.stage >= 3 && <SecondaryButton onClick={() => act('take-scroll')}>尝试收取第二卷</SecondaryButton>}
     </BondSummary> : <MutedParagraph>先走近{qiAidPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>同行与独自援助已归档。</h3><p>萧媚门障已破；家族卷归萧炎，薰儿自选卷归她。正式登记与实际离阁仍待续。</p></BondSummary>}

@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
@@ -56,7 +57,7 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
       {task.stage >= 5 && <g transform="translate(104 145)" opacity=".8"><RobeFigure cy="-21" r="11" skin="#d7e4db" cut="M-20 62 L-9-3 H9 L20 62Z" robe="#b3cabe" /><MapText y="84" fill="#e4d4b6" fontSize="13">药老</MapText></g>}
       <MapText x="360" y="269" fill="#e4d4b6" fontSize="13">{task.teaching === 'basic' ? '吹火掌初步掌握 · 仍需练习' : task.teaching === 'explained' ? '吹火掌已讲解 · 尚待初练' : '尚未学习吹火掌 · 直接推风仅是初次试验'}</MapText>
     </svg>
-    <WalkControls aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}</WalkControls>
+    <WalkControls aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}</WalkControls>
     <StatusParagraph>吸推练习 {task.stage}/10 · 基础 {task.beats}/2 · 重试 {task.attempts} 次 · 第一只{task.first === 'fragments' ? '已碎' : task.first === 'pulled' ? '已拉近' : '完好'} · 第二只{task.second === 'dust' ? '已成细末' : task.second === 'pulled' ? '已拉近' : '完好'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="吸推组合步骤">{sceneHeading(scene)}
       {training && <>

@@ -1,7 +1,8 @@
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
@@ -39,7 +40,7 @@ export default function EarlyMountainVisitor({ state, onBack }: { state: GameSta
     <p>古戒老师仍在戒中 · 紫金卡归薰儿：{task.purpleCard === 'displayed' ? '展示中，未交付' : task.purpleCard === 'stowed' ? '已收回，未交付' : '尚未展示'} · 普通黑卡待次晨</p>
     <p>本人：{task.yan === 'left' ? '已离山，当前为旁观' : task.yan === 'descending' ? '已走下山山径，尚待离山确认' : '仍在山上'} · 本段借资尚未到账，旧采购账本保留</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : observer ? '先选择青石旁薰儿的旁观焦点。' : `请本人先走近${mountainRingPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 5 && <SecondaryButton disabled={!near} onClick={() => act('claim-victory')}>尝试把薰儿评价登记为三年战已胜</SecondaryButton>}
       {task.stage === 13 && <SecondaryButton disabled={!near} onClick={() => act('claim-money')}>尝试按当晚提议领取采购资金</SecondaryButton>}
       {task.stage === 14 && <SecondaryButton disabled={!near} onClick={() => act('take-purple')}>尝试取得薰儿展示的紫金卡</SecondaryButton>}

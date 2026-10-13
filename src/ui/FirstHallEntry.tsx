@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
@@ -78,7 +79,7 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
     <StatusParagraph>实际入堂 {task.stage}/9 · 当前{space === 'hall' ? '堂内' : '门外'} · {firstHallEntrySaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor !== 'yan' ? '旁观声音不能替本人入堂。' : !near ? '本人先实际走到本步门外或堂内地点。' : '当前人物：萧炎本人'}</p>
-      <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near || actor !== 'yan', act)}
       <SecondaryButton onClick={() => act('scroll')}>站在堂门代签取得卷轴</SecondaryButton>
       <SecondaryButton onClick={() => act('win')}>把欢呼算作本人胜利</SecondaryButton>
     </BondSummary> : <BondSummary><h3>实际入堂与东西分区已归档。</h3><p>本人已入堂并先看向训练场。东侧拿卷、阅读和西侧比赛由下一段继续，旧借卷保管保持。</p></BondSummary>}

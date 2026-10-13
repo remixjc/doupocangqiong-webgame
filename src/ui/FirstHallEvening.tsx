@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { useRef, useState } from 'react'
@@ -11,7 +12,7 @@ import { firstHallEveningSaveSummary } from '../core/save-preview'
 import { walkKey } from './walk-key'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
 import { BondSummary, Eyebrow, StatusParagraph, WalkControls } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import MarketWalker from './MarketWalker'
 import HistoryBlocked from './HistoryBlocked'
@@ -50,7 +51,7 @@ export default function FirstHallEvening({ state, onBack }: { state: GameState; 
     </EarlyMap>
     <StatusParagraph>回房 {task.stage}/9 · 路步 {task.walk}/{route?.length ?? 0} · {firstHallEveningSaveSummary(state, state.settings)}</StatusParagraph>
     {moving ? <p>沿当前夜路向{({ up: '上', down: '下', left: '左', right: '右' })[route[task.walk]]}走。</p>
-      : scene ? <BondSummary>{sceneHeading(scene)}<PrimaryButton disabled={actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton></BondSummary>
+      : scene ? <BondSummary>{sceneHeading(scene)}{sceneButton(scene, actor !== 'yan', act)}</BondSummary>
         : <p>夜间回房已归档。同卷留桌，老师来访另续。</p>}
     <SecondaryButton onClick={onBack}>暂离夜间回房 · 保留断点</SecondaryButton>
   </>

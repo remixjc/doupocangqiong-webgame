@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -9,7 +10,7 @@ import { firstHallTeacherSaveSummary } from '../core/save-preview'
 import { useSceneFocus } from './use-scene-focus'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
 import { BondSummary, Eyebrow, StatusParagraph, WalkControls, RobeFigure } from './NativeRegions'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -28,6 +29,7 @@ export default function FirstHallTeacher({ state, onBack }: { state: GameState; 
     <Eyebrow>房中 / 老声与有限背景</Eyebrow><h2>抬头辨认老师，再问眼前的一点。</h2>
     <p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p>
     {task.record === 'recalled' && <p>详细历史回顾，旧教学、保管与奖励保持。</p>}
+    {state.earlyTraining.firstHallScrollReview.record !== 'none' && <p>此图回顾当时房中问答，老师后续桌边位置另存。</p>}
     <WalkControls>{actorButton(actor, setActor, 'yan', "房中本人操作")}
       {actorButton(actor, setActor, 'teacher', "观察房中老师")}</WalkControls>
     <EarlyMap ref={field} aria-label="老师现身与有限背景地图" viewBox="0 0 480 380" onKeyDown={event => {
@@ -44,7 +46,7 @@ export default function FirstHallTeacher({ state, onBack }: { state: GameState; 
     <StatusParagraph>房中问答 {task.stage}/7 · {firstHallTeacherSaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前人物正确。' : '请明确选择本步人物。'}</p>
-      <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton></BondSummary>
+      {sceneButton(scene, actor !== scene.actor, act)}</BondSummary>
       : <p>有限背景已归档。老师未走向桌面、未翻卷、未传新技。</p>}
     <SecondaryButton onClick={onBack}>暂离房中问答 · 保留断点</SecondaryButton>
   </>

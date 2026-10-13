@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -76,7 +77,7 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
     <StatusParagraph>围堵离场 {task.stage}/34 · {earlyMarketStandoffSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前焦点：{selected ? standoffNames[selected] : '尚未选择'} · {observer ? '旁观没有本人行走' : '本人或薰儿独立行走'} · 普通绿链仍由薰儿戴着</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : !active ? `本步请明确选择${standoffNames[scene.view]}${observer ? '旁观焦点' : '视角'}。` : `先走近${standoffPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 11 && <SecondaryButton disabled={!near} onClick={() => act('fight')}>把提出单挑当成已经开战</SecondaryButton>}
       {task.stage === 21 && <SecondaryButton disabled={!near} onClick={() => act('loot')}>来人离开后领取击杀战利品</SecondaryButton>}
       {task.stage === 27 && <SecondaryButton disabled={!near} onClick={() => act('recruit')}>把帮助的护卫加入伙伴队伍</SecondaryButton>}

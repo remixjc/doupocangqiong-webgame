@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
@@ -86,7 +87,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
           <SecondaryButton disabled={paused} onClick={() => act(task.beats === 0 ? 'strike' : 'octane')}>{task.beats === 0 ? '尝试先追加拳击 · 尚未迎击' : '再次八极崩 · 当前须追加拳击'}</SecondaryButton>
           <SecondaryButton disabled={paused} onClick={() => act('push')}>尝试吹火掌 · 再攻动作不符</SecondaryButton>
         </WalkControls>
-      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+      </> : sceneButton(scene, undefined, act)}
     </BondSummary> : <MutedParagraph>下一步请走近{(scene.place === 'arena' ? '台中 · 两步迎击' : ningPlaces[scene.place].label)}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <PrimaryButton onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下迎击 · 免费重新准备</SecondaryButton>}

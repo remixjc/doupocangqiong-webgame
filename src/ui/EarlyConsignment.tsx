@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -54,8 +55,7 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
       <MapText x="360" y="270" fill="#e4d0a4" fontSize="13">另一次备料 · 同一寄售实例 · 自用容器保留</MapText>
     </svg>
     <WalkControls aria-label="寄售准备位置">
-      {(Object.keys(stations) as ConsignmentStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id}
-        onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as ConsignmentStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>寄售准备 {task.stage}/5 · 已购 {Object.values(task.receipts).filter(Boolean).length}/4 · 专用余额 {task.funds - task.spent} · 已付 {task.spent}</StatusParagraph>
     <MutedParagraph>任务余额90和价格10/10/25/5是游戏折算，原作此时剩余900金币。此账本独立于早期借资和行囊金币；采购按批记录，由老师处理材料。</MutedParagraph>

@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
@@ -79,7 +80,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续礼前训练 · 恢复时机</SecondaryButton></>}
         <WalkControls><PrimaryButton disabled={paused} onClick={() => act(eighthTrainingOperation(task))}>{task.stage === 7 ? task.beats === 0 ? '吸掌 · 收定风痕' : '吹火掌 · 将风痕推出' : scene.action}</PrimaryButton>
           {task.stage === 7 && <SecondaryButton disabled={paused} onClick={() => act(task.beats === 0 ? 'push' : 'pull')}>{task.beats === 0 ? '尝试先推 · 重新调整次序' : '继续吸掌 · 重新调整次序'}</SecondaryButton>}</WalkControls>
-      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+      </> : sceneButton(scene, undefined, act)}
     </BondSummary> : <MutedParagraph>下一步请走近{eighthPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p>{onGuests && <PrimaryButton onClick={onGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}</BondSummary>}
     {target > 0 && <SecondaryButton onClick={() => act('stop')}>停下本轮礼前训练 · 免费重新开始</SecondaryButton>}

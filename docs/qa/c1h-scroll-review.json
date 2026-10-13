@@ -1,0 +1,1264 @@
+{
+  "version": "0.80.0",
+  "date": "2026-10-13",
+  "base": "bbb065b5a78e1ba002f73951c05b38e6672a4f6d",
+  "inverse": [
+    {
+      "file": "src/ui/BondJournal.tsx",
+      "sha256": "8bef4cd95c0a174c078b847685e8971ad93fa80916ebc0de32e7b622f53b96ce"
+    },
+    {
+      "file": "src/ui/EarlyAppraisal.tsx",
+      "sha256": "d53f17c022c4fe4b4211f44af8da9b7fb9ed013ff6bfb65343a10874bb3a6453"
+    },
+    {
+      "file": "src/ui/EarlyAuction.tsx",
+      "sha256": "4ee8510f407b781222331deade3b3f266a9e2d354e147d356ec7f0ccfd85b175"
+    },
+    {
+      "file": "src/ui/EarlyConsignment.tsx",
+      "sha256": "3e83782b21259d0abed9863e23f461c6d37138d16eb37e6fe4a7ad98ab7f49ee"
+    },
+    {
+      "file": "src/ui/EarlyFamilyContract.tsx",
+      "sha256": "789f2f15e9ba106851f1f7555e93baf338e4d59d59d982c6918f2f89e93426a6"
+    },
+    {
+      "file": "src/ui/EarlyFatherGift.tsx",
+      "sha256": "d6c0a89acf83dea6dd546637373fcb3c68c34600283be7bf8cf50f67a8fa83a9"
+    },
+    {
+      "file": "src/ui/EarlyLongSupplies.tsx",
+      "sha256": "f5a077215b57eebd33ff0dc6aadf118c4594eb78f1a8468ae11f543de54ba7e5"
+    },
+    {
+      "file": "src/ui/EarlyPalmPair.tsx",
+      "sha256": "fad162226a0e4b928640ff469e98750f756f235eb07f7573d3802869eda74a90"
+    },
+    {
+      "file": "src/ui/EarlyRecovery.tsx",
+      "sha256": "99082973965923e141552fbfea63584a6fc3d098d874e201d763843fff13c171"
+    },
+    {
+      "file": "src/ui/EarlySettlement.tsx",
+      "sha256": "34b0af05bd1eb9841caba6752ca2f0f9da2e96461bfc5678db8d4fd7d35521ca"
+    },
+    {
+      "file": "src/ui/EarlySeventhRoom.tsx",
+      "sha256": "6b78654abd119ceb1082e0acaa9a38bbbb8b4d2235d56888184791542b4bed71"
+    },
+    {
+      "file": "src/ui/EarlyXunerVisit.tsx",
+      "sha256": "985f4982e35271d023666442eb71144fbbb3b242a13b1bda656b4bc98b24e4d1"
+    },
+    {
+      "file": "src/ui/EarlyApprentice.tsx",
+      "sha256": "a9a5f6603be61ea742c66539dee627cd910a6dd6f9c99ce42eda050229efe0cd"
+    },
+    {
+      "file": "src/ui/EarlyCeremonyVerdict.tsx",
+      "sha256": "cc8859d2325e293da118888254693d083d5e74c2acf543565033464512a773f7"
+    },
+    {
+      "file": "src/ui/EarlyCityPharmacy.tsx",
+      "sha256": "f72b91bcd789ad3f0c7c4f5be89f3c6a81b2b39c2cfa3dc100d5e85db67941b8"
+    },
+    {
+      "file": "src/ui/EarlyEighthTraining.tsx",
+      "sha256": "af2ac2727394d2b746a7ce859a54f313e22f2600bf50f196b81acf3e7b2a8983"
+    },
+    {
+      "file": "src/ui/EarlyFamilyCompensation.tsx",
+      "sha256": "e8dd890cf29331e27903aa6937649b842438ac0326fefbeeade1448bfd6c6c22"
+    },
+    {
+      "file": "src/ui/EarlyFamilyVisit.tsx",
+      "sha256": "777192c930d6db6bfcb8f0d34dc67a0c907a3f3131c6751388a192961825f3fd"
+    },
+    {
+      "file": "src/ui/EarlyForestStrike.tsx",
+      "sha256": "a79e4c6e5453574c427b00f593f117cedbedbcafb809479b5c113bf15a815c40"
+    },
+    {
+      "file": "src/ui/EarlyKeChallenge.tsx",
+      "sha256": "88c035103562c0d2b8e8e6a5b3954b11d5972517886423c6676229c9b3095bd6"
+    },
+    {
+      "file": "src/ui/EarlyMarketBracelets.tsx",
+      "sha256": "df7a1782a047736276a6e9fd755246544291bc7f4419f571b9462515e715954b"
+    },
+    {
+      "file": "src/ui/EarlyMarketDiscovery.tsx",
+      "sha256": "891ed773f955d963c9cd5088c7eb7bc31260a156ef64d34c50717fe10a8a038a"
+    },
+    {
+      "file": "src/ui/EarlyMarketEscort.tsx",
+      "sha256": "6bdc08873c6bb4fcadf43c90bc25d0b6100fde253dec5ab063bc41feb70e83fc"
+    },
+    {
+      "file": "src/ui/EarlyMarketSearch.tsx",
+      "sha256": "3d460dcff5eb8d1c17ccff7045b273ead09b78a66d7943ccdef60b0219ddfd15"
+    },
+    {
+      "file": "src/ui/EarlyMarketStandoff.tsx",
+      "sha256": "6f2d5fb55ec3d6efea804b2439a6f10db0bbbd90c57ae304bb690bf52c8f722d"
+    },
+    {
+      "file": "src/ui/EarlyMethodDiscussion.tsx",
+      "sha256": "dbbaacf008ecbc6057505d6301a2ff2466d20e2982f05c69cdfd653e32b55e59"
+    },
+    {
+      "file": "src/ui/EarlyMorningCard.tsx",
+      "sha256": "ec4b11406a61cee34cd68036094607440febb37ec392d9eb639c97dcc92c7700"
+    },
+    {
+      "file": "src/ui/EarlyMountainRing.tsx",
+      "sha256": "ab8ff1ff2e6989b73c4e1b7425e537a23a5321a4c809439a0e752151a2987c11"
+    },
+    {
+      "file": "src/ui/EarlyMountainVisitor.tsx",
+      "sha256": "77c815487cd98e75c9265044185a3d32c8b2491dffbc3d6b7d7330c6156bfefd"
+    },
+    {
+      "file": "src/ui/EarlyNingFirst.tsx",
+      "sha256": "dbaad1e41d45aca1456c1f0715006c6e47f30d26d1a99d3a7ca70174089e8065"
+    },
+    {
+      "file": "src/ui/EarlyNingSecond.tsx",
+      "sha256": "2f3337d7948d9d59f7c5db0e1bbd17735de8122f2e9831fa1538b07e7d1cf3d6"
+    },
+    {
+      "file": "src/ui/EarlyPreparationBrief.tsx",
+      "sha256": "eee4ad243a9870d87755b7ca7f665c864609b187d48d2ae914e8374e1ca24b88"
+    },
+    {
+      "file": "src/ui/EarlyQiAid.tsx",
+      "sha256": "f8635bf3c247b48f37d49b7f69a3efb6c1a54a5d1334e9fa2c99fa156c78af08"
+    },
+    {
+      "file": "src/ui/EarlyQiBarrier.tsx",
+      "sha256": "2cdc1acd2b8a6e94de6b5bdcc0a505661a68df053eaa0e7ac0c418883d2f2331"
+    },
+    {
+      "file": "src/ui/EarlyQiPavilion.tsx",
+      "sha256": "f4c3db109130f86c616f4438bcac4a64e15d16a1a6dd946dcd864ceb884ec370"
+    },
+    {
+      "file": "src/ui/FirstDeparture.tsx",
+      "sha256": "aeb4918e9b736429b69c4bea6a260ec5801aa06b2561e41930d821068a2f62a3"
+    },
+    {
+      "file": "src/ui/FirstHallAfternoon.tsx",
+      "sha256": "5ffe730a4eb1f32054850e46a685375bb969c08d5787204d584e029478cb1695"
+    },
+    {
+      "file": "src/ui/FirstHallApproach.tsx",
+      "sha256": "d4fabc5c827addb88f3321c64ac461fd163488eb171c27bbbb25685706109d5d"
+    },
+    {
+      "file": "src/ui/FirstHallEntry.tsx",
+      "sha256": "4eee0ea2a730661ce1da6d60fd376a348938fdd453b35af2016dffab4e15cb53"
+    },
+    {
+      "file": "src/ui/FirstHallEvening.tsx",
+      "sha256": "b81dd990ae6b3ab7d9de759fd918f2a85b620254f44fe81b9f950eaf56c1ef7a"
+    },
+    {
+      "file": "src/ui/FirstHallMatch.tsx",
+      "sha256": "4b3e141004961805fa533f7cf9f0747bfff24e52f3af9e036cc718c7316f0d62"
+    },
+    {
+      "file": "src/ui/FirstHallReading.tsx",
+      "sha256": "95e03dd0c766bedf0bb29207741a7d3065cc0ac2a8091ae21fffcb111288a42e"
+    },
+    {
+      "file": "src/ui/FirstHallTalk.tsx",
+      "sha256": "8405cd07c1301abba574db36e862a29a5e2b126d6081880ac5bf7458298ba67c"
+    },
+    {
+      "file": "src/ui/FirstHallTeacher.tsx",
+      "sha256": "9d710023ae14d60a77b2437f0e1d519f8d0f0ec95cf8ce52b0d3af012e025f41"
+    },
+    {
+      "file": "src/ui/FirstRoadMeeting.tsx",
+      "sha256": "ff808395779c1ab8ba04b9b85916c0075a804e128d0faa8b89d7e879f6eca565"
+    },
+    {
+      "file": "src/ui/TeacherRoom.tsx",
+      "sha256": "67a96f13aecfafbadbc139621ceb4fa417736ae770799c08b01579361d158880"
+    },
+    {
+      "file": "src/core/first-hall-teacher.ts",
+      "sha256": "f46eb519f995146821e06b8991b45f74fadc4bc88fb571ad7483ec2e28fe6927"
+    },
+    {
+      "file": "src/core/hall-walk-transaction.ts",
+      "sha256": "6d552a404ffa894660f1eb6fee9e5777d557b4490a5599a26d1b3574c191f5da"
+    }
+  ],
+  "sceneButtonCalls": 36,
+  "keyedButtonCalls": 12,
+  "keyedComparisons": 4,
+  "buttonComparisons": 9,
+  "modeComparisons": 48,
+  "decoded": 316,
+  "native": [
+    {
+      "name": "scrollMainBaseline",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900497015.json",
+      "sha256": "9e8a38a612b53d75716a1a77b80754797bc09c38c4cf271d096238744593269f",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900507045.json",
+      "sha256": "c9821a1a0c5fca4df47dcafa3eda3761689a0634045d844aeed7498fbb81ac5a",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep01",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900530708.json",
+      "sha256": "6c85dc90877a29832a50803c28c3d7d212cae0900e42c8dd39298e06345e533d",
+      "stage": 0,
+      "walk": 1,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep02",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900540869.json",
+      "sha256": "6863a880f62c127c49eef5baa5db404d94ecd09d962ba82ca2ec002850400883",
+      "stage": 0,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep03",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900551026.json",
+      "sha256": "0e0ab785e4c4fce1e6440aedbac6daa769e44bc0ba8fb52e2f3ef64ef61de23b",
+      "stage": 0,
+      "walk": 3,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep04",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900652145.json",
+      "sha256": "f938ee71789af6f0c70cdf64752e88c7741029c994fd62dafc7b7fdb7077cc73",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep05",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900661340.json",
+      "sha256": "01820f1c981e305031e6057212705680e60438b03e2b5e30b6b4feedbfb6cfa2",
+      "stage": 2,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep06",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900671527.json",
+      "sha256": "5cb497ecee0bbdc2f8c1ebdf1fdd64c305d4623813c9f4bafd7f2e98a6fbdef3",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep07",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900696415.json",
+      "sha256": "e6bb7808cd822a771724a10dc3539c447786676cf077aa5795dab15255e18591",
+      "stage": 4,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep08",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900706577.json",
+      "sha256": "c8ea44617a00bd880f3931ddfbd5e9b17c6a099006997431d3737aa89f2ae04e",
+      "stage": 5,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep09",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900716734.json",
+      "sha256": "e9aa1d543d7dde66407f586175256f22cc50f67c4ceb99f608e2babc7e0d34ab",
+      "stage": 6,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900739113.json",
+      "sha256": "6e67681257ac30675de4fcbe2c6672753f2a9948408a385ed9513bbc7fbf1a47",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900749259.json",
+      "sha256": "684e68079e77e1d9bfbddcd1422383b1ca9638dba83d9b6af99b182d3aa01a79",
+      "stage": 8,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainStep12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900759401.json",
+      "sha256": "8da11eef6cc62096c65688b755deebf58206f87ff5e8d9f6ed75585196e3fe69",
+      "stage": 9,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791901014229.json",
+      "sha256": "f69b667e563c164880cd91783b30d4c9995b5779510935d54dc7f83833bde81c",
+      "stage": 9,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsBaseline",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900769953.json",
+      "sha256": "1fea00358917b8813f0c4a9b78060ac0d12bc9bb921bf99c49d3b56f1281195e",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep01",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900790122.json",
+      "sha256": "1c544e6b4ee90c746e06edde0cf072ff5f5c9bc74d22f579e73e0b494775d1fe",
+      "stage": 0,
+      "walk": 1,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep02",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900801294.json",
+      "sha256": "fc2cc5d43d99962aa856785f97b845b602cb7415c4a7bd38d8d1c07d89d10182",
+      "stage": 0,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep03",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900812449.json",
+      "sha256": "c035cd3267b41f7aac6f43e8207852f54ab0d6c90f2d5b4b58078b856268f1c6",
+      "stage": 0,
+      "walk": 3,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep04",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900834472.json",
+      "sha256": "71d9cdc20a1aeb5890b3188ef295fffa2bffb9d1ad1784282a8e58f413cb5f07",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep05",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900845613.json",
+      "sha256": "10d7927cb480e7d9f1773ab5070cba3490b7537df1effea351ec5f682b921621",
+      "stage": 2,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep06",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900856775.json",
+      "sha256": "f5ab8d9032bd487a88cfe5387fe5c6a72fc5e2217c45b5faae9a073cb6f2e1b8",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep07",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900877458.json",
+      "sha256": "2f1ad340934562c8af402b8d59ddfed3f0e32337a18034112960729a16ee38e9",
+      "stage": 4,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep08",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900888594.json",
+      "sha256": "75afe3dd3f8453e8fa230e70ed14934c44b7046bdf9cabdcb8d250b6d881e6d9",
+      "stage": 5,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep09",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900899735.json",
+      "sha256": "ccc373f862367f32f5c3708cba418e0defa4b81360c03a0c6e70524cac34f0c6",
+      "stage": 6,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900922854.json",
+      "sha256": "85bc1314c7abd54f7918057e2858922a4e898577af1ec759e00704175644c9e8",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900934007.json",
+      "sha256": "636a0999588839ca0115ab69adf60858ba618d18ca9ce39e3bda432eb1fc08a7",
+      "stage": 8,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollMaterialsStep12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791900944216.json",
+      "sha256": "2afeb8bfaf07a5211286b6a623f6bf14f6dff5b8fd06e352f5efb604f28b1319",
+      "stage": 9,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyReviewChanged": true
+    },
+    {
+      "name": "scrollIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791901023291.json",
+      "sha256": "be4056db0446386b6f65991486bd80e2730f483d2b4ef6aff252611e11d8d129",
+      "entireStateEqual": true
+    }
+  ],
+  "budget": {
+    "initial": 491029,
+    "gzip": 164485,
+    "total": 1849477,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "browser": [
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 0/3 · 同卷求技 · 未参与\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 0/3 · 同卷求技 · 未参与",
+      "teacher": "translate(260 190)",
+      "yan": "translate(300 270)",
+      "label": "MainBaseline",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 0/3 · 同卷求技 · 未参与\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 0/3 · 同卷求技 · 未参与",
+      "teacher": "translate(260 190)",
+      "yan": "translate(300 270)",
+      "label": "MainRejected",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3",
+      "teacher": "translate(300 190)",
+      "yan": "translate(300 270)",
+      "label": "MainStep01Before",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3",
+      "teacher": "translate(300 190)",
+      "yan": "translate(300 270)",
+      "label": "MainStep01Refreshed",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3\n\n老师沿桌边路线向下走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3",
+      "teacher": "translate(340 190)",
+      "yan": "translate(300 270)",
+      "label": "MainStep02Before",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3\n\n老师沿桌边路线向下走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3",
+      "teacher": "translate(340 190)",
+      "yan": "translate(300 270)",
+      "label": "MainStep02Refreshed",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3\n\n老师到达身旁桌边\n\n药老走到桌边，本人仍疲惫坐在原处。\n\n请明确选择本步人物。\n\n老师到达身旁桌边\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep03Before",
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+          "timestamp": "2026-10-13T13:41:23.932Z",
+          "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3\n\n老师到达身旁桌边\n\n药老走到桌边，本人仍疲惫坐在原处。\n\n请明确选择本步人物。\n\n老师到达身旁桌边\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep03Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n\n同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边\n\n翻看桌上同一借卷\n\n药老翻看那份第二借卷；卷仍在桌上，没有副本或新技能。\n\n请明确选择本步人物。\n\n翻看桌上同一借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep04Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n\n同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边\n\n翻看桌上同一借卷\n\n药老翻看那份第二借卷；卷仍在桌上，没有副本或新技能。\n\n请明确选择本步人物。\n\n翻看桌上同一借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep04Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看\n\n老师评价这份借卷\n\n药老：这种浅层斗技，也值得花这些时间？\n\n请明确选择本步人物。\n\n老师评价这份借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep05Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看\n\n老师评价这份借卷\n\n药老：这种浅层斗技，也值得花这些时间？\n\n请明确选择本步人物。\n\n老师评价这份借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep05Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价\n\n本人说明眼前的需要\n\n萧炎：除了吸掌，我还没有别的斗技。族中人人可学的只有黄阶，成人礼与人交手又该用什么？\n\n当前人物正确。\n\n本人说明眼前的需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep06Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价\n\n本人说明眼前的需要\n\n萧炎：除了吸掌，我还没有别的斗技。族中人人可学的只有黄阶，成人礼与人交手又该用什么？\n\n当前人物正确。\n\n本人说明眼前的需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep06Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要\n\n老师看出求技意图\n\n药老看出本人想向他求一门斗技。\n\n请明确选择本步人物。\n\n老师看出求技意图\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep07Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要\n\n老师看出求技意图\n\n药老看出本人想向他求一门斗技。\n\n请明确选择本步人物。\n\n老师看出求技意图\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep07Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出\n\n本人明确向老师求技\n\n萧炎没有掩饰，只把请求明明白白说出。\n\n当前人物正确。\n\n本人明确向老师求技\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep08Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出\n\n本人明确向老师求技\n\n萧炎没有掩饰，只把请求明明白白说出。\n\n当前人物正确。\n\n本人明确向老师求技\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep08Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授\n\n听明日后的赠技条件\n\n药老：以后学会炼药，自会有人愿赠较好的斗技。这是未来条件，眼下没有赠技或收据。\n\n请明确选择本步人物。\n\n听明日后的赠技条件\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep09Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授\n\n听明日后的赠技条件\n\n药老：以后学会炼药，自会有人愿赠较好的斗技。这是未来条件，眼下没有赠技或收据。\n\n请明确选择本步人物。\n\n听明日后的赠技条件\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep09Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件\n\n本人坚持眼下需要\n\n萧炎：可我现在就需要。请求仍未成为老师实际传授。\n\n当前人物正确。\n\n本人坚持眼下需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep10Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件\n\n本人坚持眼下需要\n\n萧炎：可我现在就需要。请求仍未成为老师实际传授。\n\n当前人物正确。\n\n本人坚持眼下需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep10Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要\n\n翻卷与求技归档\n\n同卷留桌，老师在桌边，本人原位。正式传技和身体要求另续。\n\n当前人物正确。\n\n翻卷与求技归档\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep11Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要\n\n翻卷与求技归档\n\n同卷留桌，老师在桌边，本人原位。正式传技和身体要求另续。\n\n当前人物正确。\n\n翻卷与求技归档\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep11Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep12Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainStep12Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 0/3 · 同卷求技 · 未参与\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 0/3 · 同卷求技 · 未参与",
+      "teacher": "translate(260 190)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsBaseline",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3",
+      "teacher": "translate(300 190)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep01Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3\n\n老师沿桌边路线向右走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 1/3 · 同卷求技 · 老师走近桌边 1/3",
+      "teacher": "translate(300 190)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep01Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3\n\n老师沿桌边路线向下走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3",
+      "teacher": "translate(340 190)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep02Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3\n\n老师沿桌边路线向下走；本人原位。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 2/3 · 同卷求技 · 老师走近桌边 2/3",
+      "teacher": "translate(340 190)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep02Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3\n\n老师到达身旁桌边\n\n药老走到桌边，本人仍疲惫坐在原处。\n\n请明确选择本步人物。\n\n老师到达身旁桌边\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep03Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近桌边\n本人 · 疲惫原位\n\n同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3\n\n老师到达身旁桌边\n\n药老走到桌边，本人仍疲惫坐在原处。\n\n请明确选择本步人物。\n\n老师到达身旁桌边\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 0/9 · 路步 3/3 · 同卷求技 · 老师走近桌边 3/3",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep03Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n\n同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边\n\n翻看桌上同一借卷\n\n药老翻看那份第二借卷；卷仍在桌上，没有副本或新技能。\n\n请明确选择本步人物。\n\n翻看桌上同一借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep04Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n\n同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边\n\n翻看桌上同一借卷\n\n药老翻看那份第二借卷；卷仍在桌上，没有副本或新技能。\n\n请明确选择本步人物。\n\n翻看桌上同一借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 1/9 · 路步 0/0 · 同卷求技 · 老师已到桌边",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep04Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看\n\n老师评价这份借卷\n\n药老：这种浅层斗技，也值得花这些时间？\n\n请明确选择本步人物。\n\n老师评价这份借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep05Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看\n\n老师评价这份借卷\n\n药老：这种浅层斗技，也值得花这些时间？\n\n请明确选择本步人物。\n\n老师评价这份借卷\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 2/9 · 路步 0/0 · 同卷求技 · 同卷已翻看",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep05Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价\n\n本人说明眼前的需要\n\n萧炎：除了吸掌，我还没有别的斗技。族中人人可学的只有黄阶，成人礼与人交手又该用什么？\n\n当前人物正确。\n\n本人说明眼前的需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep06Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价\n\n本人说明眼前的需要\n\n萧炎：除了吸掌，我还没有别的斗技。族中人人可学的只有黄阶，成人礼与人交手又该用什么？\n\n当前人物正确。\n\n本人说明眼前的需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 3/9 · 路步 0/0 · 同卷求技 · 已听评价",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep06Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要\n\n老师看出求技意图\n\n药老看出本人想向他求一门斗技。\n\n请明确选择本步人物。\n\n老师看出求技意图\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep07Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要\n\n老师看出求技意图\n\n药老看出本人想向他求一门斗技。\n\n请明确选择本步人物。\n\n老师看出求技意图\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 4/9 · 路步 0/0 · 同卷求技 · 已说明眼前需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep07Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出\n\n本人明确向老师求技\n\n萧炎没有掩饰，只把请求明明白白说出。\n\n当前人物正确。\n\n本人明确向老师求技\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep08Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出\n\n本人明确向老师求技\n\n萧炎没有掩饰，只把请求明明白白说出。\n\n当前人物正确。\n\n本人明确向老师求技\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 5/9 · 路步 0/0 · 同卷求技 · 意图被看出",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep08Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授\n\n听明日后的赠技条件\n\n药老：以后学会炼药，自会有人愿赠较好的斗技。这是未来条件，眼下没有赠技或收据。\n\n请明确选择本步人物。\n\n听明日后的赠技条件\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep09Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授\n\n听明日后的赠技条件\n\n药老：以后学会炼药，自会有人愿赠较好的斗技。这是未来条件，眼下没有赠技或收据。\n\n请明确选择本步人物。\n\n听明日后的赠技条件\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 6/9 · 路步 0/0 · 同卷求技 · 请求已说，尚未传授",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep09Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件\n\n本人坚持眼下需要\n\n萧炎：可我现在就需要。请求仍未成为老师实际传授。\n\n当前人物正确。\n\n本人坚持眼下需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep10Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件\n\n本人坚持眼下需要\n\n萧炎：可我现在就需要。请求仍未成为老师实际传授。\n\n当前人物正确。\n\n本人坚持眼下需要\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 7/9 · 路步 0/0 · 同卷求技 · 只获日后赠技条件",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep10Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要\n\n翻卷与求技归档\n\n同卷留桌，老师在桌边，本人原位。正式传技和身体要求另续。\n\n当前人物正确。\n\n翻卷与求技归档\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep11Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要\n\n翻卷与求技归档\n\n同卷留桌，老师在桌边，本人原位。正式传技和身体要求另续。\n\n当前人物正确。\n\n翻卷与求技归档\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 8/9 · 路步 0/0 · 同卷求技 · 坚持眼下需要",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep11Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep12Before",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MaterialsStep12Refreshed",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainCompleted",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainRepeated",
+      "errors": []
+    },
+    {
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "focus": "同卷翻看与求技地图",
+      "scroll": {
+        "x": "320",
+        "y": "255"
+      },
+      "status": "同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续",
+      "teacher": "translate(340 230)",
+      "yan": "translate(300 270)",
+      "label": "MainReopened",
+      "errors": []
+    }
+  ],
+  "isolation": {
+    "returnFocus": "接续同卷翻看与求技",
+    "oldTeacher": {
+      "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n此图回顾当时房中问答，老师后续桌边位置另存。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+      "teacher": "translate(260 190)",
+      "yan": "translate(300 270)"
+    },
+    "oldEvening": "×\n天黑之后 / 回房与同一借卷\n夜路走回房中，借卷放在身旁。\n\n方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。\n\n夜间本人操作\n观察薰儿分路\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n本人 · 疲惫放松\n\n回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档\n\n夜间回房已归档。同卷留桌，老师来访另续。\n\n暂离夜间回房 · 保留断点",
+    "oldAfternoon": {
+      "dom": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n此图回顾当时山上位置，夜间实际位置另存。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    "intact": {
+      "title": "斗破苍穹 · 异火之路",
+      "entry": 0,
+      "alerts": 0,
+      "errors": []
+    }
+  },
+  "refreshes": 24,
+  "vitest": {
+    "files": 157,
+    "tests": 928
+  },
+  "nodeTests": 11,
+  "prerequisite": {
+    "sha": "bbb065b5a78e1ba002f73951c05b38e6672a4f6d",
+    "ci": 38407801855,
+    "conclusion": "success",
+    "pages": 38407801991,
+    "pagesConclusion": "skipped",
+    "files": 126,
+    "bytes": 1982546
+  },
+  "limitations": "Previously inspected English Chapter18 reused, no new online source verification. Chinese/current anime unverified. Original short dialogue/manual route. Same second scroll, no skill grant/award/realm improvement. Historical module-fetch error at 13:41 during capacity rebuild retained in log; no new errors during feature. One automation call exceeded 30s after third native export; kernel reset, exact saved step observed and continued, no repeated action. 36 scene button and 12 keyed actor factories retain original component/props/callback/key; 48 entire old files inverse. Over-total candidates 1851897/1850018 rejected, syntax failure fixed before build. No physical-device/background/FPS claim."
+}

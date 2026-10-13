@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
@@ -63,7 +64,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
     <StatusParagraph>路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</StatusParagraph>
     {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{!near ? '本人先实际走到本步位置。' : actor !== scene.actor ? '请选择当前发言人物。' : actor === 'mei' ? '当前关注：萧媚发言，本人位置保持。' : '当前人物：萧炎本人'}</p>
-      <PrimaryButton disabled={!near || actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near || actor !== scene.actor, act)}
       <SecondaryButton onClick={() => act('fight')}>把招呼算作本人战斗胜利</SecondaryButton>
       <SecondaryButton onClick={() => act('hall')}>在路口直接签入堂借卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>路口会面与分路已归档。</h3><p>双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。</p></BondSummary>}

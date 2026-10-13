@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
@@ -7,7 +8,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -60,7 +61,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
     <StatusParagraph>礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</StatusParagraph>
     {scene ? nearVerdictPlace(position, scene.place) ? <BondSummary aria-label="正式裁定步骤">
       {sceneHeading(scene)}
-      <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, undefined, act)}
       {task.stage >= 2 && task.stage <= 4 && <SecondaryButton onClick={() => act('fight')}>尝试第三场 · 不符合裁判规则</SecondaryButton>}
       {task.technique === 'offered' && <SecondaryButton onClick={() => act('take-technique')}>尝试收斗技 · 尚未传授</SecondaryButton>}
       {task.method === 'offered' && <SecondaryButton onClick={() => act('take-method')}>尝试领功法 · 只有提议</SecondaryButton>}

@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
@@ -54,8 +55,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       <MapText x="355" y="300" fill="#ebd6b1" fontSize="13">原有自用容器 · {recoveryEnergyLabels[task.energy]}</MapText>
     </svg>
     <WalkControls aria-label="恢复房间位置">
-      {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => <SecondaryButton key={id}
-        aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as EarlyRecoveryStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>回房恢复 {task.stage}/7 · {recoveryEnergyLabels[task.energy]} · {task.period === 'reviewed' ? '持续时段已回顾' : '持续时段待回顾'} · {task.result === 'fifth-duan' ? '五段故事结果已记下' : '故事结果尚未记录'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="回房恢复步骤">

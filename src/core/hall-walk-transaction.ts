@@ -1,3 +1,4 @@
+import { hasHallMode } from './early-snapshots'
 import { successfulTransaction } from './early-result'
 import type { GameState } from './model'
 import type { Transaction } from './rules'
@@ -22,7 +23,7 @@ export function hallWalkTransaction<T extends HallWalk>(state: GameState, positi
   const task = state.earlyTraining[spec.key], route = spec.route(task.stage), scene = spec.scenes[task.stage], candidate = action as Record<string, unknown>
   if (!spec.valid(task as unknown as Record<string, unknown>) || (task.stage > 0 || task.walk > 0) && task.record !== spec.source
     || !fieldsMatch(action, task) || candidate.actor !== 'yan'
-    || ['continuation', 'conflict', 'threat', 'exitResponse', 'checkout', 'leaving', 'aftermath'].some(key => candidate[key])
+    || hasHallMode(action)
     || !earlySnapshotsMatch(state, action, spec.snapshots) || !fieldsMatch(position, { x: task.x, y: task.y }) || space !== task.location || !scene) return fail()
   const moving = route && task.walk < route.length
   if (candidate.operation !== (moving ? `move-${route[task.walk]}` : scene.operation)) return fail()

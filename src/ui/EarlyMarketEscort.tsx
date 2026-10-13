@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -70,7 +71,7 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
     <p>三位跟随护卫：{task.following === 3 ? '已经进入人群' : task.stage >= 14 ? '已受命，实际跟随待续' : '尚未派出'} · 队长与其余护卫：{task.patrol ? '已接续巡逻' : '仍在原街口'}</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : observer ? '先选择本步的旁观焦点。'
       : !canWalk ? '先明确回到本人视角，再接续两人的同行。' : `本人先走近${marketEscortPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 0 && <SecondaryButton disabled={!near} onClick={() => act('absorb-core')}>直接吸收魔核可行吗？</SecondaryButton>}
       {task.stage === 1 && <SecondaryButton disabled={!near} onClick={() => act('collect-tax')}>能把摊主税费用于本次采购吗？</SecondaryButton>}
       {task.stage === 16 && <SecondaryButton disabled={!near} onClick={() => act('recruit')}>请跟随护卫加入可用队伍</SecondaryButton>}

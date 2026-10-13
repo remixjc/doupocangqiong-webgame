@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -33,7 +34,7 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
     <p>老师：{task.elder === 'in-ring' ? '已进入同一古戒' : '仍在青石旁'} · 古戒：{task.ring === 'worn' ? '同一古戒已返手佩戴' : '仍浮空，尚未返手'}</p>
     <p>历史准备单：主药{task.main}株 / 辅药{task.auxiliary}株 / 一阶木核{task.woodCore}枚 · 只记要求，任务袋和收据保持</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 12 && <SecondaryButton disabled={!near} onClick={() => act('claim-materials')}>尝试把准备单登记为材料已取得</SecondaryButton>}
       {task.stage === 14 && <SecondaryButton disabled={!near} onClick={() => act('wear-early')}>尝试把老师入戒当作古戒已返手</SecondaryButton>}
       {task.stage === 18 && <SecondaryButton disabled={!near} onClick={() => act('claim-money')}>尝试按借资打算领取资金</SecondaryButton>}

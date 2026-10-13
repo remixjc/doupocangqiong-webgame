@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -6,7 +7,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -78,7 +79,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
     <p>当前视角：{selected === 'yan' ? '萧炎' : selected === 'xuner' ? '薰儿' : '尚未选择'} · 蓝金手链：{task.expensive === 'unoffered' ? '尚未提出' : '来人持有，未交付'}
       {' · '}普通绿链：{task.green === 'unshown' ? '尚未拿出' : task.green === 'shown' ? '萧炎持有，未交付' : task.green === 'received' ? '薰儿已收到，尚未戴上' : '薰儿已戴上'}</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : !active ? `本步请明确选择${scene.view === 'yan' ? '萧炎' : '薰儿'}视角。` : '先走近拦路街角。')}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('take-blue')}>提议赠送就算蓝金手链已交付吗？</SecondaryButton>}
       {task.stage === 10 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>想到拆核就把木核放入任务袋</SecondaryButton>}
       {task.stage === 18 && <SecondaryButton disabled={!near} onClick={() => act('pay-extra')}>比较价格后追加支付赠礼费用</SecondaryButton>}

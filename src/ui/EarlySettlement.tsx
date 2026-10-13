@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -41,7 +42,7 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
       <MapText x="360" y="294" fill="#e8d1a6" fontSize="13">{task.stage < 5 ? '贵宾凭据与收款分别办理' : `成交${FIRST_SALE_GROSS} − 手续费${FIRST_SALE_FEE} = 净款${FIRST_SALE_NET}`}</MapText>
     </svg>
     <WalkControls aria-label="寄售手续位置">
-      {(Object.keys(stations) as SettlementStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as SettlementStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>寄售手续 {task.stage}/7 · {task.vip ? '水晶贵宾卡已收' : '贵宾卡未领'} · {task.net ? `净款${task.net}已收` : '尚未收款'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管</StatusParagraph>
     {task.stage >= 5 && <BondSummary aria-label="首次寄售账单">

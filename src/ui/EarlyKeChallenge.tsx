@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
@@ -80,7 +81,7 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
           {task.beats === 0 ? <><PrimaryButton disabled={paused} onClick={() => act('evade-left')}>向左侧避 · 避开来掌</PrimaryButton><SecondaryButton disabled={paused} onClick={() => act('evade-right')}>向右侧避 · 尝试另一方向</SecondaryButton></>
             : <><PrimaryButton disabled={paused} onClick={() => act('low-palm')}>族内低阶掌法 · 反击肩部</PrimaryButton><SecondaryButton disabled={paused} onClick={() => act('octane-blast')}>尝试八极崩 · 本段动作不符</SecondaryButton></>}
         </WalkControls>
-      </> : <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>}
+      </> : sceneButton(scene, undefined, act)}
     </BondSummary> : <MutedParagraph>下一步请走近{keChallengePlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p>{onTraining && <PrimaryButton onClick={onTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮应战 · 免费重新准备</SecondaryButton>}

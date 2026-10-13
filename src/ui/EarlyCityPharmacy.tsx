@@ -1,3 +1,4 @@
+import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -6,7 +7,7 @@ import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -55,7 +56,7 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
     <p>独立采购账：借资{ledger.purse.borrowed} / 已付{ledger.purse.spent} / 余{ledger.purse.borrowed - ledger.purse.spent}</p>
     <p>实际任务袋主药{ledger.supplies.bluegrass}株 / 辅药{ledger.supplies.boneflower}株 / 木核{ledger.supplies.woodCore}枚 · 主药收据{ledger.receipts.bluegrass ? '已付' : '未购'} / 辅药收据{ledger.receipts.boneflower ? '已付' : '未购'} / 木核收据{ledger.receipts.woodCore ? '旧进度已付保留' : '尚未购'}</p>
     {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : `本人先走近${cityPharmacyPlaces[scene.place].label}。`)}
-      <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
+      {sceneButton(scene, !near, act)}
       {task.stage === 6 && <SecondaryButton disabled={!near} onClick={() => act('claim-items')}>尝试逛摊直接领取两药</SecondaryButton>}
       {task.stage === 13 && <SecondaryButton disabled={!near} onClick={() => act('charge-900')}>尝试在原收据外另扣900</SecondaryButton>}
       {task.stage === 14 && <><SecondaryButton disabled={!near} onClick={() => act('claim-core')}>尝试药铺直接交木核与附物</SecondaryButton>

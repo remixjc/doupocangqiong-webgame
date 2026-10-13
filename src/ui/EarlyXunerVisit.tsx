@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -43,7 +44,7 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
       <MapText x="360" y="266" fill="#e8d1a6" fontSize="13">{task.card === 'xuner' ? '紫金卡由薰儿保管，尚未交给家族' : '紫金卡已交长老 · 家族取得100000 · 萧炎未领取'}</MapText>
     </svg>
     <WalkControls aria-label="薰儿事件位置">
-      {(Object.keys(stations) as XunerVisitStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
+      {(Object.keys(stations) as XunerVisitStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}
     </WalkControls>
     <StatusParagraph>人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="薰儿事件步骤">
