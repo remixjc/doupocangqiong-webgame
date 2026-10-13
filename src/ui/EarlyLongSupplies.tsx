@@ -5,7 +5,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -49,7 +49,7 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
     </WalkControls>
     <StatusParagraph>物资归档 {task.stage}/6 · 药材包{places[task.herbs]} · 魔核包{places[task.cores]}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="物资归档步骤">
-      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {spokenSceneHeading(scene)}
       {sorting && <WalkControls aria-label="选择物资包">
         <SecondaryButton aria-pressed={item === 'herbs'} disabled={task.herbs !== 'parcel'} onClick={() => setItem('herbs')}>拿起药材包</SecondaryButton>
         <SecondaryButton aria-pressed={item === 'cores'} disabled={task.cores !== 'parcel'} onClick={() => setItem('cores')}>拿起魔核包</SecondaryButton>

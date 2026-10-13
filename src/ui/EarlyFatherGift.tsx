@@ -6,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -46,7 +46,7 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
     </WalkControls>
     <StatusParagraph>父亲赠回 {task.stage}/6 · 同瓶{appraisalOwnerLabels[bottle.owner]}保管 · 净款{state.earlyTraining.settlement.net}保留 · 自用药力耗尽</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="父子来访步骤">
-      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {spokenSceneHeading(scene)}
       <PrimaryButton onClick={() => submitEarlyFatherGift(gameStore, position, station,
         { step: task.stage, owner: bottle.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>

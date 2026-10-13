@@ -5,7 +5,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -49,7 +49,7 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
       <p>{task.net ? '绿色储款卡已接收，唯一收款记录保留。' : '账单已核对，储款卡还未接收。'}</p>
     </BondSummary>}
     {scene ? station === scene.station ? <BondSummary aria-label="寄售手续步骤">
-      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {spokenSceneHeading(scene)}
       <PrimaryButton onClick={() => submitEarlySettlement(gameStore, position, station,
         { step: task.stage, net: task.net, vip: task.vip, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>

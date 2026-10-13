@@ -2,7 +2,7 @@ import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
@@ -31,7 +31,7 @@ export default function EarlyMountainRing({ state, onBack }: { state: GameState;
       ring={task.ring} elderVisible={task.elder === 'visible'} near={near} onMove={move} onInteract={() => { if (scene) act(scene.operation) }} />
     <StatusParagraph>后山与古戒 {task.stage}/21 · {earlyMountainRingSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{task.stage === 21 ? '本段当时记录 · ' : ''}古戒：{task.ring === 'floating' ? '老人处浮空，尚未再佩戴' : task.ring === 'thrown' ? '已抛出，尚未返回' : '仍佩戴在右手'} · 身份：未公开 · 今后取气：{task.future === 'asked' ? '本人已询问，尚待答复' : '尚未询问'}</p>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`} />
+    {scene ? <BondSummary>{sceneHeading(scene, near ? scene.text : `请先走近${mountainRingPlaces[scene.place].label}。`)}
       <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage === 4 && <SecondaryButton disabled={!near} onClick={() => act('claim-cause')}>尝试直接登记流失原因</SecondaryButton>}
       {task.stage === 14 && <SecondaryButton disabled={!near} onClick={() => act('wear-now')}>尝试在返回之前再佩戴古戒</SecondaryButton>}

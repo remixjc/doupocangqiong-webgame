@@ -15,7 +15,7 @@ import { fieldsMatch } from '../core/state-guards'
 import { earlySnapshots } from '../core/early-snapshots'
 import { firstHallEntrySaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -75,7 +75,7 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
     {scene && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix="入堂" onMove={move} /></WalkControls>}
     {scene && task.entered && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'hall' ? hallEntryPlaces.entry : hallEntryPlaces.door)} onClick={crossBack}>{space === 'hall' ? '从堂内返回门外' : '再从堂门进入堂内'} · 不追加历史</SecondaryButton>}
     <StatusParagraph>实际入堂 {task.stage}/9 · 当前{space === 'hall' ? '堂内' : '门外'} · {firstHallEntrySaveSummary(state, state.settings)}</StatusParagraph>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor !== 'yan' ? '旁观声音不能替本人入堂。' : !near ? '本人先实际走到本步门外或堂内地点。' : '当前人物：萧炎本人'}</p>
       <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('scroll')}>站在堂门代签取得卷轴</SecondaryButton>

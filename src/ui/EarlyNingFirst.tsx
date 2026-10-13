@@ -9,7 +9,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -74,7 +74,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
     </EarlyMap>
     <WalkControls aria-label="萧宁首轮行走操作">{<WalkDirectionButtons prefix="首轮" onMove={move} />}</WalkControls>
     <StatusParagraph>萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮当时待裁判，最终胜负已宣布' : '首轮倒地，待最终裁判' : '尚未完成首轮'}</StatusParagraph>
-    {scene ? near ? <BondSummary aria-label="萧宁首轮步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? near ? <BondSummary aria-label="萧宁首轮步骤">{sceneHeading(scene)}
       {training ? <>
         {steady && <TimingRange label="萧宁首轮时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="萧宁首轮时机指针" marker={marker} />

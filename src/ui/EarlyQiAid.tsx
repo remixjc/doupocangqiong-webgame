@@ -9,7 +9,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -59,7 +59,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
     </EarlyMap>
     <WalkControls aria-label="同行援助行走操作"><WalkDirectionButtons prefix="援助" onMove={move} /></WalkControls>
     <StatusParagraph>援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</StatusParagraph>
-    {scene ? near ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? near ? <BondSummary>{sceneHeading(scene)}
       {training ? <>
         {steady && <TimingRange label="援助出手时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：键盘调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="援助时机指针" marker={marker} />

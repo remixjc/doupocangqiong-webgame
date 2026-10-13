@@ -6,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -47,7 +47,7 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
     </WalkControls>
     <StatusParagraph>人物事件 {task.stage}/7 · {xunerView ? '薰儿视角，萧炎不在场' : '房中谈话'} · {task.card === 'xuner' ? '紫金卡由薰儿保管' : '紫金卡由长老保管，家族取得100000'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="薰儿事件步骤">
-      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {spokenSceneHeading(scene)}
       <PrimaryButton onClick={() => submitEarlyXunerVisit(gameStore, position, station,
         { step: task.stage, card: task.card, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>

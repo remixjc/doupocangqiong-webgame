@@ -2,7 +2,7 @@ import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import type { GameState } from '../core/model'
 import { earlyGrowthScenes } from '../content/early-growth'
 import { earlyGrowthBlock, submitEarlyGrowth } from '../core/early-growth'
@@ -32,7 +32,7 @@ export default function EarlyGrowth({ state, onContinue }: { state: GameState; o
     <MutedParagraph>以日夜画面压缩持续练习，翻页记录只代表已读过渡，不对应固定天数、境界提升或考核成绩。</MutedParagraph>
     {stage < 3 ? <>
       <StatusParagraph>过渡翻阅 {stage}/3 · 可中途关闭</StatusParagraph>
-      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {spokenSceneHeading(scene)}
       <SecondaryButton onClick={() => submitEarlyGrowth(gameStore, stage)}>{scene.action}</SecondaryButton>
     </> : <>
       <h3>这一页已记下，继续走自己的路。</h3>

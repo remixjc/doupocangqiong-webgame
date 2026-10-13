@@ -3,7 +3,7 @@ import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useState } from 'react'
 import type { GameState } from '../core/model'
@@ -47,8 +47,8 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       none: '尚无', preparing: '备纸未写成', written: '写成未标记', marked: '有印记未置桌', table: '同一文书已置桌', nalan: '同一文书由纳兰持有',
     }[task.paper]} · 玉匣：{task.box === 'ring' ? '已回葛叶纳戒' : task.box === 'returned' ? '已退回，尚未收入纳戒' : '未接取，仍属来客'}</p>
     {scene ? <BondSummary>
-      <SceneHeading title={scene.title} text={near ? scene.text : observer
-        ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`} />
+      {sceneHeading(scene, near ? scene.text : observer
+        ? `请将旁观焦点转到${familyContractPlaces[scene.place].label}。` : `请先走近${familyContractPlaces[scene.place].label}。`)}
       <PrimaryButton disabled={!near} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage === 7 && <>
         <SecondaryButton disabled={!near} onClick={() => act('start-duel')}>尝试今日直接决斗</SecondaryButton>

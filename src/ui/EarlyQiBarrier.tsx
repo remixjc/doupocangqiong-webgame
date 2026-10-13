@@ -9,7 +9,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -74,7 +74,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
     </EarlyMap>
     <WalkControls aria-label="火通道行走操作"><WalkDirectionButtons prefix="火通道" onMove={move} /></WalkControls>
     <StatusParagraph>门障 {task.stage}/10 · {task.path === 3 ? '第三路' : '未选支路'} · {task.room37 ? '37已核' : '37待核'} · {task.room43 ? '43已到' : '43待到'} · {task.barrier === 'broken' ? '红幕已破' : task.barrier === 'touched' ? '红幕已探查' : '红幕完整'} · {task.entered ? '已入室' : '未入室'} · 免费重试 {task.attempts}</StatusParagraph>
-    {scene ? near ? <BondSummary aria-label="火通道门障步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? near ? <BondSummary aria-label="火通道门障步骤">{sceneHeading(scene)}
       {task.stage === 1 ? <WalkControls>{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</WalkControls>
         : task.stage === 6 ? <>
           {steady && <TimingRange label="破幕时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></TimingRange>}

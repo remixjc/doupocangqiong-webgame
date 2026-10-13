@@ -8,7 +8,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -58,7 +58,7 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
     </svg>
     <WalkControls aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}</WalkControls>
     <StatusParagraph>吸推练习 {task.stage}/10 · 基础 {task.beats}/2 · 重试 {task.attempts} 次 · 第一只{task.first === 'fragments' ? '已碎' : task.first === 'pulled' ? '已拉近' : '完好'} · 第二只{task.second === 'dust' ? '已成细末' : task.second === 'pulled' ? '已拉近' : '完好'}</StatusParagraph>
-    {scene ? station === scene.station ? <BondSummary aria-label="吸推组合步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? station === scene.station ? <BondSummary aria-label="吸推组合步骤">{sceneHeading(scene)}
       {training && <>
         {steady && <TimingRange label="吸推切换时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="吸推时机指针" marker={marker} />

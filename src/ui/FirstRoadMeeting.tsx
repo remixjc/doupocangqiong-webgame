@@ -14,7 +14,7 @@ import { firstRoadMeetingScenes } from '../content/first-road-meeting'
 import { earlySnapshots } from '../core/early-snapshots'
 import { firstRoadMeetingSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -60,7 +60,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
     </EarlyMap>
     {scene && actor === 'yan' && !talking && <WalkControls><WalkDirectionButtons prefix="会面" onMove={move} /></WalkControls>}
     <StatusParagraph>路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</StatusParagraph>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{!near ? '本人先实际走到本步位置。' : actor !== scene.actor ? '请选择当前发言人物。' : actor === 'mei' ? '当前关注：萧媚发言，本人位置保持。' : '当前人物：萧炎本人'}</p>
       <PrimaryButton disabled={!near || actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('fight')}>把招呼算作本人战斗胜利</SecondaryButton>

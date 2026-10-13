@@ -14,7 +14,8 @@ import { PrimaryButton, SecondaryButton } from './Buttons'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import MarketWalker from './MarketWalker'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
+import NightRoomFixtures from './NightRoomFixtures'
 import './early-walk.css'
 export default function FirstHallEvening({ state, onBack }: { state: GameState; onBack: () => void }) {
   const task = state.earlyTraining.firstHallEvening, route = eveningRoute(task.stage), scene = firstHallEveningScenes[task.stage]
@@ -37,11 +38,7 @@ export default function FirstHallEvening({ state, onBack }: { state: GameState; 
       if (!event.repeat) walkKey(event, direction => act(`move-${direction}`), () => { if (!moving && scene) act(scene.operation) })
     }}>
       <MapBackground width="480" height="380" fill="#111e27" />
-      {room ? <><path d="M160 120 H420 V300 H160Z" fill="#3b3931" stroke="#bfa46a" />
-        <rect x="195" y="294" width="50" height="12" fill={task.door === 'closed' ? '#856644' : '#111e27'} aria-label={`本人房门${task.door}`} />
-        <rect x="315" y="245" width="65" height="40" fill="#856644" /><MapText x="355" y="233">身旁桌</MapText>
-        <circle cx="360" cy="268" r="7" fill="#bfa46a" aria-label={task.tea ? '茶已饮' : '桌边茶'} />
-        <MapText x="220" y="335">薰儿已在院中分路</MapText></>
+      {room ? <NightRoomFixtures door={task.door} tea={task.tea} />
         : <><path d="M300 150 V230 H220 V310" fill="none" stroke="#756747" strokeWidth="22" />
           <path d="M180 300 H260" stroke="#bfa46a" /><MapText x="220" y="352">院中房门</MapText>
           <MapText x="345" y="100">夜山</MapText>
@@ -52,7 +49,7 @@ export default function FirstHallEvening({ state, onBack }: { state: GameState; 
     </EarlyMap>
     <StatusParagraph>回房 {task.stage}/9 · 路步 {task.walk}/{route?.length ?? 0} · {firstHallEveningSaveSummary(state, state.settings)}</StatusParagraph>
     {moving ? <p>沿当前夜路向{({ up: '上', down: '下', left: '左', right: '右' })[route[task.walk]]}走。</p>
-      : scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton disabled={actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton></BondSummary>
+      : scene ? <BondSummary>{sceneHeading(scene)}<PrimaryButton disabled={actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton></BondSummary>
         : <p>夜间回房已归档。同卷留桌，老师来访另续。</p>}
     <SecondaryButton onClick={onBack}>暂离夜间回房 · 保留断点</SecondaryButton>
   </>

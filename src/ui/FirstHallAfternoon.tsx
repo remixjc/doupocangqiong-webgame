@@ -14,7 +14,7 @@ import { PrimaryButton, SecondaryButton } from './Buttons'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import MarketWalker from './MarketWalker'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import './early-walk.css'
 export default function FirstHallAfternoon({ state, onBack }: { state: GameState; onBack: () => void }) {
   const t = state.earlyTraining, task = t.firstHallAfternoon, route = afternoonRoute(task.stage), scene = firstHallAfternoonScenes[task.stage]
@@ -52,7 +52,7 @@ export default function FirstHallAfternoon({ state, onBack }: { state: GameState
     </EarlyMap>
     <StatusParagraph>午后 {task.stage}/10 · 本段行走 {task.walk}/{route ? 6 : 0} · {firstHallAfternoonSaveSummary(state, state.settings)}</StatusParagraph>
     {moving ? <BondSummary><h3>沿山路同行</h3><p>下一步向{({ up: '上', down: '下', left: '左', right: '右' })[route[task.walk]]}走。</p></BondSummary>
-      : scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton disabled={actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton></BondSummary>
+      : scene ? <BondSummary>{sceneHeading(scene)}<PrimaryButton disabled={actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton></BondSummary>
         : <BondSummary><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></BondSummary>}
     <SecondaryButton onClick={onBack}>暂离整个午后 · 保留断点</SecondaryButton>
   </>

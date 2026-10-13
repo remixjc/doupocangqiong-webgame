@@ -15,7 +15,7 @@ import { firstHallReadingScenes } from '../content/first-hall-reading'
 import { hallSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallReadingSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -63,7 +63,7 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
     {scene && actor === 'yan' && !task.leaned && <WalkControls><WalkDirectionButtons prefix="阅读" onMove={move} /></WalkControls>}
     <StatusParagraph>东侧阅读 {task.stage}/8 · {firstHallReadingSaveSummary(state, state.settings)}</StatusParagraph>
     <p>当前卷轴保管：{{ none: '当前未持卷', 'reading-first': '正在阅读第一卷', 'selected-second': '已另选第二卷', 'borrowed-second': '借出的第二卷由本人保管' }[t.hall.scroll]}。{task.record === 'recalled' || !task.picked && t.hall.stage >= 6 ? '本段明确回顾当时第一卷阅读，当前已归架或第二卷保管保持。' : '同一第一卷沿原保管账衔接，不新增库存。'}</p>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor !== 'yan' ? '西侧声音不能替本人读卷。' : !near ? '本人先实际走到东侧书架前。' : '当前人物：萧炎本人'}</p>
       <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('learn')}>把阅读算作当场授技</SecondaryButton>

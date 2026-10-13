@@ -8,7 +8,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useRef, useState, type KeyboardEvent } from 'react'
@@ -67,7 +67,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       <li>薰儿：{task.xuner === 'unmeasured' ? '未测' : '一星斗者'}</li>
       <li>萧炎：{task.yan === 'unmeasured' ? '未测' : task.stage < 13 ? '七段 · 待宣读' : '七段 · 已宣读合格'}</li>
     </ul>
-    {scene ? near ? <BondSummary aria-label="预测当前步骤"><SceneHeading title={scene.title} text={scene.text} /><PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
+    {scene ? near ? <BondSummary aria-label="预测当前步骤">{sceneHeading(scene)}<PrimaryButton onClick={act}>{scene.action}</PrimaryButton></BondSummary>
       : <MutedParagraph>下一步请走近{preliminaryPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>{state.earlyTraining.keChallenge.stage === 12 ? '预测与后续萧克应战已归档。' : '预测已归档，接续后续挑战。'}</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼按顺序记录。</p>
         {onChallenge && <PrimaryButton onClick={onChallenge}>接续萧克挑战 · 六段对手应战</PrimaryButton>}</BondSummary>}

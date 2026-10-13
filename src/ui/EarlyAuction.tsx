@@ -6,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -47,7 +47,7 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
     </WalkControls>
     <StatusParagraph>首次拍卖 {task.stage}/7 · {sold ? '买方萧战 · 成交40000' : bid ? `报价${bid} · 尚未成交` : '尚未报价'} · 同瓶{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管 · {state.earlyTraining.settlement.net ? '净款已收' : '尚未结算'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="首次拍卖步骤">
-      <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {spokenSceneHeading(scene)}
       <PrimaryButton onClick={() => submitEarlyAuction(gameStore, position, station,
         { step: task.stage, owner: state.earlyTraining.consignment.owner, operation: scene.operation })}>{scene.action}</PrimaryButton>
     </BondSummary> : <MutedParagraph>下一步请到{stations[scene.station]}：{scene.title}。</MutedParagraph>

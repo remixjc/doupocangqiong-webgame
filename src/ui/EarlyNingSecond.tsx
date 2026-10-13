@@ -9,7 +9,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -74,7 +74,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
     </EarlyMap>
     <WalkControls aria-label="违规再攻行走操作">{<WalkDirectionButtons prefix="再攻" onMove={move} />}</WalkControls>
     <StatusParagraph>违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</StatusParagraph>
-    {scene ? near ? <BondSummary aria-label="违规再攻步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? near ? <BondSummary aria-label="违规再攻步骤">{sceneHeading(scene)}
       {training ? <>
         {steady && <TimingRange label="违规迎击时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="违规迎击时机指针" marker={marker} />

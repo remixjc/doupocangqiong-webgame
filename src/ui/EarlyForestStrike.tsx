@@ -10,7 +10,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -71,7 +71,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       <WalkDirectionButtons prefix="林中" onMove={move} />
     </WalkControls>
     <StatusParagraph>林中练技 {task.stage}/7 · {task.result === 'none' ? '六段回顾未记录' : '故事六段'} · 连贯动作 {task.beats}/3 · 重试 {task.attempts} 次 · {task.tree === 'intact' ? '树木完好' : '同一棵树已倒下'}</StatusParagraph>
-    {scene ? near ? <BondSummary aria-label="林中练技步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? near ? <BondSummary aria-label="林中练技步骤">{sceneHeading(scene)}
       {training ? <>
         {steady && <TimingRange label="林中练技时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="林中练技时机指针" marker={marker} />

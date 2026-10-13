@@ -5,7 +5,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
@@ -57,7 +57,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     </EarlyMap>
     {scene && movable && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix={prefix} onMove={move} /></WalkControls>}
     <StatusParagraph>{prefix} {stage}/{total} · {summary}</StatusParagraph>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{!selected ? '先明确选择本步人物。' : !close ? '先切回本人，走近当前交接地点。' : `当前人物：${actor === 'yan' ? '萧炎本人' : '房中的老师'}`}</p>
       {controls}
       <PrimaryButton disabled={!close || !selected} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>

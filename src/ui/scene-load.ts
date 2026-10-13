@@ -1,3 +1,5 @@
+import { lazy, type ComponentType } from 'react'
+
 export const SCENE_LOAD_TIMEOUT_MS = 20_000
 export class SceneLoadTimeout extends Error {
   constructor() { super('Scene module did not load within the allowed time'); this.name = 'SceneLoadTimeout' }
@@ -19,5 +21,3 @@ export function loadSceneModule<T>(load: () => Promise<T>, timeoutMs = SCENE_LOA
     )
   })
 }
-import { lazy, type ComponentType } from 'react'
-

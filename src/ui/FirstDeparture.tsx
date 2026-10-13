@@ -17,7 +17,7 @@ import { firstDepartureSaveSummary } from '../core/save-preview'
 import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import './early-walk.css'
 
@@ -80,7 +80,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
     {scene && task.risen && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix="出门" onMove={move} /></WalkControls>}
     {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}
     <StatusParagraph>出门石路 {task.stage}/9 · 当前{space === 'room' ? '房内' : '室外'} · {firstDepartureSaveSummary(state, state.settings)}</StatusParagraph>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor !== 'yan' ? '静止古戒不能替本人行动。' : !near ? '本人先走到当前房内或室外地点。' : '当前人物：萧炎本人'}</p>
       <PrimaryButton disabled={!near || actor !== 'yan'} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('finish')}>用一句回顾代签全部出门</SecondaryButton>

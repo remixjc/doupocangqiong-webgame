@@ -36,6 +36,7 @@ const EarlyMarketDiscovery = lazyScene(() => import('./EarlyMarketDiscovery'))
 const EarlyMarketStandoff = lazyScene(() => import('./EarlyMarketStandoff'))
 const EarlyMarketBracelets = lazyScene(() => import('./EarlyMarketBracelets'))
 
+const FirstHallTeacher = lazyScene(() => import('./FirstHallTeacher'))
 const FirstHallEvening = lazyScene(() => import('./FirstHallEvening'))
 const FirstHallAfternoon = lazyScene(() => import('./FirstHallAfternoon'))
 const FirstHallApproach = lazyScene(() => import('./FirstHallApproach'))
@@ -74,6 +75,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [firstHallThreat, setFirstHallThreat, hallThreatEntry, hallThreatBack] = useReturningScene()
   const [firstHallExitResponse, setFirstHallExitResponse, hallExitResponseEntry, hallExitResponseBack] = useReturningScene()
   const [firstHallCheckout, setFirstHallCheckout, hallCheckoutEntry, hallCheckoutBack] = useReturningScene()
+  const [firstHallTeacher, setFirstHallTeacher, hallTeacherEntry, hallTeacherBack] = useReturningScene()
   const [firstHallEvening, setFirstHallEvening, hallEveningEntry, hallEveningBack] = useReturningScene()
   const [firstHallAfternoon, setFirstHallAfternoon, hallAfternoonEntry, hallAfternoonBack] = useReturningScene()
   const [firstHallAftermath, setFirstHallAftermath, hallAftermathEntry, hallAftermathBack] = useReturningScene()
@@ -107,6 +109,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   if (firstHallThreat) return deferredRoute(FirstHallApproach, "正在接续成人礼威胁……", state, hallThreatBack, { threat: true })
   if (firstHallExitResponse) return deferredRoute(FirstHallApproach, "正在接续堂内移步……", state, hallExitResponseBack, { exitResponse: true })
   if (firstHallCheckout) return deferredRoute(FirstHallApproach, "正在接续同卷登记……", state, hallCheckoutBack, { checkout: true })
+  if (firstHallTeacher) return deferredRoute(FirstHallTeacher, "正在接续房中有限问答……", state, hallTeacherBack, {})
   if (firstHallEvening) return deferredRoute(FirstHallEvening, "正在接续夜间回房……", state, hallEveningBack, {  })
   if (firstHallAfternoon) return deferredRoute(FirstHallAfternoon, "正在接续整个午后……", state, hallAfternoonBack, {  })
   if (firstHallAftermath) return deferredRoute(FirstHallApproach, "正在接续堂内反应……", state, hallAftermathBack, { aftermath: true })
@@ -261,6 +264,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 31 && <SecondaryButton ref={hallThreatEntry} onClick={() => setFirstHallThreat(true)}>接续成人礼威胁与本人观察</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 40 && <SecondaryButton ref={hallExitResponseEntry} onClick={() => setFirstHallExitResponse(true)}>接续堂内移步与来年回应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 46 && <SecondaryButton ref={hallCheckoutEntry} onClick={() => setFirstHallCheckout(true)}>接续同卷管理者登记</SecondaryButton>}
+      {task.firstHallEvening.stage === 9 && <SecondaryButton ref={hallTeacherEntry} onClick={() => setFirstHallTeacher(true)}>接续房中老师现身与有限背景</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallAfternoon.stage === 10 && <SecondaryButton ref={hallEveningEntry} onClick={() => setFirstHallEvening(true)}>接续夜间回房与同卷放桌</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage === 57 && <SecondaryButton ref={hallAfternoonEntry} onClick={() => setFirstHallAfternoon(true)}>接续整个午后同行与天黑</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 53 && <SecondaryButton ref={hallAftermathEntry} onClick={() => setFirstHallAftermath(true)}>接续离堂后萧宁独立反应</SecondaryButton>}

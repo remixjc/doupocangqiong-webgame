@@ -15,7 +15,7 @@ import { firstHallMatchScene } from '../content/first-hall-match'
 import { hallSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallMatchSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import './early-walk.css'
 export default function FirstHallMatch({ state, onBack, continuation = false }: { state: GameState; onBack: () => void; continuation?: boolean }) {
@@ -59,7 +59,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
     </EarlyMap>
     <StatusParagraph>{prefix} {continuation ? task.stage : Math.min(task.stage, 12)}/{continuation ? 20 : 12} · {firstHallMatchSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{t.firstHallReading.record === 'recalled' ? '明确回顾当时第一卷，当前已归架或第二卷保管保持。' : '本人仍持同一第一卷。'}旧卷账 {t.hall.stage}/9；没有新技能或奖励。</p>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前焦点正确。' : '请明确切换到本步所需焦点。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('win')}>本人入西场参赛</SecondaryButton>

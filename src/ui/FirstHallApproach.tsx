@@ -15,7 +15,7 @@ import { firstHallApproachSaveSummary } from '../core/save-preview'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { HallText } from './MapPrimitives'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import './early-walk.css'
 
@@ -83,7 +83,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
     <p>{departing ? task.exitRecord === 'recalled' ? '明确回顾当时离堂，更高保管保持。' : outside ? '两人已跨门，仍持同一借卷。' : '借卷已登记，尚未跨门。' : checkout && task.checkoutRecord !== 'none' ? task.checkoutRecord === 'recalled' ? '明确回顾当时管理者登记，当前更高保管保持。' : '同一第二卷实际登记借出，本人仍持卷尚未离堂。' : current ? (task.secondRecord === 'recalled' ? '明确回顾当时另取第二卷，现有更高保管保持。' : task.stage >= 28 ? '本人另取第二卷，未登记或离堂。' : '第一卷已归架，第二卷尚未取。') : task.stage >= 20 || t.firstHallReading.record === 'recalled' || task.returnRecord === 'recalled' || t.hall.stage >= 6 && first !== 'returned'
       ? '明确回顾当时第一卷，当前更高保管保持。' : first === 'returned' ? '同一第一卷已归架，第二卷尚未取。' : '本人仍持同一第一卷，尚未归架。'}{!current && (task.ownPlaced ? '回顾当时她仍持自己的临时卷，后段放卷记录保持。' : '薰儿仍持她自己的临时卷。')}旧卷账 {t.hall.stage}/9。</p>
     {current && <p>{task.ownPlaced ? '当前她自己的临时卷已经放下，旧会面拿卷历史保持。' : '她自己的临时卷仍在手中。'}切磋与未来威胁没有当前开战。</p>}
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前人物正确。' : '请切换到本步人物。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('return')}>把收卷当成第一卷已归架</SecondaryButton>

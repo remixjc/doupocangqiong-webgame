@@ -8,7 +8,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useRef, useState, type KeyboardEvent } from 'react'
@@ -56,7 +56,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
     </EarlyMap>
     <WalkControls aria-label="功法阁行走操作">{<WalkDirectionButtons prefix="功法阁" onMove={move} />}</WalkControls>
     <StatusParagraph>入阁 {task.stage}/12 · 萧炎{task.yan === 'fire' ? '火属性' : '未测'} · 薰儿{task.xuner === 'fire' ? '火属性' : '未测'} · 水晶{task.crystal === 'broken' ? '已碎' : task.crystal === 'cracked' ? '有裂纹尚未碎' : '完整'} · {task.entered ? '已实际入阁' : task.permission ? '有许可尚未过门' : '尚未许可入阁'} · 尚无新卷轴</StatusParagraph>
-    {scene ? nearQiPavilionPlace(position, scene.place, task.stage) ? <BondSummary aria-label="功法阁入阁步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? nearQiPavilionPlace(position, scene.place, task.stage) ? <BondSummary aria-label="功法阁入阁步骤">{sceneHeading(scene)}
       <PrimaryButton onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       {task.stage >= 5 && <SecondaryButton onClick={() => act('take-scroll')}>尝试取卷 · 尚未择卷</SecondaryButton>}
       {task.crystal !== 'intact' && <SecondaryButton onClick={() => act('take-crystal')}>尝试拾水晶 · 无玩家物品</SecondaryButton>}

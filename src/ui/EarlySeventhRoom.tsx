@@ -8,7 +8,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
@@ -58,7 +58,7 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
       {(Object.keys(stations) as SeventhStation[]).map(id => <SecondaryButton key={id} aria-pressed={station === id} onClick={() => setStation(id)}>查看{stations[id]}</SecondaryButton>)}
     </WalkControls>
     <StatusParagraph>房中七段 {task.stage}/8 · 调息 {task.beats}/{task.stage <= 3 ? 2 : 3} · 补液 {task.drops}/1 滴 · 重试 {task.attempts} 次 · {task.result === 'none' ? '故事七段未成立' : '故事七段已成立'}</StatusParagraph>
-    {scene ? station === scene.station ? <BondSummary aria-label="七段房中步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? station === scene.station ? <BondSummary aria-label="七段房中步骤">{sceneHeading(scene)}
       {training && <>
         {steady && <TimingRange label="房中调息时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调到35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="房中调息时机指针" marker={marker} />

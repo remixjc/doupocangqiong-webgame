@@ -9,7 +9,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
@@ -71,7 +71,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
     </EarlyMap>
     <WalkControls aria-label="礼前训练行走操作">{<WalkDirectionButtons prefix="礼前" onMove={move} />}</WalkControls>
     <StatusParagraph>礼前训练 {task.stage}/15 · {target ? `本轮 ${task.beats}/${target}` : '地点步骤'} · 重开 {task.attempts} 次 · {task.outing === 'none' ? '尚待回应' : task.outing === 'promised' ? '已约好，同行未完成' : '次日同行已记'} · {task.result === 'none' ? '故事八段尚未感知' : '故事八段已感知'}</StatusParagraph>
-    {scene ? near ? <BondSummary aria-label="礼前训练步骤"><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? near ? <BondSummary aria-label="礼前训练步骤">{sceneHeading(scene)}
       {target ? <>
         {steady && <TimingRange label="礼前训练时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="礼前训练时机指针" marker={marker} />

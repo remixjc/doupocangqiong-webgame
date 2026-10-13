@@ -8,7 +8,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import SceneHeading from './SceneHeading'
+import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyHallBlock, earlyHallStart, earlyHallPlaces, earlyHallObstacles, moveEarlyHall, nearbyEarlyHallPlace, submitEarlyHall } from '../core/early-hall'
@@ -85,7 +85,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
     {scene && <MutedParagraph>下一步：{earlyHallPlaces.find(place => place.id === scene.place)?.label} · {scene.title}</MutedParagraph>}
     {reading && place?.id === reading && <BondSummary aria-label="斗技堂地点说明">
       <h3>{place.label}</h3><p>{place.text}</p>
-      {scene?.place === place.id && <><SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
+      {scene?.place === place.id && <>{spokenSceneHeading(scene)}
         <PrimaryButton onClick={() => submitEarlyHall(gameStore, position, { step: scene.stage, operation: scene.operation })}>{scene.action}</PrimaryButton></>}
     </BondSummary>}
     {task.stage === 9 && <BondSummary><h3>离堂与回房已记录</h3><p>借卷由萧炎保管。药老的正式传授在回房后独立记录，不由本次借阅代签。</p>

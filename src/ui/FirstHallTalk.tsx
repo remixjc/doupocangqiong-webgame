@@ -15,7 +15,7 @@ import { hallTalkSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallTalkSaveSummary } from '../core/save-preview'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import HistoryBlocked from './HistoryBlocked'
-import SceneHeading from './SceneHeading'
+import { sceneHeading } from './SceneHeading'
 import MarketWalker from './MarketWalker'
 import './early-walk.css'
 
@@ -64,7 +64,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
     </EarlyMap>
     <StatusParagraph>东架会面 {task.stage}/20 · {firstHallTalkSaveSummary(state, state.settings)}</StatusParagraph>
     <p>{t.firstHallReading.record === 'recalled' || t.hall.stage >= 6 ? '明确回顾当时第一卷，现有更高卷账不回退。' : '本人仍持同一第一卷。'}薰儿的卷{task.ownScroll === 'xuner' ? '由她临时拿看' : '尚在架上'}；旧卷账 {t.hall.stage}/9。借资{t.purse.borrowed}、已付{t.purse.spent}保持。</p>
-    {scene ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
+    {scene ? <BondSummary>{sceneHeading(scene)}
       <p>{actor === scene.actor ? '当前人物正确。' : '请明确切换到本步人物。'}</p>
       <PrimaryButton disabled={actor !== scene.actor} onClick={() => act(scene.operation)}>{scene.action}</PrimaryButton>
       <SecondaryButton onClick={() => act('repay')}>把玩笑当作已还款</SecondaryButton>
