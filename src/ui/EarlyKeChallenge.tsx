@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -57,11 +58,11 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       <MapText x="165" y="100" fill="#ead9b6" fontSize="13">高台 · 萧战宣布胜负</MapText>
       <circle cx="580" cy="180" r="74" fill="#446355" stroke="#9a9478" />
       {task.stage >= 2 && task.stage <= 5 && <g role="img" aria-label={task.stage >= 4 ? '萧克已倒地，低阶掌法击肩已记' : task.beats === 1 ? '萧炎已向左侧避，准备低阶掌法击肩' : '萧克来掌，等待左侧避'}>
-        <g transform={`translate(${task.stage >= 4 ? 626 : 608} ${task.stage >= 4 ? 202 : 160}) rotate(${task.stage >= 4 ? 78 : 0})`}><circle cy="-15" r="8" fill="#dbb799" /><path d="M-12 18 L-7-5 H7 L12 18Z" fill="#b88775" /><path d="M-8-3 L-36 2" stroke="#dbb799" strokeWidth="5" /></g>
+        <g transform={`translate(${task.stage >= 4 ? 626 : 608} ${task.stage >= 4 ? 202 : 160}) rotate(${task.stage >= 4 ? 78 : 0})`}><RobeFigure cy="-15" skin="#dbb799" cut="M-12 18 L-7-5 H7 L12 18Z" robe="#b88775" /><path d="M-8-3 L-36 2" stroke="#dbb799" strokeWidth="5" /></g>
         {task.stage === 3 && <path d={task.beats === 0 ? 'M594 161 L553 179 L582 196Z' : 'M535 176 Q559 159 596 163'} fill={task.beats === 0 ? '#d7967c55' : 'none'} stroke="#d4bd79" strokeDasharray="4 3" />}
         <MapText x="630" y="232" fill="#ead9b6" fontSize="11">萧克 · 六段</MapText>
       </g>}
-      <g transform="translate(342 278)"><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
+      <g transform="translate(342 278)"><RobeFigure cy="-15" skin="#dfbca3" cut="M-12 16 L-7-5 H7 L12 16Z" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
       <path d="M87 345 V295 M61 304 Q86 280 112 305 M54 316 Q86 283 120 316" fill="none" stroke="#86a383" strokeWidth="7" />
       {Object.entries(keChallengePlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><HallWalker /></g>

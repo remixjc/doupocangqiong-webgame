@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -6,7 +7,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useReturningScene } from './use-returning-scene'
-import DeferredScene from './DeferredScene'
+import { deferredRoute } from './DeferredScene'
 import { lazy, useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
@@ -207,63 +208,28 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (ceremonyVerdict) return <DeferredScene message="正在接续正式裁定与礼终……"><EarlyCeremonyVerdict state={state} position={position}
-    onBack={ceremonyVerdictBack} /></DeferredScene>
-  if (ningSecond) return <DeferredScene message="正在接续违规再攻与迎击……"><EarlyNingSecond state={state} position={position} onVerdict={openCeremonyVerdict}
-    onBack={ningSecondBack} /></DeferredScene>
-  if (ningFirst) return <DeferredScene message="正在接续萧宁首轮推拉交锋……"><EarlyNingFirst state={state} position={position} onSecond={openNingSecond}
-    onBack={ningFirstBack} /></DeferredScene>
-  if (ceremonialTest) return <DeferredScene message="正在接续正式仪式与验碑……"><EarlyCeremonialTest state={state} position={position} onChallenge={openNingFirst}
-    onBack={ceremonialTestBack} /></DeferredScene>
-  if (ceremonyGuests) return <DeferredScene message="正在进入正式礼宾客场地……"><EarlyCeremonyGuests state={state} position={position} onCeremony={openCeremonialTest}
-    onBack={ceremonyGuestsBack} /></DeferredScene>
-  if (eighthTraining) return <DeferredScene message="正在接续同行与礼前训练……"><EarlyEighthTraining state={state} position={position} onGuests={openCeremonyGuests}
-    onBack={eighthTrainingBack} /></DeferredScene>
-  if (keChallenge) return <DeferredScene message="正在接续萧克六段挑战……"><EarlyKeChallenge state={state} position={position} onTraining={openEighthTraining}
-    onBack={keChallengeBack} /></DeferredScene>
-  if (preliminary) return <DeferredScene message="正在进入一月前预测……"><EarlyPreliminary state={state} position={position} onChallenge={openKeChallenge}
-    onBack={preliminaryBack} /></DeferredScene>
-  if (palmTraining) return <DeferredScene message="正在展开吸推两瓶练习……"><EarlyPalmPair state={state} position={position} onPreliminary={openPreliminary}
-    onBack={palmTrainingBack} /></DeferredScene>
-  if (seventhTraining) return <DeferredScene message="正在回房接续七段调息……"><EarlySeventhRoom state={state} position={position}
-    onPalm={openPalm}
-    onBack={seventhTrainingBack} /></DeferredScene>
-  if (forestTraining) return <DeferredScene message="正在走入练技森林……"><EarlyForestStrike state={state} position={position}
-    onSeventh={openSeventh}
-    onBack={forestTrainingBack} /></DeferredScene>
-  if (storingSupplies) return <DeferredScene message="正在回看房中物资……"><EarlyLongSupplies state={state} position={position}
-    onForest={openForest}
-    onBack={storingSuppliesBack} /></DeferredScene>
-  if (xunerVisiting) return <DeferredScene message="正在接续薰儿来访……"><EarlyXunerVisit state={state} position={position}
-    onSupplies={openLongSupplies}
-    onBack={xunerVisitingBack} /></DeferredScene>
-  if (fatherVisiting) return <DeferredScene message="正在回房接续父亲来访……"><EarlyFatherGift state={state} position={position}
-    onXunerVisit={openXunerVisit}
-    onBack={fatherVisitingBack} /></DeferredScene>
-  if (settling) return <DeferredScene message="正在展开寄售手续……"><EarlySettlement state={state} position={position}
-    onFatherGift={openFatherGift}
-    onBack={settlingBack} /></DeferredScene>
-  if (auctioning) return <DeferredScene message="正在进入第一拍卖室……"><EarlyAuction state={state} position={position}
-    onSettle={openSettlement}
-    onBack={auctioningBack} /></DeferredScene>
-  if (appraising) return <DeferredScene message="正在展开寄售鉴定路线……"><EarlyAppraisal state={state} position={position}
-    onAuction={openAuction}
-    onBack={appraisingBack} /></DeferredScene>
-  if (consigning) return <DeferredScene message="正在展开首次寄售准备……"><EarlyConsignment state={state} position={position}
-    onAppraise={openAppraisal}
-    onBack={consigningBack} /></DeferredScene>
-  if (recovering) return <DeferredScene message="正在打开训练后的恢复房间……"><EarlyRecovery state={state} position={position}
-    onConsign={openConsignment}
-    onBack={recoveringBack} /></DeferredScene>
-  if (supervising) return <DeferredScene message="正在展开后山督练……"><EarlySupervision state={state} position={position}
-    onRecover={openRecovery}
-    onBack={supervisingBack} /></DeferredScene>
-  if (teaching) return <DeferredScene message="正在打开老师传技房间……"><EarlyTeaching state={state} position={position}
-    onSupervise={openSupervision}
-    onBack={teachingBack} /></DeferredScene>
-  if (hall) return <DeferredScene message="正在展开斗技堂……"><EarlyHall state={state}
-    onTeach={openTeaching}
-    onBack={hallBack} /></DeferredScene>
+  if (ceremonyVerdict) return deferredRoute(EarlyCeremonyVerdict, "正在接续正式裁定与礼终……", state, ceremonyVerdictBack, { position: position })
+  if (ningSecond) return deferredRoute(EarlyNingSecond, "正在接续违规再攻与迎击……", state, ningSecondBack, { position: position, onVerdict: openCeremonyVerdict })
+  if (ningFirst) return deferredRoute(EarlyNingFirst, "正在接续萧宁首轮推拉交锋……", state, ningFirstBack, { position: position, onSecond: openNingSecond })
+  if (ceremonialTest) return deferredRoute(EarlyCeremonialTest, "正在接续正式仪式与验碑……", state, ceremonialTestBack, { position: position, onChallenge: openNingFirst })
+  if (ceremonyGuests) return deferredRoute(EarlyCeremonyGuests, "正在进入正式礼宾客场地……", state, ceremonyGuestsBack, { position: position, onCeremony: openCeremonialTest })
+  if (eighthTraining) return deferredRoute(EarlyEighthTraining, "正在接续同行与礼前训练……", state, eighthTrainingBack, { position: position, onGuests: openCeremonyGuests })
+  if (keChallenge) return deferredRoute(EarlyKeChallenge, "正在接续萧克六段挑战……", state, keChallengeBack, { position: position, onTraining: openEighthTraining })
+  if (preliminary) return deferredRoute(EarlyPreliminary, "正在进入一月前预测……", state, preliminaryBack, { position: position, onChallenge: openKeChallenge })
+  if (palmTraining) return deferredRoute(EarlyPalmPair, "正在展开吸推两瓶练习……", state, palmTrainingBack, { position: position, onPreliminary: openPreliminary })
+  if (seventhTraining) return deferredRoute(EarlySeventhRoom, "正在回房接续七段调息……", state, seventhTrainingBack, { position: position, onPalm: openPalm })
+  if (forestTraining) return deferredRoute(EarlyForestStrike, "正在走入练技森林……", state, forestTrainingBack, { position: position, onSeventh: openSeventh })
+  if (storingSupplies) return deferredRoute(EarlyLongSupplies, "正在回看房中物资……", state, storingSuppliesBack, { position: position, onForest: openForest })
+  if (xunerVisiting) return deferredRoute(EarlyXunerVisit, "正在接续薰儿来访……", state, xunerVisitingBack, { position: position, onSupplies: openLongSupplies })
+  if (fatherVisiting) return deferredRoute(EarlyFatherGift, "正在回房接续父亲来访……", state, fatherVisitingBack, { position: position, onXunerVisit: openXunerVisit })
+  if (settling) return deferredRoute(EarlySettlement, "正在展开寄售手续……", state, settlingBack, { position: position, onFatherGift: openFatherGift })
+  if (auctioning) return deferredRoute(EarlyAuction, "正在进入第一拍卖室……", state, auctioningBack, { position: position, onSettle: openSettlement })
+  if (appraising) return deferredRoute(EarlyAppraisal, "正在展开寄售鉴定路线……", state, appraisingBack, { position: position, onAuction: openAuction })
+  if (consigning) return deferredRoute(EarlyConsignment, "正在展开首次寄售准备……", state, consigningBack, { position: position, onAppraise: openAppraisal })
+  if (recovering) return deferredRoute(EarlyRecovery, "正在打开训练后的恢复房间……", state, recoveringBack, { position: position, onConsign: openConsignment })
+  if (supervising) return deferredRoute(EarlySupervision, "正在展开后山督练……", state, supervisingBack, { position: position, onRecover: openRecovery })
+  if (teaching) return deferredRoute(EarlyTeaching, "正在打开老师传技房间……", state, teachingBack, { position: position, onSupervise: openSupervision })
+  if (hall) return deferredRoute(EarlyHall, "正在展开斗技堂……", state, hallBack, { onTeach: openTeaching })
   if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={indoorsBack} />
   return <>
     <Eyebrow>乌坦城 / 往事准备路线</Eyebrow>
@@ -293,7 +259,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
         {item.id === 'teacher' && <circle cx={item.x} cy={item.y - 6} r="9" fill="#aec9ce" opacity=".8" />}
       </g>)}
       <g aria-hidden="true" data-player-x={position.x} data-player-y={position.y} transform={`translate(${position.x} ${position.y})`}>
-        <ellipse cy="14" rx="13" ry="5" fill="#0005" /><path d="M-10 12 L-6-2 H6 L11 12Z" fill="#d3a567" /><circle cy="-8" r="7" fill="#edc79f" /><path d="M-7-11 Q0-20 7-10" fill="#26322f" /><path d="M-12 3 L-8 11 M12 3 L8 11" stroke="#8e653c" strokeWidth="3" />
+        <ellipse cy="14" rx="13" ry="5" fill="#0005" /><RobeFigure cut="M-10 12 L-6-2 H6 L11 12Z" robe="#d3a567" cy="-8" r="7" skin="#edc79f" bodyFirst /><path d="M-7-11 Q0-20 7-10" fill="#26322f" /><path d="M-12 3 L-8 11 M12 3 L8 11" stroke="#8e653c" strokeWidth="3" />
       </g>
       <MapText x="360" y="402" fill="#a7b9a9">院门 · 每次进入从这里出发</MapText>
     </EarlyMap>

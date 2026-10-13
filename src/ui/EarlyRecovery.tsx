@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -41,7 +42,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       <path d="M580 40 V130 M525 85 H635" stroke="#b6a079" strokeWidth="3" />
       {task.stage >= 5 && <path d="M525 130 L390 275 H655 L635 130Z" fill="#f0d8a620" />}
       <g transform={`translate(${inContainer ? 355 : 205} ${inContainer ? 180 : 207})`}>
-        <path d="M-22 48 L-12 0 H12 L22 48Z" fill="#c9a06b" /><circle cy="-13" r="13" fill="#e8c69f" /><path d="M-13-20 Q0-35 13-20" fill="#28342d" />
+        <RobeFigure cut="M-22 48 L-12 0 H12 L22 48Z" robe="#c9a06b" r="13" skin="#e8c69f" bodyFirst /><path d="M-13-20 Q0-35 13-20" fill="#28342d" />
         {inContainer && <path d="M-16 9 Q0 19 16 9" stroke="#d3e4bb" fill="none" strokeWidth="2" />}
       </g>
       <g transform="translate(355 245)">

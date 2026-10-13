@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -48,7 +49,7 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
       <path d="M90 260 L220 148 L166 70 L280 260Z" fill="#d9c68f" opacity=".13" />
       <path d="M261 199 H456 L446 263 H271Z" fill="#816745" stroke="#c4a675" strokeWidth="3" />
       <ellipse cx="359" cy="199" rx="98" ry="30" fill={color} stroke="#b7bb93" strokeWidth="3" />
-      {task.stage > 0 && <g transform="translate(356 156)"><circle cy="-26" r="14" fill="#e4c59e" /><path d="M-31 46 L-13-8 H13 L31 46Z" fill="#d1a56d" /><path d="M-24 16 L0 28 L24 16" fill="none" stroke="#8e744f" strokeWidth="5" /></g>}
+      {task.stage > 0 && <g transform="translate(356 156)"><RobeFigure cy="-26" r="14" skin="#e4c59e" cut="M-31 46 L-13-8 H13 L31 46Z" robe="#d1a56d" /><path d="M-24 16 L0 28 L24 16" fill="none" stroke="#8e744f" strokeWidth="5" /></g>}
       <g transform="translate(573 160)"><ellipse rx="26" ry="17" fill="none" stroke="#171f23" strokeWidth="10" /><MapText y="46" fill="#e5d5b7" fontSize="14">古戒 · 药老补液</MapText></g>
       {task.drops === 1 && <g><path d="M524 177 Q511 196 524 200 Q537 196 524 177Z" fill="#88bda1" /><path d="M503 197 L465 200" stroke="#9dcead" strokeDasharray="4 5" /><MapText x="558" y="250" fill="#e5d5b7" fontSize="13">一滴已入水 · 不重复补入</MapText></g>}
       <MapText x="360" y="291" fill="#e5d5b7" fontSize="13">{seventhEnergyLabels[task.energy]} · {task.result === 'none' ? '尚待合法感知结果' : '本轮故事七段'}</MapText>

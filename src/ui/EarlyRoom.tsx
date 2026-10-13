@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -54,16 +55,14 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
         <g transform="translate(470 130)">
           <ellipse cy="78" rx="45" ry="12" fill="#1118" />
           <path d="M-32 65 Q-26-14 0-14 Q26-14 32 65Z" fill="#a9c3bd" opacity=".8" />
-          <circle cy="-35" r="20" fill="#d8d9c6" />
-          <path d="M-22-40 Q0-74 23-40 M-14-22 Q0 11 14-22" fill="#dee3d3" />
+          <RobeFigure cy="-35" r="20" skin="#d8d9c6" cut="M-22-40 Q0-74 23-40 M-14-22 Q0 11 14-22" robe="#dee3d3" />
           <path d={task.liquid.stage >= 2 && task.liquid.stage <= 5 ? 'M-19 9 L-53 17 L-75 0 M19 9 L44 30' : 'M-19 9 L-35 39 M19 9 L35 39'} fill="none" stroke="#d2ded1" strokeWidth="9" strokeLinecap="round" />
           {view.flame && <g data-room-flame="teacher"><path d="M-93-3 Q-110-22-82-53 Q-87-26-72-31 Q-49-12-66-3Z" fill="#edf5e6" /><path d="M-82-5 Q-90-16-77-32 Q-80-17-72-14Z" fill="#b9ddd1" /></g>}
           {task.liquid.stage >= 3 && task.liquid.stage <= 5 && <path d="M-80-23 Q-99-3-80 2 Q-61-3-80-23Z" fill="#75ad87" stroke="#d3e8ad" />}
           <MapText y="100" fill="#e6d4a6" fontSize="13">药老 · {view.flame ? '掌中处理材料' : task.liquid.ready ? '调制完成' : task.liquid.stage === 5 ? '药液待入水' : '指导准备'}</MapText>
         </g>
         <g transform="translate(224 255)">
-          <ellipse cy="37" rx="29" ry="9" fill="#1118" /><path d="M-24 27 L-16-11 H16 L24 27Z" fill="#c29862" />
-          <circle cy="-25" r="15" fill="#ebc59e" /><path d="M-15-29 Q0-51 16-29" fill="#202c29" />
+          <ellipse cy="37" rx="29" ry="9" fill="#1118" /><RobeFigure cut="M-24 27 L-16-11 H16 L24 27Z" robe="#c29862" cy="-25" r="15" skin="#ebc59e" bodyFirst /><path d="M-15-29 Q0-51 16-29" fill="#202c29" />
           <path d="M-13 0 L-35 16 M13 0 L35 16" stroke="#d4aa75" strokeWidth="7" strokeLinecap="round" />
           <MapText y="59" fill="#e6d4a6" fontSize="13">萧炎 · {task.liquid.stage === 1 ? '准备容器与清水' : '在旁观察'}</MapText>
         </g>

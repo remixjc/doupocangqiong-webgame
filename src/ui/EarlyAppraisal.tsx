@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -35,7 +36,7 @@ export default function EarlyAppraisal({ state, position, onBack, onAuction }: {
         {!task.cloaked && <circle cy="-13" r="12" fill="#e5c499" />}
         <MapText y="86" fill="#e8d1a6">{task.speaker === 'yaolao' ? '药老代言 · 萧炎藏身' : '萧炎'}</MapText></g>
       <path d="M368 213 H623 V233 H368Z M386 233 V273 M605 233 V273" stroke="#c1a675" fill="#826a48" strokeWidth="3" />
-      {task.stage >= 5 && <g transform="translate(560 128)"><path d="M-27 65 L-13 0 H13 L27 65Z" fill="#91a37a" /><circle cy="-15" r="14" fill="#dac4a4" /><path d="M-16-22 Q0-42 16-22" fill="#d7dbbf" /><MapText y="94" fill="#e8d1a6" fontSize="13">谷尼 · 鉴定者</MapText></g>}
+      {task.stage >= 5 && <g transform="translate(560 128)"><RobeFigure cut="M-27 65 L-13 0 H13 L27 65Z" robe="#91a37a" cy="-15" r="14" skin="#dac4a4" bodyFirst /><path d="M-16-22 Q0-42 16-22" fill="#d7dbbf" /><MapText y="94" fill="#e8d1a6" fontSize="13">谷尼 · 鉴定者</MapText></g>}
       {task.stage < 7 && <g transform={`translate(${bottle.owner === 'xiaoyan' ? 295 : 433} 179)`}>
         <path d="M-8-19 H8 V-10 Q17-2 14 18 H-14 Q-17-2-8-10Z" fill="#dedfc8" stroke="#b5bea5" /><rect x="-9" y="-24" width="18" height="6" fill="#98764c" />
       </g>}

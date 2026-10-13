@@ -2,7 +2,7 @@ import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import DeferredScene from './DeferredScene'
+import DeferredScene, { deferredRoute } from './DeferredScene'
 import { lazy } from 'react'
 import { useReturningScene } from './use-returning-scene'
 import type { GameState } from '../core/model'
@@ -37,6 +37,7 @@ const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMar
 const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
 const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
 
+const FirstHallEvening = lazy(() => loadSceneModule(() => import('./FirstHallEvening')))
 const FirstHallAfternoon = lazy(() => loadSceneModule(() => import('./FirstHallAfternoon')))
 const FirstHallApproach = lazy(() => loadSceneModule(() => import('./FirstHallApproach')))
 const FirstHallTalk = lazy(() => loadSceneModule(() => import('./FirstHallTalk')))
@@ -74,6 +75,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [firstHallThreat, setFirstHallThreat, hallThreatEntry, hallThreatBack] = useReturningScene()
   const [firstHallExitResponse, setFirstHallExitResponse, hallExitResponseEntry, hallExitResponseBack] = useReturningScene()
   const [firstHallCheckout, setFirstHallCheckout, hallCheckoutEntry, hallCheckoutBack] = useReturningScene()
+  const [firstHallEvening, setFirstHallEvening, hallEveningEntry, hallEveningBack] = useReturningScene()
   const [firstHallAfternoon, setFirstHallAfternoon, hallAfternoonEntry, hallAfternoonBack] = useReturningScene()
   const [firstHallAftermath, setFirstHallAftermath, hallAftermathEntry, hallAftermathBack] = useReturningScene()
   const [firstHallLeaving, setFirstHallLeaving, hallLeavingEntry, hallLeavingBack] = useReturningScene()
@@ -102,62 +104,54 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
   const liquidScene = earlyLiquidScenes[task.liquid.stage]
-  if (firstHallFirstReturn) return <DeferredScene message="正在接续同卷归架……"><FirstHallApproach continuation state={state} onBack={hallFirstReturnBack} /></DeferredScene>
-  if (firstHallThreat) return <DeferredScene message="正在接续成人礼威胁……"><FirstHallApproach threat state={state} onBack={hallThreatBack} /></DeferredScene>
-  if (firstHallExitResponse) return <DeferredScene message="正在接续堂内移步……"><FirstHallApproach exitResponse state={state} onBack={hallExitResponseBack} /></DeferredScene>
-  if (firstHallCheckout) return <DeferredScene message="正在接续同卷登记……"><FirstHallApproach checkout state={state} onBack={hallCheckoutBack} /></DeferredScene>
-  if (firstHallAfternoon) return <DeferredScene message="正在接续整个午后……"><FirstHallAfternoon state={state} onBack={hallAfternoonBack} /></DeferredScene>
-  if (firstHallAftermath) return <DeferredScene message="正在接续堂内反应……"><FirstHallApproach aftermath state={state} onBack={hallAftermathBack} /></DeferredScene>
-  if (firstHallLeaving) return <DeferredScene message="正在接续同行离堂……"><FirstHallApproach leaving state={state} onBack={hallLeavingBack} /></DeferredScene>
-  if (firstHallConflict) return <DeferredScene message="正在接续东架交锋……"><FirstHallApproach conflict state={state} onBack={hallConflictBack} /></DeferredScene>
-  if (firstHallApproach) return <DeferredScene message="正在接续整衣与靠近……"><FirstHallApproach state={state} onBack={hallApproachBack} /></DeferredScene>
-  if (firstHallTalk) return <DeferredScene message="正在接续东架会面……"><FirstHallTalk state={state} onBack={hallTalkBack} /></DeferredScene>
-  if (firstHallMatch) return <DeferredScene message="正在接续东架旁观……"><FirstHallMatch state={state} onBack={hallMatchBack} /></DeferredScene>
-  if (firstHallReturn) return <DeferredScene message="正在接续赛后东架……"><FirstHallMatch continuation state={state} onBack={hallReturnBack} /></DeferredScene>
-  if (firstHallReading) return <DeferredScene message="正在接续东侧同一卷阅读……"><FirstHallReading state={state} onBack={hallReadingBack} /></DeferredScene>
-  if (firstHallEntry) return <DeferredScene message="正在接续实际入堂……"><FirstHallEntry state={state} onBack={hallEntryBack} /></DeferredScene>
-  if (firstRoadMeeting) return <DeferredScene message="正在接续石路会面……"><FirstRoadMeeting state={state} onBack={roadMeetingBack} /></DeferredScene>
-  if (firstDeparture) return <DeferredScene message="正在接续出门石路……"><FirstDeparture state={state} onBack={departureBack} /></DeferredScene>
-  if (firstBottle) return <DeferredScene message="正在接续有限试瓶……"><FirstTechnique continuation state={state} onBack={bottleBack} /></DeferredScene>
-  if (firstTechnique) return <DeferredScene message="正在接续铁片研究……"><FirstTechnique state={state} onBack={techniqueBack} /></DeferredScene>
-  if (firstReview) return <DeferredScene message="正在接续半月回顾……"><FirstTraining continuation state={state} onBack={reviewBack} /></DeferredScene>
-  if (firstTraining) return <DeferredScene message="正在接续持续调息……"><FirstTraining state={state} onBack={trainingBack} /></DeferredScene>
-  if (refining) return <DeferredScene message="正在接续清水与主辅药……"><EarlyRefining state={state} onBack={refiningBack} /></DeferredScene>
-  if (infusion) return <DeferredScene message="正在接续魔核炼化与入水……"><EarlyRefining continuation state={state} onBack={infusionBack} /></DeferredScene>
-  if (iron) return <DeferredScene message="正在接续铁片辨认……"><EarlyIron state={state} onBack={ironBack} /></DeferredScene>
+  if (firstHallFirstReturn) return deferredRoute(FirstHallApproach, "正在接续同卷归架……", state, hallFirstReturnBack, { continuation: true })
+  if (firstHallThreat) return deferredRoute(FirstHallApproach, "正在接续成人礼威胁……", state, hallThreatBack, { threat: true })
+  if (firstHallExitResponse) return deferredRoute(FirstHallApproach, "正在接续堂内移步……", state, hallExitResponseBack, { exitResponse: true })
+  if (firstHallCheckout) return deferredRoute(FirstHallApproach, "正在接续同卷登记……", state, hallCheckoutBack, { checkout: true })
+  if (firstHallEvening) return deferredRoute(FirstHallEvening, "正在接续夜间回房……", state, hallEveningBack, {  })
+  if (firstHallAfternoon) return deferredRoute(FirstHallAfternoon, "正在接续整个午后……", state, hallAfternoonBack, {  })
+  if (firstHallAftermath) return deferredRoute(FirstHallApproach, "正在接续堂内反应……", state, hallAftermathBack, { aftermath: true })
+  if (firstHallLeaving) return deferredRoute(FirstHallApproach, "正在接续同行离堂……", state, hallLeavingBack, { leaving: true })
+  if (firstHallConflict) return deferredRoute(FirstHallApproach, "正在接续东架交锋……", state, hallConflictBack, { conflict: true })
+  if (firstHallApproach) return deferredRoute(FirstHallApproach, "正在接续整衣与靠近……", state, hallApproachBack, {  })
+  if (firstHallTalk) return deferredRoute(FirstHallTalk, "正在接续东架会面……", state, hallTalkBack, {  })
+  if (firstHallMatch) return deferredRoute(FirstHallMatch, "正在接续东架旁观……", state, hallMatchBack, {  })
+  if (firstHallReturn) return deferredRoute(FirstHallMatch, "正在接续赛后东架……", state, hallReturnBack, { continuation: true })
+  if (firstHallReading) return deferredRoute(FirstHallReading, "正在接续东侧同一卷阅读……", state, hallReadingBack, {  })
+  if (firstHallEntry) return deferredRoute(FirstHallEntry, "正在接续实际入堂……", state, hallEntryBack, {  })
+  if (firstRoadMeeting) return deferredRoute(FirstRoadMeeting, "正在接续石路会面……", state, roadMeetingBack, {  })
+  if (firstDeparture) return deferredRoute(FirstDeparture, "正在接续出门石路……", state, departureBack, {  })
+  if (firstBottle) return deferredRoute(FirstTechnique, "正在接续有限试瓶……", state, bottleBack, { continuation: true })
+  if (firstTechnique) return deferredRoute(FirstTechnique, "正在接续铁片研究……", state, techniqueBack, {  })
+  if (firstReview) return deferredRoute(FirstTraining, "正在接续半月回顾……", state, reviewBack, { continuation: true })
+  if (firstTraining) return deferredRoute(FirstTraining, "正在接续持续调息……", state, trainingBack, {  })
+  if (refining) return deferredRoute(EarlyRefining, "正在接续清水与主辅药……", state, refiningBack, {  })
+  if (infusion) return deferredRoute(EarlyRefining, "正在接续魔核炼化与入水……", state, infusionBack, { continuation: true })
+  if (iron) return deferredRoute(EarlyIron, "正在接续铁片辨认……", state, ironBack, {  })
   if (marketReturn) return <DeferredScene message="正在接续回族与房中准备……"><EarlyMarketDiscovery key="return" returning state={state}
     onBack={marketReturnBack} /></DeferredScene>
   if (marketTrade) return <DeferredScene message="正在接续询价与唯一成交……"><EarlyMarketDiscovery key="trade" trade state={state}
     onBack={marketTradeBack} /></DeferredScene>
-  if (marketDiscovery) return <DeferredScene message="正在接续摊位发现与心中建议……"><EarlyMarketDiscovery state={state}
-    onBack={marketDiscoveryBack} /></DeferredScene>
-  if (marketStandoff) return <DeferredScene message="正在接续围堵与非战斗离场……"><EarlyMarketStandoff state={state}
-    onBack={marketStandoffBack} /></DeferredScene>
-  if (marketBracelets) return <DeferredScene message="正在接续让路与两条手链……"><EarlyMarketBracelets state={state}
-    onBack={marketBraceletsBack} /></DeferredScene>
-  if (marketSearch) return <DeferredScene message="正在接续寻核与手链摊……"><EarlyMarketSearch state={state}
-    onBack={marketSearchBack} /></DeferredScene>
-  if (marketEscort) return <DeferredScene message="正在接续南坊与巡卫……"><EarlyMarketEscort state={state}
-    onBack={marketEscortBack} /></DeferredScene>
-  if (cityPharmacy) return <DeferredScene message="正在接续实际同行与药铺采购……"><EarlyCityPharmacy state={state}
-    onBack={cityPharmacyBack} onRoute={() => { setCityPharmacy(false); setWalking(true) }} /></DeferredScene>
-  if (morningCard) return <DeferredScene message="正在接续晨间普通黑卡交接……"><EarlyMorningCard state={state}
-    onBack={morningCardBack} onRoute={() => { setMorningCard(false); setWalking(true) }} /></DeferredScene>
-  if (mountainVisitor) return <DeferredScene message="正在接续当晚来访与借资问答……"><EarlyMountainVisitor state={state} onBack={mountainVisitorBack} /></DeferredScene>
-  if (preparationBrief) return <DeferredScene message="正在接续准备说明与老师返戒……"><EarlyPreparationBrief state={state}
-    onBack={preparationBriefBack}
-    onRoute={() => { setPreparationBrief(false); setWalking(true) }} /></DeferredScene>
-  if (methodDiscussion) return <DeferredScene message="正在打开青石前的功法说明……"><EarlyMethodDiscussion state={state} onBack={methodDiscussionBack} /></DeferredScene>
-  if (apprentice) return <DeferredScene message="正在接续援助交涉与本人拜师……"><EarlyApprentice state={state} onBack={apprenticeBack} /></DeferredScene>
-  if (mountainRing) return <DeferredScene message="正在走上后山，察看古戒……"><EarlyMountainRing state={state} onBack={mountainRingBack} /></DeferredScene>
-  if (familyContract) return <DeferredScene message="正在接续文书与双方离厅……"><EarlyFamilyContract state={state} onBack={familyContractBack} /></DeferredScene>
-  if (familyCompensation) return <DeferredScene message="正在接续补偿与本人发言……"><EarlyFamilyCompensation state={state} onBack={familyCompensationBack} /></DeferredScene>
-  if (familyVisit) return <DeferredScene message="正在回到拜师前的接待厅……"><EarlyFamilyVisit state={state} onBack={familyVisitBack} /></DeferredScene>
-  if (barrier) return <DeferredScene message="正在进入火通道与四十三号门障……"><EarlyQiBarrier state={state} onBack={barrierBack} /></DeferredScene>
-  if (scroll) return <DeferredScene message="正在打开卷轴保管记录……"><EarlyQiScroll state={state} onBack={scrollBack} /></DeferredScene>
-  if (exchange) return <DeferredScene message="正在回看双卷交接……"><EarlyQiExchange state={state} onBack={exchangeBack} /></DeferredScene>
-  if (aid) return <DeferredScene message="正在打开同行与援助记录……"><EarlyQiAid state={state} onBack={aidBack} /></DeferredScene>
-  if (pavilion) return <DeferredScene message="正在前往五天后的功法阁……"><EarlyQiPavilion state={state} onBack={pavilionBack} /></DeferredScene>
+  if (marketDiscovery) return deferredRoute(EarlyMarketDiscovery, "正在接续摊位发现与心中建议……", state, marketDiscoveryBack, {  })
+  if (marketStandoff) return deferredRoute(EarlyMarketStandoff, "正在接续围堵与非战斗离场……", state, marketStandoffBack, {  })
+  if (marketBracelets) return deferredRoute(EarlyMarketBracelets, "正在接续让路与两条手链……", state, marketBraceletsBack, {  })
+  if (marketSearch) return deferredRoute(EarlyMarketSearch, "正在接续寻核与手链摊……", state, marketSearchBack, {  })
+  if (marketEscort) return deferredRoute(EarlyMarketEscort, "正在接续南坊与巡卫……", state, marketEscortBack, {  })
+  if (cityPharmacy) return deferredRoute(EarlyCityPharmacy, "正在接续实际同行与药铺采购……", state, cityPharmacyBack, { onRoute: () => { setCityPharmacy(false); setWalking(true) } })
+  if (morningCard) return deferredRoute(EarlyMorningCard, "正在接续晨间普通黑卡交接……", state, morningCardBack, { onRoute: () => { setMorningCard(false); setWalking(true) } })
+  if (mountainVisitor) return deferredRoute(EarlyMountainVisitor, "正在接续当晚来访与借资问答……", state, mountainVisitorBack, {  })
+  if (preparationBrief) return deferredRoute(EarlyPreparationBrief, "正在接续准备说明与老师返戒……", state, preparationBriefBack, { onRoute: () => { setPreparationBrief(false); setWalking(true) } })
+  if (methodDiscussion) return deferredRoute(EarlyMethodDiscussion, "正在打开青石前的功法说明……", state, methodDiscussionBack, {  })
+  if (apprentice) return deferredRoute(EarlyApprentice, "正在接续援助交涉与本人拜师……", state, apprenticeBack, {  })
+  if (mountainRing) return deferredRoute(EarlyMountainRing, "正在走上后山，察看古戒……", state, mountainRingBack, {  })
+  if (familyContract) return deferredRoute(EarlyFamilyContract, "正在接续文书与双方离厅……", state, familyContractBack, {  })
+  if (familyCompensation) return deferredRoute(EarlyFamilyCompensation, "正在接续补偿与本人发言……", state, familyCompensationBack, {  })
+  if (familyVisit) return deferredRoute(EarlyFamilyVisit, "正在回到拜师前的接待厅……", state, familyVisitBack, {  })
+  if (barrier) return deferredRoute(EarlyQiBarrier, "正在进入火通道与四十三号门障……", state, barrierBack, {  })
+  if (scroll) return deferredRoute(EarlyQiScroll, "正在打开卷轴保管记录……", state, scrollBack, {  })
+  if (exchange) return deferredRoute(EarlyQiExchange, "正在回看双卷交接……", state, exchangeBack, {  })
+  if (aid) return deferredRoute(EarlyQiAid, "正在打开同行与援助记录……", state, aidBack, {  })
+  if (pavilion) return deferredRoute(EarlyQiPavilion, "正在前往五天后的功法阁……", state, pavilionBack, {  })
   if (walking && !blocked) return <EarlyWalk state={state} onContinue={onContinue} onBack={walkingBack} />
   return <>
     {!blocked && <BondSummary aria-label="拜师之前的来访">
@@ -268,6 +262,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 31 && <SecondaryButton ref={hallThreatEntry} onClick={() => setFirstHallThreat(true)}>接续成人礼威胁与本人观察</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 40 && <SecondaryButton ref={hallExitResponseEntry} onClick={() => setFirstHallExitResponse(true)}>接续堂内移步与来年回应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 46 && <SecondaryButton ref={hallCheckoutEntry} onClick={() => setFirstHallCheckout(true)}>接续同卷管理者登记</SecondaryButton>}
+      {isVisible(state, 2) && task.firstHallAfternoon.stage === 10 && <SecondaryButton ref={hallEveningEntry} onClick={() => setFirstHallEvening(true)}>接续夜间回房与同卷放桌</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage === 57 && <SecondaryButton ref={hallAfternoonEntry} onClick={() => setFirstHallAfternoon(true)}>接续整个午后同行与天黑</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 53 && <SecondaryButton ref={hallAftermathEntry} onClick={() => setFirstHallAftermath(true)}>接续离堂后萧宁独立反应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 49 && <SecondaryButton ref={hallLeavingEntry} onClick={() => setFirstHallLeaving(true)}>接续同行与实际离堂</SecondaryButton>}

@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -33,8 +34,8 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
       <MapText x="142" y="61" fill="#e8d1a6" fontSize="15">萧炎房中</MapText>
       <MapText x="366" y="211" fill="#e8d1a6" fontSize="15">院落转角</MapText>
       <MapText x="587" y="61" fill="#e8d1a6" fontSize="15">长老议事房</MapText>
-      <g transform="translate(101 140)" opacity={xunerView ? .4 : 1}><circle cy="-21" r="12" fill="#e6c8a2" /><path d="M-22 59 L-11-5 H11 L22 59Z" fill="#c79e66" /><MapText y="82" fill="#e8d1a6">萧炎{ xunerView ? '留在房中' : ''}</MapText></g>
-      {task.stage > 0 && <g transform={`translate(${task.stage >= 5 ? 449 : xunerView ? 365 : 195} 140)`}><circle cy="-21" r="12" fill="#e6c8a2" /><path d="M-22 59 L-11-5 H11 L22 59Z" fill="#b9acd3" /><MapText y="82" fill="#e8d1a6">薰儿</MapText></g>}
+      <g transform="translate(101 140)" opacity={xunerView ? .4 : 1}><RobeFigure cy="-21" r="12" skin="#e6c8a2" cut="M-22 59 L-11-5 H11 L22 59Z" robe="#c79e66" /><MapText y="82" fill="#e8d1a6">萧炎{ xunerView ? '留在房中' : ''}</MapText></g>
+      {task.stage > 0 && <g transform={`translate(${task.stage >= 5 ? 449 : xunerView ? 365 : 195} 140)`}><RobeFigure cy="-21" r="12" skin="#e6c8a2" cut="M-22 59 L-11-5 H11 L22 59Z" robe="#b9acd3" /><MapText y="82" fill="#e8d1a6">薰儿</MapText></g>}
       <g transform="translate(525 124)"><circle r="11" fill="#d4bea0" /><path d="M-18 62 L-9 14 H9 L18 62Z" fill="#a08252" /><MapText y="83" fill="#e8d1a6">萧战</MapText></g>
       {[584, 621, 658].map(x => <g key={x} transform={`translate(${x} 124)`}><circle r="10" fill="#d4bea0" /><path d="M-16 62 L-8 14 H8 L16 62Z" fill="#8a8761" /></g>)}
       {task.stage >= 5 && <rect x={task.card === 'xuner' ? 452 : 598} y="161" width="24" height="15" rx="2" fill="#9c75b7" stroke="#e6bc65" />}

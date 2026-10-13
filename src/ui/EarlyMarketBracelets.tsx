@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -57,7 +58,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
       <text x="220" y="365" textAnchor="middle" fill="#eed7ad">拦路街角</text>
       <text x="540" y="365" textAnchor="middle" fill="#eed7ad">萧炎原先寻核处</text>
       <g aria-label={task.identity === 'named' ? '已在对话揭名的加列奥' : '尚未在对话揭名的青年'} transform="translate(160 310)">
-        <path d="M-13 16 L-7-7 H7 L13 16Z" fill="#b6a58a" /><circle cy="-15" r="9" fill="#dcc6ae" />
+        <RobeFigure cut="M-13 16 L-7-7 H7 L13 16Z" robe="#b6a58a" cy="-15" r="9" skin="#dcc6ae" bodyFirst />
         {task.expensive !== 'unoffered' && <g aria-label="蓝金手链与木核仍由来人持有"><circle cx="17" cy="3" r="8" fill="none" stroke="#8fb9d9" strokeWidth="3" /><circle cx="17" cy="11" r="4" fill="#75bd7e" /></g>}
       </g>
       <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}>

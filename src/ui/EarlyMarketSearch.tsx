@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -54,14 +55,14 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
       <MarketStreetBuildings />
       {Object.entries(marketSearchPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
         <HallText x={p.x} y={p.y + 40} fontSize="11">{p.label}</HallText></g>)}
-      <g aria-label="普通手链摊主" transform="translate(190 210)"><path d="M-10 12 L-5-5 H5 L10 12Z" fill="#b2a480" /><circle cy="-12" r="7" fill="#ddb894" /></g>
+      <g aria-label="普通手链摊主" transform="translate(190 210)"><RobeFigure cut="M-10 12 L-5-5 H5 L10 12Z" robe="#b2a480" cy="-12" r="7" skin="#ddb894" bodyFirst /></g>
       {task.bracelet !== 'xuner-viewing' && <circle aria-label="普通手链在摊上" cx="220" cy="214" r="7" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /></g>
       <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}>
         <MarketWalker xuner />
         {task.bracelet === 'xuner-viewing' && <circle aria-label="薰儿只拿看未购手链" cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
       </g>
-      {task.stranger === 'seen' && <g aria-label="姓名尚未揭出的华衣来人" transform="translate(145 310)"><path d="M-13 16 L-7-7 H7 L13 16Z" fill="#b6a58a" /><circle cy="-15" r="9" fill="#dcc6ae" /></g>}
+      {task.stranger === 'seen' && <g aria-label="姓名尚未揭出的华衣来人" transform="translate(145 310)"><RobeFigure cut="M-13 16 L-7-7 H7 L13 16Z" robe="#b6a58a" cy="-15" r="9" skin="#dcc6ae" bodyFirst /></g>}
     </EarlyMap>
     {scene && <WalkControls><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>

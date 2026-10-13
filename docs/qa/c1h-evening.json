@@ -1,0 +1,1488 @@
+{
+  "version": "0.78.0",
+  "date": "2026-10-13",
+  "native": [
+    {
+      "name": "eveningMainBaseline",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892690234.json",
+      "stage": 0,
+      "walk": 0,
+      "sha256": "e49e3a590774c300d4faf17fb91e0a10590ca2a010554d8bae9dfd1e636f629c",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainRejected",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892699235.json",
+      "stage": 0,
+      "walk": 0,
+      "sha256": "5c9c03fe0b586883c229c3ee850d3a295393787ad69d96a51e0365fd9cc45e18",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep01",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892759695.json",
+      "stage": 0,
+      "walk": 1,
+      "sha256": "befdb4eacbbd2eccee20b39ae2e3254fb270e991c19f09acd05245c6d7bfe47e",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep02",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892766819.json",
+      "stage": 0,
+      "walk": 2,
+      "sha256": "dc50eb76be1e41a486483d3bca138871d82e49353eb31b01c4573b49cb2c05e9",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep03",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892773945.json",
+      "stage": 0,
+      "walk": 3,
+      "sha256": "b68f849d6530d78b458ca55f9c47e5667e96f9441049ea4fb2fcddc557539352",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep04",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892781068.json",
+      "stage": 0,
+      "walk": 4,
+      "sha256": "4c88912730d3fb146875ca28ad346a95fe936b207397aacebdf3bf780c6d5637",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep05",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892788201.json",
+      "stage": 0,
+      "walk": 5,
+      "sha256": "514b1a40468ff086ee1eff081e0f339081fa052b7bb70874eb0b18a76ba01ec4",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep06",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892817945.json",
+      "stage": 0,
+      "walk": 6,
+      "sha256": "cda969abb7c12f248db6d750aa35704cc7d07bd301f76a1c57f207b83e0b701e",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep07",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892863645.json",
+      "stage": 1,
+      "walk": 0,
+      "sha256": "1fcb8e2c1f3aeb75e60bcf281af4d3c2f8dcdefe39cffa48eb95812c1f4618b6",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep08",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892870769.json",
+      "stage": 2,
+      "walk": 0,
+      "sha256": "cdba44f7aabf2f65146ad40234717385a3c6e3b60222e45bd3a46afbffc03e95",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep09",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892877907.json",
+      "stage": 3,
+      "walk": 0,
+      "sha256": "4f347bc6c45b81a5ef4937844fd844374b0f2a24da31cf9421334409f22bf22b",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892885020.json",
+      "stage": 4,
+      "walk": 0,
+      "sha256": "f6f10c3700d2c1e83b9be8bf3b58d2bec438434cd55ded899aafff63b581449a",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892903076.json",
+      "stage": 4,
+      "walk": 1,
+      "sha256": "33f25e8b0671d6016af928427f1793eace602eab85f87ef0db172ad803b4194f",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892910189.json",
+      "stage": 4,
+      "walk": 2,
+      "sha256": "a3160cb8ac2a9ac1fef47664aec2c5621191000c93857a06889b4faff0798ab5",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892917302.json",
+      "stage": 5,
+      "walk": 0,
+      "sha256": "048b7f86eb73592af35b12c332608fd486e0ca2848e6e45f98c215635f9c5fe9",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep14",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892924407.json",
+      "stage": 6,
+      "walk": 0,
+      "sha256": "ac7c44ce5717609344ef6f07a14fa1900dfbc2dacfa1a4791623fbf2d1fabb50",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep15",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892931513.json",
+      "stage": 7,
+      "walk": 0,
+      "sha256": "babebfdddf38c7a40fbc6000162aa22148fe06af682db995158d734a30a98711",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep16",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892938627.json",
+      "stage": 8,
+      "walk": 0,
+      "sha256": "17315eaaf5f59bee003fddf150b3799282e07b3f0903a4ac0862bf9ea1e095a7",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainStep17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892945726.json",
+      "stage": 9,
+      "walk": 0,
+      "sha256": "aa178cfb6b7c58c17661d7676a2a6d19eb5035904a40e0763117f21e922d2355",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893287619.json",
+      "stage": 9,
+      "walk": 0,
+      "sha256": "355cb4257062c97b12705c0b3094d017ca54c2c7cd3cdd65fc5446f52c908f80",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsBaseline",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892709426.json",
+      "stage": 0,
+      "walk": 0,
+      "sha256": "2710738c4f6246244faaae64dbb1921c32c19ef8457c179885325099feee6918",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep01",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892964663.json",
+      "stage": 0,
+      "walk": 1,
+      "sha256": "4c58958b836c893521cf03dbfc3d0052aa66cc42b19f751ede211ec0f5142ce5",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep02",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892972792.json",
+      "stage": 0,
+      "walk": 2,
+      "sha256": "45a884ae4e2fd8738730e34dd8d032d4987595798e672158970e0a15e5b37c6f",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep03",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892980901.json",
+      "stage": 0,
+      "walk": 3,
+      "sha256": "63e02ea251790895d15298a11f5370b515188c6e8f4443ef8eda3566ba65acf7",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep04",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892989026.json",
+      "stage": 0,
+      "walk": 4,
+      "sha256": "8ea231efd6f2b413af831b10fa10422cca3a9c3f42c459bab3b1678c2fe77efe",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep05",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791892997146.json",
+      "stage": 0,
+      "walk": 5,
+      "sha256": "6417a196ff2f1fc0af6a018446745b4c47c481ef621af86748687659cb7ba791",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep06",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893005282.json",
+      "stage": 0,
+      "walk": 6,
+      "sha256": "193b35f97b9fb545ad05b8c5aecc7ff6fff2d4d80b816cfbc24a47a371ec670d",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep07",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893120754.json",
+      "stage": 1,
+      "walk": 0,
+      "sha256": "4253ce021b38367c7acc65d7431a2502bd71f7ed6e82ac849adfb396fce452dd",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep08",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893128906.json",
+      "stage": 2,
+      "walk": 0,
+      "sha256": "7fff53b49b08061c74c5a6b235f1efa2c574b1d5674545d220aab4a801ab555a",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep09",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893137035.json",
+      "stage": 3,
+      "walk": 0,
+      "sha256": "b5ff84484f35df533f6fa85c929c6e0b13b2789197f56d655c81a8f84865902f",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep10",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893145178.json",
+      "stage": 4,
+      "walk": 0,
+      "sha256": "4662b2e92629557703c9be4444cbf9521631078cf269d7385e3defee0395a9dd",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep11",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893153303.json",
+      "stage": 4,
+      "walk": 1,
+      "sha256": "05ffade346978236c7e3468ea7abc67c0e15ae3645660aad0445d6fc50c6a629",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep12",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893161456.json",
+      "stage": 4,
+      "walk": 2,
+      "sha256": "7f82218b01e934bbf129533b2c57dbb702484d5b7f24c2611b1cd65634dd5ccf",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep13",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893205241.json",
+      "stage": 5,
+      "walk": 0,
+      "sha256": "8f60a8923352899060475cca5ba80503ded28f7fca7b83b5ff81207d02c17533",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep14",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893213347.json",
+      "stage": 6,
+      "walk": 0,
+      "sha256": "aec58b2f0d6ccef1b1f00d72968a6e173562d56bf5ace59a742545674f7c665e",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep15",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893221488.json",
+      "stage": 7,
+      "walk": 0,
+      "sha256": "176fffbf2265ca38903393a04c80ebb0a8a3523b7789650b1538c2a953ec5379",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep16",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893229618.json",
+      "stage": 8,
+      "walk": 0,
+      "sha256": "06e62d2c624cf9058f51c0421c51d821a864411b678df1c71fa66a4e6a6d1d5c",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningMaterialsStep17",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893237795.json",
+      "stage": 9,
+      "walk": 0,
+      "sha256": "8444eb46b6a6fe633e369e1c5abb684a616880bc2c811d3ef3a908ddf16d9bf9",
+      "rawEqualsOfficial": true,
+      "onlyEveningChanged": true
+    },
+    {
+      "name": "eveningIntactMigrated",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791893296793.json",
+      "sha256": "e29b482a341fba5af72759214a4c83a5509cb25877dbcec7c46182562fde0c99",
+      "entireStateEqual": true
+    }
+  ],
+  "browser": [
+    {
+      "label": "MainBaseline",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "回房 0/9 · 路步 0/6 · 夜间回房 · 未参与",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 120)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 0/6 · 夜间回房 · 未参与</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainRejected",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "回房 0/9 · 路步 0/6 · 夜间回房 · 未参与",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 120)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 0/6 · 夜间回房 · 未参与</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MaterialsBaseline",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "回房 0/9 · 路步 0/6 · 夜间回房 · 未参与",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 120)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 0/6 · 夜间回房 · 未参与</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "MainStep01Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "185",
+      "status": "回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 160)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 190)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"185\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 160)",
+      "yan": "translate(300 190)"
+    },
+    {
+      "label": "MainStep01Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "185",
+      "status": "回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 160)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 190)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"185\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 160)",
+      "yan": "translate(300 190)"
+    },
+    {
+      "label": "MainStep02Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 200)",
+      "yan": "translate(300 230)"
+    },
+    {
+      "label": "MainStep02Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 200)",
+      "yan": "translate(300 230)"
+    },
+    {
+      "label": "MainStep03Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(285 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(260 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(285 200)",
+      "yan": "translate(260 230)"
+    },
+    {
+      "label": "MainStep03Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(285 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(260 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(285 200)",
+      "yan": "translate(260 230)"
+    },
+    {
+      "label": "MainStep04Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainStep04Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MainStep05Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 240)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 240)",
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MainStep05Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 240)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 240)",
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MainStep06Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>夜路走到房门外</h3><p>本人仍持同一第二借卷。</p><button class=\"primary\">夜路走到房门外</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MainStep06Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>夜路走到房门外</h3><p>本人仍持同一第二借卷。</p><button class=\"primary\">夜路走到房门外</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MainStep07Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>院中结束同行</h3><p>薰儿沿院中岔路离开，不进入本人房间。</p><button class=\"primary\">院中结束同行</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MainStep07Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>院中结束同行</h3><p>薰儿沿院中岔路离开，不进入本人房间。</p><button class=\"primary\">院中结束同行</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MainStep08Before",
+      "departed": true,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"薰儿已分路，院中离开处\" transform=\"translate(245 280)\"><circle r=\"8\" fill=\"none\" stroke=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-18\">已分路</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外</p><section class=\"bond-summary\"><h3>本人实际跨门</h3><p>从院中门前走入房间。</p><button class=\"primary\">本人实际跨门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MainStep08Refreshed",
+      "departed": true,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"薰儿已分路，院中离开处\" transform=\"translate(245 280)\"><circle r=\"8\" fill=\"none\" stroke=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-18\">已分路</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外</p><section class=\"bond-summary\"><h3>本人实际跨门</h3><p>从院中门前走入房间。</p><button class=\"primary\">本人实际跨门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MainStep09Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#111e27\" aria-label=\"本人房门open\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门</p><section class=\"bond-summary\"><h3>关上房门</h3><p>门关好之后，走到桌椅旁。</p><button class=\"primary\">关上房门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MainStep09Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#111e27\" aria-label=\"本人房门open\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门</p><section class=\"bond-summary\"><h3>关上房门</h3><p>门关好之后，走到桌椅旁。</p><button class=\"primary\">关上房门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MainStep10Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MainStep10Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MainStep11Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(260 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(260 270)"
+    },
+    {
+      "label": "MainStep11Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(260 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(260 270)"
+    },
+    {
+      "label": "MainStep12Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅</p><section class=\"bond-summary\"><h3>放松疲惫的肩膀</h3><p>同行了整个午后，此刻才在椅边放松。</p><button class=\"primary\">放松疲惫的肩膀</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep12Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅</p><section class=\"bond-summary\"><h3>放松疲惫的肩膀</h3><p>同行了整个午后，此刻才在椅边放松。</p><button class=\"primary\">放松疲惫的肩膀</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep13Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手</p><section class=\"bond-summary\"><h3>同一借卷放到桌上</h3><p>第二借卷移至身旁桌面，第一卷仍已归架。</p><button class=\"primary\">同一借卷放到桌上</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep13Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手</p><section class=\"bond-summary\"><h3>同一借卷放到桌上</h3><p>第二借卷移至身旁桌面，第一卷仍已归架。</p><button class=\"primary\">同一借卷放到桌上</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep14Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续</p><section class=\"bond-summary\"><h3>本人饮茶</h3><p>端起桌边茶水，喝下一口。</p><button class=\"primary\">本人饮茶</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep14Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续</p><section class=\"bond-summary\"><h3>本人饮茶</h3><p>端起桌边茶水，喝下一口。</p><button class=\"primary\">本人饮茶</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep15Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续</p><section class=\"bond-summary\"><h3>回想她仍能继续走</h3><p>萧炎：她的精神倒好，似乎还能再走一程。</p><button class=\"primary\">回想她仍能继续走</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep15Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续</p><section class=\"bond-summary\"><h3>回想她仍能继续走</h3><p>萧炎：她的精神倒好，似乎还能再走一程。</p><button class=\"primary\">回想她仍能继续走</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep16Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续</p><section class=\"bond-summary\"><h3>夜间回房归档</h3><p>关门、疲惫、同卷放桌和茶分别保留。老师来访另续。</p><button class=\"primary\">夜间回房归档</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep16Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续</p><section class=\"bond-summary\"><h3>夜间回房归档</h3><p>关门、疲惫、同卷放桌和茶分别保留。老师来访另续。</p><button class=\"primary\">夜间回房归档</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep17Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档</p><p>夜间回房已归档。同卷留桌，老师来访另续。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainStep17Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档</p><p>夜间回房已归档。同卷留桌，老师来访另续。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep01Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "185",
+      "status": "回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 160)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 190)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"185\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 160)",
+      "yan": "translate(300 190)"
+    },
+    {
+      "label": "MaterialsStep01Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "185",
+      "status": "回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 160)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 190)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"185\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 1/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 160)",
+      "yan": "translate(300 190)"
+    },
+    {
+      "label": "MaterialsStep02Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 200)",
+      "yan": "translate(300 230)"
+    },
+    {
+      "label": "MaterialsStep02Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(325 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(300 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 2/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(325 200)",
+      "yan": "translate(300 230)"
+    },
+    {
+      "label": "MaterialsStep03Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(285 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(260 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(285 200)",
+      "yan": "translate(260 230)"
+    },
+    {
+      "label": "MaterialsStep03Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(285 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(260 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 3/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向左走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(285 200)",
+      "yan": "translate(260 230)"
+    },
+    {
+      "label": "MaterialsStep04Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsStep04Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "225",
+      "status": "回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 200)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 230)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"225\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 4/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 200)",
+      "yan": "translate(220 230)"
+    },
+    {
+      "label": "MaterialsStep05Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 240)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 240)",
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MaterialsStep05Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 240)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 5/6 · 夜间回房 · 夜路回房，同行待结束</p><p>沿当前夜路向下走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 240)",
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MaterialsStep06Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>夜路走到房门外</h3><p>本人仍持同一第二借卷。</p><button class=\"primary\">夜路走到房门外</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MaterialsStep06Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 0/9 · 路步 6/6 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>夜路走到房门外</h3><p>本人仍持同一第二借卷。</p><button class=\"primary\">夜路走到房门外</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MaterialsStep07Before",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>院中结束同行</h3><p>薰儿沿院中岔路离开，不进入本人房间。</p><button class=\"primary\">院中结束同行</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MaterialsStep07Refreshed",
+      "departed": false,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"夜间薰儿位置\" transform=\"translate(245 280)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#9dbca4\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edcfbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">薰儿</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 1/9 · 路步 0/0 · 夜间回房 · 夜路回房，同行待结束</p><section class=\"bond-summary\"><h3>院中结束同行</h3><p>薰儿沿院中岔路离开，不进入本人房间。</p><button class=\"primary\">院中结束同行</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": "translate(245 280)",
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MaterialsStep08Before",
+      "departed": true,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"薰儿已分路，院中离开处\" transform=\"translate(245 280)\"><circle r=\"8\" fill=\"none\" stroke=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-18\">已分路</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外</p><section class=\"bond-summary\"><h3>本人实际跨门</h3><p>从院中门前走入房间。</p><button class=\"primary\">本人实际跨门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MaterialsStep08Refreshed",
+      "departed": true,
+      "room": false,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "305",
+      "status": "回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M300 150 V230 H220 V310\" fill=\"none\" stroke=\"#756747\" stroke-width=\"22\"></path><path d=\"M180 300 H260\" stroke=\"#bfa46a\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"352\">院中房门</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"345\" y=\"100\">夜山</text><g aria-label=\"薰儿已分路，院中离开处\" transform=\"translate(245 280)\"><circle r=\"8\" fill=\"none\" stroke=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-18\">已分路</text></g><g aria-label=\"夜间本人位置\" transform=\"translate(220 310)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"305\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 2/9 · 路步 0/0 · 夜间回房 · 她已分路，本人门外</p><section class=\"bond-summary\"><h3>本人实际跨门</h3><p>从院中门前走入房间。</p><button class=\"primary\">本人实际跨门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 310)"
+    },
+    {
+      "label": "MaterialsStep09Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#111e27\" aria-label=\"本人房门open\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门</p><section class=\"bond-summary\"><h3>关上房门</h3><p>门关好之后，走到桌椅旁。</p><button class=\"primary\">关上房门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MaterialsStep09Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#111e27\" aria-label=\"本人房门open\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 3/9 · 路步 0/0 · 夜间回房 · 本人已跨门，尚未关门</p><section class=\"bond-summary\"><h3>关上房门</h3><p>门关好之后，走到桌椅旁。</p><button class=\"primary\">关上房门</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MaterialsStep10Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MaterialsStep10Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "240",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(220 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"240\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 0/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(220 270)"
+    },
+    {
+      "label": "MaterialsStep11Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(260 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(260 270)"
+    },
+    {
+      "label": "MaterialsStep11Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "280",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(260 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"280\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 1/2 · 夜间回房 · 已关门，走向桌椅</p><p>沿当前夜路向右走。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(260 270)"
+    },
+    {
+      "label": "MaterialsStep12Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅</p><section class=\"bond-summary\"><h3>放松疲惫的肩膀</h3><p>同行了整个午后，此刻才在椅边放松。</p><button class=\"primary\">放松疲惫的肩膀</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep12Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 4/9 · 路步 2/2 · 夜间回房 · 已关门，走向桌椅</p><section class=\"bond-summary\"><h3>放松疲惫的肩膀</h3><p>同行了整个午后，此刻才在椅边放松。</p><button class=\"primary\">放松疲惫的肩膀</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep13Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手</p><section class=\"bond-summary\"><h3>同一借卷放到桌上</h3><p>第二借卷移至身旁桌面，第一卷仍已归架。</p><button class=\"primary\">同一借卷放到桌上</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep13Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · held",
+      "secondX": "320",
+      "secondY": "265",
+      "status": "回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · held\" x=\"320\" y=\"265\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 5/9 · 路步 0/0 · 夜间回房 · 疲惫已记，同卷仍在手</p><section class=\"bond-summary\"><h3>同一借卷放到桌上</h3><p>第二借卷移至身旁桌面，第一卷仍已归架。</p><button class=\"primary\">同一借卷放到桌上</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep14Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续</p><section class=\"bond-summary\"><h3>本人饮茶</h3><p>端起桌边茶水，喝下一口。</p><button class=\"primary\">本人饮茶</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep14Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"桌边茶\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 6/9 · 路步 0/0 · 夜间回房 · 同卷已放桌，饮茶待续</p><section class=\"bond-summary\"><h3>本人饮茶</h3><p>端起桌边茶水，喝下一口。</p><button class=\"primary\">本人饮茶</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep15Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续</p><section class=\"bond-summary\"><h3>回想她仍能继续走</h3><p>萧炎：她的精神倒好，似乎还能再走一程。</p><button class=\"primary\">回想她仍能继续走</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep15Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 7/9 · 路步 0/0 · 夜间回房 · 茶已饮，短句待续</p><section class=\"bond-summary\"><h3>回想她仍能继续走</h3><p>萧炎：她的精神倒好，似乎还能再走一程。</p><button class=\"primary\">回想她仍能继续走</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep16Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续</p><section class=\"bond-summary\"><h3>夜间回房归档</h3><p>关门、疲惫、同卷放桌和茶分别保留。老师来访另续。</p><button class=\"primary\">夜间回房归档</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep16Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 8/9 · 路步 0/0 · 夜间回房 · 短句已记，归档待续</p><section class=\"bond-summary\"><h3>夜间回房归档</h3><p>关门、疲惫、同卷放桌和茶分别保留。老师来访另续。</p><button class=\"primary\">夜间回房归档</button></section><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep17Before",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档</p><p>夜间回房已归档。同卷留桌，老师来访另续。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MaterialsStep17Refreshed",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档</p><p>夜间回房已归档。同卷留桌，老师来访另续。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainCompleted",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档</p><p>夜间回房已归档。同卷留桌，老师来访另续。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    },
+    {
+      "label": "MainRepeated",
+      "departed": false,
+      "room": true,
+      "scroll": "夜间同一第二借卷 · table",
+      "secondX": "320",
+      "secondY": "255",
+      "status": "回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">天黑之后 / 回房与同一借卷</span><h2>夜路走回房中，借卷放在身旁。</h2><p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">夜间本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察薰儿分路</button><button class=\"secondary\" aria-label=\"夜间本人向上走\">↑</button><button class=\"secondary\" aria-label=\"夜间本人向左走\">←</button><button class=\"secondary\" aria-label=\"夜间本人向下走\">↓</button><button class=\"secondary\" aria-label=\"夜间本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"夜间回房地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"夜间本人位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫放松</text></g><rect aria-label=\"夜间同一第二借卷 · table\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档</p><p>夜间回房已归档。同卷留桌，老师来访另续。</p><button class=\"secondary\">暂离夜间回房 · 保留断点</button>",
+      "xuner": null,
+      "yan": "translate(300 270)"
+    }
+  ],
+  "isolation": {
+    "eveningFocus": "接续夜间回房与同卷放桌",
+    "oldEveningAfternoon": {
+      "historical": true,
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    "eveningIsolated": {
+      "alerts": 0,
+      "entry": 0,
+      "normal": true
+    }
+  },
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "equivalence": {
+    "inverse": [
+      {
+        "file": "src/ui/EarlyWalk.tsx",
+        "sha256": "56762f7e90975866d196adca389a0b36d94e2c1ab0e9a1ad1e73f46eb85cb976"
+      },
+      {
+        "file": "src/ui/EarlyTrainingPanel.tsx",
+        "sha256": "35e2b667793c0df16b6cfec0c236e8590ce968ca3a2552d62deedca7cdea598c"
+      },
+      {
+        "file": "src/ui/EarlyAppraisal.tsx",
+        "sha256": "bfa26c0b95797580fe5a3de7b5d0c58bfb42d71947fbe15c3e38c33030cfa8ab"
+      },
+      {
+        "file": "src/ui/EarlyAuction.tsx",
+        "sha256": "0b1d15ff6b37c6b38b282deffeac85ff2c58131d1859873976c4abc1c6408a01"
+      },
+      {
+        "file": "src/ui/EarlyCeremonialTest.tsx",
+        "sha256": "8d8c12ba9d11ac058a6982a2ebaeb8d2b39a1f60ede5959bfc30f372f1a232eb"
+      },
+      {
+        "file": "src/ui/EarlyCeremonyGuests.tsx",
+        "sha256": "62b1061d318918a9994d8c26958ff32fa2c54fbd8a9ff1ace12717f444c323fb"
+      },
+      {
+        "file": "src/ui/EarlyCeremonyVerdict.tsx",
+        "sha256": "9d0eed20af7919b9d8395a55c513e74810f95573003ae61d299abd961b5d165f"
+      },
+      {
+        "file": "src/ui/EarlyCityPharmacy.tsx",
+        "sha256": "e43ab4559bcee1ea25fee3ab4afcf40bbb717e04ba56153b763e8d80785969e7"
+      },
+      {
+        "file": "src/ui/EarlyConsignment.tsx",
+        "sha256": "1a08059f20cdaeef21b953be91042b4f9e14d9413a60f3b768cbc377e460ba90"
+      },
+      {
+        "file": "src/ui/EarlyEighthTraining.tsx",
+        "sha256": "962affb97ebde65e1e00b311b6aee45add300db37e16b48681d75041a4eb3faf"
+      },
+      {
+        "file": "src/ui/EarlyFatherGift.tsx",
+        "sha256": "dac73b3e600e7dec0f4a5e6b5b48dad92e1741952131e51af4068956e28d2b8f"
+      },
+      {
+        "file": "src/ui/EarlyForestStrike.tsx",
+        "sha256": "3d41a9d0a6d4ff0712f4b01cfbd33e7a0bb167e7700520dfc9f77979215bf0b8"
+      },
+      {
+        "file": "src/ui/EarlyHall.tsx",
+        "sha256": "5581a4c8db2e084ebceb5249646466ff5589fd67a094678235f2e9c1f46dee32"
+      },
+      {
+        "file": "src/ui/EarlyKeChallenge.tsx",
+        "sha256": "8a9df1f2064a4796a3a62e5ad6c9a534af0eec9963a882d823b21c935bd88c8c"
+      },
+      {
+        "file": "src/ui/EarlyMarketBracelets.tsx",
+        "sha256": "281a9691f2df4c481889da6a3ed95eaa89338d152ab3447094dd86424dbeb31b"
+      },
+      {
+        "file": "src/ui/EarlyMarketEscort.tsx",
+        "sha256": "ac193e3715461fd62137e6a70df63ed0822854c1f954bcba2c885b01e9c57445"
+      },
+      {
+        "file": "src/ui/EarlyMarketSearch.tsx",
+        "sha256": "9f63676da1aca1197fbaebd413a006c7ef39f084b79392b7260bd3d0d891247b"
+      },
+      {
+        "file": "src/ui/EarlyMarketStandoff.tsx",
+        "sha256": "a2b8912e734b82a2f6025473b86101c5367f78356b5deedeb6917741b483a256"
+      },
+      {
+        "file": "src/ui/EarlyMorningCard.tsx",
+        "sha256": "3bfdfb3435b2071b190af275746c90f6776dd150622f72455a0ce2e4eee3967e"
+      },
+      {
+        "file": "src/ui/EarlyNingFirst.tsx",
+        "sha256": "b71e2f5db0b07929200b34537aa9ae7128d265653a44db450b2b73070ed32b6d"
+      },
+      {
+        "file": "src/ui/EarlyNingSecond.tsx",
+        "sha256": "dcbd77fa6f87199c74eb8c859e821aab2b999e72015caddab546c3d1a8325979"
+      },
+      {
+        "file": "src/ui/EarlyPalmPair.tsx",
+        "sha256": "13a4c8f37a6629ae0870cb015e0adcabd28c98e85cf34bd00945ff7f5f7a25aa"
+      },
+      {
+        "file": "src/ui/EarlyPreliminary.tsx",
+        "sha256": "64599bdd699edcfc5705f2681e9ed9efb9f42ad23923235b21068cb79369e35f"
+      },
+      {
+        "file": "src/ui/EarlyQiPavilion.tsx",
+        "sha256": "a914d61aa25dbf547a61e3c83360c5d5f8337503c76c6d953002d89b5db125f2"
+      },
+      {
+        "file": "src/ui/EarlyRecovery.tsx",
+        "sha256": "14777a149c60b96c84ad3049c51bce04b803c765412d1e185a6390a155fc975b"
+      },
+      {
+        "file": "src/ui/EarlyRoom.tsx",
+        "sha256": "41c55a0636640b46bf31047c2f1d8d5b8870fc16137fe0a18438c8c02ad324f5"
+      },
+      {
+        "file": "src/ui/EarlySeventhRoom.tsx",
+        "sha256": "955b3b17f396154818fc41057809d6b7f670f356ae8a12a6e5af7e192df2d1d5"
+      },
+      {
+        "file": "src/ui/EarlySupervision.tsx",
+        "sha256": "dcf8e235c7de932b0e1ad51d604259dce97d1f9709aacc412d401b832efe41c2"
+      },
+      {
+        "file": "src/ui/EarlyTeaching.tsx",
+        "sha256": "1e8970ea63e07153ac0570ec6461e0c60e93471ff548edd26a5a688ce0572716"
+      },
+      {
+        "file": "src/ui/EarlyXunerVisit.tsx",
+        "sha256": "36a12736b1ca96c0a143e296d5763333f5cc0987a5e199b2a629b93e7d7fcd55"
+      },
+      {
+        "file": "src/ui/MountainWalkMap.tsx",
+        "sha256": "0c015fc9ae647958945442aeb13de4aff2f5fbdfb9b4ecb9b8294ffd7b42f426"
+      }
+    ],
+    "robeFiles": 30,
+    "robeNodes": 58,
+    "routes": 66,
+    "decoded": 247,
+    "oldAfternoonTransactionsCompared": 7904,
+    "nativeFigureTreesEqual": true,
+    "deferredMessagesChildComponentPropsCallbacksRefsEqual": true,
+    "transactionWholeSourceInverse": true
+  },
+  "refreshes": 34,
+  "walksPerBranch": 8,
+  "narrativeStagesPerBranch": 9,
+  "vitest": {
+    "files": 155,
+    "tests": 918
+  },
+  "nodeTests": 11,
+  "budget": {
+    "initial": 490721,
+    "gzip": 164271,
+    "total": 1849309,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "prerequisite": {
+    "sha": "30873692cf3c5a36663a3ebbd6ea48c661f46a1f",
+    "ci": 38391398521,
+    "conclusion": "success",
+    "pages": 38391398526,
+    "pagesConclusion": "skipped",
+    "files": 122,
+    "bytes": 1982356
+  },
+  "limitations": "Original night route, courtyard branching and short remark. English Chapter18 already inspected; Chinese/current anime unverified. Person alone crosses own doorway; Xuner left at courtyard, never rendered as entering room. Old afternoon mountain map explicitly historical. Same second borrowed scroll placed at table only at own action; no teacher arrival, limited background or new learning signed. Four failed budget candidates not committed, budgets unchanged. Native figure transform initially found overlapping hair/head/body pairs before any file write; disjoint ordered pairs fixed. Initial typed union error repaired without weakening field validation. Browser action lookup guessed CSS class then unsupported level option; fixed using actual h3 DOM; no game error. Actual desktop keyboard/buttons, no physical devices or long-press claim."
+}

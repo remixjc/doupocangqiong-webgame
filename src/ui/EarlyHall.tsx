@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -56,8 +57,8 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
       <MapText x="550" y="185" fill="#dec99f" fontSize="17">藏 卷 区</MapText>
       <MapText x="180" y="240" fill="#dec99f" fontSize="17">练 习 区</MapText>
       {task.stage >= 2 && task.stage <= 4 && <g role="img" aria-label={task.stage >= 4 ? '薰儿胜出，萧宁退至练习区外' : '薰儿与萧宁切磋，萧炎在旁观察'}>
-        <g transform={`translate(${task.stage === 3 ? 155 : 180} 145)`}><path d="M-10 14 L-6-2 H6 L11 14Z" fill="#bfb3db" /><circle cy="-9" r="7" fill="#edc79f" /><MapText y="35">薰儿</MapText></g>
-        <g transform={`translate(${task.stage >= 4 ? 325 : 245} 145)`}><path d="M-10 14 L-6-2 H6 L11 14Z" fill="#7190a3" /><circle cy="-9" r="7" fill="#edc79f" /><MapText y="35">萧宁</MapText></g>
+        <g transform={`translate(${task.stage === 3 ? 155 : 180} 145)`}><RobeFigure cut="M-10 14 L-6-2 H6 L11 14Z" robe="#bfb3db" cy="-9" r="7" skin="#edc79f" bodyFirst /><MapText y="35">薰儿</MapText></g>
+        <g transform={`translate(${task.stage >= 4 ? 325 : 245} 145)`}><RobeFigure cut="M-10 14 L-6-2 H6 L11 14Z" robe="#7190a3" cy="-9" r="7" skin="#edc79f" bodyFirst /><MapText y="35">萧宁</MapText></g>
         {task.stage === 3 && <path d="M218 145 L177 145" stroke="#e3c890" strokeWidth="3" strokeDasharray="4 4" />}
       </g>}
       {task.stage >= 5 && task.stage <= 7 && <g role="img" aria-label="薰儿与萧宁在藏卷处交涉">
@@ -69,8 +70,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
         <MapText x={item.x} y={item.y - 35} fontSize="13">{item.label}</MapText>
       </g>)}
       <g aria-hidden="true" data-player-x={position.x} data-player-y={position.y} transform={`translate(${position.x} ${position.y})`}>
-        <ellipse cy="14" rx="13" ry="5" fill="#0005" /><path d="M-10 12 L-6-2 H6 L11 12Z" fill="#d3a567" />
-        <circle cy="-8" r="7" fill="#edc79f" /><path d="M-7-11 Q0-20 7-10" fill="#26322f" />
+        <ellipse cy="14" rx="13" ry="5" fill="#0005" /><RobeFigure cut="M-10 12 L-6-2 H6 L11 12Z" robe="#d3a567" cy="-8" r="7" skin="#edc79f" bodyFirst /><path d="M-7-11 Q0-20 7-10" fill="#26322f" />
       </g>
       <MapText x="360" y="406" fill="#dbc59e">堂口 · 原创比例与陈设</MapText>
     </EarlyMap>

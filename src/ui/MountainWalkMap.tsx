@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -40,12 +41,11 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
         <MapText x={target.x} y={target.y + 37} fill="#ead0a4">{target.label}</MapText>
       </g>)}
       {elderVisible && <g aria-label={elderNamed ? '已报名字的药老' : '身份尚未公开的古戒老人'} transform={`translate(${elderPoint.x} ${elderPoint.y})`} opacity=".65">
-        <path d={seated ? 'M-15 20 L-8-6 H8 L15 20Z' : 'M-15 20 L-9-6 H9 L15 20Z'} fill="#b2d6cb" /><circle cy="-13" r="9" fill="#cbded2" />
-        <path d="M-7-8 L0 9 L7-8" fill="#e0e9df" />
+        <path d={seated ? 'M-15 20 L-8-6 H8 L15 20Z' : 'M-15 20 L-9-6 H9 L15 20Z'} fill="#b2d6cb" /><RobeFigure r="9" skin="#cbded2" cut="M-7-8 L0 9 L7-8" robe="#e0e9df" />
       </g>}
       {ring === 'floating' && <g aria-label="老人处浮空的同一古戒"><ellipse cx={elderPoint.x} cy={elderPoint.y + 40} rx="9" ry="5" fill="none" stroke="#a7bdb2" strokeWidth="3" /></g>}
       {purpleVisible && <g aria-label={purpleNamed ? '已确认来访的薰儿' : '山径上的紫衣身影'} transform={`translate(${purplePoint.x} ${purplePoint.y})`}>
-        <path d="M-12 15 L-6-7 H6 L12 15Z" fill="#b295cd" /><circle cy="-14" r="8" fill="#edcfbd" />
+        <RobeFigure cut="M-12 15 L-6-7 H6 L12 15Z" robe="#b295cd" cy="-14" skin="#edcfbd" bodyFirst />
         {purpleCardVisible && <g aria-label="薰儿持有展示的五纹紫金卡">
           <rect x="12" y="-1" width="24" height="14" rx="2" fill="#684786" stroke="#d7b475" />
           {[0, 1, 2, 3, 4].map(i => <path key={i} d={`M${16 + i * 4} 2v8`} stroke="#e8c178" />)}

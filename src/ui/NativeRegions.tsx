@@ -34,3 +34,10 @@ export function HallWalker() {
 export function TimingRange({ label, value, onChange, children }: { label: string; value: number; onChange: ComponentProps<'input'>['onChange']; children: ComponentProps<'small'>['children'] }) {
   return <label className="setting-row"><span>{label}{children}</span><input aria-label={label} type="range" min="0" max="1" step=".05" value={value} onChange={onChange} /></label>
 }
+
+export function RobeFigure({ skin = '#e1bba0', robe = '#73a98a', cut = 'M-13 17 L-7-5 H7 L13 17Z', cy = '-13', r = '8', bodyFirst = false }: {
+  skin?: string; robe?: string; cut?: string; cy?: string; r?: string; bodyFirst?: boolean
+}) {
+  const head = <circle cy={cy} r={r} fill={skin} />, body = <path d={cut} fill={robe} />
+  return bodyFirst ? <>{body}{head}</> : <>{head}{body}</>
+}

@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -33,8 +34,8 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
       <rect x="100" y="185" width="92" height="20" rx="8" fill="#293538" stroke="#ddc68a" />
       <path d="M120 190 H175 M120 198 H168" stroke="#d6ba7f" />
       <MapText x="145" y="293" fill="#efd5a5" fontSize="14">借卷 · 萧炎保管</MapText>
-      <g transform="translate(390 180)"><ellipse cy="55" rx="24" ry="7" fill="#0004" /><path d="M-20 48 L-10 0 H10 L20 48Z" fill="#cfa469" /><circle cy="-14" r="13" fill="#eac79e" /><path d="M-13-20 Q0-36 13-20" fill="#26312c" /></g>
-      <g transform="translate(500 140)" opacity=".85"><path d="M-24 95 Q-16 35 0 5 Q16 35 24 95Z" fill="#b9d1ca" /><circle cy="-5" r="13" fill="#d7dfcd" /><path d="M-10 0 Q0 24 10 0" fill="#eaf0e6" /><MapText x="0" y="125" fill="#e5e5c9" fontSize="14">药老</MapText></g>
+      <g transform="translate(390 180)"><ellipse cy="55" rx="24" ry="7" fill="#0004" /><RobeFigure cut="M-20 48 L-10 0 H10 L20 48Z" robe="#cfa469" cy="-14" r="13" skin="#eac79e" bodyFirst /><path d="M-13-20 Q0-36 13-20" fill="#26312c" /></g>
+      <g transform="translate(500 140)" opacity=".85"><RobeFigure cut="M-24 95 Q-16 35 0 5 Q16 35 24 95Z" robe="#b9d1ca" cy="-5" r="13" skin="#d7dfcd" bodyFirst /><path d="M-10 0 Q0 24 10 0" fill="#eaf0e6" /><MapText x="0" y="125" fill="#e5e5c9" fontSize="14">药老</MapText></g>
       {stage >= 3 && <g>
         <path d="M485 160 L405 166" stroke="#ead49c" strokeWidth="3" strokeDasharray="4 6" />
         {Array.from({ length: 8 }, (_, i) => <circle key={i} cx={390 + Math.cos(i * Math.PI / 4) * 28} cy={165 + Math.sin(i * Math.PI / 4) * 28} r="3" fill="#eac885" />)}

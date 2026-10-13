@@ -19,6 +19,7 @@ import { firstHallThreatStep } from './helpers/first-hall-threat-replay'
 import { firstHallExitResponseStep } from './helpers/first-hall-exit-response-replay'
 import { firstHallCheckoutStep } from './helpers/first-hall-checkout-replay'
 import { firstHallLeavingStep } from './helpers/first-hall-leaving-replay'
+import { firstHallEveningStep } from './helpers/first-hall-evening-replay'
 import { firstHallAfternoonStep } from './helpers/first-hall-afternoon-replay'
 import { firstHallAftermathStep } from './helpers/first-hall-aftermath-replay'
 import { firstHallFirstReturnStep } from './helpers/first-hall-first-return-replay'
@@ -334,6 +335,7 @@ describe('完整主线真实规则战斗回放', () => {
         while (state.earlyTraining.firstHallApproach.stage < 53) state = firstHallLeavingStep(state)
         while (state.earlyTraining.firstHallApproach.stage < 57) state = firstHallAftermathStep(state)
         while (state.earlyTraining.firstHallAfternoon.stage < 10) state = firstHallAfternoonStep(state)
+        while (state.earlyTraining.firstHallEvening.stage < 9) state = firstHallEveningStep(state)
         expect(state.earlyTraining.practice.attempts).toBe(1)
       }
       for (const { event } of [...bondEvents, ...preparationEvents].filter(item => item.chapter === chapter.id)) {

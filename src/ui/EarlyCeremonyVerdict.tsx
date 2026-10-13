@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -46,11 +47,11 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
       <rect x="412" y="220" width="56" height="36" fill="#a38a61" />
       {task.stage < 8 && <g transform="translate(440 160)" role="img" aria-label={task.verdict === 'xiaoyan' ? '二长老已经正式宣布萧炎获胜' : '二长老尚未宣布胜负'}>
-        <circle cy="-13" r="8" fill="#d9b99d" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#b6bba8" />
+        <RobeFigure skin="#d9b99d" robe="#b6bba8" />
       </g>}
-      {task.yu !== 'none' && task.stage < 5 && <g transform="translate(525 168)" role="img" aria-label={task.yu === 'blocked' ? '萧玉挑战资格已被否定' : '萧玉仅提出挑战请求'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#9e83a6" /></g>}
-      <g transform={`translate(${task.xuner === 'requested' || task.stage === 9 ? 360 : task.stage >= 11 ? 195 : 270} ${task.xuner === 'requested' || task.stage === 9 ? 168 : task.stage >= 11 ? 335 : 280})`} role="img" aria-label={task.xuner === 'requested' ? '薰儿提出代战，尚未获准' : task.stage === 9 ? '薰儿参加自己的仪式' : '薰儿观礼或离场同行'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
-      {task.stage < 2 && <g transform="translate(676 280) rotate(83)" role="img" aria-label="场外昏迷萧宁，交由族人照看"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /></g>}
+      {task.yu !== 'none' && task.stage < 5 && <g transform="translate(525 168)" role="img" aria-label={task.yu === 'blocked' ? '萧玉挑战资格已被否定' : '萧玉仅提出挑战请求'}><RobeFigure robe="#9e83a6" /></g>}
+      <g transform={`translate(${task.xuner === 'requested' || task.stage === 9 ? 360 : task.stage >= 11 ? 195 : 270} ${task.xuner === 'requested' || task.stage === 9 ? 168 : task.stage >= 11 ? 335 : 280})`} role="img" aria-label={task.xuner === 'requested' ? '薰儿提出代战，尚未获准' : task.stage === 9 ? '薰儿参加自己的仪式' : '薰儿观礼或离场同行'}><RobeFigure /></g>
+      {task.stage < 2 && <g transform="translate(676 280) rotate(83)" role="img" aria-label="场外昏迷萧宁，交由族人照看"><RobeFigure robe="#bc786b" /></g>}
       {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 50} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>

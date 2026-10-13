@@ -1,3 +1,4 @@
+import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -44,7 +45,7 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
       </g>)}
       <rect x="458" y="38" width="230" height="165" fill="#344139" stroke="#bea16d" />
       <MapText x="573" y="65" fill="#e7d2a9" fontSize="14">隐蔽巷 · 药老调制</MapText>
-      <g transform="translate(525 124)"><path d="M-22 55 Q-10-15 0-15 Q10-15 22 55Z" fill="#b6cec0" /><circle cy="-24" r="12" fill="#d8deca" />
+      <g transform="translate(525 124)"><RobeFigure cut="M-22 55 Q-10-15 0-15 Q10-15 22 55Z" robe="#b6cec0" cy="-24" r="12" skin="#d8deca" bodyFirst />
         {task.stage === 3 && <path d="M22 13 Q30-25 45-34 Q36-5 48 0 Q50 22 22 13Z" fill="#e0ead3" />}</g>
       {task.product === 'mixture' && <g transform="translate(627 143)"><ellipse rx="30" ry="13" fill="#7e9b4e" /><circle cx="8" cy="-4" r="5" fill="#a1aa65" /><circle cx="-12" cy="3" r="4" fill="#637d41" /></g>}
       {task.product === 'sealed' && <g transform="translate(627 144)"><path d="M-10-25 H10 V-13 Q23-3 19 25 H-19 Q-23-3-10-13Z" fill="#dfdfc7" stroke="#b7bea2" /><rect x="-12" y="-30" width="24" height="7" fill="#957547" /><MapText y="46" fill="#e4d0a4">{state.earlyTraining.auction.stage >= 6 ? '同瓶' : '待售'} · {appraisalOwnerLabels[task.owner]}保管</MapText></g>}
