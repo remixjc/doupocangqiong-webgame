@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -23,7 +24,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
   const [marker, setMarker] = useState(.5)
   const entry = useRef<HTMLHeadingElement>(null)
   const blocked = earlyRecoveryBlock(state, position)
-  useEffect(() => { if (!blocked) entry.current?.focus() }, [blocked])
+  useSceneFocus(entry, !blocked, [blocked])
   useEffect(() => { setMarker(.5) }, [task.stage])
   if (blocked) return <p>{blocked}</p>
   const inContainer = task.stage >= 2 && task.stage <= 4

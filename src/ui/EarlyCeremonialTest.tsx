@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -10,7 +11,7 @@ import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { ceremonialPlaces, ceremonialRails, earlyCeremonialTestBlock, moveCeremonialWalker,
@@ -26,7 +27,7 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...ceremonialPlaces.waiting })
   const field = useRef<SVGSVGElement>(null), blocked = earlyCeremonialTestBlock(state, entryPosition)
   const near = scene && nearCeremonialPlace(position, scene.place, task.stage)
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveCeremonialWalker(current, direction, task.stage))
   function act() {
     if (document.hidden || !scene) return

@@ -1,9 +1,10 @@
+import { lazyScene } from './scene-load'
 import { MountainStatus, CampOptions } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
+import { Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 import { chapters, chapterById } from '../content/chapters'
 import { gameStore } from '../core/store'
 import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
@@ -17,16 +18,15 @@ import { teacherSupport } from '../core/companions'
 import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
 import { bindDialogFocus } from './dialog-focus'
-import { loadSceneModule } from './scene-load'
 import RouteControls from './RouteControls'
 
-const GameView = lazy(() => loadSceneModule(() => import('./GameView')))
-const StoryRecap = lazy(() => loadSceneModule(() => import('./StoryRecap')))
-const EarlyTrainingPanel = lazy(() => loadSceneModule(() => import('./EarlyTrainingPanel')))
-const SavesPanel = lazy(() => loadSceneModule(() => import('./SavesPanel')))
-const BondJournal = lazy(() => loadSceneModule(() => import('./BondJournal')))
-const StoryEventPanel = lazy(() => loadSceneModule(() => import('./StoryEventPanel')))
-const ToolkitPanel = lazy(() => loadSceneModule(() => import('./Panels')))
+const GameView = lazyScene(() => import('./GameView'))
+const StoryRecap = lazyScene(() => import('./StoryRecap'))
+const EarlyTrainingPanel = lazyScene(() => import('./EarlyTrainingPanel'))
+const SavesPanel = lazyScene(() => import('./SavesPanel'))
+const BondJournal = lazyScene(() => import('./BondJournal'))
+const StoryEventPanel = lazyScene(() => import('./StoryEventPanel'))
+const ToolkitPanel = lazyScene(() => import('./Panels'))
 type Panel = 'guide' | 'camp' | 'character' | 'alchemy' | 'save' | 'settings' | 'shop' | 'event' | 'bonds' | 'recap' | 'early' | null
 interface Story { lines: Dialogue[]; index: number; closing: boolean }
 

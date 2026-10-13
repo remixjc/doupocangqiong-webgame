@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch, hallTalkSnapshotKeys } from './early-snapshots'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -19,7 +20,7 @@ export function firstHallTalkBlock(state: GameState): string {
   return firstHallMatchBlock(state, true) || (state.earlyTraining.firstHallMatch.stage === 20 ? '' : '先归档赛后实际返回与走到东架。')
 }
 export function advanceFirstHallTalk(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallTalkAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = firstHallTalkBlock(state)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstHallTalk, scene = firstHallTalkScenes[task.stage]

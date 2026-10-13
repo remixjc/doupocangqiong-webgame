@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -27,7 +28,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
   const [yard, setYard] = useState({ ...(task.path ? departurePlaces.path : departurePlaces.yardDoor) })
   const [actor, setActor] = useState<'yan' | 'ring'>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   useEffect(() => { if (task.stage === 4) setSpace('outside') }, [task.stage])
   const p = space === 'room' ? room : yard, near = departureNear(p, space, task.stage), blocked = firstDepartureBlock(state)
   const move = (direction: EarlyWalkDirection) => {

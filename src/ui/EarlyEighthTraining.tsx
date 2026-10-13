@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -17,7 +18,7 @@ import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { earlyEighthTrainingBlock, eighthPlaces, eighthTrainingBeats, eighthTrainingOperation, moveEighthWalker,
   nearEighthPlace, submitEarlyEighthTraining, type EighthTrainingAction } from '../core/early-eighth-training'
 import { eighthTrainingScenes } from '../content/early-eighth-training'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 export default function EarlyEighthTraining({ state, position: entryPosition, onBack, onGuests }: {
@@ -29,12 +30,11 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
   const field = useRef<SVGSVGElement>(null), blocked = earlyEighthTrainingBlock(state, entryPosition)
   const target = eighthTrainingBeats(task.stage), near = scene && nearEighthPlace(position, scene.place)
   const steady = state.settings.reducedMotion
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
   useEffect(() => {
     if (!target || !near || steady || paused || blocked) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [target, near, steady, paused, blocked, task.beats])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveEighthWalker(current, direction))

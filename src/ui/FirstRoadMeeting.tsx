@@ -1,10 +1,11 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
 import { gameStore } from '../core/store'
@@ -23,7 +24,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
   const [p, setP] = useState({ ...(task.resumed ? roadMeetingPlaces.end : task.passed ? roadMeetingPlaces.pass : task.turned ? roadMeetingPlaces.turn : roadMeetingPlaces.start) })
   const [actor, setActor] = useState<'yan' | 'mei'>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const near = roadMeetingNear(p, task.stage), blocked = firstRoadMeetingBlock(state), talking = task.stage >= 6 && task.stage <= 8
   const move = (direction: EarlyWalkDirection) => {
     if (!scene || actor !== 'yan' || document.hidden || talking) return

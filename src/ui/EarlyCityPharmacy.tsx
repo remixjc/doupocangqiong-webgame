@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -10,7 +11,7 @@ import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
 import { gameStore } from '../core/store'
@@ -21,7 +22,7 @@ import './early-walk.css'
 export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: GameState; onBack: () => void; onRoute: () => void }) {
   const ledger = state.earlyTraining, task = ledger.cityPharmacy, scene = cityPharmacyScenes[task.stage]
   const [position, setPosition] = useState({ ...cityPharmacyStart }), field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = earlyCityPharmacyBlock(state), near = !!scene && cityPharmacyNear(position, scene.place)
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveCityWalker(current, direction))
   const act = (operation: CityPharmacyAction['operation']) => {

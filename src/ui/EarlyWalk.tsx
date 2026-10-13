@@ -1,3 +1,5 @@
+import { useSceneFocus } from './use-scene-focus'
+import { lazyScene } from './scene-load'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -8,7 +10,7 @@ import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import { useReturningScene } from './use-returning-scene'
 import { deferredRoute } from './DeferredScene'
-import { lazy, useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
 import { earlyWalkPlaces, earlyWalkObstacles, earlyWalkStart, earlyWalkSize, moveEarlyWalker, nearbyEarlyWalkPlace, type EarlyWalkDirection } from '../core/early-walk'
@@ -38,31 +40,30 @@ import { earlyCeremonialTestBlock } from '../core/early-ceremonial-test'
 import { earlyNingFirstBlock } from '../core/early-ning-first'
 import { earlyNingSecondBlock } from '../core/early-ning-second'
 import { earlyCeremonyVerdictBlock } from '../core/early-ceremony-verdict'
-import { loadSceneModule } from './scene-load'
 import './early-walk.css'
 
-const EarlyHall = lazy(() => loadSceneModule(() => import('./EarlyHall')))
-const EarlyTeaching = lazy(() => loadSceneModule(() => import('./EarlyTeaching')))
-const EarlySupervision = lazy(() => loadSceneModule(() => import('./EarlySupervision')))
-const EarlyRecovery = lazy(() => loadSceneModule(() => import('./EarlyRecovery')))
-const EarlyConsignment = lazy(() => loadSceneModule(() => import('./EarlyConsignment')))
-const EarlyAppraisal = lazy(() => loadSceneModule(() => import('./EarlyAppraisal')))
-const EarlyAuction = lazy(() => loadSceneModule(() => import('./EarlyAuction')))
-const EarlySettlement = lazy(() => loadSceneModule(() => import('./EarlySettlement')))
-const EarlyFatherGift = lazy(() => loadSceneModule(() => import('./EarlyFatherGift')))
-const EarlyXunerVisit = lazy(() => loadSceneModule(() => import('./EarlyXunerVisit')))
-const EarlyLongSupplies = lazy(() => loadSceneModule(() => import('./EarlyLongSupplies')))
-const EarlyForestStrike = lazy(() => loadSceneModule(() => import('./EarlyForestStrike')))
-const EarlySeventhRoom = lazy(() => loadSceneModule(() => import('./EarlySeventhRoom')))
-const EarlyPalmPair = lazy(() => loadSceneModule(() => import('./EarlyPalmPair')))
-const EarlyPreliminary = lazy(() => loadSceneModule(() => import('./EarlyPreliminary')))
-const EarlyKeChallenge = lazy(() => loadSceneModule(() => import('./EarlyKeChallenge')))
-const EarlyEighthTraining = lazy(() => loadSceneModule(() => import('./EarlyEighthTraining')))
-const EarlyCeremonyGuests = lazy(() => loadSceneModule(() => import('./EarlyCeremonyGuests')))
-const EarlyCeremonialTest = lazy(() => loadSceneModule(() => import('./EarlyCeremonialTest')))
-const EarlyNingFirst = lazy(() => loadSceneModule(() => import('./EarlyNingFirst')))
-const EarlyNingSecond = lazy(() => loadSceneModule(() => import('./EarlyNingSecond')))
-const EarlyCeremonyVerdict = lazy(() => loadSceneModule(() => import('./EarlyCeremonyVerdict')))
+const EarlyHall = lazyScene(() => import('./EarlyHall'))
+const EarlyTeaching = lazyScene(() => import('./EarlyTeaching'))
+const EarlySupervision = lazyScene(() => import('./EarlySupervision'))
+const EarlyRecovery = lazyScene(() => import('./EarlyRecovery'))
+const EarlyConsignment = lazyScene(() => import('./EarlyConsignment'))
+const EarlyAppraisal = lazyScene(() => import('./EarlyAppraisal'))
+const EarlyAuction = lazyScene(() => import('./EarlyAuction'))
+const EarlySettlement = lazyScene(() => import('./EarlySettlement'))
+const EarlyFatherGift = lazyScene(() => import('./EarlyFatherGift'))
+const EarlyXunerVisit = lazyScene(() => import('./EarlyXunerVisit'))
+const EarlyLongSupplies = lazyScene(() => import('./EarlyLongSupplies'))
+const EarlyForestStrike = lazyScene(() => import('./EarlyForestStrike'))
+const EarlySeventhRoom = lazyScene(() => import('./EarlySeventhRoom'))
+const EarlyPalmPair = lazyScene(() => import('./EarlyPalmPair'))
+const EarlyPreliminary = lazyScene(() => import('./EarlyPreliminary'))
+const EarlyKeChallenge = lazyScene(() => import('./EarlyKeChallenge'))
+const EarlyEighthTraining = lazyScene(() => import('./EarlyEighthTraining'))
+const EarlyCeremonyGuests = lazyScene(() => import('./EarlyCeremonyGuests'))
+const EarlyCeremonialTest = lazyScene(() => import('./EarlyCeremonialTest'))
+const EarlyNingFirst = lazyScene(() => import('./EarlyNingFirst'))
+const EarlyNingSecond = lazyScene(() => import('./EarlyNingSecond'))
+const EarlyCeremonyVerdict = lazyScene(() => import('./EarlyCeremonyVerdict'))
 
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
@@ -93,7 +94,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   const field = useRef<SVGSVGElement>(null)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   function openTeaching() {
     const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }

@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -5,7 +6,7 @@ import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
-import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { useRef, type KeyboardEvent } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { mountainRingObstacles, mountainRingPlaces } from '../core/early-mountain-ring'
 import './early-walk.css'
@@ -19,7 +20,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
   onMove: (direction: EarlyWalkDirection) => void; onInteract: () => void
 }) {
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (document.hidden || event.altKey || event.ctrlKey || event.metaKey) return
     const value = event.key.length === 1 ? event.key.toLowerCase() : event.key

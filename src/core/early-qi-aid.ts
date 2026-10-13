@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -38,7 +39,7 @@ export function earlyQiAidBlock(state: GameState): string {
     || (state.earlyTraining.qiPavilionExchange.stage !== 8 ? '先归档双卷交接细节，再接续薰儿同行与风属性门障。' : '')
 }
 export function advanceEarlyQiAid(state: GameState, position: EarlyWalkPosition, action: QiAidAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyQiAidBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionAid

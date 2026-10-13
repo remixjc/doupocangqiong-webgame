@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -28,7 +29,7 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
   const [xuner, setXuner] = useState<EarlyWalkPosition>({ ...marketSearchPlaces.voice })
   const [selected, setSelected] = useState<'yan' | 'xuner' | null>(null)
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   useEffect(() => { setSelected(null) }, [scene?.view])
   const blocked = earlyMarketBraceletsBlock(state), position = selected === 'xuner' ? xuner : yan
   const active = !!scene && selected === scene.view, near = active && marketSearchNear(position, 'voice')

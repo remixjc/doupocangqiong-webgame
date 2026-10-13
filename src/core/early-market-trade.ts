@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -33,7 +34,7 @@ export type MarketTradeAction = MarketTradeState & {
   operation: typeof marketTradeScenes[number]['operation'] | 'extra-charge' | 'duplicate' | 'learn' | 'early-pay'
 }
 export function advanceEarlyMarketTrade(state: GameState, position: EarlyWalkPosition, action: MarketTradeAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMarketTradeBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketTrade, scene = marketTradeScenes[task.stage]

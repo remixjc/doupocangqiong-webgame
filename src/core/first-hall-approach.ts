@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch, hallApproachSnapshotKeys } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -37,7 +38,7 @@ export function firstHallApproachBlock(state: GameState, continuation = false, c
     || (aftermath && state.earlyTraining.firstHallApproach.stage < 53 ? '先归档两人实际跨门。' : '')
 }
 export function advanceFirstHallApproach(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallApproachAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = firstHallApproachBlock(state, action.continuation, action.conflict, action.threat, action.exitResponse, action.checkout, action.leaving, action.aftermath)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstHallApproach, scene = firstHallApproachScene(task.stage, action.continuation, action.conflict, action.threat, action.exitResponse, action.checkout, action.leaving, action.aftermath)

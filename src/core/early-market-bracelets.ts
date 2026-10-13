@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
@@ -20,7 +21,7 @@ export type MarketBraceletsAction = MarketBraceletsState & {
   operation: typeof marketBraceletsScenes[number]['operation'] | 'take-blue' | 'claim-core' | 'pay-extra' | 'claim-rank'
 }
 export function advanceEarlyMarketBracelets(state: GameState, view: MarketBraceletsView, action: MarketBraceletsAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMarketBraceletsBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketBracelets, gift = state.earlyTraining.bracelet, scene = marketBraceletsScenes[task.stage]

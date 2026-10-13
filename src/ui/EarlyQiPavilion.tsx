@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -10,7 +11,7 @@ import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition, EarlyWalkDirection } from '../core/early-walk'
 import { qiPavilionPlaces, qiPavilionWalls, qiPavilionGate, moveQiPavilionWalker, nearQiPavilionPlace, earlyQiPavilionBlock, submitEarlyQiPavilionEntry, type QiPavilionEntryAction } from '../core/early-qi-pavilion'
@@ -22,7 +23,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
   const task = state.earlyTraining.qiPavilionEntry, scene = qiPavilionEntryScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...qiPavilionPlaces.forecourt })
   const field = useRef<SVGSVGElement>(null), blocked = earlyQiPavilionBlock(state)
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   const move = (direction: EarlyWalkDirection) => { if (!document.hidden) setPosition(current => moveQiPavilionWalker(current, direction, task.stage)) }
   function act(operation: QiPavilionEntryAction['operation']) {
     if (document.hidden || !scene) return

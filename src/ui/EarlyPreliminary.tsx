@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -10,7 +11,7 @@ import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { earlyPreliminaryBlock, preliminaryPlaces, preliminaryStart, preliminaryObstacles, movePreliminaryWalker, nearPreliminaryPlace, submitEarlyPreliminary } from '../core/early-preliminary'
@@ -25,7 +26,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
   const [position, setPosition] = useState({ ...preliminaryStart })
   const field = useRef<SVGSVGElement>(null)
   const blocked = earlyPreliminaryBlock(state, entryPosition), near = scene && nearPreliminaryPlace(position, scene.place)
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   const move = (direction: EarlyWalkDirection) => setPosition(current => movePreliminaryWalker(current, direction))
   function act() {
     if (document.hidden || !scene) return

@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -27,7 +28,7 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
   const [xuner, setXuner] = useState<EarlyWalkPosition>({ ...(task.walkedDeep ? standoffPlaces.deep : standoffPlaces.street) })
   const [selected, setSelected] = useState<StandoffFocus | null>(null)
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   useEffect(() => { setSelected(null) }, [task.stage])
   const blocked = earlyMarketStandoffBlock(state), position = selected === 'xuner' ? xuner : yan
   const observer = !!scene && scene.view !== 'yan' && scene.view !== 'xuner'

@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -19,7 +20,7 @@ export type FamilyCompensationAction = FamilyCompensationState & {
   operation: typeof familyCompensationScenes[number]['operation'] | 'take-extra' | 'join-now' | 'claim-alchemist'
 }
 export function advanceEarlyFamilyCompensation(state: GameState, position: EarlyWalkPosition, action: FamilyCompensationAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyFamilyCompensationBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.familyCompensation

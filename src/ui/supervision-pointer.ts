@@ -8,6 +8,13 @@ export interface SupervisionPointerEnvironment {
   requestFrame: (callback: FrameRequestCallback) => number
   cancelFrame: (id: number) => void
 }
+
+export function startBrowserSupervisionPointer(onMarker: (marker: number) => void, onPause: () => void) {
+  return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
+    requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+  onMarker, onPause)
+}
+
 /** Stop on blur/background. Resuming requires a new explicit UI action. */
 export function startSupervisionPointer(env: SupervisionPointerEnvironment, onMarker: (marker: number) => void, onPause: () => void) {
   let active = true, previous = env.now(), elapsed = 0, frame = 0

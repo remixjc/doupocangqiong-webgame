@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -29,7 +30,7 @@ export type MarketStandoffAction = MarketStandoffState & {
   operation: typeof marketStandoffScenes[number]['operation'] | 'fight' | 'loot' | 'recruit' | 'claim-core'
 }
 export function advanceEarlyMarketStandoff(state: GameState, view: MarketStandoffView, action: MarketStandoffAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMarketStandoffBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketStandoff, scene = marketStandoffScenes[task.stage]

@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -6,7 +7,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlyXunerVisitBlock, submitEarlyXunerVisit, type XunerVisitStation } from '../core/early-xuner-visit'
@@ -19,7 +20,7 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
   const task = state.earlyTraining.xunerVisit, scene = xunerVisitScenes[task.stage]
   const [station, setStation] = useState<XunerVisitStation>('room')
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlyXunerVisitBlock(state, position)
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   if (blocked) return <p>{blocked}</p>
   const xunerView = task.stage >= 4
   return <>

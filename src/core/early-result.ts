@@ -2,6 +2,10 @@ import type { GameStore } from './store'
 import type { Transaction } from './rules'
 import type { EarlyTrainingState } from './early-training-state'
 
+export function rejectTransaction(state: Transaction['state']): (message: string) => Transaction {
+  return message => ({ state, ok: false, message })
+}
+
 // Preserve one atomic write, the original write scope, and notification order.
 export function commitEarlyResult(store: GameStore, result: Transaction, key?: keyof EarlyTrainingState | readonly (keyof EarlyTrainingState)[]): boolean {
   if (result.ok) store.update(state => {

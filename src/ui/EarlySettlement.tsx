@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -5,7 +6,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlySettlementBlock, submitEarlySettlement, type SettlementStation } from '../core/early-settlement'
@@ -19,7 +20,7 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
   const task = state.earlyTraining.settlement, scene = settlementScenes[task.stage]
   const [station, setStation] = useState<SettlementStation>('entrance')
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlySettlementBlock(state, position)
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   if (blocked) return <p>{blocked}</p>
   return <>
     <Eyebrow>米特尔鉴定室 / 首次寄售手续</Eyebrow>

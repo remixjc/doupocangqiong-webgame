@@ -1,10 +1,11 @@
+import { useSceneFocus } from './use-scene-focus'
 import { HallWalker } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { earlyWalkDirections as directions } from '../core/early-walk-keys'
-import { useEffect, useRef, type KeyboardEvent } from 'react'
+import { useRef, type KeyboardEvent } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { familyVisitPlaces, familyVisitWalls } from '../core/early-family-visit'
 import './early-walk.css'
@@ -18,7 +19,7 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
   departed?: boolean
 }) {
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (document.hidden || event.altKey || event.ctrlKey || event.metaKey) return
     const value = event.key.length === 1 ? event.key.toLowerCase() : event.key

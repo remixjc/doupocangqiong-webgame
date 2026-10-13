@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -13,7 +14,7 @@ import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlyPalmPairBlock, submitEarlyPalmPair, type PalmPairStation } from '../core/early-palm-pair'
 import { palmPairScenes } from '../content/early-palm-pair'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 const stations = { door: '门边 · 准备与归档', table: '练习桌 · 两只花瓶', teacher: '药老 · 讲解与初练' } as const
@@ -25,12 +26,11 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
   const [marker, setMarker] = useState(.5), [paused, setPaused] = useState(false)
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlyPalmPairBlock(state, position)
   const training = (task.stage === 5 || task.stage === 8) && station === scene?.station, steady = state.settings.reducedMotion
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.attempts, steady])
   useEffect(() => {
     if (blocked || !training || steady || paused) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) }, setMarker, () => setPaused(true))
+    return startBrowserSupervisionPointer( setMarker, () => setPaused(true))
   }, [blocked, training, steady, paused])
   function act() {
     if (!scene || document.hidden || training && paused) return

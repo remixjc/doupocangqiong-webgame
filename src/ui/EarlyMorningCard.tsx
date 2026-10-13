@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -10,7 +11,7 @@ import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { gameStore } from '../core/store'
@@ -22,7 +23,7 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
   const ledger = state.earlyTraining, task = ledger.morningCard, scene = morningCardScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...morningCardStart })
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = earlyMorningCardBlock(state), near = !!scene && morningCardNear(position, scene.place)
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveMorningWalker(current, direction))
   const act = (operation: MorningCardAction['operation']) => {

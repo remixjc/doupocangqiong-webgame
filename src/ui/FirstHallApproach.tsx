@@ -1,9 +1,10 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
@@ -30,7 +31,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
   const first = continuation || current ? task.first : task.stage >= 13 ? 'rolled' : 'open'
   const [actor, setActor] = useState<FirstHallApproachAction['actor']>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = firstHallApproachBlock(state, continuation, conflict, threat, exitResponse, checkout, leaving, aftermath)
   const act = (operation: string) => {
     if (!scene || document.hidden) return

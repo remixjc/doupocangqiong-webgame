@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -11,7 +12,7 @@ import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlySupervisionBlock, submitEarlySupervision, type EarlySupervisionAction } from '../core/early-supervision'
 import { gameStore } from '../core/store'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import './early-walk.css'
 
 export default function EarlySupervision({ state, position, onBack, onRecover }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onRecover?: () => void }) {
@@ -21,15 +22,14 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
   const entry = useRef<HTMLButtonElement>(null)
   const blocked = earlySupervisionBlock(state, position)
   const steady = state.settings.reducedMotion
-  useEffect(() => { if (!blocked) entry.current?.focus() }, [blocked, task.stage, task.attempts])
+  useSceneFocus(entry, !blocked, [blocked, task.stage, task.attempts])
   useEffect(() => { if (steady) setPaused(false) }, [steady])
   useEffect(() => {
     setMarker(.5); setPaused(false)
   }, [task.stage, task.attempts])
   useEffect(() => {
     if (blocked || task.stage !== 1 || steady || paused) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [blocked, task.stage, task.attempts, steady, paused])
   function act(operation: EarlySupervisionAction['operation']) {

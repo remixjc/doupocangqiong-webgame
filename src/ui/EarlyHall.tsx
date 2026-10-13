@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -8,7 +9,7 @@ import WalkDirectionButtons from './WalkDirectionButtons'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { earlyHallBlock, earlyHallStart, earlyHallPlaces, earlyHallObstacles, moveEarlyHall, nearbyEarlyHallPlace, submitEarlyHall } from '../core/early-hall'
 import { earlyHallScenes } from '../content/early-hall'
@@ -24,7 +25,7 @@ export default function EarlyHall({ state, onBack, onTeach }: { state: GameState
   const place = nearbyEarlyHallPlace(position)
   const task = state.earlyTraining.hall
   const scene = earlyHallScenes.find(scene => scene.stage === task.stage)
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   const move = (direction: EarlyWalkDirection) => {
     setReading(undefined); setPosition(current => moveEarlyHall(current, direction))
   }

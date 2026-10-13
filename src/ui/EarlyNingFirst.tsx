@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -19,7 +20,7 @@ import { ceremonyPlatform } from '../core/early-ceremony-guests'
 import { earlyNingFirstBlock, ningPlaces, ningFirstOperation, moveNingWalker, nearNingPlace,
   submitEarlyNingFirst, type NingFirstAction } from '../core/early-ning-first'
 import { ningFirstScenes } from '../content/early-ning-first'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 export default function EarlyNingFirst({ state, position: entryPosition, onBack, onSecond }: {
@@ -30,12 +31,11 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
   const [marker, setMarker] = useState(.5), [paused, setPaused] = useState(false)
   const field = useRef<SVGSVGElement>(null), blocked = earlyNingFirstBlock(state, entryPosition)
   const training = task.stage === 6, near = scene && nearNingPlace(position, scene.place), steady = state.settings.reducedMotion
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
   useEffect(() => {
     if (!training || !near || steady || paused || blocked) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [training, near, steady, paused, blocked, task.beats])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveNingWalker(current, direction))

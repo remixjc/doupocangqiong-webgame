@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -6,7 +7,7 @@ import { MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
+import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { ironNear } from '../core/early-iron'
 import { moveCityWalker } from '../core/early-city-pharmacy'
@@ -25,7 +26,7 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
 }) {
   const [yan, setYan] = useState({ ...start }), [actor, setActor] = useState<RoomScene['actor']>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const close = near(yan), selected = !!scene && actor === scene.actor
   const move = (direction: EarlyWalkDirection) => {
     if (scene && movable && actor === 'yan' && !document.hidden) {

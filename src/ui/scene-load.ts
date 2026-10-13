@@ -3,6 +3,10 @@ export class SceneLoadTimeout extends Error {
   constructor() { super('Scene module did not load within the allowed time'); this.name = 'SceneLoadTimeout' }
 }
 
+export function lazyScene<T extends ComponentType<any>>(load: () => Promise<{ default: T }>) {
+  return lazy(() => loadSceneModule(load))
+}
+
 /** A late import is consumed but cannot mount after the recovery screen has won. */
 export function loadSceneModule<T>(load: () => Promise<T>, timeoutMs = SCENE_LOAD_TIMEOUT_MS): Promise<T> {
   if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return Promise.reject(new RangeError('Invalid scene load deadline'))
@@ -15,3 +19,5 @@ export function loadSceneModule<T>(load: () => Promise<T>, timeoutMs = SCENE_LOA
     )
   })
 }
+import { lazy, type ComponentType } from 'react'
+

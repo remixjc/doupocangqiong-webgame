@@ -1,9 +1,9 @@
+import { lazyScene } from './scene-load'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import DeferredScene, { deferredRoute } from './DeferredScene'
-import { lazy } from 'react'
 import { useReturningScene } from './use-returning-scene'
 import type { GameState } from '../core/model'
 import { earlyTrainingBlock } from '../core/early-training'
@@ -14,42 +14,41 @@ import { earlyLiquidScenes } from '../content/early-liquid'
 import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
-import { loadSceneModule } from './scene-load'
 import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary, earlyPreparationBriefSaveSummary, earlyMountainVisitorSaveSummary, earlyMorningCardSaveSummary, earlyCityPharmacySaveSummary } from '../core/save-preview'
-const EarlyQiPavilion = lazy(() => loadSceneModule(() => import('./EarlyQiPavilion')))
-const EarlyQiBarrier = lazy(() => loadSceneModule(() => import('./EarlyQiBarrier')))
-const EarlyQiScroll = lazy(() => loadSceneModule(() => import('./EarlyQiScroll')))
-const EarlyQiAid = lazy(() => loadSceneModule(() => import('./EarlyQiAid')))
-const EarlyQiExchange = lazy(() => loadSceneModule(() => import('./EarlyQiExchange')))
-const EarlyFamilyVisit = lazy(() => loadSceneModule(() => import('./EarlyFamilyVisit')))
-const EarlyFamilyCompensation = lazy(() => loadSceneModule(() => import('./EarlyFamilyCompensation')))
-const EarlyFamilyContract = lazy(() => loadSceneModule(() => import('./EarlyFamilyContract')))
-const EarlyMountainRing = lazy(() => loadSceneModule(() => import('./EarlyMountainRing')))
-const EarlyApprentice = lazy(() => loadSceneModule(() => import('./EarlyApprentice')))
-const EarlyMethodDiscussion = lazy(() => loadSceneModule(() => import('./EarlyMethodDiscussion')))
-const EarlyPreparationBrief = lazy(() => loadSceneModule(() => import('./EarlyPreparationBrief')))
-const EarlyMountainVisitor = lazy(() => loadSceneModule(() => import('./EarlyMountainVisitor')))
-const EarlyMorningCard = lazy(() => loadSceneModule(() => import('./EarlyMorningCard')))
-const EarlyCityPharmacy = lazy(() => loadSceneModule(() => import('./EarlyCityPharmacy')))
-const EarlyMarketEscort = lazy(() => loadSceneModule(() => import('./EarlyMarketEscort')))
-const EarlyMarketSearch = lazy(() => loadSceneModule(() => import('./EarlyMarketSearch')))
-const EarlyMarketDiscovery = lazy(() => loadSceneModule(() => import('./EarlyMarketDiscovery')))
-const EarlyMarketStandoff = lazy(() => loadSceneModule(() => import('./EarlyMarketStandoff')))
-const EarlyMarketBracelets = lazy(() => loadSceneModule(() => import('./EarlyMarketBracelets')))
+const EarlyQiPavilion = lazyScene(() => import('./EarlyQiPavilion'))
+const EarlyQiBarrier = lazyScene(() => import('./EarlyQiBarrier'))
+const EarlyQiScroll = lazyScene(() => import('./EarlyQiScroll'))
+const EarlyQiAid = lazyScene(() => import('./EarlyQiAid'))
+const EarlyQiExchange = lazyScene(() => import('./EarlyQiExchange'))
+const EarlyFamilyVisit = lazyScene(() => import('./EarlyFamilyVisit'))
+const EarlyFamilyCompensation = lazyScene(() => import('./EarlyFamilyCompensation'))
+const EarlyFamilyContract = lazyScene(() => import('./EarlyFamilyContract'))
+const EarlyMountainRing = lazyScene(() => import('./EarlyMountainRing'))
+const EarlyApprentice = lazyScene(() => import('./EarlyApprentice'))
+const EarlyMethodDiscussion = lazyScene(() => import('./EarlyMethodDiscussion'))
+const EarlyPreparationBrief = lazyScene(() => import('./EarlyPreparationBrief'))
+const EarlyMountainVisitor = lazyScene(() => import('./EarlyMountainVisitor'))
+const EarlyMorningCard = lazyScene(() => import('./EarlyMorningCard'))
+const EarlyCityPharmacy = lazyScene(() => import('./EarlyCityPharmacy'))
+const EarlyMarketEscort = lazyScene(() => import('./EarlyMarketEscort'))
+const EarlyMarketSearch = lazyScene(() => import('./EarlyMarketSearch'))
+const EarlyMarketDiscovery = lazyScene(() => import('./EarlyMarketDiscovery'))
+const EarlyMarketStandoff = lazyScene(() => import('./EarlyMarketStandoff'))
+const EarlyMarketBracelets = lazyScene(() => import('./EarlyMarketBracelets'))
 
-const FirstHallEvening = lazy(() => loadSceneModule(() => import('./FirstHallEvening')))
-const FirstHallAfternoon = lazy(() => loadSceneModule(() => import('./FirstHallAfternoon')))
-const FirstHallApproach = lazy(() => loadSceneModule(() => import('./FirstHallApproach')))
-const FirstHallTalk = lazy(() => loadSceneModule(() => import('./FirstHallTalk')))
-const FirstHallMatch = lazy(() => loadSceneModule(() => import('./FirstHallMatch')))
-const FirstHallReading = lazy(() => loadSceneModule(() => import('./FirstHallReading')))
-const FirstHallEntry = lazy(() => loadSceneModule(() => import('./FirstHallEntry')))
-const FirstRoadMeeting = lazy(() => loadSceneModule(() => import('./FirstRoadMeeting')))
-const FirstDeparture = lazy(() => loadSceneModule(() => import('./FirstDeparture')))
-const FirstTechnique = lazy(() => loadSceneModule(() => import('./FirstTechnique')))
-const FirstTraining = lazy(() => loadSceneModule(() => import('./FirstTraining')))
-const EarlyRefining = lazy(() => loadSceneModule(() => import('./EarlyRefining')))
-const EarlyIron = lazy(() => loadSceneModule(() => import('./EarlyIron')))
+const FirstHallEvening = lazyScene(() => import('./FirstHallEvening'))
+const FirstHallAfternoon = lazyScene(() => import('./FirstHallAfternoon'))
+const FirstHallApproach = lazyScene(() => import('./FirstHallApproach'))
+const FirstHallTalk = lazyScene(() => import('./FirstHallTalk'))
+const FirstHallMatch = lazyScene(() => import('./FirstHallMatch'))
+const FirstHallReading = lazyScene(() => import('./FirstHallReading'))
+const FirstHallEntry = lazyScene(() => import('./FirstHallEntry'))
+const FirstRoadMeeting = lazyScene(() => import('./FirstRoadMeeting'))
+const FirstDeparture = lazyScene(() => import('./FirstDeparture'))
+const FirstTechnique = lazyScene(() => import('./FirstTechnique'))
+const FirstTraining = lazyScene(() => import('./FirstTraining'))
+const EarlyRefining = lazyScene(() => import('./EarlyRefining'))
+const EarlyIron = lazyScene(() => import('./EarlyIron'))
 
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)

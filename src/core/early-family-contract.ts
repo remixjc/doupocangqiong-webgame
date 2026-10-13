@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -30,7 +31,7 @@ export type FamilyContractAction = FamilyContractState & {
   operation: typeof familyContractScenes[number]['operation'] | 'start-duel' | 'take-box' | 'give-paper-father' | 'claim-victory'
 }
 export function advanceEarlyFamilyContract(state: GameState, view: FamilyContractView, action: FamilyContractAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyFamilyContractBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.familyContract

@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -48,7 +49,7 @@ export type FamilyVisitAction = FamilyVisitState & {
   operation: typeof familyVisitScenes[number]['operation'] | 'take-box' | 'accept-for-father'
 }
 export function advanceEarlyFamilyVisit(state: GameState, position: EarlyWalkPosition, action: FamilyVisitAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyFamilyVisitBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.familyVisit

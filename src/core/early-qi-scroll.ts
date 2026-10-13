@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -16,7 +17,7 @@ export function earlyQiScrollBlock(state: GameState): string {
 }
 
 export function advanceEarlyQiScroll(state: GameState, action: QiScrollAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyQiScrollBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionScroll

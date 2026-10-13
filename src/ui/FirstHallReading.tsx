@@ -1,10 +1,11 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
 import { gameStore } from '../core/store'
@@ -24,7 +25,7 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
   const [p, setP] = useState({ ...(task.shelf ? hallReadingPlaces.shelf : hallReadingPlaces.start) })
   const [actor, setActor] = useState<'yan' | 'bystander'>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const near = hallReadingNear(p, 'hall'), blocked = firstHallReadingBlock(state)
   const move = (direction: EarlyWalkDirection) => {
     if (!scene || actor !== 'yan' || task.leaned || document.hidden) return

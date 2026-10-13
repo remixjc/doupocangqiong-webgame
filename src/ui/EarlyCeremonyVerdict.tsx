@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -10,7 +11,7 @@ import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition, EarlyWalkDirection } from '../core/early-walk'
 import { ceremonyPlatform } from '../core/early-ceremony-guests'
@@ -26,7 +27,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
   const task = state.earlyTraining.ceremonyVerdict, scene = ceremonyVerdictScenes[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...verdictPlaces.stairs })
   const field = useRef<SVGSVGElement>(null), blocked = earlyCeremonyVerdictBlock(state, entryPosition)
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveNingWalker(current, direction))
   function act(operation: CeremonyVerdictAction['operation']) {
     if (document.hidden || !scene) return

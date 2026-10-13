@@ -1,10 +1,11 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField, XunerReadingScroll } from './HallShelves'
 import { HallText } from './MapPrimitives'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
@@ -22,7 +23,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
   const t = state.earlyTraining, task = t.firstHallTalk, scene = firstHallTalkScenes[task.stage]
   const [actor, setActor] = useState<FirstHallTalkAction['actor']>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = firstHallTalkBlock(state)
   const act = (operation: string) => {
     if (!scene || document.hidden) return

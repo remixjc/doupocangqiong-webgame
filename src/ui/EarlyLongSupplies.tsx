@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -20,7 +21,7 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
   const [station, setStation] = useState<LongSupplyStation>('receipt')
   const [item, setItem] = useState<LongSupplyItem>()
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlyLongSuppliesBlock(state, position)
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   useEffect(() => { setItem(undefined) }, [task.stage])
   if (blocked) return <p>{blocked}</p>
   const sorting = task.stage === 1 || task.stage === 2

@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -17,7 +18,7 @@ import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { preliminaryObstacles, movePreliminaryWalker } from '../core/early-preliminary'
 import { earlyKeChallengeBlock, keChallengePlaces, nearKeChallengePlace, submitEarlyKeChallenge, type KeChallengeAction } from '../core/early-ke-challenge'
 import { keChallengeScenes } from '../content/early-ke-challenge'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 export default function EarlyKeChallenge({ state, position: entryPosition, onBack, onTraining }: {
@@ -29,12 +30,11 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
   const field = useRef<SVGSVGElement>(null)
   const blocked = earlyKeChallengeBlock(state, entryPosition), near = scene && nearKeChallengePlace(position, scene.place)
   const training = task.stage === 3, steady = state.settings.reducedMotion
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
   useEffect(() => {
     if (!training || !near || steady || paused || blocked) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [training, near, steady, paused, blocked, task.beats])
   const move = (direction: EarlyWalkDirection) => setPosition(current => movePreliminaryWalker(current, direction))

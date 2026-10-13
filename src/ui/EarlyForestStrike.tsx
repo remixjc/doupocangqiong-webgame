@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -16,7 +17,7 @@ import type { GameState } from '../core/model'
 import type { EarlyWalkPosition, EarlyWalkDirection } from '../core/early-walk'
 import { earlyForestStrikeBlock, submitEarlyForestStrike, forestPlaces, forestStart, moveForestWalker, nearForestPlace, type ForestStrikeAction } from '../core/early-forest-strike'
 import { forestStrikeScenes } from '../content/early-forest-strike'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 
@@ -28,12 +29,11 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
   const blocked = earlyForestStrikeBlock(state, entryPosition), steady = state.settings.reducedMotion
   const near = scene && nearForestPlace(position, scene.place), training = task.stage === 2
   const motionActive = training && near && !steady && !paused
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.attempts, steady])
   useEffect(() => {
     if (!motionActive || blocked) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [motionActive, blocked])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveForestWalker(current, direction))

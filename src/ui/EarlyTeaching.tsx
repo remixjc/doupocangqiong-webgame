@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -6,7 +7,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlyTeachingRoomBlock, submitEarlyTeaching, type EarlyTeachingStation } from '../core/early-teaching'
@@ -20,7 +21,7 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
   const blocked = earlyTeachingRoomBlock(state, position)
   const stage = state.earlyTraining.teaching.stage
   const scene = earlyTeachingScenes[stage]
-  useEffect(() => { if (!blocked) first.current?.focus() }, [blocked])
+  useSceneFocus(first, !blocked, [blocked])
   if (blocked) return <p>{blocked}</p>
   return <>
     <Eyebrow>往事回房 / 药老正式传技</Eyebrow>

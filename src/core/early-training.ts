@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import type { GameState } from './model'
 import { isVisible, type Transaction } from './rules'
 import { EARLY_LOAN, earlySupplies, type EarlySupplyId } from './early-training-state'
@@ -18,7 +19,7 @@ export type EarlyTrainingAction =
 
 export function advanceEarlyTraining(state: GameState, action: EarlyTrainingAction): Transaction {
   if (action.type === 'qi-scroll') return advanceEarlyQiScroll(state, action)
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyTrainingBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining

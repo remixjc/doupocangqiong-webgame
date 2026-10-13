@@ -1,8 +1,9 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { earlyQiExchangeBlock, submitEarlyQiExchange } from '../core/early-qi-exchange'
@@ -12,7 +13,7 @@ export default function EarlyQiExchange({ state, onBack }: { state: GameState; o
   const title = useRef<HTMLHeadingElement>(null)
   const task = state.earlyTraining.qiPavilionExchange, scene = qiExchangeScenes[task.stage]
   const blocked = earlyQiExchangeBlock(state)
-  useEffect(() => { if (!blocked) title.current?.focus() }, [blocked])
+  useSceneFocus(title, !blocked, [blocked])
   if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>返回重修准备</SecondaryButton></>
   return <>
     <Eyebrow>功法阁 / 双卷交接回看</Eyebrow><h2 ref={title} tabIndex={-1}>同一卷递去，再取回。</h2>

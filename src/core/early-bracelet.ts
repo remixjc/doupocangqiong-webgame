@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { Transaction } from './rules'
@@ -8,7 +9,7 @@ import type { GameStore } from './store'
 
 export interface EarlyBraceletAction { stage: number; operation: typeof earlyBraceletScenes[number]['operation'] }
 export function advanceEarlyBracelet(state: GameState, position: EarlyWalkPosition, action: EarlyBraceletAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyTrainingBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining

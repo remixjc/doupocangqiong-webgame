@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -19,7 +20,7 @@ import {
 } from '../core/early-qi-barrier'
 import { qiBarrierScenes } from '../content/early-qi-barrier'
 import { gameStore } from '../core/store'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import './early-walk.css'
 
 export default function EarlyQiBarrier({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -35,12 +36,11 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
     && qiPaths.some((_, index) => nearQiPath(position, index + 1, task.stage))
   const near = scene && (scene.place === 'path' ? nearPath : nearQiBarrierPlace(position, scene.place, task.stage))
   const motionActive = training && near && !steady && !paused
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
   useEffect(() => {
     if (!motionActive || blocked) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [motionActive, blocked])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveQiBarrierWalker(current, direction, task.stage))

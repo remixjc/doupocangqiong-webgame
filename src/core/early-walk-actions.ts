@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -7,7 +8,7 @@ import { nearbyEarlyWalkPlace, type EarlyWalkPosition } from './early-walk'
 
 export type EarlyWalkAction = { type: 'begin' } | EarlyTrainingAction
 export function advanceEarlyWalk(state: GameState, position: EarlyWalkPosition, action: EarlyWalkAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyTrainingBlock(state)
   if (blocked) return fail(blocked)
   const destination = ['begin', 'liquid', 'practice'].includes(action.type) ? 'teacher' : action.type === 'borrow' ? 'xuner'

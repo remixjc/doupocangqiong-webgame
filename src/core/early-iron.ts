@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -32,7 +33,7 @@ export type IronAction = IronState & {
   operation: typeof ironScenes[number]['operation'] | 'learn' | 'duplicate' | 'refine'
 }
 export function advanceEarlyIron(state: GameState, yan: EarlyWalkPosition, action: IronAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyIronBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.iron, scene = ironScenes[task.stage]

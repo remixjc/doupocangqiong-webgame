@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { earlySupplies, type EarlySupplyId } from '../core/early-training-state'
 import { earlyLiquidScenes } from '../content/early-liquid'
@@ -23,7 +24,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
   const heading = useRef<HTMLHeadingElement>(null)
   const blocked = earlyRoomBlock(state, position)
   const scene = earlyLiquidScenes[task.liquid.stage]
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton></>
   return <>
     <Eyebrow>拜师之后 / 室内调制</Eyebrow>

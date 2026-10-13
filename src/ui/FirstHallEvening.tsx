@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useSceneFocus } from './use-scene-focus'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { earlySnapshots, hallEveningSnapshotKeys } from '../core/early-snapshots'
@@ -18,7 +19,7 @@ import './early-walk.css'
 export default function FirstHallEvening({ state, onBack }: { state: GameState; onBack: () => void }) {
   const task = state.earlyTraining.firstHallEvening, route = eveningRoute(task.stage), scene = firstHallEveningScenes[task.stage]
   const [actor, setActor] = useState<'yan' | 'xuner'>('yan'), field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = firstHallEveningBlock(state), moving = route && task.walk < route.length
   const act = (operation: string) => {
     if (!document.hidden) submitFirstHallEvening(gameStore, task, task.location, { ...task, actor, operation, ...earlySnapshots(state, hallEveningSnapshotKeys) })

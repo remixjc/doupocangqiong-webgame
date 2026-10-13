@@ -1,10 +1,11 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallText, MapBackground } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection } from '../core/early-walk'
 import { gameStore } from '../core/store'
@@ -26,7 +27,7 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
   const [inside, setInside] = useState({ ...hallEntryPlaces.entry })
   const [actor, setActor] = useState<'yan' | 'bystander'>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const p = space === 'hall' ? inside : outside, near = hallEntryNear(p, space, task.stage), blocked = firstHallEntryBlock(state)
   const move = (direction: EarlyWalkDirection) => {
     if (!scene || actor !== 'yan' || document.hidden) return

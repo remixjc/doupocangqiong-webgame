@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -24,7 +25,7 @@ export function hallReadingSnapshotMatches(state: GameState, action: Omit<FirstH
   return earlySnapshotsMatch(state, action, hallSnapshotKeys)
 }
 export function advanceFirstHallReading(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallReadingAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = firstHallReadingBlock(state)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstHallReading, scene = firstHallReadingScenes[task.stage]

@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -11,7 +12,7 @@ import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { gameStore } from '../core/store'
@@ -29,7 +30,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
   const task = returning ? home : trade ? order : discovery, scene = (returning ? marketReturnScenes : trade ? marketTradeScenes : marketDiscoveryScenes)[task.stage]
   const [position, setPosition] = useState<EarlyWalkPosition>({ ...(returning ? marketReturnStart(task.stage) : trade ? order.left ? marketTradeExit : marketDiscoveryPlace : task.stage ? marketDiscoveryPlace : marketTradeExit) })
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = returning ? earlyMarketReturnBlock(state) : trade ? earlyMarketTradeBlock(state) : earlyMarketDiscoveryBlock(state)
   const near = returning ? returnNear(position, task.stage) : trade ? tradeNear(position, task.stage) : discoveryNear(position)
   const move = (direction: EarlyWalkDirection) => { if (scene && !document.hidden) setPosition(moveCityWalker(position, direction)) }

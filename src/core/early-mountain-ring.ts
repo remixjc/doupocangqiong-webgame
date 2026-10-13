@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -45,7 +46,7 @@ export type MountainRingAction = MountainRingState & {
   operation: typeof mountainRingScenes[number]['operation'] | 'claim-cause' | 'wear-now' | 'claim-promise' | 'claim-recovery'
 }
 export function advanceEarlyMountainRing(state: GameState, position: EarlyWalkPosition, action: MountainRingAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMountainRingBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.mountainRing

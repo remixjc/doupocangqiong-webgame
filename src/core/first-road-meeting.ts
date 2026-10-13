@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -39,7 +40,7 @@ export type FirstRoadMeetingAction = FirstRoadMeetingState & {
   operation: string
 }
 export function advanceFirstRoadMeeting(state: GameState, p: EarlyWalkPosition, action: FirstRoadMeetingAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = firstRoadMeetingBlock(state)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstRoadMeeting, scene = firstRoadMeetingScenes[task.stage]

@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -6,7 +7,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
 import SceneHeading from './SceneHeading'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlyFatherGiftBlock, submitEarlyFatherGift, type FatherGiftStation } from '../core/early-father-gift'
@@ -20,7 +21,7 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
   const task = state.earlyTraining.fatherGift, bottle = state.earlyTraining.consignment, scene = fatherGiftScenes[task.stage]
   const [station, setStation] = useState<FatherGiftStation>('door')
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlyFatherGiftBlock(state, position)
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   if (blocked) return <p>{blocked}</p>
   return <>
     <Eyebrow>萧家房中 / 父亲赠回同瓶</Eyebrow>

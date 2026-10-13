@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -5,7 +6,7 @@ import { BondSummary, StatusParagraph } from './NativeRegions'
 import { HallBackground, HallEastShelf, HallWestField } from './HallShelves'
 import { HallText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
 import { hallReadingPlaces } from '../core/first-hall-reading'
@@ -22,7 +23,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
   const prefix = continuation ? '赛后走向东架' : '东架旁观'
   const [actor, setActor] = useState<'yan' | 'spectator'>('yan')
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   const blocked = firstHallMatchBlock(state, continuation), p = hallReadingPlaces.shelf
   const act = (operation: string) => {
     if (!scene || document.hidden) return

@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -41,7 +42,7 @@ export type CityPharmacyAction = CityPharmacyState & {
   expectedPrimary: boolean; expectedAuxiliary: boolean; expectedCore: boolean
 }
 export function advanceEarlyCityPharmacy(state: GameState, p: EarlyWalkPosition, action: CityPharmacyAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyCityPharmacyBlock(state)
   if (blocked) return fail(blocked)
   const ledger = state.earlyTraining, task = ledger.cityPharmacy

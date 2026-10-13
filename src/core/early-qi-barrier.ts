@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -58,7 +59,7 @@ export type QiBarrierAction = QiBarrierState & {
   chosenPath?: number
 }
 export function advanceEarlyQiBarrier(state: GameState, position: EarlyWalkPosition, action: QiBarrierAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyQiBarrierBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.qiPavilionBarrier, scene = qiBarrierScenes[task.stage]

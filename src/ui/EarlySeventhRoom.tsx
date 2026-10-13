@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
@@ -13,7 +14,7 @@ import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlySeventhRoomBlock, submitEarlySeventhRoom, type SeventhStation } from '../core/early-seventh-room'
 import { seventhRoomScenes, seventhEnergyLabels } from '../content/early-seventh-room'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import { gameStore } from '../core/store'
 import './early-walk.css'
 
@@ -25,12 +26,11 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
   const heading = useRef<HTMLHeadingElement>(null), blocked = earlySeventhRoomBlock(state, position)
   const training = (task.stage === 1 || task.stage === 4) && station === 'basin'
   const steady = state.settings.reducedMotion
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.attempts, steady])
   useEffect(() => {
     if (blocked || !training || steady || paused) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [blocked, training, steady, paused])
   function act() {

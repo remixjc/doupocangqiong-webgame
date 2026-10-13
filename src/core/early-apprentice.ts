@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -19,7 +20,7 @@ export type ApprenticeAction = ApprenticeState & {
   operation: typeof apprenticeScenes[number]['operation'] | 'claim-seven' | 'claim-profession' | 'skip-bow' | 'wear-ring' | 'grant-permission'
 }
 export function advanceEarlyApprentice(state: GameState, position: EarlyWalkPosition, action: ApprenticeAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyApprenticeBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.apprentice

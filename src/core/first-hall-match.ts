@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -13,7 +14,7 @@ export function firstHallMatchBlock(state: GameState, continuation = false): str
     || (continuation && state.earlyTraining.firstHallMatch.stage < 12 ? '先归档西侧比赛旁观。' : '')
 }
 export function advanceFirstHallMatch(state: GameState, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallMatchAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = firstHallMatchBlock(state, action.continuation === true)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstHallMatch, scene = firstHallMatchScene(task.stage, action.continuation === true)

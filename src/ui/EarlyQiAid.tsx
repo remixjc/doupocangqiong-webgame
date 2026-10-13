@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -16,7 +17,7 @@ import { gameStore } from '../core/store'
 import { earlyQiAidBlock, qiAidPlaces, moveQiAidWalker, nearQiAidPlace, qiAidOperation, submitEarlyQiAid, type QiAidAction } from '../core/early-qi-aid'
 import type { EarlyWalkPosition, EarlyWalkDirection } from '../core/early-walk'
 import { qiAidScenes } from '../content/early-qi-aid'
-import { startSupervisionPointer } from './supervision-pointer'
+import { startBrowserSupervisionPointer } from './supervision-pointer'
 import './early-walk.css'
 
 export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -27,12 +28,11 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
   const training = task.stage === 6, steady = state.settings.reducedMotion
   const near = scene && nearQiAidPlace(position, scene.place)
   const motionActive = training && near && !steady && !paused
-  useEffect(() => { if (!blocked) field.current?.focus() }, [blocked])
+  useSceneFocus(field, !blocked, [blocked])
   useEffect(() => { setMarker(.5); setPaused(false) }, [task.stage, task.beats, task.attempts, steady])
   useEffect(() => {
     if (!motionActive || blocked) return
-    return startSupervisionPointer({ windowTarget: window, documentTarget: document, now: () => performance.now(),
-      requestFrame: callback => window.requestAnimationFrame(callback), cancelFrame: id => window.cancelAnimationFrame(id) },
+    return startBrowserSupervisionPointer(
     setMarker, () => setPaused(true))
   }, [motionActive, blocked])
   const move = (direction: EarlyWalkDirection) => setPosition(current => moveQiAidWalker(current, direction))

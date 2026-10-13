@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -31,7 +32,7 @@ export type FirstTrainingAction = FirstTrainingState & {
   marker?: number
 }
 export function advanceFirstTraining(state: GameState, yan: EarlyWalkPosition, action: FirstTrainingAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = firstTrainingBlock(state)
   if (blocked) return fail(blocked)
   const t = state.earlyTraining, task = t.firstTraining

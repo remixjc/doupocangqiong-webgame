@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -5,7 +6,7 @@ import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import type { EarlyWalkPosition } from '../core/early-walk'
 import { earlyConsignmentBlock, submitEarlyConsignment, type ConsignmentStation } from '../core/early-consignment'
@@ -20,7 +21,7 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
   const [station, setStation] = useState<ConsignmentStation>('plan')
   const heading = useRef<HTMLHeadingElement>(null)
   const blocked = earlyConsignmentBlock(state, position)
-  useEffect(() => { if (!blocked) heading.current?.focus() }, [blocked])
+  useSceneFocus(heading, !blocked, [blocked])
   if (blocked) return <p>{blocked}</p>
   const expectedStation = task.stage === 0 ? 'plan' : task.stage === 1 ? 'pharmacy' : 'alley'
   function act(operation: 'plan' | 'deliver' | 'refine' | 'bottle') {

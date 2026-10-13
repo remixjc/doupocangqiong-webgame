@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
@@ -38,7 +39,7 @@ export type MorningCardAction = MorningCardState & {
   expectedStarted: boolean; expectedBorrowed: number; expectedSpent: number
 }
 export function advanceEarlyMorningCard(state: GameState, p: EarlyWalkPosition, action: MorningCardAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMorningCardBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.morningCard, ledger = state.earlyTraining

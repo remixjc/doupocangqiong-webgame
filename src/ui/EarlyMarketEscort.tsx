@@ -1,3 +1,4 @@
+import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -27,7 +28,7 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
   const [focus, setFocus] = useState<keyof typeof marketEscortPlaces | null>(null)
   const [returned, setReturned] = useState(task.stage < 18)
   const field = useRef<SVGSVGElement>(null)
-  useEffect(() => { field.current?.focus() }, [])
+  useSceneFocus(field, true, [])
   useEffect(() => { setFocus(null); if (task.stage === 18) setReturned(false) }, [task.stage])
   const blocked = earlyMarketEscortBlock(state), canWalk = !observer && (task.stage < 18 || returned)
   const near = !!scene && (observer ? focus === scene.place : canWalk && marketEscortNear(position, scene.place))

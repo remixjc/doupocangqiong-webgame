@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -30,7 +31,7 @@ export type RefiningAction = RefiningState & {
   operation: typeof refiningScenes[number]['operation'] | 'restore' | 'drink' | 'finish' | 'wait'
 }
 export function advanceEarlyRefining(state: GameState, yan: EarlyWalkPosition, action: RefiningAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyRefiningBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.refining, scene = refiningScenes[task.stage]

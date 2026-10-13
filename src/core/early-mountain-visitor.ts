@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -19,7 +20,7 @@ export type MountainVisitorAction = MountainVisitorState & {
   operation: typeof mountainVisitorScenes[number]['operation'] | 'claim-money' | 'take-purple' | 'claim-rank' | 'clear-debt' | 'claim-victory'
 }
 export function advanceEarlyMountainVisitor(state: GameState, view: MountainVisitorView, action: MountainVisitorAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMountainVisitorBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.mountainVisitor

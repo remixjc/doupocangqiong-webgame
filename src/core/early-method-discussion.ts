@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -19,7 +20,7 @@ export type MethodDiscussionAction = MethodDiscussionState & {
   operation: typeof methodDiscussionScenes[number]['operation'] | 'claim-scroll' | 'grant-evolution' | 'claim-profession' | 'claim-trial'
 }
 export function advanceEarlyMethodDiscussion(state: GameState, position: EarlyWalkPosition, action: MethodDiscussionAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMethodDiscussionBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.methodDiscussion

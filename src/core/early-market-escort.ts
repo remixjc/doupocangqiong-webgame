@@ -1,3 +1,4 @@
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -29,7 +30,7 @@ export type MarketEscortAction = MarketEscortState & {
   operation: typeof marketEscortScenes[number]['operation'] | 'absorb-core' | 'collect-tax' | 'recruit' | 'claim-rank' | 'claim-core'
 }
 export function advanceEarlyMarketEscort(state: GameState, view: MarketEscortView, action: MarketEscortAction): Transaction {
-  const fail = (message: string): Transaction => ({ state, ok: false, message })
+  const fail = rejectTransaction(state)
   const blocked = earlyMarketEscortBlock(state)
   if (blocked) return fail(blocked)
   const task = state.earlyTraining.marketEscort, scene = marketEscortScenes[task.stage]
