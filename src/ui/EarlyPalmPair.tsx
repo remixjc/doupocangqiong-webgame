@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -71,6 +72,6 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
       : <BondSummary><h3>两瓶试验与老师初练已归档。</h3><p>第一只碎片和第二只细末分开保留。接下来仍需长期练习，族中预测另行接续。</p>
         {onPreliminary && <PrimaryButton onClick={onPreliminary}>接续一月前预测 · 同行入场</PrimaryButton>}</BondSummary>}
     <MutedParagraph>站位、两步初练与切换窗口为原创压缩操作，约两小时仅作故事回顾。不会给予大斗师外放能力或重复解锁主线斗技；七段、自用耗尽、老师一滴、父亲原瓶与钱账保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离吸推练习 · 保留两瓶断点</SecondaryButton>
+    {returnButton(onBack, "暂离吸推练习 · 保留两瓶断点")}
   </>
 }

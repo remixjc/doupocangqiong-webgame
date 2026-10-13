@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { TimingRange } from './NativeRegions'
@@ -66,6 +67,6 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
     </>}
     {task.stage === 2 && <BondSummary><h3>这一轮督练已记下</h3><p>萧炎停下，药老提醒他回房使用修炼药液恢复。回房恢复、持续时段回顾与阶段结果分别记录。</p>
       {onRecover && <PrimaryButton onClick={onRecover}>接续回房 · 使用自用药液恢复</PrimaryButton>}</BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离后山督练 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离后山督练 · 保留断点")}
   </>
 }

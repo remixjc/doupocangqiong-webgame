@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
@@ -12,7 +13,6 @@ import { fieldsMatch } from './state-guards'
 import { firstTrainingAt, validFirstTraining, type FirstTrainingState } from './first-training-state'
 import { firstTrainingScenes } from '../content/first-training'
 import { firstReviewScenes } from '../content/first-review'
-import { commitEarlyResult } from './early-result'
 export function firstTrainingNear(yan: EarlyWalkPosition, stage: number): boolean {
   return ironNear(yan, 0) && (stage <= 6 ? fieldsMatch(yan, refiningWater) : stage === 7 ? yan.x >= 160
     : stage === 13 ? fieldsMatch(yan, { x: 160, y: 370 }) : true)
@@ -65,5 +65,5 @@ export function advanceFirstTraining(state: GameState, yan: EarlyWalkPosition, a
   return successfulTransaction(next, stage === 2 && beats === 0 ? '偏离节奏，本轮免费重试，旧药液保持。' : '当前修炼断点已保存。')
 }
 export function submitFirstTraining(store: GameStore, yan: EarlyWalkPosition, action: FirstTrainingAction): boolean {
-  return commitEarlyResult(store, advanceFirstTraining(store.getSnapshot().state, yan, action), 'firstTraining')
+  return submitEarlyTransaction(store, advanceFirstTraining, [yan, action], 'firstTraining')
 }

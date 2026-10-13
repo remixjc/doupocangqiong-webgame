@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -61,6 +61,5 @@ export function advanceEarlyPreliminary(state: GameState, entryPosition: EarlyWa
     : task.stage === 15 ? '预测已归档，三人结果分别保留；后续挑战尚待接续。' : '预测步骤已保存。')
 }
 export function submitEarlyPreliminary(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: PreliminaryAction): boolean {
-  const result = advanceEarlyPreliminary(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyPreliminary, [entryPosition, position, action])
 }

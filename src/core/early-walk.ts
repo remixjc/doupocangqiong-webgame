@@ -1,3 +1,4 @@
+import { stepWalker } from './walker-step'
 export interface EarlyWalkPosition { x: number; y: number }
 export type EarlyWalkDirection = 'up' | 'down' | 'left' | 'right'
 export const earlyWalkSize = { width: 720, height: 420 }
@@ -28,10 +29,7 @@ export function earlyWalkPositionValid(position: EarlyWalkPosition): boolean {
 }
 export function moveEarlyWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!earlyWalkPositionValid(position)) return { ...earlyWalkStart }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return earlyWalkPositionValid(next) ? next : position
+  return stepWalker(position, direction, earlyWalkPositionValid)
 }
 export function nearbyEarlyWalkPlace(position: EarlyWalkPosition) {
   if (!earlyWalkPositionValid(position)) return undefined

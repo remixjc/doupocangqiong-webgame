@@ -24,3 +24,7 @@ export function commitEarlyResult(store: GameStore, result: Transaction, key?: k
   store.notify(result.message)
   return result.ok
 }
+
+export function submitEarlyTransaction<Args extends unknown[]>(store: GameStore, advance: (state: Transaction['state'], ...args: Args) => Transaction, args: Args, key?: keyof EarlyTrainingState | readonly (keyof EarlyTrainingState)[]): boolean {
+  return commitEarlyResult(store, advance(store.getSnapshot().state, ...args), key)
+}

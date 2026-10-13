@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
@@ -9,7 +10,6 @@ import { earlyHistoryBlock } from './early-history-block'
 import { cityPositionValid, moveCityWalker } from './early-city-pharmacy'
 import { marketTradeLedger } from './early-market-trade'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import { firstRoadMeetingAt, validFirstRoadMeeting, type FirstRoadMeetingState } from './first-road-meeting-state'
 import { firstRoadMeetingScenes } from '../content/first-road-meeting'
 export const roadMeetingPlaces = { start: { x: 140, y: 310 }, turn: { x: 240, y: 250 }, pass: { x: 340, y: 250 }, end: { x: 440, y: 250 } }
@@ -57,5 +57,5 @@ export function advanceFirstRoadMeeting(state: GameState, p: EarlyWalkPosition, 
   return successfulTransaction(next, '路口会面断点已保存，旧奖励与借卷账保持。')
 }
 export function submitFirstRoadMeeting(store: GameStore, p: EarlyWalkPosition, action: FirstRoadMeetingAction): boolean {
-  return commitEarlyResult(store, advanceFirstRoadMeeting(store.getSnapshot().state, p, action), 'firstRoadMeeting')
+  return submitEarlyTransaction(store, advanceFirstRoadMeeting, [p, action], 'firstRoadMeeting')
 }

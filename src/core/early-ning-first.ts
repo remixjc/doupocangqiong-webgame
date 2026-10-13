@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -59,6 +59,5 @@ export function advanceEarlyNingFirst(state: GameState, entryPosition: EarlyWalk
   return successfulTransaction(next, updated.stage >= 7 ? '首轮倒地已记，仍待裁判；尚未形成最终胜利。' : '正式礼挑战的首轮步骤已保存。')
 }
 export function submitEarlyNingFirst(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: NingFirstAction): boolean {
-  const result = advanceEarlyNingFirst(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyNingFirst, [entryPosition, position, action])
 }

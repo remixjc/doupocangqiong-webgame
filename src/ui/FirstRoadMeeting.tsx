@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -68,6 +69,6 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
       <SecondaryButton onClick={() => act('fight')}>把招呼算作本人战斗胜利</SecondaryButton>
       <SecondaryButton onClick={() => act('hall')}>在路口直接签入堂借卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>路口会面与分路已归档。</h3><p>双方各自前行。实际入堂、东西区与卷轴由下一段接续，旧关系和奖励保持。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离路口会面 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离路口会面 · 保留断点")}
   </>
 }

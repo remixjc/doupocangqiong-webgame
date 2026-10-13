@@ -1,8 +1,9 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -28,10 +29,7 @@ export function mountainRingPositionValid(position: EarlyWalkPosition): boolean 
 }
 export function moveMountainRingWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!mountainRingPositionValid(position)) return { ...mountainRingStart }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return mountainRingPositionValid(next) ? next : position
+  return stepWalker(position, direction, mountainRingPositionValid)
 }
 export function mountainRingNear(position: EarlyWalkPosition, place: keyof typeof mountainRingPlaces): boolean {
   const target = mountainRingPlaces[place]
@@ -67,6 +65,5 @@ export function advanceEarlyMountainRing(state: GameState, position: EarlyWalkPo
     : '后山这一步已保存；主线资源、装备与已结算奖励保留。')
 }
 export function submitEarlyMountainRing(store: GameStore, position: EarlyWalkPosition, action: MountainRingAction): boolean {
-  const result = advanceEarlyMountainRing(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'mountainRing')
+  return submitEarlyTransaction(store, advanceEarlyMountainRing, [position, action], 'mountainRing')
 }

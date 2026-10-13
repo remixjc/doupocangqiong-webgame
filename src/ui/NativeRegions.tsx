@@ -31,6 +31,9 @@ export function CampOptions(props: ComponentProps<'div'>) { return <div classNam
 export function HallWalker() {
   return <><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></>
 }
+export function hallWalkerAt(position: { x: number; y: number }) {
+  return <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+}
 export function TimingRange({ label, value, onChange, children }: { label: string; value: number; onChange: ComponentProps<'input'>['onChange']; children: ComponentProps<'small'>['children'] }) {
   return <label className="setting-row"><span>{label}{children}</span><input aria-label={label} type="range" min="0" max="1" step=".05" value={value} onChange={onChange} /></label>
 }

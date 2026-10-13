@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -71,6 +72,6 @@ export default function EarlySeventhRoom({ state, position, onBack, onPalm }: { 
       : <BondSummary><h3>房中七段已归档。</h3><p>本轮木盆保留补液后渐淡状态，老师的一滴只补了一次。接续吸掌与推风组合练习。</p>
         {onPalm && <PrimaryButton onClick={onPalm}>接续两瓶试验 · 吸掌与吹火掌</PrimaryButton>}</BondSummary>}
     <MutedParagraph>两次与三次调息及35%–65%窗口为原创操作，一小时只作故事时段回顾。七段结果独立记录；既有自用药液仍耗尽，父亲原瓶、房柜原包、主线境界和已结算奖励保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离七段房中 · 保留补液断点</SecondaryButton>
+    {returnButton(onBack, "暂离七段房中 · 保留补液断点")}
   </>
 }

@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -31,6 +31,5 @@ export function advanceEarlyXunerVisit(state: GameState, position: EarlyWalkPosi
     : '人物事件已记下，当前视角和各自所知沿故事继续。')
 }
 export function submitEarlyXunerVisit(store: GameStore, position: EarlyWalkPosition, station: XunerVisitStation, action: XunerVisitAction): boolean {
-  const result = advanceEarlyXunerVisit(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyXunerVisit, [position, station, action])
 }

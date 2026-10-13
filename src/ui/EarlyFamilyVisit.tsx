@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -43,6 +44,6 @@ export default function EarlyFamilyVisit({ state, onBack }: { state: GameState; 
       ? `当时玉匣仅展示；后续补偿交涉${state.earlyTraining.familyCompensation.stage === 15 ? '已归档' : '进行中'}，文书、三年约定与实际离厅待续。`
       : '玉匣仍属来客，补偿尚未答复；文书、三年约定与实际离厅需要接续。'}现有第二章奖励和拜师记录保留。</p></BondSummary>}
     <MutedParagraph>厅院布局与20步长为游戏改编。这里回到拜师前的故事，不重发丹药、功法、金币、境界或主线奖励；暂离会保留事件，行走位置不保存。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离家族来访 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离家族来访 · 保留断点")}
   </>
 }

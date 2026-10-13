@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -57,6 +57,5 @@ export function advanceEarlyKeChallenge(state: GameState, entryPosition: EarlyWa
     : updated.stage === 5 ? '父亲宣布萧克落败，本次往事胜负已确认。' : '应战与离场步骤已保存。')
 }
 export function submitEarlyKeChallenge(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: KeChallengeAction): boolean {
-  const result = advanceEarlyKeChallenge(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyKeChallenge, [entryPosition, position, action])
 }

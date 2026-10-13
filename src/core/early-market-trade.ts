@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -64,6 +64,5 @@ export function advanceEarlyMarketTrade(state: GameState, position: EarlyWalkPos
     ? '唯一订单折算60已扣，魔核和黑铁片同次交付。' : '已有订单仅补历史，未扣款或补发材料。' : '这一步已保存。')
 }
 export function submitEarlyMarketTrade(store: GameStore, position: EarlyWalkPosition, action: MarketTradeAction): boolean {
-  const result = advanceEarlyMarketTrade(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyMarketTrade, [position, action])
 }

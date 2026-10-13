@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
@@ -47,6 +47,5 @@ export function advanceEarlyMarketReturn(state: GameState, position: EarlyWalkPo
   return successfulTransaction(next, '这一步回族与房中历史已保存，原账和材料保持。')
 }
 export function submitEarlyMarketReturn(store: GameStore, position: EarlyWalkPosition, action: MarketReturnAction): boolean {
-  const result = advanceEarlyMarketReturn(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'marketReturn')
+  return submitEarlyTransaction(store, advanceEarlyMarketReturn, [position, action], 'marketReturn')
 }

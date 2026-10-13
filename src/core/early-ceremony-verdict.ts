@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -40,6 +40,5 @@ export function advanceEarlyCeremonyVerdict(state: GameState, entryPosition: Ear
   return successfulTransaction(next, stage >= 7 ? '正式胜负已宣布；后续礼程与离场按序保存，不重复发奖。' : '请求与处分步骤已保存，胜负尚未宣布。')
 }
 export function submitEarlyCeremonyVerdict(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyVerdictAction): boolean {
-  const result = advanceEarlyCeremonyVerdict(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyCeremonyVerdict, [entryPosition, position, action])
 }

@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -78,6 +79,6 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
       {task.stage === 21 && <SecondaryButton disabled={!near} onClick={() => act('claim-rank')}>凭同行评价登记新的九段成就</SecondaryButton>}
       {task.stage === 23 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>请护卫直接交付木核</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>入坊与护卫安排已归档。</h3><p>两人继续寻找木核。三位护卫跟随，队长与其余人巡街；手链与实际交易另段继续。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离入坊巡卫 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离入坊巡卫 · 保留断点")}
   </>
 }

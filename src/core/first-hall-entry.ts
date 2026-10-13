@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
@@ -9,7 +10,6 @@ import { earlyHistoryBlock } from './early-history-block'
 import { roadMeetingPositionValid } from './first-road-meeting'
 import { fieldsMatch } from './state-guards'
 import { marketTradeLedger } from './early-market-trade'
-import { commitEarlyResult } from './early-result'
 import { firstHallEntryAt, validFirstHallEntry, type FirstHallEntryState } from './first-hall-entry-state'
 import { firstHallEntryScenes } from '../content/first-hall-entry'
 export const hallEntryPlaces = { start: { x: 140, y: 310 }, turn: { x: 240, y: 250 }, door: { x: 340, y: 250 }, entry: { x: 140, y: 310 } }
@@ -52,5 +52,5 @@ export function advanceFirstHallEntry(state: GameState, p: EarlyWalkPosition, sp
   return successfulTransaction(next, '实际入堂断点已保存，旧奖励与卷轴保管保持。')
 }
 export function submitFirstHallEntry(store: GameStore, p: EarlyWalkPosition, space: HallEntrySpace, action: FirstHallEntryAction): boolean {
-  return commitEarlyResult(store, advanceFirstHallEntry(store.getSnapshot().state, p, space, action), 'firstHallEntry')
+  return submitEarlyTransaction(store, advanceFirstHallEntry, [p, space, action], 'firstHallEntry')
 }

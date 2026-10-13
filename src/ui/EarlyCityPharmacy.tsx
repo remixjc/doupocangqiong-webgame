@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -63,6 +64,6 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
         <SecondaryButton disabled={!near} onClick={() => act('restore-liquid')}>尝试补历史复原已用药液</SecondaryButton></>}
     </BondSummary> : <BondSummary><h3>实际同行与两药历史已归档。</h3><p>历史药铺只备齐两药，木核和附物另段接续。旧已购木核、调制和药液耗尽进度保留。</p><SecondaryButton onClick={onRoute}>接续既有坊市路线 · 保留原收据</SecondaryButton></BondSummary>}
     <MutedParagraph>三株二十年/两株五年是历史要求，材料称谓沿准备单。30/20是游戏折算，不追加900，不复原已用材料。主线金币与奖励保持。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离同行药铺 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离同行药铺 · 保留断点")}
   </>
 }

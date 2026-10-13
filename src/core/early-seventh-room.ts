@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -47,6 +47,5 @@ export function advanceEarlySeventhRoom(state: GameState, position: EarlyWalkPos
     : updated.stage === 7 ? '本轮故事七段已记录；主线人物、奖励和既有药液保持原记录。' : '本次房中步骤已保存。')
 }
 export function submitEarlySeventhRoom(store: GameStore, position: EarlyWalkPosition, station: SeventhStation, action: SeventhAction): boolean {
-  const result = advanceEarlySeventhRoom(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlySeventhRoom, [position, station, action])
 }

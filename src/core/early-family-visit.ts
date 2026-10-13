@@ -1,7 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -32,10 +33,7 @@ export function familyVisitPositionValid(position: EarlyWalkPosition): boolean {
 }
 export function moveFamilyVisitWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!familyVisitPositionValid(position)) return { ...familyVisitPlaces.room }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return familyVisitPositionValid(next) ? next : position
+  return stepWalker(position, direction, familyVisitPositionValid)
 }
 export function nearFamilyVisitPlace(position: EarlyWalkPosition, place: keyof typeof familyVisitPlaces): boolean {
   const target = familyVisitPlaces[place]
@@ -69,6 +67,5 @@ export function advanceEarlyFamilyVisit(state: GameState, position: EarlyWalkPos
     : '来访这一步已保存；不改变主线能力、行囊或已结算奖励。')
 }
 export function submitEarlyFamilyVisit(store: GameStore, position: EarlyWalkPosition, action: FamilyVisitAction): boolean {
-  const result = advanceEarlyFamilyVisit(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'familyVisit')
+  return submitEarlyTransaction(store, advanceEarlyFamilyVisit, [position, action], 'familyVisit')
 }

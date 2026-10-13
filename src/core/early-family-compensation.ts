@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -39,6 +39,5 @@ export function advanceEarlyFamilyCompensation(state: GameState, position: Early
   return successfulTransaction(next, task.stage === 14 ? '补偿交涉前段已归档，文书与三年约定待续。' : '交涉这一步已保存；没有领取补偿或改变主线奖励。')
 }
 export function submitEarlyFamilyCompensation(store: GameStore, position: EarlyWalkPosition, action: FamilyCompensationAction): boolean {
-  const result = advanceEarlyFamilyCompensation(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'familyCompensation')
+  return submitEarlyTransaction(store, advanceEarlyFamilyCompensation, [position, action], 'familyCompensation')
 }

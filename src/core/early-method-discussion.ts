@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -40,6 +40,5 @@ export function advanceEarlyMethodDiscussion(state: GameState, position: EarlyWa
     : '功法说明这一步已保存；未授卷，主线能力与已结算奖励保留。')
 }
 export function submitEarlyMethodDiscussion(store: GameStore, position: EarlyWalkPosition, action: MethodDiscussionAction): boolean {
-  const result = advanceEarlyMethodDiscussion(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'methodDiscussion')
+  return submitEarlyTransaction(store, advanceEarlyMethodDiscussion, [position, action], 'methodDiscussion')
 }

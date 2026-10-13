@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -37,6 +37,5 @@ export function advanceEarlySupervision(state: GameState, position: EarlyWalkPos
     : updated.stage === 2 ? '这一轮督练已记下。回房恢复与后续成长另行继续。' : '承接已记下，留意当前负荷与老师的提醒。')
 }
 export function submitEarlySupervision(store: GameStore, position: EarlyWalkPosition, action: EarlySupervisionAction): boolean {
-  const result = advanceEarlySupervision(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlySupervision, [position, action])
 }

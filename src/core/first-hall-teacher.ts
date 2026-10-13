@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { hasHallMode } from './early-snapshots'
 import { successfulTransaction } from './early-result'
 import type { GameState } from './model'
@@ -7,7 +8,7 @@ import type { EarlyWalkPosition } from './early-walk'
 import { firstHallEveningBlock, type FirstHallEveningAction } from './first-hall-evening'
 import type { FirstHallEveningState } from './first-hall-evening-state'
 import { earlySnapshotsMatch, hallTeacherSnapshotKeys } from './early-snapshots'
-import { commitEarlyResult, rejectTransaction } from './early-result'
+import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { firstHallTeacherAt, validFirstHallTeacher, type FirstHallTeacherState } from './first-hall-teacher-state'
 import { firstHallTeacherScenes } from '../content/first-hall-teacher'
@@ -32,5 +33,5 @@ export function advanceFirstHallTeacher(state: GameState, p: EarlyWalkPosition, 
   return successfulTransaction(next, '房中现身与有限答复已保存。')
 }
 export function submitFirstHallTeacher(store: GameStore, p: EarlyWalkPosition, space: string, action: FirstHallTeacherAction): boolean {
-  return commitEarlyResult(store, advanceFirstHallTeacher(store.getSnapshot().state, p, space, action), 'firstHallTeacher')
+  return submitEarlyTransaction(store, advanceFirstHallTeacher, [p, space, action], 'firstHallTeacher')
 }

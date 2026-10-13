@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { isVisible, type Transaction } from './rules'
@@ -21,6 +21,5 @@ export function advanceEarlyGrowth(state: GameState, step: number): Transaction 
   return successfulTransaction(next, step === 2 ? '修炼时日已翻阅，可以回舆图查看后续旅程。' : '这页过渡已记下，可关闭后继续翻阅。')
 }
 export function submitEarlyGrowth(store: GameStore, step: number): boolean {
-  const result = advanceEarlyGrowth(store.getSnapshot().state, step)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyGrowth, [step])
 }

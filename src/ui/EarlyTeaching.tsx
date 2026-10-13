@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -57,6 +58,6 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
         : <MutedParagraph>下一步请到{scene.station === 'table' ? '卷册桌' : '老师处'}：{scene.title}。</MutedParagraph>}
     </> : <BondSummary><h3>正式传技已归档</h3><p>八极崩的知识与身体基础要求已记录。可接续后山监督训练，药液恢复和实际掌握分别继续。</p>
       {onSupervise && <PrimaryButton onClick={onSupervise}>接续后山 · 接受老师督练</PrimaryButton>}</BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离传技房间 · 回准备路线</SecondaryButton>
+    {returnButton(onBack, "暂离传技房间 · 回准备路线")}
   </>
 }

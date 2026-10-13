@@ -1,8 +1,9 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -22,10 +23,7 @@ export function cityPositionValid(p: EarlyWalkPosition): boolean {
 }
 export function moveCityWalker(p: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!cityPositionValid(p)) return { ...cityPharmacyStart }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return p
-  const next = { x: p.x + delta[0], y: p.y + delta[1] }
-  return cityPositionValid(next) ? next : p
+  return stepWalker(p, direction, cityPositionValid)
 }
 export function cityPharmacyNear(p: EarlyWalkPosition, place: keyof typeof cityPharmacyPlaces): boolean {
   const target = cityPharmacyPlaces[place]
@@ -77,6 +75,5 @@ export function advanceEarlyCityPharmacy(state: GameState, p: EarlyWalkPosition,
     : '药草与原唯一订单已一并保存。' : task.stage === 14 ? '同行药铺归档；坊市木核与附物另段接续。' : '同行药铺这一步已存，其他主线与物品保持。')
 }
 export function submitEarlyCityPharmacy(store: GameStore, p: EarlyWalkPosition, action: CityPharmacyAction): boolean {
-  const result = advanceEarlyCityPharmacy(store.getSnapshot().state, p, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyCityPharmacy, [p, action])
 }

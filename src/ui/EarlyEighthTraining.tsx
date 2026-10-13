@@ -1,7 +1,9 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker, TimingRange } from './NativeRegions'
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -68,7 +70,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       {task.stage >= 4 && task.stage <= 5 && <g transform={`translate(${task.stage === 4 ? 246 : 546} 104)`} role="img" aria-label="薰儿同行"><RobeFigure cy="-10" r="7" skin="#dfbca3" cut="M-11 14 L-6-3 H6 L11 14Z" /></g>}
       {task.stage === 7 && <g role="img" aria-label={task.beats ? '吸掌已记，准备吹火掌' : '准备吸掌，再接吹火掌'}><path d={task.beats ? 'M500 135 Q535 115 566 140' : 'M566 140 Q535 160 500 135'} fill="none" stroke="#d5d4a1" strokeWidth="3" strokeDasharray="6 5" /><path d="M555 129 Q581 118 571 142 Q561 146 555 129" fill="#b9c480" /></g>}
       {Object.entries(eighthPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="礼前训练行走操作">{<WalkDirectionButtons prefix="礼前" onMove={move} />}</WalkControls>
     <StatusParagraph>礼前训练 {task.stage}/15 · {target ? `本轮 ${task.beats}/${target}` : '地点步骤'} · 重开 {task.attempts} 次 · {task.outing === 'none' ? '尚待回应' : task.outing === 'promised' ? '已约好，同行未完成' : '次日同行已记'} · {task.result === 'none' ? '故事八段尚未感知' : '故事八段已感知'}</StatusParagraph>
@@ -85,6 +87,6 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       : <BondSummary><h3>同行与礼前八段已归档。</h3><p>正式礼两天前夜里的故事结果已经保留；正式仪式、石碑复测与萧宁挑战继续接续。</p>{onGuests && <PrimaryButton onClick={onGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}</BondSummary>}
     {target > 0 && <SecondaryButton onClick={() => act('stop')}>停下本轮礼前训练 · 免费重新开始</SecondaryButton>}
     <MutedParagraph>时段是压缩回顾，练技与调息为代表性操作。药液只呈现本章既有木盆的定性药力；早先耗尽自用液、老师一滴记录与父亲原封瓶独立保留，不重复领材料或成长奖励。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离礼前训练 · 保留同行与练习断点</SecondaryButton>
+    {returnButton(onBack, "暂离礼前训练 · 保留同行与练习断点")}
   </>
 }

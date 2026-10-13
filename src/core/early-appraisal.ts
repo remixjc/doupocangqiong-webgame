@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -33,6 +33,5 @@ export function advanceEarlyAppraisal(state: GameState, position: EarlyWalkPosit
     ? '已凭黑卡进入第一拍卖室，待售药液由拍卖方保管；主持与结算待接续。' : '鉴定这一步已记下，同瓶保管与身份记录保留。')
 }
 export function submitEarlyAppraisal(store: GameStore, position: EarlyWalkPosition, station: AppraisalStation, action: AppraisalAction): boolean {
-  const result = advanceEarlyAppraisal(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyAppraisal, [position, station, action])
 }

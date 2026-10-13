@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -6,7 +7,7 @@ import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -54,6 +55,6 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
       : <BondSummary><h3>同瓶已收好，父亲支持已记下。</h3><p>原来的寄售瓶经萧战购得再赠回，由萧炎保管。接下来展开薰儿来访，长期物资筹备另行接续。</p>
         {onXunerVisit && <PrimaryButton onClick={onXunerVisit}>接续薰儿来访 · 房中与转角</PrimaryButton>}</BondSummary>}
     <MutedParagraph>父亲的40000是已记录的故事购买金额，不再扣玩家的钱。赠回只改变原瓶保管，不增加材料、技能或第二份药液，也不回补已耗尽的自用容器。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离父子来访 · 保留同瓶断点</SecondaryButton>
+    {returnButton(onBack, "暂离父子来访 · 保留同瓶断点")}
   </>
 }

@@ -1,7 +1,9 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker, TimingRange } from './NativeRegions'
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -65,7 +67,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       </g>
       {task.stage >= 4 && <g transform="translate(104 176)" opacity=".8"><RobeFigure cy="-19" r="10" skin="#e0e4d5" cut="M-18 35 L-8-3 H8 L18 35Z" robe="#bdd4cb" /><MapText y="52" fill="#ead9b6" fontSize="11">药老</MapText></g>}
       {Object.entries(forestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke="#c9ab70" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 64} fill="#ead9b6" fontSize="13">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
       <MapText x="360" y="369" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</MapText>
     </EarlyMap>
     <WalkControls aria-label="林中行走操作">
@@ -85,6 +87,6 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
         {onSeventh && <PrimaryButton onClick={onSeventh}>接续房中七段 · 观察老师补液</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下这一轮 · 免费重新稳身</SecondaryButton>}
     <MutedParagraph>本次只新增往事练技记录，不重复解锁主线八极崩、不改变人物攻击或已结算奖励。三个月是压缩故事回顾；药液耗尽、房柜物资、同瓶与所有钱账保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离林中练技 · 保留成功断点</SecondaryButton>
+    {returnButton(onBack, "暂离林中练技 · 保留成功断点")}
   </>
 }

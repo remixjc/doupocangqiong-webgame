@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -30,6 +30,5 @@ export function advanceEarlyAuction(state: GameState, position: EarlyWalkPositio
     : '拍卖观察已记录；身份、主线金币与同瓶保管保留。')
 }
 export function submitEarlyAuction(store: GameStore, position: EarlyWalkPosition, station: AuctionStation, action: AuctionAction): boolean {
-  const result = advanceEarlyAuction(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyAuction, [position, station, action])
 }

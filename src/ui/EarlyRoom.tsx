@@ -1,10 +1,11 @@
+import { returnButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -25,7 +26,7 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
   const blocked = earlyRoomBlock(state, position)
   const scene = earlyLiquidScenes[task.liquid.stage]
   useSceneFocus(heading, !blocked, [blocked])
-  if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton></>
+  if (blocked) return <><p>{blocked}</p>{returnButton(onBack, "回到往事街巷")}</>
   return <>
     <Eyebrow>拜师之后 / 室内调制</Eyebrow>
     <h2 ref={heading} tabIndex={-1}>把材料交给老师，留心每一步。</h2>
@@ -98,6 +99,6 @@ export default function EarlyRoom({ state, position, onBack, onContinue }: { sta
     </BondSummary>
     <EarlyPractice state={state} onAction={action => submitEarlyWalk(gameStore, position, action)} onContinue={onContinue} />
     <MutedParagraph>场景位置与器物外观为原创表现。调制断点沿用准备单，离开室内不退材料、不重炼；这里没有口服丹药产出。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>回到往事街巷</SecondaryButton>
+    {returnButton(onBack, "回到往事街巷")}
   </>
 }

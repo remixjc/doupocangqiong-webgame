@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -48,6 +48,5 @@ export function advanceEarlyMarketSearch(state: GameState, view: MarketSearchVie
   return successfulTransaction(next, task.stage === 19 ? '寻核与放回手链归档，前方交谈待续。' : '这一步已保存。')
 }
 export function submitEarlyMarketSearch(store: GameStore, view: MarketSearchView, action: MarketSearchAction): boolean {
-  const result = advanceEarlyMarketSearch(store.getSnapshot().state, view, action)
-  return commitEarlyResult(store, result, 'marketSearch')
+  return submitEarlyTransaction(store, advanceEarlyMarketSearch, [view, action], 'marketSearch')
 }

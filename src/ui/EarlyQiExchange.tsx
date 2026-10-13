@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
@@ -14,7 +15,7 @@ export default function EarlyQiExchange({ state, onBack }: { state: GameState; o
   const task = state.earlyTraining.qiPavilionExchange, scene = qiExchangeScenes[task.stage]
   const blocked = earlyQiExchangeBlock(state)
   useSceneFocus(title, !blocked, [blocked])
-  if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>返回重修准备</SecondaryButton></>
+  if (blocked) return <><p>{blocked}</p>{returnButton(onBack, "返回重修准备")}</>
   return <>
     <Eyebrow>功法阁 / 双卷交接回看</Eyebrow><h2 ref={title} tabIndex={-1}>同一卷递去，再取回。</h2>
     <p>简略保管的结局记录保留，这里回看过程。操作不会重新取卷或改变主线。</p>
@@ -28,6 +29,6 @@ export default function EarlyQiExchange({ state, onBack }: { state: GameState; o
       <PrimaryButton onClick={() => submitEarlyQiExchange(gameStore, { ...task, actor: scene.actor, operation: scene.operation })}>{scene.action}</PrimaryButton>
       {task.stage >= 3 && <SecondaryButton onClick={() => submitEarlyQiExchange(gameStore, { ...task, actor: scene.actor, operation: 'take-support' })}>尝试收取支持卷</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>双卷交接已归档。</h3><p>家族卷由萧炎保管，支持卷归薰儿。接续同行与萧媚房门援助。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离双卷回看 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离双卷回看 · 保留断点")}
   </>
 }

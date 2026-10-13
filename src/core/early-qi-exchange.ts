@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -27,6 +27,5 @@ export function advanceEarlyQiExchange(state: GameState, action: QiExchangeActio
   return successfulTransaction(next, '双卷交接已保存；支持卷仍属薰儿，没有新功法或奖励。')
 }
 export function submitEarlyQiExchange(store: GameStore, action: QiExchangeAction): boolean {
-  const result = advanceEarlyQiExchange(store.getSnapshot().state, action)
-  return commitEarlyResult(store, result, 'qiPavilionExchange')
+  return submitEarlyTransaction(store, advanceEarlyQiExchange, [action], 'qiPavilionExchange')
 }

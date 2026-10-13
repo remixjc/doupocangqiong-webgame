@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
@@ -61,6 +61,5 @@ export function advanceEarlyRefining(state: GameState, yan: EarlyWalkPosition, a
   return successfulTransaction(next, '调制断点与同一耗材账已保存，旧完成记录保持。')
 }
 export function submitEarlyRefining(store: GameStore, yan: EarlyWalkPosition, action: RefiningAction): boolean {
-  const result = advanceEarlyRefining(store.getSnapshot().state, yan, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyRefining, [yan, action])
 }

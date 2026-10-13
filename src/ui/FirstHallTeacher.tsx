@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useRef, useState } from 'react'
@@ -10,7 +11,6 @@ import { firstHallTeacherSaveSummary } from '../core/save-preview'
 import { useSceneFocus } from './use-scene-focus'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
 import { BondSummary, Eyebrow, StatusParagraph, WalkControls, RobeFigure } from './NativeRegions'
-import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -48,6 +48,6 @@ export default function FirstHallTeacher({ state, onBack }: { state: GameState; 
       <p>{actor === scene.actor ? '当前人物正确。' : '请明确选择本步人物。'}</p>
       {sceneButton(scene, actor !== scene.actor, act)}</BondSummary>
       : <p>有限背景已归档。老师未走向桌面、未翻卷、未传新技。</p>}
-    <SecondaryButton onClick={onBack}>暂离房中问答 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离房中问答 · 保留断点")}
   </>
 }

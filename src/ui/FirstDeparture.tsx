@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -88,6 +89,6 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
       <SecondaryButton onClick={() => act('finish')}>用一句回顾代签全部出门</SecondaryButton>
       <SecondaryButton onClick={() => act('meet')}>未转路就签人物会面</SecondaryButton>
     </BondSummary> : <BondSummary><h3>出门与石路已归档。</h3><p>已真实跨门、室外关门并进入石路。转向另一条路与会面由下一段继续，旧材料与奖励保持。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离出门石路 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离出门石路 · 保留断点")}
   </>
 }

@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -46,6 +46,5 @@ export function advanceEarlyPalmPair(state: GameState, position: EarlyWalkPositi
     : updated.stage === 9 ? '第二只已成细末，两只练习瓶各自有唯一结果，售品原瓶保留。' : '吸推练习步骤已保存。')
 }
 export function submitEarlyPalmPair(store: GameStore, position: EarlyWalkPosition, station: PalmPairStation, action: PalmPairAction): boolean {
-  const result = advanceEarlyPalmPair(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyPalmPair, [position, station, action])
 }

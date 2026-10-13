@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { lazyScene } from './scene-load'
 import { RobeFigure } from './NativeRegions'
@@ -302,6 +303,6 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <MutedParagraph>{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>回到重修准备单</SecondaryButton>
+    {returnButton(onBack, "回到重修准备单")}
   </>
 }

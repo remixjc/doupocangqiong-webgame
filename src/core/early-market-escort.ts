@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -52,6 +52,5 @@ export function advanceEarlyMarketEscort(state: GameState, view: MarketEscortVie
   return successfulTransaction(next, task.stage === 23 ? '入坊与护卫安排归档，继续寻找木核。' : '这一步已保存。')
 }
 export function submitEarlyMarketEscort(store: GameStore, view: MarketEscortView, action: MarketEscortAction): boolean {
-  const result = advanceEarlyMarketEscort(store.getSnapshot().state, view, action)
-  return commitEarlyResult(store, result, 'marketEscort')
+  return submitEarlyTransaction(store, advanceEarlyMarketEscort, [view, action], 'marketEscort')
 }

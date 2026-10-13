@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { hasHallMode } from './early-snapshots'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -6,7 +7,7 @@ import type { EarlyWalkPosition } from './early-walk'
 import { firstHallTeacherBlock, type FirstHallTeacherAction } from './first-hall-teacher'
 import type { FirstHallTeacherState } from './first-hall-teacher-state'
 import { earlySnapshotsMatch, hallScrollReviewSnapshotKeys } from './early-snapshots'
-import { commitEarlyResult, rejectTransaction, successfulTransaction } from './early-result'
+import { rejectTransaction, successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { firstHallScrollReviewAt, scrollReviewRoute, validFirstHallScrollReview, type FirstHallScrollReviewState } from './first-hall-scroll-review-state'
 import { firstHallScrollReviewScenes } from '../content/first-hall-scroll-review'
@@ -32,5 +33,5 @@ export function advanceFirstHallScrollReview(state: GameState, p: EarlyWalkPosit
   return successfulTransaction(next, '老师位置与同卷求技步骤已保存。')
 }
 export function submitFirstHallScrollReview(store: GameStore, p: EarlyWalkPosition, space: string, action: FirstHallScrollReviewAction): boolean {
-  return commitEarlyResult(store, advanceFirstHallScrollReview(store.getSnapshot().state, p, space, action), 'firstHallScrollReview')
+  return submitEarlyTransaction(store, advanceFirstHallScrollReview, [p, space, action], 'firstHallScrollReview')
 }

@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -39,6 +39,5 @@ export function advanceEarlyPreparationBrief(state: GameState, position: EarlyWa
     : '这一历史步骤已保存；没有派发材料、资金、药液或主线奖励。')
 }
 export function submitEarlyPreparationBrief(store: GameStore, position: EarlyWalkPosition, action: PreparationBriefAction): boolean {
-  const result = advanceEarlyPreparationBrief(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'preparationBrief')
+  return submitEarlyTransaction(store, advanceEarlyPreparationBrief, [position, action], 'preparationBrief')
 }

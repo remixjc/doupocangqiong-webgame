@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -55,6 +55,5 @@ export function advanceEarlyNingSecond(state: GameState, entryPosition: EarlyWal
   return successfulTransaction(next, updated.contact === 'out' ? '追加拳击后出场已记，最终裁定仍待续。' : '违规再攻与迎击步骤已保存。')
 }
 export function submitEarlyNingSecond(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: NingSecondAction): boolean {
-  const result = advanceEarlyNingSecond(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyNingSecond, [entryPosition, position, action])
 }

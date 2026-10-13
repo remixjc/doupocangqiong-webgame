@@ -1,13 +1,14 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -56,7 +57,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       <g transform={`translate(${task.stage < 2 ? 156 : task.stage === 7 ? 535 : 340} ${task.stage < 2 ? 350 : task.stage === 7 ? 180 : 284})`}><RobeFigure cy="-15" skin="#dfbca3" cut="M-12 16 L-7-5 H7 L12 16Z" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
       {task.stage >= 5 && <g transform={`translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})`}><RobeFigure cy="-15" skin="#dfbca3" cut="M-12 16 L-7-5 H7 L12 16Z" robe="#c07b79" /><MapText y="34" fill="#ead9b6" fontSize="11">萧媚</MapText></g>}
       {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="预测行走操作">
       {<WalkDirectionButtons prefix="预测" onMove={move} />}
@@ -72,6 +73,6 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       : <BondSummary><h3>{state.earlyTraining.keChallenge.stage === 12 ? '预测与后续萧克应战已归档。' : '预测已归档，接续后续挑战。'}</h3><p>三人的测试结果各自保存；萧克应战、礼前突破八段与正式成年礼按顺序记录。</p>
         {onChallenge && <PrimaryButton onClick={onChallenge}>接续萧克挑战 · 六段对手应战</PrimaryButton>}</BondSummary>}
     <MutedParagraph>这段只记录往事预测，主线境界、技能、关系值、钱账与首通奖励保留。七段合格不提前结算挑战或正式礼胜利。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离族中预测 · 保留点名断点</SecondaryButton>
+    {returnButton(onBack, "暂离族中预测 · 保留点名断点")}
   </>
 }

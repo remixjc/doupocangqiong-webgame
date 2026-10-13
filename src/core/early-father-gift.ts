@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -31,6 +31,5 @@ export function advanceEarlyFatherGift(state: GameState, position: EarlyWalkPosi
     : '本步父子来访已记录，同瓶保管沿原来的来源继续。')
 }
 export function submitEarlyFatherGift(store: GameStore, position: EarlyWalkPosition, station: FatherGiftStation, action: FatherGiftAction): boolean {
-  const result = advanceEarlyFatherGift(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyFatherGift, [position, station, action])
 }

@@ -1,13 +1,14 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -62,7 +63,7 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
       <g transform="translate(272 272)" aria-label="薰儿台下候礼" role="img"><RobeFigure /></g>
       <MapText x="565" y="302" fill="#ead9b6">宾客 · 萧战与雅妃</MapText>
       {Object.entries(ceremonialPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'rite' ? 44 : 57)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="正式仪式行走操作">{<WalkDirectionButtons prefix="仪式" onMove={move} />}</WalkControls>
     <StatusParagraph>正式仪式 {task.stage}/13 · {task.rite === 'none' ? '本人礼程未开始' : task.rite === 'begun' ? '二长老主持中' : task.rite === 'reviewed' ? '半小时已回顾，待结束' : '仪式已结束'} · {task.inspected ? '二长老已验碑' : '尚未验碑'} · {task.result === 'unmeasured' ? '本人尚未正式测' : '正式八段已记'}</StatusParagraph>
@@ -70,6 +71,6 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
       : <MutedParagraph>下一步请走近{ceremonialPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>仪式与正式八段已归档。</h3><p>上月预测七段、礼前夜八段感知、本次石碑八段分别保留。{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '萧宁挑战的正式胜负已经宣布，可继续回看各轮历史。' : '萧宁的挑战及最终裁定仍待继续。'}</p>{onChallenge && <PrimaryButton onClick={onChallenge}>接续萧宁首轮 · 推拉推与待裁判</PrimaryButton>}</BondSummary>}
     <MutedParagraph>材料只作仪式观察，不构成配方或新行囊物品。八段仅本次正式往事结果，人物境界、金币、技能与已结算主线奖励保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离正式仪式 · 保留验碑断点</SecondaryButton>
+    {returnButton(onBack, "暂离正式仪式 · 保留验碑断点")}
   </>
 }

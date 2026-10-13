@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -80,6 +81,6 @@ export default function EarlyConsignment({ state, position, onBack, onAppraise }
           {task.stage === 2 ? '交老师处理材料 · 保留采购收据' : task.stage === 3 ? '观察老师完成调制 · 待装瓶' : '装瓶封好 · 由萧炎保管'}
         </PrimaryButton>
       </BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离寄售准备 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离寄售准备 · 保留断点")}
   </>
 }

@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
@@ -62,6 +63,6 @@ export default function EarlyFamilyContract({ state, onBack }: { state: GameStat
       <p>萧炎亲口承诺赴约后已离厅；纳兰持同一文书，葛叶收回玉匣并带来客离去。{state.earlyTraining.mountainRing.stage
         ? earlyMountainRingSaveSummary(state, state.settings) + '。' : '后山交涉尚待接续。'}</p></BondSummary>}
     <MutedParagraph>厅院布局、行走与核对选项为游戏改编；印记只作抽象回顾。本段不改变主线能力、行囊、生命或已结算奖励。事件断点保存，位置与旁观焦点不保存。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离文书与离厅 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离文书与离厅 · 保留断点")}
   </>
 }

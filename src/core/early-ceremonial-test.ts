@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -59,6 +59,5 @@ export function advanceEarlyCeremonialTest(state: GameState, entryPosition: Earl
   return successfulTransaction(next, updated.stage === 9 ? '本次正式石碑八段已记，继续观察反应；尚无挑战裁定。' : '正式仪式与复测步骤已保存。')
 }
 export function submitEarlyCeremonialTest(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonialTestAction): boolean {
-  const result = advanceEarlyCeremonialTest(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyCeremonialTest, [entryPosition, position, action])
 }

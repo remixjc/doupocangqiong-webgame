@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -86,6 +87,6 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       : <BondSummary><h3>萧克挑战与离场已归档。</h3><p>父亲宣布胜负和薰儿再次邀请分别保留。后续次日同行、持续训练、八段突破与正式礼继续接续。</p>{onTraining && <PrimaryButton onClick={onTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮应战 · 免费重新准备</SecondaryButton>}
     <MutedParagraph>这次不是萧宁正式礼挑战；低阶掌法不新增主线技能，错误八极崩选项只会重开练习。钱账、材料、故事七段、预测名簿与伙伴关系值保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离萧克挑战 · 保留应战断点</SecondaryButton>
+    {returnButton(onBack, "暂离萧克挑战 · 保留应战断点")}
   </>
 }

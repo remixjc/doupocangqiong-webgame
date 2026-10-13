@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -63,6 +63,5 @@ export function advanceEarlyEighthTraining(state: GameState, entryPosition: Earl
   return successfulTransaction(next, updated.stage === 14 ? '故事八段已感知，尚待归档；正式验碑仍未进行。' : '同行或训练步骤已保存。')
 }
 export function submitEarlyEighthTraining(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: EighthTrainingAction): boolean {
-  const result = advanceEarlyEighthTraining(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyEighthTraining, [entryPosition, position, action])
 }

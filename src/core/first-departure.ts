@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
@@ -12,7 +13,6 @@ import { cityPositionValid, moveCityWalker } from './early-city-pharmacy'
 import { marketTradeLedger } from './early-market-trade'
 import { firstDepartureAt, validFirstDeparture, type FirstDepartureState } from './first-departure-state'
 import { firstDepartureScenes } from '../content/first-departure'
-import { commitEarlyResult } from './early-result'
 export const departurePlaces = { bed: { x: 140, y: 370 }, door: { x: 300, y: 370 }, yardDoor: { x: 300, y: 310 }, path: { x: 140, y: 310 } }
 export type DepartureSpace = 'room' | 'outside'
 export function departurePositionValid(p: EarlyWalkPosition, space: DepartureSpace): boolean {
@@ -57,5 +57,5 @@ export function advanceFirstDeparture(state: GameState, p: EarlyWalkPosition, sp
   return successfulTransaction(next, '本人出门断点已保存，旧奖励与试招结果保持。')
 }
 export function submitFirstDeparture(store: GameStore, p: EarlyWalkPosition, space: DepartureSpace, action: FirstDepartureAction): boolean {
-  return commitEarlyResult(store, advanceFirstDeparture(store.getSnapshot().state, p, space, action), 'firstDeparture')
+  return submitEarlyTransaction(store, advanceFirstDeparture, [p, space, action], 'firstDeparture')
 }

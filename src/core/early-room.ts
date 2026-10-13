@@ -1,5 +1,5 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -35,6 +35,5 @@ export function advanceEarlyRoom(state: GameState, position: EarlyWalkPosition, 
   return advanceEarlyWalk(state, position, action)
 }
 export function submitEarlyRoom(store: GameStore, position: EarlyWalkPosition, station: EarlyRoomStation, action: LiquidAction): boolean {
-  const result = advanceEarlyRoom(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyRoom, [position, station, action])
 }

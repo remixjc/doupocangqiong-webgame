@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -43,6 +43,5 @@ export function advanceEarlyApprentice(state: GameState, position: EarlyWalkPosi
     : '援助与拜师这一步已保存；主线资源、职业与已结算奖励保留。')
 }
 export function submitEarlyApprentice(store: GameStore, position: EarlyWalkPosition, action: ApprenticeAction): boolean {
-  const result = advanceEarlyApprentice(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'apprentice')
+  return submitEarlyTransaction(store, advanceEarlyApprentice, [position, action], 'apprentice')
 }

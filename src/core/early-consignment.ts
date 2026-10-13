@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -43,6 +43,5 @@ export function advanceEarlyConsignment(state: GameState, position: EarlyWalkPos
     ? '待售药液已装瓶，由萧炎保管；鉴定与寄售入场尚待继续。' : '寄售准备已记下，和旧自用药液及行囊金币分开。')
 }
 export function submitEarlyConsignment(store: GameStore, position: EarlyWalkPosition, station: ConsignmentStation, action: ConsignmentAction): boolean {
-  const result = advanceEarlyConsignment(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyConsignment, [position, station, action])
 }

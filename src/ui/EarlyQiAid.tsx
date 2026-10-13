@@ -1,6 +1,8 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { HallWalker, TimingRange } from './NativeRegions'
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -45,7 +47,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
   function key(event: KeyboardEvent<SVGSVGElement>) {
     walkKey(event, move, scene && near ? () => act(qiAidOperation(task)) : undefined)
   }
-  if (blocked) return <><p>{blocked}</p><SecondaryButton onClick={onBack}>返回重修准备</SecondaryButton></>
+  if (blocked) return <><p>{blocked}</p>{returnButton(onBack, "返回重修准备")}</>
   return <>
     <Eyebrow>功法阁 / 同行与独自援助</Eyebrow><h2>先走过，再独自走回。</h2>
     <p id="qi-aid-help">方向键或WASD移动，靠近目标按E。取卷、看时间、经过、回返、踢破、回应与会合按顺序保存。</p>
@@ -56,7 +58,7 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
       <MapText x="350" y="270" fill="#dcc89f" fontSize="15">阁内陈设 · 不可穿行</MapText>
       <rect x="573" y="278" width="9" height="65" fill={task.door === 'broken' ? '#8bb78a' : '#bf6559'} />
       {Object.entries(qiAidPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="28" stroke={scene?.place === id ? '#f8dba4' : '#9ca487'} fill="none" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 44} fill="#edcea0" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="同行援助行走操作"><WalkDirectionButtons prefix="援助" onMove={move} /></WalkControls>
     <StatusParagraph>援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</StatusParagraph>
@@ -74,6 +76,6 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
       : <BondSummary><h3>同行与独自援助已归档。</h3><p>萧媚门障已破；家族卷归萧炎，薰儿自选卷归她。正式登记与实际离阁仍待续。</p></BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮 · 免费重新站定</SecondaryButton>}
     <MutedParagraph>地图、陈设、20步长与出手时机为原创操作；时限采用回顾，未实现现实两小时或超时离阁。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离同行与援助 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离同行与援助 · 保留断点")}
   </>
 }

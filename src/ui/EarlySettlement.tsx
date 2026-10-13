@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
@@ -5,7 +6,7 @@ import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -57,6 +58,6 @@ export default function EarlySettlement({ state, position, onBack, onFatherGift 
       : <BondSummary><h3>寄售手续已办完</h3><p>净款和贵宾卡已记录，萧炎带两张卡离场。同瓶当前由{appraisalOwnerLabels[state.earlyTraining.consignment.owner]}保管，父亲来访与赠回独立记录。</p>
         {onFatherGift && <PrimaryButton onClick={onFatherGift}>接续父亲来访 · 回萧家房中</PrimaryButton>}</BondSummary>}
     <MutedParagraph>绿色卡中的故事净款与行囊金币、备料余额分账，只收一次。入场黑卡、水晶贵宾卡、绿色储款卡分别记录；这里不会复制药液或功法。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离寄售手续 · 保留收款断点</SecondaryButton>
+    {returnButton(onBack, "暂离寄售手续 · 保留收款断点")}
   </>
 }

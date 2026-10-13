@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -72,6 +73,6 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
       <SecondaryButton onClick={() => act('repay')}>把玩笑当作已还款</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>把她的卷记作本人第二卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>东架会面已归档。</h3><p>临时阅读卷仍由薰儿拿看，萧宁仍在西场。靠近与两卷交涉待续。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离东架会面 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离东架会面 · 保留断点")}
   </>
 }

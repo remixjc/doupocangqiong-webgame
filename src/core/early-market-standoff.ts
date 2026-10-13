@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -52,6 +52,5 @@ export function advanceEarlyMarketStandoff(state: GameState, view: MarketStandof
   return successfulTransaction(next, task.stage === 33 ? '非战斗离场已归档，发现与成交待续。' : '这一步已保存。')
 }
 export function submitEarlyMarketStandoff(store: GameStore, view: MarketStandoffView, action: MarketStandoffAction): boolean {
-  const result = advanceEarlyMarketStandoff(store.getSnapshot().state, view, action)
-  return commitEarlyResult(store, result, 'marketStandoff')
+  return submitEarlyTransaction(store, advanceEarlyMarketStandoff, [view, action], 'marketStandoff')
 }

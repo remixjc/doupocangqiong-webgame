@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -38,6 +38,5 @@ export function advanceEarlyRecovery(state: GameState, position: EarlyWalkPositi
     : '这一段恢复已记下，已有容器和准备收据保留。')
 }
 export function submitEarlyRecovery(store: GameStore, position: EarlyWalkPosition, station: EarlyRecoveryStation, action: EarlyRecoveryAction): boolean {
-  const result = advanceEarlyRecovery(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyRecovery, [position, station, action])
 }

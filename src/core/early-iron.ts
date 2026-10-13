@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { EarlyWalkPosition } from './early-walk'
@@ -53,6 +53,5 @@ export function advanceEarlyIron(state: GameState, yan: EarlyWalkPosition, actio
   return successfulTransaction(next, '铁片历史已保存，原任务袋与修炼结果保持。')
 }
 export function submitEarlyIron(store: GameStore, yan: EarlyWalkPosition, action: IronAction): boolean {
-  const result = advanceEarlyIron(store.getSnapshot().state, yan, action)
-  return commitEarlyResult(store, result, 'iron')
+  return submitEarlyTransaction(store, advanceEarlyIron, [yan, action], 'iron')
 }

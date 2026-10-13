@@ -1,7 +1,9 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker, TimingRange } from './NativeRegions'
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -71,7 +73,7 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       <g transform="translate(272 272)" aria-label="薰儿台下观礼" role="img"><RobeFigure /></g>
       {task.stage >= 1 && task.stage <= 2 && <g transform="translate(174 271)" role="img" aria-label={task.pill === 'ning-held' ? '场边镜头：萧宁持有增气药物，未服用' : '场边镜头：萧玉准备交药'}><RobeFigure robe="#9e83a6" /><circle cx="20" cy="-1" r="5" fill="#8bbc87" /></g>}
       {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="萧宁首轮行走操作">{<WalkDirectionButtons prefix="首轮" onMove={move} />}</WalkControls>
     <StatusParagraph>萧宁首轮 {task.stage}/10 · 动作 {task.beats}/3 · 重开 {task.attempts} 次 · {task.pill === 'unseen' ? '场边交付未记' : '药物由萧宁持有未服'} · {task.verdict === 'pending' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '首轮当时待裁判，最终胜负已宣布' : '首轮倒地，待最终裁判' : '尚未完成首轮'}</StatusParagraph>
@@ -92,6 +94,6 @@ export default function EarlyNingFirst({ state, position: entryPosition, onBack,
       : <BondSummary><h3>首轮倒地历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '正式胜负已宣布，可回看违规再攻。首轮历史仍保留当时待裁判及药物未服的记录。' : '这份记录没有最终胜负，也不能领取首通奖励。后续违规增力再攻、迎击与正式裁定继续接续。'}</p>{onSecond && <PrimaryButton onClick={onSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下本轮交锋 · 免费重新准备</SecondaryButton>}
     <MutedParagraph>药物是场边叙事视角，尚未服用且不进入玩家行囊。动作时机和地图为原创；技能、钱账、关系、原封瓶与首通奖励保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离萧宁首轮 · 保留推拉断点</SecondaryButton>
+    {returnButton(onBack, "暂离萧宁首轮 · 保留推拉断点")}
   </>
 }

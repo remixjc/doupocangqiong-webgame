@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -80,6 +81,6 @@ export default function EarlyMarketSearch({ state, onBack }: { state: GameState;
       {task.stage === 19 && <SecondaryButton disabled={!near} onClick={() => act('reveal-name')}>尚未交谈就登记来人的姓名</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>寻核与放回手链已归档。</h3><p>萧炎仍在寻找木核，薰儿没有买下摊上的手链。华衣来人的交谈另段接续。</p></BondSummary>}
     {state.earlyTraining.bracelet.gift === 'xuner' && <MutedParagraph>后来的已赠手链记录保留。这一段回看的是当时尚未购买的时刻。</MutedParagraph>}
-    <SecondaryButton onClick={onBack}>暂离坊市寻核 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离坊市寻核 · 保留断点")}
   </>
 }

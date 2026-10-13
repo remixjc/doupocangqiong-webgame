@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -34,6 +34,5 @@ export function advanceEarlyLongSupplies(state: GameState, position: EarlyWalkPo
   return successfulTransaction(next, nextStage === 5 ? '同一批两包已移入房柜，分拣格没有副本；原有钱账和药液保留。' : '这一步物资回溯已记下。')
 }
 export function submitEarlyLongSupplies(store: GameStore, position: EarlyWalkPosition, station: LongSupplyStation, action: LongSupplyAction): boolean {
-  const result = advanceEarlyLongSupplies(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyLongSupplies, [position, station, action])
 }

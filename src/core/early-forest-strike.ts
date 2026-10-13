@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -71,6 +71,5 @@ export function advanceEarlyForestStrike(state: GameState, entryPosition: EarlyW
     : '林中练技步骤已记录；主线技能、奖励与药液保留。')
 }
 export function submitEarlyForestStrike(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: ForestStrikeAction): boolean {
-  const result = advanceEarlyForestStrike(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyForestStrike, [entryPosition, position, action])
 }

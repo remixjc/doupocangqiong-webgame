@@ -1,0 +1,273 @@
+{
+  "version": "0.80.1",
+  "base": "17e090f49e2572a678151855b926721e1d6df70e",
+  "proof": {
+    "inverseFiles": 114,
+    "counts": {
+      "submit": 57,
+      "returnButton": 56,
+      "walker": 11,
+      "movement": 9
+    },
+    "oldRaw": 345,
+    "movementComparisons": 60214,
+    "nativeComparisons": 6,
+    "submitComparisons": 140,
+    "nativeFiles": 4,
+    "budget": {
+      "initial": 491342,
+      "gzip": 164583,
+      "total": 1847257,
+      "savedTotal": 2220,
+      "limits": [
+        500000,
+        165000,
+        1850000
+      ]
+    }
+  },
+  "browser": [
+    {
+      "label": "main-reloaded",
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "positions": [
+        {
+          "label": "本人房门closed",
+          "transform": null,
+          "x": "195",
+          "y": "294"
+        },
+        {
+          "label": "翻卷老师独立位置",
+          "transform": "translate(340 230)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "求技本人固定位置",
+          "transform": "translate(300 270)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "翻看的同一第二借卷仍在桌上",
+          "transform": null,
+          "x": "320",
+          "y": "255"
+        }
+      ],
+      "focus": {
+        "label": "同卷翻看与求技地图",
+        "tag": "svg",
+        "text": "身旁桌薰儿已在院中分路药老 · 桌边本人 · 疲惫原位同卷已翻看"
+      },
+      "errors": []
+    },
+    {
+      "label": "main-complete-repeat",
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "positions": [
+        {
+          "label": "本人房门closed",
+          "transform": null,
+          "x": "195",
+          "y": "294"
+        },
+        {
+          "label": "翻卷老师独立位置",
+          "transform": "translate(340 230)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "求技本人固定位置",
+          "transform": "translate(300 270)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "翻看的同一第二借卷仍在桌上",
+          "transform": null,
+          "x": "320",
+          "y": "255"
+        }
+      ],
+      "focus": {
+        "label": "同卷翻看与求技地图",
+        "tag": "svg",
+        "text": "身旁桌薰儿已在院中分路药老 · 桌边本人 · 疲惫原位同卷已翻看"
+      },
+      "errors": []
+    },
+    {
+      "label": "main-return-enter",
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "positions": [
+        {
+          "label": "本人房门closed",
+          "transform": null,
+          "x": "195",
+          "y": "294"
+        },
+        {
+          "label": "翻卷老师独立位置",
+          "transform": "translate(340 230)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "求技本人固定位置",
+          "transform": "translate(300 270)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "翻看的同一第二借卷仍在桌上",
+          "transform": null,
+          "x": "320",
+          "y": "255"
+        }
+      ],
+      "focus": {
+        "label": "同卷翻看与求技地图",
+        "tag": "svg",
+        "text": "身旁桌薰儿已在院中分路药老 · 桌边本人 · 疲惫原位同卷已翻看"
+      },
+      "errors": []
+    },
+    {
+      "label": "materials-reloaded",
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "positions": [
+        {
+          "label": "本人房门closed",
+          "transform": null,
+          "x": "195",
+          "y": "294"
+        },
+        {
+          "label": "翻卷老师独立位置",
+          "transform": "translate(340 230)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "求技本人固定位置",
+          "transform": "translate(300 270)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "翻看的同一第二借卷仍在桌上",
+          "transform": null,
+          "x": "320",
+          "y": "255"
+        }
+      ],
+      "focus": {
+        "label": "同卷翻看与求技地图",
+        "tag": "svg",
+        "text": "身旁桌薰儿已在院中分路药老 · 桌边本人 · 疲惫原位同卷已翻看"
+      },
+      "errors": []
+    },
+    {
+      "label": "old-evening",
+      "dialog": "×\n天黑之后 / 回房与同一借卷\n夜路走回房中，借卷放在身旁。\n\n方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。\n\n夜间本人操作\n观察薰儿分路\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n本人 · 疲惫放松\n\n回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档\n\n夜间回房已归档。同卷留桌，老师来访另续。\n\n暂离夜间回房 · 保留断点",
+      "positions": [
+        {
+          "label": "本人房门closed",
+          "transform": null,
+          "x": "195",
+          "y": "294"
+        },
+        {
+          "label": "夜间本人位置",
+          "transform": "translate(300 270)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "夜间同一第二借卷 · table",
+          "transform": null,
+          "x": "320",
+          "y": "255"
+        }
+      ],
+      "focus": {
+        "label": "夜间回房地图",
+        "tag": "svg",
+        "text": "身旁桌薰儿已在院中分路本人 · 疲惫放松"
+      },
+      "errors": []
+    },
+    {
+      "label": "old-afternoon",
+      "dialog": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n此图回顾当时山上位置，夜间实际位置另存。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "positions": [
+        {
+          "label": "午后薰儿位置",
+          "transform": "translate(325 120)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "午后本人位置",
+          "transform": "translate(300 150)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "午后同一第二借卷",
+          "transform": null,
+          "x": "320",
+          "y": "145"
+        }
+      ],
+      "focus": {
+        "label": "整个午后同行地图",
+        "tag": "svg",
+        "text": "堂外附近山路薰儿本人"
+      },
+      "errors": []
+    },
+    {
+      "label": "final-stable",
+      "dialog": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "positions": [
+        {
+          "label": "本人房门closed",
+          "transform": null,
+          "x": "195",
+          "y": "294"
+        },
+        {
+          "label": "翻卷老师独立位置",
+          "transform": "translate(340 230)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "求技本人固定位置",
+          "transform": "translate(300 270)",
+          "x": null,
+          "y": null
+        },
+        {
+          "label": "翻看的同一第二借卷仍在桌上",
+          "transform": null,
+          "x": "320",
+          "y": "255"
+        }
+      ],
+      "focus": {
+        "label": "同卷翻看与求技地图",
+        "tag": "svg",
+        "text": "身旁桌薰儿已在院中分路药老 · 桌边本人 · 疲惫原位同卷已翻看"
+      },
+      "errors": []
+    }
+  ],
+  "screenshot": "c1h-grant-capacity.png",
+  "physicalDevices": false
+}

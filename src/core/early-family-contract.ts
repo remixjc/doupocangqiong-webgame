@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -59,6 +59,5 @@ export function advanceEarlyFamilyContract(state: GameState, view: FamilyContrac
     : '文书与离厅这一步已保存；不改变主线能力、行囊或已结算奖励。')
 }
 export function submitEarlyFamilyContract(store: GameStore, view: FamilyContractView, action: FamilyContractAction): boolean {
-  const result = advanceEarlyFamilyContract(store.getSnapshot().state, view, action)
-  return commitEarlyResult(store, result, 'familyContract')
+  return submitEarlyTransaction(store, advanceEarlyFamilyContract, [view, action], 'familyContract')
 }

@@ -1,7 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -47,6 +47,5 @@ export function advanceEarlyCeremonyGuests(state: GameState, entryPosition: Earl
   return successfulTransaction(next, updated.stage === 7 ? '萧玉已收剑，没有发生战斗；待听后续回应。' : '宾客与冲突中止步骤已保存。')
 }
 export function submitEarlyCeremonyGuests(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyGuestAction): boolean {
-  const result = advanceEarlyCeremonyGuests(store.getSnapshot().state, entryPosition, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyCeremonyGuests, [entryPosition, position, action])
 }

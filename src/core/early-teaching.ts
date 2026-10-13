@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -31,6 +31,5 @@ export function advanceEarlyTeaching(state: GameState, position: EarlyWalkPositi
   return successfulTransaction(next, scene.step === 4 ? '正式传技已归档，知识与身体要求已记下；后续监督训练另行继续。' : '传技这一步已记下，主线战斗能力保持。')
 }
 export function submitEarlyTeaching(store: GameStore, position: EarlyWalkPosition, station: EarlyTeachingStation, action: EarlyTeachingAction): boolean {
-  const result = advanceEarlyTeaching(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyTeaching, [position, station, action])
 }

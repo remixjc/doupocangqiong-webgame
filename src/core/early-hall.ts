@@ -1,6 +1,7 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -31,10 +32,7 @@ export function earlyHallPositionValid(position: EarlyWalkPosition): boolean {
 }
 export function moveEarlyHall(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!earlyHallPositionValid(position)) return { ...earlyHallStart }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return earlyHallPositionValid(next) ? next : position
+  return stepWalker(position, direction, earlyHallPositionValid)
 }
 export function nearbyEarlyHallPlace(position: EarlyWalkPosition) {
   if (!earlyHallPositionValid(position)) return undefined
@@ -80,6 +78,5 @@ export function advanceEarlyHall(state: GameState, position: EarlyWalkPosition, 
   return successfulTransaction(next, scene.stage === 8 ? '离堂与回房已记录，借卷由萧炎保管；老师传技另行继续。' : '堂内这一步已记下，可继续或稍后回来。')
 }
 export function submitEarlyHall(store: GameStore, position: EarlyWalkPosition, action: EarlyHallAction): boolean {
-  const result = advanceEarlyHall(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyHall, [position, action])
 }

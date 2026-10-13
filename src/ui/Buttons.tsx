@@ -18,3 +18,8 @@ export function sceneButton<O extends string>(scene: { operation: O; action: Com
   return disabled === undefined ? <PrimaryButton onClick={onClick}>{scene.action}</PrimaryButton>
     : <PrimaryButton disabled={disabled} onClick={onClick}>{scene.action}</PrimaryButton>
 }
+
+// Keep the same component boundary and exact callback; focus belongs to the caller.
+export function returnButton(onBack: () => void, children: ComponentProps<'button'>['children']) {
+  return <SecondaryButton onClick={onBack}>{children}</SecondaryButton>
+}

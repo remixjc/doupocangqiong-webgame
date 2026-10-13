@@ -1,7 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -32,10 +33,7 @@ export function validQiPavilionPosition(position: EarlyWalkPosition, stage: numb
 }
 export function moveQiPavilionWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection, stage: number): EarlyWalkPosition {
   if (!validQiPavilionPosition(position, stage)) return { ...qiPavilionPlaces.forecourt }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return validQiPavilionPosition(next, stage) ? next : position
+  return stepWalker(position, direction, next => validQiPavilionPosition(next, stage))
 }
 export function nearQiPavilionPlace(position: EarlyWalkPosition, place: keyof typeof qiPavilionPlaces, stage: number): boolean {
   const target = qiPavilionPlaces[place]
@@ -60,6 +58,5 @@ export function advanceEarlyQiPavilionEntry(state: GameState, position: EarlyWal
   return successfulTransaction(next, '属性与入阁步骤已保存，主线与已结算奖励保留。')
 }
 export function submitEarlyQiPavilionEntry(store: GameStore, position: EarlyWalkPosition, action: QiPavilionEntryAction): boolean {
-  const result = advanceEarlyQiPavilionEntry(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'qiPavilionEntry')
+  return submitEarlyTransaction(store, advanceEarlyQiPavilionEntry, [position, action], 'qiPavilionEntry')
 }

@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -43,6 +44,6 @@ export default function EarlyPreparationBrief({ state, onBack, onRoute }: { stat
       <PrimaryButton onClick={onRoute}>接续既有准备路线 · 接取与借资</PrimaryButton>
     </BondSummary>}
     <MutedParagraph>历史准备要求不代表新增库存；借资打算不代表到账。本段不自动接取或重置已有准备，不增发资金，不改主线装备与已结算奖励。位置不保存。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离准备与返戒 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离准备与返戒 · 保留断点")}
   </>
 }

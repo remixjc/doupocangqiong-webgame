@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -86,6 +87,6 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
       {task.stage === 24 && <SecondaryButton disabled={!near} onClick={() => act('claim-rank')}>看见徽记就为本人授予一星境界</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>让路与两条手链已归档。</h3><p>普通绿链已经收到、戴上并道谢。蓝金手链与木核未交付，来人尚未离开，围堵另段继续。</p></BondSummary>}
     <MutedParagraph>与简略手链往事共用唯一赠礼记录。已有进度只补历史，不倒退或重复交付；本段不改变金币、木核、队伍或主线奖励。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离让路手链 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离让路手链 · 保留断点")}
   </>
 }

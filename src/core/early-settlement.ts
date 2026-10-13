@@ -1,6 +1,6 @@
+import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -30,6 +30,5 @@ export function advanceEarlySettlement(state: GameState, position: EarlyWalkPosi
     : '本步寄售手续已保存，凭据与收款按步骤分别记录。')
 }
 export function submitEarlySettlement(store: GameStore, position: EarlyWalkPosition, station: SettlementStation, action: SettlementAction): boolean {
-  const result = advanceEarlySettlement(store.getSnapshot().state, position, station, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlySettlement, [position, station, action])
 }

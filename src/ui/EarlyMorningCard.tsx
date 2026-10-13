@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -68,6 +69,6 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
       {task.stage === 12 && <SecondaryButton disabled={!near} onClick={() => act('restore-supplies')}>尝试接卡复原已用材料与药液</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>晨间普通黑卡交接已归档。</h3><p>{ledger.cityPharmacy.stage ? earlyMorningCardSaveSummary(state, state.settings) : '实际入城与药铺采购待接续。'}已有准备、收据、药液与主线均保留。</p><SecondaryButton onClick={onRoute}>查看既有准备路线 · 保留已付收据</SecondaryButton></BondSummary>}
     <MutedParagraph>房门、位置和操作为原创比例，位置不保存。160是游戏折算，容量不是余额；不新增积蓄，不改变主线金币，也不让旧借资再领一次。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离晨间交卡 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离晨间交卡 · 保留断点")}
   </>
 }

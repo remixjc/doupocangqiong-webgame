@@ -1,7 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -23,10 +24,7 @@ export function validQiAidPosition(position: EarlyWalkPosition): boolean {
 }
 export function moveQiAidWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!validQiAidPosition(position)) return { ...qiAidPlaces.fire }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return validQiAidPosition(next) ? next : position
+  return stepWalker(position, direction, validQiAidPosition)
 }
 export function nearQiAidPlace(position: EarlyWalkPosition, place: keyof typeof qiAidPlaces): boolean {
   return validQiAidPosition(position) && Math.hypot(position.x - qiAidPlaces[place].x, position.y - qiAidPlaces[place].y) <= 28
@@ -70,6 +68,5 @@ export function advanceEarlyQiAid(state: GameState, position: EarlyWalkPosition,
   return successfulTransaction(next, updated.stage === 10 ? '同行与独自援助已归档，正式登记与离阁待续。' : '同行与援助步骤已保存，不发第二卷或关系奖励。')
 }
 export function submitEarlyQiAid(store: GameStore, position: EarlyWalkPosition, action: QiAidAction): boolean {
-  const result = advanceEarlyQiAid(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'qiPavilionAid')
+  return submitEarlyTransaction(store, advanceEarlyQiAid, [position, action], 'qiPavilionAid')
 }

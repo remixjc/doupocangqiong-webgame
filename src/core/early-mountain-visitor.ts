@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -43,6 +43,5 @@ export function advanceEarlyMountainVisitor(state: GameState, view: MountainVisi
     : task.stage === 22 ? '本人已离山；后续切换薰儿留山的旁观焦点。' : '当晚这一步已保存；未到账，旧主线和采购账本保留。')
 }
 export function submitEarlyMountainVisitor(store: GameStore, view: MountainVisitorView, action: MountainVisitorAction): boolean {
-  const result = advanceEarlyMountainVisitor(store.getSnapshot().state, view, action)
-  return commitEarlyResult(store, result, 'mountainVisitor')
+  return submitEarlyTransaction(store, advanceEarlyMountainVisitor, [view, action], 'mountainVisitor')
 }

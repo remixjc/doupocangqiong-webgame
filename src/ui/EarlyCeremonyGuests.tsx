@@ -1,13 +1,14 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -56,7 +57,7 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       <g transform="translate(550 268)" role="img" aria-label="雅妃与宾客"><RobeFigure robe="#b86c65" /><MapText y="36" fill="#ead9b6" fontSize="11">雅妃</MapText></g>
       {task.stage >= 6 && task.stage < 12 && <g transform={`translate(${task.stage >= 9 ? 490 : 290} 260)`} role="img" aria-label="萧战已走近"><RobeFigure skin="#d5b491" cut="M-14 17 L-8-5 H8 L14 17Z" robe="#7f8cba" /></g>}
       {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 56} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</WalkControls>
     <StatusParagraph>宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</StatusParagraph>
@@ -64,6 +65,6 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       : <MutedParagraph>下一步请走近{ceremonyGuestPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>宾客与收剑已归档。</h3><p>萧玉收剑离去，父亲介绍与雅妃询问已记。正式仪式和八段石碑复测接下来继续。</p>{onCeremony && <PrimaryButton onClick={onCeremony}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}</BondSummary>}
     <MutedParagraph>本段以观察和交谈平息争执，没有战斗结算；剑由萧玉保管，钱账、原封瓶、人物与伙伴记录保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离宾客场地 · 保留收剑断点</SecondaryButton>
+    {returnButton(onBack, "暂离宾客场地 · 保留收剑断点")}
   </>
 }

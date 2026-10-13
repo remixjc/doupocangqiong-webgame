@@ -1,7 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
+import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -33,10 +34,7 @@ export function validQiBarrierPosition(position: EarlyWalkPosition, stage: numbe
 }
 export function moveQiBarrierWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection, stage: number): EarlyWalkPosition {
   if (!validQiBarrierPosition(position, stage)) return { ...qiBarrierPlaces.fire }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return position
-  const next = { x: position.x + delta[0], y: position.y + delta[1] }
-  return validQiBarrierPosition(next, stage) ? next : position
+  return stepWalker(position, direction, next => validQiBarrierPosition(next, stage))
 }
 export function nearQiBarrierPlace(position: EarlyWalkPosition, place: keyof typeof qiBarrierPlaces, stage: number): boolean {
   const target = qiBarrierPlaces[place]
@@ -92,6 +90,5 @@ export function advanceEarlyQiBarrier(state: GameState, position: EarlyWalkPosit
   return successfulTransaction(next, updated.stage >= 7 ? '本次红幕已破，收势与入室按序保存；取卷仍待独立操作。' : '火路与门障步骤已保存，不发物品或奖励。')
 }
 export function submitEarlyQiBarrier(store: GameStore, position: EarlyWalkPosition, action: QiBarrierAction): boolean {
-  const result = advanceEarlyQiBarrier(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'qiPavilionBarrier')
+  return submitEarlyTransaction(store, advanceEarlyQiBarrier, [position, action], 'qiPavilionBarrier')
 }

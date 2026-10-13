@@ -1,5 +1,5 @@
+import { submitEarlyTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
@@ -21,6 +21,5 @@ export function advanceEarlyWalk(state: GameState, position: EarlyWalkPosition, 
 }
 export function submitEarlyWalk(store: GameStore, position: EarlyWalkPosition, action: EarlyWalkAction): boolean {
   // Read the current snapshot at click time; a rendered order can already be stale.
-  const result = advanceEarlyWalk(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result)
+  return submitEarlyTransaction(store, advanceEarlyWalk, [position, action])
 }

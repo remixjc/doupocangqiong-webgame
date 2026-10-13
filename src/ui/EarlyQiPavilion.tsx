@@ -1,7 +1,8 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -53,7 +54,7 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
       <g transform="translate(385 310)" aria-hidden="true"><RobeFigure robe="#b6bba8" /></g>
       <g transform={`translate(${task.entered ? 395 : 465} ${task.entered ? 105 : 325})`} aria-hidden="true"><RobeFigure /></g>
       {Object.entries(qiPavilionPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 47} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="功法阁行走操作">{<WalkDirectionButtons prefix="功法阁" onMove={move} />}</WalkControls>
     <StatusParagraph>入阁 {task.stage}/12 · 萧炎{task.yan === 'fire' ? '火属性' : '未测'} · 薰儿{task.xuner === 'fire' ? '火属性' : '未测'} · 水晶{task.crystal === 'broken' ? '已碎' : task.crystal === 'cracked' ? '有裂纹尚未碎' : '完整'} · {task.entered ? '已实际入阁' : task.permission ? '有许可尚未过门' : '尚未许可入阁'} · 尚无新卷轴</StatusParagraph>
@@ -64,6 +65,6 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
     </BondSummary> : <MutedParagraph>下一步请走近{qiPavilionPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>测定与入阁已归档。</h3><p>火通道第三路四十三号房线索保留。门障、取得功法、回应薰儿与出阁登记还待接续；此前斗技堂借卷与主线技能分别保持。</p></BondSummary>}
     <MutedParagraph>布局与步长为原创，五天与两小时为故事时段；本段不发金币、功法、技能或境界。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离功法阁 · 保留入阁断点</SecondaryButton>
+    {returnButton(onBack, "暂离功法阁 · 保留入阁断点")}
   </>
 }

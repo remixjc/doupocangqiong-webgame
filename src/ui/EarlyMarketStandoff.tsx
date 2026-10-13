@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -83,6 +84,6 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
       {task.stage === 27 && <SecondaryButton disabled={!near} onClick={() => act('recruit')}>把帮助的护卫加入伙伴队伍</SecondaryButton>}
       {task.stage === 33 && <SecondaryButton disabled={!near} onClick={() => act('claim-core')}>走进深处就把木核放入任务袋</SecondaryButton>}
     </BondSummary> : <BondSummary><h3>围堵与非战斗离场已归档。</h3><p>本人拒绝单挑，来人与护卫已分别离场。两人继续寻核，发现与实际成交待续。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离围堵离场 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离围堵离场 · 保留断点")}
   </>
 }

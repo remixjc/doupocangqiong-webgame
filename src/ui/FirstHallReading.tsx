@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -71,6 +72,6 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
       <SecondaryButton onClick={() => act('learn')}>把阅读算作当场授技</SecondaryButton>
       <SecondaryButton onClick={() => act('second')}>提前取得第二卷</SecondaryButton>
     </BondSummary> : <BondSummary><h3>东侧第一卷阅读已归档。</h3><p>本人仍在东侧读卷。西侧切磋与后续交涉待接续，旧技能与奖励保持。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离东侧阅读 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离东侧阅读 · 保留断点")}
   </>
 }

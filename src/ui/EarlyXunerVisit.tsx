@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -6,7 +7,7 @@ import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { spokenSceneHeading } from './SceneHeading'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -55,6 +56,6 @@ export default function EarlyXunerVisit({ state, position, onBack, onSupplies }:
       : <BondSummary><h3>承诺与独自交卡的心意已记下。</h3><p>长老收卡并答应不再为难萧战。萧炎并不知情；同瓶仍由他保管，后续修炼另行接续。</p>
         {onSupplies && <PrimaryButton onClick={onSupplies}>回看长期物资 · 父亲来访之前</PrimaryButton>}</BondSummary>}
     <MutedParagraph>家族收到的是薰儿的紫金卡，与萧炎的寄售净款39200和采购账分开。这里记录人物事件，不增加玩家金币、物资、技能或关系值。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离薰儿事件 · 保留人物断点</SecondaryButton>
+    {returnButton(onBack, "暂离薰儿事件 · 保留人物断点")}
   </>
 }

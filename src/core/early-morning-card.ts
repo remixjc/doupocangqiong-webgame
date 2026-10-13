@@ -1,3 +1,4 @@
+import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
@@ -20,10 +21,7 @@ export function morningPositionValid(p: EarlyWalkPosition): boolean {
 }
 export function moveMorningWalker(p: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!morningPositionValid(p)) return { ...morningCardStart }
-  const delta = { up: [0, -20], down: [0, 20], left: [-20, 0], right: [20, 0] }[direction]
-  if (!delta) return p
-  const next = { x: p.x + delta[0], y: p.y + delta[1] }
-  return morningPositionValid(next) ? next : p
+  return stepWalker(p, direction, morningPositionValid)
 }
 export function morningCardNear(p: EarlyWalkPosition, place: keyof typeof morningCardPlaces): boolean {
   const target = morningCardPlaces[place]

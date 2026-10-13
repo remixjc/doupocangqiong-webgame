@@ -1,7 +1,9 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker, TimingRange } from './NativeRegions'
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -71,7 +73,7 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       <MapText x="550" y="202" fill="#ead9b6" fontSize="11">{task.contact === 'out' ? '出场 · 仍待裁定' : task.contact === 'met' ? '已对拳 · 尚未出场' : '违规再攻'}</MapText>
       <g transform="translate(272 272)" aria-label="薰儿台下观礼" role="img"><RobeFigure /></g>
       {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} fill="#ead9b6" fontSize="11">{id === 'arena' ? '台中 · 两步迎击' : place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="违规再攻行走操作">{<WalkDirectionButtons prefix="再攻" onMove={move} />}</WalkControls>
     <StatusParagraph>违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</StatusParagraph>
@@ -92,6 +94,6 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       : <BondSummary><h3>违规再攻与出场历史已记。</h3><p>{state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '最终胜负已宣布，可回看正式裁定与礼终离场。此轮保留出场当时尚待裁判的历史。' : '八极崩迎击和追加拳击分别完成，没有派发胜利。接下来处理萧玉与薰儿的请求、制止和二长老正式处分。'}</p>{onVerdict && <PrimaryButton onClick={onVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}</BondSummary>}
     {training && <SecondaryButton onClick={() => act('stop')}>停下迎击 · 免费重新准备</SecondaryButton>}
     <MutedParagraph>违规药物只由萧宁使用，临时增强不等于永久境界。地图与动作时机为原创；主线钱账、技能、药液、关系和首通奖励保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离违规再攻 · 保留迎击断点</SecondaryButton>
+    {returnButton(onBack, "暂离违规再攻 · 保留迎击断点")}
   </>
 }

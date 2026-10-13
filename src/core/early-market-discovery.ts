@@ -1,8 +1,8 @@
+import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
-import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
 import { type Transaction } from './rules'
@@ -42,6 +42,5 @@ export function advanceEarlyMarketDiscovery(state: GameState, position: EarlyWal
   return successfulTransaction(next, task.stage === 9 ? '发现与建议已归档，实际成交待续。' : '这一步已保存。')
 }
 export function submitEarlyMarketDiscovery(store: GameStore, position: EarlyWalkPosition, action: MarketDiscoveryAction): boolean {
-  const result = advanceEarlyMarketDiscovery(store.getSnapshot().state, position, action)
-  return commitEarlyResult(store, result, 'marketDiscovery')
+  return submitEarlyTransaction(store, advanceEarlyMarketDiscovery, [position, action], 'marketDiscovery')
 }

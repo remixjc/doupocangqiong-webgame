@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -11,7 +12,7 @@ import { useSceneFocus } from './use-scene-focus'
 import { walkKey } from './walk-key'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
 import { BondSummary, Eyebrow, StatusParagraph, WalkControls, RobeFigure } from './NativeRegions'
-import { SecondaryButton, actorButton } from './Buttons'
+import { actorButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
 import MarketWalker from './MarketWalker'
@@ -49,6 +50,6 @@ export default function FirstHallScrollReview({ state, onBack }: { state: GameSt
       : scene ? <BondSummary>{sceneHeading(scene)}<p>{actor === scene.actor ? '当前人物正确。' : '请明确选择本步人物。'}</p>
         {sceneButton(scene, actor !== scene.actor, act)}</BondSummary>
         : <p>翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。</p>}
-    <SecondaryButton onClick={onBack}>暂离同卷求技 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离同卷求技 · 保留断点")}
   </>
 }

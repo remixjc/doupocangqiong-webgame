@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
@@ -61,6 +62,6 @@ export default function EarlyLongSupplies({ state, position, onBack, onForest }:
       : <BondSummary><h3>房柜已合上，另批物资已记下。</h3><p>两包原物都在柜中，没有散落副本。后山首次成功练技、后续补液与七段突破分别继续；这次归档不代签后续修炼结果。</p>
         {onForest && <PrimaryButton onClick={onForest}>接续后山森林 · 首次成功练技</PrimaryButton>}</BondSummary>}
     <MutedParagraph>包代表物资类别，不代表已核实的数量或容量。这里只归档原作已购批次，没有新增付款、配方或精确价单；寄售净款39200、家族交卡、原瓶和耗尽记录保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离物资回溯 · 保留同批断点</SecondaryButton>
+    {returnButton(onBack, "暂离物资回溯 · 保留同批断点")}
   </>
 }

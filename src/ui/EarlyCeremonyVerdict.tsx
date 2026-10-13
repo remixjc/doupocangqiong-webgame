@@ -1,7 +1,8 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
-import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -55,7 +56,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
       <g transform={`translate(${task.xuner === 'requested' || task.stage === 9 ? 360 : task.stage >= 11 ? 195 : 270} ${task.xuner === 'requested' || task.stage === 9 ? 168 : task.stage >= 11 ? 335 : 280})`} role="img" aria-label={task.xuner === 'requested' ? '薰儿提出代战，尚未获准' : task.stage === 9 ? '薰儿参加自己的仪式' : '薰儿观礼或离场同行'}><RobeFigure /></g>
       {task.stage < 2 && <g transform="translate(676 280) rotate(83)" role="img" aria-label="场外昏迷萧宁，交由族人照看"><RobeFigure robe="#bc786b" /></g>}
       {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 50} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
     </EarlyMap>
     <WalkControls aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</WalkControls>
     <StatusParagraph>礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</StatusParagraph>
@@ -68,6 +69,6 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
     </BondSummary> : <MutedParagraph>下一步请走近{verdictPlaces[scene.place].label}：{scene.title}。</MutedParagraph>
       : <BondSummary><h3>正式胜负、礼终与离场已归档。</h3><p>萧玉和薰儿两次请求被阻止，萧宁禁足三个月，二长老正式宣布萧炎获胜。其他仪式与午后礼终已记，两项支持均婉拒；五天后功法阁是后续安排，没有新增功法或重复奖励。</p></BondSummary>}
     <MutedParagraph>地图布局与步长为原创，主线、钱账、药液、房柜、人物关系和已结算奖励保留。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离正式裁定 · 保留礼终断点</SecondaryButton>
+    {returnButton(onBack, "暂离正式裁定 · 保留礼终断点")}
   </>
 }

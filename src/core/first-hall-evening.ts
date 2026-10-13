@@ -1,3 +1,4 @@
+import { submitEarlyTransaction } from './early-result'
 import { hallWalkTransaction } from './hall-walk-transaction'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -6,7 +7,6 @@ import type { EarlyWalkPosition } from './early-walk'
 import { firstHallAfternoonBlock, type FirstHallAfternoonAction } from './first-hall-afternoon'
 import type { FirstHallAfternoonState } from './first-hall-afternoon-state'
 import { hallEveningSnapshotKeys } from './early-snapshots'
-import { commitEarlyResult } from './early-result'
 import { eveningRoute, firstHallEveningAt, validFirstHallEvening, type FirstHallEveningState } from './first-hall-evening-state'
 import { firstHallEveningScenes } from '../content/first-hall-evening'
 export type FirstHallEveningAction = Omit<FirstHallAfternoonAction, keyof FirstHallAfternoonState> & FirstHallEveningState & {
@@ -22,5 +22,5 @@ export function advanceFirstHallEvening(state: GameState, p: EarlyWalkPosition, 
     failure: '按本人夜间位置与回房断点继续。', saved: '夜间位置与同卷已保存。' })
 }
 export function submitFirstHallEvening(store: GameStore, p: EarlyWalkPosition, space: FirstHallEveningState['location'], action: FirstHallEveningAction): boolean {
-  return commitEarlyResult(store, advanceFirstHallEvening(store.getSnapshot().state, p, space, action), 'firstHallEvening')
+  return submitEarlyTransaction(store, advanceFirstHallEvening, [p, space, action], 'firstHallEvening')
 }

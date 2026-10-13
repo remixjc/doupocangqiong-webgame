@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -12,7 +13,6 @@ import { firstHallAfternoonSaveSummary } from '../core/save-preview'
 import { walkKey } from './walk-key'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
 import { BondSummary, Eyebrow, StatusParagraph, WalkControls } from './NativeRegions'
-import { SecondaryButton } from './Buttons'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import MarketWalker from './MarketWalker'
 import HistoryBlocked from './HistoryBlocked'
@@ -56,6 +56,6 @@ export default function FirstHallAfternoon({ state, onBack }: { state: GameState
     {moving ? <BondSummary><h3>沿山路同行</h3><p>下一步向{({ up: '上', down: '下', left: '左', right: '右' })[route[task.walk]]}走。</p></BondSummary>
       : scene ? <BondSummary>{sceneHeading(scene)}{sceneButton(scene, actor !== 'yan', act)}</BondSummary>
         : <BondSummary><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离整个午后 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离整个午后 · 保留断点")}
   </>
 }

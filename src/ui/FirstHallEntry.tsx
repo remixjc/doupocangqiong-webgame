@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -83,6 +84,6 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
       <SecondaryButton onClick={() => act('scroll')}>站在堂门代签取得卷轴</SecondaryButton>
       <SecondaryButton onClick={() => act('win')}>把欢呼算作本人胜利</SecondaryButton>
     </BondSummary> : <BondSummary><h3>实际入堂与东西分区已归档。</h3><p>本人已入堂并先看向训练场。东侧拿卷、阅读和西侧比赛由下一段继续，旧借卷保管保持。</p></BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离实际入堂 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离实际入堂 · 保留断点")}
   </>
 }

@@ -1,6 +1,8 @@
+import { returnButton } from './Buttons'
+import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { HallWalker, TimingRange } from './NativeRegions'
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -70,7 +72,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       <MapText x="360" y="58" fill="#e5c48e" fontSize="17">火通道 · 第三路 · 四十三号</MapText>
       {qiPaths.map((x, index) => <g key={x}><circle cx={x} cy="350" r="25" fill={task.path === 3 && index === 2 ? '#a18456' : '#465a4d'} /><MapText x={x} y="355" fill="#ead9b6">{index + 1}</MapText></g>)}
       <text x="335" y="285" fill="#e6d4ad" fontSize="11">37</text><text x="335" y="112" fill="#e6d4ad" fontSize="11">43</text>
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
+      {hallWalkerAt(position)}
       {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 43} fill="#ead9b6" fontSize="10">{place.label}</MapText></g>)}
     </EarlyMap>
     <WalkControls aria-label="火通道行走操作"><WalkDirectionButtons prefix="火通道" onMove={move} /></WalkControls>
@@ -89,6 +91,6 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       : <BondSummary><h3>火路、门障与入室已归档。</h3><p>{state.earlyTraining.qiPavilionScroll.family === 'held' ? '后续已取得家族卷，这里保留此前破幕与入室的记录。' : '四十三号室内卷轴仍待独立取得。'}破幕不增加功法、技能、境界或奖励。</p></BondSummary>}
     {task.stage === 6 && <SecondaryButton onClick={() => act('stop')}>停下这一轮 · 免费重新蓄势</SecondaryButton>}
     <MutedParagraph>五条支路、门牌与门障地图是原创压缩操作；八极崩沿已有主线技能使用，不重复解锁。</MutedParagraph>
-    <SecondaryButton onClick={onBack}>暂离火通道 · 保留门障断点</SecondaryButton>
+    {returnButton(onBack, "暂离火通道 · 保留门障断点")}
   </>
 }

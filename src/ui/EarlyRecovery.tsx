@@ -1,3 +1,4 @@
+import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -8,7 +9,7 @@ import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapText } from './MapPrimitives'
-import { PrimaryButton, SecondaryButton } from './Buttons'
+import { PrimaryButton } from './Buttons'
 import { spokenSceneHeading } from './SceneHeading'
 import { useEffect, useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -71,6 +72,6 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       : <BondSummary><h3>恢复与阶段结果已记下</h3><p>自用药液已经耗尽。萧炎记下故事中的斗之气五段，接下来需另筹材料。</p>
         <MutedParagraph>这是往事结果，主线人物境界、攻击和技能沿原旅程继续。容器与调制收据保留。</MutedParagraph>
         {onConsign && <PrimaryButton onClick={onConsign}>接续筹款 · 准备首次寄售</PrimaryButton>}</BondSummary>}
-    <SecondaryButton onClick={onBack}>暂离恢复房间 · 保留断点</SecondaryButton>
+    {returnButton(onBack, "暂离恢复房间 · 保留断点")}
   </>
 }
