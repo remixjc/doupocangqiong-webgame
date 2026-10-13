@@ -222,6 +222,9 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (purse.own !== 0 || ![0, EARLY_LOAN].includes(purse.borrowed as number)
     || (!data.started && purse.borrowed !== 0)) return invalid()
   const result = { ...blankEarlyTraining(), started: data.started }
+  function candidate<K extends keyof EarlyTrainingState>(key: K, legacy: boolean): EarlyTrainingState[K] | Record<string, unknown> {
+    return data[key] === undefined && legacy ? result[key] : object(data[key])
+  }
   function history<T extends { stage: number }>(key: string, legacy: boolean,
     valid: (value: Record<string, unknown> | T) => value is T, derive: (stage: number) => T, prerequisite: boolean): T {
     const candidate = data[key] === undefined && legacy ? derive(0) : object(data[key])
@@ -238,11 +241,11 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const methodDiscussion = history('methodDiscussion', legacyMethodDiscussion, validMethodDiscussion, methodDiscussionAt, !(apprentice.stage !== 25))
   const preparationBrief = history('preparationBrief', legacyPreparationBrief, validPreparationBrief, preparationBriefAt, !(methodDiscussion.stage !== 28))
   const mountainVisitor = history('mountainVisitor', legacyMountainVisitor, validMountainVisitor, mountainVisitorAt, !(preparationBrief.stage !== 20))
-  const morningCard = data.morningCard === undefined && legacyMorningCard ? result.morningCard : object(data.morningCard)
+  const morningCard = candidate('morningCard', legacyMorningCard)
   if (!validMorningCard(morningCard) || morningCard.stage > 0 && mountainVisitor.stage !== 26
     || morningCard.stage >= 9 && (!data.started || purse.borrowed !== EARLY_LOAN)) return invalid()
   result.morningCard = morningCardAt(morningCard.stage, morningCard.funds)
-  const cityPharmacy = data.cityPharmacy === undefined && legacyCityPharmacy ? result.cityPharmacy : object(data.cityPharmacy)
+  const cityPharmacy = candidate('cityPharmacy', legacyCityPharmacy)
   if (!validCityPharmacy(cityPharmacy) || cityPharmacy.stage > 0 && morningCard.stage !== 14
     || cityPharmacy.stage >= 11 && receipts.bluegrass !== true || cityPharmacy.stage >= 12 && receipts.boneflower !== true) return invalid()
   result.cityPharmacy = cityPharmacyAt(cityPharmacy.stage, cityPharmacy.primaryOrder, cityPharmacy.auxiliaryOrder)
@@ -251,7 +254,7 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const marketBracelets = history('marketBracelets', legacyMarketBracelets, validMarketBracelets, marketBraceletsAt, !(marketSearch.stage !== 20))
   const marketStandoff = history('marketStandoff', legacyMarketStandoff, validMarketStandoff, marketStandoffAt, !(marketBracelets.stage !== 28))
   const marketDiscovery = history('marketDiscovery', legacyMarketDiscovery, validMarketDiscovery, marketDiscoveryAt, !(marketStandoff.stage !== 34))
-  const marketTrade = data.marketTrade === undefined && legacyMarketTrade ? result.marketTrade : object(data.marketTrade)
+  const marketTrade = candidate('marketTrade', legacyMarketTrade)
   if (!validMarketTrade(marketTrade) || marketTrade.stage > 0 && marketDiscovery.stage !== 10) return invalid()
   result.marketTrade = marketTradeAt(marketTrade.stage, marketTrade.settlement)
   const marketReturn = history('marketReturn', legacyMarketReturn, validMarketReturn, marketReturnAt, !(marketTrade.stage !== 17))
@@ -268,7 +271,7 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   const firstDeparture = history('firstDeparture', legacyFirstDeparture, validFirstDeparture, firstDepartureAt, firstTechnique.stage === 19)
   const firstRoadMeeting = history('firstRoadMeeting', legacyFirstRoadMeeting, validFirstRoadMeeting, firstRoadMeetingAt, firstDeparture.stage === 9)
   const firstHallEntry = history('firstHallEntry', legacyFirstHallEntry, validFirstHallEntry, firstHallEntryAt, firstRoadMeeting.stage === 12)
-  const firstHallReading = data.firstHallReading === undefined && legacyFirstHallReading ? result.firstHallReading : object(data.firstHallReading)
+  const firstHallReading = candidate('firstHallReading', legacyFirstHallReading)
   if (!validFirstHallReading(firstHallReading) || firstHallReading.stage > 0 && firstHallEntry.stage !== 9) return invalid()
   result.firstHallReading = firstHallReadingAt(firstHallReading.stage, firstHallReading.record)
   const firstHallMatch = history('firstHallMatch', legacyFirstHallMatch, validFirstHallMatch, firstHallMatchAt, firstHallReading.stage === 8)
@@ -277,19 +280,19 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     : { ...(legacyFirstHallFirstReturn ? { returnRecord: 'none' } : {}), ...(legacyFirstHallConflict ? { ownPlaced: false, secondRecord: 'none' } : {}), ...(legacyFirstHallThreat ? { threatHeard: false } : {}), ...(legacyFirstHallExitResponse ? { yan: 'east' } : {}), ...(legacyFirstHallCheckout ? { checkoutRecord: 'none' } : {}), ...(legacyFirstHallLeaving ? { xunerPos: 'east', exitRecord: 'none' } : {}), ...(legacyFirstHallAftermath ? { ningAngry: false, handprint: false } : {}), ...object(data.firstHallApproach) }
   if (!validFirstHallApproach(firstHallApproach) || firstHallApproach.stage > 0 && firstHallTalk.stage !== 20) return invalid()
   result.firstHallApproach = firstHallApproachAt(firstHallApproach.stage, firstHallApproach.returnRecord, firstHallApproach.secondRecord, firstHallApproach.checkoutRecord, firstHallApproach.exitRecord)
-  const firstHallAfternoon = data.firstHallAfternoon === undefined && legacyFirstHallAfternoon ? result.firstHallAfternoon : object(data.firstHallAfternoon)
+  const firstHallAfternoon = candidate('firstHallAfternoon', legacyFirstHallAfternoon)
   if (!validFirstHallAfternoon(firstHallAfternoon) || (firstHallAfternoon.stage > 0 || firstHallAfternoon.walk > 0)
     && (firstHallApproach.stage !== 57 || firstHallAfternoon.record !== firstHallApproach.exitRecord)) return invalid()
   result.firstHallAfternoon = firstHallAfternoonAt(firstHallAfternoon.stage, firstHallAfternoon.walk, firstHallAfternoon.record)
-  const firstHallEvening = data.firstHallEvening === undefined && legacyFirstHallEvening ? result.firstHallEvening : object(data.firstHallEvening)
+  const firstHallEvening = candidate('firstHallEvening', legacyFirstHallEvening)
   if (!validFirstHallEvening(firstHallEvening) || (firstHallEvening.stage > 0 || firstHallEvening.walk > 0)
     && (firstHallAfternoon.stage !== 10 || firstHallEvening.record !== firstHallAfternoon.record)) return invalid()
   result.firstHallEvening = firstHallEveningAt(firstHallEvening.stage, firstHallEvening.walk, firstHallEvening.record)
-  const firstHallTeacher = data.firstHallTeacher === undefined && legacyFirstHallTeacher ? result.firstHallTeacher : object(data.firstHallTeacher)
+  const firstHallTeacher = candidate('firstHallTeacher', legacyFirstHallTeacher)
   if (!validFirstHallTeacher(firstHallTeacher) || firstHallTeacher.stage > 0
     && (firstHallEvening.stage !== 9 || firstHallTeacher.record !== firstHallEvening.record)) return invalid()
   result.firstHallTeacher = firstHallTeacherAt(firstHallTeacher.stage, firstHallTeacher.record)
-  const liquid = data.liquid === undefined && legacyLiquid ? result.liquid : object(data.liquid)
+  const liquid = candidate('liquid', legacyLiquid)
   if (!boundedInteger(liquid.stage, 6)
     || liquid.water !== (liquid.stage >= 2) || liquid.ready !== (liquid.stage === 6)) return invalid()
   result.liquid = { stage: liquid.stage, water: liquid.water as boolean, ready: liquid.ready as boolean }
@@ -307,7 +310,7 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (result.receipts.woodCore && (!result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   if (purse.spent !== spent || spent > (purse.borrowed as number)) return invalid()
   result.purse = { own: 0, borrowed: purse.borrowed as number, spent }
-  const market = data.market === undefined && legacyMarket ? result.market : object(data.market)
+  const market = candidate('market', legacyMarket)
   if (!boundedInteger(market.stage, 4)
     || market.blackIron !== (market.stage === 4 ? 1 : 0)) return invalid()
   if (market.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
@@ -315,7 +318,7 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (market.stage < marketTradeMinimum(marketTrade.stage)) return invalid()
   result.market = { stage: market.stage, blackIron: market.blackIron as number }
   if (liquid.stage > 0 && (!result.receipts.woodCore || market.stage !== 4)) return invalid()
-  const practice = data.practice === undefined && legacyPractice ? result.practice : object(data.practice)
+  const practice = candidate('practice', legacyPractice)
   if (!boundedInteger(practice.phase, 4) || !boundedInteger(practice.pulse, 3)
     || !boundedInteger(practice.score, 300) || !boundedInteger(practice.attempts, 1_000_000)) return invalid()
   if (practice.phase > 0 && !result.liquid.ready) return invalid()
@@ -323,14 +326,14 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
   if (practice.phase === 1 && (practice.pulse > 2 || practice.score > practice.pulse * 100)) return invalid()
   if (practice.phase >= 2 && (practice.pulse !== 3 || practice.score < 180)) return invalid()
   result.practice = { phase: practice.phase, pulse: practice.pulse, score: practice.score, attempts: practice.attempts }
-  const bracelet = data.bracelet === undefined && legacyBracelet ? result.bracelet : object(data.bracelet)
+  const bracelet = candidate('bracelet', legacyBracelet)
   if (!boundedInteger(bracelet.stage, 6) || bracelet.stage < braceletMinimum(marketBracelets.stage) || bracelet.gift !== (bracelet.stage >= 5 ? 'xuner' : 'none')
     || bracelet.stage > 0 && (!result.started || !result.receipts.bluegrass || !result.receipts.boneflower)) return invalid()
   result.bracelet = { stage: bracelet.stage, gift: bracelet.gift as 'none' | 'xuner' }
-  const growth = data.growth === undefined && legacyGrowth ? result.growth : object(data.growth)
+  const growth = candidate('growth', legacyGrowth)
   if (!boundedInteger(growth.stage, 3) || growth.stage > 0 && practice.phase !== 4) return invalid()
   result.growth = { stage: growth.stage }
-  const hall = data.hall === undefined && legacyHall ? result.hall : object(data.hall)
+  const hall = candidate('hall', legacyHall)
   if (!boundedInteger(hall.stage, 9) || hall.stage > 0 && practice.phase !== 4
     && !(firstHallReading.picked && hall.stage >= 2 && hall.stage <= (firstHallApproach.stage >= 52 ? 9 : firstHallApproach.stage >= 48 ? 8 : firstHallApproach.stage >= 28 ? 7 : firstHallApproach.stage >= 18 ? 6 : firstHallTalk.stage > 0 ? hallTalkMinimum(firstHallTalk.stage) : hallMatchMinimum(firstHallMatch.stage)))) return invalid()
   if (firstHallApproach.stage >= 18 && hall.stage < (firstHallApproach.stage >= 52 ? 9 : firstHallApproach.stage >= 48 ? 8 : firstHallApproach.stage >= 28 ? 7 : 6)) return invalid()
@@ -342,31 +345,31 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     : hall.stage >= 2 && hall.stage <= 5 ? 'reading-first' : 'none'
   if (scroll !== expectedScroll) return invalid()
   result.hall = { stage: hall.stage, scroll: scroll as EarlyTrainingState['hall']['scroll'] }
-  const teaching = data.teaching === undefined && legacyTeaching ? result.teaching : object(data.teaching)
+  const teaching = candidate('teaching', legacyTeaching)
   if (!boundedInteger(teaching.stage, 5) || teaching.stage > 0 && hall.stage !== 9) return invalid()
   result.teaching = { stage: teaching.stage }
-  const supervision = data.supervision === undefined && legacySupervision ? result.supervision : object(data.supervision)
+  const supervision = candidate('supervision', legacySupervision)
   if (!boundedInteger(supervision.stage, 2) || !boundedInteger(supervision.pulses, 4) || !boundedInteger(supervision.attempts, 1_000_000)
     || ((supervision.stage > 0 || supervision.attempts > 0) && teaching.stage !== 5)
     || supervision.stage === 0 && supervision.pulses !== 0
     || supervision.stage === 1 && supervision.pulses >= 4
     || supervision.stage === 2 && supervision.pulses !== 4) return invalid()
   result.supervision = { stage: supervision.stage, pulses: supervision.pulses, attempts: supervision.attempts }
-  const recovery = data.recovery === undefined && legacyRecovery ? result.recovery : object(data.recovery)
+  const recovery = candidate('recovery', legacyRecovery)
   if (!boundedInteger(recovery.stage, 7) || recovery.stage > 0 && supervision.stage !== 2
     || recovery.energy !== recoveryEnergyAt(recovery.stage)
     || recovery.period !== (recovery.stage >= 6 ? 'reviewed' : 'unreviewed')
     || recovery.result !== (recovery.stage === 7 ? 'fifth-duan' : 'none')) return invalid()
   result.recovery = { stage: recovery.stage, energy: recovery.energy as EarlyTrainingState['recovery']['energy'],
     period: recovery.period as EarlyTrainingState['recovery']['period'], result: recovery.result as EarlyTrainingState['recovery']['result'] }
-  const consignment = data.consignment === undefined && legacyConsignment ? result.consignment : object(data.consignment)
-  const appraisal = data.appraisal === undefined && legacyAppraisal ? result.appraisal : object(data.appraisal)
+  const consignment = candidate('consignment', legacyConsignment)
+  const appraisal = candidate('appraisal', legacyAppraisal)
   if (!boundedInteger(appraisal.stage, 8) || appraisal.stage > 0 && consignment.stage !== 5
     || appraisal.cloaked !== (appraisal.stage >= 1) || appraisal.speaker !== (appraisal.stage >= 4 ? 'yaolao' : 'self')
     || appraisal.tier !== (appraisal.stage >= 6 ? 2 : 0) || appraisal.card !== (appraisal.stage >= 7 ? 'black-entry' : 'none')) return invalid()
   result.appraisal = { stage: appraisal.stage, cloaked: appraisal.cloaked as boolean, speaker: appraisal.speaker as EarlyTrainingState['appraisal']['speaker'],
     tier: appraisal.tier as number, card: appraisal.card as EarlyTrainingState['appraisal']['card'] }
-  const fatherGift = data.fatherGift === undefined && legacyFatherGift ? result.fatherGift : object(data.fatherGift)
+  const fatherGift = candidate('fatherGift', legacyFatherGift)
   if (!boundedInteger(fatherGift.stage, 6)) return invalid()
   result.fatherGift = { stage: fatherGift.stage }
   if (!boundedInteger(consignment.stage, 5) || consignment.stage > 0 && recovery.stage !== 7
@@ -387,75 +390,75 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     || consignment.owner !== (consignment.stage === 5 ? consignmentOwnerAt(appraisal.stage, fatherGift.stage) : 'none')) return invalid()
   result.consignment = { ...parsed, stage: consignment.stage, funds: consignment.funds as number, spent: saleSpent,
     product: consignment.product as EarlyTrainingState['consignment']['product'], owner: consignment.owner as EarlyTrainingState['consignment']['owner'] }
-  const auction = data.auction === undefined && legacyAuction ? result.auction : object(data.auction)
+  const auction = candidate('auction', legacyAuction)
   if (!boundedInteger(auction.stage, 7) || auction.stage > 0 && appraisal.stage !== 8) return invalid()
   result.auction = { stage: auction.stage }
-  const settlement = data.settlement === undefined && legacySettlement ? result.settlement : object(data.settlement)
+  const settlement = candidate('settlement', legacySettlement)
   if (!boundedInteger(settlement.stage, 7) || settlement.stage > 0 && auction.stage !== 7
     || settlement.vip !== (settlement.stage >= 4) || settlement.net !== (settlement.stage >= 6 ? 39200 : 0)) return invalid()
   result.settlement = { stage: settlement.stage, net: settlement.net as number, vip: settlement.vip as boolean }
   if (fatherGift.stage > 0 && settlement.stage !== 7) return invalid()
-  const xunerVisit = data.xunerVisit === undefined && legacyXunerVisit ? result.xunerVisit : object(data.xunerVisit)
+  const xunerVisit = candidate('xunerVisit', legacyXunerVisit)
   if (!boundedInteger(xunerVisit.stage, 7) || xunerVisit.stage > 0 && fatherGift.stage !== 6
     || xunerVisit.card !== xunerCardAt(xunerVisit.stage)) return invalid()
   result.xunerVisit = { stage: xunerVisit.stage, card: xunerVisit.card as EarlyTrainingState['xunerVisit']['card'] }
-  const longSupplies = data.longSupplies === undefined && legacyLongSupplies ? result.longSupplies : object(data.longSupplies)
+  const longSupplies = candidate('longSupplies', legacyLongSupplies)
   if (!boundedInteger(longSupplies.stage, 6) || longSupplies.stage > 0 && xunerVisit.stage !== 7
     || longSupplies.herbs !== longSupplyPlaceAt(longSupplies.stage, 'herbs')
     || longSupplies.cores !== longSupplyPlaceAt(longSupplies.stage, 'cores')) return invalid()
   result.longSupplies = { stage: longSupplies.stage, herbs: longSupplies.herbs as LongSupplyPlace, cores: longSupplies.cores as LongSupplyPlace }
-  const forestStrike = data.forestStrike === undefined && legacyForestStrike ? result.forestStrike : object(data.forestStrike)
+  const forestStrike = candidate('forestStrike', legacyForestStrike)
   if (!validForestStrike(forestStrike) || forestStrike.stage > 0 && longSupplies.stage !== 6) return invalid()
   result.forestStrike = { stage: forestStrike.stage, beats: forestStrike.beats, attempts: forestStrike.attempts,
     tree: forestStrike.tree, result: forestStrike.result }
-  const seventhRoom = data.seventhRoom === undefined && legacySeventhRoom ? result.seventhRoom : object(data.seventhRoom)
+  const seventhRoom = candidate('seventhRoom', legacySeventhRoom)
   if (!validSeventhRoom(seventhRoom) || seventhRoom.stage > 0 && forestStrike.stage !== 7) return invalid()
   result.seventhRoom = { stage: seventhRoom.stage, beats: seventhRoom.beats, attempts: seventhRoom.attempts,
     drops: seventhRoom.drops, energy: seventhRoom.energy, period: seventhRoom.period, result: seventhRoom.result }
-  const palmPair = data.palmPair === undefined && legacyPalmPair ? result.palmPair : object(data.palmPair)
+  const palmPair = candidate('palmPair', legacyPalmPair)
   if (!validPalmPair(palmPair) || palmPair.stage > 0 && seventhRoom.stage !== 8) return invalid()
   result.palmPair = { stage: palmPair.stage, beats: palmPair.beats, attempts: palmPair.attempts,
     first: palmPair.first, second: palmPair.second, teaching: palmPair.teaching, period: palmPair.period }
-  const preliminary = data.preliminary === undefined && legacyPreliminary ? result.preliminary : object(data.preliminary)
+  const preliminary = candidate('preliminary', legacyPreliminary)
   if (!validPreliminary(preliminary) || preliminary.stage > 0 && palmPair.stage !== 10) return invalid()
   result.preliminary = { stage: preliminary.stage, mei: preliminary.mei, xuner: preliminary.xuner, yan: preliminary.yan }
-  const keChallenge = data.keChallenge === undefined && legacyKeChallenge ? result.keChallenge : object(data.keChallenge)
+  const keChallenge = candidate('keChallenge', legacyKeChallenge)
   if (!validKeChallenge(keChallenge) || (keChallenge.stage > 0 || keChallenge.attempts > 0) && preliminary.stage !== 16) return invalid()
   result.keChallenge = { stage: keChallenge.stage, beats: keChallenge.beats, attempts: keChallenge.attempts,
     verdict: keChallenge.verdict, invitation: keChallenge.invitation }
-  const eighthTraining = data.eighthTraining === undefined && legacyEighthTraining ? result.eighthTraining : object(data.eighthTraining)
+  const eighthTraining = candidate('eighthTraining', legacyEighthTraining)
   if (!validEighthTraining(eighthTraining) || eighthTraining.stage > 0 && keChallenge.stage !== 12) return invalid()
   result.eighthTraining = { stage: eighthTraining.stage, beats: eighthTraining.beats, attempts: eighthTraining.attempts,
     outing: eighthTraining.outing, period: eighthTraining.period, energy: eighthTraining.energy, result: eighthTraining.result }
-  const ceremonyGuests = data.ceremonyGuests === undefined && legacyCeremonyGuests ? result.ceremonyGuests : object(data.ceremonyGuests)
+  const ceremonyGuests = candidate('ceremonyGuests', legacyCeremonyGuests)
   if (!validCeremonyGuests(ceremonyGuests) || ceremonyGuests.stage > 0 && eighthTraining.stage !== 15) return invalid()
   result.ceremonyGuests = { stage: ceremonyGuests.stage, sword: ceremonyGuests.sword, introduced: ceremonyGuests.introduced }
-  const ceremonialTest = data.ceremonialTest === undefined && legacyCeremonialTest ? result.ceremonialTest : object(data.ceremonialTest)
+  const ceremonialTest = candidate('ceremonialTest', legacyCeremonialTest)
   if (!validCeremonialTest(ceremonialTest) || ceremonialTest.stage > 0 && ceremonyGuests.stage !== 12) return invalid()
   result.ceremonialTest = { stage: ceremonialTest.stage, rite: ceremonialTest.rite, inspected: ceremonialTest.inspected, result: ceremonialTest.result }
-  const ningFirst = data.ningFirst === undefined && legacyNingFirst ? result.ningFirst : object(data.ningFirst)
+  const ningFirst = candidate('ningFirst', legacyNingFirst)
   if (!validNingFirst(ningFirst) || (ningFirst.stage > 0 || ningFirst.attempts > 0) && ceremonialTest.stage !== 13) return invalid()
   result.ningFirst = { stage: ningFirst.stage, beats: ningFirst.beats, attempts: ningFirst.attempts, pill: ningFirst.pill, verdict: ningFirst.verdict }
-  const ningSecond = data.ningSecond === undefined && legacyNingSecond ? result.ningSecond : object(data.ningSecond)
+  const ningSecond = candidate('ningSecond', legacyNingSecond)
   if (!validNingSecond(ningSecond) || (ningSecond.stage > 0 || ningSecond.attempts > 0) && ningFirst.stage !== 10) return invalid()
   result.ningSecond = { stage: ningSecond.stage, beats: ningSecond.beats, attempts: ningSecond.attempts, pill: ningSecond.pill,
     ignored: ningSecond.ignored, contact: ningSecond.contact, verdict: ningSecond.verdict }
-  const ceremonyVerdict = data.ceremonyVerdict === undefined && legacyCeremonyVerdict ? result.ceremonyVerdict : object(data.ceremonyVerdict)
+  const ceremonyVerdict = candidate('ceremonyVerdict', legacyCeremonyVerdict)
   if (!validCeremonyVerdict(ceremonyVerdict) || ceremonyVerdict.stage > 0 && ningSecond.stage !== 8) return invalid()
   result.ceremonyVerdict = { stage: ceremonyVerdict.stage, ...ceremonyVerdictAt(ceremonyVerdict.stage) }
-  const qiPavilionEntry = data.qiPavilionEntry === undefined && legacyQiPavilionEntry ? result.qiPavilionEntry : object(data.qiPavilionEntry)
+  const qiPavilionEntry = candidate('qiPavilionEntry', legacyQiPavilionEntry)
   if (!validQiPavilionEntry(qiPavilionEntry) || qiPavilionEntry.stage > 0 && ceremonyVerdict.stage !== 16) return invalid()
   result.qiPavilionEntry = { stage: qiPavilionEntry.stage, ...qiPavilionEntryAt(qiPavilionEntry.stage) }
-  const qiBarrier = data.qiPavilionBarrier === undefined && legacyQiBarrier ? result.qiPavilionBarrier : object(data.qiPavilionBarrier)
+  const qiBarrier = candidate('qiPavilionBarrier', legacyQiBarrier)
   if (!validQiBarrier(qiBarrier) || (qiBarrier.stage > 0 || qiBarrier.attempts > 0) && qiPavilionEntry.stage !== 12) return invalid()
   result.qiPavilionBarrier = { stage: qiBarrier.stage, beats: qiBarrier.beats, attempts: qiBarrier.attempts, ...qiBarrierAt(qiBarrier.stage) }
-  const qiScroll = data.qiPavilionScroll === undefined && legacyQiPavilionScroll ? result.qiPavilionScroll : object(data.qiPavilionScroll)
+  const qiScroll = candidate('qiPavilionScroll', legacyQiPavilionScroll)
   if (!validQiPavilionScroll(qiScroll) || qiScroll.stage > 0 && qiBarrier.stage !== 10) return invalid()
   result.qiPavilionScroll = { stage: qiScroll.stage, ...qiPavilionScrollAt(qiScroll.stage) }
-  const qiExchange = data.qiPavilionExchange === undefined && legacyQiPavilionAid ? result.qiPavilionExchange : object(data.qiPavilionExchange)
+  const qiExchange = candidate('qiPavilionExchange', legacyQiPavilionAid)
   if (!validQiPavilionExchange(qiExchange) || qiExchange.stage > 0 && qiScroll.stage !== 6) return invalid()
   result.qiPavilionExchange = { stage: qiExchange.stage, ...qiPavilionExchangeAt(qiExchange.stage) }
-  const qiAid = data.qiPavilionAid === undefined && legacyQiPavilionAid ? result.qiPavilionAid : object(data.qiPavilionAid)
+  const qiAid = candidate('qiPavilionAid', legacyQiPavilionAid)
   if (!validQiPavilionAid(qiAid) || (qiAid.stage > 0 || qiAid.attempts > 0) && qiExchange.stage !== 8) return invalid()
   result.qiPavilionAid = { stage: qiAid.stage, beats: qiAid.beats, attempts: qiAid.attempts, ...qiPavilionAidAt(qiAid.stage) }
   return result

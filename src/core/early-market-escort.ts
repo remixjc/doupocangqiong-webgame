@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -48,7 +49,7 @@ export function advanceEarlyMarketEscort(state: GameState, view: MarketEscortVie
   if (scene.actor !== action.actor || scene.operation !== action.operation) return fail('人物或操作次序不符。')
   const next = structuredClone(state)
   next.earlyTraining.marketEscort = marketEscortAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 23 ? '入坊与护卫安排归档，继续寻找木核。' : '这一步已保存。' }
+  return successfulTransaction(next, task.stage === 23 ? '入坊与护卫安排归档，继续寻找木核。' : '这一步已保存。')
 }
 export function submitEarlyMarketEscort(store: GameStore, view: MarketEscortView, action: MarketEscortAction): boolean {
   const result = advanceEarlyMarketEscort(store.getSnapshot().state, view, action)

@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -48,7 +49,7 @@ export function advanceEarlyMarketStandoff(state: GameState, view: MarketStandof
   if (scene.actor !== action.actor || scene.operation !== action.operation) return fail('人物或操作次序不符。')
   const next = structuredClone(state)
   next.earlyTraining.marketStandoff = marketStandoffAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 33 ? '非战斗离场已归档，发现与成交待续。' : '这一步已保存。' }
+  return successfulTransaction(next, task.stage === 33 ? '非战斗离场已归档，发现与成交待续。' : '这一步已保存。')
 }
 export function submitEarlyMarketStandoff(store: GameStore, view: MarketStandoffView, action: MarketStandoffAction): boolean {
   const result = advanceEarlyMarketStandoff(store.getSnapshot().state, view, action)

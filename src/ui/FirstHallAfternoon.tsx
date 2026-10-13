@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -35,8 +36,8 @@ export default function FirstHallAfternoon({ state, onBack }: { state: GameState
     <p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p>
     {(state.earlyTraining.firstHallEvening.stage > 0 || state.earlyTraining.firstHallEvening.walk > 0) && <p>此图回顾当时山上位置，夜间实际位置另存。</p>}
     <p>{task.record === 'recalled' ? '历史回顾，更高保管保持。' : '本人持同一第二借卷。'}第一卷归架、她的卷留堂。回房另续。</p>
-    <WalkControls><SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与记录</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>薰儿同行</SecondaryButton>
+    <WalkControls>{actorButton(actor, setActor, 'yan', "本人行走与记录")}
+      {actorButton(actor, setActor, 'xuner', "薰儿同行")}
       <WalkDirectionButtons prefix="午后本人" onMove={direction => act(`move-${direction}`)} />
     </WalkControls>
     <EarlyMap ref={field} aria-label="整个午后同行地图" viewBox="0 0 480 380" onKeyDown={event => {

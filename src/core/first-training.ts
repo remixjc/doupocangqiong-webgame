@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import type { GameState } from './model'
@@ -61,7 +62,7 @@ export function advanceFirstTraining(state: GameState, yan: EarlyWalkPosition, a
   } else if (action.marker !== undefined) return fail('仅调息步骤接受呼吸标记。')
   const next = structuredClone(state)
   next.earlyTraining.firstTraining = firstTrainingAt(stage, beats, attempts)
-  return { state: next, ok: true, message: stage === 2 && beats === 0 ? '偏离节奏，本轮免费重试，旧药液保持。' : '当前修炼断点已保存。' }
+  return successfulTransaction(next, stage === 2 && beats === 0 ? '偏离节奏，本轮免费重试，旧药液保持。' : '当前修炼断点已保存。')
 }
 export function submitFirstTraining(store: GameStore, yan: EarlyWalkPosition, action: FirstTrainingAction): boolean {
   return commitEarlyResult(store, advanceFirstTraining(store.getSnapshot().state, yan, action), 'firstTraining')

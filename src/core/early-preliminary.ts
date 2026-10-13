@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -45,18 +47,18 @@ export function earlyPreliminaryBlock(state: GameState, position: EarlyWalkPosit
 }
 export function advanceEarlyPreliminary(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: PreliminaryAction): Transaction {
   const blocked = earlyPreliminaryBlock(state, entryPosition)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.preliminary, scene = preliminaryScenes[task.stage]
   if (!scene || !validPreliminary(task) || !fieldsMatch(action, task))
-    return { state, ok: false, message: '预测记录已变化，请依当前名簿和步骤继续。' }
+    return failedTransaction(state, '预测记录已变化，请依当前名簿和步骤继续。')
   if (scene.actor !== action.actor || scene.operation !== action.operation)
-    return { state, ok: false, message: '当前点名与被测人物不符，三份结果未改变。' }
+    return failedTransaction(state, '当前点名与被测人物不符，三份结果未改变。')
   if (!nearPreliminaryPlace(position, scene.place))
-    return { state, ok: false, message: `先走近${preliminaryPlaces[scene.place].label}。` }
+    return failedTransaction(state, `先走近${preliminaryPlaces[scene.place].label}。`)
   const next = structuredClone(state)
   next.earlyTraining.preliminary = { stage: task.stage + 1, ...preliminaryAt(task.stage + 1) }
-  return { state: next, ok: true, message: task.stage === 10 ? '本人触碑已记七段；还需高台反应、测试员宣读与结束归档。'
-    : task.stage === 15 ? '预测已归档，三人结果分别保留；后续挑战尚待接续。' : '预测步骤已保存。' }
+  return successfulTransaction(next, task.stage === 10 ? '本人触碑已记七段；还需高台反应、测试员宣读与结束归档。'
+    : task.stage === 15 ? '预测已归档，三人结果分别保留；后续挑战尚待接续。' : '预测步骤已保存。')
 }
 export function submitEarlyPreliminary(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: PreliminaryAction): boolean {
   const result = advanceEarlyPreliminary(store.getSnapshot().state, entryPosition, position, action)

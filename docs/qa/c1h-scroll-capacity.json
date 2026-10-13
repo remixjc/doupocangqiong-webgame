@@ -1,0 +1,502 @@
+{
+  "version": "0.79.1",
+  "date": "2026-10-13",
+  "base": "a6aecf0bf5c2a74fc5d5062af6c9269f5edc398d",
+  "inverse": [
+    {
+      "file": "src/core/early-appraisal.ts",
+      "sha256": "768490eaf97c2b9a1b28373d13316fc12c3647b25c5e716006f07d833b7e68c6"
+    },
+    {
+      "file": "src/core/early-auction.ts",
+      "sha256": "072ba755893fecf41960f779d584c7569007a8797c1f9f73eb0cb66fda8a7819"
+    },
+    {
+      "file": "src/core/early-ceremonial-test.ts",
+      "sha256": "820c161777b8f85e93b806e71aac0f296efbcd37f477893916fc207397da372f"
+    },
+    {
+      "file": "src/core/early-ceremony-guests.ts",
+      "sha256": "12a7c002786f9b394def46b4f3b84f049783b36b52e831ff648b4689fc2c604d"
+    },
+    {
+      "file": "src/core/early-ceremony-verdict.ts",
+      "sha256": "e4c4839631702169ba8c9a083493980ae9157ff274439dc303d69de6338626c9"
+    },
+    {
+      "file": "src/core/early-consignment.ts",
+      "sha256": "098714d03fc97312e7d21d5bc0ea6f5f81a9b6fb7a75a1dded5b06b65705c843"
+    },
+    {
+      "file": "src/core/early-eighth-training.ts",
+      "sha256": "2b213bdcf58a5611903f67a684300fcafc224bd47bde8eb81c6e88c9c565fc0b"
+    },
+    {
+      "file": "src/core/early-father-gift.ts",
+      "sha256": "cca3da331b0b061719390ac0642674294fc57bdd956c7f4c85f503d6d649d183"
+    },
+    {
+      "file": "src/core/early-forest-strike.ts",
+      "sha256": "0f20449930de44fedd200268735aa94547446a87a7938a9ef1d8faa55cb4ee9f"
+    },
+    {
+      "file": "src/core/early-growth.ts",
+      "sha256": "dd91f47530dbfef21ccbde5745c60f27f94f3d2f6d6f046ba0a466f914f70e90"
+    },
+    {
+      "file": "src/core/early-hall.ts",
+      "sha256": "2db1a511be13f605ca09411786660d5712f5292cd9f82e637a145b6ee542f4d4"
+    },
+    {
+      "file": "src/core/early-ke-challenge.ts",
+      "sha256": "525596c84e2dbfc965ec7c7693088cc5306f2841dcee9918bcbb907d7641971b"
+    },
+    {
+      "file": "src/core/early-long-supplies.ts",
+      "sha256": "83f971a226942c06f8d926c7269ead6fe7a6b2936b4b03d91977813560d63f7e"
+    },
+    {
+      "file": "src/core/early-ning-first.ts",
+      "sha256": "706b6bdedef0ea6e683d77a1936b7fad644d1c25797a0a598af789a8d755ec48"
+    },
+    {
+      "file": "src/core/early-ning-second.ts",
+      "sha256": "9a38da1c31158f19d68748713e4c6b463489dd214d6a77f94050b1282d186e05"
+    },
+    {
+      "file": "src/core/early-palm-pair.ts",
+      "sha256": "b279e8639a22b6f2da66276d436b0cddb904a35c17d63a3cea02d53eadda1e2a"
+    },
+    {
+      "file": "src/core/early-preliminary.ts",
+      "sha256": "d258eb6b9e7554d3c856e19dc4ae0992472037c56fa83c2c3e679a406b5c541e"
+    },
+    {
+      "file": "src/core/early-qi-pavilion.ts",
+      "sha256": "f5b2af5b2fb2ffd11f64ef2b0bcada21c9a6351fee92d128e83aa9c9d73b2ad1"
+    },
+    {
+      "file": "src/core/early-recovery.ts",
+      "sha256": "5730854949036317e5cbab8cfc3c4c669227b3a0445804a24c8297f8abf8ea7a"
+    },
+    {
+      "file": "src/core/early-room.ts",
+      "sha256": "8984b3cf5ad12c2d54660f143cca0aaaf2468b76f979869845443a6bbfbee9dc"
+    },
+    {
+      "file": "src/core/early-settlement.ts",
+      "sha256": "61db3e434eeca587b80c680b1d208375f31371beedd3378cfc956822f4cd2577"
+    },
+    {
+      "file": "src/core/early-seventh-room.ts",
+      "sha256": "4992ac09355a59b27e8a3094c67b1652544149574c01ddca867a641c63910161"
+    },
+    {
+      "file": "src/core/early-supervision.ts",
+      "sha256": "493ad17f51d37db5d69f24272943e46c2d95eac85e1d017a5118cf504a58d233"
+    },
+    {
+      "file": "src/core/early-teaching.ts",
+      "sha256": "16f0e646727140f7f79ae34c68988b9a1891616de4e037d4b6ffcf25c9f57a07"
+    },
+    {
+      "file": "src/core/early-training.ts",
+      "sha256": "da921665cd96783a148d7b0af017814083a560b4cd90902ee411c44faedd9a06"
+    },
+    {
+      "file": "src/core/early-xuner-visit.ts",
+      "sha256": "e9eee64fea3a623d95b70eb05125258dce00d1db17c6ea041d3082e30bd7fdb1"
+    },
+    {
+      "file": "src/core/early-apprentice.ts",
+      "sha256": "99d9f4b4cc034cf9730d1088e328ecea3920e94cf727c9e1a8d488b3d0927fda"
+    },
+    {
+      "file": "src/core/early-bracelet.ts",
+      "sha256": "73ff0cacbd213bbc7034f0f9517771551cfd530c4ece1826a1fc524886b98ac6"
+    },
+    {
+      "file": "src/core/early-city-pharmacy.ts",
+      "sha256": "68067d88fcdb37b02c7b699ee00c61f331098fe2933016370307ec5bb1650971"
+    },
+    {
+      "file": "src/core/early-family-compensation.ts",
+      "sha256": "07bc93afe71e3881200f24d4897e0a64d0029b9448d567a030bd8343f9b04d1a"
+    },
+    {
+      "file": "src/core/early-family-contract.ts",
+      "sha256": "9021a2cb5950fe0031e104115be17db614abd119358e53d8ee18200187c5383d"
+    },
+    {
+      "file": "src/core/early-family-visit.ts",
+      "sha256": "d64e79c3dce4624ba6d889ee7fcd977061d6e542c8baef8cf4cdba25f2eb1b37"
+    },
+    {
+      "file": "src/core/early-iron.ts",
+      "sha256": "f87c8f43c5b9b2d2f5b1db41dd2f780e7f9595bfd65b0d7185fea3c6d3c35d44"
+    },
+    {
+      "file": "src/core/early-market-bracelets.ts",
+      "sha256": "37594e8787cc93e90f0006efe83dfb5ff6442a4353b7ccd41351a15c557ad61b"
+    },
+    {
+      "file": "src/core/early-market-discovery.ts",
+      "sha256": "67cf05786fcf8cc19aad718590d32e672cf9c3294af8548c50502941d0c86a0a"
+    },
+    {
+      "file": "src/core/early-market-escort.ts",
+      "sha256": "25f63648a6261d774ddcdf2d90db32a9ae8a4aec216372dd062b2679eda7a236"
+    },
+    {
+      "file": "src/core/early-market-return.ts",
+      "sha256": "aa3445d7efd7da6294cf33b549e24e1b2e7c75d611c68145c2592d05ae8ec9b0"
+    },
+    {
+      "file": "src/core/early-market-search.ts",
+      "sha256": "89d1250c2d80e45b8be246ac61a245a7bd52d339d684fe4af89159433d789529"
+    },
+    {
+      "file": "src/core/early-market-standoff.ts",
+      "sha256": "ce6c9240a2a1317707ee0bb50f60e19a343e8dc7a77253878cbf35ec6395b8b1"
+    },
+    {
+      "file": "src/core/early-market-trade.ts",
+      "sha256": "88c8e0a46de47745bffaa75fb2ab50748768d160e86011922a9207a8bcefdead"
+    },
+    {
+      "file": "src/core/early-method-discussion.ts",
+      "sha256": "1da70a4b74aa9a255b56655472aa26c34c5c2ea377549b21d6aef80ecd8456c1"
+    },
+    {
+      "file": "src/core/early-morning-card.ts",
+      "sha256": "51ef81eeaf68c4104a20b976ce19ffd0d1d20045efe7680561bf6ee5cf2af55e"
+    },
+    {
+      "file": "src/core/early-mountain-ring.ts",
+      "sha256": "4680f3dd1c10b0e6fc2a49c785cbdee3875c9d87d1349b9dbf758c42de006d59"
+    },
+    {
+      "file": "src/core/early-mountain-visitor.ts",
+      "sha256": "abc44b49e2e564208b5f343e667b4d94196104ce3f9f590e86daaf5794582497"
+    },
+    {
+      "file": "src/core/early-preparation-brief.ts",
+      "sha256": "c7140a869111bf628bd7d153a6037e0caaa3e5fd17d24c80bc793de3377156d3"
+    },
+    {
+      "file": "src/core/early-qi-aid.ts",
+      "sha256": "55e8ad187988c6f9a97e1eec6671f927df9a123959610bf19154647f526ed4e2"
+    },
+    {
+      "file": "src/core/early-qi-barrier.ts",
+      "sha256": "84bd4301e9c49793aeae17a33900e278f160b0eb17819a31e61e39cc85b70851"
+    },
+    {
+      "file": "src/core/early-qi-exchange.ts",
+      "sha256": "f4078e9cd3bef7d42a8731a45b223380e4d586a03cfdc08d214250a28ac40561"
+    },
+    {
+      "file": "src/core/early-qi-scroll.ts",
+      "sha256": "2409c890a49f988802a532d44c84027bce3cfdb402f37ba978715b4fec9b1e48"
+    },
+    {
+      "file": "src/core/early-refining.ts",
+      "sha256": "22dc3a9224ba96a04f2ffd111d57cc3d2cd3a753264acd544f8f86e8568d3038"
+    },
+    {
+      "file": "src/core/early-training-state.ts",
+      "sha256": "0b12839a514f9b856cd8756eb028e0b59c4e564bc748f5b939b7e0d3da299d6f"
+    },
+    {
+      "file": "src/core/events.ts",
+      "sha256": "0b39f5dbd8ad471265144bf9f30b4125cb1f69b037f8c3bb37e91a54d5449f36"
+    },
+    {
+      "file": "src/core/first-departure.ts",
+      "sha256": "5f725a57a8f0c61b44e4b1fb2aba78e2ef6033da9bd28ca9bcf3234f67a3cc9f"
+    },
+    {
+      "file": "src/core/first-hall-approach.ts",
+      "sha256": "4014fd9ee3c5ab8ea210b242b9bd3771cbf73f4f9cda4978d41e8c5eca40d9c8"
+    },
+    {
+      "file": "src/core/first-hall-entry.ts",
+      "sha256": "c53c4ab4848b11a830bac188da1810dba325b80bcfcfebcb5f088c73731d1290"
+    },
+    {
+      "file": "src/core/first-hall-match.ts",
+      "sha256": "8e5b9e07c8933fc6840828695454554e9495c541151820b6dbb1a79a431b8a54"
+    },
+    {
+      "file": "src/core/first-hall-reading.ts",
+      "sha256": "2cf993ba6300195ebb46f7c878028bbe7c4a7be2ab72b26f05b40b7832331bb7"
+    },
+    {
+      "file": "src/core/first-hall-talk.ts",
+      "sha256": "2c66c781675b5584d09450b91c8a19213190fbf735b4904db5becb88a78ce1eb"
+    },
+    {
+      "file": "src/core/first-hall-teacher.ts",
+      "sha256": "58137b84e936a13eaa578f51ac53a7cbdf65df264bf5bd587f7195480c55d36b"
+    },
+    {
+      "file": "src/core/first-road-meeting.ts",
+      "sha256": "29dd2d9dc5b86cdbfcc9796c4817f34f60b149fb90ffd4e146eb3a051d2ef740"
+    },
+    {
+      "file": "src/core/first-technique.ts",
+      "sha256": "51ed3aa607485d30dbe3e3daa36a8ff3acd9f64d4e17d25993b4d2e0ca5688f5"
+    },
+    {
+      "file": "src/core/first-training.ts",
+      "sha256": "9a27317350e451705d327bb4849e84870dc737626317e0d3fdc1a875d186cf8b"
+    },
+    {
+      "file": "src/core/hall-walk-transaction.ts",
+      "sha256": "9e3ab988583c705aeb593d4c3205d89506b3e48c979418099e7d3e853e02754d"
+    },
+    {
+      "file": "src/core/rules.ts",
+      "sha256": "a299e30efb11441081f62699141a19c0aa42c19a826e7816aa3487e552352884"
+    },
+    {
+      "file": "src/ui/EarlyTeaching.tsx",
+      "sha256": "7caaaace08e2b9b73f41a0e07744291839b674d237aa1d123b24bf899561224f"
+    },
+    {
+      "file": "src/ui/FirstDeparture.tsx",
+      "sha256": "9259ab91549049da868b63897fa0b882386aac33071c9e6909b31fde82930dba"
+    },
+    {
+      "file": "src/ui/FirstHallAfternoon.tsx",
+      "sha256": "3a6a7d746093fed9029731e689469c719b690a7ecb76bc815fe60daa983f6df5"
+    },
+    {
+      "file": "src/ui/FirstHallApproach.tsx",
+      "sha256": "ca3945acb2b72e5f02acca0c54d2468196f0aa2315eefba1d43c5775bc3549b5"
+    },
+    {
+      "file": "src/ui/FirstHallEntry.tsx",
+      "sha256": "f67ef48488e9e6cb474219aa8673279eaa2e3742b05d4468a26df92ff74727b8"
+    },
+    {
+      "file": "src/ui/FirstHallEvening.tsx",
+      "sha256": "95ed98b40162894598f206a0dfd2aa7db59681149f43aa97614a3a46e5aceba9"
+    },
+    {
+      "file": "src/ui/FirstHallMatch.tsx",
+      "sha256": "5b9e6f337d269b050325b8d9340107e7cbd79925ff828fbb1046a591095d3696"
+    },
+    {
+      "file": "src/ui/FirstHallReading.tsx",
+      "sha256": "201b6b334e6f6d5f3419c3e5bdcd3ca29cfa6468b139510b2fa6c9dc47e8b4e0"
+    },
+    {
+      "file": "src/ui/FirstHallTalk.tsx",
+      "sha256": "7f4ef47905f0462a3fdae1edb848dd6c78a77c8f049e2da1478371cb88da7a69"
+    },
+    {
+      "file": "src/ui/FirstHallTeacher.tsx",
+      "sha256": "087745f27214512409955b8c9bd2685668fb7f162c993c198ba92c256d42a346"
+    },
+    {
+      "file": "src/ui/FirstRoadMeeting.tsx",
+      "sha256": "a82f39c78397c4976d82b24771169366e91b1d81f3de726843efd22992014ce3"
+    },
+    {
+      "file": "src/ui/TeacherRoom.tsx",
+      "sha256": "699b66963c3afe58beb628ba6a8e35266d8490fb44d7fcd812d03bb6ffc9ff93"
+    },
+    {
+      "file": "src/core/early-result.ts",
+      "sha256": "a3a83183a30362f8112428f92abc4466f285bd56430decfc862590fdbe6a0fa2"
+    },
+    {
+      "file": "src/ui/Buttons.tsx",
+      "sha256": "ec8ad817acb7e05a02e3bd377ac2502345984fb12859e1ccb7f74869999237aa"
+    }
+  ],
+  "successfulReturns": 85,
+  "failedReturns": 114,
+  "actorFactories": 26,
+  "legacyCandidates": 39,
+  "decoded": 309,
+  "transactionIdentity": 1854,
+  "invalidComparisons": 312,
+  "actorComparisons": 48,
+  "native": [
+    {
+      "name": "scrollCapacityMainFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791898983964.json",
+      "prior": "teacherMainAfterNavigation",
+      "sha256": "731aab5b7f202bf7da226db0209696ae99e578502da7bd5189453ffec2b98528",
+      "entireStateEqual": true
+    },
+    {
+      "name": "scrollCapacityMaterialsFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791898986318.json",
+      "prior": "teacherMaterialsStep07",
+      "sha256": "d1a4f760b70c6e87da768e1a496134e286c58b1c5e4ed1b06e570bdc42177c29",
+      "entireStateEqual": true
+    },
+    {
+      "name": "scrollCapacityIntactFinal",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791898988990.json",
+      "prior": "teacherIntactMigrated",
+      "sha256": "c1b91d61b497a4913ca44ed5b28416ec92bfedc0bc27e92484298fbd0251c55e",
+      "entireStateEqual": true
+    },
+    {
+      "name": "scrollCapacityMainFinalAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791899040194.json",
+      "prior": "scrollCapacityMainFinal",
+      "sha256": "c3fc8f887144b130afb7f3177597b479fc62e946550db4d679fa66cc7bd68d98",
+      "entireStateEqual": true
+    }
+  ],
+  "budget": {
+    "initial": 489935,
+    "gzip": 164200,
+    "total": 1844162,
+    "savedTotal": 5735,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "browser": {
+    "records": [
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MainAfterReload",
+        "errors": []
+      },
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MaterialsAfterReload",
+        "errors": []
+      },
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MainRepeated",
+        "errors": []
+      },
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MainReopened",
+        "errors": []
+      },
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MainFinalAfterReload",
+        "errors": [
+          {
+            "level": "error",
+            "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+            "timestamp": "2026-10-13T13:41:23.932Z",
+            "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+          }
+        ]
+      },
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MaterialsFinalAfterReload",
+        "errors": []
+      },
+      {
+        "dom": "×\n房中 / 老声与有限背景\n抬头辨认老师，再问眼前的一点。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌\n\n有限背景已归档。老师未走向桌面、未翻卷、未传新技。\n\n暂离房中问答 · 保留断点",
+        "focus": "老师现身与有限背景地图",
+        "scroll": {
+          "x": "320",
+          "y": "255"
+        },
+        "teacher": "translate(260 190)",
+        "yan": "translate(300 270)",
+        "name": "MainFinalRepeated",
+        "errors": [
+          {
+            "level": "error",
+            "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/FirstHallAfternoon-Q-Wy51xA.js",
+            "timestamp": "2026-10-13T13:41:23.932Z",
+            "url": "http://127.0.0.1:4185/assets/index-CZXtLnfD.js"
+          }
+        ]
+      }
+    ],
+    "oldEvening": "×\n天黑之后 / 回房与同一借卷\n夜路走回房中，借卷放在身旁。\n\n方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。\n\n夜间本人操作\n观察薰儿分路\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n本人 · 疲惫放松\n\n回房 9/9 · 路步 0/0 · 夜间回房 · 同卷留桌，茶与疲惫归档\n\n夜间回房已归档。同卷留桌，老师来访另续。\n\n暂离夜间回房 · 保留断点",
+    "oldAfternoon": {
+      "dom": "×\n离堂之后 / 整个午后\n同行山路，直到天黑。\n\n方向键/WASD走路并保存，E记时段。原创路线与游戏时段。\n\n此图回顾当时山上位置，夜间实际位置另存。\n\n本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。\n\n本人行走与记录\n薰儿同行\n↑\n←\n↓\n→\n堂外\n附近山路\n薰儿\n本人\n\n午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0\n\n整个午后已归档\n\n三段同行与夜色保持，仍在山上。\n\n暂离整个午后 · 保留断点",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    "intact": {
+      "title": "斗破苍穹 · 异火之路",
+      "entry": 0,
+      "alerts": 0,
+      "errors": [
+        {
+          "level": "error",
+          "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4191/assets/EarlyTrainingPanel-FBvr68J8.js",
+          "timestamp": "2026-10-13T13:41:40.646Z",
+          "url": "http://127.0.0.1:4191/assets/index-CZXtLnfD.js"
+        }
+      ]
+    },
+    "returnFocus": "接续房中老师现身与有限背景",
+    "mainWholeDOMEqual": true,
+    "materialsWholeDOMEqual": true,
+    "historicalModuleFetchFailureRecovered": true
+  },
+  "validation": {
+    "vitestFiles": 156,
+    "vitestTests": 923,
+    "nodeTests": 11,
+    "firstCheck": "one existing replay test exceeded 5000ms; full independent rerun passed without changing limit",
+    "secondCheck": "passed",
+    "browserModuleFailure": "old lazy chunk replaced during local rebuild; recovered after real reload, exact save unchanged"
+  },
+  "limitations": "No new narrative/checkpoint/award signed; 28 condensed chapters, full-cycle and real-device/source/release gates remain open."
+}

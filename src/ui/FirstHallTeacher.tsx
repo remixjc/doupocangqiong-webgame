@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
 import { gameStore } from '../core/store'
@@ -27,8 +28,8 @@ export default function FirstHallTeacher({ state, onBack }: { state: GameState; 
     <Eyebrow>房中 / 老声与有限背景</Eyebrow><h2>抬头辨认老师，再问眼前的一点。</h2>
     <p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p>
     {task.record === 'recalled' && <p>详细历史回顾，旧教学、保管与奖励保持。</p>}
-    <WalkControls><SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>房中本人操作</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>观察房中老师</SecondaryButton></WalkControls>
+    <WalkControls>{actorButton(actor, setActor, 'yan', "房中本人操作")}
+      {actorButton(actor, setActor, 'teacher', "观察房中老师")}</WalkControls>
     <EarlyMap ref={field} aria-label="老师现身与有限背景地图" viewBox="0 0 480 380" onKeyDown={event => {
       if (event.key.toLowerCase() !== 'e' || event.repeat || event.ctrlKey || event.altKey || event.metaKey) return
       event.preventDefault(); if (scene && actor === scene.actor) act(scene.operation)

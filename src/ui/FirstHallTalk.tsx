@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -39,9 +40,9 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
     <Eyebrow>斗技堂 / 东架会面</Eyebrow><h2>各自拿着阅读卷，说起这半月。</h2>
     <p id="hall-talk-help">明确选择本人、薰儿或人群，按E记录本步。重新进入默认关注本人；本人位置不动，四段只是当时结果。</p>
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人目光与答话</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>旁观薰儿动作与发言</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
+      {actorButton(actor, setActor, 'yan', "本人目光与答话")}
+      {actorButton(actor, setActor, 'xuner', "旁观薰儿动作与发言")}
+      {actorButton(actor, setActor, 'bystander', "旁观堂中人群")}
     </WalkControls>
     <EarlyMap ref={field} aria-label="东架会面地图" aria-describedby="hall-talk-help" viewBox="100 190 390 115" onKeyDown={key}>
       <HallBackground />

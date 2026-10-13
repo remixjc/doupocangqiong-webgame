@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -21,7 +22,7 @@ export function advanceEarlyBracelet(state: GameState, position: EarlyWalkPositi
   const next = structuredClone(state)
   next.earlyTraining.bracelet.stage++
   if (next.earlyTraining.bracelet.stage === 5) next.earlyTraining.bracelet.gift = 'xuner'
-  return { state: next, ok: true, message: action.operation === 'finish' ? '手链往事已记下，已有采购记录保留。' : '这段往事已保存，可稍后继续。' }
+  return successfulTransaction(next, action.operation === 'finish' ? '手链往事已记下，已有采购记录保留。' : '这段往事已保存，可稍后继续。')
 }
 export function submitEarlyBracelet(store: GameStore, position: EarlyWalkPosition, action: EarlyBraceletAction): boolean {
   const result = advanceEarlyBracelet(store.getSnapshot().state, position, action)

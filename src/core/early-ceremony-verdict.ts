@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -25,17 +27,17 @@ export function earlyCeremonyVerdictBlock(state: GameState, position: EarlyWalkP
 }
 export function advanceEarlyCeremonyVerdict(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyVerdictAction): Transaction {
   const blocked = earlyCeremonyVerdictBlock(state, entryPosition)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.ceremonyVerdict, scene = ceremonyVerdictScenes[task.stage]
   if (!scene || !validCeremonyVerdict(task) || !fieldsMatch(action, task))
-    return { state, ok: false, message: '正式裁定记录已变化，请按当前步骤继续。' }
+    return failedTransaction(state, '正式裁定记录已变化，请按当前步骤继续。')
   if (action.actor !== scene.actor || action.operation !== scene.operation)
-    return { state, ok: false, message: '当前人物或步骤不符；不得再开第三场、接受未传授物品或提前裁定。' }
+    return failedTransaction(state, '当前人物或步骤不符；不得再开第三场、接受未传授物品或提前裁定。')
   if (!nearVerdictPlace(position, scene.place))
-    return { state, ok: false, message: `请先走近${verdictPlaces[scene.place].label}。` }
+    return failedTransaction(state, `请先走近${verdictPlaces[scene.place].label}。`)
   const next = structuredClone(state), stage = task.stage + 1
   next.earlyTraining.ceremonyVerdict = { stage, ...ceremonyVerdictAt(stage) }
-  return { state: next, ok: true, message: stage >= 7 ? '正式胜负已宣布；后续礼程与离场按序保存，不重复发奖。' : '请求与处分步骤已保存，胜负尚未宣布。' }
+  return successfulTransaction(next, stage >= 7 ? '正式胜负已宣布；后续礼程与离场按序保存，不重复发奖。' : '请求与处分步骤已保存，胜负尚未宣布。')
 }
 export function submitEarlyCeremonyVerdict(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyVerdictAction): boolean {
   const result = advanceEarlyCeremonyVerdict(store.getSnapshot().state, entryPosition, position, action)

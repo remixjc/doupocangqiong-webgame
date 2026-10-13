@@ -1,3 +1,4 @@
+import { failedTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -28,9 +29,9 @@ export function earlyRoomPresentation(state: GameState) {
 }
 export function advanceEarlyRoom(state: GameState, position: EarlyWalkPosition, station: EarlyRoomStation, action: LiquidAction): Transaction {
   const blocked = earlyRoomBlock(state, position)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   if (station !== earlyRoomPresentation(state).station)
-    return { state, ok: false, message: '请到当前操作对应的位置，材料盘只供核对。' }
+    return failedTransaction(state, '请到当前操作对应的位置，材料盘只供核对。')
   return advanceEarlyWalk(state, position, action)
 }
 export function submitEarlyRoom(store: GameStore, position: EarlyWalkPosition, station: EarlyRoomStation, action: LiquidAction): boolean {

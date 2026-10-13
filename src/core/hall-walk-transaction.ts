@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import type { GameState } from './model'
 import type { Transaction } from './rules'
 import type { EarlyWalkDirection, EarlyWalkPosition } from './early-walk'
@@ -28,5 +29,5 @@ export function hallWalkTransaction<T extends HallWalk>(state: GameState, positi
   const next = structuredClone(state)
   Object.assign(next.earlyTraining, { [spec.key]: spec.derive(moving ? task.stage : task.stage + 1, moving ? task.walk + 1 : 0,
     task.record === 'none' ? spec.source === 'recalled' ? 'recalled' : 'current' : task.record) })
-  return { state: next, ok: true, message: spec.saved }
+  return successfulTransaction(next, spec.saved)
 }

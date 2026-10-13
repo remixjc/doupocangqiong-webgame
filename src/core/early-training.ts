@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import type { GameState } from './model'
 import { isVisible, type Transaction } from './rules'
@@ -46,7 +48,7 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
     } else if (action.operation === 'attempt' && practice.phase === 2) updated.phase = 3
     else if (action.operation === 'finish' && practice.phase === 3) updated.phase = 4
     else return fail('当前练习的操作次序无效。')
-    return { state: next, ok: true, message: updated.phase === 4 ? '初期重修与斗技尝试已记下，继续踏实修炼。' : '这一步练习已记录；节奏失误可免费重来。' }
+    return successfulTransaction(next, updated.phase === 4 ? '初期重修与斗技尝试已记下，继续踏实修炼。' : '这一步练习已记录；节奏失误可免费重来。')
   }
   if (action.type === 'liquid') {
     if (!task.receipts.woodCore || task.market.stage !== 4) return fail('先备齐材料，完成坊市交涉并带回黑铁片。')
@@ -61,7 +63,7 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
     }
     next.earlyTraining.liquid.stage++
     if (action.step === 5) next.earlyTraining.liquid.ready = true
-    return { state: next, ok: true, message: action.step === 5 ? '药老将药液加入清水，修炼准备已经完成。' : '当前准备与观察已记下，可关闭后继续。' }
+    return successfulTransaction(next, action.step === 5 ? '药老将药液加入清水，修炼准备已经完成。' : '当前准备与观察已记下，可关闭后继续。')
   }
   if (action.type === 'market') {
     if (!task.receipts.bluegrass || !task.receipts.boneflower) return fail('先买齐药草，再回顾坊市采购。')
@@ -69,12 +71,12 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
     if (action.step === 3 && !task.receipts.woodCore) return fail('先付清魔核采购订单，再核对附物交付。')
     next.earlyTraining.market.stage++
     if (action.step === 3) next.earlyTraining.market.blackIron = 1
-    return { state: next, ok: true, message: action.step === 3 ? '魔核交易附物已核对：黑铁片由任务袋保管，未再次付账。' : '坊市往事已记下，继续交涉。' }
+    return successfulTransaction(next, action.step === 3 ? '魔核交易附物已核对：黑铁片由任务袋保管，未再次付账。' : '坊市往事已记下，继续交涉。')
   }
   if (action.type === 'borrow') {
     if (task.purse.borrowed !== 0) return fail('借资已经记账，不能重复领取。')
     next.earlyTraining.purse.borrowed = EARLY_LOAN
-    return { state: next, ok: true, message: '薰儿借出的采购资金已单独记账。' }
+    return successfulTransaction(next, '薰儿借出的采购资金已单独记账。')
   }
   if (action.type !== 'purchase' || !Object.hasOwn(earlySupplies, action.item)) return fail('采购项目无效。')
   const item = earlySupplies[action.item]
@@ -86,13 +88,13 @@ export function advanceEarlyTraining(state: GameState, action: EarlyTrainingActi
   next.earlyTraining.purse.spent += item.price
   next.earlyTraining.supplies[action.item] = item.quantity
   next.earlyTraining.receipts[action.item] = true
-  return { state: next, ok: true, message: `${item.label}已由药铺或摊主交付，任务袋与货款同步记账。` }
+  return successfulTransaction(next, `${item.label}已由药铺或摊主交付，任务袋与货款同步记账。`)
 }
 export function beginEarlyTraining(state: GameState): Transaction {
   const blocked = earlyTrainingBlock(state)
-  if (blocked) return { state, ok: false, message: blocked }
-  if (state.earlyTraining.started) return { state, ok: false, message: '重修准备单已经记下。' }
+  if (blocked) return failedTransaction(state, blocked)
+  if (state.earlyTraining.started) return failedTransaction(state, '重修准备单已经记下。')
   const next = structuredClone(state)
   next.earlyTraining.started = true
-  return { state: next, ok: true, message: '重修准备单已记下。材料和资金仍需另行取得。' }
+  return successfulTransaction(next, '重修准备单已记下。材料和资金仍需另行取得。')
 }

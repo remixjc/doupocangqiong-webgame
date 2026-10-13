@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
@@ -58,7 +59,7 @@ export function advanceFirstTechnique(state: GameState, yan: EarlyWalkPosition, 
   } else if (action.marker !== undefined) return fail('只有有限吸力步骤接受标记。')
   const next = structuredClone(state)
   next.earlyTraining.firstTechnique = firstTechniqueAt(stage, beats, attempts)
-  return { state: next, ok: true, message: stage === 11 && beats === 0 ? '偏离节奏，有限吸力标记免费复位，瓷瓶仍完整。' : '本人铁片研究断点已保存，原材料与后期修炼保持。' }
+  return successfulTransaction(next, stage === 11 && beats === 0 ? '偏离节奏，有限吸力标记免费复位，瓷瓶仍完整。' : '本人铁片研究断点已保存，原材料与后期修炼保持。')
 }
 export function submitFirstTechnique(store: GameStore, yan: EarlyWalkPosition, action: FirstTechniqueAction): boolean {
   return commitEarlyResult(store, advanceFirstTechnique(store.getSnapshot().state, yan, action), 'firstTechnique')

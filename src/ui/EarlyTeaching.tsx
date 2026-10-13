@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -46,7 +47,7 @@ export default function EarlyTeaching({ state, position, onBack, onSupervise }: 
     </svg>
     <WalkControls aria-label="传技房间位置">
       <SecondaryButton ref={first} aria-pressed={station === 'table'} onClick={() => setStation('table')}>查看卷册桌</SecondaryButton>
-      <SecondaryButton aria-pressed={station === 'teacher'} onClick={() => setStation('teacher')}>走到老师处 · 请教</SecondaryButton>
+      {actorButton(station, setStation, 'teacher', "走到老师处 · 请教")}
     </WalkControls>
     <StatusParagraph>正式传技 {stage}/5 · {stage >= 3 ? '技法知识已记下' : '尚未接受技法知识'} · {stage >= 4 ? '身体要求已记下' : '身体要求待确认'}</StatusParagraph>
     {station === 'table' && <BondSummary><h3>房间的卷册桌</h3><p>这里是斗技堂登记借出的第二卷；第一卷此前已归回书架。借卷仍由萧炎保管，不进入可售行囊，也没有新增副本。</p></BondSummary>}

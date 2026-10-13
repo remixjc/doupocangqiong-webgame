@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
@@ -70,7 +71,7 @@ export function advanceEarlyQiBarrier(state: GameState, position: EarlyWalkPosit
   const retry = (message: string): Transaction => {
     if (task.attempts >= 1_000_000) return fail('免费重试记录已达上限。')
     updated.beats = 0; updated.attempts++
-    return { state: next, ok: true, message }
+    return successfulTransaction(next, message)
   }
   if (task.stage === 6 && action.operation === 'stop') return retry('免费停下本轮，红幕和已确认路线保留。')
   if (task.stage === 1 && action.operation === 'path') {
@@ -84,11 +85,11 @@ export function advanceEarlyQiBarrier(state: GameState, position: EarlyWalkPosit
     if (typeof action.marker !== 'number' || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1) return fail('破幕时机无效。')
     if (action.marker < .35 || action.marker > .65) return retry('动作尚未连贯，免费重新稳身；红幕完整，物资未扣。')
     updated.beats++
-    if (updated.beats < 3) return { state: next, ok: true, message: '本轮动作已记，红幕尚未破。' }
+    if (updated.beats < 3) return successfulTransaction(next, '本轮动作已记，红幕尚未破。')
   } else if (action.marker !== undefined) return fail('当前步骤不使用破幕时机。')
   updated.stage++
   Object.assign(updated, qiBarrierAt(updated.stage))
-  return { state: next, ok: true, message: updated.stage >= 7 ? '本次红幕已破，收势与入室按序保存；取卷仍待独立操作。' : '火路与门障步骤已保存，不发物品或奖励。' }
+  return successfulTransaction(next, updated.stage >= 7 ? '本次红幕已破，收势与入室按序保存；取卷仍待独立操作。' : '火路与门障步骤已保存，不发物品或奖励。')
 }
 export function submitEarlyQiBarrier(store: GameStore, position: EarlyWalkPosition, action: QiBarrierAction): boolean {
   const result = advanceEarlyQiBarrier(store.getSnapshot().state, position, action)

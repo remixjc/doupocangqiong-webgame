@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -43,7 +44,7 @@ export function advanceEarlyMarketReturn(state: GameState, position: EarlyWalkPo
   if (scene.actor !== action.actor || scene.operation !== action.operation) return fail('人物或操作次序不符。')
   const next = structuredClone(state)
   next.earlyTraining.marketReturn = marketReturnAt(task.stage + 1)
-  return { state: next, ok: true, message: '这一步回族与房中历史已保存，原账和材料保持。' }
+  return successfulTransaction(next, '这一步回族与房中历史已保存，原账和材料保持。')
 }
 export function submitEarlyMarketReturn(store: GameStore, position: EarlyWalkPosition, action: MarketReturnAction): boolean {
   const result = advanceEarlyMarketReturn(store.getSnapshot().state, position, action)

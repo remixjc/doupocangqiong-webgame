@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -44,7 +45,7 @@ export function advanceEarlyMarketSearch(state: GameState, view: MarketSearchVie
   if (scene.actor !== action.actor || scene.operation !== action.operation) return fail('人物或操作次序不符。')
   const next = structuredClone(state)
   next.earlyTraining.marketSearch = marketSearchAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 19 ? '寻核与放回手链归档，前方交谈待续。' : '这一步已保存。' }
+  return successfulTransaction(next, task.stage === 19 ? '寻核与放回手链归档，前方交谈待续。' : '这一步已保存。')
 }
 export function submitEarlyMarketSearch(store: GameStore, view: MarketSearchView, action: MarketSearchAction): boolean {
   const result = advanceEarlyMarketSearch(store.getSnapshot().state, view, action)

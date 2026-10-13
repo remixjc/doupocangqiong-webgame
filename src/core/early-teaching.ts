@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -19,14 +21,14 @@ export function earlyTeachingRoomBlock(state: GameState, position: EarlyWalkPosi
 }
 export function advanceEarlyTeaching(state: GameState, position: EarlyWalkPosition, station: EarlyTeachingStation, action: EarlyTeachingAction): Transaction {
   const blocked = earlyTeachingRoomBlock(state, position)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const scene = earlyTeachingScenes[state.earlyTraining.teaching.stage]
   if (!scene || action.step !== scene.step || action.operation !== scene.operation)
-    return { state, ok: false, message: '老师传技记录已变化，请按当前步骤继续。' }
-  if (station !== scene.station) return { state, ok: false, message: '先到当前步骤对应的房间位置。' }
+    return failedTransaction(state, '老师传技记录已变化，请按当前步骤继续。')
+  if (station !== scene.station) return failedTransaction(state, '先到当前步骤对应的房间位置。')
   const next = structuredClone(state)
   next.earlyTraining.teaching.stage++
-  return { state: next, ok: true, message: scene.step === 4 ? '正式传技已归档，知识与身体要求已记下；后续监督训练另行继续。' : '传技这一步已记下，主线战斗能力保持。' }
+  return successfulTransaction(next, scene.step === 4 ? '正式传技已归档，知识与身体要求已记下；后续监督训练另行继续。' : '传技这一步已记下，主线战斗能力保持。')
 }
 export function submitEarlyTeaching(store: GameStore, position: EarlyWalkPosition, station: EarlyTeachingStation, action: EarlyTeachingAction): boolean {
   const result = advanceEarlyTeaching(store.getSnapshot().state, position, station, action)

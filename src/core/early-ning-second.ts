@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -22,35 +24,35 @@ export function earlyNingSecondBlock(state: GameState, position: EarlyWalkPositi
 }
 export function advanceEarlyNingSecond(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: NingSecondAction): Transaction {
   const blocked = earlyNingSecondBlock(state, entryPosition)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.ningSecond, scene = ningSecondScenes[task.stage]
   if (!scene || !validNingSecond(task) || !fieldsMatch(action, task))
-    return { state, ok: false, message: '再攻记录已变化，请依当前阶段继续。' }
+    return failedTransaction(state, '再攻记录已变化，请依当前阶段继续。')
   if (!validCeremonialPosition(position, 2) || action.actor !== scene.actor)
-    return { state, ok: false, message: '迎击或场边观察身份/位置无效。' }
+    return failedTransaction(state, '迎击或场边观察身份/位置无效。')
   if (action.operation !== 'stop' && !nearNingPlace(position, scene.place))
-    return { state, ok: false, message: '先走近当前再攻步骤的地点。' }
+    return failedTransaction(state, '先走近当前再攻步骤的地点。')
   const next = structuredClone(state), updated = next.earlyTraining.ningSecond
   if (task.stage === 4) {
     if (!['octane', 'strike', 'push', 'pull', 'stop'].includes(action.operation) || (action.operation === 'stop' ? action.marker !== undefined
       : typeof action.marker !== 'number' || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1))
-      return { state, ok: false, message: '迎击动作或时机无效，记录未改变。' }
+      return failedTransaction(state, '迎击动作或时机无效，记录未改变。')
     if (action.operation === 'stop' || action.operation !== ningSecondOperation(task) || action.marker! < .35 || action.marker! > .65) {
-      if (task.attempts >= 1_000_000) return { state, ok: false, message: '迎击重试已到上限。' }
+      if (task.attempts >= 1_000_000) return failedTransaction(state, '迎击重试已到上限。')
       updated.stage = 3; updated.beats = 0; updated.contact = 'none'; updated.attempts++
-      return { state: next, ok: true, message: '迎击免费重新准备；违规用药与叫停记录保留。' }
+      return successfulTransaction(next, '迎击免费重新准备；违规用药与叫停记录保留。')
     }
     updated.beats++
     updated.contact = updated.beats === 1 ? 'met' : 'out'
     if (updated.beats === 2) updated.stage = 5
   } else {
     if (action.operation !== scene.operation || action.marker !== undefined)
-      return { state, ok: false, message: '当前再攻步骤不符，不能跳过叫停或正式裁定。' }
+      return failedTransaction(state, '当前再攻步骤不符，不能跳过叫停或正式裁定。')
     updated.stage++
     if (updated.stage === 1) updated.pill = 'used'
     if (updated.stage === 2) updated.ignored = true
   }
-  return { state: next, ok: true, message: updated.contact === 'out' ? '追加拳击后出场已记，最终裁定仍待续。' : '违规再攻与迎击步骤已保存。' }
+  return successfulTransaction(next, updated.contact === 'out' ? '追加拳击后出场已记，最终裁定仍待续。' : '违规再攻与迎击步骤已保存。')
 }
 export function submitEarlyNingSecond(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: NingSecondAction): boolean {
   const result = advanceEarlyNingSecond(store.getSnapshot().state, entryPosition, position, action)

@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -36,10 +37,10 @@ export function advanceEarlyApprentice(state: GameState, position: EarlyWalkPosi
   if (action.operation === 'grant-permission') return fail('老人承诺遵守许可边界，并不等于本人授予取气许可或永久免耗。')
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('人物或操作次序不符，请按当前提示继续。')
   const next = structuredClone(state); next.earlyTraining.apprentice = apprenticeAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 24
+  return successfulTransaction(next, task.stage === 24
     ? '援助与本人拜师已归档，功法说明与正式返戒待续。'
     : task.stage === 22 ? '本人拜师礼已保存；接下来才听老师名字。'
-    : '援助与拜师这一步已保存；主线资源、职业与已结算奖励保留。' }
+    : '援助与拜师这一步已保存；主线资源、职业与已结算奖励保留。')
 }
 export function submitEarlyApprentice(store: GameStore, position: EarlyWalkPosition, action: ApprenticeAction): boolean {
   const result = advanceEarlyApprentice(store.getSnapshot().state, position, action)

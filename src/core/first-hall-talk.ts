@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch, hallTalkSnapshotKeys } from './early-snapshots'
 import { commitEarlyResult } from './early-result'
@@ -35,7 +36,7 @@ export function advanceFirstHallTalk(state: GameState, p: EarlyWalkPosition, spa
   next.earlyTraining.firstHallTalk = history
   const minimum = hallTalkMinimum(history.stage)
   if (t.hall.stage < minimum) next.earlyTraining.hall = { stage: minimum, scroll: 'reading-first' }
-  return { state: next, ok: true, message: '东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。' }
+  return successfulTransaction(next, '东架问答与必要旧卷账已保存；临时卷、借资和奖励保持。')
 }
 export function submitFirstHallTalk(store: GameStore, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallTalkAction): boolean {
   const result = advanceFirstHallTalk(store.getSnapshot().state, p, space, action)

@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -45,8 +46,8 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     <Eyebrow>{title}</Eyebrow><h2>{heading}</h2>
     <p id="teacher-room-help">{help}</p>
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'teacher'} onClick={() => setActor('teacher')}>旁观房中的老师</SecondaryButton>
+      {actorButton(actor, setActor, 'yan', "本人行走与操作")}
+      {actorButton(actor, setActor, 'teacher', "旁观房中的老师")}
     </WalkControls>
     <EarlyMap ref={field} aria-label={mapLabel} aria-describedby="teacher-room-help" viewBox="80 290 245 125" onKeyDown={key}>
       <MapBackground /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />

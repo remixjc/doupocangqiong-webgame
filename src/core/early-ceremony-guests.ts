@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -34,15 +36,15 @@ export function earlyCeremonyGuestsBlock(state: GameState, position: EarlyWalkPo
 }
 export function advanceEarlyCeremonyGuests(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyGuestAction): Transaction {
   const blocked = earlyCeremonyGuestsBlock(state, entryPosition)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.ceremonyGuests, scene = ceremonyGuestScenes[task.stage]
   if (!scene || !validCeremonyGuests(task) || !fieldsMatch(action, task))
-    return { state, ok: false, message: '宾客与收剑记录已变化，请依当前步骤继续。' }
+    return failedTransaction(state, '宾客与收剑记录已变化，请依当前步骤继续。')
   if (action.operation !== scene.operation || !nearCeremonyGuestPlace(position, scene.place))
-    return { state, ok: false, message: `先走近${ceremonyGuestPlaces[scene.place].label}，完成当前观察。` }
+    return failedTransaction(state, `先走近${ceremonyGuestPlaces[scene.place].label}，完成当前观察。`)
   const next = structuredClone(state), updated = next.earlyTraining.ceremonyGuests
   updated.stage++; Object.assign(updated, ceremonyGuestsAt(updated.stage))
-  return { state: next, ok: true, message: updated.stage === 7 ? '萧玉已收剑，没有发生战斗；待听后续回应。' : '宾客与冲突中止步骤已保存。' }
+  return successfulTransaction(next, updated.stage === 7 ? '萧玉已收剑，没有发生战斗；待听后续回应。' : '宾客与冲突中止步骤已保存。')
 }
 export function submitEarlyCeremonyGuests(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonyGuestAction): boolean {
   const result = advanceEarlyCeremonyGuests(store.getSnapshot().state, entryPosition, position, action)

@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -35,7 +36,7 @@ export function advanceEarlyFamilyCompensation(state: GameState, position: Early
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('发言人物或次序不符，请按当前提示继续。')
   const next = structuredClone(state)
   next.earlyTraining.familyCompensation = familyCompensationAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 14 ? '补偿交涉前段已归档，文书与三年约定待续。' : '交涉这一步已保存；没有领取补偿或改变主线奖励。' }
+  return successfulTransaction(next, task.stage === 14 ? '补偿交涉前段已归档，文书与三年约定待续。' : '交涉这一步已保存；没有领取补偿或改变主线奖励。')
 }
 export function submitEarlyFamilyCompensation(store: GameStore, position: EarlyWalkPosition, action: FamilyCompensationAction): boolean {
   const result = advanceEarlyFamilyCompensation(store.getSnapshot().state, position, action)

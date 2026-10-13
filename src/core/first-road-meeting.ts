@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
@@ -53,7 +54,7 @@ export function advanceFirstRoadMeeting(state: GameState, p: EarlyWalkPosition, 
     return fail('按当前人物依次记录路口对话；不代签入堂、战斗或关系奖励。')
   const next = structuredClone(state)
   next.earlyTraining.firstRoadMeeting = firstRoadMeetingAt(task.stage + 1)
-  return { state: next, ok: true, message: '路口会面断点已保存，旧奖励与借卷账保持。' }
+  return successfulTransaction(next, '路口会面断点已保存，旧奖励与借卷账保持。')
 }
 export function submitFirstRoadMeeting(store: GameStore, p: EarlyWalkPosition, action: FirstRoadMeetingAction): boolean {
   return commitEarlyResult(store, advanceFirstRoadMeeting(store.getSnapshot().state, p, action), 'firstRoadMeeting')

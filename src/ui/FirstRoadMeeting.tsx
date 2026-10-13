@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -42,8 +43,8 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
     <Eyebrow>石路 / 路口会面</Eyebrow><h2>转路、招呼，再各自前行。</h2>
     <p id="road-meeting-help">方向或WASD由本人实际行走，近本步地点按E。关注来人发言不移动本人，停步问答期间先完成当前对话。刷新恢复断点。</p>
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与答话</SecondaryButton>
-      {task.identified && <SecondaryButton aria-pressed={actor === 'mei'} onClick={() => setActor('mei')}>关注萧媚发言</SecondaryButton>}
+      {actorButton(actor, setActor, 'yan', "本人行走与答话")}
+      {task.identified && actorButton(actor, setActor, 'mei', "关注萧媚发言")}
     </WalkControls>
     <EarlyMap ref={field} aria-label="石路会面地图" aria-describedby="road-meeting-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />

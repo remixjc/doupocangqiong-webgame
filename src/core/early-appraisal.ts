@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -16,19 +18,19 @@ export function earlyAppraisalBlock(state: GameState, position: EarlyWalkPositio
 }
 export function advanceEarlyAppraisal(state: GameState, position: EarlyWalkPosition, station: AppraisalStation, action: AppraisalAction): Transaction {
   const blocked = earlyAppraisalBlock(state, position)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.appraisal, scene = appraisalScenes[task.stage]
   if (!scene || scene.step !== action.step || scene.operation !== action.operation
     || action.owner !== state.earlyTraining.consignment.owner || action.owner !== appraisalOwnerAt(task.stage))
-    return { state, ok: false, message: '鉴定或玉瓶交接记录已变化，请按当前步骤继续。' }
-  if (station !== scene.station) return { state, ok: false, message: '请到当前鉴定步骤对应的地点。' }
+    return failedTransaction(state, '鉴定或玉瓶交接记录已变化，请按当前步骤继续。')
+  if (station !== scene.station) return failedTransaction(state, '请到当前鉴定步骤对应的地点。')
   const next = structuredClone(state), updated = next.earlyTraining.appraisal
   updated.stage++; updated.cloaked = true
   updated.speaker = updated.stage >= 4 ? 'yaolao' : 'self'
   updated.tier = updated.stage >= 6 ? 2 : 0; updated.card = updated.stage >= 7 ? 'black-entry' : 'none'
   next.earlyTraining.consignment.owner = appraisalOwnerAt(updated.stage)
-  return { state: next, ok: true, message: updated.stage === 8
-    ? '已凭黑卡进入第一拍卖室，待售药液由拍卖方保管；主持与结算待接续。' : '鉴定这一步已记下，同瓶保管与身份记录保留。' }
+  return successfulTransaction(next, updated.stage === 8
+    ? '已凭黑卡进入第一拍卖室，待售药液由拍卖方保管；主持与结算待接续。' : '鉴定这一步已记下，同瓶保管与身份记录保留。')
 }
 export function submitEarlyAppraisal(store: GameStore, position: EarlyWalkPosition, station: AppraisalStation, action: AppraisalAction): boolean {
   const result = advanceEarlyAppraisal(store.getSnapshot().state, position, station, action)

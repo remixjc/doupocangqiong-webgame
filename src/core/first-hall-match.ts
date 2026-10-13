@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -29,7 +30,7 @@ export function advanceFirstHallMatch(state: GameState, p: EarlyWalkPosition, sp
   next.earlyTraining.firstHallMatch = history
   const minimum = hallMatchMinimum(history.stage)
   if (t.hall.stage < minimum) next.earlyTraining.hall = { stage: minimum, scroll: 'reading-first' }
-  return { state: next, ok: true, message: '本人东架位置保持，旁观断点与必要旧卷账已保存。' }
+  return successfulTransaction(next, '本人东架位置保持，旁观断点与必要旧卷账已保存。')
 }
 export function submitFirstHallMatch(store: GameStore, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallMatchAction): boolean {
   const result = advanceFirstHallMatch(store.getSnapshot().state, p, space, action)

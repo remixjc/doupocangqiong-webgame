@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { certificationTargets, danFinalTargets, mindTargets, eventsForChapter, findEvent, tournamentRound, tournamentRounds, type ChapterEvent, type ReflectionChoice } from '../content/events'
 import { blankEvent, type ChapterEventProgress, type GameState } from './model'
 import { preparationProtocols, type PreparationOperation } from '../content/preparations'
@@ -420,5 +421,5 @@ export function advanceEvent(state: GameState, action: EventAction): EventResult
       message = `供货完成 · 收到 ${gold} 金币${premium ? '与修炼丹 ×1' : ''}。`
     } else return fail('这次操作不符合当前剧情目标。')
   }
-  return { state: next, ok: true, message }
+  return successfulTransaction(next, message)
 }

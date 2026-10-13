@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -63,9 +64,9 @@ export function advanceEarlyMorningCard(state: GameState, p: EarlyWalkPosition, 
     if (result) next.earlyTraining.purse.borrowed = EARLY_LOAN
   }
   next.earlyTraining.morningCard = morningCardAt(task.stage + 1, link)
-  return { state: next, ok: true, message: scene.operation === 'receive-black'
+  return successfulTransaction(next, scene.operation === 'receive-black'
     ? link === 'credited' ? '本人接普通黑卡与唯一160折算借资已在同一存档事务保存。' : '本人接卡历史已补；既有借资、收据和材料保持，没有重发160。'
-    : task.stage === 13 ? '晨间交卡归档；实际入城和采购待续。' : '晨间这一步已存；主线与其他材料不变。' }
+    : task.stage === 13 ? '晨间交卡归档；实际入城和采购待续。' : '晨间这一步已存；主线与其他材料不变。')
 }
 export function submitEarlyMorningCard(store: GameStore, p: EarlyWalkPosition, action: MorningCardAction): boolean {
   const result = advanceEarlyMorningCard(store.getSnapshot().state, p, action)

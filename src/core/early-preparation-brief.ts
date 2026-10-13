@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -34,8 +35,8 @@ export function advanceEarlyPreparationBrief(state: GameState, position: EarlyWa
   if (action.operation === 'claim-liquid') return fail('温和方案和材料单不等于调制完成；药液必须由已有采购与调制链接续。')
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('人物或操作次序不符，请按当前提示继续。')
   const next = structuredClone(state); next.earlyTraining.preparationBrief = preparationBriefAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 19 ? '准备说明与正式返戒已归档；已有准备、资金和收据保留。'
-    : '这一历史步骤已保存；没有派发材料、资金、药液或主线奖励。' }
+  return successfulTransaction(next, task.stage === 19 ? '准备说明与正式返戒已归档；已有准备、资金和收据保留。'
+    : '这一历史步骤已保存；没有派发材料、资金、药液或主线奖励。')
 }
 export function submitEarlyPreparationBrief(store: GameStore, position: EarlyWalkPosition, action: PreparationBriefAction): boolean {
   const result = advanceEarlyPreparationBrief(store.getSnapshot().state, position, action)

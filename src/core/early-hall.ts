@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -44,12 +46,12 @@ export function earlyHallBlock(state: GameState): string {
 export function enterEarlyHall(state: GameState, position: EarlyWalkPosition): Transaction {
   const blocked = earlyHallBlock(state)
     || (nearbyEarlyWalkPlace(position)?.id !== 'teacher' ? '先回药老处，再接续前往斗技堂的往事。' : '')
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   if (state.earlyTraining.hall.stage > 0)
     return { state, ok: true, message: '再次来到斗技堂，卷册与传技记录保持。' }
   const next = structuredClone(state)
   next.earlyTraining.hall.stage = 1
-  return { state: next, ok: true, message: '斗技堂到访已记下，可以查看两区和登记处。' }
+  return successfulTransaction(next, '斗技堂到访已记下，可以查看两区和登记处。')
 }
 export function submitEarlyHallEntry(store: GameStore, position: EarlyWalkPosition): boolean {
   const before = store.getSnapshot().state
@@ -62,12 +64,12 @@ export function submitEarlyHallEntry(store: GameStore, position: EarlyWalkPositi
 export type EarlyHallAction = { step: number; operation: typeof earlyHallScenes[number]['operation'] }
 export function advanceEarlyHall(state: GameState, position: EarlyWalkPosition, action: EarlyHallAction): Transaction {
   const blocked = earlyHallBlock(state)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const scene = earlyHallScenes.find(scene => scene.stage === state.earlyTraining.hall.stage)
   if (!scene || action.step !== scene.stage || action.operation !== scene.operation)
-    return { state, ok: false, message: '堂内记录已变化，请按当前步骤继续。' }
+    return failedTransaction(state, '堂内记录已变化，请按当前步骤继续。')
   if (nearbyEarlyHallPlace(position)?.id !== scene.place)
-    return { state, ok: false, message: '先走近这一步对应的堂内地点。' }
+    return failedTransaction(state, '先走近这一步对应的堂内地点。')
   const next = structuredClone(state)
   const hall = next.earlyTraining.hall
   hall.stage++
@@ -75,7 +77,7 @@ export function advanceEarlyHall(state: GameState, position: EarlyWalkPosition, 
   if (action.operation === 'return') hall.scroll = 'none'
   if (action.operation === 'select') hall.scroll = 'selected-second'
   if (action.operation === 'register') hall.scroll = 'borrowed-second'
-  return { state: next, ok: true, message: scene.stage === 8 ? '离堂与回房已记录，借卷由萧炎保管；老师传技另行继续。' : '堂内这一步已记下，可继续或稍后回来。' }
+  return successfulTransaction(next, scene.stage === 8 ? '离堂与回房已记录，借卷由萧炎保管；老师传技另行继续。' : '堂内这一步已记下，可继续或稍后回来。')
 }
 export function submitEarlyHall(store: GameStore, position: EarlyWalkPosition, action: EarlyHallAction): boolean {
   const result = advanceEarlyHall(store.getSnapshot().state, position, action)

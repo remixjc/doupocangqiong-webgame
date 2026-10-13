@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -34,39 +36,39 @@ export function earlyForestStrikeBlock(state: GameState, position: EarlyWalkPosi
 }
 export function advanceEarlyForestStrike(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: ForestStrikeAction): Transaction {
   const blocked = earlyForestStrikeBlock(state, entryPosition)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.forestStrike, scene = forestStrikeScenes[task.stage]
   if (!scene || !validForestStrike(task) || action.stage !== task.stage || action.beats !== task.beats || action.attempts !== task.attempts)
-    return { state, ok: false, message: '林中练技记录已变化，请依当前步骤继续。' }
-  if (!validForestPosition(position)) return { state, ok: false, message: '林中位置无效，练技记录未改变。' }
+    return failedTransaction(state, '林中练技记录已变化，请依当前步骤继续。')
+  if (!validForestPosition(position)) return failedTransaction(state, '林中位置无效，练技记录未改变。')
   const next = structuredClone(state), updated = next.earlyTraining.forestStrike
   if (task.stage === 2 && action.operation === 'stop') {
-    if (task.attempts >= 1_000_000) return { state, ok: false, message: '重试记录已到上限。' }
+    if (task.attempts >= 1_000_000) return failedTransaction(state, '重试记录已到上限。')
     updated.stage = 1; updated.beats = 0; updated.attempts++
-    return { state: next, ok: true, message: '本轮免费停练；六段回顾、物资和树木原状保留。' }
+    return successfulTransaction(next, '本轮免费停练；六段回顾、物资和树木原状保留。')
   }
-  if (!nearForestPlace(position, scene.place)) return { state, ok: false, message: `先走近${forestPlaces[scene.place].label}。` }
+  if (!nearForestPlace(position, scene.place)) return failedTransaction(state, `先走近${forestPlaces[scene.place].label}。`)
   if (task.stage === 2) {
     if (action.operation !== (['steady', 'gather', 'strike'] as const)[task.beats])
-      return { state, ok: false, message: '请依稳身、凝气、肘击的次序练习。' }
+      return failedTransaction(state, '请依稳身、凝气、肘击的次序练习。')
     if (typeof action.marker !== 'number' || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1)
-      return { state, ok: false, message: '练技时机无效，记录未改变。' }
+      return failedTransaction(state, '练技时机无效，记录未改变。')
     if (action.marker < .35 || action.marker > .65) {
-      if (task.attempts >= 1_000_000) return { state, ok: false, message: '重试记录已到上限。' }
+      if (task.attempts >= 1_000_000) return failedTransaction(state, '重试记录已到上限。')
       updated.beats = 0; updated.attempts++
-      return { state: next, ok: true, message: '动作尚未连贯，重新稳身；没有扣钱或材料，树仍完好。' }
+      return successfulTransaction(next, '动作尚未连贯，重新稳身；没有扣钱或材料，树仍完好。')
     }
     updated.beats++
     if (updated.beats === 3) { updated.stage = 3; updated.tree = 'fallen' }
   } else {
     if (action.operation !== scene.operation || action.marker !== undefined)
-      return { state, ok: false, message: '当前不是这个练技操作。' }
+      return failedTransaction(state, '当前不是这个练技操作。')
     updated.stage++
     if (updated.stage === 1) updated.result = 'sixth-duan'
   }
-  return { state: next, ok: true, message: updated.stage === 3
+  return successfulTransaction(next, updated.stage === 3
     ? '首次成功肘击已记下，同一棵树倒下；当前耗尽，先退至青石休息。'
-    : '林中练技步骤已记录；主线技能、奖励与药液保留。' }
+    : '林中练技步骤已记录；主线技能、奖励与药液保留。')
 }
 export function submitEarlyForestStrike(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: ForestStrikeAction): boolean {
   const result = advanceEarlyForestStrike(store.getSnapshot().state, entryPosition, position, action)

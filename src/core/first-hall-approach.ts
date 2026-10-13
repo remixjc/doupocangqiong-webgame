@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch, hallApproachSnapshotKeys } from './early-snapshots'
 import type { GameState } from './model'
@@ -63,7 +64,7 @@ export function advanceFirstHallApproach(state: GameState, p: EarlyWalkPosition,
   if (task.stage === 27 && t.hall.stage < 7) next.earlyTraining.hall = { stage: 7, scroll: 'selected-second' }
   if (task.stage === 47 && t.hall.stage < 8) next.earlyTraining.hall = { stage: 8, scroll: 'borrowed-second' }
   if (task.stage === 51 && t.hall.stage < 9) next.earlyTraining.hall = { stage: 9, scroll: 'borrowed-second' }
-  return { state: next, ok: true, message: action.aftermath ? '萧宁独立反应已存。' : action.leaving ? '离堂断点已存。' : action.checkout ? '同卷登记断点已存，尚未同行离堂。' : action.exitResponse ? '堂内位置与回应已存，同卷未登记或离堂。' : action.threat ? '威胁与观察已存，未登记或离堂。' : action.conflict ? '交锋断点已存，本人两卷与她的临时卷分存。' : action.continuation ? '同卷交涉已存，现有卷账与奖励保持。' : '靠近断点已存，第一卷尚未归架，技能与奖励保持。' }
+  return successfulTransaction(next, action.aftermath ? '萧宁独立反应已存。' : action.leaving ? '离堂断点已存。' : action.checkout ? '同卷登记断点已存，尚未同行离堂。' : action.exitResponse ? '堂内位置与回应已存，同卷未登记或离堂。' : action.threat ? '威胁与观察已存，未登记或离堂。' : action.conflict ? '交锋断点已存，本人两卷与她的临时卷分存。' : action.continuation ? '同卷交涉已存，现有卷账与奖励保持。' : '靠近断点已存，第一卷尚未归架，技能与奖励保持。')
 }
 export function submitFirstHallApproach(store: GameStore, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallApproachAction): boolean {
   return commitEarlyResult(store, advanceFirstHallApproach(store.getSnapshot().state, p, space, action), ['firstHallApproach', 'hall'])

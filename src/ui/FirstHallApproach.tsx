@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -52,10 +53,10 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
     {!departing && task.stage >= 50 && <p>明确回顾同行跨门前的位置。</p>}
     {(t.firstHallAfternoon.stage > 0 || t.firstHallAfternoon.walk > 0) && <p>明确回顾当时堂内外位置；当前午后位置另存。</p>}
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人读卷与察觉</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'ning'} onClick={() => setActor('ning')}>{aftermath ? '旁观萧宁离堂后反应' : exitResponse ? '旁观萧宁误解与脸色' : threat ? '旁观萧宁威胁与未动手' : conflict ? '旁观萧宁讥讽与提议' : continuation ? '旁观萧宁提议与说法' : '旁观萧宁整衣与行走'}</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>旁观堂中人群</SecondaryButton>
-      {(conflict || departing) && <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>{departing ? '薰儿同行' : '旁观薰儿放卷与回应'}</SecondaryButton>}
+      {actorButton(actor, setActor, 'yan', "本人读卷与察觉")}
+      {actorButton(actor, setActor, 'ning', aftermath ? '旁观萧宁离堂后反应' : exitResponse ? '旁观萧宁误解与脸色' : threat ? '旁观萧宁威胁与未动手' : conflict ? '旁观萧宁讥讽与提议' : continuation ? '旁观萧宁提议与说法' : '旁观萧宁整衣与行走')}
+      {actorButton(actor, setActor, 'bystander', "旁观堂中人群")}
+      {(conflict || departing) && actorButton(actor, setActor, 'xuner', departing ? '薰儿同行' : '旁观薰儿放卷与回应')}
     </WalkControls>
     <EarlyMap ref={field} aria-label={`${prefix}地图`} aria-describedby="hall-approach-help"
       viewBox={departing ? '20 190 470 175' : moving ? '100 190 390 175' : '100 190 390 120'} onKeyDown={key}>

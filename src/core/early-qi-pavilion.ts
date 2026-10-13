@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -45,17 +47,17 @@ export type QiPavilionEntryAction = QiPavilionEntryState & {
 }
 export function advanceEarlyQiPavilionEntry(state: GameState, position: EarlyWalkPosition, action: QiPavilionEntryAction): Transaction {
   const blocked = earlyQiPavilionBlock(state)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.qiPavilionEntry, scene = qiPavilionEntryScenes[task.stage]
   if (!scene || !validQiPavilionEntry(task) || !fieldsMatch(action, task))
-    return { state, ok: false, message: '入阁记录已变化，请按当前步骤继续。' }
+    return failedTransaction(state, '入阁记录已变化，请按当前步骤继续。')
   if (action.actor !== scene.actor || action.operation !== scene.operation)
-    return { state, ok: false, message: '当前人物或步骤不符；入阁测定不发卷轴或水晶物品。' }
+    return failedTransaction(state, '当前人物或步骤不符；入阁测定不发卷轴或水晶物品。')
   if (!nearQiPavilionPlace(position, scene.place, task.stage))
-    return { state, ok: false, message: `请先走近${qiPavilionPlaces[scene.place].label}。` }
+    return failedTransaction(state, `请先走近${qiPavilionPlaces[scene.place].label}。`)
   const next = structuredClone(state), stage = task.stage + 1
   next.earlyTraining.qiPavilionEntry = { stage, ...qiPavilionEntryAt(stage) }
-  return { state: next, ok: true, message: '属性与入阁步骤已保存，主线与已结算奖励保留。' }
+  return successfulTransaction(next, '属性与入阁步骤已保存，主线与已结算奖励保留。')
 }
 export function submitEarlyQiPavilionEntry(store: GameStore, position: EarlyWalkPosition, action: QiPavilionEntryAction): boolean {
   const result = advanceEarlyQiPavilionEntry(store.getSnapshot().state, position, action)

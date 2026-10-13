@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { chapterById, chapters } from '../content/chapters'
 import { blankProgress, type FlameId, type GameState, type SkillId } from './model'
 import { recipes } from '../content/recipes'
@@ -70,14 +71,14 @@ export function rankPracticeReward(s: GameState): Transaction {
   if (s.chapter !== 14 || !s.completed.includes(14) || !chapterReady(s))
     return { state: s, ok: false, message: '完成内院首通后才开放强榜复练。' }
   const next = structuredClone(s); next.fireEnergy++
-  return { state: next, ok: true, message: '强榜复练获胜 · 火能+1。休整后可再练，没有额外金币或首通奖励。' }
+  return successfulTransaction(next, '强榜复练获胜 · 火能+1。休整后可再练，没有额外金币或首通奖励。')
 }
 export function trainFireEnergy(s: GameState): Transaction {
   if (!s.completed.includes(14) || !isVisible(s, 14))
     return { state: s, ok: false, message: '先完成内院首通，登记所需火能暂不用于普通修炼。' }
   if (s.fireEnergy < 2) return { state: s, ok: false, message: '修炼需2火能，可重返第十四章进行强榜复练。' }
   const next = structuredClone(s); next.fireEnergy -= 2; next.xp += 30
-  return { state: next, ok: true, message: '火能修炼完成 · 火能−2、修炼积累+30。' }
+  return successfulTransaction(next, '火能修炼完成 · 火能−2、修炼积累+30。')
 }
 export function craft(s: GameState, recipeId: string, quality = .5): Transaction {
   const recipe = recipes.find(r => r.id === recipeId)
@@ -92,7 +93,7 @@ export function craft(s: GameState, recipeId: string, quality = .5): Transaction
   next.progress[s.chapter].brews++
   next.totalBrews++
   next.xp += 12
-  return { state: next, ok: true, message: `${recipe.name} ×${count} · ${quality >= .8 ? '上品' : quality >= .45 ? '良品' : '初成'}` }
+  return successfulTransaction(next, `${recipe.name} ×${count} · ${quality >= .8 ? '上品' : quality >= .45 ? '良品' : '初成'}`)
 }
 export const prices: Record<ItemId, number> = { herb: 12, crystal: 20, heal: 45, mana: 35, elixir: 100 }
 export function buy(s: GameState, item: ItemId, quantity: number): Transaction {
@@ -102,7 +103,7 @@ export function buy(s: GameState, item: ItemId, quantity: number): Transaction {
   if (s.gold < price) return { state: s, ok: false, message: '金币不足。' }
   const next = structuredClone(s)
   next.gold -= price; next.inventory[item] += quantity
-  return { state: next, ok: true, message: '购买完成。' }
+  return successfulTransaction(next, '购买完成。')
 }
 export function upgrade(s: GameState, kind: 'attack' | 'armor'): Transaction {
   const key = kind === 'attack' ? 'attackUpgrade' : 'armorUpgrade'
@@ -111,5 +112,5 @@ export function upgrade(s: GameState, kind: 'attack' | 'armor'): Transaction {
   if (s.gold < price) return { state: s, ok: false, message: '金币不足。' }
   const next = structuredClone(s)
   next.gold -= price; next[key]++
-  return { state: next, ok: true, message: kind === 'attack' ? '兵器磨砺完成。' : '护具强化完成。' }
+  return successfulTransaction(next, kind === 'attack' ? '兵器磨砺完成。' : '护具强化完成。')
 }

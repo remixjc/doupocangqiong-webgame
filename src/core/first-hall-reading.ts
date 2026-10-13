@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -40,7 +41,7 @@ export function advanceFirstHallReading(state: GameState, p: EarlyWalkPosition, 
   const record = task.stage === 1 ? (t.hall.stage >= 6 ? 'recalled' : 'current') : task.record
   next.earlyTraining.firstHallReading = firstHallReadingAt(task.stage + 1, record)
   if (task.stage === 1 && t.hall.stage < 2) next.earlyTraining.hall = { stage: 2, scroll: 'reading-first' }
-  return { state: next, ok: true, message: '东侧阅读断点已保存，同一卷保管单调衔接。' }
+  return successfulTransaction(next, '东侧阅读断点已保存，同一卷保管单调衔接。')
 }
 export function submitFirstHallReading(store: GameStore, p: EarlyWalkPosition, space: 'hall' | 'outside', action: FirstHallReadingAction): boolean {
   const result = advanceFirstHallReading(store.getSnapshot().state, p, space, action)

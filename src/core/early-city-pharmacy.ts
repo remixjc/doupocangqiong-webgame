@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -72,8 +73,8 @@ export function advanceEarlyCityPharmacy(state: GameState, p: EarlyWalkPosition,
     else auxiliary = existing ? 'existing' : 'new'
   }
   next.earlyTraining.cityPharmacy = cityPharmacyAt(task.stage + 1, primary, auxiliary)
-  return { state: next, ok: true, message: item ? ledger.receipts[item] ? '旧药草收据只补历史，没有重复扣款或恢复库存。'
-    : '药草与原唯一订单已一并保存。' : task.stage === 14 ? '同行药铺归档；坊市木核与附物另段接续。' : '同行药铺这一步已存，其他主线与物品保持。' }
+  return successfulTransaction(next, item ? ledger.receipts[item] ? '旧药草收据只补历史，没有重复扣款或恢复库存。'
+    : '药草与原唯一订单已一并保存。' : task.stage === 14 ? '同行药铺归档；坊市木核与附物另段接续。' : '同行药铺这一步已存，其他主线与物品保持。')
 }
 export function submitEarlyCityPharmacy(store: GameStore, p: EarlyWalkPosition, action: CityPharmacyAction): boolean {
   const result = advanceEarlyCityPharmacy(store.getSnapshot().state, p, action)

@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -39,7 +40,7 @@ export function advanceEarlyMarketBracelets(state: GameState, view: MarketBracel
   next.earlyTraining.marketBracelets = marketBraceletsAt(stage)
   next.earlyTraining.bracelet.stage = Math.max(gift.stage, braceletMinimum(stage))
   next.earlyTraining.bracelet.gift = next.earlyTraining.bracelet.stage >= 5 ? 'xuner' : 'none'
-  return { state: next, ok: true, message: stage === 28 ? '两条手链分别归档，围堵待续。' : '这一步与同一赠礼记录已保存。' }
+  return successfulTransaction(next, stage === 28 ? '两条手链分别归档，围堵待续。' : '这一步与同一赠礼记录已保存。')
 }
 export function submitEarlyMarketBracelets(store: GameStore, view: MarketBraceletsView, action: MarketBraceletsAction): boolean {
   const result = advanceEarlyMarketBracelets(store.getSnapshot().state, view, action)

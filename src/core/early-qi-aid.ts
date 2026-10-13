@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
@@ -52,7 +53,7 @@ export function advanceEarlyQiAid(state: GameState, position: EarlyWalkPosition,
   const retry = (message: string): Transaction => {
     if (task.attempts >= 1_000_000) return fail('免费重试次数已达上限。')
     updated.beats = 0; updated.attempts++
-    return { state: next, ok: true, message }
+    return successfulTransaction(next, message)
   }
   if (task.stage === 6 && action.operation === 'stop') return retry('免费停下本轮，回返和薰儿卷轴保管保持。')
   if (!nearQiAidPlace(position, scene.place)) return fail(`先实际走近${qiAidPlaces[scene.place].label}。`)
@@ -62,11 +63,11 @@ export function advanceEarlyQiAid(state: GameState, position: EarlyWalkPosition,
     if (typeof action.marker !== 'number' || !Number.isFinite(action.marker) || action.marker < 0 || action.marker > 1) return fail('出手时机无效。')
     if (action.marker < .35 || action.marker > .65) return retry('动作未连贯，免费重来；门障完整，未取卷。')
     updated.beats++
-    if (updated.beats < 2) return { state: next, ok: true, message: '独自站定已保存，尚未踢破门障。' }
+    if (updated.beats < 2) return successfulTransaction(next, '独自站定已保存，尚未踢破门障。')
   } else if (action.marker !== undefined) return fail('本步骤不使用出手时机。')
   updated.stage++
   Object.assign(updated, qiPavilionAidAt(updated.stage))
-  return { state: next, ok: true, message: updated.stage === 10 ? '同行与独自援助已归档，正式登记与离阁待续。' : '同行与援助步骤已保存，不发第二卷或关系奖励。' }
+  return successfulTransaction(next, updated.stage === 10 ? '同行与独自援助已归档，正式登记与离阁待续。' : '同行与援助步骤已保存，不发第二卷或关系奖励。')
 }
 export function submitEarlyQiAid(store: GameStore, position: EarlyWalkPosition, action: QiAidAction): boolean {
   const result = advanceEarlyQiAid(store.getSnapshot().state, position, action)

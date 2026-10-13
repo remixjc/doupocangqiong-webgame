@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
@@ -48,7 +49,7 @@ export function advanceFirstHallEntry(state: GameState, p: EarlyWalkPosition, sp
     return fail('按本人所见依次入堂；不代签取卷、授技或切磋胜负。')
   const next = structuredClone(state)
   next.earlyTraining.firstHallEntry = firstHallEntryAt(task.stage + 1)
-  return { state: next, ok: true, message: '实际入堂断点已保存，旧奖励与卷轴保管保持。' }
+  return successfulTransaction(next, '实际入堂断点已保存，旧奖励与卷轴保管保持。')
 }
 export function submitFirstHallEntry(store: GameStore, p: EarlyWalkPosition, space: HallEntrySpace, action: FirstHallEntryAction): boolean {
   return commitEarlyResult(store, advanceFirstHallEntry(store.getSnapshot().state, p, space, action), 'firstHallEntry')

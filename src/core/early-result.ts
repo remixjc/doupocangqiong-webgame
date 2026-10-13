@@ -6,6 +6,14 @@ export function rejectTransaction(state: Transaction['state']): (message: string
   return message => ({ state, ok: false, message })
 }
 
+export function successfulTransaction(state: Transaction['state'], message: string): Transaction {
+  return { state, ok: true, message }
+}
+
+export function failedTransaction(state: Transaction['state'], message: string): Transaction {
+  return { state, ok: false, message }
+}
+
 // Preserve one atomic write, the original write scope, and notification order.
 export function commitEarlyResult(store: GameStore, result: Transaction, key?: keyof EarlyTrainingState | readonly (keyof EarlyTrainingState)[]): boolean {
   if (result.ok) store.update(state => {

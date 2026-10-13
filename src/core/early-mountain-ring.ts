@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -61,9 +62,9 @@ export function advanceEarlyMountainRing(state: GameState, position: EarlyWalkPo
   if (action.operation === 'claim-recovery') return fail('得知流失原因不补满当前资源、授境界或重发奖励。')
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('人物或操作次序不符，请按当前提示继续。')
   const next = structuredClone(state); next.earlyTraining.mountainRing = mountainRingAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 20
+  return successfulTransaction(next, task.stage === 20
     ? '后山与古戒前段已归档；承诺、援助谈判与本人拜师待续。'
-    : '后山这一步已保存；主线资源、装备与已结算奖励保留。' }
+    : '后山这一步已保存；主线资源、装备与已结算奖励保留。')
 }
 export function submitEarlyMountainRing(store: GameStore, position: EarlyWalkPosition, action: MountainRingAction): boolean {
   const result = advanceEarlyMountainRing(store.getSnapshot().state, position, action)

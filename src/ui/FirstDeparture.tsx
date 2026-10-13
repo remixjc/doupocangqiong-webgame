@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -55,8 +56,8 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
     <Eyebrow>房门 / 出门与石路</Eyebrow><h2>起身、跨门，再走上石路。</h2>
     <p id="departure-help">方向或WASD实际行走，近当前地点按E。房内和室外位置分开；首次跨门保存历史，关门前可正常往返，往返不追加历史。刷新恢复本段断点。</p>
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与操作</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'ring'} onClick={() => setActor('ring')}>只看静止古戒</SecondaryButton>
+      {actorButton(actor, setActor, 'yan', "本人行走与操作")}
+      {actorButton(actor, setActor, 'ring', "只看静止古戒")}
     </WalkControls>
     <EarlyMap ref={field} aria-label="出门与石路地图" aria-describedby="departure-help" viewBox={space === 'room' ? '80 290 245 125' : '80 215 280 125'} onKeyDown={key}>
       <MapBackground />

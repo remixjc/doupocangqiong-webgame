@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -53,9 +54,9 @@ export function advanceEarlyFamilyContract(state: GameState, view: FamilyContrac
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('人物或操作次序不符，请按当前提示继续。')
   const next = structuredClone(state)
   next.earlyTraining.familyContract = familyContractAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 23 ? '萧炎已实际离厅，后续片段切为旁观。'
+  return successfulTransaction(next, task.stage === 23 ? '萧炎已实际离厅，后续片段切为旁观。'
     : task.stage === 32 ? '文书、三年赴约与双方离厅已归档，接下来独自上后山。'
-    : '文书与离厅这一步已保存；不改变主线能力、行囊或已结算奖励。' }
+    : '文书与离厅这一步已保存；不改变主线能力、行囊或已结算奖励。')
 }
 export function submitEarlyFamilyContract(store: GameStore, view: FamilyContractView, action: FamilyContractAction): boolean {
   const result = advanceEarlyFamilyContract(store.getSnapshot().state, view, action)

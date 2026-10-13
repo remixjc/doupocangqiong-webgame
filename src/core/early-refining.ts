@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -57,7 +58,7 @@ export function advanceEarlyRefining(state: GameState, yan: EarlyWalkPosition, a
     next = result.state
   }
   next.earlyTraining.refining = refiningAt(task.stage + 1)
-  return { state: next, ok: true, message: '调制断点与同一耗材账已保存，旧完成记录保持。' }
+  return successfulTransaction(next, '调制断点与同一耗材账已保存，旧完成记录保持。')
 }
 export function submitEarlyRefining(store: GameStore, yan: EarlyWalkPosition, action: RefiningAction): boolean {
   const result = advanceEarlyRefining(store.getSnapshot().state, yan, action)

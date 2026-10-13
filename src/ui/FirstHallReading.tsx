@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -43,8 +44,8 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
     <Eyebrow>斗技堂 / 东侧同一第一卷</Eyebrow><h2>走到书架，展开当时的黑卷。</h2>
     <p id="hall-reading-help">方向或WASD由本人实际行走，近东侧书架按E逐步阅读。靠架后保持阅读位置；刷新恢复断点，不代签学习与奖励。</p>
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与阅读</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注西侧声音</SecondaryButton>
+      {actorButton(actor, setActor, 'yan', "本人行走与阅读")}
+      {actorButton(actor, setActor, 'bystander', "只关注西侧声音")}
     </WalkControls>
     <EarlyMap ref={field} aria-label="东侧阅读地图" aria-describedby="hall-reading-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />

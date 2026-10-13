@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
@@ -29,7 +30,7 @@ export function advanceEarlyQiScroll(state: GameState, action: QiScrollAction): 
   const updated = next.earlyTraining.qiPavilionScroll
   updated.stage++
   Object.assign(updated, qiPavilionScrollAt(updated.stage))
-  return { state: next, ok: true, message: updated.stage === 6 ? '家族卷已保管归档；登记与离阁结果待后续确认。' : '卷轴保管步骤已保存，不改变焚诀、技能或奖励。' }
+  return successfulTransaction(next, updated.stage === 6 ? '家族卷已保管归档；登记与离阁结果待后续确认。' : '卷轴保管步骤已保存，不改变焚诀、技能或奖励。')
 }
 
 export function submitEarlyQiScroll(store: GameStore, action: QiScrollAction): boolean {

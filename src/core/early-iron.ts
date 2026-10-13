@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlyHistoryBlock } from './early-history-block'
 import { commitEarlyResult } from './early-result'
@@ -49,7 +50,7 @@ export function advanceEarlyIron(state: GameState, yan: EarlyWalkPosition, actio
   if (scene.actor !== action.actor || scene.operation !== action.operation) return fail('请明确选择本步人物，并按当前操作继续。')
   const next = structuredClone(state)
   next.earlyTraining.iron = ironAt(task.stage + 1)
-  return { state: next, ok: true, message: '铁片历史已保存，原任务袋与修炼结果保持。' }
+  return successfulTransaction(next, '铁片历史已保存，原任务袋与修炼结果保持。')
 }
 export function submitEarlyIron(store: GameStore, yan: EarlyWalkPosition, action: IronAction): boolean {
   const result = advanceEarlyIron(store.getSnapshot().state, yan, action)

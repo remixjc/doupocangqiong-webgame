@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { useRef, useState } from 'react'
 import type { GameState } from '../core/model'
@@ -31,8 +32,8 @@ export default function FirstHallEvening({ state, onBack }: { state: GameState; 
     <Eyebrow>天黑之后 / 回房与同一借卷</Eyebrow><h2>夜路走回房中，借卷放在身旁。</h2>
     <p>方向键/WASD逐步保存，E记当前动作；路线和短对白为原创。</p>
     {task.record === 'recalled' && <p>详细历史回顾，旧传技、保管与奖励保持。</p>}
-    <WalkControls><SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>夜间本人操作</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'xuner'} onClick={() => setActor('xuner')}>观察薰儿分路</SecondaryButton>
+    <WalkControls>{actorButton(actor, setActor, 'yan', "夜间本人操作")}
+      {actorButton(actor, setActor, 'xuner', "观察薰儿分路")}
       <WalkDirectionButtons prefix="夜间本人" onMove={direction => act(`move-${direction}`)} /></WalkControls>
     <EarlyMap ref={field} aria-label="夜间回房地图" viewBox="0 0 480 380" onKeyDown={event => {
       if (!event.repeat) walkKey(event, direction => act(`move-${direction}`), () => { if (!moving && scene) act(scene.operation) })

@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { earlyHistoryBlock } from './early-history-block'
@@ -38,8 +39,8 @@ export function advanceEarlyMountainVisitor(state: GameState, view: MountainVisi
   if (action.operation === 'claim-victory') return fail('薰儿的判断不等于未来三年战斗已经获胜，不发胜利奖励。')
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('人物或操作次序不符，请按当前提示继续。')
   const next = structuredClone(state); next.earlyTraining.mountainVisitor = mountainVisitorAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 25 ? '当晚问答已归档；次晨普通黑卡交付与账本衔接待续。'
-    : task.stage === 22 ? '本人已离山；后续切换薰儿留山的旁观焦点。' : '当晚这一步已保存；未到账，旧主线和采购账本保留。' }
+  return successfulTransaction(next, task.stage === 25 ? '当晚问答已归档；次晨普通黑卡交付与账本衔接待续。'
+    : task.stage === 22 ? '本人已离山；后续切换薰儿留山的旁观焦点。' : '当晚这一步已保存；未到账，旧主线和采购账本保留。')
 }
 export function submitEarlyMountainVisitor(store: GameStore, view: MountainVisitorView, action: MountainVisitorAction): boolean {
   const result = advanceEarlyMountainVisitor(store.getSnapshot().state, view, action)

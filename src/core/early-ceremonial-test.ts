@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
@@ -46,15 +48,15 @@ export function earlyCeremonialTestBlock(state: GameState, position: EarlyWalkPo
 }
 export function advanceEarlyCeremonialTest(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonialTestAction): Transaction {
   const blocked = earlyCeremonialTestBlock(state, entryPosition)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.ceremonialTest, scene = ceremonialTestScenes[task.stage]
   if (!scene || !validCeremonialTest(task) || !fieldsMatch(action, task))
-    return { state, ok: false, message: '正式仪式记录已变化，请依当前阶段继续。' }
+    return failedTransaction(state, '正式仪式记录已变化，请依当前阶段继续。')
   if (action.actor !== scene.actor || action.operation !== scene.operation || !nearCeremonialPlace(position, scene.place, task.stage))
-    return { state, ok: false, message: `先走近${ceremonialPlaces[scene.place].label}，依当前本人动作或观察步骤继续。` }
+    return failedTransaction(state, `先走近${ceremonialPlaces[scene.place].label}，依当前本人动作或观察步骤继续。`)
   const next = structuredClone(state), updated = next.earlyTraining.ceremonialTest
   updated.stage++; Object.assign(updated, ceremonialTestAt(updated.stage))
-  return { state: next, ok: true, message: updated.stage === 9 ? '本次正式石碑八段已记，继续观察反应；尚无挑战裁定。' : '正式仪式与复测步骤已保存。' }
+  return successfulTransaction(next, updated.stage === 9 ? '本次正式石碑八段已记，继续观察反应；尚无挑战裁定。' : '正式仪式与复测步骤已保存。')
 }
 export function submitEarlyCeremonialTest(store: GameStore, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: CeremonialTestAction): boolean {
   const result = advanceEarlyCeremonialTest(store.getSnapshot().state, entryPosition, position, action)

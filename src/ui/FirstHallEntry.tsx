@@ -1,3 +1,4 @@
+import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -51,8 +52,8 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
     <Eyebrow>族内后部 / 实际入堂</Eyebrow><h2>走到堂门，再看见东西两区。</h2>
     <p id="hall-entry-help">方向或WASD由本人实际行走，近本步地点按E。门外与堂内位置分开，入堂后可在门口正常往返，往返不追加历史；刷新恢复本段断点。</p>
     <WalkControls>
-      <SecondaryButton aria-pressed={actor === 'yan'} onClick={() => setActor('yan')}>本人行走与观察</SecondaryButton>
-      <SecondaryButton aria-pressed={actor === 'bystander'} onClick={() => setActor('bystander')}>只关注旁观声音</SecondaryButton>
+      {actorButton(actor, setActor, 'yan', "本人行走与观察")}
+      {actorButton(actor, setActor, 'bystander', "只关注旁观声音")}
     </WalkControls>
     <EarlyMap ref={field} aria-label="实际入堂地图" aria-describedby="hall-entry-help" viewBox="80 185 425 155" onKeyDown={key}>
       <MapBackground />

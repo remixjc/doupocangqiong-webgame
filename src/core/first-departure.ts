@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { earlySnapshotsMatch } from './early-snapshots'
 import type { GameState } from './model'
@@ -53,7 +54,7 @@ export function advanceFirstDeparture(state: GameState, p: EarlyWalkPosition, sp
     return fail('本人依次起身、看戒、跨门、关门和入石路；不授技、发物或提前会面。')
   const next = structuredClone(state)
   next.earlyTraining.firstDeparture = firstDepartureAt(task.stage + 1)
-  return { state: next, ok: true, message: '本人出门断点已保存，旧奖励与试招结果保持。' }
+  return successfulTransaction(next, '本人出门断点已保存，旧奖励与试招结果保持。')
 }
 export function submitFirstDeparture(store: GameStore, p: EarlyWalkPosition, space: DepartureSpace, action: FirstDepartureAction): boolean {
   return commitEarlyResult(store, advanceFirstDeparture(store.getSnapshot().state, p, space, action), 'firstDeparture')

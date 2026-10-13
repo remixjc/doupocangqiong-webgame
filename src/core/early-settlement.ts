@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -14,18 +16,18 @@ export function earlySettlementBlock(state: GameState, position: EarlyWalkPositi
 }
 export function advanceEarlySettlement(state: GameState, position: EarlyWalkPosition, station: SettlementStation, action: SettlementAction): Transaction {
   const blocked = earlySettlementBlock(state, position)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   const task = state.earlyTraining.settlement, scene = settlementScenes[task.stage]
   if (!scene || action.step !== scene.step || action.operation !== scene.operation || action.net !== task.net || action.vip !== task.vip
     || action.owner !== 'auction' || state.earlyTraining.consignment.owner !== action.owner)
-    return { state, ok: false, message: '寄售手续或款项记录已变化，请按当前步骤继续。' }
-  if (station !== scene.station) return { state, ok: false, message: '请到当前寄售手续对应的位置。' }
+    return failedTransaction(state, '寄售手续或款项记录已变化，请按当前步骤继续。')
+  if (station !== scene.station) return failedTransaction(state, '请到当前寄售手续对应的位置。')
   const next = structuredClone(state), updated = next.earlyTraining.settlement
   updated.stage++; updated.vip = updated.stage >= 4
   updated.net = updated.stage >= 6 ? FIRST_SALE_NET : 0
-  return { state: next, ok: true, message: updated.stage === 6
+  return successfulTransaction(next, updated.stage === 6
     ? '已接过储款卡，独立净款39200只记一次；主线金币和同瓶保管保留。'
-    : '本步寄售手续已保存，凭据与收款按步骤分别记录。' }
+    : '本步寄售手续已保存，凭据与收款按步骤分别记录。')
 }
 export function submitEarlySettlement(store: GameStore, position: EarlyWalkPosition, station: SettlementStation, action: SettlementAction): boolean {
   const result = advanceEarlySettlement(store.getSnapshot().state, position, station, action)

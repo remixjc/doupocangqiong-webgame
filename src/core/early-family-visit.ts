@@ -1,3 +1,4 @@
+import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
 import { fieldsMatch } from './state-guards'
 import { commitEarlyResult } from './early-result'
@@ -63,9 +64,9 @@ export function advanceEarlyFamilyVisit(state: GameState, position: EarlyWalkPos
   if (action.actor !== scene.actor || action.operation !== scene.operation) return fail('人物或操作次序不符，请按当前提示继续。')
   const next = structuredClone(state)
   next.earlyTraining.familyVisit = familyVisitAt(task.stage + 1)
-  return { state: next, ok: true, message: task.stage === 16
+  return successfulTransaction(next, task.stage === 16
     ? '来访前半程已归档，补偿尚未答复、文书与立约待续。'
-    : '来访这一步已保存；不改变主线能力、行囊或已结算奖励。' }
+    : '来访这一步已保存；不改变主线能力、行囊或已结算奖励。')
 }
 export function submitEarlyFamilyVisit(store: GameStore, position: EarlyWalkPosition, action: FamilyVisitAction): boolean {
   const result = advanceEarlyFamilyVisit(store.getSnapshot().state, position, action)

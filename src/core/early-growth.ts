@@ -1,3 +1,5 @@
+import { failedTransaction } from './early-result'
+import { successfulTransaction } from './early-result'
 import { commitEarlyResult } from './early-result'
 import type { GameState } from './model'
 import type { GameStore } from './store'
@@ -11,12 +13,12 @@ export function earlyGrowthBlock(state: GameState): string {
 }
 export function advanceEarlyGrowth(state: GameState, step: number): Transaction {
   const blocked = earlyGrowthBlock(state)
-  if (blocked) return { state, ok: false, message: blocked }
+  if (blocked) return failedTransaction(state, blocked)
   if (!Number.isSafeInteger(step) || step !== state.earlyTraining.growth.stage || step >= 3)
-    return { state, ok: false, message: '这段修炼过渡已翻阅，或当前页已变化。' }
+    return failedTransaction(state, '这段修炼过渡已翻阅，或当前页已变化。')
   const next = structuredClone(state)
   next.earlyTraining.growth.stage++
-  return { state: next, ok: true, message: step === 2 ? '修炼时日已翻阅，可以回舆图查看后续旅程。' : '这页过渡已记下，可关闭后继续翻阅。' }
+  return successfulTransaction(next, step === 2 ? '修炼时日已翻阅，可以回舆图查看后续旅程。' : '这页过渡已记下，可关闭后继续翻阅。')
 }
 export function submitEarlyGrowth(store: GameStore, step: number): boolean {
   const result = advanceEarlyGrowth(store.getSnapshot().state, step)
