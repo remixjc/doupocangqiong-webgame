@@ -1,3 +1,4 @@
+import { HallWalker } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -51,7 +52,7 @@ export default function MountainWalkMap({ label, helpId, prefix = '后山', posi
         </g>}
       </g>}
       {!observerOnly && <g aria-label="萧炎后山行走位置" transform={`translate(${position.x} ${position.y})`}>
-        <ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
+        <HallWalker />
         {ring === 'worn' && <circle aria-label="右手佩戴的同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />}
       </g>}
       {bowed && <MapText x="300" y="180" fill="#edcea0">本人行礼已记录</MapText>}

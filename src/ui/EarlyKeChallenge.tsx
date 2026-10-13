@@ -1,3 +1,4 @@
+import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -63,13 +64,13 @@ export default function EarlyKeChallenge({ state, position: entryPosition, onBac
       <g transform="translate(342 278)"><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
       <path d="M87 345 V295 M61 304 Q86 280 112 305 M54 316 Q86 283 120 316" fill="none" stroke="#86a383" strokeWidth="7" />
       {Object.entries(keChallengePlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x - (training && task.beats === 1 ? 18 : 0)} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="萧克挑战行走操作">{<WalkDirectionButtons prefix="应战" onMove={move} />}</WalkControls>
     <StatusParagraph>萧克挑战 {task.stage}/12 · 动作 {task.beats}/2 · 重开 {task.attempts} 次 · {task.verdict === 'none' ? '尚未完成交锋' : task.verdict === 'pending' ? '萧克倒地，待父亲宣布' : '父亲已宣布萧克败'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="萧克挑战步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
-        {steady && <label className="setting-row"><span>萧克应战时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="萧克应战时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        {steady && <TimingRange label="萧克应战时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="萧克应战时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停萧克应战时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续萧克应战 · 恢复时机</SecondaryButton></>}

@@ -1,3 +1,4 @@
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -58,9 +59,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
     {scene ? station === scene.station ? <BondSummary aria-label="回房恢复步骤">
       <SceneHeading title={scene.title} text={scene.text} speaker={scene.speaker} />
       {breathing && <>
-        <label className="setting-row"><span>恢复调息时机<small>用方向键调至35%–65%；当前 {Math.round(marker * 100)}%。失误可免费再试，药力保留。</small></span>
-          <input type="range" aria-label="恢复调息时机" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />
-        </label>
+        <TimingRange label="恢复调息时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>用方向键调至35%–65%；当前 {Math.round(marker * 100)}%。失误可免费再试，药力保留。</small></TimingRange>
         <TimingMeter label="恢复时机指针" marker={marker} />
       </>}
       {scene.operation === 'review' && <MutedParagraph>此处是压缩往事回顾：老师提及半月前的耐受变化，成长叙述另回顾四段后一个半月到五段。没有实际等待，也不把这一轮四次脉冲当成全部时日。调息次数与时机区间均为原创折算。</MutedParagraph>}

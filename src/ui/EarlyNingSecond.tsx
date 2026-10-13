@@ -1,3 +1,4 @@
+import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -68,13 +69,13 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       <MapText x="550" y="202" fill="#ead9b6" fontSize="11">{task.contact === 'out' ? '出场 · 仍待裁定' : task.contact === 'met' ? '已对拳 · 尚未出场' : '违规再攻'}</MapText>
       <g transform="translate(272 272)" aria-label="薰儿台下观礼" role="img"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} fill="#ead9b6" fontSize="11">{id === 'arena' ? '台中 · 两步迎击' : place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="违规再攻行走操作">{<WalkDirectionButtons prefix="再攻" onMove={move} />}</WalkControls>
     <StatusParagraph>违规再攻 {task.stage}/8 · 迎击 {task.beats}/2 · 重开 {task.attempts} 次 · {task.pill === 'used' ? '增气药已用' : '药物宁持未服'} · {task.ignored ? '叫停无效已记' : '尚待叫停'} · {task.contact === 'out' ? '追加拳击后已出场' : task.contact === 'met' ? '迎击已对拳，未出场' : '迎击待续'} · {state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '此轮当时待裁定，最终胜负已宣布' : '仍待最终裁定'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="违规再攻步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
-        {steady && <label className="setting-row"><span>违规迎击时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="违规迎击时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        {steady && <TimingRange label="违规迎击时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="违规迎击时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停违规迎击时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续违规迎击 · 恢复时机</SecondaryButton></>}

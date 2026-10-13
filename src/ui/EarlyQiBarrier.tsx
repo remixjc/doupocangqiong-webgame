@@ -1,3 +1,4 @@
+import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -68,7 +69,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
       <MapText x="360" y="58" fill="#e5c48e" fontSize="17">火通道 · 第三路 · 四十三号</MapText>
       {qiPaths.map((x, index) => <g key={x}><circle cx={x} cy="350" r="25" fill={task.path === 3 && index === 2 ? '#a18456' : '#465a4d'} /><MapText x={x} y="355" fill="#ead9b6">{index + 1}</MapText></g>)}
       <text x="335" y="285" fill="#e6d4ad" fontSize="11">37</text><text x="335" y="112" fill="#e6d4ad" fontSize="11">43</text>
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
       {Object.entries(qiBarrierPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="31" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 43} fill="#ead9b6" fontSize="10">{place.label}</MapText></g>)}
     </EarlyMap>
     <WalkControls aria-label="火通道行走操作"><WalkDirectionButtons prefix="火通道" onMove={move} /></WalkControls>
@@ -76,7 +77,7 @@ export default function EarlyQiBarrier({ state, onBack }: { state: GameState; on
     {scene ? near ? <BondSummary aria-label="火通道门障步骤"><SceneHeading title={scene.title} text={scene.text} />
       {task.stage === 1 ? <WalkControls>{[1, 2, 3, 4, 5].map(path => <SecondaryButton key={path} onClick={() => act('path', path)}>选择第{path}路</SecondaryButton>)}</WalkControls>
         : task.stage === 6 ? <>
-          {steady && <label className="setting-row"><span>破幕时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="破幕时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+          {steady && <TimingRange label="破幕时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></TimingRange>}
           <TimingMeter label="破幕时机指针" marker={marker} />
           {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停破幕时机</SecondaryButton>}
           {paused && <><StatusParagraph>破幕时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续破幕练习</SecondaryButton></>}

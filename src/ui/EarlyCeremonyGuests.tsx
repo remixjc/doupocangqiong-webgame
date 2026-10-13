@@ -1,3 +1,4 @@
+import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -53,7 +54,7 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       <g transform="translate(550 268)" role="img" aria-label="雅妃与宾客"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#b86c65" /><MapText y="36" fill="#ead9b6" fontSize="11">雅妃</MapText></g>
       {task.stage >= 6 && task.stage < 12 && <g transform={`translate(${task.stage >= 9 ? 490 : 290} 260)`} role="img" aria-label="萧战已走近"><circle cy="-13" r="8" fill="#d5b491" /><path d="M-14 17 L-8-5 H8 L14 17Z" fill="#7f8cba" /></g>}
       {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 56} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="宾客场地行走操作">{<WalkDirectionButtons prefix="候礼" onMove={move} />}</WalkControls>
     <StatusParagraph>宾客与收剑 {task.stage}/12 · {task.sword === 'none' ? '尚未拔剑' : task.sword === 'drawn' ? '佩剑出鞘，尚未交锋' : '佩剑已收回，没有战斗'} · {task.introduced ? '父亲介绍已记' : '父亲介绍尚待'}</StatusParagraph>

@@ -1,3 +1,4 @@
+import { HallWalker } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
 import WalkDirectionButtons from './WalkDirectionButtons'
@@ -46,7 +47,7 @@ export default function FamilyHallMap({ label, helpId, prefix, position, place, 
         {(paper === 'marked' || paper === 'table' || paper === 'nalan') && <circle cx="14" cy="20" r="3" fill="#9a684e" />}
       </g>}
       {!observer && <g aria-label="萧炎行走位置" transform={`translate(${position.x} ${position.y})`}>
-        <ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" />
+        <HallWalker />
       </g>}
       {observer && <MapText x="465" y="390" fill="#a6e1d3" fontSize="13">{departed ? '旁观厅外 · 双方已离厅，纳兰携原文书' : '旁观厅内 · 萧炎已离厅'}</MapText>}
     </EarlyMap>

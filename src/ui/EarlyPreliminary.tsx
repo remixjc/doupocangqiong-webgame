@@ -1,3 +1,4 @@
+import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -53,7 +54,7 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       <g transform={`translate(${task.stage < 2 ? 156 : task.stage === 7 ? 535 : 340} ${task.stage < 2 ? 350 : task.stage === 7 ? 180 : 284})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#73a98a" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
       {task.stage >= 5 && <g transform={`translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})`}><circle cy="-15" r="8" fill="#dfbca3" /><path d="M-12 16 L-7-5 H7 L12 16Z" fill="#c07b79" /><MapText y="34" fill="#ead9b6" fontSize="11">萧媚</MapText></g>}
       {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="预测行走操作">
       {<WalkDirectionButtons prefix="预测" onMove={move} />}

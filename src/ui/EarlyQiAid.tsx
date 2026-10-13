@@ -1,3 +1,4 @@
+import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -54,13 +55,13 @@ export default function EarlyQiAid({ state, onBack }: { state: GameState; onBack
       <MapText x="350" y="270" fill="#dcc89f" fontSize="15">阁内陈设 · 不可穿行</MapText>
       <rect x="573" y="278" width="9" height="65" fill={task.door === 'broken' ? '#8bb78a' : '#bf6559'} />
       {Object.entries(qiAidPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="28" stroke={scene?.place === id ? '#f8dba4' : '#9ca487'} fill="none" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 44} fill="#edcea0" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="同行援助行走操作"><WalkDirectionButtons prefix="援助" onMove={move} /></WalkControls>
     <StatusParagraph>援助 {task.stage}/10 · 薰儿自选卷{task.xunerScroll === 'xuner' ? '已由她保管' : '未取'} · 风房门障{task.door === 'broken' ? '已破' : task.door === 'intact' ? '完整' : '待观察'} · {task.returned ? '已回返' : '未回返'} · 动作{task.beats}/2 · 免费重试{task.attempts}</StatusParagraph>
     {scene ? near ? <BondSummary><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
-        {steady && <label className="setting-row"><span>援助出手时机<small>减弱动态：键盘调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="援助出手时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        {steady && <TimingRange label="援助出手时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：键盘调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="援助时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停援助时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，请明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续援助练习</SecondaryButton></>}

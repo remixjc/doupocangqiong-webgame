@@ -1,3 +1,4 @@
+import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -62,7 +63,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
       </g>
       {task.stage >= 4 && <g transform="translate(104 176)" opacity=".8"><circle cy="-19" r="10" fill="#e0e4d5" /><path d="M-18 35 L-8-3 H8 L18 35Z" fill="#bdd4cb" /><MapText y="52" fill="#ead9b6" fontSize="11">药老</MapText></g>}
       {Object.entries(forestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke="#c9ab70" strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 64} fill="#ead9b6" fontSize="13">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
       <MapText x="360" y="369" fill="#ead9b6" fontSize="13">{task.stage >= 3 ? task.stage >= 4 ? '首次成功已记下 · 停下休息后继续' : '成功后当前耗尽 · 退至青石' : '每次进入从山径起点出发 · 行走位置不写入存档'}</MapText>
     </EarlyMap>
     <WalkControls aria-label="林中行走操作">
@@ -71,7 +72,7 @@ export default function EarlyForestStrike({ state, position: entryPosition, onBa
     <StatusParagraph>林中练技 {task.stage}/7 · {task.result === 'none' ? '六段回顾未记录' : '故事六段'} · 连贯动作 {task.beats}/3 · 重试 {task.attempts} 次 · {task.tree === 'intact' ? '树木完好' : '同一棵树已倒下'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="林中练技步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training ? <>
-        {steady && <label className="setting-row"><span>林中练技时机<small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></span><input aria-label="林中练技时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        {steady && <TimingRange label="林中练技时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调至35%–65%。当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="林中练技时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停林中时机</SecondaryButton>}
         {paused && <><StatusParagraph>练技时机已暂停，返回前台后需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续林中练技 · 恢复时机</SecondaryButton></>}

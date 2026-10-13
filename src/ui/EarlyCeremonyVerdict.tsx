@@ -1,3 +1,4 @@
+import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -51,7 +52,7 @@ export default function EarlyCeremonyVerdict({ state, position: entryPosition, o
       <g transform={`translate(${task.xuner === 'requested' || task.stage === 9 ? 360 : task.stage >= 11 ? 195 : 270} ${task.xuner === 'requested' || task.stage === 9 ? 168 : task.stage >= 11 ? 335 : 280})`} role="img" aria-label={task.xuner === 'requested' ? '薰儿提出代战，尚未获准' : task.stage === 9 ? '薰儿参加自己的仪式' : '薰儿观礼或离场同行'}><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       {task.stage < 2 && <g transform="translate(676 280) rotate(83)" role="img" aria-label="场外昏迷萧宁，交由族人照看"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#bc786b" /></g>}
       {Object.entries(verdictPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 50} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="正式裁定行走操作">{<WalkDirectionButtons prefix="裁定" onMove={move} />}</WalkControls>
     <StatusParagraph>礼终裁定 {task.stage}/16 · {task.yu === 'blocked' ? '萧玉请求被阻止' : '萧玉请求待处理'} · {task.xuner === 'blocked' ? '薰儿代战被阻止' : '薰儿请求待处理'} · {task.penalty === 3 ? '萧宁禁足三个月已宣布' : '处分待宣布'} · {task.verdict === 'xiaoyan' ? '正式萧炎获胜' : '胜负尚待宣布'} · {task.rite === 'ended' ? '午后礼终' : '礼程未结束'}</StatusParagraph>

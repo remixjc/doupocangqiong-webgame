@@ -1,0 +1,236 @@
+{
+  "version": "0.77.1",
+  "date": "2026-10-13",
+  "inverse": [
+    {
+      "file": "src/ui/EarlyCeremonialTest.tsx",
+      "nodes": 1,
+      "sha256": "d0787535b4c0497d121bfa6e259b1c4db590349e610d91ff5bc9177142dde7ca"
+    },
+    {
+      "file": "src/ui/EarlyCeremonyGuests.tsx",
+      "nodes": 1,
+      "sha256": "c2b12f80a246e82289c1dd2004511b16a1af66b2d6f64d057773543646ce578e"
+    },
+    {
+      "file": "src/ui/EarlyCeremonyVerdict.tsx",
+      "nodes": 1,
+      "sha256": "2de21fa82af938541c34b27a6b825d05e8946b36f1a0c42482b73332bd3c17c1"
+    },
+    {
+      "file": "src/ui/EarlyEighthTraining.tsx",
+      "nodes": 2,
+      "sha256": "95f6171b22506094a86d5926fbb38a4b586644a33ca5798a0c948256b86f7b25"
+    },
+    {
+      "file": "src/ui/EarlyForestStrike.tsx",
+      "nodes": 2,
+      "sha256": "d5edf5ccf0bcaa151705a444063551bdb67b8403e2cdb4c13604bf6fcc6ada8e"
+    },
+    {
+      "file": "src/ui/EarlyKeChallenge.tsx",
+      "nodes": 2,
+      "sha256": "51c62721b8d43fbf381cecea1c8cef289afdc3f51bfaafa8e8255a1b8b30d39b"
+    },
+    {
+      "file": "src/ui/EarlyNingFirst.tsx",
+      "nodes": 2,
+      "sha256": "fdba08cd4e84a76b8dcfb838369d3e730d2a0ce777e470f1a1d9afed9d517359"
+    },
+    {
+      "file": "src/ui/EarlyNingSecond.tsx",
+      "nodes": 2,
+      "sha256": "343af8d91e9fab5610cf5c4daee776afbf22e07a3411f4389b2829cf013e4d88"
+    },
+    {
+      "file": "src/ui/EarlyPalmPair.tsx",
+      "nodes": 1,
+      "sha256": "9a460719af88810e01db44894e839618b4af34e7fb4f95882450747016456cd1"
+    },
+    {
+      "file": "src/ui/EarlyPractice.tsx",
+      "nodes": 1,
+      "sha256": "fef59fd12aca28aafd85229efa38c573d2b5552292a211389110d6af1aaa7ee2"
+    },
+    {
+      "file": "src/ui/EarlyPreliminary.tsx",
+      "nodes": 1,
+      "sha256": "2765df0a5a74d231e5c2e18a08912afa313492bcb8b0556dbcb8a61d4ee656a6"
+    },
+    {
+      "file": "src/ui/EarlyQiAid.tsx",
+      "nodes": 2,
+      "sha256": "6318f98b9085d7cbbc126840773a80ec437a5c390ad78fa3f55f5921d597f3f8"
+    },
+    {
+      "file": "src/ui/EarlyQiBarrier.tsx",
+      "nodes": 2,
+      "sha256": "c44f595254a83d538f502f43d975d54fe5f4c1318bb80498f280594a5dcc6f8d"
+    },
+    {
+      "file": "src/ui/EarlyQiPavilion.tsx",
+      "nodes": 1,
+      "sha256": "cfe5cf647787f7118ad30bf5f2d802590cfeea3c6b5082edfb12b4241dd2a75e"
+    },
+    {
+      "file": "src/ui/EarlyRecovery.tsx",
+      "nodes": 1,
+      "sha256": "0938f6a215cf2ea8e321fdf0bd3ff2d7d3bec12119398a77f9aefda13c1a93a7"
+    },
+    {
+      "file": "src/ui/EarlySeventhRoom.tsx",
+      "nodes": 1,
+      "sha256": "b42877a394c41c9265f8a7f89f3e78aa5c02b051a166da3ec374fbb27727f854"
+    },
+    {
+      "file": "src/ui/EarlySupervision.tsx",
+      "nodes": 1,
+      "sha256": "84156baf730c7b1ab1a079909368b458950df05d5b03518098b923e7d20ab9c3"
+    },
+    {
+      "file": "src/ui/FamilyHallMap.tsx",
+      "nodes": 1,
+      "sha256": "f77d7ff8019bba2cd2ae0c96614be0b8f1a9f8475d723b266a4833c330280e5d"
+    },
+    {
+      "file": "src/ui/MountainWalkMap.tsx",
+      "nodes": 1,
+      "sha256": "af0ec813f0f3e8d5d46ed2f657eafbedccdd2c8f7235330523eda5981c7910f8"
+    }
+  ],
+  "figureNodes": 14,
+  "rangeLabels": 12,
+  "nativeTreesAndCallbackEqual": true,
+  "decoded": 243,
+  "nativeBackups": [
+    {
+      "name": "eveningCapacityMain",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791891181238.json",
+      "prior": "afternoonMainAfterOldViews",
+      "sha256": "459d7fe886d1678ef544a6260aa9cce4395dd7b033e3154a65728996ccd585d7",
+      "entireStateEqual": true
+    },
+    {
+      "name": "eveningCapacityMaterials",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791891185287.json",
+      "prior": "afternoonMaterialsAfterNavigation",
+      "sha256": "113c0bece22bd02f930981f6f24d276f6bc382eddeaa11b0a592b74eef2cabbd",
+      "entireStateEqual": true
+    },
+    {
+      "name": "eveningCapacityIntact",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791891187999.json",
+      "prior": "afternoonIntactMigrated",
+      "sha256": "9cea816bb567e8507a43e907909d44336a5d1341186e954394d40c70931e2f9a",
+      "entireStateEqual": true
+    },
+    {
+      "name": "eveningCapacityMainAfterNavigation",
+      "file": "D:\\Users\\jacob\\Downloads\\异火之路-第28章-1791891282120.json",
+      "prior": "eveningCapacityMain",
+      "sha256": "dfd86f31a56299b4dc3d0d3697e153d76f989f78b847301523f1fe184f5dd8f3",
+      "entireStateEqual": true
+    }
+  ],
+  "budget": {
+    "initial": 489207,
+    "gzip": 163819,
+    "total": 1846257,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ],
+    "savedTotal": 3435
+  },
+  "browser": [
+    {
+      "label": "mainBefore",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">离堂之后 / 整个午后</span><h2>同行山路，直到天黑。</h2><p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p><p>本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">本人行走与记录</button><button class=\"secondary\" aria-pressed=\"false\">薰儿同行</button><button class=\"secondary\" aria-label=\"午后本人向上走\">↑</button><button class=\"secondary\" aria-label=\"午后本人向左走\">←</button><button class=\"secondary\" aria-label=\"午后本人向下走\">↓</button><button class=\"secondary\" aria-label=\"午后本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"整个午后同行地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M40 350 L100 180 L140 250 L200 30 L270 110 L320 30 L450 350Z\" fill=\"#192e2b\"></path><polyline points=\"60,310 100,310 140,310 140,270 140,230 180,230 220,230 220,190 220,150 180,150 140,150 140,110 140,70 180,70 220,70 220,110 220,150 260,150 300,150\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></polyline><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"60\" y=\"355\">堂外</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"350\" y=\"300\">附近山路</text><g aria-label=\"午后薰儿位置\" transform=\"translate(325 120)\"><circle r=\"7\" fill=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-15\">薰儿</text></g><g aria-label=\"午后本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"午后同一第二借卷\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0</p><section class=\"bond-summary\"><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></section><button class=\"secondary\">暂离整个午后 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "materialsBefore",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">离堂之后 / 整个午后</span><h2>同行山路，直到天黑。</h2><p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p><p>本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">本人行走与记录</button><button class=\"secondary\" aria-pressed=\"false\">薰儿同行</button><button class=\"secondary\" aria-label=\"午后本人向上走\">↑</button><button class=\"secondary\" aria-label=\"午后本人向左走\">←</button><button class=\"secondary\" aria-label=\"午后本人向下走\">↓</button><button class=\"secondary\" aria-label=\"午后本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"整个午后同行地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M40 350 L100 180 L140 250 L200 30 L270 110 L320 30 L450 350Z\" fill=\"#192e2b\"></path><polyline points=\"60,310 100,310 140,310 140,270 140,230 180,230 220,230 220,190 220,150 180,150 140,150 140,110 140,70 180,70 220,70 220,110 220,150 260,150 300,150\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></polyline><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"60\" y=\"355\">堂外</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"350\" y=\"300\">附近山路</text><g aria-label=\"午后薰儿位置\" transform=\"translate(325 120)\"><circle r=\"7\" fill=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-15\">薰儿</text></g><g aria-label=\"午后本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"午后同一第二借卷\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0</p><section class=\"bond-summary\"><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></section><button class=\"secondary\">暂离整个午后 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "mainRepeat",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">离堂之后 / 整个午后</span><h2>同行山路，直到天黑。</h2><p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p><p>本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">本人行走与记录</button><button class=\"secondary\" aria-pressed=\"false\">薰儿同行</button><button class=\"secondary\" aria-label=\"午后本人向上走\">↑</button><button class=\"secondary\" aria-label=\"午后本人向左走\">←</button><button class=\"secondary\" aria-label=\"午后本人向下走\">↓</button><button class=\"secondary\" aria-label=\"午后本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"整个午后同行地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M40 350 L100 180 L140 250 L200 30 L270 110 L320 30 L450 350Z\" fill=\"#192e2b\"></path><polyline points=\"60,310 100,310 140,310 140,270 140,230 180,230 220,230 220,190 220,150 180,150 140,150 140,110 140,70 180,70 220,70 220,110 220,150 260,150 300,150\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></polyline><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"60\" y=\"355\">堂外</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"350\" y=\"300\">附近山路</text><g aria-label=\"午后薰儿位置\" transform=\"translate(325 120)\"><circle r=\"7\" fill=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-15\">薰儿</text></g><g aria-label=\"午后本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"午后同一第二借卷\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0</p><section class=\"bond-summary\"><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></section><button class=\"secondary\">暂离整个午后 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "mainAfterNavigation",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">离堂之后 / 整个午后</span><h2>同行山路，直到天黑。</h2><p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p><p>本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">本人行走与记录</button><button class=\"secondary\" aria-pressed=\"false\">薰儿同行</button><button class=\"secondary\" aria-label=\"午后本人向上走\">↑</button><button class=\"secondary\" aria-label=\"午后本人向左走\">←</button><button class=\"secondary\" aria-label=\"午后本人向下走\">↓</button><button class=\"secondary\" aria-label=\"午后本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"整个午后同行地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M40 350 L100 180 L140 250 L200 30 L270 110 L320 30 L450 350Z\" fill=\"#192e2b\"></path><polyline points=\"60,310 100,310 140,310 140,270 140,230 180,230 220,230 220,190 220,150 180,150 140,150 140,110 140,70 180,70 220,70 220,110 220,150 260,150 300,150\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></polyline><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"60\" y=\"355\">堂外</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"350\" y=\"300\">附近山路</text><g aria-label=\"午后薰儿位置\" transform=\"translate(325 120)\"><circle r=\"7\" fill=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-15\">薰儿</text></g><g aria-label=\"午后本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"午后同一第二借卷\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0</p><section class=\"bond-summary\"><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></section><button class=\"secondary\">暂离整个午后 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "mainRefreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">离堂之后 / 整个午后</span><h2>同行山路，直到天黑。</h2><p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p><p>本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">本人行走与记录</button><button class=\"secondary\" aria-pressed=\"false\">薰儿同行</button><button class=\"secondary\" aria-label=\"午后本人向上走\">↑</button><button class=\"secondary\" aria-label=\"午后本人向左走\">←</button><button class=\"secondary\" aria-label=\"午后本人向下走\">↓</button><button class=\"secondary\" aria-label=\"午后本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"整个午后同行地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M40 350 L100 180 L140 250 L200 30 L270 110 L320 30 L450 350Z\" fill=\"#192e2b\"></path><polyline points=\"60,310 100,310 140,310 140,270 140,230 180,230 220,230 220,190 220,150 180,150 140,150 140,110 140,70 180,70 220,70 220,110 220,150 260,150 300,150\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></polyline><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"60\" y=\"355\">堂外</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"350\" y=\"300\">附近山路</text><g aria-label=\"午后薰儿位置\" transform=\"translate(325 120)\"><circle r=\"7\" fill=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-15\">薰儿</text></g><g aria-label=\"午后本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"午后同一第二借卷\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0</p><section class=\"bond-summary\"><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></section><button class=\"secondary\">暂离整个午后 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    },
+    {
+      "label": "materialsRefreshed",
+      "secondX": "320",
+      "secondY": "145",
+      "status": "午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0",
+      "tabindex": "0",
+      "tree": "<button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">离堂之后 / 整个午后</span><h2>同行山路，直到天黑。</h2><p>方向键/WASD走路并保存，E记时段。原创路线与游戏时段。</p><p>本人持同一第二借卷。第一卷归架、她的卷留堂。回房另续。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">本人行走与记录</button><button class=\"secondary\" aria-pressed=\"false\">薰儿同行</button><button class=\"secondary\" aria-label=\"午后本人向上走\">↑</button><button class=\"secondary\" aria-label=\"午后本人向左走\">←</button><button class=\"secondary\" aria-label=\"午后本人向下走\">↓</button><button class=\"secondary\" aria-label=\"午后本人向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"整个午后同行地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M40 350 L100 180 L140 250 L200 30 L270 110 L320 30 L450 350Z\" fill=\"#192e2b\"></path><polyline points=\"60,310 100,310 140,310 140,270 140,230 180,230 220,230 220,190 220,150 180,150 140,150 140,110 140,70 180,70 220,70 220,110 220,150 260,150 300,150\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></polyline><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"60\" y=\"355\">堂外</text><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"350\" y=\"300\">附近山路</text><g aria-label=\"午后薰儿位置\" transform=\"translate(325 120)\"><circle r=\"7\" fill=\"#ae8dbd\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-15\">薰儿</text></g><g aria-label=\"午后本人位置\" transform=\"translate(300 150)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人</text></g><rect aria-label=\"午后同一第二借卷\" x=\"320\" y=\"145\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">午后 10/10 · 本段行走 0/0 · 整个午后 · 三段与天黑归档，山上待回房 / 路段3/3 · 在途0</p><section class=\"bond-summary\"><h3>整个午后已归档</h3><p>三段同行与夜色保持，仍在山上。</p></section><button class=\"secondary\">暂离整个午后 · 保留断点</button>",
+      "xuner": "translate(325 120)",
+      "yan": "translate(300 150)"
+    }
+  ],
+  "errors": {
+    "main": [],
+    "materials": [],
+    "intact": []
+  },
+  "isolation": {
+    "intactCapacity": {
+      "alerts": 0,
+      "entry": 0,
+      "normal": true
+    },
+    "mountainBefore": ""
+  },
+  "vitest": {
+    "files": 154,
+    "tests": 913
+  },
+  "nodeTests": 11,
+  "prerequisite": {
+    "sha": "9e925fb566db3ed5810225aa726400c338915651",
+    "ci": 38325134114,
+    "conclusion": "success",
+    "pages": 38325134067,
+    "pagesConclusion": "skipped",
+    "files": 122,
+    "bytes": 1985791
+  },
+  "limitations": "Capacity only. 19 whole-source inverses preserve 14 exact figures and 12 entire range labels; old callbacks and small JSX retained. 243 immutable previous native files only content version changes. Four new native exports equal previous complete state. Two current branches refreshed complete dialog DOM identical. Actual mountain map movement, figure and entry focus inspected; range native tree verified in Node, no claimed physical-device or live slider test. Empty old browser tabs recreated on same browser with existing origin saves; first URL failed because preview had stopped; restarted normal preview. Initial proof locator assumed scroll rect nested, corrected to actual labelled rect; no game error."
+}

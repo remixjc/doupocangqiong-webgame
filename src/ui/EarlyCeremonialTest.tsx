@@ -1,3 +1,4 @@
+import { HallWalker } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -59,7 +60,7 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
       <g transform="translate(272 272)" aria-label="薰儿台下候礼" role="img"><circle cy="-13" r="8" fill="#e1bba0" /><path d="M-13 17 L-7-5 H7 L13 17Z" fill="#73a98a" /></g>
       <MapText x="565" y="302" fill="#ead9b6">宾客 · 萧战与雅妃</MapText>
       {Object.entries(ceremonialPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'rite' ? 44 : 57)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="正式仪式行走操作">{<WalkDirectionButtons prefix="仪式" onMove={move} />}</WalkControls>
     <StatusParagraph>正式仪式 {task.stage}/13 · {task.rite === 'none' ? '本人礼程未开始' : task.rite === 'begun' ? '二长老主持中' : task.rite === 'reviewed' ? '半小时已回顾，待结束' : '仪式已结束'} · {task.inspected ? '二长老已验碑' : '尚未验碑'} · {task.result === 'unmeasured' ? '本人尚未正式测' : '正式八段已记'}</StatusParagraph>

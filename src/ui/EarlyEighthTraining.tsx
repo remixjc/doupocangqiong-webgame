@@ -1,3 +1,4 @@
+import { HallWalker, TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -65,13 +66,13 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       {task.stage >= 4 && task.stage <= 5 && <g transform={`translate(${task.stage === 4 ? 246 : 546} 104)`} role="img" aria-label="薰儿同行"><circle cy="-10" r="7" fill="#dfbca3" /><path d="M-11 14 L-6-3 H6 L11 14Z" fill="#73a98a" /></g>}
       {task.stage === 7 && <g role="img" aria-label={task.beats ? '吸掌已记，准备吹火掌' : '准备吸掌，再接吹火掌'}><path d={task.beats ? 'M500 135 Q535 115 566 140' : 'M566 140 Q535 160 500 135'} fill="none" stroke="#d5d4a1" strokeWidth="3" strokeDasharray="6 5" /><path d="M555 129 Q581 118 571 142 Q561 146 555 129" fill="#b9c480" /></g>}
       {Object.entries(eighthPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
-      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><ellipse cy="17" rx="14" ry="5" fill="#0005" /><path d="M-12 13 L-7-5 H7 L12 13Z" fill="#d3a567" /><circle cy="-13" r="8" fill="#edc79f" /></g>
+      <g transform={`translate(${position.x} ${position.y})`} aria-hidden="true"><HallWalker /></g>
     </EarlyMap>
     <WalkControls aria-label="礼前训练行走操作">{<WalkDirectionButtons prefix="礼前" onMove={move} />}</WalkControls>
     <StatusParagraph>礼前训练 {task.stage}/15 · {target ? `本轮 ${task.beats}/${target}` : '地点步骤'} · 重开 {task.attempts} 次 · {task.outing === 'none' ? '尚待回应' : task.outing === 'promised' ? '已约好，同行未完成' : '次日同行已记'} · {task.result === 'none' ? '故事八段尚未感知' : '故事八段已感知'}</StatusParagraph>
     {scene ? near ? <BondSummary aria-label="礼前训练步骤"><SceneHeading title={scene.title} text={scene.text} />
       {target ? <>
-        {steady && <label className="setting-row"><span>礼前训练时机<small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="礼前训练时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        {steady && <TimingRange label="礼前训练时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="礼前训练时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停礼前训练时机</SecondaryButton>}
         {paused && <><StatusParagraph>时机已暂停，需明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续礼前训练 · 恢复时机</SecondaryButton></>}

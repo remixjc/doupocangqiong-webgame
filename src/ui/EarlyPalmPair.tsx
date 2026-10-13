@@ -1,3 +1,4 @@
+import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
@@ -58,7 +59,7 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
     <StatusParagraph>吸推练习 {task.stage}/10 · 基础 {task.beats}/2 · 重试 {task.attempts} 次 · 第一只{task.first === 'fragments' ? '已碎' : task.first === 'pulled' ? '已拉近' : '完好'} · 第二只{task.second === 'dust' ? '已成细末' : task.second === 'pulled' ? '已拉近' : '完好'}</StatusParagraph>
     {scene ? station === scene.station ? <BondSummary aria-label="吸推组合步骤"><SceneHeading title={scene.title} text={scene.text} />
       {training && <>
-        {steady && <label className="setting-row"><span>吸推切换时机<small>减弱动态：方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></span><input aria-label="吸推切换时机" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} /></label>}
+        {steady && <TimingRange label="吸推切换时机" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态：方向键调至35%–65%，当前{Math.round(marker * 100)}%。</small></TimingRange>}
         <TimingMeter label="吸推时机指针" marker={marker} />
         {!steady && !paused && <SecondaryButton onClick={() => setPaused(true)}>暂停吸推时机</SecondaryButton>}
         {paused && <><StatusParagraph>吸推时机已暂停，需要明确继续。</StatusParagraph><SecondaryButton onClick={() => { setMarker(.5); setPaused(false) }}>继续吸推练习 · 恢复时机</SecondaryButton></>}

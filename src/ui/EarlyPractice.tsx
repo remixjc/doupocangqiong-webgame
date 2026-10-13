@@ -1,3 +1,4 @@
+import { TimingRange } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { BondSummary } from './NativeRegions'
@@ -41,9 +42,7 @@ export default function EarlyPractice({ state, onAction, onContinue }: { state: 
     {practice.phase === 1 && <>
       <h3>三次调息</h3><p>第{practice.pulse + 1}次 · 本轮{practice.score}/300 · 重试{practice.attempts}次</p>
       <p>指针靠近中央时锁定，三次合计180分通过。失误可免费重来，药液与主线资源保留。</p>
-      {steady ? <label className="setting-row"><span>调息位置<small>减弱动态开启：用方向键调整位置，再锁定。</small></span>
-        <input aria-label="调息位置" type="range" min="0" max="1" step=".05" value={marker} onChange={event => setMarker(Number(event.target.value))} />
-      </label> : <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="调息指针"><div className="heat-target" /><i style={{ left: `${marker * 100}%` }} /></div>}
+      {steady ? <TimingRange label="调息位置" value={marker} onChange={event => setMarker(Number(event.target.value))}><small>减弱动态开启：用方向键调整位置，再锁定。</small></TimingRange> : <div className="heat-meter" data-marker={marker.toFixed(3)} aria-label="调息指针"><div className="heat-target" /><i style={{ left: `${marker * 100}%` }} /></div>}
       <PrimaryButton onClick={() => act('pulse')}>锁定第{practice.pulse + 1}次调息</PrimaryButton>
     </>}
     {practice.phase === 2 && <>
