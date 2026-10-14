@@ -1,0 +1,2842 @@
+{
+  "version": "0.83.0",
+  "date": "2026-10-14",
+  "proof": {
+    "base": "0c9927b8bb5bd7b349b51d4dd000bee5476a12f9",
+    "decoded": 394,
+    "migrations": [
+      {
+        "name": "matchMainMigrated",
+        "sha256": "812ab893872b44dd80db081b823070c8a08dcc7e42a33b5083aebae72ee415e7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchRejected0",
+        "sha256": "317a04d104ae94d330ce2e84bf997ed1f99dab64476336c8c89822d4327cb765",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMainStage1",
+        "sha256": "72373f70f342e1ae7ffcbbe3107a39382a95e77d7ac6cd75ca395adc9cb10370",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMainStage4",
+        "sha256": "33bcb4aa8a289ceadb7af4bf9cca833ad5b31a3bfcf69ae238fa9ee2beeeb4a0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMainWrongFocus4",
+        "sha256": "69261bcb6fe81d9c164f1f7217e67a645d8f4517def7448f6a74cad2f14cf299",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMainStage11",
+        "sha256": "153a417386c73578e172127cc9f994a298bebd4f224168ec09e9ad8ab32026e1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMaterialsMigrated",
+        "sha256": "5de14625bc2f4d1bebb618cfafac99019c1c70fd65bc1b60aa42e8f75f070e94",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchIntactMigrated",
+        "sha256": "24229c6d64ca1711ba99ecec8512cc5a836960c6d328c3ab34c741a53154f1c5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMainFinal",
+        "sha256": "649720d696f00f29535467764321a4a7ce8b7d887492d6890ac2351d5e0ff77a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMaterialsFinal",
+        "sha256": "60aeb15f109fe72890524a8acb1432f43483e1a237ef50474a878b838b30ae96",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchMainFinalRepeat",
+        "sha256": "bcbad0037facb22f6ce18de22a7a2fe258da73937add87da5cbcf55d151a0705",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "matchIntactAfterNavigation",
+        "sha256": "f8b54e1c3c68fe3159e1226949e05c3d7ccbcda14091851065bcefa360dd1640",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "snapshotMainMigrated",
+        "sha256": "f75f0ff5ba602969b7739c95e019399252dd3ffb0a472cc9f895a9ae05614f54",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "snapshotMaterialsMigrated",
+        "sha256": "45bff18c5ac3dfb1192afc762f28e4ca050bd8673b14d9f7c929ffad174d4a00",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "snapshotIntactMigrated",
+        "sha256": "2df3e95736ae322c79cf8aceab739165148fdb96ef49a19863a844ef2a3d307e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "snapshotMainAfterRoutes",
+        "sha256": "a713a8e6a48498b29d15b5cce23a30bdb8e5167943833df6204ed736b3c293da",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainMigrated",
+        "sha256": "b244f818809001c7157c81bb41794a2bb02899d0f0e9e1370d954628575c6c23",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMaterialsMigrated",
+        "sha256": "b427d49d1dace7e7e44c94c2a30c6bd51016481c4c01b2299a9cc84ccbd822bc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnIntactMigrated",
+        "sha256": "198e4c0ddfe0b4d1df6e3e3304834ffb47a391e15b50379d94ee5407d0163122",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainRejected12",
+        "sha256": "3b7919bb322bdc2c35b17c842ad4fb4cb5a8913aec12e4ac8c9c6d6f07ae3990",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainStage16",
+        "sha256": "3f034884a1e9f4e7d536b08359a6fd21f2fc1e5a819b2561183306f19581cfd5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainStage17",
+        "sha256": "9d15c618be351f5bd23e1673b5eb6d5a02ae119f18d4edbb34ae00cd93eae8fe",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainFinal",
+        "sha256": "7b9660e3d8321ca4bcbae78f3ae2f07d6781a02f9faca5758343a36a10872ef7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMaterialsFinal",
+        "sha256": "17e6933be277b355792d6b6ed5249d655e349f5eb3b69bd80a77510e6af4b7d5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnIntactAfterNavigation",
+        "sha256": "5896004e37310c3dd2f79fa3cf1b8aa48349502e7e6d87d372ba0fae31547424",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainOriginalEntry",
+        "sha256": "fb2ef3b3a5280bbf9e2ea3ccea73fb02a12f1c2c509e311645ca7033423dde59",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "returnMainVisualRefresh",
+        "sha256": "8e3e751052e7e80f83b391f8103d836d4ffcbeeae259199deb08d5fa1b32eb1d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "buttonsMainMigrated",
+        "sha256": "d4c49d4c0a59c6658be86b434cd5e198d49ed3cea1f0b138f57b06ea453551f4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "buttonsMaterialsMigrated",
+        "sha256": "11080f85e9343ba7a11baea4a0abfc38eb16fb0afe864983d6f9aa31d1943c31",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "buttonsIntactMigrated",
+        "sha256": "678e5edf91585cc7d870434ff7a2c213a8e149a14410fa620f5d961316958eb4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "buttonsMainAfterRoutes",
+        "sha256": "acf34b4afbce7f8304d936d44915eaa5451b8e9749de3eb24821c81e6fdd44da",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainMigrated",
+        "sha256": "7116b34d082426a3eac8bfffeae97738f40e53209ba7d7574ae1b924dc32b725",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMaterialsMigrated",
+        "sha256": "07b3dd3ac290268509743d807aab3b799219e3e9efbb6932a29cd4d7a9aff93e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkIntactMigrated",
+        "sha256": "2ff2134cab2e3f164dace2e9ae9bd2e82103b047b8d8159c26bdfa7bf973a267",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainRejected0",
+        "sha256": "875ef3d63bc695edc670df6f763d03fb77b190b63b0de02ebeeca7269fb0fb84",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainStage5",
+        "sha256": "74ea787de51328e98277697ce30ab73bf43f1e85e564e8b1b860e04a43797f50",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainStage9",
+        "sha256": "ef9d9a3dd877f3fb009d606b6b43b279ecb44571a00b259f0a039cd892a632e1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainStage15",
+        "sha256": "23bf9d62f353718b926ac9d24a711cb3689777e05c3ac40d0ea0d987b4cf52ab",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainStage17",
+        "sha256": "b6a416001b288d5cc1d4f2b5de54f3549803e3b903c8e5ef3e0becf0bb34095c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainFinal",
+        "sha256": "1c1ff925f8237c3db085935afc58c0841ed92e97f1775f3e478c2eab73e17037",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMaterialsStage5",
+        "sha256": "0fbcd4b7b0f5ce6c7417b675f1fd5c8f03c6d80f6277e1d43396ff43eb560d81",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMaterialsStage9",
+        "sha256": "3667b3a9cd906632b3bb6e5fc707e525b5a6a93d8ee9c27e6cdf398df6f0a4a3",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMaterialsStage17",
+        "sha256": "a455f6b44ca9c7ab891313203da00b1df8228e4d103ee43dc8eb336ec54ea4d0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMaterialsFinal",
+        "sha256": "fd69ae5c92c4cdb77b79844a81d21de22b2b2b77fff0c3cf42612d8cdf6054e3",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainOriginalEntry",
+        "sha256": "e531018d877f2db3827ad31e31571bb607391d8c0299afffb1d86db312f9f6a2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkIntactAfterNavigation",
+        "sha256": "fc68b5314241764219ab4d0d77f83159f28ce1d3677520421601334624344c06",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "talkMainFinalRefresh",
+        "sha256": "93d31798dc147f684addee3dc950e35905f0c84f7171c7161de8584bf5349186",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapMain",
+        "sha256": "d300b880b0cde9c7f53c686d544172649f500f3cff49d610872f45c952d27134",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapMaterials",
+        "sha256": "ea5e4de4bc0fdb11794c6256c17f50d517a3410700be0532f84df3fe3c104714",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapIntact",
+        "sha256": "049d91d71c4742df14319d8208c1ce06652190f37e88c7100de4752efd89c17a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapMainAfterScenes",
+        "sha256": "95a8e9b02de18cc2e8afe80d16e246d12004a93f7c362d1f6832bd2cb2291f08",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapMainFinal",
+        "sha256": "94b3827150aff5a5d416ba4686695ab5c0b4a01cec22fa95585310d2fd6ff727",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapMaterialsFinal",
+        "sha256": "dd2e5d5ed1dc26baa72a722f443059df933d01d5115da0107ed4b09be1a46850",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mapIntactFinal",
+        "sha256": "a5b63b53178f8a8dff9c0fc324a93bb5b0f138d94b45fa68333e5ea2a037bd29",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainMigrated",
+        "sha256": "99714893802ce2a68dd545e1daeb8c5c7f4490fdb9ed9b4ccf07e0629652d46c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMaterialsMigrated",
+        "sha256": "c0f923e4c381c507f0c07919cb43bead2bc0b9f0f6a5ccd55e7e91344b74e602",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachIntactMigrated",
+        "sha256": "9f6e8c2a55c1af00054ff28e3b00d0e4a08dbbd58c5d78979bb01c08bf2d93e6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainRejected0",
+        "sha256": "c502530b1cbc0aca00777239f2d30d85faa0740d140b5f0287f1e70ad9e28a52",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainStage7",
+        "sha256": "7ae155782bc59371cb3e6e0bc2c99b172c64af74ffee7c4e357e6251f7e0f07b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainStage8",
+        "sha256": "633e4ba8705dece8e8ea8b6799a986ade7c13b937801f24e29e70edbd3020196",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainStage9",
+        "sha256": "e06d6f76528490352eb17b678ecee308c92192ceeec173c3af38c55277b24249",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainStage13",
+        "sha256": "bf350ee9e4825dffc8107f9ec2db5cf7f12795391f95d0f156f50477885d1e56",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainFinal",
+        "sha256": "725080cd4e7fa7dcd012ccbe303cca2aa687a3ae5eb0ec77d8799bde8c4fc90f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainOriginalEntry",
+        "sha256": "75caec2fb608ae0ba4566502443a675ccc6146ebd28cbef7e574a0e4abba0399",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMaterialsStage7",
+        "sha256": "1ed909680040a73005d5fc4d6db3ad060da842cbc3eb5179fa93c27dd194b222",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMaterialsStage8",
+        "sha256": "7fdfb5074ec44d7e32ea7946454ec111a5da83f2d7e59e979a39bd122230e501",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMaterialsStage9",
+        "sha256": "68907677ecd1cdad35265272648164e0db83b2894af0ab1783192b914ebc7b26",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMaterialsStage13",
+        "sha256": "f4d7f9329240e0697186ea7e2bed195c1127aa3203a7ac1536ec5050adac181a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMaterialsFinal",
+        "sha256": "2599bba4a58cfeb9cb88916ae9950ed9f108bc2b668afe84895e80620abe8f50",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainFinalRefresh",
+        "sha256": "ac9187b9ee08de09aa8b5f07e65cacf3ab7a8b2f075ddcbeef400d8e75fda3d0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachIntactAfterNavigation",
+        "sha256": "e19a33e76e939d1b036aa3f80bbd4f71aa5564048372a0c2b4b6023667aa6229",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "approachMainAfterDirectionScenes",
+        "sha256": "fa6381f20bc4ae3579c7017fd20105a3dd2927466f69e7ac7d261a224955ea35",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "summaryMain",
+        "sha256": "d8404907b977012e932dcf8d47e55741259237e9f82d2740e46207e648be04ce",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "summaryMaterials",
+        "sha256": "fdae9f0510dd7f855f34498bdb9d7c3aab2bc14bbfe80e98a85f8b5ffd848cbe",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "summaryIntact",
+        "sha256": "4e40144b51f3edb3ef5e9e5bef8ae6b0c3f2d670e053227455563bf2be9c6a09",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "summaryMainAfterNavigation",
+        "sha256": "eadad5894fdafd067ac20b13ec31a9c4833c1dfb9a945bc237b46e10a0321aa1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainMigrated",
+        "sha256": "8734679d4893a95380483e92bdeb25a7fd8eb88a8d06a5ffd1150fac0be95a7e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMaterialsMigrated",
+        "sha256": "bd77f53c2725b953195144526b90776117ba3822e637cc90e58067d3e16fdd02",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnIntactMigrated",
+        "sha256": "28ef886185559c877a870257693712770c00437c43c0bb7dc5550f9ea405f5d6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainRejected0",
+        "sha256": "8d674b53cbe5c8d889f8bcde0cf804c792d5c6e8450c6e2135157b938d225d09",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainStage3",
+        "sha256": "ee8a4c23db52418d668220de917c550f4d14380b2113e29c626800be968e55bf",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainStage4",
+        "sha256": "662d6e823b11c8a30d1e9cdfc964fff3b1c3c5d5239513aa269667f28045d5c0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainFinal",
+        "sha256": "431169b963796ba0ea134740c908fc2bf5e6fa3dbd5970f2943355b414673714",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainOriginalEntry",
+        "sha256": "a335d819c65683a1809f0b3b90704fead36f0e4c96c3be2a6f58358d56889321",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMaterialsStage3",
+        "sha256": "c5bf2ba7052ab59d7d40d7681983876ac867d795b1be2dc801fabf54e05d9051",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMaterialsStage4",
+        "sha256": "7ccb0d34eb407d43ce536fe41bb087acb85ec7ed1731cc958aa3cce7ddae943a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMaterialsFinal",
+        "sha256": "abb6ff4baad03ac52048b9046f371df2aaa1980c78e65d47d54fa9d740f24934",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnMainFinalRefresh",
+        "sha256": "c6afef731e80ec902811fb6ceaa27b619275fb2e867c4c79e5445348de680b36",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "firstReturnIntactAfterNavigation",
+        "sha256": "b28e79561feeabbfcf7a2d63603d593ecbb68047861223fb8470d1f17b83b4fb",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "contentMainMigrated",
+        "sha256": "a220824b1afff5f0b33b67003a92986a8b1416de453ad8d55ac54aeac84ee1e7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "contentMaterialsMigrated",
+        "sha256": "d198c713293d3b3d143b7ce1a1365f077242536b8749bd1125df1a82a0ced39c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "contentIntactMigrated",
+        "sha256": "b29f12d2498c8cc8547c4993be83f172b3bcb7964e2d22bc45d63a64e9358107",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "contentMainAfterNavigation",
+        "sha256": "af341ecda067be45ff7d47b99b3e127a616b25d26767f70ebc9062304bc974d6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainMigrated",
+        "sha256": "907d5287b2d20022976713116b69c5e90e73335a555ccd6eb7cd6614ba65ae63",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainRejected0",
+        "sha256": "735d8765c9e1fa28138111be78d03180fc9a2fa6bd3518857918f270336db8d9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainStage5",
+        "sha256": "e40c37364e2c0a40d783eeed93958ef99cabc8abd871a6ff6e3ccc3f060f14c5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainStage6",
+        "sha256": "175f7e179d610cbfb8a9e9464062b46d927bab3fda989ea3e0165402a68445eb",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainStage8",
+        "sha256": "40a639b70ef7472c23dff7338815909b936c61cc8ac19369aae819c0fc0a18bc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainStage9",
+        "sha256": "0e5900381a805afae1597bd47d4098aefcd3ea24c150d1fe4bc0705835c3865b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainFinal",
+        "sha256": "4940b9889d745835b445efeee2a13f9ef19b9679aa44277b9841d774b2d8a763",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMaterialsMigrated",
+        "sha256": "064befb030c4ed5eeb507c6a38bdce500d4d33d05fafa3d840eab72cb1bc03e2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMaterialsStage6",
+        "sha256": "cb71381628f1a188fde514538c07c2a4e49fde43aa3c19a4ab788bd6de0ebaf9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMaterialsStage9",
+        "sha256": "2f3ff41ab69e97d92f407051df07781e5bfac1cf75857af682fc575cef1214d2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMaterialsFinal",
+        "sha256": "b4c95380a876073d0f58eb7225d8866e1de33c091ae8cf57b6dd62621e5fbbd1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainOldEntry",
+        "sha256": "2846cb79a39f372add3ea4e24240d125cfb17e4e74a0a41897109e53c546fd2c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictIntactMigrated",
+        "sha256": "8fa36b734e3c721b037d4eb611cbd14c5066531035d0199791bd2e5ede3caa8b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictIntactAfterNavigation",
+        "sha256": "ec5cde5794c8a539f5f6306bac04414206a7d450a83e5ffdfdaf85311c5af0d3",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "conflictMainFinalRefresh",
+        "sha256": "827070217a85d22a00e44725ec402c28a5f52fe7c2f29d58fb3583dd3350c70e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainMigrated",
+        "sha256": "483b1e1f0aee347fcb3d1316c6fcb4c42a2a226ac66b7e92a2d235660198b5bc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainRejected0",
+        "sha256": "6091f7b3d94e02886fc1a57b698442770ac3add698a6ba929d780d68ae913edb",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainStage5",
+        "sha256": "90ad15be22518dc7981824a4a71e9816e972d636c51db84263d515b8d686200f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainStage6",
+        "sha256": "17ceba4dae627c4689a0b230a1cc56a56ce0554896e5637baa4ca872f6522284",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainFinal",
+        "sha256": "a8dc7fa99180ddf4dc1a822e2a3569f8f54174ebc106e1481cfedcbb01e54ea1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMaterialsMigrated",
+        "sha256": "258fd3f20d6dde80036fe49fcc264c3f4775fba2b955c2414fd2ff5f14ab8249",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMaterialsStage6",
+        "sha256": "dcd101b6dd11ab4250b963ffde2cd9a732f9a5b814b717915abde421fe339b73",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMaterialsFinal",
+        "sha256": "dd48127445123061c72181185c4182148b5e257541414a6190d8ca9121dd6176",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainOldEntry",
+        "sha256": "806be3f669f84bd9bf79b039abd878851b6364327290cc2464d07b3076af318e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatIntactMigrated",
+        "sha256": "a3f45618c07d2825abf1aa462d0cb970cdbaaed489c16466e8d8c74be071ef53",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatIntactAfterNavigation",
+        "sha256": "8ca35d59eb38813c054f744481228dac7fc106833e62fc54c11649d8966396b7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "threatMainFinalRefresh",
+        "sha256": "3e472b184728d0c5e6027478931873537c60fc6061de79cb7123766f07d2f798",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "regionsMainMigrated",
+        "sha256": "0e5ba010767e613a474dfd5265b56efaa6651bfdce734c8c934046eae96faee8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "regionsMaterialsMigrated",
+        "sha256": "5274ff16764e7655e504995139f2e97657ccef9aa30cc1bcef4494b68ce088cf",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "regionsMainAfterNavigation",
+        "sha256": "2df2a7c14484ef7008111df6bb9d649427b68f9105c8a08831e3fe4149840042",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "regionsIntactMigrated",
+        "sha256": "027ea0f33ae96cb694365074cf8289958771070fa27964a05b7e4b3c7d056e31",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainMigrated",
+        "sha256": "0ce9810db2c39589653fdcdaea4ad5049f5d8679a8ab51d7bbd5a10f5887518d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainRejected0",
+        "sha256": "5491c65576826eadfc3c09afe3279f9392aa995a8653a1e48a9500412f6d3c65",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainStage1",
+        "sha256": "0d7952d1486b720100ee30e6e8e98ed0337f231808b2ef3e8fe02c42b422e6ef",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainStage3",
+        "sha256": "b10b72f99ddef2781de23bddeccb73629e4434f5784285e3bcd8d4259eed38cd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainFinal",
+        "sha256": "4a0f4a74c1f00e7affa2c000a9073ead517ccdf007017a2ea123b630a79fc236",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMaterialsMigrated",
+        "sha256": "f10a58662d81d00492b4bd0f128881302bdbf5624d5d5b1f9ef601fdd5311569",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMaterialsStage3",
+        "sha256": "33178ed79bfc9481a9ee01b5923023680f99b4f80d5f0d3d109ca9b77e8bcc13",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMaterialsFinal",
+        "sha256": "d1fffa08e2e502debcd9c4a54e3245ce4265e3f2137d183ec0b885b02cebdd26",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainOldEntry",
+        "sha256": "71bfebf577274e2ad70d4f7ba573d4d9fef41d6f91ca5db072c5295dcce62d7d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseIntactMigrated",
+        "sha256": "6a60d070ac4ed0cd85d410c20d5d55096f39144b3a92d5ef272429076885d90a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseIntactAfterNavigation",
+        "sha256": "df37bf9d81283f7287cd4cc534494a1c5c1b32eb91aa3d5e08683f7a9ae177d2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainFinalRefresh",
+        "sha256": "0b5ee209be195eb01e876da4dda0e4d117158c118f880ec9e6b629a330d7e738",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "exitResponseMainLayoutRefresh",
+        "sha256": "942d7249a43ceef511143c08de26bed17f6328379b707020ba0488abd13647fc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMainMigrated",
+        "sha256": "32a9c0cc9adacaae5a315b57cc1625d85bcf2dd6b21cac7e5799dc06c32fbd4d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMainRejected0",
+        "sha256": "a5fa2a3e102919aea51ef5932d06168ae11c5787854cbafd77ac3792f525e7fc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMainStage2",
+        "sha256": "7c14aff794f816de8e7fd8c46c55a86c7c488caeea452b8fbf45e3322826cab2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMainFinal",
+        "sha256": "0a89e648f5bebdd51e1cd57300abb646e9d0e4f257a4bf658d6417245faf525a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMaterialsMigrated",
+        "sha256": "465c615ebdd7e0a303c4bbaff788c8dfa612f0d8fdab253238a2f7ef32085dda",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMaterialsStage2",
+        "sha256": "f65bb9e1e603617bfed2406b614911667a034dc33a6bdbff94f2d2db14a77cc5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMaterialsFinal",
+        "sha256": "52ca780a0a1004d125a1f1654a5fdbb8618f7fda75dd1bd744022a7f2e02494b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMainOldEntry",
+        "sha256": "c0b0f769c23f4f83fe8f32c920eef2b7542c36c7f499c86f16959b3bb16fd47a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutIntactMigrated",
+        "sha256": "605f038311ab5457b3194f53e273a73e15d6f73c03f9e725cada34a977421ce5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutIntactAfterNavigation",
+        "sha256": "194c5096903ff166fda43294ded88763db724a264508969627f46877bd134f87",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "checkoutMainFinalRefresh",
+        "sha256": "c3056c6f184d5d405cf3a5697a30f5c3ab8fd5b0be47209ca05bb395d3c1c0f5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "earlyMapMainMigrated",
+        "sha256": "1ba151915739c9a27f007ccd6bb9e29b5ad9b6222c05cbaadf397d4441872147",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "earlyMapMainAfterNavigation",
+        "sha256": "019882555a41e843dbf0a1145b70716e537ca5619d58671ea40ec44a867c63eb",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "earlyMapMaterialsMigrated",
+        "sha256": "34a555c9ffc235050ce8aae8fa4496a93fce360ecf098182c3064284c9f8a46b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "earlyMapIntactMigrated",
+        "sha256": "8c5ccbee1951d68712c14241a8f3351d1bb69c202731d1e92e83297f2dd96852",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainMigrated",
+        "sha256": "13456909bc72c7f9166a574d2169462fc873d933a6342bea360c2254c3fc506b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMaterialsMigrated",
+        "sha256": "9258684e2cd7bcbedf9e329b960a73736ecb11fbf16cc30b3a213ed97ba8d5c0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingIntactMigrated",
+        "sha256": "aabddfa23dd066ca03744e34a6f6bf100572f6a86973d535e9dab6b4b92b45d1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainRejected0",
+        "sha256": "88ebc6fe64411b5a9aadf797fef0ee26f9315f0409f07c87381171c2b3be1262",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainStage1",
+        "sha256": "56367d28fc858046d70c080c7983107bfb68aaed94eb644cff27b66631a8d836",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainStage2",
+        "sha256": "0fa37057a253d35384b28720987055e58264d6a49adb48a9d1ef0e308f7bd355",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainStage3",
+        "sha256": "f88e2618334c40664bf31823888fe38d0d945e85a25eb21f46563c9ecdfc53c9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainStage4",
+        "sha256": "3ad07f5fc0da0ed4428134a87d3d999c9a07f94c8231b147004bfab9aa63062f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainFinal",
+        "sha256": "301f185dc2662580a619863130d875ad3a8d774adb2dd191f496e9a9dc57bb47",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainOldEntry",
+        "sha256": "e9858e8a969dd3256db74e8c6d2968ef30c73be2bc1059abcf03649086261717",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMainFinalRefresh",
+        "sha256": "fcd019fb70f2c574838864526979c221be32ab77787a3a32f13b25c00ea3a306",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMaterialsStage1",
+        "sha256": "f5c8cbefd30957325c756676d58e4cd62f1be05e874e7236673567d2499410f2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMaterialsStage2",
+        "sha256": "f51c6b20a669544d90e2fa7e0b063398962980b2203e702feb83df488e12a06d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMaterialsStage3",
+        "sha256": "3eed077a81a4511bac86717989189c150d26ecb695daec06c1fc070db3bbaede",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMaterialsStage4",
+        "sha256": "d2efebb8cd0b00dd167164af7a094ebf6ca4d983dfe6d5d012996aaccf940cd9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingMaterialsFinal",
+        "sha256": "362898263362d1c55bd07ae385dd04778c852c385c6019fb2b8d67525129c290",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "leavingIntactAfterNavigation",
+        "sha256": "646175ebac4ffbe2db76d1398da76aaa5e7f7cf3e1bd657ab25afe712a7e65f6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "sceneKeysMainMigrated",
+        "sha256": "d38402d41a7655c14a310582eb1485cb3189527fdbf2c6975ac57bf3de29530f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "sceneKeysMaterialsMigrated",
+        "sha256": "5def39de6dbfbfe718ec76f2a876b77c5aa11165fac8bc8290ce618683ea83e6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "sceneKeysIntactMigrated",
+        "sha256": "97e39663105b52d8a32d06beddd0ca2bce940b83c95d87133b0d728089f941f1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "sceneKeysMainAfterNavigation",
+        "sha256": "1581f5989f62600efe3e1587839350288fc601118aa70b685fc7d75693dd456f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "sceneKeysIntactAfterNavigation",
+        "sha256": "91c9db22daa9d5771c8e67418d9c2df37602061ad9edff1e300885e8222945ed",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "pavilionBlockMainMigrated",
+        "sha256": "f3620b5cfa224badc68c6b2e0839a1d5252e1d17f95b53d39714177514cea0be",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "pavilionBlockMaterialsMigrated",
+        "sha256": "01596d14eaec88bf17be9d656cc43fda1f61d6df8443ce66eb5c374080650404",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "pavilionBlockIntactMigrated",
+        "sha256": "5d32ae9f30ebd98727960c243043868df6a067b0dc118fdeb298f8ce191169e7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "pavilionBlockMainAfterNavigation",
+        "sha256": "39710a822a75d3419e7598855af4a11e58d94f489217285b2a507665f9ae89fe",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainMigrated",
+        "sha256": "72469f41d2e5916c683994256ea3214f7b0d12aa0491fd163ea1cd1a17b233e5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMaterialsMigrated",
+        "sha256": "5897fb42bbe7259f63aa89e6a75597d00aece54dd9981fef78eb7f521c6428b7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathIntactMigrated",
+        "sha256": "8375a5f1803b37af2c47d510058857ecb9fa2db0e41946c24e33aef44f44df43",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainRejected0",
+        "sha256": "ea6498708c1c9fed24495638bbc016a737749f248e94ed5d17990c8ea9babb41",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainStage1",
+        "sha256": "a79fa171191282acbae42ee8bf34830da06257706b5ecdfaefbe819f00b57f66",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainStage2",
+        "sha256": "09700e8c6b0fc3b5756b1b7f6f21d2d3fcfbab3f8e42369ae8d92965f5731cae",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainStage3",
+        "sha256": "fbf667e3554f8bc1b40ee49f6c879277c37a30f84b428d7858ec45d8838d4121",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainStage4",
+        "sha256": "239a8fc024876b9d344a354c2f03ad31933b9c98b50b1e3572bc9bf8a464e6e4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainFinalRefresh",
+        "sha256": "f4b0e9656fa6fcc98caeab5d2bf95bb82b9672182487c9ea8953c666d56459e1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMaterialsStage1",
+        "sha256": "0904dae30dc4ee18b2e3ca5b19d5aea7455fdf5b04fe4a01766822e73943f9c2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMaterialsStage2",
+        "sha256": "358fc3592037a7b7c6d5be38ecc7f7ba9e0d016f679c1427b5fdf3b6a4266100",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMaterialsStage3",
+        "sha256": "424b9afbb899a4385923cd43e72a15f775fb064196b1c72865e9cfbfb6b61334",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMaterialsStage4",
+        "sha256": "fdc8b25b89b4bdf4e8a8809abb97969dcdae406af261bbbe69c9fc9bf18777c7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMaterialsFinalRefresh",
+        "sha256": "91523424b54920ed54d97f7e851d8e7e7577a8d21ad4305f1ec089bf0d180678",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainOldEntry",
+        "sha256": "7f07ccf0ac767d6bb9933ba373168d327ab9a972eac63fc4b36ca62e1afcbb47",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathIntactAfterNavigation",
+        "sha256": "8ca120b89f51a757dc31bcb679611daae49ec40205bae79010e04042c4159223",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathMainFinal",
+        "sha256": "e4a6b77a12048b8b229eec27bf064133443d9c5e492fa655104857e1763d9ed8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "aftermathIntactStableNavigation",
+        "sha256": "aa9af75d435431fd78d46b0547ed3ada6bdb92ef27f33dc1f846cf5de124ca39",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "nativeControlsMainMigrated",
+        "sha256": "a8701a40e3712864bf1e3568138d4eb68ac7edce0c00e995d495bc33ebec0be8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "nativeControlsMaterialsMigrated",
+        "sha256": "0559a60e26c65d9e85251e3d6162c0f78c4ab178c3906cbbec14ec727b6902d9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "nativeControlsIntactMigrated",
+        "sha256": "3afba6d8be47cf6c7f480eed3195c8cb6bbf04d9ad2fb9fa795464f318293cfb",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "nativeControlsMainAfterNavigation",
+        "sha256": "88e21a0b157b90d3a1006608e78bc4f132169aba9e70e511735933ed0a2acf04",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mutedMainMigrated",
+        "sha256": "eaf819d41f9a2a40ae94ea8918b74dc42edc4fafb3b03bd72326a5d2e82ba350",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mutedMaterialsMigrated",
+        "sha256": "4ad4c0e3433d0a204af0d6adf3a3eeeb5f8aa2f9b464fd7adf6b868c5a2a6d3f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mutedIntactMigrated",
+        "sha256": "01bdebb7fc3b356c8e6b9b8afcb60237f1203620518d4e22e2ce49de6f8b946b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "mutedMainAfterNavigation",
+        "sha256": "7f1d7165970b1f253f49ae087db2db6c8b9f83d12806f8a54b608ea5b49a8c2b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainBaseline",
+        "sha256": "6c589630f847e6e47ad4c0a041f5ab04dabd9cd457ab6e8d8a6f2f273a511f76",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainRejected",
+        "sha256": "be91891a5b22e74864e90e81527fa4fe309f73659eeb3a4e81e837c6ff3a2acc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainLeg1Mid",
+        "sha256": "04d44e6379b93e3d17dadce28baf43060e80b2fe6cc0208ff06941ba3ab51531",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainLeg1End",
+        "sha256": "39aa19fc31fc0a9cd31d9e775a874acdb08453975a412c573dadf2d81981d3dc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage1",
+        "sha256": "9a4002a2dd67d650696f32770f7065df2e9a61468b977b93f994a423a5fb268d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage2",
+        "sha256": "fccb45d5da018b734f522db6ce8fb6750a47831249e72bb38b84026f51bedfcd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainLeg2Mid",
+        "sha256": "6cfa91244b99d1949a33e3531f5dffcaf67eaff5bd9a31aa0e4c6b96c8f336e4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainLeg2End",
+        "sha256": "67bab9424c6fbcc14eefbf5c6bc75e21997be8482885e732c5f76e8e14894f68",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage3",
+        "sha256": "54e7bbd2e7fb73090b26dc35a62fa2df868530b22e2933cc1088aca4d7e59932",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage4",
+        "sha256": "284f7a11acf36b06283d3f66ac60ffe9c5c8ead8d4d229523d802fdf949ba207",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainLeg3Mid",
+        "sha256": "5fd998b97fefaa1e16abe55d1b84c360de36d2fef3b40a9474d6b3bcea63e23c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainLeg3End",
+        "sha256": "91a761acbffc6298b3170e1ff14ccc9e046a9384cdb5fd36b9cd21100eacf798",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage5",
+        "sha256": "3d2a1533b8bfec1a24b2ea4fcbc1d898714bc97c9e61533336dae2ee186b1bae",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage6",
+        "sha256": "fe9ae1459b335e03565fddcde0c1cd85603c723749ab9fd4ab877cd196d360a4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage7",
+        "sha256": "472869cbe2303c9556cd1bfd53d91c927254e7ab8869437a315953e152156c67",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage8",
+        "sha256": "b5ba70231ad0c75a7eca78c7febe226793803bb01ca0ec30590f132ab24c0538",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage9",
+        "sha256": "4d38d74ce9b830709a872abdc75004817132052faae2e452bf5ce8bdfba517aa",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainStage10",
+        "sha256": "11a4e9ad49a57b0104ac91f3b4db90544808bfafa52c989281bdd6b51c673780",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainAfterNavigation",
+        "sha256": "991f89141476e926bcdee5e1bfbfaadb6ad36abc9ceba367552c8ee4769964f0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsBaseline",
+        "sha256": "c9f616a6c9b72534b6c8e5b3bd04678987f9d4e41311546681e145509522a291",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsLeg1Mid",
+        "sha256": "08d810a42b8d08baabded554abcdce652ec0d28cfd26f93f7555a78283cec276",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsLeg1End",
+        "sha256": "a82071308a89569e202e4987b43e813f07eb10ae7897c7cf262811e725e3d425",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage1",
+        "sha256": "fc65077a4a352beb6af4950ad4a3923c0532bde8e142e146d9fce1254cc19c4e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage2",
+        "sha256": "906fec760a8db454522be7d1bf2e16971fc9abe4dfe2dab42d0d751ceb6cd76a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsLeg2Mid",
+        "sha256": "bcde466918bbe5d02e35f7e2d2b658c0b51efa145985a03f2e2045417eab6360",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsLeg2End",
+        "sha256": "9dfe89c965b86b3e1e0a8b4d8476a4e5ef4251f70eca01fdc996a9dc168a9d22",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage3",
+        "sha256": "90b10d0f904f1010f5816cd2881934b8a48b591c875a8cd70841a6c2f81ef916",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage4",
+        "sha256": "96ae8dc3811f1471defb7aa72d3f70cfb19ad8512910c456b83131b63bcc4fdf",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsLeg3Mid",
+        "sha256": "973b56f518fa412e20321182f9f7a586ed37f7d85bec0df4d0d7c5c2e5928353",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsLeg3End",
+        "sha256": "0cdee63b79eb85213fcf443d7b9718d12faae282790c59c874b7c2dd36d17b4e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage5",
+        "sha256": "79c8d508f727e273f113ad685909969e7fe775154da40f5dfea1b8277d17596f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage6",
+        "sha256": "786510c7c995bd9ecc3749cb38a88b758287a40bc4c2aa589f4e7b4fc5f213d4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage7",
+        "sha256": "27cb256338d8afa06078845002d32b7e4656e7f95ead51156df16db6ef676aa6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage8",
+        "sha256": "fadca3e249653c9f1d7556abb5e454ddcef4329f997d904fee6ca984f0dbf938",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage9",
+        "sha256": "7f42a318f946f6b20e8228f230c9e61b5db101d28c9d08bf1dc46054df831204",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsStage10",
+        "sha256": "ca6b25e879e8665ee63af9f1f23bfe25fc71473907b891790626c7a0de598710",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMaterialsAfterNavigation",
+        "sha256": "d753b54c98014a40b7ce91739c8a6d764d076ec0b076fb3ca869e693d5efdd24",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonMainAfterOldViews",
+        "sha256": "2f4abb4fa5d6d63c102f1ba9c52d9392db83a5da32573890c81af9b410e693be",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "afternoonIntactMigrated",
+        "sha256": "244feb1bd3277cd973fd35943436b471ef745299b323b36c624d5f6980485134",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningCapacityMain",
+        "sha256": "459d7fe886d1678ef544a6260aa9cce4395dd7b033e3154a65728996ccd585d7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningCapacityMaterials",
+        "sha256": "113c0bece22bd02f930981f6f24d276f6bc382eddeaa11b0a592b74eef2cabbd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningCapacityIntact",
+        "sha256": "9cea816bb567e8507a43e907909d44336a5d1341186e954394d40c70931e2f9a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningCapacityMainAfterNavigation",
+        "sha256": "dfd86f31a56299b4dc3d0d3697e153d76f989f78b847301523f1fe184f5dd8f3",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainBaseline",
+        "sha256": "e49e3a590774c300d4faf17fb91e0a10590ca2a010554d8bae9dfd1e636f629c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainRejected",
+        "sha256": "5c9c03fe0b586883c229c3ee850d3a295393787ad69d96a51e0365fd9cc45e18",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsBaseline",
+        "sha256": "2710738c4f6246244faaae64dbb1921c32c19ef8457c179885325099feee6918",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep01",
+        "sha256": "befdb4eacbbd2eccee20b39ae2e3254fb270e991c19f09acd05245c6d7bfe47e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep02",
+        "sha256": "dc50eb76be1e41a486483d3bca138871d82e49353eb31b01c4573b49cb2c05e9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep03",
+        "sha256": "b68f849d6530d78b458ca55f9c47e5667e96f9441049ea4fb2fcddc557539352",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep04",
+        "sha256": "4c88912730d3fb146875ca28ad346a95fe936b207397aacebdf3bf780c6d5637",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep05",
+        "sha256": "514b1a40468ff086ee1eff081e0f339081fa052b7bb70874eb0b18a76ba01ec4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep06",
+        "sha256": "cda969abb7c12f248db6d750aa35704cc7d07bd301f76a1c57f207b83e0b701e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep07",
+        "sha256": "1fcb8e2c1f3aeb75e60bcf281af4d3c2f8dcdefe39cffa48eb95812c1f4618b6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep08",
+        "sha256": "cdba44f7aabf2f65146ad40234717385a3c6e3b60222e45bd3a46afbffc03e95",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep09",
+        "sha256": "4f347bc6c45b81a5ef4937844fd844374b0f2a24da31cf9421334409f22bf22b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep10",
+        "sha256": "f6f10c3700d2c1e83b9be8bf3b58d2bec438434cd55ded899aafff63b581449a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep11",
+        "sha256": "33f25e8b0671d6016af928427f1793eace602eab85f87ef0db172ad803b4194f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep12",
+        "sha256": "a3160cb8ac2a9ac1fef47664aec2c5621191000c93857a06889b4faff0798ab5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep13",
+        "sha256": "048b7f86eb73592af35b12c332608fd486e0ca2848e6e45f98c215635f9c5fe9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep14",
+        "sha256": "ac7c44ce5717609344ef6f07a14fa1900dfbc2dacfa1a4791623fbf2d1fabb50",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep15",
+        "sha256": "babebfdddf38c7a40fbc6000162aa22148fe06af682db995158d734a30a98711",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep16",
+        "sha256": "17315eaaf5f59bee003fddf150b3799282e07b3f0903a4ac0862bf9ea1e095a7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainStep17",
+        "sha256": "aa178cfb6b7c58c17661d7676a2a6d19eb5035904a40e0763117f21e922d2355",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep01",
+        "sha256": "4c58958b836c893521cf03dbfc3d0052aa66cc42b19f751ede211ec0f5142ce5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep02",
+        "sha256": "45a884ae4e2fd8738730e34dd8d032d4987595798e672158970e0a15e5b37c6f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep03",
+        "sha256": "63e02ea251790895d15298a11f5370b515188c6e8f4443ef8eda3566ba65acf7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep04",
+        "sha256": "8ea231efd6f2b413af831b10fa10422cca3a9c3f42c459bab3b1678c2fe77efe",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep05",
+        "sha256": "6417a196ff2f1fc0af6a018446745b4c47c481ef621af86748687659cb7ba791",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep06",
+        "sha256": "193b35f97b9fb545ad05b8c5aecc7ff6fff2d4d80b816cfbc24a47a371ec670d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep07",
+        "sha256": "4253ce021b38367c7acc65d7431a2502bd71f7ed6e82ac849adfb396fce452dd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep08",
+        "sha256": "7fff53b49b08061c74c5a6b235f1efa2c574b1d5674545d220aab4a801ab555a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep09",
+        "sha256": "b5ff84484f35df533f6fa85c929c6e0b13b2789197f56d655c81a8f84865902f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep10",
+        "sha256": "4662b2e92629557703c9be4444cbf9521631078cf269d7385e3defee0395a9dd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep11",
+        "sha256": "05ffade346978236c7e3468ea7abc67c0e15ae3645660aad0445d6fc50c6a629",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep12",
+        "sha256": "7f82218b01e934bbf129533b2c57dbb702484d5b7f24c2611b1cd65634dd5ccf",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep13",
+        "sha256": "8f60a8923352899060475cca5ba80503ded28f7fca7b83b5ff81207d02c17533",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep14",
+        "sha256": "aec58b2f0d6ccef1b1f00d72968a6e173562d56bf5ace59a742545674f7c665e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep15",
+        "sha256": "176fffbf2265ca38903393a04c80ebb0a8a3523b7789650b1538c2a953ec5379",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep16",
+        "sha256": "06e62d2c624cf9058f51c0421c51d821a864411b678df1c71fa66a4e6a6d1d5c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMaterialsStep17",
+        "sha256": "8444eb46b6a6fe633e369e1c5abb684a616880bc2c811d3ef3a908ddf16d9bf9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningMainAfterNavigation",
+        "sha256": "355cb4257062c97b12705c0b3094d017ca54c2c7cd3cdd65fc5446f52c908f80",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "eveningIntactMigrated",
+        "sha256": "e29b482a341fba5af72759214a4c83a5509cb25877dbcec7c46182562fde0c99",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherCapacityMain",
+        "sha256": "43583174e69379a2363af988eaec280b7980280f539f81b821facfc1880754a8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherCapacityMaterials",
+        "sha256": "b3759f6b38a2be1093b34d699dda71d242d2b3415933fd58e19212eae63be766",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherCapacityIntact",
+        "sha256": "a75f924ed4e5031a42ac72ffca5cb869dccf9863076c54e7e79350cff0fc704f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherCapacityMainAfterNavigation",
+        "sha256": "cf8d60b50c74d0090965a16bf5f3ab74efc19ad613d9ae63b31b1423b2ba9e16",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainBaseline",
+        "sha256": "aa656528e7c31ce4f950f9b0f751c364e94aad52abbf24cc2e121bcc7d8159e5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsBaseline",
+        "sha256": "c29742795ae4286755922273ca0e3cd0873e87f87b989f52fb08ff5f57cd49f4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainRejected",
+        "sha256": "99bbdbf68ec1b9357f2e86f7469b12e06eac7844b2b1c5e0861e52095186e1af",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep01",
+        "sha256": "2e29a85386b26b3b481eb0e0cdd18e4ec533353ea3d0c3247bd02fc82bc45482",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep01",
+        "sha256": "d827ae9a1da205de8bb69031bcfa8f3e283ccc035e3e7db88b44122d0a2ab4bd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep02",
+        "sha256": "0119f82daf1c5507f59fd95e4cc04e525b04e3ac2adb20b7a91d9609b8f194ab",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep02",
+        "sha256": "482eab677532cefca691972ff9a4902ca28ea635b56c0fcfea5067e8da588ea0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep03",
+        "sha256": "cd697e0bd579edb4c7744076f55da5adf343ae1fa15d9ef76aec9cfb8b3737ef",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep03",
+        "sha256": "90aea56a986c706b0cba1bcb3cf826b1f4a9a6d6ed284bc7fb72b6b919a71b1b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep04",
+        "sha256": "26df2935fdf0da33a944fc8be25aae4e70ae3bd01252058d8d0f5775c2cea331",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep04",
+        "sha256": "1fa9647929a1144ca291b85de79cb38e0c57cbe51ea3bd2b06a6309095721d1b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep05",
+        "sha256": "b9b927a00067c9966b7f6ac3d0ecba84ad2ada61f54efa4a841f1a87606dc487",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep05",
+        "sha256": "7aabe01b5b0ac6e0ebc37c613e03d7d0c7253a8dda06f217ff03d393abb17ddf",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep06",
+        "sha256": "fd7a39239ba9d7ec5011912c53d27044f6b0cf85c1f3e9eff3ff492348cfd74e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep06",
+        "sha256": "64413bc0e8c1f51f151f152d90e939af0678213d04f631624e02a88652ef79dd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainStep07",
+        "sha256": "c898cc3eab6fc7800a139092e64d5d585c0d6212ead3602fd5ecaa89fff26ad6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMaterialsStep07",
+        "sha256": "4b64f037a122e3b8660359f41913b6d4d0f2ab9fd9c9f36ee0613efdc2ac0414",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherMainAfterNavigation",
+        "sha256": "cff0ee532c058e9811495897ae80f5192260f0ae024f7e767776dbaa3a678239",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "teacherIntactMigrated",
+        "sha256": "7efaed8f507e8d9ed6a8b29faa59c6fc16d3aab0ac11a5a16bc47aeed9e31f83",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityMain",
+        "sha256": "7343961c31de8d3f4a660068ee5f815a571bff03a7f593a630178025f7a6c783",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityMaterials",
+        "sha256": "9b12d804d2b7fdf0eca8ff3e176644533372e79e67022f19e628fa0c20e546cd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityIntact",
+        "sha256": "7618f8fe4ca85f52297bbab1973248d38a361d2b3a332871c11d1f8cf80da6ee",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityMainFinal",
+        "sha256": "731aab5b7f202bf7da226db0209696ae99e578502da7bd5189453ffec2b98528",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityMaterialsFinal",
+        "sha256": "d1a4f760b70c6e87da768e1a496134e286c58b1c5e4ed1b06e570bdc42177c29",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityIntactFinal",
+        "sha256": "c1b91d61b497a4913ca44ed5b28416ec92bfedc0bc27e92484298fbd0251c55e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollCapacityMainFinalAfterNavigation",
+        "sha256": "c3fc8f887144b130afb7f3177597b479fc62e946550db4d679fa66cc7bd68d98",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainBaseline",
+        "sha256": "9e8a38a612b53d75716a1a77b80754797bc09c38c4cf271d096238744593269f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainRejected",
+        "sha256": "c9821a1a0c5fca4df47dcafa3eda3761689a0634045d844aeed7498fbb81ac5a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep01",
+        "sha256": "6c85dc90877a29832a50803c28c3d7d212cae0900e42c8dd39298e06345e533d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep02",
+        "sha256": "6863a880f62c127c49eef5baa5db404d94ecd09d962ba82ca2ec002850400883",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep03",
+        "sha256": "0e0ab785e4c4fce1e6440aedbac6daa769e44bc0ba8fb52e2f3ef64ef61de23b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep04",
+        "sha256": "f938ee71789af6f0c70cdf64752e88c7741029c994fd62dafc7b7fdb7077cc73",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep05",
+        "sha256": "01820f1c981e305031e6057212705680e60438b03e2b5e30b6b4feedbfb6cfa2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep06",
+        "sha256": "5cb497ecee0bbdc2f8c1ebdf1fdd64c305d4623813c9f4bafd7f2e98a6fbdef3",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep07",
+        "sha256": "e6bb7808cd822a771724a10dc3539c447786676cf077aa5795dab15255e18591",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep08",
+        "sha256": "c8ea44617a00bd880f3931ddfbd5e9b17c6a099006997431d3737aa89f2ae04e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep09",
+        "sha256": "e9aa1d543d7dde66407f586175256f22cc50f67c4ceb99f608e2babc7e0d34ab",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep10",
+        "sha256": "6e67681257ac30675de4fcbe2c6672753f2a9948408a385ed9513bbc7fbf1a47",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep11",
+        "sha256": "684e68079e77e1d9bfbddcd1422383b1ca9638dba83d9b6af99b182d3aa01a79",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainStep12",
+        "sha256": "8da11eef6cc62096c65688b755deebf58206f87ff5e8d9f6ed75585196e3fe69",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsBaseline",
+        "sha256": "1fea00358917b8813f0c4a9b78060ac0d12bc9bb921bf99c49d3b56f1281195e",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep01",
+        "sha256": "1c544e6b4ee90c746e06edde0cf072ff5f5c9bc74d22f579e73e0b494775d1fe",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep02",
+        "sha256": "fc2cc5d43d99962aa856785f97b845b602cb7415c4a7bd38d8d1c07d89d10182",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep03",
+        "sha256": "c035cd3267b41f7aac6f43e8207852f54ab0d6c90f2d5b4b58078b856268f1c6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep04",
+        "sha256": "71d9cdc20a1aeb5890b3188ef295fffa2bffb9d1ad1784282a8e58f413cb5f07",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep05",
+        "sha256": "10d7927cb480e7d9f1773ab5070cba3490b7537df1effea351ec5f682b921621",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep06",
+        "sha256": "f5ab8d9032bd487a88cfe5387fe5c6a72fc5e2217c45b5faae9a073cb6f2e1b8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep07",
+        "sha256": "2f1ad340934562c8af402b8d59ddfed3f0e32337a18034112960729a16ee38e9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep08",
+        "sha256": "75afe3dd3f8453e8fa230e70ed14934c44b7046bdf9cabdcb8d250b6d881e6d9",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep09",
+        "sha256": "ccc373f862367f32f5c3708cba418e0defa4b81360c03a0c6e70524cac34f0c6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep10",
+        "sha256": "85bc1314c7abd54f7918057e2858922a4e898577af1ec759e00704175644c9e8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep11",
+        "sha256": "636a0999588839ca0115ab69adf60858ba618d18ca9ce39e3bda432eb1fc08a7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMaterialsStep12",
+        "sha256": "2afeb8bfaf07a5211286b6a623f6bf14f6dff5b8fd06e352f5efb604f28b1319",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollMainAfterNavigation",
+        "sha256": "f69b667e563c164880cd91783b30d4c9995b5779510935d54dc7f83833bde81c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "scrollIntactMigrated",
+        "sha256": "be4056db0446386b6f65991486bd80e2730f483d2b4ef6aff252611e11d8d129",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantCapacityMainFinal",
+        "sha256": "da03463d86c9f164575f92e1ad28d07a8f4e38ad72fd08dbfd676f3a449c85e5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantCapacityMaterialsFinal",
+        "sha256": "86d3568ffb94e35a3fd3ead21a867775865096cac1c898beb160795dc650a3e2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantCapacityIntactFinal",
+        "sha256": "6ad84e21b61e44c519b9786cd2001b9a3016d84ce3e896173b80eedfc12582b7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantCapacityMainAfterNavigation",
+        "sha256": "277bcf11076c51f2f46a8c43698b8dff0fd74d715db9ded4e38cd6ad39af5ee7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainBaseline",
+        "sha256": "2978d5edf0640ac935f8245ea5389dd0ea00cda2722585def68b8be978c139a5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainRejected",
+        "sha256": "efadb70dc479e57bf95b54c77755a3f3eda719ee5c4bf1e1715f357e780299ff",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsBaseline",
+        "sha256": "4202c21d805da461d295d5eef3436d225c139fbb2fe4ad1accd6443b4569c976",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep1",
+        "sha256": "0a2fa4c258a2bb995450ecd7d97e0fd8b735c5d0300a371e07b1253741a7cbca",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep2",
+        "sha256": "5b1587df0c06c17e914a9b33ffcfc36e738fbd2971a3e014f1cab67357e50c0c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep3",
+        "sha256": "633b92f29b9858763d22ac166fe8c51093d43d86454f9053ef45a5fcdecf29fd",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep4",
+        "sha256": "c6e30d30cb2ce8c7e921c217bc104e42672fd136c46e9f077af597967be01594",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep1",
+        "sha256": "d2f1533fa3309022011dcb27db699c46718659a2dae72b3009ccc3defffccd0d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep5",
+        "sha256": "8a25c392f16c8056284dbc503133a9ce4c67b76cdea07a2cf4c8b7ffb7f4df30",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep6",
+        "sha256": "6165af824600ab272b6015673327748706f110ff1c70f0a8b1af45afc32705d3",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainStep7",
+        "sha256": "06f423ee604d87369f77bde48a97fa8a35ac5b64053364748a077eced6022be7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep2",
+        "sha256": "d40073575b42ffe88602aef27aa644c2668e7c0b6c47feae1f54093f301ad2a8",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep3",
+        "sha256": "07b5a1e4267dfdd92057a53da35a5c1af91d4e76507942d7479ad79c1266468d",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep4",
+        "sha256": "9e99252083300a36a870e70343d944e214da81d05820b019fc2f4c9ca7648102",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep5",
+        "sha256": "41782537386f079607ef586122704c933b173f585c80b9480f147bee6551f4c4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep6",
+        "sha256": "d94501c21de62c09e071088383960313bb7d516dc07134c03c7f7aa989651ef7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMaterialsStep7",
+        "sha256": "ffa7be730edc2b38a44b9b5e54c8f27effbe6d57e18ffe2b8560561aea54025f",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantIntactMigrated",
+        "sha256": "08cd417b40c23557fdf8836e82a5974ec5812def7385391f05715fde50ebbff5",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "grantMainAfterNavigation",
+        "sha256": "06e37f61638c6d10b35762b7eaa2717f1a8932bdd74d6f1f8a18110f739915f2",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainBaseline",
+        "sha256": "d59b0c78cb64ee666b6fe2e34507869b88917c53d6a64f797cb5b91e67e6a044",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainRejected",
+        "sha256": "0d0e501932a732d9b20dee1c49b8808b7fd7da06ed14f5ff26f5557c6f645e30",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsBaseline",
+        "sha256": "28c5f0e3e2eff031254254f371e13e7ac9b71be73bdce2312a3eed8c6720f1c4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep1",
+        "sha256": "d7f6ae4da965c12a21aae1226f019768f98962839e0cf75c76c1771dd3765152",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep2",
+        "sha256": "94ef07663a16def714babfc371b49bbc43a22c8a8aa51bd31cc4471b4735800a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep3",
+        "sha256": "33ddc3a4a710e7605263479d92b3b113654a7776547f3c61d15123cfdb30dfbe",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep4",
+        "sha256": "1be2a181e310d67251f162c37149c438ca8752d1bdd7134b0a3b2452d7501a27",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep5",
+        "sha256": "a11784f33f683f81276305545ef603bccf996246c54dfca00b0f16f9307c72ba",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep1",
+        "sha256": "4ab77435c772119a8ad12f7772436df1ae9f18fbe02c3e3aa5b7c1d0cd9aa586",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsRouteRejected",
+        "sha256": "6d3df961648b3805d1d50e207e5764cdfcc271991d3a21e7b463fe82fa1542d1",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep6",
+        "sha256": "7fa51e6440b423a08fa81f036b2ac2d9061c58c1c87857e013c485da808f5011",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep7",
+        "sha256": "16a6f6af7d3626d3a2356ed88eb1f54649a466781047165771720047d3730060",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainStep8",
+        "sha256": "326bd757983964fed7e81c8c94174bd4033f8ef7ef10c81e4d02f349075aba25",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep2",
+        "sha256": "5f95143dad66853ac4c662c9c741dfb924fa4845f553d35ee7dc18c3eac69650",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep3",
+        "sha256": "57f75ee8432e5fa5eced628a1bbbc2a5fa90602d473669a01fc682ecc6e9819b",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep4",
+        "sha256": "adba8d95f7b4629c08fd219d17bb8c182f105537f609712f830dc01e20d6469c",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep5",
+        "sha256": "a4bacf6abe12143c135c372e867de11861b5212dbebee796122d857ccf9a4c32",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep6",
+        "sha256": "faaec1831330da2c5b9bab64a911cbfd35c229f8f47c2b3241ba4568e2ee5ed6",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep7",
+        "sha256": "53c9b0e97e07b54be60ec4d7b1d5e210edec7c537539e4acd7a89073e9e30e33",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMaterialsStep8",
+        "sha256": "1716194f5d8dce0ab9875d3ec74720cda465210bf114e59a365fb49a3a25ed2a",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionIntactMigrated",
+        "sha256": "207e0f0b267caf65344a67535edd2e1b81e15efdf99c6a577f8df322225f86e4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "transmissionMainAfterNavigation",
+        "sha256": "ca1c1a239106d3b5da7e719b07d46b81dd0b3222d3d46bd4ca24b55b5e43c0c4",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "bodyCapacityMainFinal",
+        "sha256": "6535117ee8e22015b73dd93a0b7d5c31d115284f3e97a0a342a82214231ededc",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "bodyCapacityMaterialsFinal",
+        "sha256": "34c1d9602550ab6ed089caa0221c2b7eb6d0bab0371b845ed51ab87e004a1ab0",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "bodyCapacityIntactFinal",
+        "sha256": "62a294a9e05b0d22bbd0cfff2bb99fdff181cf1cbf20d4220077e2f301927aa7",
+        "onlyVersionAndEmptyBody": true
+      },
+      {
+        "name": "bodyCapacityMainAfterNavigation",
+        "sha256": "71a1fa0223afab19ef795e5451b6403a27ace0ac4aa2d892ce9ca35eb4af188f",
+        "onlyVersionAndEmptyBody": true
+      }
+    ],
+    "native": [
+      {
+        "name": "bodyMainBaseline",
+        "sha256": "686363b54ecda0f8b6d5fba1a3630aed86f67939c042a5acec47af772de781b8",
+        "stage": 0,
+        "teaching": 3,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainRejected",
+        "sha256": "cdf482bfec24614f8977679402110ba5f7baf9229a870901c20e9e848a22b048",
+        "stage": 0,
+        "teaching": 3,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep1",
+        "sha256": "1c0acf3387991ff258ba59273dbd1b68f425ef72651f3ef82135dd89b2e9bf27",
+        "stage": 1,
+        "teaching": 3,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep2",
+        "sha256": "8869403d26d10165a04052e442656eeec80e9da709de0c150110ca91d39d7517",
+        "stage": 2,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep3",
+        "sha256": "66b43375d37bc8dcae0eab5cb4c7b8d7a2443c38b8a923c14d7ccb20b002dc80",
+        "stage": 3,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep4",
+        "sha256": "df29129077be4765ebafe8e43dc367d05ba10dabbf2a9bc788519a5342674709",
+        "stage": 4,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep5",
+        "sha256": "08e85b8467ba86f116af0fe6b245be4af3951ede96e5cacffa2f97ca243b51d5",
+        "stage": 5,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep6",
+        "sha256": "899e06d65c5d96ec9eb6c8c8994bbd3737e0a69e06233cff394ba55535f1dc61",
+        "stage": 6,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainStep7",
+        "sha256": "698a512dc548fbe3b536cbee2377f20c0cc38dfeaee99130bedfd750e0eae803",
+        "stage": 7,
+        "teaching": 5,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMainAfterNavigation",
+        "sha256": "a71a7f327bbc1d6d85b38f116c44f2f9af068884e8e7a0eda01e049c6123a84e",
+        "stage": 7,
+        "teaching": 5,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsBaseline",
+        "sha256": "db6a50c417cdee3ef04557864b7d64c800c0a3858c7e9fc000f890d73a178500",
+        "stage": 0,
+        "teaching": 3,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep1",
+        "sha256": "3c5ffbb30bcec671f4989dc1b79332690e6d1834f91d93461a074e711e844b1d",
+        "stage": 1,
+        "teaching": 3,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep2",
+        "sha256": "e19c06ff4d578e78ff819c9426b01972442217b22ed47b3f76156b88b12a657e",
+        "stage": 2,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep3",
+        "sha256": "2a299e8f5833951a8193cc6e644e10444cbd3543f6194ceed4baba61eb847c0b",
+        "stage": 3,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep4",
+        "sha256": "f0889effb887146f392a96216b5df105e729cb4cb1f098f5b2a066a5886bca0e",
+        "stage": 4,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep5",
+        "sha256": "bfb25abb12859ac0f3d8dbf70b7864ee40fd1d6c3096f31864d56994b11bd508",
+        "stage": 5,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep6",
+        "sha256": "47f8fdbff8ce96df27f8c6649cd81f6e1f6fca716d9f74fef0ea3882f4ac46d9",
+        "stage": 6,
+        "teaching": 4,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyMaterialsStep7",
+        "sha256": "07cf7985e87f5d7db0caa3d93758dbc9febc78cb22d68f0462a3a1089e97f640",
+        "stage": 7,
+        "teaching": 5,
+        "onlyBodyAndPermittedLedger": true,
+        "rawEqualsOfficial": true
+      },
+      {
+        "name": "bodyIntactMigrated",
+        "sha256": "1ed71b71ed1949554b83442aea04f058c0b190956d0b44d25b0394c990c8cc6a",
+        "entireStateEqual": true
+      }
+    ],
+    "oldTeacherAndGrantEntireMarkupEqual": true,
+    "budget": {
+      "initial": 491869,
+      "gzip": 164398,
+      "total": 1849995,
+      "limits": [
+        500000,
+        165000,
+        1850000
+      ]
+    }
+  },
+  "browser": {
+    "observations": [
+      {
+        "label": "MainBaseline",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 0/7 · 身体问答 · 未参与</p><section class=\"bond-summary\"><h3>想到眼前的对手</h3><p>当时四段，想到学会后或可对付萧宁。仅是想法，五段使用条件与身体要求仍在。</p><p>当前人物正确。</p><button class=\"primary\">本人记下四段的想法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 0/7 · 身体问答 · 未参与",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 0/7 · 身体问答 · 未参与想到眼前的对手当时四段，想到学会后或可对付萧宁。仅是想法，五段使用条件与身体要求仍在。当前人物正确。本人记下四段的想法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainRejected",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 0/7 · 身体问答 · 未参与</p><section class=\"bond-summary\"><h3>想到眼前的对手</h3><p>当时四段，想到学会后或可对付萧宁。仅是想法，五段使用条件与身体要求仍在。</p><p>当前人物正确。</p><button class=\"primary\">本人记下四段的想法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 0/7 · 身体问答 · 未参与",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 0/7 · 身体问答 · 未参与想到眼前的对手当时四段，想到学会后或可对付萧宁。仅是想法，五段使用条件与身体要求仍在。当前人物正确。本人记下四段的想法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep1Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 1/7 · 身体问答 · 问答1/7，尚未训练</p><section class=\"bond-summary\"><h3>弱身体无法承受</h3><p>八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明身体限制</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 1/7 · 身体问答 · 问答1/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 1/7 · 身体问答 · 问答1/7，尚未训练弱身体无法承受八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。请明确选择本步人物。老师说明身体限制暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep1Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 1/7 · 身体问答 · 问答1/7，尚未训练</p><section class=\"bond-summary\"><h3>弱身体无法承受</h3><p>八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明身体限制</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 1/7 · 身体问答 · 问答1/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 1/7 · 身体问答 · 问答1/7，尚未训练弱身体无法承受八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。请明确选择本步人物。老师说明身体限制暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep2Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 2/7 · 身体问答 · 问答2/7，尚未训练</p><section class=\"bond-summary\"><h3>怎样增强身体</h3><p>收住急于使用的念头，问怎样增强身体。问答不代签身体合格。</p><p>当前人物正确。</p><button class=\"primary\">本人询问增强办法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 2/7 · 身体问答 · 问答2/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 2/7 · 身体问答 · 问答2/7，尚未训练怎样增强身体收住急于使用的念头，问怎样增强身体。问答不代签身体合格。当前人物正确。本人询问增强办法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep2Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 2/7 · 身体问答 · 问答2/7，尚未训练</p><section class=\"bond-summary\"><h3>怎样增强身体</h3><p>收住急于使用的念头，问怎样增强身体。问答不代签身体合格。</p><p>当前人物正确。</p><button class=\"primary\">本人询问增强办法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 2/7 · 身体问答 · 问答2/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 2/7 · 身体问答 · 问答2/7，尚未训练怎样增强身体收住急于使用的念头，问怎样增强身体。问答不代签身体合格。当前人物正确。本人询问增强办法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep3Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 3/7 · 身体问答 · 问答3/7，尚未训练</p><section class=\"bond-summary\"><h3>斗气成长与外力</h3><p>斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明成长与外力</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 3/7 · 身体问答 · 问答3/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 3/7 · 身体问答 · 问答3/7，尚未训练斗气成长与外力斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。请明确选择本步人物。老师说明成长与外力暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep3Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 3/7 · 身体问答 · 问答3/7，尚未训练</p><section class=\"bond-summary\"><h3>斗气成长与外力</h3><p>斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明成长与外力</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 3/7 · 身体问答 · 问答3/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 3/7 · 身体问答 · 问答3/7，尚未训练斗气成长与外力斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。请明确选择本步人物。老师说明成长与外力暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep4Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 4/7 · 身体问答 · 问答4/7，尚未训练</p><section class=\"bond-summary\"><h3>再问具体刺激</h3><p>追问外力刺激是什么。接收答案与实际训练分别保存。</p><p>当前人物正确。</p><button class=\"primary\">本人追问刺激种类</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 4/7 · 身体问答 · 问答4/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 4/7 · 身体问答 · 问答4/7，尚未训练再问具体刺激追问外力刺激是什么。接收答案与实际训练分别保存。当前人物正确。本人追问刺激种类暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep4Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 4/7 · 身体问答 · 问答4/7，尚未训练</p><section class=\"bond-summary\"><h3>再问具体刺激</h3><p>追问外力刺激是什么。接收答案与实际训练分别保存。</p><p>当前人物正确。</p><button class=\"primary\">本人追问刺激种类</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 4/7 · 身体问答 · 问答4/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 4/7 · 身体问答 · 问答4/7，尚未训练再问具体刺激追问外力刺激是什么。接收答案与实际训练分别保存。当前人物正确。本人追问刺激种类暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep5Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 5/7 · 身体问答 · 问答5/7，尚未训练</p><section class=\"bond-summary\"><h3>听清挨打说明</h3><p>老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明挨打</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 5/7 · 身体问答 · 问答5/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 5/7 · 身体问答 · 问答5/7，尚未训练听清挨打说明老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。请明确选择本步人物。老师说明挨打暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep5Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 5/7 · 身体问答 · 问答5/7，尚未训练</p><section class=\"bond-summary\"><h3>听清挨打说明</h3><p>老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明挨打</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 5/7 · 身体问答 · 问答5/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 5/7 · 身体问答 · 问答5/7，尚未训练听清挨打说明老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。请明确选择本步人物。老师说明挨打暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep6Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 6/7 · 身体问答 · 问答6/7，尚未训练</p><section class=\"bond-summary\"><h3>身体问答归档</h3><p>四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。</p><p>当前人物正确。</p><button class=\"primary\">归档身体问答 · 训练另续</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 6/7 · 身体问答 · 问答6/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 6/7 · 身体问答 · 问答6/7，尚未训练身体问答归档四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。当前人物正确。归档身体问答 · 训练另续暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep6Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 6/7 · 身体问答 · 问答6/7，尚未训练</p><section class=\"bond-summary\"><h3>身体问答归档</h3><p>四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。</p><p>当前人物正确。</p><button class=\"primary\">归档身体问答 · 训练另续</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 6/7 · 身体问答 · 问答6/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 6/7 · 身体问答 · 问答6/7，尚未训练身体问答归档四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。当前人物正确。归档身体问答 · 训练另续暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep7Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainStep7Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsBaseline",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 0/7 · 身体问答 · 未参与</p><section class=\"bond-summary\"><h3>想到眼前的对手</h3><p>当时四段，想到学会后或可对付萧宁。仅是想法，五段使用条件与身体要求仍在。</p><p>当前人物正确。</p><button class=\"primary\">本人记下四段的想法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 0/7 · 身体问答 · 未参与",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 0/7 · 身体问答 · 未参与想到眼前的对手当时四段，想到学会后或可对付萧宁。仅是想法，五段使用条件与身体要求仍在。当前人物正确。本人记下四段的想法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep1Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 1/7 · 身体问答 · 问答1/7，尚未训练</p><section class=\"bond-summary\"><h3>弱身体无法承受</h3><p>八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明身体限制</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 1/7 · 身体问答 · 问答1/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 1/7 · 身体问答 · 问答1/7，尚未训练弱身体无法承受八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。请明确选择本步人物。老师说明身体限制暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep1Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 1/7 · 身体问答 · 问答1/7，尚未训练</p><section class=\"bond-summary\"><h3>弱身体无法承受</h3><p>八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明身体限制</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 1/7 · 身体问答 · 问答1/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 1/7 · 身体问答 · 问答1/7，尚未训练弱身体无法承受八极崩是近身斗技，也要求身体承受。眼下筋骨弱，勉强使用可能先伤自己；这是警示，尚未受伤。请明确选择本步人物。老师说明身体限制暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep2Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 2/7 · 身体问答 · 问答2/7，尚未训练</p><section class=\"bond-summary\"><h3>怎样增强身体</h3><p>收住急于使用的念头，问怎样增强身体。问答不代签身体合格。</p><p>当前人物正确。</p><button class=\"primary\">本人询问增强办法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 2/7 · 身体问答 · 问答2/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 2/7 · 身体问答 · 问答2/7，尚未训练怎样增强身体收住急于使用的念头，问怎样增强身体。问答不代签身体合格。当前人物正确。本人询问增强办法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep2Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 2/7 · 身体问答 · 问答2/7，尚未训练</p><section class=\"bond-summary\"><h3>怎样增强身体</h3><p>收住急于使用的念头，问怎样增强身体。问答不代签身体合格。</p><p>当前人物正确。</p><button class=\"primary\">本人询问增强办法</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 2/7 · 身体问答 · 问答2/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 2/7 · 身体问答 · 问答2/7，尚未训练怎样增强身体收住急于使用的念头，问怎样增强身体。问答不代签身体合格。当前人物正确。本人询问增强办法暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep3Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 3/7 · 身体问答 · 问答3/7，尚未训练</p><section class=\"bond-summary\"><h3>斗气成长与外力</h3><p>斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明成长与外力</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 3/7 · 身体问答 · 问答3/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 3/7 · 身体问答 · 问答3/7，尚未训练斗气成长与外力斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。请明确选择本步人物。老师说明成长与外力暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep3Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 3/7 · 身体问答 · 问答3/7，尚未训练</p><section class=\"bond-summary\"><h3>斗气成长与外力</h3><p>斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明成长与外力</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 3/7 · 身体问答 · 问答3/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 3/7 · 身体问答 · 问答3/7，尚未训练斗气成长与外力斗气增长能使身体更强；想加快，可借外力刺激。仅听方法，没有开始训练或升级。请明确选择本步人物。老师说明成长与外力暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep4Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 4/7 · 身体问答 · 问答4/7，尚未训练</p><section class=\"bond-summary\"><h3>再问具体刺激</h3><p>追问外力刺激是什么。接收答案与实际训练分别保存。</p><p>当前人物正确。</p><button class=\"primary\">本人追问刺激种类</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 4/7 · 身体问答 · 问答4/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 4/7 · 身体问答 · 问答4/7，尚未训练再问具体刺激追问外力刺激是什么。接收答案与实际训练分别保存。当前人物正确。本人追问刺激种类暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep4Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 4/7 · 身体问答 · 问答4/7，尚未训练</p><section class=\"bond-summary\"><h3>再问具体刺激</h3><p>追问外力刺激是什么。接收答案与实际训练分别保存。</p><p>当前人物正确。</p><button class=\"primary\">本人追问刺激种类</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 4/7 · 身体问答 · 问答4/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 4/7 · 身体问答 · 问答4/7，尚未训练再问具体刺激追问外力刺激是什么。接收答案与实际训练分别保存。当前人物正确。本人追问刺激种类暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep5Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 5/7 · 身体问答 · 问答5/7，尚未训练</p><section class=\"bond-summary\"><h3>听清挨打说明</h3><p>老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明挨打</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 5/7 · 身体问答 · 问答5/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 5/7 · 身体问答 · 问答5/7，尚未训练听清挨打说明老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。请明确选择本步人物。老师说明挨打暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep5Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 5/7 · 身体问答 · 问答5/7，尚未训练</p><section class=\"bond-summary\"><h3>听清挨打说明</h3><p>老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师说明挨打</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 5/7 · 身体问答 · 问答5/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 5/7 · 身体问答 · 问答5/7，尚未训练听清挨打说明老师解释为挨打。只记录说明，尚未出手、消耗或受伤；训练另续。请明确选择本步人物。老师说明挨打暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep6Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 6/7 · 身体问答 · 问答6/7，尚未训练</p><section class=\"bond-summary\"><h3>身体问答归档</h3><p>四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。</p><p>当前人物正确。</p><button class=\"primary\">归档身体问答 · 训练另续</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 6/7 · 身体问答 · 问答6/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 6/7 · 身体问答 · 问答6/7，尚未训练身体问答归档四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。当前人物正确。归档身体问答 · 训练另续暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep6Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 6/7 · 身体问答 · 问答6/7，尚未训练</p><section class=\"bond-summary\"><h3>身体问答归档</h3><p>四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。</p><p>当前人物正确。</p><button class=\"primary\">归档身体问答 · 训练另续</button></section><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 6/7 · 身体问答 · 问答6/7，尚未训练",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 6/7 · 身体问答 · 问答6/7，尚未训练身体问答归档四段想法、身体限制与增强说明归档。知识、身体强度与使用分别记录。当前人物正确。归档身体问答 · 训练另续暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep7Before",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsStep7Refreshed",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainComplete",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainRepeated",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MainReopened",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsComplete",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      },
+      {
+        "label": "MaterialsRepeated",
+        "actor": "身体问答本人操作",
+        "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 身体限制与增强问答</span><h2>先听身体要求，再问怎样增强。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">身体问答本人操作</button><button class=\"secondary\" aria-pressed=\"false\">身体问答老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"身体限制与增强问答地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">身体问答 7/7 · 身体问答 · 说明归档，实际训练待续</p><p>身体说明已归档，尚未签身体合格、实际训练或使用。</p><button class=\"secondary\">暂离身体问答 · 保留断点</button></section>",
+        "positions": [
+          [
+            "老师房中独立位置",
+            "translate(300 250)"
+          ],
+          [
+            "房中本人独立位置",
+            "translate(300 270)"
+          ]
+        ],
+        "scroll": "<rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect>",
+        "status": "身体问答 7/7 · 身体问答 · 说明归档，实际训练待续",
+        "text": "×房中 / 身体限制与增强问答先听身体要求，再问怎样增强。明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。身体问答本人操作身体问答老师操作身旁桌薰儿已在院中分路药老 · 虚幻身影本人 · 疲惫抬头身体问答 7/7 · 身体问答 · 说明归档，实际训练待续身体说明已归档，尚未签身体合格、实际训练或使用。暂离身体问答 · 保留断点"
+      }
+    ],
+    "wrongPersonModifierDirectionButtonFocusEntireStateAndMarkupEqual": true,
+    "disabledWrongActor": true,
+    "completedNoChangeMainAndMaterials": true,
+    "backFocus": "接续身体限制与增强问答",
+    "reopenWholeMarkupEqual": true,
+    "oldScenes": {
+      "firstTeacherEntireMarkupEqual": true,
+      "bodyOldTeacherHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 老声与有限背景</span><h2>抬头辨认老师，再问眼前的一点。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><p>此图回顾当时房中问答，老师后续桌边位置另存。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">房中本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察房中老师</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"老师现身与有限背景地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(260 190)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌</p><p>有限背景已归档。老师未走向桌面、未翻卷、未传新技。</p><button class=\"secondary\">暂离房中问答 · 保留断点</button></section>",
+      "grantWholeTextEqual": true,
+      "bodyOldGrantText": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n此图回顾当时认可条件，老师后续额前位置另存。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 7/7 · 认可条件 · 问答归档，额前传授待续\n\n认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。\n\n暂离认可条件 · 保留断点",
+      "bodyOldGrantHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 认可与使用条件</span><h2>先听认可与条件，再准备接受传授。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><p>此图回顾当时认可条件，老师后续额前位置另存。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">房中本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察房中老师</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"传技认可与条件地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(340 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 振作好奇</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">认可条件 7/7 · 认可条件 · 问答归档，额前传授待续</p><p>认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。</p><button class=\"secondary\">暂离认可条件 · 保留断点</button></section>",
+      "transmissionEntireMarkupEqual": true,
+      "bodyOldTransmissionHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续</p><p>知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+      "nightWholeTextEqual": true,
+      "afternoonWholeTextEqual": true,
+      "bodyOldAfternoonPositions": [
+        [
+          "午后薰儿位置",
+          "translate(325 120)"
+        ],
+        [
+          "午后本人位置",
+          "translate(300 150)"
+        ]
+      ]
+    },
+    "intact": {
+      "entry": 0,
+      "alerts": 0,
+      "title": "斗破苍穹 · 异火之路"
+    },
+    "errors": [
+      [],
+      [],
+      []
+    ],
+    "screenshot": "docs/qa/c1h-body.png"
+  },
+  "checks": {
+    "command": "pnpm check",
+    "vitestFiles": 160,
+    "vitestTests": 943,
+    "nodeTests": 11,
+    "type": true,
+    "production": true,
+    "threeDifficultiesEarlyAnd28": true,
+    "fourSlotsPreviousAuto": true
+  },
+  "remaining": "实际外力训练与全周期开放门槛"
+}
