@@ -1,0 +1,515 @@
+{
+  "version": "0.90.0",
+  "base": "5df5780693462db0189855d8dc211b14e81bd974",
+  "migrations": 518,
+  "native": [
+    {
+      "name": "salePlanMainBaseline",
+      "sha256": "17f0cf5b0e9f4888de72e9036fb270957cc46db83cdc8f3cb6bae12b83ac9249",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainRejected",
+      "sha256": "1db2fa31793db44b05c2f8c14d2a8acff62ab508e53f272bb42f7e3b26537fe3",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage1",
+      "sha256": "e2904c5b4a09c101775d7bf3500f671e561f1b4ce2b104658b4a4e386a8a67b8",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainWrongWalk",
+      "sha256": "f4c9c9ad08a5062249ff3e8fd1d06fb4878ad1a0b430e4b9d9bdccab288cea87",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainWalk1",
+      "sha256": "ff170c16b0d6a790b160ca2bd055bdf584990c65fb7b6cd49c788e6f9d13a62a",
+      "stage": 1,
+      "walk": 1,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainWalk2",
+      "sha256": "0150a09cb467c8dc1901cc10f1831a0ed4bcda7871eac7af3e05f0fdb8311e2e",
+      "stage": 1,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainWalk3",
+      "sha256": "786254199a70ad461a674456b2d59e1393d425e014d7e5362fe52951771e946b",
+      "stage": 1,
+      "walk": 3,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainWalk4",
+      "sha256": "6c9f3aa79b7580f668fdccc1b4c5f67a338a2e9e74c9cd525210065af335aeec",
+      "stage": 1,
+      "walk": 4,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainWalk5",
+      "sha256": "c311c730d017a0c9a13dd80575d9a455967c57e037b9aaf95a15a471c70ffd5e",
+      "stage": 1,
+      "walk": 5,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage2",
+      "sha256": "02a022be8d4fc28b550fb9f70c20322d7aeec63c6bca9d4c0020b90d145498da",
+      "stage": 2,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage3",
+      "sha256": "9af8a1355a09e9ea6831752592b5634fd978c40bbc13759f9167c1166bed2743",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage4",
+      "sha256": "381f0e627ce02da4e52b9e408d3fcb544fe2fac0f9f0d4f0daa681554ef2d4bc",
+      "stage": 4,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage5",
+      "sha256": "afa3b7c4a8fae76d795a3eee61ccd4f66edcc250de0237aa7710f6da7e9af4be",
+      "stage": 5,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage6",
+      "sha256": "e786c3f7940522461ca7c233d4fd56c3e8a7db038d9e1a56c61af41762825609",
+      "stage": 6,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage7",
+      "sha256": "4a34de4b3a2b4ce98e6698643c4f18ac303c01f5bff4b6a62c77434280d16318",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage8",
+      "sha256": "b53f878bb041f515b3d2e56bd9f3fca0142121f471fb943449b424cff54df5b9",
+      "stage": 8,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage9",
+      "sha256": "66eee0bf6c026e589245fd804ad230eccbb381839eafc6ed75a2069ffc6a9db4",
+      "stage": 9,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage10",
+      "sha256": "7c87505a2ec81ac8cabe8bb678a6d1fa8175e62f6c449fa64c68d722e875cf97",
+      "stage": 10,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage11",
+      "sha256": "132bb520d6116c0612932aec633f59eabeb1bb4afe38d597f9c6d156ce907524",
+      "stage": 11,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage12",
+      "sha256": "848814eb13f4dd85d0e6b7fe8b9a00f073ea77a0fe80630042f781a9b6cc034b",
+      "stage": 12,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage13",
+      "sha256": "a59c38a1054bd76fa79ce3c545610dff250ed3a11e7565b0e6735aab7229dfc7",
+      "stage": 13,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage14",
+      "sha256": "73a5e17ef2fd4a730f65563bc23583a4390de08273c910be5ad3d7b1d680207b",
+      "stage": 14,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage15",
+      "sha256": "1eb1913aa4fa0a92ee0203c43c034cde4e46d8acda9d9c5c5419ab9ca5386c5b",
+      "stage": 15,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage16",
+      "sha256": "04e7eebfd0e85d77793f89de3a142c91def20c42bd3c04b2d03426613ed33732",
+      "stage": 16,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage17",
+      "sha256": "09af9e696fc60149df137ea2993b1c9ab0b6b7113d45e8d10c79a13df2a34fa0",
+      "stage": 17,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage18",
+      "sha256": "e532433bc669993c4327a54dc07c291fde0a556ec645522fc38b38d95da0b8f8",
+      "stage": 18,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage19",
+      "sha256": "6dfc1cce49cbf5c425e43d8e897898d9189afffcea6e2bb277f1451421b71628",
+      "stage": 19,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage20",
+      "sha256": "bae11f2a14ba72657aa74208da2763d0da7d1f4b61a4231ffac6697090acbbd2",
+      "stage": 20,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainStage21",
+      "sha256": "84e5ee9070378c4c8a9354c03372650fac5eec7d0739c583dd1acc48b1d36dc6",
+      "stage": 21,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainCompleteRepeat",
+      "sha256": "1514a094dc4f05b69c924359adf50e2b96765f1bbbfc8c34b5a6e0f7fb1c484b",
+      "stage": 21,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMainFinalVisual",
+      "sha256": "000dde191adbf5e302130d0c0a2cdae6913d3467b3d94e191815555ce690e30e",
+      "stage": 21,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsBaseline",
+      "sha256": "3ebb8e923472f73605dac5f836024d051c0dab3f12360d18ace4da7167a991be",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage1",
+      "sha256": "36137c37fc24659e1eec1c94e3cf3f1b1e85bf0e936631f8b83327343b7efee3",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsWalk1",
+      "sha256": "74d9320fca393706322af99ecdaab16594cc4b21f37aa3b277bff81ba6e25c50",
+      "stage": 1,
+      "walk": 1,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsWalk2",
+      "sha256": "5f9dba06d114a4e64dfd6a22930d6072203794fe31f303cf44543e08bd682ac7",
+      "stage": 1,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsWalk3",
+      "sha256": "f98cf81c64b98b9431a3ceb165df1d26496d2f6eb843091ca51e7d4e5e6cd36f",
+      "stage": 1,
+      "walk": 3,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsWalk4",
+      "sha256": "c10e9090cf11037da503fc1269bbc91801ea6da3492fd35ba001bb9893e891a9",
+      "stage": 1,
+      "walk": 4,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsWalk5",
+      "sha256": "889b49bbb970b4ad2d2cdfecf6f9cee66618a3e2a0f3b028fa980b3c583e73b6",
+      "stage": 1,
+      "walk": 5,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage2",
+      "sha256": "cb9faa5a006658013678775939be1267793e4f4938dc53580653899e64aba4ee",
+      "stage": 2,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage3",
+      "sha256": "a6f360440c4da81e107c5450d112ce013bba5dfb0e114fd65417668d527be1e1",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage4",
+      "sha256": "b25892746f91f466a7eda634294808214a87c22e72311326340d7cedcd5bbb64",
+      "stage": 4,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage5",
+      "sha256": "20e392d01d98fc164ec8085af9e699ee0da6d41c3e164a87644cb9cf3aeb7c7d",
+      "stage": 5,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage6",
+      "sha256": "21c876ffbb460614b22a77d64e63f4841455390019a36af6ab9b34fb8b773799",
+      "stage": 6,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage7",
+      "sha256": "d4863b93dcf39a12fe86619211726bb38bd55ea110dbb1a8b18a4bf26172f775",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage8",
+      "sha256": "5f66fea67bd49613df2d1bd46e0beb847abc4fda113a0e4c33860d9aa8f199d6",
+      "stage": 8,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage9",
+      "sha256": "1882a6425638c4e599b367fa164094bfa99dc2a849f0c8dc8e32b249f0a69760",
+      "stage": 9,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage10",
+      "sha256": "d7beeafc9b179cd61764cb08da8eea3195dcc304f1fcb6e4fa08a46906bd9116",
+      "stage": 10,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage11",
+      "sha256": "fc1bc61e503324d20f48492249c9dab95fb49e6ffbeb39cdf437ebc38ee18b6e",
+      "stage": 11,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage12",
+      "sha256": "331d57d8ee3f548bfd7c42f54ff8b6908abe3e543b7cecfd0705719ea7d8c2db",
+      "stage": 12,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage13",
+      "sha256": "e4b90f3b76d5fd54f2a56d2b8045c21f84665571f82244dd197400a2fb508479",
+      "stage": 13,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage14",
+      "sha256": "8a94348c88bad44311a8eee69fa4956f3cd0b5e0017bc068908433c90070de8e",
+      "stage": 14,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage15",
+      "sha256": "b8565ec14c9453f67cdaec14ed1c1ce0adc0705cf5aa03539a1945f297359d6d",
+      "stage": 15,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage16",
+      "sha256": "74624cc68ba8adf8cb2bb28c7c21e48113e2c9e464d8b4e860a3feaf7d921a70",
+      "stage": 16,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage17",
+      "sha256": "9ad46cce97d624b250ef20fa87257aba01081682c158bd5da4bd3eca453395fb",
+      "stage": 17,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage18",
+      "sha256": "04a7ee869acd0625dcd44fc734fa39e6085ae56f04385d93144c231f7606b5f4",
+      "stage": 18,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage19",
+      "sha256": "ae9a518d17b2e324b6e06fdf8a5bbcd12692ab35089b491830390bfeeb9ab231",
+      "stage": 19,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage20",
+      "sha256": "ec9eae767759ff693bb55bf77666b4bbd8048265d97de980feef1db02489bebc",
+      "stage": 20,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsStage21",
+      "sha256": "4e49bca9acdf90a0133f92844ed735b5b98da2240545828a0e8861eeeedddffe",
+      "stage": 21,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    },
+    {
+      "name": "salePlanMaterialsCompleteRepeat",
+      "sha256": "08655ddbbf10e122199fb3f309ca600079c4441fb9fce1ffabc5d0e00bfa11a8",
+      "stage": 21,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "onlyNewHistoryAndPermittedBridge": true
+    }
+  ],
+  "browserCheckpoints": 57,
+  "allFullDialogEqual": true,
+  "returned": {
+    "focused": "筹备首次寄售 · 另备待售药液",
+    "enterFullDialogEqual": true,
+    "mainErrors": []
+  },
+  "materialsErrors": [],
+  "budget": {
+    "initial": 493411,
+    "gzip": 164926,
+    "total": 1849960,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "tests": {
+    "vitestFiles": 166,
+    "vitestTests": 989,
+    "nodeTests": 16
+  },
+  "finalVisualReturn": {
+    "focused": "筹备首次寄售 · 另备待售药液",
+    "enterFullDialogEqual": true,
+    "mainErrors": []
+  },
+  "source": "Previously verified English chapter20; no new source verification",
+  "remaining": [
+    "B actual departure and purchase",
+    "C alley processing and bottle custody",
+    "Chinese legitimate/current anime sources",
+    "Chapter21 and other full-story sources",
+    "real devices/Beta/licensing/public release"
+  ]
+}
