@@ -1,0 +1,25 @@
+{
+  "batch": "C1h-recovery-entry",
+  "version": "0.86.0",
+  "commit": "6123942f9d8d57683c6cd24b0af3b8fd91361033",
+  "browser": {
+    "url": "http://127.0.0.1:4185/",
+    "entryVisible": true,
+    "entryLabel": "回房恢复 · 走准备路线",
+    "limitArchiveStage": 8,
+    "recoveryStageBefore": 0,
+    "routeOpened": true,
+    "containerReached": true,
+    "saveIndicator": "已保存",
+    "notes": "在既有0.84试玩档上刷新后完成限度八步；关闭场景后重新打开修炼手札，入口可见。点击入口沿街巷11右3上到盛水容器并打开附近地点，未跳过恢复步骤。"
+  },
+  "automated": {
+    "typecheck": true,
+    "vitestFiles": 163,
+    "vitestTests": 956,
+    "nodeChecks": 16,
+    "production": {"entryBytes": 493969, "gzipBytes": 164970, "totalJsBytes": 1824627},
+    "scenePack": {"modules": 55, "payloads": 58, "rows": 790}
+  },
+  "migration": "本批不新增存档字段；入口由firstExternalLimit.stage===8且recovery.stage<7派生。"
+}
