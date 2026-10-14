@@ -39,6 +39,7 @@ const EarlyMarketStandoff = lazyScene(() => import('./EarlyMarketStandoff'))
 const EarlyMarketBracelets = lazyScene(() => import('./EarlyMarketBracelets'))
 
 const FirstExternalTraining = lazyScene(() => import('./FirstExternalTraining'))
+const FirstExternalLimit = lazyScene(() => import('./FirstExternalLimit'))
 const FirstHallScrollReview = lazyScene(() => import('./FirstHallScrollReview'))
 const FirstHallTeacher = lazyScene(() => import('./FirstHallTeacher'))
 const FirstHallEvening = lazyScene(() => import('./FirstHallEvening'))
@@ -57,6 +58,7 @@ const EarlyIron = lazyScene(() => import('./EarlyIron'))
 
 const preparationRoutes = [
   [51, FirstExternalTraining, "正在接续山后受击……", {}],
+  [52, FirstExternalLimit, "正在接续限度说明与离林……", {}],
   [17, FirstHallApproach, "正在接续同卷归架……", { continuation: true }],
   [18, FirstHallApproach, "正在接续成人礼威胁……", { threat: true }],
   [19, FirstHallApproach, "正在接续堂内移步……", { exitResponse: true }],
@@ -113,7 +115,7 @@ const preparationRoutes = [
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
   const [walking, setWalking, entry, walkingBack] = useReturningScene()
-  const routes = useSceneRoutes(52)
+  const routes = useSceneRoutes(53)
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
@@ -234,6 +236,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 40 && routes.button(19, "接续堂内移步与来年回应")}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 46 && routes.button(20, "接续同卷管理者登记")}
       {isVisible(state, 2) && task.firstHallBody.stage === 7 && routes.button(51, "接续山后受击与身体反应")}
+      {isVisible(state, 2) && task.firstExternalTraining.stage === 10 && routes.button(52, "接续限度说明与离林")}
       {isVisible(state, 2) && task.firstHallTransmission.stage === 6 && routes.button(21, "接续身体限制与增强问答")}
       {isVisible(state, 2) && task.firstHallGrant.stage === 7 && routes.button(22, "接续实际额前传授与知识")}
       {isVisible(state, 2) && task.firstHallScrollReview.stage === 9 && routes.button(23, "接续老师认可与使用条件")}
