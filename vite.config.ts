@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
+// @ts-expect-error Build-only JavaScript plugin; its parser is covered by literal roundtrip tests.
+import { packedSceneRowsPlugin } from './scripts/pack-scene-rows.mjs'
 
 const phaserDefines = {
   global: 'globalThis',
@@ -13,7 +15,7 @@ const phaserDefines = {
 }
 
 export default defineConfig({
-  plugins: [react(), {
+  plugins: [packedSceneRowsPlugin(), react(), {
     name: 'verify-phaser-source',
     apply: 'build',
     generateBundle() {

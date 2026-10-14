@@ -1,0 +1,829 @@
+{
+  "version": "0.83.2",
+  "base": "33af326fb2df86884db7f5e7bf2562db490131cf",
+  "allExistingSrcUnchanged": true,
+  "migrations": 417,
+  "ssr": 834,
+  "native": [
+    {
+      "name": "trainingTextCapacityMainFinal",
+      "prior": "trainingCapacityRoutesMainAfterNavigation",
+      "entireStateEqual": true,
+      "sha256": "17687840bd60161bea4ec51569eae7bf66c299134f2ab2836c9e4fbde9a506d2"
+    },
+    {
+      "name": "trainingTextCapacityMaterialsFinal",
+      "prior": "trainingCapacityRoutesMaterialsFinal",
+      "entireStateEqual": true,
+      "sha256": "88eb7fc7eac4d993db64847102708a0cb56326bb2487acdbe970068dff59b488"
+    },
+    {
+      "name": "trainingTextCapacityIntactFinal",
+      "prior": "trainingCapacityRoutesIntactFinal",
+      "entireStateEqual": true,
+      "sha256": "14a83bcc3cac60e97ab1471a03ccdbf1502ccaf852313d820aab566d172e9bdc"
+    },
+    {
+      "name": "trainingTextCapacityMainAfterNavigation",
+      "prior": "trainingCapacityRoutesMainAfterNavigation",
+      "entireStateEqual": true,
+      "sha256": "e434c72e61915c35ad7e8f4da290fa81f15c873f3d22df9d956836e73132000e"
+    }
+  ],
+  "production": {
+    "modules": 53,
+    "payloads": 56,
+    "rows": 772,
+    "matches": [
+      {
+        "file": "src/content/early-appraisal.ts",
+        "rows": 8,
+        "chunks": [
+          "early-appraisal-DJm8Typs.js"
+        ]
+      },
+      {
+        "file": "src/content/early-apprentice.ts",
+        "rows": 25,
+        "chunks": [
+          "EarlyApprentice-BEbhP63A.js"
+        ]
+      },
+      {
+        "file": "src/content/early-auction.ts",
+        "rows": 7,
+        "chunks": [
+          "early-auction-CHrvjRcA.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremonial-test.ts",
+        "rows": 13,
+        "chunks": [
+          "early-ceremonial-test-B3gNgNGW.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremony-guests.ts",
+        "rows": 12,
+        "chunks": [
+          "early-ceremony-guests-CxEdhJZC.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremony-verdict.ts",
+        "rows": 16,
+        "chunks": [
+          "EarlyTrainingPanel-pMJ3YwXp.js"
+        ]
+      },
+      {
+        "file": "src/content/early-city-pharmacy.ts",
+        "rows": 15,
+        "chunks": [
+          "early-city-pharmacy-B8cceDqw.js"
+        ]
+      },
+      {
+        "file": "src/content/early-eighth-training.ts",
+        "rows": 15,
+        "chunks": [
+          "early-eighth-training-BVAKgoxz.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-compensation.ts",
+        "rows": 15,
+        "chunks": [
+          "EarlyFamilyCompensation-ZvHOK25M.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-contract.ts",
+        "rows": 33,
+        "chunks": [
+          "EarlyFamilyContract-Ca675spW.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-visit.ts",
+        "rows": 17,
+        "chunks": [
+          "FamilyHallMap-DKJoTLJp.js"
+        ]
+      },
+      {
+        "file": "src/content/early-father-gift.ts",
+        "rows": 6,
+        "chunks": [
+          "early-father-gift-Cl4mpD9l.js"
+        ]
+      },
+      {
+        "file": "src/content/early-forest-strike.ts",
+        "rows": 7,
+        "chunks": [
+          "early-forest-strike-CaJxbXRg.js"
+        ]
+      },
+      {
+        "file": "src/content/early-hall.ts",
+        "rows": 8,
+        "chunks": [
+          "EarlyTrainingPanel-pMJ3YwXp.js"
+        ]
+      },
+      {
+        "file": "src/content/early-iron.ts",
+        "rows": 18,
+        "chunks": [
+          "early-iron-DUPkV22L.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ke-challenge.ts",
+        "rows": 12,
+        "chunks": [
+          "early-ke-challenge-CtmT1uKP.js"
+        ]
+      },
+      {
+        "file": "src/content/early-long-supplies.ts",
+        "rows": 6,
+        "chunks": [
+          "early-long-supplies-CHHYRSDq.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-bracelets.ts",
+        "rows": 28,
+        "chunks": [
+          "EarlyMarketBracelets-C3lhV7Vg.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-discovery.ts",
+        "rows": 10,
+        "chunks": [
+          "early-market-trade-DRK5Vrmx.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-escort.ts",
+        "rows": 24,
+        "chunks": [
+          "EarlyMarketEscort-8HDDxxAt.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-return.ts",
+        "rows": 9,
+        "chunks": [
+          "EarlyMarketDiscovery-BGcHkvKB.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-search.ts",
+        "rows": 20,
+        "chunks": [
+          "early-market-search-G7BH4QPo.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-standoff.ts",
+        "rows": 34,
+        "chunks": [
+          "EarlyMarketStandoff-BgjL5aey.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-trade.ts",
+        "rows": 17,
+        "chunks": [
+          "early-market-trade-DRK5Vrmx.js"
+        ]
+      },
+      {
+        "file": "src/content/early-method-discussion.ts",
+        "rows": 28,
+        "chunks": [
+          "EarlyMethodDiscussion-BNL2V9rM.js"
+        ]
+      },
+      {
+        "file": "src/content/early-morning-card.ts",
+        "rows": 14,
+        "chunks": [
+          "EarlyMorningCard-Cfer_aoK.js"
+        ]
+      },
+      {
+        "file": "src/content/early-mountain-ring.ts",
+        "rows": 21,
+        "chunks": [
+          "MountainWalkMap-CxSua7ei.js"
+        ]
+      },
+      {
+        "file": "src/content/early-mountain-visitor.ts",
+        "rows": 26,
+        "chunks": [
+          "EarlyMountainVisitor-P1DFWT9I.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ning-first.ts",
+        "rows": 10,
+        "chunks": [
+          "early-ning-first-ComubrUE.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ning-second.ts",
+        "rows": 8,
+        "chunks": [
+          "early-ning-second-CB-o79mV.js"
+        ]
+      },
+      {
+        "file": "src/content/early-palm-pair.ts",
+        "rows": 10,
+        "chunks": [
+          "early-palm-pair-Btw0ZXJ2.js"
+        ]
+      },
+      {
+        "file": "src/content/early-preliminary.ts",
+        "rows": 16,
+        "chunks": [
+          "early-preliminary-V27qkOe9.js"
+        ]
+      },
+      {
+        "file": "src/content/early-preparation-brief.ts",
+        "rows": 20,
+        "chunks": [
+          "EarlyPreparationBrief-CiaUedm1.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-aid.ts",
+        "rows": 10,
+        "chunks": [
+          "EarlyQiAid-DA6aqfg6.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-barrier.ts",
+        "rows": 10,
+        "chunks": [
+          "EarlyQiBarrier-C8KpRbAK.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-exchange.ts",
+        "rows": 8,
+        "chunks": [
+          "EarlyQiExchange-CnIowCdx.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-pavilion.ts",
+        "rows": 12,
+        "chunks": [
+          "early-qi-pavilion-DliSzRcj.js"
+        ]
+      },
+      {
+        "file": "src/content/early-recovery.ts",
+        "rows": 7,
+        "chunks": [
+          "early-recovery-sJhQUoQQ.js"
+        ]
+      },
+      {
+        "file": "src/content/early-refining.ts",
+        "rows": 22,
+        "chunks": [
+          "early-refining-DxclJGHc.js"
+        ]
+      },
+      {
+        "file": "src/content/early-settlement.ts",
+        "rows": 7,
+        "chunks": [
+          "early-settlement-BejpUw9P.js"
+        ]
+      },
+      {
+        "file": "src/content/early-xuner-visit.ts",
+        "rows": 7,
+        "chunks": [
+          "early-xuner-visit-xXhBBbvX.js"
+        ]
+      },
+      {
+        "file": "src/content/first-bottle.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstTechnique-wEBc46Mx.js"
+        ]
+      },
+      {
+        "file": "src/content/first-departure.ts",
+        "rows": 9,
+        "chunks": [
+          "FirstDeparture-DIGhZ86l.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 14,
+        "chunks": [
+          "first-hall-approach-B5ziPeN1.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 12,
+        "chunks": [
+          "first-hall-approach-B5ziPeN1.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 9,
+        "chunks": [
+          "first-hall-approach-B5ziPeN1.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 6,
+        "chunks": [
+          "first-hall-approach-B5ziPeN1.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-body.ts",
+        "rows": 7,
+        "chunks": [
+          "FirstHallTeacher-CU8P3KBh.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-entry.ts",
+        "rows": 9,
+        "chunks": [
+          "first-hall-entry-Da2ghygH.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-match.ts",
+        "rows": 20,
+        "chunks": [
+          "first-hall-match-XypvhPWi.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-reading.ts",
+        "rows": 8,
+        "chunks": [
+          "first-hall-reading-BBio6YbH.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-talk.ts",
+        "rows": 20,
+        "chunks": [
+          "first-hall-talk-B7NH6SWG.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-transmission.ts",
+        "rows": 6,
+        "chunks": [
+          "first-hall-transmission-B_nSCX7N.js"
+        ]
+      },
+      {
+        "file": "src/content/first-road-meeting.ts",
+        "rows": 12,
+        "chunks": [
+          "first-road-meeting-CdLpxhsD.js"
+        ]
+      },
+      {
+        "file": "src/content/first-technique.ts",
+        "rows": 9,
+        "chunks": [
+          "FirstTechnique-wEBc46Mx.js"
+        ]
+      },
+      {
+        "file": "src/content/first-training.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstTraining-ZB8SdD6l.js"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "initial": 491869,
+    "gzip": 164398,
+    "total": 1808795,
+    "savedTotal": 38551,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "browser": {
+    "version": "0.83.2",
+    "visited": [
+      {
+        "tab": "1",
+        "label": "回到家族来访 · 入席与公开请求",
+        "title": "这一场来访，从入席说起。",
+        "back": "暂离家族来访 · 保留断点",
+        "focus": "回到家族来访 · 入席与公开请求",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续补偿交涉 · 本人发言与追加条件",
+        "title": "提议的价值，不能替本人答复。",
+        "back": "暂离补偿交涉 · 保留断点",
+        "focus": "接续补偿交涉 · 本人发言与追加条件",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续文书与离厅 · 三年约定和原物保管",
+        "title": "亲手写下决定，再面对三年之后。",
+        "back": "暂离文书与离厅 · 保留断点",
+        "focus": "接续文书与离厅 · 三年约定和原物保管",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "独自走上后山 · 声音与古戒归属",
+        "title": "声音从哪里来，古戒又去了哪里。",
+        "back": "暂离后山与古戒 · 保留断点",
+        "focus": "独自走上后山 · 声音与古戒归属",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续援助与拜师 · 许可边界和本人行礼",
+        "title": "先谈清条件，再亲自完成师徒礼。",
+        "back": "暂离援助与拜师 · 保留断点",
+        "focus": "接续援助与拜师 · 许可边界和本人行礼",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续功法说明 · 前置与未授卷",
+        "title": "问清前置和依据，保留尚未授卷。",
+        "back": "暂离功法说明 · 保留断点",
+        "focus": "接续功法说明 · 前置与未授卷",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续准备与返戒 · 材料单和借资衔接",
+        "title": "记清准备要求，再看同一古戒返手。",
+        "back": "暂离准备与返戒 · 保留断点",
+        "focus": "接续准备与返戒 · 材料单和借资衔接",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续薰儿来访 · 当晚问答与紫金卡",
+        "title": "先听清借资提议，次晨交卡另记。",
+        "back": "暂离当晚来访 · 保留断点",
+        "focus": "接续薰儿来访 · 当晚问答与紫金卡",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续晨间交卡 · 普通黑卡与采购账",
+        "title": "本人接下普通黑卡，账本只记一次。",
+        "back": "暂离晨间交卡 · 保留断点",
+        "focus": "接续晨间交卡 · 普通黑卡与采购账",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续同行药铺 · 入城与两药原收据",
+        "title": "走到药铺，两笔旧账各核一次。",
+        "back": "暂离同行药铺 · 保留断点",
+        "focus": "接续同行药铺 · 入城与两药原收据",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续入坊巡卫 · 同行与三护卫",
+        "title": "穿过南坊入口，听清护卫安排。",
+        "back": "暂离入坊巡卫 · 保留断点",
+        "focus": "接续入坊巡卫 · 同行与三护卫",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续坊市寻核 · 分路与手链放回",
+        "title": "一个继续寻核，一个停在手链摊。",
+        "back": "暂离坊市寻核 · 保留断点",
+        "focus": "接续坊市寻核 · 分路与手链放回",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续让路与两条手链",
+        "title": "先请让路，再分清两件赠礼。",
+        "back": "暂离让路手链 · 保留断点",
+        "focus": "接续让路与两条手链",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续围堵与非战斗离场",
+        "title": "呼叫护卫，拒绝单挑，继续寻核。",
+        "back": "暂离围堵离场 · 保留断点",
+        "focus": "接续围堵与非战斗离场",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续摊位发现与心中建议",
+        "title": "一枚绿核，一片尚未辨明的黑铁。",
+        "back": "暂离摊位发现 · 保留断点",
+        "focus": "接续摊位发现与心中建议",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续询价与唯一成交",
+        "title": "同意之后，才付清同一笔订单。",
+        "back": "暂离询价成交 · 保留断点",
+        "focus": "接续询价与唯一成交",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续回族与房中准备",
+        "title": "走回族内，锁门后再摆材料。",
+        "back": "暂离回族准备 · 保留断点",
+        "focus": "接续回族与房中准备",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续铁片辨认与限制",
+        "title": "先辨明来历，再认识自己的限度。",
+        "back": "暂离铁片辨认 · 保留断点",
+        "focus": "接续铁片辨认与限制",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续清水与主辅药调制",
+        "title": "先备清水，再看白焰中的药性。",
+        "back": "暂离主辅药调制 · 保留断点",
+        "focus": "接续清水与主辅药调制",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续魔核炼化与入水",
+        "title": "先柔化魔核，再将药团加入清水。",
+        "back": "暂离魔核炼化与入水 · 保留断点",
+        "focus": "接续魔核炼化与入水",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续当前一轮持续调息",
+        "title": "坐定、调息，再收束这一轮。",
+        "back": "暂离持续调息 · 保留断点",
+        "focus": "接续当前一轮持续调息",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续半月回顾与当时四段",
+        "title": "分别回顾时段、成果与药色。",
+        "back": "暂离半月回顾 · 保留断点",
+        "focus": "接续半月回顾与当时四段",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续同一铁片研究与感知",
+        "title": "取回铁片，亲自感知其中方法。",
+        "back": "暂离铁片研究 · 保留断点",
+        "focus": "接续同一铁片研究与感知",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续有限瓷瓶试招",
+        "title": "以当时有限功力，面对桌上的瓷瓶。",
+        "back": "暂离有限试瓶 · 保留断点",
+        "focus": "接续有限瓷瓶试招",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续实际出门与石路",
+        "title": "起身、跨门，再走上石路。",
+        "back": "暂离出门石路 · 保留断点",
+        "focus": "接续实际出门与石路",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续石路会面与分路",
+        "title": "转路、招呼，再各自前行。",
+        "back": "暂离路口会面 · 保留断点",
+        "focus": "接续石路会面与分路",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续实际入堂与东西分区",
+        "title": "走到堂门，再看见东西两区。",
+        "back": "暂离实际入堂 · 保留断点",
+        "focus": "接续实际入堂与东西分区",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续东侧同一第一卷阅读",
+        "title": "走到书架，展开当时的黑卷。",
+        "back": "暂离东侧阅读 · 保留断点",
+        "focus": "接续东侧同一第一卷阅读",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续东架旁观西侧比赛",
+        "title": "读卷的位置，始终在东侧。",
+        "back": "暂离西赛旁观 · 保留断点",
+        "focus": "接续东架旁观西侧比赛",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续帮选交涉与同卷归架",
+        "title": "回应提议，把同一第一卷放回书架。",
+        "back": "暂离同卷归架 · 保留断点",
+        "focus": "接续帮选交涉与同卷归架",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续东架交锋与本人第二卷",
+        "title": "分清她的临时卷与本人第二卷。",
+        "back": "暂离交锋与第二卷 · 保留断点",
+        "focus": "接续东架交锋与本人第二卷",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续成人礼威胁与本人观察",
+        "title": "来年的威胁，当前仍持同一第二卷。",
+        "back": "暂离成人礼威胁 · 保留断点",
+        "focus": "接续成人礼威胁与本人观察",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续堂内移步与来年回应",
+        "title": "持同一第二卷移步，回应来年的话。",
+        "back": "暂离堂内移步与来年回应 · 保留断点",
+        "focus": "接续堂内移步与来年回应",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续同卷管理者登记",
+        "title": "向管理者登记本人所持的同一第二卷。",
+        "back": "暂离同卷管理者登记 · 保留断点",
+        "focus": "接续同卷管理者登记",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续身体限制与增强问答",
+        "title": "先听身体要求，再问怎样增强。",
+        "back": "暂离身体问答 · 保留断点",
+        "focus": "接续身体限制与增强问答",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续实际额前传授与知识",
+        "title": "先凝神，再逐步接收技法知识。",
+        "back": "暂离额前传授 · 保留断点",
+        "focus": "接续实际额前传授与知识",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续老师认可与使用条件",
+        "title": "先听认可与条件，再准备接受传授。",
+        "back": "暂离认可条件 · 保留断点",
+        "focus": "接续老师认可与使用条件",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续同卷翻看与求技",
+        "title": "老师走向桌边，本人说出眼前所需。",
+        "back": "暂离同卷求技 · 保留断点",
+        "focus": "接续同卷翻看与求技",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续房中老师现身与有限背景",
+        "title": "抬头辨认老师，再问眼前的一点。",
+        "back": "暂离房中问答 · 保留断点",
+        "focus": "接续房中老师现身与有限背景",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续夜间回房与同卷放桌",
+        "title": "夜路走回房中，借卷放在身旁。",
+        "back": "暂离夜间回房 · 保留断点",
+        "focus": "接续夜间回房与同卷放桌",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续整个午后同行与天黑",
+        "title": "同行山路，直到天黑。",
+        "back": "暂离整个午后 · 保留断点",
+        "focus": "接续整个午后同行与天黑",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续离堂后萧宁独立反应",
+        "title": "堂内留下轻掌印，两人仍在堂外。",
+        "back": "暂离离堂后萧宁反应 · 保留断点",
+        "focus": "接续离堂后萧宁独立反应",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续同行与实际离堂",
+        "title": "持借卷同行跨门。",
+        "back": "暂离同行与实际离堂 · 保留断点",
+        "focus": "接续同行与实际离堂",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续整衣靠近与同卷收起",
+        "title": "他走近东架，本人收起同一卷。",
+        "back": "暂离整衣靠近 · 保留断点",
+        "focus": "接续整衣靠近与同卷收起",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续东架会面与半月问答",
+        "title": "各自拿着阅读卷，说起这半月。",
+        "back": "暂离东架会面 · 保留断点",
+        "focus": "接续东架会面与半月问答",
+        "exactFocus": true
+      },
+      {
+        "tab": "1",
+        "label": "接续赛后返回与薰儿走向东架",
+        "title": "读卷的位置，始终在东侧。",
+        "back": "暂离赛后东架 · 保留断点",
+        "focus": "接续赛后返回与薰儿走向东架",
+        "exactFocus": true
+      }
+    ],
+    "oldMainWholeEqual": true,
+    "oldMaterialsWholeEqual": true,
+    "completedEASUnchanged": true,
+    "intact": {
+      "entry": 0,
+      "alerts": 0,
+      "title": "斗破苍穹 · 异火之路"
+    },
+    "errors": [
+      [],
+      [],
+      []
+    ]
+  }
+}
