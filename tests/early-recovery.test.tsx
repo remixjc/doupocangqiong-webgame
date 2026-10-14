@@ -27,6 +27,10 @@ describe('训练后的药液恢复与独立结果', () => {
   it('只有督练归档/有效地点/可见范围才开放，旧主线不能代签', () => {
     const state = eligible()
     expect(earlyRecoveryBlock(state, teacher)).toBe('')
+    const limitPending = structuredClone(state)
+    limitPending.earlyTraining.firstExternalLimit.stage = 3
+    limitPending.earlyTraining.firstExternalLimit.record = 'current'
+    expect(earlyRecoveryBlock(limitPending, teacher)).toContain('限度说明与离林')
     for (const position of [{ x: NaN, y: 310 }, { x: 150, y: 310 }])
       expect(advanceEarlyRecovery(state, position, 'door', action(state)).state).toBe(state)
     const unfinished = structuredClone(state); unfinished.earlyTraining.supervision = { stage: 1, pulses: 3, attempts: 2 }

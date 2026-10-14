@@ -14,6 +14,8 @@ export type EarlyRecoveryAction = { step: number; energy: EarlyTrainingState['re
   operation: typeof earlyRecoveryScenes[number]['operation']; marker?: number }
 export function earlyRecoveryBlock(state: GameState, position: EarlyWalkPosition): string {
   return earlySupervisionBlock(state, position)
+    || (state.earlyTraining.firstExternalLimit.stage > 0 && state.earlyTraining.firstExternalLimit.stage < 8
+      ? '先完成山后限度说明与离林，再回房恢复。' : '')
     || (state.earlyTraining.supervision.stage !== 2 ? '先在后山完成本轮督练，再回房恢复。' : '')
 }
 export function advanceEarlyRecovery(state: GameState, position: EarlyWalkPosition, station: EarlyRecoveryStation, action: EarlyRecoveryAction): Transaction {
