@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -17,7 +18,7 @@ export type StandoffFocus = typeof marketStandoffScenes[number]['view']
 export const standoffNames: Record<StandoffFocus, string> = { yan: '萧炎', xuner: '薰儿', opponent: '来人', underlings: '随从', crowd: '围观人群', guards: '队长与护卫', captain: '队长' }
 export function standoffNear(p: EarlyWalkPosition, place: keyof typeof standoffPlaces): boolean {
   const target = standoffPlaces[place]
-  return cityPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
+  return cityPositionValid(p) && nearWalkPoint(p, target, 38)
 }
 export function earlyMarketStandoffBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

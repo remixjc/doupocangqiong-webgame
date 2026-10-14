@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
@@ -38,7 +39,7 @@ export function moveQiBarrierWalker(position: EarlyWalkPosition, direction: Earl
 }
 export function nearQiBarrierPlace(position: EarlyWalkPosition, place: keyof typeof qiBarrierPlaces, stage: number): boolean {
   const target = qiBarrierPlaces[place]
-  return validQiBarrierPosition(position, stage) && Math.hypot(position.x - target.x, position.y - target.y) <= 28
+  return validQiBarrierPosition(position, stage) && nearWalkPoint(position, target, 28)
 }
 export function nearQiPath(position: EarlyWalkPosition, path: number, stage: number): boolean {
   return Number.isSafeInteger(path) && path >= 1 && path <= 5 && validQiBarrierPosition(position, stage)

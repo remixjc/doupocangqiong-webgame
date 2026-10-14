@@ -365,6 +365,7 @@ export function replayEarlyTraining(input: GameState, failFirstBreath = false, o
     }
   }
   if (includeTeaching || includeSupervision || includeRecovery || includeConsignment) for (const scene of earlyTeachingScenes) {
+    if (scene.step < state.earlyTraining.teaching.stage) continue
     const result = advanceEarlyTeaching(state, earlyWalkPlaces.find(place => place.id === 'teacher')!, scene.station,
       { step: scene.step, operation: scene.operation })
     expect(result.ok, result.message).toBe(true)

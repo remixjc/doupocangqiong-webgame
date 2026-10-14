@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -17,7 +18,7 @@ export function marketReturnStart(stage: number): EarlyWalkPosition {
 }
 export function returnNear(position: EarlyWalkPosition, stage: number): boolean {
   const scene = marketReturnScenes[stage], target = scene && marketReturnPlaces[scene.place]
-  return !!target && cityPositionValid(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return !!target && cityPositionValid(position) && nearWalkPoint(position, target, 38)
 }
 export function earlyMarketReturnBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

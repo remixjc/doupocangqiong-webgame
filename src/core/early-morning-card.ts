@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -25,7 +26,7 @@ export function moveMorningWalker(p: EarlyWalkPosition, direction: EarlyWalkDire
 }
 export function morningCardNear(p: EarlyWalkPosition, place: keyof typeof morningCardPlaces): boolean {
   const target = morningCardPlaces[place]
-  return morningPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
+  return morningPositionValid(p) && nearWalkPoint(p, target, 38)
 }
 export function earlyMorningCardBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

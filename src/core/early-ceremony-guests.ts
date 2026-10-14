@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -17,8 +18,7 @@ export const ceremonyGuestPlaces = {
 } as const
 export const ceremonyPlatform = { x: 300, y: 80, width: 360, height: 140 }
 export function validCeremonyGuestPosition(position: EarlyWalkPosition): boolean {
-  return validForestPosition(position) && !(position.x > ceremonyPlatform.x - 12 && position.x < ceremonyPlatform.x + ceremonyPlatform.width + 12
-    && position.y > ceremonyPlatform.y - 12 && position.y < ceremonyPlatform.y + ceremonyPlatform.height + 12)
+  return validForestPosition(position) && !(walkPointOverlaps(position, ceremonyPlatform, 12))
 }
 export function moveCeremonyGuestWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!validCeremonyGuestPosition(position)) return { ...ceremonyGuestPlaces.gate }
@@ -27,7 +27,7 @@ export function moveCeremonyGuestWalker(position: EarlyWalkPosition, direction: 
 }
 export function nearCeremonyGuestPlace(position: EarlyWalkPosition, place: keyof typeof ceremonyGuestPlaces): boolean {
   const target = ceremonyGuestPlaces[place]
-  return validCeremonyGuestPosition(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 45
+  return validCeremonyGuestPosition(position) && nearWalkPoint(position, target, 45)
 }
 export type CeremonyGuestAction = CeremonyGuestsState & { operation: typeof ceremonyGuestScenes[number]['operation'] }
 export function earlyCeremonyGuestsBlock(state: GameState, position: EarlyWalkPosition): string {

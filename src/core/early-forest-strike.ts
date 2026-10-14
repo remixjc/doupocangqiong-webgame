@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -21,7 +22,7 @@ export function validForestPosition(position: EarlyWalkPosition): boolean {
 }
 export function nearForestPlace(position: EarlyWalkPosition, place: keyof typeof forestPlaces): boolean {
   const target = forestPlaces[place]
-  return validForestPosition(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 45
+  return validForestPosition(position) && nearWalkPoint(position, target, 45)
 }
 export function moveForestWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!validForestPosition(position)) return { ...forestStart }

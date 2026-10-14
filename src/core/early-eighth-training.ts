@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -32,7 +33,7 @@ export function earlyEighthTrainingBlock(state: GameState, position: EarlyWalkPo
 }
 export function nearEighthPlace(position: EarlyWalkPosition, place: keyof typeof eighthPlaces): boolean {
   const target = eighthPlaces[place]
-  return validForestPosition(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 45
+  return validForestPosition(position) && nearWalkPoint(position, target, 45)
 }
 export function advanceEarlyEighthTraining(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: EighthTrainingAction): Transaction {
   const blocked = earlyEighthTrainingBlock(state, entryPosition)

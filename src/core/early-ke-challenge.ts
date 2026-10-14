@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -20,7 +21,7 @@ export function earlyKeChallengeBlock(state: GameState, position: EarlyWalkPosit
 }
 export function nearKeChallengePlace(position: EarlyWalkPosition, place: keyof typeof keChallengePlaces): boolean {
   const target = keChallengePlaces[place]
-  return validPreliminaryPosition(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 45
+  return validPreliminaryPosition(position) && nearWalkPoint(position, target, 45)
 }
 export function advanceEarlyKeChallenge(state: GameState, entryPosition: EarlyWalkPosition, position: EarlyWalkPosition, action: KeChallengeAction): Transaction {
   const blocked = earlyKeChallengeBlock(state, entryPosition)

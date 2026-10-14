@@ -47,6 +47,9 @@ export default defineConfig({
   optimizeDeps: { include: ['phaser'], rolldownOptions: { transform: { define: phaserDefines } } },
   build: {
     manifest: true,
+    // Native ESM resolves the deferred scene graph; Vite still waits for its CSS.
+    // Avoid repeating speculative JS preload lists for every history route.
+    modulePreload: false,
     rollupOptions: {
       output: {
         manualChunks(id) {

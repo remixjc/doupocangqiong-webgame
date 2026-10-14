@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
@@ -28,8 +29,7 @@ export const familyVisitWalls = [
 export function familyVisitPositionValid(position: EarlyWalkPosition): boolean {
   return Number.isFinite(position.x) && Number.isFinite(position.y)
     && position.x >= 12 && position.x <= 708 && position.y >= 12 && position.y <= 408
-    && !familyVisitWalls.some(wall => position.x > wall.x - 12 && position.x < wall.x + wall.width + 12
-      && position.y > wall.y - 12 && position.y < wall.y + wall.height + 12)
+    && !familyVisitWalls.some(wall => walkPointOverlaps(position, wall, 12))
 }
 export function moveFamilyVisitWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!familyVisitPositionValid(position)) return { ...familyVisitPlaces.room }
@@ -37,7 +37,7 @@ export function moveFamilyVisitWalker(position: EarlyWalkPosition, direction: Ea
 }
 export function nearFamilyVisitPlace(position: EarlyWalkPosition, place: keyof typeof familyVisitPlaces): boolean {
   const target = familyVisitPlaces[place]
-  return familyVisitPositionValid(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return familyVisitPositionValid(position) && nearWalkPoint(position, target, 38)
 }
 export function earlyFamilyVisitBlock(state: GameState): string {
   if (!isVisible(state, 2)) return '这段往事超出当前剧透范围。'

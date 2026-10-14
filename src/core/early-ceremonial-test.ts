@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -23,8 +24,7 @@ export const ceremonialRails = [
   { x: 482, y: 212, width: 178, height: 8 },
 ] as const
 function overlaps(position: EarlyWalkPosition, rect: { x: number; y: number; width: number; height: number }): boolean {
-  return position.x > rect.x - 12 && position.x < rect.x + rect.width + 12
-    && position.y > rect.y - 12 && position.y < rect.y + rect.height + 12
+  return walkPointOverlaps(position, rect, 12)
 }
 export function validCeremonialPosition(position: EarlyWalkPosition, stage: number): boolean {
   return validForestPosition(position) && !ceremonialRails.some(rect => overlaps(position, rect))
@@ -37,7 +37,7 @@ export function moveCeremonialWalker(position: EarlyWalkPosition, direction: Ear
 }
 export function nearCeremonialPlace(position: EarlyWalkPosition, place: keyof typeof ceremonialPlaces, stage: number): boolean {
   const target = ceremonialPlaces[place]
-  return validCeremonialPosition(position, stage) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return validCeremonialPosition(position, stage) && nearWalkPoint(position, target, 38)
 }
 export type CeremonialTestAction = CeremonialTestState & {
   actor: typeof ceremonialTestScenes[number]['actor']; operation: typeof ceremonialTestScenes[number]['operation']

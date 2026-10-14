@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { stepWalker } from './walker-step'
 import { failedTransaction } from './early-result'
@@ -28,8 +29,7 @@ export function validQiPavilionPosition(position: EarlyWalkPosition, stage: numb
     && Number.isFinite(position.x) && Number.isFinite(position.y)
     && position.x >= radius && position.x <= 720 - radius && position.y >= radius && position.y <= 420 - radius
     && !(stage < 9 && position.y < 170)
-    && !obstacles.some(rect => position.x > rect.x - radius && position.x < rect.x + rect.width + radius
-      && position.y > rect.y - radius && position.y < rect.y + rect.height + radius)
+    && !obstacles.some(rect => walkPointOverlaps(position, rect, radius))
 }
 export function moveQiPavilionWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection, stage: number): EarlyWalkPosition {
   if (!validQiPavilionPosition(position, stage)) return { ...qiPavilionPlaces.forecourt }
@@ -37,7 +37,7 @@ export function moveQiPavilionWalker(position: EarlyWalkPosition, direction: Ear
 }
 export function nearQiPavilionPlace(position: EarlyWalkPosition, place: keyof typeof qiPavilionPlaces, stage: number): boolean {
   const target = qiPavilionPlaces[place]
-  return validQiPavilionPosition(position, stage) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return validQiPavilionPosition(position, stage) && nearWalkPoint(position, target, 38)
 }
 export type QiPavilionEntryAction = QiPavilionEntryState & {
   actor: typeof qiPavilionEntryScenes[number]['actor']

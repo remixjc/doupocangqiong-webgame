@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -15,7 +16,7 @@ export const verdictPlaces = { waiting: ningPlaces.waiting, stairs: ningPlaces.s
   outside: { x: 676, y: 280, label: '场外 · 萧宁交接' }, exit: { x: 160, y: 340, label: '场口 · 离场同行' } } as const
 export function nearVerdictPlace(position: EarlyWalkPosition, place: keyof typeof verdictPlaces): boolean {
   const target = verdictPlaces[place]
-  return validCeremonialPosition(position, 2) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return validCeremonialPosition(position, 2) && nearWalkPoint(position, target, 38)
 }
 export type CeremonyVerdictAction = CeremonyVerdictState & {
   actor: typeof ceremonyVerdictScenes[number]['actor']

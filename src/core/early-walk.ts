@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { stepWalker } from './walker-step'
 export interface EarlyWalkPosition { x: number; y: number }
 export type EarlyWalkDirection = 'up' | 'down' | 'left' | 'right'
@@ -24,8 +25,7 @@ export function earlyWalkPositionValid(position: EarlyWalkPosition): boolean {
   return Number.isFinite(position.x) && Number.isFinite(position.y)
     && position.x >= radius && position.x <= earlyWalkSize.width - radius
     && position.y >= radius && position.y <= earlyWalkSize.height - radius
-    && !earlyWalkObstacles.some(rect => position.x > rect.x - radius && position.x < rect.x + rect.width + radius
-      && position.y > rect.y - radius && position.y < rect.y + rect.height + radius)
+    && !earlyWalkObstacles.some(rect => walkPointOverlaps(position, rect, radius))
 }
 export function moveEarlyWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!earlyWalkPositionValid(position)) return { ...earlyWalkStart }
@@ -33,5 +33,5 @@ export function moveEarlyWalker(position: EarlyWalkPosition, direction: EarlyWal
 }
 export function nearbyEarlyWalkPlace(position: EarlyWalkPosition) {
   if (!earlyWalkPositionValid(position)) return undefined
-  return earlyWalkPlaces.find(place => Math.hypot(place.x - position.x, place.y - position.y) <= 48)
+  return earlyWalkPlaces.find(place => nearWalkPoint(place, position, 48))
 }

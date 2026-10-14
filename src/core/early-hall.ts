@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { stepWalker } from './walker-step'
 import { failedTransaction } from './early-result'
@@ -27,8 +28,7 @@ export const earlyHallPlaces = [
 export function earlyHallPositionValid(position: EarlyWalkPosition): boolean {
   return Number.isFinite(position.x) && Number.isFinite(position.y)
     && position.x >= 12 && position.x <= 708 && position.y >= 12 && position.y <= 408
-    && !earlyHallObstacles.some(rect => position.x > rect.x - 12 && position.x < rect.x + rect.width + 12
-      && position.y > rect.y - 12 && position.y < rect.y + rect.height + 12)
+    && !earlyHallObstacles.some(rect => walkPointOverlaps(position, rect, 12))
 }
 export function moveEarlyHall(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!earlyHallPositionValid(position)) return { ...earlyHallStart }
@@ -36,7 +36,7 @@ export function moveEarlyHall(position: EarlyWalkPosition, direction: EarlyWalkD
 }
 export function nearbyEarlyHallPlace(position: EarlyWalkPosition) {
   if (!earlyHallPositionValid(position)) return undefined
-  return earlyHallPlaces.find(place => Math.hypot(place.x - position.x, place.y - position.y) <= 48)
+  return earlyHallPlaces.find(place => nearWalkPoint(place, position, 48))
 }
 export function earlyHallBlock(state: GameState): string {
   return earlyGrowthBlock(state)

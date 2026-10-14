@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -20,7 +21,7 @@ export type FamilyContractView = { kind: 'yan'; position: EarlyWalkPosition }
   | { kind: 'observer'; place: keyof typeof familyContractPlaces }
 export function familyContractNear(position: EarlyWalkPosition, place: keyof typeof familyContractPlaces): boolean {
   const target = familyContractPlaces[place]
-  return !!target && familyVisitPositionValid(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return !!target && familyVisitPositionValid(position) && nearWalkPoint(position, target, 38)
 }
 export function earlyFamilyContractBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

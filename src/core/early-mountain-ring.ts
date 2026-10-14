@@ -1,3 +1,4 @@
+import { walkPointOverlaps, nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
@@ -25,7 +26,7 @@ export const mountainRingObstacles = [
 export function mountainRingPositionValid(position: EarlyWalkPosition): boolean {
   return Number.isFinite(position.x) && Number.isFinite(position.y) && position.x >= 12 && position.x <= 708
     && position.y >= 12 && position.y <= 408 && !mountainRingObstacles.some(rect =>
-      position.x > rect.x - 12 && position.x < rect.x + rect.width + 12 && position.y > rect.y - 12 && position.y < rect.y + rect.height + 12)
+      walkPointOverlaps(position, rect, 12))
 }
 export function moveMountainRingWalker(position: EarlyWalkPosition, direction: EarlyWalkDirection): EarlyWalkPosition {
   if (!mountainRingPositionValid(position)) return { ...mountainRingStart }
@@ -33,7 +34,7 @@ export function moveMountainRingWalker(position: EarlyWalkPosition, direction: E
 }
 export function mountainRingNear(position: EarlyWalkPosition, place: keyof typeof mountainRingPlaces): boolean {
   const target = mountainRingPlaces[place]
-  return !!target && mountainRingPositionValid(position) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return !!target && mountainRingPositionValid(position) && nearWalkPoint(position, target, 38)
 }
 export function earlyMountainRingBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

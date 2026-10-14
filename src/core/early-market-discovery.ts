@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -12,7 +13,7 @@ import { marketDiscoveryAt, validMarketDiscovery, type MarketDiscoveryState } fr
 import { marketDiscoveryScenes } from '../content/early-market-discovery'
 export const marketDiscoveryPlace = { x: 620, y: 230 }
 export function discoveryNear(p: EarlyWalkPosition): boolean {
-  return cityPositionValid(p) && Math.hypot(p.x - marketDiscoveryPlace.x, p.y - marketDiscoveryPlace.y) <= 38
+  return cityPositionValid(p) && nearWalkPoint(p, marketDiscoveryPlace, 38)
 }
 export function earlyMarketDiscoveryBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

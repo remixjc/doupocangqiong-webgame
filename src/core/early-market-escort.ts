@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -18,7 +19,7 @@ export const marketEscortPlaces = {
 } as const
 export function marketEscortNear(p: EarlyWalkPosition, place: keyof typeof marketEscortPlaces): boolean {
   const target = marketEscortPlaces[place]
-  return cityPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
+  return cityPositionValid(p) && nearWalkPoint(p, target, 38)
 }
 export function earlyMarketEscortBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

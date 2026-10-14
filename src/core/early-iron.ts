@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -18,7 +19,7 @@ export function ironStart(stage: number): EarlyWalkPosition {
 export function ironNear(yan: EarlyWalkPosition, stage: number): boolean {
   if (!cityPositionValid(yan)) return false
   const target = stage === 4 ? ironPlaces.teacher : stage === 12 ? ironPlaces.table : undefined
-  return target ? Math.hypot(yan.x - target.x, yan.y - target.y) <= 38
+  return target ? nearWalkPoint(yan, target, 38)
     : yan.y >= 330 && yan.x >= 100 && yan.x <= 300
 }
 export function earlyIronBlock(state: GameState): string {

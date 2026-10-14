@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { stepWalker } from './walker-step'
 import { successfulTransaction } from './early-result'
@@ -27,7 +28,7 @@ export function moveCityWalker(p: EarlyWalkPosition, direction: EarlyWalkDirecti
 }
 export function cityPharmacyNear(p: EarlyWalkPosition, place: keyof typeof cityPharmacyPlaces): boolean {
   const target = cityPharmacyPlaces[place]
-  return cityPositionValid(p) && Math.hypot(p.x - target.x, p.y - target.y) <= 38
+  return cityPositionValid(p) && nearWalkPoint(p, target, 38)
 }
 export function earlyCityPharmacyBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

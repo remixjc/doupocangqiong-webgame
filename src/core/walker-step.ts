@@ -7,3 +7,12 @@ export function stepWalker(position: EarlyWalkPosition, direction: EarlyWalkDire
   const next = { x: position.x + delta[0], y: position.y + delta[1] }
   return valid(next) ? next : position
 }
+
+export function nearWalkPoint(position: EarlyWalkPosition, target: EarlyWalkPosition, radius: number): boolean {
+  return Math.hypot(position.x - target.x, position.y - target.y) <= radius
+}
+
+export function walkPointOverlaps(position: EarlyWalkPosition, rect: { x: number; y: number; width: number; height: number }, radius: number): boolean {
+  return position.x > rect.x - radius && position.x < rect.x + rect.width + radius
+    && position.y > rect.y - radius && position.y < rect.y + rect.height + radius
+}

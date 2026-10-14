@@ -1,0 +1,614 @@
+{
+  "version": "0.81.0",
+  "date": "2026-10-14",
+  "proof": {
+    "base": "b03c48de5d5919b7802a1cac6ffe1b153ddf24cc",
+    "inverse": [
+      {
+        "file": "src/core/early-ceremonial-test.ts",
+        "sha256": "49f5089139dd6b461dbe4725a507a169845bfbf67d0eea0b330a89af313d9519"
+      },
+      {
+        "file": "src/core/early-ceremony-guests.ts",
+        "sha256": "af522e42135e3a3a28972fb91c8cc9cb1444561732daa23fb683a03e3e2a913f"
+      },
+      {
+        "file": "src/core/early-ceremony-verdict.ts",
+        "sha256": "6fb03b45157a774ccba7c02d27a7e1aecb402e449e4d0a85d7c9b8a824d493af"
+      },
+      {
+        "file": "src/core/early-city-pharmacy.ts",
+        "sha256": "8069b66155663fb9aac943af9c038eff62afb4eaf8e8448d28d801b359dbe86d"
+      },
+      {
+        "file": "src/core/early-eighth-training.ts",
+        "sha256": "233212c9d2a0a3fa1ae1e3f34ff788b01f06275c0839cce7a21c60917e28616e"
+      },
+      {
+        "file": "src/core/early-family-contract.ts",
+        "sha256": "41a567cabc63f987f33041a8771ce7b2ee4d475a6bc33e1ff8811c7aee971f60"
+      },
+      {
+        "file": "src/core/early-family-visit.ts",
+        "sha256": "b93b3e85a3048e6ceb21bcc2958457fc9c16a0ec3a8a02e831e40cce20f2a00e"
+      },
+      {
+        "file": "src/core/early-forest-strike.ts",
+        "sha256": "64a2cb7ed0e57037f2112dde0862cb10e5e8a459392923cc1728471a165920ae"
+      },
+      {
+        "file": "src/core/early-hall.ts",
+        "sha256": "98849266228750cd2a0a473b3ac2e4ffb1a60d6fe6ae71295bcb240738d074f8"
+      },
+      {
+        "file": "src/core/early-iron.ts",
+        "sha256": "27d0f526663f173161456d93dede133a2b153804035680e5d5cc78e45b789e5e"
+      },
+      {
+        "file": "src/core/early-ke-challenge.ts",
+        "sha256": "214d1004c345e6924f3398a06d24697d5bf67e2b4fd23aa63ebe5a27b54bc6af"
+      },
+      {
+        "file": "src/core/early-market-discovery.ts",
+        "sha256": "f064ba4015c26c11afc38e95ea3068607b7e6f99b9981cdb97161409c4663035"
+      },
+      {
+        "file": "src/core/early-market-escort.ts",
+        "sha256": "cf0c135ed85427c6069b18001c44eb863fe291d4d5c9c79c9fde6012725ac830"
+      },
+      {
+        "file": "src/core/early-market-return.ts",
+        "sha256": "0508d118a69547a69f06b057fa20b37f2a0b48d915ef731c894e184855e41c12"
+      },
+      {
+        "file": "src/core/early-market-search.ts",
+        "sha256": "59bd93f51112df8eadac1e4e94989337133f87fc31769145c063eac61d5ac6ea"
+      },
+      {
+        "file": "src/core/early-market-standoff.ts",
+        "sha256": "13112b9d284cdb501e497a925b8b01cd37a4e163f42eec4f46fb574c504c96c6"
+      },
+      {
+        "file": "src/core/early-market-trade.ts",
+        "sha256": "487d783f3dc5973a7e8fdce1beabd8c847226f3edbdedf2c2ef9a7a08b160d64"
+      },
+      {
+        "file": "src/core/early-morning-card.ts",
+        "sha256": "dbb3f1ca7cc0defb72522e76b4e898e0d0ccf59dbb8da683b03e4381ce98bec3"
+      },
+      {
+        "file": "src/core/early-mountain-ring.ts",
+        "sha256": "16bb26519ff30d994e52e1387803ab57e230ad7a4b90ccc3cad3110d2988cf83"
+      },
+      {
+        "file": "src/core/early-ning-first.ts",
+        "sha256": "f859347996ab156fbb46a05ad0d407aa9d67cb093cb16b542689b65c15ee82e9"
+      },
+      {
+        "file": "src/core/early-preliminary.ts",
+        "sha256": "19ac67da216ce2677b14bc6af24b8ebf3e4bc930ee528cdff7c90ab01c92cb61"
+      },
+      {
+        "file": "src/core/early-qi-barrier.ts",
+        "sha256": "f6c80d44c4056ff5761a56cb6179fd093ac28f6c88ef575b7f0e6a5630cd53d2"
+      },
+      {
+        "file": "src/core/early-qi-pavilion.ts",
+        "sha256": "ba2ed9941dcbd8f6b954377401324941b6ea329b1e7c94e789f27e3c11855737"
+      },
+      {
+        "file": "src/core/early-refining.ts",
+        "sha256": "25f4a422abd99d0f370832e17b897e639ab218e0d28773a702069745fb961b3e"
+      },
+      {
+        "file": "src/core/early-walk.ts",
+        "sha256": "ae19babe1db07fd185de9c4ba70d1587fcf85b23a566494a1d35f61df8bbdd72"
+      },
+      {
+        "file": "src/core/walker-step.ts",
+        "sha256": "e5dc628f0f130dde7d62338a82ed8bfb735aa0c93f2de0504c9747adf29be988"
+      }
+    ],
+    "counts": {
+      "near": 25,
+      "overlap": 7
+    },
+    "geometryResults": 41472,
+    "getterSequences": 41472,
+    "decoded": 349,
+    "native": [
+      {
+        "name": "grantMainBaseline",
+        "sha256": "2978d5edf0640ac935f8245ea5389dd0ea00cda2722585def68b8be978c139a5",
+        "stage": 0,
+        "teaching": 0,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainRejected",
+        "sha256": "efadb70dc479e57bf95b54c77755a3f3eda719ee5c4bf1e1715f357e780299ff",
+        "stage": 0,
+        "teaching": 0,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep1",
+        "sha256": "0a2fa4c258a2bb995450ecd7d97e0fd8b735c5d0300a371e07b1253741a7cbca",
+        "stage": 1,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep2",
+        "sha256": "5b1587df0c06c17e914a9b33ffcfc36e738fbd2971a3e014f1cab67357e50c0c",
+        "stage": 2,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep3",
+        "sha256": "633b92f29b9858763d22ac166fe8c51093d43d86454f9053ef45a5fcdecf29fd",
+        "stage": 3,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep4",
+        "sha256": "c6e30d30cb2ce8c7e921c217bc104e42672fd136c46e9f077af597967be01594",
+        "stage": 4,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep5",
+        "sha256": "8a25c392f16c8056284dbc503133a9ce4c67b76cdea07a2cf4c8b7ffb7f4df30",
+        "stage": 5,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep6",
+        "sha256": "6165af824600ab272b6015673327748706f110ff1c70f0a8b1af45afc32705d3",
+        "stage": 6,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainStep7",
+        "sha256": "06f423ee604d87369f77bde48a97fa8a35ac5b64053364748a077eced6022be7",
+        "stage": 7,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMainAfterNavigation",
+        "sha256": "06e37f61638c6d10b35762b7eaa2717f1a8932bdd74d6f1f8a18110f739915f2",
+        "stage": 7,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsBaseline",
+        "sha256": "4202c21d805da461d295d5eef3436d225c139fbb2fe4ad1accd6443b4569c976",
+        "stage": 0,
+        "teaching": 0,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep1",
+        "sha256": "d2f1533fa3309022011dcb27db699c46718659a2dae72b3009ccc3defffccd0d",
+        "stage": 1,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep2",
+        "sha256": "d40073575b42ffe88602aef27aa644c2668e7c0b6c47feae1f54093f301ad2a8",
+        "stage": 2,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep3",
+        "sha256": "07b5a1e4267dfdd92057a53da35a5c1af91d4e76507942d7479ad79c1266468d",
+        "stage": 3,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep4",
+        "sha256": "9e99252083300a36a870e70343d944e214da81d05820b019fc2f4c9ca7648102",
+        "stage": 4,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep5",
+        "sha256": "41782537386f079607ef586122704c933b173f585c80b9480f147bee6551f4c4",
+        "stage": 5,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep6",
+        "sha256": "d94501c21de62c09e071088383960313bb7d516dc07134c03c7f7aa989651ef7",
+        "stage": 6,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantMaterialsStep7",
+        "sha256": "ffa7be730edc2b38a44b9b5e54c8f27effbe6d57e18ffe2b8560561aea54025f",
+        "stage": 7,
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyGrantAndMonotonicTeachingChanged": true
+      },
+      {
+        "name": "grantIntactMigrated",
+        "sha256": "08cd417b40c23557fdf8836e82a5974ec5812def7385391f05715fde50ebbff5",
+        "entireStateEqual": true
+      }
+    ],
+    "oldTeacherEntireMarkupEqual": true,
+    "modulePreload": {
+      "value": false,
+      "nativeEsmImports": true,
+      "cssPreloadRetained": true,
+      "change": "Disables speculative JavaScript dependency preload; network request timing and slow-network performance are not claimed equivalent."
+    },
+    "budget": {
+      "initial": 490252,
+      "gzip": 163953,
+      "total": 1843273,
+      "limits": [
+        500000,
+        165000,
+        1850000
+      ]
+    }
+  },
+  "browser": {
+    "observations": [
+      {
+        "branch": "Main",
+        "stage": 1,
+        "title": "老师答应",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\"\n  - button \"观察房中老师\" [active] [pressed]\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 疲惫抬头\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 0/7 · 认可条件 · 未参与\n  - heading \"老师答应\" [level=3]\n  - paragraph: 既然眼下需要，便教一门近身斗技。先听清条件。\n  - paragraph: 当前人物正确。\n  - button \"老师认可 · 尚未传入知识\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n认可条件 1/7 · 认可条件 · 问答1/7，仍未接收知识\n\n本人振作\n\n听到老师答应，本人提起精神，想知道技法的层次。\n\n当前人物正确。\n\n振作并留意 · 仍在原位\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n认可条件 1/7 · 认可条件 · 问答1/7，仍未接收知识\n\n本人振作\n\n听到老师答应，本人提起精神，想知道技法的层次。\n\n当前人物正确。\n\n振作并留意 · 仍在原位\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Main",
+        "stage": 2,
+        "title": "本人振作",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 疲惫抬头\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 1/7 · 认可条件 · 问答1/7，仍未接收知识\n  - heading \"本人振作\" [level=3]\n  - paragraph: 听到老师答应，本人提起精神，想知道技法的层次。\n  - paragraph: 当前人物正确。\n  - button \"振作并留意 · 仍在原位\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 2/7 · 认可条件 · 问答2/7，仍未接收知识\n\n使用条件\n\n吸掌眼下仍显弱。另一技法以五段斗之气为使用条件，不能算作当前晋阶。\n\n请明确选择本步人物。\n\n听清五段条件 · 当时仍四段\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 2/7 · 认可条件 · 问答2/7，仍未接收知识\n\n使用条件\n\n吸掌眼下仍显弱。另一技法以五段斗之气为使用条件，不能算作当前晋阶。\n\n请明确选择本步人物。\n\n听清五段条件 · 当时仍四段\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Main",
+        "stage": 3,
+        "title": "使用条件",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\"\n  - button \"观察房中老师\" [active] [pressed]\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 2/7 · 认可条件 · 问答2/7，仍未接收知识\n  - heading \"使用条件\" [level=3]\n  - paragraph: 吸掌眼下仍显弱。另一技法以五段斗之气为使用条件，不能算作当前晋阶。\n  - paragraph: 当前人物正确。\n  - button \"听清五段条件 · 当时仍四段\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 3/7 · 认可条件 · 问答3/7，仍未接收知识\n\n询问品阶\n\n玄阶之中，这门技法具体处在哪一品阶？\n\n当前人物正确。\n\n本人询问品阶\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 3/7 · 认可条件 · 问答3/7，仍未接收知识\n\n询问品阶\n\n玄阶之中，这门技法具体处在哪一品阶？\n\n当前人物正确。\n\n本人询问品阶\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Main",
+        "stage": 4,
+        "title": "询问品阶",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 3/7 · 认可条件 · 问答3/7，仍未接收知识\n  - heading \"询问品阶\" [level=3]\n  - paragraph: 玄阶之中，这门技法具体处在哪一品阶？\n  - paragraph: 当前人物正确。\n  - button \"本人询问品阶\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 4/7 · 认可条件 · 问答4/7，仍未接收知识\n\n品阶与来历\n\n玄阶高级。昔日持有者请我炼药，执意以这门技法相赠。\n\n请明确选择本步人物。\n\n记下品阶与炼药往事\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 4/7 · 认可条件 · 问答4/7，仍未接收知识\n\n品阶与来历\n\n玄阶高级。昔日持有者请我炼药，执意以这门技法相赠。\n\n请明确选择本步人物。\n\n记下品阶与炼药往事\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 1,
+        "title": "老师答应",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\"\n  - button \"观察房中老师\" [active] [pressed]\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 疲惫抬头\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 0/7 · 认可条件 · 未参与\n  - heading \"老师答应\" [level=3]\n  - paragraph: 既然眼下需要，便教一门近身斗技。先听清条件。\n  - paragraph: 当前人物正确。\n  - button \"老师认可 · 尚未传入知识\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n认可条件 1/7 · 认可条件 · 问答1/7，仍未接收知识\n\n本人振作\n\n听到老师答应，本人提起精神，想知道技法的层次。\n\n当前人物正确。\n\n振作并留意 · 仍在原位\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 疲惫抬头\n\n认可条件 1/7 · 认可条件 · 问答1/7，仍未接收知识\n\n本人振作\n\n听到老师答应，本人提起精神，想知道技法的层次。\n\n当前人物正确。\n\n振作并留意 · 仍在原位\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Main",
+        "stage": 5,
+        "title": "品阶与来历",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\"\n  - button \"观察房中老师\" [active] [pressed]\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 4/7 · 认可条件 · 问答4/7，仍未接收知识\n  - heading \"品阶与来历\" [level=3]\n  - paragraph: 玄阶高级。昔日持有者请我炼药，执意以这门技法相赠。\n  - paragraph: 当前人物正确。\n  - button \"记下品阶与炼药往事\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 5/7 · 认可条件 · 问答5/7，仍未接收知识\n\n理解差距\n\n比起家族所藏，这样的品阶令本人惊讶；老师却说得平常。\n\n当前人物正确。\n\n理解品阶差距 · 不签使用成功\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 5/7 · 认可条件 · 问答5/7，仍未接收知识\n\n理解差距\n\n比起家族所藏，这样的品阶令本人惊讶；老师却说得平常。\n\n当前人物正确。\n\n理解品阶差距 · 不签使用成功\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Main",
+        "stage": 6,
+        "title": "理解差距",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 5/7 · 认可条件 · 问答5/7，仍未接收知识\n  - heading \"理解差距\" [level=3]\n  - paragraph: 比起家族所藏，这样的品阶令本人惊讶；老师却说得平常。\n  - paragraph: 当前人物正确。\n  - button \"理解品阶差距 · 不签使用成功\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 6/7 · 认可条件 · 问答6/7，仍未接收知识\n\n认可问答归档\n\n条件已听清，实际凝神、额前点触与接收知识仍待继续。\n\n当前人物正确。\n\n归档认可与条件\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 6/7 · 认可条件 · 问答6/7，仍未接收知识\n\n认可问答归档\n\n条件已听清，实际凝神、额前点触与接收知识仍待继续。\n\n当前人物正确。\n\n归档认可与条件\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Main",
+        "stage": 7,
+        "title": "认可问答归档",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 6/7 · 认可条件 · 问答6/7，仍未接收知识\n  - heading \"认可问答归档\" [level=3]\n  - paragraph: 条件已听清，实际凝神、额前点触与接收知识仍待继续。\n  - paragraph: 当前人物正确。\n  - button \"归档认可与条件\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 7/7 · 认可条件 · 问答归档，额前传授待续\n\n认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。\n\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 7/7 · 认可条件 · 问答归档，额前传授待续\n\n认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。\n\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 2,
+        "title": "本人振作",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 疲惫抬头\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 1/7 · 认可条件 · 问答1/7，仍未接收知识\n  - heading \"本人振作\" [level=3]\n  - paragraph: 听到老师答应，本人提起精神，想知道技法的层次。\n  - paragraph: 当前人物正确。\n  - button \"振作并留意 · 仍在原位\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 2/7 · 认可条件 · 问答2/7，仍未接收知识\n\n使用条件\n\n吸掌眼下仍显弱。另一技法以五段斗之气为使用条件，不能算作当前晋阶。\n\n请明确选择本步人物。\n\n听清五段条件 · 当时仍四段\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 2/7 · 认可条件 · 问答2/7，仍未接收知识\n\n使用条件\n\n吸掌眼下仍显弱。另一技法以五段斗之气为使用条件，不能算作当前晋阶。\n\n请明确选择本步人物。\n\n听清五段条件 · 当时仍四段\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 3,
+        "title": "使用条件",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\"\n  - button \"观察房中老师\" [active] [pressed]\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 2/7 · 认可条件 · 问答2/7，仍未接收知识\n  - heading \"使用条件\" [level=3]\n  - paragraph: 吸掌眼下仍显弱。另一技法以五段斗之气为使用条件，不能算作当前晋阶。\n  - paragraph: 当前人物正确。\n  - button \"听清五段条件 · 当时仍四段\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 3/7 · 认可条件 · 问答3/7，仍未接收知识\n\n询问品阶\n\n玄阶之中，这门技法具体处在哪一品阶？\n\n当前人物正确。\n\n本人询问品阶\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 3/7 · 认可条件 · 问答3/7，仍未接收知识\n\n询问品阶\n\n玄阶之中，这门技法具体处在哪一品阶？\n\n当前人物正确。\n\n本人询问品阶\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 4,
+        "title": "询问品阶",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 3/7 · 认可条件 · 问答3/7，仍未接收知识\n  - heading \"询问品阶\" [level=3]\n  - paragraph: 玄阶之中，这门技法具体处在哪一品阶？\n  - paragraph: 当前人物正确。\n  - button \"本人询问品阶\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 4/7 · 认可条件 · 问答4/7，仍未接收知识\n\n品阶与来历\n\n玄阶高级。昔日持有者请我炼药，执意以这门技法相赠。\n\n请明确选择本步人物。\n\n记下品阶与炼药往事\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 4/7 · 认可条件 · 问答4/7，仍未接收知识\n\n品阶与来历\n\n玄阶高级。昔日持有者请我炼药，执意以这门技法相赠。\n\n请明确选择本步人物。\n\n记下品阶与炼药往事\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 5,
+        "title": "品阶与来历",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\"\n  - button \"观察房中老师\" [active] [pressed]\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 4/7 · 认可条件 · 问答4/7，仍未接收知识\n  - heading \"品阶与来历\" [level=3]\n  - paragraph: 玄阶高级。昔日持有者请我炼药，执意以这门技法相赠。\n  - paragraph: 当前人物正确。\n  - button \"记下品阶与炼药往事\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 5/7 · 认可条件 · 问答5/7，仍未接收知识\n\n理解差距\n\n比起家族所藏，这样的品阶令本人惊讶；老师却说得平常。\n\n当前人物正确。\n\n理解品阶差距 · 不签使用成功\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 5/7 · 认可条件 · 问答5/7，仍未接收知识\n\n理解差距\n\n比起家族所藏，这样的品阶令本人惊讶；老师却说得平常。\n\n当前人物正确。\n\n理解品阶差距 · 不签使用成功\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 6,
+        "title": "理解差距",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 5/7 · 认可条件 · 问答5/7，仍未接收知识\n  - heading \"理解差距\" [level=3]\n  - paragraph: 比起家族所藏，这样的品阶令本人惊讶；老师却说得平常。\n  - paragraph: 当前人物正确。\n  - button \"理解品阶差距 · 不签使用成功\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 6/7 · 认可条件 · 问答6/7，仍未接收知识\n\n认可问答归档\n\n条件已听清，实际凝神、额前点触与接收知识仍待继续。\n\n当前人物正确。\n\n归档认可与条件\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 6/7 · 认可条件 · 问答6/7，仍未接收知识\n\n认可问答归档\n\n条件已听清，实际凝神、额前点触与接收知识仍待继续。\n\n当前人物正确。\n\n归档认可与条件\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      },
+      {
+        "branch": "Materials",
+        "stage": 7,
+        "title": "认可问答归档",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 认可与使用条件\n  - heading \"先听认可与条件，再准备接受传授。\" [level=2]\n  - paragraph: 明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n  - button \"房中本人操作\" [active] [pressed]\n  - button \"观察房中老师\"\n  - group \"传技认可与条件地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"老师房中独立位置\":\n      - generic: 药老 · 虚幻身影\n    - generic \"房中本人独立位置\":\n      - generic: 本人 · 振作好奇\n    - generic \"房中同一第二借卷仍在桌上\"\n  - status: 认可条件 6/7 · 认可条件 · 问答6/7，仍未接收知识\n  - heading \"认可问答归档\" [level=3]\n  - paragraph: 条件已听清，实际凝神、额前点触与接收知识仍待继续。\n  - paragraph: 当前人物正确。\n  - button \"归档认可与条件\"\n  - button \"暂离认可条件 · 保留断点\"",
+        "before": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 7/7 · 认可条件 · 问答归档，额前传授待续\n\n认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。\n\n暂离认可条件 · 保留断点",
+        "after": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 7/7 · 认可条件 · 问答归档，额前传授待续\n\n认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。\n\n暂离认可条件 · 保留断点",
+        "wholeDialogEqual": true,
+        "coords": [
+          {
+            "label": "老师房中独立位置",
+            "transform": "translate(340 230)"
+          },
+          {
+            "label": "房中本人独立位置",
+            "transform": "translate(300 270)"
+          }
+        ]
+      }
+    ],
+    "rejectedEntireStateEqual": true,
+    "completedNoChange": true,
+    "backFocus": "接续老师认可与使用条件",
+    "reopenWholeDialogEqual": true,
+    "reviewEntireDialogEqual": true,
+    "oldTeacherDOM": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 老声与有限背景</span><h2>抬头辨认老师，再问眼前的一点。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><p>此图回顾当时房中问答，老师后续桌边位置另存。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">房中本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察房中老师</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"老师现身与有限背景地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(260 190)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌</p><p>有限背景已归档。老师未走向桌面、未翻卷、未传新技。</p><button class=\"secondary\">暂离房中问答 · 保留断点</button></section>",
+    "oldTeacherCoord": "translate(260 190)",
+    "oldEveningEntireDialogEqual": true,
+    "oldAfternoonEntireDialogEqual": true,
+    "oldAfternoonPositions": [
+      {
+        "label": "午后薰儿位置",
+        "transform": "translate(325 120)"
+      },
+      {
+        "label": "午后本人位置",
+        "transform": "translate(300 150)"
+      }
+    ],
+    "intact": {
+      "entry": 0,
+      "alerts": 0,
+      "title": "斗破苍穹 · 异火之路"
+    },
+    "errors": [
+      [],
+      [],
+      []
+    ],
+    "helperFailures": [
+      "heading level option is unsupported; resolved with current dialog h3 locator before any action",
+      "browser runtime/tabs reset and preview processes stopped; same origins restored with hidden normal preview"
+    ],
+    "screenshot": "docs/qa/c1h-grant.png"
+  },
+  "checks": {
+    "command": "pnpm check",
+    "vitestFiles": 158,
+    "vitestTests": 933,
+    "nodeTests": 11,
+    "type": true,
+    "production": true,
+    "allThreeDifficultiesEarlyAnd28": true,
+    "fourSlotsAndPreviousAuto": true
+  },
+  "openGates": [
+    "额前实际知识传授",
+    "身体问答",
+    "中文正版与当前动画",
+    "完整人物与其他来源",
+    "51实际登记离阁",
+    "1277身体毒",
+    "0.7.1回退根因与死亡末帧",
+    "真实设备与玩家Beta",
+    "素材授权",
+    "公网部署与回滚"
+  ]
+}

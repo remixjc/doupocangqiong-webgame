@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
 import { rejectTransaction } from './early-result'
@@ -17,7 +18,7 @@ export function refiningStart(stage: number): EarlyWalkPosition {
   return stage >= 3 ? refiningWater : ironPlaces.table
 }
 export function refiningNear(yan: EarlyWalkPosition, stage: number): boolean {
-  return ironNear(yan, 0) && (![2, 17].includes(stage) || Math.hypot(yan.x - refiningWater.x, yan.y - refiningWater.y) <= 38)
+  return ironNear(yan, 0) && (![2, 17].includes(stage) || nearWalkPoint(yan, refiningWater, 38))
 }
 export function earlyRefiningBlock(state: GameState): string {
   const blocked = earlyHistoryBlock(state)

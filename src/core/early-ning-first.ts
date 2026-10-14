@@ -1,3 +1,4 @@
+import { nearWalkPoint } from './walker-step'
 import { submitEarlyTransaction } from './early-result'
 import { failedTransaction } from './early-result'
 import { successfulTransaction } from './early-result'
@@ -16,7 +17,7 @@ export function moveNingWalker(position: EarlyWalkPosition, direction: EarlyWalk
 }
 export function nearNingPlace(position: EarlyWalkPosition, place: keyof typeof ningPlaces): boolean {
   const target = ningPlaces[place]
-  return validCeremonialPosition(position, 2) && Math.hypot(position.x - target.x, position.y - target.y) <= 38
+  return validCeremonialPosition(position, 2) && nearWalkPoint(position, target, 38)
 }
 export function ningFirstOperation(task: NingFirstState): NingFirstAction['operation'] {
   return task.stage === 6 ? task.beats === 1 ? 'pull' : 'push' : ningFirstScenes[task.stage]?.operation ?? 'withdraw'
