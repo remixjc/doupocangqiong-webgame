@@ -1,0 +1,44 @@
+{
+  "version": "0.87.1",
+  "base": "514933d6cd94c0ac55d2c2d7461d5bf095ef9bd9",
+  "tests": {
+    "files": 163,
+    "cases": 957,
+    "node": 16,
+    "finalTargetedCases": 10,
+    "typecheck": true,
+    "production": true,
+    "integrity": true
+  },
+  "migration": {
+    "immutableNativeFiles": 446,
+    "actualPreviousParserCompared": true,
+    "onlyVersionChanges": true
+  },
+  "browser": {
+    "url": "http://127.0.0.1:4185/",
+    "branch": "existing primary limit8 / practice0 / growth0",
+    "actualRouteWalkAndRoomOpened": true,
+    "recoveryStage": 0,
+    "newNativeExportOnlyVersion": true,
+    "screenshot": "c1h-recovery-route-0871.png",
+    "noDetailedRecoveryActionsClaimed": true,
+    "staleChunkRecoveryWindowObservedDuringBuild": true
+  },
+  "budget": {
+    "initial": 493969,
+    "gzip": 164971,
+    "total": 1825245,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "remaining": [
+    "独立细分恢复",
+    "醒后耗尽与五段细分",
+    "中文正版及当前动画定位",
+    "真机/Beta/许可/公网发行"
+  ]
+}

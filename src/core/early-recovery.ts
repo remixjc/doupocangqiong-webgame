@@ -5,7 +5,9 @@ import type { GameState } from './model'
 import type { GameStore } from './store'
 import type { Transaction } from './rules'
 import { earlySupervisionBlock } from './early-supervision'
-import type { EarlyWalkPosition } from './early-walk'
+import { firstExternalLimitBlock } from './first-external-limit'
+import { isVisible } from './rules'
+import { nearbyEarlyWalkPlace, type EarlyWalkPosition } from './early-walk'
 import { recoveryEnergyAt, type EarlyTrainingState } from './early-training-state'
 import { earlyRecoveryScenes } from '../content/early-recovery'
 
@@ -13,7 +15,12 @@ export type EarlyRecoveryStation = typeof earlyRecoveryScenes[number]['station']
 export type EarlyRecoveryAction = { step: number; energy: EarlyTrainingState['recovery']['energy'];
   operation: typeof earlyRecoveryScenes[number]['operation']; marker?: number }
 export function earlyRecoveryBlock(state: GameState, position: EarlyWalkPosition): string {
-  return earlySupervisionBlock(state, position)
+  // Detailed training never fabricates completion of the older practice ledger.
+  return (state.earlyTraining.firstExternalLimit.stage === 8
+    ? firstExternalLimitBlock(state)
+      || (!isVisible(state, 3) ? '后续恢复超出当前剧透范围。' : '')
+      || (nearbyEarlyWalkPlace(position)?.id !== 'teacher' ? '先走近原有盛水容器，再回房恢复。' : '')
+    : earlySupervisionBlock(state, position))
     || (state.earlyTraining.firstExternalLimit.stage > 0 && state.earlyTraining.firstExternalLimit.stage < 8
       ? '先完成山后限度说明与离林，再回房恢复。' : '')
     || (state.earlyTraining.supervision.stage !== 2 ? '先在后山完成本轮督练，再回房恢复。' : '')

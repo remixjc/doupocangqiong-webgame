@@ -11,6 +11,7 @@ import { earlyRoomPresentation } from '../src/core/early-room'
 import { replayEarlyTraining } from './helpers/early-training-replay'
 import EarlyRecovery from '../src/ui/EarlyRecovery'
 import EarlyRoom from '../src/ui/EarlyRoom'
+import { firstExternalLimitEligible, firstExternalLimitStep } from './helpers/first-external-limit-replay'
 
 const teacher = { x: 575, y: 310 }
 function eligible() {
@@ -24,6 +25,27 @@ function action(state: ReturnType<typeof eligible>, marker = .5) {
   return { step: scene.step, operation: scene.operation, energy: state.earlyTraining.recovery.energy, marker }
 }
 describe('训练后的药液恢复与独立结果', () => {
+  it('真实细分训练离林后可回房，不要求补签旧初期练习，七步往返保持旧账', () => {
+    let state = firstExternalLimitEligible()
+    while (state.earlyTraining.firstExternalLimit.stage < 8) state = firstExternalLimitStep(state)
+    const before = structuredClone(state)
+    expect(state.earlyTraining.practice.phase).toBe(0)
+    expect(state.earlyTraining.growth.stage).toBe(0)
+    expect(earlyRecoveryBlock(state, teacher)).toBe('')
+    for (const position of [{ x: NaN, y: 310 }, { x: 150, y: 310 }])
+      expect(advanceEarlyRecovery(state, position, 'door', action(state)).state).toBe(state)
+    const sealed = structuredClone(state)
+    sealed.settings.spoiler = 'anime'; sealed.settings.animeLimit = 2
+    expect(earlyRecoveryBlock(sealed, teacher)).toContain('剧透')
+    for (const scene of earlyRecoveryScenes) {
+      const result = advanceEarlyRecovery(state, teacher, scene.station, action(state))
+      expect(result.ok, result.message).toBe(true)
+      state = parseSave(serializeSave(result.state))
+    }
+    before.earlyTraining.recovery = state.earlyTraining.recovery
+    expect(state).toEqual(before)
+    expect(state.earlyTraining.recovery.result).toBe('fifth-duan')
+  })
   it('只有督练归档/有效地点/可见范围才开放，旧主线不能代签', () => {
     const state = eligible()
     expect(earlyRecoveryBlock(state, teacher)).toBe('')

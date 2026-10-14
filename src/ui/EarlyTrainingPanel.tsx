@@ -239,7 +239,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstExternalTraining.stage === 10 && routes.button(52, "接续限度说明与离林")}
       {isVisible(state, 2) && task.firstExternalLimit.stage === 8 && task.recovery.stage < 7 && <BondSummary aria-label="限度后回房恢复">
         <b>限度与离林已归档 · 回房同一药液恢复</b>
-        <p>沿准备路线回到房中，分别记录凉痛、闭眼、呼吸平稳、入睡、药力修复、药色变淡与醒来；本入口不会跳过任何恢复动作。</p>
+        <p>沿准备路线到原有容器，进入恢复七段回顾；凉痛、闭眼与入睡的独立细分记录仍待接续。</p>
         <SecondaryButton onClick={() => setWalking(true)}>回房恢复 · 走准备路线</SecondaryButton>
       </BondSummary>}
       {isVisible(state, 2) && task.firstHallTransmission.stage === 6 && routes.button(21, "接续身体限制与增强问答")}
