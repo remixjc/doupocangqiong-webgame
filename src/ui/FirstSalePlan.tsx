@@ -13,8 +13,13 @@ import { BondSummary, Eyebrow, RobeFigure, StatusParagraph, WalkControls } from 
 import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import HistoryBlocked from './HistoryBlocked'
+import { lazyScene } from './scene-load'
+import { deferredRoute } from './DeferredScene'
+import { useSceneRoutes } from './use-scene-routes'
 import './early-walk.css'
+const FirstSaleDeparture = lazyScene(() => import('./FirstSaleDeparture'))
 export default function FirstSalePlan({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+  const routes = useSceneRoutes(1)
   const t = state.earlyTraining.firstSalePlan, scene = firstSalePlanScenes[t.stage]
   const [actor, setActor] = useState<'yan' | 'teacher'>('yan'), field = useRef<SVGSVGElement>(null)
   useSceneFocus(field, true, [])
@@ -25,6 +30,7 @@ export default function FirstSalePlan({ state, position, onBack }: { state: Game
       expectedConsignment: structuredClone(state.earlyTraining.consignment), actor, operation })
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
+  if (routes.active[0]) return deferredRoute(FirstSaleDeparture, "正在接续拿物与正常离房……", state, routes.back(0), { position })
   return <>
     <Eyebrow>原房 / 床边寄售方案</Eyebrow><h2>走到床边，把售药的想法说清。</h2>
     <p>选对人物后E或按钮继续；路步依次右右右上上。900故事余额与90专款分账。</p>
@@ -55,7 +61,10 @@ export default function FirstSalePlan({ state, position, onBack }: { state: Game
             {{ right:'床边向右走', up:'床边向上走', left:'床边向左走', down:'床边向下走' }[direction]}
           </SecondaryButton>)}
       </WalkControls> : sceneButton(scene, actor !== scene.actor, act)}
-    </BondSummary> : <BondSummary><h3>床边方案全过程已归档。</h3><p>已接续90专款；本人仍在床边，离房采购与制造待续。</p></BondSummary>}
+    </BondSummary> : <BondSummary><h3>床边方案全过程已归档。</h3><p>{state.earlyTraining.firstSaleDeparture.stage
+      ? '床边全过程已保存；拿物与离房断点可由下方入口继续。'
+      : '已接续90专款；本人仍在床边，离房采购与制造待续。'}</p></BondSummary>}
+    {t.archived && <SecondaryButton ref={routes.entry(0)} onClick={() => routes.set(0, true)}>接续拿物与正常离房</SecondaryButton>}
     {returnButton(onBack, '暂离床边方案 · 保留断点')}
   </>
 }

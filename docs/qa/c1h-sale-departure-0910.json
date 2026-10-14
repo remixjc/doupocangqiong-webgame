@@ -1,0 +1,517 @@
+{
+  "version": "0.91.0",
+  "scope": "B1 belongings, actual bed-to-door movement and normal exit only",
+  "tests": {
+    "vitestFiles": 171,
+    "vitestTests": 1028,
+    "nodeTests": 17
+  },
+  "migration": {
+    "base": "57e4263d1f7d110db398f4b7fc4751e20a5dcd14",
+    "nativeCount": 590,
+    "oldCoreSourceFiles": 137,
+    "onlyVersionAndEmptyDeparture": true
+  },
+  "native": [
+    {
+      "name": "departureMain00",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "b064584309de5de8b29db0d398b24bc7e1c36ae75340e913617eb64326c1b094"
+    },
+    {
+      "name": "departureMainReject00",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "2f4ede18d87c7abeeea7eae75311b874d3be3a9897dfbaa7535bcad27283b715"
+    },
+    {
+      "name": "departureMain01",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "9661d613526abf4b163f647088bb848c983ae14b9884501ffda596a22cf58fe6"
+    },
+    {
+      "name": "departureMain02",
+      "stage": 2,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7afa69eabb255e6f1e85871af90bb74bbcfe1a9d4a36b563b0ede5da2f834dcb"
+    },
+    {
+      "name": "departureMain03",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6ad509e2b8055531b3a34c9ccc8dc781410d07476189453543c6da999e583ba7"
+    },
+    {
+      "name": "departureMainRejectDirection",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "bd2e8d713b60b23e4540013795d8af7d226038651644b346cf9b6c039553d3ce"
+    },
+    {
+      "name": "departureMainWalk1",
+      "stage": 3,
+      "walk": 1,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "f758de0f7adda4f69d0fd89af1c19568457554b5283f450dfe0f87020e74a084"
+    },
+    {
+      "name": "departureMainWalk2",
+      "stage": 3,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "4bd01c7d8f9eba4c32788928d51f3eca85ca72397be2a236a8ed7c1c966a4b90"
+    },
+    {
+      "name": "departureMainWalk3",
+      "stage": 3,
+      "walk": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3dd79dac9e639032e61c5fe749505c9263165c55bab5e9bf01aae561f30818bc"
+    },
+    {
+      "name": "departureMainWalk4",
+      "stage": 3,
+      "walk": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "01f7381db13eda2f1b741e5139d21d299912e7f1de7c5596f0ab5cca40f3e4ec"
+    },
+    {
+      "name": "departureMainWalk5",
+      "stage": 3,
+      "walk": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "42af033dd167b06bf6ec0537d63d3eab62f2fb729501a8339712e6693a673293"
+    },
+    {
+      "name": "departureMain04",
+      "stage": 4,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6ce736de4b0627b30038891e66dfc6ce8681fb0370353727b2b70f0c41507f3d"
+    },
+    {
+      "name": "departureMain05",
+      "stage": 5,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3c42a21ef160f567741e796e91a21149f92d5d3757f17fa7c91c0310b8429c9d"
+    },
+    {
+      "name": "departureMain06",
+      "stage": 6,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "dac2ec90dc5e04aa95f41cc4360a229b7c827b01a5349365c9e5b55ee57889af"
+    },
+    {
+      "name": "departureMain07",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "fa6778a39220e8e56c03c0b4d94ef4f8964b73180ba1ecb47c9d07bc0c0b0aac"
+    },
+    {
+      "name": "departureMainRepeat",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "a2c7b3c5c28ff819ec22bf1d9b433c7fa2481aac1fbe2a1a220f1e6de1be3f4e"
+    },
+    {
+      "name": "departureMaterials00",
+      "stage": 0,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "0cf7df999fbbaef92b1404be9cdda56ea9e8a81460b5e10692c8b26d9921cf17"
+    },
+    {
+      "name": "departureMaterials01",
+      "stage": 1,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "e9faed82e8bba858a2741a3428241dd38808c8203ac9c3410418f6a98e612ac0"
+    },
+    {
+      "name": "departureMaterials02",
+      "stage": 2,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "e96bba71388ac76d0e087600e76533b84a778b8cc26f67f1e0701ae287800636"
+    },
+    {
+      "name": "departureMaterials03",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6e59b577bc5ea8ef6f1b8d162cd74a2f68028b178c5ec2e7aa08bdd855fdd340"
+    },
+    {
+      "name": "departureMaterialsRejectDirection",
+      "stage": 3,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "c856952a1bf955590e9cade70b4f2462a8c5fc79c052dae3c414b3add346f836"
+    },
+    {
+      "name": "departureMaterialsWalk1",
+      "stage": 3,
+      "walk": 1,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "c99f11dd54827455131a718f0bf6c2f06fe3503a5d8d51041df5c5d27c3c4570"
+    },
+    {
+      "name": "departureMaterialsWalk2Recovery",
+      "stage": 3,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "8272f4d0a002e681be6f8ae5cadacc520ef8418ce3adade247f0d7d4aa562f3c"
+    },
+    {
+      "name": "departureMaterialsWalk2Restored",
+      "stage": 3,
+      "walk": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "03aa39320f523b7eb8e29d3dbbf61360e9da27d3b9c6736174cb1e268fc34bbe"
+    },
+    {
+      "name": "departureMaterialsWalk3",
+      "stage": 3,
+      "walk": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7dadd1438272f5694e0d85a2ac034ea8b9256f6c7174d94a5b96960bace7588c"
+    },
+    {
+      "name": "departureMaterialsWalk4",
+      "stage": 3,
+      "walk": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "98eae937153ff8a6cfccd15622c01a1579d703d7927d956e5b98a40bb85866c0"
+    },
+    {
+      "name": "departureMaterialsWalk5",
+      "stage": 3,
+      "walk": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "12a27b21198791e0291c2e0386b2fe25bdce7b3d4d1cad7bd56f3f387be597b0"
+    },
+    {
+      "name": "departureMaterials04",
+      "stage": 4,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "fcc090458eb8fc80680cd10f490ccd64d0a5e3d36cbbfb15b375010e3f22033e"
+    },
+    {
+      "name": "departureMaterials05",
+      "stage": 5,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "4f46cd743bd7da43e159e0abfec4244f88b7cd225a1b57a8bb82af468c64f732"
+    },
+    {
+      "name": "departureMainFinalBuild",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "bcd30e3a9d078793f0aa518d061be4e2c420d0e465cb643433111064e595cf60"
+    },
+    {
+      "name": "departureMaterials06",
+      "stage": 6,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "69e3e912149da4d4faf912af9720fecae01ae151cf4e1992600b11c37dc6475b"
+    },
+    {
+      "name": "departureMaterials07",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "cd09e2bcbdb39d8957cae3eb7b6ea71ff3fbb55f3e7e81eb25a32d4ac7443279"
+    },
+    {
+      "name": "departureMaterialsRepeat",
+      "stage": 7,
+      "walk": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "bc52c628970984c3715ebe7c9f69a9bffc3dd6cb48b723bb8227e995677a19ed"
+    }
+  ],
+  "browser": [
+    {
+      "name": "departureMain00",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainReject00",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain01",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain02",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain03",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainRejectDirection",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainWalk1",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainWalk2",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainWalk3",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainWalk4",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainWalk5",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain04",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain05",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain06",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMain07",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainRepeat",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials00",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials01",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials02",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials03",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsRejectDirection",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsWalk1",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsWalk2Restored",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsWalk3",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsWalk4",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsWalk5",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials04",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials05",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMainFinalBuild",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials06",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterials07",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    },
+    {
+      "name": "departureMaterialsRepeat",
+      "fullDialogEqual": true,
+      "label": "重修往事",
+      "errors": []
+    }
+  ],
+  "reopen": [
+    {
+      "name": "main",
+      "focus": "接续拿物与正常离房",
+      "fullDialogEqual": true
+    },
+    {
+      "name": "materials",
+      "focus": "接续拿物与正常离房",
+      "fullDialogEqual": true
+    }
+  ],
+  "staleBuildRecovery": {
+    "cause": "Build replaced previously referenced lazy asset while the page was open",
+    "expectedErrors": [
+      {
+        "level": "error",
+        "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4187/assets/SavesPanel-Ph3nykjw.js",
+        "timestamp": "2026-10-14T22:41:08.334Z",
+        "url": "http://127.0.0.1:4187/assets/index-DDaemDoo.js"
+      }
+    ],
+    "officialParsedRawEqualsExactWalk2State": true,
+    "restoredOnNewTab": true
+  },
+  "budget": {
+    "initial": 479771,
+    "gzip": 160108,
+    "total": 1848822,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "boundaries": [
+    "No additional source verification in this batch",
+    "Belongings, route and door actions are original interpolation",
+    "Street shopping B2 and alley production C remain open",
+    "No real-device testing or deployment claim",
+    "28 chapters remain the compressed main line; full-cycle gates remain open"
+  ]
+}

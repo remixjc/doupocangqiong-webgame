@@ -2,7 +2,7 @@ import type { GameState } from './model'
 import { marketTradeLedger } from './early-market-trade'
 import { fieldsMatch } from './state-guards'
 
-const fields = { Awakening: 'firstAwakening', FirstRecovery: 'firstRecovery', Limit: 'firstExternalLimit', ExternalTraining: 'firstExternalTraining', Body: 'firstHallBody', Supervision: 'supervision', Transmission: 'firstHallTransmission', Grant: 'firstHallGrant', Teaching: 'teaching', ScrollReview: 'firstHallScrollReview', Teacher: 'firstHallTeacher', Evening: 'firstHallEvening', Afternoon: 'firstHallAfternoon', Approach: 'firstHallApproach', Talk: 'firstHallTalk', Reading: 'firstHallReading', Match: 'firstHallMatch', Entry: 'firstHallEntry', Meeting: 'firstRoadMeeting', Departure: 'firstDeparture',
+const fields = { SalePlan: 'firstSalePlan', Awakening: 'firstAwakening', FirstRecovery: 'firstRecovery', Limit: 'firstExternalLimit', ExternalTraining: 'firstExternalTraining', Body: 'firstHallBody', Supervision: 'supervision', Transmission: 'firstHallTransmission', Grant: 'firstHallGrant', Teaching: 'teaching', ScrollReview: 'firstHallScrollReview', Teacher: 'firstHallTeacher', Evening: 'firstHallEvening', Afternoon: 'firstHallAfternoon', Approach: 'firstHallApproach', Talk: 'firstHallTalk', Reading: 'firstHallReading', Match: 'firstHallMatch', Entry: 'firstHallEntry', Meeting: 'firstRoadMeeting', Departure: 'firstDeparture',
   Technique: 'firstTechnique', Training: 'firstTraining', Iron: 'iron', Practice: 'practice',
   Recovery: 'recovery', Hall: 'hall' } as const
 export const hallSnapshotKeys = ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall'] as const
@@ -19,6 +19,7 @@ export const externalTrainingSnapshotKeys = [...hallBodySnapshotKeys, 'Body', 'S
 export const externalLimitSnapshotKeys = [...externalTrainingSnapshotKeys, 'Limit', 'ExternalTraining'] as const
 export const awakeningSnapshotKeys = [...externalLimitSnapshotKeys, 'FirstRecovery'] as const
 export const salePlanSnapshotKeys = [...awakeningSnapshotKeys, 'Awakening'] as const
+export const saleDepartureSnapshotKeys = [...salePlanSnapshotKeys, 'SalePlan'] as const
 export function hasHallMode(action: object): boolean {
   const candidate = action as Record<string, unknown>
   return ['continuation', 'conflict', 'threat', 'exitResponse', 'checkout', 'leaving', 'aftermath'].some(key => candidate[key])
