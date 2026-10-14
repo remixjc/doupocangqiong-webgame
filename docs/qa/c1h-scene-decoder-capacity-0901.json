@@ -1,0 +1,65 @@
+{
+  "version": "0.90.1",
+  "base": "ed84fea82e4975a7706bb3eff5d6ae5d86fea6d1",
+  "migrations": 578,
+  "payloads": 61,
+  "rows": 833,
+  "tests": {
+    "vitestFiles": 167,
+    "vitestTests": 992,
+    "nodeTests": 16
+  },
+  "native": [
+    {
+      "name": "decoderMain",
+      "sha256": "6e68530e1549634f79a014a5f4d497c6c350856cdecb888f9196e63af34bbe34",
+      "onlyVersion": true,
+      "rawEqualsOfficial": true
+    },
+    {
+      "name": "decoderMaterials",
+      "sha256": "ab8d4f7bdb4c6aa582dbf9436dea5c4b26a20c3f9a52b8bd3dc8e6f10e16c353",
+      "onlyVersion": true,
+      "rawEqualsOfficial": true
+    }
+  ],
+  "browser": [
+    {
+      "name": "decoderMain",
+      "fullDialogEqual": true,
+      "errors": []
+    },
+    {
+      "name": "decoderMaterials",
+      "fullDialogEqual": true,
+      "errors": []
+    }
+  ],
+  "returned": {
+    "focused": "进入药老调制室",
+    "roomFullDialogEqual": true,
+    "errors": []
+  },
+  "decoder": {
+    "bytes": 1557,
+    "previousBytes": 4850,
+    "removedUnusedCompressionAPIs": true,
+    "noticesPreserved": true
+  },
+  "budget": {
+    "initial": 493411,
+    "gzip": 164932,
+    "total": 1846667,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "remaining": [
+    "Actual departure and purchase B",
+    "Alley manufacture C",
+    "Chinese legitimate/current anime and chapter21 sources",
+    "real devices/Beta/licensing/public release"
+  ]
+}
