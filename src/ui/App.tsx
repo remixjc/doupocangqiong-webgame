@@ -8,7 +8,6 @@ import { Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 import { chapters, chapterById } from '../content/chapters'
 import { gameStore } from '../core/store'
 import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skillUnlocked, unlockedFlames } from '../core/rules'
-import TouchControls from './TouchControls'
 import { setVolume, unlockAudio, stopAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
 import { eventsForChapter } from '../content/events'
@@ -18,9 +17,10 @@ import { teacherSupport } from '../core/companions'
 import SaveStatus from './SaveStatus'
 import SceneBoundary from './SceneBoundary'
 import { bindDialogFocus } from './dialog-focus'
-import RouteControls from './RouteControls'
 
 const GameView = lazyScene(() => import('./GameView'))
+const TouchControls = lazyScene(() => import('./TouchControls'))
+const RouteControls = lazyScene(() => import('./RouteControls'))
 const StoryRecap = lazyScene(() => import('./StoryRecap'))
 const EarlyTrainingPanel = lazyScene(() => import('./EarlyTrainingPanel'))
 const SavesPanel = lazyScene(() => import('./SavesPanel'))
@@ -184,19 +184,18 @@ export default function App() {
         <p className="quest-hint">{completed ? '本章已结算，可自由修炼或返回大陆舆图继续旅途。' : progress.boss ? '返回左下营地，结算本章并解锁新的旅途。' : chapterReady(s) ? `准备完成。前往${map.gateLabel ?? '地图上的试炼碑'}，按 E ${map.trialMode === 'assessment' ? '提交审核' : map.trialMode === 'attunement' ? '确认火域收服' : '开始挑战'}。` : !eventDone(s) ? eventHint(s) : '沿小径寻找发光药草。接近敌人后，用走位和斗技完成历练。'}</p>
         <div className="sidebar-bottom"><SecondaryButton onClick={() => setPanel('alchemy')}>开炉炼药</SecondaryButton><SecondaryButton onClick={() => setPanel('camp')}>营地与休整</SecondaryButton><button className="text-button" onClick={() => setPanel('recap')}>篇章回顾 ↗</button><button className="text-button" onClick={() => setPanel('character')}>人物 · 行囊 ↗</button></div>
       </aside>
+      <SceneBoundary key={`${s.chapter}:${run}`} onFailure={() => {
+        gameStore.paused = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; stopAudio(); setSceneFailed(true)
+      }} onReload={() => { void reloadScene() }} onSave={() => setPanel('save')} onBack={() => setScreen('world')}>
       <section className="stage-wrap">
         <div className="stage-topline"><span>◈ {chapter.location} · {{ story: '剧情', normal: '普通', hard: '挑战' }[r.difficulty]}</span><span style={{ color: flame.color }}>● {flame.name}</span></div>
         <div className="stage">
-          <SceneBoundary key={`${s.chapter}:${run}`} onFailure={() => {
-            gameStore.paused = true; gameStore.move = { x: 0, y: 0 }; gameStore.actions.length = 0; stopAudio(); setSceneFailed(true)
-          }} onReload={() => { void reloadScene() }} onSave={() => setPanel('save')} onBack={() => setScreen('world')}>
-            <Suspense fallback={<div className="loading" role="status">正在展开山川画卷…</div>}><GameView /></Suspense>
-          </SceneBoundary>
+          <Suspense fallback={<div className="loading" role="status">正在展开山川画卷…</div>}><GameView /></Suspense>
           <div className="player-hud" data-player-x={r.x} data-player-y={r.y}><span className="portrait-small">炎</span><div><b>萧炎 <small>{chapter.realm}</small></b><Meter value={r.hp} max={r.maxHp} label="生命" color="hp" /><Meter value={r.qi} max={r.maxQi} label="斗气" color="qi" /><Meter value={r.stamina} max={100} label="体力" color="stamina" /></div></div>
           {r.bossMaxHp > 0 && r.bossHp > 0 && <div className="boss-hud"><span>{r.bossName}<small className="boss-phase">第 {r.duel?.phase ?? r.ranking?.phase ?? r.sect?.phase ?? r.finale?.phase ?? (r.bossHp / r.bossMaxHp < .35 ? 3 : r.bossHp / r.bossMaxHp < .7 ? 2 : 1)} 阶段</small></span><Meter value={r.bossHp} max={r.bossMaxHp} label="首领生命" color="boss" /></div>}
           {r.prompt && !panel && !story && <button className="interaction" onClick={() => gameStore.action('interact')}>{r.prompt}</button>}
           <div className="stage-location"><span>☷</span> {chapter.trialNote || '游戏改编历练 · 场景与战斗为原创实现'}</div>
-          <TouchControls onMenu={() => setPanel('camp')} />
+          <Suspense fallback={null}><TouchControls onMenu={() => setPanel('camp')} /></Suspense>
         </div>
         <p id="scene-keyboard-help" className="visually-hidden">聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。</p>
         <div className="combat-bar"><div className="basic-controls"><span><kbd>WASD</kbd> 移动</span><button onClick={() => gameStore.action('attack')}><kbd>J</kbd> 普攻</button><button onClick={() => gameStore.action('dodge')}><kbd>空格</kbd> 闪避</button><button onClick={() => gameStore.action('mana')}><kbd>F</kbd> 回气</button><button disabled={!support.available} onClick={() => gameStore.action('support')}><kbd>R</kbd> {support.available ? '支援' : '支援暂不可用'}</button></div>
@@ -206,8 +205,9 @@ export default function App() {
             return <button className={`skill ${unlocked ? '' : 'locked'}`} key={skill.id} onClick={() => gameStore.action(skill.id)} disabled={!unlocked || !revealed} title={revealed ? skill.description : '超出当前剧透范围'}><kbd>{skill.key}</kbd><b>{revealed ? skill.name : '未揭晓斗技'}</b><small>{!unlocked || !revealed ? '剧情解锁' : cd > .1 ? `${cd.toFixed(1)}s` : `${skill.cost} 斗气`}</small></button>
           })}<button className="skill potion" onClick={() => gameStore.action('heal')}><kbd>Q</kbd><b>恢复丹</b><small>{r.cooldowns.heal > .1 ? `${r.cooldowns.heal.toFixed(1)}s` : `持有 ${s.inventory.heal}`}</small></button></div>
         </div>
-        <RouteControls navigation={r.navigation?.chapter === s.chapter ? r.navigation : undefined} disabled={!!panel || !!story || r.dead || portrait || sceneFailed} />
+        <Suspense fallback={<StatusParagraph>正在读取行走操作…</StatusParagraph>}><RouteControls navigation={r.navigation?.chapter === s.chapter ? r.navigation : undefined} disabled={!!panel || !!story || r.dead || portrait || sceneFailed} /></Suspense>
       </section>
+      </SceneBoundary>
     </main>}
     {notice && <div className="toast" role="status">{notice}</div>}
     {panel && <div className="modal-backdrop"><section className="modal panel" role="dialog" aria-modal="true" aria-label={{guide:'修炼手札',camp:'营地休整',character:'人物行囊',alchemy:'炼药',save:'存档管理',settings:'游戏设置',shop:'坊市',event:'剧情事件',bonds:'伙伴手札',recap:'篇章回顾',early:'重修往事'}[panel]}>

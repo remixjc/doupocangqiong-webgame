@@ -54,7 +54,8 @@ async function main() {
     engineGzipBytes: sum(engine, 'gzip'), engineLazy: engine.every(item => !item.initial), files }
   await writeFile(resolve(dist, 'bundle-report.json'), JSON.stringify(report, null, 2) + '\n')
   const failures = [...budgetFailures(report, budgets),
-    ...deferredAssetFailures(manifest, ['src/ui/Panels.tsx', 'src/ui/GameView.tsx', 'src/ui/SavesPanel.tsx'])]
+    ...deferredAssetFailures(manifest, ['src/ui/Panels.tsx', 'src/ui/GameView.tsx', 'src/ui/SavesPanel.tsx',
+      'src/ui/TouchControls.tsx', 'src/ui/RouteControls.tsx'])]
   if (failures.length) throw new Error(`Bundle budget exceeded:\n${failures.join('\n')}`)
   console.log(`Bundle check: entry ${report.initialJsBytes} bytes / gzip ${report.initialJsGzipBytes}; engine gzip ${report.engineGzipBytes}; total JS ${report.totalJsBytes}; engine lazy=${report.engineLazy}`)
 }

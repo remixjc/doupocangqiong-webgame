@@ -1,0 +1,49 @@
+{
+  "version": "0.87.2",
+  "base": "ddc68254858f203743c6eb532621ba1e9942be95",
+  "migrations": 447,
+  "oldParserCompared": true,
+  "onlyVersion": true,
+  "controlsSourceByteIdentical": true,
+  "tests": {
+    "files": 163,
+    "cases": 957,
+    "node": 16,
+    "typecheck": true,
+    "production": true,
+    "integrity": true
+  },
+  "budget": {
+    "initial": 491105,
+    "gzip": 164051,
+    "total": 1825981,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ],
+    "initialSaved": 2864,
+    "gzipSaved": 920
+  },
+  "browser": {
+    "primaryChapter": 28,
+    "touchMounted": true,
+    "routeStartedAndStopped": true,
+    "primaryNativeStateOnlyVersion": true,
+    "unavailableModulesIndividuallyVerified": [
+      "TouchControls",
+      "RouteControls"
+    ],
+    "failureBranchExistingChapter": 17,
+    "safeRecoveryAndWorldReturn": true,
+    "screenshot": "c1h-controls-capacity-0872.png",
+    "stopInitialClickBeforeRuntimeAckRejectedThenObservedAndRetried": true,
+    "realTouchDeviceClaimed": false
+  },
+  "previousBatchCI": {
+    "sha": "ddc68254858f203743c6eb532621ba1e9942be95",
+    "gameChecks": 38606128982,
+    "conclusion": "success",
+    "pages": "skipped"
+  }
+}
