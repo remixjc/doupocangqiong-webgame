@@ -42,6 +42,7 @@ describe('限度说明与离林', () => {
     }
     expect(states[8].earlyTraining.firstExternalLimit.left).toBe(true)
     expect(states[8].earlyTraining.recovery.stage).toBe(0)
+    expect(renderToStaticMarkup(<EarlyTrainingPanel state={states[8]} />)).toContain('限度与离林已归档 · 回房同一药液恢复')
   })
   it('24快照字段、演员/空间/顺序/旧flags/并发与当前缺项拒绝', () => {
     expect(externalLimitSnapshotKeys).toHaveLength(25)
