@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 import type { EarlyWalkDirection } from './early-walk'
 export const FIRST_HALL_SCROLL_REVIEW_VERSION = '0.80.0'
 export const scrollReviewRoute: readonly EarlyWalkDirection[] = ['right', 'right', 'down']
@@ -30,6 +30,6 @@ export function firstHallScrollReviewAt(stage: number, walk = 0, record: FirstHa
 }
 export function validFirstHallScrollReview(t: Record<string, unknown> | FirstHallScrollReviewState): t is FirstHallScrollReviewState {
   return boundedInteger(t.stage, 9) && boundedInteger(t.walk, t.stage ? 0 : 3)
-    && (t.stage || t.walk ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage || t.walk)
     && fieldsMatch(t, firstHallScrollReviewAt(t.stage, t.walk, t.record as FirstHallScrollReviewState['record']))
 }

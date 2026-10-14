@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { boundedInteger, fieldsMatch } from '../src/core/state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from '../src/core/state-guards'
 describe('shared save primitive guards retain strict validation', () => {
   it('accepts only safe integers within inclusive stage/attempt bounds without coercion', () => {
     for (const value of [0, 1, 24, Number.MAX_SAFE_INTEGER]) expect(boundedInteger(value, Number.MAX_SAFE_INTEGER)).toBe(true)
@@ -19,5 +19,12 @@ describe('shared save primitive guards retain strict validation', () => {
     }
     expect(fieldsMatch({ ...expected, patrol: 0 }, expected)).toBe(false)
     expect(fieldsMatch({ ...expected, following: '3' }, expected)).toBe(false)
+  })
+  it('empty history requires none and started history requires an explicit current or recalled source', () => {
+    for (const started of [0, 1, 4, 11]) for (const record of ['none', 'current', 'recalled', '', 'CURRENT', 0, 1, true, null, undefined, {}, []]) {
+      expect(historyRecordMatches(record, started)).toBe(
+        started ? record === 'current' || record === 'recalled' : record === 'none',
+      )
+    }
   })
 })

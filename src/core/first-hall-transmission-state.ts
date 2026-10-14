@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 import type { EarlyWalkDirection } from './early-walk'
 export const FIRST_HALL_TRANSMISSION_VERSION = '0.82.0'
 export const transmissionRoute: readonly EarlyWalkDirection[] = ['left', 'down']
@@ -29,6 +29,6 @@ export function firstHallTransmissionAt(stage: number, walk = 0, record: FirstHa
 }
 export function validFirstHallTransmission(t: Record<string, unknown> | FirstHallTransmissionState): t is FirstHallTransmissionState {
   return boundedInteger(t.stage, 6) && boundedInteger(t.walk, t.stage === 1 ? 2 : 0)
-    && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstHallTransmissionAt(t.stage, t.walk, t.record as FirstHallTransmissionState['record']))
 }

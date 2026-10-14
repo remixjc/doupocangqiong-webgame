@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_HALL_GRANT_VERSION = '0.81.0'
 export interface FirstHallGrantState {
   stage: number
@@ -24,6 +24,6 @@ export function firstHallGrantAt(stage: number, record: FirstHallGrantState['rec
     provenance: stage >= 5 ? 'alchemy-request' : 'unheard', gapUnderstood: stage >= 6, record: stage ? record : 'none' }
 }
 export function validFirstHallGrant(t: Record<string, unknown> | FirstHallGrantState): t is FirstHallGrantState {
-  return boundedInteger(t.stage, 7) && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+  return boundedInteger(t.stage, 7) && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstHallGrantAt(t.stage, t.record as FirstHallGrantState['record']))
 }

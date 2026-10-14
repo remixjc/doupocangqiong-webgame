@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_HALL_TEACHER_VERSION = '0.79.0'
 export interface FirstHallTeacherState {
   stage: number
@@ -25,6 +25,6 @@ export function firstHallTeacherAt(stage: number, record: FirstHallTeacherState[
     stopped: stage >= 6, record: stage ? record : 'none' }
 }
 export function validFirstHallTeacher(t: Record<string, unknown> | FirstHallTeacherState): t is FirstHallTeacherState {
-  return boundedInteger(t.stage, 7) && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+  return boundedInteger(t.stage, 7) && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstHallTeacherAt(t.stage, t.record as FirstHallTeacherState['record']))
 }

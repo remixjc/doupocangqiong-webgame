@@ -10,3 +10,7 @@ export function fieldsMatch(value: object, expected: object): boolean {
 export function stagedFieldsMatch(value: { stage?: unknown }, max: number, derive: (stage: number) => object): boolean {
   return boundedInteger(value.stage, max) && fieldsMatch(value, derive(value.stage))
 }
+
+export function historyRecordMatches(record: unknown, started: number): boolean {
+  return started ? record === 'current' || record === 'recalled' : record === 'none'
+}

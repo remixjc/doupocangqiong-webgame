@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_AWAKENING_VERSION = '0.89.0'
 export interface FirstAwakeningState {
   stage: number
@@ -32,6 +32,6 @@ export function firstAwakeningMinimum(stage: number): number {
 export function validFirstAwakening(t: Record<string, unknown> | FirstAwakeningState): t is FirstAwakeningState {
   return boundedInteger(t.stage, 11) && boundedInteger(t.priorStage, t.stage ? 7 : 0)
     && (!t.stage || t.priorStage >= 3)
-    && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstAwakeningAt(t.stage, t.record as FirstAwakeningState['record'], t.priorStage))
 }

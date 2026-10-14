@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_EXTERNAL_LIMIT_VERSION = '0.85.0'
 export interface FirstExternalLimitState {
   stage: number
@@ -29,6 +29,6 @@ export function firstExternalLimitAt(stage: number, attempts = 0,
 export function validFirstExternalLimit(t: Record<string, unknown> | FirstExternalLimitState): t is FirstExternalLimitState {
   return boundedInteger(t.stage, 8) && boundedInteger(t.attempts, 1_000_000)
     && typeof t.priorCompleted === 'boolean'
-    && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstExternalLimitAt(t.stage, t.attempts, t.record as FirstExternalLimitState['record'], t.priorCompleted))
 }

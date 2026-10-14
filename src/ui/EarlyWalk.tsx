@@ -9,7 +9,7 @@ import { EarlyMap } from './MapPrimitives'
 import { BondSummary, StatusParagraph } from './NativeRegions'
 import { MapBackground, MapText } from './MapPrimitives'
 import { PrimaryButton, SecondaryButton } from './Buttons'
-import { useReturningScene } from './use-returning-scene'
+import { useSceneRoutes } from './use-scene-routes'
 import { deferredRoute } from './DeferredScene'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import type { GameState } from '../core/model'
@@ -71,138 +71,37 @@ const EarlyCeremonyVerdict = lazyScene(() => import('./EarlyCeremonyVerdict'))
 export default function EarlyWalk({ state, onBack, onContinue }: { state: GameState; onBack: () => void; onContinue?: () => void }) {
   const [position, setPosition] = useState({ ...earlyWalkStart })
   const [reading, setReading] = useState<string>()
-  const [indoors, setIndoors, roomEntry, indoorsBack] = useReturningScene()
-  const [hall, setHall, hallEntry, hallBack] = useReturningScene()
-  const [teaching, setTeaching, teachingEntry, teachingBack] = useReturningScene()
-  const [supervising, setSupervising, supervisionEntry, supervisingBack] = useReturningScene()
-  const [recovering, setRecovering, recoveryEntry, recoveringBack] = useReturningScene()
-  const [consigning, setConsigning, consignmentEntry, consigningBack] = useReturningScene()
-  const [appraising, setAppraising, appraisalEntry, appraisingBack] = useReturningScene()
-  const [auctioning, setAuctioning, auctionEntry, auctioningBack] = useReturningScene()
-  const [settling, setSettling, settlementEntry, settlingBack] = useReturningScene()
-  const [fatherVisiting, setFatherVisiting, fatherGiftEntry, fatherVisitingBack] = useReturningScene()
-  const [xunerVisiting, setXunerVisiting, xunerVisitEntry, xunerVisitingBack] = useReturningScene()
-  const [storingSupplies, setStoringSupplies, longSuppliesEntry, storingSuppliesBack] = useReturningScene()
-  const [forestTraining, setForestTraining, forestEntry, forestTrainingBack] = useReturningScene()
-  const [seventhTraining, setSeventhTraining, seventhEntry, seventhTrainingBack] = useReturningScene()
-  const [palmTraining, setPalmTraining, palmEntry, palmTrainingBack] = useReturningScene()
-  const [preliminary, setPreliminary, preliminaryEntry, preliminaryBack] = useReturningScene()
-  const [keChallenge, setKeChallenge, keChallengeEntry, keChallengeBack] = useReturningScene()
-  const [eighthTraining, setEighthTraining, eighthEntry, eighthTrainingBack] = useReturningScene()
-  const [ceremonyGuests, setCeremonyGuests, guestsEntry, ceremonyGuestsBack] = useReturningScene()
-  const [ceremonialTest, setCeremonialTest, ceremonialEntry, ceremonialTestBack] = useReturningScene()
-  const [ningFirst, setNingFirst, ningFirstEntry, ningFirstBack] = useReturningScene()
-  const [ningSecond, setNingSecond, ningSecondEntry, ningSecondBack] = useReturningScene()
-  const [ceremonyVerdict, setCeremonyVerdict, verdictEntry, ceremonyVerdictBack] = useReturningScene()
+  const routes = useSceneRoutes(23)
   const field = useRef<SVGSVGElement>(null)
   const blocked = earlyTrainingBlock(state)
   const place = nearbyEarlyWalkPlace(position)
   useSceneFocus(field, !blocked, [blocked])
-  function openTeaching() {
-    const blocked = earlyTeachingRoomBlock(gameStore.getSnapshot().state, position)
+  function open(from: number, to: number, block: (state: GameState, position: { x: number; y: number }) => string) {
+    const blocked = block(gameStore.getSnapshot().state, position)
     if (blocked) { gameStore.notify(blocked); return }
-    setHall(false); setTeaching(true)
+    routes.set(from, false); routes.set(to, true)
   }
-  function openSupervision() {
-    const blocked = earlySupervisionBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setTeaching(false); setSupervising(true)
-  }
-  function openRecovery() {
-    const blocked = earlyRecoveryBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setSupervising(false); setRecovering(true)
-  }
-  function openConsignment() {
-    const blocked = earlyConsignmentBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setRecovering(false); setConsigning(true)
-  }
-  function openAppraisal() {
-    const blocked = earlyAppraisalBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setConsigning(false); setAppraising(true)
-  }
-  function openAuction() {
-    const blocked = earlyAuctionBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setAppraising(false); setAuctioning(true)
-  }
-  function openSettlement() {
-    const blocked = earlySettlementBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setAuctioning(false); setSettling(true)
-  }
-  function openFatherGift() {
-    const blocked = earlyFatherGiftBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setSettling(false); setFatherVisiting(true)
-  }
-  function openXunerVisit() {
-    const blocked = earlyXunerVisitBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setFatherVisiting(false); setXunerVisiting(true)
-  }
-  function openLongSupplies() {
-    const blocked = earlyLongSuppliesBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setXunerVisiting(false); setStoringSupplies(true)
-  }
-  function openForest() {
-    const blocked = earlyForestStrikeBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setStoringSupplies(false); setForestTraining(true)
-  }
-  function openSeventh() {
-    const blocked = earlySeventhRoomBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setForestTraining(false); setSeventhTraining(true)
-  }
-  function openPalm() {
-    const blocked = earlyPalmPairBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setSeventhTraining(false); setPalmTraining(true)
-  }
-  function openPreliminary() {
-    const blocked = earlyPreliminaryBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setPalmTraining(false); setPreliminary(true)
-  }
-  function openCeremonyVerdict() {
-    const blocked = earlyCeremonyVerdictBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setNingSecond(false); setCeremonyVerdict(true)
-  }
-  function openNingSecond() {
-    const blocked = earlyNingSecondBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setNingFirst(false); setNingSecond(true)
-  }
-  function openNingFirst() {
-    const blocked = earlyNingFirstBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setCeremonialTest(false); setNingFirst(true)
-  }
-  function openCeremonialTest() {
-    const blocked = earlyCeremonialTestBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setCeremonyGuests(false); setCeremonialTest(true)
-  }
-  function openCeremonyGuests() {
-    const blocked = earlyCeremonyGuestsBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setEighthTraining(false); setCeremonyGuests(true)
-  }
-  function openEighthTraining() {
-    const blocked = earlyEighthTrainingBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setKeChallenge(false); setEighthTraining(true)
-  }
-  function openKeChallenge() {
-    const blocked = earlyKeChallengeBlock(gameStore.getSnapshot().state, position)
-    if (blocked) { gameStore.notify(blocked); return }
-    setPreliminary(false); setKeChallenge(true)
-  }
+  const openTeaching = () => open(1, 2, earlyTeachingRoomBlock)
+  const openSupervision = () => open(2, 3, earlySupervisionBlock)
+  const openRecovery = () => open(3, 4, earlyRecoveryBlock)
+  const openConsignment = () => open(4, 5, earlyConsignmentBlock)
+  const openAppraisal = () => open(5, 6, earlyAppraisalBlock)
+  const openAuction = () => open(6, 7, earlyAuctionBlock)
+  const openSettlement = () => open(7, 8, earlySettlementBlock)
+  const openFatherGift = () => open(8, 9, earlyFatherGiftBlock)
+  const openXunerVisit = () => open(9, 10, earlyXunerVisitBlock)
+  const openLongSupplies = () => open(10, 11, earlyLongSuppliesBlock)
+  const openForest = () => open(11, 12, earlyForestStrikeBlock)
+  const openSeventh = () => open(12, 13, earlySeventhRoomBlock)
+  const openPalm = () => open(13, 14, earlyPalmPairBlock)
+  const openPreliminary = () => open(14, 15, earlyPreliminaryBlock)
+  const openCeremonyVerdict = () => open(21, 22, earlyCeremonyVerdictBlock)
+  const openNingSecond = () => open(20, 21, earlyNingSecondBlock)
+  const openNingFirst = () => open(19, 20, earlyNingFirstBlock)
+  const openCeremonialTest = () => open(18, 19, earlyCeremonialTestBlock)
+  const openCeremonyGuests = () => open(17, 18, earlyCeremonyGuestsBlock)
+  const openEighthTraining = () => open(16, 17, earlyEighthTrainingBlock)
+  const openKeChallenge = () => open(15, 16, earlyKeChallengeBlock)
   const move = (direction: EarlyWalkDirection) => { setReading(undefined); setPosition(current => moveEarlyWalker(current, direction)) }
   function key(event: KeyboardEvent<SVGSVGElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey) return
@@ -212,31 +111,31 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     if (event.key.toLowerCase() === 'e') { event.preventDefault(); if (place) setReading(place.id) }
   }
   if (blocked) return <p>{blocked}</p>
-  if (ceremonyVerdict) return deferredRoute(EarlyCeremonyVerdict, "正在接续正式裁定与礼终……", state, ceremonyVerdictBack, { position: position })
-  if (ningSecond) return deferredRoute(EarlyNingSecond, "正在接续违规再攻与迎击……", state, ningSecondBack, { position: position, onVerdict: openCeremonyVerdict })
-  if (ningFirst) return deferredRoute(EarlyNingFirst, "正在接续萧宁首轮推拉交锋……", state, ningFirstBack, { position: position, onSecond: openNingSecond })
-  if (ceremonialTest) return deferredRoute(EarlyCeremonialTest, "正在接续正式仪式与验碑……", state, ceremonialTestBack, { position: position, onChallenge: openNingFirst })
-  if (ceremonyGuests) return deferredRoute(EarlyCeremonyGuests, "正在进入正式礼宾客场地……", state, ceremonyGuestsBack, { position: position, onCeremony: openCeremonialTest })
-  if (eighthTraining) return deferredRoute(EarlyEighthTraining, "正在接续同行与礼前训练……", state, eighthTrainingBack, { position: position, onGuests: openCeremonyGuests })
-  if (keChallenge) return deferredRoute(EarlyKeChallenge, "正在接续萧克六段挑战……", state, keChallengeBack, { position: position, onTraining: openEighthTraining })
-  if (preliminary) return deferredRoute(EarlyPreliminary, "正在进入一月前预测……", state, preliminaryBack, { position: position, onChallenge: openKeChallenge })
-  if (palmTraining) return deferredRoute(EarlyPalmPair, "正在展开吸推两瓶练习……", state, palmTrainingBack, { position: position, onPreliminary: openPreliminary })
-  if (seventhTraining) return deferredRoute(EarlySeventhRoom, "正在回房接续七段调息……", state, seventhTrainingBack, { position: position, onPalm: openPalm })
-  if (forestTraining) return deferredRoute(EarlyForestStrike, "正在走入练技森林……", state, forestTrainingBack, { position: position, onSeventh: openSeventh })
-  if (storingSupplies) return deferredRoute(EarlyLongSupplies, "正在回看房中物资……", state, storingSuppliesBack, { position: position, onForest: openForest })
-  if (xunerVisiting) return deferredRoute(EarlyXunerVisit, "正在接续薰儿来访……", state, xunerVisitingBack, { position: position, onSupplies: openLongSupplies })
-  if (fatherVisiting) return deferredRoute(EarlyFatherGift, "正在回房接续父亲来访……", state, fatherVisitingBack, { position: position, onXunerVisit: openXunerVisit })
-  if (settling) return deferredRoute(EarlySettlement, "正在展开寄售手续……", state, settlingBack, { position: position, onFatherGift: openFatherGift })
-  if (auctioning) return deferredRoute(EarlyAuction, "正在进入第一拍卖室……", state, auctioningBack, { position: position, onSettle: openSettlement })
-  if (appraising) return deferredRoute(EarlyAppraisal, "正在展开寄售鉴定路线……", state, appraisingBack, { position: position, onAuction: openAuction })
-  if (consigning) return deferredRoute(EarlyConsignment, "正在展开首次寄售准备……", state, consigningBack, { position: position, onAppraise: openAppraisal })
-  if (recovering && state.earlyTraining.firstRecovery.stage === 11) return deferredRoute(FirstAwakening, "正在展开醒后恢复……", state, recoveringBack, { position, onConsign: openConsignment })
-  if (recovering && state.earlyTraining.firstExternalLimit.stage === 8) return deferredRoute(FirstRecovery, "正在打开同液细分恢复……", state, recoveringBack, { position })
-  if (recovering) return deferredRoute(EarlyRecovery, "正在打开训练后的恢复房间……", state, recoveringBack, { position: position, onConsign: openConsignment })
-  if (supervising) return deferredRoute(EarlySupervision, "正在展开后山督练……", state, supervisingBack, { position: position, onRecover: openRecovery })
-  if (teaching) return deferredRoute(EarlyTeaching, "正在打开老师传技房间……", state, teachingBack, { position: position, onSupervise: openSupervision })
-  if (hall) return deferredRoute(EarlyHall, "正在展开斗技堂……", state, hallBack, { onTeach: openTeaching })
-  if (indoors) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={indoorsBack} />
+  if (routes.active[22]) return deferredRoute(EarlyCeremonyVerdict, "正在接续正式裁定与礼终……", state, routes.back(22), { position: position })
+  if (routes.active[21]) return deferredRoute(EarlyNingSecond, "正在接续违规再攻与迎击……", state, routes.back(21), { position: position, onVerdict: openCeremonyVerdict })
+  if (routes.active[20]) return deferredRoute(EarlyNingFirst, "正在接续萧宁首轮推拉交锋……", state, routes.back(20), { position: position, onSecond: openNingSecond })
+  if (routes.active[19]) return deferredRoute(EarlyCeremonialTest, "正在接续正式仪式与验碑……", state, routes.back(19), { position: position, onChallenge: openNingFirst })
+  if (routes.active[18]) return deferredRoute(EarlyCeremonyGuests, "正在进入正式礼宾客场地……", state, routes.back(18), { position: position, onCeremony: openCeremonialTest })
+  if (routes.active[17]) return deferredRoute(EarlyEighthTraining, "正在接续同行与礼前训练……", state, routes.back(17), { position: position, onGuests: openCeremonyGuests })
+  if (routes.active[16]) return deferredRoute(EarlyKeChallenge, "正在接续萧克六段挑战……", state, routes.back(16), { position: position, onTraining: openEighthTraining })
+  if (routes.active[15]) return deferredRoute(EarlyPreliminary, "正在进入一月前预测……", state, routes.back(15), { position: position, onChallenge: openKeChallenge })
+  if (routes.active[14]) return deferredRoute(EarlyPalmPair, "正在展开吸推两瓶练习……", state, routes.back(14), { position: position, onPreliminary: openPreliminary })
+  if (routes.active[13]) return deferredRoute(EarlySeventhRoom, "正在回房接续七段调息……", state, routes.back(13), { position: position, onPalm: openPalm })
+  if (routes.active[12]) return deferredRoute(EarlyForestStrike, "正在走入练技森林……", state, routes.back(12), { position: position, onSeventh: openSeventh })
+  if (routes.active[11]) return deferredRoute(EarlyLongSupplies, "正在回看房中物资……", state, routes.back(11), { position: position, onForest: openForest })
+  if (routes.active[10]) return deferredRoute(EarlyXunerVisit, "正在接续薰儿来访……", state, routes.back(10), { position: position, onSupplies: openLongSupplies })
+  if (routes.active[9]) return deferredRoute(EarlyFatherGift, "正在回房接续父亲来访……", state, routes.back(9), { position: position, onXunerVisit: openXunerVisit })
+  if (routes.active[8]) return deferredRoute(EarlySettlement, "正在展开寄售手续……", state, routes.back(8), { position: position, onFatherGift: openFatherGift })
+  if (routes.active[7]) return deferredRoute(EarlyAuction, "正在进入第一拍卖室……", state, routes.back(7), { position: position, onSettle: openSettlement })
+  if (routes.active[6]) return deferredRoute(EarlyAppraisal, "正在展开寄售鉴定路线……", state, routes.back(6), { position: position, onAuction: openAuction })
+  if (routes.active[5]) return deferredRoute(EarlyConsignment, "正在展开首次寄售准备……", state, routes.back(5), { position: position, onAppraise: openAppraisal })
+  if (routes.active[4] && state.earlyTraining.firstRecovery.stage === 11) return deferredRoute(FirstAwakening, "正在展开醒后恢复……", state, routes.back(4), { position, onConsign: openConsignment })
+  if (routes.active[4] && state.earlyTraining.firstExternalLimit.stage === 8) return deferredRoute(FirstRecovery, "正在打开同液细分恢复……", state, routes.back(4), { position })
+  if (routes.active[4]) return deferredRoute(EarlyRecovery, "正在打开训练后的恢复房间……", state, routes.back(4), { position: position, onConsign: openConsignment })
+  if (routes.active[3]) return deferredRoute(EarlySupervision, "正在展开后山督练……", state, routes.back(3), { position: position, onRecover: openRecovery })
+  if (routes.active[2]) return deferredRoute(EarlyTeaching, "正在打开老师传技房间……", state, routes.back(2), { position: position, onSupervise: openSupervision })
+  if (routes.active[1]) return deferredRoute(EarlyHall, "正在展开斗技堂……", state, routes.back(1), { onTeach: openTeaching })
+  if (routes.active[0]) return <EarlyRoom state={state} position={position} onContinue={onContinue} onBack={routes.back(0)} />
   return <>
     <Eyebrow>乌坦城 / 往事准备路线</Eyebrow>
     <h2>走过街巷，再把准备做齐。</h2>
@@ -279,31 +178,31 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
     </WalkControls>
     {reading && place?.id === reading && <>
       <BondSummary aria-label="往事地点说明"><b>{place.label}</b><p>{place.text}</p></BondSummary>
-      {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <PrimaryButton ref={roomEntry} onClick={() => setIndoors(true)}>进入药老调制室</PrimaryButton>}
-      {place.id === 'teacher' && !earlyHallBlock(state) && <SecondaryButton ref={hallEntry} onClick={() => {
-        if (submitEarlyHallEntry(gameStore, position)) setHall(true)
+      {place.id === 'teacher' && state.earlyTraining.market.stage === 4 && <PrimaryButton ref={routes.entry(0)} onClick={() => routes.set(0, true)}>进入药老调制室</PrimaryButton>}
+      {place.id === 'teacher' && !earlyHallBlock(state) && <SecondaryButton ref={routes.entry(1)} onClick={() => {
+        if (submitEarlyHallEntry(gameStore, position)) routes.set(1, true)
       }}>接续往事 · 前往斗技堂</SecondaryButton>}
-      {place.id === 'teacher' && !earlyTeachingRoomBlock(state, position) && <PrimaryButton ref={teachingEntry} onClick={openTeaching}>回房请药老正式传技</PrimaryButton>}
-      {place.id === 'teacher' && !earlySupervisionBlock(state, position) && <SecondaryButton ref={supervisionEntry} onClick={openSupervision}>前往后山 · 接受药老督练</SecondaryButton>}
-      {place.id === 'teacher' && !earlyRecoveryBlock(state, position) && <PrimaryButton ref={recoveryEntry} onClick={openRecovery}>回房恢复 · 查看自用药液</PrimaryButton>}
-      {place.id === 'teacher' && !earlyConsignmentBlock(state, position) && <SecondaryButton ref={consignmentEntry} onClick={openConsignment}>筹备首次寄售 · 另备待售药液</SecondaryButton>}
-      {place.id === 'teacher' && !earlyAppraisalBlock(state, position) && <PrimaryButton ref={appraisalEntry} onClick={openAppraisal}>前往拍卖场 · 黑袍与谷尼鉴定</PrimaryButton>}
-      {place.id === 'teacher' && !earlyAuctionBlock(state, position) && <SecondaryButton ref={auctionEntry} onClick={openAuction}>入席旁观 · 雅妃主持首次拍卖</SecondaryButton>}
-      {place.id === 'teacher' && !earlySettlementBlock(state, position) && <PrimaryButton ref={settlementEntry} onClick={openSettlement}>回鉴定室 · 贵宾卡与寄售收款</PrimaryButton>}
-      {place.id === 'teacher' && !earlyFatherGiftBlock(state, position) && <SecondaryButton ref={fatherGiftEntry} onClick={openFatherGift}>回萧家房中 · 父亲赠回同瓶</SecondaryButton>}
-      {place.id === 'teacher' && !earlyXunerVisitBlock(state, position) && <PrimaryButton ref={xunerVisitEntry} onClick={openXunerVisit}>接续薰儿来访 · 独自处理长老争执</PrimaryButton>}
-      {place.id === 'teacher' && !earlyLongSuppliesBlock(state, position) && <SecondaryButton ref={longSuppliesEntry} onClick={openLongSupplies}>回看已购长期物资 · 分拣与藏柜</SecondaryButton>}
-      {place.id === 'teacher' && !earlyForestStrikeBlock(state, position) && <PrimaryButton ref={forestEntry} onClick={openForest}>走入后山森林 · 首次成功八极崩</PrimaryButton>}
-      {place.id === 'teacher' && !earlySeventhRoomBlock(state, position) && <SecondaryButton ref={seventhEntry} onClick={openSeventh}>回房冲向七段 · 老师从古戒补一滴</SecondaryButton>}
-      {place.id === 'teacher' && !earlyPalmPairBlock(state, position) && <PrimaryButton ref={palmEntry} onClick={openPalm}>接续吸推两瓶 · 请药老传吹火掌</PrimaryButton>}
-      {place.id === 'teacher' && !earlyPreliminaryBlock(state, position) && <SecondaryButton ref={preliminaryEntry} onClick={openPreliminary}>前往一月前预测 · 名簿与黑碑</SecondaryButton>}
-      {place.id === 'teacher' && !earlyKeChallengeBlock(state, position) && <PrimaryButton ref={keChallengeEntry} onClick={openKeChallenge}>接续萧克六段挑战 · 侧避与低阶掌法</PrimaryButton>}
-      {place.id === 'teacher' && !earlyEighthTrainingBlock(state, position) && <PrimaryButton ref={eighthEntry} onClick={openEighthTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}
-      {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <PrimaryButton ref={guestsEntry} onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}
-      {place.id === 'teacher' && !earlyCeremonialTestBlock(state, position) && <PrimaryButton ref={ceremonialEntry} onClick={openCeremonialTest}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}
-      {place.id === 'teacher' && !earlyNingFirstBlock(state, position) && <PrimaryButton ref={ningFirstEntry} onClick={openNingFirst}>接续萧宁首轮 · 推拉推与待裁判</PrimaryButton>}
-      {place.id === 'teacher' && !earlyNingSecondBlock(state, position) && <PrimaryButton ref={ningSecondEntry} onClick={openNingSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}
-      {place.id === 'teacher' && !earlyCeremonyVerdictBlock(state, position) && <PrimaryButton ref={verdictEntry} onClick={openCeremonyVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}
+      {place.id === 'teacher' && !earlyTeachingRoomBlock(state, position) && <PrimaryButton ref={routes.entry(2)} onClick={openTeaching}>回房请药老正式传技</PrimaryButton>}
+      {place.id === 'teacher' && !earlySupervisionBlock(state, position) && <SecondaryButton ref={routes.entry(3)} onClick={openSupervision}>前往后山 · 接受药老督练</SecondaryButton>}
+      {place.id === 'teacher' && !earlyRecoveryBlock(state, position) && <PrimaryButton ref={routes.entry(4)} onClick={openRecovery}>回房恢复 · 查看自用药液</PrimaryButton>}
+      {place.id === 'teacher' && !earlyConsignmentBlock(state, position) && <SecondaryButton ref={routes.entry(5)} onClick={openConsignment}>筹备首次寄售 · 另备待售药液</SecondaryButton>}
+      {place.id === 'teacher' && !earlyAppraisalBlock(state, position) && <PrimaryButton ref={routes.entry(6)} onClick={openAppraisal}>前往拍卖场 · 黑袍与谷尼鉴定</PrimaryButton>}
+      {place.id === 'teacher' && !earlyAuctionBlock(state, position) && <SecondaryButton ref={routes.entry(7)} onClick={openAuction}>入席旁观 · 雅妃主持首次拍卖</SecondaryButton>}
+      {place.id === 'teacher' && !earlySettlementBlock(state, position) && <PrimaryButton ref={routes.entry(8)} onClick={openSettlement}>回鉴定室 · 贵宾卡与寄售收款</PrimaryButton>}
+      {place.id === 'teacher' && !earlyFatherGiftBlock(state, position) && <SecondaryButton ref={routes.entry(9)} onClick={openFatherGift}>回萧家房中 · 父亲赠回同瓶</SecondaryButton>}
+      {place.id === 'teacher' && !earlyXunerVisitBlock(state, position) && <PrimaryButton ref={routes.entry(10)} onClick={openXunerVisit}>接续薰儿来访 · 独自处理长老争执</PrimaryButton>}
+      {place.id === 'teacher' && !earlyLongSuppliesBlock(state, position) && <SecondaryButton ref={routes.entry(11)} onClick={openLongSupplies}>回看已购长期物资 · 分拣与藏柜</SecondaryButton>}
+      {place.id === 'teacher' && !earlyForestStrikeBlock(state, position) && <PrimaryButton ref={routes.entry(12)} onClick={openForest}>走入后山森林 · 首次成功八极崩</PrimaryButton>}
+      {place.id === 'teacher' && !earlySeventhRoomBlock(state, position) && <SecondaryButton ref={routes.entry(13)} onClick={openSeventh}>回房冲向七段 · 老师从古戒补一滴</SecondaryButton>}
+      {place.id === 'teacher' && !earlyPalmPairBlock(state, position) && <PrimaryButton ref={routes.entry(14)} onClick={openPalm}>接续吸推两瓶 · 请药老传吹火掌</PrimaryButton>}
+      {place.id === 'teacher' && !earlyPreliminaryBlock(state, position) && <SecondaryButton ref={routes.entry(15)} onClick={openPreliminary}>前往一月前预测 · 名簿与黑碑</SecondaryButton>}
+      {place.id === 'teacher' && !earlyKeChallengeBlock(state, position) && <PrimaryButton ref={routes.entry(16)} onClick={openKeChallenge}>接续萧克六段挑战 · 侧避与低阶掌法</PrimaryButton>}
+      {place.id === 'teacher' && !earlyEighthTrainingBlock(state, position) && <PrimaryButton ref={routes.entry(17)} onClick={openEighthTraining}>接续同行与礼前八段 · 实际训练</PrimaryButton>}
+      {place.id === 'teacher' && !earlyCeremonyGuestsBlock(state, position) && <PrimaryButton ref={routes.entry(18)} onClick={openCeremonyGuests}>前往正式礼宾客 · 观察收剑中止</PrimaryButton>}
+      {place.id === 'teacher' && !earlyCeremonialTestBlock(state, position) && <PrimaryButton ref={routes.entry(19)} onClick={openCeremonialTest}>接续正式仪式 · 二长老验碑与八段</PrimaryButton>}
+      {place.id === 'teacher' && !earlyNingFirstBlock(state, position) && <PrimaryButton ref={routes.entry(20)} onClick={openNingFirst}>接续萧宁首轮 · 推拉推与待裁判</PrimaryButton>}
+      {place.id === 'teacher' && !earlyNingSecondBlock(state, position) && <PrimaryButton ref={routes.entry(21)} onClick={openNingSecond}>接续违规再攻 · 八极崩与追加拳击</PrimaryButton>}
+      {place.id === 'teacher' && !earlyCeremonyVerdictBlock(state, position) && <PrimaryButton ref={routes.entry(22)} onClick={openCeremonyVerdict}>接续正式裁定 · 双请求与礼终离场</PrimaryButton>}
       <EarlyWalkInteraction state={state} position={position} onContinue={onContinue} />
     </>}
     <MutedParagraph>{earlyTrainingSaveSummary(state, state.settings)}。本图位置仅在当前窗口保留；关闭或刷新回院门，准备单中的已完成步骤仍保存。街巷尺寸、道路和行走步长是原创布局。</MutedParagraph>

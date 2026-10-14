@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_EXTERNAL_TRAINING_VERSION = '0.84.0'
 export interface FirstExternalTrainingState {
   stage: number
@@ -33,6 +33,6 @@ export function firstExternalTrainingAt(stage: number, attempts = 0,
 export function validFirstExternalTraining(t: Record<string, unknown> | FirstExternalTrainingState): t is FirstExternalTrainingState {
   return boundedInteger(t.stage, 10) && boundedInteger(t.attempts, t.stage >= 3 ? 1_000_000 : 0)
     && typeof t.priorCompleted === 'boolean' && (t.stage > 0 || !t.priorCompleted)
-    && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstExternalTrainingAt(t.stage, t.attempts, t.record as FirstExternalTrainingState['record'], t.priorCompleted))
 }

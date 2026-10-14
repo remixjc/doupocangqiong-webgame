@@ -1,0 +1,102 @@
+{
+  "version": "0.89.1",
+  "base": "30b1e8cab9ddb736bce171f8cb64284ff0115a70",
+  "changes": {
+    "recordGuards": 11,
+    "orderedVersionFlags": 81,
+    "walkRoutes": 23,
+    "guardedTransitions": 21,
+    "gameplayAndSavedFieldsChanged": false
+  },
+  "verification": {
+    "vitestFiles": 165,
+    "vitestTests": 976,
+    "nodeTests": 16,
+    "typecheck": true,
+    "production": true,
+    "releaseIntegrity": true,
+    "migrations": 515,
+    "oldParserSource": "actual 0.89.0 Git source",
+    "onlyVersion": true,
+    "invalidVersionBoundaryComparisons": 6075,
+    "guardComparisons": 81774,
+    "ssrComparisons": 12,
+    "inverseCompleteSourceComparisons": 13,
+    "hookRoutesCompared": [
+      53,
+      23
+    ]
+  },
+  "native": [
+    {
+      "name": "saleCapacity0891Main",
+      "sha256": "bee70bb90ecb954e441f9bff3d1caf8ecf731ea3965fe73043840e35e6254032",
+      "wholeStateOnlyVersion": true,
+      "officialEqualsRaw": true
+    },
+    {
+      "name": "saleCapacity0891Materials",
+      "sha256": "b29bf97bf0af27421fa2b15cf1282278458a014e06217d94de16835dd084f9a9",
+      "wholeStateOnlyVersion": true,
+      "officialEqualsRaw": true
+    }
+  ],
+  "browser": {
+    "views": [
+      {
+        "name": "wakeOriginalAndOptimized",
+        "fullDialogEqual": true,
+        "backFocus": "回房恢复 · 查看自用药液",
+        "enterReopenEqual": true
+      },
+      {
+        "name": "mainConsignmentRefresh",
+        "fullDialogEqual": true
+      },
+      {
+        "name": "consignBackEnter",
+        "backFocus": "筹备首次寄售 · 另备待售药液",
+        "enterReopenEqual": true
+      },
+      {
+        "name": "materialsDirectRoutes",
+        "directions": "11 right / 3 up via buttons",
+        "consignBackFocus": "筹备首次寄售 · 另备待售药液",
+        "roomBackFocus": "进入药老调制室",
+        "roomEnterFullEqual": true
+      },
+      {
+        "name": "materialsConsignRefresh",
+        "fullDialogEqual": true
+      }
+    ],
+    "materialsErrors": [],
+    "stalePreviousPageErrors": [
+      {
+        "level": "error",
+        "message": "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4185/assets/EarlyConsignment-Cud0TnVV.js",
+        "timestamp": "2026-10-14T19:24:41.273Z",
+        "url": "http://127.0.0.1:4185/assets/index-BEEEW52p.js"
+      }
+    ],
+    "stalePageRecoveredByNormalReload": true,
+    "screenshot": "c1h-sale-capacity-0891.png",
+    "screenshotActuallyViewed": true
+  },
+  "budget": {
+    "initial": 492286,
+    "gzip": 164572,
+    "total": 1840159,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ],
+    "initialSaved": 705,
+    "gzipSaved": 29,
+    "totalSaved": 1597
+  },
+  "sourceVerificationChanged": false,
+  "nextBedsidePlanImplemented": false,
+  "allLifecycleGatesComplete": false
+}

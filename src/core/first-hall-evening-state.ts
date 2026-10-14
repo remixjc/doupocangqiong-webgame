@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 import type { EarlyWalkDirection } from './early-walk'
 export const FIRST_HALL_EVENING_VERSION = '0.78.0'
 const nightRoute: readonly EarlyWalkDirection[] = ['down', 'down', 'left', 'left', 'down', 'down']
@@ -35,6 +35,6 @@ export function firstHallEveningAt(stage: number, walk = 0, record: FirstHallEve
 }
 export function validFirstHallEvening(t: Record<string, unknown> | FirstHallEveningState): t is FirstHallEveningState {
   return boundedInteger(t.stage, 9) && boundedInteger(t.walk, eveningRoute(t.stage)?.length ?? 0)
-    && (t.stage || t.walk ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage || t.walk)
     && fieldsMatch(t, firstHallEveningAt(t.stage, t.walk, t.record as FirstHallEveningState['record']))
 }

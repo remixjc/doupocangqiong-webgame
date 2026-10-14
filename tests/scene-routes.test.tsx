@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { SecondaryButton } from '../src/ui/Buttons'
+import { PrimaryButton, SecondaryButton } from '../src/ui/Buttons'
 
 const hooks = vi.hoisted(() => ({ current: null as null | Harness }))
 interface Harness {
@@ -46,14 +46,14 @@ function harness(): Harness {
     },
   }
 }
-function pair() {
+function pair(count = 53) {
   const oldHarness = harness(), currentHarness = harness()
   let old: ReturnType<typeof useReturningScene>[], current: ReturnType<typeof useSceneRoutes>
   const oldFocus: number[] = [], currentFocus: number[] = []
   const render = () => {
-    oldHarness.begin(); old = Array.from({ length: 51 }, () => useReturningScene())
-    currentHarness.begin(); current = useSceneRoutes(51)
-    for (let i = 0; i < 51; i++) {
+    oldHarness.begin(); old = Array.from({ length: count }, () => useReturningScene())
+    currentHarness.begin(); current = useSceneRoutes(count)
+    for (let i = 0; i < count; i++) {
       old[i][2].current = { focus: () => { oldFocus.push(i) } } as HTMLButtonElement
       const ref = current.button(i, '入口').props.ref
       ref.current = { focus: () => { currentFocus.push(i) } }
@@ -68,13 +68,15 @@ function pair() {
     set(i: number, value: boolean) { old[i][1](value); current.set(i, value) },
     back(i: number) { old[i][3](); current.back(i)() },
     button(i: number) { return { old: <SecondaryButton ref={old[i][2]} onClick={() => old[i][1](true)}>入口</SecondaryButton>, current: current.button(i, '入口') } },
+    primary(i: number) { return { old: <PrimaryButton ref={old[i][2]} onClick={() => old[i][1](true)}>入口</PrimaryButton>,
+      current: <PrimaryButton ref={current.entry(i)} onClick={() => current.set(i, true)}>入口</PrimaryButton> } },
   }
 }
 afterEach(() => { hooks.current = null })
 describe('准备路线独立旗标与返回焦点', () => {
-  it('51个原入口分别打开与返回，原人物场景按钮类型/props次序/原生markup相等', () => {
+  it('准备单53个原入口分别打开与返回，原人物场景按钮类型/props次序/原生markup相等', () => {
     const p = pair()
-    for (let i=0;i<51;i++) {
+    for (let i=0;i<53;i++) {
       const buttons=p.button(i)
       expect(buttons.current.type).toBe(buttons.old.type)
       expect(Object.keys(buttons.current.props)).toEqual(Object.keys(buttons.old.props))
@@ -82,7 +84,7 @@ describe('准备路线独立旗标与返回焦点', () => {
       buttons.old.props.onClick!({} as never); buttons.current.props.onClick()
       p.render(); p.back(i); p.render()
     }
-    expect(p.currentFocus).toEqual(Array.from({ length: 51 }, (_, i) => i))
+    expect(p.currentFocus).toEqual(Array.from({ length: 53 }, (_, i) => i))
   })
   it('多个旗标保持独立；同次返回沿原hook顺序依次回焦，重开不丢引用', () => {
     const p=pair(), refs=[0,17,50].map(i=>p.button(i).current.props.ref)
@@ -104,5 +106,24 @@ describe('准备路线独立旗标与返回焦点', () => {
     r.set(2,true);env.begin();r=useSceneRoutes(51);env.flush()
     r.back(2)();env.begin();r=useSceneRoutes(51)
     expect(()=>env.flush()).not.toThrow();expect(!!r.active[2]).toBe(false)
+  })
+  it('步行23个入口保留主按钮、独立引用和返回；连续转场不会申请旧入口焦点', () => {
+    const p = pair(23)
+    for (let i = 0; i < 23; i++) {
+      const buttons = p.primary(i), ref = buttons.current.props.ref
+      expect(buttons.current.type).toBe(buttons.old.type)
+      expect(Object.keys(buttons.current.props)).toEqual(Object.keys(buttons.old.props))
+      expect(renderToStaticMarkup(buttons.current)).toBe(renderToStaticMarkup(buttons.old))
+      buttons.old.props.onClick!({} as never); buttons.current.props.onClick!({} as never)
+      p.render(); expect(p.primary(i).current.props.ref).toBe(ref)
+      p.back(i); p.render()
+    }
+    expect(p.currentFocus).toEqual(Array.from({ length: 23 }, (_, i) => i))
+    for (let i = 1; i < 22; i++) {
+      p.set(i, true); p.render(); p.set(i, false); p.set(i + 1, true); p.render()
+    }
+    expect(p.currentFocus).toEqual(Array.from({ length: 23 }, (_, i) => i))
+    p.back(22); p.render()
+    expect(p.currentFocus.at(-1)).toBe(22)
   })
 })

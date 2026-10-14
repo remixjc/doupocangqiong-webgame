@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 import type { EarlyWalkDirection } from './early-walk'
 export const FIRST_HALL_AFTERNOON_VERSION = '0.77.0'
 export const afternoonRoutes: readonly (readonly EarlyWalkDirection[])[] = [
@@ -36,6 +36,6 @@ export function firstHallAfternoonAt(stage: number, walk = 0, record: FirstHallA
 }
 export function validFirstHallAfternoon(task: Record<string, unknown> | FirstHallAfternoonState): task is FirstHallAfternoonState {
   return boundedInteger(task.stage, 10) && boundedInteger(task.walk, afternoonRoute(task.stage) ? 6 : 0)
-    && (task.stage || task.walk ? task.record === 'current' || task.record === 'recalled' : task.record === 'none')
+    && historyRecordMatches(task.record, task.stage || task.walk)
     && fieldsMatch(task, firstHallAfternoonAt(task.stage, task.walk, task.record as FirstHallAfternoonState['record']))
 }

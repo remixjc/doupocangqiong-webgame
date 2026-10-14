@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_HALL_BODY_VERSION = '0.83.0'
 export interface FirstHallBodyState {
   stage: number
@@ -21,6 +21,6 @@ export function firstHallBodyAt(stage: number, record: FirstHallBodyState['recor
     askedStimulus: stage >= 5, stimulus: stage >= 6 ? 'beatings' : 'unheard', record: stage ? record : 'none' }
 }
 export function validFirstHallBody(t: Record<string, unknown> | FirstHallBodyState): t is FirstHallBodyState {
-  return boundedInteger(t.stage, 7) && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+  return boundedInteger(t.stage, 7) && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstHallBodyAt(t.stage, t.record as FirstHallBodyState['record']))
 }

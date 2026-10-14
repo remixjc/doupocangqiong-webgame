@@ -22,6 +22,7 @@ export function useSceneRoutes(count: number) {
   })
   return {
     active, set,
+    entry: (name: number) => refs.current![name],
     back: (name: number) => () => { returning.current[name] = true; set(name, false) },
     button: (name: number, children: ReactNode) => <SecondaryButton ref={refs.current![name]} onClick={() => set(name, true)}>{children}</SecondaryButton>,
   }

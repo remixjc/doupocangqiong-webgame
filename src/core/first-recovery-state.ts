@@ -1,4 +1,4 @@
-import { boundedInteger, fieldsMatch } from './state-guards'
+import { boundedInteger, fieldsMatch, historyRecordMatches } from './state-guards'
 export const FIRST_RECOVERY_VERSION = '0.88.0'
 export interface FirstRecoveryState {
   stage: number
@@ -31,6 +31,6 @@ export function firstRecoveryMinimum(stage: number): number {
 export function validFirstRecovery(t: Record<string, unknown> | FirstRecoveryState): t is FirstRecoveryState {
   return boundedInteger(t.stage, 11) && boundedInteger(t.walk, t.stage === 1 ? 4 : 0)
     && boundedInteger(t.priorStage, t.stage ? 7 : 0)
-    && (t.stage ? t.record === 'current' || t.record === 'recalled' : t.record === 'none')
+    && historyRecordMatches(t.record, t.stage)
     && fieldsMatch(t, firstRecoveryAt(t.stage, t.walk, t.record as FirstRecoveryState['record'], t.priorStage))
 }
