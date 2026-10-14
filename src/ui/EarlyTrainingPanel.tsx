@@ -237,9 +237,9 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 46 && routes.button(20, "接续同卷管理者登记")}
       {isVisible(state, 2) && task.firstHallBody.stage === 7 && routes.button(51, "接续山后受击与身体反应")}
       {isVisible(state, 2) && task.firstExternalTraining.stage === 10 && routes.button(52, "接续限度说明与离林")}
-      {isVisible(state, 3) && task.firstExternalLimit.stage === 8 && (task.recovery.stage < 7 || task.firstRecovery.stage < 11) && <BondSummary aria-label="限度后回房恢复">
+      {isVisible(state, 3) && task.firstExternalLimit.stage === 8 && (task.recovery.stage < 7 || task.firstRecovery.stage < 11 || task.firstAwakening.stage < 11) && <BondSummary aria-label="限度后回房恢复">
         <b>限度与离林已归档 · 回房同一药液恢复</b>
-        <p>沿准备路线进入细分恢复，分别记录入液、凉痛、闭眼、调息、睡眠、修复、色淡和醒来；醒后耗尽与五段另续。</p>
+        <p>沿准备路线进入细分恢复，逐步记录同液恢复、醒后舒展、实际离容器、清水与耗尽、闭眼感知和故事五段。</p>
         <SecondaryButton onClick={() => setWalking(true)}>回房恢复 · 走准备路线</SecondaryButton>
       </BondSummary>}
       {isVisible(state, 2) && task.firstHallTransmission.stage === 6 && routes.button(21, "接续身体限制与增强问答")}

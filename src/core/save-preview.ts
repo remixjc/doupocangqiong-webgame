@@ -243,9 +243,17 @@ export function firstExternalLimitSaveSummary(saved: GameState, viewing: Setting
   const t = saved.earlyTraining.firstExternalLimit
   return '限度与离林 · ' + (t.stage === 8 ? '现场归档，回房恢复待续' : t.stage ? '步骤' + t.stage + '/8，尚未离林' : notStarted)
 }
+export function firstAwakeningSaveSummary(saved: GameState, viewing: Settings): string {
+  if (earlySummarySealed(viewing, 3)) return sealedEarly
+  const t = saved.earlyTraining.firstAwakening
+  return '醒后耗尽与感知 · ' + (t.archived ? '全过程归档，自用药力已尽' : t.result === 'fifth-duan' ? '故事五段已记，时段回顾待归档'
+    : t.stage ? '步骤' + t.stage + '/11' : notStarted)
+}
 export function firstRecoverySaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 3)) return sealedEarly
   const t = saved.earlyTraining.firstRecovery
+  if (t.stage === 11 && saved.earlyTraining.firstAwakening.stage > 0)
+    return '同液恢复 · 醒来归档，' + firstAwakeningSaveSummary(saved, viewing)
   return '同液恢复 · ' + (t.stage === 11 ? '醒来归档，醒后结果待续' : t.stage ? `步骤${t.stage}/11，路步${t.walk}/4` : notStarted)
 }
 export function firstHallBodySaveSummary(saved: GameState, viewing: Settings): string {
@@ -384,7 +392,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   if (limit >= 2) summaries.push(firstExternalLimitSaveSummary(saved, viewing), firstExternalTrainingSaveSummary(saved, viewing), firstHallBodySaveSummary(saved, viewing), firstHallTransmissionSaveSummary(saved, viewing), firstHallGrantSaveSummary(saved, viewing), firstHallScrollReviewSaveSummary(saved, viewing), firstHallTeacherSaveSummary(saved, viewing), firstHallEveningSaveSummary(saved, viewing), firstHallAfternoonSaveSummary(saved, viewing), firstHallApproachSaveSummary(saved, viewing), firstHallTalkSaveSummary(saved, viewing), firstHallMatchSaveSummary(saved, viewing), firstHallReadingSaveSummary(saved, viewing), firstHallEntrySaveSummary(saved, viewing), firstRoadMeetingSaveSummary(saved, viewing), firstDepartureSaveSummary(saved, viewing), firstTechniqueSaveSummary(saved, viewing), firstTrainingSaveSummary(saved, viewing), earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyCityPharmacySaveSummary(saved, viewing), earlyMarketEscortSaveSummary(saved, viewing), earlyMarketSearchSaveSummary(saved, viewing), earlyMarketBraceletsSaveSummary(saved, viewing), earlyMarketStandoffSaveSummary(saved, viewing), earlyMarketDiscoverySaveSummary(saved, viewing), earlyMarketTradeSaveSummary(saved, viewing), earlyMarketReturnSaveSummary(saved, viewing), earlyIronSaveSummary(saved, viewing), earlyRefiningSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {
     const details = [
-      firstRecoverySaveSummary, earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,
+      firstAwakeningSaveSummary, firstRecoverySaveSummary, earlyGrowthSaveSummary, earlyHallSaveSummary, earlyTeachingSaveSummary, earlySupervisionSaveSummary,
       earlyRecoverySaveSummary, earlyConsignmentSaveSummary, earlyAppraisalSaveSummary, earlyAuctionSaveSummary,
       earlySettlementSaveSummary, earlyFatherGiftSaveSummary, earlyXunerVisitSaveSummary, earlyLongSuppliesSaveSummary,
       earlyForestStrikeSaveSummary, earlySeventhRoomSaveSummary, earlyPalmPairSaveSummary, earlyPreliminarySaveSummary,

@@ -1,0 +1,51 @@
+{
+  "version": "0.89.0",
+  "base": "530b895e86066f24f622b96ac5c754f44dd5516a",
+  "migrations": 484,
+  "native": 30,
+  "browserCheckpoints": 30,
+  "allFullDialogEqual": true,
+  "return": {
+    "focus": "回房恢复 · 查看自用药液",
+    "enterFullDialogEqual": true,
+    "consignmentOpenedAtStage0": true,
+    "mainErrors": []
+  },
+  "materialsErrors": [],
+  "budget": {
+    "initial": 492991,
+    "gzip": 164601,
+    "total": 1841756,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "tests": {
+    "files": 165,
+    "cases": 974,
+    "node": 16,
+    "finalCopyTargetedCases": 22,
+    "typecheck": true,
+    "production": true,
+    "integrity": true
+  },
+  "browser": {
+    "keyboardActions": 11,
+    "buttonActions": 11,
+    "nativeCheckpoints": 30,
+    "allFullDialogEqual": true,
+    "onlyNewHistoryAndPermittedBridge": true,
+    "legacyFiveOnlyAfterSeparateReview": true,
+    "nextConsignmentAtStage0": true,
+    "screenshot": "c1h-awakening-0890.png",
+    "realDeviceClaimed": false
+  },
+  "previousBatchCI": {
+    "sha": "530b895e86066f24f622b96ac5c754f44dd5516a",
+    "gameChecks": 38611231774,
+    "conclusion": "success",
+    "pages": "skipped"
+  }
+}

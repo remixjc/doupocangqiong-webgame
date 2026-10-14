@@ -1,5 +1,6 @@
 import { FIRST_EXTERNAL_TRAINING_VERSION } from './first-external-training-state'
 import { FIRST_EXTERNAL_LIMIT_VERSION } from './first-external-limit-state'
+import { FIRST_AWAKENING_VERSION } from './first-awakening-state'
 import { FIRST_RECOVERY_VERSION } from './first-recovery-state'
 import { FIRST_HALL_BODY_VERSION } from './first-hall-body-state'
 import { FIRST_HALL_TRANSMISSION_VERSION } from './first-hall-transmission-state'
@@ -333,7 +334,7 @@ before(FIRST_HALL_MATCH_VERSION),
     before(FIRST_HALL_AFTERMATH_VERSION),
     before(FIRST_HALL_AFTERNOON_VERSION),
     before(FIRST_HALL_EVENING_VERSION),
-    before(FIRST_HALL_TEACHER_VERSION), before(FIRST_HALL_SCROLL_REVIEW_VERSION), before(FIRST_HALL_GRANT_VERSION), before(FIRST_HALL_TRANSMISSION_VERSION), before(FIRST_HALL_BODY_VERSION), before(FIRST_EXTERNAL_TRAINING_VERSION), before(FIRST_EXTERNAL_LIMIT_VERSION), before(FIRST_RECOVERY_VERSION))
+    before(FIRST_HALL_TEACHER_VERSION), before(FIRST_HALL_SCROLL_REVIEW_VERSION), before(FIRST_HALL_GRANT_VERSION), before(FIRST_HALL_TRANSMISSION_VERSION), before(FIRST_HALL_BODY_VERSION), before(FIRST_EXTERNAL_TRAINING_VERSION), before(FIRST_EXTERNAL_LIMIT_VERSION), before(FIRST_RECOVERY_VERSION), before(FIRST_AWAKENING_VERSION))
   const early = s.earlyTraining, approach = early.firstHallApproach
   if ((early.firstHallAfternoon.stage > 0 || early.firstHallAfternoon.walk > 0) && before(FIRST_HALL_AFTERNOON_VERSION)) throw new Error('整个午后记录不属于此版本。')
   if ((early.firstHallEvening.stage > 0 || early.firstHallEvening.walk > 0) && before(FIRST_HALL_EVENING_VERSION)) throw new Error('夜间回房记录不属于此版本。')
@@ -344,6 +345,7 @@ before(FIRST_HALL_MATCH_VERSION),
   requireHistoryVersion(early.firstExternalTraining, 0, FIRST_EXTERNAL_TRAINING_VERSION, '山后受击现场')
   requireHistoryVersion(early.firstExternalLimit, 0, FIRST_EXTERNAL_LIMIT_VERSION, '限度说明与离林')
   requireHistoryVersion(early.firstRecovery, 0, FIRST_RECOVERY_VERSION, '同液恢复')
+  requireHistoryVersion(early.firstAwakening, 0, FIRST_AWAKENING_VERSION, '醒后耗尽与感知')
   requireHistoryVersion(early.firstHallBody, 0, FIRST_HALL_BODY_VERSION, '身体限制问答')
   requireHistoryVersion(early.firstHallTransmission, 0, FIRST_HALL_TRANSMISSION_VERSION, '额前实际传授')
   requireHistoryVersion(early.firstHallGrant, 0, FIRST_HALL_GRANT_VERSION, '传技认可条件')
