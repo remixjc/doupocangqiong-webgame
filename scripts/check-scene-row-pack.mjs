@@ -5,10 +5,11 @@ import { fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
 import LZString from 'lz-string'
 import { packSceneRows } from './pack-scene-rows.mjs'
+import { decodeSceneWords } from '../src/content/scene-radix85.js'
 
 export async function verifyPackedSceneRows(directory = 'dist') {
   const report = JSON.parse(await fs.readFile(resolve(directory, 'scene-row-pack-report.json'), 'utf8'))
-  assert.equal(report.encoding, 'lz-string-1.5.0-base64')
+  assert.equal(report.encoding, 'lz-string-1.5.0-words-radix85')
   const assets = await Promise.all((await fs.readdir(resolve(directory, 'assets')))
     .filter(name => name.endsWith('.js')).map(async name => [name, await fs.readFile(resolve(directory, 'assets', name), 'utf8')]))
   const expected = {}, matches = []
@@ -17,10 +18,10 @@ export async function verifyPackedSceneRows(directory = 'dist') {
     const file = `src/content/${name}`, source = await fs.readFile(file, 'utf8'), packed = packSceneRows(source, resolve(file))
     if (!packed) continue
     expected[`content/${name}`] = packed.reports
-    const payloads = [...packed.code.matchAll(/decodeSceneRows\("([A-Za-z0-9+/=]+)"\)/g)]
+    const payloads = [...packed.code.matchAll(/decodeSceneRows85\("([^"]+)"\)/g)]
     assert.equal(payloads.length, packed.reports.length, file)
     for (const [i, match] of payloads.entries()) {
-      const text = LZString.decompressFromBase64(match[1]), rows = JSON.parse(text)
+      const text = LZString.decompress(decodeSceneWords(match[1]).map(word => String.fromCharCode(word)).join('')), rows = JSON.parse(text)
       assert.equal(createHash('sha256').update(text).digest('hex'), packed.reports[i].sha256, file)
       assert.equal(rows.length, packed.reports[i].rows, file)
       // Check the actual emitted literal, not just the pre-minification transformation.

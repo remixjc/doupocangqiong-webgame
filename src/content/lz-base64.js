@@ -33,6 +33,8 @@ SOFTWARE.
 // Extracted from the pinned lz-string 1.5.0 package. Algorithm body is unchanged.
 const f = String.fromCharCode;
 const keyStrBase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+// The same unchanged upstream algorithm also accepts its native 16-bit words.
+export { decompress };
 function decompress(length, resetValue, getNextValue) {
     var dictionary = [],
         next,

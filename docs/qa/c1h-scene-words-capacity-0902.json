@@ -1,0 +1,526 @@
+{
+  "version": "0.90.2",
+  "base": "e7e85f64f890b2d2de6ff61ff7399cd85f4ec312",
+  "tests": {
+    "vitestFiles": 168,
+    "vitestTests": 995,
+    "nodeTests": 16
+  },
+  "migrations": 581,
+  "differential": {
+    "uniqueSamples": 81,
+    "comparisons": 18447,
+    "rejected": 17822,
+    "accepted": 625
+  },
+  "native": [
+    {
+      "name": "wordsMain",
+      "sha256": "2d1b98412acfd0cf6eb21f9677de8cd01ae00a466c6dc71a0c2fdee148d69479",
+      "rawEqualsOfficial": true,
+      "onlyVersion": true
+    },
+    {
+      "name": "wordsMaterials",
+      "sha256": "3d4b4c7bbacf433abbaa93d4d780620c5866975c35cd6e4562fc2cecf4ca0481",
+      "rawEqualsOfficial": true,
+      "onlyVersion": true
+    }
+  ],
+  "browser": [
+    {
+      "name": "wordsMain",
+      "fullDialogEqual": true,
+      "errors": []
+    },
+    {
+      "name": "wordsMaterials",
+      "fullDialogEqual": true,
+      "errors": []
+    }
+  ],
+  "returned": {
+    "focus": {
+      "tag": "BUTTON",
+      "text": "进入药老调制室"
+    },
+    "roomFullDialogEqual": true,
+    "errors": []
+  },
+  "scenes": {
+    "modules": 61,
+    "payloads": 64,
+    "rows": 854,
+    "matches": [
+      {
+        "file": "src/content/early-appraisal.ts",
+        "rows": 8,
+        "chunks": [
+          "early-appraisal-DwyPpr5c.js"
+        ]
+      },
+      {
+        "file": "src/content/early-apprentice.ts",
+        "rows": 25,
+        "chunks": [
+          "EarlyApprentice-Dsz06Yci.js"
+        ]
+      },
+      {
+        "file": "src/content/early-auction.ts",
+        "rows": 7,
+        "chunks": [
+          "early-auction-C8PUvlQN.js"
+        ]
+      },
+      {
+        "file": "src/content/early-bracelet.ts",
+        "rows": 6,
+        "chunks": [
+          "EarlyTrainingPanel-BY8wygvM.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremonial-test.ts",
+        "rows": 13,
+        "chunks": [
+          "early-ceremonial-test-Bqo9NKcd.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremony-guests.ts",
+        "rows": 12,
+        "chunks": [
+          "early-ceremony-guests-CeQ3g9Zr.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremony-verdict.ts",
+        "rows": 16,
+        "chunks": [
+          "EarlyTrainingPanel-BY8wygvM.js"
+        ]
+      },
+      {
+        "file": "src/content/early-city-pharmacy.ts",
+        "rows": 15,
+        "chunks": [
+          "early-city-pharmacy-BHk2VI2g.js"
+        ]
+      },
+      {
+        "file": "src/content/early-eighth-training.ts",
+        "rows": 15,
+        "chunks": [
+          "early-eighth-training-D0_ZHyV3.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-compensation.ts",
+        "rows": 15,
+        "chunks": [
+          "EarlyFamilyCompensation-ATUgKCON.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-contract.ts",
+        "rows": 33,
+        "chunks": [
+          "EarlyFamilyContract-DZtYedgt.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-visit.ts",
+        "rows": 17,
+        "chunks": [
+          "FamilyHallMap-BGnPVaSZ.js"
+        ]
+      },
+      {
+        "file": "src/content/early-father-gift.ts",
+        "rows": 6,
+        "chunks": [
+          "early-father-gift-Ico2UIg2.js"
+        ]
+      },
+      {
+        "file": "src/content/early-forest-strike.ts",
+        "rows": 7,
+        "chunks": [
+          "early-forest-strike-Dt1ufCW5.js"
+        ]
+      },
+      {
+        "file": "src/content/early-hall.ts",
+        "rows": 8,
+        "chunks": [
+          "EarlyTrainingPanel-BY8wygvM.js"
+        ]
+      },
+      {
+        "file": "src/content/early-iron.ts",
+        "rows": 18,
+        "chunks": [
+          "early-iron-A0wtZOsq.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ke-challenge.ts",
+        "rows": 12,
+        "chunks": [
+          "early-ke-challenge-BhtQUDoe.js"
+        ]
+      },
+      {
+        "file": "src/content/early-long-supplies.ts",
+        "rows": 6,
+        "chunks": [
+          "early-long-supplies-Ce9OYeJE.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-bracelets.ts",
+        "rows": 28,
+        "chunks": [
+          "EarlyMarketBracelets-O1U2A2Ck.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-discovery.ts",
+        "rows": 10,
+        "chunks": [
+          "early-market-trade-CIfl9Sgl.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-escort.ts",
+        "rows": 24,
+        "chunks": [
+          "EarlyMarketEscort-IcRI2ns0.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-return.ts",
+        "rows": 9,
+        "chunks": [
+          "EarlyMarketDiscovery-BnLyodtz.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-search.ts",
+        "rows": 20,
+        "chunks": [
+          "early-market-search-DSGEyEfV.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-standoff.ts",
+        "rows": 34,
+        "chunks": [
+          "EarlyMarketStandoff-D87OpmzF.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-trade.ts",
+        "rows": 17,
+        "chunks": [
+          "early-market-trade-CIfl9Sgl.js"
+        ]
+      },
+      {
+        "file": "src/content/early-method-discussion.ts",
+        "rows": 28,
+        "chunks": [
+          "EarlyMethodDiscussion-CSMbPhgW.js"
+        ]
+      },
+      {
+        "file": "src/content/early-morning-card.ts",
+        "rows": 14,
+        "chunks": [
+          "EarlyMorningCard-Dc5iMtGV.js"
+        ]
+      },
+      {
+        "file": "src/content/early-mountain-ring.ts",
+        "rows": 21,
+        "chunks": [
+          "MountainWalkMap-gRNiPKV9.js"
+        ]
+      },
+      {
+        "file": "src/content/early-mountain-visitor.ts",
+        "rows": 26,
+        "chunks": [
+          "EarlyMountainVisitor-DWZ9e1UQ.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ning-first.ts",
+        "rows": 10,
+        "chunks": [
+          "early-ning-first-nnersl3-.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ning-second.ts",
+        "rows": 8,
+        "chunks": [
+          "early-ning-second-nuxDHlJd.js"
+        ]
+      },
+      {
+        "file": "src/content/early-palm-pair.ts",
+        "rows": 10,
+        "chunks": [
+          "early-palm-pair-CzhnhJFf.js"
+        ]
+      },
+      {
+        "file": "src/content/early-preliminary.ts",
+        "rows": 16,
+        "chunks": [
+          "early-preliminary-Ca9Sgcyt.js"
+        ]
+      },
+      {
+        "file": "src/content/early-preparation-brief.ts",
+        "rows": 20,
+        "chunks": [
+          "EarlyPreparationBrief-DyLQchH8.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-aid.ts",
+        "rows": 10,
+        "chunks": [
+          "EarlyQiAid-CVob8Loe.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-barrier.ts",
+        "rows": 10,
+        "chunks": [
+          "EarlyQiBarrier-fAdLxWbf.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-exchange.ts",
+        "rows": 8,
+        "chunks": [
+          "EarlyQiExchange-Dg0eMFSA.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-pavilion.ts",
+        "rows": 12,
+        "chunks": [
+          "early-qi-pavilion-C0xvjLJT.js"
+        ]
+      },
+      {
+        "file": "src/content/early-recovery.ts",
+        "rows": 7,
+        "chunks": [
+          "early-recovery-DLQyYusw.js"
+        ]
+      },
+      {
+        "file": "src/content/early-refining.ts",
+        "rows": 22,
+        "chunks": [
+          "early-refining-C47stK8-.js"
+        ]
+      },
+      {
+        "file": "src/content/early-settlement.ts",
+        "rows": 7,
+        "chunks": [
+          "early-settlement-BOIWc3K7.js"
+        ]
+      },
+      {
+        "file": "src/content/early-seventh-room.ts",
+        "rows": 8,
+        "chunks": [
+          "early-seventh-room-GjERtBvc.js"
+        ]
+      },
+      {
+        "file": "src/content/early-xuner-visit.ts",
+        "rows": 7,
+        "chunks": [
+          "early-xuner-visit-BVZA_DdG.js"
+        ]
+      },
+      {
+        "file": "src/content/first-awakening.ts",
+        "rows": 11,
+        "chunks": [
+          "first-awakening-DvJZzn9a.js"
+        ]
+      },
+      {
+        "file": "src/content/first-bottle.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstTechnique-DA1zITVl.js"
+        ]
+      },
+      {
+        "file": "src/content/first-departure.ts",
+        "rows": 9,
+        "chunks": [
+          "FirstDeparture-CPL7a0hJ.js"
+        ]
+      },
+      {
+        "file": "src/content/first-external-limit.ts",
+        "rows": 8,
+        "chunks": [
+          "first-external-limit-OjXv9Ql7.js"
+        ]
+      },
+      {
+        "file": "src/content/first-external-training.ts",
+        "rows": 10,
+        "chunks": [
+          "first-external-training-CSBS5tud.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 14,
+        "chunks": [
+          "first-hall-approach-BO2_ccTO.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 12,
+        "chunks": [
+          "first-hall-approach-BO2_ccTO.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 9,
+        "chunks": [
+          "first-hall-approach-BO2_ccTO.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 6,
+        "chunks": [
+          "first-hall-approach-BO2_ccTO.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-body.ts",
+        "rows": 7,
+        "chunks": [
+          "first-hall-body-BVeetbug.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-entry.ts",
+        "rows": 9,
+        "chunks": [
+          "first-hall-entry-auwitIIQ.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-match.ts",
+        "rows": 20,
+        "chunks": [
+          "first-hall-match-BPba-yli.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-reading.ts",
+        "rows": 8,
+        "chunks": [
+          "first-hall-reading-CsAg1UlW.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-talk.ts",
+        "rows": 20,
+        "chunks": [
+          "first-hall-talk-VghA4HiI.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-transmission.ts",
+        "rows": 6,
+        "chunks": [
+          "first-hall-transmission-DnUQIDja.js"
+        ]
+      },
+      {
+        "file": "src/content/first-recovery.ts",
+        "rows": 11,
+        "chunks": [
+          "first-recovery-HU7EfhU6.js"
+        ]
+      },
+      {
+        "file": "src/content/first-review.ts",
+        "rows": 7,
+        "chunks": [
+          "FirstTraining-B3ocDfG0.js"
+        ]
+      },
+      {
+        "file": "src/content/first-road-meeting.ts",
+        "rows": 12,
+        "chunks": [
+          "first-road-meeting-DDYVD9Bw.js"
+        ]
+      },
+      {
+        "file": "src/content/first-sale-plan.ts",
+        "rows": 21,
+        "chunks": [
+          "FirstSalePlan-DqA_E--l.js"
+        ]
+      },
+      {
+        "file": "src/content/first-technique.ts",
+        "rows": 9,
+        "chunks": [
+          "FirstTechnique-DA1zITVl.js"
+        ]
+      },
+      {
+        "file": "src/content/first-training.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstTraining-B3ocDfG0.js"
+        ]
+      }
+    ]
+  },
+  "budget": {
+    "initial": 493039,
+    "gzip": 164845,
+    "total": 1838910,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ],
+    "saved": {
+      "initial": 372,
+      "gzip": 87,
+      "total": 7757
+    }
+  },
+  "boundaries": [
+    "Build-owned literal transport only",
+    "No new save fields or reward changes",
+    "Actual B/C gameplay still pending",
+    "No new original-work source, device or deployment verification"
+  ]
+}

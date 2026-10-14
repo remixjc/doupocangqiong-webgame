@@ -251,6 +251,16 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     ;(result as unknown as Record<string, unknown>)[key] = parsed
     return parsed
   }
+  function recordedHistory<T extends { stage: number; record: string; walk?: number }>(
+    key: keyof EarlyTrainingState, legacy: boolean, valid: (value: Record<string, unknown> | T) => value is T,
+    derive: (value: T) => T, prerequisite: boolean, record: string, includeWalk = false): T {
+    const value = candidate(key, legacy) as Record<string, unknown> | T
+    if (!valid(value) || (value.stage > 0 || includeWalk && (value.walk ?? 0) > 0)
+      && (!prerequisite || value.record !== record)) return invalid()
+    const parsed = derive(value)
+    ;(result as unknown as Record<string, unknown>)[key] = parsed
+    return parsed
+  }
   const familyVisit = history('familyVisit', legacyFamilyVisit, validFamilyVisit, familyVisitAt, !(!completed.includes(2)))
   const familyCompensation = history('familyCompensation', legacyFamilyCompensation, validFamilyCompensation, familyCompensationAt, !(familyVisit.stage !== 17))
   const familyContract = history('familyContract', legacyFamilyContract, validFamilyContract, familyContractAt, !(familyCompensation.stage !== 15))
@@ -298,34 +308,20 @@ export function parseEarlyTraining(value: unknown, completed: number[], legacyRe
     : { ...(legacyFirstHallFirstReturn ? { returnRecord: 'none' } : {}), ...(legacyFirstHallConflict ? { ownPlaced: false, secondRecord: 'none' } : {}), ...(legacyFirstHallThreat ? { threatHeard: false } : {}), ...(legacyFirstHallExitResponse ? { yan: 'east' } : {}), ...(legacyFirstHallCheckout ? { checkoutRecord: 'none' } : {}), ...(legacyFirstHallLeaving ? { xunerPos: 'east', exitRecord: 'none' } : {}), ...(legacyFirstHallAftermath ? { ningAngry: false, handprint: false } : {}), ...object(data.firstHallApproach) }
   if (!validFirstHallApproach(firstHallApproach) || firstHallApproach.stage > 0 && firstHallTalk.stage !== 20) return invalid()
   result.firstHallApproach = firstHallApproachAt(firstHallApproach.stage, firstHallApproach.returnRecord, firstHallApproach.secondRecord, firstHallApproach.checkoutRecord, firstHallApproach.exitRecord)
-  const firstHallAfternoon = candidate('firstHallAfternoon', legacyFirstHallAfternoon)
-  if (!validFirstHallAfternoon(firstHallAfternoon) || (firstHallAfternoon.stage > 0 || firstHallAfternoon.walk > 0)
-    && (firstHallApproach.stage !== 57 || firstHallAfternoon.record !== firstHallApproach.exitRecord)) return invalid()
-  result.firstHallAfternoon = firstHallAfternoonAt(firstHallAfternoon.stage, firstHallAfternoon.walk, firstHallAfternoon.record)
-  const firstHallEvening = candidate('firstHallEvening', legacyFirstHallEvening)
-  if (!validFirstHallEvening(firstHallEvening) || (firstHallEvening.stage > 0 || firstHallEvening.walk > 0)
-    && (firstHallAfternoon.stage !== 10 || firstHallEvening.record !== firstHallAfternoon.record)) return invalid()
-  result.firstHallEvening = firstHallEveningAt(firstHallEvening.stage, firstHallEvening.walk, firstHallEvening.record)
-  const firstHallTeacher = candidate('firstHallTeacher', legacyFirstHallTeacher)
-  if (!validFirstHallTeacher(firstHallTeacher) || firstHallTeacher.stage > 0
-    && (firstHallEvening.stage !== 9 || firstHallTeacher.record !== firstHallEvening.record)) return invalid()
-  result.firstHallTeacher = firstHallTeacherAt(firstHallTeacher.stage, firstHallTeacher.record)
-  const firstHallScrollReview = candidate('firstHallScrollReview', legacyFirstHallScrollReview)
-  if (!validFirstHallScrollReview(firstHallScrollReview) || (firstHallScrollReview.stage > 0 || firstHallScrollReview.walk > 0)
-    && (firstHallTeacher.stage !== 7 || firstHallScrollReview.record !== firstHallTeacher.record)) return invalid()
-  result.firstHallScrollReview = firstHallScrollReviewAt(firstHallScrollReview.stage, firstHallScrollReview.walk, firstHallScrollReview.record)
-  const firstHallGrant = candidate('firstHallGrant', legacyFirstHallGrant)
-  if (!validFirstHallGrant(firstHallGrant) || firstHallGrant.stage > 0
-    && (firstHallScrollReview.stage !== 9 || firstHallGrant.record !== firstHallScrollReview.record)) return invalid()
-  result.firstHallGrant = firstHallGrantAt(firstHallGrant.stage, firstHallGrant.record)
-  const firstHallTransmission = candidate('firstHallTransmission', legacyFirstHallTransmission)
-  if (!validFirstHallTransmission(firstHallTransmission) || firstHallTransmission.stage > 0
-    && (firstHallGrant.stage !== 7 || firstHallTransmission.record !== firstHallGrant.record)) return invalid()
-  result.firstHallTransmission = firstHallTransmissionAt(firstHallTransmission.stage, firstHallTransmission.walk, firstHallTransmission.record)
-  const firstHallBody = candidate('firstHallBody', legacyFirstHallBody)
-  if (!validFirstHallBody(firstHallBody) || firstHallBody.stage > 0
-    && (firstHallTransmission.stage !== 6 || firstHallBody.record !== firstHallTransmission.record)) return invalid()
-  result.firstHallBody = firstHallBodyAt(firstHallBody.stage, firstHallBody.record)
+  const firstHallAfternoon = recordedHistory('firstHallAfternoon', legacyFirstHallAfternoon, validFirstHallAfternoon,
+    t => firstHallAfternoonAt(t.stage, t.walk, t.record), firstHallApproach.stage === 57, firstHallApproach.exitRecord, true)
+  const firstHallEvening = recordedHistory('firstHallEvening', legacyFirstHallEvening, validFirstHallEvening,
+    t => firstHallEveningAt(t.stage, t.walk, t.record), firstHallAfternoon.stage === 10, firstHallAfternoon.record, true)
+  const firstHallTeacher = recordedHistory('firstHallTeacher', legacyFirstHallTeacher, validFirstHallTeacher,
+    t => firstHallTeacherAt(t.stage, t.record), firstHallEvening.stage === 9, firstHallEvening.record)
+  const firstHallScrollReview = recordedHistory('firstHallScrollReview', legacyFirstHallScrollReview, validFirstHallScrollReview,
+    t => firstHallScrollReviewAt(t.stage, t.walk, t.record), firstHallTeacher.stage === 7, firstHallTeacher.record, true)
+  const firstHallGrant = recordedHistory('firstHallGrant', legacyFirstHallGrant, validFirstHallGrant,
+    t => firstHallGrantAt(t.stage, t.record), firstHallScrollReview.stage === 9, firstHallScrollReview.record)
+  const firstHallTransmission = recordedHistory('firstHallTransmission', legacyFirstHallTransmission, validFirstHallTransmission,
+    t => firstHallTransmissionAt(t.stage, t.walk, t.record), firstHallGrant.stage === 7, firstHallGrant.record)
+  const firstHallBody = recordedHistory('firstHallBody', legacyFirstHallBody, validFirstHallBody,
+    t => firstHallBodyAt(t.stage, t.record), firstHallTransmission.stage === 6, firstHallTransmission.record)
   const firstExternalTraining = candidate('firstExternalTraining', legacyFirstExternalTraining)
   if (!validFirstExternalTraining(firstExternalTraining) || firstExternalTraining.stage > 0
     && (firstHallBody.stage !== 7 || firstExternalTraining.record !== (firstHallBody.record === 'recalled' || firstExternalTraining.priorCompleted ? 'recalled' : 'current'))) return invalid()

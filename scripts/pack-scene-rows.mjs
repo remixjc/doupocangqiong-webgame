@@ -1,5 +1,6 @@
 import LZString from 'lz-string'
 import { createHash } from 'node:crypto'
+import { encodeSceneWords, decodeSceneWords } from '../src/content/scene-radix85.js'
 
 // Parse the limited array-of-literals format without evaluating source code.
 // Reject unknown syntax rather than rewriting arbitrary expressions.
@@ -72,9 +73,11 @@ export function packSceneRows(source, id) {
   const edits = [], reports = []
   for (const call of calls) {
     const start = call.index + call[0].length, { rows, end } = readLiteralRows(source, start)
-    const json = JSON.stringify(rows), encoded = LZString.compressToBase64(json)
-    if (LZString.decompressFromBase64(encoded) !== json) throw new Error(`Scene roundtrip failed: ${id}`)
-    const replacement = `decodeSceneRows(${JSON.stringify(encoded)})`
+    const json = JSON.stringify(rows), compressed = LZString.compress(json)
+    const encoded = encodeSceneWords(compressed.split('').map(char => char.charCodeAt(0)))
+    const restored = decodeSceneWords(encoded).map(word => String.fromCharCode(word)).join('')
+    if (LZString.decompress(restored) !== json) throw new Error(`Scene roundtrip failed: ${id}`)
+    const replacement = `decodeSceneRows85(${JSON.stringify(encoded)})`
     const bytes = Buffer.byteLength(source.slice(start, end)), packedBytes = Buffer.byteLength(replacement)
     // Keep small literals and guarantee a material per-module saving.
     if (bytes - packedBytes < 300) continue
@@ -84,7 +87,7 @@ export function packSceneRows(source, id) {
   if (!edits.length) return null
   let code = source
   for (const { start, end, replacement } of edits.reverse()) code = code.slice(0, start) + replacement + code.slice(end)
-  return { code: "import { decodeSceneRows } from './decode-scene-rows'\n" + code, reports }
+  return { code: "import { decodeSceneRows85 } from './decode-scene-rows'\n" + code, reports }
 }
 
 export function packedSceneRowsPlugin() {
@@ -103,7 +106,7 @@ export function packedSceneRowsPlugin() {
     generateBundle() {
       if (!modules.size) this.error('No scene rows were packed')
       this.emitFile({ type: 'asset', fileName: 'scene-row-pack-report.json',
-        source: JSON.stringify({ encoding: 'lz-string-1.5.0-base64', modules: Object.fromEntries([...modules].sort()) }, null, 2) + '\n' })
+        source: JSON.stringify({ encoding: 'lz-string-1.5.0-words-radix85', modules: Object.fromEntries([...modules].sort()) }, null, 2) + '\n' })
     },
   }
 }

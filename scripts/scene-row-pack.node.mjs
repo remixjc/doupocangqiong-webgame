@@ -5,12 +5,13 @@ import { resolve } from 'node:path'
 import LZString from 'lz-string'
 import { createServer } from 'vite'
 import { packSceneRows, readLiteralRows } from './pack-scene-rows.mjs'
+import { decodeSceneWords } from '../src/content/scene-radix85.js'
 
 const contentId = '/project/src/content/example.ts'
 const longText = '清晨山后，站稳、观察、各自操作；不是自动结算。\n'.repeat(30)
 const literal = JSON.stringify([['yan', 3, true, longText]])
 const shared = `export const scenes = defineSceneRows(actorSceneKeys, ${literal} as const)`
-function payloads(code) { return [...code.matchAll(/decodeSceneRows\("([A-Za-z0-9+/=]+)"\)/g)].map(m => m[1]) }
+function payloads(code) { return [...code.matchAll(/decodeSceneRows85\("([^"]+)"\)/g)].map(m => m[1]) }
 
 test('literal parser preserves Unicode, escapes, primitives, comments and trailing commas', () => {
   const source = String.raw` [ /* 开场 */ ['萧炎', "quote\"\\", '\u4e91\x41\n\t\b\f\r\v', 0, -2.5, true, false,], // 注
@@ -31,12 +32,12 @@ test('pack shared and inline keys without changing surrounding code or row order
   const packed = packSceneRows(shared + '\n' + inline, contentId)
   assert(packed)
   assert.equal(packed.reports.length, 2)
-  assert.equal(packed.code.split("import { decodeSceneRows }").length, 2)
-  assert.deepEqual(payloads(packed.code).map(p => JSON.parse(LZString.decompressFromBase64(p))),
+  assert.equal(packed.code.split("import { decodeSceneRows85 }").length, 2)
+  assert.deepEqual(payloads(packed.code).map(p => JSON.parse(LZString.decompress(decodeSceneWords(p).map(word => String.fromCharCode(word)).join('')))),
     [JSON.parse(literal), [[false, longText]]])
-  let restored = packed.code.replace("import { decodeSceneRows } from './decode-scene-rows'\n", '')
+  let restored = packed.code.replace("import { decodeSceneRows85 } from './decode-scene-rows'\n", '')
   for (const [payload, rows] of payloads(packed.code).map((p, i) => [p, [literal, JSON.stringify([[false, longText]])][i]])) {
-    restored = restored.replace(`decodeSceneRows("${payload}")`, rows)
+    restored = restored.replace(`decodeSceneRows85("${payload}")`, rows)
   }
   assert.equal(restored, shared + '\n' + inline)
 })
