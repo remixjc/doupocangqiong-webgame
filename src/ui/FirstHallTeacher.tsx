@@ -1,3 +1,5 @@
+import { robeFigureGroup } from './NativeRegions'
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -12,10 +14,9 @@ import { earlySnapshots, hallTeacherSnapshotKeys, hallGrantSnapshotKeys } from '
 import { firstHallTeacherSaveSummary, firstHallGrantSaveSummary } from '../core/save-preview'
 import { useSceneFocus } from './use-scene-focus'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
-import { BondSummary, Eyebrow, StatusParagraph, WalkControls, RobeFigure } from './NativeRegions'
+import { BondSummary, Eyebrow, StatusParagraph, WalkControls } from './NativeRegions'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import MarketWalker from './MarketWalker'
 import NightRoomFixtures from './NightRoomFixtures'
 import './early-walk.css'
 export default function FirstHallTeacher({ state, onBack, agreement = false }: { state: GameState; onBack: () => void; agreement?: boolean }) {
@@ -45,9 +46,8 @@ export default function FirstHallTeacher({ state, onBack, agreement = false }: {
     }}>
       <MapBackground width="480" height="380" fill="#111e27" /><NightRoomFixtures door={task.door} tea={state.earlyTraining.firstHallEvening.tea} />
       {task.teacher === 'voice' && <MapText x="260" y="160">房中老声 · 尚未抬眼</MapText>}
-      {task.teacher === 'appeared' && <g aria-label="老师房中独立位置" transform={`translate(${task.teacherX} ${task.teacherY})`} opacity=".65">
-        <RobeFigure skin="#dfded2" robe="#98b0b4" /><MapText y="28">{task.recognized ? '药老 · 虚幻身影' : '待辨认身影'}</MapText></g>}
-      <g aria-label="房中本人独立位置" transform={`translate(${task.x} ${task.y})`}><MarketWalker /><MapText y="28">本人 · {agreement && state.earlyTraining.firstHallGrant.curious ? '振作好奇' : task.looked ? '疲惫抬头' : '疲惫放松'}</MapText></g>
+      {task.teacher === 'appeared' && robeFigureGroup({ "aria-label": "老师房中独立位置", "transform": `translate(${task.teacherX} ${task.teacherY})`, "opacity": ".65" }, { "skin": "#dfded2", "robe": "#98b0b4" }, <MapText y="28">{task.recognized ? '药老 · 虚幻身影' : '待辨认身影'}</MapText>)}
+      {marketWalkerGroup({ "aria-label": "房中本人独立位置", "transform": `translate(${task.x} ${task.y})` }, {  }, <MapText y="28">本人 · {agreement && state.earlyTraining.firstHallGrant.curious ? '振作好奇' : task.looked ? '疲惫抬头' : '疲惫放松'}</MapText>)}
       <rect aria-label="房中同一第二借卷仍在桌上" x="320" y="255" width="9" height="15" fill="#415849" stroke="#bfa46a" />
     </EarlyMap>
     <StatusParagraph>{agreement ? '认可条件' : '房中问答'} {task.stage}/7 · {(agreement ? firstHallGrantSaveSummary : firstHallTeacherSaveSummary)(state, state.settings)}</StatusParagraph>

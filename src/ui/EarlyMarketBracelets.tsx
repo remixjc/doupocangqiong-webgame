@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -11,7 +12,6 @@ import { MapBackground } from './MapPrimitives'
 import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -64,14 +64,8 @@ export default function EarlyMarketBracelets({ state, onBack }: { state: GameSta
         <RobeFigure cut="M-13 16 L-7-7 H7 L13 16Z" robe="#b6a58a" cy="-15" r="9" skin="#dcc6ae" bodyFirst />
         {task.expensive !== 'unoffered' && <g aria-label="蓝金手链与木核仍由来人持有"><circle cx="17" cy="3" r="8" fill="none" stroke="#8fb9d9" strokeWidth="3" /><circle cx="17" cy="11" r="4" fill="#75bd7e" /></g>}
       </g>
-      <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}>
-        <MarketWalker />
-        {task.green === 'shown' && <circle aria-label="普通绿链仍由萧炎持有" cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
-      </g>
-      <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}>
-        <MarketWalker xuner />
-        {(task.green === 'received' || task.green === 'worn') && <circle aria-label={task.green === 'worn' ? '薰儿已戴普通绿链' : '薰儿收到但尚未戴上普通绿链'} cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />}
-      </g>
+      {marketWalkerGroup({ "aria-label": "萧炎独立行走位置", "transform": `translate(${yan.x} ${yan.y})` }, {  }, task.green === 'shown' && <circle aria-label="普通绿链仍由萧炎持有" cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />)}
+      {marketWalkerGroup({ "aria-label": "薰儿独立行走位置", "transform": `translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})` }, { "xuner": true }, (task.green === 'received' || task.green === 'worn') && <circle aria-label={task.green === 'worn' ? '薰儿已戴普通绿链' : '薰儿收到但尚未戴上普通绿链'} cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />)}
     </EarlyMap>
     {scene && <WalkControls><SecondaryButton onClick={() => { setSelected('yan'); field.current?.focus() }}>选择萧炎视角</SecondaryButton>
       <SecondaryButton onClick={() => { setSelected('xuner'); field.current?.focus() }}>选择薰儿视角</SecondaryButton>

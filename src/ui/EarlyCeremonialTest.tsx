@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { hallWalkerAt } from './NativeRegions'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -51,16 +52,14 @@ export default function EarlyCeremonialTest({ state, position: entryPosition, on
       {[224, 235, 246].map(y => <path key={y} d={`M412 ${y} H468`} stroke="#ddd0aa" strokeWidth="2" />)}
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
       {task.stage < 2 && <g aria-label="尚未叫名，阶梯未开放" role="img"><path d="M408 235 H472" stroke="#a94e45" strokeWidth="7" /><MapText x="440" y="262" fill="#f0dfb9" fontSize="11">候礼中 · 阶梯未开放</MapText></g>}
-      <g transform="translate(490 132)" role="img" aria-label={task.inspected ? '二长老已亲验石碑' : task.rite === 'begun' || task.rite === 'reviewed' ? '二长老正在主持仪式' : '二长老候礼主持'}>
-        <RobeFigure skin="#d7b899" cut="M-15 19 L-8-5 H8 L15 19Z" robe="#b3a48c" /><path d="M-8-13 L8-13" stroke="#dad8cb" strokeWidth="4" /><MapText y="38" fill="#ead9b6" fontSize="11">二长老</MapText>
-      </g>
+      {robeFigureGroup({ "transform": "translate(490 132)", "role": "img", "aria-label": task.inspected ? '二长老已亲验石碑' : task.rite === 'begun' || task.rite === 'reviewed' ? '二长老正在主持仪式' : '二长老候礼主持' }, { "skin": "#d7b899", "cut": "M-15 19 L-8-5 H8 L15 19Z", "robe": "#b3a48c" }, <path d="M-8-13 L8-13" stroke="#dad8cb" strokeWidth="4" />, <MapText y="38" fill="#ead9b6" fontSize="11">二长老</MapText>)}
       {task.rite !== 'none' && task.rite !== 'ended' && <g role="img" aria-label="仪式材料由主持者使用，无玩家配方"><ellipse cx="440" cy="183" rx="29" ry="8" fill="none" stroke="#e0c295" strokeDasharray="3 5" /><path d="M404 167 Q410 146 405 134 M472 169 Q466 149 471 136" fill="none" stroke="#d5ceab" strokeWidth="2" /></g>}
       <g role="img" aria-label={task.result === 'eighth-duan' ? '正式黑碑显示斗之气八段' : task.inspected ? '正式黑碑已验，本人尚未触碑' : '正式黑碑尚待二长老检查'}>
         <path d="M555 184 V116 Q580 98 605 116 V184Z" fill="#293434" stroke={task.result === 'eighth-duan' ? '#e2c273' : '#93a492'} strokeWidth="4" />
         <MapText x="580" y="130" fill="#edd28c" fontSize="14">{task.result === 'eighth-duan' ? '八 段' : task.inspected ? '已 验' : '待 验'}</MapText>
       </g>
       <path d="M179 285 V211" stroke="#957454" strokeWidth="10" /><circle cx="179" cy="207" r="43" fill="#496b4f" />
-      <g transform="translate(272 272)" aria-label="薰儿台下候礼" role="img"><RobeFigure /></g>
+      {robeFigureGroup({ "transform": "translate(272 272)", "aria-label": "薰儿台下候礼", "role": "img" }, {  })}
       <MapText x="565" y="302" fill="#ead9b6">宾客 · 萧战与雅妃</MapText>
       {Object.entries(ceremonialPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'rite' ? 44 : 57)} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       {hallWalkerAt(position)}

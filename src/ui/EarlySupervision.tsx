@@ -1,3 +1,4 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { RobeFigure } from './NativeRegions'
@@ -47,7 +48,7 @@ export default function EarlySupervision({ state, position, onBack, onRecover }:
       <rect width="720" height="300" fill="#203934" /><path d="M0 120 L90 32 L200 105 L350 15 L480 110 L610 40 L720 116 V0 H0Z" fill="#496359" />
       <path d="M0 255 Q130 200 250 245 T720 230 V300 H0Z" fill="#606346" />
       <ellipse cx="205" cy="234" rx="60" ry="20" fill="#73786a" />
-      <g transform="translate(205 125)" opacity=".85"><RobeFigure cut="M-22 80 Q-10 15 0 0 Q10 15 22 80Z" robe="#bdd4cb" cy="-10" r="12" skin="#e0e4d5" bodyFirst /><MapText x="0" y="107" fill="#ead9b6" fontSize="14">药老 · 督练</MapText></g>
+      {robeFigureGroup({ "transform": "translate(205 125)", "opacity": ".85" }, { "cut": "M-22 80 Q-10 15 0 0 Q10 15 22 80Z", "robe": "#bdd4cb", "cy": "-10", "r": "12", "skin": "#e0e4d5", "bodyFirst": true }, <MapText x="0" y="107" fill="#ead9b6" fontSize="14">药老 · 督练</MapText>)}
       <g transform="translate(475 170)"><ellipse cy="65" rx="28" ry="8" fill="#0004" /><RobeFigure cut="M-20 55 L-10 0 H10 L20 55Z" robe="#cda46b" cy="-14" r="12" skin="#edc9a2" bodyFirst /><path d="M-13-21 Q0-35 13-21" fill="#24312c" />
         {task.stage === 1 && <path d="M-32-25 Q40-30 40 34 Q0 75-32 36" fill="none" stroke="#a8cbaa" strokeWidth="3" />}
       </g>

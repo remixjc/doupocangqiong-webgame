@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -46,7 +47,7 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
     <svg className="early-walk-map" role="img" aria-label={`练习瓶一：${bottleLabels[task.first]}；练习瓶二：${bottleLabels[task.second]}；吹火掌：${teachingLabels[task.teaching]}`} viewBox="0 0 720 280">
       <rect width="720" height="280" fill="#293a35" /><path d="M25 25 H695 V255 H25Z" fill="#514a3b" stroke="#bea073" strokeWidth="3" />
       <path d="M350 183 H635 V200 H350Z M370 200 V249 M615 200 V249" fill="#947750" stroke="#c4a577" strokeWidth="3" />
-      <g transform="translate(232 155)"><RobeFigure cy="-25" r="13" skin="#e5c59f" cut="M-26 63 L-13-9 H13 L26 63Z" robe="#c99d69" /><path d="M16 10 L49 15" stroke="#e5c59f" strokeWidth="6" /></g>
+      {robeFigureGroup({ "transform": "translate(232 155)" }, { "cy": "-25", "r": "13", "skin": "#e5c59f", "cut": "M-26 63 L-13-9 H13 L26 63Z", "robe": "#c99d69" }, <path d="M16 10 L49 15" stroke="#e5c59f" strokeWidth="6" />)}
       {[task.first, task.second].map((status, index) => <g key={index} transform={`translate(${status === 'pulled' ? 303 : index ? 575 : 408} 177)`}>
         {status === 'fragments' ? <path d="M-24 0 L-11-13 L-2 0Z M1 0 L14-16 L20 0Z M24 0 L30-9 L39 0Z" fill="#b9c9c6" />
           : status === 'dust' ? <ellipse rx="32" ry="6" fill="#dfe3d4" />
@@ -55,7 +56,7 @@ export default function EarlyPalmPair({ state, position, onBack, onPreliminary }
       </g>)}
       {task.stage === 2 && <path d="M285 155 Q325 148 356 157" fill="none" stroke="#b9c6ac" strokeWidth="2" />}
       {(task.stage === 3 || task.stage === 8) && <path d="M342 128 L286 128 M291 122 L282 128 L291 134" fill="none" stroke="#93c6bf" strokeWidth="3" />}
-      {task.stage >= 5 && <g transform="translate(104 145)" opacity=".8"><RobeFigure cy="-21" r="11" skin="#d7e4db" cut="M-20 62 L-9-3 H9 L20 62Z" robe="#b3cabe" /><MapText y="84" fill="#e4d4b6" fontSize="13">药老</MapText></g>}
+      {task.stage >= 5 && robeFigureGroup({ "transform": "translate(104 145)", "opacity": ".8" }, { "cy": "-21", "r": "11", "skin": "#d7e4db", "cut": "M-20 62 L-9-3 H9 L20 62Z", "robe": "#b3cabe" }, <MapText y="84" fill="#e4d4b6" fontSize="13">药老</MapText>)}
       <MapText x="360" y="269" fill="#e4d4b6" fontSize="13">{task.teaching === 'basic' ? '吹火掌初步掌握 · 仍需练习' : task.teaching === 'explained' ? '吹火掌已讲解 · 尚待初练' : '尚未学习吹火掌 · 直接推风仅是初次试验'}</MapText>
     </svg>
     <WalkControls aria-label="吸推房中位置">{(Object.keys(stations) as PalmPairStation[]).map(id => actorButton(station, setStation, id, ['查看', stations[id]], id))}</WalkControls>

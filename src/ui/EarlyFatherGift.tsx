@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -34,8 +35,8 @@ export default function EarlyFatherGift({ state, position, onBack, onXunerVisit 
       <path d="M25 25 H695 V275 H25Z" fill="#4b493b" stroke="#b5a073" strokeWidth="3" />
       <rect x="60" y="55" width="97" height="210" fill="#313e36" stroke="#a99064" />
       <MapText x="108" y="46" fill="#e8d1a6" fontSize="14">房门</MapText>
-      <g transform="translate(375 155)"><RobeFigure cy="-21" r="13" skin="#e6c8a2" cut="M-25 68 L-12-5 H12 L25 68Z" robe="#c79e66" /><MapText y="92" fill="#e8d1a6" fontSize="13">萧炎</MapText></g>
-      {task.stage >= 2 && task.stage < 6 && <g transform="translate(260 148)"><RobeFigure cy="-23" r="15" skin="#dec4a2" cut="M-29 76 L-14-5 H14 L29 76Z" robe="#a08252" /><MapText y="100" fill="#e8d1a6" fontSize="13">萧战</MapText></g>}
+      {robeFigureGroup({ "transform": "translate(375 155)" }, { "cy": "-21", "r": "13", "skin": "#e6c8a2", "cut": "M-25 68 L-12-5 H12 L25 68Z", "robe": "#c79e66" }, <MapText y="92" fill="#e8d1a6" fontSize="13">萧炎</MapText>)}
+      {task.stage >= 2 && task.stage < 6 && robeFigureGroup({ "transform": "translate(260 148)" }, { "cy": "-23", "r": "15", "skin": "#dec4a2", "cut": "M-29 76 L-14-5 H14 L29 76Z", "robe": "#a08252" }, <MapText y="100" fill="#e8d1a6" fontSize="13">萧战</MapText>)}
       <rect x="540" y="110" width="98" height="138" fill="#685d42" stroke="#b5a073" />
       <MapText x="589" y="96" fill="#e8d1a6" fontSize="14">收瓶处</MapText>
       {task.stage >= 2 && <g transform={`translate(${task.stage >= 6 ? 589 : bottle.owner === 'xiaozhan' ? 297 : 412} ${task.stage >= 6 ? 162 : 184})`}>

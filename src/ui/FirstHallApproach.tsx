@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -18,7 +19,6 @@ import { SecondaryButton } from './Buttons'
 import { HallText } from './MapPrimitives'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
-import MarketWalker from './MarketWalker'
 import './early-walk.css'
 
 export default function FirstHallApproach({ state, onBack, continuation = false, conflict = false, threat = false, exitResponse = false, checkout = false, leaving = false, aftermath = false }: { state: GameState; onBack: () => void; continuation?: boolean; conflict?: boolean; threat?: boolean; exitResponse?: boolean; checkout?: boolean; leaving?: boolean; aftermath?: boolean }) {
@@ -76,7 +76,7 @@ export default function FirstHallApproach({ state, onBack, continuation = false,
       {current && task.ownPlaced ? <rect aria-label="薰儿自己的临时卷已放下" x="353" y="280" width="13" height="9" fill="#604572" stroke="#c2a679" /> : <XunerReadingScroll />}
       {moving && <HallText x="205" y="356">{outside ? '堂内入口' : '堂内入口 · 尚未跨门'}</HallText>}
       {checkout && <HallText x="280" y="310">管理者 · 同卷借阅</HallText>}
-      <g aria-label={moving ? `萧炎本人实际位置 · ${!departing && task.yan === 'outside' ? 'entrance' : task.yan}` : '萧炎本人仍在东架'} transform={`translate(${position.x} ${position.y})`}><MarketWalker /><HallText y="26" fontSize="9">本人 · {current && task.stage >= 28 ? '持第二卷' : first === 'returned' ? '已归架' : first === 'rolled' ? '已收卷' : '读第一卷'}</HallText></g>
+      {marketWalkerGroup({ "aria-label": moving ? `萧炎本人实际位置 · ${!departing && task.yan === 'outside' ? 'entrance' : task.yan}` : '萧炎本人仍在东架', "transform": `translate(${position.x} ${position.y})` }, {  }, <HallText y="26" fontSize="9">本人 · {current && task.stage >= 28 ? '持第二卷' : first === 'returned' ? '已归架' : first === 'rolled' ? '已收卷' : '读第一卷'}</HallText>)}
       {current && task.stage >= 28 && <rect aria-label="本人另取的同一第二卷" x={position.x + 20} y={position.y - 5} width="9" height="15" fill="#415849" stroke="#bfa46a" />}
       <rect aria-label={first === 'returned' ? '同一第一卷实际放回书架' : first === 'rolled' ? '同一第一卷已卷起尚未归架' : '同一第一卷仍展开'}
         x="420" y={first === 'returned' ? 215 : 245} width={first === 'open' ? 28 : 8} height="15" fill="#161e20" stroke="#bfa46a" />

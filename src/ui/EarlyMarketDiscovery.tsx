@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
 import { MutedParagraph } from './NativeRegions'
@@ -9,7 +10,6 @@ import { MapBackground } from './MapPrimitives'
 import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -56,7 +56,7 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
       {returning ? <>
         {Object.entries(marketReturnPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke="#f7d699" strokeDasharray="4 5" />
           <text x={p.x} y={p.y - 30} textAnchor="middle" fill="#eed7ad">{id === 'gate' ? '族门前' : id === 'clan' ? '族内道路' : home.locked ? '房中 · 门已锁' : '房中 · 门未锁'}</text></g>)}
-        {home.teacher && <g aria-label="锁门转身后看见的老师" transform="translate(220 370)"><MarketWalker /><text y="-30" textAnchor="middle" fill="#eed7ad">老师</text></g>}
+        {home.teacher && marketWalkerGroup({ "aria-label": "锁门转身后看见的老师", "transform": "translate(220 370)" }, {  }, <text y="-30" textAnchor="middle" fill="#eed7ad">老师</text>)}
         {home.materials && <g aria-label="当时材料桌面历史，旧耗材不补回"><rect x="220" y="300" width="65" height="25" fill="#937954" /><text x="253" y="295" textAnchor="middle" fill="#eed7ad">当时材料</text></g>}
       </> : <>
       <circle cx="620" cy="230" r="28" fill="none" stroke="#f7d699" strokeDasharray="4 5" /><text x="620" y="180" textAnchor="middle" fill="#eed7ad">前方摊位</text>
@@ -66,8 +66,8 @@ export default function EarlyMarketDiscovery({ state, onBack, trade = false, ret
         {discovery.iron !== 'unseen' && <rect aria-label="古旧黑铁片仍属摊主，未成交" x="630" y="208" width="14" height="9" fill="#292a29" stroke="#9f886b" />}
       </>}
       </>}
-      <g aria-label="萧炎本人行走位置" transform={`translate(${position.x} ${position.y})`}><MarketWalker /></g>
-      {(!returning || !home.parted) && <g aria-label="薰儿同行位置" transform={`translate(${position.x + 25} ${position.y})`}><MarketWalker xuner /></g>}
+      {marketWalkerGroup({ "aria-label": "萧炎本人行走位置", "transform": `translate(${position.x} ${position.y})` }, {  })}
+      {(!returning || !home.parted) && marketWalkerGroup({ "aria-label": "薰儿同行位置", "transform": `translate(${position.x + 25} ${position.y})` }, { "xuner": true })}
     </EarlyMap>
     {scene && <WalkControls>{<WalkDirectionButtons prefix="发现" onMove={move} />}</WalkControls>}
     <StatusParagraph>{returning ? '回族房中' : trade ? '唯一成交' : '摊位发现'} {task.stage}/{returning ? 9 : trade ? 17 : 10} · {(returning ? earlyMarketReturnSaveSummary : trade ? earlyMarketTradeSaveSummary : earlyMarketDiscoverySaveSummary)(state, state.settings)}</StatusParagraph>

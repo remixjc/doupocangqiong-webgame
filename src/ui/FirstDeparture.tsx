@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -17,7 +18,6 @@ import { firstDepartureScenes } from '../content/first-departure'
 import { earlySnapshots } from '../core/early-snapshots'
 import { fieldsMatch } from '../core/state-guards'
 import { firstDepartureSaveSummary } from '../core/save-preview'
-import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
@@ -78,7 +78,7 @@ export default function FirstDeparture({ state, onBack }: { state: GameState; on
         <HallText x="140" y="293">石路</HallText>
         {[140, 195, 245].map(x => <g key={x} aria-label="石路旁绿柳"><path d={`M${x} 280 V247`} stroke="#a39c6b" strokeWidth="3" /><path d={`M${x - 13} 276 Q${x} 235 ${x + 13} 276`} stroke="#75bd7e" strokeWidth="6" fill="none" /></g>)}
       </>}
-      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</HallText></g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人行走位置", "transform": `translate(${p.x} ${p.y})` }, {  }, <HallText y="26">{space === 'room' ? '本人 · 房内' : '本人 · 室外'}</HallText>)}
     </EarlyMap>
     {scene && task.risen && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix="出门" onMove={move} /></WalkControls>}
     {scene && task.outside && !task.closed && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'room' ? departurePlaces.door : departurePlaces.yardDoor)} onClick={changeSpace}>{space === 'room' ? '再从房门到室外' : '从门外返回房内'} · 不追加历史</SecondaryButton>}

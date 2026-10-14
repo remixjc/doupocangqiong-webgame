@@ -1,8 +1,9 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -65,13 +66,10 @@ export default function EarlyNingSecond({ state, position: entryPosition, onBack
       {ceremonialRails.map((rect, i) => <rect key={i} {...rect} fill="#ddc18a" />)}
       <path d="M592 181 V114 Q613 99 634 114 V181Z" fill="#293434" stroke="#93a492" strokeWidth="3" />
       <MapText x="613" y="130" fill="#e2c273">复测已记</MapText>
-      <g transform={`translate(${ningX} ${task.contact === 'out' ? 280 : 146}) rotate(${task.contact === 'out' ? 83 : 0})`} role="img" aria-label={task.contact === 'out' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '追加拳击后出场的历史画面，最终胜负已宣布' : '追加拳击后萧宁被击出场，仍待最终裁定' : task.contact === 'met' ? '八极崩已对拳迎击，萧宁尚未出场' : '萧宁违规再攻'}>
-        <RobeFigure robe="#bc786b" /><path d="M-8-3 L-25-6" stroke="#e1bba0" strokeWidth="5" />
-        {task.pill === 'used' && <path d="M-23-19 Q-30 0-23 17 M23-19 Q30 0 23 17" stroke="#91c79f" fill="none" strokeWidth="3" />}
-      </g>
+      {robeFigureGroup({ "transform": `translate(${ningX} ${task.contact === 'out' ? 280 : 146}) rotate(${task.contact === 'out' ? 83 : 0})`, "role": "img", "aria-label": task.contact === 'out' ? state.earlyTraining.ceremonyVerdict.verdict === 'xiaoyan' ? '追加拳击后出场的历史画面，最终胜负已宣布' : '追加拳击后萧宁被击出场，仍待最终裁定' : task.contact === 'met' ? '八极崩已对拳迎击，萧宁尚未出场' : '萧宁违规再攻' }, { "robe": "#bc786b" }, <path d="M-8-3 L-25-6" stroke="#e1bba0" strokeWidth="5" />, task.pill === 'used' && <path d="M-23-19 Q-30 0-23 17 M23-19 Q30 0 23 17" stroke="#91c79f" fill="none" strokeWidth="3" />)}
       {training && <path d={task.beats === 0 ? 'M478 151 H446' : 'M478 166 Q588 175 667 255'} stroke="#efc67c" fill="none" strokeDasharray="5 5" strokeWidth="3" />}
       <MapText x="550" y="202" fill="#ead9b6" fontSize="11">{task.contact === 'out' ? '出场 · 仍待裁定' : task.contact === 'met' ? '已对拳 · 尚未出场' : '违规再攻'}</MapText>
-      <g transform="translate(272 272)" aria-label="薰儿台下观礼" role="img"><RobeFigure /></g>
+      {robeFigureGroup({ "transform": "translate(272 272)", "aria-label": "薰儿台下观礼", "role": "img" }, {  })}
       {Object.entries(ningPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + (id === 'arena' ? 38 : 55)} fill="#ead9b6" fontSize="11">{id === 'arena' ? '台中 · 两步迎击' : place.label}</MapText></g>)}
       {hallWalkerAt(position)}
     </EarlyMap>

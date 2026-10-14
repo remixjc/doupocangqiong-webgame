@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -13,7 +14,6 @@ import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react'
 import type { EarlyWalkDirection, EarlyWalkPosition } from '../core/early-walk'
 import { ironNear } from '../core/early-iron'
 import { moveCityWalker } from '../core/early-city-pharmacy'
-import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import './early-walk.css'
@@ -52,9 +52,9 @@ export default function TeacherRoom({ title, heading, help, mapLabel, prefix, st
     </WalkControls>
     <EarlyMap ref={field} aria-label={mapLabel} aria-describedby="teacher-room-help" viewBox="80 290 245 125" onKeyDown={key}>
       <MapBackground /><rect x="95" y="325" width="220" height="82" fill="#937954" opacity=".3" />
-      <g aria-label="老师固定房中位置" transform="translate(220 370)"><MarketWalker /><text y="-52" textAnchor="middle" fill="#eed7ad">老师</text></g>
+      {marketWalkerGroup({ "aria-label": "老师固定房中位置", "transform": "translate(220 370)" }, {  }, <text y="-52" textAnchor="middle" fill="#eed7ad">老师</text>)}
       <rect x="250" y="346" width="35" height="15" fill="#937954" /><text x="250" y="338" fill="#eed7ad">桌面</text>
-      <g aria-label="萧炎本人行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /><text y="26" textAnchor="middle" fill="#eed7ad">本人</text></g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人行走位置", "transform": `translate(${yan.x} ${yan.y})` }, {  }, <text y="26" textAnchor="middle" fill="#eed7ad">本人</text>)}
       {draw(yan)}
     </EarlyMap>
     {scene && movable && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix={prefix} onMove={move} /></WalkControls>}

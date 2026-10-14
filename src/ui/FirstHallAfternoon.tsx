@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -14,7 +15,6 @@ import { walkKey } from './walk-key'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
 import { BondSummary, Eyebrow, StatusParagraph, WalkControls } from './NativeRegions'
 import WalkDirectionButtons from './WalkDirectionButtons'
-import MarketWalker from './MarketWalker'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
 import './early-walk.css'
@@ -49,7 +49,7 @@ export default function FirstHallAfternoon({ state, onBack }: { state: GameState
       <polyline points={points.map(p => `${p.x},${p.y}`).join(' ')} fill="none" stroke="#bfa46a" strokeDasharray="5 4" />
       <MapText x="60" y="355">堂外</MapText><MapText x="350" y="300">附近山路</MapText>
       <g aria-label="午后薰儿位置" transform={`translate(${task.xunerX} ${task.xunerY})`}><circle r="7" fill="#ae8dbd" /><MapText y="-15">薰儿</MapText></g>
-      <g aria-label="午后本人位置" transform={`translate(${task.x} ${task.y})`}><MarketWalker /><MapText y="28">本人</MapText></g>
+      {marketWalkerGroup({ "aria-label": "午后本人位置", "transform": `translate(${task.x} ${task.y})` }, {  }, <MapText y="28">本人</MapText>)}
       <rect aria-label="午后同一第二借卷" x={task.x + 20} y={task.y - 5} width="9" height="15" fill="#415849" stroke="#bfa46a" />
     </EarlyMap>
     <StatusParagraph>午后 {task.stage}/10 · 本段行走 {task.walk}/{route ? 6 : 0} · {firstHallAfternoonSaveSummary(state, state.settings)}</StatusParagraph>

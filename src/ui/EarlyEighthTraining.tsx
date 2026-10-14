@@ -1,8 +1,9 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -67,7 +68,7 @@ export default function EarlyEighthTraining({ state, position: entryPosition, on
       </g>
       <rect x="516" y="277" width="53" height="24" rx="4" fill="#8c7666" />
       <path d="M580 285 V250" stroke="#b59457" strokeWidth="4" /><circle cx="580" cy="250" r="9" fill="#f1c270" />
-      {task.stage >= 4 && task.stage <= 5 && <g transform={`translate(${task.stage === 4 ? 246 : 546} 104)`} role="img" aria-label="薰儿同行"><RobeFigure cy="-10" r="7" skin="#dfbca3" cut="M-11 14 L-6-3 H6 L11 14Z" /></g>}
+      {task.stage >= 4 && task.stage <= 5 && robeFigureGroup({ "transform": `translate(${task.stage === 4 ? 246 : 546} 104)`, "role": "img", "aria-label": "薰儿同行" }, { "cy": "-10", "r": "7", "skin": "#dfbca3", "cut": "M-11 14 L-6-3 H6 L11 14Z" })}
       {task.stage === 7 && <g role="img" aria-label={task.beats ? '吸掌已记，准备吹火掌' : '准备吸掌，再接吹火掌'}><path d={task.beats ? 'M500 135 Q535 115 566 140' : 'M566 140 Q535 160 500 135'} fill="none" stroke="#d5d4a1" strokeWidth="3" strokeDasharray="6 5" /><path d="M555 129 Q581 118 571 142 Q561 146 555 129" fill="#b9c480" /></g>}
       {Object.entries(eighthPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       {hallWalkerAt(position)}

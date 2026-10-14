@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -48,9 +49,8 @@ export default function EarlyCityPharmacy({ state, onBack, onRoute }: { state: G
       <path d="M170 40 H230 L252 90 H148Z" fill="#6b8056" /><path d="M520 105 H580 L597 120 H503Z" fill="#ab9260" />
       {Object.entries(cityPharmacyPlaces).map(([id, point]) => <g key={id}><circle cx={point.x} cy={point.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#a69065'} strokeDasharray="4 5" />
         <MapText x={point.x} y={point.y + 40} fill="#ead0a4">{point.label}</MapText></g>)}
-      <g aria-label="同行的浅绿衣薰儿" transform={`translate(${position.x + 30} ${position.y - 20})`}><RobeFigure cut="M-12 15 L-6-7 H6 L12 15Z" robe="#92b69c" cy="-14" skin="#edcfbd" bodyFirst /></g>
-      <g aria-label="萧炎入城行走位置" transform={`translate(${position.x} ${position.y})`}><RobeFigure cut="M-12 13 L-7-5 H7 L12 13Z" robe="#d3a567" skin="#edc79f" bodyFirst />
-        <circle aria-label="同一古戒仍佩戴" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" /></g>
+      {robeFigureGroup({ "aria-label": "同行的浅绿衣薰儿", "transform": `translate(${position.x + 30} ${position.y - 20})` }, { "cut": "M-12 15 L-6-7 H6 L12 15Z", "robe": "#92b69c", "cy": "-14", "skin": "#edcfbd", "bodyFirst": true })}
+      {robeFigureGroup({ "aria-label": "萧炎入城行走位置", "transform": `translate(${position.x} ${position.y})` }, { "cut": "M-12 13 L-7-5 H7 L12 13Z", "robe": "#d3a567", "skin": "#edc79f", "bodyFirst": true }, <circle aria-label="同一古戒仍佩戴" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />)}
     </EarlyMap>
     <WalkControls>{<WalkDirectionButtons prefix="药铺" onMove={move} />}</WalkControls>
     <StatusParagraph>同行药铺 {task.stage}/15 · {earlyCityPharmacySaveSummary(state, state.settings)}</StatusParagraph>

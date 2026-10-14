@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -50,11 +51,8 @@ export default function EarlyMorningCard({ state, onBack, onRoute }: { state: Ga
       <text x="180" y="145" fill="#ddd0a4" textAnchor="middle">房内</text><text x="530" y="145" fill="#ddd0a4" textAnchor="middle">门前</text>
       {Object.entries(morningCardPlaces).map(([id, point]) => <g key={id}><circle cx={point.x} cy={point.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#a69065'} strokeDasharray="4 5" />
         <MapText x={point.x} y={point.y + 41} fill="#ead0a4">{point.label}</MapText></g>)}
-      <g aria-label="门外浅绿衣的薰儿" transform="translate(567 188)"><RobeFigure cut="M-12 15 L-6-7 H6 L12 15Z" robe="#92b69c" cy="-14" skin="#edcfbd" bodyFirst />
-        {task.card !== 'yan' && <rect aria-label={task.card === 'offered' ? '薰儿递出待接的普通黑卡' : '薰儿持有另一张普通黑卡'} x={task.card === 'offered' ? -45 : 12} y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />}</g>
-      <g aria-label="萧炎晨间行走位置" transform={`translate(${position.x} ${position.y})`}><RobeFigure cut="M-12 13 L-7-5 H7 L12 13Z" robe="#d3a567" skin="#edc79f" bodyFirst />
-        <circle aria-label="右手佩戴同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />
-        {task.card === 'yan' && <rect aria-label="本人已接同一普通黑卡" x="15" y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />}</g>
+      {robeFigureGroup({ "aria-label": "门外浅绿衣的薰儿", "transform": "translate(567 188)" }, { "cut": "M-12 15 L-6-7 H6 L12 15Z", "robe": "#92b69c", "cy": "-14", "skin": "#edcfbd", "bodyFirst": true }, task.card !== 'yan' && <rect aria-label={task.card === 'offered' ? '薰儿递出待接的普通黑卡' : '薰儿持有另一张普通黑卡'} x={task.card === 'offered' ? -45 : 12} y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />)}
+      {robeFigureGroup({ "aria-label": "萧炎晨间行走位置", "transform": `translate(${position.x} ${position.y})` }, { "cut": "M-12 13 L-7-5 H7 L12 13Z", "robe": "#d3a567", "skin": "#edc79f", "bodyFirst": true }, <circle aria-label="右手佩戴同一古戒" cx="12" cy="6" r="3" fill="#152621" stroke="#b5a27d" />, task.card === 'yan' && <rect aria-label="本人已接同一普通黑卡" x="15" y="-1" width="23" height="14" rx="2" fill="#151c19" stroke="#adab92" />)}
     </EarlyMap>
     <WalkControls>{<WalkDirectionButtons prefix="晨卡" onMove={move} />}</WalkControls>
     <StatusParagraph>晨间交卡 {task.stage}/14 · {earlyMorningCardSaveSummary(state, state.settings)}</StatusParagraph>

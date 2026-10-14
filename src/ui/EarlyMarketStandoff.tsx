@@ -1,7 +1,9 @@
+import { robeFigureGroup } from './NativeRegions'
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
 import { EarlyMap } from './MapPrimitives'
@@ -10,7 +12,6 @@ import { HallText, MapBackground } from './MapPrimitives'
 import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -61,14 +62,12 @@ export default function EarlyMarketStandoff({ state, onBack }: { state: GameStat
       <MapBackground /><path d="M80 310 H600" stroke="#bfa46a" strokeWidth="25" opacity=".35" />
       <MarketStreetBuildings />
       {Object.entries(standoffPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="28" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" /><HallText x={p.x} y={p.y + 65} fontSize="12">{p.label}</HallText></g>)}
-      {task.opponent !== 'left' && <g aria-label={task.opponent === 'paused' ? '来人停步尚未离开' : task.opponent === 'withdrawing' ? '来人正向外走' : '来人仍在街角'} transform={`translate(${task.opponent === 'present' ? 150 : 80} 310)`}>
-        <RobeFigure cut="M-13 16 L-7-7 H7 L13 16Z" robe="#b6a58a" cy="-15" r="9" skin="#dcc6ae" bodyFirst />
-      </g>}
+      {task.opponent !== 'left' && robeFigureGroup({ "aria-label": task.opponent === 'paused' ? '来人停步尚未离开' : task.opponent === 'withdrawing' ? '来人正向外走' : '来人仍在街角', "transform": `translate(${task.opponent === 'present' ? 150 : 80} 310)` }, { "cut": "M-13 16 L-7-7 H7 L13 16Z", "robe": "#b6a58a", "cy": "-15", "r": "9", "skin": "#dcc6ae", "bodyFirst": true })}
       {task.ring === 'closed' && <g aria-label="随从围堵尚未解除">{[[185, 275], [270, 280], [250, 345]].map(([x, y]) => <circle key={x} cx={x} cy={y} r="9" fill="#b89070" />)}</g>}
       {(task.guards === 'approaching' || task.guards === 'surrounding') && <g aria-label={task.guards === 'approaching' ? '护卫已到场尚未外层围住' : '护卫在外层控制局面'}>
         {(task.guards === 'approaching' ? [[360, 350], [390, 350], [420, 350]] : [[160, 250], [300, 265], [300, 355], [170, 355]]).map(([x, y]) => <circle key={x} cx={x} cy={y} r="10" fill="#b6bb90" />)}</g>}
-      <g aria-label="萧炎独立行走位置" transform={`translate(${yan.x} ${yan.y})`}><MarketWalker /></g>
-      <g aria-label="薰儿独立行走位置" transform={`translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})`}><MarketWalker xuner /><circle cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" /></g>
+      {marketWalkerGroup({ "aria-label": "萧炎独立行走位置", "transform": `translate(${yan.x} ${yan.y})` }, {  })}
+      {marketWalkerGroup({ "aria-label": "薰儿独立行走位置", "transform": `translate(${xuner.x + (xuner.x === yan.x && xuner.y === yan.y ? 25 : 0)} ${xuner.y})` }, { "xuner": true }, <circle cx="12" cy="4" r="6" fill="none" stroke="#afd0ba" strokeWidth="3" />)}
     </EarlyMap>
     {scene && <WalkControls>
       <SecondaryButton onClick={() => select('yan')}>选择萧炎视角</SecondaryButton><SecondaryButton onClick={() => select('xuner')}>选择薰儿视角</SecondaryButton>

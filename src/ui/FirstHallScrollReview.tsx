@@ -1,3 +1,5 @@
+import { robeFigureGroup } from './NativeRegions'
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useRef, useState } from 'react'
@@ -14,11 +16,10 @@ import { firstHallScrollReviewSaveSummary, firstHallTransmissionSaveSummary } fr
 import { useSceneFocus } from './use-scene-focus'
 import { walkKey } from './walk-key'
 import { EarlyMap, MapBackground, MapText } from './MapPrimitives'
-import { BondSummary, Eyebrow, StatusParagraph, WalkControls, RobeFigure } from './NativeRegions'
+import { BondSummary, Eyebrow, StatusParagraph, WalkControls } from './NativeRegions'
 import { actorButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import MarketWalker from './MarketWalker'
 import NightRoomFixtures from './NightRoomFixtures'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import './early-walk.css'
@@ -48,8 +49,8 @@ export default function FirstHallScrollReview({ state, onBack, transmission = fa
     }}>
       <MapBackground width="480" height="380" fill="#111e27" /><NightRoomFixtures door="closed" tea={state.earlyTraining.firstHallEvening.tea} />
       <path d={transmission ? 'M340 230 H300 V250' : 'M260 190 H340 V230'} fill="none" stroke="#bfa46a" strokeDasharray="5 4" />
-      <g aria-label={transmission ? '额前老师独立位置' : '翻卷老师独立位置'} transform={`translate(${t.teacherX} ${t.teacherY})`} opacity=".65"><RobeFigure skin="#dfded2" robe="#98b0b4" /><MapText y="-24">药老 · {transmission ? t.stage >= 2 || t.stage === 1 && t.walk === 2 ? '额前' : '走近额前' : t.approached ? '桌边' : '走近桌边'}</MapText></g>
-      <g aria-label={transmission ? '接受传授本人固定位置' : '求技本人固定位置'} transform={`translate(${t.x} ${t.y})`}><MarketWalker /><MapText y="28">本人 · {transmission ? state.earlyTraining.firstHallTransmission.eyesClosed ? '闭眼凝神' : '原位睁眼' : '疲惫原位'}</MapText></g>
+      {robeFigureGroup({ "aria-label": transmission ? '额前老师独立位置' : '翻卷老师独立位置', "transform": `translate(${t.teacherX} ${t.teacherY})`, "opacity": ".65" }, { "skin": "#dfded2", "robe": "#98b0b4" }, <MapText y="-24">药老 · {transmission ? t.stage >= 2 || t.stage === 1 && t.walk === 2 ? '额前' : '走近额前' : t.approached ? '桌边' : '走近桌边'}</MapText>)}
+      {marketWalkerGroup({ "aria-label": transmission ? '接受传授本人固定位置' : '求技本人固定位置', "transform": `translate(${t.x} ${t.y})` }, {  }, <MapText y="28">本人 · {transmission ? state.earlyTraining.firstHallTransmission.eyesClosed ? '闭眼凝神' : '原位睁眼' : '疲惫原位'}</MapText>)}
       <rect aria-label={transmission ? '传授时同一第二借卷留桌' : '翻看的同一第二借卷仍在桌上'} x="320" y="255" width="9" height="15" fill="#415849" stroke="#bfa46a" />
       {!transmission && t.opened && <MapText x="330" y="290">同卷已翻看</MapText>}
     </EarlyMap>

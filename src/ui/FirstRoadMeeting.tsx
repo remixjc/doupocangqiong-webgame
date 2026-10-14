@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -18,7 +19,6 @@ import { earlySnapshots } from '../core/early-snapshots'
 import { firstRoadMeetingSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
-import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import './early-walk.css'
@@ -59,7 +59,7 @@ export default function FirstRoadMeeting({ state, onBack }: { state: GameState; 
         <circle cx="-18" r="5" fill="#d8c6a7" /><circle cx="18" r="5" fill="#d8c6a7" />
         <HallText y="-13">{task.identified ? '萧媚与同伴' : '几名少女'}</HallText>
       </g>}
-      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">本人</HallText></g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人行走位置", "transform": `translate(${p.x} ${p.y})` }, {  }, <HallText y="26">本人</HallText>)}
     </EarlyMap>
     {scene && actor === 'yan' && !talking && <WalkControls><WalkDirectionButtons prefix="会面" onMove={move} /></WalkControls>}
     <StatusParagraph>路口会面 {task.stage}/12 · {firstRoadMeetingSaveSummary(state, state.settings)}</StatusParagraph>

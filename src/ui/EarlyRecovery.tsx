@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { TimingRange } from './NativeRegions'
 import { TimingMeter } from './NativeRegions'
 import { MutedParagraph } from './NativeRegions'
@@ -44,10 +45,7 @@ export default function EarlyRecovery({ state, position, onBack, onConsign }: { 
       <rect x="525" y="40" width="110" height="90" fill={task.stage >= 5 ? '#dbc794' : '#708a7b'} stroke="#b6a079" />
       <path d="M580 40 V130 M525 85 H635" stroke="#b6a079" strokeWidth="3" />
       {task.stage >= 5 && <path d="M525 130 L390 275 H655 L635 130Z" fill="#f0d8a620" />}
-      <g transform={`translate(${inContainer ? 355 : 205} ${inContainer ? 180 : 207})`}>
-        <RobeFigure cut="M-22 48 L-12 0 H12 L22 48Z" robe="#c9a06b" r="13" skin="#e8c69f" bodyFirst /><path d="M-13-20 Q0-35 13-20" fill="#28342d" />
-        {inContainer && <path d="M-16 9 Q0 19 16 9" stroke="#d3e4bb" fill="none" strokeWidth="2" />}
-      </g>
+      {robeFigureGroup({ "transform": `translate(${inContainer ? 355 : 205} ${inContainer ? 180 : 207})` }, { "cut": "M-22 48 L-12 0 H12 L22 48Z", "robe": "#c9a06b", "r": "13", "skin": "#e8c69f", "bodyFirst": true }, <path d="M-13-20 Q0-35 13-20" fill="#28342d" />, inContainer && <path d="M-16 9 Q0 19 16 9" stroke="#d3e4bb" fill="none" strokeWidth="2" />)}
       <g transform="translate(355 245)">
         <path d="M-86-10 L-74 28 Q0 50 74 28 L86-10Z" fill="#806747" stroke="#c6aa79" strokeWidth="3" />
         <ellipse rx="86" ry="24" cy="-10" fill={waterColor} stroke="#c6aa79" strokeWidth="3" />

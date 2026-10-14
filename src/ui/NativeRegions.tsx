@@ -1,4 +1,5 @@
-import type { ComponentProps } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
+import { jsx, jsxs } from 'react/jsx-runtime'
 
 // Retain native semantics, supplied attributes, children and React 19 refs.
 export function StatusParagraph(props: ComponentProps<'p'>) {
@@ -43,4 +44,10 @@ export function RobeFigure({ skin = '#e1bba0', robe = '#73a98a', cut = 'M-13 17 
 }) {
   const head = <circle cy={cy} r={r} fill={skin} />, body = <path d={cut} fill={robe} />
   return bodyFirst ? <>{body}{head}</> : <>{head}{body}</>
+}
+
+export function robeFigureGroup(props: ComponentProps<'g'>, figureProps: ComponentProps<typeof RobeFigure>, ...children: ReactNode[]) {
+  const figure = <RobeFigure {...figureProps} />
+  return children.length ? jsxs('g', { ...props, children: [figure, ...children] })
+    : jsx('g', { ...props, children: figure })
 }

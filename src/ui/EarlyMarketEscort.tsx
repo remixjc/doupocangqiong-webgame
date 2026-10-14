@@ -1,3 +1,5 @@
+import { robeFigureGroup } from './NativeRegions'
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -10,7 +12,6 @@ import { HallText, MapBackground } from './MapPrimitives'
 import { SecondaryButton } from './Buttons'
 import { sceneHeading } from './SceneHeading'
 import HistoryBlocked from './HistoryBlocked'
-import MarketWalker from './MarketWalker'
 import MarketStreetBuildings from './MarketStreetBuildings'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
@@ -56,14 +57,9 @@ export default function EarlyMarketEscort({ state, onBack }: { state: GameState;
       {Object.entries(marketEscortPlaces).map(([id, p]) => <g key={id}><circle cx={p.x} cy={p.y} r="24" fill="none" stroke={scene?.place === id ? '#f7d699' : '#9d8b63'} strokeDasharray="4 5" />
         <HallText x={p.x} y={p.y + 40} fontSize="11">{p.label}</HallText></g>)}
       {[240, 280].map(x => <g key={x} aria-label="门前家族护卫" transform={`translate(${x} 280)`}><RobeFigure cut="M-9 12 L-5-5 H5 L9 12Z" robe="#697a87" cy="-12" r="7" skin="#ddb894" bodyFirst /></g>)}
-      <g aria-label={task.captain === 'introduced' ? '已自我介绍的巡卫队长' : '尚未自报身份的护卫'} transform={`translate(${task.patrol ? 260 : 540} ${task.patrol ? 210 : 290})`}>
-        <RobeFigure cut="M-11 15 L-6-5 H6 L11 15Z" robe="#809298" skin="#d8b796" bodyFirst /></g>
+      {robeFigureGroup({ "aria-label": task.captain === 'introduced' ? '已自我介绍的巡卫队长' : '尚未自报身份的护卫', "transform": `translate(${task.patrol ? 260 : 540} ${task.patrol ? 210 : 290})` }, { "cut": "M-11 15 L-6-5 H6 L11 15Z", "robe": "#809298", "skin": "#d8b796", "bodyFirst": true })}
       {task.following === 3 && [0, 1, 2].map(i => <g key={i} aria-label="人群中的跟随护卫" transform={`translate(${490 + i * 20} 205)`}><RobeFigure cut="M-7 10 L-4-5 H4 L7 10Z" robe="#7b8d86" cy="-10" r="6" skin="#dbb795" bodyFirst /></g>)}
-      <g aria-label={observer ? '人群中同行的萧炎与薰儿 · 旁观时不移动' : '萧炎坊市行走位置'}
-        transform={`translate(${observer ? 540 : position.x} ${observer ? 230 : position.y})`}>
-        <MarketWalker />
-        <path d="M20 10 L25-12 H37 L42 10Z" fill="#9dbca4" /><circle cx="31" cy="-18" r="8" fill="#edcfbd" />
-      </g>
+      {marketWalkerGroup({ "aria-label": observer ? '人群中同行的萧炎与薰儿 · 旁观时不移动' : '萧炎坊市行走位置', "transform": `translate(${observer ? 540 : position.x} ${observer ? 230 : position.y})` }, {  }, <path d="M20 10 L25-12 H37 L42 10Z" fill="#9dbca4" />, <circle cx="31" cy="-18" r="8" fill="#edcfbd" />)}
     </EarlyMap>
     {canWalk && <WalkControls>{<WalkDirectionButtons prefix="入坊" onMove={move} />}</WalkControls>}
     {observer && scene && <SecondaryButton onClick={() => setFocus(scene.place)}>选择旁观焦点 · {marketEscortPlaces[scene.place].label}</SecondaryButton>}

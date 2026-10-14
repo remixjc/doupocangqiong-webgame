@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -19,7 +20,6 @@ import { firstHallTalkSaveSummary } from '../core/save-preview'
 import { SecondaryButton } from './Buttons'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
-import MarketWalker from './MarketWalker'
 import './early-walk.css'
 
 export default function FirstHallTalk({ state, onBack }: { state: GameState; onBack: () => void }) {
@@ -58,11 +58,7 @@ export default function FirstHallTalk({ state, onBack }: { state: GameState; onB
         <HallText y="-13" fontSize="9">薰儿</HallText>
       </g>
       {task.ownScroll === 'xuner' && <XunerReadingScroll />}
-      <g aria-label="萧炎本人东架位置" transform="translate(400 250)">
-        <MarketWalker />
-        {task.stage >= 17 && <path aria-label="轻拍头部的历史动作" d="M0 4 L-15 -5" fill="none" stroke="#eac49b" strokeWidth="3" />}
-        <HallText y="26" fontSize="9">本人 · {task.stage >= 16 || task.stage >= 2 && task.stage < 12 ? '抬眼答话' : '读第一卷'}</HallText>
-      </g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人东架位置", "transform": "translate(400 250)" }, {  }, task.stage >= 17 && <path aria-label="轻拍头部的历史动作" d="M0 4 L-15 -5" fill="none" stroke="#eac49b" strokeWidth="3" />, <HallText y="26" fontSize="9">本人 · {task.stage >= 16 || task.stage >= 2 && task.stage < 12 ? '抬眼答话' : '读第一卷'}</HallText>)}
       <rect aria-label="本人同一第一卷的位置或明确回顾" x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
     </EarlyMap>
     <StatusParagraph>东架会面 {task.stage}/20 · {firstHallTalkSaveSummary(state, state.settings)}</StatusParagraph>

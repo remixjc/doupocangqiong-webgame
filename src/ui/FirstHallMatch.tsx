@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
@@ -18,7 +19,6 @@ import { hallSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallMatchSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
-import MarketWalker from './MarketWalker'
 import './early-walk.css'
 export default function FirstHallMatch({ state, onBack, continuation = false }: { state: GameState; onBack: () => void; continuation?: boolean }) {
   const t = state.earlyTraining, task = t.firstHallMatch, scene = firstHallMatchScene(task.stage, continuation)
@@ -56,7 +56,7 @@ export default function FirstHallMatch({ state, onBack, continuation = false }: 
         <circle r="7" fill="#bd8d6b" /><HallText y="21" fontSize="9">{task.identified ? '萧宁' : '场中对手'}</HallText>
       </g>
       <HallEastShelf />
-      <g aria-label="萧炎本人阅读位置" transform="translate(400 250)"><MarketWalker /><HallText y="26" fontSize="9">本人 · 靠架阅读</HallText></g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人阅读位置", "transform": "translate(400 250)" }, {  }, <HallText y="26" fontSize="9">本人 · 靠架阅读</HallText>)}
       <rect x="420" y="245" width="28" height="15" fill="#161e20" stroke="#bfa46a" />
     </EarlyMap>
     <StatusParagraph>{prefix} {continuation ? task.stage : Math.min(task.stage, 12)}/{continuation ? 20 : 12} · {firstHallMatchSaveSummary(state, state.settings)}</StatusParagraph>

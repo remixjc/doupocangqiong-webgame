@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { hallWalkerAt } from './NativeRegions'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -48,14 +49,10 @@ export default function EarlyCeremonyGuests({ state, position: entryPosition, on
       {[100, 128, 156, 184, 212].map(y => <path key={y} d={`M304 ${y} H656`} stroke="#b39464" strokeWidth="2" />)}
       <MapText x="480" y="145" fill="#f0dfb9" fontSize="16">成年礼木台 · 尚待开礼</MapText>
       <path d="M195 298 V200" stroke="#957454" strokeWidth="12" /><circle cx="195" cy="194" r="60" fill="#496b4f" /><circle cx="156" cy="200" r="32" fill="#56765a" />
-      <g transform="translate(266 260)" aria-label="薰儿候礼" role="img"><RobeFigure /></g>
-      {task.stage >= 4 && task.stage <= 7 && <g transform="translate(330 270)" role="img" aria-label={task.sword === 'drawn' ? '萧玉佩剑已出鞘，尚未交锋' : '萧玉佩剑仍由本人保管'}>
-        <RobeFigure robe="#9e83a6" />
-        <path d={task.sword === 'drawn' ? 'M-12 0 L-67-5' : 'M16-5 L19 24'} stroke={task.sword === 'drawn' ? '#dddcd3' : '#827361'} strokeWidth="5" />
-        <MapText y="42" fill="#ead9b6" fontSize="11">萧玉</MapText>
-      </g>}
-      <g transform="translate(550 268)" role="img" aria-label="雅妃与宾客"><RobeFigure robe="#b86c65" /><MapText y="36" fill="#ead9b6" fontSize="11">雅妃</MapText></g>
-      {task.stage >= 6 && task.stage < 12 && <g transform={`translate(${task.stage >= 9 ? 490 : 290} 260)`} role="img" aria-label="萧战已走近"><RobeFigure skin="#d5b491" cut="M-14 17 L-8-5 H8 L14 17Z" robe="#7f8cba" /></g>}
+      {robeFigureGroup({ "transform": "translate(266 260)", "aria-label": "薰儿候礼", "role": "img" }, {  })}
+      {task.stage >= 4 && task.stage <= 7 && robeFigureGroup({ "transform": "translate(330 270)", "role": "img", "aria-label": task.sword === 'drawn' ? '萧玉佩剑已出鞘，尚未交锋' : '萧玉佩剑仍由本人保管' }, { "robe": "#9e83a6" }, <path d={task.sword === 'drawn' ? 'M-12 0 L-67-5' : 'M16-5 L19 24'} stroke={task.sword === 'drawn' ? '#dddcd3' : '#827361'} strokeWidth="5" />, <MapText y="42" fill="#ead9b6" fontSize="11">萧玉</MapText>)}
+      {robeFigureGroup({ "transform": "translate(550 268)", "role": "img", "aria-label": "雅妃与宾客" }, { "robe": "#b86c65" }, <MapText y="36" fill="#ead9b6" fontSize="11">雅妃</MapText>)}
+      {task.stage >= 6 && task.stage < 12 && robeFigureGroup({ "transform": `translate(${task.stage >= 9 ? 490 : 290} 260)`, "role": "img", "aria-label": "萧战已走近" }, { "skin": "#d5b491", "cut": "M-14 17 L-8-5 H8 L14 17Z", "robe": "#7f8cba" })}
       {Object.entries(ceremonyGuestPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 56} fill="#ead9b6">{place.label}</MapText></g>)}
       {hallWalkerAt(position)}
     </EarlyMap>

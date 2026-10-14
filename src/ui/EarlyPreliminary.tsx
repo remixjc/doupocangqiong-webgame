@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { hallWalkerAt } from './NativeRegions'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -53,9 +54,9 @@ export default function EarlyPreliminary({ state, position: entryPosition, onBac
       <path d="M68 371 V306 H132 V371 M80 349 V321 H120 V349" fill="#8a7351" stroke="#c0a779" strokeWidth="3" />
       <path d="M220 299 V251 M260 299 V251 M214 251 H266" fill="none" stroke="#c0a779" strokeWidth="7" />
       <g role="img" aria-label={`预测黑碑 · ${lastResult}`}><path d="M555 195 V98 L580 87 L605 98 V195Z" fill="#182927" stroke="#b8a472" strokeWidth="3" /><MapText x="580" y="149" fill="#eed38b">{task.yan !== 'unmeasured' ? '七段' : task.xuner !== 'unmeasured' ? '一星斗者' : task.mei !== 'unmeasured' ? '八段' : '待测'}</MapText></g>
-      <g transform="translate(636 172)"><RobeFigure cy="-17" skin="#dbb799" cut="M-12 13 L-7-5 H7 L12 13Z" robe="#91a49c" /><path d="M-10 0 H12 V10 H-10Z" fill="#c1a46d" /><MapText y="34" fill="#ead9b6">测试员</MapText></g>
-      <g transform={`translate(${task.stage < 2 ? 156 : task.stage === 7 ? 535 : 340} ${task.stage < 2 ? 350 : task.stage === 7 ? 180 : 284})`}><RobeFigure cy="-15" skin="#dfbca3" cut="M-12 16 L-7-5 H7 L12 16Z" /><MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText></g>
-      {task.stage >= 5 && <g transform={`translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})`}><RobeFigure cy="-15" skin="#dfbca3" cut="M-12 16 L-7-5 H7 L12 16Z" robe="#c07b79" /><MapText y="34" fill="#ead9b6" fontSize="11">萧媚</MapText></g>}
+      {robeFigureGroup({ "transform": "translate(636 172)" }, { "cy": "-17", "skin": "#dbb799", "cut": "M-12 13 L-7-5 H7 L12 13Z", "robe": "#91a49c" }, <path d="M-10 0 H12 V10 H-10Z" fill="#c1a46d" />, <MapText y="34" fill="#ead9b6">测试员</MapText>)}
+      {robeFigureGroup({ "transform": `translate(${task.stage < 2 ? 156 : task.stage === 7 ? 535 : 340} ${task.stage < 2 ? 350 : task.stage === 7 ? 180 : 284})` }, { "cy": "-15", "skin": "#dfbca3", "cut": "M-12 16 L-7-5 H7 L12 16Z" }, <MapText y="34" fill="#ead9b6" fontSize="11">薰儿</MapText>)}
+      {task.stage >= 5 && robeFigureGroup({ "transform": `translate(${task.stage === 5 ? 535 : 400} ${task.stage === 5 ? 180 : 350})` }, { "cy": "-15", "skin": "#dfbca3", "cut": "M-12 16 L-7-5 H7 L12 16Z", "robe": "#c07b79" }, <MapText y="34" fill="#ead9b6" fontSize="11">萧媚</MapText>)}
       {Object.entries(preliminaryPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="44" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 57} fill="#ead9b6">{place.label}</MapText></g>)}
       {hallWalkerAt(position)}
     </EarlyMap>

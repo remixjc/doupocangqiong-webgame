@@ -1,8 +1,9 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { hallWalkerAt } from './NativeRegions'
 import { sceneButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -51,8 +52,8 @@ export default function EarlyQiPavilion({ state, onBack }: { state: GameState; o
           {task.crystal === 'cracked' && <path d="M-8-20 L-2-11 L-7-4 M6-20 L3-12 L9-3" fill="none" stroke="#584333" strokeWidth="2" />}</>
           : <path d="M-15-4 L-4-9 L-8 0Z M1-11 L13-4 L3 0Z" fill="#c8b69e" />}
       </g>
-      <g transform="translate(385 310)" aria-hidden="true"><RobeFigure robe="#b6bba8" /></g>
-      <g transform={`translate(${task.entered ? 395 : 465} ${task.entered ? 105 : 325})`} aria-hidden="true"><RobeFigure /></g>
+      {robeFigureGroup({ "transform": "translate(385 310)", "aria-hidden": "true" }, { "robe": "#b6bba8" })}
+      {robeFigureGroup({ "transform": `translate(${task.entered ? 395 : 465} ${task.entered ? 105 : 325})`, "aria-hidden": "true" }, {  })}
       {Object.entries(qiPavilionPlaces).map(([id, place]) => <g key={id}><circle cx={place.x} cy={place.y} r="37" fill="none" stroke={scene?.place === id ? '#eed38b' : '#a9aa89'} strokeDasharray="4 5" /><MapText x={place.x} y={place.y + 47} fill="#ead9b6" fontSize="11">{place.label}</MapText></g>)}
       {hallWalkerAt(position)}
     </EarlyMap>

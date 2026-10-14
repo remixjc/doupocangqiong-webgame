@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -19,7 +20,6 @@ import { hallSnapshotKeys, earlySnapshots } from '../core/early-snapshots'
 import { firstHallReadingSaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
-import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import './early-walk.css'
@@ -61,7 +61,7 @@ export default function FirstHallReading({ state, onBack }: { state: GameState; 
       <HallText x="140" y="290">堂内门口</HallText>
       {task.picked && <g aria-label={task.record === 'recalled' ? '回顾当时第一卷' : '同一第一黑卷'}><rect x="420" y="245" width={task.opened ? 28 : 8} height="15" fill="#161e20" stroke="#bfa46a" />
         {task.grade && <MapText x="434" y="255" fill="#e9c877" fontSize="7">黄阶中级</MapText>}</g>}
-      <g aria-label="萧炎本人阅读位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{task.leaned ? '本人 · 靠架阅读' : '本人 · 堂内'}</HallText></g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人阅读位置", "transform": `translate(${p.x} ${p.y})` }, {  }, <HallText y="26">{task.leaned ? '本人 · 靠架阅读' : '本人 · 堂内'}</HallText>)}
     </EarlyMap>
     {scene && actor === 'yan' && !task.leaned && <WalkControls><WalkDirectionButtons prefix="阅读" onMove={move} /></WalkControls>}
     <StatusParagraph>东侧阅读 {task.stage}/8 · {firstHallReadingSaveSummary(state, state.settings)}</StatusParagraph>

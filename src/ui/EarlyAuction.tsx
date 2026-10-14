@@ -1,7 +1,8 @@
+import { robeFigureGroup } from './NativeRegions'
 import { returnButton } from './Buttons'
 import { actorButton } from './Buttons'
 import { useSceneFocus } from './use-scene-focus'
-import { RobeFigure } from './NativeRegions'
+
 import { MutedParagraph } from './NativeRegions'
 import { Eyebrow } from './NativeRegions'
 import { WalkControls } from './NativeRegions'
@@ -35,7 +36,7 @@ export default function EarlyAuction({ state, position, onBack, onSettle }: { st
       <rect width="720" height="300" fill="#252f2c" />
       <path d="M25 25 H695 V275 H25Z" fill="#393c34" stroke="#b5a073" strokeWidth="3" />
       <path d="M325 68 H651 V177 H325Z" fill="#59463c" />
-      <g transform="translate(489 93)"><RobeFigure cy="-18" r="12" skin="#e6c8a2" cut="M-25 55 L-11-2 H11 L25 55Z" robe="#a34640" /><MapText x="0" y="-38" fill="#ebd4a9" fontSize="14">雅妃 · 主持</MapText></g>
+      {robeFigureGroup({ "transform": "translate(489 93)" }, { "cy": "-18", "r": "12", "skin": "#e6c8a2", "cut": "M-25 55 L-11-2 H11 L25 55Z", "robe": "#a34640" }, <MapText x="0" y="-38" fill="#ebd4a9" fontSize="14">雅妃 · 主持</MapText>)}
       <path d="M403 147 H585 V167 H403Z M419 167 V185 M567 167 V185" fill="#8b704b" stroke="#c1a675" strokeWidth="3" />
       {task.stage >= 2 && task.stage < 7 && <g transform="translate(445 127)"><ellipse cy="16" rx="31" ry="4" fill="#adb99a" /><path d="M-7-10 H7 V-3 Q15 3 12 13 H-12 Q-15 3-7-3Z" fill="#dedfc8" /><rect x="-8" y="-14" width="16" height="5" fill="#98764c" /></g>}
       {task.stage === 7 && <g><ellipse cx="444" cy="144" rx="35" ry="6" fill="#c7cdcf" /><rect x="417" y="130" width="54" height="11" rx="4" fill="#83a877" /><MapText x="489" y="201" fill="#e8d1a6">下一拍品 · 只观察</MapText></g>}

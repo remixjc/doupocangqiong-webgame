@@ -1,3 +1,4 @@
+import { marketWalkerGroup } from './MarketWalker'
 import { returnButton } from './Buttons'
 import { sceneButton } from './Buttons'
 import { actorButton } from './Buttons'
@@ -19,7 +20,6 @@ import { earlySnapshots } from '../core/early-snapshots'
 import { firstHallEntrySaveSummary } from '../core/save-preview'
 import HistoryBlocked from './HistoryBlocked'
 import { sceneHeading } from './SceneHeading'
-import MarketWalker from './MarketWalker'
 import WalkDirectionButtons from './WalkDirectionButtons'
 import { walkKey } from './walk-key'
 import './early-walk.css'
@@ -73,7 +73,7 @@ export default function FirstHallEntry({ state, onBack }: { state: GameState; on
         <HallText x="140" y="289">堂内门口</HallText>
         {task.fieldLook && <g aria-label={task.girl ? '训练场中的薰儿与对手' : '训练场中两人'}><circle cx="200" cy="244" r="7" fill="#ae8dbd" /><circle cx="235" cy="244" r="7" fill="#bd8d6b" /></g>}
       </>}
-      <g aria-label="萧炎本人行走位置" transform={`translate(${p.x} ${p.y})`}><MarketWalker /><HallText y="26">{space === 'hall' ? '本人 · 堂内' : '本人 · 门外'}</HallText></g>
+      {marketWalkerGroup({ "aria-label": "萧炎本人行走位置", "transform": `translate(${p.x} ${p.y})` }, {  }, <HallText y="26">{space === 'hall' ? '本人 · 堂内' : '本人 · 门外'}</HallText>)}
     </EarlyMap>
     {scene && actor === 'yan' && <WalkControls><WalkDirectionButtons prefix="入堂" onMove={move} /></WalkControls>}
     {scene && task.entered && <SecondaryButton disabled={actor !== 'yan' || !fieldsMatch(p, space === 'hall' ? hallEntryPlaces.entry : hallEntryPlaces.door)} onClick={crossBack}>{space === 'hall' ? '从堂内返回门外' : '再从堂门进入堂内'} · 不追加历史</SecondaryButton>}
