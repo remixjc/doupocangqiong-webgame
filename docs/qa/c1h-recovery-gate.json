@@ -1,0 +1,17 @@
+{
+  "batch": "C1h-recovery-gate",
+  "version": "0.87.0",
+  "commit": "598b303a8a741ef85d40b824625f91fa21bad9cf",
+  "behavior": {
+    "newLimitStage1to7": "blocked",
+    "blockedMessage": "先完成山后限度说明与离林，再回房恢复。",
+    "legacyEmptyLimit": "compatible with prior supervision/recovery flow",
+    "limitStage8": "recovery route remains available",
+    "recoverySteps": 7,
+    "liquidBoundaries": ["active", "fading", "spent"],
+    "fifthDuanOnlyAtFinalSense": true
+  },
+  "automated": {"typecheck": true, "vitestFiles": 163, "vitestTests": 956, "nodeChecks": 16, "production": {"entryBytes": 493969, "gzipBytes": 164968, "totalJsBytes": 1824780}, "scenePack": {"modules": 55, "payloads": 58, "rows": 790}},
+  "ci": {"run": 38588366699, "conclusion": "success"},
+  "notes": "保留旧恢复档；新限度未完成不会提前进入恢复。浏览器已实际验证限度完成后入口卡、准备路线、房间容器与同一药液显示；恢复七段由专项 Vitest 逐步保存/迁移/耗尽测试覆盖。"
+}
