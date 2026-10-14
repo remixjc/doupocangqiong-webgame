@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
 // @ts-expect-error Build-only JavaScript plugin; its parser is covered by literal roundtrip tests.
 import { packedSceneRowsPlugin } from './scripts/pack-scene-rows.mjs'
+// @ts-expect-error Build-only AST transformation; literal and export parity are checked.
+import { packedSummaryTextsPlugin } from './scripts/pack-summary-texts.mjs'
 
 const phaserDefines = {
   global: 'globalThis',
@@ -15,7 +17,7 @@ const phaserDefines = {
 }
 
 export default defineConfig({
-  plugins: [packedSceneRowsPlugin(), react(), {
+  plugins: [packedSceneRowsPlugin(), packedSummaryTextsPlugin(), react(), {
     name: 'verify-phaser-source',
     apply: 'build',
     generateBundle() {

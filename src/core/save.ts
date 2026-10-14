@@ -1,3 +1,4 @@
+import { FIRST_SALE_PURCHASE_VERSION } from './first-sale-purchase-state'
 import { FIRST_SALE_DEPARTURE_VERSION } from './first-sale-departure-state'
 import { FIRST_SALE_PLAN_VERSION } from './first-sale-plan-state'
 import { FIRST_EXTERNAL_TRAINING_VERSION } from './first-external-training-state'
@@ -346,7 +347,8 @@ export function validateState(value: unknown): GameState {
       FIRST_RECOVERY_VERSION,
       FIRST_AWAKENING_VERSION,
       FIRST_SALE_PLAN_VERSION,
-      FIRST_SALE_DEPARTURE_VERSION
+      FIRST_SALE_DEPARTURE_VERSION,
+      FIRST_SALE_PURCHASE_VERSION
     ].map(before) as Parameters<typeof parseEarlyTraining> extends [unknown, number[], ...infer Flags] ? Flags : never)
   const early = s.earlyTraining, approach = early.firstHallApproach
   if ((early.firstHallAfternoon.stage > 0 || early.firstHallAfternoon.walk > 0) && before(FIRST_HALL_AFTERNOON_VERSION)) throw new Error('整个午后记录不属于此版本。')
@@ -361,6 +363,7 @@ export function validateState(value: unknown): GameState {
   requireHistoryVersion(early.firstAwakening, 0, FIRST_AWAKENING_VERSION, '醒后耗尽与感知')
   requireHistoryVersion(early.firstSalePlan, 0, FIRST_SALE_PLAN_VERSION, '床边寄售方案')
   requireHistoryVersion(early.firstSaleDeparture, 0, FIRST_SALE_DEPARTURE_VERSION, '寄售拿物离房')
+  requireHistoryVersion(early.firstSalePurchase, 0, FIRST_SALE_PURCHASE_VERSION, '寄售街巷采购')
   requireHistoryVersion(early.firstHallBody, 0, FIRST_HALL_BODY_VERSION, '身体限制问答')
   requireHistoryVersion(early.firstHallTransmission, 0, FIRST_HALL_TRANSMISSION_VERSION, '额前实际传授')
   requireHistoryVersion(early.firstHallGrant, 0, FIRST_HALL_GRANT_VERSION, '传技认可条件')

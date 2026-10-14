@@ -36,6 +36,9 @@ importers:
       fake-indexeddb:
         specifier: 6.2.5
         version: 6.2.5
+      rolldown:
+        specifier: 1.2.13
+        version: 1.2.13
       typescript:
         specifier: 7.0.2
         version: 7.0.2

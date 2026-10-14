@@ -1,0 +1,1112 @@
+{
+  "version": "0.92.0",
+  "scope": "B2 actual street/shop movement, four purchases with existing receipt compatibility, batch safekeeping only",
+  "tests": {
+    "vitestFiles": 172,
+    "vitestTests": 1055,
+    "nodeTests": 20
+  },
+  "migration": {
+    "base": "059bfa88fc2fab102af838eeb2f9dadd93367138",
+    "nativeCount": 624,
+    "oldCoreSourceFiles": 139,
+    "onlyVersionAndEmptyPurchase": true,
+    "summaryFunctions": 74,
+    "spoilerSettings": 4
+  },
+  "native": [
+    {
+      "name": "purchaseMain00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "0ec112c5a3f5b046e5f62142f0fd4dde0d4a7be7d6e7ad1148ce9654326d99f8"
+    },
+    {
+      "name": "purchaseMainReject00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "8810ba90a538f7c969ead853aba973d9dc67cb4013872232697594e7b7bdf176"
+    },
+    {
+      "name": "purchaseMain01",
+      "step": 1,
+      "stage": 1,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "d903a67736150059d004cac76d29e54da022e1b6217ac4bcd2b4542aa810004f"
+    },
+    {
+      "name": "purchaseMainRejectDirection",
+      "step": 1,
+      "stage": 1,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6cf0454c15589695059076807836ef8cd5659dabae4b7fc9a767e2a23852f96b"
+    },
+    {
+      "name": "purchaseMain02",
+      "step": 2,
+      "stage": 1,
+      "walk": 1,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "4085ba2ef8ae7ddd9a248a81fb7ec3484ce2d6b5cfe58e3e60609a8b6d05cfdc"
+    },
+    {
+      "name": "purchaseMain03",
+      "step": 3,
+      "stage": 1,
+      "walk": 2,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "4dc3b4eeb6274017c4c05349422bc897e3eb252162c18d2412daa62d0c76a8be"
+    },
+    {
+      "name": "purchaseMain04",
+      "step": 4,
+      "stage": 1,
+      "walk": 3,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "dd21eb674d2d4af9f2f59ed37ce6589506982de40a24c75f861be7244dff5a64"
+    },
+    {
+      "name": "purchaseMain05",
+      "step": 5,
+      "stage": 1,
+      "walk": 4,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "1795f053680de9708bbff23a7e712cfd2d9f0e10e4eed032455fc892296d0cc2"
+    },
+    {
+      "name": "purchaseMain06",
+      "step": 6,
+      "stage": 2,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "2c144fcde1a06902152f28006c041b427fea03fd93dfcdc48d271fd57543f091"
+    },
+    {
+      "name": "purchaseMain07",
+      "step": 7,
+      "stage": 3,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6408e47ce1286690c07c893e4859503aca1527298f9725a5dc4a88974a4c3ce8"
+    },
+    {
+      "name": "purchaseMain08",
+      "step": 8,
+      "stage": 4,
+      "walk": 0,
+      "spent": 10,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6fd5fbbfd668c7f24636956e7bf795388685b2e865d6448a3061211b16574c15"
+    },
+    {
+      "name": "purchaseMain09",
+      "step": 9,
+      "stage": 5,
+      "walk": 0,
+      "spent": 10,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5bcbec53b0e95fb4895a89bfd5dfa76da7eebc062713a4997afd7f52a0a46635"
+    },
+    {
+      "name": "purchaseMainWrongAux",
+      "step": 9,
+      "stage": 5,
+      "walk": 0,
+      "spent": 10,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "b165255341a462b407448295c40fa9504c323a50bef0a2fe8ba77c4ee90cd996"
+    },
+    {
+      "name": "purchaseMain10",
+      "step": 10,
+      "stage": 6,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5b1751b3ff14c605dfe2dbd70d078cdb8b5fe1f3242c99ab627dff80c43fef5a"
+    },
+    {
+      "name": "purchaseMain11",
+      "step": 11,
+      "stage": 6,
+      "walk": 1,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "21ec98cb5dc1f72e0dad95cb894aca62c23455ff8a31ee542f66a867382f91c2"
+    },
+    {
+      "name": "purchaseMain12",
+      "step": 12,
+      "stage": 6,
+      "walk": 2,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "0a0d472762e8d23f1240c1e1905a83100c82389a05f5f1efb84087c587e8f9ff"
+    },
+    {
+      "name": "purchaseMain13",
+      "step": 13,
+      "stage": 6,
+      "walk": 3,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "86b057a02e561800369df82fe2a5f1db80b15a61eb65b73c5f50d10c387e6048"
+    },
+    {
+      "name": "purchaseMain14",
+      "step": 14,
+      "stage": 6,
+      "walk": 4,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3ac045c78c08d2d6edb2efe10a4727242af7ab7c80fddce7461d8a079a1c27a8"
+    },
+    {
+      "name": "purchaseMain15",
+      "step": 15,
+      "stage": 7,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "45076bd2bb3ac602cc685e2decaece7c51998e42c0f33379d714d3a2edb7ac0d"
+    },
+    {
+      "name": "purchaseMain16",
+      "step": 16,
+      "stage": 8,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "edc36119236367faff6fbc2e5ac6ed647c0504f2fe1bc71ac075daee7f547f3c"
+    },
+    {
+      "name": "purchaseMainWrongCore",
+      "step": 16,
+      "stage": 8,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ac25596887a0394e536df6928d89e57c3098fd4dbf4c0fef017cd817d96d349e"
+    },
+    {
+      "name": "purchaseMain17",
+      "step": 17,
+      "stage": 9,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "2ec154c1dcf167f307ae771512d8837a84229aad9136c92249ea2409807042dd"
+    },
+    {
+      "name": "purchaseMain18",
+      "step": 18,
+      "stage": 9,
+      "walk": 1,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "04ea20d06477a0523db2b58ed0f80b02c054490d649175fa5a4e637b628ecbd8"
+    },
+    {
+      "name": "purchaseMain19",
+      "step": 19,
+      "stage": 9,
+      "walk": 2,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "97b567e6ba593e76ed4694cd5359844ae384f99f6ec0d5521beba71b35713b56"
+    },
+    {
+      "name": "purchaseMain20",
+      "step": 20,
+      "stage": 9,
+      "walk": 3,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5a2db76f575af7bcc54616daf7cbafd347755f48be0007e0a2815503a8d675a6"
+    },
+    {
+      "name": "purchaseMain21",
+      "step": 21,
+      "stage": 10,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ba14afaebbc2e275c72b6727e608a8ae1b64ea8535fead626fc8f1a2b68608ca"
+    },
+    {
+      "name": "purchaseMain22",
+      "step": 22,
+      "stage": 11,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "a16a06f1c6ba0421852235f3efca87ba3b4758332c1148af338439720953d4e1"
+    },
+    {
+      "name": "purchaseMainWrongBottle",
+      "step": 22,
+      "stage": 11,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "52443b9f3d1a4074295248fd179e59710304e0bc44fb4c38a2dc564ae3b95119"
+    },
+    {
+      "name": "purchaseMain23",
+      "step": 23,
+      "stage": 12,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5cd9076cafa0c2c185629baad480699a60ef24aae23c3672ec7658ce3e484fc7"
+    },
+    {
+      "name": "purchaseMain24",
+      "step": 24,
+      "stage": 13,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "dd2a1563c27935b76fe054d7836d11e053b2fece38da943a48fac7c95d1bdaff"
+    },
+    {
+      "name": "purchaseMain25",
+      "step": 25,
+      "stage": 14,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5c673feeac0c161a56dd8c75612f07aefdd6126363e74153b80e922fa8e71e63"
+    },
+    {
+      "name": "purchaseMainRepeat",
+      "step": 25,
+      "stage": 14,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "0d1fc2126359f94534788f346fe3473eea8b7cdbcb882ba39951e3565b20b12e"
+    },
+    {
+      "name": "purchaseMaterials00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "74a82f8b031119b270cba38333af33fd2163fa1f48b84ce9d188d74c54d1869b"
+    },
+    {
+      "name": "purchaseMaterials01",
+      "step": 1,
+      "stage": 1,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "adc6ce5656376880305718785643a9eefe25354669857f20806b91be06fde0ea"
+    },
+    {
+      "name": "purchaseMaterials02",
+      "step": 2,
+      "stage": 1,
+      "walk": 1,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7ea13c142abfa5c46f89d76287ab5c0f9303e62295878281b8c465b987bebce2"
+    },
+    {
+      "name": "purchaseMaterials03",
+      "step": 3,
+      "stage": 1,
+      "walk": 2,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "b4f0292230b1f71a1f20d28859ebb497b689ff6c764bba343882ae887aace6c8"
+    },
+    {
+      "name": "purchaseMaterials04",
+      "step": 4,
+      "stage": 1,
+      "walk": 3,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "59ac16fbdbf9b2f503ca38121d27547677345564dea200f7c398e9ebfd41c0ff"
+    },
+    {
+      "name": "purchaseMaterialsRejectDirection",
+      "step": 4,
+      "stage": 1,
+      "walk": 3,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "f22829d3faa46e4571bf4ffeee839dd60793b20afa069491a88048ab23c75df0"
+    },
+    {
+      "name": "purchaseMaterials05",
+      "step": 5,
+      "stage": 1,
+      "walk": 4,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7fe2f407de3f1feb2bcfeba6f50fbf8b9665611b4d4bd00aa1080e09e2a6f664"
+    },
+    {
+      "name": "purchaseMaterials06",
+      "step": 6,
+      "stage": 2,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "e49a59d4f34696c7035d9608df737f97162b04f223267afc3c9a220861b4835d"
+    },
+    {
+      "name": "purchaseMaterials07",
+      "step": 7,
+      "stage": 3,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "976bb36cdc24bf4adcd6248901cb8b1f6116bc1363830e8fc7b65777a6b1704d"
+    },
+    {
+      "name": "purchaseMaterialsWrongPrimary",
+      "step": 7,
+      "stage": 3,
+      "walk": 0,
+      "spent": 0,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "63a2075f20424e8a331fad4de2bc32188d24d921b3b54f180b1c28aeac8434f7"
+    },
+    {
+      "name": "purchaseMaterials08",
+      "step": 8,
+      "stage": 4,
+      "walk": 0,
+      "spent": 10,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "73070d966aac9d7e54e829216eec1c1a7bd204b5faf02bdfee62ff3ccc11853c"
+    },
+    {
+      "name": "purchaseMaterials09",
+      "step": 9,
+      "stage": 5,
+      "walk": 0,
+      "spent": 10,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "363832dcd717c5c8ef64e05cbd2d7c024081b69b8f0ad1382b58300baee812fb"
+    },
+    {
+      "name": "purchaseMaterials10",
+      "step": 10,
+      "stage": 6,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "aa67658974a280f10c7f6c7afeb1120bb3bba9f0fa2119dbe0b40b785e95c713"
+    },
+    {
+      "name": "purchaseMaterials11",
+      "step": 11,
+      "stage": 6,
+      "walk": 1,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "16306928c0995c79edb3989e4ad6f40e8a231d53e3cc9a5610d5966f38802028"
+    },
+    {
+      "name": "purchaseMaterials12",
+      "step": 12,
+      "stage": 6,
+      "walk": 2,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "c51eb2136c6fe55989f9b25c0e3fe0926db0666d545af24cd63a9a46cf39a233"
+    },
+    {
+      "name": "purchaseMaterials13",
+      "step": 13,
+      "stage": 6,
+      "walk": 3,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "de306ea96453e12c44354d220ef719ef59c2ce74a947bd14ef7830453b5a1836"
+    },
+    {
+      "name": "purchaseMaterials14",
+      "step": 14,
+      "stage": 6,
+      "walk": 4,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "a812f81767519b9a3f0f85017cfbbc9d58c3ba46d50b9bc7ecc4e5a5cfa8285b"
+    },
+    {
+      "name": "purchaseMaterials15",
+      "step": 15,
+      "stage": 7,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "9e0bb3ed00ef1a4786911f58c4e229174e31741e4cb277417d2153557981b135"
+    },
+    {
+      "name": "purchaseMaterials16",
+      "step": 16,
+      "stage": 8,
+      "walk": 0,
+      "spent": 20,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "453bea72e5188aec12cc21ce78e384197fd94cd0738257b99c9006137156c745"
+    },
+    {
+      "name": "purchaseMaterials17",
+      "step": 17,
+      "stage": 9,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "9a78880939c0a07dcbe38e8ba0eda06f4960d0962379881608f4480229ff1934"
+    },
+    {
+      "name": "purchaseMaterials18",
+      "step": 18,
+      "stage": 9,
+      "walk": 1,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "dc1422524125e970a3332cf6ba917694619c153ce3131edd157b3db85cb52bde"
+    },
+    {
+      "name": "purchaseMaterials19",
+      "step": 19,
+      "stage": 9,
+      "walk": 2,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7d92cafeea4b8e9e5d3956e3f0ddbc4736fa54bc2098d423e8fecef6f1039d14"
+    },
+    {
+      "name": "purchaseMaterials20",
+      "step": 20,
+      "stage": 9,
+      "walk": 3,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6c2d97d466dd97e8606407bd1f41597b0d15783f75a24a1d81bf0324e63b4696"
+    },
+    {
+      "name": "purchaseMaterials21",
+      "step": 21,
+      "stage": 10,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "0886bb746145aaeb18c651cf1da471cc1ba6712d2cdf27b1d47b7b1758a53b48"
+    },
+    {
+      "name": "purchaseMaterials22",
+      "step": 22,
+      "stage": 11,
+      "walk": 0,
+      "spent": 45,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "d425c8ec09f620bb83b73c6ff1a683d1670d5d91470a58983f982340dee554f6"
+    },
+    {
+      "name": "purchaseMaterials23",
+      "step": 23,
+      "stage": 12,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "4addf2fbc9c6f687f291a24c46354c925eb2acf512e354943919fe7c3c4b5b6f"
+    },
+    {
+      "name": "purchaseMaterials24",
+      "step": 24,
+      "stage": 13,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "f60d1dde9c6235c1a367bae53b8b6c8f10d0526819c567e6be12896f9a911128"
+    },
+    {
+      "name": "purchaseMaterials25",
+      "step": 25,
+      "stage": 14,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "336a47931dc71c066e90d4359e714f16cbd8e049c3d2a871eb52262fd75273d7"
+    },
+    {
+      "name": "purchaseMaterialsRepeat",
+      "step": 25,
+      "stage": 14,
+      "walk": 0,
+      "spent": 50,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "2e5502161190fad794b9f14419de5d4bbb0a316963de4cbe035b41f17c928517"
+    }
+  ],
+  "windows": [
+    {
+      "name": "purchaseMain00",
+      "fullDialogEqual": true,
+      "beforeSha256": "8f1cab7a69306fb959ebe248289c65b45ce65565c7519db3156545f492708ab4",
+      "afterSha256": "8f1cab7a69306fb959ebe248289c65b45ce65565c7519db3156545f492708ab4",
+      "errors": []
+    },
+    {
+      "name": "purchaseMainReject00",
+      "fullDialogEqual": true,
+      "beforeSha256": "8f1cab7a69306fb959ebe248289c65b45ce65565c7519db3156545f492708ab4",
+      "afterSha256": "8f1cab7a69306fb959ebe248289c65b45ce65565c7519db3156545f492708ab4",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain01",
+      "fullDialogEqual": true,
+      "beforeSha256": "cb8d6d21c13653f5105cd1ba3334d6777a8442971e4345935501454d054f0d9c",
+      "afterSha256": "cb8d6d21c13653f5105cd1ba3334d6777a8442971e4345935501454d054f0d9c",
+      "errors": []
+    },
+    {
+      "name": "purchaseMainRejectDirection",
+      "fullDialogEqual": true,
+      "beforeSha256": "cb8d6d21c13653f5105cd1ba3334d6777a8442971e4345935501454d054f0d9c",
+      "afterSha256": "cb8d6d21c13653f5105cd1ba3334d6777a8442971e4345935501454d054f0d9c",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain02",
+      "fullDialogEqual": true,
+      "beforeSha256": "563850aba2cce850147a590bc20ba1f4e11f778a5ebb2dd292b42789c38e7dfd",
+      "afterSha256": "563850aba2cce850147a590bc20ba1f4e11f778a5ebb2dd292b42789c38e7dfd",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain03",
+      "fullDialogEqual": true,
+      "beforeSha256": "adefa2e2fb4bb090ebf085e0334fa1b1a7e52d565b5b7a2cd4b2cb6d4723b3b3",
+      "afterSha256": "adefa2e2fb4bb090ebf085e0334fa1b1a7e52d565b5b7a2cd4b2cb6d4723b3b3",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain04",
+      "fullDialogEqual": true,
+      "beforeSha256": "fd60998a160345ca1aa32aabd8e46dadb818c06dbacd414e715f5cef9c4eb707",
+      "afterSha256": "fd60998a160345ca1aa32aabd8e46dadb818c06dbacd414e715f5cef9c4eb707",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain05",
+      "fullDialogEqual": true,
+      "beforeSha256": "4a2c877a60b56d2df87a423ff922459d1f6d8196331063549d9fe29a3f0208e9",
+      "afterSha256": "4a2c877a60b56d2df87a423ff922459d1f6d8196331063549d9fe29a3f0208e9",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain06",
+      "fullDialogEqual": true,
+      "beforeSha256": "238af93611e483fb728f8aff73df8eac0c5a327adcecf167bfc9e124c7764ba2",
+      "afterSha256": "238af93611e483fb728f8aff73df8eac0c5a327adcecf167bfc9e124c7764ba2",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain07",
+      "fullDialogEqual": true,
+      "beforeSha256": "b9978ce2ad0da9ae7db4c518a8c2701481d6c63f869e0089a347a43a013fa8eb",
+      "afterSha256": "b9978ce2ad0da9ae7db4c518a8c2701481d6c63f869e0089a347a43a013fa8eb",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain08",
+      "fullDialogEqual": true,
+      "beforeSha256": "d8569dd26f3557daf63c1388246c3dfbe438be7d7e25283059fdbf6482bba4a5",
+      "afterSha256": "d8569dd26f3557daf63c1388246c3dfbe438be7d7e25283059fdbf6482bba4a5",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain09",
+      "fullDialogEqual": true,
+      "beforeSha256": "087e9a0c3d771d8ba3cb500457e12eb73e309fe860e8c96b5739c6d01042ce62",
+      "afterSha256": "087e9a0c3d771d8ba3cb500457e12eb73e309fe860e8c96b5739c6d01042ce62",
+      "errors": []
+    },
+    {
+      "name": "purchaseMainWrongAux",
+      "fullDialogEqual": true,
+      "beforeSha256": "087e9a0c3d771d8ba3cb500457e12eb73e309fe860e8c96b5739c6d01042ce62",
+      "afterSha256": "087e9a0c3d771d8ba3cb500457e12eb73e309fe860e8c96b5739c6d01042ce62",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain10",
+      "fullDialogEqual": true,
+      "beforeSha256": "7e2a0de2a71b1bfbb688dd4e902becbb4bce7d47d15c88daadff61b1bae58e17",
+      "afterSha256": "7e2a0de2a71b1bfbb688dd4e902becbb4bce7d47d15c88daadff61b1bae58e17",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain11",
+      "fullDialogEqual": true,
+      "beforeSha256": "19e5e4df3695862ab3130a458fa925de3b405748d93335c786170ba09fbc449f",
+      "afterSha256": "19e5e4df3695862ab3130a458fa925de3b405748d93335c786170ba09fbc449f",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain12",
+      "fullDialogEqual": true,
+      "beforeSha256": "981e532e185a3afb4687a600709722ae69a2154f2a31ef2db42bcc77929b17a4",
+      "afterSha256": "981e532e185a3afb4687a600709722ae69a2154f2a31ef2db42bcc77929b17a4",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain13",
+      "fullDialogEqual": true,
+      "beforeSha256": "b61667509d85e8f754f389742f136915d00361366617fac5d28490a73593089f",
+      "afterSha256": "b61667509d85e8f754f389742f136915d00361366617fac5d28490a73593089f",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain14",
+      "fullDialogEqual": true,
+      "beforeSha256": "a26909312b8211163beb62aa908da693e411b18a9e279cfc8613f22390eb4192",
+      "afterSha256": "a26909312b8211163beb62aa908da693e411b18a9e279cfc8613f22390eb4192",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain15",
+      "fullDialogEqual": true,
+      "beforeSha256": "5c860e54a3eebb32cea5f09b9ebddb4c0d9fb226b1792d3e15673a89d7c144fe",
+      "afterSha256": "5c860e54a3eebb32cea5f09b9ebddb4c0d9fb226b1792d3e15673a89d7c144fe",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain16",
+      "fullDialogEqual": true,
+      "beforeSha256": "77ab5b3cba98cfcc8ee3eba035c711ffa5f26a233ac83be1859190a68238c062",
+      "afterSha256": "77ab5b3cba98cfcc8ee3eba035c711ffa5f26a233ac83be1859190a68238c062",
+      "errors": []
+    },
+    {
+      "name": "purchaseMainWrongCore",
+      "fullDialogEqual": true,
+      "beforeSha256": "77ab5b3cba98cfcc8ee3eba035c711ffa5f26a233ac83be1859190a68238c062",
+      "afterSha256": "77ab5b3cba98cfcc8ee3eba035c711ffa5f26a233ac83be1859190a68238c062",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain17",
+      "fullDialogEqual": true,
+      "beforeSha256": "7b05971138cf501dbc35acf480c855d07da314b608e0a0a9d10cf425380d8bd7",
+      "afterSha256": "7b05971138cf501dbc35acf480c855d07da314b608e0a0a9d10cf425380d8bd7",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain18",
+      "fullDialogEqual": true,
+      "beforeSha256": "b7414c7b48a019fcb01e80c2b0e7dc82110e1cb22c53841ae60c2c16d0ee0f0e",
+      "afterSha256": "b7414c7b48a019fcb01e80c2b0e7dc82110e1cb22c53841ae60c2c16d0ee0f0e",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain19",
+      "fullDialogEqual": true,
+      "beforeSha256": "4422b0d7988dda5795eb29980bb38f9ea12754fea291dfbde283fac69c512204",
+      "afterSha256": "4422b0d7988dda5795eb29980bb38f9ea12754fea291dfbde283fac69c512204",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain20",
+      "fullDialogEqual": true,
+      "beforeSha256": "acd286ba7f46d1e410c47e0b72e4088ede67cc401dd488a594f8241173aac8ff",
+      "afterSha256": "acd286ba7f46d1e410c47e0b72e4088ede67cc401dd488a594f8241173aac8ff",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain21",
+      "fullDialogEqual": true,
+      "beforeSha256": "365abae34c5b252d892bdae16a258cbd250cc07286594e12f9a713255401debf",
+      "afterSha256": "365abae34c5b252d892bdae16a258cbd250cc07286594e12f9a713255401debf",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain22",
+      "fullDialogEqual": true,
+      "beforeSha256": "df9388b5aa8dc79893580d980bce5baec1ce6eb977422902d7c592e9cfae91cf",
+      "afterSha256": "df9388b5aa8dc79893580d980bce5baec1ce6eb977422902d7c592e9cfae91cf",
+      "errors": []
+    },
+    {
+      "name": "purchaseMainWrongBottle",
+      "fullDialogEqual": true,
+      "beforeSha256": "df9388b5aa8dc79893580d980bce5baec1ce6eb977422902d7c592e9cfae91cf",
+      "afterSha256": "df9388b5aa8dc79893580d980bce5baec1ce6eb977422902d7c592e9cfae91cf",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain23",
+      "fullDialogEqual": true,
+      "beforeSha256": "2383f29b98cbb59b15d1cc48b67517a993d1dbcb6366f813524d776d4d9e452b",
+      "afterSha256": "2383f29b98cbb59b15d1cc48b67517a993d1dbcb6366f813524d776d4d9e452b",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain24",
+      "fullDialogEqual": true,
+      "beforeSha256": "da46405c82df792482644ff69e4f972c7a7f771544854dc7bdd226e3f8eb4ad6",
+      "afterSha256": "da46405c82df792482644ff69e4f972c7a7f771544854dc7bdd226e3f8eb4ad6",
+      "errors": []
+    },
+    {
+      "name": "purchaseMain25",
+      "fullDialogEqual": true,
+      "beforeSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "afterSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "errors": []
+    },
+    {
+      "name": "purchaseMainRepeat",
+      "fullDialogEqual": true,
+      "beforeSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "afterSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials00",
+      "fullDialogEqual": true,
+      "beforeSha256": "8f1cab7a69306fb959ebe248289c65b45ce65565c7519db3156545f492708ab4",
+      "afterSha256": "8f1cab7a69306fb959ebe248289c65b45ce65565c7519db3156545f492708ab4",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials01",
+      "fullDialogEqual": true,
+      "beforeSha256": "cb8d6d21c13653f5105cd1ba3334d6777a8442971e4345935501454d054f0d9c",
+      "afterSha256": "cb8d6d21c13653f5105cd1ba3334d6777a8442971e4345935501454d054f0d9c",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials02",
+      "fullDialogEqual": true,
+      "beforeSha256": "563850aba2cce850147a590bc20ba1f4e11f778a5ebb2dd292b42789c38e7dfd",
+      "afterSha256": "563850aba2cce850147a590bc20ba1f4e11f778a5ebb2dd292b42789c38e7dfd",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials03",
+      "fullDialogEqual": true,
+      "beforeSha256": "adefa2e2fb4bb090ebf085e0334fa1b1a7e52d565b5b7a2cd4b2cb6d4723b3b3",
+      "afterSha256": "adefa2e2fb4bb090ebf085e0334fa1b1a7e52d565b5b7a2cd4b2cb6d4723b3b3",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials04",
+      "fullDialogEqual": true,
+      "beforeSha256": "fd60998a160345ca1aa32aabd8e46dadb818c06dbacd414e715f5cef9c4eb707",
+      "afterSha256": "fd60998a160345ca1aa32aabd8e46dadb818c06dbacd414e715f5cef9c4eb707",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterialsRejectDirection",
+      "fullDialogEqual": true,
+      "beforeSha256": "fd60998a160345ca1aa32aabd8e46dadb818c06dbacd414e715f5cef9c4eb707",
+      "afterSha256": "fd60998a160345ca1aa32aabd8e46dadb818c06dbacd414e715f5cef9c4eb707",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials05",
+      "fullDialogEqual": true,
+      "beforeSha256": "4a2c877a60b56d2df87a423ff922459d1f6d8196331063549d9fe29a3f0208e9",
+      "afterSha256": "4a2c877a60b56d2df87a423ff922459d1f6d8196331063549d9fe29a3f0208e9",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials06",
+      "fullDialogEqual": true,
+      "beforeSha256": "238af93611e483fb728f8aff73df8eac0c5a327adcecf167bfc9e124c7764ba2",
+      "afterSha256": "238af93611e483fb728f8aff73df8eac0c5a327adcecf167bfc9e124c7764ba2",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials07",
+      "fullDialogEqual": true,
+      "beforeSha256": "b9978ce2ad0da9ae7db4c518a8c2701481d6c63f869e0089a347a43a013fa8eb",
+      "afterSha256": "b9978ce2ad0da9ae7db4c518a8c2701481d6c63f869e0089a347a43a013fa8eb",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterialsWrongPrimary",
+      "fullDialogEqual": true,
+      "beforeSha256": "b9978ce2ad0da9ae7db4c518a8c2701481d6c63f869e0089a347a43a013fa8eb",
+      "afterSha256": "b9978ce2ad0da9ae7db4c518a8c2701481d6c63f869e0089a347a43a013fa8eb",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials08",
+      "fullDialogEqual": true,
+      "beforeSha256": "d8569dd26f3557daf63c1388246c3dfbe438be7d7e25283059fdbf6482bba4a5",
+      "afterSha256": "d8569dd26f3557daf63c1388246c3dfbe438be7d7e25283059fdbf6482bba4a5",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials09",
+      "fullDialogEqual": true,
+      "beforeSha256": "087e9a0c3d771d8ba3cb500457e12eb73e309fe860e8c96b5739c6d01042ce62",
+      "afterSha256": "087e9a0c3d771d8ba3cb500457e12eb73e309fe860e8c96b5739c6d01042ce62",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials10",
+      "fullDialogEqual": true,
+      "beforeSha256": "7e2a0de2a71b1bfbb688dd4e902becbb4bce7d47d15c88daadff61b1bae58e17",
+      "afterSha256": "7e2a0de2a71b1bfbb688dd4e902becbb4bce7d47d15c88daadff61b1bae58e17",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials11",
+      "fullDialogEqual": true,
+      "beforeSha256": "19e5e4df3695862ab3130a458fa925de3b405748d93335c786170ba09fbc449f",
+      "afterSha256": "19e5e4df3695862ab3130a458fa925de3b405748d93335c786170ba09fbc449f",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials12",
+      "fullDialogEqual": true,
+      "beforeSha256": "981e532e185a3afb4687a600709722ae69a2154f2a31ef2db42bcc77929b17a4",
+      "afterSha256": "981e532e185a3afb4687a600709722ae69a2154f2a31ef2db42bcc77929b17a4",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials13",
+      "fullDialogEqual": true,
+      "beforeSha256": "b61667509d85e8f754f389742f136915d00361366617fac5d28490a73593089f",
+      "afterSha256": "b61667509d85e8f754f389742f136915d00361366617fac5d28490a73593089f",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials14",
+      "fullDialogEqual": true,
+      "beforeSha256": "a26909312b8211163beb62aa908da693e411b18a9e279cfc8613f22390eb4192",
+      "afterSha256": "a26909312b8211163beb62aa908da693e411b18a9e279cfc8613f22390eb4192",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials15",
+      "fullDialogEqual": true,
+      "beforeSha256": "5c860e54a3eebb32cea5f09b9ebddb4c0d9fb226b1792d3e15673a89d7c144fe",
+      "afterSha256": "5c860e54a3eebb32cea5f09b9ebddb4c0d9fb226b1792d3e15673a89d7c144fe",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials16",
+      "fullDialogEqual": true,
+      "beforeSha256": "77ab5b3cba98cfcc8ee3eba035c711ffa5f26a233ac83be1859190a68238c062",
+      "afterSha256": "77ab5b3cba98cfcc8ee3eba035c711ffa5f26a233ac83be1859190a68238c062",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials17",
+      "fullDialogEqual": true,
+      "beforeSha256": "7b05971138cf501dbc35acf480c855d07da314b608e0a0a9d10cf425380d8bd7",
+      "afterSha256": "7b05971138cf501dbc35acf480c855d07da314b608e0a0a9d10cf425380d8bd7",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials18",
+      "fullDialogEqual": true,
+      "beforeSha256": "b7414c7b48a019fcb01e80c2b0e7dc82110e1cb22c53841ae60c2c16d0ee0f0e",
+      "afterSha256": "b7414c7b48a019fcb01e80c2b0e7dc82110e1cb22c53841ae60c2c16d0ee0f0e",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials19",
+      "fullDialogEqual": true,
+      "beforeSha256": "4422b0d7988dda5795eb29980bb38f9ea12754fea291dfbde283fac69c512204",
+      "afterSha256": "4422b0d7988dda5795eb29980bb38f9ea12754fea291dfbde283fac69c512204",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials20",
+      "fullDialogEqual": true,
+      "beforeSha256": "acd286ba7f46d1e410c47e0b72e4088ede67cc401dd488a594f8241173aac8ff",
+      "afterSha256": "acd286ba7f46d1e410c47e0b72e4088ede67cc401dd488a594f8241173aac8ff",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials21",
+      "fullDialogEqual": true,
+      "beforeSha256": "365abae34c5b252d892bdae16a258cbd250cc07286594e12f9a713255401debf",
+      "afterSha256": "365abae34c5b252d892bdae16a258cbd250cc07286594e12f9a713255401debf",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials22",
+      "fullDialogEqual": true,
+      "beforeSha256": "df9388b5aa8dc79893580d980bce5baec1ce6eb977422902d7c592e9cfae91cf",
+      "afterSha256": "df9388b5aa8dc79893580d980bce5baec1ce6eb977422902d7c592e9cfae91cf",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials23",
+      "fullDialogEqual": true,
+      "beforeSha256": "2383f29b98cbb59b15d1cc48b67517a993d1dbcb6366f813524d776d4d9e452b",
+      "afterSha256": "2383f29b98cbb59b15d1cc48b67517a993d1dbcb6366f813524d776d4d9e452b",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials24",
+      "fullDialogEqual": true,
+      "beforeSha256": "da46405c82df792482644ff69e4f972c7a7f771544854dc7bdd226e3f8eb4ad6",
+      "afterSha256": "da46405c82df792482644ff69e4f972c7a7f771544854dc7bdd226e3f8eb4ad6",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterials25",
+      "fullDialogEqual": true,
+      "beforeSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "afterSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "errors": []
+    },
+    {
+      "name": "purchaseMaterialsRepeat",
+      "fullDialogEqual": true,
+      "beforeSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "afterSha256": "24fb1e20d9ef7f14463543c5cd887d85eac0bf0070f37b441a71e681637385d9",
+      "errors": []
+    }
+  ],
+  "reopen": [
+    {
+      "branch": "Main",
+      "focus": "接续街巷同单采购",
+      "fullDialogEqual": true
+    },
+    {
+      "branch": "Materials",
+      "focus": "接续街巷同单采购",
+      "fullDialogEqual": true
+    }
+  ],
+  "buildOnlyOwnedLiteralCompression": {
+    "content/chapters.ts": {
+      "encoding": "lz-string-1.5.0-words-radix85",
+      "literals": 99,
+      "rows": 94,
+      "sourceBytes": 17239,
+      "packedBytes": 12502,
+      "sha256": "c736f357cc67bd9fbd3a333408595f3e7043e36a91f4e2e962946a25745a8fe2"
+    },
+    "core/save-preview.ts": {
+      "encoding": "lz-string-1.5.0-words-radix85",
+      "literals": 609,
+      "rows": 602,
+      "sourceBytes": 57014,
+      "packedBytes": 52102,
+      "sha256": "14c417b5128ac11c02b5792a12e3edec714a2b8057889bd07d653c68f213fc2e"
+    }
+  },
+  "budget": {
+    "initial": 478204,
+    "gzip": 163278,
+    "total": 1843525,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "retainedFailures": [
+    "Initial actual B2 candidate exceeded total JS budget (1857900).",
+    "TypeScript native compiler lacks the former compiler API; switched build AST parser to pinned existing Rolldown.",
+    "Long generated identifier missed the minimum source savings; short private pool now passes fixed gates.",
+    "Differential harness initially called out-of-range chapter IDs without comparing thrown errors; original error behavior now compared.",
+    "Browser download helper initially used nonexistent close label; corrected to observed 关闭, no purchase advanced during failed calls."
+  ],
+  "boundaries": [
+    "No new source verification; previous English chapter20 evidence retained.",
+    "Shop positions, prices, walk steps and precise bottle purchase timing are game interpolation.",
+    "No alley delivery, production, teacher entity, finished sale product or oral item added.",
+    "No real-device or deployment claim.",
+    "28 chapters are compressed main line, full-cycle gates remain open."
+  ]
+}

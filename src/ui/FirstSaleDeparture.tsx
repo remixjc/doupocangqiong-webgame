@@ -13,8 +13,13 @@ import { BondSummary, Eyebrow, RobeFigure, StatusParagraph, WalkControls } from 
 import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import HistoryBlocked from './HistoryBlocked'
+import { lazyScene } from './scene-load'
+import { deferredRoute } from './DeferredScene'
+import { useSceneRoutes } from './use-scene-routes'
 import './early-walk.css'
+const FirstSalePurchase = lazyScene(() => import('./FirstSalePurchase'))
 export default function FirstSaleDeparture({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+  const routes = useSceneRoutes(1)
   const t = state.earlyTraining.firstSaleDeparture, scene = firstSaleDepartureScenes[t.stage], field = useRef<SVGSVGElement>(null)
   useSceneFocus(field, true, [])
   const blocked = firstSaleDepartureBlock(state, position), walking = t.stage === 3 && t.walk < 5
@@ -23,6 +28,7 @@ export default function FirstSaleDeparture({ state, position, onBack }: { state:
       ...earlySnapshots(state, saleDepartureSnapshotKeys), expectedConsignment: structuredClone(state.earlyTraining.consignment), actor: 'yan', operation })
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
+  if (routes.active[0]) return deferredRoute(FirstSalePurchase, "正在接续街巷同单采购……", state, routes.back(0), { position })
   return <>
     <Eyebrow>首次寄售 / 拿物与正常离房</Eyebrow><h2>拿齐已有物品，从房门走出去。</h2>
     <p>本人按E或按钮逐项操作。门前路线：右右下下下；地图与路步为原创补间。</p>
@@ -53,7 +59,8 @@ export default function FirstSaleDeparture({ state, position, onBack }: { state:
             {{ right:'离房向右走', down:'离房向下走', left:'离房向左走', up:'离房向上走' }[direction]}
           </SecondaryButton>)}
       </WalkControls> : sceneButton(scene, false, act)}
-    </BondSummary> : <BondSummary><h3>拿物与正常离房已归档。</h3><p>本人停在门外。到店与采购待续，现有专款和所有旧收据保持。</p></BondSummary>}
+    </BondSummary> : <BondSummary><h3>拿物与正常离房已归档。</h3><p>离房历史已保存，到店与采购可由下方入口继续。</p></BondSummary>}
+    {t.archived && <SecondaryButton ref={routes.entry(0)} onClick={() => routes.set(0,true)}>接续街巷同单采购</SecondaryButton>}
     {returnButton(onBack, '返回床边方案 · 保留离房断点')}
   </>
 }
