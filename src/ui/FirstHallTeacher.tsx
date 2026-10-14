@@ -36,6 +36,7 @@ export default function FirstHallTeacher({ state, onBack, agreement = false }: {
     <p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p>
     {task.record === 'recalled' && <p>详细历史回顾，旧教学、保管与奖励保持。</p>}
     {!agreement && state.earlyTraining.firstHallScrollReview.record !== 'none' && <p>此图回顾当时房中问答，老师后续桌边位置另存。</p>}
+    {agreement && state.earlyTraining.firstHallTransmission.record !== 'none' && <p>此图回顾当时认可条件，老师后续额前位置另存。</p>}
     <WalkControls>{actorButton(actor, setActor, 'yan', "房中本人操作")}
       {actorButton(actor, setActor, 'teacher', "观察房中老师")}</WalkControls>
     <EarlyMap ref={field} aria-label={agreement ? '传技认可与条件地图' : '老师现身与有限背景地图'} viewBox="0 0 480 380" onKeyDown={event => {

@@ -76,6 +76,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   const [firstHallThreat, setFirstHallThreat, hallThreatEntry, hallThreatBack] = useReturningScene()
   const [firstHallExitResponse, setFirstHallExitResponse, hallExitResponseEntry, hallExitResponseBack] = useReturningScene()
   const [firstHallCheckout, setFirstHallCheckout, hallCheckoutEntry, hallCheckoutBack] = useReturningScene()
+  const [firstHallTransmission, setFirstHallTransmission, hallTransmissionEntry, hallTransmissionBack] = useReturningScene()
   const [firstHallGrant, setFirstHallGrant, hallGrantEntry, hallGrantBack] = useReturningScene()
   const [firstHallScrollReview, setFirstHallScrollReview, hallScrollReviewEntry, hallScrollReviewBack] = useReturningScene()
   const [firstHallTeacher, setFirstHallTeacher, hallTeacherEntry, hallTeacherBack] = useReturningScene()
@@ -112,6 +113,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
   if (firstHallThreat) return deferredRoute(FirstHallApproach, "正在接续成人礼威胁……", state, hallThreatBack, { threat: true })
   if (firstHallExitResponse) return deferredRoute(FirstHallApproach, "正在接续堂内移步……", state, hallExitResponseBack, { exitResponse: true })
   if (firstHallCheckout) return deferredRoute(FirstHallApproach, "正在接续同卷登记……", state, hallCheckoutBack, { checkout: true })
+  if (firstHallTransmission) return deferredRoute(FirstHallScrollReview, "正在接续额前传授……", state, hallTransmissionBack, { transmission: true })
   if (firstHallGrant) return deferredRoute(FirstHallTeacher, "正在接续认可条件……", state, hallGrantBack, { agreement: true })
   if (firstHallScrollReview) return deferredRoute(FirstHallScrollReview, "正在接续同卷求技……", state, hallScrollReviewBack, {})
   if (firstHallTeacher) return deferredRoute(FirstHallTeacher, "正在接续房中有限问答……", state, hallTeacherBack, {})
@@ -269,6 +271,7 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 2) && task.firstHallApproach.stage >= 31 && <SecondaryButton ref={hallThreatEntry} onClick={() => setFirstHallThreat(true)}>接续成人礼威胁与本人观察</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 40 && <SecondaryButton ref={hallExitResponseEntry} onClick={() => setFirstHallExitResponse(true)}>接续堂内移步与来年回应</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallApproach.stage >= 46 && <SecondaryButton ref={hallCheckoutEntry} onClick={() => setFirstHallCheckout(true)}>接续同卷管理者登记</SecondaryButton>}
+      {isVisible(state, 2) && task.firstHallGrant.stage === 7 && <SecondaryButton ref={hallTransmissionEntry} onClick={() => setFirstHallTransmission(true)}>接续实际额前传授与知识</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallScrollReview.stage === 9 && <SecondaryButton ref={hallGrantEntry} onClick={() => setFirstHallGrant(true)}>接续老师认可与使用条件</SecondaryButton>}
       {isVisible(state, 2) && task.firstHallTeacher.stage === 7 && <SecondaryButton ref={hallScrollReviewEntry} onClick={() => setFirstHallScrollReview(true)}>接续同卷翻看与求技</SecondaryButton>}
       {task.firstHallEvening.stage === 9 && <SecondaryButton ref={hallTeacherEntry} onClick={() => setFirstHallTeacher(true)}>接续房中老师现身与有限背景</SecondaryButton>}

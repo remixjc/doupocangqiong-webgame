@@ -1,0 +1,671 @@
+{
+  "version": "0.82.0",
+  "date": "2026-10-14",
+  "proof": {
+    "base": "4d178bcbe4d4868bc6bdad2b4424fe76208090aa",
+    "decoded": 368,
+    "native": [
+      {
+        "name": "transmissionMainBaseline",
+        "sha256": "d59b0c78cb64ee666b6fe2e34507869b88917c53d6a64f797cb5b91e67e6a044",
+        "stage": 0,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainRejected",
+        "sha256": "0d0e501932a732d9b20dee1c49b8808b7fd7da06ed14f5ff26f5557c6f645e30",
+        "stage": 0,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep1",
+        "sha256": "d7f6ae4da965c12a21aae1226f019768f98962839e0cf75c76c1771dd3765152",
+        "stage": 1,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep2",
+        "sha256": "94ef07663a16def714babfc371b49bbc43a22c8a8aa51bd31cc4471b4735800a",
+        "stage": 1,
+        "walk": 1,
+        "teacher": [
+          300,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep3",
+        "sha256": "33ddc3a4a710e7605263479d92b3b113654a7776547f3c61d15123cfdb30dfbe",
+        "stage": 1,
+        "walk": 2,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep4",
+        "sha256": "1be2a181e310d67251f162c37149c438ca8752d1bdd7134b0a3b2452d7501a27",
+        "stage": 2,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep5",
+        "sha256": "a11784f33f683f81276305545ef603bccf996246c54dfca00b0f16f9307c72ba",
+        "stage": 3,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep6",
+        "sha256": "7fa51e6440b423a08fa81f036b2ac2d9061c58c1c87857e013c485da808f5011",
+        "stage": 4,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep7",
+        "sha256": "16a6f6af7d3626d3a2356ed88eb1f54649a466781047165771720047d3730060",
+        "stage": 5,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainStep8",
+        "sha256": "326bd757983964fed7e81c8c94174bd4033f8ef7ef10c81e4d02f349075aba25",
+        "stage": 6,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMainAfterNavigation",
+        "sha256": "ca1c1a239106d3b5da7e719b07d46b81dd0b3222d3d46bd4ca24b55b5e43c0c4",
+        "stage": 6,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsBaseline",
+        "sha256": "28c5f0e3e2eff031254254f371e13e7ac9b71be73bdce2312a3eed8c6720f1c4",
+        "stage": 0,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep1",
+        "sha256": "4ab77435c772119a8ad12f7772436df1ae9f18fbe02c3e3aa5b7c1d0cd9aa586",
+        "stage": 1,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsRouteRejected",
+        "sha256": "6d3df961648b3805d1d50e207e5764cdfcc271991d3a21e7b463fe82fa1542d1",
+        "stage": 1,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep2",
+        "sha256": "5f95143dad66853ac4c662c9c741dfb924fa4845f553d35ee7dc18c3eac69650",
+        "stage": 1,
+        "walk": 1,
+        "teacher": [
+          300,
+          230
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep3",
+        "sha256": "57f75ee8432e5fa5eced628a1bbbc2a5fa90602d473669a01fc682ecc6e9819b",
+        "stage": 1,
+        "walk": 2,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep4",
+        "sha256": "adba8d95f7b4629c08fd219d17bb8c182f105537f609712f830dc01e20d6469c",
+        "stage": 2,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep5",
+        "sha256": "a4bacf6abe12143c135c372e867de11861b5212dbebee796122d857ccf9a4c32",
+        "stage": 3,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep6",
+        "sha256": "faaec1831330da2c5b9bab64a911cbfd35c229f8f47c2b3241ba4568e2ee5ed6",
+        "stage": 4,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep7",
+        "sha256": "53c9b0e97e07b54be60ec4d7b1d5e210edec7c537539e4acd7a89073e9e30e33",
+        "stage": 5,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionMaterialsStep8",
+        "sha256": "1716194f5d8dce0ab9875d3ec74720cda465210bf114e59a365fb49a3a25ed2a",
+        "stage": 6,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3,
+        "rawEqualsOfficial": true,
+        "onlyTransmissionAndKnowledgeBridgeChanged": true
+      },
+      {
+        "name": "transmissionIntactMigrated",
+        "sha256": "207e0f0b267caf65344a67535edd2e1b81e15efdf99c6a577f8df322225f86e4",
+        "entireStateEqual": true
+      }
+    ],
+    "oldSceneMarkup": {
+      "reviewOnlyHistoryCaptionAdded": true,
+      "grantOnlyHistoryCaptionAdded": true,
+      "firstTeacherEntireMarkupEqual": true
+    },
+    "budget": {
+      "initial": 491098,
+      "gzip": 164180,
+      "total": 1848395,
+      "limits": [
+        500000,
+        165000,
+        1850000
+      ]
+    }
+  },
+  "browser": {
+    "observations": [
+      {
+        "branch": "Main",
+        "index": 1,
+        "title": "本人闭眼凝神",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 走近额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 原位睁眼\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 0/6 · 路步 0/0 · 额前传授 · 未参与\n  - heading \"本人闭眼凝神\" [level=3]\n  - paragraph: 听清条件后，本人闭眼凝神，留在原位等待。老师尚未点触额前。\n  - paragraph: 当前人物正确。\n  - button \"本人闭眼凝神 · 尚未接收知识\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用\n\n老师沿额前路线向左走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用\n\n老师沿额前路线向左走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(340 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用</p><p>老师沿额前路线向左走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(340 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用</p><p>老师沿额前路线向左走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 1,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Main",
+        "index": 2,
+        "title": "老师独立路步",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\"\n  - button \"额前老师操作\" [active] [pressed]\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 走近额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用\n  - paragraph: 老师沿额前路线向左走；本人原位。\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用\n\n老师沿额前路线向下走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用\n\n老师沿额前路线向下走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用</p><p>老师沿额前路线向下走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用</p><p>老师沿额前路线向下走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 1,
+        "walk": 1,
+        "teacher": [
+          300,
+          230
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Main",
+        "index": 3,
+        "title": "老师独立路步",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\"\n  - button \"额前老师操作\" [active] [pressed]\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 走近额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用\n  - paragraph: 老师沿额前路线向下走；本人原位。\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用\n\n老师轻点额前\n\n老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。\n\n请明确选择本步人物。\n\n老师轻点额前 · 点触单独保存\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用\n\n老师轻点额前\n\n老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。\n\n请明确选择本步人物。\n\n老师轻点额前 · 点触单独保存\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用</p><section class=\"bond-summary\"><h3>老师轻点额前</h3><p>老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师轻点额前 · 点触单独保存</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用</p><section class=\"bond-summary\"><h3>老师轻点额前</h3><p>老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师轻点额前 · 点触单独保存</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 1,
+        "walk": 2,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Main",
+        "index": 4,
+        "title": "老师轻点额前",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\"\n  - button \"额前老师操作\" [active] [pressed]\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用\n  - heading \"老师轻点额前\" [level=3]\n  - paragraph: 老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。\n  - paragraph: 当前人物正确。\n  - button \"老师轻点额前 · 点触单独保存\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用\n\n技法信息进入\n\n额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。\n\n当前人物正确。\n\n本人记录信息进入 · 不签使用成功\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用\n\n技法信息进入\n\n额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。\n\n当前人物正确。\n\n本人记录信息进入 · 不签使用成功\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>技法信息进入</h3><p>额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。</p><p>当前人物正确。</p><button class=\"primary\">本人记录信息进入 · 不签使用成功</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>技法信息进入</h3><p>额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。</p><p>当前人物正确。</p><button class=\"primary\">本人记录信息进入 · 不签使用成功</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 2,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Main",
+        "index": 5,
+        "title": "技法信息进入",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用\n  - heading \"技法信息进入\" [level=3]\n  - paragraph: 额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。\n  - paragraph: 当前人物正确。\n  - button \"本人记录信息进入 · 不签使用成功\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用\n\n本人恢复神思\n\n本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。\n\n当前人物正确。\n\n本人恢复并睁眼\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用\n\n本人恢复神思\n\n本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。\n\n当前人物正确。\n\n本人恢复并睁眼\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>本人恢复神思</h3><p>本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。</p><p>当前人物正确。</p><button class=\"primary\">本人恢复并睁眼</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>本人恢复神思</h3><p>本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。</p><p>当前人物正确。</p><button class=\"primary\">本人恢复并睁眼</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 3,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Materials",
+        "index": 1,
+        "title": "本人闭眼凝神",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 走近额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 原位睁眼\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 0/6 · 路步 0/0 · 额前传授 · 未参与\n  - heading \"本人闭眼凝神\" [level=3]\n  - paragraph: 听清条件后，本人闭眼凝神，留在原位等待。老师尚未点触额前。\n  - paragraph: 当前人物正确。\n  - button \"本人闭眼凝神 · 尚未接收知识\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用\n\n老师沿额前路线向左走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用\n\n老师沿额前路线向左走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(340 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用</p><p>老师沿额前路线向左走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(340 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用</p><p>老师沿额前路线向左走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 1,
+        "walk": 0,
+        "teacher": [
+          340,
+          230
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Main",
+        "index": 6,
+        "title": "本人恢复神思",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用\n  - heading \"本人恢复神思\" [level=3]\n  - paragraph: 本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。\n  - paragraph: 当前人物正确。\n  - button \"本人恢复并睁眼\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用\n\n阅读八极崩说明\n\n玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。\n\n当前人物正确。\n\n本人阅读说明 · 熟练与身体要求待续\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用\n\n阅读八极崩说明\n\n玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。\n\n当前人物正确。\n\n本人阅读说明 · 熟练与身体要求待续\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>阅读八极崩说明</h3><p>玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。</p><p>当前人物正确。</p><button class=\"primary\">本人阅读说明 · 熟练与身体要求待续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>阅读八极崩说明</h3><p>玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。</p><p>当前人物正确。</p><button class=\"primary\">本人阅读说明 · 熟练与身体要求待续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 4,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Main",
+        "index": 7,
+        "title": "阅读八极崩说明",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 原位睁眼\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用\n  - heading \"阅读八极崩说明\" [level=3]\n  - paragraph: 玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。\n  - paragraph: 当前人物正确。\n  - button \"本人阅读说明 · 熟练与身体要求待续\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用\n\n额前传授归档\n\n凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。\n\n当前人物正确。\n\n归档知识传授 · 身体问答另续\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用\n\n额前传授归档\n\n凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。\n\n当前人物正确。\n\n归档知识传授 · 身体问答另续\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>额前传授归档</h3><p>凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。</p><p>当前人物正确。</p><button class=\"primary\">归档知识传授 · 身体问答另续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>额前传授归档</h3><p>凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。</p><p>当前人物正确。</p><button class=\"primary\">归档知识传授 · 身体问答另续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 5,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Main",
+        "index": 8,
+        "title": "额前传授归档",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 原位睁眼\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用\n  - heading \"额前传授归档\" [level=3]\n  - paragraph: 凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。\n  - paragraph: 当前人物正确。\n  - button \"归档知识传授 · 身体问答另续\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续\n\n知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。\n\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续\n\n知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。\n\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续</p><p>知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续</p><p>知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 6,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Materials",
+        "index": 2,
+        "title": "老师独立路步",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\"\n  - button \"额前老师操作\" [active] [pressed]\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 走近额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 1/6 · 路步 0/2 · 额前传授 · 步骤1/6，路步0，尚未使用\n  - paragraph: 老师沿额前路线向左走；本人原位。\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用\n\n老师沿额前路线向下走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 走近额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用\n\n老师沿额前路线向下走；本人原位。\n\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用</p><p>老师沿额前路线向下走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 230)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 走近额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用</p><p>老师沿额前路线向下走；本人原位。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 1,
+        "walk": 1,
+        "teacher": [
+          300,
+          230
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Materials",
+        "index": 3,
+        "title": "老师独立路步",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\"\n  - button \"额前老师操作\" [active] [pressed]\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 走近额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 1/6 · 路步 1/2 · 额前传授 · 步骤1/6，路步1，尚未使用\n  - paragraph: 老师沿额前路线向下走；本人原位。\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用\n\n老师轻点额前\n\n老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。\n\n请明确选择本步人物。\n\n老师轻点额前 · 点触单独保存\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用\n\n老师轻点额前\n\n老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。\n\n请明确选择本步人物。\n\n老师轻点额前 · 点触单独保存\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用</p><section class=\"bond-summary\"><h3>老师轻点额前</h3><p>老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师轻点额前 · 点触单独保存</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用</p><section class=\"bond-summary\"><h3>老师轻点额前</h3><p>老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师轻点额前 · 点触单独保存</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 1,
+        "walk": 2,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Materials",
+        "index": 4,
+        "title": "老师轻点额前",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\"\n  - button \"额前老师操作\" [active] [pressed]\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 1/6 · 路步 2/2 · 额前传授 · 步骤1/6，路步2，尚未使用\n  - heading \"老师轻点额前\" [level=3]\n  - paragraph: 老师已走到本人额前，伸指轻点。点触与随后知识进入分别记录。\n  - paragraph: 当前人物正确。\n  - button \"老师轻点额前 · 点触单独保存\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用\n\n技法信息进入\n\n额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。\n\n当前人物正确。\n\n本人记录信息进入 · 不签使用成功\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用\n\n技法信息进入\n\n额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。\n\n当前人物正确。\n\n本人记录信息进入 · 不签使用成功\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>技法信息进入</h3><p>额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。</p><p>当前人物正确。</p><button class=\"primary\">本人记录信息进入 · 不签使用成功</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>技法信息进入</h3><p>额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。</p><p>当前人物正确。</p><button class=\"primary\">本人记录信息进入 · 不签使用成功</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 2,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 2
+      },
+      {
+        "branch": "Materials",
+        "index": 5,
+        "title": "技法信息进入",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 2/6 · 路步 0/0 · 额前传授 · 步骤2/6，路步0，尚未使用\n  - heading \"技法信息进入\" [level=3]\n  - paragraph: 额前微有不适，关于八极崩的一段技法信息进入意识。收到知识仍需恢复、阅读与训练。\n  - paragraph: 当前人物正确。\n  - button \"本人记录信息进入 · 不签使用成功\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用\n\n本人恢复神思\n\n本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。\n\n当前人物正确。\n\n本人恢复并睁眼\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 闭眼凝神\n\n额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用\n\n本人恢复神思\n\n本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。\n\n当前人物正确。\n\n本人恢复并睁眼\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>本人恢复神思</h3><p>本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。</p><p>当前人物正确。</p><button class=\"primary\">本人恢复并睁眼</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 闭眼凝神</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>本人恢复神思</h3><p>本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。</p><p>当前人物正确。</p><button class=\"primary\">本人恢复并睁眼</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 3,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Materials",
+        "index": 6,
+        "title": "本人恢复神思",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 闭眼凝神\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 3/6 · 路步 0/0 · 额前传授 · 步骤3/6，路步0，尚未使用\n  - heading \"本人恢复神思\" [level=3]\n  - paragraph: 本人逐渐缓过神，睁开眼睛。尚未将新信息读作熟练掌握。\n  - paragraph: 当前人物正确。\n  - button \"本人恢复并睁眼\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用\n\n阅读八极崩说明\n\n玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。\n\n当前人物正确。\n\n本人阅读说明 · 熟练与身体要求待续\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用\n\n阅读八极崩说明\n\n玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。\n\n当前人物正确。\n\n本人阅读说明 · 熟练与身体要求待续\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>阅读八极崩说明</h3><p>玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。</p><p>当前人物正确。</p><button class=\"primary\">本人阅读说明 · 熟练与身体要求待续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>阅读八极崩说明</h3><p>玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。</p><p>当前人物正确。</p><button class=\"primary\">本人阅读说明 · 熟练与身体要求待续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 4,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Materials",
+        "index": 7,
+        "title": "阅读八极崩说明",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 原位睁眼\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 4/6 · 路步 0/0 · 额前传授 · 步骤4/6，路步0，尚未使用\n  - heading \"阅读八极崩说明\" [level=3]\n  - paragraph: 玄阶高级的近身斗技。说明称练至熟练时可叠加八重劲力，攻击可比地阶低级；这是技法描述，当前没有这些熟练度或伤害。\n  - paragraph: 当前人物正确。\n  - button \"本人阅读说明 · 熟练与身体要求待续\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用\n\n额前传授归档\n\n凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。\n\n当前人物正确。\n\n归档知识传授 · 身体问答另续\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用\n\n额前传授归档\n\n凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。\n\n当前人物正确。\n\n归档知识传授 · 身体问答另续\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>额前传授归档</h3><p>凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。</p><p>当前人物正确。</p><button class=\"primary\">归档知识传授 · 身体问答另续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用</p><section class=\"bond-summary\"><h3>额前传授归档</h3><p>凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。</p><p>当前人物正确。</p><button class=\"primary\">归档知识传授 · 身体问答另续</button></section><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 5,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      },
+      {
+        "branch": "Materials",
+        "index": 8,
+        "title": "额前传授归档",
+        "beforeAction": "- banner:\n  - button \"炎 斗破苍穹 异 火 之 路\":\n    - generic: 炎\n    - text: 斗破苍穹\n    - generic: 异 火 之 路\n  - navigation \"主导航\":\n    - button \"启程\"\n    - button \"大陆舆图\"\n    - button \"修炼手札\"\n    - button \"伙伴手札\"\n  - generic: 浏览器单机 · 章节式冒险\n  - status: 自动存档 · 当前旅途已读取\n  - button \"查看人物\": ◈\n  - button \"存档管理\": ▤\n  - button \"游戏设置\": ⚙\n- main:\n  - generic: 从乌坦城，走向斗气大陆\n  - heading \"以少年之名 赴异火之约。\" [level=1]:\n    - text: 以少年之名\n    - emphasis: 赴异火之约。\n  - paragraph:\n    - text: 一枚古戒，一位老师，一条不向命运低头的路。\n    - text: 探索山川，磨砺斗技，以掌中之火照亮新的旅途。\n  - button \"开始历练 ↗\":\n    - text: 开始历练\n    - generic: ↗\n  - button \"展开大陆舆图\"\n  - generic: \"28\"\n  - generic: 当前可玩篇章\n  - generic: 焚诀\n  - generic: 异火成长之路\n  - generic: 纯网页\n  - generic: 无需安装客户端\n  - complementary:\n    - generic: 万 火 归 一\n    - generic: 斗气大陆 · 故事改编\n  - generic: 原创短对白 · 程序绘制场景 · 单机冒险\n  - generic: 漫长的旅途，从此刻开始。\n- dialog \"重修往事\":\n  - button \"关闭\": ×\n  - generic: 房中 / 额前实际传授\n  - heading \"先凝神，再逐步接收技法知识。\" [level=2]\n  - paragraph: 本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n  - button \"原位本人操作\" [active] [pressed]\n  - button \"额前老师操作\"\n  - button \"额前老师向上走\": ↑\n  - button \"额前老师向左走\": ←\n  - button \"额前老师向下走\": ↓\n  - button \"额前老师向右走\": →\n  - group \"额前实际传授地图\":\n    - generic \"本人房门closed\"\n    - generic: 身旁桌\n    - generic \"茶已饮\"\n    - generic: 薰儿已在院中分路\n    - generic \"额前老师独立位置\":\n      - generic: 药老 · 额前\n    - generic \"接受传授本人固定位置\":\n      - generic: 本人 · 原位睁眼\n    - generic \"传授时同一第二借卷留桌\"\n  - status: 额前传授 5/6 · 路步 0/0 · 额前传授 · 步骤5/6，路步0，尚未使用\n  - heading \"额前传授归档\" [level=3]\n  - paragraph: 凝神、老师走近、点触、接收、恢复与读说明已分别记录。身体是否适合使用，仍需继续问老师。\n  - paragraph: 当前人物正确。\n  - button \"归档知识传授 · 身体问答另续\"\n  - button \"暂离额前传授 · 保留断点\"",
+        "before": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续\n\n知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。\n\n暂离额前传授 · 保留断点",
+        "after": "×\n房中 / 额前实际传授\n先凝神，再逐步接收技法知识。\n\n本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。\n\n原位本人操作\n额前老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 额前\n本人 · 原位睁眼\n\n额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续\n\n知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。\n\n暂离额前传授 · 保留断点",
+        "wholeTextEqual": true,
+        "beforeHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续</p><p>知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "afterHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 额前实际传授</span><h2>先凝神，再逐步接收技法知识。</h2><p>本人先在原位闭眼，老师再沿左、下两步走近额前；按E或动作按钮分别记录点触、信息进入、恢复与读说明。位置、路线与短对白为原创。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">原位本人操作</button><button class=\"secondary\" aria-pressed=\"false\">额前老师操作</button><button class=\"secondary\" aria-label=\"额前老师向上走\">↑</button><button class=\"secondary\" aria-label=\"额前老师向左走\">←</button><button class=\"secondary\" aria-label=\"额前老师向下走\">↓</button><button class=\"secondary\" aria-label=\"额前老师向右走\">→</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"额前实际传授地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><path d=\"M340 230 H300 V250\" fill=\"none\" stroke=\"#bfa46a\" stroke-dasharray=\"5 4\"></path><g aria-label=\"额前老师独立位置\" transform=\"translate(300 250)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-24\">药老 · 额前</text></g><g aria-label=\"接受传授本人固定位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 原位睁眼</text></g><rect aria-label=\"传授时同一第二借卷留桌\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">额前传授 6/6 · 路步 0/0 · 额前传授 · 知识归档，身体问答待续</p><p>知识传授已归档。技法描述不代表当前熟练或身体合格，使用与训练仍需继续。</p><button class=\"secondary\">暂离额前传授 · 保留断点</button></section>",
+        "wholeMarkupEqual": true,
+        "stage": 6,
+        "walk": 0,
+        "teacher": [
+          300,
+          250
+        ],
+        "teaching": 3
+      }
+    ],
+    "wrongPersonBeforeFocusEntireStateEqual": true,
+    "routeSkipEWrongDirectionModifierWholeMarkupAndStateEqual": true,
+    "completedNoChange": true,
+    "backFocus": "接续实际额前传授与知识",
+    "reopenWholeMarkupEqual": true,
+    "oldScenes": {
+      "grantOnlyHistoryNote": true,
+      "reviewOnlyHistoryNote": true,
+      "transOldGrantText": "×\n房中 / 认可与使用条件\n先听认可与条件，再准备接受传授。\n\n明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。\n\n此图回顾当时认可条件，老师后续额前位置另存。\n\n房中本人操作\n观察房中老师\n身旁桌\n薰儿已在院中分路\n药老 · 虚幻身影\n本人 · 振作好奇\n\n认可条件 7/7 · 认可条件 · 问答归档，额前传授待续\n\n认可与条件已归档。五段仅为使用条件；额前传授、身体要求与训练另续。\n\n暂离认可条件 · 保留断点",
+      "transOldReviewText": "×\n房中 / 翻同一借卷与求技\n老师走向桌边，本人说出眼前所需。\n\n先选择老师，方向键/WASD或方向按钮逐步走到桌边，再按E或动作按钮。位置、路线与短对白为原创。\n\n此图回顾当时桌边求技，老师后续额前位置另存。\n\n疲惫本人操作\n桌边老师操作\n↑\n←\n↓\n→\n身旁桌\n薰儿已在院中分路\n药老 · 桌边\n本人 · 疲惫原位\n同卷已翻看\n\n同卷求技 9/9 · 路步 0/0 · 同卷求技 · 翻卷与请求归档，正式传技待续\n\n翻同卷与请求已归档。未来赠技只是条件；尚未正式传技或改变身体境界。\n\n暂离同卷求技 · 保留断点",
+      "transOldGrantTeacher": "translate(340 230)",
+      "transOldReviewTeacher": "translate(340 230)",
+      "firstTeacherEntireMarkupEqual": true,
+      "transOldTeacherHTML": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">房中 / 老声与有限背景</span><h2>抬头辨认老师，再问眼前的一点。</h2><p>明确选择本步人物，按E或动作按钮逐步保存。本人疲惫留在椅边，同一借卷留桌。短对白与位置为原创。</p><p>此图回顾当时房中问答，老师后续桌边位置另存。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">房中本人操作</button><button class=\"secondary\" aria-pressed=\"false\">观察房中老师</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"老师现身与有限背景地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#111e27\"></rect><path d=\"M160 120 H420 V300 H160Z\" fill=\"#3b3931\" stroke=\"#bfa46a\"></path><rect x=\"195\" y=\"294\" width=\"50\" height=\"12\" fill=\"#856644\" aria-label=\"本人房门closed\"></rect><rect x=\"315\" y=\"245\" width=\"65\" height=\"40\" fill=\"#856644\"></rect><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"355\" y=\"233\">身旁桌</text><circle cx=\"360\" cy=\"268\" r=\"7\" fill=\"#bfa46a\" aria-label=\"茶已饮\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" x=\"220\" y=\"335\">薰儿已在院中分路</text><g aria-label=\"老师房中独立位置\" transform=\"translate(260 190)\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dfded2\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#98b0b4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">药老 · 虚幻身影</text></g><g aria-label=\"房中本人独立位置\" transform=\"translate(300 270)\"><path d=\"M-11 14 L-6-5 H6 L11 14Z\" fill=\"#d3a567\"></path><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"28\">本人 · 疲惫抬头</text></g><rect aria-label=\"房中同一第二借卷仍在桌上\" x=\"320\" y=\"255\" width=\"9\" height=\"15\" fill=\"#415849\" stroke=\"#bfa46a\"></rect></svg><p role=\"status\">房中问答 7/7 · 房中问答 · 有限答复归档，同卷留桌</p><p>有限背景已归档。老师未走向桌面、未翻卷、未传新技。</p><button class=\"secondary\">暂离房中问答 · 保留断点</button></section>",
+      "nightWholeTextEqual": true,
+      "afternoonWholeTextEqual": true,
+      "transOldAfternoonPositions": [
+        {
+          "label": "午后薰儿位置",
+          "transform": "translate(325 120)"
+        },
+        {
+          "label": "午后本人位置",
+          "transform": "translate(300 150)"
+        }
+      ]
+    },
+    "intact": {
+      "entry": 0,
+      "alerts": 0,
+      "title": "斗破苍穹 · 异火之路"
+    },
+    "errors": [
+      [],
+      [],
+      []
+    ],
+    "screenshot": "docs/qa/c1h-transmission.png"
+  },
+  "checks": {
+    "command": "pnpm check",
+    "vitestFiles": 159,
+    "vitestTests": 938,
+    "nodeTests": 11,
+    "type": true,
+    "production": true,
+    "allThreeDifficultiesEarlyAnd28": true,
+    "fourSlotsAndPreviousAuto": true
+  },
+  "openGates": [
+    "身体限制与增强问答",
+    "实际外力训练",
+    "中文正版与当前动画",
+    "完整人物与其他来源",
+    "51实际登记离阁",
+    "1277身体毒",
+    "历史回退根因与死亡末帧",
+    "真实设备与玩家Beta",
+    "素材授权",
+    "公网发行回滚"
+  ]
+}
