@@ -50,16 +50,12 @@ import { EARLY_CITY_PHARMACY_VERSION } from './early-city-pharmacy-state'
 import { EARLY_MARKET_ESCORT_VERSION } from './early-market-escort-state'
 import { EARLY_MARKET_SEARCH_VERSION } from './early-market-search-state'
 import { EARLY_MARKET_BRACELETS_VERSION } from './early-market-bracelets-state'
+import { NewerSaveVersionError } from './save-errors'
+import { serializeSave } from './save-serialize'
+export { NewerSaveVersionError } from './save-errors'
+export { serializeSave } from './save-serialize'
 
 export interface SaveRecord { slot: number; savedAt: number; text: string }
-export class NewerSaveVersionError extends Error {
-  constructor(protectedAutomatic = false) {
-    super(protectedAutomatic
-      ? '这是较新版本的存档，请先更新游戏。原有自动档已保护，本版本不会覆盖它；当前旅途可导出JSON备份。'
-      : '这是较新版本的存档，请先更新游戏。原有存档没有被修改。')
-    this.name = 'NewerSaveVersionError'
-  }
-}
 function record(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('存档结构无效。')
   return value as Record<string, unknown>
@@ -388,9 +384,6 @@ export function validateState(value: unknown): GameState {
   requireHistoryVersion(approach, 53, FIRST_HALL_AFTERMATH_VERSION, '离堂后萧宁反应')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
   return s
-}
-export function serializeSave(state: GameState): string {
-  return JSON.stringify({ game: 'doupocangqiong-webgame', savedAt: Date.now(), state }, null, 2)
 }
 export function parseSave(text: string): GameState {
   if (text.length > 1_000_000) throw new Error('存档超过 1 MB 限制。')

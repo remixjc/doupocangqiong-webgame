@@ -7,7 +7,7 @@ import { advanceEvent, type EventAction } from './events'
 import { mapForChapter } from '../content/maps'
 import { AutoSaveQueue } from './autosave'
 import { beginEarlyTraining, advanceEarlyTraining, type EarlyTrainingAction } from './early-training'
-import { NewerSaveVersionError } from './save'
+import { NewerSaveVersionError } from './save-errors'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)

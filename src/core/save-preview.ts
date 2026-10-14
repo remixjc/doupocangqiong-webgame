@@ -6,7 +6,8 @@ const notRecalled = '未回看'
 import { chapterById } from '../content/chapters'
 import type { GameState, Settings } from './model'
 import { bondSaveSummary } from './bonds'
-import { NewerSaveVersionError, parseSave, type SaveRecord } from './save'
+import { parseSave, type SaveRecord } from './save'
+import { NewerSaveVersionError } from './save-errors'
 
 function earlySummarySealed(viewing: Settings, chapter: number): boolean {
   return viewing.spoiler === 'anime' && viewing.animeLimit < chapter

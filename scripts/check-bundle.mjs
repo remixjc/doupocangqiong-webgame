@@ -32,6 +32,10 @@ export function deferredAssetFailures(manifest, paths) {
     return initial.has(item.file) ? [`Module must remain outside the initial static dependency graph: ${path}`] : []
   })
 }
+export function deferredNamedAssetFailures(manifest, name) {
+  const keys = Object.keys(manifest).filter(key => manifest[key].name === name)
+  return keys.length === 1 ? deferredAssetFailures(manifest, keys) : [`Expected one deferred ${name} implementation chunk`]
+}
 async function main() {
   const root = fileURLToPath(new URL('../', import.meta.url)), dist = resolve(root, 'dist')
   const manifest = JSON.parse(await readFile(resolve(dist, '.vite/manifest.json'), 'utf8'))
@@ -55,7 +59,8 @@ async function main() {
   await writeFile(resolve(dist, 'bundle-report.json'), JSON.stringify(report, null, 2) + '\n')
   const failures = [...budgetFailures(report, budgets),
     ...deferredAssetFailures(manifest, ['src/ui/Panels.tsx', 'src/ui/GameView.tsx', 'src/ui/SavesPanel.tsx',
-      'src/ui/TouchControls.tsx', 'src/ui/RouteControls.tsx'])]
+      'src/ui/TouchControls.tsx', 'src/ui/RouteControls.tsx']),
+    ...deferredNamedAssetFailures(manifest, 'save')]
   if (failures.length) throw new Error(`Bundle budget exceeded:\n${failures.join('\n')}`)
   console.log(`Bundle check: entry ${report.initialJsBytes} bytes / gzip ${report.initialJsGzipBytes}; engine gzip ${report.engineGzipBytes}; total JS ${report.totalJsBytes}; engine lazy=${report.engineLazy}`)
 }

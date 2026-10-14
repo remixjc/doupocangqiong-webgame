@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { spawnSync } from 'node:child_process'
-import { budgetFailures, initialAssets, deferredAssetFailures } from './check-bundle.mjs'
+import { budgetFailures, initialAssets, deferredAssetFailures, deferredNamedAssetFailures } from './check-bundle.mjs'
 import { createReleaseManifest } from './write-release-manifest.mjs'
 import { requiredReleaseFiles } from './release-files.mjs'
 
@@ -54,6 +54,17 @@ test('release manifest binds package, bundle and migration contract', () => {
   assert.equal(manifest.migration.olderSaves.includes('schema 1/2'), true)
   assert.throws(() => createReleaseManifest({ version: '0.37.2' }, { version: '0.37.1', engineLazy: true }, 'unknown'), /does not match/)
   assert.throws(() => createReleaseManifest({ version: '0.37.1' }, { version: '0.37.1', engineLazy: false }, 'unknown'), /lazy Phaser/)
+})
+test('save implementation must exist once and remain outside the initial static graph with a generated manifest alias', () => {
+  const manifest = {
+    entry: { isEntry: true, file: 'entry.js', dynamicImports: ['_save-hash.js'] },
+    '_save-hash.js': { name: 'save', file: 'assets/save-hash.js' },
+  }
+  assert.deepEqual(deferredNamedAssetFailures(manifest, 'save'), [])
+  assert.match(deferredNamedAssetFailures({ entry: manifest.entry }, 'save')[0], /Expected one deferred/)
+  assert.match(deferredNamedAssetFailures({ ...manifest, duplicate: manifest['_save-hash.js'] }, 'save')[0], /Expected one deferred/)
+  assert.match(deferredNamedAssetFailures({ ...manifest, entry: { ...manifest.entry, imports: ['_save-hash.js'] } }, 'save')[0],
+    /outside the initial static dependency graph/)
 })
 test('release manifest module imports without package or dist and only its CLI reads build output', () => {
   const directory = mkdtempSync(join(tmpdir(), 'doupo-manifest-import-'))

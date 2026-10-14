@@ -1,0 +1,87 @@
+{
+  "version": "0.90.3",
+  "base": "c0cc0c9ab7486a4c8b455895e226729776449d89",
+  "tests": {
+    "vitestFiles": 170,
+    "vitestTests": 1000,
+    "nodeTests": 17
+  },
+  "migrations": 584,
+  "exactParserAndDatabaseSource": true,
+  "exactErrorAndSerializerSource": true,
+  "native": [
+    {
+      "name": "loadingMain",
+      "sha256": "f69f9561ac0f2c8ff12f7c91a55487b60668a10628586fa69107434c6361209d",
+      "onlyVersion": true,
+      "rawEqualsOfficial": true
+    },
+    {
+      "name": "loadingMaterials",
+      "sha256": "e90fcb3e5bb3619b3a8f1b21d4b3c83645af07c3997ed7cbf9f39e63eddad0e7",
+      "onlyVersion": true,
+      "rawEqualsOfficial": true
+    },
+    {
+      "name": "loadingDeadlineMain",
+      "sha256": "e64dff5ea757fc40cf75bcac983e029dd386bb085c573b77c1075d04a342c58b",
+      "onlyVersion": true,
+      "rawEqualsOfficial": true
+    },
+    {
+      "name": "loadingDeadlineMaterials",
+      "sha256": "27cf1ea6e12ef5c63a5d3784d0dd63bbb1f51c83c91c197183169af623d8d65f",
+      "onlyVersion": true,
+      "rawEqualsOfficial": true
+    }
+  ],
+  "browser": [
+    {
+      "name": "loadingMain",
+      "fullDialogEqual": true,
+      "errors": []
+    },
+    {
+      "name": "loadingMaterials",
+      "fullDialogEqual": true,
+      "errors": []
+    },
+    {
+      "name": "loadingDeadlineMain",
+      "fullDialogEqual": true,
+      "errors": []
+    },
+    {
+      "name": "loadingDeadlineMaterials",
+      "fullDialogEqual": true,
+      "errors": []
+    }
+  ],
+  "fault": {
+    "initialFetchFailed": true,
+    "recoveryVisible": true,
+    "backupRawEqualsOfficial": true,
+    "backupIsCurrentBlankState": true,
+    "expectedErrors": [
+      "TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4188/assets/SavesPanel-DHw7Zi9W.js"
+    ],
+    "sha256": "f55f755a3c88c44550677e825c57df06d557f4876d76bed33f28cd1e0650eb40",
+    "scope": "Fresh fault origin; existing-slot protection verified by fake-indexeddb tests, not seeded into browser"
+  },
+  "deferredSave": "assets/save-CNqqCdYH.js",
+  "budget": {
+    "initial": 478562,
+    "gzip": 159788,
+    "total": 1840960,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "boundaries": [
+    "Initialization still explicitly loads the deferred save implementation",
+    "No claim of fewer total startup requests or measured load-time gains",
+    "B/C gameplay and full-cycle gates still open"
+  ]
+}

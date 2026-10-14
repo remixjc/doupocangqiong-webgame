@@ -1,5 +1,5 @@
 import type { GameState } from '../core/model'
-import { serializeSave } from '../core/save'
+import { serializeSave } from '../core/save-serialize'
 
 interface DownloadLink {
   href: string
