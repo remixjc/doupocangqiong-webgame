@@ -2,7 +2,7 @@ import type { GameState } from './model'
 import { marketTradeLedger } from './early-market-trade'
 import { fieldsMatch } from './state-guards'
 
-const fields = { Transmission: 'firstHallTransmission', Grant: 'firstHallGrant', Teaching: 'teaching', ScrollReview: 'firstHallScrollReview', Teacher: 'firstHallTeacher', Evening: 'firstHallEvening', Afternoon: 'firstHallAfternoon', Approach: 'firstHallApproach', Talk: 'firstHallTalk', Reading: 'firstHallReading', Match: 'firstHallMatch', Entry: 'firstHallEntry', Meeting: 'firstRoadMeeting', Departure: 'firstDeparture',
+const fields = { Body: 'firstHallBody', Supervision: 'supervision', Transmission: 'firstHallTransmission', Grant: 'firstHallGrant', Teaching: 'teaching', ScrollReview: 'firstHallScrollReview', Teacher: 'firstHallTeacher', Evening: 'firstHallEvening', Afternoon: 'firstHallAfternoon', Approach: 'firstHallApproach', Talk: 'firstHallTalk', Reading: 'firstHallReading', Match: 'firstHallMatch', Entry: 'firstHallEntry', Meeting: 'firstRoadMeeting', Departure: 'firstDeparture',
   Technique: 'firstTechnique', Training: 'firstTraining', Iron: 'iron', Practice: 'practice',
   Recovery: 'recovery', Hall: 'hall' } as const
 export const hallSnapshotKeys = ['Entry', 'Meeting', 'Departure', 'Technique', 'Training', 'Iron', 'Ledger', 'Practice', 'Recovery', 'Hall'] as const
@@ -15,6 +15,7 @@ export const hallScrollReviewSnapshotKeys = [...hallTeacherSnapshotKeys, 'Teache
 export const hallGrantSnapshotKeys = [...hallScrollReviewSnapshotKeys, 'ScrollReview', 'Teaching'] as const
 export const hallTransmissionSnapshotKeys = [...hallGrantSnapshotKeys, 'Grant'] as const
 export const hallBodySnapshotKeys = [...hallTransmissionSnapshotKeys, 'Transmission'] as const
+export const externalTrainingSnapshotKeys = [...hallBodySnapshotKeys, 'Body', 'Supervision'] as const
 export function hasHallMode(action: object): boolean {
   const candidate = action as Record<string, unknown>
   return ['continuation', 'conflict', 'threat', 'exitResponse', 'checkout', 'leaving', 'aftermath'].some(key => candidate[key])

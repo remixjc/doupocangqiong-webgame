@@ -1,0 +1,1567 @@
+{
+  "base": "37b1434587145bf9f5b1274d366bc0283c13fa9f",
+  "version": "0.84.0",
+  "migrations": 421,
+  "native": [
+    {
+      "name": "externalTrainingMainBaseline",
+      "stage": 0,
+      "attempts": 0,
+      "record": "none",
+      "sha256": "8a9a796476903a29c599273307b45f47bc72498b8971974fe03a5cdc158d8708",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsBaseline",
+      "stage": 0,
+      "attempts": 0,
+      "record": "none",
+      "sha256": "89476275c360ef47f56bd9b731da690c502abe8681dd3408645b92efcd999f97",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainRejected",
+      "stage": 0,
+      "attempts": 0,
+      "record": "none",
+      "sha256": "8d66ba0d39b8bce885e6c735dbc6bf861d48f9073c222b89a597217a5dae46d4",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep1",
+      "stage": 1,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "19d7b0dd0e3136a14adcdcf13747294df0143d757bed7bf11bfe05bfe96c665a",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep2",
+      "stage": 2,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "973376cf59690ceb1bc27a4223e588ed3f7b2ec632541a079bf29487ed18d4ed",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep3",
+      "stage": 3,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "07dcdb7cf6a30fded2583f90dd4533b95f2bebbcee0378245cdfdbb77814eb53",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainRetry",
+      "stage": 3,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "1521e1ce0af9e422ddc8aba37d2d30b5587f7f34c30a1ac0c3f85c47c479a4ec",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep4",
+      "stage": 4,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "384c211dd8dcf3fdea5981ed33902b6a0bbaf8b53d9b06e862b03c013c035455",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep5",
+      "stage": 5,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "4ad6ee214341c8e2418a9f961cd9c7b2d6e549f3d9e75389af8ff05fb4b94ad0",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep6",
+      "stage": 6,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "1ec10690f0f664d60c70a1a929cdf1fef30c9da3c39434b393970a362f4f169d",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep7",
+      "stage": 7,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "b05cf9cfa7c4ad502a554f32cb42cb74665e5e9776dcf3e66f16f53fee4f943a",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep8",
+      "stage": 8,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "fcfbcd36e1c1df184b631139a9bcaf15c28483755d1cfa9e4e0f9ada916b0ab9",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep9",
+      "stage": 9,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "ab33e0ed4080b377fcb5c4d157d61acef21585995737f923a9d159adf2d1e9f7",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMainStep10",
+      "stage": 10,
+      "attempts": 1,
+      "record": "current",
+      "sha256": "b68cb3c92998f5622ce5fcc3844beae07808af49029b722b35ef5e3e9e45e7ef",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep1",
+      "stage": 1,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "31e55591f3337b9aa7176c16bcdbfae2953a38ec72bb2ea062cd0ffd741a2f89",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep2",
+      "stage": 2,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "d1846fdcdad14506658d1a58f23225c7eb6d8ea73355a812598e2e90d2c4bbfd",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep3",
+      "stage": 3,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "d00f93876f33028cb9d8a495a9f1bf1552b8b8a6fdb09eecdda43d2ef2db2d9f",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep4",
+      "stage": 4,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "9f7913aedb2251fb6412adc30f9eafa62f2b4a5ab98bb6ee9c5247887752e835",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep5",
+      "stage": 5,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "b605c57340e7751f0c7993803fe71d627b1e416dd4ffbb225cf6bb190e4423d2",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep6",
+      "stage": 6,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "67f286f3142d4edea127556c263ab91eeffd216e061dc509906b666b649b46f5",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep7",
+      "stage": 7,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "03d52c571c966d41f432d4484f71330e211df20bc8d565790707fd0aab3f17e9",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep8",
+      "stage": 8,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "857f645cdab914a734d62769bb386fd51518b5b33571fdb4001723b2e9b4f05a",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep9",
+      "stage": 9,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "e69e6e33f26fc648e61a6f3aa84cfc6c71fd43d54fbf93269d7e5f1782a70236",
+      "onlyNewRecordChanged": true
+    },
+    {
+      "name": "externalTrainingMaterialsStep10",
+      "stage": 10,
+      "attempts": 0,
+      "record": "current",
+      "sha256": "9bb691adec9698519a9bf424b03b3dc964783d05f52cd1ddc30a2b6674300c31",
+      "onlyNewRecordChanged": true
+    }
+  ],
+  "browserObservations": 24,
+  "production": {
+    "modules": 54,
+    "payloads": 57,
+    "rows": 782,
+    "matches": [
+      {
+        "file": "src/content/early-appraisal.ts",
+        "rows": 8,
+        "chunks": [
+          "early-appraisal-BPQ6PTiF.js"
+        ]
+      },
+      {
+        "file": "src/content/early-apprentice.ts",
+        "rows": 25,
+        "chunks": [
+          "EarlyApprentice-C4btpJd6.js"
+        ]
+      },
+      {
+        "file": "src/content/early-auction.ts",
+        "rows": 7,
+        "chunks": [
+          "early-auction-B20gMO-J.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremonial-test.ts",
+        "rows": 13,
+        "chunks": [
+          "early-ceremonial-test-BjkrJg6Z.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremony-guests.ts",
+        "rows": 12,
+        "chunks": [
+          "early-ceremony-guests-BeTfY-Q1.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ceremony-verdict.ts",
+        "rows": 16,
+        "chunks": [
+          "EarlyTrainingPanel-CwkJug1_.js"
+        ]
+      },
+      {
+        "file": "src/content/early-city-pharmacy.ts",
+        "rows": 15,
+        "chunks": [
+          "early-city-pharmacy-B7R8J5pL.js"
+        ]
+      },
+      {
+        "file": "src/content/early-eighth-training.ts",
+        "rows": 15,
+        "chunks": [
+          "early-eighth-training-C2HnHNw1.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-compensation.ts",
+        "rows": 15,
+        "chunks": [
+          "EarlyFamilyCompensation-AujfKTR5.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-contract.ts",
+        "rows": 33,
+        "chunks": [
+          "EarlyFamilyContract-DEFqnifp.js"
+        ]
+      },
+      {
+        "file": "src/content/early-family-visit.ts",
+        "rows": 17,
+        "chunks": [
+          "FamilyHallMap-Diy6HJ79.js"
+        ]
+      },
+      {
+        "file": "src/content/early-father-gift.ts",
+        "rows": 6,
+        "chunks": [
+          "early-father-gift-B7GJCOy0.js"
+        ]
+      },
+      {
+        "file": "src/content/early-forest-strike.ts",
+        "rows": 7,
+        "chunks": [
+          "early-forest-strike-D3vAxRRG.js"
+        ]
+      },
+      {
+        "file": "src/content/early-hall.ts",
+        "rows": 8,
+        "chunks": [
+          "EarlyTrainingPanel-CwkJug1_.js"
+        ]
+      },
+      {
+        "file": "src/content/early-iron.ts",
+        "rows": 18,
+        "chunks": [
+          "early-iron-DrunJIt_.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ke-challenge.ts",
+        "rows": 12,
+        "chunks": [
+          "early-ke-challenge-Cse8F2dG.js"
+        ]
+      },
+      {
+        "file": "src/content/early-long-supplies.ts",
+        "rows": 6,
+        "chunks": [
+          "early-long-supplies-CLuyVj9X.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-bracelets.ts",
+        "rows": 28,
+        "chunks": [
+          "EarlyMarketBracelets-BKavQsal.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-discovery.ts",
+        "rows": 10,
+        "chunks": [
+          "early-market-trade-DYzDzmRg.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-escort.ts",
+        "rows": 24,
+        "chunks": [
+          "EarlyMarketEscort-1JuQF6dN.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-return.ts",
+        "rows": 9,
+        "chunks": [
+          "EarlyMarketDiscovery-CL5OZRgN.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-search.ts",
+        "rows": 20,
+        "chunks": [
+          "early-market-search-BiEmWux_.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-standoff.ts",
+        "rows": 34,
+        "chunks": [
+          "EarlyMarketStandoff-BrVdjXZ4.js"
+        ]
+      },
+      {
+        "file": "src/content/early-market-trade.ts",
+        "rows": 17,
+        "chunks": [
+          "early-market-trade-DYzDzmRg.js"
+        ]
+      },
+      {
+        "file": "src/content/early-method-discussion.ts",
+        "rows": 28,
+        "chunks": [
+          "EarlyMethodDiscussion-Dxvs4K4o.js"
+        ]
+      },
+      {
+        "file": "src/content/early-morning-card.ts",
+        "rows": 14,
+        "chunks": [
+          "EarlyMorningCard-D_wnrOo5.js"
+        ]
+      },
+      {
+        "file": "src/content/early-mountain-ring.ts",
+        "rows": 21,
+        "chunks": [
+          "MountainWalkMap-XfbT0uqS.js"
+        ]
+      },
+      {
+        "file": "src/content/early-mountain-visitor.ts",
+        "rows": 26,
+        "chunks": [
+          "EarlyMountainVisitor-CnNLwCe7.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ning-first.ts",
+        "rows": 10,
+        "chunks": [
+          "early-ning-first-DWqR79Iu.js"
+        ]
+      },
+      {
+        "file": "src/content/early-ning-second.ts",
+        "rows": 8,
+        "chunks": [
+          "early-ning-second-D96cIOcF.js"
+        ]
+      },
+      {
+        "file": "src/content/early-palm-pair.ts",
+        "rows": 10,
+        "chunks": [
+          "early-palm-pair-CO9OYofY.js"
+        ]
+      },
+      {
+        "file": "src/content/early-preliminary.ts",
+        "rows": 16,
+        "chunks": [
+          "early-preliminary-Dmv6EYIl.js"
+        ]
+      },
+      {
+        "file": "src/content/early-preparation-brief.ts",
+        "rows": 20,
+        "chunks": [
+          "EarlyPreparationBrief-DJ6vrSwR.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-aid.ts",
+        "rows": 10,
+        "chunks": [
+          "EarlyQiAid-BEqRqPOv.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-barrier.ts",
+        "rows": 10,
+        "chunks": [
+          "EarlyQiBarrier-YkqfWSBO.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-exchange.ts",
+        "rows": 8,
+        "chunks": [
+          "EarlyQiExchange-SrqtRHwD.js"
+        ]
+      },
+      {
+        "file": "src/content/early-qi-pavilion.ts",
+        "rows": 12,
+        "chunks": [
+          "early-qi-pavilion-CX51_i93.js"
+        ]
+      },
+      {
+        "file": "src/content/early-recovery.ts",
+        "rows": 7,
+        "chunks": [
+          "early-recovery-BD96iSfT.js"
+        ]
+      },
+      {
+        "file": "src/content/early-refining.ts",
+        "rows": 22,
+        "chunks": [
+          "early-refining-oFYSLL1T.js"
+        ]
+      },
+      {
+        "file": "src/content/early-settlement.ts",
+        "rows": 7,
+        "chunks": [
+          "early-settlement-C_F2ge13.js"
+        ]
+      },
+      {
+        "file": "src/content/early-xuner-visit.ts",
+        "rows": 7,
+        "chunks": [
+          "early-xuner-visit-BVIkyjlk.js"
+        ]
+      },
+      {
+        "file": "src/content/first-bottle.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstTechnique-BqNpFWtP.js"
+        ]
+      },
+      {
+        "file": "src/content/first-departure.ts",
+        "rows": 9,
+        "chunks": [
+          "FirstDeparture-BQmh1n6n.js"
+        ]
+      },
+      {
+        "file": "src/content/first-external-training.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstExternalTraining-cJhR-f55.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 14,
+        "chunks": [
+          "first-hall-approach-F4t93OAE.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 12,
+        "chunks": [
+          "first-hall-approach-F4t93OAE.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 9,
+        "chunks": [
+          "first-hall-approach-F4t93OAE.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-approach.ts",
+        "rows": 6,
+        "chunks": [
+          "first-hall-approach-F4t93OAE.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-body.ts",
+        "rows": 7,
+        "chunks": [
+          "first-hall-body-C6QbFfcC.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-entry.ts",
+        "rows": 9,
+        "chunks": [
+          "first-hall-entry-BcS321Tk.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-match.ts",
+        "rows": 20,
+        "chunks": [
+          "first-hall-match-DB_ceHmV.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-reading.ts",
+        "rows": 8,
+        "chunks": [
+          "first-hall-reading-WriGz27_.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-talk.ts",
+        "rows": 20,
+        "chunks": [
+          "first-hall-talk-CKjeZyqZ.js"
+        ]
+      },
+      {
+        "file": "src/content/first-hall-transmission.ts",
+        "rows": 6,
+        "chunks": [
+          "first-hall-transmission-afsVyttY.js"
+        ]
+      },
+      {
+        "file": "src/content/first-road-meeting.ts",
+        "rows": 12,
+        "chunks": [
+          "first-road-meeting-BRgW_DlZ.js"
+        ]
+      },
+      {
+        "file": "src/content/first-technique.ts",
+        "rows": 9,
+        "chunks": [
+          "FirstTechnique-BqNpFWtP.js"
+        ]
+      },
+      {
+        "file": "src/content/first-training.ts",
+        "rows": 10,
+        "chunks": [
+          "FirstTraining--3CAEskL.js"
+        ]
+      }
+    ]
+  },
+  "bundle": {
+    "version": "0.84.0",
+    "initialJsBytes": 493039,
+    "initialJsGzipBytes": 164757,
+    "totalJsBytes": 1817405,
+    "engineGzipBytes": 156003,
+    "engineLazy": true,
+    "files": [
+      {
+        "file": "assets/FamilyHallMap-Diy6HJ79.js",
+        "bytes": 7834,
+        "gzip": 5023,
+        "initial": false
+      },
+      {
+        "file": "assets/HallShelves-Xo3VMPN2.js",
+        "bytes": 779,
+        "gzip": 450,
+        "initial": false
+      },
+      {
+        "file": "assets/HeatControl-CGTqBaR7.js",
+        "bytes": 2525,
+        "gzip": 1355,
+        "initial": false
+      },
+      {
+        "file": "assets/HistoryBlocked-Bhjgrysu.js",
+        "bytes": 273,
+        "gzip": 250,
+        "initial": false
+      },
+      {
+        "file": "assets/MarketStreetBuildings-bpYvVDR8.js",
+        "bytes": 314,
+        "gzip": 278,
+        "initial": false
+      },
+      {
+        "file": "assets/MarketWalker-BjAanqBF.js",
+        "bytes": 410,
+        "gzip": 289,
+        "initial": false
+      },
+      {
+        "file": "assets/MountainWalkMap-XfbT0uqS.js",
+        "bytes": 8252,
+        "gzip": 5416,
+        "initial": false
+      },
+      {
+        "file": "assets/NightRoomFixtures-B5TkLO9Q.js",
+        "bytes": 683,
+        "gzip": 478,
+        "initial": false
+      },
+      {
+        "file": "assets/TeacherRoom-Bn867WgU.js",
+        "bytes": 2645,
+        "gzip": 1419,
+        "initial": false
+      },
+      {
+        "file": "assets/WalkDirectionButtons-BstZLPaS.js",
+        "bytes": 347,
+        "gzip": 299,
+        "initial": false
+      },
+      {
+        "file": "assets/bonds-D70Se_8s.js",
+        "bytes": 1883,
+        "gzip": 1054,
+        "initial": false
+      },
+      {
+        "file": "assets/decode-scene-rows-qVgR_Kxp.js",
+        "bytes": 4850,
+        "gzip": 1502,
+        "initial": false
+      },
+      {
+        "file": "assets/early-appraisal-B2JORTT8.js",
+        "bytes": 1166,
+        "gzip": 759,
+        "initial": false
+      },
+      {
+        "file": "assets/early-appraisal-BPQ6PTiF.js",
+        "bytes": 3111,
+        "gzip": 2182,
+        "initial": false
+      },
+      {
+        "file": "assets/early-auction-B20gMO-J.js",
+        "bytes": 2534,
+        "gzip": 1894,
+        "initial": false
+      },
+      {
+        "file": "assets/early-ceremonial-test-BjkrJg6Z.js",
+        "bytes": 4042,
+        "gzip": 2892,
+        "initial": false
+      },
+      {
+        "file": "assets/early-ceremony-guests-BeTfY-Q1.js",
+        "bytes": 3459,
+        "gzip": 2555,
+        "initial": false
+      },
+      {
+        "file": "assets/early-city-pharmacy-B7R8J5pL.js",
+        "bytes": 4891,
+        "gzip": 3346,
+        "initial": false
+      },
+      {
+        "file": "assets/early-eighth-training-C2HnHNw1.js",
+        "bytes": 4860,
+        "gzip": 3466,
+        "initial": false
+      },
+      {
+        "file": "assets/early-father-gift-B7GJCOy0.js",
+        "bytes": 2340,
+        "gzip": 1708,
+        "initial": false
+      },
+      {
+        "file": "assets/early-forest-strike-D3vAxRRG.js",
+        "bytes": 3923,
+        "gzip": 2669,
+        "initial": false
+      },
+      {
+        "file": "assets/early-history-block-CItWsB4i.js",
+        "bytes": 199,
+        "gzip": 211,
+        "initial": false
+      },
+      {
+        "file": "assets/early-iron-DrunJIt_.js",
+        "bytes": 4081,
+        "gzip": 2896,
+        "initial": false
+      },
+      {
+        "file": "assets/early-ke-challenge-Cse8F2dG.js",
+        "bytes": 4189,
+        "gzip": 2973,
+        "initial": false
+      },
+      {
+        "file": "assets/early-long-supplies-CLuyVj9X.js",
+        "bytes": 2612,
+        "gzip": 1912,
+        "initial": false
+      },
+      {
+        "file": "assets/early-market-search-BiEmWux_.js",
+        "bytes": 4519,
+        "gzip": 3304,
+        "initial": false
+      },
+      {
+        "file": "assets/early-market-trade-DYzDzmRg.js",
+        "bytes": 6842,
+        "gzip": 4390,
+        "initial": false
+      },
+      {
+        "file": "assets/early-ning-first-DWqR79Iu.js",
+        "bytes": 4150,
+        "gzip": 2969,
+        "initial": false
+      },
+      {
+        "file": "assets/early-ning-second-D96cIOcF.js",
+        "bytes": 3488,
+        "gzip": 2463,
+        "initial": false
+      },
+      {
+        "file": "assets/early-palm-pair-CO9OYofY.js",
+        "bytes": 3264,
+        "gzip": 2395,
+        "initial": false
+      },
+      {
+        "file": "assets/early-preliminary-Dmv6EYIl.js",
+        "bytes": 4507,
+        "gzip": 3326,
+        "initial": false
+      },
+      {
+        "file": "assets/early-qi-pavilion-CX51_i93.js",
+        "bytes": 3759,
+        "gzip": 2771,
+        "initial": false
+      },
+      {
+        "file": "assets/early-recovery-BD96iSfT.js",
+        "bytes": 2686,
+        "gzip": 1986,
+        "initial": false
+      },
+      {
+        "file": "assets/early-refining-oFYSLL1T.js",
+        "bytes": 4614,
+        "gzip": 3324,
+        "initial": false
+      },
+      {
+        "file": "assets/early-settlement-C_F2ge13.js",
+        "bytes": 2518,
+        "gzip": 1895,
+        "initial": false
+      },
+      {
+        "file": "assets/early-seventh-room-DEaks9n5.js",
+        "bytes": 3247,
+        "gzip": 1909,
+        "initial": false
+      },
+      {
+        "file": "assets/early-snapshots-DrzsvfYq.js",
+        "bytes": 1426,
+        "gzip": 699,
+        "initial": false
+      },
+      {
+        "file": "assets/early-supervision-BumZ2S1H.js",
+        "bytes": 1549,
+        "gzip": 936,
+        "initial": false
+      },
+      {
+        "file": "assets/early-teaching-JmC1ugGo.js",
+        "bytes": 2216,
+        "gzip": 1361,
+        "initial": false
+      },
+      {
+        "file": "assets/early-walk-BWiGGvqj.js",
+        "bytes": 1893,
+        "gzip": 1213,
+        "initial": false
+      },
+      {
+        "file": "assets/early-walk-DBojRXda.css",
+        "bytes": 567,
+        "gzip": 313,
+        "initial": false
+      },
+      {
+        "file": "assets/early-walk-DEe8MTWe.js",
+        "bytes": 756,
+        "gzip": 436,
+        "initial": false
+      },
+      {
+        "file": "assets/early-walk-keys-ByzLUafJ.js",
+        "bytes": 139,
+        "gzip": 121,
+        "initial": false
+      },
+      {
+        "file": "assets/early-xuner-visit-BVIkyjlk.js",
+        "bytes": 2293,
+        "gzip": 1717,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-afternoon-BiSefPe6.js",
+        "bytes": 1994,
+        "gzip": 1223,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-approach-F4t93OAE.js",
+        "bytes": 10430,
+        "gzip": 6029,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-body-C6QbFfcC.js",
+        "bytes": 2267,
+        "gzip": 1638,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-entry-BcS321Tk.js",
+        "bytes": 2788,
+        "gzip": 2053,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-evening-bBgzUEfG.js",
+        "bytes": 1456,
+        "gzip": 994,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-match-DB_ceHmV.js",
+        "bytes": 3287,
+        "gzip": 2388,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-reading-WriGz27_.js",
+        "bytes": 2654,
+        "gzip": 1927,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-talk-CKjeZyqZ.js",
+        "bytes": 3809,
+        "gzip": 2866,
+        "initial": false
+      },
+      {
+        "file": "assets/first-hall-transmission-afsVyttY.js",
+        "bytes": 8024,
+        "gzip": 3990,
+        "initial": false
+      },
+      {
+        "file": "assets/first-road-meeting-BRgW_DlZ.js",
+        "bytes": 3119,
+        "gzip": 2250,
+        "initial": false
+      },
+      {
+        "file": "assets/phaser-CqJsoZ52.js",
+        "bytes": 593649,
+        "gzip": 156003,
+        "initial": false
+      },
+      {
+        "file": "assets/rules-6I3nww9G.js",
+        "bytes": 199831,
+        "gzip": 71336,
+        "initial": true
+      },
+      {
+        "file": "assets/save-preview-CaxFTq9j.js",
+        "bytes": 36276,
+        "gzip": 13075,
+        "initial": false
+      },
+      {
+        "file": "assets/supervision-pointer-CUiqxRkI.js",
+        "bytes": 621,
+        "gzip": 345,
+        "initial": false
+      },
+      {
+        "file": "assets/walk-key-K_NOhdkE.js",
+        "bytes": 240,
+        "gzip": 201,
+        "initial": false
+      },
+      {
+        "file": "assets/index-BwblY9XS.js",
+        "bytes": 293208,
+        "gzip": 93421,
+        "initial": true
+      },
+      {
+        "file": "assets/index-Cx21_73V.css",
+        "bytes": 29643,
+        "gzip": 7114,
+        "initial": true
+      },
+      {
+        "file": "assets/BondJournal-B4UPS20F.js",
+        "bytes": 4255,
+        "gzip": 2043,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyAppraisal-BCXPl0ic.js",
+        "bytes": 4762,
+        "gzip": 2460,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyApprentice-C4btpJd6.js",
+        "bytes": 7928,
+        "gzip": 5023,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyAuction-vEQG7iwh.js",
+        "bytes": 4706,
+        "gzip": 2379,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyCeremonialTest-DnwVPDLx.js",
+        "bytes": 5667,
+        "gzip": 2890,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyCeremonyGuests-CsQTJMbf.js",
+        "bytes": 4205,
+        "gzip": 2253,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyCeremonyVerdict-CiwbVx2g.js",
+        "bytes": 4612,
+        "gzip": 2509,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyCityPharmacy-Bvf4DzwN.js",
+        "bytes": 4626,
+        "gzip": 2494,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyConsignment-uhq0AEwo.js",
+        "bytes": 6753,
+        "gzip": 3182,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyEighthTraining-EaUH_nBr.js",
+        "bytes": 6117,
+        "gzip": 3243,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyFamilyCompensation-AujfKTR5.js",
+        "bytes": 6661,
+        "gzip": 4385,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyFamilyContract-DEFqnifp.js",
+        "bytes": 10382,
+        "gzip": 6819,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyFamilyVisit-Bylz6PHg.js",
+        "bytes": 2812,
+        "gzip": 1722,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyFatherGift-Di-PemjE.js",
+        "bytes": 3779,
+        "gzip": 2064,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyForestStrike-DahB_FoQ.js",
+        "bytes": 5460,
+        "gzip": 2981,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyHall-Bjeyj-fu.js",
+        "bytes": 5802,
+        "gzip": 2846,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyIron-BJOjtEpp.js",
+        "bytes": 1694,
+        "gzip": 1162,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyKeChallenge-CitDLZ3z.js",
+        "bytes": 6108,
+        "gzip": 3102,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyLongSupplies-BtidRoj_.js",
+        "bytes": 4376,
+        "gzip": 2285,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMarketBracelets-BKavQsal.js",
+        "bytes": 9768,
+        "gzip": 5643,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMarketDiscovery-CL5OZRgN.js",
+        "bytes": 9591,
+        "gzip": 4741,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMarketEscort-1JuQF6dN.js",
+        "bytes": 9873,
+        "gzip": 6007,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMarketSearch-BeC-WrF0.js",
+        "bytes": 4999,
+        "gzip": 2548,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMarketStandoff-BrVdjXZ4.js",
+        "bytes": 10207,
+        "gzip": 6257,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMethodDiscussion-Dxvs4K4o.js",
+        "bytes": 6988,
+        "gzip": 4417,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMorningCard-D_wnrOo5.js",
+        "bytes": 9895,
+        "gzip": 5457,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMountainRing-DCUAKA_q.js",
+        "bytes": 2811,
+        "gzip": 1695,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyMountainVisitor-CnNLwCe7.js",
+        "bytes": 8369,
+        "gzip": 5201,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyNingFirst-BfdMsfbB.js",
+        "bytes": 6705,
+        "gzip": 3318,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyNingSecond-Dj5PheOe.js",
+        "bytes": 6764,
+        "gzip": 3287,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyPalmPair-421iEoUO.js",
+        "bytes": 5359,
+        "gzip": 2869,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyPreliminary-CndraOOx.js",
+        "bytes": 5206,
+        "gzip": 2592,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyPreparationBrief-DJ6vrSwR.js",
+        "bytes": 7100,
+        "gzip": 4433,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyQiAid-BEqRqPOv.js",
+        "bytes": 8215,
+        "gzip": 4856,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyQiBarrier-YkqfWSBO.js",
+        "bytes": 9930,
+        "gzip": 5532,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyQiExchange-SrqtRHwD.js",
+        "bytes": 4386,
+        "gzip": 2660,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyQiPavilion-taz86AHg.js",
+        "bytes": 4449,
+        "gzip": 2415,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyQiScroll-WcRm8M5G.js",
+        "bytes": 1097,
+        "gzip": 712,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyRecovery-CXA2Nowl.js",
+        "bytes": 4437,
+        "gzip": 2467,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyRefining-BzG7ZS3a.js",
+        "bytes": 3020,
+        "gzip": 1733,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlySettlement-BiU-CgWP.js",
+        "bytes": 4493,
+        "gzip": 2231,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlySeventhRoom-DZyYdZMr.js",
+        "bytes": 5096,
+        "gzip": 2733,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlySupervision-BMN-HUoW.js",
+        "bytes": 4731,
+        "gzip": 2453,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyTeaching-BExYiSCF.js",
+        "bytes": 4228,
+        "gzip": 2204,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyTrainingPanel-CwkJug1_.js",
+        "bytes": 70428,
+        "gzip": 27129,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyTrainingPanel-DVxV75ad.css",
+        "bytes": 840,
+        "gzip": 369,
+        "initial": false
+      },
+      {
+        "file": "assets/EarlyXunerVisit-C_JYBjsU.js",
+        "bytes": 4167,
+        "gzip": 2108,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstDeparture-BQmh1n6n.js",
+        "bytes": 7396,
+        "gzip": 4082,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstExternalTraining-cJhR-f55.js",
+        "bytes": 6548,
+        "gzip": 4110,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallAfternoon-Z-kXIy8p.js",
+        "bytes": 3444,
+        "gzip": 1907,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallApproach-ClQHF1Rz.js",
+        "bytes": 8261,
+        "gzip": 3693,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallEntry-B6rED2x9.js",
+        "bytes": 4534,
+        "gzip": 2336,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallEvening-BexFuulN.js",
+        "bytes": 3285,
+        "gzip": 1844,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallMatch-JTYt6zsa.js",
+        "bytes": 3666,
+        "gzip": 1986,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallReading-C78id0kQ.js",
+        "bytes": 4236,
+        "gzip": 2203,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallScrollReview-CLzaoYIx.js",
+        "bytes": 4580,
+        "gzip": 2424,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallTalk-DwrqT3yk.js",
+        "bytes": 3715,
+        "gzip": 2049,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstHallTeacher-q00rpajC.js",
+        "bytes": 4396,
+        "gzip": 2225,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstRoadMeeting-BfVYnZcn.js",
+        "bytes": 3612,
+        "gzip": 2000,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstTechnique-BqNpFWtP.js",
+        "bytes": 8063,
+        "gzip": 5158,
+        "initial": false
+      },
+      {
+        "file": "assets/FirstTraining--3CAEskL.js",
+        "bytes": 7188,
+        "gzip": 4245,
+        "initial": false
+      },
+      {
+        "file": "assets/GameView-BOdJ3Hk4.js",
+        "bytes": 88755,
+        "gzip": 27926,
+        "initial": false
+      },
+      {
+        "file": "assets/Panels-cFXpHgpl.js",
+        "bytes": 6663,
+        "gzip": 2962,
+        "initial": false
+      },
+      {
+        "file": "assets/SavesPanel-DSKyTtlA.js",
+        "bytes": 3649,
+        "gzip": 1710,
+        "initial": false
+      },
+      {
+        "file": "assets/StoryEventPanel-CBp7YxE8.js",
+        "bytes": 20479,
+        "gzip": 5703,
+        "initial": false
+      },
+      {
+        "file": "assets/StoryRecap-By6pxBY1.js",
+        "bytes": 2197,
+        "gzip": 1095,
+        "initial": false
+      }
+    ]
+  },
+  "browser": [
+    {
+      "name": "MainBaseline",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 待站定</text></g></svg><p role=\"status\">受击现场 0/10 · 免费重试 0 次 · 受击现场 · 未参与</p><section class=\"bond-summary\"><h3>半月之后的清晨</h3><p>往事跳到已持续训练半月的山后僻处。晨雾未散；没有自动补半月输入、奖励或境界。</p><p>当前人物正确。</p><button class=\"primary\">本人观察 · 记下清晨与半月背景</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n本人 · 待站定\n\n受击现场 0/10 · 免费重试 0 次 · 受击现场 · 未参与\n\n半月之后的清晨\n\n往事跳到已持续训练半月的山后僻处。晨雾未散；没有自动补半月输入、奖励或境界。\n\n当前人物正确。\n\n本人观察 · 记下清晨与半月背景\n暂离受击现场 · 保留断点",
+      "status": "受击现场 0/10 · 免费重试 0 次 · 受击现场 · 未参与"
+    },
+    {
+      "name": "MainRejected",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 待站定</text></g></svg><p role=\"status\">受击现场 0/10 · 免费重试 0 次 · 受击现场 · 未参与</p><section class=\"bond-summary\"><h3>半月之后的清晨</h3><p>往事跳到已持续训练半月的山后僻处。晨雾未散；没有自动补半月输入、奖励或境界。</p><p>当前人物正确。</p><button class=\"primary\">本人观察 · 记下清晨与半月背景</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n本人 · 待站定\n\n受击现场 0/10 · 免费重试 0 次 · 受击现场 · 未参与\n\n半月之后的清晨\n\n往事跳到已持续训练半月的山后僻处。晨雾未散；没有自动补半月输入、奖励或境界。\n\n当前人物正确。\n\n本人观察 · 记下清晨与半月背景\n暂离受击现场 · 保留断点",
+      "status": "受击现场 0/10 · 免费重试 0 次 · 受击现场 · 未参与"
+    },
+    {
+      "name": "MainStep1Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 待站定</text></g></svg><p role=\"status\">受击现场 1/10 · 免费重试 0 次 · 受击现场 · 步骤1/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>双足踏土</h3><p>本人在山后站定，上身留有此前训练痕迹。本段只记录眼前姿态，不把旧痕迹当新战斗伤害。</p><p>当前人物正确。</p><button class=\"primary\">本人站定 · 双足踏土</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n本人 · 待站定\n\n受击现场 1/10 · 免费重试 0 次 · 受击现场 · 步骤1/10，尚未整轮收束\n\n双足踏土\n\n本人在山后站定，上身留有此前训练痕迹。本段只记录眼前姿态，不把旧痕迹当新战斗伤害。\n\n当前人物正确。\n\n本人站定 · 双足踏土\n暂离受击现场 · 保留断点",
+      "status": "受击现场 1/10 · 免费重试 0 次 · 受击现场 · 步骤1/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep1Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 待站定</text></g></svg><p role=\"status\">受击现场 1/10 · 免费重试 0 次 · 受击现场 · 步骤1/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>双足踏土</h3><p>本人在山后站定，上身留有此前训练痕迹。本段只记录眼前姿态，不把旧痕迹当新战斗伤害。</p><p>当前人物正确。</p><button class=\"primary\">本人站定 · 双足踏土</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n本人 · 待站定\n\n受击现场 1/10 · 免费重试 0 次 · 受击现场 · 步骤1/10，尚未整轮收束\n\n双足踏土\n\n本人在山后站定，上身留有此前训练痕迹。本段只记录眼前姿态，不把旧痕迹当新战斗伤害。\n\n当前人物正确。\n\n本人站定 · 双足踏土\n暂离受击现场 · 保留断点",
+      "status": "受击现场 1/10 · 免费重试 0 次 · 受击现场 · 步骤1/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep2Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 2/10 · 免费重试 0 次 · 受击现场 · 步骤2/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>老师坐在后方大石</h3><p>老师的虚幻身影在本人后方的大石上。两人位置分别保存，老师不替本人操作。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师落座 · 后方大石</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n本人 · 双足踏土\n\n受击现场 2/10 · 免费重试 0 次 · 受击现场 · 步骤2/10，尚未整轮收束\n\n老师坐在后方大石\n\n老师的虚幻身影在本人后方的大石上。两人位置分别保存，老师不替本人操作。\n\n请明确选择本步人物。\n\n老师落座 · 后方大石\n暂离受击现场 · 保留断点",
+      "status": "受击现场 2/10 · 免费重试 0 次 · 受击现场 · 步骤2/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep2Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 2/10 · 免费重试 0 次 · 受击现场 · 步骤2/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>老师坐在后方大石</h3><p>老师的虚幻身影在本人后方的大石上。两人位置分别保存，老师不替本人操作。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师落座 · 后方大石</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n本人 · 双足踏土\n\n受击现场 2/10 · 免费重试 0 次 · 受击现场 · 步骤2/10，尚未整轮收束\n\n老师坐在后方大石\n\n老师的虚幻身影在本人后方的大石上。两人位置分别保存，老师不替本人操作。\n\n请明确选择本步人物。\n\n老师落座 · 后方大石\n暂离受击现场 · 保留断点",
+      "status": "受击现场 2/10 · 免费重试 0 次 · 受击现场 · 步骤2/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep3Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 3/10 · 免费重试 0 次 · 受击现场 · 步骤3/10，尚未整轮收束</p><label class=\"setting-row\"><span>原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。</span><input aria-label=\"原创站稳标记\" min=\"0\" max=\"1\" step=\".05\" type=\"range\" value=\"0.5\"></label><section class=\"bond-summary\"><h3>先稳住姿态</h3><p>手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。</p><p>当前人物正确。</p><button class=\"primary\">本人确认 · 手动站稳标记</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 3/10 · 免费重试 0 次 · 受击现场 · 步骤3/10，尚未整轮收束\n\n原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。\n先稳住姿态\n\n手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。\n\n当前人物正确。\n\n本人确认 · 手动站稳标记\n暂离受击现场 · 保留断点",
+      "status": "受击现场 3/10 · 免费重试 0 次 · 受击现场 · 步骤3/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep3Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 3/10 · 免费重试 0 次 · 受击现场 · 步骤3/10，尚未整轮收束</p><label class=\"setting-row\"><span>原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。</span><input aria-label=\"原创站稳标记\" min=\"0\" max=\"1\" step=\".05\" type=\"range\" value=\"0.5\"></label><section class=\"bond-summary\"><h3>先稳住姿态</h3><p>手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。</p><p>当前人物正确。</p><button class=\"primary\">本人确认 · 手动站稳标记</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 3/10 · 免费重试 0 次 · 受击现场 · 步骤3/10，尚未整轮收束\n\n原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。\n先稳住姿态\n\n手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。\n\n当前人物正确。\n\n本人确认 · 手动站稳标记\n暂离受击现场 · 保留断点",
+      "status": "受击现场 3/10 · 免费重试 0 次 · 受击现场 · 步骤3/10，尚未整轮收束"
+    },
+    {
+      "name": "MainRetryBefore",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 3/10 · 免费重试 1 次 · 受击现场 · 步骤3/10，尚未整轮收束</p><label class=\"setting-row\"><span>原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。</span><input aria-label=\"原创站稳标记\" min=\"0\" max=\"1\" step=\".05\" type=\"range\" value=\"0.5\"></label><section class=\"bond-summary\"><h3>先稳住姿态</h3><p>手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。</p><p>当前人物正确。</p><button class=\"primary\">本人确认 · 手动站稳标记</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 3/10 · 免费重试 1 次 · 受击现场 · 步骤3/10，尚未整轮收束\n\n原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。\n先稳住姿态\n\n手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。\n\n当前人物正确。\n\n本人确认 · 手动站稳标记\n暂离受击现场 · 保留断点",
+      "status": "受击现场 3/10 · 免费重试 1 次 · 受击现场 · 步骤3/10，尚未整轮收束"
+    },
+    {
+      "name": "MainRetryRefreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 3/10 · 免费重试 1 次 · 受击现场 · 步骤3/10，尚未整轮收束</p><label class=\"setting-row\"><span>原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。</span><input aria-label=\"原创站稳标记\" min=\"0\" max=\"1\" step=\".05\" type=\"range\" value=\"0.5\"></label><section class=\"bond-summary\"><h3>先稳住姿态</h3><p>手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。</p><p>当前人物正确。</p><button class=\"primary\">本人确认 · 手动站稳标记</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 3/10 · 免费重试 1 次 · 受击现场 · 步骤3/10，尚未整轮收束\n\n原创站稳标记用方向键调至35%–65%；标记不等于原著击打次数。\n先稳住姿态\n\n手动将站稳标记调到35%–65%，再确认承接准备。这是原创操作；失误免费重试，不扣血、物资或旧账。\n\n当前人物正确。\n\n本人确认 · 手动站稳标记\n暂离受击现场 · 保留断点",
+      "status": "受击现场 3/10 · 免费重试 1 次 · 受击现场 · 步骤3/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep4Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 4/10 · 免费重试 1 次 · 受击现场 · 步骤4/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>肩部承受斗气击打</h3><p>老师发出的红色斗气击向肩部。本人站稳记录不替代这次老师动作，也不签整轮训练完成。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师出手 · 红色斗气肩击</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 4/10 · 免费重试 1 次 · 受击现场 · 步骤4/10，尚未整轮收束\n\n肩部承受斗气击打\n\n老师发出的红色斗气击向肩部。本人站稳记录不替代这次老师动作，也不签整轮训练完成。\n\n请明确选择本步人物。\n\n老师出手 · 红色斗气肩击\n暂离受击现场 · 保留断点",
+      "status": "受击现场 4/10 · 免费重试 1 次 · 受击现场 · 步骤4/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep4Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g></svg><p role=\"status\">受击现场 4/10 · 免费重试 1 次 · 受击现场 · 步骤4/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>肩部承受斗气击打</h3><p>老师发出的红色斗气击向肩部。本人站稳记录不替代这次老师动作，也不签整轮训练完成。</p><p>请明确选择本步人物。</p><button class=\"primary\" disabled=\"\">老师出手 · 红色斗气肩击</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 4/10 · 免费重试 1 次 · 受击现场 · 步骤4/10，尚未整轮收束\n\n肩部承受斗气击打\n\n老师发出的红色斗气击向肩部。本人站稳记录不替代这次老师动作，也不签整轮训练完成。\n\n请明确选择本步人物。\n\n老师出手 · 红色斗气肩击\n暂离受击现场 · 保留断点",
+      "status": "受击现场 4/10 · 免费重试 1 次 · 受击现场 · 步骤4/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep5Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path></svg><p role=\"status\">受击现场 5/10 · 免费重试 1 次 · 受击现场 · 步骤5/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>疼痛与险失稳</h3><p>本人肩部疼痛，几乎失去平衡。这是此刻身体反应；没有扣除主线生命或生成伤药费用。</p><p>当前人物正确。</p><button class=\"primary\">本人记录 · 疼痛与险失稳</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 5/10 · 免费重试 1 次 · 受击现场 · 步骤5/10，尚未整轮收束\n\n疼痛与险失稳\n\n本人肩部疼痛，几乎失去平衡。这是此刻身体反应；没有扣除主线生命或生成伤药费用。\n\n当前人物正确。\n\n本人记录 · 疼痛与险失稳\n暂离受击现场 · 保留断点",
+      "status": "受击现场 5/10 · 免费重试 1 次 · 受击现场 · 步骤5/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep5Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 双足踏土</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path></svg><p role=\"status\">受击现场 5/10 · 免费重试 1 次 · 受击现场 · 步骤5/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>疼痛与险失稳</h3><p>本人肩部疼痛，几乎失去平衡。这是此刻身体反应；没有扣除主线生命或生成伤药费用。</p><p>当前人物正确。</p><button class=\"primary\">本人记录 · 疼痛与险失稳</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 双足踏土\n\n受击现场 5/10 · 免费重试 1 次 · 受击现场 · 步骤5/10，尚未整轮收束\n\n疼痛与险失稳\n\n本人肩部疼痛，几乎失去平衡。这是此刻身体反应；没有扣除主线生命或生成伤药费用。\n\n当前人物正确。\n\n本人记录 · 疼痛与险失稳\n暂离受击现场 · 保留断点",
+      "status": "受击现场 5/10 · 免费重试 1 次 · 受击现场 · 步骤5/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep6Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 疼痛险失稳</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path></svg><p role=\"status\">受击现场 6/10 · 免费重试 1 次 · 受击现场 · 步骤6/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>体内斗气流动</h3><p>斗气在体内流转，伴随凉意。知识、受击和身体反应分别记下；还没有五段结果。</p><p>当前人物正确。</p><button class=\"primary\">本人感受 · 斗气流动与凉意</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 疼痛险失稳\n\n受击现场 6/10 · 免费重试 1 次 · 受击现场 · 步骤6/10，尚未整轮收束\n\n体内斗气流动\n\n斗气在体内流转，伴随凉意。知识、受击和身体反应分别记下；还没有五段结果。\n\n当前人物正确。\n\n本人感受 · 斗气流动与凉意\n暂离受击现场 · 保留断点",
+      "status": "受击现场 6/10 · 免费重试 1 次 · 受击现场 · 步骤6/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep6Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 疼痛险失稳</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path></svg><p role=\"status\">受击现场 6/10 · 免费重试 1 次 · 受击现场 · 步骤6/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>体内斗气流动</h3><p>斗气在体内流转，伴随凉意。知识、受击和身体反应分别记下；还没有五段结果。</p><p>当前人物正确。</p><button class=\"primary\">本人感受 · 斗气流动与凉意</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 疼痛险失稳\n\n受击现场 6/10 · 免费重试 1 次 · 受击现场 · 步骤6/10，尚未整轮收束\n\n体内斗气流动\n\n斗气在体内流转，伴随凉意。知识、受击和身体反应分别记下；还没有五段结果。\n\n当前人物正确。\n\n本人感受 · 斗气流动与凉意\n暂离受击现场 · 保留断点",
+      "status": "受击现场 6/10 · 免费重试 1 次 · 受击现场 · 步骤6/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep7Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 疼痛险失稳</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 7/10 · 免费重试 1 次 · 受击现场 · 步骤7/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>痛感渐缓</h3><p>凉意流过之后，疼痛渐渐缓和。当前受击不是原药液恢复，房内同液未被补回或消耗。</p><p>当前人物正确。</p><button class=\"primary\">本人观察 · 痛感渐缓</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 疼痛险失稳\n\n受击现场 7/10 · 免费重试 1 次 · 受击现场 · 步骤7/10，尚未整轮收束\n\n痛感渐缓\n\n凉意流过之后，疼痛渐渐缓和。当前受击不是原药液恢复，房内同液未被补回或消耗。\n\n当前人物正确。\n\n本人观察 · 痛感渐缓\n暂离受击现场 · 保留断点",
+      "status": "受击现场 7/10 · 免费重试 1 次 · 受击现场 · 步骤7/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep7Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 疼痛险失稳</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 7/10 · 免费重试 1 次 · 受击现场 · 步骤7/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>痛感渐缓</h3><p>凉意流过之后，疼痛渐渐缓和。当前受击不是原药液恢复，房内同液未被补回或消耗。</p><p>当前人物正确。</p><button class=\"primary\">本人观察 · 痛感渐缓</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 疼痛险失稳\n\n受击现场 7/10 · 免费重试 1 次 · 受击现场 · 步骤7/10，尚未整轮收束\n\n痛感渐缓\n\n凉意流过之后，疼痛渐渐缓和。当前受击不是原药液恢复，房内同液未被补回或消耗。\n\n当前人物正确。\n\n本人观察 · 痛感渐缓\n暂离受击现场 · 保留断点",
+      "status": "受击现场 7/10 · 免费重试 1 次 · 受击现场 · 步骤7/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep8Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 痛感渐缓</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 8/10 · 免费重试 1 次 · 受击现场 · 步骤8/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>本人主动要求再来</h3><p>本人提出继续。本段只观察一次受击与反应；随后多次受击至限度、老师报数和离林另有断点。</p><p>当前人物正确。</p><button class=\"primary\">本人提出 · 再来一次</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 痛感渐缓\n\n受击现场 8/10 · 免费重试 1 次 · 受击现场 · 步骤8/10，尚未整轮收束\n\n本人主动要求再来\n\n本人提出继续。本段只观察一次受击与反应；随后多次受击至限度、老师报数和离林另有断点。\n\n当前人物正确。\n\n本人提出 · 再来一次\n暂离受击现场 · 保留断点",
+      "status": "受击现场 8/10 · 免费重试 1 次 · 受击现场 · 步骤8/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep8Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 痛感渐缓</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 8/10 · 免费重试 1 次 · 受击现场 · 步骤8/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>本人主动要求再来</h3><p>本人提出继续。本段只观察一次受击与反应；随后多次受击至限度、老师报数和离林另有断点。</p><p>当前人物正确。</p><button class=\"primary\">本人提出 · 再来一次</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 痛感渐缓\n\n受击现场 8/10 · 免费重试 1 次 · 受击现场 · 步骤8/10，尚未整轮收束\n\n本人主动要求再来\n\n本人提出继续。本段只观察一次受击与反应；随后多次受击至限度、老师报数和离林另有断点。\n\n当前人物正确。\n\n本人提出 · 再来一次\n暂离受击现场 · 保留断点",
+      "status": "受击现场 8/10 · 免费重试 1 次 · 受击现场 · 步骤8/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep9Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 痛感渐缓</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 9/10 · 免费重试 1 次 · 受击现场 · 步骤9/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>本次受击与反应归档</h3><p>本次现场已可接续。未签原著84次输入、整轮督练完成、回房恢复、药液耗尽或境界升级。</p><p>当前人物正确。</p><button class=\"primary\">归档本次现场 · 整轮限度另续</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 痛感渐缓\n\n受击现场 9/10 · 免费重试 1 次 · 受击现场 · 步骤9/10，尚未整轮收束\n\n本次受击与反应归档\n\n本次现场已可接续。未签原著84次输入、整轮督练完成、回房恢复、药液耗尽或境界升级。\n\n当前人物正确。\n\n归档本次现场 · 整轮限度另续\n暂离受击现场 · 保留断点",
+      "status": "受击现场 9/10 · 免费重试 1 次 · 受击现场 · 步骤9/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep9Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 痛感渐缓</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 9/10 · 免费重试 1 次 · 受击现场 · 步骤9/10，尚未整轮收束</p><section class=\"bond-summary\"><h3>本次受击与反应归档</h3><p>本次现场已可接续。未签原著84次输入、整轮督练完成、回房恢复、药液耗尽或境界升级。</p><p>当前人物正确。</p><button class=\"primary\">归档本次现场 · 整轮限度另续</button></section><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 痛感渐缓\n\n受击现场 9/10 · 免费重试 1 次 · 受击现场 · 步骤9/10，尚未整轮收束\n\n本次受击与反应归档\n\n本次现场已可接续。未签原著84次输入、整轮督练完成、回房恢复、药液耗尽或境界升级。\n\n当前人物正确。\n\n归档本次现场 · 整轮限度另续\n暂离受击现场 · 保留断点",
+      "status": "受击现场 9/10 · 免费重试 1 次 · 受击现场 · 步骤9/10，尚未整轮收束"
+    },
+    {
+      "name": "MainStep10Before",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 痛感渐缓</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 10/10 · 免费重试 1 次 · 受击现场 · 本次反应归档，整轮限度待续</p><p>本次受击与反应已归档；整轮限度、离林、同液恢复和五段仍待接续。</p><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 痛感渐缓\n\n受击现场 10/10 · 免费重试 1 次 · 受击现场 · 本次反应归档，整轮限度待续\n\n本次受击与反应已归档；整轮限度、离林、同液恢复和五段仍待接续。\n\n暂离受击现场 · 保留断点",
+      "status": "受击现场 10/10 · 免费重试 1 次 · 受击现场 · 本次反应归档，整轮限度待续"
+    },
+    {
+      "name": "MainStep10Refreshed",
+      "tab": "1",
+      "html": "<section class=\"modal panel\" role=\"dialog\" aria-modal=\"true\" aria-label=\"重修往事\" tabindex=\"-1\"><button class=\"close\" aria-label=\"关闭\">×</button><span class=\"eyebrow\">山后 / 清晨受击现场</span><h2>先站稳，再分别记下受击与反应。</h2><p>从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。</p><div class=\"early-walk-controls\"><button class=\"secondary\" aria-pressed=\"true\">受击现场本人操作</button><button class=\"secondary\" aria-pressed=\"false\">受击现场老师操作</button></div><svg role=\"group\" class=\"early-walk-map\" tabindex=\"0\" aria-label=\"山后受击与身体反应地图\" viewBox=\"0 0 480 380\"><rect width=\"480\" height=\"380\" fill=\"#203934\"></rect><path d=\"M0 100L95 30 190 100 305 20 480 115V0H0Z\" fill=\"#46635d\"></path><path d=\"M0 290Q170 245 480 290V380H0Z\" fill=\"#626446\"></path><ellipse aria-label=\"老师后方大石\" cx=\"240\" cy=\"197\" rx=\"42\" ry=\"20\" fill=\"#747b70\"></ellipse><g transform=\"translate(240 170)\" aria-label=\"山后老师独立位置\" opacity=\".65\"><circle cy=\"-13\" r=\"8\" fill=\"#dedfd6\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#bcd4cb\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"-28\">药老 · 坐在大石</text></g><g transform=\"translate(300 270)\" aria-label=\"山后本人独立位置\"><circle cy=\"-13\" r=\"8\" fill=\"#edc79f\"></circle><path d=\"M-13 17 L-7-5 H7 L13 17Z\" fill=\"#ae895e\"></path><path d=\"M-10 17L-13 30M10 17L13 30\" stroke=\"#e3bf9c\" stroke-width=\"4\"></path><text text-anchor=\"middle\" fill=\"#f3dfb7\" font-size=\"12\" y=\"50\">本人 · 痛感渐缓</text></g><path aria-label=\"红色斗气肩击已记录\" d=\"M252 175Q282 208 294 257\" fill=\"none\" stroke=\"#d77562\" stroke-width=\"3\"></path><circle aria-label=\"斗气流动凉意已记录\" cx=\"300\" cy=\"270\" r=\"24\" fill=\"none\" stroke=\"#a9cebf\"></circle></svg><p role=\"status\">受击现场 10/10 · 免费重试 1 次 · 受击现场 · 本次反应归档，整轮限度待续</p><p>本次受击与反应已归档；整轮限度、离林、同液恢复和五段仍待接续。</p><button class=\"secondary\">暂离受击现场 · 保留断点</button></section>",
+      "text": "×\n山后 / 清晨受击现场\n先站稳，再分别记下受击与反应。\n\n从已经训练半月的清晨现场接续，不自动补半月输入。人物位置、手动标记与短对白为原创；同一借卷仍属房中历史，本图没有取走或复制。\n\n受击现场本人操作\n受击现场老师操作\n药老 · 坐在大石\n本人 · 痛感渐缓\n\n受击现场 10/10 · 免费重试 1 次 · 受击现场 · 本次反应归档，整轮限度待续\n\n本次受击与反应已归档；整轮限度、离林、同液恢复和五段仍待接续。\n\n暂离受击现场 · 保留断点",
+      "status": "受击现场 10/10 · 免费重试 1 次 · 受击现场 · 本次反应归档，整轮限度待续"
+    }
+  ],
+  "materials": {
+    "version": "0.84.0",
+    "steps": 10,
+    "wholeDialogEqualAfterReload": true,
+    "actors": [
+      "yan",
+      "yan",
+      "teacher",
+      "yan",
+      "teacher",
+      "yan",
+      "yan",
+      "yan",
+      "yan",
+      "yan"
+    ],
+    "nativeExports": "externalTrainingMaterialsStep1..10"
+  },
+  "screenshot": "c1h-external-training.png"
+}
