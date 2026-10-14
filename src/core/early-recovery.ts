@@ -28,6 +28,8 @@ export function earlyRecoveryBlock(state: GameState, position: EarlyWalkPosition
 export function advanceEarlyRecovery(state: GameState, position: EarlyWalkPosition, station: EarlyRecoveryStation, action: EarlyRecoveryAction): Transaction {
   const blocked = earlyRecoveryBlock(state, position)
   if (blocked) return failedTransaction(state, blocked)
+  if (state.earlyTraining.firstRecovery.stage > 0)
+    return failedTransaction(state, '本次已进入细分恢复，请沿同液恢复断点继续。')
   const task = state.earlyTraining.recovery, scene = earlyRecoveryScenes[task.stage]
   if (!scene || action.step !== task.stage || action.energy !== task.energy || action.operation !== scene.operation)
     return failedTransaction(state, '恢复记录已变化，请按当前步骤继续。')

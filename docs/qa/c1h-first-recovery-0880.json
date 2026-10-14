@@ -1,0 +1,52 @@
+{
+  "version": "0.88.0",
+  "base": "d53d24f42605797d9b7b1235df182bc6e7b8cb6b",
+  "migrations": 448,
+  "oldParserCompared": true,
+  "onlyVersionAndEmptyRecovery": true,
+  "tests": {
+    "files": 164,
+    "cases": 964,
+    "node": 16,
+    "typecheck": true,
+    "production": true,
+    "integrity": true
+  },
+  "budget": {
+    "initial": 492049,
+    "gzip": 164335,
+    "total": 1833780,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "browser": {
+    "checkpoints": 35,
+    "fullDialogRefreshEquality": true,
+    "branches": [
+      "keyboard-main",
+      "buttons-materials"
+    ],
+    "actionsEach": 11,
+    "savedWalkingStepsEach": 4,
+    "onlyRecoveryAndPermittedBridge": true,
+    "awakeStillInside": true,
+    "legacyRecoveryStage": 3,
+    "legacyResult": "none",
+    "focus": "回房恢复 · 查看自用药液",
+    "enterReopensFullDialogEqual": true,
+    "mainErrors": [],
+    "materialsErrors": [],
+    "screenshot": "c1h-first-recovery-0880.png",
+    "realDeviceClaimed": false
+  },
+  "previousBatchCI": {
+    "sha": "d53d24f42605797d9b7b1235df182bc6e7b8cb6b",
+    "gameChecks": 38607310363,
+    "conclusion": "success",
+    "pages": "skipped"
+  },
+  "next": "C1h醒后舒展与耗尽感知任务卡.md"
+}
