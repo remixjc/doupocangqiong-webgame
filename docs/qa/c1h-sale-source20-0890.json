@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-15",
+  "runtimeVersion": "0.89.0",
+  "source": {
+    "site": "Wuxiaworld",
+    "chapter": 20,
+    "title": "Auction",
+    "url": "https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-20",
+    "webToolFullText": true,
+    "normalBrowserFullTextToNext": true,
+    "next": 21,
+    "previous": 19,
+    "sha256": "a08dcce9c4780aad6d3db21f022cd802e8e8648cce7baa6d9805130b349efead",
+    "privateEvidence": ".git/task-sale-source20-20261015.txt",
+    "chineseEditionVerified": false,
+    "currentAnimationVerified": false,
+    "chapter21BodyVerified": false
+  },
+  "featureDelivery": {
+    "sha": "f9a1a361cf1a21c9b20a4e826854b234ef536c5c",
+    "ci": 38616974811,
+    "conclusion": "success",
+    "pages": "skipped",
+    "postCommitManifestFiles": 145,
+    "postCommitManifestBytes": 2007125,
+    "postCommitNativeWholeStateEqual": true,
+    "postCommitFullDialogEqual": true
+  },
+  "scope": "source verification and staged task card; no runtime or save changes",
+  "next": "capacity, then independent bedside sale-plan dialogue"
+}
