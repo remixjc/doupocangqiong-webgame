@@ -671,6 +671,9 @@ export class CombatWorld {
     }
   }
   spawn(type: Fighter['type'], x: number, y: number, spawnId?: string, patrol?: PatrolDefinition) {
+    // Storm reinforcements can continue indefinitely. Keep named encounter
+    // records and the boss HUD, but release dead anonymous fighters on spawn.
+    this.enemies = this.enemies.filter(e => e.hp > 0 || e.type === 'boss' || !!e.spawnId)
     const d = this.difficulty
     const scale = d === 'story' ? 0.72 : d === 'hard' ? 1.25 : 1
     const hp = Math.round((type === 'boss' ? 280 + this.chapter.id * 46 : 48 + this.chapter.id * 6) * scale)

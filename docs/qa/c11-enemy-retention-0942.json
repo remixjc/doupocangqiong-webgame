@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-15",
+  "baseline": "613bb8cac36874f44529f16c06857b049995e0ef",
+  "version": "0.94.2",
+  "seedFile": ".git/task-normal-ch15-pending-export.json",
+  "seedBytes": 13935,
+  "seedSHA256": "7f0c0c828aac92852c60451b40c18f9f724ca3345d1158912708c9cabd6f8e61",
+  "actualChapter": 15,
+  "initialEnemies": 0,
+  "ordinaryReportRuleUsed": true,
+  "ordinaryGateUsed": true,
+  "allActualPreviousSourceFiles": 373,
+  "frozenOldNatives": 855,
+  "metadataSHA256": "cb6af2ed072d582600cb50c3535f9252f5e8d7f99baaed1e678f1dcd5105d6e6",
+  "onlyContentVersionChanged": true,
+  "previousWritersRerun": false,
+  "traces": [
+    {
+      "difficulty": "story",
+      "controlledRounds": 200,
+      "ordinaryGateUsed": true,
+      "oldRetainedLast": 201,
+      "newRetainedLast": 2,
+      "newMaximum": 2,
+      "entireRuntimeLiveFightersEffectsFloatsCallbacksEqual": true,
+      "traceSHA256": "41349939f37f063b2f1b62d5e122ca97a00140b5c7853bbca3127fd8611a9a7b",
+      "browserPerformanceClaim": false
+    },
+    {
+      "difficulty": "normal",
+      "controlledRounds": 200,
+      "ordinaryGateUsed": true,
+      "oldRetainedLast": 201,
+      "newRetainedLast": 2,
+      "newMaximum": 2,
+      "entireRuntimeLiveFightersEffectsFloatsCallbacksEqual": true,
+      "traceSHA256": "ceee37de12aa3ee7d6c64b210ef9953e5ff268669923b8e8e945065de86e9ba3",
+      "browserPerformanceClaim": false
+    },
+    {
+      "difficulty": "hard",
+      "controlledRounds": 200,
+      "ordinaryGateUsed": true,
+      "oldRetainedLast": 201,
+      "newRetainedLast": 2,
+      "newMaximum": 2,
+      "entireRuntimeLiveFightersEffectsFloatsCallbacksEqual": true,
+      "traceSHA256": "8143ef8f1684c9be622f0a193d78d9a21697c7792174c863c51a405daa3a7ba6",
+      "browserPerformanceClaim": false
+    }
+  ],
+  "investigationCorrection": "Initial isolated trace used a direct chapter22 spawn; chapter22 normal gate is assessment, so that trace alone did not prove reachability. This separate proof uses actual archived chapter15 pending export and its ordinary gate. Previous raw trace preserved.",
+  "retainedScope": "CombatWorld.enemies strong references only; not heap/GPU measurement. Named encounters and bosses retained.",
+  "E03": "partial",
+  "remainingWorkPackages": 25
+}

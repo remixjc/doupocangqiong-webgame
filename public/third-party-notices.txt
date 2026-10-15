@@ -1,4 +1,4 @@
-Third-party notices for doupocangqiong-webgame 0.94.1
+Third-party notices for doupocangqiong-webgame 0.94.2
 
 Conservative parsed production module graph, before tree shaking; hashes normalize CRLF to LF. Counts do not claim byte contribution or runtime use. Virtual bundler modules counted separately.
 

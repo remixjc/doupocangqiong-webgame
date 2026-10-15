@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-15",
+  "version": "0.94.2",
+  "release": {
+    "version": "0.94.2",
+    "gitSha": "613bb8cac36874f44529f16c06857b049995e0ef",
+    "files": 155,
+    "bytes": 2587975,
+    "bundle": {
+      "initialJsBytes": 440925,
+      "initialJsGzipBytes": 160154,
+      "totalJsBytes": 1842169,
+      "engineGzipBytes": 155802
+    }
+  },
+  "oldNativeCount": 855,
+  "newNativeCount": 6,
+  "metadataAfter": 861,
+  "originals": [
+    {
+      "name": "retention0942-migrated28",
+      "bytes": 37585,
+      "sha256": "ee5e5345f32b1b7bae36e82700449b7daa83fa98144335562a529d03d40465a6",
+      "entireNativeStateMatchesOfficialParser": true
+    },
+    {
+      "name": "retention0942-refreshed28",
+      "bytes": 37585,
+      "sha256": "d54e546e12462efa3e42d284a5f314e993f990e8045a571d0a580392c4e88db0",
+      "entireNativeStateMatchesOfficialParser": true
+    },
+    {
+      "name": "retention0942-migrated15",
+      "bytes": 28318,
+      "sha256": "d3555d1908ff6829156e0c1757867c30e3dc4ec52186a9920c69c400f4262967",
+      "entireNativeStateMatchesOfficialParser": true
+    },
+    {
+      "name": "retention0942-four-real-kills15",
+      "bytes": 28318,
+      "sha256": "7ac6af4d6931d49453bccb60efba4ed70753d1d3edfdc275c2c62975c19e291b",
+      "entireNativeStateMatchesOfficialParser": true
+    },
+    {
+      "name": "retention0942-next-reinforcement15",
+      "bytes": 28318,
+      "sha256": "ce153e480f138e8277947bbc1437813d40b854436bc98072b7136f9348a6c347",
+      "entireNativeStateMatchesOfficialParser": true
+    },
+    {
+      "name": "retention0942-refreshed15",
+      "bytes": 28318,
+      "sha256": "d6345b9a2423807bdb0c16db002ff3b12538e918fb4665014c876025f74e4bfd",
+      "entireNativeStateMatchesOfficialParser": true
+    }
+  ],
+  "wholeState28MigrationAndRefreshEqual": true,
+  "archived15WholeStateMigrationEqual": true,
+  "entireCombatStateEqualsOfficialReportFourKillsTwoHealingItems": true,
+  "nextReinforcementAndRefreshWholeStateEqual": true,
+  "actualCombat": {
+    "chapter": 15,
+    "difficulty": "normal",
+    "reportStage": [
+      4,
+      5
+    ],
+    "priorDeaths": 1,
+    "freeRetryObservedHp": 472,
+    "observedAfterFirstTimedWindowHp": 287,
+    "fourKills": true,
+    "gold": [
+      5526,
+      5678
+    ],
+    "xp": [
+      4565,
+      4605
+    ],
+    "crystals": [
+      32,
+      36
+    ],
+    "healingItems": [
+      7,
+      5
+    ],
+    "bossSettled": false,
+    "firstClearClaimed": false,
+    "flame": "lotus",
+    "afterRefreshHp": 472,
+    "canvasOnScene": 1,
+    "canvasAfterExit": 0,
+    "browserErrorLogs": [],
+    "heapGpuCountClaimed": false,
+    "globalMaximumGroupClaimed": false,
+    "screenshotsMayShowOverlappingFighters": true
+  },
+  "automationFailures": [
+    "Import closes save dialog; export attempted without reopening timed out and reset tool kernel. No download counted.",
+    "Report completion changed button label; stale return-map selector failed. Fresh DOM used completion button.",
+    "Route wait selector deadline was shorter than travel; next DOM showed arrival. No duplicate route.",
+    "Initial standing combat died before save-menu attempt; no death-time native export claimed. Free retry and timed windows used instead."
+  ],
+  "remainingWorkPackages": 25,
+  "E03": "partial",
+  "previousProofsFrozen": true
+}
