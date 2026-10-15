@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-15",
+  "version": "0.95.0",
+  "kind": "source-mapping-only",
+  "sourceCodeChanged": false,
+  "openPackages": 25,
+  "observations": [
+    {
+      "chapter": 7,
+      "title": "休！",
+      "url": "https://www.qidian.com/chapter/1209977/23224872/",
+      "scope": "visible-main-first-through-final-paragraph",
+      "mainParagraphs": 51,
+      "observedMainCharactersIncludingDynamicAnnotations": 3739,
+      "privateSnapshotSHA256": "5c5f85cfe162525068f17a9e6d422797be0620903122fb0c72d63ebf6a087109",
+      "privateSnapshotPublished": false,
+      "nextChapterHrefObserved": "//www.qidian.com/chapter/1209977/23227609/"
+    },
+    {
+      "chapter": 8,
+      "title": "神秘的老者",
+      "url": "https://www.qidian.com/chapter/1209977/23227609/",
+      "scope": "visible-main-first-through-final-paragraph",
+      "mainParagraphs": 46,
+      "observedMainCharactersIncludingDynamicAnnotations": 2743,
+      "privateSnapshotSHA256": "94ba230b7340076669b5043a0e7aba19d64d5bd7ff20142109e275bda8a99710",
+      "privateSnapshotPublished": false,
+      "nextChapterHrefObserved": "//www.qidian.com/chapter/1209977/23235269/"
+    },
+    {
+      "chapter": 9,
+      "scope": "blocked-not-read",
+      "navigation": "Clicked visible next-chapter link on chapter8; remained on chapter8",
+      "barriers": [
+        "loginIfr account authentication",
+        "tcaptcha_iframe_dy slider safety verification"
+      ],
+      "bypassAttempted": false,
+      "privateBarrierSnapshotSHA256": "1b29df8f22a4b4fddcc75ccb13fff30d52a8291a0c89c2ee95a7c46fd46f28a6",
+      "privateScreenshotPublished": false
+    }
+  ],
+  "codeCompared": [
+    {
+      "file": "src/content/early-family-contract.ts",
+      "sha256": "1e827aca1dc97308a7074cdd80efab973906698d42cb30d083ddba231bb89c7a"
+    },
+    {
+      "file": "src/content/early-mountain-ring.ts",
+      "sha256": "daa0838ff2b9c1b787489f161dbf4d623521fa33a7d3382be5bf8918fd82440a"
+    },
+    {
+      "file": "src/content/early-apprentice.ts",
+      "sha256": "5263fc78195773073bcca8105af8b0816339ed9bb6697429d9604d25bd9c0fbe"
+    },
+    {
+      "file": "src/content/early-method-discussion.ts",
+      "sha256": "6a3c865fff16c8b3dde95ebc03247401383a51260730677bf40eee69e9ad11e2"
+    },
+    {
+      "file": "src/content/early-preparation-brief.ts",
+      "sha256": "1c7049aa4ac1f1a055f9144f6d92e1d71db410f2456ec2dcc4b78f96e9fa09b6"
+    }
+  ],
+  "mapping": "docs/C0中文早期来源对照验收.md",
+  "unverified": [
+    "Chinese chapter9 body and its specific material terminology",
+    "complete Pan Gate founding and canonical duties after public opening",
+    "anime actual episodes and latest aired boundary",
+    "remaining 28-chapter mapping"
+  ],
+  "verification": {
+    "vitestFiles": 179,
+    "vitestTests": 1095,
+    "nodeTests": 39,
+    "typecheck": true,
+    "productionFiles": 157,
+    "productionFilesAndBundleIdenticalToPreviousFormal": true,
+    "bundle": {
+      "initialJsBytes": 440941,
+      "initialJsGzipBytes": 160508,
+      "totalJsBytes": 1849976,
+      "engineGzipBytes": 155802
+    },
+    "saveParserAndSerializerUnchanged": true,
+    "oldMigrationEvidenceFrozen": true,
+    "nativeMetadataCount": 873,
+    "nativeMetadataSHA256": "f9bbd81a318d18321815fa233d9c08fa60b934a3f24df140ff7019aae837f26a",
+    "browserReplayRequired": false,
+    "reason": "Documentation/source evidence only; all production bytes and save code unchanged"
+  }
+}
