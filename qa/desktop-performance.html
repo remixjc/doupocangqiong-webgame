@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>桌面运行采样 · 异火之路 QA</title>
+<style>
+body{margin:0;background:#132522;color:#f5e6c8;font:14px system-ui}header{padding:12px}
+button,input{font:inherit;margin:4px;padding:7px}label{display:inline-block}
+iframe{width:100%;height:820px;border:0;background:#12211e}
+pre{white-space:pre-wrap;max-height:280px;overflow:auto;margin:12px}p{margin:6px 0}
+</style>
+<header>
+<h1>桌面运行采样</h1>
+<p>独立QA工具：只读页面、真实帧回调和浏览器性能信息，不读取存档、不模拟操作或游戏时间。</p>
+<label>本机环境说明 <input id="environment" size="60" placeholder="设备、OS、浏览器、其他负载；未核项请留空"></label>
+<label>采样秒数 <input id="seconds" type="number" min="10" max="600" value="120"></label>
+<button id="start" disabled>开始真实采样</button><button id="stop" disabled>结束采样</button>
+<button id="export" disabled>导出采样 JSON</button>
+<p role="status" id="status">正在读取构建身份…</p>
+<p>帧回调频率不是GPU呈现FPS。堆值为浏览器近似值，可能跨同进程页面；画布消失不证明监听器/GPU资源全部释放。隐藏、菜单与无场景分别记录。</p>
+</header>
+<iframe title="待测游戏" src="/"></iframe>
+<pre id="result" aria-label="采样结果"></pre>
+<script type="module" src="/__qa/probe.mjs"></script>
+</html>

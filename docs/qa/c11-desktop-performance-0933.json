@@ -1,0 +1,299 @@
+{
+  "date": "2026-10-15",
+  "version": "0.93.3",
+  "item": "E03",
+  "status": "partial",
+  "remainingPackages": 26,
+  "runtimeChanged": false,
+  "productionFilesIdentical": 154,
+  "exports": [
+    {
+      "kind": "pilot",
+      "file": "docs/qa/c11-desktop-performance-0933-pilot.json",
+      "bytes": 59600,
+      "sha256": "41232c8491d7a7713353ff1e60f5851c63ccfba9fff1736bfd1e7ccd06cc6976"
+    },
+    {
+      "kind": "steady",
+      "file": "docs/qa/c11-desktop-performance-0933-steady.json",
+      "bytes": 396272,
+      "sha256": "10ade78b567c6742c3df067a15bdeca2a716454309e125faa092124ce4e2c444"
+    }
+  ],
+  "steady": {
+    "identity": {
+      "version": "0.93.3",
+      "gitSha": "c89d6eb9afbcf00b7e6930737d521277e0770ab8",
+      "files": 154,
+      "bytes": 2592008,
+      "probeFiles": [
+        {
+          "url": "/__qa/",
+          "bytes": 1501,
+          "sha256": "0cb6e98aed76e4bf46394a0d0d9b31214592b16e6e58954972197d24f326d9eb"
+        },
+        {
+          "url": "/__qa/probe.mjs",
+          "bytes": 5730,
+          "sha256": "e0f9ea861e80b50b13399e6aa267041827a5e0c816970c8fb4dcdbec71e9d1ad"
+        },
+        {
+          "url": "/__qa/statistics.mjs",
+          "bytes": 797,
+          "sha256": "b268b0acd68d2f3942afb4294df4c2b4d4789df68097e1fd63d04d45181d86d2"
+        }
+      ]
+    },
+    "elapsedMs": 180030.5,
+    "snapshots": 182,
+    "intervals": {
+      "unfocused-scene": {
+        "count": 1594,
+        "durationMs": 12693.5,
+        "callbacksPerSecond": 125.57608224681924,
+        "p50Ms": 7.80000000000291,
+        "p95Ms": 8.5,
+        "p99Ms": 15.700000000004366,
+        "maxMs": 16.69999999999709,
+        "over20Ms": 0,
+        "over33Ms": 0,
+        "over50Ms": 0
+      },
+      "scene": {
+        "count": 17345,
+        "durationMs": 167305.10000000137,
+        "callbacksPerSecond": 103.67287070149001,
+        "p50Ms": 8,
+        "p95Ms": 16,
+        "p99Ms": 24.099999999976717,
+        "maxMs": 152,
+        "over20Ms": 268,
+        "over33Ms": 122,
+        "over50Ms": 103
+      }
+    },
+    "longTasks": {
+      "supported": true,
+      "count": 0,
+      "totalMs": 0,
+      "maxMs": 0
+    },
+    "canvases": {
+      "min": 1,
+      "max": 1
+    },
+    "heap": {
+      "firstBytes": 50010137,
+      "lastBytes": 31305792,
+      "minBytes": 23004711,
+      "maxBytes": 75696000,
+      "interpretation": "coarse/shared browser heap; does not establish retained heap or absence of leaks"
+    },
+    "visibilityEvents": 0,
+    "errors": [],
+    "interpretation": "Real rAF callback intervals; not GPU presentation FPS, combat benchmark or device certification."
+  },
+  "pilot": {
+    "started": "2026-10-15T03:26:41.503Z",
+    "ended": "2026-10-15T03:29:41.536Z",
+    "elapsedMs": 180032.8999999985,
+    "snapshots": 182,
+    "intervals": {
+      "unfocused-scene": {
+        "count": 768,
+        "durationMs": 6122.5999999999985,
+        "callbacksPerSecond": 125.43690588965475,
+        "p50Ms": 8,
+        "p95Ms": 8.200000000004366,
+        "p99Ms": 8.400000000001455,
+        "maxMs": 16.099999999998545,
+        "over20Ms": 0,
+        "over33Ms": 0,
+        "over50Ms": 0
+      },
+      "scene": {
+        "count": 15454,
+        "durationMs": 147109.20000000013,
+        "callbacksPerSecond": 105.05121365624983,
+        "p50Ms": 8,
+        "p95Ms": 16,
+        "p99Ms": 32,
+        "maxMs": 286,
+        "over20Ms": 230,
+        "over33Ms": 142,
+        "over50Ms": 105
+      },
+      "no-scene": {
+        "count": 3148,
+        "durationMs": 26558.999999999927,
+        "callbacksPerSecond": 118.52855905719375,
+        "p50Ms": 8,
+        "p95Ms": 8.19999999999709,
+        "p99Ms": 16.10000000000582,
+        "maxMs": 127.5,
+        "over20Ms": 30,
+        "over33Ms": 22,
+        "over50Ms": 17
+      }
+    },
+    "longTasks": {
+      "count": 21,
+      "totalMs": 3228,
+      "maxMs": 257
+    },
+    "rawIntervalsUnavailable": true,
+    "finalReviewerApplicable": false
+  },
+  "observedSceneCycles": [
+    {
+      "cycle": 1,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "chapter": 17,
+      "observed": true
+    },
+    {
+      "cycle": 2,
+      "chapter": 28,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:00.469Z"
+    },
+    {
+      "cycle": 3,
+      "chapter": 17,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:02.112Z"
+    },
+    {
+      "cycle": 4,
+      "chapter": 28,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:03.617Z"
+    },
+    {
+      "cycle": 5,
+      "chapter": 17,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:24.322Z"
+    },
+    {
+      "cycle": 6,
+      "chapter": 28,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:26.011Z"
+    },
+    {
+      "cycle": 7,
+      "chapter": 17,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:27.720Z"
+    },
+    {
+      "cycle": 8,
+      "chapter": 28,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:28:29.333Z"
+    },
+    {
+      "cycle": 9,
+      "chapter": 17,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:29:01.391Z"
+    },
+    {
+      "cycle": 10,
+      "chapter": 28,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:29:03.742Z"
+    },
+    {
+      "cycle": 11,
+      "chapter": 17,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:29:06.058Z"
+    },
+    {
+      "cycle": 12,
+      "chapter": 28,
+      "exitCanvas": 0,
+      "entryCanvas": 1,
+      "at": "2026-10-15T03:29:08.361Z"
+    }
+  ],
+  "nativeSaves": [
+    {
+      "name": "savedDomainAfterSampling",
+      "bytes": 37394,
+      "sha256": "a654b0426cc0d1e5103ac9457ee74384d25bbb0e72dcd8994ae385299a39d26e",
+      "stateSHA256": "65d2eed124f60d71ff9828cabb1f9047adbc7276a4e1505f7350793354868743"
+    },
+    {
+      "name": "savedDomainReload",
+      "bytes": 37394,
+      "sha256": "6cf5c49f3bfa8a98b8fc5d1314d661f0edb8d393f70934d507c7aaa5d889c4af",
+      "stateSHA256": "65d2eed124f60d71ff9828cabb1f9047adbc7276a4e1505f7350793354868743"
+    }
+  ],
+  "baseline": {
+    "sha256": "0294cc23f0ac779168bea67bb7e7115158e1d5b1d56183d97802a99527fcf43b",
+    "chapter": 17
+  },
+  "state": {
+    "chapter": 28,
+    "gold": 18718,
+    "xp": 14560,
+    "completed": 28,
+    "fireEnergy": 5,
+    "totalKills": 75,
+    "inventory": {
+      "herb": 9,
+      "crystal": 76,
+      "heal": 6,
+      "mana": 3,
+      "elixir": 0
+    }
+  },
+  "savedDomainReloadEntireStateEqual": true,
+  "onlyChapterChangedFromBaseline": true,
+  "savesScope": "Normal top-level same-origin reload/export after sampling, not an immediate iframe-memory export.",
+  "consoleErrorsOutsideBothWindows": [
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-15T03:25:43.210Z"
+    },
+    {
+      "level": "error",
+      "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+      "timestamp": "2026-10-15T03:30:49.875Z"
+    }
+  ],
+  "toolFailures": [
+    "First iframe role click returned No node found; fresh AX click succeeded.",
+    "Iframe export displayed download initiated but timed out without verified file; excluded from evidence. Top-level export succeeded."
+  ],
+  "checks": {
+    "newNodeTests": 3,
+    "typecheck": "passed",
+    "build": "passed",
+    "runtimeMigrationCorpusUnchanged": true
+  },
+  "limits": [
+    "rAF callback intervals are not GPU presentation FPS.",
+    "No combat/collection/rewards during the steady run; not a heavy combat benchmark.",
+    "Canvas DOM removal is not proof of listener, GPU or retained heap release.",
+    "Heap is coarse and potentially shared; neither proves nor disproves a leak.",
+    "Two MutationObserver errors occurred before the sampling windows; source unconfirmed.",
+    "No real mobile device, human Beta, source rights or public deployment certified."
+  ]
+}

@@ -1,0 +1,2709 @@
+{
+  "identity": {
+    "version": "0.93.3",
+    "gitSha": "c89d6eb9afbcf00b7e6930737d521277e0770ab8",
+    "files": 154,
+    "bytes": 2592008
+  },
+  "format": 1,
+  "started": "2026-10-15T03:26:41.503Z",
+  "startedAt": 58401.29999999702,
+  "requestedSeconds": 180,
+  "environmentNote": "Intel NUC11PHi7 / i7-1165G7 / 约32GiB / Windows11 Pro10.0.26300；Codex内嵌浏览器；GPU实际选用未知；其他应用与QA存在，非独占基准",
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "platform": "Win32",
+    "hardwareConcurrency": 8,
+    "deviceMemoryGiB": 32,
+    "devicePixelRatio": 2,
+    "screen": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "snapshots": [
+    {
+      "elapsedMs": 0.5,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 71451392,
+        "total": 112984348,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 1002.2000000029802,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 52910144,
+        "total": 112984468,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 2001.7000000029802,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 70326439,
+        "total": 112984483,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 3006.60000000149,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 61696859,
+        "total": 112984483,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 4004.39999999851,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 54204955,
+        "total": 112984483,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 5003.30000000447,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 45561339,
+        "total": 112984483,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 6005.60000000149,
+      "phase": "unfocused-scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 45670267,
+        "total": 112984483,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 7008.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 71250414,
+        "total": 113770946,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 8005.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46908954,
+        "total": 114033090,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 9007.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 73446578,
+        "total": 114033090,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 10005.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 56168702,
+        "total": 114033090,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 11004.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 73907990,
+        "total": 114295234,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 12003.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 54832198,
+        "total": 114819522,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 13015.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 74347182,
+        "total": 114819522,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 14003.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48287382,
+        "total": 115081666,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 15008.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 74770666,
+        "total": 115605954,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 16004.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48505174,
+        "total": 115605954,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 17006.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 73415358,
+        "total": 115605954,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 18004.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 75368738,
+        "total": 115605954,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 19005.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 64969194,
+        "total": 116130242,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 20012.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58135762,
+        "total": 116130242,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 21005.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 49467226,
+        "total": 116392386,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 22009.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 65638898,
+        "total": 116916674,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 23006.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 49955282,
+        "total": 116916674,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 24005.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 65961658,
+        "total": 116916674,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 25001.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 74994870,
+        "total": 117178818,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 26006.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 68055242,
+        "total": 117178818,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 27002.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 66557278,
+        "total": 117178818,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 28002.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59686046,
+        "total": 117178818,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 29002.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59928256,
+        "total": 118489568,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 30006.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 62149324,
+        "total": 119013856,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 31006.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 67440732,
+        "total": 119013856,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 32007.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 78133844,
+        "total": 119013856,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 33002.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 69514496,
+        "total": 119013856,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 34004.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 67903616,
+        "total": 119013856,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 35007.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 69974984,
+        "total": 119013856,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 36003.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 68475640,
+        "total": 119276000,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 37001.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 77280508,
+        "total": 119538144,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 38002.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 61755384,
+        "total": 120062432,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 39078.70000000298,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 53455049,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 40003,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 54397361,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 41001.5,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 55323477,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 42002,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 56304357,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 43001.20000000298,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 57272365,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 44001.39999999851,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58265821,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 45001.30000000447,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59285009,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 46002.20000000298,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 60342081,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 47002.89999999851,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 61403497,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 48001.39999999851,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 62496513,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 49001.89999999851,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 63601905,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 50001.60000000149,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 64742541,
+        "total": 120064353,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 51002.39999999851,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 18661528,
+        "total": 105295920,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 52002.10000000149,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 19875721,
+        "total": 105295929,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 53001.60000000149,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 21072029,
+        "total": 105295929,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 54001.70000000298,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 22281761,
+        "total": 105295929,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 55002.5,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 14873794,
+        "total": 84475506,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 56001.5,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 16163551,
+        "total": 84475515,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 57002,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 17442855,
+        "total": 84475515,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 58061.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 146,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 36617881,
+        "total": 94113185,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 59002.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 50669354,
+        "total": 102239762,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 60004.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58865839,
+        "total": 115608975,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 61016.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 52122816,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 62005.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 61204180,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 63001.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 68354056,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 64009.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 70497652,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 65001.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 44269288,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 66001.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 68928376,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 67001.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 60320188,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 68006.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 71203156,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 69001.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 51937164,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 70002.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 53972716,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 71002.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 52420004,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 72005.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 54337052,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 73004.89999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 45712020,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 74001.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 52968360,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 75006,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 72554980,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 76006.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 63988956,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 77001.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 55364440,
+        "total": 115608984,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 78044.20000000298,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 64853681,
+        "total": 115609001,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 79003.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 43809816,
+        "total": 102497800,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 80222.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 146,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 42181357,
+        "total": 108736565,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 81001.60000000149,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 24120847,
+        "total": 93064671,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 82003.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 45189037,
+        "total": 98881613,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 83003.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34582569,
+        "total": 96468425,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 84006.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34663754,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 85006.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 57327122,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 86002,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 57610830,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 87007.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46824426,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 88004.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 47102510,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 89006.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 47356738,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 90005,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 36480030,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 91016.89999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58796506,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 92002.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 37061346,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 93005.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59158846,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 94001.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 37398702,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 95012.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 37342046,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 96007.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 37819510,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 97004,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 49113202,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 98014,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 49396926,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 99005.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58707926,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 100019,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 37681334,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 101002.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 43074578,
+        "total": 96468434,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 102002,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 53149850,
+        "total": 96468458,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 103009.89999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 41170648,
+        "total": 95161852,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 104049.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 163,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 52129046,
+        "total": 99676218,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 105001.20000000298,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 40657557,
+        "total": 94109165,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 106011.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 43640407,
+        "total": 98238495,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 107001.80000000447,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 29371551,
+        "total": 98238495,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 108002.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 56385829,
+        "total": 95682073,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 109015.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 43542398,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 110005.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 35443454,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 111006,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 35588518,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 112014.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46513526,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 113022.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 47038730,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 114022.89999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46238194,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 115013.10000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 51349726,
+        "total": 95682082,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 116014,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46294364,
+        "total": 107216260,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 117020.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 70114249,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 118021.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59579649,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 119010.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 50966505,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 120015.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 57447429,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 121017.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 71734657,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 122011.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58044985,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 123020.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 71809829,
+        "total": 107216269,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 124009.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 53596605,
+        "total": 108002701,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 125011.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59242093,
+        "total": 108264845,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 126013.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 64491905,
+        "total": 108526989,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 127017.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 70432177,
+        "total": 108789133,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 128017.39999999851,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 61062845,
+        "total": 108789133,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 129011.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 71555177,
+        "total": 108789133,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 130002.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 40612397,
+        "total": 109313421,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 131018.60000000149,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 50323909,
+        "total": 109313421,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 132015.6000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 65162765,
+        "total": 109575565,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 133014.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46552069,
+        "total": 110099853,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 134018.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 60694073,
+        "total": 110099853,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 135006.8999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 70281313,
+        "total": 110099853,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 136002.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 60385149,
+        "total": 110361997,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 137020.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 72510421,
+        "total": 110886285,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 138001.8999999985,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48568861,
+        "total": 111410597,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 139091,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 146,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 78537973,
+        "total": 116453361,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 140011.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48583435,
+        "total": 103812587,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 141001.3999999985,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 33144613,
+        "total": 103812613,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 142010.6000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34198076,
+        "total": 93846988,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 143053,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 33956032,
+        "total": 93847064,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 144018.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 171,
+      "chapter": "炎盟",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 47496173,
+        "total": 98762813,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 145002.5,
+      "phase": "no-scene",
+      "canvases": 0,
+      "domNodes": 410,
+      "chapter": null,
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48983265,
+        "total": 97258945,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 146139.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 163,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 54995995,
+        "total": 101773311,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 147020.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 51768278,
+        "total": 101384318,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 148014.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59169250,
+        "total": 101384318,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 149023.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 51012050,
+        "total": 101384318,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 150017.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 52329586,
+        "total": 101384318,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 151012.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 61695118,
+        "total": 101384318,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 152017.8999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34489193,
+        "total": 96992653,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 153015.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 57373810,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 154013.6000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 43298290,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 155014.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 39551130,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 156014.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 36020686,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 157012.6000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34046670,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 158010.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58525078,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 159012.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46970982,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 160011.8999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 30452934,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 161014,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 46603030,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 162008.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 37731154,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 163015.80000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59959474,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 164009.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48367562,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 165009.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48621242,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 166009.1000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 48748422,
+        "total": 96992662,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 167010.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34985380,
+        "total": 96468356,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 168004.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 55831833,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 169007.8999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 57176825,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 170013.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34029365,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 171013.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 34383653,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 172015.1000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 32032285,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 173015.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 36384437,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 174010.30000000447,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 47868489,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 175016.70000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58673473,
+        "total": 96468365,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 176012.6000000015,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 47762897,
+        "total": 96652685,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 177015.5,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 59442509,
+        "total": 96652685,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 178017,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58686673,
+        "total": 96837005,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 179008.20000000298,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 58990597,
+        "total": 97021325,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 180008.3999999985,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 33357393,
+        "total": 97205645,
+        "limit": 4395630592
+      }
+    },
+    {
+      "elapsedMs": 180019,
+      "phase": "scene",
+      "canvases": 1,
+      "domNodes": 198,
+      "chapter": "双帝之战",
+      "iframeWidth": 1265,
+      "iframeHeight": 820,
+      "heap": {
+        "used": 33357393,
+        "total": 97205645,
+        "limit": 4395630592
+      }
+    }
+  ],
+  "longTasks": [
+    {
+      "startTime": 97352.5,
+      "duration": 56
+    },
+    {
+      "startTime": 116091.80000000447,
+      "duration": 257
+    },
+    {
+      "startTime": 136403.30000000447,
+      "duration": 50
+    },
+    {
+      "startTime": 136763.5,
+      "duration": 200
+    },
+    {
+      "startTime": 138376.70000000298,
+      "duration": 191
+    },
+    {
+      "startTime": 139838.6000000015,
+      "duration": 178
+    },
+    {
+      "startTime": 160361.90000000596,
+      "duration": 75
+    },
+    {
+      "startTime": 160553.20000000298,
+      "duration": 204
+    },
+    {
+      "startTime": 162196.6000000015,
+      "duration": 178
+    },
+    {
+      "startTime": 163361.5,
+      "duration": 74
+    },
+    {
+      "startTime": 163943.5,
+      "duration": 172
+    },
+    {
+      "startTime": 165361.90000000596,
+      "duration": 67
+    },
+    {
+      "startTime": 165540.20000000298,
+      "duration": 194
+    },
+    {
+      "startTime": 196362.90000000596,
+      "duration": 106
+    },
+    {
+      "startTime": 197188.30000000447,
+      "duration": 228
+    },
+    {
+      "startTime": 199364.70000000298,
+      "duration": 127
+    },
+    {
+      "startTime": 199671.30000000447,
+      "duration": 197
+    },
+    {
+      "startTime": 201415.80000000447,
+      "duration": 135
+    },
+    {
+      "startTime": 201932.5,
+      "duration": 207
+    },
+    {
+      "startTime": 203364.70000000298,
+      "duration": 109
+    },
+    {
+      "startTime": 204232.70000000298,
+      "duration": 223
+    }
+  ],
+  "longTasksSupported": true,
+  "errors": [],
+  "limits": [
+    "rAF callback timing, not GPU presentation FPS",
+    "DOM canvas counts do not prove listener or GPU resource release",
+    "Heap is optional, coarse and potentially shared; no forced GC or retained-object analysis",
+    "QA observer adds overhead; menus, hidden and no-scene phases are separate",
+    "Not real mobile or human Beta"
+  ],
+  "intervals": {
+    "unfocused-scene": {
+      "count": 768,
+      "durationMs": 6122.5999999999985,
+      "callbacksPerSecond": 125.43690588965475,
+      "p50Ms": 8,
+      "p95Ms": 8.200000000004366,
+      "p99Ms": 8.400000000001455,
+      "maxMs": 16.099999999998545,
+      "over20Ms": 0,
+      "over33Ms": 0,
+      "over50Ms": 0
+    },
+    "scene": {
+      "count": 15454,
+      "durationMs": 147109.20000000013,
+      "callbacksPerSecond": 105.05121365624983,
+      "p50Ms": 8,
+      "p95Ms": 16,
+      "p99Ms": 32,
+      "maxMs": 286,
+      "over20Ms": 230,
+      "over33Ms": 142,
+      "over50Ms": 105
+    },
+    "no-scene": {
+      "count": 3148,
+      "durationMs": 26558.999999999927,
+      "callbacksPerSecond": 118.52855905719375,
+      "p50Ms": 8,
+      "p95Ms": 8.19999999999709,
+      "p99Ms": 16.10000000000582,
+      "maxMs": 127.5,
+      "over20Ms": 30,
+      "over33Ms": 22,
+      "over50Ms": 17
+    }
+  },
+  "ended": "2026-10-15T03:29:41.536Z",
+  "elapsedMs": 180032.8999999985
+}
