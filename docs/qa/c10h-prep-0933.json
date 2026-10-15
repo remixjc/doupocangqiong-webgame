@@ -1,0 +1,370 @@
+{
+  "date": "2026-10-15",
+  "version": "0.93.3",
+  "item": "P02 / C10h-1 original preparation desktop evidence only",
+  "baseSHA": "814b9e839914e030da5a685ab95e67ecc94912a6",
+  "nativeExports": 13,
+  "method": "Normal UI travel and manual interactions on an existing legal completed-28 branch; immutable native downloads parsed with actual official parseSave. No injected game state.",
+  "browser": {
+    "failureText": "×\n小医仙 · 留存练习札记 / 本章事件\n小医仙 · 药材风险准备演练\n\n阅读毒体书简后，可以练习如何先做准备，再处理风险。先看隔离约定，再寻找三份练习凭证，顺序由你决定。到演练盘选择方案，并按照明确步骤操作。每次错误增加35演练风险，累计三次就放弃当前方案，凭证保留，可以免费重新选择。\n\n此为原创风险准备演练，札记不代表小医仙在此刻到场。三份凭证不是原著毒丹材料；练习不扣行囊材料、不生产毒丹、不表示毒体已被压制或控制。报告一次40积累与隔离方案恢复丹1/缓释方案回气丹1。完整原作材料、控制地点及过程继续校订。\n\n到演练盘选择隔离或缓释方案\n\n练习凭证：✓器皿 · ✓隔离区域 · ✓观察记录\n\n演练风险 0/100 · 操作失误 3 次 · 三次错误放弃当前方案，凭证保留。\n\n隔离方案 · 隔离 → 冷却 → 观察\n缓释方案 · 冷却 → 观察 → 隔离\n\n准备演练不生产毒丹，不表示毒体已被压制或控制。\n\n返回地图 · 继续准备",
+    "completedText": "×\n小医仙 · 留存练习札记 / 本章事件\n小医仙 · 药材风险准备演练\n\n阅读毒体书简后，可以练习如何先做准备，再处理风险。先看隔离约定，再寻找三份练习凭证，顺序由你决定。到演练盘选择方案，并按照明确步骤操作。每次错误增加35演练风险，累计三次就放弃当前方案，凭证保留，可以免费重新选择。\n\n此为原创风险准备演练，札记不代表小医仙在此刻到场。三份凭证不是原著毒丹材料；练习不扣行囊材料、不生产毒丹、不表示毒体已被压制或控制。报告一次40积累与隔离方案恢复丹1/缓释方案回气丹1。完整原作材料、控制地点及过程继续校订。\n\n风险准备演练已归档\n\n练习凭证：✓器皿 · ✓隔离区域 · ✓观察记录\n\n演练风险 0/100 · 操作失误 3 次 · 三次错误放弃当前方案，凭证保留。\n\n准备演练不生产毒丹，不表示毒体已被压制或控制。\n\n返回地图 · 继续准备事件完成 · 继续探索",
+    "repeatText": "×\n小医仙 · 留存练习札记 / 本章事件\n小医仙 · 药材风险准备演练\n\n阅读毒体书简后，可以练习如何先做准备，再处理风险。先看隔离约定，再寻找三份练习凭证，顺序由你决定。到演练盘选择方案，并按照明确步骤操作。每次错误增加35演练风险，累计三次就放弃当前方案，凭证保留，可以免费重新选择。\n\n此为原创风险准备演练，札记不代表小医仙在此刻到场。三份凭证不是原著毒丹材料；练习不扣行囊材料、不生产毒丹、不表示毒体已被压制或控制。报告一次40积累与隔离方案恢复丹1/缓释方案回气丹1。完整原作材料、控制地点及过程继续校订。\n\n风险准备演练已归档\n\n练习凭证：✓器皿 · ✓隔离区域 · ✓观察记录\n\n演练风险 0/100 · 操作失误 3 次 · 三次错误放弃当前方案，凭证保留。\n\n准备演练不生产毒丹，不表示毒体已被压制或控制。\n\n返回地图 · 继续准备事件完成 · 继续探索",
+    "wrongPlaceNoRewardButton": true,
+    "errors": [],
+    "notes": [
+      "Chapter4 ordinary walking took natural damage724->589; no healing item used, no death; chapter17 scene entry rebuilt724HP.",
+      "One long walk wait timed out while already arriving; fresh DOM showed correct NPC, then manualE continued. No stage was inferred from timeout.",
+      "Three wrong steady operations, then successful premium protocol; not both success branches."
+    ]
+  },
+  "records": [
+    {
+      "name": "chapter4Reported",
+      "bytes": 37390,
+      "fileSHA256": "31fb7201bcc61120db7678c9fae4c37cdf94d7a5baad90f6245981e5e5853532",
+      "stateSHA256": "127873bdb4aea662c17b8897ea792ee883511932bc933be2c8bbd283a4dfc284",
+      "chapter": 4,
+      "gold": 18718,
+      "xp": 14490,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 5,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": false,
+        "stage": 0,
+        "quote": 0,
+        "score": 0,
+        "attempts": 0,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "chapter17BondReported",
+      "bytes": 37392,
+      "fileSHA256": "2e866d072597dd3ba2de6500bd3c1ea42c354ff0ab081320128bdfe9291caab7",
+      "stateSHA256": "662fcff126b48efd789b51adc699b531365cf445b346fa58d4ffea1b059481a3",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": false,
+        "stage": 0,
+        "quote": 0,
+        "score": 0,
+        "attempts": 0,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "rulesRead",
+      "bytes": 37391,
+      "fileSHA256": "3adb3b950375f193ed52a149bcdf7f50e14afecc4a6378b41f608a9b348fae79",
+      "stateSHA256": "1ea7f9c37d8b46793e1bdeb031f14819b2d8a1b74277443930d2d02f747ed367",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 1,
+        "quote": 0,
+        "score": 0,
+        "attempts": 0,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "observationCredential",
+      "bytes": 37391,
+      "fileSHA256": "1fdb7c190cf54d79f8e274b1db047d39185fa9822439a44a46f6bc13a51633a2",
+      "stateSHA256": "2ce031d803563a448119ad79714bb9d871481cac9760e235fb6b1e247400abac",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 1,
+        "quote": 0,
+        "score": 4,
+        "attempts": 0,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "vesselCredential",
+      "bytes": 37391,
+      "fileSHA256": "32cc19ad5fd41ae2a2246ca314c3c61996ad133733c369bf55d6bf72838a0e04",
+      "stateSHA256": "0b83485e3720ba9dc815da31e5b5cdc69ccdb2984c7f4ca9f36d7b56c2b2b055",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 1,
+        "quote": 0,
+        "score": 5,
+        "attempts": 0,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "allCredentials",
+      "bytes": 37391,
+      "fileSHA256": "7bf1fe02c8d95390f6ac73ec13b2cfe55543e52be2b37c3aaa8a50c6859d9c32",
+      "stateSHA256": "4eb16a2cea32ba0d1161d6ba04def23695a5750450020ffa3fd4cc75e141c418",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 2,
+        "quote": 0,
+        "score": 7,
+        "attempts": 0,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "threeErrorsReset",
+      "bytes": 37391,
+      "fileSHA256": "271ef4fb668bc649305a391dcd91065bce2ebc61a2ff9c924d72809649595983",
+      "stateSHA256": "d2ec1861a9e18ab69f38a189ade209ac42f1e9fe58736b3b9457d1c290107b3a",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 2,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "none"
+      }
+    },
+    {
+      "name": "premiumStep1",
+      "bytes": 37394,
+      "fileSHA256": "7f0c4658b26b1589a7e84ebfd2aea25c42358f99b34f183e40751de569c114ef",
+      "stateSHA256": "cde8d8b31854042bc9d81703957e1511721cbdbddd7be01b20dfac73b69dc662",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 4,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "premium"
+      }
+    },
+    {
+      "name": "premiumStep1Reload",
+      "bytes": 37394,
+      "fileSHA256": "7f4113c4129155b27e6db59d334c1a77b430b35ba24e29a5dc89e5642441e3ae",
+      "stateSHA256": "cde8d8b31854042bc9d81703957e1511721cbdbddd7be01b20dfac73b69dc662",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 4,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "premium"
+      }
+    },
+    {
+      "name": "readyWrongPlace",
+      "bytes": 37394,
+      "fileSHA256": "fb7948a3707b2606b1d7e0ef4a25cd2cc3d9080153cc7412bbde637ca27d8693",
+      "stateSHA256": "290618a0e8ceff19b66c3de5ae9855b46e7a40ca690d3e368b2585442ae7bdcd",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14520,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 2,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 6,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "premium"
+      }
+    },
+    {
+      "name": "reported",
+      "bytes": 37394,
+      "fileSHA256": "9a0e3493904f24895db791720199d831575776e52c2e67e69d29d1f11d18c183",
+      "stateSHA256": "3b2b3a95563fa2188e3a9c31874ea29aec9d3f8c70ceb16d4cd10ea4a4366173",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14560,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 3,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 7,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "premium"
+      }
+    },
+    {
+      "name": "repeatAfterReport",
+      "bytes": 37394,
+      "fileSHA256": "14d74f5074773aa939bd5f194bfda0f6a6bdf805cd3658e40f014225a1413ffb",
+      "stateSHA256": "3b2b3a95563fa2188e3a9c31874ea29aec9d3f8c70ceb16d4cd10ea4a4366173",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14560,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 3,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 7,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "premium"
+      }
+    },
+    {
+      "name": "completedReload",
+      "bytes": 37394,
+      "fileSHA256": "2c890cc1476736a28078303de74f916dd110ac60166e3d7f9c53514e0fea41a8",
+      "stateSHA256": "3b2b3a95563fa2188e3a9c31874ea29aec9d3f8c70ceb16d4cd10ea4a4366173",
+      "chapter": 17,
+      "gold": 18718,
+      "xp": 14560,
+      "inventory": {
+        "herb": 9,
+        "crystal": 76,
+        "heal": 6,
+        "mana": 3,
+        "elixir": 0
+      },
+      "preparation": {
+        "started": true,
+        "stage": 7,
+        "quote": 0,
+        "score": 7,
+        "attempts": 3,
+        "choice": "premium"
+      }
+    }
+  ],
+  "middleReloadEntireStateEqual": true,
+  "completedRepeatReloadEntireStateEqual": true,
+  "unrelatedEntireStateUnchanged": true,
+  "all28SettledProgressPreserved": true,
+  "independentRewards": {
+    "chapter4": {
+      "xp": 20,
+      "heal": 1
+    },
+    "chapter17Bond": {
+      "xp": 30,
+      "heal": 1
+    },
+    "preparation": {
+      "xp": 40,
+      "mana": 1,
+      "onlyAfterReport": true
+    }
+  },
+  "currentChecks": {
+    "targetedFiles": 4,
+    "tests": 28,
+    "priorSameRuntimeFull": {
+      "files": 174,
+      "tests": 1073,
+      "node": 30
+    },
+    "runtimeCodeChanged": false,
+    "migrationCorpusNotRerunOrEnlarged": true
+  },
+  "limits": [
+    "AI menu-paused desktop run, not human player Beta or real mobile device.",
+    "Only premium protocol completed in this native run; steady protocol was deliberately failed three times.",
+    "Preparation credentials are not original control materials, and preparation does not certify suppression, cure, actual formula or character presence.",
+    "P02 original control chain and the remaining 26 lifecycle packages are not closed by this evidence."
+  ]
+}

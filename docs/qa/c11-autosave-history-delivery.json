@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-15",
+  "version": "0.93.3",
+  "sha": "814b9e839914e030da5a685ab95e67ecc94912a6",
+  "remote": "814b9e839914e030da5a685ab95e67ecc94912a6",
+  "checks": {
+    "id": 38673819709,
+    "conclusion": "success"
+  },
+  "pages": {
+    "id": 38673819719,
+    "conclusion": "skipped"
+  },
+  "targeted": {
+    "files": 4,
+    "tests": 25
+  },
+  "runtimeAssetsEqual": true,
+  "metadata": 786,
+  "E01": "open; reproduced vulnerability is not proof of original incident root cause"
+}
