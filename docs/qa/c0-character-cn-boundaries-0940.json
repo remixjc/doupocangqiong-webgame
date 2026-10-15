@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "date": "2026-10-15",
+  "gameVersion": "0.94.0",
+  "method": "Followed actual links in official catalog; recorded ordinary visible DOM and explicit subscription gate. No concealed text, purchase, login or CAPTCHA interaction.",
+  "rows": [
+    {
+      "id": "P02",
+      "provider": "起点中文网",
+      "chineseChapter": 749,
+      "title": "毒丹之法",
+      "url": "https://www.qidian.com/chapter/1209977/28329348/",
+      "pagePublished": "2010-07-05 14:32",
+      "pageFullWordCountLabel": 3311,
+      "observedScope": "only ordinary visible opening; explicit VIP subscription gate; no unlock or CAPTCHA interaction",
+      "visibleDomSHA256": "d5968a42648be949796b4c809c988c06d98add118ef878aed13cef5669f030ba",
+      "supported": "小医仙到山峰与萧炎会面，撤军事务导致迟到；可见美杜莎在场。",
+      "missing": [
+        "完整方法及配方",
+        "材料名称/品质/数量",
+        "获取及保管链",
+        "执行顺序",
+        "独立控制结果"
+      ]
+    },
+    {
+      "id": "P12",
+      "provider": "起点中文网",
+      "chineseChapter": 1253,
+      "title": "完美躯体",
+      "url": "https://www.qidian.com/chapter/1209977/31219132/",
+      "pagePublished": "2011-02-01 14:05",
+      "pageFullWordCountLabel": 3097,
+      "observedScope": "only ordinary visible opening; explicit VIP subscription gate; no unlock or CAPTCHA interaction",
+      "visibleDomSHA256": "da5797dc5915c1408fe595c68ef8e940febf71ca687b2005d675a7ab1551051d",
+      "supported": "清晨后山石塔，萧炎将风尊者拿出的四星斗尊骨骸置于石台，向药老确认准备。",
+      "missing": [
+        "全部材料及用量",
+        "遗骸原主及更早取得经过",
+        "完整炼身中段",
+        "药老独立融合",
+        "最终结果"
+      ]
+    }
+  ],
+  "scope": "source boundary verification only; P02/P12/S01 remain open",
+  "editionRule": "Chinese chapter numbers come from each observed page, never from a fixed English/Chinese offset.",
+  "runtimeUnchanged": true
+}
