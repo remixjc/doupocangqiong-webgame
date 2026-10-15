@@ -1,0 +1,274 @@
+{
+  "date": "2026-10-15",
+  "version": "0.95.0",
+  "baseline": "57a92f7f8b64ebd95b1b9c9fb1b547e3621a1a72",
+  "oldNatives": 861,
+  "newNatives": 11,
+  "metadataAfter": 872,
+  "rows": [
+    {
+      "name": "initial-field",
+      "bytes": 37820,
+      "sha256": "9a9a6d83acfad20e063eb836cd7bb66aac744db68fd97d50bfb4db1293ead34c",
+      "coop": {
+        "revision": 5,
+        "completed": 0,
+        "merit": 0,
+        "supplies": 4,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "field",
+        "step": 0,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "failed",
+      "bytes": 37821,
+      "sha256": "a4e71e457a4daf4be425ddd12b08608286fb4f7215cdc4ce733a027a8d7a82dc",
+      "coop": {
+        "revision": 7,
+        "completed": 0,
+        "merit": 0,
+        "supplies": 0,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "failed",
+        "step": 0,
+        "mistakes": 2
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "step1",
+      "bytes": 37821,
+      "sha256": "14da168266ab4aa3376f27d5fce965a66442aa22d7340e1521caa6e97791b6f9",
+      "coop": {
+        "revision": 10,
+        "completed": 0,
+        "merit": 0,
+        "supplies": 4,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "field",
+        "step": 1,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "step1-refreshed",
+      "bytes": 37821,
+      "sha256": "6dde9ed74d3dd0372f4c492bb2ed452c7563da1416d3d258ae7c1c079589aa12",
+      "coop": {
+        "revision": 10,
+        "completed": 0,
+        "merit": 0,
+        "supplies": 4,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "field",
+        "step": 1,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "review1",
+      "bytes": 37822,
+      "sha256": "413056d567ae6bf562beddee3d5bd8d38fb60a8aefb71830fa037150fd94af48",
+      "coop": {
+        "revision": 12,
+        "completed": 0,
+        "merit": 0,
+        "supplies": 4,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "review",
+        "step": 3,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "report1",
+      "bytes": 37820,
+      "sha256": "db899c0b4b638e5f9d4f2e55b60012b385c069fb28d1d39074c1c12e8da45934",
+      "coop": {
+        "revision": 13,
+        "completed": 1,
+        "merit": 3,
+        "supplies": 4,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "report2",
+      "bytes": 37820,
+      "sha256": "13739b14d8ef6244b72d33e379456b1a09020a01ab900a9ed08593dcb7c537a8",
+      "coop": {
+        "revision": 18,
+        "completed": 2,
+        "merit": 6,
+        "supplies": 2,
+        "assignments": [
+          0,
+          1,
+          2
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "review3-cross-role",
+      "bytes": 37822,
+      "sha256": "cf4fe74ca1f06624917d6feaafb8f164fcf21d56323207ad03f03b0d80da7279",
+      "coop": {
+        "revision": 26,
+        "completed": 2,
+        "merit": 6,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "review",
+        "step": 3,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "report3",
+      "bytes": 37820,
+      "sha256": "aae45d8d6ec5e43150db0a9acf5f207de44d578346c74cb006a5a42f57223ae9",
+      "coop": {
+        "revision": 27,
+        "completed": 3,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "report4-zero",
+      "bytes": 37820,
+      "sha256": "02aa23c352c3b2e738028f1dd01e54c2182fa5f02c0d0012ccc586c5a64594c9",
+      "coop": {
+        "revision": 33,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    },
+    {
+      "name": "report4-refreshed",
+      "bytes": 37820,
+      "sha256": "f75dbac892de24448273216e30e25715c89dec3c9fce334675c9eb01b0c825aa",
+      "coop": {
+        "revision": 33,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "wholeNativeStateEqualsOfficialAPI": true,
+      "allOtherStateUnchanged": true
+    }
+  ],
+  "browserFailures": [
+    "rewriteDocumentation timed out at300s before reset; reset/getState recovered",
+    "header save click while modal open did not switch dialogs; no download counted; closed modal then opened save successfully"
+  ],
+  "browserErrors": [],
+  "lowSuppliesDispatchEnabled": false,
+  "fullStateRefreshPairs": [
+    [
+      "step1",
+      "step1-refreshed"
+    ],
+    [
+      "report4-zero",
+      "report4-refreshed"
+    ]
+  ],
+  "fullOriginal28ChapterHistoryAndAllResourcesUnchanged": true,
+  "rewardAfterFourthReport": 9,
+  "canonicalFoundingClaimed": false,
+  "P08": "source-dependent",
+  "remainingWorkPackages": 25,
+  "realDeviceOrPlayerBetaClaimed": false,
+  "release": {
+    "version": "0.95.0",
+    "gitSha": "57a92f7f8b64ebd95b1b9c9fb1b547e3621a1a72",
+    "files": 157,
+    "bundle": {
+      "initialJsBytes": 440941,
+      "initialJsGzipBytes": 160508,
+      "totalJsBytes": 1849976,
+      "engineGzipBytes": 155802
+    }
+  }
+}

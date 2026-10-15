@@ -56,6 +56,7 @@ import { EARLY_MARKET_SEARCH_VERSION } from './early-market-search-state'
 import { EARLY_MARKET_BRACELETS_VERSION } from './early-market-bracelets-state'
 import { NewerSaveVersionError } from './save-errors'
 import { serializeSave } from './save-serialize'
+import { parseAcademyCoop } from './academy-coop-state'
 export { NewerSaveVersionError } from './save-errors'
 export { serializeSave } from './save-serialize'
 
@@ -395,6 +396,10 @@ export function validateState(value: unknown): GameState {
   requireHistoryVersion(approach, 49, FIRST_HALL_LEAVING_VERSION, '同行跨门')
   requireHistoryVersion(approach, 53, FIRST_HALL_AFTERMATH_VERSION, '离堂后萧宁反应')
   // Construct only known fields. Imported HTML and __proto__ never enter the application.
+  if (data.academyCoop !== undefined) {
+    if (before('0.95.0') || !s.completed.includes(14)) throw new Error('内院协作演练前置无效。')
+    s.academyCoop = parseAcademyCoop(data.academyCoop)
+  }
   return s
 }
 export function parseSave(text: string): GameState {

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-15",
+  "baseline": "57a92f7f8b64ebd95b1b9c9fb1b547e3621a1a72",
+  "fromVersion": "0.94.2",
+  "toVersion": "0.95.0",
+  "actualPreviousSourceFiles": 373,
+  "originals": 861,
+  "originalMetadataSHA256": "991232f0a61e45ec36c9c9981ff74d97c10e3196bf0e742eb926021af3d4bd48",
+  "onlyContentVersionChanged": true,
+  "newHistoryRemainsAbsent": true,
+  "originalsRewritten": false,
+  "previousWritersRerun": false,
+  "canonicalFoundingClaimed": false
+}

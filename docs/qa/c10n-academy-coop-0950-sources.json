@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-15",
+  "version": "0.95.0",
+  "browser": "2",
+  "rows": [
+    {
+      "id": "cn433",
+      "url": "https://www.qidian.com/chapter/1209977/26385666/",
+      "actualBrowserRead": true,
+      "domBytes": 3052,
+      "domSHA256": "8a163127b00fa29d2b373b41e2d465e7ad73c649fceb16abf4b6762803f657e6",
+      "fullBodyRead": false,
+      "boundary": "VIP opening: older students leave, Atai thanks, mutual help and hunt mention"
+    },
+    {
+      "id": "en461",
+      "url": "https://www.wuxiaworld.com/novel/battle-through-the-heavens/btth-chapter-461",
+      "actualBrowserRead": true,
+      "domBytes": 4968,
+      "domSHA256": "1dfe05e4fd84853e9c95508dba3c1254192b8a3c4a9d4e3dd8e58bc6b2d8298e",
+      "fullBodyRead": false,
+      "boundary": "Teaser opening: also concern about future harassment; truncated"
+    }
+  ],
+  "canonicalFoundingOrDutiesVerified": false,
+  "animeEpisodeVerified": false,
+  "allNewMechanicsOriginal": true
+}
