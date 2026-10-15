@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "date": "2026-10-15",
+  "runtime": "0.95.1",
+  "scope": "Official mainland page current update boundary and access evidence only; no watched full-episode or scene mapping claimed.",
+  "navigation": [
+    "Known WeTV work URL rendered a generic English catalogue without this work evidence.",
+    "Tencent homepage visibly offered this work; normal UI opened official episode1.",
+    "Selected visible 211-216 pagination and episode214. No login, purchase, captcha or alternate media request."
+  ],
+  "sources": [
+    {
+      "publisher": "腾讯视频",
+      "coverId": "mzc0020027yzd9e",
+      "firstEpisodeUrl": "https://v.qq.com/x/cover/mzc0020027yzd9e/q0043cz9x20.html",
+      "checkedEpisodeUrl": "https://v.qq.com/x/cover/mzc0020027yzd9e/z4102fl5nfu.html",
+      "observedUpdatedThrough": 214,
+      "observedDeclaredTotal": 219,
+      "observedUpdateSchedule": {
+        "svip": "Saturday 18:00",
+        "vip": "Sunday 10:00",
+        "timezone": "Not explicitly named in the visible label; do not derive individual release timestamps."
+      },
+      "latestList": [
+        {
+          "episode": 211,
+          "label": "VIP",
+          "videoId": "c4102ht69xe"
+        },
+        {
+          "episode": 212,
+          "label": "VIP",
+          "videoId": "b4102gxblb5"
+        },
+        {
+          "episode": 213,
+          "label": "VIP",
+          "videoId": "t4102988hzh"
+        },
+        {
+          "episode": 214,
+          "label": "VIP",
+          "videoId": "z4102fl5nfu"
+        },
+        {
+          "episode": 215,
+          "label": "预告",
+          "videoId": "y4102pb867k"
+        },
+        {
+          "episode": 216,
+          "label": "预告",
+          "videoId": "p41026ca81w"
+        }
+      ],
+      "episode214Access": {
+        "previewMinutes": 3,
+        "fullEpisodeRequiresMembership": true,
+        "fullEpisodeWatched": false,
+        "actualIndividualReleaseDate": null,
+        "sceneTimes": null
+      },
+      "candidateEpisodeTitles": [
+        {
+          "episode": 10,
+          "title": "火能猎捕赛"
+        },
+        {
+          "episode": 14,
+          "title": "天焚炼气塔"
+        },
+        {
+          "episode": 15,
+          "title": "磐门",
+          "videoId": "y0044c85f6k",
+          "observedLabel": "限免",
+          "opened": false
+        }
+      ],
+      "candidateUse": "Official catalogue titles identify future review entry points; no verified game chapter/event mapping follows from titles."
+    }
+  ],
+  "captures": [
+    {
+      "key": "first",
+      "localCaptureSHA256": "ccc8da4a2f1cffcb335fc29c75cafa6a6f2d70e8afb7849d101ab4aa80d3236c",
+      "capturedAt": "2026-10-15T08:57:28.525Z",
+      "publicRawCapture": false
+    },
+    {
+      "key": "latestList",
+      "localCaptureSHA256": "300426ac47b13c0e967f88da4efbd8e30a013d3a3682de73f084f6c43da2ca8f",
+      "capturedAt": "2026-10-15T08:57:38.780Z",
+      "publicRawCapture": false
+    },
+    {
+      "key": "episode214",
+      "localCaptureSHA256": "0b3072dbe11a1621c2a24f96545418d9e05e6cf492564656146b5fa2ab56a2c2",
+      "capturedAt": "2026-10-15T08:58:30.274Z",
+      "publicRawCapture": false
+    }
+  ],
+  "screenshot": {
+    "path": "docs/qa/c0-tencent-boundary-20261015.png",
+    "sha256": "6fde329062abbaf207179df0e01bed10b6f23cd19f430c2097f5741f2521c33c",
+    "scope": "Official title/header and 211-215 visible cells only; cropped to exclude public comments and original video frames. Episode216 preview status is in separate observed latest-list capture."
+  },
+  "retainedUnknowns": [
+    "Full episode214 story, exact release date and scene timecodes.",
+    "Game chapter mapping and per-event anime differences.",
+    "Full original P08 founding/member duties and other P01-P12 packages.",
+    "Availability across accounts, regions, devices and later dates."
+  ],
+  "runtimeChanges": false,
+  "saveChanges": false,
+  "spoilerModeChanges": false,
+  "openWorkPackages": 25,
+  "validation": {
+    "fullCheckPassed": true,
+    "vitest": {
+      "files": 180,
+      "tests": 1097
+    },
+    "nodeTests": 39,
+    "typecheck": true,
+    "storyCoverageAudit": true,
+    "production": {
+      "files": 157,
+      "bytes": 2585635,
+      "allPreviousFormalPathsBytesAndHashesEqual": true,
+      "bundle": {
+        "initial": 429245,
+        "gzip": 160095,
+        "total": 1838650
+      },
+      "fixedBudgets": {
+        "initial": 500000,
+        "gzip": 165000,
+        "total": 1850000
+      }
+    },
+    "frozenNativeMetadataCount": 886,
+    "latestNativeBytesUnchanged": true,
+    "newMigrationRun": false,
+    "newGameplayBrowserRun": false
+  }
+}
