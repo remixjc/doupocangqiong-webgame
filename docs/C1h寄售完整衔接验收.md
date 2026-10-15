@@ -14,6 +14,8 @@
 
 机器证据：[qa/c1h-sale-chain-0931.json](qa/c1h-sale-chain-0931.json)。25原件追加元数据749→774；本批迁移/证明写入器随交付冻结，不重跑到扩大的原件列表。提交后另取原生备份，单独追加，不覆盖旧证明。
 
+正式交付补证（2026-10-15）：完整提交58c685950242cf4fbdf6f5c5070f35b157186a72与远端一致；逐项查询Game checks38666929939为success、Pages38666929819为skipped。提交后生产清单绑定该SHA；正常刷新后的隐巷整dialog相同、error=[]，第26份原生导出由官方parseSave核对原文及此前最终整state全同。只追加该份元数据774→775，私有交付回执`.git/task-sale-chain-0931-delivery.json`；本批全部写入器冻结。
+
 以下三图均已实际查看，是桌面浏览器证据：
 
 ![隐巷归档接续入口](qa/c1h-sale-chain-0931-link.jpg)

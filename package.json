@@ -11,7 +11,9 @@
     "typecheck": "tsc -b",
     "test": "vitest run",
     "test:replay": "vitest run tests/replay.test.ts",
-    "check": "tsc -b && vitest run && node --test scripts/bundle-graph.node.mjs scripts/release-integrity.node.mjs scripts/scene-row-pack.node.mjs scripts/summary-text-pack.node.mjs && vite build && node scripts/check-bundle.mjs && node scripts/check-scene-row-pack.mjs && node scripts/check-summary-text-pack.mjs && node scripts/write-release-manifest.mjs && node scripts/verify-release.mjs",
+    "story:audit": "node scripts/audit-story-coverage.mjs",
+    "story:audit:write": "node scripts/audit-story-coverage.mjs --write",
+    "check": "tsc -b && vitest run && node --test scripts/bundle-graph.node.mjs scripts/release-integrity.node.mjs scripts/scene-row-pack.node.mjs scripts/summary-text-pack.node.mjs scripts/story-coverage.node.mjs && node scripts/audit-story-coverage.mjs && vite build && node scripts/check-bundle.mjs && node scripts/check-scene-row-pack.mjs && node scripts/check-summary-text-pack.mjs && node scripts/write-release-manifest.mjs && node scripts/verify-release.mjs",
     "release:verify": "node scripts/verify-release.mjs",
     "bundle:check": "node scripts/check-bundle.mjs"
   },

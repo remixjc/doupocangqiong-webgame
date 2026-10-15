@@ -1,0 +1,1638 @@
+{
+  "format": 1,
+  "auditDate": "2026-10-15",
+  "version": "0.93.1",
+  "scope": "28-chapter condensed playable route; original-source fidelity, character packages and lifecycle gates remain separately open",
+  "method": "Read actual repository exports and cross-check required event completion against existing public native-download evidence. No browser run or original-source verification performed by this script.",
+  "limits": [
+    "Historical browser evidence is version 0.37.5, not a new current-version 28-chapter browser playthrough.",
+    "File digests identify published historical records; this public check does not read private native originals.",
+    "Optional bond pages are counted as implemented definitions, not all completed by the ordinary journey.",
+    "Chinese novel chapter numbers, anime episodes, devices, licensing and deployment are not certified."
+  ],
+  "inputs": [
+    {
+      "file": "src/content/bonds.ts",
+      "sha256": "58fb4d607c146625b64ad141055bb1ca02571cc77fd389978068bffe1011bc0f"
+    },
+    {
+      "file": "src/content/chapters.ts",
+      "sha256": "3a4d75ca0bbc11f9d546174932633822b0c71ddf3226e7f61554522463d9b1cb"
+    },
+    {
+      "file": "src/content/content-records.ts",
+      "sha256": "6c33ba746e17e06781025ea609577a524c42ae3835065eb85f5ea9c573962532"
+    },
+    {
+      "file": "src/content/decode-scene-rows.ts",
+      "sha256": "c0b36b48ed7628f3e46ecfd4c69cda42a86a66b2349f38c33d01f3cc63f5236d"
+    },
+    {
+      "file": "src/content/early-appraisal.ts",
+      "sha256": "22b4a0b0936d1793074e99c789bd7b917cdd012a4135297e50c74a4a22359afb"
+    },
+    {
+      "file": "src/content/early-apprentice.ts",
+      "sha256": "5263fc78195773073bcca8105af8b0816339ed9bb6697429d9604d25bd9c0fbe"
+    },
+    {
+      "file": "src/content/early-auction.ts",
+      "sha256": "81fa8d07486933b528832fe7d94a6beca0e1c6667e5c03c1891bddb3ec7e6c51"
+    },
+    {
+      "file": "src/content/early-bracelet.ts",
+      "sha256": "de714e9dd72071f4936072f72491fa45293d6d7f0bf437c049973ed71b8bdc31"
+    },
+    {
+      "file": "src/content/early-ceremonial-test.ts",
+      "sha256": "0025d4a1244ce4709efc5edd654402056e13c15f475433c2dbb363f90caacd66"
+    },
+    {
+      "file": "src/content/early-ceremony-guests.ts",
+      "sha256": "064622bb23804113b22db7ecee9093c4bae6f5ba7327387e072266ae52ddfb62"
+    },
+    {
+      "file": "src/content/early-ceremony-verdict.ts",
+      "sha256": "b388b0f4c81b46cf70007f0b6a5935103e66ac7ef46888310556ea8a81f1fba7"
+    },
+    {
+      "file": "src/content/early-city-pharmacy.ts",
+      "sha256": "5928a57baecde8c601cb7c711af34dc510572719d606b22e4e9587b136970b18"
+    },
+    {
+      "file": "src/content/early-eighth-training.ts",
+      "sha256": "968d0683d7484b48ae081e8ca8b8419644d6214a7b86e3b9d195db954363fcad"
+    },
+    {
+      "file": "src/content/early-family-compensation.ts",
+      "sha256": "a93f48128378f582aa64dc198d7b2d8e445e8a85bc8fe896566f4444d087e795"
+    },
+    {
+      "file": "src/content/early-family-contract.ts",
+      "sha256": "1e827aca1dc97308a7074cdd80efab973906698d42cb30d083ddba231bb89c7a"
+    },
+    {
+      "file": "src/content/early-family-visit.ts",
+      "sha256": "796b7ee6a4e826c5e8feb4b086697edfc4ac6838838ee1ae89a1bd0dc97cb833"
+    },
+    {
+      "file": "src/content/early-father-gift.ts",
+      "sha256": "21a06f6c1ee604d5229975d93b10b18c888f09e9403ed91f9167253d2006e5fd"
+    },
+    {
+      "file": "src/content/early-forest-strike.ts",
+      "sha256": "4e067dbd47dfb5d449d069e0af43fdb5a04595b153490664c07e926e4b57c6f0"
+    },
+    {
+      "file": "src/content/early-growth.ts",
+      "sha256": "489dfb19623c8815a481f5f3b8b1f9dcadf61745095af261c7fe43ac24c79390"
+    },
+    {
+      "file": "src/content/early-hall.ts",
+      "sha256": "041cef64c78852de5b74565023a18c04143b9c444850d50e041bea072103046b"
+    },
+    {
+      "file": "src/content/early-iron.ts",
+      "sha256": "78c70bada7c4cfe6332df37f577928f182f9edc3f78174392b33bd8c368edc68"
+    },
+    {
+      "file": "src/content/early-ke-challenge.ts",
+      "sha256": "9e394da8b8884e56c7c007a4ac6e778b69d18db5406a2f50e8312355aead7918"
+    },
+    {
+      "file": "src/content/early-liquid.ts",
+      "sha256": "0fbf4b4df70af827329255bf7023a7d5dc335b7a8d0fc7c4bc43c2e1ddf45972"
+    },
+    {
+      "file": "src/content/early-long-supplies.ts",
+      "sha256": "53c21d5e1ad67343c24fd7125c744305434e75af188f27a829ce3f12a4a0ed38"
+    },
+    {
+      "file": "src/content/early-market-bracelets.ts",
+      "sha256": "e20835b8c815b506e86fdfd230d9598c90c07611733cbe7f07637dac08616b61"
+    },
+    {
+      "file": "src/content/early-market-discovery.ts",
+      "sha256": "c317ea745e1a3626154ac7445a8f5ac79671966b2461fc4e2b5117f89b56af84"
+    },
+    {
+      "file": "src/content/early-market-escort.ts",
+      "sha256": "f815023172cdf6681c81754072b734a646be02a299ffa7f16aeafeb2ab66f8a9"
+    },
+    {
+      "file": "src/content/early-market-return.ts",
+      "sha256": "658dcc4407b4bd1b7fd33603d558ff93f4d5eddc7d3b878dbf89ceb327b6da5c"
+    },
+    {
+      "file": "src/content/early-market-search.ts",
+      "sha256": "5a508caf6cc8f9d457364313bb68dae1f4ec15a3ff69b0c3a7d55280ed8727f9"
+    },
+    {
+      "file": "src/content/early-market-standoff.ts",
+      "sha256": "978f633750d1a1d0512cbdb0a1988aa03fd0bda4a3263c2f3597c5670d9c68bf"
+    },
+    {
+      "file": "src/content/early-market-trade.ts",
+      "sha256": "230b374abd746a7f857481fc0fe122eca32f51445453587ced1c735f17d03d03"
+    },
+    {
+      "file": "src/content/early-market.ts",
+      "sha256": "23fcda7bf84d6dfeec1931aec2bde928e5da3867dcdf83a272267b231a0638cf"
+    },
+    {
+      "file": "src/content/early-method-discussion.ts",
+      "sha256": "6a3c865fff16c8b3dde95ebc03247401383a51260730677bf40eee69e9ad11e2"
+    },
+    {
+      "file": "src/content/early-morning-card.ts",
+      "sha256": "2ba0dc5d11c4c4ceff247bf930fedb244207900104ec7a76332d7621ae8a7ad2"
+    },
+    {
+      "file": "src/content/early-mountain-ring.ts",
+      "sha256": "daa0838ff2b9c1b787489f161dbf4d623521fa33a7d3382be5bf8918fd82440a"
+    },
+    {
+      "file": "src/content/early-mountain-visitor.ts",
+      "sha256": "32169961961738023bf583202279db6744df4021532b2cc51a2b146c50784d7c"
+    },
+    {
+      "file": "src/content/early-ning-first.ts",
+      "sha256": "4716e7744d17034a31f571a3f6ae69f47cf2a2e245f5373daa79bd18d7484757"
+    },
+    {
+      "file": "src/content/early-ning-second.ts",
+      "sha256": "b488cfbfa3323608d6a4d223838220128c78d893be37b86d77f7c2a952f3a011"
+    },
+    {
+      "file": "src/content/early-palm-pair.ts",
+      "sha256": "6a8cdf51564135e449059b32968c3f8cc2d31c4e93fdff387c86b3a6a6245295"
+    },
+    {
+      "file": "src/content/early-preliminary.ts",
+      "sha256": "90875229caae5b76126f8b2257dec820d53c3af7acf7a53054e82988be0a8696"
+    },
+    {
+      "file": "src/content/early-preparation-brief.ts",
+      "sha256": "1c7049aa4ac1f1a055f9144f6d92e1d71db410f2456ec2dcc4b78f96e9fa09b6"
+    },
+    {
+      "file": "src/content/early-qi-aid.ts",
+      "sha256": "350870664f77d36948c0ab81c7ffd63d6effbdba3be48e2967f4ce4a5461ec0e"
+    },
+    {
+      "file": "src/content/early-qi-barrier.ts",
+      "sha256": "e610d78af6705bc45b7449397134a1f0e26e7d682e221f2968c19091d6f8435c"
+    },
+    {
+      "file": "src/content/early-qi-exchange.ts",
+      "sha256": "0f46e447b04d18803de7e723f40674d94363f29251772951ce5e8e10f74872bc"
+    },
+    {
+      "file": "src/content/early-qi-pavilion.ts",
+      "sha256": "0c2cd8fe6f598f337481c709b6750abff8fa60593696fea1b2dceb292d0d958e"
+    },
+    {
+      "file": "src/content/early-qi-scroll.ts",
+      "sha256": "cc7e70b12e4a621111ef8bb814fbe55b4ea84eb202cc1fb222e77b10bd02716f"
+    },
+    {
+      "file": "src/content/early-recovery.ts",
+      "sha256": "0ea515ebce78014c28cebc04cf804e3ea57d4008e51e1e33ae6d6cf8b9081121"
+    },
+    {
+      "file": "src/content/early-refining.ts",
+      "sha256": "6f113efe2e4498cfb542c984e3a18f7acb3734a8e63cd7b629eff189dc7762a5"
+    },
+    {
+      "file": "src/content/early-settlement.ts",
+      "sha256": "e90878447eab64623d7d739d5f3a60af400f32cb545a030f365bd07bf709801f"
+    },
+    {
+      "file": "src/content/early-seventh-room.ts",
+      "sha256": "a4986313ca8b12f075b7052f9e23a9fb95c28635a5ef559066349086c7dc3619"
+    },
+    {
+      "file": "src/content/early-teaching.ts",
+      "sha256": "d7652a4519c02ffabffeb85730a272918b1cc72cdce55fc053f28b57cda89c97"
+    },
+    {
+      "file": "src/content/early-xuner-visit.ts",
+      "sha256": "9ae5d20697bf87f572bad79e4e2e4c8c28fe1353a3162e1ac04f13b350d33712"
+    },
+    {
+      "file": "src/content/events.ts",
+      "sha256": "37f0c823e48a6f2853c2054670db8ac1d176bf8fd59ea426d68b856c0dadadd0"
+    },
+    {
+      "file": "src/content/first-awakening.ts",
+      "sha256": "014436235af09575b73225c37150e76c02e5d2fca22b36e1af10eb9bdbe4907c"
+    },
+    {
+      "file": "src/content/first-bottle.ts",
+      "sha256": "1951921f8b25f6d9c46f34a727d2dcbb48c55776c9e954a234552487231fa9c0"
+    },
+    {
+      "file": "src/content/first-departure.ts",
+      "sha256": "86c3c2ae8ce6e960902ede15601597d2dd353d3a6237581b2ead5d07a5706334"
+    },
+    {
+      "file": "src/content/first-external-limit.ts",
+      "sha256": "8bb56c7bda31b9f8145d53ba5c07a7d528c4ddb502a57b60a8dd8a3db1055098"
+    },
+    {
+      "file": "src/content/first-external-training.ts",
+      "sha256": "904a2056deb5ba18f9b51c66b818ae4b2dfe40b576645a9f5d53b37663950f5e"
+    },
+    {
+      "file": "src/content/first-hall-afternoon.ts",
+      "sha256": "ca7071121594a0f93b0fbf0766d35201bc035a1ced27f15db689dd519758b3e4"
+    },
+    {
+      "file": "src/content/first-hall-approach.ts",
+      "sha256": "62c220c88ba325d845357ff7f3393b662449eac50aa23450b6d0d324b525a0ad"
+    },
+    {
+      "file": "src/content/first-hall-body.ts",
+      "sha256": "99c484e30bee99c3055d549d224e96c04f88b9c05bdbeef902a780eb44c2dd4a"
+    },
+    {
+      "file": "src/content/first-hall-entry.ts",
+      "sha256": "7c30f616f6f02227c66e52ff2342e1c17cd8ffbbe55136ec46aa5648accf892e"
+    },
+    {
+      "file": "src/content/first-hall-evening.ts",
+      "sha256": "09b9b35bbfbf84130e2d0263d41ae58adebf8d1083d432c3c2516ec8be2680f7"
+    },
+    {
+      "file": "src/content/first-hall-grant.ts",
+      "sha256": "7961707ca7af4c65e48193584fb39dc0ffc0517d82b180939d0032de043e907a"
+    },
+    {
+      "file": "src/content/first-hall-match.ts",
+      "sha256": "b89eb410f91e8906d33927f544ab09ed0f4602dbac9ebdcc5e424eda55fc2cc7"
+    },
+    {
+      "file": "src/content/first-hall-reading.ts",
+      "sha256": "7c9dcfa8165453f9c6d44337ccaf1653e5f2c085678af33cdf1f9e54e761f210"
+    },
+    {
+      "file": "src/content/first-hall-scroll-review.ts",
+      "sha256": "01c4b7895d14af6dbe4c9fe643094bee0baa5f53e978aabc9931375169e0a904"
+    },
+    {
+      "file": "src/content/first-hall-talk.ts",
+      "sha256": "dc7d3f88884a660749b99c120217d18ef826035ee9a24d536e8a244f5e93129f"
+    },
+    {
+      "file": "src/content/first-hall-teacher.ts",
+      "sha256": "16060de046c22a8f603092cd3752d47fc7dc32b5bed5bcadd58c25b6f2413432"
+    },
+    {
+      "file": "src/content/first-hall-transmission.ts",
+      "sha256": "1b83ec746a2ce371fe3501e5bfb75c636301d199f041c16c1438d051016d207a"
+    },
+    {
+      "file": "src/content/first-recovery.ts",
+      "sha256": "92e1fab6cf18e07e3abe1c9927d806a124e66abc6cb4760d1e504b29f44efd9d"
+    },
+    {
+      "file": "src/content/first-review.ts",
+      "sha256": "3c9a09215558ee5005f3bf088d3f2b34ff30fd31c24df942edd193411986a40d"
+    },
+    {
+      "file": "src/content/first-road-meeting.ts",
+      "sha256": "92b29d91aeda2e1e51ab944e747a2bdfbea4db1e17d28c6032525e3717bde383"
+    },
+    {
+      "file": "src/content/first-sale-alley.ts",
+      "sha256": "d6b60bec8d89ceb8c5b3df15942fcbec32d50d34d51ae6a24e085e9cb52af3cd"
+    },
+    {
+      "file": "src/content/first-sale-departure.ts",
+      "sha256": "b6d01e50e99ee38cb989cbf3ab9a856a649c0664d42b617cf4978a7f3ee89c1e"
+    },
+    {
+      "file": "src/content/first-sale-plan.ts",
+      "sha256": "53092558ee0338cc7b7cae12b6a2630311b6336732a88473ee56562f03363f70"
+    },
+    {
+      "file": "src/content/first-sale-purchase.ts",
+      "sha256": "460ebb8392c2118cf074fb97864967d97764c1629be31969f2fe60bdc2215157"
+    },
+    {
+      "file": "src/content/first-technique.ts",
+      "sha256": "e06cb08431e7afaecff6909bb1d43cb1e3a5b5ab3bdc385947c4fc9dc5f319a1"
+    },
+    {
+      "file": "src/content/first-training.ts",
+      "sha256": "a00ba8340090d20cc564b8e373868375ebd50ca7b5bc26c69dec8289c1b52551"
+    },
+    {
+      "file": "src/content/lz-base64.d.ts",
+      "sha256": "1e70cabe58601979a01ad93b29141d9cd3656716e7494b8babed61e2fef09b6a"
+    },
+    {
+      "file": "src/content/maps.ts",
+      "sha256": "7a5c263810b9166be7a02cadd6fe3b425f83045cebc9354bb3d2d30ebc21d9d8"
+    },
+    {
+      "file": "src/content/preparations.ts",
+      "sha256": "8de179ef36494ced64959d6267f6b19b01f04821a1cfcf971c21b6ecee6e2d11"
+    },
+    {
+      "file": "src/content/recipes.ts",
+      "sha256": "77039ab00ea4ae06c66faac4a12911da0d271956baf5328426933524af03b979"
+    },
+    {
+      "file": "src/content/scene-radix85.d.ts",
+      "sha256": "376d970b318f9679e870413ad1da6a567f3d0e6615bb01d1b342b5cb5084c0c3"
+    },
+    {
+      "file": "src/content/scene-rows.ts",
+      "sha256": "4653795fba519832d620a0de837f1c01b238e6249eca7673c4579ee5c4edee3b"
+    },
+    {
+      "file": "src/content/story.ts",
+      "sha256": "bb74a54d7dd82314b56c0977c920434342bd831d78643b198390b1871053fb8d"
+    }
+  ],
+  "summary": {
+    "chapters": 28,
+    "distinctMaps": 28,
+    "requiredEvents": 34,
+    "optionalEvents": 26,
+    "bondLines": 7,
+    "bondPages": 24,
+    "finalPhaseMaps": [
+      "continent-final-battlefield",
+      "final-blood-realm",
+      "final-emperor-flame-realm"
+    ],
+    "openWorkPackages": 27
+  },
+  "workRegisterSHA256": "bebdb3fa87daf7256305564e38ebbe3f46cf7cae805c0f4ed721d219ba27e2f3",
+  "chapters": [
+    {
+      "id": 1,
+      "title": "少年与戒指",
+      "map": "xiao-back-mountain",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 3,
+        "kills": 3,
+        "brews": 0
+      },
+      "challenge": "后山试炼守卫",
+      "firstClearReward": 140,
+      "adaptationNote": "本章提前展示拜师后的原创教学；第2章回溯立约及拜师起因。药草、投影和试炼守卫为教学设计，不代表原作拜师考核或药方。",
+      "events": [
+        {
+          "id": "yao-training",
+          "kind": "training",
+          "title": "药老指导",
+          "optional": false,
+          "stages": 3,
+          "requires": []
+        },
+        {
+          "id": "xuner-youth-letter",
+          "kind": "bond",
+          "title": "薰儿 · 少年书简",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-early-journey.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "88a5620dafb5673cad11cca5459a9ff4b8bc761bb3c9ea10cacc9499aded49d0",
+        "checkpoint": 1,
+        "nativeFileSHA256": "0714e88b5df0a426e81d2cde9046933aad8996db9751bf69c2dd8381672c84c4",
+        "historicalStateSHA256": "6c50295d0745b85ae8ebc1f7de91e29683c12b18fa65ee4fa830314a1384a196"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 2,
+      "title": "三年之约",
+      "map": "xiao-family-courtyard",
+      "openingLines": 3,
+      "closingLines": 3,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "萧家演武教习",
+      "firstClearReward": 200,
+      "adaptationNote": "回溯三年立约，再以短场景概括药老现身与拜师，之后恢复顺叙。院中教习和演武为原创练习；来访者不是本章可击杀首领，赴约决战在第10章。",
+      "events": [
+        {
+          "id": "three-year-vow",
+          "kind": "vow",
+          "title": "立约与启程",
+          "optional": false,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "teacher-first-lessons",
+          "kind": "bond",
+          "title": "药老 · 戒中初课",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-early-journey.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "88a5620dafb5673cad11cca5459a9ff4b8bc761bb3c9ea10cacc9499aded49d0",
+        "checkpoint": 2,
+        "nativeFileSHA256": "e96cc39b8060bc3a152c95e09f9ba41c5f7efdf07b681b6a6a1356e2266b8d08",
+        "historicalStateSHA256": "cef3afdf8726cda1d506f26a4750e1f5006d83880da46675c303145fb2a1e449"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 3,
+      "title": "成人礼",
+      "map": "wutan-family-market",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "成人礼武技考核 · 历练投影",
+      "firstClearReward": 230,
+      "adaptationNote": "供货订单和武技考核为游戏原创历练，不直接复现原著商业细节。",
+      "events": [
+        {
+          "id": "family-market-order",
+          "kind": "trade",
+          "title": "坊市供货",
+          "optional": false,
+          "stages": 3,
+          "requires": []
+        },
+        {
+          "id": "adult-test-stone",
+          "kind": "stone",
+          "title": "成人礼 · 控气测试",
+          "optional": false,
+          "stages": 5,
+          "requires": [
+            "family-market-order"
+          ]
+        },
+        {
+          "id": "market-competition",
+          "kind": "competition",
+          "title": "坊市 · 竞争委托",
+          "optional": true,
+          "stages": 6,
+          "requires": [
+            "family-market-order"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-early-journey.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "88a5620dafb5673cad11cca5459a9ff4b8bc761bb3c9ea10cacc9499aded49d0",
+        "checkpoint": 3,
+        "nativeFileSHA256": "9d137c5949b5c819823bac90925aa8794d27623a620750d2ea9acabdc3099732",
+        "historicalStateSHA256": "bbff2727b86f5bce442c6ea88ff0d018bc926d9654479fb4f4cae66d6e662772"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 4,
+      "title": "青山镇",
+      "map": "qingshan-hidden-cave",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "洞穴归途 · 护卫投影",
+      "firstClearReward": 260,
+      "adaptationNote": "三符机关、宝匣材料与归途护卫为原创历练；完成寻宝和回程后开启试炼。",
+      "events": [
+        {
+          "id": "hidden-cave-treasure",
+          "kind": "cave",
+          "title": "洞穴 · 三符寻宝",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        },
+        {
+          "id": "doctor-cave-trust",
+          "kind": "bond",
+          "title": "小医仙 · 洞外的约定",
+          "optional": true,
+          "stages": 4,
+          "requires": [
+            "hidden-cave-treasure"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-mountain-certification.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "65426d40a524f4ee1a2ee544781ee2a6873789b1f84d1008691e788e08e67677",
+        "checkpoint": "04",
+        "nativeFileSHA256": "0a49dd454405641ffc0f9ac616a69a4538fffc94e8a39d02b318fe372cf41216",
+        "historicalStateSHA256": "8b5ecc17506da0fc49356fc5cb5b14b07dbf1965a60e9d47fc4b2ec12a3e07da"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 5,
+      "title": "山脉邂逅",
+      "map": "purple-crystal-valley",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "狮王警戒 · 安全撤离",
+      "firstClearReward": 290,
+      "adaptationNote": "保护采药同伴后，在警戒区坚持并撤离；紫晶翼狮王不作为可击杀首领。",
+      "events": [
+        {
+          "id": "mountain-herb-escort",
+          "kind": "escort",
+          "title": "山谷 · 采药保护",
+          "optional": false,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "lion-escape",
+          "kind": "survival",
+          "title": "紫晶洞外 · 警戒撤离",
+          "optional": false,
+          "stages": 4,
+          "requires": [
+            "mountain-herb-escort"
+          ]
+        },
+        {
+          "id": "yunyun-mountain-memory",
+          "kind": "bond",
+          "title": "云韵 · 山谷旧影",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-mountain-certification.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "65426d40a524f4ee1a2ee544781ee2a6873789b1f84d1008691e788e08e67677",
+        "checkpoint": "05",
+        "nativeFileSHA256": "20b0e0334cf12db365207b3923de3d5f632e6c098218eed93579622602a09f0f",
+        "historicalStateSHA256": "0d0e9911c0685b0fee0c7e81cab0a22fd98af261031e4613751eaaa0abef2625"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 6,
+      "title": "炼药启程",
+      "map": "black-rock-alchemy-guild",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "公会审核 · 控火资格",
+      "firstClearReward": 320,
+      "adaptationNote": "三步控火认证与登记为原创练习，专用材料由公会提供，不额外生产丹药。",
+      "events": [
+        {
+          "id": "black-rock-certification",
+          "kind": "certification",
+          "title": "黑岩城 · 控火认证",
+          "optional": false,
+          "stages": 7,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-mountain-certification.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "65426d40a524f4ee1a2ee544781ee2a6873789b1f84d1008691e788e08e67677",
+        "checkpoint": "06",
+        "nativeFileSHA256": "a406c4bb0071c86a8cd37bdb41d1f8dfe42c07b86d1e555de919c1a1bbf594c7",
+        "historicalStateSHA256": "806b1f3827632c0f28a431fb7abf10366d92e57d67a29039b7e4205a0d8e6509"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 7,
+      "title": "沙漠兄弟",
+      "map": "stone-desert-rescue-town",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "沙城出发 · 护卫投影",
+      "firstClearReward": 350,
+      "adaptationNote": "失散团员与守卫为原创救援，解救和回报后再完成出发试炼；青鳞完整支线后续扩充。",
+      "events": [
+        {
+          "id": "stone-desert-rescue",
+          "kind": "rescue",
+          "title": "石漠城 · 失散团员",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        },
+        {
+          "id": "qinglin-desert-listening",
+          "kind": "bond",
+          "title": "青鳞 · 沙城听风",
+          "optional": true,
+          "stages": 4,
+          "requires": [
+            "stone-desert-rescue"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-desert-tournament.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "0dffe58a80a5edbdb3a6e2f8a9f6889472635ad9d06cfbf0bfce6d0adb82face",
+        "checkpoint": "07",
+        "nativeFileSHA256": "2f934b352e7b9a750a876e78c1dfb8c4e109174c472e68d49c283c219aef3ab7",
+        "historicalStateSHA256": "75f0b8432213b1bc6873976712b32798e6678ebc4142dcbfd76dcc5d01d0dfda"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 8,
+      "title": "青莲地心火",
+      "map": "lotus-fire-cavern",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "青莲地心火 · 收服确认",
+      "firstClearReward": 380,
+      "adaptationNote": "三段控火、热量与冷却点为原创收服机制；第八章首通正式结算后取得青莲地心火。",
+      "events": [
+        {
+          "id": "lotus-fire-attunement",
+          "kind": "flame",
+          "title": "青莲火域 · 三段控火",
+          "optional": false,
+          "stages": 7,
+          "requires": []
+        },
+        {
+          "id": "haibodong-desert-agreement",
+          "kind": "bond",
+          "title": "海波东 · 沙漠旧约",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "medusa-fire-road-memory",
+          "kind": "bond",
+          "title": "美杜莎 · 火路旧记",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-desert-tournament.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "0dffe58a80a5edbdb3a6e2f8a9f6889472635ad9d06cfbf0bfce6d0adb82face",
+        "checkpoint": "08",
+        "nativeFileSHA256": "ecd3792ccc3a39856904c792e868ad5df489f713ac5111d1cbc14cee4a41a4c9",
+        "historicalStateSHA256": "49799da5399fd792fb8953d763a241444f08582fe2a14aa9935dba29256d7fe7"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 9,
+      "title": "炼药师大会",
+      "map": "capital-alchemy-tournament",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "大会领奖 · 成绩审核",
+      "firstClearReward": 410,
+      "adaptationNote": "三轮赛制与火候为原创大会机制，各轮独立210分通过；免费重试，不重复产丹。",
+      "events": [
+        {
+          "id": "capital-three-round-tournament",
+          "kind": "tournament",
+          "title": "帝都 · 三轮炼药大会",
+          "optional": false,
+          "stages": 15,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-desert-tournament.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "0dffe58a80a5edbdb3a6e2f8a9f6889472635ad9d06cfbf0bfce6d0adb82face",
+        "checkpoint": "09",
+        "nativeFileSHA256": "66a4ad7d460136913f192377faecf2003a9e2720f0b6c912e6fac603310be598",
+        "historicalStateSHA256": "2b8c0fbe8ac3ed3bef64356a1ccc7a2e750947ff84eaa9c3bd633ad5244410d3"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 10,
+      "title": "云岚之约",
+      "map": "yunlan-duel-court",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "纳兰嫣然 · 约定之战",
+      "firstClearReward": 440,
+      "adaptationNote": "独立演武台、三阶段风系招式和反击窗口为原创决斗机制；正式首通结算约定之战。",
+      "events": [
+        {
+          "id": "yunlan-duel-approach",
+          "kind": "vow",
+          "title": "云岚 · 赴约足迹",
+          "optional": false,
+          "stages": 3,
+          "requires": []
+        },
+        {
+          "id": "yunyun-sect-standpoint",
+          "kind": "bond",
+          "title": "云韵 · 山门两端",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-duel-academy.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "9692589e30f42d59731a1b9a679406a811caed5d89f16e58da8c322e5c9199c4",
+        "checkpoint": "10",
+        "nativeFileSHA256": "84598e4ea775fbed1b408a4e8754e4c73b4c878769af7aaea4cf002dbe354401",
+        "historicalStateSHA256": "c5572fd041e536edb458e1de84ac51a4aab30ae56d0d88a3018b971f34a59dbb"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 11,
+      "title": "逃离加玛",
+      "map": "yunlan-mountain-escape",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "云岚山路 · 安全脱离",
+      "firstClearReward": 470,
+      "adaptationNote": "追击预警与两处掩体为原创撤离机制；不击杀原著高阶追兵，保留完成的安全节点。",
+      "events": [
+        {
+          "id": "yunlan-pursuit-escape",
+          "kind": "escape",
+          "title": "云岚山外 · 追击退路",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-duel-academy.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "9692589e30f42d59731a1b9a679406a811caed5d89f16e58da8c322e5c9199c4",
+        "checkpoint": "11",
+        "nativeFileSHA256": "fe96a6bedfb0362babe36ba692286aa5e07a5bf421744726b7598b46ba73f385",
+        "historicalStateSHA256": "44ee2be3a524cf718e118be8adbe332dffd89cf8f19a4e92ad1c982623a192cd"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 12,
+      "title": "黑角域",
+      "map": "black-corner-auction-street",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "黑角域拦路者",
+      "firstClearReward": 500,
+      "adaptationNote": "旅行补给与竞拍为原创交易玩法；旁观可免费取得情报，出发挑战为原创拦截投影。",
+      "events": [
+        {
+          "id": "black-corner-travel-auction",
+          "kind": "auction",
+          "title": "黑角域 · 旅行补给竞拍",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-duel-academy.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "9692589e30f42d59731a1b9a679406a811caed5d89f16e58da8c322e5c9199c4",
+        "checkpoint": "12",
+        "nativeFileSHA256": "21241cf45218a975730c2dd496f0c9c0426f57d3f6c298b0f3af7837139f123a",
+        "historicalStateSHA256": "13c296cbba830ebffd1775d19c20dbfdaf83db48974fb4efdf8499e3abd9239a"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 13,
+      "title": "迦南外院",
+      "map": "academy-formation-ground",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "外院资格 · 协作审核",
+      "firstClearReward": 530,
+      "adaptationNote": "双阵协作与试炼同伴为原创资格玩法，完整伙伴支线后续扩充。",
+      "events": [
+        {
+          "id": "academy-dual-sigil-trial",
+          "kind": "squad",
+          "title": "外院 · 双阵协作",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-duel-academy.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "9692589e30f42d59731a1b9a679406a811caed5d89f16e58da8c322e5c9199c4",
+        "checkpoint": "13",
+        "nativeFileSHA256": "db7d900ae2a4f1ef9953216e8c0dcde7ec8586fa2939459f4f3167dd2d6d51fa",
+        "historicalStateSHA256": "161c952692297a7f73e56942e3e07a955f1de12337adeeb4fab65a78f11c50d9"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 14,
+      "title": "内院磐门",
+      "map": "inner-academy-hunt-paths",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "强榜守关者 · 演武投影",
+      "firstClearReward": 560,
+      "adaptationNote": "双路火能猎捕、临时队友和强榜招式为原创改编，火能数量不对应原著数值。",
+      "events": [
+        {
+          "id": "inner-academy-fire-hunt",
+          "kind": "hunt",
+          "title": "磐门 · 火能猎捕",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        },
+        {
+          "id": "xuner-academy-memory",
+          "kind": "bond",
+          "title": "薰儿 · 内院同路",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-academy-alliance.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "ffec5d75af8f5eacc32a8a4443ff82a822e688647f5c8c869a872e2437223a19",
+        "checkpoint": "14",
+        "nativeFileSHA256": "a70c2a17c1fe9475f7d46827d9019ebbb78f964cc4484bd207f4686ed7d39c70",
+        "historicalStateSHA256": "5602b5d81c09dcf153ab34216c4fa3c17fb1e4973adcf8bca349e82d6a7a9d62"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 15,
+      "title": "塔底心炎",
+      "map": "blazing-tower-three-landings",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "韩枫 · 历练投影",
+      "firstClearReward": 590,
+      "adaptationNote": "三层镇炎、镇心石和韩枫投影为压缩主线的原创玩法；陨落心炎仅在第十五章首次正式结算时取得。",
+      "events": [
+        {
+          "id": "blazing-tower-descent",
+          "kind": "tower",
+          "title": "火塔 · 三层镇炎",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-academy-alliance.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "ffec5d75af8f5eacc32a8a4443ff82a822e688647f5c8c869a872e2437223a19",
+        "checkpoint": "15",
+        "nativeFileSHA256": "88920df69a6745fc4d41b03bbbb3a856366edd9d78641974b492881c91a413fa",
+        "historicalStateSHA256": "ed318c024b4930cf2973c729895660c283fc7d7c685e37b2bc25d9ab87b945ae"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 16,
+      "title": "重返加玛",
+      "map": "yunlan-return-sect",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "云山 · 宗门决战",
+      "firstClearReward": 620,
+      "adaptationNote": "三阵攻防、守阵投影和云山三阶段招式为原创宗门关卡；首通收尾后药老离队，营救仍需后续主线。",
+      "events": [
+        {
+          "id": "yunlan-three-sigil-siege",
+          "kind": "siege",
+          "title": "再临云岚 · 三阵破门",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        },
+        {
+          "id": "haibodong-yunlan-help",
+          "kind": "bond",
+          "title": "海波东 · 援手余页",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "teacher-absence-notes",
+          "kind": "bond",
+          "title": "药老 · 留下的日课",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-academy-alliance.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "ffec5d75af8f5eacc32a8a4443ff82a822e688647f5c8c869a872e2437223a19",
+        "checkpoint": "16",
+        "nativeFileSHA256": "a32901e4d0131e4b1a8e1bead7e5c230062134c8e2d6010e5d3454721b9f143b",
+        "historicalStateSHA256": "8777a8bd709225c6f26d61939589e24a10acd27e2b60edfecd61eee3754057d6"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 17,
+      "title": "炎盟",
+      "map": "flame-alliance-hall",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "边境守护试炼",
+      "firstClearReward": 650,
+      "adaptationNote": "免费巡防与出资补给为原创炎盟筹备，两路线均能推进；完成边境投影才可首通启程中州，药老仍离队。",
+      "events": [
+        {
+          "id": "flame-alliance-foundation",
+          "kind": "alliance",
+          "title": "炎盟 · 根基筹备",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        },
+        {
+          "id": "doctor-poison-notes",
+          "kind": "bond",
+          "title": "小医仙 · 毒体书简",
+          "optional": true,
+          "stages": 4,
+          "requires": [
+            "flame-alliance-foundation"
+          ]
+        },
+        {
+          "id": "medusa-coalition-duty",
+          "kind": "bond",
+          "title": "美杜莎 · 共同筹备",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "doctor-risk-preparation",
+          "kind": "preparation",
+          "title": "小医仙 · 药材风险准备演练",
+          "optional": true,
+          "stages": 8,
+          "requires": [
+            "doctor-poison-notes"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-academy-alliance.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "ffec5d75af8f5eacc32a8a4443ff82a822e688647f5c8c869a872e2437223a19",
+        "checkpoint": "17",
+        "nativeFileSHA256": "2d10f44cd6d999b91a95af71c633ac5f3d022daf03e9e06c963b01b527f3cf7f",
+        "historicalStateSHA256": "60be4ddc79af9d06a88819544a1272e6532ad89ddff53fc49dd5cd1904ba284e"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 18,
+      "title": "风雷北域",
+      "map": "central-thunder-mountain",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "雷云山径 · 安全撤离",
+      "firstClearReward": 680,
+      "adaptationNote": "两段避雷石与三点/交叉雷阵为原创避战撤离；不击杀原作强者，不表示此处首次获得三千雷动。",
+      "events": [
+        {
+          "id": "central-thunder-retreat",
+          "kind": "escape",
+          "title": "雷云山径 · 避战撤离",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-thunder-lineage.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "fa82c9b20e2fbd2595965d422e708a92dbcf708395f270ae9fcff48e2eae359d",
+        "checkpoint": "18",
+        "nativeFileSHA256": "8dfdf849e69dd3a84e86d4863dfaf545784433dffac98a9b77608499551515e7",
+        "historicalStateSHA256": "03610798f77055d2a13ff1ba6f44d79f5d75fcb986c26fa542f817862029e098"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 19,
+      "title": "星陨阁",
+      "map": "star-pavilion-grove",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "星陨师门 · 联络审核",
+      "firstClearReward": 710,
+      "adaptationNote": "两份师门记录、守卫与方向校对为原创联络关卡；第19章不提前营救药老，完整四阁赛事后续扩展。",
+      "events": [
+        {
+          "id": "star-pavilion-master-leads",
+          "kind": "lineage",
+          "title": "星陨阁 · 师门线索",
+          "optional": false,
+          "stages": 5,
+          "requires": []
+        },
+        {
+          "id": "qinglin-growth-notes",
+          "kind": "bond",
+          "title": "青鳞 · 成长回望",
+          "optional": true,
+          "stages": 4,
+          "requires": [
+            "star-pavilion-master-leads"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-thunder-lineage.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "fa82c9b20e2fbd2595965d422e708a92dbcf708395f270ae9fcff48e2eae359d",
+        "checkpoint": "19",
+        "nativeFileSHA256": "1a1d229a41191bed5dbb90988ed9b63b978dc94d4d52515ba24ddafe19676ea7",
+        "historicalStateSHA256": "1c1efb61471cf34a65083ba2eecbcb564866a377a0cb4a26c779c64f0e736738"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 20,
+      "title": "丹会",
+      "map": "danta-dan-realm-valley",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "丹会成绩 · 大会审核",
+      "firstClearReward": 740,
+      "adaptationNote": "限时药材、三步控火与18秒丹雷生存为原创丹会关卡，不判定原著丹药品级；练习不额外生成玩家丹药。",
+      "events": [
+        {
+          "id": "dan-realm-timed-herbs",
+          "kind": "expedition",
+          "title": "丹界 · 限时药材目标",
+          "optional": false,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "danta-alchemy-lightning-final",
+          "kind": "danfinal",
+          "title": "丹会 · 成丹与丹雷",
+          "optional": false,
+          "stages": 8,
+          "requires": [
+            "dan-realm-timed-herbs"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-dan-realm.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "3f82875bf5d3b5666fefc6412bc2bc5de852b619b6d14c1a3e274dd08157b945",
+        "checkpoint": "20",
+        "nativeFileSHA256": "4e5b167764a6c9b9402698e0207e39cfe2b4760b9e7570557b11e57a401d6329",
+        "historicalStateSHA256": "727546e53d48352cea0642c26beb87d124c3af15674dacdfb410b9256c0eb25f"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 21,
+      "title": "星空焱炎",
+      "map": "danta-star-domain-platforms",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "三千焱炎火 · 收服确认",
+      "firstClearReward": 770,
+      "adaptationNote": "星火压力、镇心石与三段稳固为原创收服改编；不能击杀异火投影代替稳固，正式首通后才取得异火，药老仍离队。",
+      "events": [
+        {
+          "id": "star-domain-undying-attunement",
+          "kind": "starfire",
+          "title": "星域 · 不灭星火",
+          "optional": false,
+          "stages": 7,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-star-rescue.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "8cb10a7d86d8ce103b09abea8cbf78d28a0c3fad18f83ff85f93ae8d7c444bce",
+        "checkpoint": "21",
+        "nativeFileSHA256": "a8a5fcde7b066f8047bb2b0dc9ca41cd1d47d130b6df2aed88eb8dfc1dcd4930",
+        "historicalStateSHA256": "48bece6a56139e3673175cd73c235fc4c03f4b0d97587afc59655e9ba873aa10"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 22,
+      "title": "营救药老",
+      "map": "soul-prison-rescue-corridor",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "救师退路 · 撤离确认",
+      "firstClearReward": 800,
+      "adaptationNote": "破禁、护送与追击为原创营救机制；囚牢解锁或报告均不提前恢复支援，第22章正式首通才归队。",
+      "events": [
+        {
+          "id": "soul-prison-teacher-extraction",
+          "kind": "prison",
+          "title": "魂殿 · 破禁与撤离",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        },
+        {
+          "id": "doctor-rescue-reunion",
+          "kind": "bond",
+          "title": "小医仙 · 同行余页",
+          "optional": true,
+          "stages": 4,
+          "requires": [
+            "soul-prison-teacher-extraction"
+          ]
+        },
+        {
+          "id": "teacher-reunion-lessons",
+          "kind": "bond",
+          "title": "药老 · 归队之后",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-star-rescue.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "8cb10a7d86d8ce103b09abea8cbf78d28a0c3fad18f83ff85f93ae8d7c444bce",
+        "checkpoint": "22",
+        "nativeFileSHA256": "01389e66777b475999c51b4d773fbebfdd3ecdf7a4e0e369d615f3fb9bb3efd6",
+        "historicalStateSHA256": "3959f4d8137739fb38bd711293719d61908d072c585c4e19cd7c619afd309b66"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 23,
+      "title": "古族天墓",
+      "map": "ancient-clan-heaven-tomb",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "萧族传承 · 离墓审核",
+      "firstClearReward": 830,
+      "adaptationNote": "限时探索与传承心念评分为原创机制，不判定原著血脉品级或修炼岁月；离墓审核不生成可击杀的传承投影。",
+      "events": [
+        {
+          "id": "heaven-tomb-timed-layers",
+          "kind": "tomb",
+          "title": "天墓 · 三层限时探索",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        },
+        {
+          "id": "heaven-tomb-clan-inheritance",
+          "kind": "inheritance",
+          "title": "萧族 · 传承稳固",
+          "optional": false,
+          "stages": 6,
+          "requires": [
+            "heaven-tomb-timed-layers"
+          ]
+        },
+        {
+          "id": "xuner-ancient-road",
+          "kind": "bond",
+          "title": "薰儿 · 古界余页",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-tomb-bodhi.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "602385e306206bbd986fe473aa5abfcbd75f04a738812231ae6ad3cfc33ae8e9",
+        "checkpoint": "23",
+        "nativeFileSHA256": "b7e8bf164a64740dae9735649091514984d6c47ae5f54d02eb9e9a88c989ba3c",
+        "historicalStateSHA256": "35e0be9b6dc0cf32ef386d4b008c73fd138cfa8dc2119ef761567ed40fa8eddd"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 24,
+      "title": "菩提古树",
+      "map": "wilderness-bodhi-illusion-grove",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "菩提观心 · 树前审核",
+      "firstClearReward": 860,
+      "adaptationNote": "三境线索与选择为原创菩提观心，不模拟原著全部轮回；幻境奖励不进普通行囊，击杀不能代替识破。",
+      "events": [
+        {
+          "id": "bodhi-three-reflections",
+          "kind": "illusion",
+          "title": "菩提 · 三境观心",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-tomb-bodhi.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "602385e306206bbd986fe473aa5abfcbd75f04a738812231ae6ad3cfc33ae8e9",
+        "checkpoint": "24",
+        "nativeFileSHA256": "ac5bd5e3fbb9d94378a78e5545b9ce2edc07b58eb3f61703a2f156409a011366",
+        "historicalStateSHA256": "ea1b979b240b67d5a113ba7dbff9f66dbb4eec5aff07defbe16bad1b39f9e6b6"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 25,
+      "title": "净莲妖火",
+      "map": "pure-lotus-fire-space",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "净莲妖火 · 收服确认",
+      "firstClearReward": 890,
+      "adaptationNote": "三镜选择与三段净化为原创压缩玩法，不复现原著全部古图或净莲传承；没有可杀的异火投影，正式首通才发异火。",
+      "events": [
+        {
+          "id": "pure-fire-three-mirrors",
+          "kind": "illusion",
+          "title": "妖火 · 三镜辨识",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        },
+        {
+          "id": "pure-lotus-segment-purification",
+          "kind": "purification",
+          "title": "妖火 · 三段净化",
+          "optional": false,
+          "stages": 6,
+          "requires": [
+            "pure-fire-three-mirrors"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-pure-lotus.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "1293b6c7e8042daf8c89b1c98f350e72ef546ab60156c514fbd1bca73a6946d0",
+        "checkpoint": "25",
+        "nativeFileSHA256": "ff9af3835f6d2c6d183366a157fcffca3320c56259132ba41b224b4532331d80",
+        "historicalStateSHA256": "2342939654625641f6611e65eb0ee8e1f231798af8b8733daff032012e3751ff"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 26,
+      "title": "远古之劫",
+      "map": "coalition-ancient-ruins-front",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "联盟防线 · 出征确认",
+      "firstClearReward": 920,
+      "adaptationNote": "三处驻点、独立生命与两波袭击为灾难后联盟筹备的原创玩法，不改变已失去族群的结局；本章不提前战胜魂天帝。",
+      "events": [
+        {
+          "id": "coalition-three-post-defense",
+          "kind": "defense",
+          "title": "联盟 · 三处守线",
+          "optional": false,
+          "stages": 6,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-coalition-defense.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "116789909f03f89dcc4bcdb5944c68205068ea0bd4494da68e9fc9bd8b4877cf",
+        "checkpoint": "26",
+        "nativeFileSHA256": "4e15de103403aa3be6ba47ebf7b8beb52551b4217091fcad65ddea9a1230b323",
+        "historicalStateSHA256": "eef730c4f2c00d8dffd84abe87d14db6dedb672f1e0c78d0acbba386b80b5ca8"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 27,
+      "title": "古帝洞府",
+      "map": "tuoshe-emperor-origin-vault",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "本源传承 · 洞府审核",
+      "firstClearReward": 950,
+      "adaptationNote": "三铭火纹、实体封门与本源心念评分为原创压缩探索，不复述原著古玉/洞府机关或判定真实帝境实力；传承审核不生成可杀的本源投影。",
+      "events": [
+        {
+          "id": "emperor-vault-three-inscriptions",
+          "kind": "vault",
+          "title": "洞府 · 三铭封门",
+          "optional": false,
+          "stages": 8,
+          "requires": []
+        },
+        {
+          "id": "emperor-origin-mind-inheritance",
+          "kind": "inheritance",
+          "title": "本源 · 传承凝定",
+          "optional": false,
+          "stages": 6,
+          "requires": [
+            "emperor-vault-three-inscriptions"
+          ]
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-vault-origin.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "0ae3691bf45cebe5a629dc6a74f2a50e4154a89309d79e9ed8bec4a0716251d8",
+        "checkpoint": "27",
+        "nativeFileSHA256": "4283c820277026077a340a98ed80f8f36ecc238c34fc8e9c7873023bdf010cc6",
+        "historicalStateSHA256": "1bb37d83a0abf2c9c86be96a7892818f9fa63f378c64e7495530cd12f6d2bc97"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    },
+    {
+      "id": 28,
+      "title": "双帝之战",
+      "map": "continent-final-battlefield",
+      "openingLines": 3,
+      "closingLines": 2,
+      "objectives": {
+        "herbs": 0,
+        "kills": 0,
+        "brews": 0
+      },
+      "challenge": "魂天帝",
+      "firstClearReward": 980,
+      "adaptationNote": "三约碑与大陆/血环/帝炎三场景为原创终战表达；换段生命斗气冷却延续、落点护体1.5秒。失败或刷新从满血第一段重试，约碑保留。胜利后返营首通一次，尾声后可重返历练。",
+      "events": [
+        {
+          "id": "final-battle-three-vows",
+          "kind": "vow",
+          "title": "终战 · 故人之约",
+          "optional": false,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "doctor-epilogue-letter",
+          "kind": "bond",
+          "title": "小医仙 · 归途来信",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "qinglin-homeward-letter",
+          "kind": "bond",
+          "title": "青鳞 · 远行来信",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "haibodong-homeward-message",
+          "kind": "bond",
+          "title": "海波东 · 故人问候",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "yunyun-homeward-farewell",
+          "kind": "bond",
+          "title": "云韵 · 山风回信",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "medusa-homeward-promise",
+          "kind": "bond",
+          "title": "美杜莎 · 归途守望",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "teacher-epilogue-teaching",
+          "kind": "bond",
+          "title": "药老 · 传授未止",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        },
+        {
+          "id": "xuner-homeward-letter",
+          "kind": "bond",
+          "title": "薰儿 · 灯下归途",
+          "optional": true,
+          "stages": 4,
+          "requires": []
+        }
+      ],
+      "historicalDesktopEvidence": {
+        "file": "docs/qa/c11-normal-finale.json",
+        "date": "2026-10-12",
+        "version": "0.37.5",
+        "sha256": "bed3326b09e6b5fc119a363fc136834077eeb7bb67090db50b6bc28f220b7367",
+        "checkpoint": "28",
+        "nativeFileSHA256": "91e196397e890a8c265eabf7f1cfc9526656a1485544ec9110daed527037ca0f",
+        "historicalStateSHA256": "453c547f7ec7d3a51625f180f2116533d644d93ae7f79548a1a44c9edde8cc05"
+      },
+      "sourceReview": "open: see docs/剧情来源与改编.csv; no precise Chinese/anime mapping certified by this audit"
+    }
+  ]
+}
