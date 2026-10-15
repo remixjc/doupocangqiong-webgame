@@ -270,13 +270,15 @@ export default class AdventureScene extends Phaser.Scene {
       for (let y = 40; y < HEIGHT; y += 40) bg.lineBetween(40, y, WIDTH - 40, y)
     }
     for (const points of this.world.map.paths) {
-    const path = linePath(points)
-    bg.lineStyle(85, c[1], .16); path.draw(bg)
-    bg.lineStyle(55, c[2], .1); path.draw(bg)
-    for (let i = 0; i < 95; i++) {
-      const t = rand(), point = path.getPoint(t), x = point.x + (rand() - .5) * 50, y = point.y + (rand() - .5) * 50
-      bg.fillStyle(c[2], .12); bg.fillEllipse(x, y, 12 + rand() * 14, 7)
+      const path = linePath(points)
+      bg.lineStyle(85, c[1], .16); path.draw(bg)
+      bg.lineStyle(55, c[2], .1); path.draw(bg)
+      for (let i = 0; i < 95; i++) {
+        const t = rand(), point = path.getPoint(t), x = point.x + (rand() - .5) * 50, y = point.y + (rand() - .5) * 50
+        bg.fillStyle(c[2], .12); bg.fillEllipse(x, y, 12 + rand() * 14, 7)
+      }
     }
+    // The three tournament stations belong to the map, independently of roads.
     if (style === 'tournament') {
       for (const [i, x] of [580, 850, 1100].entries()) {
         bg.lineStyle(3, [0x88beaa, 0xc7b483, 0xcda0a4][i], .5); bg.strokeCircle(x, 400, 70)
@@ -284,7 +286,6 @@ export default class AdventureScene extends Phaser.Scene {
         this.add.text(x, 470, ['初赛 · 25 / 55 / 45', '复赛 · 65 / 40 / 70', '决赛 · 35 / 75 / 50'][i],
           { fontSize: '14px', color: '#cebd98', fontFamily: 'serif' }).setOrigin(.5)
       }
-    }
     }
     for (let i = 0; i < (style === 'cave' ? 10 : 48); i++) {
       const x = rand() * WIDTH, y = rand() > .5 ? rand() * 120 + 30 : 710 + rand() * 60

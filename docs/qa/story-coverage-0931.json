@@ -1,7 +1,7 @@
 {
   "format": 1,
   "auditDate": "2026-10-15",
-  "version": "0.96.0",
+  "version": "0.96.1",
   "scope": "28-chapter condensed playable route; original-source fidelity, character packages and lifecycle gates remain separately open",
   "method": "Read actual repository exports and cross-check required event completion against existing public native-download evidence. No browser run or original-source verification performed by this script.",
   "limits": [
@@ -382,7 +382,7 @@
     ],
     "openWorkPackages": 25
   },
-  "workRegisterSHA256": "369f0a7f3921836a1c41d3729a9ca1e8f9e4aced0fba5020315e6c3f8c99748f",
+  "workRegisterSHA256": "d399cfe2ba3f95def6d4918f5b86c0cf8064f7bb0006be4ef50d4e9acdacdfb0",
   "chapters": [
     {
       "id": 1,

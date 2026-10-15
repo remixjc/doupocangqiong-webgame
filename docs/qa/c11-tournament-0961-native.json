@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-15",
+  "version": "0.96.1",
+  "baseline": "469d09228b7f776d24f11ee1da5ab9f3a28d76ac",
+  "newNatives": 7,
+  "metadataBefore": 901,
+  "metadataAfter": 908,
+  "allWholeStatesVerified": true,
+  "old9OnlyChapterChanged": true,
+  "allCurrent9EqualOld9WithNewVersion": true,
+  "allThreeStovesActuallyReachedAndInteracted": true,
+  "oldScoresAttemptsAndRewardsUnchanged": true,
+  "refreshEntireStateUnchanged": true,
+  "exitReentryEntireStateUnchanged": true,
+  "restored28EqualsOriginalWithNewVersion": true,
+  "completed": 28,
+  "experience": 15582,
+  "flame": "pure",
+  "founding": {
+    "revision": 14,
+    "stage": 5,
+    "place": 1,
+    "duties": [
+      0,
+      1,
+      1
+    ]
+  },
+  "coop": {
+    "revision": 49,
+    "completed": 6,
+    "merit": 9,
+    "supplies": 1,
+    "assignments": [
+      1,
+      2,
+      0
+    ],
+    "phase": "plan",
+    "step": 0,
+    "mistakes": 0
+  },
+  "canvas": [
+    1,
+    0,
+    1,
+    0,
+    1
+  ],
+  "canvasOrder": [
+    "three-stoves-running",
+    "after-refresh-landing-map",
+    "refresh-reentry",
+    "actual-scene-exit-to-map",
+    "actual-scene-reentry"
+  ],
+  "console": [],
+  "bundle": {
+    "initialJsBytes": 429245,
+    "initialJsGzipBytes": 160091,
+    "totalJsBytes": 1845994,
+    "engineGzipBytes": 155802
+  },
+  "productionFiles": 159,
+  "productionBytes": 2593726,
+  "rows": [
+    {
+      "name": "old28",
+      "sha256": "4f85e8d4c36266813cc8c6902d74979a83fda737bb0bd2c555a71e7061a57b5c",
+      "bytes": 37967,
+      "chapter": 28,
+      "version": "0.96.0",
+      "entireNativeMatchesParse": true
+    },
+    {
+      "name": "old9",
+      "sha256": "b93fb2baa7d9329c8fc411379ed9dddc80968ca6ff89b8586ed92be5be580fa3",
+      "bytes": 37966,
+      "chapter": 9,
+      "version": "0.96.0",
+      "entireNativeMatchesParse": true
+    },
+    {
+      "name": "new9",
+      "sha256": "bed722cbb0894dcc2f520f666702582076eae5b316f761597340ee87ca144ca2",
+      "bytes": 37966,
+      "chapter": 9,
+      "version": "0.96.1",
+      "entireNativeMatchesParse": true
+    },
+    {
+      "name": "three-stoves",
+      "sha256": "f6edfe4a7259bd9f00c0230a343e48c49a44e7a2095d48ac932fc82167ecfedb",
+      "bytes": 37966,
+      "chapter": 9,
+      "version": "0.96.1",
+      "entireNativeMatchesParse": true
+    },
+    {
+      "name": "refreshed9",
+      "sha256": "e179a62a61d17ed6b014105673686bbc73418f886264bc7b203e2a74c05f14ad",
+      "bytes": 37966,
+      "chapter": 9,
+      "version": "0.96.1",
+      "entireNativeMatchesParse": true
+    },
+    {
+      "name": "reentered9",
+      "sha256": "f9eb208bac50a9cc5d07362012f13b041c0986aea12e6d4ae03cec4e38080a4c",
+      "bytes": 37966,
+      "chapter": 9,
+      "version": "0.96.1",
+      "entireNativeMatchesParse": true
+    },
+    {
+      "name": "restored28",
+      "sha256": "74efc34b855cbd861851bf306a0fb592a25907deeb00594856218e0fdb2bd6e6",
+      "bytes": 37967,
+      "chapter": 28,
+      "version": "0.96.1",
+      "entireNativeMatchesParse": true
+    }
+  ]
+}

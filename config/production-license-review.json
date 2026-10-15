@@ -146,7 +146,7 @@
     {
       "path": "src/game/AdventureScene.ts",
       "origin": "program scenes, maps and effects",
-      "sha256": "b77bdbbc833e407ee68345926d1359042b476102aad0fc9a357c9022ee21299c"
+      "sha256": "04102ec16db5335b28e7255a77e48701f6b2ce95514b8414c0db21ac0f011851"
     },
     {
       "path": "src/game/audio.ts",
