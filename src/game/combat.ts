@@ -1133,6 +1133,9 @@ export class CombatWorld {
     this.syncVault()
     if (p.hp <= 0) return
     for (const e of [...this.enemies]) {
+      // A previous enemy can deal the lethal hit during this same step.
+      // Do not settle later burn kills after the player has fallen.
+      if (p.hp <= 0) break
       if (e.hp <= 0) continue
       if (e.burn > 0) {
         e.burn -= dt; e.burnTick += dt
