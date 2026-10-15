@@ -1,0 +1,369 @@
+{
+  "format": 1,
+  "date": "2026-10-15",
+  "version": "0.94.0",
+  "batch": "C1f-5 / G01",
+  "source": {
+    "provider": "起点中文网",
+    "chapter": 51,
+    "title": "安心",
+    "url": "https://www.qidian.com/chapter/1209977/23481474/",
+    "access": "ordinary visible chapter body read to final paragraph and next-chapter navigation; no CAPTCHA interaction",
+    "visibleDomSha256": "480ff7c687fbbd92b82cace3c402a73f9ddcf2ebef1131955dc4b475e9872f21",
+    "limitation": "薰儿登记后返还为游戏保管补间；不公开整章；动画映射和其他中文章次未因此补签"
+  },
+  "baseline": {
+    "version": "0.37.5",
+    "sha256": "adae22451ea405fef65db82267067f54a5aa150f12661802bdc3451ec7da3e84",
+    "gold": 19506,
+    "completed": 28,
+    "qiAid": 10
+  },
+  "migration": {
+    "base": "8f16577ea642e8fb99d9c78041f772acc45d6872",
+    "actualSourceFiles": 367,
+    "frozenNativeFiles": 806,
+    "allowedChanges": [
+      "contentVersion=0.94.0",
+      "empty qiPavilionExit"
+    ]
+  },
+  "browser": {
+    "keyboardActions": 13,
+    "independentButtonActions": 13,
+    "nativeFiles": [
+      {
+        "name": "main-0",
+        "sha256": "4d4d7aa03a1a0fd338c8dd445e51a3486ec737ae9bd7345c73aef3da9be6b003",
+        "bytes": 37583,
+        "stage": 0,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-1",
+        "sha256": "b7698925db32e30facee4553b58d6b14ccb67e6541b06dbe4167c46306dda32c",
+        "bytes": 37583,
+        "stage": 1,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-2",
+        "sha256": "fe64232bd3b4d0a5528d7d95856e618ed5f417b4caf3a654b7b1d6963d20f7f9",
+        "bytes": 37583,
+        "stage": 2,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-3",
+        "sha256": "d2c6a75e58b0dc0da37dfc25f1395feeedb50e80346a1d188ff619715a0acea8",
+        "bytes": 37581,
+        "stage": 3,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-3-reloaded",
+        "sha256": "488e0a6748f03ae49dda7edc4481e66344fa186b5bbd5286ea7f61f3308e4d51",
+        "bytes": 37581,
+        "stage": 3,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-4",
+        "sha256": "ac63cca0ccc91a9d777684f7fef2402f1964b06a9868f18614209b530314260d",
+        "bytes": 37582,
+        "stage": 4,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-4-rejected",
+        "sha256": "7289523ec635a9eeaadeec7be342305b7ce6685f94c3423627e5633fa4539f45",
+        "bytes": 37582,
+        "stage": 4,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-5",
+        "sha256": "9e40c86a97b8dab576f5fb5580d0268f7a3f6d5f37d3e0e064b0bb7cf177f85d",
+        "bytes": 37581,
+        "stage": 5,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-6",
+        "sha256": "92e929a02afb78a56fa26ca07272cef2f9dbb4ba09b9944726177e76c6dc5349",
+        "bytes": 37581,
+        "stage": 6,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-6-gate-blocked",
+        "sha256": "88fc5be3e06337083b4b71e92c60cdec6c90cdd296402744bb2216b22b822fd2",
+        "bytes": 37581,
+        "stage": 6,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-7",
+        "sha256": "6fe488acac71c5a405bb45109a5f11eb2d95d223abfa1709d64c46ffb9f1d7bb",
+        "bytes": 37582,
+        "stage": 7,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-7-rejected",
+        "sha256": "92b1a32a111e562c3917f1fe34e3f082f968e493d5d483e7c9f12efca8a65dd7",
+        "bytes": 37582,
+        "stage": 7,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-8",
+        "sha256": "5bcaa3211de1779a09135aa3137ca652ec0a72edbb5247c3c7752926cc562c4f",
+        "bytes": 37587,
+        "stage": 8,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-8-reloaded",
+        "sha256": "63705ced0563b00407552c28c8dcb58eaabb97a5778168e0ce3f2179cc9a8402",
+        "bytes": 37587,
+        "stage": 8,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-9",
+        "sha256": "5c7681a3e689d79aba1e0326ec6e3b7c9ba3e5128d4de1be33be6c08752dcc4a",
+        "bytes": 37586,
+        "stage": 9,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-9-reloaded",
+        "sha256": "35c826e78622a92dbaf3b498facbbd6061bf15582e0e19c44ecb79411229257c",
+        "bytes": 37586,
+        "stage": 9,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-10",
+        "sha256": "5cc1e888cf3a85654c98f7343f549b740f6fcf7ccceb09738289dfea6d009191",
+        "bytes": 37586,
+        "stage": 10,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-11",
+        "sha256": "15449e92a5e6db7eac443f5db46f2ebcea2ffcaa944605aa7a5f54ab1d16f2e4",
+        "bytes": 37586,
+        "stage": 11,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-12",
+        "sha256": "151b0a9af218bf705b68d5d8c79fe26260ee15ddd109c20e03d097528d15b0a4",
+        "bytes": 37585,
+        "stage": 12,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-13",
+        "sha256": "9eb997c120e3fae6fd649ea88893f0bc1c00b17a98d2ca7aa36c3a813f3f44e4",
+        "bytes": 37585,
+        "stage": 13,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-13-repeat",
+        "sha256": "6f0bf34c4efdbe30e1577a3ab3a1587d97ecee75b02974e8ab3a32854f40d92b",
+        "bytes": 37585,
+        "stage": 13,
+        "completeStateCompared": true
+      },
+      {
+        "name": "main-13-reloaded",
+        "sha256": "ed0ed68ecc647c88ef7469a8a218762db6907e4a94d6cc1a558b8592fb1daae4",
+        "bytes": 37585,
+        "stage": 13,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-0",
+        "sha256": "c251ca4435ff3badad372cc8447213fe96b29e265bdf19b76f79ae06f74e6859",
+        "bytes": 37583,
+        "stage": 0,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-1",
+        "sha256": "36fe5771ea9ccee6867253dc50cf19eda210afc99bffbbe2aac59ecd5fb76fef",
+        "bytes": 37583,
+        "stage": 1,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-2",
+        "sha256": "7778678958553ca645dcd84ab61a808c343d725e11c31374e26347f2eacaf9fb",
+        "bytes": 37583,
+        "stage": 2,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-3",
+        "sha256": "db7c394db8cdbb2b33dfafab272e0cdace2f154f1680f7f2cd972bf10f97bd51",
+        "bytes": 37581,
+        "stage": 3,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-4",
+        "sha256": "975472d95ddf00a60597a4909d942d8d626a9e7baf80dbc9759f827a41cec8bd",
+        "bytes": 37582,
+        "stage": 4,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-5",
+        "sha256": "c30832b23e6db6cc164aeb39939d7792d85530765a9fc68802989a2a661c5b0c",
+        "bytes": 37581,
+        "stage": 5,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-6",
+        "sha256": "acfca4f76a763f4b7d4318299825c5579a98f68bd2bb38f1b281676d587b149d",
+        "bytes": 37581,
+        "stage": 6,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-7",
+        "sha256": "d28e307f46379322845ac3de3f3413c6f0bd3fdd662330d8ee346589c72a09ec",
+        "bytes": 37582,
+        "stage": 7,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-8",
+        "sha256": "1d7c58b716bdeb6a3dc985814bbb9ecbe4e10bfe13228f57c6cd44b8849722ec",
+        "bytes": 37587,
+        "stage": 8,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-9",
+        "sha256": "b1273be8e6e25d7223baf78c8d4d420135644719d5def49346d62136eff812ec",
+        "bytes": 37586,
+        "stage": 9,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-10",
+        "sha256": "c8b867e595651f75e365a20f4f7d8868fa21d23fd0ea69097b6801e3271ba06e",
+        "bytes": 37586,
+        "stage": 10,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-11",
+        "sha256": "61cd9e6246a8e9dee06828433fcbdf64cf02f8a923cd5a429ea91d6780e4d51b",
+        "bytes": 37586,
+        "stage": 11,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-12",
+        "sha256": "97b62d7ac033f9ffc41c07e9bc4edb4571209052d23f31161eb2dcbb23c1582e",
+        "bytes": 37585,
+        "stage": 12,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-13",
+        "sha256": "b08cbe51546f6b390e733836239efbda07f62a0175e314f9e7ee15cbf22a42c2",
+        "bytes": 37585,
+        "stage": 13,
+        "completeStateCompared": true
+      },
+      {
+        "name": "button-13-after-map",
+        "sha256": "9bb37758b75f7e001d0e8eae86cdf1eebee6ca6b0470222d71aae8ad69eed2cd",
+        "bytes": 37585,
+        "stage": 13,
+        "completeStateCompared": true
+      }
+    ],
+    "exactWholeStatePairs": [
+      [
+        "main-3",
+        "main-3-reloaded"
+      ],
+      [
+        "main-4",
+        "main-4-rejected"
+      ],
+      [
+        "main-6",
+        "main-6-gate-blocked"
+      ],
+      [
+        "main-7",
+        "main-7-rejected"
+      ],
+      [
+        "main-8",
+        "main-8-reloaded"
+      ],
+      [
+        "main-9",
+        "main-9-reloaded"
+      ],
+      [
+        "main-13",
+        "main-13-repeat"
+      ],
+      [
+        "main-13",
+        "main-13-reloaded"
+      ],
+      [
+        "button-13",
+        "button-13-after-map"
+      ]
+    ],
+    "consoleLogs": {
+      "main": [],
+      "buttons": []
+    },
+    "mapCanvasSequence": [
+      1,
+      0,
+      1
+    ],
+    "scope": "desktop in-app Chrome; not physical-device or another 28-chapter manual run",
+    "note": "helper target closure initially kept main tab; explicit independent helpers corrected it before button route. Shift+Arrow normally moves; ctrl+Arrow does not. Native UI first import auto-closes dialog."
+  },
+  "checks": {
+    "vitestFiles": 177,
+    "vitestTests": 1084,
+    "nodeTests": 34,
+    "types": "passed",
+    "production": "passed",
+    "threeDifficulties28Chapters": "passed in full check",
+    "entryBytes": 440925,
+    "entryGzip": 160148,
+    "totalJs": 1842062,
+    "budgets": [
+      500000,
+      165000,
+      1850000
+    ],
+    "sceneModules": 65,
+    "releaseFiles": 155,
+    "releaseBytes": 2587868
+  },
+  "limits": [
+    "Official-source access does not confer adaptation rights.",
+    "Existing historical scroll summaries still describe their earlier pending-registration moment.",
+    "No real-device, Beta, GPU resource-retention or public deployment claims."
+  ]
+}

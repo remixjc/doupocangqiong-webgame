@@ -419,7 +419,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
       earlySettlementSaveSummary, earlyFatherGiftSaveSummary, earlyXunerVisitSaveSummary, earlyLongSuppliesSaveSummary,
       earlyForestStrikeSaveSummary, earlySeventhRoomSaveSummary, earlyPalmPairSaveSummary, earlyPreliminarySaveSummary,
       earlyKeChallengeSaveSummary, earlyEighthTrainingSaveSummary, earlyCeremonyGuestsSaveSummary, earlyCeremonialTestSaveSummary,
-      earlyNingFirstSaveSummary, earlyNingSecondSaveSummary, earlyCeremonyVerdictSaveSummary, earlyQiPavilionEntrySaveSummary, earlyQiBarrierSaveSummary, earlyQiPavilionScrollSaveSummary, earlyQiPavilionAidSaveSummary, earlyQiPavilionExchangeSaveSummary,
+      earlyNingFirstSaveSummary, earlyNingSecondSaveSummary, earlyCeremonyVerdictSaveSummary, earlyQiPavilionEntrySaveSummary, earlyQiBarrierSaveSummary, earlyQiPavilionScrollSaveSummary, earlyQiPavilionAidSaveSummary, earlyQiPavilionExchangeSaveSummary, earlyQiExitSaveSummary,
     ]
     summaries.push(...details.map(summary => summary(saved, viewing)))
   } else summaries.push(sealedLater)
@@ -675,4 +675,13 @@ export function earlyQiPavilionExchangeSaveSummary(saved: GameState, viewing: Se
     : task.stage === 5 ? '家族卷已取回，支持卷仍属薰儿'
     : task.stage === 4 ? '薰儿一手一卷，支持未交付'
     : task.stage === 3 ? '同一家族卷由薰儿拿看，支持卷未展示' : task.stage > 0 ? '回看开始，品阶与交接待续' : notRecalled)
+}
+
+export function earlyQiExitSaveSummary(saved: GameState, viewing: Settings): string {
+  if (earlySummarySealed(viewing, 3)) return sealedLater
+  const t = saved.earlyTraining.qiPavilionExit
+  return '功法阁登记离阁 · ' + (t.stage === 13 ? '各自登记、同行出阁与心中保证已归档'
+    : t.assured ? '老师已保证，待归档' : t.father ? '已回应父亲，心中问答待续' : t.exited ? '两人已出阁，仍在萧家'
+    : t.xuner === 'registered' ? '双方已登记，待实际出阁' : t.xuner === 'elder' ? '薰儿登记中，本人卷已返还'
+    : t.registered ? '本人已登记返还，等候薰儿' : t.family === 'elder' ? '本人同卷交出，待登记返还' : t.stage ? '门内候登记' : notStarted)
 }

@@ -1,5 +1,5 @@
 import { chapterEvent, checkpoint, dependentChapterEvent, guardFirstCheckpoint, guardedCheckpoint, reflection, reflectionOption } from './content-records'
-import { point, type Point } from './maps'
+import { point, type Point } from './map-point'
 import { bondEvents, type BondDefinition } from './bonds'
 import { preparationEvents } from './preparations'
 

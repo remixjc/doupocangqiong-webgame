@@ -11,7 +11,7 @@ import { canEnter, chapterReady, flames, isVisible, playerStats, skillInfo, skil
 import { setVolume, unlockAudio, stopAudio } from '../game/audio'
 import type { Dialogue } from '../core/model'
 import { eventsForChapter } from '../content/events'
-import { mapForChapter } from '../content/maps'
+import { mapOverviewForChapter } from '../content/map-overview'
 import { eventDone, eventHint, eventProgress } from '../core/events'
 import { teacherSupport } from '../core/companions'
 import SaveStatus from './SaveStatus'
@@ -42,7 +42,7 @@ export default function App() {
   const [sceneFailed, setSceneFailed] = useState(false)
   const [portrait, setPortrait] = useState(() => window.matchMedia('(max-width:720px) and (orientation:portrait)').matches)
   const chapter = chapterById(s.chapter), progress = s.progress[s.chapter]
-  const map = mapForChapter(s.chapter)
+  const map = mapOverviewForChapter(s.chapter)
   const flame = flames.find(f => f.id === s.flame)!
   const stats = playerStats(s)
   const completed = s.completed.includes(s.chapter)

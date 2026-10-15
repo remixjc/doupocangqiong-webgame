@@ -1,7 +1,7 @@
 {
   "format": 1,
   "auditDate": "2026-10-15",
-  "version": "0.93.3",
+  "version": "0.94.0",
   "scope": "28-chapter condensed playable route; original-source fidelity, character packages and lifecycle gates remain separately open",
   "method": "Read actual repository exports and cross-check required event completion against existing public native-download evidence. No browser run or original-source verification performed by this script.",
   "limits": [
@@ -188,6 +188,10 @@
       "sha256": "0f46e447b04d18803de7e723f40674d94363f29251772951ce5e8e10f74872bc"
     },
     {
+      "file": "src/content/early-qi-exit.ts",
+      "sha256": "50ab18335334eac86b43bbed379f21c2e04f59a4bb777e1f9a30f22c58608d70"
+    },
+    {
       "file": "src/content/early-qi-pavilion.ts",
       "sha256": "0c2cd8fe6f598f337481c709b6750abff8fa60593696fea1b2dceb292d0d958e"
     },
@@ -221,7 +225,7 @@
     },
     {
       "file": "src/content/events.ts",
-      "sha256": "37f0c823e48a6f2853c2054670db8ac1d176bf8fd59ea426d68b856c0dadadd0"
+      "sha256": "4b7babaf32280462c4e61bfe59a8c1c712037a3e77ca630cb258db1aa0c54919"
     },
     {
       "file": "src/content/first-awakening.ts",
@@ -332,8 +336,16 @@
       "sha256": "1e70cabe58601979a01ad93b29141d9cd3656716e7494b8babed61e2fef09b6a"
     },
     {
+      "file": "src/content/map-overview.ts",
+      "sha256": "f87b105378e6677ccc6e39d036b92b385452aebf4453ab3cdd6ec47e848a16fd"
+    },
+    {
+      "file": "src/content/map-point.ts",
+      "sha256": "5991c6e19b193d1f6b01736f39ddfb7c915b1d0630c808c9065b3826762a149f"
+    },
+    {
       "file": "src/content/maps.ts",
-      "sha256": "7a5c263810b9166be7a02cadd6fe3b425f83045cebc9354bb3d2d30ebc21d9d8"
+      "sha256": "13a43ba20401cd850376040f55472cebb46699fcd4a143957af989b0a78ae772"
     },
     {
       "file": "src/content/preparations.ts",
@@ -368,9 +380,9 @@
       "final-blood-realm",
       "final-emperor-flame-realm"
     ],
-    "openWorkPackages": 26
+    "openWorkPackages": 25
   },
-  "workRegisterSHA256": "cd931e0cfd56bbd25c3d75116ac319b4a0e059f62731295823fa8dc79c9113a4",
+  "workRegisterSHA256": "520e27139dc0d574aa6a72956ba0a296986e1c745fc4100a3832f3b7f83bd5b8",
   "chapters": [
     {
       "id": 1,

@@ -1,7 +1,7 @@
 import { enemy, eventBarrier, landmark, namedEnemy, purificationZone, towerFloor } from './content-records'
-export function point(x: number, y: number): Point { return { x, y } }
+import { point, type Point } from './map-point'
+export { point, type Point } from './map-point'
 function rectangle(x: number, y: number, w: number, h: number): MapObstacle { return { x, y, w, h } }
-export interface Point { x: number; y: number }
 export interface MapObstacle extends Point { w: number; h: number }
 export interface PatrolDefinition { route: Point[]; detectionRadius: number }
 export interface MapEnemy extends Point { type: 'brute' | 'hunter' | 'mage'; id?: string; patrol?: PatrolDefinition }

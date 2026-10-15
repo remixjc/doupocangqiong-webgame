@@ -4,14 +4,14 @@ import { buy, craft, upgrade } from './rules'
 import type { ItemId } from './model'
 import { AutoSaveSession } from './save-session'
 import { advanceEvent, type EventAction } from './events'
-import { mapForChapter } from '../content/maps'
+import { mapOverviewForChapter } from '../content/map-overview'
 import { AutoSaveQueue } from './autosave'
 import { beginEarlyTraining, advanceEarlyTraining, type EarlyTrainingAction } from './early-training'
 import { NewerSaveVersionError } from './save-errors'
 
 function emptyRuntime(s: GameState): Runtime {
   const stats = playerStats(s)
-  const spawn = mapForChapter(s.chapter).spawn
+  const spawn = mapOverviewForChapter(s.chapter).spawn
   return { difficulty: s.settings.difficulty, x: spawn.x, y: spawn.y, hp: stats.maxHp, maxHp: stats.maxHp, qi: stats.maxQi, maxQi: stats.maxQi, stamina: 100,
     cooldowns: { strike: 0, wave: 0, lotus: 0, dodge: 0, heal: 0, support: 0 },
     prompt: '', near: '', bossHp: 0, bossMaxHp: 0, bossName: '', dead: false }

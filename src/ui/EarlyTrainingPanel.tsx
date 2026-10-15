@@ -17,6 +17,7 @@ import EarlyPractice from './EarlyPractice'
 import EarlyWalk from './EarlyWalk'
 import { isVisible } from '../core/rules'
 import { earlyFamilyContractSaveSummary, earlyMountainRingSaveSummary, earlyApprenticeSaveSummary, earlyMethodDiscussionSaveSummary, earlyPreparationBriefSaveSummary, earlyMountainVisitorSaveSummary, earlyMorningCardSaveSummary, earlyCityPharmacySaveSummary } from '../core/save-preview'
+const EarlyQiExit = lazyScene(() => import('./EarlyQiExit'))
 const EarlyQiPavilion = lazyScene(() => import('./EarlyQiPavilion'))
 const EarlyQiBarrier = lazyScene(() => import('./EarlyQiBarrier'))
 const EarlyQiScroll = lazyScene(() => import('./EarlyQiScroll'))
@@ -57,6 +58,7 @@ const EarlyRefining = lazyScene(() => import('./EarlyRefining'))
 const EarlyIron = lazyScene(() => import('./EarlyIron'))
 
 const preparationRoutes = [
+  [53, EarlyQiExit, "正在前往出口登记……", {}],
   [51, FirstExternalTraining, "正在接续山后受击……", {}],
   [52, FirstExternalLimit, "正在接续限度说明与离林……", {}],
   [17, FirstHallApproach, "正在接续同卷归架……", { continuation: true }],
@@ -115,7 +117,7 @@ const preparationRoutes = [
 export default function EarlyTrainingPanel({ state, onContinue }: { state: GameState; onContinue?: () => void }) {
   const blocked = earlyTrainingBlock(state)
   const [walking, setWalking, entry, walkingBack] = useReturningScene()
-  const routes = useSceneRoutes(53)
+  const routes = useSceneRoutes(54)
   const task = state.earlyTraining
   const herbsReady = task.receipts.bluegrass && task.receipts.boneflower
   const marketScene = earlyMarketScenes[task.market.stage]
@@ -274,6 +276,10 @@ export default function EarlyTrainingPanel({ state, onContinue }: { state: GameS
       {isVisible(state, 3) && task.qiPavilionExchange.stage === 8 && <BondSummary aria-label="功法阁独自援助接续">
         <b>双卷交接已核 · {task.qiPavilionAid.stage === 10 ? '同行援助已归档' : '接续同行与援助'}</b><p>薰儿另选卷、近时限与萧媚风属性房门，先经过再独自回返。</p>
         {routes.button(3, "进入同行与援助记录")}
+      </BondSummary>}
+      {isVisible(state, 3) && task.qiPavilionAid.stage === 10 && <BondSummary aria-label="功法阁登记离阁接续">
+        <b>阁内会合已归档 · 登记离阁 {task.qiPavilionExit.stage}/13</b><p>各自交卷登记并取回，等薰儿后一起出阁，再回应父亲与心中的老师。</p>
+        {routes.button(53, "接续出口登记 · 同行离阁与安心")}
       </BondSummary>}
       {task.practice.phase === 4 && <MutedParagraph>初期尝试已归档。可在准备路线走近药老，接续前往斗技堂；堂内到访独立记录，正式传技另行继续。</MutedParagraph>}
       <BondSummary aria-label="重修准备记录">
