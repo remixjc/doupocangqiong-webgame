@@ -2,7 +2,7 @@ import 'fake-indexeddb/auto'
 import {beforeAll,describe,expect,it} from 'vitest'
 import {renderToStaticMarkup} from 'react-dom/server'
 import type {GameState} from '../src/core/model'
-import {validateState,parseSave,saveSlot,listSlots} from '../src/core/save'
+import {validateState,parseSave,serializeSave,saveSlot,listSlots} from '../src/core/save'
 import {firstSaleAlleyAt} from '../src/core/first-sale-alley-state'
 import {advanceFirstSaleAlley,submitFirstSaleAlley,firstSaleAlleyBlock} from '../src/core/first-sale-alley'
 import {saleAlleySnapshotKeys} from '../src/core/early-snapshots'
@@ -131,6 +131,32 @@ describe('首次寄售C隐巷处理、同瓶藏稳与实际离巷赴拍完整流
       state=firstSaleAlleyStep(state);expect(state).toEqual(expectedAt(original,state));expect(state.earlyTraining.firstSaleAlley.record).toBe('recalled')
     }
     expect(state.earlyTraining.consignment.stage).toBe(5)
+  })
+  it('独立隐巷归档后沿原鉴定八步、首拍七步、收款七步完整接续且不能重领或退回同瓶',()=>{
+    let state=structuredClone(states.at(-1)!)
+    const original=structuredClone(state)
+    const check=()=>{
+      state=parseSave(serializeSave(state))
+      const unchanged=structuredClone(state)
+      for(const key of ['appraisal','auction','settlement'] as const)unchanged.earlyTraining[key]=original.earlyTraining[key] as never
+      unchanged.earlyTraining.consignment.owner=original.earlyTraining.consignment.owner
+      expect(unchanged).toEqual(original)
+      const t=state.earlyTraining.firstSaleAlley
+      expect(advanceFirstSaleAlley(state,recoveryEntrance,t,t.location,firstSaleAlleyInput(state)).state).toBe(state)
+    }
+    for(const scene of appraisalScenes){
+      state=advanceEarlyAppraisal(state,recoveryEntrance,scene.station,{step:scene.step,owner:state.earlyTraining.consignment.owner,operation:scene.operation}).state;check()
+    }
+    for(const scene of auctionScenes){
+      state=advanceEarlyAuction(state,recoveryEntrance,scene.station,{step:scene.step,owner:state.earlyTraining.consignment.owner,operation:scene.operation}).state;check()
+      expect(state.earlyTraining.settlement.net).toBe(0)
+    }
+    for(const scene of settlementScenes){
+      state=advanceEarlySettlement(state,recoveryEntrance,scene.station,{step:scene.step,net:state.earlyTraining.settlement.net,vip:state.earlyTraining.settlement.vip,owner:state.earlyTraining.consignment.owner,operation:scene.operation}).state;check()
+    }
+    expect(state.earlyTraining).toMatchObject({appraisal:{stage:8,card:'black-entry'},auction:{stage:7},settlement:{stage:7,net:39200,vip:true},consignment:{owner:'auction'}})
+    for(const scene of settlementScenes)expect(advanceEarlySettlement(state,recoveryEntrance,scene.station,
+      {step:scene.step,net:39200,vip:true,owner:'auction',operation:scene.operation}).state).toBe(state)
   })
   it.each(['story','normal','hard'] as const)('%s全断点、单次并发持久化与runtime保持',async difficulty=>{
     let state=structuredClone(base);state.settings.difficulty=difficulty

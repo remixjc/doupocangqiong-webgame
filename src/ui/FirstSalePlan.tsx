@@ -18,7 +18,7 @@ import { deferredRoute } from './DeferredScene'
 import { useSceneRoutes } from './use-scene-routes'
 import './early-walk.css'
 const FirstSaleDeparture = lazyScene(() => import('./FirstSaleDeparture'))
-export default function FirstSalePlan({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function FirstSalePlan({ state, position, onBack, onAppraise }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onAppraise?: () => void }) {
   const routes = useSceneRoutes(1)
   const t = state.earlyTraining.firstSalePlan, scene = firstSalePlanScenes[t.stage]
   const [actor, setActor] = useState<'yan' | 'teacher'>('yan'), field = useRef<SVGSVGElement>(null)
@@ -30,7 +30,7 @@ export default function FirstSalePlan({ state, position, onBack }: { state: Game
       expectedConsignment: structuredClone(state.earlyTraining.consignment), actor, operation })
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
-  if (routes.active[0]) return deferredRoute(FirstSaleDeparture, "正在接续拿物与正常离房……", state, routes.back(0), { position })
+  if (routes.active[0]) return deferredRoute(FirstSaleDeparture, "正在接续拿物与正常离房……", state, routes.back(0), { position, onAppraise })
   return <>
     <Eyebrow>原房 / 床边寄售方案</Eyebrow><h2>走到床边，把售药的想法说清。</h2>
     <p>选对人物后E或按钮继续；路步依次右右右上上。900故事余额与90专款分账。</p>

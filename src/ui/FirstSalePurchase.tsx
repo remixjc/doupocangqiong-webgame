@@ -20,7 +20,7 @@ import { deferredRoute } from './DeferredScene'
 import { useSceneRoutes } from './use-scene-routes'
 import './early-walk.css'
 const FirstSaleAlley = lazyScene(() => import('./FirstSaleAlley'))
-export default function FirstSalePurchase({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function FirstSalePurchase({ state, position, onBack, onAppraise }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onAppraise?: () => void }) {
   const routes = useSceneRoutes(1)
   const t = state.earlyTraining.firstSalePurchase, scene = firstSalePurchaseScenes[t.stage], field = useRef<SVGSVGElement>(null)
   useSceneFocus(field, true, [])
@@ -32,7 +32,7 @@ export default function FirstSalePurchase({ state, position, onBack }: { state: 
       actor:'yan', operation, ...(selected ? { item:selected, price:consignmentSupplies[selected].price } : {}) })
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
-  if (routes.active[0]) return deferredRoute(FirstSaleAlley, '正在接续隐巷完整流程……', state, routes.back(0), { position })
+  if (routes.active[0]) return deferredRoute(FirstSaleAlley, '正在接续隐巷完整流程……', state, routes.back(0), { position, onAppraise })
   return <>
     <Eyebrow>首次寄售 / 街巷同单采购</Eyebrow><h2>走到各处店位，购齐同一批低品材料。</h2>
     <p>本人按E或按钮操作；药铺左左上上、木核摊右右右右、瓶具摊右右下。路线与报价为原创。</p>

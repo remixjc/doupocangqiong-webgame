@@ -18,7 +18,7 @@ import { deferredRoute } from './DeferredScene'
 import { useSceneRoutes } from './use-scene-routes'
 import './early-walk.css'
 const FirstSalePurchase = lazyScene(() => import('./FirstSalePurchase'))
-export default function FirstSaleDeparture({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+export default function FirstSaleDeparture({ state, position, onBack, onAppraise }: { state: GameState; position: EarlyWalkPosition; onBack: () => void; onAppraise?: () => void }) {
   const routes = useSceneRoutes(1)
   const t = state.earlyTraining.firstSaleDeparture, scene = firstSaleDepartureScenes[t.stage], field = useRef<SVGSVGElement>(null)
   useSceneFocus(field, true, [])
@@ -28,7 +28,7 @@ export default function FirstSaleDeparture({ state, position, onBack }: { state:
       ...earlySnapshots(state, saleDepartureSnapshotKeys), expectedConsignment: structuredClone(state.earlyTraining.consignment), actor: 'yan', operation })
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
-  if (routes.active[0]) return deferredRoute(FirstSalePurchase, "正在接续街巷同单采购……", state, routes.back(0), { position })
+  if (routes.active[0]) return deferredRoute(FirstSalePurchase, "正在接续街巷同单采购……", state, routes.back(0), { position, onAppraise })
   return <>
     <Eyebrow>首次寄售 / 拿物与正常离房</Eyebrow><h2>拿齐已有物品，从房门走出去。</h2>
     <p>本人按E或按钮逐项操作。门前路线：右右下下下；地图与路步为原创补间。</p>

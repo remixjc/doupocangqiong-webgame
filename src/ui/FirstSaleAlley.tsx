@@ -15,7 +15,7 @@ import {sceneHeading} from './SceneHeading'
 import {walkKey} from './walk-key'
 import HistoryBlocked from './HistoryBlocked'
 import './early-walk.css'
-export default function FirstSaleAlley({state,position,onBack}:{state:GameState;position:EarlyWalkPosition;onBack:()=>void}){
+export default function FirstSaleAlley({state,position,onBack,onAppraise}:{state:GameState;position:EarlyWalkPosition;onBack:()=>void;onAppraise?:()=>void}){
   const t=state.earlyTraining.firstSaleAlley,scene=firstSaleAlleyScenes[t.stage],field=useRef<SVGSVGElement>(null)
   useSceneFocus(field,true,[])
   const blocked=firstSaleAlleyBlock(state,position),walking=!!saleAlleyRoutes[t.stage]?.[t.walk]
@@ -52,6 +52,7 @@ export default function FirstSaleAlley({state,position,onBack}:{state:GameState;
           {{left:'隐巷向左走',down:'隐巷向下走',up:'隐巷向上走',right:'隐巷向右走'}[direction]}</SecondaryButton>)}
       </WalkControls>:<SecondaryButton onClick={()=>act(scene.operation,scene.actor)}>{scene.action}</SecondaryButton>}
     </BondSummary>:<BondSummary><h3>隐巷完整流程已归档。</h3><p>已实际抵达拍卖门口；同瓶与旧账保留，鉴定另续。</p></BondSummary>}
+    {t.archived&&onAppraise&&<SecondaryButton onClick={onAppraise}>接续黑袍鉴定与首次拍卖</SecondaryButton>}
     {returnButton(onBack,'返回街巷采购 · 保留隐巷断点')}
   </>
 }

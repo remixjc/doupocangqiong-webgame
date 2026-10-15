@@ -129,7 +129,7 @@ export default function EarlyWalk({ state, onBack, onContinue }: { state: GameSt
   if (routes.active[8]) return deferredRoute(EarlySettlement, "正在展开寄售手续……", state, routes.back(8), { position: position, onFatherGift: openFatherGift })
   if (routes.active[7]) return deferredRoute(EarlyAuction, "正在进入第一拍卖室……", state, routes.back(7), { position: position, onSettle: openSettlement })
   if (routes.active[6]) return deferredRoute(EarlyAppraisal, "正在展开寄售鉴定路线……", state, routes.back(6), { position: position, onAuction: openAuction })
-  if (routes.active[5] && state.earlyTraining.firstAwakening.stage === 11) return deferredRoute(FirstSalePlan, "正在展开床边完整方案……", state, routes.back(5), { position })
+  if (routes.active[5] && state.earlyTraining.firstAwakening.stage === 11) return deferredRoute(FirstSalePlan, "正在展开床边完整方案……", state, routes.back(5), { position, onAppraise: openAppraisal })
   if (routes.active[5]) return deferredRoute(EarlyConsignment, "正在展开首次寄售准备……", state, routes.back(5), { position: position, onAppraise: openAppraisal })
   if (routes.active[4] && state.earlyTraining.firstRecovery.stage === 11) return deferredRoute(FirstAwakening, "正在展开醒后恢复……", state, routes.back(4), { position, onConsign: openConsignment })
   if (routes.active[4] && state.earlyTraining.firstExternalLimit.stage === 8) return deferredRoute(FirstRecovery, "正在打开同液细分恢复……", state, routes.back(4), { position })
