@@ -21,7 +21,7 @@ export function advanceEarlyConsignment(state: GameState, position: EarlyWalkPos
   const task = state.earlyTraining.consignment
   if (state.earlyTraining.firstSalePlan.stage > 0 && state.earlyTraining.firstSalePlan.stage < 21)
     return failedTransaction(state, '先按床边完整问答听到同意并归档，再接续采购。')
-  if (state.earlyTraining.firstSaleDeparture.stage > 0)
+  if (state.earlyTraining.firstSaleDeparture.stage > 0 && state.earlyTraining.firstSaleAlley.stage !== 14)
     return failedTransaction(state, '已开始独立拿物离房；街巷采购与隐巷炼制须沿后续细分接续。')
   if (action.stage !== task.stage || action.spent !== task.spent || task.stage === 5)
     return failedTransaction(state, '寄售准备记录已变化，请按当前步骤继续。')

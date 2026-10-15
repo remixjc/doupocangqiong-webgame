@@ -1,0 +1,1138 @@
+{
+  "version": "0.93.0",
+  "scope": "One complete alley flow: actual entrance, same-batch delivery, teacher handling, inferior color/effect, same bottle/hiding, actual exit and auction-door arrival",
+  "tests": {
+    "vitestFiles": 173,
+    "vitestTests": 1066,
+    "nodeTests": 20
+  },
+  "migration": {
+    "base": "0a9c5693da6c42c964bcbc0b99e660fef920e3fa",
+    "nativeCount": 686,
+    "oldCoreSourceFiles": 141,
+    "onlyVersionAndEmptyAlley": true,
+    "summaryFunctions": 75,
+    "spoilerSettings": 4
+  },
+  "native": [
+    {
+      "name": "alleyMain00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "75da380c873c25c78f88774777c6f49e695e578ffedc4e346159d7fc6d5eb77a"
+    },
+    {
+      "name": "alleyMainLayout00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "40ef1af1481b0c42ca5b986b852383503d27076ea84d0a9da36aa3b29914fe45"
+    },
+    {
+      "name": "alleyMainReject00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "a43892861d6c66815d6865e11c4c748d8aec9836e98e40144e1dac4bb7eec873"
+    },
+    {
+      "name": "alleyMain01",
+      "step": 1,
+      "stage": 1,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "04978d7ebd941fdd92511f4b7b433765d14df00e1142a9439adc2db804fa2a8d"
+    },
+    {
+      "name": "alleyMainRejectDirection",
+      "step": 1,
+      "stage": 1,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "17b22294ffc7be55f802b068d17285f67680ddd1ccb7ce537cdb3bc2b2f2a6a8"
+    },
+    {
+      "name": "alleyMain02",
+      "step": 2,
+      "stage": 1,
+      "walk": 1,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3cbe6c4a839ad84292971eb2f5a05173141f434d5dc92daf79b09ee89d1fed76"
+    },
+    {
+      "name": "alleyMain03",
+      "step": 3,
+      "stage": 1,
+      "walk": 2,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "64d5d26f8d45a2f9c9d979c83db2cff6a6a544ff8c7573eadf58dc857b4b8601"
+    },
+    {
+      "name": "alleyMain04",
+      "step": 4,
+      "stage": 1,
+      "walk": 3,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ab620b9ab3749bd3d683b3a6c3890a26f21aa3fd9a7da7cb2eff81bdfc8b0a71"
+    },
+    {
+      "name": "alleyMain05",
+      "step": 5,
+      "stage": 1,
+      "walk": 4,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "61cfbc6584a7f26a63f677103bc192b6ae77e0ca1f8df30f3e10a26d045246c0"
+    },
+    {
+      "name": "alleyMain06",
+      "step": 6,
+      "stage": 1,
+      "walk": 5,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "b3c5a8df9622af4337fe84f80e70ec528050ab86c4902ae5aea625b847688971"
+    },
+    {
+      "name": "alleyMain07",
+      "step": 7,
+      "stage": 2,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3555be4c8fbb155818ce577614bbd2ff7bd11033c36bfbd0f0efd9ee9ba0e7cc"
+    },
+    {
+      "name": "alleyMain08",
+      "step": 8,
+      "stage": 3,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "d933d9d55c71bcf4c9f49b6871531acba2a162e879fb6009f9a4bf33813d94c5"
+    },
+    {
+      "name": "alleyMain09",
+      "step": 9,
+      "stage": 4,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "875a09d43bdd3da1836ab7ccccaaf878a284a2555c19808371f7770d661b6b93"
+    },
+    {
+      "name": "alleyMain10",
+      "step": 10,
+      "stage": 5,
+      "walk": 0,
+      "consignmentStage": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5ab7054e04206b96200b3a9d5f6f7d814eb41117fe11eacc9d9ce0d38d1b5f89"
+    },
+    {
+      "name": "alleyMain11",
+      "step": 11,
+      "stage": 6,
+      "walk": 0,
+      "consignmentStage": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "265b0e2a473ecee6ba050e883e6cd15a847a5b00b7116251cff51a36abb44548"
+    },
+    {
+      "name": "alleyMainWrongTeacher",
+      "step": 11,
+      "stage": 6,
+      "walk": 0,
+      "consignmentStage": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "301b43eead45a8fbe83e13ac7affba6678990ad2aeb202e107193613f5ac723f"
+    },
+    {
+      "name": "alleyMain12",
+      "step": 12,
+      "stage": 7,
+      "walk": 0,
+      "consignmentStage": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "f845a9fa19a78bc6a98c388784a3514266b0e449a0d0bf0a7e00b3aa1a5ca22d"
+    },
+    {
+      "name": "alleyMain13",
+      "step": 13,
+      "stage": 8,
+      "walk": 0,
+      "consignmentStage": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "876f926a513d16b4728979053935995083d554c1a1bbefa1a4853e7660c32fae"
+    },
+    {
+      "name": "alleyMain14",
+      "step": 14,
+      "stage": 9,
+      "walk": 0,
+      "consignmentStage": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ce5d34f7416d6b5f384cdabf73bf2615dde26d18191fa361fff9a69511bc30ab"
+    },
+    {
+      "name": "alleyMain15",
+      "step": 15,
+      "stage": 10,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "04b96b96d86790d3c7f177d6dc53ab0659bab24c6955fdecf4ecae1f824bac24"
+    },
+    {
+      "name": "alleyMain16",
+      "step": 16,
+      "stage": 11,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "11624df6602a754b02a3f8eb26b926f96d79d8af6fc9235530c63a0c16a5b18a"
+    },
+    {
+      "name": "alleyMain17",
+      "step": 17,
+      "stage": 11,
+      "walk": 1,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ff6bf8f6c03d56e3a42b1a371cab85c6582e8ca6df29ec556ae90079d11141f3"
+    },
+    {
+      "name": "alleyMain18",
+      "step": 18,
+      "stage": 12,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "13cd42a0751f7f2d96627bb26953e376f3a29c4256d7d24e20d40d6ebd065dee"
+    },
+    {
+      "name": "alleyMain19",
+      "step": 19,
+      "stage": 12,
+      "walk": 1,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "352595614aaa08661311b668d1e3a9d983b6705e80853645c21c29d557007a25"
+    },
+    {
+      "name": "alleyMain20",
+      "step": 20,
+      "stage": 12,
+      "walk": 2,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3cbd7f23e74f3751a1dff694e568d8d842d2d554bd5b3da0e0469b0a6be78729"
+    },
+    {
+      "name": "alleyMain21",
+      "step": 21,
+      "stage": 12,
+      "walk": 3,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "135e2721ba5d1fe5726f7196e51747faaae2d2b990380945c69e665835e9dca1"
+    },
+    {
+      "name": "alleyMain22",
+      "step": 22,
+      "stage": 12,
+      "walk": 4,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "c3fd53ad6dcf2b9183ff37ed80e6fdb54f25fb280d93ded14b26e191ad3538b7"
+    },
+    {
+      "name": "alleyMain23",
+      "step": 23,
+      "stage": 12,
+      "walk": 5,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7f99a2e3f42f7d631cc4fadafc87d92ff0f428d544a05b5d3e5082464d7d2406"
+    },
+    {
+      "name": "alleyMain24",
+      "step": 24,
+      "stage": 12,
+      "walk": 6,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "cea4a393d14d2d2900089e636085f091306e9d9f1fdbe2033fd990c9d14c3fe0"
+    },
+    {
+      "name": "alleyMain25",
+      "step": 25,
+      "stage": 13,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "fdd9f1c5ff7222586be7a8b27adc4cadc1750173322af9b6c42c1f55586b6848"
+    },
+    {
+      "name": "alleyMain26",
+      "step": 26,
+      "stage": 14,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "021dda07e3fa328efd8310d74185be49ad2f08150cb68177965b7a422def876f"
+    },
+    {
+      "name": "alleyMainRepeat",
+      "step": 26,
+      "stage": 14,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ca394494517e9a137d6f9687a5e6135f2270a2326b37d5933a3f0a3b9d78f045"
+    },
+    {
+      "name": "alleyMaterials00",
+      "step": 0,
+      "stage": 0,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "68501c4a67a85da40232d50b0a12d0d77f98b404a404c8390f0c3975f532c589"
+    },
+    {
+      "name": "alleyMaterials01",
+      "step": 1,
+      "stage": 1,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3896ce28b1124916e6cc08f145ed1907c663cb7ecc9e65e5b431dfce1af2c95f"
+    },
+    {
+      "name": "alleyMaterials02",
+      "step": 2,
+      "stage": 1,
+      "walk": 1,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "4715c1bd5f838d5b9f2ef7529cb88c00af37f8a49344f9dfcf5389692b5dee8d"
+    },
+    {
+      "name": "alleyMaterials03",
+      "step": 3,
+      "stage": 1,
+      "walk": 2,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "9d4323196564d3a3febbe68d1fc76c644608b8ac4f228c6be51ec19811e023a2"
+    },
+    {
+      "name": "alleyMaterials04",
+      "step": 4,
+      "stage": 1,
+      "walk": 3,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5b302801111793987c55467709133e9b949ce1e14a7ebcd4aacb3706fade6421"
+    },
+    {
+      "name": "alleyMaterialsRejectDirection",
+      "step": 4,
+      "stage": 1,
+      "walk": 3,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "146a9a69c9df773fb9c27f3a0fc4082771fdaa66341f661a116c487e500c264d"
+    },
+    {
+      "name": "alleyMaterials05",
+      "step": 5,
+      "stage": 1,
+      "walk": 4,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "24986ac18ea5931733ced93b9ed0136224be984ff2d736865e9c7c34d959834f"
+    },
+    {
+      "name": "alleyMaterials06",
+      "step": 6,
+      "stage": 1,
+      "walk": 5,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "cc68b07a0ba992cc1150e7066fb9c17765642e9d7e258bc834db937ebae5cdff"
+    },
+    {
+      "name": "alleyMaterials07",
+      "step": 7,
+      "stage": 2,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "923473439fc5ee022ebfc2f37fb68aa532b7be994c5db91ed03d3bf0c5f23185"
+    },
+    {
+      "name": "alleyMaterials08",
+      "step": 8,
+      "stage": 3,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "6e17714e3c9da86317ad2f6eaa8013527cb6675631f1b92fd5a2d8ccb6f395ec"
+    },
+    {
+      "name": "alleyMaterials09",
+      "step": 9,
+      "stage": 4,
+      "walk": 0,
+      "consignmentStage": 2,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "3d5b9aa9b217715a1f6216b8a46d726dee460334bf50069fc2cb67bce5973973"
+    },
+    {
+      "name": "alleyMaterials10",
+      "step": 10,
+      "stage": 5,
+      "walk": 0,
+      "consignmentStage": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "e3c59489a7fde65f6be8928f559865c3fc92714dc8670b1c96d22bf62e92d325"
+    },
+    {
+      "name": "alleyMaterials11",
+      "step": 11,
+      "stage": 6,
+      "walk": 0,
+      "consignmentStage": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "b988089b02f731c1e836d128137fea2bdb49578a1201e1861a4270328ef0d8a0"
+    },
+    {
+      "name": "alleyMaterialsWrongTeacher",
+      "step": 11,
+      "stage": 6,
+      "walk": 0,
+      "consignmentStage": 3,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "98ad486304ad11e0b6e94a19a8dc3e261b0da608e411351658331c724fb3944a"
+    },
+    {
+      "name": "alleyMaterials12",
+      "step": 12,
+      "stage": 7,
+      "walk": 0,
+      "consignmentStage": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "72788fed4af09760baaf6527c50198233008b36c1171285c872247113b5ef164"
+    },
+    {
+      "name": "alleyMaterials13",
+      "step": 13,
+      "stage": 8,
+      "walk": 0,
+      "consignmentStage": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "a338f4d4777fbc94c15647d0560447c428ae8898a97609603fe293b7dc9de63c"
+    },
+    {
+      "name": "alleyMaterials14",
+      "step": 14,
+      "stage": 9,
+      "walk": 0,
+      "consignmentStage": 4,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "e4cc1263d4de4438939323560e1ae532d046f6a44d50672ad797a71cd1963563"
+    },
+    {
+      "name": "alleyMaterials15",
+      "step": 15,
+      "stage": 10,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "ad4a279476a7ba485780274c102795dcaac2fb4d309022820788a75c157bd32d"
+    },
+    {
+      "name": "alleyMaterials16",
+      "step": 16,
+      "stage": 11,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "935097ff62ca4a8b22abf2247b682894da49b7aa88faf8f1386620aaa8c3d6fa"
+    },
+    {
+      "name": "alleyMaterials17",
+      "step": 17,
+      "stage": 11,
+      "walk": 1,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "51907c2302790927bc84ea7a15ae3d18182e125facdcb3e2b3d6f9124ee17253"
+    },
+    {
+      "name": "alleyMaterials18",
+      "step": 18,
+      "stage": 12,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7aa7e7ce0bb30a1bc448e3a9233af0957a01fdebc233463744aafae1a9a42fc0"
+    },
+    {
+      "name": "alleyMaterials19",
+      "step": 19,
+      "stage": 12,
+      "walk": 1,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "b9f28c3b76e03fcbdf7f7e6336d3ec89d3a9155047aa2e38f4a321436083025e"
+    },
+    {
+      "name": "alleyMaterials20",
+      "step": 20,
+      "stage": 12,
+      "walk": 2,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "c6f93ac512cb512ed31e2a45f01f5975073ee6062eea5594dbe4df6b87c81273"
+    },
+    {
+      "name": "alleyMaterials21",
+      "step": 21,
+      "stage": 12,
+      "walk": 3,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "2538d6bed7f6da27a889a21417e1e78442eafd3a865c899cd7ecb13dc4b38a7b"
+    },
+    {
+      "name": "alleyMaterials22",
+      "step": 22,
+      "stage": 12,
+      "walk": 4,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "7abd1186fecff1427cbb0f9dd0b9e05c424c97483043b0a5bfd983041cab3864"
+    },
+    {
+      "name": "alleyMaterials23",
+      "step": 23,
+      "stage": 12,
+      "walk": 5,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "5cf61aad86ec2b224f216e343b329863220603268b4b2768905dd66e355009d0"
+    },
+    {
+      "name": "alleyMaterials24",
+      "step": 24,
+      "stage": 12,
+      "walk": 6,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "773eec714a3610fdd74541d3cc59ab4f4b58cf07dfd3158c59133c082d807308"
+    },
+    {
+      "name": "alleyMaterials25",
+      "step": 25,
+      "stage": 13,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "1d20d5d52282058653fc3874948ef9b34159e93d988cc1dee11405b9792a18ce"
+    },
+    {
+      "name": "alleyMaterials26",
+      "step": 26,
+      "stage": 14,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "128be54a9674daa2f8f81dd1589e2e425b0b8ef272283c15862c7f4f7acc87af"
+    },
+    {
+      "name": "alleyMaterialsRepeat",
+      "step": 26,
+      "stage": 14,
+      "walk": 0,
+      "consignmentStage": 5,
+      "rawEqualsOfficial": true,
+      "wholeStateEqualsActualApiReplay": true,
+      "sha256": "0e8fa4f831549858de022edb6a986ac1b5010b52ab96851b9e3bd88589298235"
+    }
+  ],
+  "windows": [
+    {
+      "name": "alleyMain00",
+      "fullDialogEqual": true,
+      "beforeSha256": "5eb1241befb9f8444ac8ae1f4ae464d1ad8477ddb548a44c077576a80630084b",
+      "afterSha256": "5eb1241befb9f8444ac8ae1f4ae464d1ad8477ddb548a44c077576a80630084b",
+      "errors": []
+    },
+    {
+      "name": "alleyMainLayout00",
+      "fullDialogEqual": true,
+      "beforeSha256": "7eb14b10b5d36d82038bacf267af1679ee1da57e512be226ff6207d241c8ff8b",
+      "afterSha256": "7eb14b10b5d36d82038bacf267af1679ee1da57e512be226ff6207d241c8ff8b",
+      "errors": []
+    },
+    {
+      "name": "alleyMainReject00",
+      "fullDialogEqual": true,
+      "beforeSha256": "7eb14b10b5d36d82038bacf267af1679ee1da57e512be226ff6207d241c8ff8b",
+      "afterSha256": "7eb14b10b5d36d82038bacf267af1679ee1da57e512be226ff6207d241c8ff8b",
+      "errors": []
+    },
+    {
+      "name": "alleyMain01",
+      "fullDialogEqual": true,
+      "beforeSha256": "f94af953e81a9fd2a2086f193e4fe63b7c74902a011718749d00f22ecfc49372",
+      "afterSha256": "f94af953e81a9fd2a2086f193e4fe63b7c74902a011718749d00f22ecfc49372",
+      "errors": []
+    },
+    {
+      "name": "alleyMainRejectDirection",
+      "fullDialogEqual": true,
+      "beforeSha256": "f94af953e81a9fd2a2086f193e4fe63b7c74902a011718749d00f22ecfc49372",
+      "afterSha256": "f94af953e81a9fd2a2086f193e4fe63b7c74902a011718749d00f22ecfc49372",
+      "errors": []
+    },
+    {
+      "name": "alleyMain02",
+      "fullDialogEqual": true,
+      "beforeSha256": "1436cb78a2b93350f197e46852f3f9a602a5a4274d6bfc8f05d0f43bcdbe4e4b",
+      "afterSha256": "1436cb78a2b93350f197e46852f3f9a602a5a4274d6bfc8f05d0f43bcdbe4e4b",
+      "errors": []
+    },
+    {
+      "name": "alleyMain03",
+      "fullDialogEqual": true,
+      "beforeSha256": "e45f2869ed4f04f5588fcf491f210fc15f2991e38c999c8d1a7bc300006de203",
+      "afterSha256": "e45f2869ed4f04f5588fcf491f210fc15f2991e38c999c8d1a7bc300006de203",
+      "errors": []
+    },
+    {
+      "name": "alleyMain04",
+      "fullDialogEqual": true,
+      "beforeSha256": "3c09d85bc15a6ccedea6322bb7280dba9562a761e6dd9aea14151207ec016e44",
+      "afterSha256": "3c09d85bc15a6ccedea6322bb7280dba9562a761e6dd9aea14151207ec016e44",
+      "errors": []
+    },
+    {
+      "name": "alleyMain05",
+      "fullDialogEqual": true,
+      "beforeSha256": "632375b4fd9c31a0db5156b54135ce20bf1daa5145f6c4f5d07fdb92c2a596f0",
+      "afterSha256": "632375b4fd9c31a0db5156b54135ce20bf1daa5145f6c4f5d07fdb92c2a596f0",
+      "errors": []
+    },
+    {
+      "name": "alleyMain06",
+      "fullDialogEqual": true,
+      "beforeSha256": "45f908cff688deb7f058767c56c8434134cba991c9e3c3aa9b83708c7ab6fea7",
+      "afterSha256": "45f908cff688deb7f058767c56c8434134cba991c9e3c3aa9b83708c7ab6fea7",
+      "errors": []
+    },
+    {
+      "name": "alleyMain07",
+      "fullDialogEqual": true,
+      "beforeSha256": "26d32d6f4ca54ff3fc47b3b81d487857131332252050b46deae63214780f7095",
+      "afterSha256": "26d32d6f4ca54ff3fc47b3b81d487857131332252050b46deae63214780f7095",
+      "errors": []
+    },
+    {
+      "name": "alleyMain08",
+      "fullDialogEqual": true,
+      "beforeSha256": "dc57fdb0acd1d260f50affcc55c0b8e351d960017e875e602ead1686949f08f8",
+      "afterSha256": "dc57fdb0acd1d260f50affcc55c0b8e351d960017e875e602ead1686949f08f8",
+      "errors": []
+    },
+    {
+      "name": "alleyMain09",
+      "fullDialogEqual": true,
+      "beforeSha256": "58357e8b0557b185fa5cc3a004a3abce2731f1445a6b87a7171313f9272f03a2",
+      "afterSha256": "58357e8b0557b185fa5cc3a004a3abce2731f1445a6b87a7171313f9272f03a2",
+      "errors": []
+    },
+    {
+      "name": "alleyMain10",
+      "fullDialogEqual": true,
+      "beforeSha256": "da3de1f55747d63bf78affd85bf3d08afb590a4222f8e64fb93fb77c28fa8c8b",
+      "afterSha256": "da3de1f55747d63bf78affd85bf3d08afb590a4222f8e64fb93fb77c28fa8c8b",
+      "errors": []
+    },
+    {
+      "name": "alleyMain11",
+      "fullDialogEqual": true,
+      "beforeSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "afterSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "errors": []
+    },
+    {
+      "name": "alleyMainWrongTeacher",
+      "fullDialogEqual": true,
+      "beforeSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "afterSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "errors": []
+    },
+    {
+      "name": "alleyMain12",
+      "fullDialogEqual": true,
+      "beforeSha256": "d05abcce990a8ec3be0ecb90e65448c38e08569e2a6b8d89636756483c5ce476",
+      "afterSha256": "d05abcce990a8ec3be0ecb90e65448c38e08569e2a6b8d89636756483c5ce476",
+      "errors": []
+    },
+    {
+      "name": "alleyMain13",
+      "fullDialogEqual": true,
+      "beforeSha256": "326edf383166bd8a97cdc8f45f67de6981e6b4977b4da44c21235dba4cffb7e5",
+      "afterSha256": "326edf383166bd8a97cdc8f45f67de6981e6b4977b4da44c21235dba4cffb7e5",
+      "errors": []
+    },
+    {
+      "name": "alleyMain14",
+      "fullDialogEqual": true,
+      "beforeSha256": "0a5339565539663e8fc1a7b38248ab9f1fc3c209c5dc305e748e97a64dbda81d",
+      "afterSha256": "0a5339565539663e8fc1a7b38248ab9f1fc3c209c5dc305e748e97a64dbda81d",
+      "errors": []
+    },
+    {
+      "name": "alleyMain15",
+      "fullDialogEqual": true,
+      "beforeSha256": "34a3dad1918e39529835cd34a4910ca4d70333e00f7d53f4391c1f4bce0c71a5",
+      "afterSha256": "34a3dad1918e39529835cd34a4910ca4d70333e00f7d53f4391c1f4bce0c71a5",
+      "errors": []
+    },
+    {
+      "name": "alleyMain16",
+      "fullDialogEqual": true,
+      "beforeSha256": "18441a4b75899f34f497af434c0ba1c59c79dfa5ccc8542a2c4f777eb341d30f",
+      "afterSha256": "18441a4b75899f34f497af434c0ba1c59c79dfa5ccc8542a2c4f777eb341d30f",
+      "errors": []
+    },
+    {
+      "name": "alleyMain17",
+      "fullDialogEqual": true,
+      "beforeSha256": "b39f801c3f65262045d18a06a2285025dddd5e64b29acb5b077c7b76823b6cea",
+      "afterSha256": "b39f801c3f65262045d18a06a2285025dddd5e64b29acb5b077c7b76823b6cea",
+      "errors": []
+    },
+    {
+      "name": "alleyMain18",
+      "fullDialogEqual": true,
+      "beforeSha256": "7e8f35af008616b66ff44818c36a93d2067f7bbf211fa2ed52f91c1b14ec2837",
+      "afterSha256": "7e8f35af008616b66ff44818c36a93d2067f7bbf211fa2ed52f91c1b14ec2837",
+      "errors": []
+    },
+    {
+      "name": "alleyMain19",
+      "fullDialogEqual": true,
+      "beforeSha256": "c11cc7d30300d3a4c851ef38189f32b60008d6bfd483778798c2bb35ad550b7a",
+      "afterSha256": "c11cc7d30300d3a4c851ef38189f32b60008d6bfd483778798c2bb35ad550b7a",
+      "errors": []
+    },
+    {
+      "name": "alleyMain20",
+      "fullDialogEqual": true,
+      "beforeSha256": "a8b673bd0bf9b5047a7460b3d1c19373ac5437808007d732ba175af9e01036b1",
+      "afterSha256": "a8b673bd0bf9b5047a7460b3d1c19373ac5437808007d732ba175af9e01036b1",
+      "errors": []
+    },
+    {
+      "name": "alleyMain21",
+      "fullDialogEqual": true,
+      "beforeSha256": "58f42cd36778166c59e82c0998d448e346b31ae7e66fe25bc97783b2d78247cd",
+      "afterSha256": "58f42cd36778166c59e82c0998d448e346b31ae7e66fe25bc97783b2d78247cd",
+      "errors": []
+    },
+    {
+      "name": "alleyMain22",
+      "fullDialogEqual": true,
+      "beforeSha256": "39030ec1590c902bd3267bcfdcd298828e633f51484bb1159575e0f4a12959ea",
+      "afterSha256": "39030ec1590c902bd3267bcfdcd298828e633f51484bb1159575e0f4a12959ea",
+      "errors": []
+    },
+    {
+      "name": "alleyMain23",
+      "fullDialogEqual": true,
+      "beforeSha256": "b6cdee685072f3017648352bff85c26e4cfa08402a11e58d1dc7660943355b89",
+      "afterSha256": "b6cdee685072f3017648352bff85c26e4cfa08402a11e58d1dc7660943355b89",
+      "errors": []
+    },
+    {
+      "name": "alleyMain24",
+      "fullDialogEqual": true,
+      "beforeSha256": "4e12b1f9e5fc722aebc2dbb71865705523b43bab4101a74f3f06ae141e39ecbd",
+      "afterSha256": "4e12b1f9e5fc722aebc2dbb71865705523b43bab4101a74f3f06ae141e39ecbd",
+      "errors": []
+    },
+    {
+      "name": "alleyMain25",
+      "fullDialogEqual": true,
+      "beforeSha256": "ab37cd2a4e2b4f23fdfa5f484f3794961152cf1de874a368c23c165fea1c1a0a",
+      "afterSha256": "ab37cd2a4e2b4f23fdfa5f484f3794961152cf1de874a368c23c165fea1c1a0a",
+      "errors": []
+    },
+    {
+      "name": "alleyMain26",
+      "fullDialogEqual": true,
+      "beforeSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "afterSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "errors": []
+    },
+    {
+      "name": "alleyMainRepeat",
+      "fullDialogEqual": true,
+      "beforeSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "afterSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials00",
+      "fullDialogEqual": true,
+      "beforeSha256": "7eb14b10b5d36d82038bacf267af1679ee1da57e512be226ff6207d241c8ff8b",
+      "afterSha256": "7eb14b10b5d36d82038bacf267af1679ee1da57e512be226ff6207d241c8ff8b",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials01",
+      "fullDialogEqual": true,
+      "beforeSha256": "f94af953e81a9fd2a2086f193e4fe63b7c74902a011718749d00f22ecfc49372",
+      "afterSha256": "f94af953e81a9fd2a2086f193e4fe63b7c74902a011718749d00f22ecfc49372",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials02",
+      "fullDialogEqual": true,
+      "beforeSha256": "1436cb78a2b93350f197e46852f3f9a602a5a4274d6bfc8f05d0f43bcdbe4e4b",
+      "afterSha256": "1436cb78a2b93350f197e46852f3f9a602a5a4274d6bfc8f05d0f43bcdbe4e4b",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials03",
+      "fullDialogEqual": true,
+      "beforeSha256": "e45f2869ed4f04f5588fcf491f210fc15f2991e38c999c8d1a7bc300006de203",
+      "afterSha256": "e45f2869ed4f04f5588fcf491f210fc15f2991e38c999c8d1a7bc300006de203",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials04",
+      "fullDialogEqual": true,
+      "beforeSha256": "3c09d85bc15a6ccedea6322bb7280dba9562a761e6dd9aea14151207ec016e44",
+      "afterSha256": "3c09d85bc15a6ccedea6322bb7280dba9562a761e6dd9aea14151207ec016e44",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterialsRejectDirection",
+      "fullDialogEqual": true,
+      "beforeSha256": "3c09d85bc15a6ccedea6322bb7280dba9562a761e6dd9aea14151207ec016e44",
+      "afterSha256": "3c09d85bc15a6ccedea6322bb7280dba9562a761e6dd9aea14151207ec016e44",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials05",
+      "fullDialogEqual": true,
+      "beforeSha256": "632375b4fd9c31a0db5156b54135ce20bf1daa5145f6c4f5d07fdb92c2a596f0",
+      "afterSha256": "632375b4fd9c31a0db5156b54135ce20bf1daa5145f6c4f5d07fdb92c2a596f0",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials06",
+      "fullDialogEqual": true,
+      "beforeSha256": "45f908cff688deb7f058767c56c8434134cba991c9e3c3aa9b83708c7ab6fea7",
+      "afterSha256": "45f908cff688deb7f058767c56c8434134cba991c9e3c3aa9b83708c7ab6fea7",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials07",
+      "fullDialogEqual": true,
+      "beforeSha256": "26d32d6f4ca54ff3fc47b3b81d487857131332252050b46deae63214780f7095",
+      "afterSha256": "26d32d6f4ca54ff3fc47b3b81d487857131332252050b46deae63214780f7095",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials08",
+      "fullDialogEqual": true,
+      "beforeSha256": "dc57fdb0acd1d260f50affcc55c0b8e351d960017e875e602ead1686949f08f8",
+      "afterSha256": "dc57fdb0acd1d260f50affcc55c0b8e351d960017e875e602ead1686949f08f8",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials09",
+      "fullDialogEqual": true,
+      "beforeSha256": "58357e8b0557b185fa5cc3a004a3abce2731f1445a6b87a7171313f9272f03a2",
+      "afterSha256": "58357e8b0557b185fa5cc3a004a3abce2731f1445a6b87a7171313f9272f03a2",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials10",
+      "fullDialogEqual": true,
+      "beforeSha256": "da3de1f55747d63bf78affd85bf3d08afb590a4222f8e64fb93fb77c28fa8c8b",
+      "afterSha256": "da3de1f55747d63bf78affd85bf3d08afb590a4222f8e64fb93fb77c28fa8c8b",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials11",
+      "fullDialogEqual": true,
+      "beforeSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "afterSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterialsWrongTeacher",
+      "fullDialogEqual": true,
+      "beforeSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "afterSha256": "5b3da50a791aaf986cbff51983ff8da74022e821b6b72fe7277ecf56148bf5ce",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials12",
+      "fullDialogEqual": true,
+      "beforeSha256": "d05abcce990a8ec3be0ecb90e65448c38e08569e2a6b8d89636756483c5ce476",
+      "afterSha256": "d05abcce990a8ec3be0ecb90e65448c38e08569e2a6b8d89636756483c5ce476",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials13",
+      "fullDialogEqual": true,
+      "beforeSha256": "326edf383166bd8a97cdc8f45f67de6981e6b4977b4da44c21235dba4cffb7e5",
+      "afterSha256": "326edf383166bd8a97cdc8f45f67de6981e6b4977b4da44c21235dba4cffb7e5",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials14",
+      "fullDialogEqual": true,
+      "beforeSha256": "0a5339565539663e8fc1a7b38248ab9f1fc3c209c5dc305e748e97a64dbda81d",
+      "afterSha256": "0a5339565539663e8fc1a7b38248ab9f1fc3c209c5dc305e748e97a64dbda81d",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials15",
+      "fullDialogEqual": true,
+      "beforeSha256": "34a3dad1918e39529835cd34a4910ca4d70333e00f7d53f4391c1f4bce0c71a5",
+      "afterSha256": "34a3dad1918e39529835cd34a4910ca4d70333e00f7d53f4391c1f4bce0c71a5",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials16",
+      "fullDialogEqual": true,
+      "beforeSha256": "18441a4b75899f34f497af434c0ba1c59c79dfa5ccc8542a2c4f777eb341d30f",
+      "afterSha256": "18441a4b75899f34f497af434c0ba1c59c79dfa5ccc8542a2c4f777eb341d30f",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials17",
+      "fullDialogEqual": true,
+      "beforeSha256": "b39f801c3f65262045d18a06a2285025dddd5e64b29acb5b077c7b76823b6cea",
+      "afterSha256": "b39f801c3f65262045d18a06a2285025dddd5e64b29acb5b077c7b76823b6cea",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials18",
+      "fullDialogEqual": true,
+      "beforeSha256": "7e8f35af008616b66ff44818c36a93d2067f7bbf211fa2ed52f91c1b14ec2837",
+      "afterSha256": "7e8f35af008616b66ff44818c36a93d2067f7bbf211fa2ed52f91c1b14ec2837",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials19",
+      "fullDialogEqual": true,
+      "beforeSha256": "c11cc7d30300d3a4c851ef38189f32b60008d6bfd483778798c2bb35ad550b7a",
+      "afterSha256": "c11cc7d30300d3a4c851ef38189f32b60008d6bfd483778798c2bb35ad550b7a",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials20",
+      "fullDialogEqual": true,
+      "beforeSha256": "a8b673bd0bf9b5047a7460b3d1c19373ac5437808007d732ba175af9e01036b1",
+      "afterSha256": "a8b673bd0bf9b5047a7460b3d1c19373ac5437808007d732ba175af9e01036b1",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials21",
+      "fullDialogEqual": true,
+      "beforeSha256": "58f42cd36778166c59e82c0998d448e346b31ae7e66fe25bc97783b2d78247cd",
+      "afterSha256": "58f42cd36778166c59e82c0998d448e346b31ae7e66fe25bc97783b2d78247cd",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials22",
+      "fullDialogEqual": true,
+      "beforeSha256": "39030ec1590c902bd3267bcfdcd298828e633f51484bb1159575e0f4a12959ea",
+      "afterSha256": "39030ec1590c902bd3267bcfdcd298828e633f51484bb1159575e0f4a12959ea",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials23",
+      "fullDialogEqual": true,
+      "beforeSha256": "b6cdee685072f3017648352bff85c26e4cfa08402a11e58d1dc7660943355b89",
+      "afterSha256": "b6cdee685072f3017648352bff85c26e4cfa08402a11e58d1dc7660943355b89",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials24",
+      "fullDialogEqual": true,
+      "beforeSha256": "4e12b1f9e5fc722aebc2dbb71865705523b43bab4101a74f3f06ae141e39ecbd",
+      "afterSha256": "4e12b1f9e5fc722aebc2dbb71865705523b43bab4101a74f3f06ae141e39ecbd",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials25",
+      "fullDialogEqual": true,
+      "beforeSha256": "ab37cd2a4e2b4f23fdfa5f484f3794961152cf1de874a368c23c165fea1c1a0a",
+      "afterSha256": "ab37cd2a4e2b4f23fdfa5f484f3794961152cf1de874a368c23c165fea1c1a0a",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterials26",
+      "fullDialogEqual": true,
+      "beforeSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "afterSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "errors": []
+    },
+    {
+      "name": "alleyMaterialsRepeat",
+      "fullDialogEqual": true,
+      "beforeSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "afterSha256": "04ab23ba41645839b0c7f4ae616334c62812cd9933ff557fceadfdc11486e1b5",
+      "errors": []
+    }
+  ],
+  "reopen": [
+    {
+      "branch": "Main",
+      "focus": "接续隐巷完整流程",
+      "fullDialogEqual": true
+    },
+    {
+      "branch": "Materials",
+      "focus": "接续隐巷完整流程",
+      "fullDialogEqual": true
+    }
+  ],
+  "buildOnlyOwnedLiteralCompression": {
+    "content/chapters.ts": {
+      "encoding": "lz-string-1.5.0-words-radix85",
+      "literals": 99,
+      "rows": 94,
+      "sourceBytes": 17239,
+      "packedBytes": 12502,
+      "sha256": "c736f357cc67bd9fbd3a333408595f3e7043e36a91f4e2e962946a25745a8fe2"
+    },
+    "content/story.ts": {
+      "encoding": "lz-string-1.5.0-words-radix85",
+      "literals": 260,
+      "rows": 244,
+      "sourceBytes": 16727,
+      "packedBytes": 12959,
+      "sha256": "e6e25d03c03df3e5b65812651d372a18a30862356b6e229f3692e7982a99da00"
+    },
+    "core/save-preview.ts": {
+      "encoding": "lz-string-1.5.0-words-radix85",
+      "literals": 613,
+      "rows": 604,
+      "sourceBytes": 57393,
+      "packedBytes": 52461,
+      "sha256": "4244241f122d1a826d44dc0298b702d4bb962b6a92a5e02ba84796966613848b"
+    }
+  },
+  "budget": {
+    "initial": 474921,
+    "gzip": 163260,
+    "total": 1848184,
+    "limits": [
+      500000,
+      165000,
+      1850000
+    ]
+  },
+  "retainedFailures": [
+    "Python alias unavailable; no wiring was applied, corrected with local Node.",
+    "Actual candidate total1852658 exceeded fixed1850000.",
+    "Events and bonds compression candidates exceeded initial gzip166892/166327; neither included in final scope.",
+    "Archived minimum-stage rollback was caught by focused test and fixed.",
+    "Initial screenshot exposed overlapping bottle/actor labels; moved labels before both full journeys. Main00 retains pre-layout-fix HTML; Layout00 and all subsequent journey checkpoints use final layout."
+  ],
+  "boundaries": [
+    "No new online source claim; re-read frozen previously verified English20.",
+    "Street/alley/map steps and interaction pacing are original interpolation.",
+    "Teacher handling does not invent an unsupported teacher body position or reuse high-grade ingredient steps.",
+    "Old stages3/4 only complete missing processing/bottling on explicit actions; completed stage5/appraisal/auction/39200 remain whole-state preserved except new history.",
+    "No oral item, new player potion, real-device test or public deployment claim.",
+    "Arrival at auction door does not sign appraisal or later transaction completion."
+  ]
+}

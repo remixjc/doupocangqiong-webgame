@@ -13,6 +13,8 @@ export type AppraisalStation = typeof appraisalScenes[number]['station']
 export type AppraisalAction = { step: number; owner: GameState['earlyTraining']['consignment']['owner']; operation: typeof appraisalScenes[number]['operation'] }
 export function earlyAppraisalBlock(state: GameState, position: EarlyWalkPosition): string {
   return earlyConsignmentBlock(state, position)
+    || (state.earlyTraining.firstSaleDeparture.stage > 0 && state.earlyTraining.firstSaleAlley.stage !== 14
+      ? '先沿独立隐巷流程藏稳玉瓶、实际离巷到拍卖门口并归档，再开始鉴定。' : '')
     || (state.earlyTraining.consignment.stage !== 5 || state.earlyTraining.consignment.product !== 'sealed'
       ? '先完成独立备料与老师调制，将待售药液装瓶，再前往鉴定。' : '')
 }

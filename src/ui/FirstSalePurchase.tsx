@@ -15,8 +15,13 @@ import { BondSummary, Eyebrow, RobeFigure, StatusParagraph, WalkControls } from 
 import { sceneHeading } from './SceneHeading'
 import { walkKey } from './walk-key'
 import HistoryBlocked from './HistoryBlocked'
+import { lazyScene } from './scene-load'
+import { deferredRoute } from './DeferredScene'
+import { useSceneRoutes } from './use-scene-routes'
 import './early-walk.css'
+const FirstSaleAlley = lazyScene(() => import('./FirstSaleAlley'))
 export default function FirstSalePurchase({ state, position, onBack }: { state: GameState; position: EarlyWalkPosition; onBack: () => void }) {
+  const routes = useSceneRoutes(1)
   const t = state.earlyTraining.firstSalePurchase, scene = firstSalePurchaseScenes[t.stage], field = useRef<SVGSVGElement>(null)
   useSceneFocus(field, true, [])
   const blocked = firstSalePurchaseBlock(state, position), walking = !!salePurchaseRoutes[t.stage]?.[t.walk]
@@ -27,6 +32,7 @@ export default function FirstSalePurchase({ state, position, onBack }: { state: 
       actor:'yan', operation, ...(selected ? { item:selected, price:consignmentSupplies[selected].price } : {}) })
   }
   if (blocked) return <HistoryBlocked message={blocked} onBack={onBack} />
+  if (routes.active[0]) return deferredRoute(FirstSaleAlley, '正在接续隐巷完整流程……', state, routes.back(0), { position })
   return <>
     <Eyebrow>首次寄售 / 街巷同单采购</Eyebrow><h2>走到各处店位，购齐同一批低品材料。</h2>
     <p>本人按E或按钮操作；药铺左左上上、木核摊右右右右、瓶具摊右右下。路线与报价为原创。</p>
@@ -56,7 +62,8 @@ export default function FirstSalePurchase({ state, position, onBack }: { state: 
           </SecondaryButton>)}
       </WalkControls> : <>{sceneButton(scene,false,act)}
         {salePurchaseItem(t.stage) && <SecondaryButton onClick={() => act(scene.operation,true)}>试选不符此单的物资</SecondaryButton>}</>}
-    </BondSummary> : <BondSummary><h3>街巷同单采购已归档。</h3><p>两种幼株、廉价木核与白玉瓶凭据保存；隐巷交料与处理待续。</p></BondSummary>}
+    </BondSummary> : <BondSummary><h3>街巷同单采购已归档。</h3><p>两种幼株、廉价木核与白玉瓶凭据保存；隐巷完整流程可由下方入口接续。</p></BondSummary>}
+    {t.archived && <SecondaryButton ref={routes.entry(0)} onClick={() => routes.set(0,true)}>接续隐巷完整流程</SecondaryButton>}
     {returnButton(onBack,'返回拿物离房 · 保留采购断点')}
   </>
 }

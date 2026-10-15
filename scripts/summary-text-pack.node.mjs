@@ -40,6 +40,21 @@ test('entire packed chapter exports and summary function branches equal readable
         }
       }else assert.deepEqual(a[key],b[key])
     }
+    const packedEvents=await packed.ssrLoadModule('/src/content/events.ts'),plainEvents=await plain.ssrLoadModule('/src/content/events.ts')
+    const packedStory=await packed.ssrLoadModule('/src/content/story.ts'),plainStory=await plain.ssrLoadModule('/src/content/story.ts')
+    assert.deepEqual(packedStory,plainStory)
+    assert.deepEqual(Object.keys(packedEvents).sort(),Object.keys(plainEvents).sort())
+    for(const key of Object.keys(plainEvents))if(typeof plainEvents[key]!=='function')assert.deepEqual(packedEvents[key],plainEvents[key])
+    for(let chapter=-1;chapter<=30;chapter++){
+      assert.deepEqual(packedEvents.eventForChapter(chapter),plainEvents.eventForChapter(chapter))
+      const events=plainEvents.eventsForChapter(chapter)
+      assert.deepEqual(packedEvents.eventsForChapter(chapter),events)
+      for(const id of [undefined,'missing-event',...events.map(event=>event.id)])
+        assert.deepEqual(packedEvents.findEvent(chapter,id),plainEvents.findEvent(chapter,id))
+      for(const event of events)assert.deepEqual(packedEvents.mindTargets(event),plainEvents.mindTargets(event))
+    }
+    assert.deepEqual(packedEvents.mindTargets({mindTargets:[.2,.9]}),plainEvents.mindTargets({mindTargets:[.2,.9]}))
+    for(let step=-10;step<=100;step++)assert.deepEqual(packedEvents.tournamentRound(step),plainEvents.tournamentRound(step))
     const next=await packed.ssrLoadModule('/src/core/save-preview.ts'),old=await plain.ssrLoadModule('/src/core/save-preview.ts')
     assert.deepEqual(Object.keys(next).sort(),Object.keys(old).sort())
     const {initialState}=await plain.ssrLoadModule('/src/core/model.ts'),base=initialState()
