@@ -1,9 +1,18 @@
-import { summarizeIntervals } from '/__qa/statistics.mjs'
+import { summarizeIntervals, longTaskWithinSample } from '/__qa/statistics.mjs'
 const $ = id => document.getElementById(id)
 const iframe = document.querySelector('iframe')
 const identity = await fetch('/__qa/identity').then(response => response.json())
 let active = false, report, frame, poll, finishTimer, observer, prior
 const groups = new Map()
+function collectLongTasks(entries) {
+  for (const entry of entries) report.longTasks.push({
+    startTime: entry.startTime, duration: entry.duration, name: entry.name,
+    attribution: [...entry.attribution].map(item => ({
+      name: item.name, containerType: item.containerType, containerSrc: item.containerSrc,
+      containerId: item.containerId, containerName: item.containerName,
+    })),
+  })
+}
 const phase = () => {
   const doc = iframe.contentDocument
   if (document.hidden || doc.hidden) return 'hidden'
@@ -40,9 +49,15 @@ function stop() {
   if (!active) return
   active = false
   iframe.contentWindow.cancelAnimationFrame(frame)
-  clearInterval(poll); clearTimeout(finishTimer); observer?.disconnect()
+  clearInterval(poll); clearTimeout(finishTimer)
+  // disconnect() discards pending entries. Drain before detaching the observer.
+  if (observer) { collectLongTasks(observer.takeRecords()); observer.disconnect(); observer = undefined }
   report.snapshots.push(snapshot())
   report.ended = new Date().toISOString(); report.elapsedMs = performance.now() - report.startedAt
+  report.longTasks = report.longTasks.flatMap(task => {
+    const row = longTaskWithinSample(task, report.clock, report.startedAt, report.elapsedMs)
+    return row ? [row] : []
+  })
   draw()
   $('start').disabled = false; $('stop').disabled = true; $('export').disabled = false
   $('status').textContent = `采样结束 · ${(report.elapsedMs / 1000).toFixed(1)}秒 · ${report.snapshots.length}个实测快照`
@@ -53,19 +68,21 @@ $('start').onclick = () => {
   const seconds = Number($('seconds').value)
   if (!Number.isFinite(seconds) || seconds < 10 || seconds > 600) return
   groups.clear(); prior = undefined
-  report = { format: 1, started: new Date().toISOString(), startedAt: performance.now(),
+  report = { format: 2, started: new Date().toISOString(), startedAt: performance.now(),
+    clock: { parentTimeOrigin: performance.timeOrigin, iframeTimeOrigin: iframe.contentWindow.performance.timeOrigin },
     requestedSeconds: seconds, environmentNote: $('environment').value,
     browser: { userAgent: navigator.userAgent, platform: navigator.platform, hardwareConcurrency: navigator.hardwareConcurrency,
       deviceMemoryGiB: navigator.deviceMemory ?? null, devicePixelRatio, screen: { width: screen.width, height: screen.height } },
     snapshots: [], transitions: [], visibilityEvents: [], longTasks: [], longTasksSupported: false, errors: [],
     limits: ['rAF callback timing, not GPU presentation FPS', 'DOM canvas counts do not prove listener or GPU resource release',
       'Heap is optional, coarse and potentially shared; no forced GC or retained-object analysis',
-      'QA observer adds overhead; menus, hidden and no-scene phases are separate', 'Not real mobile or human Beta'] }
+      'QA observer adds overhead; menus, hidden and no-scene phases are separate',
+      'Long Task attribution identifies browsing contexts, not JavaScript call stacks or GPU work',
+      'Only queued/delivered entries are available at stop; the task executing stop can be reported later',
+      'Not real mobile or human Beta'] }
   const win = iframe.contentWindow
   if (win.PerformanceObserver?.supportedEntryTypes.includes('longtask')) {
-    observer = new win.PerformanceObserver(list => {
-      for (const entry of list.getEntries()) report.longTasks.push({ startTime: entry.startTime, duration: entry.duration })
-    })
+    observer = new win.PerformanceObserver(list => collectLongTasks(list.getEntries()))
     observer.observe({ type: 'longtask' }); report.longTasksSupported = true
   }
   active = true

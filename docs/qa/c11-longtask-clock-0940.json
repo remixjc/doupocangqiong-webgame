@@ -1,0 +1,324 @@
+{
+  "date": "2026-10-15",
+  "version": "0.94.0",
+  "item": "E03",
+  "status": "partial",
+  "remainingPackages": 25,
+  "runtimeChanged": false,
+  "runtimeFilesIdentical": 155,
+  "productionBytes": 2587868,
+  "baseline": "0574e14e6993d36141f8fa9c0173b53859928e0f",
+  "bundle": {
+    "initialJsBytes": 440925,
+    "initialJsGzipBytes": 160148,
+    "totalJsBytes": 1842062,
+    "engineGzipBytes": 155802
+  },
+  "exports": [
+    {
+      "kind": "menus",
+      "file": "docs/qa/c11-longtask-clock-0940-menus.json",
+      "bytes": 99212,
+      "sha256": "a8172b28459aa527465ded19dcc7753bbc6e0e21ed47420f2f527c965d502600",
+      "clock": {
+        "parentTimeOrigin": 1792042697530.1,
+        "iframeTimeOrigin": 1792042697578.9
+      },
+      "review": {
+        "identity": {
+          "version": "0.94.0",
+          "gitSha": "0574e14e6993d36141f8fa9c0173b53859928e0f",
+          "files": 155,
+          "bytes": 2587868,
+          "probeFiles": [
+            {
+              "url": "/__qa/",
+              "bytes": 1681,
+              "sha256": "4c36638a9d3a16552c97f3f52b6fa41760785d7404665e3ac33f1633d88e1d9f"
+            },
+            {
+              "url": "/__qa/probe.mjs",
+              "bytes": 6736,
+              "sha256": "031d724538a0fb20b2c2e5f7f753f6ed954f4d61c444eaf9800dbae7f9b82fd9"
+            },
+            {
+              "url": "/__qa/statistics.mjs",
+              "bytes": 1227,
+              "sha256": "2aec3ec8a314c1d29738f73939679c33cb23805d6c2a7bab560af25f8930636d"
+            }
+          ]
+        },
+        "elapsedMs": 45012.69999999553,
+        "snapshots": 47,
+        "intervals": {
+          "unfocused-scene": {
+            "count": 13,
+            "durationMs": 115.69999999999709,
+            "callbacksPerSecond": 112.35955056180057,
+            "p50Ms": 8,
+            "p95Ms": 15.600000000002183,
+            "p99Ms": 15.600000000002183,
+            "maxMs": 15.600000000002183,
+            "over20Ms": 0,
+            "over33Ms": 0,
+            "over50Ms": 0
+          },
+          "scene": {
+            "count": 3760,
+            "durationMs": 36230.40000000002,
+            "callbacksPerSecond": 103.7802508390743,
+            "p50Ms": 8,
+            "p95Ms": 16,
+            "p99Ms": 21.69999999999709,
+            "maxMs": 84.20000000000073,
+            "over20Ms": 38,
+            "over33Ms": 2,
+            "over50Ms": 1
+          },
+          "menu": {
+            "count": 954,
+            "durationMs": 8618.900000000001,
+            "callbacksPerSecond": 110.68697861676083,
+            "p50Ms": 8,
+            "p95Ms": 16,
+            "p99Ms": 24,
+            "maxMs": 64.5,
+            "over20Ms": 14,
+            "over33Ms": 1,
+            "over50Ms": 1
+          }
+        },
+        "longTasks": {
+          "supported": true,
+          "count": 1,
+          "totalMs": 50,
+          "maxMs": 50,
+          "withinWindowMs": 50,
+          "browsingContexts": {
+            "self": 1
+          },
+          "interpretation": "Browser context attribution only; not JavaScript call stacks or GPU attribution. Stop drains queued entries, not future reports."
+        },
+        "canvases": {
+          "min": 1,
+          "max": 1
+        },
+        "heap": {
+          "firstBytes": 46927829,
+          "lastBytes": 41129838,
+          "minBytes": 24231018,
+          "maxBytes": 63707657,
+          "interpretation": "coarse/shared browser heap; does not establish retained heap or absence of leaks"
+        },
+        "visibilityEvents": 0,
+        "errors": [],
+        "interpretation": "Real rAF callback intervals; not GPU presentation FPS, combat benchmark or device certification."
+      },
+      "longTasks": [
+        {
+          "startTime": 57579.60000000149,
+          "duration": 50,
+          "name": "self",
+          "attribution": [
+            {
+              "name": "unknown",
+              "containerType": "iframe",
+              "containerSrc": "/",
+              "containerId": "",
+              "containerName": ""
+            }
+          ],
+          "elapsedStartMs": 36375.09980468452,
+          "overlapMs": 50
+        }
+      ]
+    },
+    {
+      "kind": "switch",
+      "file": "docs/qa/c11-longtask-clock-0940-switch.json",
+      "bytes": 73098,
+      "sha256": "20eaeed48618d37d1d400b133218518c7fed7317e558d408af4d6466648117b8",
+      "clock": {
+        "parentTimeOrigin": 1792042697530.1,
+        "iframeTimeOrigin": 1792042697578.9
+      },
+      "review": {
+        "identity": {
+          "version": "0.94.0",
+          "gitSha": "0574e14e6993d36141f8fa9c0173b53859928e0f",
+          "files": 155,
+          "bytes": 2587868,
+          "probeFiles": [
+            {
+              "url": "/__qa/",
+              "bytes": 1681,
+              "sha256": "4c36638a9d3a16552c97f3f52b6fa41760785d7404665e3ac33f1633d88e1d9f"
+            },
+            {
+              "url": "/__qa/probe.mjs",
+              "bytes": 6736,
+              "sha256": "031d724538a0fb20b2c2e5f7f753f6ed954f4d61c444eaf9800dbae7f9b82fd9"
+            },
+            {
+              "url": "/__qa/statistics.mjs",
+              "bytes": 1227,
+              "sha256": "2aec3ec8a314c1d29738f73939679c33cb23805d6c2a7bab560af25f8930636d"
+            }
+          ]
+        },
+        "elapsedMs": 30004.80000000447,
+        "snapshots": 32,
+        "intervals": {
+          "no-scene": {
+            "count": 1666,
+            "durationMs": 13248.800000000003,
+            "callbacksPerSecond": 125.74723748565906,
+            "p50Ms": 8,
+            "p95Ms": 8.19999999999709,
+            "p99Ms": 8.30000000000291,
+            "maxMs": 16.10000000000582,
+            "over20Ms": 0,
+            "over33Ms": 0,
+            "over50Ms": 0
+          },
+          "scene": {
+            "count": 869,
+            "durationMs": 8428.599999999991,
+            "callbacksPerSecond": 103.10134541916818,
+            "p50Ms": 8,
+            "p95Ms": 16,
+            "p99Ms": 16.19999999999709,
+            "maxMs": 270.6000000000058,
+            "over20Ms": 6,
+            "over33Ms": 2,
+            "over50Ms": 1
+          },
+          "menu": {
+            "count": 925,
+            "durationMs": 8288.799999999988,
+            "callbacksPerSecond": 111.59637100665975,
+            "p50Ms": 8,
+            "p95Ms": 16,
+            "p99Ms": 16.10000000000582,
+            "maxMs": 40,
+            "over20Ms": 6,
+            "over33Ms": 2,
+            "over50Ms": 0
+          }
+        },
+        "longTasks": {
+          "supported": true,
+          "count": 1,
+          "totalMs": 226,
+          "maxMs": 226,
+          "withinWindowMs": 226,
+          "browsingContexts": {
+            "self": 1
+          },
+          "interpretation": "Browser context attribution only; not JavaScript call stacks or GPU attribution. Stop drains queued entries, not future reports."
+        },
+        "canvases": {
+          "min": 0,
+          "max": 1
+        },
+        "heap": {
+          "firstBytes": 16988809,
+          "lastBytes": 39308582,
+          "minBytes": 15879227,
+          "maxBytes": 61920736,
+          "interpretation": "coarse/shared browser heap; does not establish retained heap or absence of leaks"
+        },
+        "visibilityEvents": 0,
+        "errors": [],
+        "interpretation": "Real rAF callback intervals; not GPU presentation FPS, combat benchmark or device certification."
+      },
+      "longTasks": [
+        {
+          "startTime": 97909.79999999702,
+          "duration": 226,
+          "name": "self",
+          "attribution": [
+            {
+              "name": "unknown",
+              "containerType": "iframe",
+              "containerSrc": "/",
+              "containerId": "",
+              "containerName": ""
+            }
+          ],
+          "elapsedStartMs": 9362.19980468601,
+          "overlapMs": 226
+        }
+      ]
+    }
+  ],
+  "nativeEvidence": [
+    {
+      "name": "longtask0940-before",
+      "bytes": 37585,
+      "sha256": "14b21f24759e4a5305796eba8e2c347f35539aee72a1eca5063296d0b26b8544",
+      "officialParseWholeStateEqual": true
+    },
+    {
+      "name": "longtask0940-after-refresh",
+      "bytes": 37585,
+      "sha256": "945f2d13c887221d5864eb936052032b70ae8de1a9b0cbb90b0c4439ddcc5dee",
+      "officialParseWholeStateEqual": true
+    }
+  ],
+  "wholePersistentStateEqual": true,
+  "frozenOriginalsBefore": 847,
+  "newNativeFiles": 2,
+  "migrationProofsRerun": false,
+  "oldActualProbeRegression": {
+    "failed": true,
+    "actualCalls": [
+      "disconnect"
+    ],
+    "expectedCalls": [
+      "takeRecords",
+      "disconnect"
+    ],
+    "scope": "same actual QA module in VM with queued observer; not a fabricated browser task"
+  },
+  "tests": {
+    "vitestFiles": 177,
+    "vitest": 1084,
+    "node": 37,
+    "types": true,
+    "production": true,
+    "threeDifficulty28ChapterReplay": true
+  },
+  "observedSwitch": {
+    "entryCanvas": 1,
+    "exitCanvas": 0,
+    "observed": true,
+    "count": 1,
+    "resourceReleaseClaim": false
+  },
+  "browserIssues": [
+    {
+      "issue": "iframe header pointer click could not locate at computed position",
+      "attempts": 2,
+      "recovery": "fresh DOM and keyboard Enter succeeded"
+    },
+    {
+      "issue": "manual stop attempted after auto timer had already disabled button",
+      "recovery": "read auto-ended status; exported actual completed sample"
+    },
+    {
+      "timestamp": "2026-10-15T05:38:17.659Z",
+      "issue": "MutationObserver observe non-Node console error",
+      "samplingStarted": "2026-10-15T05:38:38.783Z",
+      "insideSample": false,
+      "source": "unconfirmed; same prior external-window observation"
+    }
+  ],
+  "screenshot": "docs/qa/c11-longtask-clock-0940.png",
+  "limits": [
+    "No historical tail-loss count inferred",
+    "API attribution has no JavaScript call stack",
+    "Stop cannot collect future reports for the task currently executing stop",
+    "Not maximum-group benchmark, GPU-retention or mobile/Beta certification"
+  ]
+}

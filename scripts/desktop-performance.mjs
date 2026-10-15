@@ -10,3 +10,10 @@ export function summarizeIntervals(intervals) {
     over33Ms: sorted.filter(value => value > 1000 / 30).length,
     over50Ms: sorted.filter(value => value > 50).length }
 }
+
+/** Long Task timestamps belong to the observed iframe, not the QA parent. */
+export function longTaskWithinSample(task, clock, startedAt, elapsedMs) {
+  const elapsedStartMs = clock.iframeTimeOrigin - clock.parentTimeOrigin + task.startTime - startedAt
+  const overlapMs = Math.min(elapsedMs, elapsedStartMs + task.duration) - Math.max(0, elapsedStartMs)
+  return overlapMs > 0 ? { ...task, elapsedStartMs, overlapMs } : null
+}

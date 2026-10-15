@@ -4,8 +4,9 @@ import { once } from 'node:events'
 import { resolve } from 'node:path'
 import { cp, mkdtemp, readFile, writeFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
+import { runInNewContext } from 'node:vm'
 import { verifyRelease } from './verify-release.mjs'
-import { summarizeIntervals } from './desktop-performance.mjs'
+import { summarizeIntervals, longTaskWithinSample } from './desktop-performance.mjs'
 import { createPerformanceServer } from './serve-desktop-performance.mjs'
 import { reviewDesktopSample } from './review-desktop-performance.mjs'
 test('real interval statistics retain stalls and use nearest-rank percentiles', () => {
@@ -32,10 +33,99 @@ test('native sample review rejects altered frame summaries, raw values and missi
     report => { delete report.rawIntervalsMs },
     report => { report.snapshots[1].elapsedMs = -1 },
     report => { report.errors.push('real browser error') },
+    report => { report.longTasks.push({ startTime: 100, duration: Infinity }) },
+    report => { report.longTasks.push({ startTime: -1, duration: 60 }) },
+    report => { report.longTasksSupported = false; report.longTasks.push({ startTime: 100, duration: 60 }) },
   ]) {
     const invalid = structuredClone(source); mutate(invalid)
     assert.throws(() => reviewDesktopSample(invalid))
   }
+})
+test('iframe Long Tasks align distinct time origins and retain only window overlap', () => {
+  const clock = { parentTimeOrigin: 100000, iframeTimeOrigin: 102000 }
+  const raw = { startTime: 900, duration: 160, name: 'self', attribution: [] }
+  assert.deepEqual(longTaskWithinSample(raw, clock, 3000, 1000),
+    { ...raw, elapsedStartMs: -100, overlapMs: 60 })
+  assert.deepEqual(longTaskWithinSample({ ...raw, startTime: 1950 }, clock, 3000, 1000),
+    { ...raw, startTime: 1950, elapsedStartMs: 950, overlapMs: 50 })
+  for (const startTime of [800, 2000])
+    assert.equal(longTaskWithinSample({ ...raw, startTime }, clock, 3000, 1000), null)
+})
+test('format 2 review recomputes task attribution timing; legacy native samples remain readable', async () => {
+  const legacy = JSON.parse(await readFile(resolve('docs/qa/c11-desktop-performance-0933-steady.json'), 'utf8'))
+  const legacyCopy = structuredClone(legacy)
+  assert.equal(reviewDesktopSample(legacy).snapshots, 182)
+  assert.deepEqual(legacy, legacyCopy, 'review is read-only')
+  const report = structuredClone(legacy)
+  report.format = 2
+  report.clock = { parentTimeOrigin: 100000, iframeTimeOrigin: 102000 }
+  const attribution = [{ name: 'unknown', containerType: 'iframe', containerSrc: '/',
+    containerId: '', containerName: '' }]
+  report.longTasks = [longTaskWithinSample({ startTime: report.startedAt - 2050,
+    duration: 150, name: 'self', attribution }, report.clock, report.startedAt, report.elapsedMs)]
+  const reviewed = reviewDesktopSample(report)
+  assert.equal(reviewed.longTasks.withinWindowMs, 100)
+  assert.deepEqual(reviewed.longTasks.browsingContexts, { self: 1 })
+  for (const mutate of [
+    row => { row.clock.iframeTimeOrigin += 10 },
+    row => { row.longTasks[0].elapsedStartMs += 10 },
+    row => { row.longTasks[0].overlapMs += 10 },
+    row => { row.longTasks[0].startTime += row.elapsedMs + 1000 },
+    row => { row.longTasks[0].attribution[0].containerSrc = null },
+  ]) {
+    const invalid = structuredClone(report); mutate(invalid)
+    assert.throws(() => reviewDesktopSample(invalid))
+  }
+})
+test('actual QA stop drains pending Long Tasks before disconnect, excludes outside entries and resets next run', async () => {
+  const source = await readFile(resolve('qa/desktop-performance.mjs'), 'utf8')
+  const buttons = new Map()
+  const element = id => {
+    if (!buttons.has(id)) buttons.set(id, { value: id === 'seconds' ? '10' : '', textContent: '' })
+    return buttons.get(id)
+  }
+  const order = [], observers = []
+  let now = 10000
+  class Observer {
+    static supportedEntryTypes = ['longtask']
+    pending = []
+    constructor(callback) { this.callback = callback; observers.push(this) }
+    observe() {}
+    takeRecords() { order.push('takeRecords'); const rows = this.pending; this.pending = []; return rows }
+    disconnect() { order.push('disconnect'); this.pending = [] }
+  }
+  const doc = { hidden: false, hasFocus: () => true, querySelector: selector => selector === 'canvas' ? {} : null,
+    querySelectorAll: () => [{}], getElementsByTagName: () => Array(100), addEventListener() {} }
+  const iframe = { contentDocument: doc, clientWidth: 1280, clientHeight: 820, addEventListener() {},
+    contentWindow: { performance: { timeOrigin: 100500 }, PerformanceObserver: Observer,
+      requestAnimationFrame: () => 1, cancelAnimationFrame() {} } }
+  const sandbox = { summarizeIntervals, longTaskWithinSample, Map, Date, navigator: {},
+    performance: { timeOrigin: 100000, now: () => now }, devicePixelRatio: 1, screen: {},
+    document: { hidden: false, getElementById: element, querySelector: () => iframe, addEventListener() {} },
+    window: { addEventListener() {} }, fetch: async () => ({ json: async () => ({ gitSha: 'a'.repeat(40) }) }),
+    setTimeout: () => 1, setInterval: () => 1, clearTimeout() {}, clearInterval() {} }
+  await runInNewContext(`(async () => { ${source.replace(/^import .*\n/, '')} })()`, sandbox)
+  element('start').onclick()
+  const entry = { startTime: 9510, duration: 70, name: 'self', attribution: [{
+    name: 'unknown', containerType: 'window', containerSrc: '', containerId: '', containerName: '',
+  }] }
+  observers[0].pending.push({ ...entry, startTime: 0 }, entry)
+  now += 50
+  element('stop').onclick()
+  const result = JSON.parse(element('result').textContent)
+  assert.deepEqual(order, ['takeRecords', 'disconnect'])
+  assert.equal(result.format, 2)
+  assert.equal(result.longTasks.length, 1, 'pending task must survive stop; unrelated earlier task must not')
+  assert.equal(result.longTasks[0].elapsedStartMs, 10)
+  assert.equal(result.longTasks[0].overlapMs, 40)
+  assert.equal(result.longTasks[0].attribution[0].containerType, 'window')
+  element('stop').onclick()
+  assert.deepEqual(order, ['takeRecords', 'disconnect'], 'stop is idempotent')
+  now += 100
+  element('start').onclick()
+  now += 50
+  element('stop').onclick()
+  assert.deepEqual(JSON.parse(element('result').textContent).longTasks, [])
 })
 test('QA server serves verified production bytes and only explicit read-only QA routes', async () => {
   const server = await createPerformanceServer(resolve('dist'))

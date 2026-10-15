@@ -18,6 +18,7 @@ pre{white-space:pre-wrap;max-height:280px;overflow:auto;margin:12px}p{margin:6px
 <button id="export" disabled>导出采样 JSON</button>
 <p role="status" id="status">正在读取构建身份…</p>
 <p>帧回调频率不是GPU呈现FPS。堆值为浏览器近似值，可能跨同进程页面；画布消失不证明监听器/GPU资源全部释放。隐藏、菜单与无场景分别记录。</p>
+<p>长任务保留浏览器提供的上下文归属，并按父页/游戏各自时间原点对齐。归属不提供代码调用栈；结束时只保证收取已排队条目。</p>
 </header>
 <iframe title="待测游戏" src="/"></iframe>
 <pre id="result" aria-label="采样结果"></pre>

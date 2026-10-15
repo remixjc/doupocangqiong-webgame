@@ -2,11 +2,11 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { summarizeIntervals } from './desktop-performance.mjs'
+import { summarizeIntervals, longTaskWithinSample } from './desktop-performance.mjs'
 
 /** Validate a completed native QA export, recomputing every frame statistic. */
 export function reviewDesktopSample(report) {
-  assert.equal(report.format, 1)
+  assert([1, 2].includes(report.format), 'unsupported QA format')
   assert.match(report.identity.gitSha, /^[a-f0-9]{40}$/)
   assert(Number.isFinite(report.elapsedMs) && report.elapsedMs > 0)
   assert(Number.isFinite(report.startedAt) && report.startedAt >= 0)
@@ -34,11 +34,35 @@ export function reviewDesktopSample(report) {
   }
   const heaps = report.snapshots.flatMap(row => row.heap ? [row.heap.used] : [])
   const tasks = report.longTasks
-  assert(Array.isArray(tasks) && tasks.every(task => Number.isFinite(task.startTime) && task.duration >= 50))
+  assert(Array.isArray(tasks) && tasks.every(task =>
+    Number.isFinite(task.startTime) && task.startTime >= 0 && Number.isFinite(task.duration) && task.duration >= 50))
+  assert.equal(typeof report.longTasksSupported, 'boolean')
+  assert(report.longTasksSupported || tasks.length === 0, 'tasks require observer support')
+  if (report.format === 2) {
+    assert(Number.isFinite(report.clock?.parentTimeOrigin) && report.clock.parentTimeOrigin > 0)
+    assert(Number.isFinite(report.clock?.iframeTimeOrigin) && report.clock.iframeTimeOrigin > 0)
+    for (const task of tasks) {
+      assert.equal(typeof task.name, 'string')
+      assert(Array.isArray(task.attribution))
+      for (const item of task.attribution)
+        for (const key of ['name', 'containerType', 'containerSrc', 'containerId', 'containerName'])
+          assert.equal(typeof item[key], 'string')
+      const { elapsedStartMs, overlapMs, ...raw } = task
+      assert.deepEqual(longTaskWithinSample(raw, report.clock, report.startedAt, report.elapsedMs), task,
+        'long task clock/window mismatch')
+      assert(Number.isFinite(elapsedStartMs) && Number.isFinite(overlapMs) && overlapMs > 0)
+    }
+  }
   return { identity: report.identity, elapsedMs: report.elapsedMs, snapshots: report.snapshots.length,
     intervals: report.intervals, longTasks: { supported: report.longTasksSupported, count: tasks.length,
       totalMs: tasks.reduce((total, task) => total + task.duration, 0),
-      maxMs: tasks.reduce((max, task) => Math.max(max, task.duration), 0) },
+      maxMs: tasks.reduce((max, task) => Math.max(max, task.duration), 0),
+      ...(report.format === 2 ? {
+        withinWindowMs: tasks.reduce((total, task) => total + task.overlapMs, 0),
+        browsingContexts: Object.fromEntries([...new Set(tasks.map(task => task.name))]
+          .sort().map(name => [name, tasks.filter(task => task.name === name).length])),
+        interpretation: 'Browser context attribution only; not JavaScript call stacks or GPU attribution. Stop drains queued entries, not future reports.',
+      } : {}) },
     canvases: { min: Math.min(...report.snapshots.map(row => row.canvases)),
       max: Math.max(...report.snapshots.map(row => row.canvases)) },
     heap: heaps.length ? { firstBytes: heaps[0], lastBytes: heaps.at(-1), minBytes: Math.min(...heaps), maxBytes: Math.max(...heaps),
