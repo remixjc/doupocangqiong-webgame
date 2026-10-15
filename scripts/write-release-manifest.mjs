@@ -2,12 +2,12 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { resolve } from 'node:path'
-import { collectReleaseFiles, validateReleaseFiles } from './release-files.mjs'
+import { collectReleaseFiles, validateReleaseFiles, requiresLicenseInventory } from './release-files.mjs'
 
 export function createReleaseManifest(pkg, report, gitSha, files) {
   if (report.version !== pkg.version) throw new Error(`Bundle version ${report.version} does not match package ${pkg.version}`)
   if (!report.engineLazy) throw new Error('Release candidate requires a lazy Phaser engine')
-  validateReleaseFiles(files)
+  validateReleaseFiles(files, requiresLicenseInventory(pkg.version))
   return {
     artifactFormat: 1,
     game: 'doupocangqiong-webgame',

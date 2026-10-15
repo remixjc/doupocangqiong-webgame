@@ -1,7 +1,7 @@
 import { readFile, lstat } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { collectReleaseFiles, validateReleaseFiles } from './release-files.mjs'
+import { collectReleaseFiles, validateReleaseFiles, requiresLicenseInventory } from './release-files.mjs'
 
 export async function verifyRelease(directory, expectedSha) {
   const root = resolve(directory), manifestPath = resolve(root, 'release-manifest.json')
@@ -13,7 +13,7 @@ export async function verifyRelease(directory, expectedSha) {
     || manifest.engineLazy !== true) throw new Error('Invalid release manifest identity or migration format')
   if (expectedSha !== undefined && (!/^[a-f0-9]{40}$/i.test(expectedSha)
     || manifest.gitSha.toLowerCase() !== expectedSha.toLowerCase())) throw new Error('Release commit does not match expected SHA')
-  validateReleaseFiles(manifest.files)
+  validateReleaseFiles(manifest.files, requiresLicenseInventory(manifest.version))
   const actual = await collectReleaseFiles(root), actualMap = new Map(actual.map(item => [item.file, item]))
   for (const item of manifest.files) {
     const current = actualMap.get(item.file)

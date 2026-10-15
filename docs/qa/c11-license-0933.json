@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-15",
+  "version": "0.93.3",
+  "software": {
+    "graphModules": 776,
+    "phaserModules": 765,
+    "packages": 8,
+    "resources": 27,
+    "inventorySHA256": "44f1fb9624951292bfb7da2880b8ce2056de803b4356f94e789d7b7f69fb36f7",
+    "noticesSHA256": "135ce3a311778bf79aefc25573ddad7018a056b1deb7e668d3cb56742826f1ff",
+    "noticesBytes": 154168,
+    "excludedUnusedVideoPolyfill": true,
+    "embeddedEarcutISC": true,
+    "historicalOriginGrantsNotCertified": true
+  },
+  "migration": {
+    "nativeFiles": 782,
+    "unchangedCoreSources": 142,
+    "onlyContentVersionChanged": true
+  },
+  "browser": {
+    "canvasTransitions": [
+      {
+        "view": "mapAfterFirstExit",
+        "count": 0
+      },
+      {
+        "view": "reentry",
+        "count": 1
+      }
+    ],
+    "hp": "生命 724 / 724",
+    "errors": [],
+    "screen": "docs/qa/c11-license-0933-play.png"
+  },
+  "nativeExports": [
+    {
+      "name": "afterUpgrade",
+      "fileSHA256": "372b9d59886013361fc57c56eb6f1def1f95f47ca2deef9fc22290e386169527",
+      "entirePersistedStateEqualToPrevious": true,
+      "chapter": 14,
+      "completed": 28,
+      "gold": 18718,
+      "xp": 14470,
+      "fireEnergy": 5
+    },
+    {
+      "name": "afterReentry",
+      "fileSHA256": "e542e6ffc2fcdfde098f48619445a60a6ae870d973d5626f65ad93c1ac74252a",
+      "entirePersistedStateEqualToPrevious": true,
+      "chapter": 14,
+      "completed": 28,
+      "gold": 18718,
+      "xp": 14470,
+      "fireEnergy": 5
+    },
+    {
+      "name": "afterReload",
+      "fileSHA256": "e1e9c888caf4c5faf34f4d0875a136f99b5cf6010b3e98b6845c838015d12e76",
+      "entirePersistedStateEqualToPrevious": true,
+      "chapter": 14,
+      "completed": 28,
+      "gold": 18718,
+      "xp": 14470,
+      "fireEnergy": 5
+    }
+  ],
+  "checks": {
+    "vitestFiles": 174,
+    "vitest": 1073,
+    "node": 30
+  },
+  "budgets": {
+    "initial": 474921,
+    "gzip": 163259,
+    "total": 1847247,
+    "limitsUnchanged": true
+  },
+  "release": {
+    "files": 154,
+    "bytes": 2592008
+  },
+  "limits": [
+    "Parsed graph is a conservative superset, not per-module runtime/byte attribution.",
+    "Independent historical grants for origin-only comments are unconfirmed.",
+    "No original-work adaptation/source issuance license, actual device, player Beta or public deployment certified."
+  ]
+}

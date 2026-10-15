@@ -41,6 +41,26 @@ test('release verifies independently of source checkout and does not write any f
   })
 })
 
+test('license inventory is mandatory for new releases while historical format-1 packages still verify', async () => {
+  await fixture(async (directory, manifest) => {
+    assert(!(manifest.files.some(row => row.file === 'production-license-inventory.json')))
+    await verifyRelease(directory, revision)
+    const report = JSON.parse(await readFile(join(directory, 'bundle-report.json'), 'utf8'))
+    report.version = '0.93.3'
+    assert.throws(() => createReleaseManifest({ version: report.version }, report, revision, manifest.files),
+      /Missing required release file: production-license-inventory/)
+    await writeFile(join(directory, 'bundle-report.json'), JSON.stringify(report))
+    // A rehashed new manifest must also fail independent verification.
+    await writeFile(join(directory, 'release-manifest.json'), JSON.stringify({ ...manifest,
+      version: report.version, contentVersion: report.version, files: await collectReleaseFiles(directory) }))
+    await assert.rejects(verifyRelease(directory), /Missing required release file: production-license-inventory/)
+    await writeFile(join(directory, 'production-license-inventory.json'), '{"review":"fixture"}')
+    const current = createReleaseManifest({ version: report.version }, report, revision, await collectReleaseFiles(directory))
+    await writeFile(join(directory, 'release-manifest.json'), JSON.stringify(current))
+    await verifyRelease(directory, revision)
+  })
+})
+
 test('release rejects missing, changed and extra files without repairing the package', async () => {
   await fixture(async directory => {
     const asset = join(directory, 'assets/entry.js'), original = await readFile(asset)

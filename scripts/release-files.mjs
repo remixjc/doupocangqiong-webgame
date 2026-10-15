@@ -5,7 +5,12 @@ import { resolve, sep } from 'node:path'
 export const requiredReleaseFiles = ['index.html', '.vite/manifest.json', 'bundle-report.json',
   'engine-module-report.json', 'third-party-notices.txt']
 
-export function validateReleaseFiles(files) {
+export function requiresLicenseInventory(version) {
+  const [major, minor, patch] = version.split('.').map(Number)
+  return major > 0 || minor > 93 || (minor === 93 && patch >= 3)
+}
+
+export function validateReleaseFiles(files, requireLicenseInventory = false) {
   if (!Array.isArray(files) || !files.length) throw new Error('Release inventory must contain files')
   const seen = new Set()
   for (const item of files) {
@@ -19,6 +24,8 @@ export function validateReleaseFiles(files) {
     seen.add(file)
   }
   for (const file of requiredReleaseFiles) if (!seen.has(file)) throw new Error(`Missing required release file: ${file}`)
+  if (requireLicenseInventory && !seen.has('production-license-inventory.json'))
+    throw new Error('Missing required release file: production-license-inventory.json')
 }
 
 export async function collectReleaseFiles(directory) {

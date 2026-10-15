@@ -1,0 +1,262 @@
+{
+  "format": 1,
+  "directDependencies": {
+    "lz-string": "1.5.0",
+    "phaser": "3.90.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "dependencies": [
+    {
+      "name": "eventemitter3",
+      "version": "5.0.4",
+      "license": "MIT",
+      "role": "production source graph",
+      "graphModules": 1,
+      "graphSHA256": "f9c7c6babc40c9252d3c4d19be135107a8d5fca29e8225e8dd79f2da78c54938",
+      "licenses": [
+        {
+          "path": "eventemitter3/LICENSE",
+          "sha256": "3aecc12b1cb28832b5f65ab64291de96568c3f236a74d646281b4491f7bcadbf"
+        }
+      ]
+    },
+    {
+      "name": "lz-string",
+      "version": "1.5.0",
+      "license": "MIT",
+      "role": "build encoder and locally extracted runtime decoder",
+      "graphModules": 0,
+      "graphSHA256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "licenses": [
+        {
+          "path": "lz-string/LICENSE",
+          "sha256": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80"
+        }
+      ]
+    },
+    {
+      "name": "phaser",
+      "version": "3.90.0",
+      "license": "MIT",
+      "role": "production source graph",
+      "graphModules": 765,
+      "graphSHA256": "9bdbf4de2389429d51864ded904f1f4a88948474c7714881f6961d6e9dd81e1b",
+      "licenses": [
+        {
+          "path": "phaser/LICENSE.md",
+          "sha256": "c3123cd25de4eccf1fd5a5a0a6fc872299116d1dbbb48b00f2554a4c35220a65"
+        }
+      ]
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.0",
+      "license": "MIT",
+      "role": "production source graph",
+      "graphModules": 4,
+      "graphSHA256": "a3b78c398c2f6222b37c16171f7a58c99c1df9bd0273500b28dfeb719188e76c",
+      "licenses": [
+        {
+          "path": "react-dom/LICENSE",
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        }
+      ]
+    },
+    {
+      "name": "react",
+      "version": "19.3.0",
+      "license": "MIT",
+      "role": "production source graph",
+      "graphModules": 4,
+      "graphSHA256": "4957d39ecdc5652911a9c9b83692a06c7cddf4128a08474095e68d2e3c1503a1",
+      "licenses": [
+        {
+          "path": "react/LICENSE",
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        }
+      ]
+    },
+    {
+      "name": "rolldown",
+      "version": "1.2.13",
+      "license": "MIT",
+      "role": "build helper generator (conservative notice)",
+      "graphModules": 0,
+      "graphSHA256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "licenses": [
+        {
+          "path": "rolldown/LICENSE",
+          "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734"
+        }
+      ]
+    },
+    {
+      "name": "scheduler",
+      "version": "0.28.0",
+      "license": "MIT",
+      "role": "production source graph",
+      "graphModules": 2,
+      "graphSHA256": "5026ee17be802e7dc102a7da2f8ae00b395629702b010997ea07bb93d2551c60",
+      "licenses": [
+        {
+          "path": "scheduler/LICENSE",
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        }
+      ]
+    },
+    {
+      "name": "vite",
+      "version": "8.3.4",
+      "license": "MIT",
+      "role": "build helper generator (conservative notice)",
+      "graphModules": 0,
+      "graphSHA256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "licenses": [
+        {
+          "path": "vite/LICENSE.md",
+          "sha256": "a47172e44a86a7e2cd1c16282341f7726ec60caafe3a6166fe3e0602005b6fa6"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "path": "public/favicon.svg",
+      "bytes": 245,
+      "sha256": "c5594b978e5dd9a9492b9b13ee6ce47f7063db99ab2a7e311295660731d503b5",
+      "origin": "project-declared program/vector drawing; source in repository"
+    },
+    {
+      "path": "public/landscape.svg",
+      "bytes": 2592,
+      "sha256": "50c89d467a4820d65988309b2b49a1184872ed5afe9a7670137c6069e67801fa",
+      "origin": "project-declared program/vector drawing; source in repository"
+    },
+    {
+      "path": "src/content/lz-base64.js",
+      "origin": "derived lz-string decoder; package MIT and historical WTFPL header retained",
+      "sha256": "3f25b363b8a9a1be8ee26ecc5ee076250493e77002012b6183dd4c5dd9671353"
+    },
+    {
+      "path": "src/game/actor-motion.ts",
+      "origin": "program motion",
+      "sha256": "1973712bd3c869dd3e71d1b6281b8b5ded4833600b23baee0664bf0c093ce4fe"
+    },
+    {
+      "path": "src/game/AdventureScene.ts",
+      "origin": "program scenes, maps and effects",
+      "sha256": "b77bdbbc833e407ee68345926d1359042b476102aad0fc9a357c9022ee21299c"
+    },
+    {
+      "path": "src/game/audio.ts",
+      "origin": "Web Audio synthesized effects; no recording",
+      "sha256": "2586ff2b8a6053739d9bd947b57a0214a69aaeb41ee51f67081725e0c1e7da03"
+    },
+    {
+      "path": "src/game/draw-actor.ts",
+      "origin": "program actor drawing",
+      "sha256": "6f4ae12f8987bb0a77c7a36a20ef008bf495dc631c680997cf2f7b1ba290a579"
+    },
+    {
+      "path": "src/ui/EarlyAppraisal.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "1d38adcddc0f700fc5ae44fd8e42186c21fc1e1ad261f57052bf8bb30d74fd87"
+    },
+    {
+      "path": "src/ui/EarlyAuction.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "7ecc258a5d3b940f3400c97e944a432720439dfd3f7d5975950686bf30a603a8"
+    },
+    {
+      "path": "src/ui/EarlyConsignment.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "2e42a17779f569101d58466d6294f35767f0d1996c3b233f4e52fde1b95ce797"
+    },
+    {
+      "path": "src/ui/EarlyFatherGift.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "c13100b06c80f7ab85ef673e19147cda35725b18bd40548c82218b917f26a77d"
+    },
+    {
+      "path": "src/ui/EarlyGrowth.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "a8aea4f7931940148f258c05c9e953d5eac0be6699009d87789cf0a4bd263607"
+    },
+    {
+      "path": "src/ui/EarlyLongSupplies.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "477db23336458d9565b3cd4f0e57504c1944495569c1f78f97b9dcc8df34ea39"
+    },
+    {
+      "path": "src/ui/EarlyPalmPair.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "c784d17e197dddf7db51ff728b509cc80c8f60fd7e67a3badc5466a74a8763e2"
+    },
+    {
+      "path": "src/ui/EarlyQiExchange.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "660e0077ac322ab16400797eab6e79d86ca7424b0d72763d0f66ece90c56c8b9"
+    },
+    {
+      "path": "src/ui/EarlyRecovery.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "07d187257523a903e843925e23dd1bcfe28a985005a5aaf36e53459e83be197b"
+    },
+    {
+      "path": "src/ui/EarlyRoom.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "db6aab37c5663a9d8ef12950dd6a086879ef58e86036fed14e0a8a49195ba7e7"
+    },
+    {
+      "path": "src/ui/EarlySettlement.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "ab075b4616c3cf8fb3451191dc958d4c79b7a05e300ba62de74b1350c8f0d309"
+    },
+    {
+      "path": "src/ui/EarlySeventhRoom.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "2cd82faaa051ce973d5007c454d67fd95a90761cd812f55429bda78aedf97d2c"
+    },
+    {
+      "path": "src/ui/EarlySupervision.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "fac73dd945194d19fbceb36249bb439f8379a105e65c70d0bc836eb34da04c05"
+    },
+    {
+      "path": "src/ui/EarlyTeaching.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "3304b181e5f2474d29d4638cdd491f456c25b63f3d7fbda9c6349472da4d50f7"
+    },
+    {
+      "path": "src/ui/EarlyWalk.tsx",
+      "origin": "inline original route SVG",
+      "sha256": "a80c384510a2ffc814bc8c55eca032a8f1a18dd02a4804dea7518ee5798e8214"
+    },
+    {
+      "path": "src/ui/EarlyXunerVisit.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "b3a8709469c8b32f24418176d1757a87cc84c2092bc4009cd0bc07c44c363e2b"
+    },
+    {
+      "path": "src/ui/MapPrimitives.tsx",
+      "origin": "project inline SVG drawing; source ownership/derivative-work permission not certified",
+      "sha256": "78031d43e66b9f7e2a388e7323d8db738cb5df55210347ba19eff3f3d4e04f2e"
+    },
+    {
+      "path": "src/ui/MarketWalker.tsx",
+      "origin": "inline original market SVG",
+      "sha256": "6f43606dbe2d7a7893e5cf203c49c589c759bc3f7fc45d3c29646e9f8fceefe6"
+    },
+    {
+      "path": "src/ui/MountainWalkMap.tsx",
+      "origin": "inline original mountain SVG",
+      "sha256": "3f1a4b7944cbcabe5a5d674d7c5027f08b14395df8463708d745dd82dd09c2f4"
+    },
+    {
+      "path": "src/ui/styles.css",
+      "origin": "system font stack and local landscape reference",
+      "sha256": "70b3949dd68299742d99e649113c574ca67c75ea393732bb6c0ea8a1716bba75"
+    }
+  ]
+}

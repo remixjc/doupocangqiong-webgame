@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url'
 import { packedSceneRowsPlugin } from './scripts/pack-scene-rows.mjs'
 // @ts-expect-error Build-only AST transformation; literal and export parity are checked.
 import { packedSummaryTextsPlugin } from './scripts/pack-summary-texts.mjs'
+// @ts-expect-error Build-only inventory reads pinned package sources and notices.
+import { productionLicensesPlugin } from './scripts/production-licenses.mjs'
 
 const phaserDefines = {
   global: 'globalThis',
@@ -17,7 +19,7 @@ const phaserDefines = {
 }
 
 export default defineConfig({
-  plugins: [packedSceneRowsPlugin(), packedSummaryTextsPlugin(), react(), {
+  plugins: [packedSceneRowsPlugin(), packedSummaryTextsPlugin(), productionLicensesPlugin(), react(), {
     name: 'verify-phaser-source',
     apply: 'build',
     generateBundle() {

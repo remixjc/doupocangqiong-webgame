@@ -2,7 +2,8 @@
 // Expose the runtime API used by AdventureScene and GameView. Each upstream
 // module requires its own dependencies; both renderer implementations remain.
 // Register factories explicitly: importing a class alone does not register it.
-require('phaser/src/polyfills/requestVideoFrame')
+// This game registers no Video object and loads no video assets. Do not install
+// the optional upstream video callback polyfill on the host browser.
 // Phaser registers these through namespace imports in phaser-core. Keep the
 // registrations even when their namespaces are not exposed by this entry.
 require('phaser/src/events/EventEmitter')
