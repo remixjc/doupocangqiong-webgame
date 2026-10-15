@@ -1,0 +1,325 @@
+{
+  "date": "2026-10-15",
+  "version": "0.95.1",
+  "baseline": "c52c4bd5bed4b362d05954f61a55f56fb81008e1",
+  "frozenOldOriginals": 873,
+  "newNatives": 12,
+  "metadataAfter": 885,
+  "allEntireNativeStatesMatchAPI": true,
+  "refreshPairs": [
+    [
+      "failed",
+      "failed-refreshed"
+    ],
+    [
+      "report5",
+      "report5-refreshed"
+    ]
+  ],
+  "actualPreviousRestored": true,
+  "viewing13HidesNovelSlotsAndImport": true,
+  "viewing14RevealsPreservedHistory": true,
+  "settingsExistingBehavior": "Switching to anime with stored limit3 moves current chapter28 to3 and high flame to ember; completed28 and coop history preserved. Increasing limit does not restore chapter/flame. Reimported own report5 native to return28.",
+  "rows": [
+    {
+      "name": "initial-plan",
+      "sha256": "cf3664b7e834835234bf6fe53c18af8716aaa41a99a822a159f692a306982976",
+      "bytes": 37820,
+      "coop": {
+        "revision": 33,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第5单 · 拟定分工 · 物资1/6 · 已登记4单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "field-step0",
+      "sha256": "df3618e298f9491b00f35c51f9633ff0ba1eaa1d8d9e4775637483345a5fe49c",
+      "bytes": 37821,
+      "coop": {
+        "revision": 35,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 4,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "field",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第5单 · 现场1/3 · 物资4/6 · 已登记4单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "failed",
+      "sha256": "8119ab16b9e6e6f0fd6dd070cd50ab2f6c4156abf903d96689e15cb40788ac4d",
+      "bytes": 37822,
+      "coop": {
+        "revision": 37,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 0,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "failed",
+        "step": 0,
+        "mistakes": 2
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第5单 · 整队待续 · 物资0/6 · 已登记4单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "failed-refreshed",
+      "sha256": "2acbb8decb9870c1f48baef9b4122e50d24314028cf4be3c0ef1146063fb203e",
+      "bytes": 37822,
+      "coop": {
+        "revision": 37,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 0,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "failed",
+        "step": 0,
+        "mistakes": 2
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第5单 · 整队待续 · 物资0/6 · 已登记4单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "previous-restored",
+      "sha256": "f5d05f9536dd41b84a6a194c4497f3371b9a4d76dd3d79a06c6e78d8bffb58cb",
+      "bytes": 37821,
+      "coop": {
+        "revision": 36,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 2,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "field",
+        "step": 0,
+        "mistakes": 1
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第5单 · 现场1/3 · 物资2/6 · 已登记4单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "review5",
+      "sha256": "8fa27f5faaba93d17d4b0bc710fbb1a2a55ed95978510ff9e946b5c2740f71b4",
+      "bytes": 37822,
+      "coop": {
+        "revision": 42,
+        "completed": 4,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "review",
+        "step": 3,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第5单 · 待登记 · 物资1/6 · 已登记4单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "report5",
+      "sha256": "f117860e12fbb3e7e41cfed25ac9200085aa1b26abcff8d4a6c01432856285a4",
+      "bytes": 37820,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第6单 · 拟定分工 · 物资1/6 · 已登记5单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "report5-refreshed",
+      "sha256": "54e41481aa9fe6b04b653d30c8759b41281e24c6bf9cdd27408e828003398691",
+      "bytes": 37820,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第6单 · 拟定分工 · 物资1/6 · 已登记5单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "anime13",
+      "sha256": "8a959769ac950fe9c4dacd4b8154bafe93345e514dc43d2ae160c4be346b7cee",
+      "bytes": 37821,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 3,
+      "spoiler": "anime",
+      "animeLimit": 13,
+      "summary": "",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "anime14",
+      "sha256": "cb73558a3e6846d11320e6620f2cd6cd106be4b581df6f89e4bb34015d56e66e",
+      "bytes": 37821,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 3,
+      "spoiler": "anime",
+      "animeLimit": 14,
+      "summary": "内院协作 · 第6单 · 拟定分工 · 物资1/6 · 已登记5单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "novel-restored",
+      "sha256": "548ad92045a8d0066070860856179fdee3ee3a866c3406a930dfdfafda94dc76",
+      "bytes": 37821,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 3,
+      "spoiler": "novel",
+      "animeLimit": 14,
+      "summary": "内院协作 · 第6单 · 拟定分工 · 物资1/6 · 已登记5单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "import-report5",
+      "sha256": "b672167d0344a2a805f1697375d39e57d3be310ed79bd1217217bb363eaac6bd",
+      "bytes": 37820,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "内院协作 · 第6单 · 拟定分工 · 物资1/6 · 已登记5单 · 协作章9/9",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    }
+  ]
+}

@@ -46,6 +46,8 @@ test('entire packed chapter exports and summary function branches equal readable
     const packedEvents=await packed.ssrLoadModule('/src/content/events.ts'),plainEvents=await plain.ssrLoadModule('/src/content/events.ts')
     const packedStory=await packed.ssrLoadModule('/src/content/story.ts'),plainStory=await plain.ssrLoadModule('/src/content/story.ts')
     assert.deepEqual(packedStory,plainStory)
+    const packedBonds=await packed.ssrLoadModule('/src/content/bonds.ts'),plainBonds=await plain.ssrLoadModule('/src/content/bonds.ts')
+    assert.deepEqual(packedBonds,plainBonds)
     assert.deepEqual(Object.keys(packedEvents).sort(),Object.keys(plainEvents).sort())
     for(const key of Object.keys(plainEvents))if(typeof plainEvents[key]!=='function')assert.deepEqual(packedEvents[key],plainEvents[key])
     for(let chapter=-1;chapter<=30;chapter++){
@@ -68,6 +70,30 @@ test('entire packed chapter exports and summary function branches equal readable
       for(const viewing of settings)for(const key of keys)assert.deepEqual(next[key](state,viewing),old[key](state,viewing),key)
     }
     compare(base)
+    const nextJournal=await packed.ssrLoadModule('/src/core/bonds.ts'),oldJournal=await plain.ssrLoadModule('/src/core/bonds.ts')
+    const {blankProgress,blankEvent}=await plain.ssrLoadModule('/src/core/model.ts')
+    // Production packing must retain all 24 pages, choice text and rewards,
+    // as well as the visible queue/status derived from those exact exports.
+    for(const limit of [1,3,14,28])for(const stage of [0,1,2,3])for(const choice of ['none','steady','premium']){
+      const state=initialState();state.chapter=28;state.completed=Array.from({length:28},(_,i)=>i+1)
+      state.settings={...state.settings,spoiler:'anime',animeLimit:limit}
+      for(const chapter of state.completed)state.progress[chapter]=blankProgress(chapter)
+      for(const {chapter,event}of plainBonds.bondEvents)state.progress[chapter].events[event.id]={...blankEvent(),started:stage>0,stage,choice}
+      const before=structuredClone(state)
+      assert.deepEqual(nextJournal.bondJournal(state),oldJournal.bondJournal(state))
+      assert.deepEqual(nextJournal.bondVisitQueue(state),oldJournal.bondVisitQueue(state))
+      assert.equal(nextJournal.bondSaveSummary(state,state.settings),oldJournal.bondSaveSummary(state,state.settings))
+      assert.deepEqual(state,before)
+    }
+    for(const phase of ['plan','field','review','failed'])for(const step of [0,1,2,3])for(const completed of [0,3,4]){
+      const state=structuredClone(base);state.completed.push(14)
+      state.academyCoop={revision:30,completed,merit:Math.min(3,completed)*3,supplies:2,assignments:[0,1,2],phase,step,mistakes:0}
+      for(const limit of [1,13,14,28]){
+        const viewing={...state.settings,spoiler:'anime',animeLimit:limit}
+        assert.equal(next.academyCoopSaveSummary(state,viewing),old.academyCoopSaveSummary(state,viewing))
+        assert.equal(next.savePreviewSummary(state,viewing),old.savePreviewSummary(state,viewing))
+      }
+    }
     // Full thresholds and follow-on-stage interactions, including recursive summaries.
     for(let stage=0;stage<=50;stage++){
       const state=structuredClone(base)

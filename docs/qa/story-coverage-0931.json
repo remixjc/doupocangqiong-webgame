@@ -1,7 +1,7 @@
 {
   "format": 1,
   "auditDate": "2026-10-15",
-  "version": "0.95.0",
+  "version": "0.95.1",
   "scope": "28-chapter condensed playable route; original-source fidelity, character packages and lifecycle gates remain separately open",
   "method": "Read actual repository exports and cross-check required event completion against existing public native-download evidence. No browser run or original-source verification performed by this script.",
   "limits": [

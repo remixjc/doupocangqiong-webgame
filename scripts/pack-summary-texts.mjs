@@ -3,7 +3,7 @@ import LZString from 'lz-string'
 import { createHash } from 'node:crypto'
 import { encodeSceneWords, decodeSceneWords } from '../src/content/scene-radix85.js'
 
-export const summaryTextModules = ['core/save-preview.ts', 'content/chapters.ts', 'content/story.ts', 'content/events.ts']
+export const summaryTextModules = ['core/save-preview.ts', 'content/chapters.ts', 'content/story.ts', 'content/events.ts', 'content/bonds.ts']
 // Explicit owned modules; leave readable source, templates and control flow intact.
 // Never parse saves or remote text. Use AST token boundaries, not source regexes.
 export function packSummaryTexts(source, id) {
