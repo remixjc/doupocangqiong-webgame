@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-15",
+  "item": "E01",
+  "status": "open",
+  "historicalVersion": "0.7.1",
+  "historicalSHA": "221b0fac7f77c505b7d7b3f96dff9f759bcf1f3c",
+  "method": "Execute actual historical GameStore/save/model and their imports under Vite SSR with fresh process-local fake-indexeddb. Legal ordinary store actions; no browser or native original mutation.",
+  "sourceInputs": [
+    {
+      "path": "package.json",
+      "sha256": "2b3c6dba3d1ac36e8ff938be7ed966c26324c2a51d74b2a4a16d89c7cb9d65ba"
+    },
+    {
+      "path": "src/core/store.ts",
+      "sha256": "541b800767fa39558fc0011ce2fb6bc5227b59e36b6b3d06e702d2ba6f1e4e8e"
+    },
+    {
+      "path": "src/core/save.ts",
+      "sha256": "d864ae34a620e1a92d3ee8509cace1c9e5415f8a52da45152aa2e0159996885d"
+    },
+    {
+      "path": "src/ui/App.tsx",
+      "sha256": "bb20d95e6e2f2d02341e6504b48b3d5775b303d283ff0b5c0c54000cae4e8e2f"
+    },
+    {
+      "path": "src/ui/Panels.tsx",
+      "sha256": "01b8d133a0a1f67f0759072b5f3305dbd95151d1f624cefb7d0ed601ee454e1c"
+    }
+  ],
+  "experiment": {
+    "seedHerbs": 0,
+    "afterSessionACollectsTwice": 2,
+    "afterStaleSessionBReadsIntro": 0,
+    "sessionBIntroPersisted": true,
+    "reproducedStaleSessionOverwrite": true
+  },
+  "interpretation": "Confirms a known vulnerability of the actual old implementation. It DOES NOT identify the unique cause of the original C5b refresh incident.",
+  "notEstablished": [
+    "Original incident active tab count, pending transaction timing, oncomplete/abort/error and raw before/after save texts are unavailable in the cited incident record.",
+    "Immediate asynchronous writes alone do not prove transaction completion was reordered.",
+    "A refresh before durable commit, stale other page, explicit load/recovery and other causes cannot be distinguished retrospectively."
+  ],
+  "currentProtection": [
+    "AutoSaveQueue snapshots and serializes writes, exposes pending/saved/error and flush.",
+    "AutoSaveSession compares original automatic text atomically; stale sessions cannot silently overwrite.",
+    "Current save-conflicts/autosave tests and current chapter-13 browser checkpoints are separate evidence; they do not retroactively identify the incident."
+  ],
+  "nextEvidence": [
+    "If a new rollback occurs, preserve origin/version, both native JSON exports and displayed checkpoint, all open game tabs, save status/time, error and explicit load actions before retrying.",
+    "Record a repeatable action/timing sequence and compare it against the actual affected version before attributing or closing E01."
+  ]
+}

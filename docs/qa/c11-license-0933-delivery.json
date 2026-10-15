@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-15",
+  "version": "0.93.3",
+  "sha": "f4034a90bc2e032a360af38ff36922e5dc418c9d",
+  "remote": "f4034a90bc2e032a360af38ff36922e5dc418c9d",
+  "checks": {
+    "id": 38673483485,
+    "conclusion": "success"
+  },
+  "pages": {
+    "id": 38673483481,
+    "conclusion": "skipped"
+  },
+  "postCommitEntireStateEqual": true,
+  "nativeExports": 4,
+  "metadata": 786,
+  "rawSHA256": "d66c49ae5d4842d720ca9b50c3e23a69c3fabf0bf99a4c3c22884219f12f48a6",
+  "release": {
+    "files": 154,
+    "bytes": 2592008,
+    "gitSha": "f4034a90bc2e032a360af38ff36922e5dc418c9d"
+  }
+}
