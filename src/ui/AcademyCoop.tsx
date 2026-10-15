@@ -22,7 +22,7 @@ export default function AcademyCoop({ state }: { state: GameState }) {
   const need = p ? (p.completed % 3 + p.step) % 3 : 0
   return <section aria-label="内院协作演练">
     <Eyebrow>内院协作 / 原创经营演练</Eyebrow><h2>分工同行</h2>
-    <MutedParagraph>学员与委托均原创，不登记原作建门。演练物资、协作章与主线资源独立。</MutedParagraph>
+    <MutedParagraph>学员与委托均原创，与建门记录独立。演练物资、协作章与主线资源独立。</MutedParagraph>
     {!p ? <><p>初始6物资，出发耗2，三步后登记。前3单各3章，共9枚荣誉；之后仍可练习。</p><PrimaryButton onClick={() => act({ type: 'begin' })}>建立协作账本</PrimaryButton></> : <>
       <div className="stat-grid" aria-label="协作账本">{[['物资', `${p.supplies}/6`], ['协作章', `${p.merit}/9`], ['已登记委托', p.completed]].map(([label, value]) => <div key={label}><span>{label}</span><b>{value}</b></div>)}</div>
       <p>第{p.completed + 1}单 · {contracts[p.completed % 3]} · {p.phase === 'plan' ? '拟定分工' : p.phase === 'review' ? '等待登记' : p.phase === 'failed' ? '整队待续' : `现场 ${p.step + 1}/3`}</p>

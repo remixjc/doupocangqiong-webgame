@@ -1,0 +1,474 @@
+{
+  "date": "2026-10-15",
+  "version": "0.96.0",
+  "baseline": "4dfc265c6db454c0e13f25d7aa968022ac218c60",
+  "frozenOldOriginals": 887,
+  "newNatives": 13,
+  "metadataAfter": 900,
+  "allEntireNativeStatesMatchAPI": true,
+  "refreshPairs": [
+    [
+      "duties-unassigned",
+      "duties-refreshed"
+    ],
+    [
+      "completed",
+      "completed-refreshed"
+    ]
+  ],
+  "oldCoopUnchangedByFounding": true,
+  "continuedSixthReportAward": 0,
+  "settingsExistingBehavior": "Anime switch initially stored limit3, moves chapter28 to3 and high flame to ember. Changing limit does not restore chapter or flame. Native import restores entire original novel state.",
+  "failedAttempts": [
+    "AX exposed pressed position buttons as checkbox, but DOM role checkbox locator did not match; used fresh AX target successfully.",
+    "Confirm import closes the saves dialog; export helper timed out before reopening. Imported state preserved and a fresh explicit export succeeded."
+  ],
+  "rows": [
+    {
+      "name": "initial",
+      "sha256": "064b03de44cd1473cfe77d57680981e36bd9f4ffdfb190d0104f279d870868d2",
+      "bytes": 37820,
+      "founding": null,
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "wrong-request",
+      "sha256": "c8a00a85c07841b8d91eb9310370224e10ee6de67e79a13a4a78ea457bbf9d8e",
+      "bytes": 37966,
+      "founding": {
+        "revision": 2,
+        "stage": 0,
+        "place": 1,
+        "duties": [
+          2,
+          2,
+          2
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 进行中0/5",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "duties-unassigned",
+      "sha256": "c042748705d1cc9e97ecb67b883224a32f98047c63c4cb52e848bac8075dc72c",
+      "bytes": 37966,
+      "founding": {
+        "revision": 5,
+        "stage": 2,
+        "place": 2,
+        "duties": [
+          2,
+          2,
+          2
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 进行中2/5",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "duties-refreshed",
+      "sha256": "b0149796782bf1c43f687cacc83ae8d705f0feaeeeae0f55e476c0fef6789e33",
+      "bytes": 37966,
+      "founding": {
+        "revision": 5,
+        "stage": 2,
+        "place": 2,
+        "duties": [
+          2,
+          2,
+          2
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 进行中2/5",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "wrong-duties",
+      "sha256": "dbd2d291eb4a3db703f4a21f2aff015a46a35d665dd358eb11192506ad2906bd",
+      "bytes": 37966,
+      "founding": {
+        "revision": 9,
+        "stage": 2,
+        "place": 3,
+        "duties": [
+          0,
+          0,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 进行中2/5",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "duties-confirmed",
+      "sha256": "3af21e013fb204ca270de7deac4361060834c8cb4da910dc23ea3a080ce9327a",
+      "bytes": 37967,
+      "founding": {
+        "revision": 11,
+        "stage": 3,
+        "place": 3,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 进行中3/5",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "wrong-name",
+      "sha256": "01f9d78c22859b1be8515fda01f257259d252ccc20e9ce4cb1f82dc0d9538413",
+      "bytes": 37967,
+      "founding": {
+        "revision": 11,
+        "stage": 3,
+        "place": 3,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 进行中3/5",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "completed",
+      "sha256": "e40334ad2f75cced4bd718b22bdd31869cfa6e336e846842127b969b65be4992",
+      "bytes": 37967,
+      "founding": {
+        "revision": 14,
+        "stage": 5,
+        "place": 1,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 名称与职责已归档",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "completed-refreshed",
+      "sha256": "f1be74ea3daba4e4e02feaa96008fabaa10c2c8b06507eb1de134bfcdd885716",
+      "bytes": 37967,
+      "founding": {
+        "revision": 14,
+        "stage": 5,
+        "place": 1,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 43,
+        "completed": 5,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 名称与职责已归档",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "coop6-reported",
+      "sha256": "708527196a288a80ff81b3d67b06cfac7889dca22ce0326d11023af55e287954",
+      "bytes": 37967,
+      "founding": {
+        "revision": 14,
+        "stage": 5,
+        "place": 1,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 49,
+        "completed": 6,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 名称与职责已归档",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "anime13",
+      "sha256": "8193a7bc2c63c5be0b93dabb6fa27119bff4fdc91ebe84d80ce5e876d5dce234",
+      "bytes": 37968,
+      "founding": {
+        "revision": 14,
+        "stage": 5,
+        "place": 1,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 49,
+        "completed": 6,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 3,
+      "spoiler": "anime",
+      "animeLimit": 13,
+      "summary": "",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "anime14",
+      "sha256": "e8a27dbd7f68028d53965cada0a5df3898caef6550fa981b53d729cbf371543e",
+      "bytes": 37968,
+      "founding": {
+        "revision": 14,
+        "stage": 5,
+        "place": 1,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 49,
+        "completed": 6,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 3,
+      "spoiler": "anime",
+      "animeLimit": 14,
+      "summary": "磐门筹议 · 名称与职责已归档",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    },
+    {
+      "name": "import-coop6",
+      "sha256": "48ae1fca3cedf4e473dfe4eb3c70a0bfe689f62caac32c483e3f7ce1e5c1b2ca",
+      "bytes": 37967,
+      "founding": {
+        "revision": 14,
+        "stage": 5,
+        "place": 1,
+        "duties": [
+          0,
+          1,
+          1
+        ]
+      },
+      "coop": {
+        "revision": 49,
+        "completed": 6,
+        "merit": 9,
+        "supplies": 1,
+        "assignments": [
+          1,
+          2,
+          0
+        ],
+        "phase": "plan",
+        "step": 0,
+        "mistakes": 0
+      },
+      "chapter": 28,
+      "spoiler": "novel",
+      "animeLimit": 3,
+      "summary": "磐门筹议 · 名称与职责已归档",
+      "entireNativeStateEqualsActualAPI": true,
+      "parseEqualsEntireNative": true
+    }
+  ]
+}

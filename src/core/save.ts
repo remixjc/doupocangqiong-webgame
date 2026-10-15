@@ -31,6 +31,7 @@ import { EARLY_MARKET_DISCOVERY_VERSION } from './early-market-discovery-state'
 import { EARLY_MARKET_STANDOFF_VERSION } from './early-market-standoff-state'
 import { chapterById, chapters } from '../content/chapters'
 import { CONTENT_VERSION, initialState, blankEvent, type ChapterEventProgress, type FlameId, type GameState, type ItemId } from './model'
+import { parsePanmenFounding } from './panmen'
 import { unlockedFlames } from './rules'
 import { eventForChapter, eventsForChapter, type ChapterEvent } from '../content/events'
 import { eventDone, migrateLegacyEvent, migrateLegacyEvents } from './events'
@@ -399,6 +400,10 @@ export function validateState(value: unknown): GameState {
   if (data.academyCoop !== undefined) {
     if (before('0.95.0') || !s.completed.includes(14)) throw new Error('内院协作演练前置无效。')
     s.academyCoop = parseAcademyCoop(data.academyCoop)
+  }
+  if (data.panmenFounding !== undefined) {
+    if (before('0.96.0') || !s.completed.includes(14)) throw new Error('磐门筹议前置无效。')
+    s.panmenFounding = parsePanmenFounding(data.panmenFounding)
   }
   return s
 }

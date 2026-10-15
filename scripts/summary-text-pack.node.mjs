@@ -94,6 +94,13 @@ test('entire packed chapter exports and summary function branches equal readable
         assert.equal(next.savePreviewSummary(state,viewing),old.savePreviewSummary(state,viewing))
       }
     }
+    for(let stage=0;stage<=5;stage++)for(const limit of [1,13,14,28]){
+      const state=structuredClone(base);state.completed.push(14)
+      state.panmenFounding={revision:30,stage,place:1,duties:stage>=3?[0,1,1]:[2,2,2]}
+      const viewing={...state.settings,spoiler:'anime',animeLimit:limit}
+      assert.equal(next.panmenSaveSummary(state,viewing),old.panmenSaveSummary(state,viewing))
+      assert.equal(next.savePreviewSummary(state,viewing),old.savePreviewSummary(state,viewing))
+    }
     // Full thresholds and follow-on-stage interactions, including recursive summaries.
     for(let stage=0;stage<=50;stage++){
       const state=structuredClone(base)

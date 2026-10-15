@@ -24,6 +24,12 @@ export function academyCoopSaveSummary(saved: GameState, viewing: Settings): str
   return `内院协作 · 第${p.completed + 1}单 · ${phase} · 物资${p.supplies}/6 · 已登记${p.completed}单 · 协作章${p.merit}/9`
 }
 
+export function panmenSaveSummary(saved: GameState, viewing: Settings): string {
+  const p = saved.panmenFounding
+  return !p || !saved.completed.includes(14) || earlySummarySealed(viewing, 14) ? ''
+    : p.stage === 5 ? '磐门筹议 · 名称与职责已归档' : `磐门筹议 · 进行中${p.stage}/5`
+}
+
 export function earlyTrainingSaveSummary(saved: GameState, viewing: Settings): string {
   if (earlySummarySealed(viewing, 2)) return '重修记录 · 当前范围封存'
   if (!saved.completed.includes(2)) return '重修记录 · 第2章首通后开放'
@@ -417,7 +423,7 @@ export function savePreviewSummary(saved: GameState, viewing: Settings): string 
   const chapter = saved.chapter <= limit ? `第 ${saved.chapter} 章 · ${chapterById(saved.chapter).title}` : '封存篇章'
   const completed = saved.completed.filter(id => id <= limit).length
   const summaries = [
-    chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing), academyCoopSaveSummary(saved, viewing),
+    chapter, `已完成 ${completed} 章`, bondSaveSummary(saved, viewing), academyCoopSaveSummary(saved, viewing), panmenSaveSummary(saved, viewing),
   ]
   if (limit >= 2) summaries.push(firstExternalLimitSaveSummary(saved, viewing), firstExternalTrainingSaveSummary(saved, viewing), firstHallBodySaveSummary(saved, viewing), firstHallTransmissionSaveSummary(saved, viewing), firstHallGrantSaveSummary(saved, viewing), firstHallScrollReviewSaveSummary(saved, viewing), firstHallTeacherSaveSummary(saved, viewing), firstHallEveningSaveSummary(saved, viewing), firstHallAfternoonSaveSummary(saved, viewing), firstHallApproachSaveSummary(saved, viewing), firstHallTalkSaveSummary(saved, viewing), firstHallMatchSaveSummary(saved, viewing), firstHallReadingSaveSummary(saved, viewing), firstHallEntrySaveSummary(saved, viewing), firstRoadMeetingSaveSummary(saved, viewing), firstDepartureSaveSummary(saved, viewing), firstTechniqueSaveSummary(saved, viewing), firstTrainingSaveSummary(saved, viewing), earlyFamilyVisitSaveSummary(saved, viewing), earlyFamilyCompensationSaveSummary(saved, viewing), earlyFamilyContractSaveSummary(saved, viewing), earlyMountainRingSaveSummary(saved, viewing), earlyApprenticeSaveSummary(saved, viewing), earlyMethodDiscussionSaveSummary(saved, viewing), earlyPreparationBriefSaveSummary(saved, viewing), earlyMountainVisitorSaveSummary(saved, viewing), earlyMorningCardSaveSummary(saved, viewing), earlyCityPharmacySaveSummary(saved, viewing), earlyMarketEscortSaveSummary(saved, viewing), earlyMarketSearchSaveSummary(saved, viewing), earlyMarketBraceletsSaveSummary(saved, viewing), earlyMarketStandoffSaveSummary(saved, viewing), earlyMarketDiscoverySaveSummary(saved, viewing), earlyMarketTradeSaveSummary(saved, viewing), earlyMarketReturnSaveSummary(saved, viewing), earlyIronSaveSummary(saved, viewing), earlyRefiningSaveSummary(saved, viewing), earlyTrainingSaveSummary(saved, viewing), earlyBraceletSaveSummary(saved, viewing))
   if (limit >= 3) {

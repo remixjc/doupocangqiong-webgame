@@ -1,0 +1,174 @@
+{
+  "format": 1,
+  "date": "2026-10-15",
+  "publisher": "腾讯视频",
+  "url": "https://v.qq.com/x/cover/mzc0020027yzd9e/y0044c85f6k.html",
+  "cover": "mzc0020027yzd9e",
+  "video": "y0044c85f6k",
+  "episode": 15,
+  "title": "磐门",
+  "duration": "20:05",
+  "access": "Catalogue limited-free. Normal advertising and login prompt dismissal; playback continued. No login/payment or bypass.",
+  "method": "Normal visible player, progress seeking and 0.5x; selected subtitles observed at several anchors, not full episode viewing or subtitle extraction.",
+  "anchors": [
+    {
+      "near": "14:09-14:45",
+      "fact": "New students concerned about older students; ask about forming a group for mutual protection."
+    },
+    {
+      "near": "15:06",
+      "fact": "New students ask Xiao Yan to lead."
+    },
+    {
+      "near": "15:26-15:31",
+      "fact": "Xuner supports mutual protection and proposes management by herself and Hu Jia; management line reread on visible frame."
+    },
+    {
+      "near": "15:55-16:20",
+      "fact": "New students request a name; Xiao Yan wishes for firm standing in the academy; Panmen name appears and discussion continues."
+    }
+  ],
+  "mapping": {
+    "gameChapter": 14,
+    "gameGate": "first clear plus viewer allows chapter14",
+    "implemented": "Separate founding conversation, player-arranged duties and naming.",
+    "originalMechanics": [
+      "Four location navigation",
+      "Wrong answers and free correction",
+      "Duty selectors",
+      "Final confirmation and separate persistent history"
+    ],
+    "notMapped": [
+      "Earlier episode combat/tower sections",
+      "Later canonical member tasks or operating outcomes",
+      "Exact original novel chapter equivalence",
+      "Exact release date"
+    ]
+  },
+  "fullEpisodeWatched": false,
+  "animationFramesPublished": false,
+  "privateFrames": [
+    {
+      "privateFile": "task-panmen-ep15-1602.png",
+      "bytes": 83369,
+      "sha256": "a31bbc9579d187eb4d2966e8721007c1c4320bd4f13de86ed07b856cbc995414"
+    },
+    {
+      "privateFile": "task-panmen-ep15-joined.png",
+      "bytes": 76050,
+      "sha256": "ecb79eb42fc7a9a3cc339599bc7d0c775b595f9a48a5b68664cc5672ef9822d0"
+    },
+    {
+      "privateFile": "task-panmen-ep15-manage.png",
+      "bytes": 75899,
+      "sha256": "289c19beea51a6b8b8afb19796f8bc858e5daf8326d46cef065bc2a878367fb9"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-1529.png",
+      "bytes": 78050,
+      "sha256": "f41c5e80b685a1280e5d0cb6b2ee5ad9e4fa5e550bef3665dc0d29b6dff5ef54"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-actual.png",
+      "bytes": 75508,
+      "sha256": "f88d91a1c3b6ae7d88cef9e695ef7f904e3d7efc516f9b39d1cac73e3667b52a"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-anchor.png",
+      "bytes": 79493,
+      "sha256": "a9a5a10292865fd4121102e6de46af0491b6c621ee069f345dd33aa100bd3800"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-confirmed.png",
+      "bytes": 74339,
+      "sha256": "bc83dd9abfbf3b266ef8fed58eae7f4e69ac456cd3720a62515d13299ba65703"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-final.png",
+      "bytes": 79102,
+      "sha256": "05e7aaa3f778ecb886e9a2a803e0e354f43693392e6a28a6cb4b0760e59115f6"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-paused.png",
+      "bytes": 93330,
+      "sha256": "6792455233db319772508620d719b10ca1fe64e65ba0bc0737921e3f5fe89a6c"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-read.png",
+      "bytes": 88859,
+      "sha256": "b2f87bce53e6457c1eccc28a417a2b97e5ff6785c8e47ce12a5e17453281d331"
+    },
+    {
+      "privateFile": "task-panmen-ep15-management-visible.png",
+      "bytes": 77793,
+      "sha256": "73602df3e2a14539300f11dbe1a0b8b7ff348b69f685f776b4437dd6da9acecd"
+    },
+    {
+      "privateFile": "task-panmen-ep15-name-outcome.png",
+      "bytes": 76472,
+      "sha256": "0fe9d4a9bf0e1712082bb575889c44e14c1a5993b389e52953debbf933b9f808"
+    },
+    {
+      "privateFile": "task-panmen-ep15-nameA.png",
+      "bytes": 83531,
+      "sha256": "f9a3dbc97ba71db357933b1abda7192d292dd45fad63aa49dc15d94067b2ac12"
+    },
+    {
+      "privateFile": "task-panmen-ep15-nameB.png",
+      "bytes": 81061,
+      "sha256": "4609db019a3925ea0c0f661e95aa2bcf7464f31bcbbaee7a0dde80f6663e5164"
+    },
+    {
+      "privateFile": "task-panmen-ep15-nameC.png",
+      "bytes": 84673,
+      "sha256": "6b9306ecd736dd4d53cdd54c0c528f606ea694be7b15c139ba3f7470c2ce4ec3"
+    },
+    {
+      "privateFile": "task-panmen-ep15-nameD.png",
+      "bytes": 73033,
+      "sha256": "d58a76af26e8a456a53718dc46d5c2a79149a18545b5b7d53861e3ffba12f202"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readA.png",
+      "bytes": 80558,
+      "sha256": "5be77bf6a123b31cd3193011f2d45133b115dbc93a891730f81c4d3e26dc0f09"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readB.png",
+      "bytes": 79935,
+      "sha256": "9b4c97571dcb0d3e664ef30bdfc1e3cd5e1529903b0a04903e6c606d65f63ba3"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readC.png",
+      "bytes": 82611,
+      "sha256": "c2d9233029e93008fdc863f2c8e7b3103f9a54e895ee5e0d2040df62e0d10117"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readD.png",
+      "bytes": 71081,
+      "sha256": "7ed7c980b310453cc1439f18c8a75661703450c105f0a8887994e205d33621f7"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readE.png",
+      "bytes": 80782,
+      "sha256": "1bb90ee65c2801b30b663e0ef5a7daf5fbff415ca1aa571f934b0a6657e13a95"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readF.png",
+      "bytes": 79590,
+      "sha256": "4f99b87f5b309cde2e9c99f2f77a8aee6c6ed62d3c9f1191f21139a68183a73e"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readG.png",
+      "bytes": 81308,
+      "sha256": "690a37b16056b574295ff2b127103e909779833535103911dfd811f5648543e6"
+    },
+    {
+      "privateFile": "task-panmen-ep15-readH.png",
+      "bytes": 101627,
+      "sha256": "42413d96f895610cd316e5dd5d92942f02513ea514112f6f13b08e4eff2624bf"
+    }
+  ],
+  "webTextResult": "No usable story text returned; actual visible browser frames used.",
+  "sourceRights": "Observation only; not a grant of adaptation or redistribution rights."
+}

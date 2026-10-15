@@ -2,6 +2,7 @@ import { eventsForChapter } from '../content/events'
 import { version } from '../../package.json'
 import type { AutoSaveStatus } from './autosave'
 import type { AcademyCoop } from './academy-coop-state'
+import type { PanmenFounding } from './panmen'
 import { blankEarlyTraining, type EarlyTrainingState } from './early-training-state'
 export type Theme = 'city' | 'forest' | 'desert' | 'temple' | 'void' | 'fire'
 export type Pattern = 'slam' | 'dash' | 'volley' | 'storm'
@@ -54,6 +55,7 @@ export interface GameState {
   xp: number
   fireEnergy: number
   academyCoop?: AcademyCoop
+  panmenFounding?: PanmenFounding
   earlyTraining: EarlyTrainingState
   inventory: Record<ItemId, number>
   attackUpgrade: number

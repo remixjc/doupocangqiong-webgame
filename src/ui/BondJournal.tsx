@@ -11,6 +11,7 @@ import { preparationEvents } from '../content/preparations'
 import { eventBlockReason, eventDone, eventHint, eventProgress } from '../core/events'
 import { canEnter, isVisible } from '../core/rules'
 const AcademyCoop = lazyScene(() => import('./AcademyCoop'))
+const PanmenFounding = lazyScene(() => import('./PanmenFounding'))
 
 export default function BondJournal({ state, visit }: { state: GameState; visit: (chapter: number) => void }) {
   const lines = bondJournal(state)
@@ -18,11 +19,17 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
   const [selected, setSelected] = useState('little-doctor')
   const [filter, setFilter] = useState<'all' | 'todo' | 'done'>('all')
   const [cooperate, setCooperate] = useState(false)
+  const [founding, setFounding] = useState(false)
   const active = lines.find(line => line.id === selected) ?? lines[0]
   const entries = active?.entries.filter(entry => filter === 'all' || (filter === 'done' ? entry.done : !entry.done)) ?? []
   const completed = lines.reduce((total, line) => total + line.completed, 0)
   const total = lines.reduce((total, line) => total + line.entries.length, 0)
   const academy = state.completed.includes(14) && isVisible(state, 14)
+  if (founding && academy) return <>
+    <SecondaryButton onClick={() => setFounding(false)}>返回伙伴手札</SecondaryButton>
+    <Suspense fallback={<p role="status">正在进入新生院落…</p>}><PanmenFounding state={state}
+      exercise={() => { setFounding(false); setCooperate(true) }} /></Suspense>
+  </>
   if (cooperate && academy) return <>
     <SecondaryButton onClick={() => setCooperate(false)}>返回伙伴手札</SecondaryButton>
     <Suspense fallback={<p role="status">正在打开协作账本…</p>}><AcademyCoop state={state} /></Suspense>
@@ -30,7 +37,8 @@ export default function BondJournal({ state, visit }: { state: GameState; visit:
   return <>
     <Eyebrow>伙伴手札 / 可选回访</Eyebrow><h2>记下同行，留有归途。</h2>
     <MutedParagraph>支线可在主线通关后回访补做。到人物处接取、读取路标、选择回应，返回确认才领取一次补给。卷页之间需要前页完成，旧通关不自动补齐。</MutedParagraph>
-    {academy && <div className="panel-tabs"><SecondaryButton onClick={() => setCooperate(true)}>内院协作演练 · 成员分工与经营</SecondaryButton></div>}
+    {academy && <div className="panel-tabs"><SecondaryButton onClick={() => setFounding(true)}>磐门筹议 · 新生建门</SecondaryButton>
+      <SecondaryButton onClick={() => setCooperate(true)}>内院协作演练 · 成员分工与经营</SecondaryButton></div>}
     {!!lines.length && <BondSummary aria-label="回访安排">
       <p>可见记录 {completed} / {total} · 当前可做 {queue.length} 页</p>
       {queue[0] ? <>
