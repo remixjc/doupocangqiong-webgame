@@ -1,0 +1,345 @@
+{
+  "date": "2026-10-15",
+  "version": "0.94.1",
+  "baseline": "8c4eef2b367f028a8c30ccf2cec45e4b287aa4ea",
+  "workItem": "E03",
+  "status": "partial",
+  "remainingPackages": 25,
+  "change": {
+    "onlyRuntimeSource": [
+      "src/ui/GameView.tsx"
+    ],
+    "addition": "        // This game draws Graphics/Text directly and never uses Phaser FX.\n        // Avoid allocating the unused PreFX render-target pool on every entry.\n        disablePreFX: true, disablePostFX: true,\n",
+    "productionChunk": {
+      "file": "assets/GameView-BcXdfTwT.js",
+      "bytes": 109363,
+      "sha256": "fce419e1969e0124edf022f1600c0e5082607e0c48159658d73e8ddc00e4c4f1"
+    },
+    "phaserVendorFileUnchanged": {
+      "file": "assets/phaser-CIO7jVcA.js",
+      "bytes": 592512,
+      "sha256": "e7084923ac0dc1398805eb1dcfc9b54b1a36665ac549181a7cc01921380e1a21"
+    },
+    "installedSourceInputs": [
+      {
+        "file": "node_modules/phaser/src/core/Config.js",
+        "bytes": 32315,
+        "sha256": "06b52660193d26c96cba779dab3bb2d7363725a14f08ace3ea5e4f622e36f5c9"
+      },
+      {
+        "file": "node_modules/phaser/src/renderer/webgl/PipelineManager.js",
+        "bytes": 53265,
+        "sha256": "b61b5ce35add4b145c55646fb62718442bf1efce2339c82ec2a41a15f083b29c"
+      },
+      {
+        "file": "node_modules/phaser/src/renderer/webgl/WebGLRenderer.js",
+        "bytes": 118976,
+        "sha256": "2be756864b3d9a2e4d5bc047f10346770f86d262f820eb07f341ae6f027ac733"
+      },
+      {
+        "file": "node_modules/phaser/src/textures/TextureManager.js",
+        "bytes": 56417,
+        "sha256": "936321645a8c277757be93628d5d9b6e3eb48017c83a6ad371b715a3567cb4bc"
+      }
+    ],
+    "preFXTargetCountFromSource": 75,
+    "countIsActualGPUObservation": false,
+    "noPreOrPostFXUsageInCurrentSource": true,
+    "rendererChoiceUnchanged": "Phaser.AUTO"
+  },
+  "migration": {
+    "previousCompleteSourceFiles": 373,
+    "immutableNatives": 852,
+    "previousVersion": "0.94.0",
+    "onlyContentVersionChanged": true,
+    "metadataSHA256": "06e3026b821a0527a0c4920754b43a9bb146cd93a589f8314a53f4db29bb9dcb",
+    "oldProofsRerun": false,
+    "originalsRewritten": false
+  },
+  "sample": {
+    "file": "docs/qa/c11-unused-fx-0941-native.json",
+    "bytes": 133628,
+    "sha256": "c8c00f45dd6f6f5785001ecd4177164bed721bf31859b51fbe377b7f6fa019dd",
+    "review": {
+      "identity": {
+        "version": "0.94.1",
+        "gitSha": "8c4eef2b367f028a8c30ccf2cec45e4b287aa4ea",
+        "files": 155,
+        "bytes": 2587901,
+        "probeFiles": [
+          {
+            "url": "/__qa/",
+            "bytes": 1885,
+            "sha256": "cd549961d40cc0e1f2677bb912d4c1cf95d2d2274c8e1a61c36a85eec23d5b2c"
+          },
+          {
+            "url": "/__qa/probe.mjs",
+            "bytes": 8833,
+            "sha256": "22e039057b30c6bff5310bb7cbaad0bedce7d36583a370d70ef04e044791f872"
+          },
+          {
+            "url": "/__qa/statistics.mjs",
+            "bytes": 1227,
+            "sha256": "2aec3ec8a314c1d29738f73939679c33cb23805d6c2a7bab560af25f8930636d"
+          }
+        ]
+      },
+      "elapsedMs": 58446.79999999702,
+      "snapshots": 60,
+      "intervals": {
+        "no-scene": {
+          "count": 845,
+          "durationMs": 6722.499999999993,
+          "callbacksPerSecond": 125.69728523614741,
+          "p50Ms": 7.599999999998545,
+          "p95Ms": 8.5,
+          "p99Ms": 15.30000000000291,
+          "maxMs": 68.5,
+          "over20Ms": 6,
+          "over33Ms": 2,
+          "over50Ms": 1
+        },
+        "scene": {
+          "count": 2234,
+          "durationMs": 21777.29999999999,
+          "callbacksPerSecond": 102.58388321784616,
+          "p50Ms": 8,
+          "p95Ms": 16,
+          "p99Ms": 23,
+          "maxMs": 207.1999999999971,
+          "over20Ms": 29,
+          "over33Ms": 6,
+          "over50Ms": 2
+        },
+        "menu": {
+          "count": 3261,
+          "durationMs": 29849.300000000003,
+          "callbacksPerSecond": 109.24879310402588,
+          "p50Ms": 8,
+          "p95Ms": 16,
+          "p99Ms": 16.60000000000582,
+          "maxMs": 63.5,
+          "over20Ms": 31,
+          "over33Ms": 16,
+          "over50Ms": 4
+        },
+        "unfocused-scene": {
+          "count": 1,
+          "durationMs": 8,
+          "callbacksPerSecond": 125,
+          "p50Ms": 8,
+          "p95Ms": 8,
+          "p99Ms": 8,
+          "maxMs": 8,
+          "over20Ms": 0,
+          "over33Ms": 0,
+          "over50Ms": 0
+        }
+      },
+      "longTasks": {
+        "supported": true,
+        "count": 3,
+        "totalMs": 317,
+        "maxMs": 163,
+        "withinWindowMs": 317,
+        "browsingContexts": {
+          "same-origin-ancestor": 1,
+          "self": 2
+        },
+        "interpretation": "Browser context attribution only; not JavaScript call stacks or GPU attribution. Stop drains queued entries, not future reports."
+      },
+      "longAnimationFrames": {
+        "supported": true,
+        "count": 4,
+        "reportedBlockingDurationMs": 244,
+        "boundaryFrames": 0,
+        "scriptEntries": [
+          {
+            "startTime": 48214.20000000298,
+            "duration": 5.600000008940697,
+            "executionStart": 48214.20000000298,
+            "forcedStyleAndLayoutDuration": 0.1,
+            "pauseDuration": 0,
+            "invoker": "DIV#root.onclick",
+            "invokerType": "event-listener",
+            "sourceURL": "http://127.0.0.1:4199/assets/index-CJvqbavR.js",
+            "sourceFunctionName": "_h",
+            "sourceCharPosition": 210615,
+            "windowAttribution": "descendant"
+          },
+          {
+            "startTime": 48634.70000000298,
+            "duration": 163.70000000298023,
+            "executionStart": 48634.70000000298,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "IMG[src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABdJREFUeNpi/P//PwMMMDEgAdwcgAADAJZuAwXJYZOzAAAAAElFTkSuQmCC\"].onload",
+            "invokerType": "event-listener",
+            "sourceURL": "http://127.0.0.1:4199/assets/phaser-CIO7jVcA.js",
+            "sourceFunctionName": "",
+            "sourceCharPosition": 577533,
+            "windowAttribution": "descendant"
+          },
+          {
+            "startTime": 48798.70000000298,
+            "duration": 35.79999999701977,
+            "executionStart": 48798.70000000298,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceURL": "http://127.0.0.1:4199/assets/phaser-CIO7jVcA.js",
+            "sourceFunctionName": "t",
+            "sourceCharPosition": 584142,
+            "windowAttribution": "descendant"
+          },
+          {
+            "startTime": 84065.30000001192,
+            "duration": 98.3999999910593,
+            "executionStart": 84065.30000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "IMG[src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABdJREFUeNpi/P//PwMMMDEgAdwcgAADAJZuAwXJYZOzAAAAAElFTkSuQmCC\"].onload",
+            "invokerType": "event-listener",
+            "sourceURL": "http://127.0.0.1:4199/assets/phaser-CIO7jVcA.js",
+            "sourceFunctionName": "",
+            "sourceCharPosition": 577533,
+            "windowAttribution": "descendant"
+          },
+          {
+            "startTime": 84163.90000000596,
+            "duration": 22.900000005960464,
+            "executionStart": 84163.90000000596,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceURL": "http://127.0.0.1:4199/assets/phaser-CIO7jVcA.js",
+            "sourceFunctionName": "t",
+            "sourceCharPosition": 584142,
+            "windowAttribution": "descendant"
+          }
+        ],
+        "interpretation": "Same-origin root includes QA overhead. Blocking/script durations are original whole-entry values, not clipped attribution. Not a full stack, source map or GPU timing. Frame and task durations overlap; never add them."
+      },
+      "canvases": {
+        "min": 0,
+        "max": 1
+      },
+      "heap": {
+        "firstBytes": 11211453,
+        "lastBytes": 26682921,
+        "minBytes": 11211453,
+        "maxBytes": 59177145,
+        "interpretation": "coarse/shared browser heap; does not establish retained heap or absence of leaks"
+      },
+      "visibilityEvents": 0,
+      "errors": [],
+      "interpretation": "Real rAF callback intervals; not GPU presentation FPS, combat benchmark or device certification."
+    },
+    "sourceEntries": [
+      {
+        "id": "assets/index-CJvqbavR.js:210615",
+        "sha256": "4963f1e6d7afa41c69f461df21d5ccfd8194a4b67fc7948f48bca64dac996447",
+        "utf16CharacterPosition": 210615,
+        "productionExcerpt": "wt(t);var n=Ni(e,t);n!==null&&Pd(n,e,t),ph(e,t)}}var gh=!0;function _h(e,t,n,r){var i=E.T;E.T=null;var a=D.p;try{D.p=2,yh(e,t,n,r)}finally{D.p=a,E.T=i}}function vh(e,t,n,r){var i=E.T;E.T=null;var a=D.p;try{D.p=8,yh(e,t,n,r)}finally{D.p=a,E."
+      },
+      {
+        "id": "assets/phaser-CIO7jVcA.js:577533",
+        "sha256": "e7084923ac0dc1398805eb1dcfc9b54b1a36665ac549181a7cc01921380e1a21",
+        "utf16CharacterPosition": 577533,
+        "productionExcerpt": ",r=new Image;r.onerror=function(){n.emit(d.ERROR,e)},r.onload=function(){var t=n.create(e,r);t&&(v.Image(t,0),n.emit(d.ADD,e,t),n.emit(d.ADD_KEY+e,t),n.emit(d.LOAD,e,t))},r.src=t}return this},getBase64:function(e,t,n,r){n===void 0&&(n=`imag"
+      },
+      {
+        "id": "assets/phaser-CIO7jVcA.js:584142",
+        "sha256": "e7084923ac0dc1398805eb1dcfc9b54b1a36665ac549181a7cc01921380e1a21",
+        "utf16CharacterPosition": 584142,
+        "productionExcerpt": "ut=!1,this.timeOutID=null,this.delay=0;var e=this;this.step=function t(n){e.callback(n),e.isRunning&&(e.timeOutID=window.requestAnimationFrame(t))},this.stepTimeout=function t(){e.isRunning&&(e.timeOutID=window.setTimeout(t,e.delay)),e.call"
+      }
+    ]
+  },
+  "baselineEvidence": "docs/qa/c11-animation-entry-0940.json",
+  "browser": {
+    "canvases": [
+      1,
+      0,
+      1
+    ],
+    "actualActions": [
+      "import original 0.94.0 backup into new 4199 origin",
+      "enter chapter28",
+      "open and close character menu",
+      "ArrowRight",
+      "J normal attack",
+      "1 melee skill",
+      "world map",
+      "reenter chapter28",
+      "open settings",
+      "close settings",
+      "native backup on same-origin standalone page",
+      "normal refresh and second backup"
+    ],
+    "settingsChanged": false,
+    "reducedMotionOriginallyChecked": true,
+    "sampleWindowErrors": [],
+    "checkedTabErrors": [],
+    "failuresRetained": [
+      "Iframe header click location failed, fresh DOM and native Enter succeeded",
+      "Parent download listener for iframe backup timed out and reset browser kernel; UI reported initiation but no new file appeared. Same-origin standalone page native download succeeded, followed by normal refresh and second file."
+    ],
+    "screenshotsActuallyViewed": true,
+    "dangerCueCoverage": "Existing combat tests retained; this browser sample verifies camp movement/attack/skill drawing, not new maximum-group danger-frame acceptance.",
+    "nativeWholeStateComparisons": [
+      {
+        "name": "unusedFX0941-normal-read-after-sample",
+        "bytes": 37585,
+        "sha256": "c39649728c34871407eebc7d03352cfa79d9d98b668c741bb1695446e88689eb",
+        "wholeStateEqual": true
+      },
+      {
+        "name": "unusedFX0941-normal-refresh",
+        "bytes": 37585,
+        "sha256": "40d642e25ebe7081bfa56da6371b9be27eaa3d1bbb9e01dd000d1f87632e54fd",
+        "wholeStateEqual": true
+      }
+    ],
+    "manualPlayOnly": true,
+    "noStoredStateOrClockInjection": true,
+    "noParallelBuildOrTestsDuringSample": true
+  },
+  "tests": {
+    "command": "pnpm check",
+    "exitCode": 0,
+    "vitestFiles": 177,
+    "vitest": 1084,
+    "node": 39,
+    "types": true,
+    "threeDifficulties28Chapters": true,
+    "production": true
+  },
+  "candidateRelease": {
+    "gitSha": "8c4eef2b367f028a8c30ccf2cec45e4b287aa4ea",
+    "files": 155,
+    "bundle": {
+      "initialJsBytes": 440925,
+      "initialJsGzipBytes": 160152,
+      "totalJsBytes": 1842095,
+      "engineGzipBytes": 155802
+    }
+  },
+  "initialFailures": [
+    "Coverage snapshot needed 0.94.1 version regeneration",
+    "Third-party notice header still 0.94.0; regenerated actual inventory; diff is header version only"
+  ],
+  "screenshots": [
+    "docs/qa/c11-unused-fx-0941-play.png",
+    "docs/qa/c11-unused-fx-0941-sample.png"
+  ],
+  "limitations": [
+    "75 targets are inferred from source, not observed GPU objects",
+    "Independent real samples are not an isolated causal experiment or fixed speedup",
+    "Missing sub-50ms script records do not imply zero duration",
+    "LoAF/Long Tasks cannot be added, and do not show full stacks or GPU work",
+    "Maximum group combat, exact retained objects, real devices, human Beta and full source gates remain open"
+  ]
+}

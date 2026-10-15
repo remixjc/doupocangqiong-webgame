@@ -17,6 +17,9 @@ export default function GameView() {
         backgroundColor: '#213b33', scene: [new AdventureScene(error => setFailure(error instanceof Error ? error : new Error('Scene execution failed')))],
         scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
         render: { antialias: true, pixelArt: false }, audio: { noAudio: true },
+        // This game draws Graphics/Text directly and never uses Phaser FX.
+        // Avoid allocating the unused PreFX render-target pool on every entry.
+        disablePreFX: true, disablePostFX: true,
         input: { keyboard: { capture: [] } },
       })
     }, game => game.destroy(true), error => setFailure(error instanceof Error ? error : new Error('Scene initialization failed')))
