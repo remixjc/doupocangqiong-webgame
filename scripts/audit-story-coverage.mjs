@@ -57,6 +57,7 @@ async function contentInputs(directory) {
 
 export async function auditStoryCoverage() {
   const server = await createServer({ root, configFile: false,
+    optimizeDeps: { noDiscovery: true, include: [] },
     server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
   try {
     const { chapters } = await server.ssrLoadModule('/src/content/chapters.ts')

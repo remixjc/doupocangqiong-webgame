@@ -49,11 +49,13 @@ test('small rows, unrelated modules and expression rows are not silently packed'
   assert(packSceneRows(shared, 'C:\\project\\src\\content\\example.ts'))
 })
 test('every actual packed content export equals the original complete module', async () => {
-  const plain = await createServer({ configFile: false, server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
-  const packed = await createServer({ configFile: false, plugins: [{
+  const options = { configFile: false, optimizeDeps: { noDiscovery: true, include: [] },
+    server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' }
+  const plain = await createServer(options)
+  const packed = await createServer({ ...options, plugins: [{
     name: 'exercise-production-row-transform-in-ssr', enforce: 'pre',
     transform(code, id) { const result = packSceneRows(code, id); return result ? { code: result.code, map: null } : null },
-  }], server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
+  }] })
   let modules = 0, rows = 0
   try {
     for (const name of (await fs.readdir('src/content')).filter(n => n.endsWith('.ts'))) {

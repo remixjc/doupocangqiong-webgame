@@ -77,7 +77,7 @@ test('format 2 review recomputes task attribution timing; legacy native samples 
     assert.throws(() => reviewDesktopSample(invalid))
   }
 })
-test('actual QA stop drains pending Long Tasks before disconnect, excludes outside entries and resets next run', async () => {
+for (const frameSupport of [false, true]) test(`actual QA stop drains pending entries and resets next run (animation frames: ${frameSupport})`, async () => {
   const source = await readFile(resolve('qa/desktop-performance.mjs'), 'utf8')
   const buttons = new Map()
   const element = id => {
@@ -87,7 +87,7 @@ test('actual QA stop drains pending Long Tasks before disconnect, excludes outsi
   const order = [], observers = []
   let now = 10000
   class Observer {
-    static supportedEntryTypes = ['longtask']
+    static supportedEntryTypes = frameSupport ? ['longtask', 'long-animation-frame'] : ['longtask']
     pending = []
     constructor(callback) { this.callback = callback; observers.push(this) }
     observe() {}
@@ -102,7 +102,7 @@ test('actual QA stop drains pending Long Tasks before disconnect, excludes outsi
   const sandbox = { summarizeIntervals, longTaskWithinSample, Map, Date, navigator: {},
     performance: { timeOrigin: 100000, now: () => now }, devicePixelRatio: 1, screen: {},
     document: { hidden: false, getElementById: element, querySelector: () => iframe, addEventListener() {} },
-    window: { addEventListener() {} }, fetch: async () => ({ json: async () => ({ gitSha: 'a'.repeat(40) }) }),
+    window: { addEventListener() {}, PerformanceObserver: Observer }, fetch: async () => ({ json: async () => ({ gitSha: 'a'.repeat(40) }) }),
     setTimeout: () => 1, setInterval: () => 1, clearTimeout() {}, clearInterval() {} }
   await runInNewContext(`(async () => { ${source.replace(/^import .*\n/, '')} })()`, sandbox)
   element('start').onclick()
@@ -110,22 +110,76 @@ test('actual QA stop drains pending Long Tasks before disconnect, excludes outsi
     name: 'unknown', containerType: 'window', containerSrc: '', containerId: '', containerName: '',
   }] }
   observers[0].pending.push({ ...entry, startTime: 0 }, entry)
+  const frameEntry = { startTime: 10010, duration: 80, blockingDuration: 30, renderStart: 10020,
+    styleAndLayoutStart: 10030, firstUIEventTimestamp: 0, scripts: [{
+      startTime: 10010, duration: 65, executionStart: 10011, forcedStyleAndLayoutDuration: 2, pauseDuration: 0,
+      invoker: 'FrameRequestCallback', invokerType: 'user-callback', sourceURL: '/real-test-module.js',
+      sourceFunctionName: 'draw', sourceCharPosition: 23, windowAttribution: 'self',
+    }] }
+  if (frameSupport) {
+    observers[1].pending.push({ ...frameEntry, startTime: 0 }, frameEntry)
+    observers[1].callback({ getEntries: () => [frameEntry] })
+  }
   now += 50
   element('stop').onclick()
   const result = JSON.parse(element('result').textContent)
-  assert.deepEqual(order, ['takeRecords', 'disconnect'])
-  assert.equal(result.format, 2)
+  const expectedOrder = frameSupport ? ['takeRecords', 'disconnect', 'takeRecords', 'disconnect']
+    : ['takeRecords', 'disconnect']
+  assert.deepEqual(order, expectedOrder)
+  assert.equal(result.format, 3)
+  assert.equal(result.longAnimationFramesSupported, frameSupport)
+  if (frameSupport) {
+    assert.equal(result.longAnimationFrames.length, 2, 'callback and pending frame both retained, old frame excluded')
+    assert.equal(result.longAnimationFrames[0].scripts[0].sourceFunctionName, 'draw')
+    assert.equal(result.longAnimationFrames[1].elapsedStartMs, 10)
+    assert.equal(result.longAnimationFrames[1].overlapMs, 40)
+  } else assert.deepEqual(result.longAnimationFrames, [])
   assert.equal(result.longTasks.length, 1, 'pending task must survive stop; unrelated earlier task must not')
   assert.equal(result.longTasks[0].elapsedStartMs, 10)
   assert.equal(result.longTasks[0].overlapMs, 40)
   assert.equal(result.longTasks[0].attribution[0].containerType, 'window')
   element('stop').onclick()
-  assert.deepEqual(order, ['takeRecords', 'disconnect'], 'stop is idempotent')
+  assert.deepEqual(order, expectedOrder, 'stop is idempotent')
   now += 100
   element('start').onclick()
   now += 50
   element('stop').onclick()
   assert.deepEqual(JSON.parse(element('result').textContent).longTasks, [])
+  assert.deepEqual(JSON.parse(element('result').textContent).longAnimationFrames, [])
+})
+test('format 3 keeps partial script attribution separate from Long Tasks and rejects corrupt fields', async () => {
+  const report = JSON.parse(await readFile(resolve('docs/qa/c11-longtask-clock-0940-switch.json'), 'utf8'))
+  const format2 = structuredClone(report)
+  report.format = 3; report.longAnimationFramesSupported = true
+  report.animationFrameTimeOrigin = report.clock.parentTimeOrigin
+  const script = { startTime: report.startedAt + 100, duration: 65, executionStart: report.startedAt + 101,
+    forcedStyleAndLayoutDuration: 4, pauseDuration: 0, invoker: 'FrameRequestCallback', invokerType: 'user-callback',
+    sourceURL: 'http://127.0.0.1/assets/example.js', sourceFunctionName: 'render', sourceCharPosition: 200,
+    windowAttribution: 'self' }
+  report.longAnimationFrames = [longTaskWithinSample({ startTime: report.startedAt + 50,
+    duration: 100, blockingDuration: 50, renderStart: report.startedAt + 110,
+    styleAndLayoutStart: report.startedAt + 120, firstUIEventTimestamp: 0, scripts: [script] },
+  { ...report.clock, iframeTimeOrigin: report.animationFrameTimeOrigin }, report.startedAt, report.elapsedMs)]
+  const result = reviewDesktopSample(report)
+  assert.equal(result.longAnimationFrames.reportedBlockingDurationMs, 50)
+  assert.equal(result.longAnimationFrames.boundaryFrames, 0)
+  assert.equal(result.longAnimationFrames.scriptEntries[0].sourceFunctionName, 'render')
+  assert.deepEqual(result.longTasks, reviewDesktopSample(format2).longTasks, 'do not add frame and task durations')
+  const unsupported = structuredClone(report)
+  unsupported.longAnimationFramesSupported = false; unsupported.longAnimationFrames = []
+  assert.equal(reviewDesktopSample(unsupported).longAnimationFrames.count, 0)
+  for (const mutate of [
+    row => { row.longAnimationFramesSupported = false },
+    row => { row.animationFrameTimeOrigin += 1 },
+    row => { row.longAnimationFrames[0].overlapMs += 1 },
+    row => { row.longAnimationFrames[0].blockingDuration = Infinity },
+    row => { row.longAnimationFrames[0].scripts[0].sourceURL = null },
+    row => { row.longAnimationFrames[0].scripts[0].sourceCharPosition = -2 },
+    row => { row.longAnimationFrames[0].scripts[0].duration = NaN },
+  ]) {
+    const invalid = structuredClone(report); mutate(invalid)
+    assert.throws(() => reviewDesktopSample(invalid))
+  }
 })
 test('QA server serves verified production bytes and only explicit read-only QA routes', async () => {
   const server = await createPerformanceServer(resolve('dist'))

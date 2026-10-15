@@ -25,7 +25,10 @@ test('syntax errors, identifier collision, module/type strings and literal prope
     assert.throws(()=>packSummaryTexts(source,id))
 })
 test('entire packed chapter exports and summary function branches equal readable originals',async()=>{
-  const options={configFile:false,server:{middlewareMode:true,hmr:false,ws:false},appType:'custom'}
+  // SSR proof servers do not serve browser dependencies. Parallel optimizer
+  // workers otherwise race to rename the shared .vite/deps cache on Windows.
+  const options={configFile:false,optimizeDeps:{noDiscovery:true,include:[]},
+    server:{middlewareMode:true,hmr:false,ws:false},appType:'custom'}
   const plain=await createServer(options),packed=await createServer({...options,plugins:[{name:'production-owned-summary-transform',enforce:'pre',
     transform(source,id){const result=packSummaryTexts(source,id);return result?{code:result.code,map:null}:null}}]})
   try{

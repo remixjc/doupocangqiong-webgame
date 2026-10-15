@@ -19,6 +19,7 @@ pre{white-space:pre-wrap;max-height:280px;overflow:auto;margin:12px}p{margin:6px
 <p role="status" id="status">正在读取构建身份…</p>
 <p>帧回调频率不是GPU呈现FPS。堆值为浏览器近似值，可能跨同进程页面；画布消失不证明监听器/GPU资源全部释放。隐藏、菜单与无场景分别记录。</p>
 <p>长任务保留浏览器提供的上下文归属，并按父页/游戏各自时间原点对齐。归属不提供代码调用栈；结束时只保证收取已排队条目。</p>
+<p>支持时另采同源根页面长动画帧（包含QA父页）及脚本入口URL/函数/字符位置，保留脚本窗口归属。它不是完整调用栈或GPU耗时；与长任务不能相加。</p>
 </header>
 <iframe title="待测游戏" src="/"></iframe>
 <pre id="result" aria-label="采样结果"></pre>

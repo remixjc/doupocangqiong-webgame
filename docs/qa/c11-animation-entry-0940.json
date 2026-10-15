@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-15",
+  "version": "0.94.0",
+  "item": "E03",
+  "status": "partial",
+  "remainingPackages": 25,
+  "baseline": "132665417558fea46a1747b272e624b9a44a326a",
+  "runtimeChanged": false,
+  "runtimeFilesIdentical": 155,
+  "export": {
+    "file": "docs/qa/c11-animation-entry-0940-native.json",
+    "bytes": 115875,
+    "sha256": "613ae5b9d655ea1d7f7899fa6678d3b773e99a5eea61b89265268ba0e1da8793"
+  },
+  "review": {
+    "identity": {
+      "version": "0.94.0",
+      "gitSha": "132665417558fea46a1747b272e624b9a44a326a",
+      "files": 155,
+      "bytes": 2587868,
+      "probeFiles": [
+        {
+          "url": "/__qa/",
+          "bytes": 1885,
+          "sha256": "cd549961d40cc0e1f2677bb912d4c1cf95d2d2274c8e1a61c36a85eec23d5b2c"
+        },
+        {
+          "url": "/__qa/probe.mjs",
+          "bytes": 8833,
+          "sha256": "22e039057b30c6bff5310bb7cbaad0bedce7d36583a370d70ef04e044791f872"
+        },
+        {
+          "url": "/__qa/statistics.mjs",
+          "bytes": 1227,
+          "sha256": "2aec3ec8a314c1d29738f73939679c33cb23805d6c2a7bab560af25f8930636d"
+        }
+      ]
+    },
+    "elapsedMs": 52583.19999999553,
+    "snapshots": 54,
+    "intervals": {
+      "no-scene": {
+        "count": 1113,
+        "durationMs": 8838,
+        "callbacksPerSecond": 125.93346911065852,
+        "p50Ms": 7.600000000005821,
+        "p95Ms": 8.5,
+        "p99Ms": 8.700000000011642,
+        "maxMs": 142.29999999998836,
+        "over20Ms": 3,
+        "over33Ms": 1,
+        "over50Ms": 1
+      },
+      "scene": {
+        "count": 2850,
+        "durationMs": 29719.199999999983,
+        "callbacksPerSecond": 95.89760155051286,
+        "p50Ms": 8,
+        "p95Ms": 16,
+        "p99Ms": 23.60000000000582,
+        "maxMs": 330.70000000001164,
+        "over20Ms": 46,
+        "over33Ms": 19,
+        "over50Ms": 2
+      },
+      "menu": {
+        "count": 1436,
+        "durationMs": 13883.399999999994,
+        "callbacksPerSecond": 103.43287667286116,
+        "p50Ms": 8,
+        "p95Ms": 16,
+        "p99Ms": 23.199999999982538,
+        "maxMs": 40,
+        "over20Ms": 23,
+        "over33Ms": 6,
+        "over50Ms": 0
+      },
+      "unfocused-scene": {
+        "count": 6,
+        "durationMs": 64,
+        "callbacksPerSecond": 93.75,
+        "p50Ms": 8,
+        "p95Ms": 16.10000000000582,
+        "p99Ms": 16.10000000000582,
+        "maxMs": 16.10000000000582,
+        "over20Ms": 0,
+        "over33Ms": 0,
+        "over50Ms": 0
+      }
+    },
+    "longTasks": {
+      "supported": true,
+      "count": 3,
+      "totalMs": 697,
+      "maxMs": 296,
+      "withinWindowMs": 697,
+      "browsingContexts": {
+        "self": 3
+      },
+      "interpretation": "Browser context attribution only; not JavaScript call stacks or GPU attribution. Stop drains queued entries, not future reports."
+    },
+    "longAnimationFrames": {
+      "supported": true,
+      "count": 3,
+      "reportedBlockingDurationMs": 607.2,
+      "boundaryFrames": 0,
+      "scriptEntries": [
+        {
+          "startTime": 140640.79999999702,
+          "duration": 139.10000000149012,
+          "executionStart": 140640.79999999702,
+          "forcedStyleAndLayoutDuration": 0,
+          "pauseDuration": 0,
+          "invoker": "DIV#root.onkeydown",
+          "invokerType": "event-listener",
+          "sourceURL": "http://127.0.0.1:4198/assets/index-DYMY-YfV.js",
+          "sourceFunctionName": "_h",
+          "sourceCharPosition": 210615,
+          "windowAttribution": "descendant"
+        },
+        {
+          "startTime": 140780.19999999553,
+          "duration": 6.300000004470348,
+          "executionStart": 140780.19999999553,
+          "forcedStyleAndLayoutDuration": 0,
+          "pauseDuration": 0,
+          "invoker": "DIV#root.onclick",
+          "invokerType": "event-listener",
+          "sourceURL": "http://127.0.0.1:4198/assets/index-DYMY-YfV.js",
+          "sourceFunctionName": "_h",
+          "sourceCharPosition": 210615,
+          "windowAttribution": "descendant"
+        },
+        {
+          "startTime": 141161.09999999404,
+          "duration": 255.90000000596046,
+          "executionStart": 141161.09999999404,
+          "forcedStyleAndLayoutDuration": 0,
+          "pauseDuration": 0,
+          "invoker": "IMG[src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABdJREFUeNpi/P//PwMMMDEgAdwcgAADAJZuAwXJYZOzAAAAAElFTkSuQmCC\"].onload",
+          "invokerType": "event-listener",
+          "sourceURL": "http://127.0.0.1:4198/assets/phaser-CIO7jVcA.js",
+          "sourceFunctionName": "",
+          "sourceCharPosition": 577533,
+          "windowAttribution": "descendant"
+        },
+        {
+          "startTime": 141417.09999999404,
+          "duration": 31.900000005960464,
+          "executionStart": 141417.09999999404,
+          "forcedStyleAndLayoutDuration": 0,
+          "pauseDuration": 0,
+          "invoker": "FrameRequestCallback",
+          "invokerType": "user-callback",
+          "sourceURL": "http://127.0.0.1:4198/assets/phaser-CIO7jVcA.js",
+          "sourceFunctionName": "t",
+          "sourceCharPosition": 584142,
+          "windowAttribution": "descendant"
+        },
+        {
+          "startTime": 170209.19999999553,
+          "duration": 295.8999999985099,
+          "executionStart": 170209.19999999553,
+          "forcedStyleAndLayoutDuration": 0,
+          "pauseDuration": 0,
+          "invoker": "IMG[src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABdJREFUeNpi/P//PwMMMDEgAdwcgAADAJZuAwXJYZOzAAAAAElFTkSuQmCC\"].onload",
+          "invokerType": "event-listener",
+          "sourceURL": "http://127.0.0.1:4198/assets/phaser-CIO7jVcA.js",
+          "sourceFunctionName": "",
+          "sourceCharPosition": 577533,
+          "windowAttribution": "descendant"
+        },
+        {
+          "startTime": 170505.59999999404,
+          "duration": 21.600000001490116,
+          "executionStart": 170505.59999999404,
+          "forcedStyleAndLayoutDuration": 0,
+          "pauseDuration": 0,
+          "invoker": "FrameRequestCallback",
+          "invokerType": "user-callback",
+          "sourceURL": "http://127.0.0.1:4198/assets/phaser-CIO7jVcA.js",
+          "sourceFunctionName": "t",
+          "sourceCharPosition": 584142,
+          "windowAttribution": "descendant"
+        }
+      ],
+      "interpretation": "Same-origin root includes QA overhead. Blocking/script durations are original whole-entry values, not clipped attribution. Not a full stack, source map or GPU timing. Frame and task durations overlap; never add them."
+    },
+    "canvases": {
+      "min": 0,
+      "max": 1
+    },
+    "heap": {
+      "firstBytes": 11788316,
+      "lastBytes": 42797665,
+      "minBytes": 11788316,
+      "maxBytes": 57446163,
+      "interpretation": "coarse/shared browser heap; does not establish retained heap or absence of leaks"
+    },
+    "visibilityEvents": 0,
+    "errors": [],
+    "interpretation": "Real rAF callback intervals; not GPU presentation FPS, combat benchmark or device certification."
+  },
+  "clock": {
+    "parentTimeOrigin": 1792043419099,
+    "iframeTimeOrigin": 1792043419169.4
+  },
+  "animationFrameTimeOrigin": 1792043419099,
+  "actualEntries": [
+    {
+      "id": "assets/index-DYMY-YfV.js:210615",
+      "file": "assets/index-DYMY-YfV.js",
+      "sha256": "edadfa1ec5f68d8c163e711e3bb3cb2043fbe561a1e76b16936d7b9ed6622e92",
+      "utf16CharacterPosition": 210615,
+      "sourceFunctionName": "_h",
+      "productionExcerpt": "===31){var t=jd();t=wt(t);var n=Ni(e,t);n!==null&&Pd(n,e,t),ph(e,t)}}var gh=!0;function _h(e,t,n,r){var i=E.T;E.T=null;var a=D.p;try{D.p=2,yh(e,t,n,r)}finally{D.p=a,E.T=i}}function vh(e,t,n,r){var i=E.T;E.T=null;var a=D.p;try{D.p=8,yh(e,t,n,r)}finally{D.p=a,E.T=i}}function yh(e,t,n,r){if(gh){var i=bh(r);if(i=",
+      "interpretation": "Actual minified entry position, not a source map or full stack."
+    },
+    {
+      "id": "assets/phaser-CIO7jVcA.js:577533",
+      "file": "assets/phaser-CIO7jVcA.js",
+      "sha256": "e7084923ac0dc1398805eb1dcfc9b54b1a36665ac549181a7cc01921380e1a21",
+      "utf16CharacterPosition": 577533,
+      "sourceFunctionName": "",
+      "productionExcerpt": "ckKey(e)){var n=this,r=new Image;r.onerror=function(){n.emit(d.ERROR,e)},r.onload=function(){var t=n.create(e,r);t&&(v.Image(t,0),n.emit(d.ADD,e,t),n.emit(d.ADD_KEY+e,t),n.emit(d.LOAD,e,t))},r.src=t}return this},getBase64:function(e,t,n,r){n===void 0&&(n=`image/png`),r===void 0&&(r=.92);var a=``,o=this.getFra",
+      "interpretation": "Actual minified entry position, not a source map or full stack."
+    },
+    {
+      "id": "assets/phaser-CIO7jVcA.js:584142",
+      "file": "assets/phaser-CIO7jVcA.js",
+      "sha256": "e7084923ac0dc1398805eb1dcfc9b54b1a36665ac549181a7cc01921380e1a21",
+      "utf16CharacterPosition": 584142,
+      "sourceFunctionName": "t",
+      "productionExcerpt": "ck=i,this.isSetTimeOut=!1,this.timeOutID=null,this.delay=0;var e=this;this.step=function t(n){e.callback(n),e.isRunning&&(e.timeOutID=window.requestAnimationFrame(t))},this.stepTimeout=function t(){e.isRunning&&(e.timeOutID=window.setTimeout(t,e.delay)),e.callback(window.performance.now())}},start:function(e,",
+      "interpretation": "Actual minified entry position, not a source map or full stack."
+    }
+  ],
+  "actualNative": {
+    "bytes": 37585,
+    "sha256": "47f6bb96bb05c4c2feea230dc5c453d4b25516b740be61651cec59f01ac61227",
+    "officialParseWholeStateEqual": true
+  },
+  "oldNativeCollection": 850,
+  "newNativeFiles": 1,
+  "migrationProofsRerun": false,
+  "observedCanvases": {
+    "firstScene": 1,
+    "exit": 0,
+    "secondScene": 1,
+    "observed": true,
+    "allResourcesReleased": false
+  },
+  "tests": {
+    "vitestFiles": 177,
+    "vitest": 1084,
+    "node": 39,
+    "affectedSSRFollowup": 14,
+    "types": true,
+    "production": true
+  },
+  "ssrOptimizerIncident": {
+    "time": "2026-10-15T05:50:44Z",
+    "error": "EPERM rename shared node_modules/.vite/deps",
+    "fullCheckExitCode": 0,
+    "testsFailed": 0,
+    "loggedErrorRetained": true,
+    "correction": "SSR-only proof servers disable browser dependency discovery with noDiscovery:true/include:[]",
+    "followup": "14 actual parallel SSR tests passed with no optimizer scan, bundling or error output",
+    "historicalGameRollbackRootCause": false
+  },
+  "browserErrors": {
+    "sampleErrors": [],
+    "precedingConsoleErrorAt": "2026-10-15T05:45:04.061Z",
+    "firstSampleAt": "2026-10-15T05:52:39.488Z",
+    "precedingErrorSource": "MutationObserver unconfirmed; not included in the sample window"
+  },
+  "screenshot": "docs/qa/c11-animation-entry-0940.png",
+  "limitations": [
+    "Root-frame timing includes QA overhead",
+    "Partial script entry, not full call stack or GPU timing",
+    "Original blocking/script durations are not additive with Long Tasks",
+    "No maximum-group, exact retained-object, real-device or human-Beta acceptance"
+  ]
+}

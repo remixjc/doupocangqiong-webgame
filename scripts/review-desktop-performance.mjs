@@ -6,7 +6,7 @@ import { summarizeIntervals, longTaskWithinSample } from './desktop-performance.
 
 /** Validate a completed native QA export, recomputing every frame statistic. */
 export function reviewDesktopSample(report) {
-  assert([1, 2].includes(report.format), 'unsupported QA format')
+  assert([1, 2, 3].includes(report.format), 'unsupported QA format')
   assert.match(report.identity.gitSha, /^[a-f0-9]{40}$/)
   assert(Number.isFinite(report.elapsedMs) && report.elapsedMs > 0)
   assert(Number.isFinite(report.startedAt) && report.startedAt >= 0)
@@ -38,7 +38,7 @@ export function reviewDesktopSample(report) {
     Number.isFinite(task.startTime) && task.startTime >= 0 && Number.isFinite(task.duration) && task.duration >= 50))
   assert.equal(typeof report.longTasksSupported, 'boolean')
   assert(report.longTasksSupported || tasks.length === 0, 'tasks require observer support')
-  if (report.format === 2) {
+  if (report.format >= 2) {
     assert(Number.isFinite(report.clock?.parentTimeOrigin) && report.clock.parentTimeOrigin > 0)
     assert(Number.isFinite(report.clock?.iframeTimeOrigin) && report.clock.iframeTimeOrigin > 0)
     for (const task of tasks) {
@@ -53,16 +53,46 @@ export function reviewDesktopSample(report) {
       assert(Number.isFinite(elapsedStartMs) && Number.isFinite(overlapMs) && overlapMs > 0)
     }
   }
+  if (report.format >= 3) {
+    assert.equal(report.animationFrameTimeOrigin, report.clock.parentTimeOrigin, 'LoAF observes same-origin QA root')
+    assert.equal(typeof report.longAnimationFramesSupported, 'boolean')
+    assert(Array.isArray(report.longAnimationFrames))
+    assert(report.longAnimationFramesSupported || report.longAnimationFrames.length === 0)
+    for (const entry of report.longAnimationFrames) {
+      for (const key of ['startTime', 'duration', 'blockingDuration', 'renderStart', 'styleAndLayoutStart', 'firstUIEventTimestamp'])
+        assert(Number.isFinite(entry[key]) && entry[key] >= 0, `invalid animation frame ${key}`)
+      assert(entry.duration >= 50 && entry.blockingDuration <= entry.duration)
+      const { elapsedStartMs, overlapMs, ...raw } = entry
+      assert.deepEqual(longTaskWithinSample(raw, { ...report.clock, iframeTimeOrigin: report.animationFrameTimeOrigin },
+        report.startedAt, report.elapsedMs), entry)
+      assert(overlapMs > 0 && Number.isFinite(elapsedStartMs))
+      assert(Array.isArray(entry.scripts))
+      for (const script of entry.scripts) {
+        for (const key of ['startTime', 'duration', 'executionStart', 'forcedStyleAndLayoutDuration', 'pauseDuration'])
+          assert(Number.isFinite(script[key]) && script[key] >= 0, `invalid script ${key}`)
+        for (const key of ['invoker', 'invokerType', 'sourceURL', 'sourceFunctionName', 'windowAttribution'])
+          assert.equal(typeof script[key], 'string')
+        assert(Number.isSafeInteger(script.sourceCharPosition) && script.sourceCharPosition >= -1)
+      }
+    }
+  }
   return { identity: report.identity, elapsedMs: report.elapsedMs, snapshots: report.snapshots.length,
     intervals: report.intervals, longTasks: { supported: report.longTasksSupported, count: tasks.length,
       totalMs: tasks.reduce((total, task) => total + task.duration, 0),
       maxMs: tasks.reduce((max, task) => Math.max(max, task.duration), 0),
-      ...(report.format === 2 ? {
+      ...(report.format >= 2 ? {
         withinWindowMs: tasks.reduce((total, task) => total + task.overlapMs, 0),
         browsingContexts: Object.fromEntries([...new Set(tasks.map(task => task.name))]
           .sort().map(name => [name, tasks.filter(task => task.name === name).length])),
         interpretation: 'Browser context attribution only; not JavaScript call stacks or GPU attribution. Stop drains queued entries, not future reports.',
       } : {}) },
+    ...(report.format >= 3 ? { longAnimationFrames: {
+      supported: report.longAnimationFramesSupported, count: report.longAnimationFrames.length,
+      reportedBlockingDurationMs: report.longAnimationFrames.reduce((total, entry) => total + entry.blockingDuration, 0),
+      boundaryFrames: report.longAnimationFrames.filter(entry => entry.overlapMs < entry.duration).length,
+      scriptEntries: report.longAnimationFrames.flatMap(entry => entry.scripts),
+      interpretation: 'Same-origin root includes QA overhead. Blocking/script durations are original whole-entry values, not clipped attribution. Not a full stack, source map or GPU timing. Frame and task durations overlap; never add them.',
+    } } : {}),
     canvases: { min: Math.min(...report.snapshots.map(row => row.canvases)),
       max: Math.max(...report.snapshots.map(row => row.canvases)) },
     heap: heaps.length ? { firstBytes: heaps[0], lastBytes: heaps.at(-1), minBytes: Math.min(...heaps), maxBytes: Math.max(...heaps),
