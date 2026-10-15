@@ -2,6 +2,8 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { once } from 'node:events'
 import { resolve } from 'node:path'
+import { cp, mkdtemp, readFile, writeFile, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
 import { verifyRelease } from './verify-release.mjs'
 import { summarizeIntervals } from './desktop-performance.mjs'
 import { createPerformanceServer } from './serve-desktop-performance.mjs'
@@ -59,4 +61,38 @@ test('QA server serves verified production bytes and only explicit read-only QA 
     }
     assert.equal((await fetch(origin + '/', { method: 'POST', body: 'no writes' })).status, 405)
   } finally { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)) }
+})
+test('QA identity pins every served production byte across a concurrent rebuild', async () => {
+  const directory = await mkdtemp(resolve(tmpdir(), 'btth-desktop-snapshot-'))
+  let server
+  try {
+    await cp(resolve('dist'), directory, { recursive: true })
+    const before = await readFile(resolve(directory, 'index.html'))
+    const manifestBytes = await readFile(resolve(directory, 'release-manifest.json'))
+    const manifest = JSON.parse(manifestBytes)
+    const js = manifest.files.find(row => row.file.endsWith('.js')).file
+    const jsBefore = await readFile(resolve(directory, js))
+    server = await createPerformanceServer(directory)
+    server.listen(0, '127.0.0.1'); await once(server, 'listening')
+    const origin = `http://127.0.0.1:${server.address().port}`
+    // A successful startup is not enough: requests after these changes used to
+    // serve new/corrupt bytes under the old verified SHA, and expose new files.
+    await writeFile(resolve(directory, 'index.html'), 'later build')
+    await writeFile(resolve(directory, js), 'later javascript')
+    await writeFile(resolve(directory, 'release-manifest.json'), '{}')
+    await writeFile(resolve(directory, 'unlisted.txt'), 'not verified')
+    for (const [path, expected] of [
+      ['/', before], ['/index.html', before], ['/' + js, jsBefore], ['/release-manifest.json', manifestBytes],
+    ]) {
+      const response = await fetch(origin + path)
+      assert.equal(response.status, 200)
+      assert.deepEqual(Buffer.from(await response.arrayBuffer()), expected, path)
+    }
+    assert.equal((await fetch(origin + '/unlisted.txt')).status, 404)
+    assert.equal((await fetch(origin + '/__qa/identity').then(response => response.json())).gitSha, manifest.gitSha)
+    await assert.rejects(createPerformanceServer(directory))
+  } finally {
+    if (server) { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)) }
+    await rm(directory, { recursive: true, force: true })
+  }
 })

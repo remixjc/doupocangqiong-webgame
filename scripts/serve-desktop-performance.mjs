@@ -1,6 +1,6 @@
 import { createServer } from 'node:http'
-import { readFile, realpath, stat } from 'node:fs/promises'
-import { resolve, relative, extname, isAbsolute } from 'node:path'
+import { readFile, realpath } from 'node:fs/promises'
+import { resolve, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { verifyRelease } from './verify-release.mjs'
 import { createHash } from 'node:crypto'
@@ -11,7 +11,20 @@ const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; cha
   '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.txt': 'text/plain; charset=utf-8' }
 export async function createPerformanceServer(directory) {
   const root = await realpath(directory)
+  const manifestBytes = await readFile(resolve(root, 'release-manifest.json'))
   const release = await verifyRelease(root)
+  if (!manifestBytes.equals(await readFile(resolve(root, 'release-manifest.json'))))
+    throw new Error('Release manifest changed while verifying')
+  const manifest = JSON.parse(manifestBytes)
+  // A later build must not change the game behind this server's fixed identity.
+  // Cache only listed files, checking the exact bytes retained for every response.
+  const production = new Map(await Promise.all(manifest.files.map(async item => {
+    const bytes = await readFile(resolve(root, item.file))
+    if (bytes.length !== item.bytes || createHash('sha256').update(bytes).digest('hex') !== item.sha256)
+      throw new Error(`Release file changed while taking snapshot: ${item.file}`)
+    return ['/' + item.file, { bytes, type: mime[extname(item.file)] ?? 'application/octet-stream' }]
+  })))
+  production.set('/release-manifest.json', { bytes: manifestBytes, type: mime['.json'] })
   const probeFiles = [
     ['/__qa/', resolve(scriptRoot, '../qa/desktop-performance.html')],
     ['/__qa/probe.mjs', resolve(scriptRoot, '../qa/desktop-performance.mjs')],
@@ -29,7 +42,6 @@ export async function createPerformanceServer(directory) {
     if (request.method !== 'GET') { response.writeHead(405); response.end(); return }
     try {
       const path = decodeURIComponent(new URL(request.url, 'http://localhost').pathname)
-      let file
       if (probes.has(path)) {
         const asset = probes.get(path)
         response.setHeader('Content-Type', asset.type)
@@ -39,13 +51,11 @@ export async function createPerformanceServer(directory) {
         response.end(JSON.stringify(identity)); return
       } else {
         if (path.includes('\0') || path.includes('\\')) throw new Error('Invalid path')
-        file = await realpath(resolve(root, '.' + (path === '/' ? '/index.html' : path)))
-        const within = relative(root, file)
-        if (within.startsWith('..') || isAbsolute(within)) throw new Error('Outside release')
+        const asset = production.get(path === '/' ? '/index.html' : path)
+        if (!asset) throw new Error('Not in release snapshot')
+        response.setHeader('Content-Type', asset.type)
+        response.end(asset.bytes)
       }
-      if (!(await stat(file)).isFile()) throw new Error('Not a file')
-      response.setHeader('Content-Type', mime[extname(file)] ?? 'application/octet-stream')
-      response.end(await readFile(file))
     } catch { response.writeHead(404); response.end('Not found') }
   })
 }

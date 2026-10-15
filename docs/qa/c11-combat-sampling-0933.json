@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-15",
+  "version": "0.93.3",
+  "item": "E03",
+  "status": "partial",
+  "remainingWorkPackages": 26,
+  "runtimeChanged": false,
+  "unchangedProductionFiles": 154,
+  "nativeSample": {
+    "file": "docs/qa/c11-combat-sampling-0933-native.json",
+    "bytes": 461564,
+    "sha256": "605b5a8f6494427c117c903c700e3e5adc1f94f20984791d265308ad21b910b3",
+    "review": {
+      "identity": {
+        "version": "0.93.3",
+        "gitSha": "7ff30a14257b5d7cc8d376c85860d74c259ead7c",
+        "files": 154,
+        "bytes": 2592008,
+        "probeFiles": [
+          {
+            "url": "/__qa/",
+            "bytes": 1501,
+            "sha256": "0cb6e98aed76e4bf46394a0d0d9b31214592b16e6e58954972197d24f326d9eb"
+          },
+          {
+            "url": "/__qa/probe.mjs",
+            "bytes": 5730,
+            "sha256": "e0f9ea861e80b50b13399e6aa267041827a5e0c816970c8fb4dcdbec71e9d1ad"
+          },
+          {
+            "url": "/__qa/statistics.mjs",
+            "bytes": 797,
+            "sha256": "b268b0acd68d2f3942afb4294df4c2b4d4789df68097e1fd63d04d45181d86d2"
+          }
+        ]
+      },
+      "elapsedMs": 180067.5,
+      "snapshots": 182,
+      "intervals": {
+        "unfocused-scene": {
+          "count": 14,
+          "durationMs": 107.29999999998836,
+          "callbacksPerSecond": 130.47530288911014,
+          "p50Ms": 7.5,
+          "p95Ms": 8.099999999991269,
+          "p99Ms": 8.099999999991269,
+          "maxMs": 8.099999999991269,
+          "over20Ms": 0,
+          "over33Ms": 0,
+          "over50Ms": 0
+        },
+        "scene": {
+          "count": 16471,
+          "durationMs": 141592.40000000002,
+          "callbacksPerSecond": 116.32686500122887,
+          "p50Ms": 7.800000000017462,
+          "p95Ms": 8.60000000000582,
+          "p99Ms": 23.099999999976717,
+          "maxMs": 376.79999999998836,
+          "over20Ms": 181,
+          "over33Ms": 119,
+          "over50Ms": 96
+        },
+        "menu": {
+          "count": 4495,
+          "durationMs": 38276.09999999998,
+          "callbacksPerSecond": 117.43620692808314,
+          "p50Ms": 7.600000000005821,
+          "p95Ms": 8.5,
+          "p99Ms": 23.20000000001164,
+          "maxMs": 168.40000000002328,
+          "over20Ms": 58,
+          "over33Ms": 36,
+          "over50Ms": 18
+        }
+      },
+      "longTasks": {
+        "supported": true,
+        "count": 2,
+        "totalMs": 401,
+        "maxMs": 204
+      },
+      "canvases": {
+        "min": 1,
+        "max": 1
+      },
+      "heap": {
+        "firstBytes": 55492806,
+        "lastBytes": 62304705,
+        "minBytes": 23960470,
+        "maxBytes": 75665244,
+        "interpretation": "coarse/shared browser heap; does not establish retained heap or absence of leaks"
+      },
+      "visibilityEvents": 0,
+      "errors": [],
+      "interpretation": "Real rAF callback intervals; not GPU presentation FPS, combat benchmark or device certification."
+    }
+  },
+  "observed": [
+    {
+      "at": "2026-10-15T04:30:26.803Z",
+      "kind": "start",
+      "text": "\t\t5 text field (settable) 本机环境说明, Value: NUC11PHi7/i7-1165G7/约32GiB/Win11 Pro10.0.26300；内嵌Chrome155；第14章强榜单敌复练，手动操作与免费重试，非最大群战；采样期间无构建测试, ID: environment\n\t\t8 button (disabled) 开始真实采样, ID: start\n\t\t11 text 0.93.3 @ 7ff30a14257b5d7cc8d376c85860d74c259ead7c · 请在游戏中正常准备场景后开始\n\t\t\t\t\t\t54 text 每次复练胜利+1 · 人物面板2火能换30积累\n\t\t\t\t\t\t\t130 text 强榜复练  · 第 1 阶段\n\t\t\t\t\t\t70 level indicator Description: 生命, Value: 724\n\t\t\t\t\t\t133 level indicator Description: 首领生命, Value: 924\n\t\t\t\t\t\t128 button E · 开启强榜复练 · 胜利1火能\n\t\t\t\t\t\t\t\t127 双路猎捕 · 火能独立收支 · 强榜复练\n\t\t\t\t134 text 强榜复练已开始。真实获胜得1火能，首通奖励不重复。\nThe focused UI element is 128 button E · 开启强榜复练 · 胜利1火能"
+    },
+    {
+      "at": "2026-10-15T04:30:42.142Z",
+      "kind": "manualAttackWave",
+      "text": "\t\t134 text 采样中 15.0秒 · scene · 画布1\n\t\t\t\t\t\t\t130 text 强榜复练  · 第 1 阶段\n\t\t\t\t\t\t70 level indicator Description: 生命, Value: 504\n\t\t\t\t\t\t71 level indicator Description: 斗气, Value: 184\n\t\t\t\t\t\t133 level indicator Description: 首领生命, Value: 924\n\t\t\t\t\t89 button 1 八极崩 18 斗气, Help: 近身爆发，打断普通敌人的蓄力。\n\t\t\t\t\t\t92 text 18 斗气\n\t\t\t\t\t93 button 2 焰分噬浪尺 28 斗气, Help: 沿面向方向释放远距斩击。\n\t\t\t\t\t\t96 text 28 斗气\n\t\t\t\t\t97 button 3 佛怒火莲 48 斗气, Help: 在前方凝聚范围火莲，需要持有异火。\n\t\t\t\t\t\t100 text 48 斗气"
+    },
+    {
+      "at": "2026-10-15T04:30:52.707Z",
+      "kind": "firstCombatObservation",
+      "text": "\t\t134 text 采样中 26.0秒 · scene · 画布1\n\t\t\t\t\t\t\t130 text 强榜复练  · 第 1 阶段\n\t\t\t\t\t\t70 level indicator Description: 生命, Value: 328\n\t\t\t\t\t\t71 level indicator Description: 斗气, Value: 184\n\t\t\t\t\t\t133 level indicator Description: 首领生命, Value: 540\n\t\t\t\t\t89 button 1 八极崩 18 斗气, Help: 近身爆发，打断普通敌人的蓄力。\n\t\t\t\t\t\t92 text 18 斗气\n\t\t\t\t\t93 button 2 焰分噬浪尺 28 斗气, Help: 沿面向方向释放远距斩击。\n\t\t\t\t\t\t96 text 28 斗气\n\t\t\t\t\t97 button 3 佛怒火莲 48 斗气, Help: 在前方凝聚范围火莲，需要持有异火。\n\t\t\t\t\t\t100 text 48 斗气"
+    },
+    {
+      "at": "2026-10-15T04:31:10.016Z",
+      "kind": "combatObserve",
+      "text": "\t\t134 text 采样中 43.0秒 · scene · 画布1\n\t\t\t\t\t\t70 level indicator Description: 生命, Value: 108\n\t\t\t\t\t\t133 level indicator Description: 首领生命, Value: 540"
+    },
+    {
+      "at": "2026-10-15T04:31:29.638Z",
+      "kind": "dodgeActionTimedOut",
+      "text": "\t\t8 button (disabled) 开始真实采样, ID: start\n\t\t9 button 结束采样, ID: stop\n\t\t10 button (disabled) 导出采样 JSON, ID: export\n\t\t134 text 采样中 63.0秒 · menu · 画布1\n\t\t\t\t\t17 button 炎 斗破苍穹 异 火 之 路\n\t\t\t\t\t\t22 button 启程\n\t\t\t\t\t\t23 button 大陆舆图\n\t\t\t\t\t\t24 button 修炼手札\n\t\t\t\t\t\t25 button 伙伴手札\n\t\t\t\t\t29 button 查看人物\n\t\t\t\t\t30 button 存档管理\n\t\t\t\t\t31 button 游戏设置\n\t\t\t\t\t\t59 button 开炉炼药\n\t\t\t\t\t\t60 button 营地与休整\n\t\t\t\t\t\t61 button 篇章回顾 ↗\n\t\t\t\t\t\t62 button 人物 · 行囊 ↗\n\t\t\t\t\t\t70 level indicator Description: 生命, Value: 0\n\t\t\t\t\t\t133 level indicator Description: 首领生命, Value: 540\n\t\t\t\t\t\t128 button E · 开启强榜复练 · 胜利1火能\n\t\t\t\t\t77 button J 普攻\n\t\t\t\t\t80 button 空格 闪避\n\t\t\t\t\t83 button F 回气\n\t\t\t\t\t86 button R 支援\n\t\t\t\t\t89 button 1 八极崩 18 斗气, Help: 近身爆发，打断普通敌人的蓄力。\n\t\t\t\t\t93 button 2 焰分噬浪尺 28 斗气, Help: 沿面向方向释放远距斩击。\n\t\t\t\t\t97 button 3 佛怒火莲 48 斗气, Help: 在前方凝聚范围火莲，需要持有异火。\n\t\t\t\t\t101 button Q 恢复丹 持有 6\n\t\t\t\t\t\t107 pop up button (disabled, collapsed, settable) 前往地点, Value: 强榜演武台, ID: walk-destination, Secondary Actions: Expand\n\t\t\t\t\t\t108 button (disabled) 沿路行走\n\t\t\t\t\t\t109 button (disabled) 停止行走\n\t\t\t\t\t\t110 text 行走已停止，关闭菜单后可重新选择。\n\t\t\t\t\t141 button 回到营地，重新挑战\n\t\t\t\t\t142 button 返回舆图\nThe focused UI element is 141 button 回到营地，重新挑战"
+    },
+    {
+      "at": "2026-10-15T04:31:55.615Z",
+      "kind": "freeRetryAndTravel",
+      "text": "\t\t178 text 采样中 88.0秒 · scene · 画布1\n\t\t\t\t\t\t121 level indicator Description: 生命, Value: 724\n\t\t\t\t\t\t176 text 正在前往：强榜演武台。"
+    },
+    {
+      "at": "2026-10-15T04:32:20.808Z",
+      "kind": "secondCombatStart",
+      "text": "\t\t180 text 采样中 114.0秒 · scene · 画布1\n\t\t\t\t\t\t\t182 text 强榜复练  · 第 1 阶段\n\t\t\t\t\t\t116 container 探索场景：WASD移动，J普攻，空格闪避，E交互\n\t\t\t\t\t\t121 level indicator Description: 生命, Value: 724\n\t\t\t\t\t\t185 level indicator Description: 首领生命, Value: 924\n\t\t\t\t\t126 text 聚焦场景后使用WASD或方向键移动、J普攻、空格闪避、E交互。Tab切换按钮，聚焦按钮时Enter或空格执行该按钮。\n\t\t\t\t\t131 button 空格 闪避\n\t\t\t\t\t\t133 text  闪避"
+    },
+    {
+      "at": "2026-10-15T04:32:28.320Z",
+      "kind": "buttonDodgeAndMove",
+      "text": "\t\t186 text 采样中 121.0秒 · scene · 画布1\n\t\t\t\t\t\t\t182 text 强榜复练  · 第 1 阶段\n\t\t\t\t\t\t121 level indicator Description: 生命, Value: 636\n\t\t\t\t\t\t123 level indicator Description: 体力, Value: 79\n\t\t\t\t\t\t185 level indicator Description: 首领生命, Value: 924"
+    },
+    {
+      "at": "2026-10-15T04:33:05.003Z",
+      "kind": "secondCombatObserve",
+      "text": "\t\t186 text 采样中 158.0秒 · scene · 画布1\n\t\t\t\t\t\t\t182 text 强榜复练  · 第 1 阶段\n\t\t\t\t\t\t121 level indicator Description: 生命, Value: 64\n\t\t\t\t\t\t185 level indicator Description: 首领生命, Value: 924"
+    },
+    {
+      "at": "2026-10-15T04:33:19.403Z",
+      "kind": "secondDeath",
+      "text": "\t\t186 text 采样中 172.0秒 · menu · 画布1\n\t\t\t\t\t\t121 level indicator Description: 生命, Value: 0\n\t\t\t\t\t\t185 level indicator Description: 首领生命, Value: 924\n\t\t\t\t\t193 button 回到营地，重新挑战\nThe focused UI element is 193 button 回到营地，重新挑战"
+    },
+    {
+      "at": "2026-10-15T04:33:27.532Z",
+      "kind": "secondFreeRetry",
+      "text": "\t\t113 text 采样结束 · 180.1秒 · 182个实测快照\n\t\t\t\t\t\t121 level indicator Description: 生命, Value: 724"
+    }
+  ],
+  "consoleErrorsAndWarnings": [],
+  "method": "Normal previously completed chapter14 strong-list practice; manual starts, one basic attack and wave, button dodge, natural deaths, free retries. No injected state or simulated time.",
+  "outcome": "Two single-enemy practice starts and two natural deaths observed. Second free retry confirmed just after sample ended. No win, kill, collection, consumables or new reward.",
+  "timingBoundary": "180.0675s is the complete mixed measurement window, including travel and failure menus; not 180 seconds of uninterrupted combat.",
+  "sourceDisposalTestBoundary": "Three tests call actual AdventureScene create/update/shutdown/destroy with a mocked Phaser display/input facade and real CombatWorld. Five window handlers, one visibility handler, pointer input and scene cleanup callbacks are checked. This is source-level wiring evidence, not browser retained-object or GPU measurements.",
+  "serverRegression": {
+    "trigger": "Rebuild dist while the previously verified QA server is running",
+    "before": "Old implementation demonstrably served replacement 11-byte index under its original verified release identity.",
+    "after": "Startup pins and rehashes listed production bytes plus manifest; later modified HTML/JS/manifest and new unlisted file cannot change served snapshot. New startup rejects corrupted release.",
+    "tests": 4
+  },
+  "nativeSaves": [
+    {
+      "name": "beforeCombat",
+      "bytes": 37394,
+      "sha256": "c4bedc3ff9f1b0c1a9084b267a4bdbfe4805561823025ee276035cabc6c4a727",
+      "stateSHA256": "19e519eda7d415882911aa97c1ad48668d8dda09f31f42102845a6a4fc36adbf"
+    },
+    {
+      "name": "afterCombatDomainReload",
+      "bytes": 37394,
+      "sha256": "801e93f085afc65cbdaf5e332d89878b094f5c6a340199bcb294ce67ebc54ee1",
+      "stateSHA256": "19e519eda7d415882911aa97c1ad48668d8dda09f31f42102845a6a4fc36adbf"
+    }
+  ],
+  "beforeAfterEntireOfficialStateEqual": true,
+  "state": {
+    "chapter": 14,
+    "gold": 18718,
+    "xp": 14560,
+    "fireEnergy": 5,
+    "totalKills": 75,
+    "inventory": {
+      "herb": 9,
+      "crystal": 76,
+      "heal": 6,
+      "mana": 3,
+      "elixir": 0
+    },
+    "completed": 28
+  },
+  "toolFailure": "A requested keyboard Space timed out when the natural death dialog had appeared; not counted as a successful dodge. Later actual button dodge observed stamina79.",
+  "limits": [
+    "Single-enemy practice is not worst-case group combat.",
+    "rAF is not GPU presentation FPS.",
+    "No exact long-task code attribution, forced GC, GPU accounting or browser retained-object analysis.",
+    "The two earlier camp/pilot measurements remain frozen and are not relabeled as this run.",
+    "Source, full character, device, human Beta, rights and public deployment gates remain open."
+  ]
+}
